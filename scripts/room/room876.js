@@ -1606,7 +1606,7 @@ room876.chat = function (chatID) {
                     " you're going to love Alonzo, he's a really knows how to treat a girl, if you know what I mean. *wink* ",
                 button: [
                     { chatID: 136, text: "Oh. Thanks. He looks like he knows what he's doing. ", callback: "cheer8_3" },
-                    { chatID: -1, text: "Squeel and run away! ", callback: "cheer8_9bad" }
+                    { chatID: -1, text: "Squeal and run away! ", callback: "cheer8_9bad" }
                 ]
             },
             {
@@ -1620,7 +1620,7 @@ room876.chat = function (chatID) {
             {
                 chatID: 137,
                 speaker: "me",
-                text: "Make me squeel big guy! ",
+                text: "Make me squeal big guy! ",
                 button: [
                     { chatID: 138, text: "...", callback: "cheer8_5" },
                 ]

@@ -1004,7 +1004,7 @@ room28.chat = function (chatID) {
                 speaker: "thinking",
                 text: "I'm really turning into a sexy girl. I bet some men even " +
                     "might even think I was born a girl. I bet I could totally " +
-                    "secude a man that's only into girls....",
+                    "seduce a man that's only into girls....",
                 button: [
                     { chatID: -1, text: "[You can now try to seduce men]", callback: "endDream" }
                 ]

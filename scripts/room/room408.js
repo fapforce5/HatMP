@@ -457,7 +457,7 @@ room408.chat = function (chatID) {
             text: "Oh. Sure. I prefer tattooing while I talk. Care for a free tattoo while I tell you all about them? ",
             button: [
                 { chatID: 10, text: "Sure! ", callback: "" },
-                { chatID: -1, text: "Squeel and run away! ", callback: "leave" },
+                { chatID: -1, text: "Squeal and run away! ", callback: "leave" },
             ]
         },
         {

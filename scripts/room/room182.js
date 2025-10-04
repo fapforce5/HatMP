@@ -1377,7 +1377,7 @@ room182.chat = function (chatID) {
                     "sissy. This sissy is my personal favorite and I expected her to get this " +
                     "award. " + sc.n("me") + ", please set forward to receive your crown. ",
                 button: [
-                    { chatID: 79, text: "*squeel*", callback: "crown0" },
+                    { chatID: 79, text: "*squeal*", callback: "crown0" },
                 ]
             },
             {

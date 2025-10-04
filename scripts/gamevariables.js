@@ -143,6 +143,8 @@ gv.init = function () {
 
         { n: "caveDoorEnter", t: false, q: "bool" },
 
+        { n: "janiceWalk", t: 0, q: "int" },
+        { n: "janiceAfternoon", t: 0, q: "int" },
 
         //{ n: "jobConstWorkToday", t: 0, q: "int" },
         //---------------------------------check not used------------------------------

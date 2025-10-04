@@ -344,7 +344,8 @@ room252.btnclick = function (name) {
                 levels.oral(3, "m", "!man", true);
                 room252.btnclick("chat");
             }
-            g.internal.eventpointer++;
+            if (g.internal !== null)
+                g.internal.eventpointer++;
             break;
         default:
             break;

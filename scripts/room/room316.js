@@ -2424,7 +2424,7 @@ room316.chat = function (chatID) {
              {
                 chatID: 109,
                 speaker: "me",
-                text: "*Squeel like a girl!*",
+                text: "*Squeal like a girl!*",
                 button: [
                     { chatID: -1, text: "[Run!]", callback: "leave" },
                 ]
@@ -2769,7 +2769,7 @@ room316.chat = function (chatID) {
             {
                 chatID: 144,
                 speaker: "janice",
-                text: "*Squeel* Yes! Let's pick out a man! ",
+                text: "*Squeal* Yes! Let's pick out a man! ",
                 button: [
                     { chatID: -1, text: "[Pick the man that's going to fuck your girlfriend]", callback: "datrScroll" },
                 ]

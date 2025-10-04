@@ -481,7 +481,7 @@ room54.chat = function (chatID) {
             text: "Ooooo show her the makeup counter. It's my favorite part! Make her " +
                 "into a pretty girl! ",
             button: [
-                { chatID: 17, text: "*Squeel*", callback: "e5_2" },
+                { chatID: 17, text: "yea", callback: "e5_2" },
             ]
         },
         {
@@ -489,7 +489,7 @@ room54.chat = function (chatID) {
             speaker: "tiffany",
             text: "Come here, I'll teach you how to make yourself a pretty girl. ",
             button: [
-                { chatID: 18, text: "*Squeel*", callback: "e5_3" },
+                { chatID: 18, text: "*Squeal*", callback: "e5_3" },
             ]
         },
         {
@@ -623,7 +623,7 @@ room54.chat = function (chatID) {
                 "Bring a gym outfit. It will be totally awesome if you make the team! We've been " +
                 "looking for a new girl! ",
             button: [
-                { chatID: 32, text: "*squeel* Really? Me a cheerleader?", callback: "" },
+                { chatID: 32, text: "*squeal* Really? Me a cheerleader?", callback: "" },
             ]
         },
         {

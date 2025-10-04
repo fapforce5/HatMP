@@ -285,7 +285,7 @@ room951.chat = function (chatID) {
             speaker: "cult",
             text: "That really goes deep, you are a slut...",
             button: [
-                { chatID: 16, text: "Squeel", callback: "box1_5" }
+                { chatID: 16, text: "Squeal", callback: "box1_5" }
             ]
         },
         {

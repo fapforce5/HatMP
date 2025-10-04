@@ -599,7 +599,7 @@ room875.chat = function (chatID) {
                 text: "Let's go to the locker room, we want some more that that ass of yours. ",
                 button: [
                     { chatID: 47, text: "Oh, anything for the team. ", callback: "cheer9_2" },
-                    { chatID: -1, text: "Squeel and run away. ", callback: "leaveLate" },
+                    { chatID: -1, text: "Squeal and run away. ", callback: "leaveLate" },
                 ]
             },
             {
@@ -617,7 +617,7 @@ room875.chat = function (chatID) {
                     "locker room for some post game celebration. You down? ",
                 button: [
                     { chatID: 34, text: "Oh, anything for the team. ", callback: "cheer9_2" },
-                    { chatID: -1, text: "Squeel and run away. ", callback: "leaveLate" },
+                    { chatID: -1, text: "Squeal and run away. ", callback: "leaveLate" },
                 ]
             },
             {

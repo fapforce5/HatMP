@@ -664,7 +664,7 @@ room176.chat = function (chatID) {
                 chatID: 19,
                 speaker: "p",
                 text: "I'm giving you all a cock to take home to help you. You're welcome. " +
-                    " Your homework is to suck cock that cock. Focus on your technique. ",
+                    " Your homework is to suck that cock. Focus on your technique. ",
                 button: [
                     { chatID: 12, text: "...", callback: "oral8" },
                 ]

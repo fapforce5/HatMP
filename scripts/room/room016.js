@@ -587,7 +587,7 @@ room16.chat = function (chatID) {
         {
             chatID: 17,
             speaker: "landlord",
-            text: "Squeel!! I'm so excited to have another girl in the house! We're going to play dress up! I'm going to put on my night " +
+            text: "Squeal!! I'm so excited to have another girl in the house! We're going to play dress up! I'm going to put on my night " +
                 "gown, you strip off those nasty clothes!",
             button: [
                 { chatID: 18, text: "Yes!", callback: "girl2" }
@@ -744,7 +744,7 @@ room16.chat = function (chatID) {
         {
             chatID: 35,
             speaker: "landlord",
-            text: "I love the way you squeel.",
+            text: "I love the way you squeal.",
             button: [
                 { chatID: 36, text: "Yes!", callback: "s12" }
             ]

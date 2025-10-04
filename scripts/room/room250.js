@@ -43,22 +43,22 @@ room250.main = function () {
             nav.button({
                 "type": "btn",
                 "name": "hollyStand",
-                "left": 1094,
-                "top": 77,
-                "width": 540,
-                "height": 1003,
-                "image": "250_beaver/holly_stand_mad.png"
+                "left": 1104,
+                "top": 81,
+                "width": 432,
+                "height": 999,
+                "image": "250_beaver/holly_stand.png"
             }, 250);
         }
         else {
             nav.button({
                 "type": "btn",
                 "name": "hollyStand",
-                "left": 1104,
-                "top": 81,
-                "width": 432,
-                "height": 999,
-                "image": "250_beaver/holly_stand.png"
+                "left": 1094,
+                "top": 77,
+                "width": 540,
+                "height": 1003,
+                "image": "250_beaver/holly_stand_mad.png"
             }, 250);
         }
         nav.buildnav([0]);
@@ -393,7 +393,7 @@ room250.chat = function (chatID) {
         },
         {
             chatID: 25,
-            speaker: "holly",
+            speaker: "thinking",
             text: "They must be closed for the night. ",
             button: [
                 { chatID: -1, text: "...", callback: "" }

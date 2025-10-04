@@ -359,7 +359,7 @@ room776.chat = function (chatID) {
         {
             chatID: 19,
             speaker: "nun",
-            text: "*squeel* I shouldn't... I-I-I took a vow of celibacy... oooOOoooo. " +
+            text: "*squeal* I shouldn't... I-I-I took a vow of celibacy... oooOOoooo. " +
                 "Of fiddle sticks! I need it so bad! You have no idea! Please keep it " +
                 "quiet and don't tell ANYONE. I can't get found out",
             button: [

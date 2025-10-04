@@ -284,6 +284,7 @@ sc.charMission = [
                 missionName: "random", mStatus: 0, title: "Random", desc: "Random Events", task:
                     [
                         { id: 0, txt: "Sneaky sleep fuck", show: true, mStatus: 0, roomId: 13 },
+                        { id: 1, txt: "Walk the dog", show: true, mStatus: 0, roomId: 13 },
                     ]
             },
         ],
@@ -575,10 +576,17 @@ sc.charMission = [
                         { id: 1, txt: "Caught!", show: true, mStatus: 0, roomId: 315 },
                         { id: 2, txt: "You're her bitch", show: true, mStatus: 0, roomId: 315 },
                         { id: 3, txt: "[not made yet your dirty bitch]", show: true, mStatus: 0, roomId: 315 },
+                        { id: 4, txt: "Webcam first time", show: true, mStatus: 0, roomId: 315 },
                     ]
             },
             {
                 missionName: "breakup", mStatus: 0, title: "Break Up", desc: "You two just wearn't meant for each other. It's over", task: new Array()
+            },
+            {
+                missionName: "random", mStatus: 0, title: "Misc Events", desc: "", task:
+                    [
+                        { id: 0, txt: "Dog park", show: true, mStatus: 0, roomId: 322 },
+                    ]
             },
         ]
     },
@@ -2712,6 +2720,10 @@ sc.trivial = function (charname) {
         case "!seller":
             name = "LeRoy";
             image = "seller.png";
+            break;
+        case "!dog":
+            name = "Doggy";
+            image = "dog.png";
             break;
         default:
             console.log("unknown trivial char: (check capitilazation)" + charname);

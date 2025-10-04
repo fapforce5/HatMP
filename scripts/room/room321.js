@@ -29,7 +29,15 @@ room321.main = function () {
     $.each(btnList, function (i, v) {
         nav.button(v, 321);
     });
-    if (sc.getSecret("janice").secretOut) {
+    if (g.pass === "pass322") {
+        g.pass = null;
+        nav.bg("321_whorechat/doggy0.jpg");
+        if (sc.getMissionTask("janice", "dog-x", 4).notStarted) {
+            sc.completeMissionTask("janice", "dog-x", 4);
+            chat(26, 321);
+        }
+    }
+    else if (sc.getSecret("janice").secretOut) {
         g.internal.maxviews = 20000;
         switch (sc.taskGetStep("janice", "femdom")) {
             case 2:
@@ -446,6 +454,8 @@ room321.btnclick = function (name) {
         case "icon_quit":
             cl.undo();
             sc.modLevel("janice", g.internal.money, 10);
+            clearTimeout(g.roomTimeout);
+            char.addtime(90);
             char.room(316);
             break;
         case "icon_femdom0":
@@ -530,6 +540,7 @@ room321.chatcatch = function (callback) {
         case "room0":
             sc.modLevel("janice", 25, 10);
             char.addtime(60);
+            clearTimeout(g.roomTimeout);
             char.room(0);
             break;
         case "randchat":
@@ -585,10 +596,38 @@ room321.chatcatch = function (callback) {
             room321.btnclick("icon_quit");
             break;
         case "room316":
+            clearTimeout(g.roomTimeout);
+            char.addtime(60);
             char.room(316);
             break;
         case "begin":
             room321.btnclick("buttons");
+            break;
+        case "doggy1":
+        case "doggy2":
+            room321.sidechat(callback);
+            g.internal.viewers += g.rand(40, 90);
+            nav.bg("321_whorechat/" + callback + ".jpg");
+            break;
+        case "doggy3":
+        case "doggy4":
+        case "doggy5":
+        case "doggy6":
+        case "doggy7":
+        case "doggy8":
+        case "doggy9":
+        case "doggy10":
+            nav.bg("321_whorechat/" + callback + ".jpg");
+            room321.sidechat("");
+            room321.sidechat("doggyloop");
+            g.internal.excitement += 20;
+            break;
+        case "doggyEnd":
+            char.addtime(120);
+            clearTimeout(g.roomTimeout);
+            levels.swallowCum("m", "dog");
+            char.settime(19, 30);
+            char.room(322);
             break;
         default:
             break;
@@ -833,6 +872,96 @@ room321.chat = function (chatID) {
                 { chatID: -1, text: "Mmmm please put it in me", callback: "straponfuck1" }
             ]
         },
+        {
+            chatID: 26,
+            speaker: "janice",
+            text: "Hello all you pervets! Welcome back to my show! So what should we start with? ",
+            button: [
+                { chatID: 27, text: "....", callback: "doggy1" }
+            ]
+        },
+        {
+            chatID: 27,
+            speaker: "janice",
+            text: "Yeah Jim, it's peanut butter time! ",
+            button: [
+                { chatID: 28, text: "....", callback: "doggy2" }
+            ]
+        },
+        {
+            chatID: 28,
+            speaker: "janice",
+            text: "come 'er " + sc.n("dog") + ". Time for your treat! ",
+            button: [
+                { chatID: 29, text: "....", callback: "doggy3" }
+            ]
+        },
+        {
+            chatID: 29,
+            speaker: "janice",
+            text: "Oh yeah, just like that! Best tongue there is!  ",
+            button: [
+                { chatID: 30, text: "....", callback: "doggy4" }
+            ]
+        },
+        {
+            chatID: 30,
+            speaker: "janice",
+            text: "Fuck! Right there! Yeah yeah yeah. Let me get on my knees so you can really lick my clit!",
+            button: [
+                { chatID: 31, text: "....", callback: "doggy5" }
+            ]
+        },
+        {
+            chatID: 31,
+            speaker: "janice",
+            text: "Good doggy! Just keep licking like that! ",
+            button: [
+                { chatID: 32, text: "....", callback: "doggy6" }
+            ]
+        },
+        {
+            chatID: 32,
+            speaker: "janice",
+            text: "ooof... Not like that. Oh maybe... Should we?  It does feel good...",
+            button: [
+                { chatID: 33, text: "....", callback: "doggy7" }
+            ]
+        },
+        {
+            chatID: 33,
+            speaker: "janice",
+            text: "Owie owie owie! Gentle! That knot is so god damned big!!!! fffffff",
+            button: [
+                { chatID: 34, text: "....", callback: "doggy8" }
+            ]
+        },
+        {
+            chatID: 34,
+            speaker: "janice",
+            text: "*huf* *huf* *huf* Please just finish.. please hurry it's stretching me out...",
+            button: [
+                { chatID: 35, text: "....", callback: "doggy9" }
+            ]
+        },
+        {
+            chatID: 35,
+            speaker: "janice",
+            text: "I can feel the doggy cum filling my womb! I wonder if I'm going to have a litter of " +
+                "puppies.... hmmm.... oh. It's leaking.. Quick! Bitch! Get over here!",
+            button: [
+                { chatID: 36, text: "....", callback: "doggy10" }
+            ]
+        },
+        {
+            chatID: 36,
+            speaker: "janice",
+            text: "There's so much puppy batter! I don't think I've ever had a bigger load in me. " +
+                "Drink it all up so I don't get it on the rug. That's my good girl. ",
+            button: [
+                { chatID: -1, text: "*slurp* *suck* *gulp*", callback: "doggyEnd" }
+            ]
+        },
     ];
     if (cArray.length > chatID && chatID > -1)
         return cArray[chatID];
@@ -898,7 +1027,6 @@ room321.sidechat = function (metalk) {
                 g.internal.chat.push({ user: "Jim", txt: "Bend your femboy over and fuck him! ", hex: "#1d6640" });
                 g.internal.chat.push({ user: "Jim", txt: "oh yeah. I want to see you fuck him too ", hex: "#283b31" });
                 g.internal.chat.push({ user: "Jim", txt: "Make him your bitch!", hex: "#0d915a" });
-
                 break;
             case "femdom_message2":
                 g.internal.chat.push({ user: "HighTower894", txt: "Get a strap-on bby girl", hex: "#1a1701" });
@@ -908,7 +1036,29 @@ room321.sidechat = function (metalk) {
                 g.internal.chat.push({ user: "Romeo", txt: "🍆🍑 get a strapon girl", hex: "#1aba45" });
                 g.internal.chat.push({ user: "Jim", txt: "STRAP ATTACK!!!! ", hex: "#0d915a" });
                 g.internal.chat.push({ user: "Jim", txt: "Strap-ons are so sexy! ", hex: "#0d915a" });
-
+                break;
+            case "doggy1":
+                g.internal.chat.push({ user: "HighTower894", txt: "Who's the gimp???", hex: "#1a1701" });
+                g.internal.chat.push({ user: "Jim", txt: "Peatnut butter time!", hex: "#0d915a" });
+                break;
+            case "doggy2":
+                g.internal.chat.push({ user: "XXyoungbloodXX", txt: "I want to lick that peanutbutter girl", hex: "#475b73" });
+                g.internal.chat.push({ user: "Daddy", txt: "Love a doggy slut!", hex: "#13914a" });
+                break;
+            case "doggyloop":
+                var carray = [
+                    { user: "Firak", txt: "Oh yeah! Fuck that puppy breeding hole!", hex: "#05193b" },
+                    { user: "XXyoungbloodXX", txt: "Love a girl that know's she's a bitch", hex: "#475b73" },
+                    { user: "Daddy", txt: "Love a doggy slut!", hex: "#13914a" },
+                    { user: "GreyHairs", txt: "Oooo fill that pussy with puppies", hex: "#4a5e5d" },
+                    { user: "Jim", txt: "Knotty slut", hex: "#0d915a" },
+                    { user: "BigD", txt: "I want next! ", hex: "#475a61" },
+                    { user: "Mr. T", txt: "ARF GRRR RUFF! Breed that hole", hex: "#0a457d" },
+                    { user: "BigDick420", txt: "Hot I'm rubbin my cock", hex: "#a12336" },
+                    { user: "AssLicker", txt: "Love a breeding bitch", hex: "#a33329" },
+                    { user: "HighTower894", txt: "Momma! I need you", hex: "#1a1701" }
+                ];
+                g.internal.chat.push(carray[g.rand(0, carray.length)]);
                 break;
         }
     }
@@ -967,109 +1117,6 @@ room321.sidechat = function (metalk) {
             g.internal.chat.push(sidechat[g.rand(0, sidechat.length)]);
         }
     }
-
-
-    //let thisChat;
-    //let flirtChat;
-    
-
-    //if (metalk === "tips") {
-    //    g.internal.viewers -= Math.floor(Math.random() * 5);
-    //    if (g.internal.excitement > 7 && g.internal.viewers > 10) {
-    //        g.internal.excitement -= 2;
-    //        g.internal.chat.push({ user: sc.n("me"), txt: "Anyone wanna give me some tips? ", hex: "#f587af" });
-    //        g.internal.chat.push({ user: "DirtyDaddy", txt: "Anything for you bby girl!", hex: "#1900ff" });
-    //        g.internal.money += g.rand(4, 12);
-    //    }
-    //    else if (g.internal.viewers > 5) {
-    //        g.internal.excitement -= 2;
-    //        g.internal.chat.push({ user: sc.n("me"), txt: "Anyone wanna give me some tips? ", hex: "#f587af" });
-    //        g.internal.chat.push({ user: "XX_assFUCKER69_XX", txt: "No! Show us your butthole! ", hex: "#1900ff" });
-    //    }
-    //    else {
-    //        g.internal.excitement -= 2;
-    //        g.internal.chat.push({ user: sc.n("me"), txt: "Anyone wanna give me some tips? ", hex: "#f587af" });
-    //        g.internal.chat.push({ user: sc.n("me"), txt: "Anyone? ", hex: "#f587af" });
-    //    }
-    //}
-    //else if (metalk === "flirt") {
-    //    if (g.internal.chat.length > 2) {
-    //        thisChat = g.internal.chat[g.internal.chat.length - 1];
-    //        if (thisChat.user !== sc.n("me")) {
-    //            g.internal.viewers -= g.rand(0, 4);
-    //            g.internal.excitement += .5;
-    //            flirtChat = [
-    //                { user: sc.n("me"), txt: "Fuck me hard " + thisChat.user + "!", hex: "#f587af" },
-    //                { user: sc.n("me"), txt: "I want to sit on your dick " + thisChat.user, hex: "#f587af" },
-    //                { user: sc.n("me"), txt: thisChat.user + ", pound my sissy hole! ", hex: "#f587af" },
-    //                { user: sc.n("me"), txt: "I need your tongue in me " + thisChat.user, hex: "#f587af" },
-    //            ]
-    //            g.internal.chat.push(flirtChat[g.rand(0, flirtChat.length)]);
-    //        }
-    //        else {
-    //            g.internal.viewers -= g.rand(0, 4);
-    //            flirtChat = [
-    //                { user: sc.n("me"), txt: "I need a dick inside me!", hex: "#f587af" },
-    //                { user: sc.n("me"), txt: "Bend me over and spank my ass", hex: "#f587af" },
-    //                { user: sc.n("me"), txt: "I'm so horny", hex: "#f587af" },
-    //                { user: sc.n("me"), txt: "Anyone want to fuck me?", hex: "#f587af" },
-    //            ]
-    //            g.internal.chat.push(flirtChat[g.rand(0, flirtChat.length)]);
-    //        }
-    //    }
-    //    else {
-    //        g.internal.viewers -= g.rand(0, 4);
-    //        flirtChat = [
-    //            { user: sc.n("me"), txt: "I need a dick inside me!", hex: "#f587af" },
-    //            { user: sc.n("me"), txt: "Bend me over and spank my ass", hex: "#f587af" },
-    //            { user: sc.n("me"), txt: "I'm so horny", hex: "#f587af" },
-    //            { user: sc.n("me"), txt: "Anyone want to fuck me?", hex: "#f587af" },
-    //        ]
-    //        g.internal.chat.push(flirtChat[g.rand(0, flirtChat.length)]);
-    //    }
-    //}
-    //else if (metalk === "insult") {
-    //    if (g.internal.chat.length > 2) {
-    //        thisChat = g.internal.chat[g.internal.chat.length - 1];
-    //        if (thisChat.user !== sc.n("me")) {
-    //            g.internal.viewers -= g.rand(0, 4);
-    //            g.internal.excitement += .5;
-    //            flirtChat = [
-    //                { user: sc.n("me"), txt: "You have a tiny pp " + thisChat.user + "!", hex: "#f587af" },
-    //                { user: sc.n("me"), txt: "Go fuck yourself " + thisChat.user, hex: "#f587af" },
-    //                { user: sc.n("me"), txt: thisChat.user + ", is a little bitch ", hex: "#f587af" },
-    //                { user: sc.n("me"), txt: "I'm going to crush your balls " + thisChat.user, hex: "#f587af" },
-    //            ]
-    //            g.internal.chat.push(flirtChat[g.rand(0, flirtChat.length)]);
-    //        }
-    //        else {
-    //            g.internal.viewers -= g.rand(1, 4);
-    //            g.internal.excitement += .5;
-    //            flirtChat = [
-    //                { user: sc.n("me"), txt: "You're all bitches", hex: "#f587af" },
-    //                { user: sc.n("me"), txt: "I hate you guys", hex: "#f587af" },
-    //                { user: sc.n("me"), txt: "Everyone shut up!", hex: "#f587af" },
-    //                { user: sc.n("me"), txt: "Go fuck yourselves", hex: "#f587af" },
-    //            ]
-    //            g.internal.chat.push(flirtChat[g.rand(0, flirtChat.length)]);
-    //        }
-    //    }
-    //    else {
-    //        g.internal.viewers -= g.rand(1, 4);
-    //        g.internal.excitement += .5;
-    //        flirtChat = [
-    //            { user: sc.n("me"), txt: "You're all bitches", hex: "#f587af" },
-    //            { user: sc.n("me"), txt: "I hate you guys", hex: "#f587af" },
-    //            { user: sc.n("me"), txt: "Everyone shut up!", hex: "#f587af" },
-    //            { user: sc.n("me"), txt: "Go fuck yourselves", hex: "#f587af" },
-    //        ]
-    //        g.internal.chat.push(flirtChat[g.rand(0, flirtChat.length)]);
-    //    }
-    //}
-    //if (metalk === null && g.internal.viewers > 3) {
-    //    g.internal.chat.push(sidechat[g.rand(0, sidechat.length)]);
-    //}
-
 
     if (g.internal.chat.length > 12)
         g.internal.chat.splice(0, g.internal.chat.length - 12);

@@ -617,7 +617,7 @@ room53.chat = function (chatID) {
         {
             chatID: 25,
             speaker: "chad",
-            text: "I'm going to make this bitch squeel like a whore. ",
+            text: "I'm going to make this bitch squeal like a whore. ",
             button: [
                 { chatID: -1, text: "...", callback: "101_4" }
             ]
@@ -870,7 +870,7 @@ room53.chat = function (chatID) {
         {
             chatID: 28,
             speaker: "candy",
-            text: "Squeel!! Quick lick it up before it drips onto the floor",
+            text: "Squeal!! Quick lick it up before it drips onto the floor",
             button: [
                 { chatID: -1, text: "...", callback: "bc4" }
             ]

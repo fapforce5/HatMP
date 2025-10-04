@@ -143,8 +143,8 @@ room727.chatcatch = function (callback) {
                 "height": 1080,
                 "image": "727_bathroom/time2d.png"
             }, 727);
-            zcl.kneel(-100, 200, 1.5, "open");
-
+            //zcl.kneel(-100, 200, 1.5, "open");
+            zcl.kneelRedux(150, 300, 1.6, "open", false);
             break;
         case 'tim2da':
             nav.killbutton("tim2d");
@@ -158,7 +158,7 @@ room727.chatcatch = function (callback) {
                 "height": 1080,
                 "image": "727_bathroom/time2d.png"
             }, 727);
-            zcl.kneel(-100, 200, 1.5, "open");
+            zcl.kneelRedux(110, 470, 1.6, "open", false);
             break;
         case "tim2e":
             nav.killbutton("tim2d");

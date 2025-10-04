@@ -2603,7 +2603,7 @@ room14.chat = function (chatID) {
                 text: "I see you just can't get enough of my dick. ",
                 button: [
                     { chatID: 153, text: "I really do! ", callback: "" },
-                    { chatID: -1, text: "*squeel* [Run away]", callback: "leave" },
+                    { chatID: -1, text: "*squeal* [Run away]", callback: "leave" },
                 ]
             },
             {
