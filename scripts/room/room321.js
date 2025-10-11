@@ -32,10 +32,10 @@ room321.main = function () {
     if (g.pass === "pass322") {
         g.pass = null;
         nav.bg("321_whorechat/doggy0.jpg");
-        if (sc.getMissionTask("janice", "dog-x", 4).notStarted) {
-            sc.completeMissionTask("janice", "dog-x", 4);
-            chat(26, 321);
+        if (sc.getMissionTask("janice", "dog-x", 5).notStarted) {
+            sc.completeMissionTask("janice", "dog-x", 5);
         }
+        chat(26, 321);
     }
     else if (sc.getSecret("janice").secretOut) {
         g.internal.maxviews = 20000;

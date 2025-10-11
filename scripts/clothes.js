@@ -129,7 +129,8 @@ cl.init = function () {
         { type: "dress", name: "j", display: "Janice's Dress", img: "dress_janice.png", sex: "f", inv: false, daring: 3, price: 180 },
         { type: "dress", name: "ps", display: "Pink Slutty Dress", img: "dress_pinkslut.png", sex: "f", inv: false, daring: 4, price: 175 },
         { type: "dress", name: "m", display: "Mesh Dress", img: "dress_mesh.png", sex: "f", inv: false, daring: 4, price: 210 },
-        
+        { type: "dress", name: "bitchsuit", display: "Bitchsuit", img: "dress_mesh.png", sex: "f", inv: false, daring: 4, price: -1 },
+
         { type: "swimsuit", name: "m", display: "Male Swimsuit", img: "swim_man.png", sex: "m", inv: false, daring: 0, price: 45 },
         { type: "swimsuit", name: "b", display: "Blue Swimsuit", img: "swim_blue.png", sex: "f", inv: false, daring: 2, price: 125 },
         { type: "swimsuit", name: "r", display: "Red Swimsuit", img: "swim_red.png", sex: "f", inv: false, daring: 3, price: 140 },
@@ -215,7 +216,8 @@ cl.init = function () {
         { type: "buttplug", name: "fd", display: "Daisy", img: "plug_daisy.png", sex: "f", inv: false, daring: 1, price: -1 },
         { type: "buttplug", name: "fp", display: "Pink flower", img: "plug_pinkFlower.png", sex: "f", inv: false, daring: 1, price: -1 },
         { type: "buttplug", name: "t", display: "Tampon", img: "plug_tampon.png", sex: "f", inv: false, daring: 1, price: -1 },
-
+        { type: "buttplug", name: "tail", display: "Tail", img: "plug_tail.png", sex: "f", inv: false, daring: 4, price: -1 },
+        
         { type: "wig", name: "d", img: "wig_d.png", sex: "f", inv: false, daring: 2, price: -1 },
         { type: "wig", name: "f", img: "wig_f.png", sex: "f", inv: false, daring: 2, price: -1 }
     ];
@@ -1971,7 +1973,14 @@ cl.buttplug = [
     { name: "t", leg: 2, image: "plug_t_2.png" },
     { name: "t", leg: 3, image: "plug_t_3.png" },
     { name: "t", leg: 4, image: "plug_t_4.png" },
-    { name: "t", leg: 5, image: "plug_t_5.png" }
+    { name: "t", leg: 5, image: "plug_t_5.png" },
+
+    { name: "tail", leg: 0, image: "plug_tail_0.png" },
+    { name: "tail", leg: 1, image: "plug_tail_0.png" },
+    { name: "tail", leg: 2, image: "plug_tail_2.png" },
+    { name: "tail", leg: 3, image: "plug_tail_3.png" },
+    { name: "tail", leg: 4, image: "plug_tail_4.png" },
+    { name: "tail", leg: 5, image: "plug_tail_5.png" }
 ];
 
 cl.accessories = [
@@ -2106,6 +2115,29 @@ cl.display = function () {
         $('#char-legs').after('<div class="bladder-box" style="' + g.makeCss(52 * thisMilk, 60, 245 + (thisMilk * -52), 120) + ' position:absolute; background:#fff; z-index:13;"></div>');
         cl.subDisplay("char-head", "xray_top.png");
         cl.subDisplay("char-cock", "xray_milk.png");
+    }
+    else if (cl.c.dress === "bitchsuit") {
+        $("#char-bg-1").html("");
+        $('#char-legs').html("");
+        $('#char-chest').html("");
+        $('#char-head').html("");
+        $('#char-cock').html("");
+        $('#char-bodyHair').html("");
+        $('#char-cum').html("");
+        $('#char-panties').html("");
+        $('#char-bra').html("");
+        $('#char-necklace').html("");
+        $('#char-socks').html("");
+        $('#char-shoes').html("");
+        $('#char-pants').html("");
+        $('#char-shirt').html("");
+        $('#char-head').html("");
+        $('#char-lips').html("");
+        $('#char-eyes').html("");
+        $('#char-accHead').html("");
+        $('#char-hair').html("");
+        $('#char-buttplug').html("");
+        cl.subDisplay("char-legs", (g.tview === "b" ? "z_bitchsuit_back.png" : "z_bitchsuit_front.png"));
     }
     else {
         var cback = g.tview === "b";
@@ -2372,7 +2404,6 @@ cl.display = function () {
             });
         }
 
-
         //set pj
         if (cl.c.pj !== null) {
             cl.c.bra = null;
@@ -2433,23 +2464,6 @@ cl.display = function () {
                 }
             });
         }
-       
-        
-        //$.each(cl.c.accessories, function (i, v) {
-        //    $.each(cl.accessories, function (j, u) {
-        //        if (v === u.name) {
-        //            var thisAccImg = cback ? u.back : u.image;
-        //            cl.subDisplayAppend("char-accBody", thisAccImg);
-        //            //if (u.type === "head" && thisAccImg !== null) {
-        //            //    $('#char-accHead').append('<img src="./images/mainChar/' + thisAccImg + '" />');
-        //            //}
-        //            //else if (thisAccImg !== null) {
-        //            //    $('#char-accBody').append('<img src="./images/mainChar/' + thisAccImg + '" />');
-        //            //}
-        //            return false;
-        //        }
-        //    });
-        //});
 
         cl.cockDisplay();
         cl.energydisplay();

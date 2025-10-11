@@ -575,8 +575,10 @@ sc.charMission = [
                         { id: 0, txt: "Dish ran away without the spoon", show: true, mStatus: 0, roomId: 315 },
                         { id: 1, txt: "Caught!", show: true, mStatus: 0, roomId: 315 },
                         { id: 2, txt: "You're her bitch", show: true, mStatus: 0, roomId: 315 },
-                        { id: 3, txt: "[not made yet your dirty bitch]", show: true, mStatus: 0, roomId: 315 },
-                        { id: 4, txt: "Webcam first time", show: true, mStatus: 0, roomId: 315 },
+                        { id: 3, txt: "Bitchsuit for a bitch", show: true, mStatus: 0, roomId: 316 },
+                        { id: 4, txt: "First Day", show: true, mStatus: 0, roomId: 322 },
+                        { id: 5, txt: "Webcam first time", show: true, mStatus: 0, roomId: 321 },
+                        { id: 6, txt: "Freedom", show: true, mStatus: 0, roomId: 322 },
                     ]
             },
             {
@@ -1429,6 +1431,11 @@ sc.getLevel = function (name) {
     return null;
 };
 
+sc.getLevelDetails = function (name) {
+    let i = sc.i(name);
+    return { l: sc.char[i].l, c: sc.char[i].c };
+};
+
 sc.modLevel = function (name, amount, targetLevel = 10) {
     var actualAmount = 0;
     var i, j;
@@ -1487,8 +1494,14 @@ sc.modLevel = function (name, amount, targetLevel = 10) {
             sc.char[i].c = 0;
         g.popUpNotice(sc.char[i].display + "'s points have decreased. ");
     }
-    //sstat.makeGraph();
 };
+
+sc.setLevel = function (name, level, points) {
+    let i = sc.i(name);
+    sc.char[i].c = points;
+    sc.char[i].l = level;
+    return true;
+}
 
 //Mission ----------------------------------------------------------------------
 

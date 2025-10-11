@@ -402,8 +402,13 @@ missy.afterLunch = function () {
         var subweek;
         if (sissy.st[17].ach) {
             if (inv.has("lockpick"))
-                if (sissy.st[0].ach)
-                    subweek = "ccac";
+                if (sissy.st[0].ach) {
+                    if (g.rand(0, 3) === 0)
+                        subweek = "ccsc";
+                    else
+                        subweek = "ccac";
+
+                }
                 else
                     subweek = "cccc";
             else

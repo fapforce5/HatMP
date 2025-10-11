@@ -450,10 +450,11 @@ nav.progressBar = function (btn, roomId) {
             type: btn.type,
             name: btn.name,
             left: btn.left,
-            top: btn.top - 25,
-            font: 20,
+            top: btn.top - 24,
+            font: 24,
             hex: ("titleColor" in btn ) ? btn.titleColor : "#ffffff",
-            text: btn.title
+            text: btn.title,
+            stroke: "black"
         }, roomId)
     }
 };

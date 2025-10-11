@@ -17,7 +17,7 @@ room197.main = function () {
 
     if (lastEvent < 8) {
         lastEvent++;
-        missy.mod("subCounter197", lastEvent);
+        missy.set("subCounter197", nextEvent + 1);
         selected = sublist[lastEvent];
         if (selected.n === "anal")
             nav.bg("197_sub/anal0.jpg");
