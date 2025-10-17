@@ -62,7 +62,20 @@ room322.btnclick = function (name) {
         case "livingroom":
             nav.kill();
             room322.btnclick("progressbar");
-            if (g.gethourdecimal() > 19) {
+            if (g.gethourdecimal() > 20) {
+                if (daily.get("janicePhoneGangbang")) {
+                    nav.button({
+                        "type": "img",
+                        "name": "waiter0",
+                        "left": 172,
+                        "top": 264,
+                        "width": 863,
+                        "height": 763,
+                        "image": "322_dog/waiter0.webp"
+                    }, 322);
+                    chat(96, 322);
+                    return;
+                }
                 var janiceRand = gv.get("janiceRand");
                 if (janiceRand === 0) {
                     janiceRand = g.rand(0, 3);
@@ -76,27 +89,19 @@ room322.btnclick = function (name) {
                 }
                 gv.mod("janiceRand", 1);
             }
-            else if (g.gethourdecimal() > g.rand(12) && sc.getMissionTask("janice", "dog-x", 4).complete && !daily.get("janiceAfternoonEvent")) {
+            else if (g.gethourdecimal() > g.rand(12, 15) && sc.getMissionTask("janice", "dog-x", 4).complete && !daily.get("janiceAfternoonEvent")) {
                 //she leaves her phone out and you can select who to text to put
                 //in motion these events
                 daily.set("janiceAfternoonEvent");
                 var janicedetailsx = sc.getLevelDetails("janice");
-                if (gv.get("janiceAnnoyance") > 70) {
+                if (gv.get("janiceAnnoyance") > 98) {
                     room322.btnclick("livingroom");
                 }
-                else if (janicedetailsx.c > 95 || janicedetailsx.l > 9) {
-                    nav.button({
-                        "type": "img",
-                        "name": "waiter0",
-                        "left": 172,
-                        "top": 264,
-                        "width": 863,
-                        "height": 763,
-                        "image": "322_dog/waiter0.webp"
-                    }, 322);
-                    chat(76, 322);
+                else if (janicedetailsx.c > 95 && janicedetailsx.l < 10) {
+                    nav.bg("322_dog/livingroom.webp");
+                    chat(110, 322);
                 }
-                else {
+                else if (janicedetailsx.l < 10) {
                     switch (gv.get("janiceAfternoon") % 3) {
                         case 0:
                             daily.set("janice322Webcam");
@@ -108,6 +113,25 @@ room322.btnclick = function (name) {
                             break;
                         case 2:
                             room322.btnclick("pl0")
+                            break;
+                    }
+                    gv.mod("janiceAfternoon", 1);
+                }
+                else {
+                    switch (gv.get("janiceAfternoon") % 4) {
+                        case 0:
+                            daily.set("janice322Webcam");
+                            nav.bg("315_girlfriend/bitch_2.jpg");
+                            chat(24, 322);
+                            break;
+                        case 1:
+                            room322.btnclick("waiter0");
+                            break;
+                        case 2:
+                            room322.btnclick("pl0");
+                            break;
+                        case 3:
+                            chat(110, 322);
                             break;
                     }
                     gv.mod("janiceAfternoon", 1);
@@ -150,6 +174,28 @@ room322.btnclick = function (name) {
             }, 322);
             chat(41, 322);
             break;
+        case "f0":
+            nav.kill();
+            nav.bg("322_dog/livingroom.webp");
+            nav.button({
+                "type": "img",
+                "name": "waiter0",
+                "left": 172,
+                "top": 264,
+                "width": 863,
+                "height": 763,
+                "image": "322_dog/waiter0.webp"
+            }, 322);
+            chat(96, 322);
+            break;
+        case "f3":
+            nav.bg("322_dog/f" + g.internal + ".webp");
+            if (g.internal === 9) {
+                nav.kill();
+                chat(107, 322);
+            }
+            g.internal++;
+            break;
         case "dogbed":
             nav.kill();
             room322.btnclick("progressbar");
@@ -191,7 +237,7 @@ room322.btnclick = function (name) {
                 sc.modLevel("dog", 50, 10);
             }
             room322.btnclick("progressbar");
-            char.settime(20, 0);
+            char.settime(19, 56);
             g.roomTimeout = setTimeout(function () {
                 room322.btnclick("livingroom");
             }, 2000);
@@ -217,6 +263,8 @@ room322.btnclick = function (name) {
                 }
                 else {
                     nav.bg("322_dog/yardpeelaugh" + ypchastity + ".webp");
+                    sc.modLevel("janice", 3, 10);
+                    room322.btnclick("progressbar");
                     chat(8, 322);
                 }
             }
@@ -289,9 +337,8 @@ room322.btnclick = function (name) {
             break;
         case "couch":
             nav.kill();
-            room322.btnclick("progressbar");
             gv.mod("energy", -20);
-            sc.modLevel("janice", -5);
+            gv.mod("janiceAnnoyance", 60);
             room322.btnclick("progressbar");
             char.addtime(15);
             nav.bg("322_dog/couch.webp");
@@ -325,7 +372,7 @@ room322.btnclick = function (name) {
             break;
         case "napAllx":
             nav.kill();
-            char.settime(19, 10);
+            char.settime(19, 56);
             nav.bg("322_dog/sleepfeet.webp");
             if (!daily.get("naplay")) {
                 daily.set("naplay");
@@ -339,7 +386,7 @@ room322.btnclick = function (name) {
         case "nuzzle":
             nav.kill();
             room322.btnclick("progressbar");
-            if (gv.get("janiceAnnoyance") > 60) {
+            if (gv.get("janiceAnnoyance") > 98) {
                 gv.mod("janiceAnnoyance", 10);
                 room322.btnclick("progressbar");
                 nav.bg("322_dog/shoo.webp");
@@ -351,25 +398,34 @@ room322.btnclick = function (name) {
                 chat(12, 322);
             }
             else {
-                switch (2) {//g.rand(0, 3)) {
+                switch (g.rand(0, 4)) {
                     case 0:
-                        gv.mod("janiceAnnoyance", 7);
+                        gv.mod("janiceAnnoyance", 40);
                         room322.btnclick("progressbar");
                         nav.bg("322_dog/shoo.webp");
                         char.addtime(30);
                         chat(67, 322);
                         break;
                     case 1:
+                        gv.mod("janiceAnnoyance", 26);
                         room322.btnclick("progressbar");
                         nav.bg("322_dog/shoo.webp");
                         char.addtime(30);
                         chat(68, 322);
                         break;
                     case 2:
+                        gv.mod("janiceAnnoyance", 26);
                         room322.btnclick("progressbar");
                         nav.bg("322_dog/t0.webp");
                         char.addtime(30);
                         chat(76, 322);
+                        break;
+                    case 3:
+                        gv.mod("janiceAnnoyance", 26);
+                        room322.btnclick("progressbar");
+                        nav.bg("322_dog/shoo.webp");
+                        char.addtime(30);
+                        chat(103, 322);
                         break;
                 }
             }
@@ -429,13 +485,280 @@ room322.btnclick = function (name) {
             break;
         case "ff":
             nav.bg("322_dog/f" + g.internal + ".webp");
-            if (g.internal === 10) {
+            if (g.internal === 9) {
                 nav.kill();
-                sc.modLevel("janice", 100, 10);
-                levels.swallowCum("m", "bbc");
-                room322.chatcatch("bed");
+                chat(107, 322);
             }
             g.internal++;
+            break;
+        case "spee":
+            nav.kill();
+            nav.bg("322_dog/p1_0.webp");
+            chat(111, 322);
+            break;
+        case "sphone":
+            room322.btnclick("phoneDraw");
+            break;
+        case "phoneDraw":
+            nav.kill();
+            nav.bg("322_dog/phone_bg.webp");
+            nav.button({
+                "type": "btn",
+                "name": "phone_pic",
+                "left": 813,
+                "top": 121,
+                "width": 180,
+                "height": 225,
+                "image": "322_dog/phone_pic.webp"
+            }, 322);
+            nav.button({
+                "type": "btn",
+                "name": "phone_text",
+                "left": 1126,
+                "top": 121,
+                "width": 180,
+                "height": 225,
+                "image": daily.get("janicePhoneGangbang") ? "322_dog/phone_text.webp" : "322_dog/phone_text1.webp"
+            }, 322);
+
+            nav.button({
+                "type": "btn",
+                "name": "phone_datr",
+                "left": 813,
+                "top": 401,
+                "width": 180,
+                "height": 225,
+                "image": "322_dog/phone_datr.webp"
+            }, 322);
+
+            nav.button({
+                "type": "btn",
+                "name": "livingroom",
+                "left": 1013,
+                "top": 905,
+                "width": 90,
+                "height": 90,
+                "image": "322_dog/phone_off.webp"
+            }, 322);
+            break;
+        case "phone_text":
+            nav.kill();
+            nav.bg("322_dog/phone_bg.webp");
+            for (let i = 0; i < 7; i++) {
+                nav.button({
+                    "type": "btn",
+                    "name": "phone_t_" + i,
+                    "left": i % 2 === 0 ? 815 : 1126,
+                    "top": 100 + (Math.floor(i / 2) * 155),
+                    "width": 150,
+                    "height": 150,
+                    "image": "322_dog/phone_t_" + i + "_i.webp"
+                }, 322);
+            }
+            if (!daily.get("janicePhoneGangbang")) {
+                nav.modbutton("phone_t_6", "322_dog/phone_t_6_ia.webp", null, null)
+            }
+            nav.button({
+                "type": "btn",
+                "name": "phoneDraw",
+                "left": 900,
+                "top": 910,
+                "width": 300,
+                "height": 100,
+                "image": "1001_rand/back_1.png"
+            }, 322);
+            break;
+        case "phone_t_0":
+        case "phone_t_1":
+        case "phone_t_2":
+        case "phone_t_3":
+        case "phone_t_4":
+        case "phone_t_5":
+        case "phone_t_6":
+            nav.kill();
+            if (name === "phone_t_6") {
+                if (!daily.get("janicePhoneGangbang")) {
+                    nav.bg("322_dog/phone_t_6.webp");
+                    chat(113, 322);
+                }
+                else {
+                    nav.bg("322_dog/phone_t_6a.webp");
+                }
+            }
+            else {
+                nav.bg("322_dog/" + name + ".webp");
+            }
+            nav.button({
+                "type": "btn",
+                "name": "phone_text",
+                "left": 900,
+                "top": 910,
+                "width": 300,
+                "height": 100,
+                "image": "1001_rand/back_1.png"
+            }, 322);
+            break;
+        case "phone_pic":
+            nav.kill();
+            nav.bg("322_dog/phone_bg.webp");
+            for (let i = 0; i < 9; i++) {
+                nav.button({
+                    "type": "btn",
+                    "name": "phone_i_" + i,
+                    "left": i % 2 === 0 ? 815 : 1126,
+                    "top": 100 + (Math.floor(i / 2) * 155),
+                    "width": 150,
+                    "height": 150,
+                    "image": "322_dog/phone_i_" + i + "_i.webp"
+                }, 322);
+            }
+            nav.button({
+                "type": "btn",
+                "name": "phoneDraw",
+                "left": 900,
+                "top": 910,
+                "width": 300,
+                "height": 100,
+                "image": "1001_rand/back_1.png"
+            }, 322);
+            break;
+        case "phone_i_0":
+        case "phone_i_1":
+        case "phone_i_2":
+        case "phone_i_3":
+        case "phone_i_4":
+        case "phone_i_5":
+        case "phone_i_6":
+        case "phone_i_7":
+        case "phone_i_8":
+            nav.kill();
+            nav.bg("322_dog/" + name + ".webp");
+            nav.button({
+                "type": "btn",
+                "name": "phone_pic",
+                "left": 900,
+                "top": 910,
+                "width": 300,
+                "height": 100,
+                "image": "1001_rand/back_1.png"
+            }, 322);
+            break;
+        case "phone_datr":
+            nav.kill();
+            nav.bg("322_dog/datr0.webp");
+            nav.button({
+                "type": "btn",
+                "name": "phone_datr0",
+                "left": 764,
+                "top": 314,
+                "width": 584,
+                "height": 179,
+                "image": "322_dog/datr_messages.webp"
+            }, 322);
+            nav.button({
+                "type": "btn",
+                "name": "phoneDraw",
+                "left": 900,
+                "top": 910,
+                "width": 300,
+                "height": 100,
+                "image": "1001_rand/back_1.png"
+            }, 322);
+            break;
+        case "phone_datr0":
+            nav.kill();
+            nav.bg("322_dog/datr0.webp");
+            var messagefoo = [
+                "Kail", "Ari", "Noah", "Kian", "Luca", "Dean", "Roman", "Jude", "Ethan", "Zane"
+            ];
+            for (let i = 0; i < messagefoo.length; i++) {
+                nav.button({
+                    "type": "btn",
+                    "name": "phone_d_" + i,
+                    "left": 764,
+                    "top": 300 + (i * 60),
+                    "width": 584,
+                    "height": 50,
+                    "image": "322_dog/datr_messages1.webp"
+                }, 322);
+                
+                nav.t({
+                    type: "clickthrough",
+                    name: "msgtxt",
+                    left: 864,
+                    top: 304 + (i * 60),
+                    font: 40,
+                    hex: "#000000",
+                    text: messagefoo[i]
+                }, 1);
+            }
+            nav.button({
+                "type": "btn",
+                "name": "phoneDraw",
+                "left": 900,
+                "top": 910,
+                "width": 300,
+                "height": 100,
+                "image": "1001_rand/back_1.png"
+            }, 322);
+            break;
+        case "phone_d_0":
+        case "phone_d_1":
+        case "phone_d_2":
+        case "phone_d_3":
+        case "phone_d_4":
+        case "phone_d_5":
+        case "phone_d_6":
+        case "phone_d_7":
+        case "phone_d_8":
+        case "phone_d_9":
+            nav.kill();
+            nav.bg("322_dog/datr_blank.webp");
+            var thisNameId = parseInt(name.replace("phone_d_", ""));
+            var msgtxt = "";
+            var messagefoo1 = [
+                "Kail", "Ari", "Noah", "Kian", "Luca", "Dean", "Roman", "Jude", "Ethan", "Zane"
+            ];
+            
+            switch (thisNameId) {
+                case 0: msgtxt = "Hey! "; break;
+                case 1: msgtxt = "Nice tits girl! Wanna bang? "; break;
+                case 2: msgtxt = "What's up? "; break;
+                case 3: msgtxt = "OMG. I want to see you get fucked by your dog. You ever get fucked by a dog. You'll love it. I once saw a girl get fucked by her dog on the internet. It was so hot. I want to see you do it too. I think I'm in love with you. Hit me back. "; break;
+                case 4: msgtxt = "Hi sexy! Wanna chat"; break;
+                case 5: msgtxt = "hi"; break;
+                case 6: msgtxt = "Wanna see my dick. 10 inches hard and thick!  "; break;
+                case 7: msgtxt = "wanna sext?"; break;
+                case 8: msgtxt = "Love that pic of you and your dog! I have a golden boy too. We should take our dogs for a walk. Hit me up if you're interested. "; break;
+                case 9: msgtxt = "You look just like my mom. I want so much to be your little baby boy. Your breasts are so big I bet they can hold all kinds of milk. You know if I suck on your nipples each day you can lactate. I would love to drink your milk while you hold me in your arms. Would you change my nappy? Some times I soil my little nappy and need mommy to change me. Can you change me mommy?"; break;
+            }
+            nav.t({
+                type: "clickthrough",
+                name: "msgtxt",
+                left: 800,
+                top: 310,
+                font: 40,
+                hex: "#000000",
+                text: messagefoo1[thisNameId]
+            }, 1);
+            nav.t({
+                type: "img",
+                name: "msgtxt",
+                left: 864,
+                top: 380,
+                font: 24,
+                hex: "#000000",
+                text: g.linebreak(msgtxt, 36)
+            }, 1);
+            nav.button({
+                "type": "btn",
+                "name": "phone_datr0",
+                "left": 900,
+                "top": 910,
+                "width": 300,
+                "height": 100,
+                "image": "1001_rand/back_1.png"
+            }, 322);
             break;
         default:
             break;
@@ -482,6 +805,14 @@ room322.chatcatch = function (callback) {
         case "t3":
         case "t4":
         case "f1":
+        case "f2":
+        case "f10":
+        case "p1_1":
+        case "k0":
+        case "k1":
+        case "k2":
+        case "pp1":
+        case "pp2":
             nav.bg("322_dog/" + callback + ".webp");
             break;
         case "pl1":
@@ -524,7 +855,8 @@ room322.chatcatch = function (callback) {
             break;
         case "kitchenbad":
             nav.bg("322_dog/" + callback + ".webp");
-            sc.modLevel("janice", -15, 10);
+            gv.mod("janiceAnnoyance", 75);
+            room322.btnclick("progressbar");
             daily.set("room322EatBad")
             break;
         case "kitchen":
@@ -602,7 +934,7 @@ room322.chatcatch = function (callback) {
             room322.btnclick("progressbar");
             nav.bg("322_dog/e10.webp");
             if (sc.getLevelDetails("janice").c > 65) {
-                if (gv.get("janiceAnnoyance") > 70) {
+                if (gv.get("janiceAnnoyance") > 98) {
                     chat(87, 322);
                 }
                 else {
@@ -633,17 +965,17 @@ room322.chatcatch = function (callback) {
             sc.modLevel("dog", 50, 10);
             levels.oral(4, "m", "dog", false, "dog");
             sc.modLevel("janice", 2, 10);
-            gv.mod("janiceAnnoyance", 30);
+            gv.mod("janiceAnnoyance", 50);
             char.addtime(90);
             room322.btnclick("progressbar");
             break;
         case "backyardannoy":
-            gv.mod("janiceAnnoyance", 15);
+            gv.mod("janiceAnnoyance", 30);
             room322.btnclick("progressbar");
             room322.btnclick("backyard");
             break;
         case "livingroomannoy":
-            gv.mod("janiceAnnoyance", 15);
+            gv.mod("janiceAnnoyance", 30);
             room322.btnclick("livingroom");
             break;
         case "tEnd":
@@ -657,12 +989,23 @@ room322.chatcatch = function (callback) {
             break;
         case "ppend":
             levels.mod("piss", 20);
-            gv.mod("janiceAnnoyance", 65);
+            gv.mod("janiceAnnoyance", 85);
             room322.btnclick("livingroom");
             break;
         case "f3":
             g.internal = 4;
-            nav.next("ff")
+            nav.bg("322_dog/" + callback + ".webp");
+            nav.next("ff");
+            break;
+        case "f11":
+            sc.modLevel("janice", 100, 10);
+            levels.swallowCum("m", "!bbc");
+            room322.chatcatch("bed");
+            break;
+        case "k_end":
+            gv.mod("energy", -30);
+            sc.modLevel("janice", 2, 10);
+            room322.btnclick("livingroom");
             break;
         case "reset":
             char.room(322);
@@ -670,7 +1013,26 @@ room322.chatcatch = function (callback) {
         case "leave":
             cl.c.buttplug = null;
             cl.nude();
+            if (!sc.getMission("janice", "dog-x").complete) {
+                sc.completeMissionTask("janice", "dog-x", 6);
+                sc.completeMission("janice", "dog-x");
+            }
             char.room(320);
+            break;
+        case "p0":
+            nav.kill();
+            nav.bg("322_dog/p0.webp");
+            sc.select("sphone", "322_dog/icon_phone.webp", 0);
+            sc.select("spee", "322_dog/icon_watch.webp", 1);
+            break;
+        case "p1_1end":
+            levels.piss(false, false, false, "f", "janice");
+            char.addtime(20);
+            char.room(322);
+            break;
+        case "phoneReply":
+            daily.set("janicePhoneGangbang");
+            nav.bg("322_dog/phone_t_6a.webp");
             break;
         default:
             break;
@@ -1484,16 +1846,16 @@ room322.chat = function (chatID) {
             ]
         },
         {
-            chatID: 74,
+            chatID: 94,
             speaker: "janice",
             text: "Wakey wakey. You want to be my doggy some more, or do you want to leave? ",
             button: [
                 { chatID: -1, text: "*arf*", callback: "livingroom" },
-                { chatID: 75, text: "*pleading eyes*", callback: "" },
+                { chatID: 95, text: "*pleading eyes*", callback: "" },
             ]
         },
         {
-            chatID: 75,
+            chatID: 95,
             speaker: "janice",
             text: "ok. I'll take my bitch suit. You can get dressed in the bathroom.  ",
             button: [
@@ -1501,62 +1863,161 @@ room322.chat = function (chatID) {
             ]
         },
         {
-            chatID: 76,
+            chatID: 96,
             speaker: "janice",
-            text: "oh yeah! They're here!",
+            text: "I wonder who that is?",
             button: [
-                { chatID: 77, text: "?", callback: "f0" },
+                { chatID: 97, text: "hehehe", callback: "f0" },
             ]
         },
         {
-            chatID: 77,
+            chatID: 97,
             speaker: "bbc",
             text: "Hey girl, what's up with the freak back there?",
             button: [
-                { chatID: 78, text: "?", callback: "" },
+                { chatID: 98, text: "?", callback: "" },
             ]
         },
         {
-            chatID: 78,
+            chatID: 98,
             speaker: "janice",
             text: "Oh those are my doggies! They're so great!",
             button: [
-                { chatID: 79, text: "...", callback: "" },
+                { chatID: 99, text: "...", callback: "" },
             ]
         },
         {
-            chatID: 79,
+            chatID: 99,
             speaker: "bbc",
             text: "Hehehe.. doggies.. I see one doggy and one bitch. Maybe they want to watch " +
                 "what you're going to do to you. ",
             button: [
-                { chatID: 80, text: "...", callback: "f1" },
+                { chatID: 100, text: "...", callback: "f1" },
             ]
         },
         {
-            chatID: 80,
+            chatID: 100,
             speaker: "janice",
-            text: "Oh yeah, they would love to watch. Let's take this to my bedroom.",
+            text: "Oh? What are you going to do to me?",
             button: [
-                { chatID: 81, text: "...", callback: "f2" },
+                { chatID: 109, text: "...", callback: "" },
             ]
         },
         {
-            chatID: 81,
+            chatID: 101,
             speaker: "janice",
-            text: "So boys, who wants to go first? Don't be afraid to use my bitch you need to " +
-                "get hard. She's more cock hungry than me. ",
+            text: "Oh my. I do love a gruff men. Let me see what you're all working with in my bedroom. ",
             button: [
-                { chatID: 82, text: "...", callback: "" },
+                { chatID: 102, text: "...", callback: "f2" },
             ]
         },
         {
-            chatID: 82,
+            chatID: 102,
             speaker: "bbc",
             text: "I don't need that bitch to get hard enough to fuck you baby. Jerry may need 'er " +
                 "though hehehe. ",
             button: [
-                { chatID: 83, text: "...", callback: "f3" },
+                { chatID: -1, text: "...", callback: "f3" },
+            ]
+        },
+        {
+            chatID: 103,
+            speaker: "janice",
+            text: "Ugh, you want to play. Fine. Turn around. ",
+            button: [
+                { chatID: 104, text: "[turn around]", callback: "k0" },
+            ]
+        },
+        {
+            chatID: 104,
+            speaker: "janice",
+            text: "You know for a girl dog it is weird that your balls hang so low. ",
+            button: [
+                { chatID: 105, text: "?", callback: "k1" },
+            ]
+        },
+        {
+            chatID: 105,
+            speaker: "janice",
+            text: "Let me kick them inside of you! hehehe",
+            button: [
+                { chatID: 106, text: "?", callback: "k2" },
+            ]
+        },
+        {
+            chatID: 106,
+            speaker: "thinking",
+            text: "Oh no, oh no, oh no! My poor poor balls! aaaaa! why? WHY! Damn I can't even " +
+                "cradle my balls in this bitch suit! Fuck my life...",
+            button: [
+                { chatID: -1, text: "...", callback: "k_end" },
+            ]
+        },
+        {
+            chatID: 107,
+            speaker: "janice",
+            text: "Fuck yeah that was amazing! Clean me up my little doggies!",
+            button: [
+                { chatID: 108, text: "mmmmm", callback: "f10" },
+            ]
+        },
+        {
+            chatID: 108,
+            speaker: "janice",
+            text: "You're such good doggies!",
+            button: [
+                { chatID: -1, text: "...", callback: "f11" },
+            ]
+        },
+        {
+            chatID: 109,
+            speaker: "!bbc",
+            text: "Oh we've heard about you. You know how this is going to go down slut. Jerry, " +
+                "strip of this bitch's clothes. I wanna see where I'm going to stick my dick.",
+            button: [
+                { chatID: 101, text: "...", callback: "f1" },
+            ]
+        },
+        {
+            chatID: 110,
+            speaker: "janice",
+            text: "Oof. Gotta run and powder my nose. ",
+            button: [
+                { chatID: -1, text: "...", callback: "p0" },
+            ]
+        },
+        {
+            chatID: 111,
+            speaker: "janice",
+            text: "Awww you want to watch me go pee pee?",
+            button: [
+                { chatID: 112, text: "...", callback: "p1_1" },
+            ]
+        },
+        {
+            chatID: 112,
+            speaker: "janice",
+            text: "Hehehe. You're one weird doggy! ",
+            button: [
+                { chatID: -1, text: "*muffled arf*", callback: "p1_1end" },
+            ]
+        },
+        {
+            chatID: 113,
+            speaker: "thinking",
+            text: "Oh. She's got a waiting message from someone she doesn't know. Should I " +
+                "invite them over and suprise her, and give me a little gift. Hehehe..",
+            button: [
+                { chatID: 114, text: "[Use your nose to send a reply]", callback: "phoneReply" },
+                { chatID: -1, text: "[Don't reply]", callback: "" },
+            ]
+        },
+        {
+            chatID: 114,
+            speaker: "thinking",
+            text: "There! She's going to get such a big suprise when they get here! Hehehehe! ",
+            button: [
+                { chatID: -1, text: "...", callback: "" },
             ]
         },
     ];

@@ -584,8 +584,15 @@ room316.btnclick = function (name) {
                 sc.select("icontv", "316_livingroom/icon_tv.png", 4);
             if (!g.pass.datr)
                 sc.select("iconDatr", "316_livingroom/icon_datr.png", 6);
-            if (!g.pass.dog && cuckwalk)
-                sc.select("iconWalkCuck", "316_livingroom/icon_walk.png", 8);
+            if (!g.pass.dog && cuckwalk) {
+                
+                if (sc.getMissionTask("janice", "dog-x", 6).complete) {
+                    sc.select("iconbitch", "316_livingroom/icon_bitch.png", 8);
+                }
+                else {
+                    sc.select("iconWalkCuck", "316_livingroom/icon_walk.png", 8);
+                }
+            }
 
             if (!g.pass.dick)
                 sc.select("iconDickx", "316_livingroom/icon_dick.png", 9);
@@ -595,6 +602,9 @@ room316.btnclick = function (name) {
             break;
         case "iconLeave":
             char.room(0);
+            break;
+        case "iconbitch":
+            chat(165, 322);
             break;
         case "icontv":
             g.pass.tv = true;
@@ -1314,6 +1324,10 @@ room316.chatcatch = function (callback) {
         case "room322":
             sc.completeMissionTask("janice", "dog-x", 3);
             sc.setLevel("janice", 9, 0);
+            char.room(322);
+            break;
+        case "room322-1":
+            char.addtime(60);
             char.room(322);
             break;
         default:
@@ -2979,6 +2993,15 @@ room316.chat = function (chatID) {
                     "don't talk. Let's go inside. ",
                 button: [
                     { chatID: -1, text: "[Follow her]", callback: "room322" },
+                ]
+            },
+            {
+                chatID: 165,
+                speaker: "janice",
+                text: "Hahaha. My little bitch has decided to come home. Let's get you dressed " +
+                    "up! ",
+                button: [
+                    { chatID: -1, text: "[Follow her]", callback: "room322-1" },
                 ]
             },
         ];
