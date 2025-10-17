@@ -578,7 +578,8 @@ sc.charMission = [
                         { id: 3, txt: "Bitchsuit for a bitch", show: true, mStatus: 0, roomId: 316 },
                         { id: 4, txt: "First Day", show: true, mStatus: 0, roomId: 322 },
                         { id: 5, txt: "Webcam first time", show: true, mStatus: 0, roomId: 321 },
-                        { id: 6, txt: "Freedom", show: true, mStatus: 0, roomId: 322 },
+                        { id: 6, txt: "Do I suprise her?", show: true, mStatus: 0, roomId: 322 },
+                        { id: 7, txt: "Freedom", show: true, mStatus: 0, roomId: 322 },
                     ]
             },
             {

@@ -586,7 +586,7 @@ room316.btnclick = function (name) {
                 sc.select("iconDatr", "316_livingroom/icon_datr.png", 6);
             if (!g.pass.dog && cuckwalk) {
                 
-                if (sc.getMissionTask("janice", "dog-x", 6).complete) {
+                if (sc.getMissionTask("janice", "dog-x", 7).complete) {
                     sc.select("iconbitch", "316_livingroom/icon_bitch.png", 8);
                 }
                 else {
@@ -604,7 +604,7 @@ room316.btnclick = function (name) {
             char.room(0);
             break;
         case "iconbitch":
-            chat(165, 322);
+            chat(165, 316);
             break;
         case "icontv":
             g.pass.tv = true;

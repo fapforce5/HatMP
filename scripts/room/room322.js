@@ -9,15 +9,23 @@ room322.main = function () {
             sc.completeMissionTask("janice", "dog-x", 4);
         }
         if (gv.get("bladder") > 0) {
+            gv.set("bladder", 0);
             nav.bg("322_dog/pp0.webp");
             chat(84, 322);
         }
-        else if (janicedetails.c > 95 || janicedetails.l > 9) {
+        else if (sc.getMissionTask("janice", "dog-x", 6).complete) {
             nav.bg("322_dog/wake0.webp");
             gv.set("janiceAnnoyance", 0);
             chat(94, 322);
         }
+        else if (sc.getLevelDetails("janice").c > 65) {
+            char.settime(9, 15);
+            nav.bg("322_dog/wake1.webp");
+            gv.set("janiceAnnoyance", 0);
+            chat(117, 322);
+        }
         else {
+            char.settime(9, 15);
             nav.bg("322_dog/wake0.webp");
             gv.set("janiceAnnoyance", 0);
             chat(66, 322);
@@ -33,6 +41,10 @@ room322.btnclick = function (name) {
         case "progressbar":
             nav.killbutton("trust");
             nav.killbutton("annoyance");
+            var getjd = sc.getLevelDetails("janice");
+            if (getjd.l > 9)
+                getjd.c = 100;
+
             nav.progressBar({
                 "type": "img",
                 "name": "trust",
@@ -42,7 +54,7 @@ room322.btnclick = function (name) {
                 "height": 10,
                 "color": "pink",
                 "maxVal": 100,
-                "val": sc.getLevelDetails("janice").c,
+                "val": getjd.c,
                 "title": sc.n("janice") + "'s trust"
             }, 322);
 
@@ -60,20 +72,16 @@ room322.btnclick = function (name) {
             }, 322);
             break;
         case "livingroom":
+            char.addtime(3);
             nav.kill();
             room322.btnclick("progressbar");
-            if (g.gethourdecimal() > 20) {
+            if (cl.stinky()) {
+                nav.bg("322_dog/livingroom.webp");
+                chat(115, 322);
+            }
+            else if (g.gethourdecimal() > 20) {
                 if (daily.get("janicePhoneGangbang")) {
-                    nav.button({
-                        "type": "img",
-                        "name": "waiter0",
-                        "left": 172,
-                        "top": 264,
-                        "width": 863,
-                        "height": 763,
-                        "image": "322_dog/waiter0.webp"
-                    }, 322);
-                    chat(96, 322);
+                    room322.btnclick("f0");
                     return;
                 }
                 var janiceRand = gv.get("janiceRand");
@@ -94,10 +102,8 @@ room322.btnclick = function (name) {
                 //in motion these events
                 daily.set("janiceAfternoonEvent");
                 var janicedetailsx = sc.getLevelDetails("janice");
-                if (gv.get("janiceAnnoyance") > 98) {
-                    room322.btnclick("livingroom");
-                }
-                else if (janicedetailsx.c > 95 && janicedetailsx.l < 10) {
+                if ((janicedetailsx.c > 98 || janicedetailsx.l > 9) && sc.getMissionTask("janice", "dog-x", 6).notStarted) {
+                    sc.completeMissionTask("janice", "dog-x", 6);
                     nav.bg("322_dog/livingroom.webp");
                     chat(110, 322);
                 }
@@ -263,7 +269,7 @@ room322.btnclick = function (name) {
                 }
                 else {
                     nav.bg("322_dog/yardpeelaugh" + ypchastity + ".webp");
-                    sc.modLevel("janice", 3, 10);
+                    sc.modLevel("janice", 3, 9);
                     room322.btnclick("progressbar");
                     chat(8, 322);
                 }
@@ -350,7 +356,7 @@ room322.btnclick = function (name) {
             nav.bg("322_dog/sleepfeet.webp");
             if (!daily.get("naplay")) {
                 daily.set("naplay");
-                sc.modLevel("janice", 5, 10);
+                sc.modLevel("janice", 5, 9);
             }
             room322.btnclick("progressbar");
             g.roomTimeout = setTimeout(function () {
@@ -363,7 +369,7 @@ room322.btnclick = function (name) {
             nav.bg("322_dog/sleepfeet.webp");
             if (!daily.get("naplay")) {
                 daily.set("naplay");
-                sc.modLevel("janice", 5, 10);
+                sc.modLevel("janice", 5, 9);
             }
             room322.btnclick("progressbar");
             g.roomTimeout = setTimeout(function () {
@@ -376,7 +382,7 @@ room322.btnclick = function (name) {
             nav.bg("322_dog/sleepfeet.webp");
             if (!daily.get("naplay")) {
                 daily.set("naplay");
-                sc.modLevel("janice", 5, 10);
+                sc.modLevel("janice", 5, 9);
             }
             room322.btnclick("progressbar");
             g.roomTimeout = setTimeout(function () {
@@ -447,9 +453,8 @@ room322.btnclick = function (name) {
         case "feed2":
             daily.set("room322Eat");
             nav.killbutton("feed2");
-            sc.modLevel("janice", 3, 10);
+            sc.modLevel("janice", 3, 9);
             room322.btnclick("progressbar");
-            gv.mod("energy", 75);
             gv.mod("bladder", .8);
             chat(4, 322);
             break;
@@ -813,6 +818,7 @@ room322.chatcatch = function (callback) {
         case "k2":
         case "pp1":
         case "pp2":
+        case "bath":
             nav.bg("322_dog/" + callback + ".webp");
             break;
         case "pl1":
@@ -882,9 +888,9 @@ room322.chatcatch = function (callback) {
             switch (gv.get("janiceWalk") % 3) {
                 case 0:
                     nav.bg("322_dog/walk0.webp");
-                    sc.modLevel("janice", 3, 10);
+                    sc.modLevel("janice", 3, 9);
                     room322.btnclick("progressbar");
-                    sc.modLevel("janice", 4, 10);
+                    sc.modLevel("janice", 4, 9);
                     chat(13, 322);
                     break;
                 case 1:
@@ -892,18 +898,18 @@ room322.chatcatch = function (callback) {
                         sc.completeMissionTask("eva", "random", 1);
                         nav.bg("322_dog/walk1.webp");
                         sc.modSecret("eva", 100);
-                        sc.modLevel("janice", 4, 10);
+                        sc.modLevel("janice", 4, 9);
                         chat(14, 322);
                     }
                     else {
                         nav.bg("322_dog/walk2.webp");
-                        sc.modLevel("janice", 4, 10);
+                        sc.modLevel("janice", 4, 9);
                         chat(18, 322);
                     }
                     break;
                 case 2:
                     nav.kill();
-                    sc.modLevel("janice", 5, 10);
+                    sc.modLevel("janice", 5, 9);
                     room322.btnclick("progressbar");
                     if (sc.getMissionTask("janice", "random", 0).notStarted) {
                         sc.completeMissionTask("janice", "random", 0);
@@ -933,19 +939,17 @@ room322.chatcatch = function (callback) {
             nav.kill();
             room322.btnclick("progressbar");
             nav.bg("322_dog/e10.webp");
-            if (sc.getLevelDetails("janice").c > 65) {
-                if (gv.get("janiceAnnoyance") > 98) {
-                    chat(87, 322);
-                }
-                else {
-                    chat(88, 322);
-                }
+            var asldkfjaslkdjf = sc.getLevelDetails("janice");
+            if (asldkfjaslkdjf.c > 65 || asldkfjaslkdjf.l > 9) {
+                chat(88, 322);
             }
-            chat(64, 322);
+            else {
+                chat(64, 322);
+            }
             break;
         case "sleep":
-            if (sc.getLevelDetails("janice").c > 60) {
-                sc.modLevel("janice", 2);
+            if (sc.getLevelDetails("janice").c > 65) {
+                sc.modLevel("janice", 2, 9);
                 g.pass = 321;
             }
             else
@@ -956,7 +960,7 @@ room322.chatcatch = function (callback) {
             nav.bg("322_dog/ds5.webp");
             sc.modLevel("dog", 50, 10);
             levels.oral(4, "m", "dog", true, "dog");
-            sc.modLevel("janice", 7, 10);
+            sc.modLevel("janice", 7, 9);
             char.addtime(90);
             room322.btnclick("progressbar");
             break;
@@ -964,7 +968,7 @@ room322.chatcatch = function (callback) {
             nav.bg("322_dog/ds5a.webp");
             sc.modLevel("dog", 50, 10);
             levels.oral(4, "m", "dog", false, "dog");
-            sc.modLevel("janice", 2, 10);
+            sc.modLevel("janice", 2, 9);
             gv.mod("janiceAnnoyance", 50);
             char.addtime(90);
             room322.btnclick("progressbar");
@@ -979,7 +983,7 @@ room322.chatcatch = function (callback) {
             room322.btnclick("livingroom");
             break;
         case "tEnd":
-            sc.modLevel("janice", 5, 10);
+            sc.modLevel("janice", 5, 9);
             gv.mod("energy", 25);
             room322.btnclick("livingroom");
             break;
@@ -998,13 +1002,13 @@ room322.chatcatch = function (callback) {
             nav.next("ff");
             break;
         case "f11":
-            sc.modLevel("janice", 100, 10);
+            sc.modLevel("janice", 100, 9);
             levels.swallowCum("m", "!bbc");
             room322.chatcatch("bed");
             break;
         case "k_end":
             gv.mod("energy", -30);
-            sc.modLevel("janice", 2, 10);
+            sc.modLevel("janice", 2, 9);
             room322.btnclick("livingroom");
             break;
         case "reset":
@@ -1014,7 +1018,7 @@ room322.chatcatch = function (callback) {
             cl.c.buttplug = null;
             cl.nude();
             if (!sc.getMission("janice", "dog-x").complete) {
-                sc.completeMissionTask("janice", "dog-x", 6);
+                sc.completeMissionTask("janice", "dog-x", 7);
                 sc.completeMission("janice", "dog-x");
             }
             char.room(320);
@@ -1028,6 +1032,12 @@ room322.chatcatch = function (callback) {
         case "p1_1end":
             levels.piss(false, false, false, "f", "janice");
             char.addtime(20);
+            char.room(322);
+            break;
+        case "bathEnd":
+            cl.clean();
+            sc.modLevel("janice", 2, 9);
+            char.addtime(60);
             char.room(322);
             break;
         case "phoneReply":
@@ -1881,7 +1891,7 @@ room322.chat = function (chatID) {
         {
             chatID: 98,
             speaker: "janice",
-            text: "Oh those are my doggies! They're so great!",
+            text: "Oh those are my doggies! So who are you guys? ",
             button: [
                 { chatID: 99, text: "...", callback: "" },
             ]
@@ -1892,7 +1902,7 @@ room322.chat = function (chatID) {
             text: "Hehehe.. doggies.. I see one doggy and one bitch. Maybe they want to watch " +
                 "what you're going to do to you. ",
             button: [
-                { chatID: 100, text: "...", callback: "f1" },
+                { chatID: 100, text: "...", callback: "" },
             ]
         },
         {
@@ -1914,8 +1924,8 @@ room322.chat = function (chatID) {
         {
             chatID: 102,
             speaker: "bbc",
-            text: "I don't need that bitch to get hard enough to fuck you baby. Jerry may need 'er " +
-                "though hehehe. ",
+            text: "I'm gunna fuck that pussy so good your bitch is gunna cum! Gerry, you can fuck that " +
+                "freak's face. I know how much you love freaks!",
             button: [
                 { chatID: -1, text: "...", callback: "f3" },
             ]
@@ -2018,6 +2028,31 @@ room322.chat = function (chatID) {
             text: "There! She's going to get such a big suprise when they get here! Hehehehe! ",
             button: [
                 { chatID: -1, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 115,
+            speaker: "janice",
+            text: "*gag* oh my. Someone's stinky! Time to hose you off you smelly doggy!",
+            button: [
+                { chatID: 116, text: "[follow her]", callback: "bath" },
+            ]
+        },
+        {
+            chatID: 116,
+            speaker: "thinking",
+            text: "oh ho ho ho!!!! That's so cold on my bare balls and back!!!! Brrrrr. So " +
+                "I've going to freeze to death! So cold!!!",
+            button: [
+                { chatID: -1, text: "...", callback: "bathEnd" },
+            ]
+        },
+        {
+            chatID: 117,
+            speaker: "janice",
+            text: "Wake up sleepy head! Time to get up lazy bones!!!",
+            button: [
+                { chatID: -1, text: "...", callback: "livingroom" },
             ]
         },
     ];

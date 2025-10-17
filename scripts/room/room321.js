@@ -624,6 +624,7 @@ room321.chatcatch = function (callback) {
             break;
         case "doggyEnd":
             char.addtime(120);
+            sc.modLevel("janice", 4, 10);
             clearTimeout(g.roomTimeout);
             levels.swallowCum("m", "dog");
             char.settime(19, 30);
