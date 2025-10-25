@@ -4,34 +4,46 @@ room800.main = function () {
     var btnList = new Array();
     var activeCase = missy.activecase();
     if (!g.isNight()) {
-       btnList.push({
-                "type": "btn",
-                "name": "watering",
-                "left": 1018,
-                "top": 386,
-                "width": 333,
-                "height": 579,
-                "image": "800_ralph/watering.png"
+        btnList.push({
+            "type": "btn",
+            "name": "door",
+            "left": 772,
+            "top": 436,
+            "width": 97,
+            "height": 197,
+            "image": "800_ralph/door.png",
+            "night": "800_ralph/door_night.png"
         });
+        btnList.push({
+            "type": "btn",
+            "name": "watering",
+            "left": 1018,
+            "top": 386,
+            "width": 333,
+            "height": 579,
+            "image": "800_ralph/watering.png"
+        });
+        btnList.push({
+            "type": "hand",
+            "name": "wass",
+            "left": 1018,
+            "top": 503,
+            "width": 101,
+            "height": 102,
+            "image": "800_ralph/wass.png"
+        })
     }
-    //btnList.push({
-    //    "type": "btn",
-    //    "name": "door",
-    //    "left": 1018,
-    //    "top": 386,
-    //    "width": 333,
-    //    "height": 579,
-    //    "image": "800_ralph/door.png",
-    //    "night": "800_ralph/door_night.png"
-    //});
+    
     if (activeCase.name === "case_saveralph" && !activeCase.isComplete) {
         chat(3, 800);
     }
-    var navList = [0];
     $.each(btnList, function (i, v) {
         nav.button(v, 800);
     });
-    nav.buildnav(navList);
+    if(g.isNight())
+        nav.buildnav([0]);
+    else
+        nav.buildnav([801, 0]);
 };
 
 room800.btnclick = function (name) {
@@ -56,8 +68,57 @@ room800.btnclick = function (name) {
             //    chat(1, 800);
             //}
             break;
+        case "wass":
+            nav.killbutton("wass");
+            if (sc.getSecret("ralphsmom").secretOut) {
+                nav.killbutton("watering");
+                nav.button({
+                    "type": "img",
+                    "name": "watering",
+                    "left": 746,
+                    "top": 72,
+                    "width": 601,
+                    "height": 1008,
+                    "image": "800_ralph/ralphmom.png"
+                });
+                chat(29, 800);
+            }
+            else if (sc.getLevel("ralphsmom") < 3) {
+                if (!daily.get("spankRalphsMom")) {
+                    daily.set("spankRalphsMom");
+                    sc.modLevel("ralphsmom", 25, 3);
+                }
+                nav.killbutton("watering");
+                nav.button({
+                    "type": "img",
+                    "name": "watering",
+                    "left": 746,
+                    "top": 72,
+                    "width": 601,
+                    "height": 1008,
+                    "image": "800_ralph/ralphmom_s.png"
+                });
+                chat(30, 800);
+            }
+            else {
+                nav.killbutton("watering");
+                nav.button({
+                    "type": "img",
+                    "name": "watering",
+                    "left": 746,
+                    "top": 72,
+                    "width": 601,
+                    "height": 1008,
+                    "image": "800_ralph/ralphmom_h.png"
+                });
+                chat(31, 800);
+            }
+            break;
         case "door":
-            chat(2, 800);
+            if (g.isNight())
+                chat(2, 800);
+            else
+                char.room(801);
             break;
         case "fightRun":
             nav.bg("800_ralph/case6_6Run.jpg");
@@ -72,6 +133,107 @@ room800.btnclick = function (name) {
             nav.killall();
             nav.bg("1_startScreen/case6_6Beat.jpg");
             chat(25, 800);
+            break;
+        case "cancel":
+            char.room(800);
+            break;
+        case "dick":
+            nav.kill("gift");
+            nav.kill("chat");
+            nav.kill("dick");
+            nav.kill("cancel");
+            if (cl.c.chastity !== null) {
+                sc.modSecret("ralphsmom", 100);               
+                nav.kill("watering");
+                nav.button({
+                    "type": "img",
+                    "name": "watering",
+                    "left": 746,
+                    "top": 72,
+                    "width": 601,
+                    "height": 1008,
+                    "image": "800_ralph/ralphmom_s.png"
+                });
+                chat(32, 800);
+            }
+            else if (!gender.canUseCock()) {
+                sc.modSecret("ralphsmom", 100);
+                nav.kill("watering");
+                nav.button({
+                    "type": "img",
+                    "name": "watering",
+                    "left": 746,
+                    "top": 72,
+                    "width": 601,
+                    "height": 1008,
+                    "image": "800_ralph/ralphmom_h.png"
+                });
+                chat(35, 800);
+            }
+            else if (sc.getLevel("ralphsmom") < 6) {
+                nav.kill("watering");
+                nav.button({
+                    "type": "img",
+                    "name": "watering",
+                    "left": 746,
+                    "top": 72,
+                    "width": 601,
+                    "height": 1008,
+                    "image": "800_ralph/ralphmom_s.png"
+                });
+                chat(33, 800);
+            }
+            else {
+                if (!daily.get("ralphsmomdickflash")) {
+                    daily.set("ralphsmomdickflash");
+                    sc.modLevel("ralphsmom", 15);
+                }
+                nav.kill("watering");
+                nav.button({
+                    "type": "img",
+                    "name": "watering",
+                    "left": 746,
+                    "top": 72,
+                    "width": 601,
+                    "height": 1008,
+                    "image": "800_ralph/ralphmom_s.png"
+                });
+                chat(34, 800);
+            }
+            break;
+        case "gift":
+            nav.kill("gift");
+            nav.kill("chat");
+            nav.kill("dick");
+            nav.kill("cancel");
+            var jl = 0;
+            for (let i = 0; i < tl.length; i++) {
+                if (tl[i].count > 0) {
+                    switch (tl[i].name) {
+                        case "bouquet": sc.select("gift_bouquet", "252_waitress/icon_bouquet.png", jl); jl++; break;
+                        case "roses": sc.select("gift_roses", "252_waitress/icon_roses.png", jl); jl++; break;
+                        case "seal": sc.select("gift_seal", "252_waitress/icon_seal.png", jl); jl++; break;
+                        case "mug": sc.select("gift_mug", "252_waitress/icon_mug.png", jl); jl++; break;
+                        case "whoopee": sc.select("gift_whoopee", "252_waitress/icon_whoopee.png", jl); jl++; break;
+                    }
+                }
+            }
+            sc.selectCancel("cancel", jl);
+            break;
+        case "bouquet":
+        case "roses":
+            if (!daily.get("ralphmomflowers") && sc.getLevel("ralphsmom") < 6) {
+                daily.set("ralphmomflowers");
+                sc.modLevel("ralphsmom", 34);
+            }
+            inv.use(name);
+            chat(36, 800);
+            break;
+        case "seal":
+        case "mug":
+        case "whoopee":
+            inv.use(name);
+            chat(37, 800);
             break;
         default:
             break;
@@ -117,6 +279,15 @@ room800.chatcatch = function (callback) {
             //sc.setstep("ralph", 200);
             char.room(800);
             break;
+        case "reset":
+            char.room(800);
+            break;
+        case "choices":
+            sc.select("gift", "252_waitress/icon_gift.png", 0);
+            sc.select("chat", "252_waitress/icon_chat.png", 1);
+            sc.select("dick", "752_whore/whore_dick.png", 2);
+            sc.select("cancel", "752_whore/icon_cancel.png", 2);
+            break;
         default:
             break;
     }
@@ -148,7 +319,7 @@ room800.chat = function (chatID) {
             text: "Oh you must be Ralph's little friend, " + sc.n("me") + ". We've heard so much about you. He's inside if " +
                 "you want to play in his room. It's so good that he has friends to play with. ",
             button: [
-                { chatID: -1, text: "Thanks Ralph's mom!", callback: "" }
+                { chatID: -1, text: "Thanks Ralph's mom!", callback: "reset" }
             ]
         },
         {
@@ -156,13 +327,13 @@ room800.chat = function (chatID) {
             speaker: "ralphsmom",
             text: "Ralph's inside if you want to play. ",
             button: [
-                { chatID: -1, text: "Thanks Ralph's mom!", callback: "" }
+                { chatID: -1, text: "Thanks Ralph's mom!", callback: "reset" }
             ]
         },
         {
             chatID: 2,
             speaker: "thinking",
-            text: "Not built yet. ",
+            text: sc.n("ralph") + "'s parents don't like visitors at night. ",
             button: [
                 { chatID: -1, text: "...", callback: "" }
             ]
@@ -394,6 +565,88 @@ room800.chat = function (chatID) {
             text: "Oh good. we accept him as crossdresser ",
             button: [
                 { chatID: -1, text: "Get out of here! ", callback: "case6_6GoodEnd_complete" }
+            ]
+        },
+        {
+            chatID: 29,
+            speaker: "ralphsmom",
+            text: "Oh you. " + sc.n("ralph") + "'s inside. Now you two stay out of trouble " +
+                "I know how hard the world is on your girls like yourselves. ",
+            button: [
+                { chatID: -1, text: "ok", callback: "" }
+            ]
+        },
+        {
+            chatID: 30,
+            speaker: "ralphsmom",
+            text: "oh! oh my. You smacked my butt. I'm sure you didn't mean to. " +
+                sc.n("ralph") + "'s upstaird in his room again. ",
+            button: [
+                { chatID: -1, text: "ok", callback: "" }
+            ]
+        },
+        {
+            chatID: 31,
+            speaker: "ralphsmom",
+            text: "You dirty dirty boy. Don't let my husband see you do that! Hehehe",
+            button: [
+                { chatID: -1, text: "ok", callback: "choices" }
+            ]
+        },
+        {
+            chatID: 32,
+            speaker: "ralphsmom",
+            text: "Oh no. You're one of those sissies aren't you. I know why boys like " +
+                "you wear those chastity cages. *hrumph* It's too bad. I was starting to get " +
+                "to like you. I guess it makes sense that my little " + sc.n("ralph") + " would " +
+                "have a sissy friend. He's a bit of a sissy too, but I'm sure you already know that. ",
+            button: [
+                { chatID: -1, text: "awww", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 33,
+            speaker: "ralphsmom",
+            text: "Oh my! Put your penis away. Why would you pull that out, out here! ",
+            button: [
+                { chatID: -1, text: "Yes ma'am", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 34,
+            speaker: "ralphsmom",
+            text: "Oh my! Put your penis away. Why would you pull that out, out here! ",
+            button: [
+                { chatID: -1, text: "Yes ma'am", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 35,
+            speaker: "ralphsmom",
+            text: "Oh honey. Look at the tiny little penis. You poor thing. Did you " +
+                "show it to me to let me know you're probably a virgin? I'm sorry, but " +
+                "no girl's going to want to have that inside her. You should do what " +
+                sc.n("ralph") + " does and just be a sissy. It's really not all that bad. " +
+                "It'll be hard at first, but practice putting a dildo in your butt and in no " +
+                "time you'll find your real self. I know you can do it! ",
+            button: [
+                { chatID: -1, text: "Oh. Thanks?", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 36,
+            speaker: "ralphsmom",
+            text: "Oh you lovely young man! I do love flowers!  ",
+            button: [
+                { chatID: -1, text: "You're welcome!", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 37,
+            speaker: "ralphsmom",
+            text: "Oh. Thanks. This is nice, but I really much prefer flowers. ",
+            button: [
+                { chatID: -1, text: "You're welcome!", callback: "reset" }
             ]
         },
     ];

@@ -11,12 +11,18 @@ charisma.getStats = function (charismaLevel) {
     return { n: stat, txt: "[Charisma Roll: " + stat + "%] ", baseRoll: baseRoll, rollNeeded: rollNeeded, myCharisma: myCharisma, appearance: appearance };
 };
 
+charisma.getIntel = function (charismaLevel) {
+    var myCharisma = levels.get("pi").l;
+    var baseRoll = 12 + charismaLevel;
+    var rollNeeded = baseRoll - myCharisma;
+
+
+    var stat = g.getSingleRoll(rollNeeded);
+    return { n: stat, txt: "[Intelligence Roll: " + stat + "%] ", baseRoll: baseRoll, rollNeeded: rollNeeded, myCharisma: myCharisma, appearance: 0 };
+};
+
 charisma.init = function (charismaLevel, btnPressWin, btnPressLost, roomID) {
-    var stat = this.getStats(charismaLevel);
-    //nav.killbutton("quickfight");
-    //nav.killbutton("quickfightrunaway");
-    //nav.killbutton("quickfightFight");
-    //nav.killbutton("quickfightRun");
+    var stat = charisma.getStats(charismaLevel);
     nav.button({
         "type": "img",
         "name": "quickfight",
@@ -239,7 +245,8 @@ charisma.complete = function () {
     nav.killbutton("charismaComplete");
     var name;
     var roomId = g.fight.roomID;
-    levels.mod("charisma", 20);
+    if (g.fight.appearance !== -999)
+        levels.mod("charisma", 20);
     if (g.fight.aftermath === "win")
         name = g.fight.btnPressWin;
     else
@@ -247,4 +254,96 @@ charisma.complete = function () {
 
     g.fight = null;
     window[g.room(roomId)]["btnclick"](name);
+};
+
+charisma.itelInit = function (intelLevel, btnPressWin, btnPressLost, roomID) {
+    let stat = charisma.getIntel(intelLevel);
+    nav.button({
+        "type": "img",
+        "name": "quickfight",
+        "left": 0,
+        "top": 0,
+        "width": 1920,
+        "height": 1080,
+        "image": "1002_quickfight/black20Alpha.png"
+    }, 1);
+    nav.button({
+        "type": "img",
+        "name": "quickfight",
+        "left": 1597,
+        "top": 147,
+        "width": 306,
+        "height": 712,
+        "image": "227_fight/menu.png"
+    }, 1);
+    nav.button({
+        "type": "btn",
+        "name": "charismaRoll",
+        "left": 760,
+        "top": 300,
+        "width": 400,
+        "height": 100,
+        "image": "1002_quickfight/roll.png"
+    }, 1);
+
+    nav.t({
+        type: "zimg",
+        name: "quickfight",
+        left: 1620,
+        top: 180,
+        font: 30,
+        hex: "#ffffff",
+        text: "Charisma"
+    }, 1);
+    nav.t({
+        type: "img",
+        name: "quickfight",
+        left: 1660,
+        top: 280 + (0 * 50) + 12,
+        font: 20,
+        hex: "#ffffff",
+        text: "Your Intelligence: " + stat.myCharisma
+    }, 1);
+    
+    
+    nav.t({
+        type: "img",
+        name: "quickfight",
+        left: 1660,
+        top: 280 + (4 * 50) + 12,
+        font: 20,
+        hex: "#ffffff",
+        text: "Base Roll Needed : " + stat.baseRoll
+    }, 1);
+    nav.t({
+        type: "img",
+        name: "quickfight",
+        left: 1660,
+        top: 280 + (5 * 50) + 12,
+        font: 20,
+        hex: "#ffffff",
+        text: "Adjusted Roll Needed : " + stat.rollNeeded
+    }, 1);
+    nav.t({
+        type: "img",
+        name: "quickfight",
+        left: 1660,
+        top: 280 + (6 * 50) + 12,
+        font: 20,
+        hex: "#ffffff",
+        text: "Chance: " + stat.n + "%"
+    }, 1);
+
+
+    g.fight = {
+        myCharisma: stat.myCharisma,
+        appearance: -999,
+        baseRoll: stat.baseRoll,
+        rollNeeded: stat.rollNeeded,
+        aftermath: null,
+        btnPressWin: btnPressWin,
+        btnPressLost: btnPressLost,
+        prob: stat.n,
+        roomID: roomID
+    };
 };

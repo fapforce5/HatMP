@@ -62,6 +62,20 @@ room727.main = function () {
                 "image": "727_bathroom/stall.png"
             },
         ];
+        if (!daily.get("tina") && sc.getMission("tina", "cat").startedOrComplete) {
+            daily.set("tina");
+            if (cl.isCrossdressing())
+                sc.modSecret("tina", 100);
+            btnList.push({
+                "type": "btn",
+                "name": "tina",
+                "left": 1390,
+                "top": 28,
+                "width": 370,
+                "height": 1052,
+                "image": "727_bathroom/tina.webp"
+            });
+        }
         var navList = [725, 726, 0];
         $.each(btnList, function (i, v) {
             nav.button(v, 727);
@@ -86,6 +100,7 @@ room727.btnclick = function (name) {
         case "stall":
             nav.killbutton("stall");
             nav.killbutton("mirror");
+            nav.killbutton("tina");
             if (g.pass === "slutfuck") {
                 //fuck slut
             }
@@ -118,6 +133,29 @@ room727.btnclick = function (name) {
             gv.mod("arousal", 100);
             g.roomTimeout = setTimeout(function () { chat(10, 727); }, 2000);
             break;
+        case "tina":
+            if (sc.getMissionTask("tina", "cat", 2).fail) {
+                chat(42, 727);
+            }
+            else if (sc.getSecret("tina").secretOut) {
+                chat(22, 727);
+            }
+            else if (sc.getLevel("tina") < 7) {
+                sc.modLevel("tina", 25, 7);
+                if (sc.getMissionTask("tina", "cat", 1).notStarted) {
+                    sc.completeMissionTask("tina", "cat", 1);
+                    chat(23, 727);
+                }
+                else
+                    chat(25, 727);
+            }
+            else {
+                if (cl.c.chastity === null)
+                    chat(26, 727);
+                else
+                    chat(39, 727);
+            }
+            break;
         default:
             break;
     }
@@ -125,6 +163,20 @@ room727.btnclick = function (name) {
 
 room727.chatcatch = function (callback) {
     switch (callback) {
+        case "tina1":
+        case "tina2":
+        case "tina3":
+        case "tina4":
+        case "tina5":
+        case "tina7":
+        case "tina8":
+        case "tina9":
+            nav.bg("727_bathroom/" + callback + ".jpg");
+            break;
+        case "tina0":
+            nav.kill();
+            nav.bg("727_bathroom/" + callback + ".jpg");
+            break;
         case "tim2b":
             nav.modbutton("tim", "727_bathroom/tim2b.png", null, null);
             break;
@@ -247,6 +299,35 @@ room727.chatcatch = function (callback) {
             daily.set("cindy");
             char.addtime(60);
             char.room(727);
+            break;
+        case "tina6":
+            if (gender.canUseCock()) {
+                nav.bg("727_bathroom/tina6.jpg");
+                chat(43, 727)
+            }
+            else {
+                nav.bg("727_bathroom/tina5b.jpg");
+                chat(40, 727);
+            }
+            break;
+        case "reset":
+            char.room(727);
+            break;
+        case "tinabad":
+            if (sc.getMissionTask("tina", "cat", 2).notStarted) {
+                sc.completeMission("tina", "cat", false);
+                sc.completeMissionTask("tina", "cat", 2, false);
+            }
+            char.room(0); 
+            break;
+        case "tinagood":
+            if (sc.getMissionTask("tina", "cat", 2).notStarted) {
+                sc.completeMission("tina", "cat");
+                sc.completeMissionTask("tina", "cat", 2);
+            }
+            levels.fuckpussy("tina", "f");
+            char.addtime(180);
+            char.room(0);
             break;
         default:
             break;
@@ -440,6 +521,205 @@ room727.chat = function (chatID) {
                 text: "Come back and fuck me anytime!",
                 button: [
                     { chatID: -1, text: "Sweet!", callback: "girl8" }
+                ]
+            },
+            {
+                chatID: 22,
+                speaker: "tina",
+                text: "Hey girlfriend! Just taking a tinkle in a real toilet before I head home. " +
+                    "Good luck out there!",
+                button: [
+                    { chatID: -1, text: "You too!", callback: "reset" }
+                ]
+            },
+            {
+                chatID: 23,
+                speaker: "tina",
+                text: "Oh! I'm so embarrased! I guess you caught me going tinkle. Hehe. I just come " +
+                    "here sometimes to use the bathroom. My place doesn't have one. ",
+                button: [
+                    { chatID: 24, text: "You don't have a bathroom?", callback: "" }
+                ]
+            },
+            {
+                chatID: 24,
+                speaker: "tina",
+                text: "No. " + sc.n("construction") + " let's me sleep in the office, but those outhouses " +
+                    "are so gross I can't stand to go in them. So I come here. Anyway. It's pretty late. I " +
+                    "should get home. ",
+                button: [
+                    { chatID: -1, text: "Ok. See you at work! [Need level 7 to progress]", callback: "reset" }
+                ]
+            },
+            {
+                chatID: 25,
+                speaker: "tina",
+                text: "Hahah! You caught me again. Anyway. I'll see you at work sexy. ",
+                button: [
+                    { chatID: -1, text: "Ok. See you at work! [Need level 7 to progress]", callback: "reset" }
+                ]
+            },
+            {
+                chatID: 26,
+                speaker: "tina",
+                text: "Hehehe. Hi sexy. ",
+                button: [
+                    { chatID: 28, text: "Hey kitty, you want to show me where you pee from? ", callback: "" },
+                    { chatID: 27, text: "*arf* *bark* *grrrr*", callback: "" },
+                ]
+            },
+            {
+                chatID: 27,
+                speaker: "tina",
+                text: "Oh no! I don't like doggies. They scare me. Bye",
+                button: [
+                    { chatID: -1, text: "oh ok.", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 28,
+                speaker: "tina",
+                text: "Hehehehe. oh you. Sure follow me home.",
+                button: [
+                    { chatID: 29, text: "[Follow her]", callback: "tina0" },
+                ]
+            },
+            {
+                chatID: 29,
+                speaker: "!burlysecurity",
+                text: "Hey darlin' What toy are you bringing home tonight? Wait... Is that...",
+                button: [{ chatID: 30, text: "...", callback: "" }]
+            },
+            {
+                chatID: 30,
+                speaker: "tina",
+                text: "It is. What can I say, I do love to take in strays. Stay safe out here. ",
+                button: [{ chatID: 31 , text: "...", callback: "tina1" }]
+            },
+            {
+                chatID: 31,
+                speaker: "tina",
+                text: "So this is my place. You have no idea how hard it is to lug my bed in here " +
+                    "every night. oh. I left a mouse in my bed. Don't run! It's just a fake toy " +
+                    "I like to play with. ",
+                button: [{ chatID: 32, text: "What's in the box behind you. ", callback: "" }]
+            },
+            {
+                chatID: 32,
+                speaker: "tina",
+                text: "Oh! Hehehe. It's my litter box. There's no toilet in here and I can't always " +
+                    "run to the club to tinkle! Don't worry, I clean it twice a day. Totally clean!",
+                button: [{ chatID: 33, text: "hehehe ", callback: "" }]
+            },
+            {
+                chatID: 33,
+                speaker: "tina",
+                text: "Before we start, there's a little think I like to do first. I know there's not " +
+                    "much room in here, but I need you to wait in " + sc.n("construction") + "'s " +
+                    " office 'k?",
+                button: [{ chatID: 34, text: "sure.  ", callback: "tina3" }]
+            },
+            {
+                chatID: 34,
+                speaker: "thinking",
+                text: "I wonder what's she up to in there. Can't be much since there isn't much in there. ",
+                button: [{ chatID: 35, text: "...", callback: "" }]
+            },
+            {
+                chatID: 35,
+                speaker: "tina",
+                text: "Ok, I'm ready. Come in!",
+                button: [{ chatID: 36, text: "Cummin'", callback: "tina4" }]
+            },
+            {
+                chatID: 36,
+                speaker: "tina",
+                text: "meow",
+                button: [{ chatID: 37, text: "oh yeah! Meow!", callback: "" }]
+            },
+            {
+                chatID: 37,
+                speaker: "tina",
+                text: "Did you know a cat's penis has barbs. It's so the girl cat can't during the breeding. " +
+                    "Does your penis have barbs? ",
+                button: [{ chatID: 38, text: "uhhh. I don't think so", callback: "tina5" }]
+            },
+            {
+                chatID: 38,
+                speaker: "tina",
+                text: "I'm in heat, so let's find out my feral alley cat! ",
+                button: [{ chatID: -1, text: "Oh yeah!", callback: "tina6" }]
+            },
+            {
+                chatID: 39,
+                speaker: "tina",
+                text: "Hehehe. Hi sexy. ",
+                button: [
+                    { chatID: -1, text: "[She so wants my dick, too bad I'm wearing a chastity cage]", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 40,
+                speaker: "tina",
+                text: "OMG! Is that your penis!!! It's so tiny!! No wonder " + sc.n("river") +
+                    " is always picking on you! Tiny dick, tiny dick! Hahahahahha",
+                button: [
+                    { chatID: 41, text: "I uhhhh", callback: "" },
+                ]
+            },
+            {
+                chatID: 41,
+                speaker: "tina",
+                text: "Bwhahahah. I'm laughig too hard!! We can't do this. I won't even " +
+                    "feel it! Just go! Hahahha. it's ok. Just go. ",
+                button: [
+                    { chatID: -1, text: "Crap. ok", callback: "tinabad" },
+                ]
+            },
+            {
+                chatID: 42,
+                speaker: "tina",
+                text: "Hahaha! I'm sorry, I can't stop thinking about how tiny your " +
+                    "dick is! Hahahahhahaha",
+                button: [
+                    { chatID: -1, text: "awww", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 43,
+                speaker: "thinking",
+                text: "Is it weird I'm fucking a cat? Naww. It's a girl. A really sexy " +
+                    "girl. I'm not fucking a cat. I'm fucking a girl",
+                button: [
+                    { chatID: 44, text: "...", callback: "tina7" },
+                ]
+            },
+            {
+                chatID: 44,
+                speaker: "tina",
+                text: "*meow*  *huff* Put your babies inside me! Make me carry your litter " +
+                    "of kittens! *meow*",
+                button: [
+                    { chatID: 45, text: "*grunt* I'm gunna.. I'm gunna...", callback: "tina8" },
+                ]
+            },
+            {
+                chatID: 45,
+                speaker: "tina",
+                text: "*meeeeowwwww* My womb feels so hot and yummy!!! I can feel your little " +
+                    "spermies simming around inside me! hehehe! ",
+                button: [
+                    { chatID: 46, text: "..Cum so hard inside you! *grunt* *huff* *huff*", callback: "tina9" },
+                ]
+            },
+            {
+                chatID: 46,
+                speaker: "tina",
+                text: "You just made me a happy pussy. hehehe. Like cat. *meow* There really " +
+                    "isn't room in my kitty bed for two, but I'll see you around my stray " +
+                    "alley cat. *meow*",
+                button: [
+                    { chatID: -1, text: "Meow to you too. Night!", callback: "tinagood" },
                 ]
             },
         ];

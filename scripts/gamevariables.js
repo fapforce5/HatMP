@@ -85,6 +85,7 @@ gv.init = function () {
         { n: "lolaPanties", t: false, q: "bool" },
         { n: "momsPanties", t: false, q: "bool" },
         { n: "panties", t: false, q: "bool" },
+        { n: "constructionMessage", t: false, q: "bool" },
 
         //sissyschool
         { n: "sissySchoolClass", t: null, q: "string" },
@@ -193,96 +194,6 @@ gv.init = function () {
 
     //save by index
     daily.st = new Array();
-    //    [
-    //    { n: "chloe", t: false },
-    //    { n: "landlord", t: false },
-    //    { n: "landlordChat", t: false },
-    //    { n: "landlordmolest", t: false },
-    //    { n: "evamassage", t: false },
-    //    { n: "evatalk", t: false },
-    //    { n: "lolamassage", t: false },
-    //    { n: "lolatalk", t: false },
-    //    { n: "tif", t: false },
-    //    { n: "candy", t: false },
-    //    { n: "envy", t: false },
-    //    { n: "jones", t: false },
-    //    { n: "rachel", t: false },
-    //    { n: "zoey", t: false },
-    //    { n: "tim", t: false },
-    //    { n: "cindy", t: false },
-    //    { n: "keaton", t: false },
-    //    { n: "bigguy", t: false },
-    //    { n: "g", t: false },
-    //    { n: "doc", t: false },
-    //    { n: "ppgirl", t: false },
-    //    { n: "janice", t: false },
-    //    { n: "bimbo", t: false },
-    //    { n: "foundmoney", t: false },
-
-    //    { n: "momChoreBed", t: false },
-    //    { n: "momChoreDishes", t: false },
-    //    { n: "homeShowerPeek", t: false },
-    //    { n: "momRaidCloset", t: false },
-    //    { n: "spermbank", t: false },
-    //    { n: "shower", t: false },
-
-    //    { n: "construction", t: false },
-    //    { n: "buttholePlay", t: false },
-    //    { n: "dildoSuckPlay", t: false },
-    //    { n: "zbar", t: false },
-    //    { n: "gold0", t: false },
-    //    { n: "petcat", t: false },
-    //    { n: "cardgame", t: false },
-    //    { n: "cultrun", t: false },
-    //    { n: "tookHormonePill", t: false },
-    //    //dogsitting
-    //    { n: "dog", t: false },
-    //    { n: "dcrawl", t: false },
-    //    { n: "dfeed", t: false },
-    //    { n: "dpet", t: false },
-    //    { n: "dsniff", t: false },
-    //    { n: "dball", t: false },
-    //    { n: "dpb", t: false },
-    //    { n: "dinside", t: false },
-    //    { n: "dhump", t: false },
-    //    { n: "dlock", t: false },
-    //    { n: "dpee", t: false },
-    //    { n: "dsex", t: false },
-    //    { n: "dwalk", t: false },
-
-    //    { n: "water", t: false },
-
-    //    { n: "cop", t: false },
-    //    { n: "elsleep", t: false },
-    //    { n: "zoeytalk", t: false },
-    //    { n: "orchid", t: false },
-    //    { n: "zoeypiss", t: false },
-    //    { n: "evaDrunk", t: false },
-    //    { n: "lolaDrunk", t: false },
-    //    { n: "pills", t: false },
-    //    { n: "landlordDick", t: false },
-    //    { n: "lolaDick", t: false },
-
-    //    { n: "makeup", t: false },
-    //    { n: "lipstick", t: false },
-    //    { n: "eyeshadow", t: false },
-    //    { n: "raven", t: false },
-
-    //    { n: "constructionPay", t: false },
-    //    { n: "treasureAzrael", t: false },
-    //    { n: "wolfsniff", t: false },
-    //    { n: "parkNight", t: false },
-
-    //    { n: "jonesCleanStart", t: false },
-    //    { n: "jonesCleanEnd", t: false },
-    //    { n: "jonesCleanRoom1", t: false },
-    //    { n: "jonesCleanRoom2", t: false },
-    //    { n: "jonesCleanRoom3", t: false },
-
-    //    { n: "janiceWebcam", t: false },
-    //    { n: "stripper", t: false }
-    // evaTalkSecret
-    //];
 
     weekly.st = [
         { n: "lolapee", t: false },
@@ -1842,6 +1753,11 @@ levels.oralass = function(gender, who = null){
     sex.mod("oralass", gender, who);
     gv.mod("arousal", 40);
     levels.oralSizes(3);
+};
+
+levels.gavetitjob = function (gender, who = null) {
+    sex.mod("gavetitjob", gender, who);
+    gv.mod("arousal", 40);
 };
 
 sex.masturbate = function (t = null) {

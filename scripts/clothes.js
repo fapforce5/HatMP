@@ -59,13 +59,14 @@ cl.init = function () {
         //{ type: "panties", name: "inv", display: "Invisible Panties", img: "panties_cheetah.png", sex: "f", inv: false, daring: 2, price: -1 },
         { type: "panties", name: "cl", display: "Spankies", img: "panties_cheer.png", sex: "f", inv: false, daring: 2, price: -1 },
         { type: "panties", name: "bi", display: "Bimbo's Panties", img: "panties_bimbo.png", sex: "f", inv: false, daring: 3, price: -1 },
-
         //{ type: "panties", name: "holly", display: "Molly's Panties", img: "panties_holly.png", sex: "f", inv: false, daring: 2, price: -1 },
         //{ type: "panties", name: "dolly", display: "Dolly's Panties", img: "panties_dolly.png", sex: "f", inv: false, daring: 2, price: -1 },
         { type: "panties", name: "b", display: "Black Lowrise Panties", img: "panties_blackLowrise.png", sex: "f", inv: false, daring: 3, price: 50 },
         { type: "panties", name: "p", display: "Pink Thong", img: "panties_pinkThong.png", sex: "f", inv: false, daring: 3, price: 95 },
         { type: "panties", name: "l", display: "Low Rise Panties", img: "panties_low.png", sex: "f", inv: false, daring: 3, price: 60 },
-        //{ type: "panties", name: "molly", display: "Molly's Panties", img: "panties_molly.png", sex: "f", inv: false, daring: 3, price: -1 },
+        { type: "panties", name: "cr", display: "Crotchless Panties", img: "panties_cr.png", sex: "f", inv: false, daring: 4, price: -1 },
+
+//{ type: "panties", name: "molly", display: "Molly's Panties", img: "panties_molly.png", sex: "f", inv: false, daring: 3, price: -1 },
 
         { type: "bra", name: "p", display: "Pink Bra", img: "bra_pink.png", sex: "f", inv: false, daring: 2, price: -1 },
         { type: "bra", name: "w", display: "Plain White Bra", img: "bra_white.png", sex: "f", inv: false, daring: 2, price: 20 },
@@ -75,6 +76,7 @@ cl.init = function () {
         { type: "bra", name: "dolly", display: "Dolly's Bra", img: "bra_dolly.png", sex: "f", inv: false, daring: 2, price: -1 },
         { type: "bra", name: "f", display: "Purple Bra", img: "bra_fancy.png", sex: "f", inv: false, daring: 3, price: 65 },
         { type: "bra", name: "r", display: "Red Bra", img: "bra_red.png", sex: "f", inv: false, daring: 3, price: 80 },
+        { type: "bra", name: "cr", display: "Transparent Bra", img: "bra_cr.png", sex: "f", inv: false, daring: 4, price: -1 },
 
         { type: "pants", name: "j", display: "Blue Jeans", img: "pants_jeans.png", sex: "m", inv: true, daring: 0, price: 20 },
         { type: "pants", name: "s", display: "Black Suit Pants", img: "pants_suit.png", sex: "m", inv: false, daring: 0, price: 80 },
@@ -1230,7 +1232,15 @@ cl.bra = [
     { name: "l", chest: 3, image: "bra_l_3.png", back: "bra_l_3_back.png" },
     { name: "l", chest: 2, image: "bra_l_2.png", back: "bra_l_2_back.png" },
     { name: "l", chest: 1, image: "bra_l_0.png", back: "bra_l_0_back.png" },
-    { name: "l", chest: 0, image: "bra_l_0.png", back: "bra_l_0_back.png" }
+    { name: "l", chest: 0, image: "bra_l_0.png", back: "bra_l_0_back.png" },
+
+    { name: "cr", chest: 6, image: "bra_cr_6.png", back: "bra_cr_2_back.png" },
+    { name: "cr", chest: 5, image: "bra_cr_5.png", back: "bra_cr_2_back.png" },
+    { name: "cr", chest: 4, image: "bra_cr_4.png", back: "bra_cr_2_back.png" },
+    { name: "cr", chest: 3, image: "bra_cr_3.png", back: "bra_cr_2_back.png" },
+    { name: "cr", chest: 2, image: "bra_cr_2.png", back: "bra_cr_2_back.png" },
+    { name: "cr", chest: 1, image: "bra_cr_0.png", back: "bra_cr_0_back.png" },
+    { name: "cr", chest: 0, image: "bra_cr_0.png", back: "bra_cr_0_back.png" }
 ];
 
 cl.necklace = [
@@ -1846,6 +1856,14 @@ cl.panties = [
     { name: "bi", leg: 2, pussy: "panty_b_0.png", cock: "panty_b_0.png", back: "panty_bi_2_back.png" },
     { name: "bi", leg: 1, pussy: "panty_b_0.png", cock: "panty_b_0.png", back: "panty_bi_0_back.png" },
     { name: "bi", leg: 0, pussy: "panty_b_0.png", cock: "panty_b_0.png", back: "panty_bi_0_back.png" },
+
+    { name: "cr", leg: 5, pussy: "dress_cr_5.png", cock: "dress_cr_5.png", back: "panty_cr_5_back.png" },
+    { name: "cr", leg: 4, pussy: "dress_cr_4.png", cock: "dress_cr_4.png", back: "panty_cr_4_back.png" },
+    { name: "cr", leg: 3, pussy: "dress_cr_3.png", cock: "dress_cr_3.png", back: "panty_cr_3_back.png" },
+    { name: "cr", leg: 2, pussy: "dress_cr_1.png", cock: "dress_cr_1.png", back: "panty_cr_2_back.png" },
+    { name: "cr", leg: 1, pussy: "dress_cr_1.png", cock: "dress_cr_1.png", back: "panty_cr_0_back.png" },
+    { name: "cr", leg: 0, pussy: "dress_cr_0.png", cock: "dress_cr_0.png", back: "panty_cr_0_back.png" },
+
 ];
 
 cl.pjTop = [
@@ -2297,7 +2315,9 @@ cl.display = function () {
         //set panties
         if (cl.c.panties !== null) {
             cl.c.pj = null;
-            cl.subDisplay("char-cock", null);
+            if (cl.c.panties !== "cr") {
+                cl.subDisplay("char-cock", null);
+            }
             $.each(cl.panties, function (i, v) {
                 if (v.name === cl.c.panties && v.leg === cl.c.leg) {
                     if (cl.c.cock < 5)

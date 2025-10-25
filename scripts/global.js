@@ -9,8 +9,8 @@ g.map = null;
 g.roomAdd = new Array();
 g.saveState = null;
 g.startDate = new Date(2012, 0, 1, 0, 0, 0, 0);
-g.version = 26.0;
-g.versionText = "0.26.0.1 - Sep 2025";
+g.version = 26.1;
+g.versionText = "0.26.1.0 - Nov 2025";
 g.newLoad = true;
 g.back = false;
 g.altview = false;
@@ -385,6 +385,9 @@ g.rooms = [
     { roomID: 776, name: "Church", image: "776_church/bg.webp", nightImage: "776_church/bg.webp", houseID: 775, btn: "roomBtn_10.png" },
 
     { roomID: 800, name: "Ralph's House", image: "800_ralph/bg.jpg", nightImage: "800_ralph/bg_night.jpg", houseID: 800, btn: "roomBtn_800.png" },
+    { roomID: 801, name: "Ralph's Living Room", image: "801_ralphlivingroom/bg.webp", nightImage: "801_ralphlivingroom/bg.webp", houseID: 800, btn: "roomBtn_801.png" },
+    { roomID: 802, name: "Ralph's Bedroom", image: "802_ralphbedroom/bg.webp", nightImage: "802_ralphbedroom/bg_night.webp", houseID: 800, btn: "roomBtn_802.png" },
+    { roomID: 803, name: "Ralph's Parents", image: "803_parentbedroom/bg.webp", nightImage: "803_parentbedroom/bg_night.webp", houseID: 800, btn: "roomBtn_803.png" },
 
     { roomID: 825, name: "Dirty Lot", image: "825_lot/bg.jpg", nightImage: "825_lot/bg_night.jpg", houseID: 825, btn: "roomBtn_825.png" },
 

@@ -3,6 +3,13 @@ var room101 = {};
 
 room101.main = function () {
     g.internal = { s: "Can you tell me how my cum tastes?", r: "I bet it tastes delicious", p: "" };
+    if (!sc.char[sc.i("tina")].show)
+        sc.show("tina");
+
+    if (cl.isCrossdressing()) {
+        sc.modSecret("tina", 100);
+    }
+
     if (cl.isLewd()) {
         nav.button({
             "type": "btn",
@@ -17,16 +24,40 @@ room101.main = function () {
     }
     else {
         if (daily.get("construction") && !daily.get("constructionPay")) {
-            daily.set("constructionPay")
-            nav.button({
-                "type": "btn",
-                "name": "tina",
-                "left": 810,
-                "top": 268,
-                "width": 491,
-                "height": 715,
-                "image": "101_constFrontOffice/sit1.png"
-            }, 101);
+            daily.set("constructionPay");
+            if (sc.getLevel("tina") > 6) {
+                nav.button({
+                    "type": "btn",
+                    "name": "tina",
+                    "left": 810,
+                    "top": 268,
+                    "width": 491,
+                    "height": 715,
+                    "image": "101_constFrontOffice/sit3.png"
+                }, 101);
+            }
+            else if (sc.getLevel("tina") > 4) {
+                nav.button({
+                    "type": "btn",
+                    "name": "tina",
+                    "left": 810,
+                    "top": 268,
+                    "width": 491,
+                    "height": 715,
+                    "image": "101_constFrontOffice/sit2.png"
+                }, 101);
+            }
+            else {
+                nav.button({
+                    "type": "btn",
+                    "name": "tina",
+                    "left": 810,
+                    "top": 268,
+                    "width": 491,
+                    "height": 715,
+                    "image": "101_constFrontOffice/sit1.png"
+                }, 101);
+            }
             chat(5, 101);
         }
         else {
@@ -108,45 +139,50 @@ room101.chatcatch = function (callback) {
                 "top": 268,
                 "width": 491,
                 "height": 715,
-                "image": "101_constFrontOffice/laugh1.png" 
+                "image": "101_constFrontOffice/laugh1.png"
             }, 101);
             levels.mod("charisma", 15, 999);
             sc.modLevel("tina", 55, 5);
-            
+
             break;
         case "nicePickupLine":
             levels.mod("charisma", 12, 999);
-            //if (tinaRel < 8) {
-            //    sc.incstep("tina", 1);
-            //    chat(15, 101);
-            //}
-            //else
-            //    chat(16, 101);
+            if (sc.getLevel("tina") < 2) {
+                sc.modLevel("tina", 55);
+                chat(15, 101);
+            }
+            else
+                chat(16, 101);
             break;
         case "dirtyPickup":
-            levels.mod("charisma", -15, 999);
-            //if (tinaRel < 10) {
-            //    chat(17, 101);
-            //    sc.incstep("tina", -1);
-            //}
-            //else {
-            //    if (tinaRel < 16)
-            //        sc.incstep("tina", 1);
-            //    chat(18, 101);
-            //    if (g.internal.p === "tits") {
-
-            //        nav.killbutton("tina");
-            //        nav.button({
-            //            "type": "btn",
-            //            "name": "tina",
-            //            "left": 810,
-            //            "top": 299,
-            //            "width": 439,
-            //            "height": 711,
-            //            "image": "101_constFrontOffice/tits.png"
-            //        }, 101);
-            //    }
-            //}
+            if (sc.getLevel("tina") < 5) {
+                chat(17, 101);
+            }
+            else {
+                sc.modLevel("tina", 51, 10);
+                levels.mod("charisma", 20);
+                chat(901, 101);
+            }
+            break;
+        case "tits":
+            if (sc.getLevel("tina") < 5) {
+                chat(17, 101);
+            }
+            else {
+                sc.modLevel("tina", 51, 10);
+                levels.mod("charisma", 20);
+                nav.killbutton("tina");
+                nav.button({
+                    "type": "btn",
+                    "name": "tina",
+                    "left": 810,
+                    "top": 268,
+                    "width": 491,
+                    "height": 715,
+                    "image": "101_constFrontOffice/tits.png"
+                }, 101);
+                chat(901, 101);
+            }
             break;
         case "postShow":
             nav.killbutton("tina");
@@ -171,271 +207,292 @@ room101.chatcatch = function (callback) {
 };
 
 room101.chat = function (chatID) {
-    var pickUpLine = [
-        "Was your mother a beaver? 'Cause damn!",
-        "Your breasts remind me of Mount Rushmore — my face should be among them.",
-        "It's handy that I have my library card because I'm totally checking you out.",
-        "Did you just fart? Because you blow me away!",
-        "Do you work at Subway? 'Cause you just gave me a foot-long.",
-        "I hear you're looking for a stud. Well, I've got the STD and all I need is you.",
-        "Are those space pants? Because your ass is outta this world!",
-        "Do you have a Band-Aid? 'Cause I scraped my knee falling for you.",
-        "If you were a Transformer, you'd be Optimus Fine.",
-        "I've lost my teddy bear! Can I sleep with you instead?",
-        "Hey, baby. Want a raisin? Sorry, none left. Perhaps a date then?",
-        "OK, I'm here. What do you want for your next wish?",
-        "Do you like pancakes? Well how about IHOP on that ass.",
-        "If you were a booger, I'd pick you.",
-        "You're like a candy bar: half sweet and half nuts.",
-        "Are you religious? Because you're the answer to all my prayers.",
-        "You look great and all, but do you know what really looks good on you? Me.",
-        "What's your favorite silverware? Because I like to spoon!",
-        "Hey I'm looking for treasure, Can I look around your chest?",
-        "Are you a musician vampire? Because my organ is filling up with blood.",
-        "Hey baby, wanna sit on my lap and we'll talk about the first thing that pops up!?",
-        "If it's true that we are what we eat, then I could be you by morning.",
-        "I may not be Fred Flintstone, but I bet I can make your Bed Rock.",
-        "Tonight this Han doesn’t want to fly Solo.",
-        "Is your dad retarded? Because you’re special",
-        "My mom thinks I`m gay, can you help me prove her wrong?",
-        "You are hotter than the bottom of my laptop.",
-        "Would you like Gin and platonic, or do you prefer Scotch and sofa?",
-        "What’s the difference between a Ferrari and an erection? I don’t have a Ferrari.",
-        "What has 36 teeth and holds back the Incredible Hulk? My zipper.",
-        "If I were a dog would you help me bury my bone?",
-        "I am participating in the Sexual Olympics multiple orgasm relay race my partner just died of exhaustion. Would you like to help me out?",
-        "Excuse me, I’ve seem to have lost my virginity, can I have yours?",
-        "Nice hair, wanna mess it up?",
-        "Excuse me, I just shit in my pants. Can I get in yours?",
-        "Congratulations! You’ve been voted “Most Beautiful Girl In This Room” and the grand prize is a night with me!",
-        "Could I touch your belly button…from the inside?",
-        "Could you do me a favor? Could you get on your knees and smile like a donut?"
-    ];
+    if (chatID === 900) {
+        var pickUpLine = [
+            "Was your mother a beaver? 'Cause damn!",
+            "Your breasts remind me of Mount Rushmore — my face should be among them.",
+            "It's handy that I have my library card because I'm totally checking you out.",
+            "Did you just fart? Because you blow me away!",
+            "Do you work at Subway? 'Cause you just gave me a foot-long.",
+            "I hear you're looking for a stud. Well, I've got the STD and all I need is you.",
+            "Are those space pants? Because your ass is outta this world!",
+            "Do you have a Band-Aid? 'Cause I scraped my knee falling for you.",
+            "If you were a Transformer, you'd be Optimus Fine.",
+            "I've lost my teddy bear! Can I sleep with you instead?",
+            "Hey, baby. Want a raisin? Sorry, none left. Perhaps a date then?",
+            "OK, I'm here. What do you want for your next wish?",
+            "Do you like pancakes? Well how about IHOP on that ass.",
+            "If you were a booger, I'd pick you.",
+            "You're like a candy bar: half sweet and half nuts.",
+            "Are you religious? Because you're the answer to all my prayers.",
+            "You look great and all, but do you know what really looks good on you? Me.",
+            "What's your favorite silverware? Because I like to spoon!",
+            "Hey I'm looking for treasure, Can I look around your chest?",
+            "Are you a musician vampire? Because my organ is filling up with blood.",
+            "Hey baby, wanna sit on my lap and we'll talk about the first thing that pops up!?",
+            "If it's true that we are what we eat, then I could be you by morning.",
+            "I may not be Fred Flintstone, but I bet I can make your Bed Rock.",
+            "Tonight this Han doesn’t want to fly Solo.",
+            "Is your dad retarded? Because you’re special",
+            "My mom thinks I`m gay, can you help me prove her wrong?",
+            "You are hotter than the bottom of my laptop.",
+            "Would you like Gin and platonic, or do you prefer Scotch and sofa?",
+            "What’s the difference between a Ferrari and an erection? I don’t have a Ferrari.",
+            "What has 36 teeth and holds back the Incredible Hulk? My zipper.",
+            "If I were a dog would you help me bury my bone?",
+            "I am participating in the Sexual Olympics multiple orgasm relay race my partner just died of exhaustion. Would you like to help me out?",
+            "Excuse me, I’ve seem to have lost my virginity, can I have yours?",
+            "Nice hair, wanna mess it up?",
+            "Excuse me, I just shit in my pants. Can I get in yours?",
+            "Congratulations! You’ve been voted “Most Beautiful Girl In This Room” and the grand prize is a night with me!",
+            "Could I touch your belly button…from the inside?",
+            "Could you do me a favor? Could you get on your knees and smile like a donut?"
+        ];
 
-    var nicePickupLine = [
-        "you're looking really good today!",
-        "I absolutely love your hair.",
-        "I only come here to see your face each day.",
-        "I love how cheerful you are each day.",
-        "Your smile makes it worth coming to work.",
-        "I could stare at you all day.",
-        "you're absolutely perfect.",
-        "you are easily the most beautiful girl I have ever seen.",
-        "I love that outfit",
-        "your shirt is a very lovely color"
-    ];
+        var nicePickupLine = [
+            "you're looking really good today!",
+            "I absolutely love your hair.",
+            "I only come here to see your face each day.",
+            "I love how cheerful you are each day.",
+            "Your smile makes it worth coming to work.",
+            "I could stare at you all day.",
+            "you're absolutely perfect.",
+            "you are easily the most beautiful girl I have ever seen.",
+            "I love that outfit",
+            "your shirt is a very lovely color"
+        ];
 
-    var dirtyArray = [
-        { s: "Can you tell me how my cum tastes?", r: "I bet it tastes delicious", p: "" },
-        { s: "I want to tie to you up and force feed you my cock.", r: "I love bondage, and rough sex", p: "" },
-        { s: "That's a beautiful pussy, can I get a taste?", r: "hehehe " + sc.n("me") + " yes, meet me after work at the local club [Local club not build yet]", p: "" },
-        { s: "Do you do anal?", r: "I love a fat cock up my ass! ", p: "" },
-        { s: "Would you lick my asshole?", r: "Hmmmm OK, but you'll have to shower first", p: "" },
-        { s: "So how many drinks would it take to get into your panties?", r: "hahah you don't have to get me drunk, just give me that cock", p: "" },
-        { s: "So how do you take your cock?", r: "rough, with a side of dirty talk.", p: "" },
-        { s: "Do you want to ditch this place and go to your place", r: "YES!, but i need the money. You can meet me at the local club and I'll let you do anything you want to me [Local club not build yet]", p: "" },
-        { s: "So... are you into fisting?", r: "Oh god! I haven't tried it. maybe...", p: "" },
-        { s: "You look sick, mind if I take your temperature rectally?", r: "Only if you use your cock!", p: "" },
-        { s: "My erection has lasted for more than 4 hours, why don't we play doctor at your place. ", r: "I'll be your naught nurse, Meet me at the local club. [Local club not build yet]", p: "" },
-        { s: "Show me them titties girl", r: "OK", p: "tits" },
-        { s: "So what do you want to do later? ", r: "I want you to use every little hole in my tiny body. Meet me at the club big boy [Local club not build yet]", p: "" },
-        { s: "So are you an exhibitionist, 'cause I would love to see those tits.", r: "Here you go! ", p: "tits" },
-        { s: "If I told you, you had a beautiful body, would you show it to me?", r: "Gladly!", p: "tits" },
-        { s: "Are you wearing a bra?", r: "Hahaha... no. See", p: "tits" }
-    ];
-    if (chatID === 13)
-        g.internal = dirtyArray[Math.floor(Math.random() * dirtyArray.length)];
-
-    var cArray = [
-        {
-            chatID: 0,
-            speaker: "me",
-            text: "hmmmm",
-            button: [
-                { chatID: 1, text: "", callback: "" }
-            ]
-        },
-        {
-            chatID: 1,
-            speaker: "tina",
-            text: "Hello sir, what can i do for you?",
-            button: [
-                { chatID: -1, text: "Nothing, it appears I'm lost.", callback: "leave" },
-                { chatID: 2, text: "You can help me out of your clothes.", callback: "angry" }
-            ]
-        },
-        {
-            chatID: 2,
-            speaker: "tina",
-            text: "Who says that!? You need to leave before I call the police!",
-            button: [
-                { chatID: -1, text: ":/", callback: "leave" }
-            ]
-        },
-        {
-            chatID: 3,
-            speaker: "tina",
-            text: "Hello sir, what can i do for you?",
-            button: [
-                { chatID: 4, text: "I'm here for the job", callback: "" }
-            ]
-        },
-        {
-            chatID: 4,
-            speaker: "tina",
-            text: "Perfect, please enter the door to the boss' office",
-            button: [
-                { chatID: -1, text: "yes ma'am", callback: "createDoor" }
-            ]
-        },
-        {
-            chatID: 5,
-            speaker: "tina",
-            text: "Hey honey, here for your money?",
-            button: [
-                { chatID: 6, text: "yep", callback: "payTheMan" }
-            ]
-        },
-        {
-            chatID: 6,
-            speaker: "tina",
-            text: "Here you go",
-            button: [
-                { chatID: 13, text: "Flirt with " + sc.n("tina"), callback: "" },
-                { chatID: -1, text: "Thanks babe", callback: "endday" },
-            ]
-        },
-        {
-            chatID: 7,
-            speaker: "tina",
-            text: "hehehe, you're soo cute!",
-            button: [
-                { chatID: -1, text: "Thanks babe", callback: "" }
-            ]
-        },
-        {
-            chatID: 8,
-            speaker: "tina",
-            text: "Hey " + sc.n("me") + " What do you want to talk about?",
-            button: [
-                { chatID: 12, text: "How much do I get paid each day?", callback: "payQuestion" },
-                //{ chatID: sc.getstep("tina") < 10 ? 19 : sc.getstep("tina") < 16 ? 20 : 21, text: "How beautiful you are.", callback: "" },
-                { chatID: -1, text: "Nothing", callback: "" }
-            ]
-        },
-        {
-            chatID: 9,
-            speaker: "tina",
-            text: "Hey " + sc.n("me") + "! The workday has started, you need to get out there and start working. ",
-            button: [
-                { chatID: -1, text: "OK see you later babe", callback: "" }
-            ]
-        },
-        {
-            chatID: 10,
-            speaker: "tina",
-            text: "Sorry " + sc.n("me") + " The workday starts before 10 AM. Please come back first thing in the morning. ",
-            button: [
-                { chatID: -1, text: "OK see you later babe", callback: "" }
-            ]
-        },
-        {
-            chatID: 11,
-            speaker: "tina",
-            text: "Oh My God! I can't believe you caught me getting busy with myself. I just can't help it being around " +
-                "so many sexy guys all day. ",
-            button: [
-                { chatID: 12, text: "Don't worry " + sc.n("tina") + ", I was enjoying the show.", callback: "postShow" }
-            ]
-        },
-        {
-            chatID: 12,
-            speaker: "tina",
-            text: "You get $" + gv.get("jobConstructionPay") + " each day you work. ",
-            button: [
-                { chatID: -1, text: "Thanks " + sc.n("tina"), callback: "" }
-            ]
-        },
-        {
-            chatID: 13,
+        var dirtyArray = [
+            { s: "Can you tell me how my cum tastes?", r: "I bet it tastes delicious", p: "dirtyPickup" },
+            { s: "I want to tie to you up and force feed you my cock.", r: "I love bondage, and rough sex", p: "dirtyPickup" },
+            { s: "That's a beautiful pussy, can I get a taste?", r: "hehehe " + sc.n("me") + ", you're too much!", p: "dirtyPickup" },
+            { s: "Do you do anal?", r: "I love a fat cock up my ass! ", p: "dirtyPickup" },
+            { s: "Would you lick my asshole?", r: "Hmmmm OK, but you'll have to shower first", p: "dirtyPickup" },
+            { s: "So how many drinks would it take to get into your panties?", r: "hahah you don't have to get me drunk, just give me that cock", p: "" },
+            { s: "So how do you take your cock?", r: "rough, with a side of dirty talk.", p: "dirtyPickup" },
+            { s: "Do you want to ditch this place and go to your place", r: "YES!, but i need the money.", p: "dirtyPickup" },
+            { s: "So... are you into fisting?", r: "Oh god! I haven't tried it. maybe...", p: "dirtyPickup" },
+            { s: "You look sick, mind if I take your temperature rectally?", r: "Only if you use your cock!", p: "dirtyPickup" },
+            { s: "My erection has lasted for more than 4 hours, why don't we play doctor at your place. ", r: "I'll be your naughty nurse.", p: "" },
+            { s: "Show me them titties girl", r: "OK", p: "tits" },
+            { s: "That's a tight body, want to show it to me?", r: "Sure", p: "tits" },
+            { s: "What color are your nipples?", r: "Pink, see!", p: "tits" },
+            { s: "So what do you want to do later? ", r: "I want you to use every little hole in my tiny body.", p: "dirtyPickup" },
+            { s: "So are you an exhibitionist, 'cause I would love to see those tits.", r: "Here you go! ", p: "tits" },
+            { s: "If I told you, you had a beautiful body, would you show it to me?", r: "Gladly!", p: "tits" },
+            { s: "Are you wearing a bra?", r: "Hahaha... no. See", p: "tits" }
+        ];
+        let dirtyChoice = dirtyArray[g.rand(0, dirtyArray.length)];
+        g.internal = dirtyChoice.r;
+        return {
+            chatID: 900,
             speaker: "me",
             text: sc.n("tina") + " ...",
             button: [
-                { chatID: 14, text: pickUpLine[Math.floor(Math.random() * pickUpLine.length)], callback: "hitOnTinaFunny" },
-                { chatID: 15, text: nicePickupLine[Math.floor(Math.random() * nicePickupLine.length)], callback: "nicePickupLine" },
-                { chatID: 17, text: g.internal.s, callback: "dirtyPickup" }
+                { chatID: 15, text: nicePickupLine[g.rand(0, nicePickupLine.length)], callback: "nicePickupLine" },
+                { chatID: 14, text: pickUpLine[g.rand(0, pickUpLine.length)], callback: "hitOnTinaFunny" },
+                { chatID: 17, text: dirtyChoice.s, callback: dirtyChoice.p }
             ]
-        },
-        {
-            chatID: 14,
-            speaker: "tina",
-            text: "HAhahah " + sc.n("me") + " you're so funny!",
-            button: [
-                { chatID: -1, text: "...", callback: "endday" }
-            ]
-        },
-        {
-            chatID: 15,
-            speaker: "tina",
-            text: "That's nice, thanks " + sc.n("me") + ".",
-            button: [
-                { chatID: -1, text: "...", callback: "endday" }
-            ]
-        },
-        {
-            chatID: 16,
-            speaker: "tina",
-            text: "Awwwww " + sc.n("me") + " you're sweetest, but I don't like sweets; I like rough dominating cock.",
-            button: [
-                { chatID: -1, text: "...", callback: "endday" }
-            ]
-        },
-        {
-            chatID: 17,
-            speaker: "tina",
-            text: sc.n("me") + "!!!",
-            button: [
-                { chatID: -1, text: "...", callback: "endday" }
-            ]
-        },
-        {
+        };
+    }
+    else if (chatID === 901) {
+        return {
             chatID: 18,
             speaker: "tina",
-            text: g.internal.r,
+            text: g.internal,
             button: [
                 { chatID: -1, text: "...", callback: "endday" }
             ]
-        },
-        {
-            chatID: 19,
-            speaker: "tina",
-            text: "Awwww you're cute.",
-            button: [
-                { chatID: -1, text: "...", callback: "endday" }
-            ]
-        },
-        {
-            chatID: 20,
-            speaker: "tina",
-            text: "OK Casanova, if you're going to butter me up, you better eat my muffin.",
-            button: [
-                { chatID: -1, text: "...", callback: "endday" }
-            ]
-        },
-        {
-            chatID: 21,
-            speaker: "tina",
-            text: "Stop being nice, meet me a the club and get ready to pull my hair. [Club not built yet]",
-            button: [
-                { chatID: -1, text: "...", callback: "endday" }
-            ]
-        },
-        {
-            chatID: 22,
-            speaker: "tina",
-            text: "Oh My God. Get out now!",
-            button: [{ chatID: -1, text: "Of course", callback: "leave" }]
-        }
-    ];
-    return cArray[chatID];
+        };
+    }
+    else {
+        var cArray = [
+            {
+                chatID: 0,
+                speaker: "me",
+                text: "hmmmm",
+                button: [
+                    { chatID: 1, text: "", callback: "" }
+                ]
+            },
+            {
+                chatID: 1,
+                speaker: "tina",
+                text: "Hello sir, what can i do for you?",
+                button: [
+                    { chatID: -1, text: "Nothing, it appears I'm lost.", callback: "leave" },
+                    { chatID: 2, text: "You can help me out of your clothes.", callback: "angry" }
+                ]
+            },
+            {
+                chatID: 2,
+                speaker: "tina",
+                text: "Who says that!? You need to leave before I call the police!",
+                button: [
+                    { chatID: -1, text: ":/", callback: "leave" }
+                ]
+            },
+            {
+                chatID: 3,
+                speaker: "tina",
+                text: "Hello sir, what can i do for you?",
+                button: [
+                    { chatID: 4, text: "I'm here for the job", callback: "" }
+                ]
+            },
+            {
+                chatID: 4,
+                speaker: "tina",
+                text: "Perfect, please enter the door to the boss' office",
+                button: [
+                    { chatID: -1, text: "yes ma'am", callback: "createDoor" }
+                ]
+            },
+            {
+                chatID: 5,
+                speaker: "tina",
+                text: "Hey honey, here for your money?",
+                button: [
+                    { chatID: 6, text: "yep", callback: "payTheMan" }
+                ]
+            },
+            {
+                chatID: 6,
+                speaker: "tina",
+                text: "Here you go",
+                button: [
+                    { chatID: 900, text: "Flirt with " + sc.n("tina"), callback: "" },
+                    { chatID: -1, text: "Thanks babe", callback: "endday" },
+                ]
+            },
+            {
+                chatID: 7,
+                speaker: "tina",
+                text: "hehehe, you're soo cute!",
+                button: [
+                    { chatID: -1, text: "Thanks babe", callback: "" }
+                ]
+            },
+            {
+                chatID: 8,
+                speaker: "tina",
+                text: "Hey " + sc.n("me") + " What do you want to talk about?",
+                button: [
+                    { chatID: 12, text: "How much do I get paid each day?", callback: "payQuestion" },
+                    //{ chatID: sc.getstep("tina") < 10 ? 19 : sc.getstep("tina") < 16 ? 20 : 21, text: "How beautiful you are.", callback: "" },
+                    { chatID: -1, text: "Nothing", callback: "" }
+                ]
+            },
+            {
+                chatID: 9,
+                speaker: "tina",
+                text: "Hey " + sc.n("me") + "! The workday has started, you need to get out there and start working. ",
+                button: [
+                    { chatID: -1, text: "OK see you later babe", callback: "" }
+                ]
+            },
+            {
+                chatID: 10,
+                speaker: "tina",
+                text: "Sorry " + sc.n("me") + " The workday starts before 10 AM. Please come back first thing in the morning. ",
+                button: [
+                    { chatID: -1, text: "OK see you later babe", callback: "" }
+                ]
+            },
+            {
+                chatID: 11,
+                speaker: "tina",
+                text: "Oh My God! I can't believe you caught me getting busy with myself. I just can't help it being around " +
+                    "so many sexy guys all day. ",
+                button: [
+                    { chatID: 12, text: "Don't worry " + sc.n("tina") + ", I was enjoying the show.", callback: "postShow" }
+                ]
+            },
+            {
+                chatID: 12,
+                speaker: "tina",
+                text: "You get $" + gv.get("jobConstructionPay") + " each day you work. ",
+                button: [
+                    { chatID: -1, text: "Thanks " + sc.n("tina"), callback: "" }
+                ]
+            },
+            {
+                chatID: 13,
+                speaker: "me",
+                text: "noop",
+                button: []
+            },
+            {
+                chatID: 14,
+                speaker: "tina",
+                text: "HAhahah " + sc.n("me") + " you're so funny!",
+                button: [
+                    { chatID: -1, text: "...", callback: "endday" }
+                ]
+            },
+            {
+                chatID: 15,
+                speaker: "tina",
+                text: "That's nice, thanks " + sc.n("me") + ".",
+                button: [
+                    { chatID: -1, text: "...", callback: "endday" }
+                ]
+            },
+            {
+                chatID: 16,
+                speaker: "tina",
+                text: "Awwwww " + sc.n("me") + " you're sweetest, but I don't like sweets; I like rough dominating cock.",
+                button: [
+                    { chatID: -1, text: "...", callback: "endday" }
+                ]
+            },
+            {
+                chatID: 17,
+                speaker: "tina",
+                text: sc.n("me") + "!!!",
+                button: [
+                    { chatID: -1, text: "...", callback: "endday" }
+                ]
+            },
+            {
+                chatID: 18,
+                speaker: "tina",
+                text: "noop",
+                button: [
+                    { chatID: -1, text: "...", callback: "endday" }
+                ]
+            },
+            {
+                chatID: 19,
+                speaker: "tina",
+                text: "Awwww you're cute.",
+                button: [
+                    { chatID: -1, text: "...", callback: "endday" }
+                ]
+            },
+            {
+                chatID: 20,
+                speaker: "tina",
+                text: "OK Casanova, if you're going to butter me up, you better eat my muffin.",
+                button: [
+                    { chatID: -1, text: "...", callback: "endday" }
+                ]
+            },
+            {
+                chatID: 21,
+                speaker: "tina",
+                text: "Stop being nice, meet me a the club and get ready to pull my hair. [Club not built yet]",
+                button: [
+                    { chatID: -1, text: "...", callback: "endday" }
+                ]
+            },
+            {
+                chatID: 22,
+                speaker: "tina",
+                text: "Oh My God. Get out now!",
+                button: [{ chatID: -1, text: "Of course", callback: "leave" }]
+            }
+        ];
+        return cArray[chatID];
+    }
 };

@@ -33,7 +33,9 @@ zcl.displayMain = function (top, left, ratio, spec, dback) {
     else if (spec === "mirror")
         displayCock = false;
     else if (spec.indexOf("panties") > -1 || spec.indexOf("clothes") > -1) {
-        if (cl.c.panties !== null || cl.c.swimsuit !== null || cl.c.pj !== null)
+        if (cl.c.panties !== null && cl.c.panties !== "cr")
+            displayCock = false;
+        if (cl.c.swimsuit !== null || cl.c.pj !== null)
             displayCock = false;
     }
     if (displayCock) {

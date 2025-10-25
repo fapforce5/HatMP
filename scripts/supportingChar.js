@@ -70,6 +70,7 @@ sc.char = [
     { name: "kei", display: "Kei", image: "kei.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
     { name: "ralph", display: "Ralph", image: "ralph.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
     { name: "ralphsmom", display: "Ralph's Mom", image: "ralphsmom.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, q3: null },
+    { name: "ralphsdad", display: "Ralph's Dad", image: "ralphsdad.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, q3: null },
 
     { name: "jones", display: "Mr. Jones", image: "jones.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: false },
 
@@ -572,8 +573,8 @@ sc.charMission = [
             {
                 missionName: "dog-x", mStatus: 0, title: "Bad dog!", desc: "You're a very naughty girl!", task:
                     [
-                        { id: 0, txt: "Dish ran away without the spoon", show: true, mStatus: 0, roomId: 315 },
-                        { id: 1, txt: "Caught!", show: true, mStatus: 0, roomId: 315 },
+                        { id: 0, txt: "Complete some Datr events then offer to walk the dog.", show: true, mStatus: 0, roomId: 315 },
+                        { id: 1, txt: "You know what you did your filthy fuck!", show: true, mStatus: 0, roomId: 315 },
                         { id: 2, txt: "You're her bitch", show: true, mStatus: 0, roomId: 315 },
                         { id: 3, txt: "Bitchsuit for a bitch", show: true, mStatus: 0, roomId: 316 },
                         { id: 4, txt: "First Day", show: true, mStatus: 0, roomId: 322 },
@@ -1025,9 +1026,11 @@ sc.charMission = [
     {
         name: "tina", mission: [
             {
-                missionName: "cat", mStatus: 0, title: "Kitty", desc: "I'm a cat girl", task:
+                missionName: "cat", mStatus: 0, title: "Pussy Cat", desc: "Fill my pussy", task:
                     [
                         { id: 0, txt: "Saved your ass", show: true, mStatus: 0, roomId: 100 },
+                        { id: 1, txt: "You caught me. Hehehe", show: true, mStatus: 0, roomId: 727 },
+                        { id: 2, txt: "Put a litter of kitties inside me", show: true, mStatus: 0, roomId: 727 },
                     ]
             },
         ]
@@ -1113,12 +1116,39 @@ sc.charMission = [
     {
         name: "ralph", mission: [
             {
+                missionName: "room", mStatus: 0, title: "Friends", desc: "Playing in my room", task:
+                    [
+                        { id: 0, txt: "First", show: true, mStatus: 0, roomId: 125 },
+                    ]
+            },
+            {
                 missionName: "cards", mStatus: 0, title: "Boy's Game", desc: "Play some poker", task:
                     [
                         { id: 0, txt: "Sucked his cock", show: true, mStatus: 0, roomId: 125 },
                         { id: 1, txt: "Coming out", show: true, mStatus: 0, roomId: 125 },
                         { id: 2, txt: "I guess I'm a cock sucker too", show: true, mStatus: 0, roomId: 125 },
                         { id: 3, txt: "Why are you naked?", show: true, mStatus: 0, roomId: 125 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "ralphsmom", mission: [
+            {
+                missionName: "room", mStatus: 0, title: "Friends", desc: "Playing in my room", task:
+                    [
+                        { id: 0, txt: "First", show: true, mStatus: 0, roomId: 125 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "ralphsdad", mission: [
+            {
+                missionName: "main", mStatus: 0, title: "Dad", desc: "My buddy's dad", task:
+                    [
+                        { id: 0, txt: "First meet", show: true, mStatus: 0, roomId: 801 },
+                        { id: 1, txt: "Work trip", show: true, mStatus: 0, roomId: 800 },
                     ]
             },
         ]

@@ -61,7 +61,7 @@ room556.btnclick = function (name) {
             nav.killbutton("exit");
             var thisEnergyg = gv.get("energy");
             if (thisEnergyg < 10) {
-                chat(9, 50);
+                chat(9, 556);
             }
             else {
                 nav.bg("556_spar/bg1.jpg");

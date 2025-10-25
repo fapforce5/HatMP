@@ -79,6 +79,31 @@ room103.btnclick = function (name) {
             nav.killall();
             chat(69, 103);
             break;
+        case "rapeComplete":
+            chat(100, 103);
+            break;
+        case "gang":
+            if (g.internal === 5) {
+                nav.bg("103_constSite/gang5" + (cl.c.chastity === null ? "" : "_c") + ".jpg");
+            }
+            else if (g.internal === 6)
+                nav.bg("103_constSite/gang6.jpg");
+            else {
+                levels.anal("4", false, "m", true, "!man");
+                levels.anal("3", false, "m", true, "!man");
+                levels.anal("2", false, "m", false, "!man");
+                levels.anal("3", false, "m", true, "!man");
+                levels.oral(3, "m", "!man", true);
+                levels.oral(4, "m", "!man", true);
+                levels.oral(3, "m", "!man", true);
+                levels.oral(2, "m", "!man", false);
+                levels.oral(3, "m", "!man", true);
+                levels.gavetitjob("m", "!man");
+                levels.gavetitjob("m", "!man");
+                gv.mod("energy", -999);
+                chat(99, 103);
+            }
+            break;
     }
 };
 
@@ -119,7 +144,8 @@ room103.chatcatch = function (callback) {
                     }, 103);
                 }
             }
-            else {
+            else if (!gv.get("constructionMessage")) {
+                gv.set("constructionMessage", true);
                 chat(74, 103);
             }
             nav.button({
@@ -152,6 +178,7 @@ room103.chatcatch = function (callback) {
         case "chat":
             nav.killall();
             switch (gv.get("jobapplyconst")) {
+                case 1:
                 case 2: //first day
                     nav.bg("103_constSite/worker2.jpg");
                     chat(13, 103);
@@ -171,10 +198,74 @@ room103.chatcatch = function (callback) {
                     nav.bg("103_constSite/worker3.jpg");
                     chat(99, 103);
                     break;
-                case 100:
-                    chat(73, 103);
-                    break;
+                default:
+                    if (cl.appearance() > 1) {
+                        switch (g.rand(0, 6)) {
+                            case 0:
+                                nav.kill();
+                                nav.bg("103_constSite/rapman0.jpg");
+                                chat(84, 103);
+                                break;
+                            case 1:
+                                nav.kill();
+                                nav.bg("103_constSite/rapman12.jpg");
+                                chat(85, 103);
+                                break;
+                            case 2:
+                                nav.bg("103_constSite/worker0.jpg");
+                                chat(86, 103);
+                                break;
+                            case 3:
+                                nav.bg("103_constSite/worker4.jpg");
+                                chat(87, 103);
+                                break;
+                            case 4:
+                                nav.bg("103_constSite/worker2.jpg");
+                                chat(90, 103);
+                                break;
+                            case 5:
+                                nav.bg("103_constSite/gang0.jpg");
+                                chat(93, 103);
+                                break;
+                        }
+                    }
+                    else {
+                        switch (g.rand(0, 4)) {
+                            case 0:
+                                nav.bg("103_constSite/worker2.jpg");
+                                chat(73, 103);
+                                break;
+                            case 1:
+                                nav.bg("103_constSite/worker0.jpg");
+                                chat(75, 103);
+                                break;
+                            default:
+                                if (sc.getLevel("tina") < 4) {
+                                    nav.bg("103_constSite/worker_tina0.jpg");
+                                    sc.modLevel("tina", 50);
+                                    chat(77, 103);
+                                }
+                                else if (sc.getLevel("tina") < 6) {
+                                    nav.bg("103_constSite/worker_tina0.jpg");
+                                    sc.modLevel("tina", 50);
+                                    chat(79, 103);
+                                }
+                                else {
+                                    nav.bg("103_constSite/worker_tina0.jpg");
+                                    sc.modLevel("tina", 50);
+                                    chat(82, 103);
+                                }
+                                break;
+
+                        }
+                        break;
+                    }
             }
+            break;
+        case "work2shirt":
+            cl.c.shirt = g.pass;
+            cl.display();
+            room103.chatcatch("work2");
             break;
         case "work2":
             nav.killall();
@@ -247,7 +338,6 @@ room103.chatcatch = function (callback) {
             levels.mod("xdress", 5, 1);
             nav.bg("103_constSite/worker4.jpg");
             break;
-        
         case "hole0":
             nav.killall();
             nav.bg("103_constSite/hole0.jpg");
@@ -267,7 +357,14 @@ room103.chatcatch = function (callback) {
         case "fight2":
         case "fight3":
         case "fight4":
+        case "worker_tina1":
+        case "worker_tina2":
+        case "gang1":
             nav.bg("103_constSite/" + callback + ".jpg");
+            break;
+        case "gang2":
+        case "gang3":
+            nav.bg("103_constSite/" + callback + (cl.c.chastity === null ? "" : "_c") + ".jpg");
             break;
         case "hole2":
         case "hole3":
@@ -327,8 +424,32 @@ room103.chatcatch = function (callback) {
             sc.show("tina");
             sc.startMission("river", "bully");
             sc.startMission("tina", "cat");
+            sc.completeMissionTask("tina", "cat", 0);
             g.internal = false;
             room103.chatcatch("sweep");
+            break;
+        case "rapeman0":
+            nav.bg("103_constSite/103_sweep.jpg");
+            rape.init(0, "street", 103, "rapeComplete");
+            break;
+        case "rapeman12":
+            nav.bg("103_constSite/103_sweep.jpg");
+            rape.init(12, "street", 103, "rapeComplete");
+            break;
+        case "tits":
+            levels.mod("xdress", 20);
+            g.pass = cl.c.shirt;
+            cl.c.shirt = null;
+            zcl.displayMain(100, 800, .26, "clothes", true);
+            break;
+        case "gang4":
+            nav.bg("103_constSite/gang4.jpg");
+            g.internal = 5;
+            nav.next("gang");
+            break;
+        case "leave":
+            char.settime(15, 12);
+            char.room(0);
             break;
         default:
             break;
@@ -981,19 +1102,257 @@ room103.chat = function (chatID) {
         },
         {
             chatID: 73,
-            speaker: "thinking",
-            text: "I like lunch [This part in development]",
+            speaker: "construction",
+            text: "You know. I started by cleaning out construction sites, but with a lot of hard " +
+                "work, and my dad's help I bought my own. Now I get to fuck all kinds of bitches. ",
             button: [
-                { chatID: -1, text: "...", callback: "work2" },
+                { chatID: -1, text: "cool", callback: "work2" },
             ]
         },
         {
             chatID: 74,
             speaker: "thinking",
             text: "This is so dumb. I don't know why I'm sweeping here when I should " +
-                "be working at Missy's",
+                "be working at Missy's. This job is, at best, a side hussle. I really should " +
+                "be spending my day with her. ",
             button: [
-                { chatID: -1, text: "...", callback: "" },
+                { chatID: -1, text: "I should work at Missy's", callback: "" },
+            ]
+        },
+        {
+            chatID: 75,
+            speaker: "!constworker0",
+            text: "This job wouldn't be so bad if not for the constant groping by all these perverts. " +
+                "I can't say how may times I've had to tell someone that I'm not going to suck their dick!",
+            button: [
+                { chatID: -1, text: "There're terrible", callback: "work2" },
+                { chatID: 76, text: "So... Do you want to suck my dick?", callback: "" },
+            ]
+        },
+        {
+            chatID: 76,
+            speaker: "!constworker0",
+            text: "Grrrr!",
+            button: [
+                { chatID: -1, text: "...", callback: "work2" },
+            ]
+        },
+        {
+            chatID: 77,
+            speaker: "tina",
+            text: "Hey! So glad there's a real man around here. I get so tired of all the mean guys! ",
+            button: [
+                { chatID: -1, text: "I come here just to see you each day. ", callback: "work2" },
+                { chatID: 78, text: "Want to make my day better [Need level 5] ", callback: "" },
+            ]
+        },
+        {
+            chatID: 78,
+            speaker: "tina",
+            text: "You're the cutest man I know!  ",
+            button: [
+                { chatID: -1, text: "Awww. You think I'm cute!", callback: "work2" },
+            ]
+        },
+        {
+            chatID: 79,
+            speaker: "tina",
+            text: "Hey! So glad there's a real man around here. I get so tired of all the mean guys! ",
+            button: [
+                { chatID: 80, text: "Want to make my day better?", callback: "worker_tina1" },
+                { chatID: -1, text: "I come here just to see you each day. ", callback: "work2" },
+            ]
+        },
+        {
+            chatID: 80,
+            speaker: "tina",
+            text: "Hopefully titties make your day a little better! ",
+            button: [
+                { chatID: -1, text: "They so do!", callback: "work2" },
+                { chatID: 81, text: "Wanto to make it even better? [Need level 7]", callback: "" },
+            ]
+        },
+        {
+            chatID: 81,
+            speaker: "tina",
+            text: "Maybe another day handsome! Now back to work so I can pay you!",
+            button: [
+                { chatID: -1, text: "Ok, ok", callback: "work2" },
+            ]
+        },
+        {
+            chatID: 82,
+            speaker: "tina",
+            text: "Hey sexy! God you make me so hot! I love seeing you!",
+            button: [
+                { chatID: 83, text: "I love seeing you too. I want to see more of you?", callback: "worker_tina2" },
+                { chatID: -1, text: "Cool", callback: "work2" },
+
+            ]
+        },
+        {
+            chatID: 83,
+            speaker: "tina",
+            text: "Hopefully you love seeing my tight little kitty! Can't wait to see you after " +
+                "work. I love the smell of sweaty men. *wink*",
+            button: [
+                { chatID: -1, text: "Cool", callback: "work2" },
+            ]
+        },
+        {
+            chatID: 84,
+            speaker: "!rape0",
+            text: "I couldn't help but notice that you look like a bitch. And you know " +
+                "bitches need cock! ",
+            button: [
+                { chatID: -1, text: "What?", callback: "rapeman0" },
+            ]
+        },
+        {
+            chatID: 85,
+            speaker: "!rape12",
+            text: "HEY! I heard your the slut around here! I need something to cum in " +
+                "before I lose my mind! ",
+            button: [
+                { chatID: -1, text: "What?", callback: "rapeman12" },
+            ]
+        },
+        {
+            chatID: 86,
+            speaker: "!constworker0",
+            text: "I'm so glad you're here. Ever since you've come out as a cum hungry " +
+                "slut all the guys have focused on fucking you! I don't know what changed " +
+                "since you started working here, but thank you so much! Fighting away dicks " +
+                "all day is tiring!",
+            button: [
+                { chatID: -1, text: "...you're welcome", callback: "work2" },
+            ]
+        },
+        {
+            chatID: 87,
+            speaker: "random",
+            text: "Hey look! Tony wears panties just like the site cum rag! ",
+            button: [
+                { chatID: 88, text: "!", callback: "" },
+            ]
+        },
+        {
+            chatID: 88,
+            speaker: "!boy",
+            text: "Hey! I'm not like the cum rag over there! I just like how they feel! " +
+                "Now fuck off so I can get back to work!",
+            button: [
+                { chatID: -1, text: "*sigh*", callback: "work2" },
+            ]
+        },
+        {
+            chatID: 89,
+            speaker: "boy",
+            text: "Hey! I'm not like the cum rag over there! I just like how they feel! " +
+                "Now fuck off so I can get back to work!",
+            button: [
+                { chatID: -1, text: "*sigh*", callback: "work2" },
+            ]
+        },
+        {
+            chatID: 90,
+            speaker: "construction",
+            text: "Hey! The site cum rag! I can't tell you how much I like you working " +
+                "here! You see the boys get all pent up and if they don't fuck something " +
+                "they don't work all that great. Now show me them tits!",
+            button: [
+                { chatID: 92, text: "[Show him your tits]", callback: "tits" },
+                { chatID: 91, text: "Oh. I don't do that. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 91,
+            speaker: "construction",
+            text: "Lame. It's ok, I'll just get " + sc.n("tina") + " to show me her tits. " +
+                "Maybe blow me too!",
+            button: [
+                { chatID: -1, text: "*sigh*", callback: "work2" },
+            ]
+        },
+        {
+            chatID: 92,
+            speaker: "construction",
+            text: "Nice. I'm starting to get hard. I'm going to go fuck that slut " +
+                sc.n("tina") + "! Later!",
+            button: [
+                { chatID: -1, text: "*sigh*", callback: "work2shirt" },
+            ]
+        },
+        {
+            chatID: 93,
+            speaker: "boy",
+            text: "me and some of the guys were wondering if you're ok if we bang " +
+                "you really quick. Watching you bend over and sweep really is making our " +
+                "dicks hard. ",
+            button: [
+                { chatID: 95, text: "Hmmmm. sure", callback: "" },
+                { chatID: 94, text: "What? No. I'm not that kind of girl!", callback: "" },
+            ]
+        },
+        {
+            chatID: 94,
+            speaker: "boy",
+            text: "awwwww. ok!",
+            button: [
+                { chatID: -1, text: "*sigh*", callback: "work2" },
+            ]
+        },
+        {
+            chatID: 95,
+            speaker: "boy",
+            text: "Sweet! I'll go get them!",
+            button: [
+                { chatID: 96, text: "...", callback: "gang1" },
+            ]
+        },
+        {
+            chatID: 96,
+            speaker: "boy",
+            text: "Hey everyone! She said we could fuck her! No limits!",
+            button: [
+                { chatID: 97, text: "*oh shit*", callback: "gang2" },
+            ]
+        },
+        {
+            chatID: 97,
+            speaker: "me",
+            text: "Well it looks like I'm about to get penetrated. Line up boys and pick " +
+                "a hole to fuck. ",
+            button: [
+                { chatID: 98, text: "...", callback: "gang3" },
+            ]
+        },
+        {
+            chatID: 98,
+            speaker: "boy",
+            text: "Bring that ass over here. I'm so going to leave you in a puddle of " +
+                "cum and spit for the next guy! ",
+            button: [
+                { chatID: -1, text: "*sissy squeel of joy*", callback: "gang4" },
+            ]
+        },
+        {
+            chatID: 99,
+            speaker: "thinking",
+            text: "I'm way to tired to finish sweeping. I'm just going to drag myself " +
+                "home by my lips and shower off all this cum! I wonder if anyone here " +
+                "still respects me. ",
+            button: [
+                { chatID: -1, text: "[Get dressed and leave]", callback: "leave" },
+            ]
+        },
+        {
+            chatID: 100,
+            speaker: "thinking",
+            text: "Who does that! Who just rapes someone while they're working! Fuck this " +
+                "place. I'm going home!",
+            button: [
+                { chatID: -1, text: "[Run away]", callback: "leave" },
             ]
         },
     ];
