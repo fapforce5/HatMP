@@ -122,20 +122,26 @@ room27.btnclick = function (name) {
         case "makeup":
             room27.btnclick("clear");
             if (inv.has("makeup") || g.pass === 57) {
-                sc.select("makeup_natural", "27_mirror/icon_natural.png", 5);
+                sc.select("makeup_natural", "27_mirror/icon_natural.png", 3);
                 if (makeuplevel > 0)
-                    sc.select("makeup_blush", "27_mirror/icon_blush.png", 6);
+                    sc.select("makeup_blush", "27_mirror/icon_blush.png", 4);
                 if (makeuplevel > 1)
-                    sc.select("makeup_blushheavy", "27_mirror/icon_blushheavy.png", 7);
+                    sc.select("makeup_blushheavy", "27_mirror/icon_blushheavy.png", 5);
                 if (makeuplevel > 2)
-                    sc.select("makeup_clown", "27_mirror/icon_clown.png", 8);
+                    sc.select("makeup_clown", "27_mirror/icon_clown.png", 6);
                 if (makeuplevel > 3)
-                    sc.select("makeup_brown", "27_mirror/icon_brown.png", 9);
+                    sc.select("makeup_egirl", "27_mirror/icon_egirl.png", 7);
+                if (makeuplevel > 3)
+                    sc.select("makeup_brown", "27_mirror/icon_brown.png", 8);
                 if (makeuplevel > 4)
-                    sc.select("makeup_orange", "27_mirror/icon_orange.png", 10);
+                    sc.select("makeup_orange", "27_mirror/icon_orange.png", 9);
                 if (makeuplevel > 5)
-                    sc.select("makeup_white", "27_mirror/icon_white.png", 11);
-                sc.selectCancel("menu", 13);
+                    sc.select("makeup_white", "27_mirror/icon_white.png", 10);
+                if (makeuplevel > 5)
+                    sc.select("makeup_whore", "27_mirror/icon_whore.png", 11);
+                
+                sc.select("viewfacemakeup", "27_mirror/icon_face.png", 12);
+                sc.selectBack("menu", 13);
             }
             else
                 chat(1, 27);
@@ -152,7 +158,8 @@ room27.btnclick = function (name) {
                 sc.select("lipstick_blue", "27_mirror/icon_lipstick_blue.png", 10);
             if (inv.has("blackl"))
                 sc.select("lipstick_black", "27_mirror/icon_lipstick_black.png", 11);
-            sc.selectCancel("menu", 13);
+            sc.select("viewfacelipstick", "27_mirror/icon_face.png", 12);
+            sc.selectBack("menu", 13);
             break;
         case "eyeshadow":
             room27.btnclick("clear");
@@ -168,7 +175,8 @@ room27.btnclick = function (name) {
                     sc.select("eyeliner_green", "27_mirror/icon_eye_green.png", 9);
                     sc.select("eyeliner_blue", "27_mirror/icon_eye_blue.png", 10);
                     sc.select("eyeliner_rainbow", "27_mirror/icon_eye_rainbow.png", 11);
-                    sc.selectCancel("menu", 13);
+                    sc.select("viewfaceeyeshadow", "27_mirror/icon_face.png", 12);
+                    sc.selectBack("menu", 13);
                 }
             }
             else {
@@ -182,6 +190,8 @@ room27.btnclick = function (name) {
         case "makeup_brown":
         case "makeup_orange":
         case "makeup_white":
+        case "makeup_egirl":
+        case "makeup_whore":
             if (daily.get("makeup"))
                 levels.mod("makeup", 2);
             else {
@@ -192,7 +202,9 @@ room27.btnclick = function (name) {
             cl.c.makeup = name.replace("makeup_", "");
             inv.use("makeup");
             cl.display();
-            room27.chatcatch("checkmakeup");
+            nav.kill();
+            zcl.displayMirror();
+            sc.select("makeup", "27_mirror/icon_makeup.png", 13);
             break;
         case "eyeliner_light":
         case "eyeliner_black":
@@ -210,7 +222,9 @@ room27.btnclick = function (name) {
             cl.c.pissface = name.replace("eyeliner_", "");
             inv.use("eyeshadow");
             cl.display();
-            room27.chatcatch("checkmakeup");
+            nav.kill();
+            zcl.displayMirror();
+            sc.select("eyeshadow", "27_mirror/icon_eyeshadow.png", 13);
             break;
         case "lipstick_red":
         case "lipstick_pink":
@@ -227,7 +241,9 @@ room27.btnclick = function (name) {
             cl.c.lipstick = lipstickcolor;
             inv.use(lipstickcolor + "l");
             cl.display();
-            room27.chatcatch("checkmakeup");
+            nav.kill();
+            zcl.displayMirror();
+            sc.select("lipstick", "27_mirror/icon_lipstick.png", 13);
             break;
         case "save":
             gv.set("lipstick", cl.c.lipstick);
@@ -295,11 +311,34 @@ room27.btnclick = function (name) {
                 cl.c.lipstick = null;
             }
             g.popUpNotice("You put on your makeup");
-            char.room(27);
+            nav.kill();
+            cl.display();
+            zcl.displayMirror();
+            sc.selectBack("menu", 13);
             break;
         case "clear":
             nav.killall();
             zcl.displayMirror();
+            break;
+        case "viewface":
+            nav.killall();
+            zcl.displayMirror();
+            sc.selectBack("menu", 13);
+            break;
+        case "viewfacemakeup":
+            nav.killall();
+            zcl.displayMirror();
+            sc.selectBack("makeup", 13);
+            break;
+        case "viewfacelipstick":
+            nav.killall();
+            zcl.displayMirror();
+            sc.selectBack("lipstick", 13);
+            break;
+        case "viewfaceeyeshadow":
+            nav.killall();
+            zcl.displayMirror();
+            sc.selectBack("eyeshadow", 13);
             break;
         default:
             break;
@@ -331,7 +370,7 @@ room27.chatcatch = function (callback) {
                     sc.select("makeup_orange", "27_mirror/icon_orange.png", 10);
                 if (makeuplevel > 5)
                     sc.select("makeup_white", "27_mirror/icon_white.png", 11);
-                sc.selectCancel("menu", 13);
+                sc.selectBack("menu", 13);
             }
             else
                 chat(1, 27);
@@ -349,7 +388,7 @@ room27.chatcatch = function (callback) {
                     sc.select("eyeliner_green", "27_mirror/icon_eye_green.png", 9);
                     sc.select("eyeliner_blue", "27_mirror/icon_eye_blue.png", 10);
                     sc.select("eyeliner_rainbow", "27_mirror/icon_eye_rainbow.png", 11);
-                    sc.selectCancel("menu", 13);
+                    sc.selectBack("menu", 13);
                 }
             }
             else {
@@ -368,7 +407,7 @@ room27.chatcatch = function (callback) {
                 sc.select("lipstick_blue", "27_mirror/icon_lipstick_blue.png", 10);
             if (inv.has("blackl"))
                 sc.select("lipstick_black", "27_mirror/icon_lipstick_black.png", 11);
-            sc.selectCancel("menu", 13);
+            sc.selectBack("menu", 13);
             break;
         case "wash":
             cl.clean("face");
@@ -595,12 +634,12 @@ room27.chatcatch = function (callback) {
                 sc.select("wash", "27_mirror/icon_wash.png", 9);
                 sc.select("save", "27_mirror/icon_save.png", 10);
                 sc.select("load", "27_mirror/icon_load.png", 11);
-                sc.selectCancel("reset", 13)
+                sc.select("viewface", "27_mirror/icon_face.png", 12);
+                sc.selectBack("reset", 13);
             }
             else
                 chat(31, 27);
             break;
-       
         default:
             break;
     }

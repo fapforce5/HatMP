@@ -1,6 +1,21 @@
 ﻿//Room name
 var room800 = {};
 room800.main = function () {
+    if (cl.isLewd()) {
+        chat(47, 800);
+        return;
+    }
+    if (!sc.char[sc.i("ralphsmom")].show) {
+        sc.show("ralphsmom");
+        sc.show("ralphsdad");
+        sc.show("ralph");
+    }
+    if (g.pass === "noRalphReset") {
+        g.pass = null;
+    }
+    else {
+        gv.mod("ralphcycle", 1);
+    }
     var btnList = new Array();
     var activeCase = missy.activecase();
     if (!g.isNight()) {
@@ -14,24 +29,26 @@ room800.main = function () {
             "image": "800_ralph/door.png",
             "night": "800_ralph/door_night.png"
         });
-        btnList.push({
-            "type": "btn",
-            "name": "watering",
-            "left": 1018,
-            "top": 386,
-            "width": 333,
-            "height": 579,
-            "image": "800_ralph/watering.png"
-        });
-        btnList.push({
-            "type": "hand",
-            "name": "wass",
-            "left": 1018,
-            "top": 503,
-            "width": 101,
-            "height": 102,
-            "image": "800_ralph/wass.png"
-        })
+        if (sc.getTimeline("ralphsmom").thisRoom) {
+            btnList.push({
+                "type": "btn",
+                "name": "watering",
+                "left": 1018,
+                "top": 386,
+                "width": 333,
+                "height": 579,
+                "image": "800_ralph/watering.png"
+            });
+            btnList.push({
+                "type": "hand",
+                "name": "wass",
+                "left": 1018,
+                "top": 503,
+                "width": 101,
+                "height": 102,
+                "image": "800_ralph/wass.png"
+            });
+        }
     }
     
     if (activeCase.name === "case_saveralph" && !activeCase.isComplete) {
@@ -58,15 +75,22 @@ room800.btnclick = function (name) {
                 "width": 601,
                 "height": 1008,
                 "image": "800_ralph/ralphmom.png"
-            });
-            chat(0, 800);
-            //if (sc.getstep("ralphsmom") === 0) {
-            //    sc.setstep("ralphsmom", 1);
-            //    chat(0, 800);
-            //}
-            //else {
-            //    chat(1, 800);
-            //}
+            }, 800);
+            nav.killbutton("door");
+            nav.button({
+                "type": "btn",
+                "name": "door",
+                "left": 772,
+                "top": 436,
+                "width": 97,
+                "height": 197,
+                "image": "800_ralph/door.png",
+                "night": "800_ralph/door_night.png"
+            }, 800);
+            sc.select("gift", "252_waitress/icon_gift.png", 0);
+            sc.select("chat", "252_waitress/icon_chat.png", 1);
+            sc.select("dick", "752_whore/whore_dick.png", 2);
+            sc.selectCancel("cancel",3);
             break;
         case "wass":
             nav.killbutton("wass");
@@ -80,7 +104,18 @@ room800.btnclick = function (name) {
                     "width": 601,
                     "height": 1008,
                     "image": "800_ralph/ralphmom.png"
-                });
+                }, 800);
+                nav.killbutton("door");
+                nav.button({
+                    "type": "btn",
+                    "name": "door",
+                    "left": 772,
+                    "top": 436,
+                    "width": 97,
+                    "height": 197,
+                    "image": "800_ralph/door.png",
+                    "night": "800_ralph/door_night.png"
+                }, 800);
                 chat(29, 800);
             }
             else if (sc.getLevel("ralphsmom") < 3) {
@@ -97,7 +132,18 @@ room800.btnclick = function (name) {
                     "width": 601,
                     "height": 1008,
                     "image": "800_ralph/ralphmom_s.png"
-                });
+                }, 800);
+                nav.killbutton("door");
+                nav.button({
+                    "type": "btn",
+                    "name": "door",
+                    "left": 772,
+                    "top": 436,
+                    "width": 97,
+                    "height": 197,
+                    "image": "800_ralph/door.png",
+                    "night": "800_ralph/door_night.png"
+                }, 800);
                 chat(30, 800);
             }
             else {
@@ -110,7 +156,18 @@ room800.btnclick = function (name) {
                     "width": 601,
                     "height": 1008,
                     "image": "800_ralph/ralphmom_h.png"
-                });
+                }, 800);
+                nav.killbutton("door");
+                nav.button({
+                    "type": "btn",
+                    "name": "door",
+                    "left": 772,
+                    "top": 436,
+                    "width": 97,
+                    "height": 197,
+                    "image": "800_ralph/door.png",
+                    "night": "800_ralph/door_night.png"
+                }, 800);
                 chat(31, 800);
             }
             break;
@@ -135,16 +192,44 @@ room800.btnclick = function (name) {
             chat(25, 800);
             break;
         case "cancel":
-            char.room(800);
+            nav.killbutton("gift");
+            nav.killbutton("chat");
+            nav.killbutton("dick");
+            nav.killbutton("cancel");
+            break;
+        case "chat":
+            if (!daily.get("800chat")) {
+                daily.set("800chat");
+                sc.modLevel("ralphsmom", 26, 6);
+            }
+            nav.kill();
+            nav.button({
+                "type": "img",
+                "name": "watering",
+                "left": 746,
+                "top": 72,
+                "width": 601,
+                "height": 1008,
+                "image": "800_ralph/ralphmom_h.png"
+            });
+            chat(500, 800);
             break;
         case "dick":
-            nav.kill("gift");
-            nav.kill("chat");
-            nav.kill("dick");
-            nav.kill("cancel");
+            nav.killbutton("gift");
+            nav.killbutton("chat");
+            nav.killbutton("dick");
+            nav.killbutton("cancel");
+            if (!daily.get("ralphsmompenis800")) {
+                daily.set("ralphsmompenis800");
+                sc.modLevel("ralphsmom", 51, 6);
+            }
+            else {
+                chat(43, 800);
+                return;
+            }
             if (cl.c.chastity !== null) {
-                sc.modSecret("ralphsmom", 100);               
-                nav.kill("watering");
+                sc.modSecret("ralphsmom", 100);
+                nav.killbutton("watering");
                 nav.button({
                     "type": "img",
                     "name": "watering",
@@ -158,7 +243,7 @@ room800.btnclick = function (name) {
             }
             else if (!gender.canUseCock()) {
                 sc.modSecret("ralphsmom", 100);
-                nav.kill("watering");
+                nav.killbutton("watering");
                 nav.button({
                     "type": "img",
                     "name": "watering",
@@ -170,8 +255,8 @@ room800.btnclick = function (name) {
                 });
                 chat(35, 800);
             }
-            else if (sc.getLevel("ralphsmom") < 6) {
-                nav.kill("watering");
+            else if (sc.getLevel("ralphsmom") < 3) {
+                nav.killbutton("watering");
                 nav.button({
                     "type": "img",
                     "name": "watering",
@@ -180,45 +265,34 @@ room800.btnclick = function (name) {
                     "width": 601,
                     "height": 1008,
                     "image": "800_ralph/ralphmom_s.png"
-                });
+                }, 800);
                 chat(33, 800);
             }
             else {
-                if (!daily.get("ralphsmomdickflash")) {
-                    daily.set("ralphsmomdickflash");
-                    sc.modLevel("ralphsmom", 15);
-                }
-                nav.kill("watering");
-                nav.button({
-                    "type": "img",
-                    "name": "watering",
-                    "left": 746,
-                    "top": 72,
-                    "width": 601,
-                    "height": 1008,
-                    "image": "800_ralph/ralphmom_s.png"
-                });
+                nav.kill();
+                nav.bg("800_ralph/cockgrab0.webp");
                 chat(34, 800);
             }
             break;
         case "gift":
-            nav.kill("gift");
-            nav.kill("chat");
-            nav.kill("dick");
-            nav.kill("cancel");
+            nav.killbutton("gift");
+            nav.killbutton("chat");
+            nav.killbutton("dick");
+            nav.killbutton("cancel");
             var jl = 0;
+            var tl = inv.gettype("a");
             for (let i = 0; i < tl.length; i++) {
                 if (tl[i].count > 0) {
                     switch (tl[i].name) {
-                        case "bouquet": sc.select("gift_bouquet", "252_waitress/icon_bouquet.png", jl); jl++; break;
-                        case "roses": sc.select("gift_roses", "252_waitress/icon_roses.png", jl); jl++; break;
-                        case "seal": sc.select("gift_seal", "252_waitress/icon_seal.png", jl); jl++; break;
-                        case "mug": sc.select("gift_mug", "252_waitress/icon_mug.png", jl); jl++; break;
-                        case "whoopee": sc.select("gift_whoopee", "252_waitress/icon_whoopee.png", jl); jl++; break;
+                        case "bouquet": sc.select("bouquet", "252_waitress/icon_bouquet.png", jl); jl++; break;
+                        case "roses": sc.select("roses", "252_waitress/icon_roses.png", jl); jl++; break;
+                        case "seal": sc.select("seal", "252_waitress/icon_seal.png", jl); jl++; break;
+                        case "mug": sc.select("mug", "252_waitress/icon_mug.png", jl); jl++; break;
+                        case "whoopee": sc.select("whoopee", "252_waitress/icon_whoopee.png", jl); jl++; break;
                     }
                 }
             }
-            sc.selectCancel("cancel", jl);
+            sc.selectBack("choices", jl);
             break;
         case "bouquet":
         case "roses":
@@ -235,6 +309,19 @@ room800.btnclick = function (name) {
             inv.use(name);
             chat(37, 800);
             break;
+        case "choices":
+            nav.kill();
+            nav.button({
+                "type": "img",
+                "name": "watering",
+                "left": 746,
+                "top": 72,
+                "width": 601,
+                "height": 1008,
+                "image": "800_ralph/ralphmom.png"
+            }, 800);
+            room800.chatcatch("choices");
+            break;
         default:
             break;
     }
@@ -242,6 +329,14 @@ room800.btnclick = function (name) {
 
 room800.chatcatch = function (callback) {
     switch (callback) {
+        case "cockgrab0":
+        case "cockgrab1":
+        case "cockgrab2":
+        case "cockgrab3":
+        case "cockgrab10":
+        case "cockgrab11":
+            nav.bg("800_ralph/" + callback + ".webp");
+            break;
         case "case6_0":
             nav.killall();
             char.settime(22, 0);
@@ -280,13 +375,62 @@ room800.chatcatch = function (callback) {
             char.room(800);
             break;
         case "reset":
+            g.pass = "noRalphReset";
             char.room(800);
             break;
         case "choices":
             sc.select("gift", "252_waitress/icon_gift.png", 0);
             sc.select("chat", "252_waitress/icon_chat.png", 1);
             sc.select("dick", "752_whore/whore_dick.png", 2);
-            sc.select("cancel", "752_whore/icon_cancel.png", 2);
+            sc.selectCancel("cancel", 3);
+            break;
+        case "cockgrabpremature":
+            gv.mod("arousal", 100);
+            sc.completeMissionTask("ralphsmom", "room", 1);
+            sc.modLevel("ralphsmom", 75, 6);
+            nav.kill();
+            nav.bg("800_ralph/bg.jpg", "800_ralph/bg_night.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "door",
+                "left": 772,
+                "top": 436,
+                "width": 97,
+                "height": 197,
+                "image": "800_ralph/door.png",
+                "night": "800_ralph/door_night.png"
+            }, 800);
+            break;
+        case "cockgrab2checkdad":
+            
+            if (sc.getTimeline("ralphsdad").roomID < 800) {
+                nav.bg("800_ralph/cockgrab1.webp");
+                chat(44, 800);
+            }
+            else {
+                nav.bg("800_ralph/cockgrab2.webp");
+                chat(40, 800);
+            }
+            break;
+        case "cockgrabcum":
+            nav.kill();
+            levels.gothandjob("f", "ralphsmom", false, true);
+            sc.modLevel("ralphsmom", 75, 6);
+            sc.completeMissionTask("ralphsmom", "room", 1);
+            nav.bg("800_ralph/bg.jpg", "800_ralph/bg_night.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "door",
+                "left": 772,
+                "top": 436,
+                "width": 97,
+                "height": 197,
+                "image": "800_ralph/door.png",
+                "night": "800_ralph/door_night.png"
+            }, 800);
+            break;
+        case "leave":
+            char.room(0);
             break;
         default:
             break;
@@ -311,6 +455,66 @@ room800.chat = function (chatID) {
             text: "We're going to pound your face into the floor! ",
             button: btnList
         };
+    }
+    else if (chatID === 500) {
+        let carray = [];
+        let ml = sc.getLevel("ralphsmom");
+        if (ml < 3) {
+            carray = [
+                "Don't you just look " + gender.pronoun("pretty") + " today. I could gobble you up! hehehe",
+                "You look hungry. You should come back when I'm in the kitchen. I do make some delicious cookies. ",
+                "My husband is always saying I spend too much time with my flowers. Well you know what! They're the best flowers on this block!",
+                "I do wish my husband didn't travel so much for work. It seems like he's here one week, gone the next. ",
+                "My husband's always traveling for work. I do get so lonely when he's gone."
+            ];
+            if (cl.appearance() < 2) {
+                carray.push("I bet a handsome boy like you gets all the girls. If I was younger.. ooo. If I was younger. ");
+                carray.push("You are looking so good, I could eat you up. ");
+                carray.push("You look a little like my husband when he was younger.");
+                carray.push("I don't know what it is about young men, but you make me want to gobble you up!")
+            }
+            else {
+                carray.push("You're so cute. You know I had a lesbian phase when I was younger. I would totally have dated you.");
+                carray.push("You remind me of me when I was younger. Wild, free and hot!");
+
+            }
+            return {
+                chatID: 500,
+                speaker: "ralphsmom",
+                text: carray[g.rand(0, carray.length)],
+                button: [
+                    { chatID: -1, text: "Thanks " + sc.n("ralphsmom"), callback: "choices" }
+                ]
+            };
+        }
+        else {//if (ml < 6) {
+            carray = [
+                "Don't you just look " + gender.pronoun("pretty") + " today. I could gobble you up! hehehe",
+                "I do wish my husband didn't travel so much for work. It seems like he's here one week, gone the next. ",
+                "My husband's always traveling for work. I do get so lonely when he's gone."
+            ];
+            if (cl.appearance() < 2) {
+                carray.push("Well aren't you looking sexy today. ");
+                carray.push("You know a woman always needs some good oral sex! I mean, when you go on dates with other girls, not me right now. Hehehe.");
+                carray.push("I bet you fuck like a rock star. I do miss my party days. ");
+                carray.push("I love penises... FLOWERS! I mean flowers!");
+            }
+            else {
+                carray.push("You know, women are so much better at eating vagina than men. We know how it all works down there! ");
+                carray.push("You sure do have a pretty face and sexy tongue.. uhh. never mind. ");
+            }
+            return {
+                chatID: 500,
+                speaker: "ralphsmom",
+                text: carray[g.rand(0, carray.length)],
+                button: [
+                    { chatID: -1, text: "Oh Ralph's mom! You really do know how to make a " + gender.pronoun("boy") + " blush. ", callback: "choices" }
+                ]
+            };
+        }
+        //else {
+
+        //}
     }
     var cArray = [
         {
@@ -573,16 +777,16 @@ room800.chat = function (chatID) {
             text: "Oh you. " + sc.n("ralph") + "'s inside. Now you two stay out of trouble " +
                 "I know how hard the world is on your girls like yourselves. ",
             button: [
-                { chatID: -1, text: "ok", callback: "" }
+                { chatID: -1, text: "ok", callback: "choices" }
             ]
         },
         {
             chatID: 30,
             speaker: "ralphsmom",
             text: "oh! oh my. You smacked my butt. I'm sure you didn't mean to. " +
-                sc.n("ralph") + "'s upstaird in his room again. ",
+                sc.n("ralph") + "'s upstairs in his room again. ",
             button: [
-                { chatID: -1, text: "ok", callback: "" }
+                { chatID: -1, text: "ok", callback: "choices" }
             ]
         },
         {
@@ -596,18 +800,19 @@ room800.chat = function (chatID) {
         {
             chatID: 32,
             speaker: "ralphsmom",
-            text: "Oh no. You're one of those sissies aren't you. I know why boys like " +
-                "you wear those chastity cages. *hrumph* It's too bad. I was starting to get " +
-                "to like you. I guess it makes sense that my little " + sc.n("ralph") + " would " +
+            text: "Oh no. You're one of those sissies aren't you. If you're going to show your caged " +
+                "penis to a girl, I hope you are extremely good at oral. hahaha. " +
+                "I guess it makes sense that my little " + sc.n("ralph") + " would " +
                 "have a sissy friend. He's a bit of a sissy too, but I'm sure you already know that. ",
             button: [
-                { chatID: -1, text: "awww", callback: "reset" }
+                { chatID: -1, text: "MMMhmmmm", callback: "reset" }
             ]
         },
         {
             chatID: 33,
             speaker: "ralphsmom",
-            text: "Oh my! Put your penis away. Why would you pull that out, out here! ",
+            text: "Oh my, that does look nice... I mean put your penis away. " +
+                "Why would you pull that out, out here! ",
             button: [
                 { chatID: -1, text: "Yes ma'am", callback: "reset" }
             ]
@@ -615,17 +820,17 @@ room800.chat = function (chatID) {
         {
             chatID: 34,
             speaker: "ralphsmom",
-            text: "Oh my! Put your penis away. Why would you pull that out, out here! ",
+            text: "Oh my, is that for me? ",
             button: [
-                { chatID: -1, text: "Yes ma'am", callback: "reset" }
+                { chatID: 38, text: "Yes ma'am", callback: "cockgrab1" }
             ]
         },
         {
             chatID: 35,
             speaker: "ralphsmom",
-            text: "Oh honey. Look at the tiny little penis. You poor thing. Did you " +
-                "show it to me to let me know you're probably a virgin? I'm sorry, but " +
-                "no girl's going to want to have that inside her. You should do what " +
+            text: "Oh honey. Look at the tiny little penis. You poor thing. I do hope " +
+                "you are good with oral becuase " +
+                "no girl's going to want to have that inside her. You can do what " +
                 sc.n("ralph") + " does and just be a sissy. It's really not all that bad. " +
                 "It'll be hard at first, but practice putting a dildo in your butt and in no " +
                 "time you'll find your real self. I know you can do it! ",
@@ -647,6 +852,95 @@ room800.chat = function (chatID) {
             text: "Oh. Thanks. This is nice, but I really much prefer flowers. ",
             button: [
                 { chatID: -1, text: "You're welcome!", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 38,
+            speaker: "ralphsmom",
+            text: gender.pronoun("boy") + "s and their penises. Always looking to " +
+                "cum. Does it feel good when I rub it?  ",
+            button: [
+                { chatID: 39, text: "So good..", callback: "cockgrab0" }
+            ]
+        },
+        {
+            chatID: 39,
+            speaker: "ralphsmom",
+            text: "I bet you want me to keep rubbing it till you cum, don't you? ",
+            button: [
+                { chatID: -1, text: "So much..", callback: "cockgrab2checkdad" }
+            ]
+        },
+        {
+            chatID: 40,
+            speaker: "ralphsdad",
+            text: "Hey honey, the oven's beeping. Can you check it?",
+            button: [
+                { chatID: 41, text: "*gulp*", callback: "" }
+            ]
+        },
+        {
+            chatID: 41,
+            speaker: "ralphsmom",
+            text: "Sure honey! Be there in a second.",
+            button: [
+                { chatID: 42, text: "...", callback: "cockgrab3" }
+            ]
+        },
+        {
+            chatID: 42,
+            speaker: "ralphsmom",
+            text: "Why do men act so clueless when the oven beeps. It's simple, you just " +
+                "take out the cookies. I guess we'll have to finish this some other time " +
+                "cutie. ",
+            button: [
+                { chatID: -1, text: "...yea... some other time. ", callback: "cockgrabpremature" }
+            ]
+        },
+        {
+            chatID: 43,
+            speaker: "ralphsmom",
+            text: "Are you just going to keep showing me your penis all day?",
+            button: [
+                { chatID: -1, text: "kinda. Yeah. I am a pervert", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 44,
+            speaker: "ralphsmom",
+            text: "It's a good thing my husband is away on business. He would be so " +
+                "pissed if he caught me giving my little boy's friend a hand job in " +
+                "the garden. hehehe",
+            button: [
+                { chatID: 45, text: "...totally, keep going ", callback: "cockgrab10" }
+            ]
+        },
+        {
+            chatID: 45,
+            speaker: "ralphsmom",
+            text: "You like it when I rub your penis like this? My husband hates hand jobs. " +
+                "He says it's the pussy or nothing. I do love feeling a hard cock in my " +
+                "hand. And I'm great at hand jobs too!",
+            button: [
+                { chatID: 46, text: "...*ugh* so good... ", callback: "cockgrab11" }
+            ]
+        },
+        {
+            chatID: 46,
+            speaker: "ralphsmom",
+            text: "Hehehe. See I told you I was good at hand jobs. I've got you cum all over " +
+                "my pussy. Gotta go change. I hope " + sc.n("ralph") + " doesn't see me going " +
+                "to my room with your cum all over me. ",
+            button: [
+                { chatID: -1, text: "*huff* so good", callback: "cockgrabcum" }
+            ]
+        },
+        {
+            chatID: 47,
+            speaker: "thinking",
+            text: "I'm going to put some clothes on before going to my friend's house. ",
+            button: [
+                { chatID: -1, text: "...", callback: "leave" }
             ]
         },
     ];

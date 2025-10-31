@@ -1,8 +1,8 @@
 ﻿//submissiveness
 var room197 = {};
 room197.main = function () {
-    var sub = levels.get("sub").l;
     var lastEvent = missy.get("subCounter197");
+    let selected;
     var sublist = [
         { n: "rubfeet", chatid: 0 },
         { n: "rubfeet", chatid: 0 },
@@ -15,22 +15,26 @@ room197.main = function () {
         { n: "anal", chatid: 28 },
     ];
 
-    if (lastEvent < 8) {
-        lastEvent++;
-        missy.set("subCounter197", nextEvent + 1);
+    if (lastEvent < sublist.length) {
         selected = sublist[lastEvent];
+        missy.set("subCounter197", (lastEvent + 1));
         if (selected.n === "anal")
             nav.bg("197_sub/anal0.jpg");
         chat(selected.chatid, 197);
     }
     else {
+        if (g.rand(0, 5) === 0) {
+            selected = sublist[g.rand(0, sublist.length)];
+            if (selected.n === "anal")
+                nav.bg("197_sub/anal0.jpg");
+            chat(selected.chatid, 197);
+        }
         switch (g.rand(0, 4)) {
             case 0: nav.bg("197_sub/anal0.jpg"); chat(28, 197); break;
             case 1: chat(34, 197); break;
             case 2: chat(39, 197); break;
             default: chat(44, 197); break;
         }
-        //selected = sublist[g.rand(0, sublist.length)];
     }
 };
 

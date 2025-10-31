@@ -401,7 +401,7 @@ missy.afterLunch = function () {
     if (g.dt.getDay() === 1 || weekly === null || weekly.length < 7) {
         var subweek;
         if (sissy.st[17].ach) {
-            if (inv.has("lockpick"))
+            if (inv.has("lockpick")) {
                 if (sissy.st[0].ach) {
                     if (g.rand(0, 3) === 0)
                         subweek = "ccsc";
@@ -411,6 +411,7 @@ missy.afterLunch = function () {
                 }
                 else
                     subweek = "cccc";
+            }
             else
                 subweek = "pcpc";
         }

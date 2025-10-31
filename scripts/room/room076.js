@@ -3,22 +3,74 @@ var room76 = {};
 room76.main = function () {
     var navList = [77];
     if (sc.getTimeline("bimbo").thisRoom) {
-        nav.button({
-            "type": "btn",
-            "name": "blanket",
-            "left": 704,
-            "top": 472,
-            "width": 815,
-            "height": 583,
-            "image": "76_bimboRoom/blanket.png"
-        }, 76);
-        nav.bg("76_bimboRoom/sleeping1.jpg");
+        if (cl.c.chastity === null) {
+            nav.button({
+                "type": "btn",
+                "name": "blanket",
+                "left": 704,
+                "top": 472,
+                "width": 815,
+                "height": 583,
+                "image": "76_bimboRoom/blanket.png"
+            }, 76);
+            nav.bg("76_bimboRoom/sleeping1.jpg");
+        }
+        else {
+            nav.button({
+                "type": "btn",
+                "name": "blanketa",
+                "left": 704,
+                "top": 472,
+                "width": 815,
+                "height": 583,
+                "image": "76_bimboRoom/blanket.png"
+            }, 76);
+            nav.bg("76_bimboRoom/sleeping1a.jpg");
+        }
     }
     nav.buildnav(navList);
 };
 
 room76.btnclick = function (name) {
     switch (name) {
+        case "blanketa":
+            nav.kill();
+            nav.bg("76_bimboRoom/cumcouple.jpg");
+            if (!daily.get("76bcum")) {
+                nav.button({
+                    "type": "tongue",
+                    "name": "bcum",
+                    "left": 1597,
+                    "top": 500,
+                    "width": 99,
+                    "height": 182,
+                    "image": "76_bimboRoom/bcum.webp"
+                }, 76);
+            }
+            if (!daily.get("76gcum")) {
+                nav.button({
+                    "type": "tongue",
+                    "name": "gcum",
+                    "left": 326,
+                    "top": 648,
+                    "width": 72,
+                    "height": 193,
+                    "image": "76_bimboRoom/gcum.webp"
+                }, 76);
+            }
+            break;
+        case "bcum":
+            daily.set("76bcum");
+            nav.killbutton("bcum");
+            levels.swallowCum("m", "tim");
+            chat(16, 76);
+            break;
+        case "gcum":
+            daily.set("76gcum");
+            nav.killbutton("gcum");
+            levels.swallowCum("m", "tim");
+            chat(17, 76);
+            break;
         case "blanket":
             nav.killbutton("blanket");
             nav.bg("76_bimboRoom/sleeping2.jpg"); 
@@ -346,6 +398,25 @@ room76.chat = function (chatID) {
             text: "zzZZZz zzZZZzzz",
             button: [
                 { chatID: -1, text: "[My little tiny cock won't please her, there's no point in even trying]", callback: "" }
+            ]
+        },
+        {
+            chatID: 16,
+            speaker: "thinking",
+            text: "MMmmm. I do love the cream of some young guy. Creamy and smooth, with just " +
+                "a hint of sweetness. Perfect when it's straight from the source. ",
+            button: [
+                { chatID: -1, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 17,
+            speaker: "thinking",
+            text: "Oh wow! That is a delicious mix of boy and girl cum! You get the thick " +
+                "nutty flavor from him, and the delicate musky froth from her. These two " +
+                "should really bottle this up so everyone can partake in their yumminess. ",
+            button: [
+                { chatID: -1, text: "...", callback: "" }
             ]
         }
     ];

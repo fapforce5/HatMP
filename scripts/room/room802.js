@@ -9,6 +9,7 @@ room802.main = function () {
         }
         return;
     }
+    daily.set("ralphRandEvent");
     var btnList = [
         {
             "type": "img",

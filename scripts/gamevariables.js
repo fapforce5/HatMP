@@ -74,8 +74,9 @@ gv.init = function () {
 
         //lola / eva
         { n: "lockdrawer", t: false, q: "bool" },
-        
 
+        //ralph
+        { n: "ralphcycle", t: -1, q: "int" },
         //room decoration
         { n: "painting", t: "", q: "string" },
 
@@ -91,7 +92,6 @@ gv.init = function () {
         { n: "sissySchoolClass", t: null, q: "string" },
         { n: "sissySchoolClassDays", t: 0, q: "int" },
         { n: "sissyGrades", t: "", q: "string" },
-        //sissy school final:
 
         { n: "pill", t: null, q: "string" },
 
@@ -142,6 +142,9 @@ gv.init = function () {
 
         { n: "lolaEvaShowerPeek", t: false, q: "bool" },
 
+        { n: "dddfirsttime", t: true, q: "bool" },
+        { n: "dddfail", t: 0, q: "int" },
+        { n: "dddsuccess", t: 0, q: "int" },
         { n: "caveDoorEnter", t: false, q: "bool" },
 
         { n: "janiceWalk", t: 0, q: "int" },

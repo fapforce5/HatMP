@@ -323,6 +323,7 @@ room727.chatcatch = function (callback) {
         case "tinagood":
             if (sc.getMissionTask("tina", "cat", 2).notStarted) {
                 sc.completeMission("tina", "cat");
+                sc.completeMissionTask("tina", "cat", 1);
                 sc.completeMissionTask("tina", "cat", 2);
             }
             levels.fuckpussy("tina", "f");
@@ -614,7 +615,7 @@ room727.chat = function (chatID) {
             {
                 chatID: 33,
                 speaker: "tina",
-                text: "Before we start, there's a little think I like to do first. I know there's not " +
+                text: "Before we start, there's a little thing I like to do first. I know there's not " +
                     "much room in here, but I need you to wait in " + sc.n("construction") + "'s " +
                     " office 'k?",
                 button: [{ chatID: 34, text: "sure.  ", callback: "tina3" }]

@@ -159,7 +159,8 @@ room475.btnclick = function (name) {
                 char.room(485); //row 42 can buy things 
             }
             else if (m.fmap[g.map.row][g.map.col].used === "j") {
-                //middle event char.room(???);
+                //dozen degrading doors
+                char.room(486);
             }
             break;
         case "reload":

@@ -1,17 +1,22 @@
 ﻿//Room name
 var room49 = {};
 room49.main = function () {
-    if (g.isNight() && g.rand(0, 3) === 0) {
-        g.internal = "g1";
-        nav.button({
-            "type": "img",
-            "name": "name",
-            "left": 775,
-            "top": 473,
-            "width": 560,
-            "height": 781,
-            "image": "49_train/g1.png"
-        }, 49);
+    if (g.isNight() && g.rand(0, 2) === 0) {
+        //g.internal = "g1";
+        //nav.button({
+        //    "type": "img",
+        //    "name": "name",
+        //    "left": 775,
+        //    "top": 473,
+        //    "width": 560,
+        //    "height": 781,
+        //    "image": "49_train/g1.png"
+        //}, 49);
+        if (cl.isLewd() && !daily.get("49trainrape")) {
+            daily.set("49trainrape");
+            chat(8, 49);
+            return;
+        }
     }
 
     sc.select("sit", "49_train/icon_sit.png", 8);
@@ -129,6 +134,15 @@ room49.chatcatch = function (callback) {
         case "nextStop":
             room49.btnclick("nextStop");
             break;
+        case "rape":
+            var chastity49 = cl.c.chastity === null ? "_n" : "_c";
+            nav.kill();
+            nav.bg("49_train/rape_" + gender.pronoun("m") + chastity49 + ".webp");
+            break;
+        case "endrape":
+            levels.anal(4, true, "m", true, "!man");
+            nav.bg("49_train/rape1_" + gender.pronoun("m") + ".webp");
+            break;
         default:
             break;
     }
@@ -212,6 +226,39 @@ room49.chat = function (chatID) {
             text: "Dammit. Here's the stop. Now I'll never know who just came inside me. ",
             button: [
                 { chatID: -1, text: "[Get off the bus]", callback: "nextStop" },
+            ]
+        },
+        {
+            chatID: 8,
+            speaker: "!man",
+            text: "Looks like someone's lookin' to get raped!",
+            button: [
+                { chatID: 9, text: "wha? huh? Who said that?", callback: "rape" },
+            ]
+        },
+        {
+            chatID: 9,
+            speaker: "!man",
+            text: "I said that! And I meant it too! ",
+            button: [
+                { chatID: 10, text: "Oh fuck! I can feel you dick hitting my bussy button! Fuck it feels so good I'm cumming in front of everyone!", callback: "" },
+            ]
+        },
+        {
+            chatID: 10,
+            speaker: "stormy",
+            text: "Haha! You're cumming more than he is!",
+            button: [
+                { chatID: 11, text: "I just keep orgasmining! I can't help it!", callback: "endrape" },
+            ]
+        },
+        {
+            chatID: 11,
+            speaker: "!girl3",
+            text: "So gross! I think I got cum on " +
+                "on my shoes. This is why I hate coming to the city. ",
+            button: [
+                { chatID: -1, text: "*sigh*", callback: "nextStop" },
             ]
         },
     ];

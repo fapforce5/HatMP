@@ -375,7 +375,7 @@ g.rooms = [
 
     { roomID: 725, name: "Bar", image: "725_club/club.jpg", nightImage: "725_club/club.jpg", houseID: 725, btn: "roomBtn_725.png" },
     { roomID: 726, name: "Dance Floor", image: "726_dance/dance.jpg", nightImage: "726_dance/dance.jpg", houseID: 725, btn: "roomBtn_726.png" },
-    { roomID: 727, name: "Unisex Bathroom", image: "727_bathroom/bg.jpg", nightImage: "727_bathroom/bg.jpg", houseID: 725, btn: "roomBtn_726.png" },
+    { roomID: 727, name: "Club Bathroom", image: "727_bathroom/bg.jpg", nightImage: "727_bathroom/bg.jpg", houseID: 725, btn: "roomBtn_726.png" },
 
     { roomID: 750, name: "Homeless Camp", image: "750_homeless/bg.jpg", nightImage: "750_homeless/bgNight.jpg", houseID: 750, btn: "roomBtn_750.png" },
     { roomID: 751, name: "Fortune Teller", image: "751_crystal/bg.jpg", nightImage: "751_crystal/bg.jpg", houseID: 750, btn: "roomBtn_751.png" },
@@ -384,10 +384,11 @@ g.rooms = [
     { roomID: 775, name: "Church", image: "775_church/boy.jpg", nightImage: "775_church/boy.jpg", houseID: 775, btn: "roomBtn_10.png" },
     { roomID: 776, name: "Church", image: "776_church/bg.webp", nightImage: "776_church/bg.webp", houseID: 775, btn: "roomBtn_10.png" },
 
-    { roomID: 800, name: "Ralph's House", image: "800_ralph/bg.jpg", nightImage: "800_ralph/bg_night.jpg", houseID: 800, btn: "roomBtn_800.png" },
-    { roomID: 801, name: "Ralph's Living Room", image: "801_ralphlivingroom/bg.webp", nightImage: "801_ralphlivingroom/bg.webp", houseID: 800, btn: "roomBtn_801.png" },
-    { roomID: 802, name: "Ralph's Bedroom", image: "802_ralphbedroom/bg.webp", nightImage: "802_ralphbedroom/bg_night.webp", houseID: 800, btn: "roomBtn_802.png" },
-    { roomID: 803, name: "Ralph's Parents", image: "803_parentbedroom/bg.webp", nightImage: "803_parentbedroom/bg_night.webp", houseID: 800, btn: "roomBtn_803.png" },
+    { roomID: 800, name: "R House", image: "800_ralph/bg.jpg", nightImage: "800_ralph/bg_night.jpg", houseID: 800, btn: "roomBtn_800.png" },
+    { roomID: 801, name: "R Living Room", image: "801_ralphlivingroom/bg.webp", nightImage: "801_ralphlivingroom/bg.webp", houseID: 800, btn: "roomBtn_801.png" },
+    { roomID: 802, name: "R Bedroom", image: "802_ralphbedroom/bg.webp", nightImage: "802_ralphbedroom/bg.webp", houseID: 800, btn: "roomBtn_802.png" },
+    { roomID: 803, name: "R Parents", image: "803_parentbedroom/bg.webp", nightImage: "803_parentbedroom/bg.webp", houseID: 800, btn: "roomBtn_803.png" },
+    { roomID: 804, name: "R Kitchen", image: "804_kitchen/bg.webp", nightImage: "804_kitchen/bg_night.webp", houseID: 800, btn: "roomBtn_804.png" },
 
     { roomID: 825, name: "Dirty Lot", image: "825_lot/bg.jpg", nightImage: "825_lot/bg_night.jpg", houseID: 825, btn: "roomBtn_825.png" },
 

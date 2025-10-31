@@ -358,6 +358,11 @@ char.map = function () {
     else if (g.roomID > 499 && g.roomID < 550) {
         cArray.push({ t: sc.getTimeline("zoey"), c: sc.n("zoey") });
     }
+    else if (g.roomID > 799 && g.roomID < 810) {
+        cArray.push({ t: sc.getTimeline("ralph"), c: sc.n("ralph") });
+        cArray.push({ t: sc.getTimeline("ralphsmom"), c: sc.n("ralphsmom") });
+        cArray.push({ t: sc.getTimeline("ralphsdad"), c: sc.n("ralphsdad") });
+    }
     else if (g.roomID > 899 && g.roomID < 905) {
         cArray.push({ t: sc.getTimeline("cindy"), c: sc.n("cindy") });
         cArray.push({ t: sc.getTimeline("tim"), c: sc.n("tim") });

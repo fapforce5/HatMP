@@ -1137,7 +1137,8 @@ sc.charMission = [
             {
                 missionName: "room", mStatus: 0, title: "Friends", desc: "Playing in my room", task:
                     [
-                        { id: 0, txt: "First", show: true, mStatus: 0, roomId: 125 },
+                        { id: 0, txt: "First", show: true, mStatus: 0, roomId: 800 },
+                        { id: 1, txt: "Rub my penis", show: true, mStatus: 0, roomId: 800 },
                     ]
             },
         ]
@@ -1147,8 +1148,20 @@ sc.charMission = [
             {
                 missionName: "main", mStatus: 0, title: "Dad", desc: "My buddy's dad", task:
                     [
-                        { id: 0, txt: "First meet", show: true, mStatus: 0, roomId: 801 },
-                        { id: 1, txt: "Work trip", show: true, mStatus: 0, roomId: 800 },
+                        { id: 0, txt: "No spark until you play the part", show: true, mStatus: 0, roomId: 801 },
+                        { id: 1, txt: "Reckless desire, petals for a pretty girl", show: true, mStatus: 0, roomId: 801 },
+                        { id: 2, txt: "Passion hides within the mundane suburbs", show: true, mStatus: 0, roomId: 801 },
+                        { id: 3, txt: "The sweet pursuit is now commencing", show: true, mStatus: 0, roomId: 801 },
+
+                    ]
+            },
+            {
+                missionName: "random", mStatus: 0, title: "Random", desc: "Non linear events", task:
+                    [
+                        { id: 0, txt: "Bad girls get spanked", show: true, mStatus: 0, roomId: 804 },
+                        { id: 1, txt: "Thumb in the bum", show: true, mStatus: 0, roomId: 804 },
+                        { id: 2, txt: "Don't act like you've never seen a dick before", show: true, mStatus: 0, roomId: 803 },
+
                     ]
             },
         ]
@@ -2101,6 +2114,63 @@ sc.getTimeline = function (char) {
                 { d: [0, 1, 2, 3, 4, 5, 6], hstart: 20, hend: 24, roomId: 726, alt: null }, //club
             ];
             break;
+        case "ralphsdad":
+            if (future.get("ralphsdadworktrip") === -1) {
+                switch (gv.get("ralphcycle") % 3) {
+                    case 0:
+                        timeline = [
+                            { d: [0, 1, 2, 3, 4, 5, 6], hstart: 0, hend: 7, roomId: 802, alt: null }, //bedroom
+                            { d: [0, 1, 2, 3, 4, 5, 6], hstart: 0, hend: 20, roomId: 801, alt: null }, //pool
+                            { d: [0, 1, 2, 3, 4, 5, 6], hstart: 20, hend: 24, roomId: 802, alt: null }, //bedroom
+                        ];
+                        break;
+                    case 1:
+                        timeline = [
+                            { d: [0, 1, 2, 3, 4, 5, 6], hstart: 0, hend: 7, roomId: 802, alt: null }, //bedroom
+                            { d: [0, 1, 2, 3, 4, 5, 6], hstart: 0, hend: 20, roomId: 803, alt: null }, //pool
+                            { d: [0, 1, 2, 3, 4, 5, 6], hstart: 20, hend: 24, roomId: 802, alt: null }, //bedroom
+                        ];
+                        break;
+                    case 2:
+                        timeline = [
+                            { d: [0, 1, 2, 3, 4, 5, 6], hstart: 0, hend: 7, roomId: 802, alt: null }, //bedroom
+                            { d: [0, 1, 2, 3, 4, 5, 6], hstart: 0, hend: 20, roomId: 801, alt: null }, //pool
+                            { d: [0, 1, 2, 3, 4, 5, 6], hstart: 20, hend: 24, roomId: 802, alt: null }, //bedroom
+                        ];
+                        break;
+                }
+            }
+            break;
+        case "ralphsmom":
+            switch (gv.get("ralphcycle") % 3) {
+                case 0:
+                    timeline = [
+                        { d: [0, 1, 2, 3, 4, 5, 6], hstart: 0, hend: 7, roomId: 802, alt: null }, //bedroom
+                        { d: [0, 1, 2, 3, 4, 5, 6], hstart: 0, hend: 20, roomId: 800, alt: null }, //pool
+                        { d: [0, 1, 2, 3, 4, 5, 6], hstart: 20, hend: 24, roomId: 802, alt: null }, //bedroom
+                    ];
+                    break;
+                case 1:
+                    timeline = [
+                        { d: [0, 1, 2, 3, 4, 5, 6], hstart: 0, hend: 7, roomId: 802, alt: null }, //bedroom
+                        { d: [0, 1, 2, 3, 4, 5, 6], hstart: 0, hend: 20, roomId: 803, alt: null }, //pool
+                        { d: [0, 1, 2, 3, 4, 5, 6], hstart: 20, hend: 24, roomId: 802, alt: null }, //bedroom
+                    ];
+                    break;
+                case 2:
+                    timeline = [
+                        { d: [0, 1, 2, 3, 4, 5, 6], hstart: 0, hend: 7, roomId: 802, alt: null }, //bedroom
+                        { d: [0, 1, 2, 3, 4, 5, 6], hstart: 0, hend: 20, roomId: 804, alt: null }, //pool
+                        { d: [0, 1, 2, 3, 4, 5, 6], hstart: 20, hend: 24, roomId: 802, alt: null }, //bedroom
+                    ];
+                    break;
+            }
+            break;
+        case "ralph":
+            timeline = [
+                { d: [0, 1, 2, 3, 4, 5, 6], hstart: 0, hend: 24, roomId: 802, alt: null }, //bedroom
+            ];
+            break;
     }
 
     var retVar = { roomID: -1, thisRoom: false, subList: new Array() };
@@ -2147,6 +2217,10 @@ sc.select = function (name, img, i) {
 
 sc.selectCancel = function (name, i) {
     sc.select(name, "1001_rand/icon_cancel.png", i);
+};
+
+sc.selectBack = function (name, i) {
+    sc.select(name, "1001_rand/icon_back.png", i);
 };
 
 sc.swimgirl = function () {
@@ -2768,6 +2842,10 @@ sc.trivial = function (charname) {
         case "!dog":
             name = "Doggy";
             image = "dog.png";
+            break;
+        case "!ann":
+            name = "Announcer";
+            image = "ann.png";
             break;
         default:
             console.log("unknown trivial char: (check capitilazation)" + charname);

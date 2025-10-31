@@ -457,7 +457,7 @@ room77.chat = function (chatID) {
             speaker: "bimbo",
             text: "I don't remember ordering a pizza. I don't have any money. ",
             button: [
-                { chatID: 2, text: "When the how are you going to pay?", callback: "" }
+                { chatID: 2, text: "Well then, how are you going to pay?", callback: "" }
             ]
         },
         {

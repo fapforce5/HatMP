@@ -2,8 +2,21 @@
 var room803 = {};
 room803.main = function () {
     if (future.get("ralphsdadworktripback") > 0) {
-        nav.bg("803_parentbedroom/no.webp");
-        chat(0, 803);
+        if (sc.getTimeline("ralphsdad").thisRoom) {
+            nav.bg("803_parentbedroom/lpeek0.webp");
+            chat(11, 803);
+        }
+        else {
+            if (sc.getMissionTask("ralphsdad", "main", 3).notStarted && !daily.get("803daddick")) {
+                nav.bg("803_parentbedroom/no.webp");
+                chat(0, 803);
+            }
+            else {
+                daily.set("803daddick");
+                nav.bg("803_parentbedroom/no.webp");
+                chat(13, 803);
+            }
+        }
     }
     else {
         var btnList = [
@@ -103,6 +116,9 @@ room803.btnclick = function (name) {
                 }
             }
             break;
+        case "daddick":
+            chat(16, 803);
+            break;
         default:
             break;
     }
@@ -113,6 +129,21 @@ room803.chatcatch = function (callback) {
         case "peek0":
         case "peek1":
         case "peek2":
+        case "lpeek1":
+        case "suck0":
+        case "suck1":
+        case "suck4":
+        case "suck5":
+        case "suck6":
+        case "suck7":
+        case "suck8":
+        case "suck9":
+        case "suck10":
+        case "suck11":
+            nav.bg("803_parentbedroom/" + callback + ".webp");
+            break;
+        case "suck3":
+            nav.kill();
             nav.bg("803_parentbedroom/" + callback + ".webp");
             break;
         case "closet":
@@ -124,6 +155,34 @@ room803.chatcatch = function (callback) {
             break;
         case "peekLeave":
             daily.set("noRoom803");
+            char.room(801);
+            break;
+        case "suck2":
+            nav.bg("803_parentbedroom/bg.webp");
+            nav.button({
+                "type": "kiss",
+                "name": "daddick",
+                "left": 926,
+                "top": 86,
+                "width": 437,
+                "height": 994,
+                "image": "801_ralphlivingroom/d_d.webp"
+            }, 803);
+            break;
+        case "room801bg":
+            nav.bg("801_ralphlivingroom/bg.webp");
+            nav.button({
+                "type": "btn",
+                "name": "dad",
+                "left": 926,
+                "top": 86,
+                "width": 437,
+                "height": 994,
+                "image": "801_ralphlivingroom/d.webp"
+            }, 801);
+            daily.set("room800dad");
+            break;
+        case "leave":
             char.room(801);
             break;
         default:
@@ -230,6 +289,157 @@ room803.chat = function (chatID) {
                 "these on! ",
             button: [
                 { chatID: -1, text: "[Slutty Bra and panties added to inventory]", callback: "closet" },
+            ]
+        },
+        {
+            chatID: 11,
+            speaker: "thinking",
+            text: "Oh wow! He's really giving it to her! He sure does know how to fuck! ",
+            button: [
+                { chatID: 12, text: "[Take a peek]", callback: "lpeek1" },
+                { chatID: -1, text: "[Give them their privacy]", callback: "leave" },
+            ]
+        },
+        {
+            chatID: 12,
+            speaker: "thinking",
+            text: "oh wow. Now that's fuckin'! ",
+            button: [
+                { chatID: -1, text: "[Give them their privacy]", callback: "leave" },
+            ]
+        },
+        {
+            chatID: 13,
+            speaker: "ralphsdad",
+            text: "What are you doing in my bedroom? ",
+            button: [
+                { chatID: 14, text: "I uh...", callback: "suck0" },
+            ]
+        },
+        {
+            chatID: 14,
+            speaker: "ralphsdad",
+            text: "You came in here hoping I'd follow you, didn't you? You wanted me to " +
+                "follow you, didn't you " + sc.n("me") + "? But why would you want me to " +
+                "follow you into my bedroom? ",
+            button: [
+                { chatID: 15, text: "well", callback: "suck1" },
+            ]
+        },
+        {
+            chatID: 15,
+            speaker: "ralphsdad",
+            text: "We both know why. You want to wrap that pretty mouth around my cock. " +
+                "We have about 15 minutes before my wife comes walking around. Just enough time " +
+                "to get a taste of my dick. That is what you want isn't it? ",
+            button: [
+                { chatID: -1, text: "...", callback: "suck2" },
+            ]
+        },
+        {
+            chatID: 16,
+            speaker: "ralphsdad",
+            text: "Oh yeah, I still got it. Just lick it a little ",
+            button: [
+                { chatID: 17, text: "*lick*", callback: "suck3" },
+            ]
+        },
+        {
+            chatID: 17,
+            speaker: "ralphsdad",
+            text: "Oh that feel so good. You have such a tender tongue. Take a small taste. " +
+                "I think you'll like it.",
+            button: [
+                { chatID: 18, text: "*nibble*", callback: "suck4" },
+            ]
+        },
+        {
+            chatID: 18,
+            speaker: "ralphsdad",
+            text: "*whispering* Oh crap. That's the front door. Quick in the closet!",
+            button: [
+                { chatID: 19, text: "*gasp*", callback: "suck5" },
+            ]
+        },
+        {
+            chatID: 19,
+            speaker: "ralphsdad",
+            text: "*whispering* Just stay here till I tell you the coast is clear ok. " +
+                "Don't make a sound!",
+            button: [
+                { chatID: 20, text: "*nod your head*", callback: "suck6" },
+            ]
+        },
+        {
+            chatID: 20,
+            speaker: "ralphsmom",
+            text: "So what are you doing hanging out in here? Jacking your pee pee again?",
+            button: [
+                { chatID: 21, text: "...", callback: "suck7" },
+            ]
+        },
+        {
+            chatID: 21,
+            speaker: "ralphsdad",
+            text: "What? no. I was just taking a leak. ",
+            button: [
+                { chatID: 22, text: "...", callback: "suck8" },
+            ]
+        },
+        {
+            chatID: 22,
+            speaker: "ralphsmom",
+            text: "You were peeing in MY toilet? I hope you wiped off the pee sprinkles from " +
+                "the lid. ",
+            button: [
+                { chatID: 23, text: "...", callback: "suck9" },
+            ]
+        },
+        {
+            chatID: 23,
+            speaker: "ralphsdad",
+            text: "So what are you up to? Taking off your pants so we can have sex?",
+            button: [
+                { chatID: 24, text: "...", callback: "suck10" },
+            ]
+        },
+        {
+            chatID: 24,
+            speaker: "ralphsmom",
+            text: "Hahaha. Not a chance. Slipped in a mud spot, now I have take a shower " +
+                "and change my pants. Kindly get out so I can shower in peace and not " +
+                "get molested the entire time. ",
+            button: [
+                { chatID: 25, text: "...", callback: "suck11" },
+            ]
+        },
+        {
+            chatID: 25,
+            speaker: "ralphsdad",
+            text: "Yes dear ",
+            button: [
+                { chatID: 26, text: "...", callback: "peek0" },
+            ]
+        },
+        {
+            chatID: 26,
+            speaker: "thinking",
+            text: "Looks like the coast's clear. Poor guy, just wants to have sex with " +
+                "his wife and is totally denied right in front of me! If I was his wife " +
+                "I would have let him stick his dick in me. Oh well. Gotta sneak out.",
+            button: [
+                { chatID: 27, text: "...", callback: "room801bg" },
+            ]
+        },
+        {
+            chatID: 27,
+            speaker: "ralphsdad",
+            text: "Oh wow! That was so close! She didn't see you did she? Of course she " +
+                "didn't or she would be in here screaming at me. You should probably just " +
+                "go upstairs and play with " + sc.n("ralph") + ". My heart's beating too hard " +
+                "to get a BJ right now. ",
+            button: [
+                { chatID: -1, text: "Sure. I'll go play with my little  friend. ", callback: "leave" },
             ]
         },
     ];

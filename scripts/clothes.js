@@ -878,8 +878,9 @@ cl.makeup = [
     { name: "clown", image: "head_clown.png" },
     { name: "blush", image: "head_blush.png" },
     { name: "blushheavy", image: "head_blushheavy.png" },
+    { name: "egirl", image: "head_egirl.png" },
     { name: "brown", image: "head_brown.png" },
-    
+    { name: "whore", image: "head_whore.png" },
 
     { name: "light", image: "body_head_med_black.png" },
     { name: "lb", image: "body_head_light_black.png" },
