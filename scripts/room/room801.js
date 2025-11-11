@@ -3,26 +3,25 @@ var room801 = {};
 //after sissy school day 1 > find out Ralph told him mom everything
 //after sissy school > mom buys and brings panties to Ralph
 room801.main = function () {
-    if (sc.getMission("ralphsdad", "main").notStarted) {
-        daily.set("room800dad");
-        sc.show("ralphsdad");
-        sc.startMission("ralphsdad", "main");
-        sc.completeMissionTask("ralphsdad", "main", 0);
-        nav.bg("801_ralphlivingroom/dad.webp");
-        nav.button({
-            "type": "btn",
-            "name": "dad",
-            "left": 926,
-            "top": 86,
-            "width": 437,
-            "height": 994,
-            "image": "801_ralphlivingroom/d.webp"
-        }, 801);
-        future.add("ralphsdadworktripback", 7);
-        chat(0, 801);
-    }
-    else if (sc.getTimeline("ralphsdad").thisRoom) {
-        if (daily.get("room800dad")) {
+    if (sc.getTimeline("ralphsdad").thisRoom) {
+        if (sc.getMission("ralphsdad", "main").notStarted) {
+            gv.set("ralphcycle", 1);
+            daily.set("room800dad");
+            sc.startMission("ralphsdad", "main");
+            sc.completeMissionTask("ralphsdad", "main", 0);
+            nav.bg("801_ralphlivingroom/dad.webp");
+            nav.button({
+                "type": "btn",
+                "name": "dad",
+                "left": 926,
+                "top": 86,
+                "width": 437,
+                "height": 994,
+                "image": "801_ralphlivingroom/d.webp"
+            }, 801);
+            chat(0, 801);
+        }
+        else if (daily.get("room800dad")) {
             nav.button({
                 "type": "btn",
                 "name": "dad",
@@ -59,8 +58,7 @@ room801.main = function () {
                     }, 801);
                 }
             }
-            else if (!sc.getMissionTask("ralphsdad", "main", 2).complete) {
-                daily.set("room800dad");
+            else if (!sc.getMissionTask("ralphsdad", "main", 6).complete) {
                 if (sc.getMissionTask("ralphsdad", "main", 2).notStarted) {
                     nav.button({
                         "type": "btn",
@@ -113,8 +111,18 @@ room801.main = function () {
                     }
                 }
             }
-            else if (!sc.getMissionTask("ralphsdad", "main", 3).complete) {
-
+            else {
+                daily.set("room800dad");
+                nav.button({
+                    "type": "btn",
+                    "name": "daddick",
+                    "left": 926,
+                    "top": 86,
+                    "width": 437,
+                    "height": 994,
+                    "image": "801_ralphlivingroom/d_d.webp"
+                }, 801);
+                chat(22, 801);
             }
         }
         else {
@@ -213,6 +221,23 @@ room801.chatcatch = function (callback) {
         case "kissgood":
             sc.modLevel("ralphsdad", 51, 7);
             char.room(801);
+            break;
+        case "bj0":
+            nav.modbutton("dad", "801_ralphlivingroom/d_d1.webp", null, "img");
+            zcl.displayMain(550, 880, .14, "clothes", true);
+            break;
+        case "bj1":
+            daily.set("room800dad");
+            levels.oral(4, "m", "ralphsdad", true);
+            nav.button({
+                "type": "img",
+                "name": "dad",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "801_ralphlivingroom/bj1.webp"
+            }, 801);
             break;
         case "reset":
             char.room(801);
@@ -426,6 +451,33 @@ room801.chat = function (chatID) {
                 "have to see some other time. ",
             button: [
                 { chatID: -1, text: "OOooooo. Sounds dirty", callback: "kissgood" },
+            ]
+        },
+        {
+            chatID: 22,
+            speaker: "ralphsdad",
+            text: "I'm so glad you came by! I've been thinking about those lips around my dick all day. ",
+            button: [
+                { chatID: 23, text: "[Get down on your knees and suck his dick]", callback: "bj0" },
+                { chatID: -1, text: "That's hot, could we do a three some instead? ", callback: "3some" },
+                { chatID: -1, text: "Just came to visit " + sc.n("ralph"), callback: "ralphRoom" },
+            ]
+        },
+        {
+            chatID: 23,
+            speaker: "ralphsdad",
+            text: "Oh perfect. Love that you just get down on your knees to suck me off. You're so perfect.",
+            button: [
+                { chatID: 24, text: "*slurp* *suck* mmhmm *slurp*", callback: "bj1" },
+            ]
+        },
+        {
+            chatID: 24,
+            speaker: "ralphsdad",
+            text: "Oh shit. Feels so good. You're such a great side piece. Love I can just get a bj when ever " +
+                "I need. Fuck that's good. You'll make a bad man really happy some day. ",
+            button: [
+                { chatID: -1, text: "*slurp* mmhhhmmm *gulp*", callback: "reset" },
             ]
         },
     ];

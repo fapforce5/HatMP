@@ -204,6 +204,8 @@ room27.btnclick = function (name) {
             cl.display();
             nav.kill();
             zcl.displayMirror();
+
+            sc.select("menu", "27_mirror/icon_main.png", 12);
             sc.select("makeup", "27_mirror/icon_makeup.png", 13);
             break;
         case "eyeliner_light":
@@ -224,6 +226,7 @@ room27.btnclick = function (name) {
             cl.display();
             nav.kill();
             zcl.displayMirror();
+            sc.select("menu", "27_mirror/icon_main.png", 12);
             sc.select("eyeshadow", "27_mirror/icon_eyeshadow.png", 13);
             break;
         case "lipstick_red":
@@ -243,6 +246,7 @@ room27.btnclick = function (name) {
             cl.display();
             nav.kill();
             zcl.displayMirror();
+            sc.select("menu", "27_mirror/icon_main.png", 12);
             sc.select("lipstick", "27_mirror/icon_lipstick.png", 13);
             break;
         case "save":

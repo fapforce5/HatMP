@@ -25,8 +25,13 @@ room802.main = function () {
         nav.button(v, 802);
     });
     nav.buildnav([801, 0]);
-    sc.select("game", "802_ralphbedroom/icon_game.webp", 0);
-    sc.select("chat", "752_whore/whore_chat.png", 1);
+    if (inv.has("blackDildo") && !daily.get("803bbcdildo") && sc.getMissionTask("ralph", "room", 1).notStarted) {
+        chat(10, 802);
+    }
+    else {
+        sc.select("game", "802_ralphbedroom/icon_game.webp", 0);
+        sc.select("chat", "752_whore/whore_chat.png", 2);
+    }
 };
 
 room802.btnclick = function (name) {
@@ -45,7 +50,10 @@ room802.btnclick = function (name) {
             break;
         case "chat":
             room802.btnclick("killbtns");
-            if (daily.get("ralphChat")) {
+            if (sc.getMissionTask("ralph", "room", 0).notStarted) {
+                chat(17, 802);
+            }
+            else if (daily.get("ralphChat")) {
                 chat(5, 802);
             }
             else {
@@ -64,6 +72,10 @@ room802.btnclick = function (name) {
 room802.chatcatch = function (callback) {
     switch (callback) {
         case "rand1_0":
+            nav.bg("802_ralphbedroom/" + callback + ".webp");
+            break;
+        case "bbc0":
+            nav.kill();
             nav.bg("802_ralphbedroom/" + callback + ".webp");
             break;
         case "settlers":
@@ -87,6 +99,15 @@ room802.chatcatch = function (callback) {
             break;
         case "good":
             sc.modLevel("ralph", 34, 7);
+            char.room(802);
+            break;
+        case "blackdildobadend":
+            sc.completeMissionTask("ralph", "room", 1, false);
+            char.room(802);
+            break;
+        case "blackdildogoodend":
+            sc.completeMissionTask("ralph", "room", 1);
+            char.addtime(20);
             char.room(802);
             break;
         case "leave":
@@ -191,7 +212,7 @@ room802.chat = function (chatID) {
                 speaker: "ralph",
                 text: "No! No way! None of your business! Get out!! GET OUT!!",
                 button: [
-                    { chatID: -1, text: "ok, ok. I'm going", callback: "leave" },
+                    { chatID: -1, text: "ok, ok. I'm going. Also I'm never going to sit in that chair. ", callback: "leave" },
                 ]
             },
             {
@@ -208,6 +229,102 @@ room802.chat = function (chatID) {
                 text: "Get out! get out get out get out get out get out get out!!!",
                 button: [
                     { chatID: -1, text: "ok. I'm going", callback: "leave" },
+                ]
+            },
+            {
+                chatID: 10,
+                speaker: "ralph",
+                text: "Oh man! I just got yelled at for stealing my mom's dildo! But " +
+                    "you know what, I didn't steal it. The only other person in the house " +
+                    "was you. Did you steal her dildo? ",
+                button: [
+                    { chatID: 12, text: "Oh no. I'm so sorry. I just wanted to look at it.", callback: "" },
+                    { chatID: 11, text: "Nope. Wasn't me", callback: "" },
+
+                ]
+            },
+            {
+                chatID: 11,
+                speaker: "ralph",
+                text: "ok. It wasn't me. I guess she may have lost it. ",
+                button: [
+                    { chatID: -1, text: "Yeah. Must have", callback: "blackdildobadend" },
+                ]
+            },
+            {
+                chatID: 12,
+                speaker: "ralph",
+                text: "Oh man! I go in so much trouble! I even said you took it, but they " +
+                    "didn't believe me! So do you have it?",
+                button: [
+                    { chatID: 13, text: "Yeah. Why?", callback: "" },
+                ]
+            },
+            {
+                chatID: 13,
+                speaker: "ralph",
+                text: "I want to see it. I never knew my mom had a dildo. I want to see it. " +
+                    "My dad totally took my Blade model and threw him in the trash. So embarrassing. " +
+                    "You owe me, let me see my mom's dildo. ",
+                button: [
+                    { chatID: 14, text: "Yeah, here it is. ", callback: "bbc0" },
+                ]
+            },
+            {
+                chatID: 14,
+                speaker: "ralph",
+                text: "*sniff* Huh. Smells kinda funky. I wonder if this is what my " +
+                    "mom smells like. You know I've never smelled a real pussy. I've " +
+                    "never seen one either. ",
+                button: [
+                    { chatID: 15, text: "Really? ", callback: "" },
+                ]
+            },
+            {
+                chatID: 15,
+                speaker: "ralph",
+                text: "I think i saw one kind of at the beach. This one girl was sunbathing " +
+                    "and she rolled over and I'm pretty sure part of her pussy slipped out and " +
+                    "I saw half of it. It was pretty cool. Almost as good as that time I was at " +
+                    "the beach and this girl's bikini top slipped down in a wave and I saw her boobs. " +
+                    "Like full on total boobs. That was amazing. So do you think I can have it? To keep? ",
+                button: [
+                    { chatID: 16, text: "Have it? Your mom's dildo? ", callback: "" },
+                ]
+            },
+            {
+                chatID: 16,
+                speaker: "ralph",
+                text: "What? uh, no. Never mind. Put it away. You want to play some " +
+                    "games? ",
+                button: [
+                    { chatID: -1, text: "Totally! ", callback: "blackdildogoodend" },
+                ]
+            },
+            {
+                chatID: 17,
+                speaker: "ralph",
+                text: "I was wondering when you would come by! This is my room! ",
+                button: [
+                    { chatID: 18, text: "You have a lot of stuff ", callback: "" },
+                ]
+            },
+            {
+                chatID: 18,
+                speaker: "ralph",
+                text: "Yeah. My dad says I have too many toys and I need to get a job, but all the jobs " +
+                    "in this town are so lame. He's just mad becuase he has to travel for work on Friday, " +
+                    "Saturday, and Sunday. The good thing is here not here to give me a hard time. ",
+                button: [
+                    { chatID: 19, text: "Totally ", callback: "" },
+                ]
+            },
+            {
+                chatID: 19,
+                speaker: "ralph",
+                text: "So you want to play a game? I'm totally the best! ",
+                button: [
+                    { chatID: -1, text: "It's on! ", callback: "reset" },
                 ]
             },
         ];

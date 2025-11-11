@@ -37,7 +37,7 @@ room203.main = function () {
         nav.button(v, 203);
     });
     nav.buildnav(navList);
-    if (g.dt.getDay() === 6 && gv.get("sissySchoolClass") === "finalx") {
+    if (g.dt.getDay() === 6 && gv.get("sissySchoolClass") === "finalx" && future.get("sissyfinal") > -1) {
         sc.select("icon_fashion", "203_entrance/icon_fashion.webp", 0)
     }
 };

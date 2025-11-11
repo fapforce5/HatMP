@@ -293,7 +293,7 @@ charisma.itelInit = function (intelLevel, btnPressWin, btnPressLost, roomID) {
         top: 180,
         font: 30,
         hex: "#ffffff",
-        text: "Charisma"
+        text: "Intelligence"
     }, 1);
     nav.t({
         type: "img",

@@ -89,10 +89,11 @@ room103.btnclick = function (name) {
             else if (g.internal === 6)
                 nav.bg("103_constSite/gang6.jpg");
             else {
-                levels.anal("4", false, "m", true, "!man");
-                levels.anal("3", false, "m", true, "!man");
-                levels.anal("2", false, "m", false, "!man");
-                levels.anal("3", false, "m", true, "!man");
+                nav.killbutton("gang");
+                levels.anal(4, false, "m", true, "!man");
+                levels.anal(3, false, "m", true, "!man");
+                levels.anal(2, false, "m", false, "!man");
+                levels.anal(3, false, "m", true, "!man");
                 levels.oral(3, "m", "!man", true);
                 levels.oral(4, "m", "!man", true);
                 levels.oral(3, "m", "!man", true);
@@ -103,6 +104,7 @@ room103.btnclick = function (name) {
                 gv.mod("energy", -999);
                 chat(99, 103);
             }
+            g.internal++;
             break;
     }
 };
@@ -200,7 +202,7 @@ room103.chatcatch = function (callback) {
                     break;
                 default:
                     if (cl.appearance() > 1) {
-                        switch (g.rand(0, 6)) {
+                        switch (g.rand(0, 10)) {
                             case 0:
                                 nav.kill();
                                 nav.bg("103_constSite/rapman0.jpg");
@@ -223,7 +225,7 @@ room103.chatcatch = function (callback) {
                                 nav.bg("103_constSite/worker2.jpg");
                                 chat(90, 103);
                                 break;
-                            case 5:
+                            default:
                                 nav.bg("103_constSite/gang0.jpg");
                                 chat(93, 103);
                                 break;

@@ -67,10 +67,25 @@ room804.btnclick = function (name) {
             chat(14, 804);
             break;
         case "asspull":
-            nav.kill();
-            daily.set("804moms_ass");
-            nav.bg("804_kitchen/cookiesass0.webp");
-            chat(16, 804);
+            if (sc.getMissionTask("ralphsmom", "room", 2).complete
+                && sc.getLevel("ralphsmom") > 5) {
+                nav.kill();
+                daily.set("804moms_ass");
+                //nav.bg("804_kitchen/cookiesass0.webp");
+                //bent over wiggle
+                if (cl.c.chastity === null) {
+
+                }
+                else {
+
+                }
+            }
+            else {
+                nav.kill();
+                daily.set("804moms_ass");
+                nav.bg("804_kitchen/cookiesass0.webp");
+                chat(16, 804);
+            }
             break;
         case "oven":
             nav.kill();
@@ -123,6 +138,7 @@ room804.chatcatch = function (callback) {
             }
             break;
         case "cookie":
+            sc.modLevel("ralphsmom", 15);
             gv.mod("energy", 200);
             break;
         case "bend":
@@ -175,6 +191,7 @@ room804.chatcatch = function (callback) {
             break;
         case "muffdiveEnd":
             levels.oral(3, "f", "ralphsmom");
+            sc.completeMissionTask("ralphsmom", "room", 2);
             gv.mod("energy", 200);
             char.addtime(25);
             break;
@@ -368,8 +385,8 @@ room804.chat = function (chatID) {
         {
             chatID: 20,
             speaker: "ralphsmom",
-            text: "Oh fudge! I miss the feeling of a tongue on my clit. You are one amazing " +
-                "little " + gender.pronoun("boy") + ". Keep going, I need to cum!",
+            text: "Oh fudge! I miss the feeling of a kiss on my fun button. You are one amazing " +
+                "little " + gender.pronoun("boy") + ". Keep going, I need to feel my happy tremor!",
             button: [
                 { chatID: 21, text: "*ignore that hair on your tongue and furiously attack that clit with your tongue technique*", callback: "muffdive2" },
             ]
@@ -385,7 +402,7 @@ room804.chat = function (chatID) {
         {
             chatID: 22,
             speaker: "ralphsmom",
-            text: "I haven't cum like that in ages! Such a great performance deserves " +
+            text: "My happy cord just got strummed for the first time this decade! Such a great performance deserves " +
                 "a cookie! Also you might want to wash your face in the sink, I can smell " +
                 "my honey pot on you",
             button: [

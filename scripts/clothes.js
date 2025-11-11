@@ -84,6 +84,7 @@ cl.init = function () {
         { type: "pants", name: "r", display: "Red Shorts", img: "pants_redShort.png", sex: "m", inv: false, daring: 0, price: 60 },
         { type: "pants", name: "b", display: "Blue Shorts", img: "pants_blueShort.png", sex: "m", inv: true, daring: 0, price: 55 },
         { type: "pants", name: "ps", display: "Pink Shorts", img: "pants_pinkshorts.png", sex: "f", inv: false, daring: 1, price: 78 },
+        { type: "pants", name: "y", display: "Yoga Pants", img: "pants_yoga.png", sex: "f", inv: false, daring: 2, price: -1 },
         { type: "pants", name: "k", display: "Office Skirt", img: "pants_skirt.png", sex: "f", inv: false, daring: 2, price: -1 },
         { type: "pants", name: "ss", display: "Sissy School Skirt", img: "pants_sissy.png", sex: "f", inv: false, daring: 2, price: -1 },
         { type: "pants", name: "d", display: "Polka Dot Dress", img: "pants_polka.png", sex: "f", inv: false, daring: 2, price: 160 },
@@ -606,7 +607,7 @@ cl.hasoutfit = function (ctype) {
                 missingClothing.push("running shoes");
             if (!(cl.c.shirt === "g" || cl.c.shirt === "c" || cl.c.shirt === "p" || cl.c.shirt === "w" || cl.c.shirt === "pt" || cl.c.shirt === "gg" || cl.c.shirt === "cl"))
                 missingClothing.push("t-shirt");
-            if (!(cl.c.pants === "r" || cl.c.pants === "b" || cl.c.pants === "ps" || cl.c.pants === "cl"))
+            if (!(cl.c.pants === "r" || cl.c.pants === "b" || cl.c.pants === "ps" || cl.c.pants === "cl" || cl.c.pants === "y"))
                 missingClothing.push("shorts");
             break;
         case "public":
@@ -644,6 +645,15 @@ cl.hasoutfit = function (ctype) {
                 missingClothing.push("PJs");
             if (cl.c.bra !== null)
                 missingClothing.push("bra");
+            break;
+        case "contruction":
+            if (!(cl.c.pants === "j" || cl.c.pants === "y" || cl.c.pants === "dd" || cl.c.pants === "pl")) {
+                missingClothing.push("work pants");
+            }
+            if (!(cl.c.shirt === "g" || cl.c.shirt === "c" || cl.c.shirt === "p" || cl.c.shirt === "w" || cl.c.shirt === "ss" || cl.c.shirt === "pt" || cl.c.shirt === "gg")) {
+                missingClothing.push("t-shirt");
+            }
+
             break;
         case "swim":
         case "swimsuit":
@@ -769,7 +779,7 @@ cl.hasoutfit = function (ctype) {
     //}
     if (outerWearSexy.length > 0 && ctype !== "officegirl") {
         var owsString = outerWearSexy.join(", ");
-        retMissing = ' <span class="hl"> self aweness! I don\' feel comfortable wearing this ' + owsString + ".</span>";
+        retMissing = ' <span class="hl"> self aweness! I don\' feel comfortable wearing these ' + owsString + ".</span>";
     }
     else if (retMissing !== null)
         retMissing = ' <span class="hl">' + retMissing + '</span>';
@@ -1179,6 +1189,13 @@ cl.pants = [
     { name: "pl1", leg: 2, image: "dress_pl1_b_1.png", back: "dress_pl_b_2_back.png" },
     { name: "pl1", leg: 1, image: "dress_pl1_b_1.png", back: "dress_pl_b_0_back.png" },
     { name: "pl1", leg: 0, image: "dress_pl1_b_0.png", back: "dress_pl_b_0_back.png" },
+
+    { name: "y", leg: 5, image: "dress_y_5.png", back: "dress_y_5_back.png" },
+    { name: "y", leg: 4, image: "dress_y_4.png", back: "dress_y_4_back.png" },
+    { name: "y", leg: 3, image: "dress_y_3.png", back: "dress_y_3_back.png" },
+    { name: "y", leg: 2, image: "dress_y_1.png", back: "dress_y_2_back.png" },
+    { name: "y", leg: 1, image: "dress_y_1.png", back: "dress_y_0_back.png" },
+    { name: "y", leg: 0, image: "dress_y_0.png", back: "dress_y_0_back.png" }
 ];
 
 cl.wig = [
@@ -2064,7 +2081,7 @@ cl.shave = function () {
 cl.noDickPants = function () {
     if (cl.c.pants === null)
         return false;
-    let noDickPantsx = ["s", "j", "b", "r", "dd", "p", "ps", "pl", "pl1"];
+    let noDickPantsx = ["s", "j", "b", "r", "dd", "p", "ps", "pl", "pl1", "y"];
     return noDickPantsx.includes(cl.c.pants);
 };
 

@@ -388,7 +388,7 @@ g.rooms = [
     { roomID: 801, name: "R Living Room", image: "801_ralphlivingroom/bg.webp", nightImage: "801_ralphlivingroom/bg.webp", houseID: 800, btn: "roomBtn_801.png" },
     { roomID: 802, name: "R Bedroom", image: "802_ralphbedroom/bg.webp", nightImage: "802_ralphbedroom/bg.webp", houseID: 800, btn: "roomBtn_802.png" },
     { roomID: 803, name: "R Parents", image: "803_parentbedroom/bg.webp", nightImage: "803_parentbedroom/bg.webp", houseID: 800, btn: "roomBtn_803.png" },
-    { roomID: 804, name: "R Kitchen", image: "804_kitchen/bg.webp", nightImage: "804_kitchen/bg_night.webp", houseID: 800, btn: "roomBtn_804.png" },
+    { roomID: 804, name: "R Kitchen", image: "804_kitchen/bg.webp", nightImage: "804_kitchen/bg.webp", houseID: 800, btn: "roomBtn_804.png" },
 
     { roomID: 825, name: "Dirty Lot", image: "825_lot/bg.jpg", nightImage: "825_lot/bg_night.jpg", houseID: 825, btn: "roomBtn_825.png" },
 

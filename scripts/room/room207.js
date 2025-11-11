@@ -44,7 +44,7 @@ room207.main = function () {
         "image": gv.get("sissyfinal_pageant") === null ? "207_door/pageant.webp" : "207_door/pageant_x.webp",
     }, 207);
     nav.buildnav([203, 0]);
-    if (g.dt.getDay() === 6 && gv.get("sissySchoolClass") === "finalx") {
+    if (g.dt.getDay() === 6 && gv.get("sissySchoolClass") === "finalx" && future.get("sissyfinal") > -1) {
         sc.select("door_pink", "207_door/icon_fashion.webp", 0)
     }
     else if (sissy.st[21].ach) {

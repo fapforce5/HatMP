@@ -428,12 +428,6 @@ room28.future = function () {
                     if (gv.get("sissyfinal_pageant") === null)
                         gv.set("sissyfinal_pageant", false);
                     break;
-                case "ralphsdadworktrip":
-                    future.add("ralphsdadworktripback", 7);
-                    break;
-                case "ralphsdadworktripback":
-                    future.add("ralphsdadworktrip", 7);
-                    break;
             }
             future.st.splice(i, 1);
         }

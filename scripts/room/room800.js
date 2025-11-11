@@ -5,10 +5,27 @@ room800.main = function () {
         chat(47, 800);
         return;
     }
-    if (!sc.char[sc.i("ralphsmom")].show) {
-        sc.show("ralphsmom");
-        sc.show("ralphsdad");
-        sc.show("ralph");
+    else if (daily.get("803caught")) {
+        chat(48, 800);
+        return;
+    }
+    else if (future.get("803caught") > -1 && !g.isNight()) {
+        if (sc.getTimeline("ralphsdad").roomID > -1) {
+            nav.bg("800_ralph/3some.webp");
+            chat(49, 800);
+        }
+        else {
+            nav.button({
+                "type": "img",
+                "name": "watering",
+                "left": 746,
+                "top": 72,
+                "width": 601,
+                "height": 1008,
+                "image": "800_ralph/ralphmom.png"
+            }, 800);
+            chat(55, 800);
+        }
     }
     if (g.pass === "noRalphReset") {
         g.pass = null;
@@ -19,35 +36,56 @@ room800.main = function () {
     var btnList = new Array();
     var activeCase = missy.activecase();
     if (!g.isNight()) {
-        btnList.push({
-            "type": "btn",
-            "name": "door",
-            "left": 772,
-            "top": 436,
-            "width": 97,
-            "height": 197,
-            "image": "800_ralph/door.png",
-            "night": "800_ralph/door_night.png"
-        });
-        if (sc.getTimeline("ralphsmom").thisRoom) {
+        if (sc.getMission("ralphsmom", "room").notStarted) {
+            sc.startMission("ralphsmom", "room");
+            sc.completeMissionTask("ralphsmom", "room", 0);
+            sc.show("ralphsmom");
+            sc.show("ralphsdad");
+            sc.show("ralph");
+            nav.button({
+                "type": "img",
+                "name": "watering",
+                "left": 746,
+                "top": 72,
+                "width": 601,
+                "height": 1008,
+                "image": "800_ralph/ralphmom.png"
+            }, 800);
+            chat(0, 800);
+        }
+        else {
             btnList.push({
                 "type": "btn",
-                "name": "watering",
-                "left": 1018,
-                "top": 386,
-                "width": 333,
-                "height": 579,
-                "image": "800_ralph/watering.png"
+                "name": "door",
+                "left": 772,
+                "top": 436,
+                "width": 97,
+                "height": 197,
+                "image": "800_ralph/door.png",
+                "night": "800_ralph/door_night.png"
             });
-            btnList.push({
-                "type": "hand",
-                "name": "wass",
-                "left": 1018,
-                "top": 503,
-                "width": 101,
-                "height": 102,
-                "image": "800_ralph/wass.png"
-            });
+            if (sc.getTimeline("ralphsmom").thisRoom) {
+                btnList.push({
+                    "type": "btn",
+                    "name": "watering",
+                    "left": 1018,
+                    "top": 386,
+                    "width": 333,
+                    "height": 579,
+                    "image": "800_ralph/watering.png"
+                });
+                if (!daily.get("800wass")) {
+                    btnList.push({
+                        "type": "hand",
+                        "name": "wass",
+                        "left": 1018,
+                        "top": 503,
+                        "width": 101,
+                        "height": 102,
+                        "image": "800_ralph/wass.png"
+                    });
+                }
+            }
         }
     }
     
@@ -90,35 +128,17 @@ room800.btnclick = function (name) {
             sc.select("gift", "252_waitress/icon_gift.png", 0);
             sc.select("chat", "252_waitress/icon_chat.png", 1);
             sc.select("dick", "752_whore/whore_dick.png", 2);
-            sc.selectCancel("cancel",3);
+            if (sc.getMissionTask("ralphsmom", "main", 4).complete && !daily.get("room800dad")) {
+                sc.select("sissy", "800_ralph/icon_middle.webp", 3);
+                sc.selectCancel("cancel", 4);
+            }
+            else
+                sc.selectCancel("cancel", 3);
             break;
         case "wass":
             nav.killbutton("wass");
-            if (sc.getSecret("ralphsmom").secretOut) {
-                nav.killbutton("watering");
-                nav.button({
-                    "type": "img",
-                    "name": "watering",
-                    "left": 746,
-                    "top": 72,
-                    "width": 601,
-                    "height": 1008,
-                    "image": "800_ralph/ralphmom.png"
-                }, 800);
-                nav.killbutton("door");
-                nav.button({
-                    "type": "btn",
-                    "name": "door",
-                    "left": 772,
-                    "top": 436,
-                    "width": 97,
-                    "height": 197,
-                    "image": "800_ralph/door.png",
-                    "night": "800_ralph/door_night.png"
-                }, 800);
-                chat(29, 800);
-            }
-            else if (sc.getLevel("ralphsmom") < 3) {
+            daily.set("800wass");
+            if (sc.getLevel("ralphsmom") < 3) {
                 if (!daily.get("spankRalphsMom")) {
                     daily.set("spankRalphsMom");
                     sc.modLevel("ralphsmom", 25, 3);
@@ -429,6 +449,13 @@ room800.chatcatch = function (callback) {
                 "night": "800_ralph/door_night.png"
             }, 800);
             break;
+        case "3someTalkEnd":
+            sc.completeMissionTask("ralphsmom", "room", 4);
+            sc.completeMissionTask("ralphsdad", "main", 6);
+            char.addtime(30);
+            future.kill("803caught");
+            char.room(800);
+            break;
         case "leave":
             char.room(0);
             break;
@@ -464,8 +491,8 @@ room800.chat = function (chatID) {
                 "Don't you just look " + gender.pronoun("pretty") + " today. I could gobble you up! hehehe",
                 "You look hungry. You should come back when I'm in the kitchen. I do make some delicious cookies. ",
                 "My husband is always saying I spend too much time with my flowers. Well you know what! They're the best flowers on this block!",
-                "I do wish my husband didn't travel so much for work. It seems like he's here one week, gone the next. ",
-                "My husband's always traveling for work. I do get so lonely when he's gone."
+                "I do wish my husband didn't travel so much for work. He's gone Friday, Saturday, and Sunday. ",
+                "My husband's always traveling for work Friday thru Sunday. I do get so lonely when he's gone."
             ];
             if (cl.appearance() < 2) {
                 carray.push("I bet a handsome boy like you gets all the girls. If I was younger.. ooo. If I was younger. ");
@@ -490,8 +517,8 @@ room800.chat = function (chatID) {
         else {//if (ml < 6) {
             carray = [
                 "Don't you just look " + gender.pronoun("pretty") + " today. I could gobble you up! hehehe",
-                "I do wish my husband didn't travel so much for work. It seems like he's here one week, gone the next. ",
-                "My husband's always traveling for work. I do get so lonely when he's gone."
+                "I do wish my husband didn't travel so much for work. He's gone Friday, Saturday, and Sunday. ",
+                "My husband's always traveling for work Friday thru Sunday. I do get so lonely when he's gone."
             ];
             if (cl.appearance() < 2) {
                 carray.push("Well aren't you looking sexy today. ");
@@ -783,7 +810,7 @@ room800.chat = function (chatID) {
         {
             chatID: 30,
             speaker: "ralphsmom",
-            text: "oh! oh my. You smacked my butt. I'm sure you didn't mean to. " +
+            text: "oh! oh my. Did you just swat my apple?. I'm sure you didn't mean to. " +
                 sc.n("ralph") + "'s upstairs in his room again. ",
             button: [
                 { chatID: -1, text: "ok", callback: "choices" }
@@ -801,7 +828,7 @@ room800.chat = function (chatID) {
             chatID: 32,
             speaker: "ralphsmom",
             text: "Oh no. You're one of those sissies aren't you. If you're going to show your caged " +
-                "penis to a girl, I hope you are extremely good at oral. hahaha. " +
+                "penis to a girl, I hope you are extremely good at licking her fun bean. hahaha. " +
                 "I guess it makes sense that my little " + sc.n("ralph") + " would " +
                 "have a sissy friend. He's a bit of a sissy too, but I'm sure you already know that. ",
             button: [
@@ -811,7 +838,7 @@ room800.chat = function (chatID) {
         {
             chatID: 33,
             speaker: "ralphsmom",
-            text: "Oh my, that does look nice... I mean put your penis away. " +
+            text: "Oh my, that does look nice... I mean put your fun stick away. " +
                 "Why would you pull that out, out here! ",
             button: [
                 { chatID: -1, text: "Yes ma'am", callback: "reset" }
@@ -829,10 +856,10 @@ room800.chat = function (chatID) {
             chatID: 35,
             speaker: "ralphsmom",
             text: "Oh honey. Look at the tiny little penis. You poor thing. I do hope " +
-                "you are good with oral becuase " +
+                "you are good giving the lotus a kiss becuase " +
                 "no girl's going to want to have that inside her. You can do what " +
                 sc.n("ralph") + " does and just be a sissy. It's really not all that bad. " +
-                "It'll be hard at first, but practice putting a dildo in your butt and in no " +
+                "It'll be hard at first, but practice putting a joy stick in your tushie and in no " +
                 "time you'll find your real self. I know you can do it! ",
             button: [
                 { chatID: -1, text: "Oh. Thanks?", callback: "reset" }
@@ -841,7 +868,7 @@ room800.chat = function (chatID) {
         {
             chatID: 36,
             speaker: "ralphsmom",
-            text: "Oh you lovely young man! I do love flowers!  ",
+            text: "Oh you lovely young " + gender.pronoun("boy") + "! I do love flowers!  ",
             button: [
                 { chatID: -1, text: "You're welcome!", callback: "reset" }
             ]
@@ -857,8 +884,8 @@ room800.chat = function (chatID) {
         {
             chatID: 38,
             speaker: "ralphsmom",
-            text: gender.pronoun("boy") + "s and their penises. Always looking to " +
-                "cum. Does it feel good when I rub it?  ",
+            text: gender.pronoun("boy") + "s and their fun sticks. Always looking for " +
+                "a happy ending. Does it feel good when I rub it?  ",
             button: [
                 { chatID: 39, text: "So good..", callback: "cockgrab0" }
             ]
@@ -866,7 +893,7 @@ room800.chat = function (chatID) {
         {
             chatID: 39,
             speaker: "ralphsmom",
-            text: "I bet you want me to keep rubbing it till you cum, don't you? ",
+            text: "I bet you want me to keep rubbing it till you finish, don't you? ",
             button: [
                 { chatID: -1, text: "So much..", callback: "cockgrab2checkdad" }
             ]
@@ -909,7 +936,7 @@ room800.chat = function (chatID) {
             chatID: 44,
             speaker: "ralphsmom",
             text: "It's a good thing my husband is away on business. He would be so " +
-                "pissed if he caught me giving my little boy's friend a hand job in " +
+                "angry with me if he caught me giving my little boy's friend ticke time in " +
                 "the garden. hehehe",
             button: [
                 { chatID: 45, text: "...totally, keep going ", callback: "cockgrab10" }
@@ -918,8 +945,8 @@ room800.chat = function (chatID) {
         {
             chatID: 45,
             speaker: "ralphsmom",
-            text: "You like it when I rub your penis like this? My husband hates hand jobs. " +
-                "He says it's the pussy or nothing. I do love feeling a hard cock in my " +
+            text: "You like it when I rub your fun stick like this? My husband hates that. " +
+                "He says it's the honey pot or nothing. I do love your silk missle in my " +
                 "hand. And I'm great at hand jobs too!",
             button: [
                 { chatID: 46, text: "...*ugh* so good... ", callback: "cockgrab11" }
@@ -928,9 +955,9 @@ room800.chat = function (chatID) {
         {
             chatID: 46,
             speaker: "ralphsmom",
-            text: "Hehehe. See I told you I was good at hand jobs. I've got you cum all over " +
-                "my pussy. Gotta go change. I hope " + sc.n("ralph") + " doesn't see me going " +
-                "to my room with your cum all over me. ",
+            text: "Hehehe. See I told you I was good at using my hands. I've got your victory splash all over " +
+                "my honey pot. Gotta go change. I hope " + sc.n("ralph") + " doesn't see me going " +
+                "to my room with your splash all over me. ",
             button: [
                 { chatID: -1, text: "*huff* so good", callback: "cockgrabcum" }
             ]
@@ -941,6 +968,80 @@ room800.chat = function (chatID) {
             text: "I'm going to put some clothes on before going to my friend's house. ",
             button: [
                 { chatID: -1, text: "...", callback: "leave" }
+            ]
+        },
+        {
+            chatID: 48,
+            speaker: "thinking",
+            text: "There's no way I'm going back here today. I think I've caused enough problems for a day. ",
+            button: [
+                { chatID: -1, text: "...", callback: "leave" }
+            ]
+        },
+        {
+            chatID: 49,
+            speaker: "ralphsmom",
+            text: "We were wondering when you would show up again.  ",
+            button: [
+                { chatID: 50, text: "...? yes", callback: "" }
+            ]
+        },
+        {
+            chatID: 50,
+            speaker: "ralphsdad",
+            text: "My wife and I had a long talk after you snuck away and we've come to an understanding. ",
+            button: [
+                { chatID: 51, text: "...and are you two mad at me?", callback: "" }
+            ]
+        },
+        {
+            chatID: 51,
+            speaker: "ralphsmom",
+            text: "Well, at first I was, but then I had to remind myself that I was just as guilty as my " +
+                "husband. Just a bit better at not getting caught with penis in a sissy hehehe.",
+            button: [
+                { chatID: 52, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 52,
+            speaker: "ralphsdad",
+            text: "Yeah. Women really are better at keeping secrets. But we agree that our sex life wasn't " +
+                "right for us and we both want different things and that's ok to want different things. We " +
+                "just have to work together to solve our needs. ",
+            button: [
+                { chatID: 53, text: "hmm?", callback: "" }
+            ]
+        },
+        {
+            chatID: 53,
+            speaker: "ralphsmom",
+            text: "Yes. We do have different needs. I need more foreplay  and oral. He needs to put it in a butt. So if " +
+                "you're interested we would love to use you to fulfill both our desires. You've already shown " +
+                "to be amazing at what you do with each of us, we would like to share you togther. But we do " +
+                "need you to keep a secret from our little one and our neighbors. We would like to keep our " +
+                "sex life private. ",
+            button: [
+                { chatID: 54, text: "I won't tell a soul.", callback: "" }
+            ]
+        },
+        {
+            chatID: 54,
+            speaker: "ralphsdad",
+            text: "Wonderful! We've agreed we can our little events with you, and if you're feeling up to it, " +
+                "we can all get together for some fun times. Just ask either of us. ",
+            button: [
+                { chatID: -1, text: "That's hot! I will.", callback: "3someTalkEnd" }
+            ]
+        },
+        {
+            chatID: 55,
+            speaker: "ralphsmom",
+            text: "I'm so happy you've decided to come back. My husband and I were talking and we agreed to " +
+                "speak to you together. Once he gets back we'll talk. You can play with " + sc.n("ralph") + 
+                " when he's out playing. ",
+            button: [
+                { chatID: -1, text: "ok. I'll come back when your husband's home. ", callback: "leave" }
             ]
         },
     ];
