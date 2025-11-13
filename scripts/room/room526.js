@@ -1,6 +1,12 @@
 ﻿//Room name
 var room526 = {};
 room526.main = function () {
+    if (sc.getMissionTask("ralph", "room", 7).inProgress) {
+        sc.completeMissionTask("ralph", "room", 7);
+        nav.bg("526_bar/ralph0.webp");
+        chat(77, 526);
+        return;
+    }
     var btnList = [{
         "type": "btn",
         "name": "zoey",
@@ -51,6 +57,31 @@ room526.main = function () {
         });
     }
 
+    if (sc.getMissionTask("ralph", "room", 7).complete && g.rand(0, 2) === 0) {
+        if (g.rand(0, 3) === 0 && !daily.get("526spankychat")) {
+            btnList.push({
+                "type": "btn",
+                "name": "ralph_1",
+                "left": 559,
+                "top": 381,
+                "width": 201,
+                "height": 515,
+                "image": "526_bar/ralph_1.webp"
+            });
+        }
+        else {
+            btnList.push({
+                "type": "btn",
+                "name": "ralph_0",
+                "left": 559,
+                "top": 381,
+                "width": 201,
+                "height": 515,
+                "image": "526_bar/ralph_0.webp"
+            });
+        }
+    }
+
     $.each(btnList, function (i, v) {
         nav.button(v, 526);
     });
@@ -75,7 +106,12 @@ room526.btnclick = function (name) {
                 }
             }
             else if (sc.getLevel("zoey") > 4 && sc.getMission("zoey", "cheating").success)
-                chat(31, 526);
+                if (future.get("802ralphjob") > -1) {
+                    chat(73, 526);
+                }
+                else {
+                    chat(31, 526);
+                }
             else
                 chat(30, 526);
             break;
@@ -204,6 +240,23 @@ room526.btnclick = function (name) {
                 case 4: nav.bg("526_bar/sex3_6.jpg"); nav.killall(); chat(72, 526); break;
             }
             g.internal++;
+            break;
+        case "ralph_1":
+            nav.kill();
+            daily.set("526spankychat");
+            nav.bg("526_bar/ralph1.webp");
+            if (sc.getMissionTask("ralph", "room", 8).notStarted) {
+                sc.completeMissionTask("ralph", "room", 8);
+                chat(81, 526);
+            }
+            else {
+                chat(87, 526);
+            }
+            break;
+        case "ralph_0":
+            nav.kill();
+            nav.bg("526_bar/ralph0.webp");
+            chat(90, 526);
             break;
         default:
             break;
@@ -380,6 +433,12 @@ room526.chatcatch = function (callback) {
             char.room(28);
             break;
         case "reset":
+            char.room(526);
+            break;
+        case "ralphEnd1":
+            future.kill("802ralphjob");
+            sc.completeMissionTask("ralph", "room", 5);
+            sc.startMissionTask("ralph", "room", 6);
             char.room(526);
             break;
         case "leave":
@@ -1045,6 +1104,181 @@ room526.chat = function (chatID) {
                 "Now we go to bed. ",
             button: [
                 { chatID: -1, text: "Sure!", callback: "s4_end" },
+            ]
+        },
+        {
+            chatID: 73,
+            speaker: "zoey",
+            text: "If it isn't my BFF! So glad you came! Have a drink and hang out! ",
+            button: [
+                { chatID: 74, text: "Hey, best girlfriend. Any chance you could hire my buddy to help you?", callback: "" },
+                { chatID: 32, text: "Hey, do you want me to help you clean up?", callback: "" },
+                { chatID: -1, text: "Totally!", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 74,
+            speaker: "zoey",
+            text: "Huh? Are they any good? I hired help once and they just spent the entire shift blowing up" +
+                "all the penis they can. Cette fainéante n'a même pas lavé une seule tasse",
+            button: [
+                { chatID: 75, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 75,
+            speaker: "zoey",
+            text: "I'm not promising they're not going to blow up a penis, but my friend, " + sc.n("ralph") +
+                ", will totally clean stuff. She's a good girl and really good at doing what you tell her " +
+                "to. ",
+            button: [
+                { chatID: 76, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 76,
+            speaker: "zoey",
+            text: "Hmmm... If it was for anyone but you I would answer no. But you. You have my heart, so I " +
+                "will answer yes. Let this " + sc.n("ralph") + " know. Let him know he'll be a barback and only clean. " +
+                "No make drinks. That is for me. ",
+            button: [
+                { chatID: -1, text: "Sweet. I'll let him know. ", callback: "ralphEnd1" }
+            ]
+        },
+        {
+            chatID: 77,
+            speaker: "me",
+            text: "Looking good girl!",
+            button: [
+                { chatID: 78, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 78,
+            speaker: "ralph",
+            text: "Thanks. hehe. I first came by with a kilt and " + sc.n("zoey") + " told me I had to try " +
+                "harder. She totally took me to the store to get it! I've never bought girl's clothes before. " +
+                "I was so scared, but having " + sc.n("zoey") + " there totally made it easier. Do you think " +
+                "she's into me? She did talk to me. I'm so in love with her. ",
+            button: [
+                { chatID: 79, text: "Oh. Are you going to steal my girlfriend away from me? ", callback: "" }
+            ]
+        },
+        {
+            chatID: 79,
+            speaker: "ralph",
+            text: "oh yeah. hahaha. I was just kidding. But she is really hot! Maybe she has a friend that's into " +
+                "a girl like me. That would be awesome. I think I'm a lesbian, but I'm not sure. What's it called " +
+                "when you fall for anyone that just loves you. Doesn't matter the gender? ",
+            button: [
+                { chatID: 80, text: "Oh. I guess it depends on the person. Some would say bi, others would say reciprosexual. ", callback: "" }
+            ]
+        },
+        {
+            chatID: 80,
+            speaker: "ralph",
+            text: "Oh. I guess that makes sense. I've got to wash some dishes! Later! ",
+            button: [
+                { chatID: -1, text: "Later!", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 81,
+            speaker: "spanky",
+            text: "Hey there. Good to see you! You know I always tell " + sc.n("ralph") + " here he needs to " +
+                "get out more. Maybe work with people. I would have hired her, but I totally don't make enough " +
+                "money to hire new help, ya know. People think becuase I own my own business I'm rich, but that's " +
+                "just not true. I'm barely making it. So I'm so happy you got my girl here a job. You know I dated " +
+                "a bartender once a long time ago. She was totally hot too. ",
+            button: [
+                { chatID: 82, text: "Hi " + sc.n("spanky") + ". How'd you get in? ", callback: "" }
+            ]
+        },
+        {
+            chatID: 82,
+            speaker: "spanky",
+            text: "I sell " + sc.n("zoey") + " some of my excess liquor bottles, ya know. I get a good deal from this " +
+                "dude that I'm good friends with and they sell me a bunch of good stuff, ya know. So sometimes I get too " +
+                "much, so I sells them to your friend " + sc.n("zoey") + " for a good price. She makes out and I make out " +
+                "so win, win, ya know. Plus I get to check out all these hot chicks that are totally into my dick! Heheheh. " +
+                "I mean. I totally get to see my girlfriend at work. ",
+            button: [
+                { chatID: 83, text: "Speaking of your girlfriend. " + sc.n("ralph") + ". You know you have cum on your face? ", callback: "" }
+            ]
+        },
+        {
+            chatID: 83,
+            speaker: "ralph",
+            text: "*sigh* I know. " + sc.n("spanky") + " said I had to wear it to prove to everyone that I'm " +
+                "his girlfriend and no one else can fuck me. ",
+            button: [
+                { chatID: 84, text: "Really?", callback: "" }
+            ]
+        },
+        {
+            chatID: 84,
+            speaker: "spanky",
+            text: "Gotta mark my bitches! But she's not my girlfriend. I don't believe in labeling stuff, ya know.  " +
+                "Gotta keep on keeping on. But she's special to me. You're special to me too. You know if you ever " +
+                "want to suck my dick you can. There's a bathroom right over there, if you're into it. " + sc.n("ralph") +
+                "can be there too. I would love for both of you to suck me. Gargle my balls. You ever had your balls " +
+                "gargled? It's the best. Lets me know that a bitch it totally into my cock. Also ass licking. You know why " +
+                "I love it when a bitch licks my ass? 'Cause it means I can do anything to her. Nothing better than some " +
+                "bitch without limits, ya know. So you wanna suck my dick, or lick my ass? ",
+            button: [
+                { chatID: 85, text: "I uhh..", callback: "" }
+            ]
+        },
+        {
+            chatID: 85,
+            speaker: "ralph",
+            text: "Don't you have to go now that you've delivered your liquor? I'm pretty sure " + sc.n("zoey") +
+                " said you can't just hang around. Besides I have to get back to work. ",
+            button: [
+                { chatID: 86, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 86,
+            speaker: "spanky",
+            text: "Ok, ok, ok. I'm out. Catch you bitches later! ",
+            button: [
+                { chatID: -1, text: "yeah. later", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 87,
+            speaker: "me",
+            text: "So I see you've given " + sc.n("spanky") + " another bj. heheh",
+            button: [
+                { chatID: 88, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 88,
+            speaker: "ralph",
+            text: "Yeah. He does have an amazing penis. I've got to get back to it. " + sc.n("spanky") + 
+                " go home. She doesn't want to suck your dick in the bathroom. ",
+            button: [
+                { chatID: 89, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 89,
+            speaker: "spanky",
+            text: "Gotcha. I'll see that ass later tonight. 'cause I'm going to fuck it! Hahahah! Good thing " +
+                "you can't get pregnant or I would have knocked you up a 100 times! 'cause I cum in that ass. " +
+                "Well, gotta go. ",
+            button: [
+                { chatID: -1, text: "Yeah", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 90,
+            speaker: "ralph",
+            text: "Thanks so much for getting me this job!  ",
+            button: [
+                { chatID: -1, text: "You're welcome! ", callback: "reset" }
             ]
         },
     ];

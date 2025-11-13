@@ -7,7 +7,7 @@ room803.main = function () {
         chat(80, 803);
         return;
     }
-    if (sc.getTimeline("ralphsdad").roomID !== null) {
+    if (sc.getTimeline("ralphsdad").roomID !== null && !sc.getTimeline("ralphsmom").thisRoom) {
         if (sc.getMissionTask("ralphsdad", "main", 3).notStarted && !daily.get("803daddick")) {
             nav.bg("803_parentbedroom/no.webp");
             chat(0, 803);
@@ -53,8 +53,8 @@ room803.main = function () {
             "top": 436,
             "width": 406,
             "height": 311,
-            "image": "801_ralphlivingroom/read0.webp"
-        }, 801);
+            "image": "803_parentbedroom/read0.webp"
+        }, 803);
     }
     else {
         var btnList = [
@@ -509,6 +509,7 @@ room803.chatcatch = function (callback) {
         case "anal13":
         case "3some_s1":
         case "3some_s3":
+        case "read5":
             nav.bg("803_parentbedroom/" + callback + ".webp");
             break;
         case "anal0":
@@ -530,17 +531,20 @@ room803.chatcatch = function (callback) {
             break;
         case "read1":
             nav.kill();
-            nav.bg("805_bathroom/peek.webp");
-            if (sc.getTimeline("ralphsdad").roomID < 800) {
+            nav.bg("803_parentbedroom/read1.webp");
+            if (sc.getMissionTask("ralphsmom", "book", 4).complete) {
+                chat(87, 803);
+            }
+            else if (daily.get("803ralphmomfuck")) {
+                chat(86, 803);
+            }
+            else if (sc.getTimeline("ralphsdad").roomID !== null) {
                 chat(53, 803);
             }
             else {
+                daily.set("803ralphmomfuck");
                 chat(54, 803);
             }
-            break;
-        case "read5":
-            g.internal = 6;
-            nav.next("read");
             break;
         case "suck3":
             nav.kill();
@@ -605,6 +609,7 @@ room803.chatcatch = function (callback) {
             break;
         case "bed":
             nav.killall();
+            char.changeMenu("hide", false, true);
             g.internal = {
                 p: 0,
                 kiss: 0,
@@ -1558,6 +1563,26 @@ room803.chat = function (chatID) {
                 "my cake. You did good. Go play with your friend. ",
             button: [
                 { chatID: -1, text: "ok. cool. ", callback: "ralphroom" },
+            ]
+        },
+        {
+            chatID: 86,
+            speaker: "ralphsmom",
+            text: "I'm spent. I'm not a spring chicken anymore. Why don't you go play with my little " + sc.n("ralph") + ". ",
+            button: [
+                { chatID: -1, text: "Sure ", callback: "ralphroom" },
+            ]
+        },
+        {
+            chatID: 87,
+            speaker: "ralphsmom",
+            text: "Oh honey. I like being the object of desire, but if I'm going to let you rub your naked " +
+                "body all over mine I need to feel some pleasure. Now I know you'll find a nice someone that " +
+                "is happy with your size, but I'm going to need something bigger. Surely you're aware how " +
+                "small and limp your fun stick is. It's nice, just not for me. Why don't you go play with " +
+                "my little " + sc.n("ralph") + ", I'm going to work on this book. ",
+            button: [
+                { chatID: -1, text: "oh ok ", callback: "ralphroom" },
             ]
         },
     ];

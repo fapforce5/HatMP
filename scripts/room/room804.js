@@ -67,25 +67,25 @@ room804.btnclick = function (name) {
             chat(14, 804);
             break;
         case "asspull":
-            if (sc.getMissionTask("ralphsmom", "room", 2).complete
-                && sc.getLevel("ralphsmom") > 5) {
-                nav.kill();
-                daily.set("804moms_ass");
-                //nav.bg("804_kitchen/cookiesass0.webp");
-                //bent over wiggle
-                if (cl.c.chastity === null) {
+            //if (sc.getMissionTask("ralphsmom", "room", 2).complete
+            //    && sc.getLevel("ralphsmom") > 5) {
+            //    nav.kill();
+            //    daily.set("804moms_ass");
+            //    //nav.bg("804_kitchen/cookiesass0.webp");
+            //    //bent over wiggle
+            //    if (cl.c.chastity === null) {
 
-                }
-                else {
+            //    }
+            //    else {
 
-                }
-            }
-            else {
+            //    }
+            //}
+            //else {
                 nav.kill();
                 daily.set("804moms_ass");
                 nav.bg("804_kitchen/cookiesass0.webp");
                 chat(16, 804);
-            }
+            //}
             break;
         case "oven":
             nav.kill();
@@ -192,6 +192,7 @@ room804.chatcatch = function (callback) {
         case "muffdiveEnd":
             levels.oral(3, "f", "ralphsmom");
             sc.completeMissionTask("ralphsmom", "room", 2);
+            sc.modLevel("ralphsmom", 51, 10);
             gv.mod("energy", 200);
             char.addtime(25);
             break;

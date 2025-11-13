@@ -128,7 +128,7 @@ room800.btnclick = function (name) {
             sc.select("gift", "252_waitress/icon_gift.png", 0);
             sc.select("chat", "252_waitress/icon_chat.png", 1);
             sc.select("dick", "752_whore/whore_dick.png", 2);
-            if (sc.getMissionTask("ralphsmom", "main", 4).complete && !daily.get("room800dad")) {
+            if (sc.getMissionTask("ralphsmom", "room", 4).complete && !daily.get("room800dad")) {
                 sc.select("sissy", "800_ralph/icon_middle.webp", 3);
                 sc.selectCancel("cancel", 4);
             }

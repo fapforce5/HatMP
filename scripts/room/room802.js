@@ -51,7 +51,41 @@ room802.btnclick = function (name) {
         case "chat":
             room802.btnclick("killbtns");
             if (sc.getMissionTask("ralph", "room", 0).notStarted) {
+                sc.startMission("ralph", "room");
+                sc.completeMissionTask("ralph", "room", 0);
                 chat(17, 802);
+            }
+            else if (sc.getMissionTask("ralph", "room", 6).inProgress) {
+                chat(36, 802);
+            }
+            else if (sissy.st[0].ach && sc.getMissionTask("ralph", "room", 2).notStarted) {
+                if (cl.isCrossdressing()) {
+                    sc.completeMissionTask("ralph", "room", 2, false);
+                    room802.btnclick("chat");
+                    return;
+                }
+                chat(20, 802);
+            }
+            else if (sissy.st[10].ach && sc.getMissionTask("ralph", "room", 3).notStarted) {
+                if (sissy.st[21].ach) {
+                    sc.completeMissionTask("ralph", "room", 3, false);
+                    room802.btnclick("chat");
+                    return;
+                }
+                sc.completeMissionTask("ralph", "room", 3);
+                chat(26, 802);
+            }
+            else if (sissy.st[21].ach && sc.getMissionTask("ralph", "room", 4).notStarted && !daily.get("801ralphjob")) {
+                daily.set("801ralphjob");
+                if (sc.getMissionTask("zoey", "sex", 3).notStarted) {
+                    chat(31, 802);
+                }
+                else {
+                    sc.completeMissionTask("ralph", "room", 4);
+                    sc.startMissionTask("ralph", "room", 5);
+                    future.add("802ralphjob", 999);
+                    chat(32, 802);
+                }
             }
             else if (daily.get("ralphChat")) {
                 chat(5, 802);
@@ -108,6 +142,32 @@ room802.chatcatch = function (callback) {
         case "blackdildogoodend":
             sc.completeMissionTask("ralph", "room", 1);
             char.addtime(20);
+            char.room(802);
+            break;
+        case "showpanties":
+            g.internal = cl.c.pants;
+            cl.c.pants = null;
+            zcl.displayMain(0, 900, .2, "clothes", true);
+            nav.modbutton("ralph", "802_ralphbedroom/ralph1.webp", null, null);
+            if (cl.c.panties === null) {
+                chat(21, 802);
+            }
+            else if (cl.pantiesTxt() === "panties") {
+                chat(24, 802);
+            }
+            else {
+                chat(23, 802);
+            }
+            break;
+        case "dorkReset":
+            cl.c.pants = g.internal;
+            char.room(802);
+            break;
+        case "ralph6complete":
+            sc.completeMissionTask("ralph", "room", 6);
+            sc.startMissionTask("ralph", "room", 7);
+            daily.set("nottodayralph");
+            char.addtime(30);
             char.room(802);
             break;
         case "leave":
@@ -325,6 +385,194 @@ room802.chat = function (chatID) {
                 text: "So you want to play a game? I'm totally the best! ",
                 button: [
                     { chatID: -1, text: "It's on! ", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 20,
+                speaker: "ralph",
+                text: "I'm so excited you're in class too! Don't tell my parents. They think I'm just taking " +
+                    "a class at the community college. I'm just so giddy! I didn't think anyone else I knew " +
+                    "would ever wear panties! Well except for girls, of course. It would be weird if the didn't. " +
+                    "So are you wearing panties now? Can I see???",
+                button: [
+                    { chatID: -1, text: "I total am!", callback: "showpanties" },
+                    { chatID: -1, text: "Oh no. I would never wear panties in public. ", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 21,
+                speaker: "ralph",
+                text: "Dude. You're not wearing any underwear. I can totally see your dork. ",
+                button: [
+                    { chatID: 22, text: "Oh. hahaha. Yeah. Let me put that away. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 22,
+                speaker: "ralph",
+                text: "Please do. And try not to pull your dick out in my room again. I can't imagine what " +
+                    "my dad would say if he walked in on us like this. ",
+                button: [
+                    { chatID: -1, text: "Eeeee yeah. ", callback: "dorkReset" },
+                ]
+            },
+            {
+                chatID: 23,
+                speaker: "ralph",
+                text: "Dude. You're now wearing panties. You're just standing my my room in your underwear? " +
+                    "Please put your pants back on. I don't know what my dad would say if he walked in on us " +
+                    "like this. ",
+                button: [
+                    { chatID: -1, text: "Eeeee yeah. ", callback: "dorkReset" },
+                ]
+            },
+            {
+                chatID: 24,
+                speaker: "ralph",
+                text: "OMG! That's so cute! I mean cute for a dude in panties. I mean.. No. I mean that's " +  
+                    "totally cute! I love it! I'm going to wear panties too. Not right now, but I will. But " +
+                    "your panties look totally cute on you! I should wear panties. I will wear panties! ",
+                button: [
+                    { chatID: 25, text: "Dude, relax. You're free to wear panties when you want. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 25,
+                speaker: "ralph",
+                text: "You're right. But I do love them so so much. I once stole a pair of my mom's panties. " +
+                    "I couldn't help it. They were so silky smooth and cute. I wore them in my room for a " +
+                    "whole hour before I changed back into my underwear. I was going to put them back, but " +
+                    "my dad came home, so I just threw them into the garbage. Mom never asked me about them. " +
+                    "I always wonder if she noticed they disappeared. I really am happy you're in class with me. " +
+                    "I don't know if I could do it alone. ",
+                button: [
+                    { chatID: -1, text: "I'm glad you're there too. ", callback: "dorkReset" },
+                ]
+            },
+            {
+                chatID: 26,
+                speaker: "ralph",
+                text: "That mid-term was BRUTAL!!! Do you know " + sc.n("black") + " tried to put a thingy in my pee hole! " +
+                    "I mean I get the dildo in the butt, but my pee hole! I tapped out right then and there! " +
+                    "No way that was going in. ",
+                button: [
+                    { chatID: 27, text: "She's totally crazy! So why didn't you pick " + sc.n("cecilia") + "'s side?", callback: "" },
+                ]
+            },
+            {
+                chatID: 27,
+                speaker: "ralph",
+                text: "Oh. She's amazing. I could never be as hot as her. I mean, I'm a bigger guy, so I picked the " +
+                    "big guy. No way I'll ever pass as a girl, no matter how much I want to. ",
+                button: [
+                    { chatID: 28, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 28,
+                speaker: "me",
+                text: "Listen. You are a girl. Other people may not know it, but I know it, and you know it. Also every " +
+                    "in class knows it. Even Missy. Girls come in all shapes and sizes. Just becuase you're not a tiny " +
+                    "girl makes you no less a girl. Besides. Some people like bigger girls. Don't ever try to " +
+                    "pretend to be a boy around me. I know you. And I know that you're a girl. You just have to " +
+                    "learn to accept who you really are. ",
+                button: [
+                    { chatID: 29, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 29,
+                speaker: "ralph",
+                text: "Oh yeah. I guess I do. Can I be a girl and still wear my normal clothes? ",
+                button: [
+                    { chatID: 30, text: "You've never heard of a tomboy?", callback: "" },
+                ]
+            },
+            {
+                chatID: 30,
+                speaker: "ralph",
+                text: "Yeah! I'm just a tomboy, girl. I'm not ready for pretty dresses yet. But I can be a tomboy! " +
+                    "Thanks so much! I guess I really am a girl. ",
+                button: [
+                    { chatID: -1, text: "Any time.", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 31,
+                speaker: "ralph",
+                text: "My dad's still pissed at me. He says I need to get a job. Do you know anywhere I can " +
+                    "get one? ",
+                button: [
+                    { chatID: -1, text: "Can't think of any. [Need to complete " + sc.n("zoey") + "'s quest: fuck me please - Mon cœur souffre pour toi", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 32,
+                speaker: "ralph",
+                text: "My dad's still pissed at me. He says I need to get a job. Do you know anywhere I can " +
+                    "get one? ",
+                button: [
+                    { chatID: 33, text: "Hmmm. I know my girlfriend, " + sc.n("zoey") + " could use some help. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 33,
+                speaker: "ralph",
+                text: "Really, What does she do? Whould would I do? ",
+                button: [
+                    { chatID: 34, text: "She owns her own bar and really needs help cleaning up. It's that bar Caravaggio.", callback: "" },
+                ]
+            },
+            {
+                chatID: 34,
+                speaker: "ralph",
+                text: "That's awesome! I tried to go in there once and they told me girls only. I would love to be " +
+                    "around lesbians all the time!",
+                button: [
+                    { chatID: 35, text: "Well... It's not just lesbians. But I'll ask. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 35,
+                speaker: "ralph",
+                text: "Sweet dude. You're the best!",
+                button: [
+                    { chatID: -1, text: "[I just need to go to " + sc.n("zoey") + " at her bar and ask now. ]", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 36,
+                speaker: "me",
+                text: "Oh hey! I talked to " + sc.n("zoey") + " and she said you can have the job. It's a barback, " +
+                    "so you'll only be cleaning. ",
+                button: [
+                    { chatID: 37, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 37,
+                speaker: "ralph",
+                text: "EEEEeeee!!!! Yes! Thank you dude! Do I need to get an apron? Can I wear these clothes, or should I " +
+                    "get something else? What do bar backs wear? ",
+                button: [
+                    { chatID: 38, text: "Oh. You'll have to get a dress. Only people wearing dresses can go in. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 38,
+                speaker: "ralph",
+                text: "Oh. I should have guessed that for a lesbian bar. I guess I'll get a dress. In a way I " +
+                    "am a lesbian. I guess I could look the part. Is a kilt ok?",
+                button: [
+                    { chatID: 39, text: "I don't know. Also it's not quite a lesbian bar, but kind of is. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 38,
+                speaker: "ralph",
+                text: "I'll figure something out. I can just change after I leave. I'm so excited!!! I'll see you there!!",
+                button: [
+                    { chatID: -1, text: "Totally", callback: "ralph6complete" },
                 ]
             },
         ];

@@ -1116,10 +1116,17 @@ sc.charMission = [
     {
         name: "ralph", mission: [
             {
-                missionName: "room", mStatus: 0, title: "Friends", desc: "Playing in my room", task:
+                missionName: "room", mStatus: 0, title: "Chat", desc: "Playing in my room", task:
                     [
                         { id: 0, txt: "First", show: true, mStatus: 0, roomId: 802 },
                         { id: 1, txt: "BBC", show: true, mStatus: 0, roomId: 802 },
+                        { id: 2, txt: "Sissy School, Day 1", show: true, mStatus: 0, roomId: 802 },
+                        { id: 3, txt: "Sissy School, Midterm", show: true, mStatus: 0, roomId: 802 },
+                        { id: 4, txt: "Sissy School, Final - Find a job", show: true, mStatus: 0, roomId: 802 },
+                        { id: 5, txt: "Ask Zoey about a job", show: true, mStatus: 0, roomId: 525 },
+                        { id: 6, txt: "He has the job. Now let him know. ", show: true, mStatus: 0, roomId: 802 },
+                        { id: 7, txt: "Working girl. ", show: true, mStatus: 0, roomId: 526 },
+                        { id: 8, txt: "Boyfriend ", show: true, mStatus: 0, roomId: 526 },
                     ]
             },
             {
@@ -1153,7 +1160,7 @@ sc.charMission = [
                         { id: 1, txt: "Honey Buiscuits", show: true, mStatus: 0, roomId: 803 },
                         { id: 2, txt: "Tell me even more", show: true, mStatus: 0, roomId: 803 },
                         { id: 3, txt: "One great fuck!", show: true, mStatus: 0, roomId: 803 },
-                        { id: 4, txt: "A dissapointing ticy dick fuck", show: true, mStatus: 0, roomId: 803 },
+                        { id: 4, txt: "A dissapointing tiny dick", show: true, mStatus: 0, roomId: 803 },
                     ]
             },
         ]
@@ -2169,23 +2176,23 @@ sc.getTimeline = function (char) {
             switch (gv.get("ralphcycle") % 3) {
                 case 0:
                     timeline = [
-                        { d: [0, 1, 2, 3, 4, 5, 6], hstart: 0, hend: 7, roomId: 802, alt: null }, //bedroom
+                        { d: [0, 1, 2, 3, 4, 5, 6], hstart: 0, hend: 7, roomId: 803, alt: null }, //bedroom
                         { d: [0, 1, 2, 3, 4, 5, 6], hstart: 0, hend: 20, roomId: 800, alt: null }, //pool
-                        { d: [0, 1, 2, 3, 4, 5, 6], hstart: 20, hend: 24, roomId: 802, alt: null }, //bedroom
+                        { d: [0, 1, 2, 3, 4, 5, 6], hstart: 20, hend: 24, roomId: 803, alt: null }, //bedroom
                     ];
                     break;
                 case 1:
                     timeline = [
-                        { d: [0, 1, 2, 3, 4, 5, 6], hstart: 0, hend: 7, roomId: 802, alt: null }, //bedroom
-                        { d: [0, 1, 2, 3, 4, 5, 6], hstart: 0, hend: 20, roomId: 802, alt: null }, //pool
-                        { d: [0, 1, 2, 3, 4, 5, 6], hstart: 20, hend: 24, roomId: 802, alt: null }, //bedroom
+                        { d: [0, 1, 2, 3, 4, 5, 6], hstart: 0, hend: 7, roomId: 803, alt: null }, //bedroom
+                        { d: [0, 1, 2, 3, 4, 5, 6], hstart: 0, hend: 20, roomId: 803, alt: null }, //pool
+                        { d: [0, 1, 2, 3, 4, 5, 6], hstart: 20, hend: 24, roomId: 803, alt: null }, //bedroom
                     ];
                     break;
                 case 2:
                     timeline = [
-                        { d: [0, 1, 2, 3, 4, 5, 6], hstart: 0, hend: 7, roomId: 802, alt: null }, //bedroom
+                        { d: [0, 1, 2, 3, 4, 5, 6], hstart: 0, hend: 7, roomId: 803, alt: null }, //bedroom
                         { d: [0, 1, 2, 3, 4, 5, 6], hstart: 0, hend: 20, roomId: 804, alt: null }, //pool
-                        { d: [0, 1, 2, 3, 4, 5, 6], hstart: 20, hend: 24, roomId: 802, alt: null }, //bedroom
+                        { d: [0, 1, 2, 3, 4, 5, 6], hstart: 20, hend: 24, roomId: 803, alt: null }, //bedroom
                     ];
                     break;
             }
