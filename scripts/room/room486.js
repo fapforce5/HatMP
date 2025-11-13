@@ -31,30 +31,96 @@
 //posters go up around town - raises fame
 var room486 = {};
 room486.main = function () {
-    if (gv.get("ddd") === 0) {
-
-    }
-    var btnList = [
-        {
-            "type": "btn",
-            "name": "name",
-            "left": 1741,
-            "top": 618,
-            "width": 130,
-            "height": 252,
-            "image": "486_folder/hole.png"
-        }
-    ];
-    var navList = [0];
-    $.each(btnList, function (i, v) {
-        nav.button(v, 486);
-    });
-    nav.buildnav(navList);
+    gv.mod("486gamecounter", 1);
+    g.internal = {
+        r: 0,
+        inst: false,
+        r1: g.rand(0, 3)
+    };
+    room486.btnclick("drawbtns");
 };
 
 room486.btnclick = function (name) {
     switch (name) {
-        case "":
+        case "drawbtns":
+            nav.killbutton("mask");
+            nav.killbutton("redbutton");
+            nav.killbutton("greenbutton");
+            nav.button({
+                "type": "hand",
+                "name": "mask",
+                "left": 1398,
+                "top": 463,
+                "width": 100,
+                "height": 180,
+                "image": "486_game/m" + g.internal.r + ".webp"
+            }, 486);
+            nav.killbutton("redbutton");
+            nav.killbutton("greenbutton");
+            nav.button({
+                "type": "hand",
+                "name": "redbutton",
+                "left": 852,
+                "top": 444,
+                "width": 94,
+                "height": 102,
+                "image": "486_game/redbutton.webp"
+            }, 486);
+            nav.button({
+                "type": "hand",
+                "name": "greenbutton",
+                "left": 1156,
+                "top": 444,
+                "width": 94,
+                "height": 102,
+                "image": "486_game/greenbutton.webp"
+            }, 486);
+            break;
+        case "mask":
+            g.internal.inst = true;
+            switch (g.internal.r) {
+                case 0:
+                    if (gv.get("486gamecounter") < 2) {
+                        chat(0, 486);
+                    }
+                    else {
+                        chat(6, 486);
+                    }
+                    break;
+                case 1:
+                    chat(1001, 486);
+                    break;
+            }
+            break;
+        case "redbutton":
+            if (g.internal.r === 0 && !g.internal.inst) {
+                chat(5, 486);
+            }
+            break;
+        case "greenbutton":
+            var proc486 = false;
+            if (g.internal.r === 0 && !g.internal.inst) {
+                chat(5, 486);
+                return;
+            }
+            switch (g.internal.r) {
+                case 0:
+                    
+                    proc486 = true;
+                    break;
+            }
+            if (proc486) {
+                nav.killbutton("redbutton");
+                nav.killbutton("greenbutton");
+                nav.bg("486_game/r" + g.internal.r + "_o.webp");
+                nav.modbutton("mask", "486_game/m" + g.internal.r + ".webp", null, "img");
+                g.roomTimeout = setTimeout(function () {
+                    nav.killall();
+                    g.internal.r++;
+                    nav.bg("486_game/r" + g.internal.r + ".webp");
+                    room486.btnclick("drawbtns");
+                }, 1200);
+            }
             break;
         default:
             break;
@@ -74,10 +140,19 @@ room486.chat = function (chatID) {
     let carray;
     if (chatID === 1001) {
         carray = [
-            "Yell out 'I really love penises in my butt!'",
-            "Yell out 'I would lick anyone's butt on command!'",
-            "Yell out 'I'm a pee pee girl!"
+            "yell out 'I really love penises in my butt!'",
+            "yell out 'I would lick anyone's butt on command!'",
+            "yell out 'I'm a pee pee girl!"
         ];
+        return {
+            chatID: 0,
+            speaker: "!ann",
+            text: "This first room will start easy. We just want you to " + carray[g.internal.r1] + 
+                "",
+            button: [
+                { chatID: 1, text: "huh?", callback: "" }
+            ]
+        };
     }
     else if (chatID === 1002) {
         carray = [
@@ -165,7 +240,7 @@ room486.chat = function (chatID) {
             {
                 chatID: 0,
                 speaker: "!ann",
-                text: "Welcome new comer you're the next contestant to the underground " +
+                text: "Welcome newcomer you're the next contestant to the underground " +
                     "game show The Dozen Degrading Doors!!!! ",
                 button: [
                     { chatID: 1, text: "huh?", callback: "" }
@@ -194,8 +269,8 @@ room486.chat = function (chatID) {
             {
                 chatID: 3,
                 speaker: "!ann",
-                text: "What ever you do don't press the Red Button! The Red Button ends the game, " +
-                    "but you will be punished. Given to the CUM cult so they may use you as their " +
+                text: "What ever you do don't press the Red Button! The Red Button ends the game " +
+                    "and you will be punished. Given to the CUM cult so they may use you as their " +
                     "toy! It is much better to pass all 12 doors! Don't forget to smile for the " +
                     "audiance! They do enjoy a competitor!",
                 button: [
@@ -205,9 +280,25 @@ room486.chat = function (chatID) {
             {
                 chatID: 4,
                 speaker: "!ann",
-                text: "That's the spirit! The door will now open so you can BEGIN THE SHOW!!!",
+                text: "That's the spirit! To open the door, just press the green button!",
                 button: [
                     { chatID: -1, text: "*sigh* ", callback: "nextRoom" }
+                ]
+            },
+            {
+                chatID: 5,
+                speaker: "!ann",
+                text: "Press the mask of instruction to begin the game. ",
+                button: [
+                    { chatID: -1, text: "huh?", callback: "" }
+                ]
+            },
+            {
+                chatID: 6,
+                speaker: "!ann",
+                text: "Welcome back! I see you do enjoy our little game. Please press the green button to play. ",
+                button: [
+                    { chatID: -1, text: "crap. Here again.", callback: "" }
                 ]
             },
         ];

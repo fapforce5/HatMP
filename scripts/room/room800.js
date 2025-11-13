@@ -13,6 +13,7 @@ room800.main = function () {
         if (sc.getTimeline("ralphsdad").roomID > -1) {
             nav.bg("800_ralph/3some.webp");
             chat(49, 800);
+            return;
         }
         else {
             nav.button({
@@ -215,6 +216,7 @@ room800.btnclick = function (name) {
             nav.killbutton("gift");
             nav.killbutton("chat");
             nav.killbutton("dick");
+            nav.killbutton("sissy");
             nav.killbutton("cancel");
             break;
         case "chat":
@@ -238,6 +240,7 @@ room800.btnclick = function (name) {
             nav.killbutton("gift");
             nav.killbutton("chat");
             nav.killbutton("dick");
+            nav.killbutton("sissy");
             nav.killbutton("cancel");
             if (!daily.get("ralphsmompenis800")) {
                 daily.set("ralphsmompenis800");
@@ -298,6 +301,7 @@ room800.btnclick = function (name) {
             nav.killbutton("gift");
             nav.killbutton("chat");
             nav.killbutton("dick");
+            nav.killbutton("sissy");
             nav.killbutton("cancel");
             var jl = 0;
             var tl = inv.gettype("a");
@@ -341,6 +345,14 @@ room800.btnclick = function (name) {
                 "image": "800_ralph/ralphmom.png"
             }, 800);
             room800.chatcatch("choices");
+            break;
+        case "sissy":
+            nav.killbutton("gift");
+            nav.killbutton("chat");
+            nav.killbutton("dick");
+            nav.killbutton("sissy");
+            nav.killbutton("cancel");
+            chat(56, 800);
             break;
         default:
             break;
@@ -402,7 +414,12 @@ room800.chatcatch = function (callback) {
             sc.select("gift", "252_waitress/icon_gift.png", 0);
             sc.select("chat", "252_waitress/icon_chat.png", 1);
             sc.select("dick", "752_whore/whore_dick.png", 2);
-            sc.selectCancel("cancel", 3);
+            if (sc.getMissionTask("ralphsmom", "room", 4).complete && !daily.get("room800dad")) {
+                sc.select("sissy", "800_ralph/icon_middle.webp", 3);
+                sc.selectCancel("cancel", 4);
+            }
+            else
+                sc.selectCancel("cancel", 3);
             break;
         case "cockgrabpremature":
             gv.mod("arousal", 100);
@@ -455,6 +472,10 @@ room800.chatcatch = function (callback) {
             char.addtime(30);
             future.kill("803caught");
             char.room(800);
+            break;
+        case "3some":
+            g.pass = "803-3some";
+            char.room(803);
             break;
         case "leave":
             char.room(0);
@@ -1042,6 +1063,22 @@ room800.chat = function (chatID) {
                 " when he's out playing. ",
             button: [
                 { chatID: -1, text: "ok. I'll come back when your husband's home. ", callback: "leave" }
+            ]
+        },
+        {
+            chatID: 56,
+            speaker: "me",
+            text: "So I was wondering if we could.. uhh... I mean all three of us could... you know... ",
+            button: [
+                { chatID: 57, text: "....", callback: "" }
+            ]
+        },
+        {
+            chatID: 57,
+            speaker: "ralphsmom",
+            text: "I was hoping you'd ask! Come with my, my little honey pot licker and let's sneak off to the bedroom! ",
+            button: [
+                { chatID: -1, text: "....", callback: "3some" }
             ]
         },
     ];

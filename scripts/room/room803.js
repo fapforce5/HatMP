@@ -4,7 +4,7 @@ room803.main = function () {
     if (g.pass === "803-3some") {
         g.pass = null;
         nav.bg("803_parentbedroom/3some_s0.webp");
-        chat(80, 803);
+        chat(81, 803);
         return;
     }
     if (sc.getTimeline("ralphsdad").roomID !== null && !sc.getTimeline("ralphsmom").thisRoom) {
@@ -41,7 +41,7 @@ room803.main = function () {
                 "height": 994,
                 "image": "801_ralphlivingroom/d_d.webp"
             }, 801);
-            chat(74, 803);
+            chat(75, 803);
         }
     }
     else if (sc.getTimeline("ralphsmom").thisRoom) {
@@ -475,7 +475,7 @@ room803.btnclick = function (name) {
             else {
                 nav.kill();
                 nav.bg("803_parentbedroom/3some_s2_" + gender.pronoun("f") + ".webp");
-                chat(82, 803);
+                chat(83, 803);
             }
             g.internal++;
             break;
@@ -535,10 +535,10 @@ room803.chatcatch = function (callback) {
             nav.kill();
             nav.bg("803_parentbedroom/read1.webp");
             if (sc.getMissionTask("ralphsmom", "book", 4).complete) {
-                chat(87, 803);
+                chat(88, 803);
             }
             else if (daily.get("803ralphmomfuck")) {
-                chat(86, 803);
+                chat(87, 803);
             }
             else if (sc.getTimeline("ralphsdad").roomID !== null) {
                 chat(53, 803);
@@ -753,7 +753,7 @@ room803.chatcatch = function (callback) {
             sc.completeMissionTask("ralphsmom", "room", 3);
             levels.anal(4, false, "m", true, "ralphsdad");
             char.addtime(45);
-            daily.add("803caught");
+            daily.set("803caught");
             future.add("803caught", 9999);
             char.room(0);
             break;
@@ -774,7 +774,7 @@ room803.chatcatch = function (callback) {
             sc.completeMissionTask("ralphsdad", "main", 7);
             daily.set("room800dad");
             char.addtime(97);
-            char.room(102);
+            char.room(802);
             break;
         case "ralphroom":
             char.room(802);
@@ -1430,18 +1430,18 @@ room803.chat = function (chatID) {
             ]
         },
         {
-            chatID: 71,
+            chatID: 72,
             speaker: "ralphsdad",
             text: "Well excuse me! I asked you if you wanted to have sex, but like always you turned me down! " +
                 "I don't know how many times I try to initiate sex with my wife, I get a no. For the first time " +
                 "in my life, I got a yes. No hesitation, no whining, just a happy yes! And " + gender.pronoun("she") +
                 " let me put it up her ass. Something you've NEVER done! ",
             button: [
-                { chatID: 72, text: "[Busy getting dressed]", callback: "anal12" },
+                { chatID: 73, text: "[Busy getting dressed]", callback: "anal12" },
             ]
         },
         {
-            chatID: 72,
+            chatID: 73,
             speaker: "ralphsmom",
             text: "You tried to initiate sex? I'm sorry, but trying to put your finger in my butt is not " +
                 "initiating sex. It's border line sexual assult, becuse I keep telling you to stop that. If " +
@@ -1449,11 +1449,11 @@ room803.chat = function (chatID) {
                 "start with some oral. You know how much I love oral. I don't orgasm from you just pounding " +
                 "away on me like I'm some empty hole.",
             button: [
-                { chatID: 73, text: "[Keep getting dressed]", callback: "anal13" },
+                { chatID: 74, text: "[Keep getting dressed]", callback: "anal13" },
             ]
         },
         {
-            chatID: 73,
+            chatID: 74,
             speaker: "ralphsdad",
             text: "Oral? When's the last time you've given me a blow job? Besides I'm happy with your honey pot, " +
                 "but you never let me near it. Is it too much to ask for a quickie every once in a while? " +
@@ -1463,50 +1463,50 @@ room803.chat = function (chatID) {
             ]
         },
         {
-            chatID: 74,
+            chatID: 75,
             speaker: "ralphsdad",
             text: "I knew you wanted to get fucked! Let's go to the bathroom so we don't make too much noise. " +
                 "Wouldn't want " + sc.n("ralph") + " to walk in on us. ",
             button: [
-                { chatID: 75, text: "Yes daddy!", callback: "anal0" },
-            ]
-        },
-        {
-            chatID: 75,
-            speaker: "ralphsdad",
-            text: "Love how you're always ready for dick. I don't even have to try! Show me where I'm going " +
-                "to stick my cock. ",
-            button: [
-                { chatID: 76, text: "Like this daddy?", callback: "anal1" },
+                { chatID: 76, text: "Yes daddy!", callback: "anal0" },
             ]
         },
         {
             chatID: 76,
             speaker: "ralphsdad",
-            text: "Just like that. You have such a pretty hole. I need this so bad! ",
+            text: "Love how you're always ready for dick. I don't even have to try! Show me where I'm going " +
+                "to stick my cock. ",
             button: [
-                { chatID: 77, text: "Oh yes daddy. stop teasing me and put it inside me!", callback: "anal2" },
+                { chatID: 77, text: "Like this daddy?", callback: "anal1" },
             ]
         },
         {
             chatID: 77,
             speaker: "ralphsdad",
-            text: "I love sissies so much! You asshole is so tight it just is begging to milk my dick. I " +
-                "love anal so much!",
+            text: "Just like that. You have such a pretty hole. I need this so bad! ",
             button: [
-                { chatID: 78, text: "*grunt* *squeel* yes harder daddy, I can feel my sissygasm! *huff*", callback: "anal3a" },
+                { chatID: 78, text: "Oh yes daddy. stop teasing me and put it inside me!", callback: "anal2" },
             ]
         },
         {
             chatID: 78,
             speaker: "ralphsdad",
-            text: "Oh god I'm cumming up your ass! So hot! ",
+            text: "I love sissies so much! You asshole is so tight it just is begging to milk my dick. I " +
+                "love anal so much!",
             button: [
-                { chatID: 79, text: "*sissy squeel* So good! I'm cumming so hard!", callback: "anal4" },
+                { chatID: 79, text: "*grunt* *squeel* yes harder daddy, I can feel my sissygasm! *huff*", callback: "anal3a" },
             ]
         },
         {
             chatID: 79,
+            speaker: "ralphsdad",
+            text: "Oh god I'm cumming up your ass! So hot! ",
+            button: [
+                { chatID: 80, text: "*sissy squeel* So good! I'm cumming so hard!", callback: "anal4" },
+            ]
+        },
+        {
+            chatID: 80,
             speaker: "ralphsdad",
             text: "Damn that was awesome! My balls were overflowing. I so needed that. So glad my wife and " +
                 "agreed we could use you however we wanted. Now go play and remember, this is just between us.  ",
@@ -1515,16 +1515,16 @@ room803.chat = function (chatID) {
             ]
         },
         {
-            chatID: 80,
+            chatID: 81,
             speaker: "ralphsmom",
             text: "I'm so excited! I get to enjoy my favorite part of sex and I don't have to fend off my " +
                 "husband's dick always trying to get into my butt.  ",
             button: [
-                { chatID: 81, text: "...", callback: "3some_s1" },
+                { chatID: 82, text: "...", callback: "3some_s1" },
             ]
         },
         {
-            chatID: 81,
+            chatID: 82,
             speaker: "ralphsmom",
             text: "And you get the best of both worlds. My husband's fat penis and my yummy honey pot. ",
             button: [
@@ -1532,32 +1532,32 @@ room803.chat = function (chatID) {
             ]
         },
         {
-            chatID: 82,
+            chatID: 83,
             speaker: "ralphsdad",
             text: "Oh god, that was amazing. I love a tight butthole. ",
             button: [
-                { chatID: 83, text: "*gasp*", callback: "" },
-            ]
-        },
-        {
-            chatID: 83,
-            speaker: "ralphsmom",
-            text: "Not as much as I love to get licked. I orgasdmed so much I don't think I have any left. hehehe ",
-            button: [
-                { chatID: 84, text: "*lick*", callback: "3some_s3" },
+                { chatID: 84, text: "*gasp*", callback: "" },
             ]
         },
         {
             chatID: 84,
             speaker: "ralphsmom",
-            text: "Thank you so much for making our marriage better. It's hard to keep it fresh for " +
-                "so many years. Now go run along and play. Just remember, it's our little secret. ",
+            text: "Not as much as I love to get licked. I orgasdmed so much I don't think I have any left. hehehe ",
             button: [
-                { chatID: 84, text: "I'll keep it between just us. ", callback: "3someEnd" },
+                { chatID: 85, text: "*lick*", callback: "3some_s3" },
             ]
         },
         {
             chatID: 85,
+            speaker: "ralphsmom",
+            text: "Thank you so much for making our marriage better. It's hard to keep it fresh for " +
+                "so many years. Now go run along and play. Just remember, it's our little secret. ",
+            button: [
+                { chatID: -1, text: "I'll keep it between just us. ", callback: "3someEnd" },
+            ]
+        },
+        {
+            chatID: 86,
             speaker: "ralphsmom",
             text: "Oh. Well it looks like you have that thing on your penis. That's ok honey. To be honest " +
                 "I really just prefer to have my honey pot eaten. For me a penis is like sprinkles on a cake. " +
@@ -1568,7 +1568,7 @@ room803.chat = function (chatID) {
             ]
         },
         {
-            chatID: 86,
+            chatID: 87,
             speaker: "ralphsmom",
             text: "I'm spent. I'm not a spring chicken anymore. Why don't you go play with my little " + sc.n("ralph") + ". ",
             button: [
@@ -1576,7 +1576,7 @@ room803.chat = function (chatID) {
             ]
         },
         {
-            chatID: 87,
+            chatID: 88,
             speaker: "ralphsmom",
             text: "Oh honey. I like being the object of desire, but if I'm going to let you rub your naked " +
                 "body all over mine I need to feel some pleasure. Now I know you'll find a nice someone that " +

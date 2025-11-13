@@ -327,6 +327,7 @@ g.rooms = [
     { roomID: 483, name: "Den Entrance", image: "483_cave/bg.jpg", nightImage: "483_cave/bg_night.jpg", houseID: 480, btn: "roomBtn_483.png" },
     { roomID: 484, name: "Wolf's Den", image: "483_cave/cave0.jpg", nightImage: "483_cave/cave0.jpg", houseID: 480, btn: "roomBtn_483.png" },
     { roomID: 485, name: "Seller", image: "485_seller/bg.webp", nightImage: "485_seller/bg.webp", houseID: 480, btn: "roomBtn_483.png" },
+    { roomID: 486, name: "Dozen Degrading Doors", image: "486_game/bg0.webp", nightImage: "486_game/bg0.webp", houseID: 480, btn: "roomBtn_483.png" },
 
     { roomID: 500, name: "Zoey's House", image: "500_jada/500_zoeyHouseDay.jpg", nightImage: "500_jada/500_zoeyHouseNight.jpg", houseID: 500, btn: "roomBtn_500.png" },
     { roomID: 501, name: "Zoey's Living Room", image: "501_jadaGame/501_game.jpg", nightImage: "501_jadaGame/501_game.jpg", houseID: 500, btn: "roomBtn_501.png" },

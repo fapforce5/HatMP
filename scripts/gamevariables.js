@@ -152,6 +152,8 @@ gv.init = function () {
         { n: "janiceRand", t: 0, q: "int" },
         { n: "janiceAnnoyance", t: 0, q: "hundred" },
 
+        { n: "486gamecounter", t: 0, q: "int" },
+
         //{ n: "jobConstWorkToday", t: 0, q: "int" },
         //---------------------------------check not used------------------------------
 
