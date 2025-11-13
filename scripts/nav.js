@@ -78,7 +78,13 @@ nav.bg = function (image, night) {
         night = image;
     var gameWidth = 1920 * g.ratio;
     var gameHeight = 1080 * g.ratio;
-    if (g.isNight())
+    if (image.endsWith(".mp4")) {
+        $('#room-background').html('<video width="' + gameWidth + '" height="' + gameHeight + '" controls autoplay loop>' +
+            '<source src="./images/room/' + image + '" type="video/mp4" >' +
+            '<source src="movie.ogg" type="video/ogg">Your browser does not support the video tag.' +
+            '</video>');
+    }
+    else if (g.isNight())
         $('#room-background').html('<img src="./images/room/' + night + '" style="width:' + gameWidth + 'px; height:' + gameHeight + ';"/>');
     else
         $('#room-background').html('<img src="./images/room/' + image + '" style="width:' + gameWidth + 'px; height:' + gameHeight + ';"/>');

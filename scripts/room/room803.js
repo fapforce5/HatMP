@@ -513,11 +513,13 @@ room803.chatcatch = function (callback) {
             nav.bg("803_parentbedroom/" + callback + ".webp");
             break;
         case "anal0":
-        case "anal2":
         case "anal3":
         case "anal5":
         case "anal3a":
             nav.bg("803_parentbedroom/" + callback + "_" + gender.pronoun("f") + ".webp");
+            break;
+        case "anal2":
+            nav.bg("803_parentbedroom/" + callback + "_" + gender.pronoun("f") + ".mp4");
             break;
         case "read2":
         case "bed_fuck_4":
