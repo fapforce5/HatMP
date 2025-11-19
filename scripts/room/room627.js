@@ -30,7 +30,7 @@ room627.chatcatch = function (callback) {
         case "kiss":
         case "bg":
             nav.kill();
-            nav.bg("627_bong/" + callback + ".jpg");
+            nav.bg("627_bong/" + callback + ".jpg", "627_bong/" + callback + "_n.jpg");
             break;
         case "play":
             if (gv.get("money") < 5)

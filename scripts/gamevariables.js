@@ -154,6 +154,10 @@ gv.init = function () {
 
         { n: "486gamecounter", t: 0, q: "int" },
 
+        { n: "485seller", t: 0, q: "int" },
+        { n: "carnival", t: true, q: "bool" },
+
+
         //{ n: "jobConstWorkToday", t: 0, q: "int" },
         //---------------------------------check not used------------------------------
 

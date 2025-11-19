@@ -62,9 +62,22 @@ room0.btnclick = function (name) {
         var tempMap = gv.get("map");
         g.internal = tempMap;
         room0.chatcatch("walk");
+        let carnival = gv.get("carnival");
         $.each(g.roomMap, function (i, v) {
             if (tempMap === v.map) {
-                if (g.isNight() && v.darkAccess) {
+                if (v.roomID === 625 && !carnival) {
+                    btnList.push({
+                        "type": "img",
+                        "name": v.roomID,
+                        "left": v.left,
+                        "top": v.top,
+                        "width": v.width,
+                        "height": v.height,
+                        "image": "map/625_a.png",
+                        "title": v.display
+                    });
+                }
+                else if (g.isNight() && v.darkAccess) {
                     btnList.push({
                         "type": "btn",
                         "name": v.roomID,

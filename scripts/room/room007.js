@@ -73,6 +73,11 @@ room7.main = function () {
             }
 
         }
+        else if (future.get("carnivalBlow") > -1 && sc.getMissionTask("landlord", "misc", 6).notStarted) {
+            sc.completeMissionTask("landlord", "misc", 6);
+            nav.bg("7_mainCharRoomAlt/wake_landlord_nightgown.jpg");
+            chat(66, 7);
+        }
         else if (cl.pantiesTxt() === "panties") {
             if (cl.c.panties === "c") { //ll panties
                 nav.bg("7_mainCharRoomAlt/wake_landlord_nightgown_angry.jpg")
@@ -1478,6 +1483,33 @@ room7.chat = function (chatID) {
                     "in the park. That will be rough. Damn damn damn!",
                 button: [
                     { chatID: -1, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 66,
+                speaker: "landlord",
+                text: "Did you hear what happened at the carnival. It's all over the news.",
+                button: [
+                    { chatID: 67, text: "no, what?", callback: "" },
+                ]
+            },
+            {
+                chatID: 67,
+                speaker: "landlord",
+                text: "It totally blew up! Like boom. It's gone now. I don't think anyone died. Luckily it happend " +
+                    "at night when it was closed. ",
+                button: [
+                    { chatID: 68, text: "oh good", callback: "" },
+                ]
+            },
+            {
+                chatID: 68,
+                speaker: "landlord",
+                text: "It was a good thing too. They found some poor girls that had been kidnapped by those horrible " +
+                    "carnies. Don't you ever work for a carnival. Terrible things happen to people that work there. Now " + 
+                    "get up and start your day. ",
+                button: [
+                    { chatID: 9, text: "Yes " + sc.n("landlord"), callback: "clearRoom" },
                 ]
             },
         ];

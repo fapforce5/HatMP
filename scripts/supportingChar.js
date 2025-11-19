@@ -341,6 +341,7 @@ sc.charMission = [
                         { id: 3, txt: "River Whore event", show: true, mStatus: 0, roomId: 14 },
                         { id: 4, txt: "Kicked out", show: true, mStatus: 0, roomId: 13 },
                         { id: 5, txt: "Chastity Check", show: true, mStatus: 0, roomId: 16 },
+                        { id: 6, txt: "Cranival", show: true, mStatus: 0, roomId: 7 },
                     ]
             },
             {
@@ -1009,8 +1010,9 @@ sc.charMission = [
                     [
                         { id: 0, txt: "Meet", show: true, mStatus: 0, roomId: 526 },
                         { id: 1, txt: "Pink room", show: true, mStatus: 0, roomId: 213 },
+                        { id: 2, txt: "I was there!", show: false, mStatus: 0, roomId: 526 },
                     ]
-            },
+            }
         ]
     },
     {
@@ -1127,6 +1129,7 @@ sc.charMission = [
                         { id: 6, txt: "He has the job. Now let him know. ", show: true, mStatus: 0, roomId: 802 },
                         { id: 7, txt: "Working girl. ", show: true, mStatus: 0, roomId: 526 },
                         { id: 8, txt: "Boyfriend ", show: true, mStatus: 0, roomId: 526 },
+                        { id: 9, txt: "My hero! ", show: true, mStatus: 0, roomId: 802 },
                     ]
             },
             {
@@ -1136,6 +1139,12 @@ sc.charMission = [
                         { id: 1, txt: "Coming out", show: true, mStatus: 0, roomId: 125 },
                         { id: 2, txt: "I guess I'm a cock sucker too", show: true, mStatus: 0, roomId: 125 },
                         { id: 3, txt: "Why are you naked?", show: true, mStatus: 0, roomId: 125 },
+                    ]
+            },
+            {
+                missionName: "cult", mStatus: 0, title: "Cult", desc: "Taken by the cult", task:
+                    [
+                        { id: 0, txt: "Taken by the cult", show: true, mStatus: 0, roomId: 800 },
                     ]
             },
         ]
@@ -2877,6 +2886,10 @@ sc.trivial = function (charname) {
         case "!ann":
             name = "Announcer";
             image = "ann.png";
+            break;
+        case "!barker":
+            name = "Barker";
+            image = "barker.png";
             break;
         default:
             console.log("unknown trivial char: (check capitilazation)" + charname);

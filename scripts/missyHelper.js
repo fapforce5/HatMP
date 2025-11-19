@@ -66,6 +66,7 @@ missy.init = function () {
         { caseId: 15, name: "case_elijah_origin", show: true, complete: false, success: false },
         { caseId: 16, name: "case_damselle", show: true, complete: false, success: false },
         { caseId: 17, name: "case_sissyfinal", show: true, complete: false, success: false },
+        { caseId: 18, name: "case_carnival", show: true, complete: false, success: false },
     ];
 }
 
@@ -132,7 +133,7 @@ missy.activecase = function () {
             { caseId: 4, name: "case_usb", txt: "Get the USB drive from the back of the toilet at the park. ", m: [450], isComplete: activeCaseComplete },
             { caseId: 5, name: "case_booth", txt: "Investigate the Cum Caper at Toy 'n Us. Tiffany is there M-F during the day. ", m: [650], isComplete: activeCaseComplete },
             { caseId: 6, name: "case_lostgirl", txt: "Find Martha's daughter and report to Missy. ", m: [], isComplete: activeCaseComplete },
-            { caseId: 7, name: "case_saveralph", txt: "Hide out at Ralph's house to stop the cult from kidnapping him. ", m: [], isComplete: activeCaseComplete },
+            { caseId: 7, name: "case_saveralph", txt: "Hide out at Ralph's house tonight and see if there's any cult activity. ", m: [], isComplete: activeCaseComplete },
             { caseId: 8, name: "case_locket", txt: "Get the locket from the prostitute at the homeless camp. ", m: [], isComplete: activeCaseComplete },
             { caseId: 9, name: "case_goth", txt: "Babysit Bill and get her to the train station on time. ", m: [], isComplete: activeCaseComplete },
             { caseId: 10, name: "case_newclothes", txt: "Visit Tiffany at Toys 'n Us and pick up your new uniform.", m: [650], isComplete: activeCaseComplete },
@@ -143,6 +144,7 @@ missy.activecase = function () {
             { caseId: 15, name: "case_elijah_origin", txt: "Find the mad pooper", m: [725], isComplete: activeCaseComplete },
             { caseId: 16, name: "case_damselle", txt: "Rescue the girl in the woods", m: [435], isComplete: activeCaseComplete },
             { caseId: 17, name: "case_sissyfinal", txt: "Sissy Final! 1. Saturday fashion show at the pink room. 2. Pick up someone at the mall food court. 3. Friday stip club. 4. Get fucked  ", m: [200], isComplete: activeCaseComplete },
+            { caseId: 18, name: "case_carnival", txt: "You need to find those missing girls from the carnival!", m: [625], isComplete: activeCaseComplete },
         ];
         if (activecase > cases.length) {
             console.log("invalid missy.activecase" + activecase);
@@ -309,16 +311,16 @@ missy.getcases = function () {
                         }
                         break;
                     case "case_saveralph":
-                        //if (sissy.st[10].ach) {
-                        //    canDoCase = true;
-                        //    caseList.push({
-                        //        caseId: i,
-                        //        active: canDoCase,
-                        //        icon: "case" + i.toString() + (canDoCase ? "" : "_no") + ".png",
-                        //        notReadyTxt: "Raise your PI Level. ",
-                        //        callback: missy.cases[i].name
-                        //    });
-                        //}
+                        if (sissy.st[10].ach) {
+                            canDoCase = true;
+                            caseList.push({
+                                caseId: i,
+                                active: canDoCase,
+                                icon: "case" + i.toString() + (canDoCase ? "" : "_no") + ".png",
+                                notReadyTxt: "...",
+                                callback: missy.cases[i].name
+                            });
+                        }
                         break;
                     case "case_damselle":
                         if (cl.pantiesTxt() === "panties" && cl.c.chest > 0 && g.dt.getDay() < 4)  {
@@ -327,6 +329,17 @@ missy.getcases = function () {
                                 caseId: i,
                                 active: canDoCase,
                                 icon: "case" + i.toString() + (canDoCase ? "" : "_no") + ".png",
+                                notReadyTxt: "Raise your PI Level. ",
+                                callback: missy.cases[i].name
+                            });
+                        }
+                        break;
+                    case "case_carnival":
+                        if (sissy.st[21].ach) {
+                            caseList.push({
+                                caseId: i,
+                                active: true,
+                                icon: "case" + i.toString() + ".png",
                                 notReadyTxt: "Raise your PI Level. ",
                                 callback: missy.cases[i].name
                             });

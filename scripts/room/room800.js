@@ -5,6 +5,9 @@ room800.main = function () {
         chat(47, 800);
         return;
     }
+    else if (sc.getMission("ralph", "cult").inProgress) {
+        chat(58, 800);
+    }
     else if (daily.get("803caught")) {
         chat(48, 800);
         return;
@@ -204,12 +207,12 @@ room800.btnclick = function (name) {
             break;
         case "fightLost":
             nav.killall();
-            nav.bg("1_startScreen/black.jpg");
+            nav.bg("800_ralph/punch.webp");
             chat(23, 800);
             break;
         case "fightWin":
             nav.killall();
-            nav.bg("1_startScreen/case6_6Beat.jpg");
+            nav.bg("800_ralph/runaway.webp");
             chat(25, 800);
             break;
         case "cancel":
@@ -354,6 +357,12 @@ room800.btnclick = function (name) {
             nav.killbutton("cancel");
             chat(56, 800);
             break;
+        case "charwinChar":
+            chat(10, 800);
+            break;
+        case "charloseChar":
+            chat(20, 800);
+            break;
         default:
             break;
     }
@@ -369,13 +378,21 @@ room800.chatcatch = function (callback) {
         case "cockgrab11":
             nav.bg("800_ralph/" + callback + ".webp");
             break;
+        case "case6_1":
+        case "case6_2":
+        case "case6_3":
+        case "case6_4":
+        case "case6_5":
+        case "case6_6":
+            nav.bg("800_ralph/" + callback + ".jpg");
+            break;
         case "case6_0":
             nav.killall();
             char.settime(22, 0);
             nav.bg("800_ralph/case6_0.jpg");
             break;
         case "fightStart":
-            quickFight.init(12, "Cultist", "fightWin", "fightLost", "fightRun", 800);
+            quickFight.init(20, "Cultist", "fightWin", "fightLost", "fightRun", 800);
             break;
         case "fightRun":
             nav.bg("800_ralph/case6_6Run.jpg");
@@ -384,7 +401,15 @@ room800.chatcatch = function (callback) {
         case "case6_badEnd":
             missy.set("activeCaseComplete", 2);
             char.addtime(157);
-            sc.setstep("ralph", 300);
+            sc.startMission("ralph", "cult");
+            sc.completeMissionTask("ralph", "cult", 0);
+            sc.completeMission("ralph", "room");
+            if (sc.getMissionTask("ralph", "cards", 2).complete) {
+                sc.completeMissionTask("ralph", "cards");
+            }
+            else {
+                sc.completeMissionTask("ralph", "cards", false);
+            }
             char.room(0);
             break;
         case "case6_badEnd_lostFight":
@@ -401,6 +426,7 @@ room800.chatcatch = function (callback) {
             nav.bg("800_ralph/case6_6GoodEnd.jpg");
             break;
         case "case6_6GoodEnd_complete":
+            sc.startMissionTask("ralph", "room", 9);
             missy.set("activeCaseComplete", 1);
             char.addtime(78);
             //sc.setstep("ralph", 200);
@@ -477,6 +503,13 @@ room800.chatcatch = function (callback) {
             g.pass = "803-3some";
             char.room(803);
             break;
+        case "charroll":
+            charisma.init(17, "charwinChar", "charloseChar", 800);
+            break;
+        case "punch":
+            nav.kill();
+            nav.bg("800_ralph/punch.webp");
+            break;
         case "leave":
             char.room(0);
             break;
@@ -487,15 +520,11 @@ room800.chatcatch = function (callback) {
 
 room800.chat = function (chatID) {
     if (chatID === 999) {
-        var getProb = quickFight.getStats(12).winProb;
-        var charisma = levels.get("charisma").l;
+        var getProb = quickFight.getStats(20).winProb;
         var btnList = new Array();
-        if (charisma < 5)
-            btnList.push({ chatID: 20, text: "Talk them out of it [Charisma 5 - Failed]", callback: "" });
-        else
-            btnList.push({ chatID: 10, text: "Talk them out of it [Charisma 5 - Pass]", callback: "" });
+        btnList.push({ chatID: -1, text: "Talk them out of it " + charisma.getStats(17).txt, callback: "charroll" });
 
-        btnList.push({ chatID: -1, text: "Fight [" + getProb + "% chance to win]", callback: "fightStart" });
+        btnList.push({ chatID: -1, text: "Fight [" + getProb + "]", callback: "fightStart" });
         btnList.push({ chatID: -1, text: "Run. Leave Ralph with them. ", callback: "fightRun" });
         return {
             chatID: 999,
@@ -593,9 +622,9 @@ room800.chat = function (chatID) {
         {
             chatID: 3,
             speaker: "thinking",
-            text: "Should I wait here till " + nav.convertTime(22, 0) + " for Ralph to take his walk? ",
+            text: "Should I wait here till night and see if the cult is around? ",
             button: [
-                { chatID: 4, text: "I'll wait. Once it's clear I'll hide in those bushes. ", callback: "case6_0" },
+                { chatID: 4, text: "I'll wait. I'll just hide in those bushes. ", callback: "case6_0" },
                 { chatID: -1, text: "Nah..", callback: "" }
             ]
         },
@@ -644,7 +673,7 @@ room800.chat = function (chatID) {
             speaker: "cult",
             text: "Hey, Who's over there? ",
             button: [
-                { chatID: 999, text: "", callback: "case6_6" }
+                { chatID: 999, text: "...", callback: "case6_6" }
             ]
         },
         {
@@ -654,7 +683,7 @@ room800.chat = function (chatID) {
                 "to pick up sissies to take part in the transformation ceremony, but Ralph there isn't going to work. He's " +
                 "a lost cause. ",
             button: [
-                { chatID: 11, text: "", callback: "" }
+                { chatID: 11, text: "...", callback: "" }
             ]
         },
         {
@@ -756,7 +785,7 @@ room800.chat = function (chatID) {
             speaker: "cult",
             text: "Fuck out of here. We're taking him! ",
             button: [
-                { chatID: 999, text: "Crap", callback: "" }
+                { chatID: 23, text: "Crap", callback: "punch" }
             ]
         },
         {
@@ -800,21 +829,23 @@ room800.chat = function (chatID) {
             speaker: "cult",
             text: "Y-y-yeah. We're never coming back, I swear it. Just let us go and you'll never see us again!  ",
             button: [
-                { chatID: 27, text: "Get out of here! ", callback: "case6_6GoodEnd" }
+                { chatID: 27, text: "Grrrr! ", callback: "case6_6GoodEnd" }
             ]
         },
         {
             chatID: 27,
             speaker: "me",
-            text: "Here's Ralph ",
+            text: "Hi " + sc.n("ralph") + "'a parent. I found him like this. I think he fell and knocked " +
+                "himself out. ",
             button: [
-                { chatID: 28, text: "Get out of here! ", callback: "" }
+                { chatID: 28, text: "...", callback: "" }
             ]
         },
         {
             chatID: 28,
             speaker: "ralphsmom",
-            text: "Oh good. we accept him as crossdresser ",
+            text: "Oh wow. Uhhh... Honey, take him from " + sc.n("me") + ". Put him on the couch. We'll take " +
+                "it from here. ",
             button: [
                 { chatID: -1, text: "Get out of here! ", callback: "case6_6GoodEnd_complete" }
             ]
@@ -1079,6 +1110,14 @@ room800.chat = function (chatID) {
             text: "I was hoping you'd ask! Come with my, my little honey pot licker and let's sneak off to the bedroom! ",
             button: [
                 { chatID: -1, text: "....", callback: "3some" }
+            ]
+        },
+        {
+            chatID: 58,
+            speaker: "thinking",
+            text: "With " + sc.n("ralph") + " gone, there isn't a reason to go to his house anymore. 😢",
+            button: [
+                { chatID: -1, text: "....", callback: "leave" }
             ]
         },
     ];

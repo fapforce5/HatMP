@@ -1,6 +1,11 @@
 ﻿//Room name
 var room802 = {};
 room802.main = function () {
+    if (sc.getMissionTask("ralph", "room", 9).inProgress) {
+        sc.completeMissionTask("ralph", "room", 9);
+        chat(39, 802);
+        return;
+    }
     if (g.rand(0, 5) === 0 && !daily.get("ralphRandEvent")) {
         daily.set("ralphRandEvent");
         switch (g.rand(0, 2)) {
@@ -108,6 +113,11 @@ room802.chatcatch = function (callback) {
         case "rand1_0":
             nav.bg("802_ralphbedroom/" + callback + ".webp");
             break;
+        case "eatass0":
+            nav.bg("802_ralphbedroom/" + callback + ".webp");
+            g.internal = 1;
+            nav.next("eatass");
+            break;
         case "bbc0":
             nav.kill();
             nav.bg("802_ralphbedroom/" + callback + ".webp");
@@ -169,6 +179,16 @@ room802.chatcatch = function (callback) {
             daily.set("nottodayralph");
             char.addtime(30);
             char.room(802);
+            break;
+        case "scselect":
+            nav.buildnav([801, 0]);
+            sc.select("game", "802_ralphbedroom/icon_game.webp", 0);
+            sc.select("chat", "752_whore/whore_chat.png", 2);
+            break;
+        case "scselect50":
+            gv.mod("money", 50);
+            sc.select("game", "802_ralphbedroom/icon_game.webp", 0);
+            sc.select("chat", "752_whore/whore_chat.png", 2);
             break;
         case "leave":
             char.room(0);
@@ -573,6 +593,35 @@ room802.chat = function (chatID) {
                 text: "I'll figure something out. I can just change after I leave. I'm so excited!!! I'll see you there!!",
                 button: [
                     { chatID: -1, text: "Totally", callback: "ralph6complete" },
+                ]
+            },
+            {
+                chatID: 39,
+                speaker: "ralph",
+                text: "You are so my hero!!! No more night time walks in my panties I'll tell you what! I " +
+                    "wonder what they wanted from me? I don't know, but I'm totally going to stay in at " +
+                    "night from now on! I can't thank you enough! Anything you want from me, it's yours! " +
+                    "Anything, just name it! ",
+                button: [
+                    { chatID: -1, text: "Having you as a friend is enough. ", callback: "scselect" },
+                    { chatID: 40, text: "I could use $50 ", callback: "" },
+                    { chatID: 41, text: "You could eat my ass ", callback: "" },
+                ]
+            },
+            {
+                chatID: 40,
+                speaker: "ralph",
+                text: "Oh. yeah, sure. Thanks so much! ",
+                button: [
+                    { chatID: -1, text: "...", callback: "scselect50" },
+                ]
+            },
+            {
+                chatID: 41,
+                speaker: "ralph",
+                text: "Oh. I didn't...uhhh... Sure. I did say anything. It would be an honor. ",
+                button: [
+                    { chatID: -1, text: "Sweet! [Pull your pants down and bend over]", callback: "eatass0" },
                 ]
             },
         ];

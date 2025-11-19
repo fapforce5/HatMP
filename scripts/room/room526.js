@@ -118,7 +118,11 @@ room526.btnclick = function (name) {
         case "g1":
             nav.killall();
             nav.bg("526_bar/g2.jpg");
-            if (sc.getMission("orchid", "slut").notStarted) {
+            if (sc.getMissionTask("orchid", "slut", 2).inProgress) {
+                sc.completeMissionTask("orchid", "slut", 2);
+                chat(91, 526);
+            }
+            else if (sc.getMission("orchid", "slut").notStarted) {
                 sc.startMission("orchid", "slut");
                 sc.completeMissionTask("orchid", "slut", 0);
                 sc.show("orchid");
@@ -1279,6 +1283,38 @@ room526.chat = function (chatID) {
             text: "Thanks so much for getting me this job!  ",
             button: [
                 { chatID: -1, text: "You're welcome! ", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 91,
+            speaker: "orchid",
+            text: "Hey, have I got a story for you! So there I was with the BIGGEST dick I've ever seen. " +
+                "I mean it was big. A-list Porn star big! So big I probably would have squirted just by having " +
+                "it inside me, big. Not only that, but her friend had a girl there and she wanted me to eat her " +
+                "out while I'm getting banged! My dream come true. ",
+            button: [
+                { chatID: 92, text: "ok ", callback: "" }
+            ]
+        },
+        {
+            chatID: 92,
+            speaker: "orchid",
+            text: "So the first girl has the head of her cock right at my hole, about to work it in. It was " +
+                "way too big to just shove it in and her radio goes off. I don't what it said, I was too focused " +
+                "on eating the other girl's muff, but the big dick girl say's to run. I'm like, huh? And she just " +
+                "starts running away. So I think there's a wild animal in the tent and I take off running too. A " +
+                "minute later, BOOM! The entire carnival blows up! If she didn't say to run, I would totally be dead. ",
+            button: [
+                { chatID: 93, text: "oh wow ", callback: "" }
+            ]
+        },
+        {
+            chatID: 93,
+            speaker: "orchid",
+            text: "As I'm walking away I realized I could die at any moment, so I've decided that I need " +
+                "to fuck as much as I can until then. It really opened my eyes, ya know. ",
+            button: [
+                { chatID: -1, text: "Totally. ", callback: "reset" }
             ]
         },
     ];

@@ -57,6 +57,14 @@ room200.btnclick = function (name) {
                         else
                             chat(19, 200);
                         break;
+                    case 7:
+                        if (activeCaseComplete === 1) {
+                            chat(124, 200);
+                        }
+                        else {
+                            chat(126, 200);
+                        }
+                        break;
                     case 8:
                         if (activeCaseComplete === 1) {
                             inv.use("locket");
@@ -91,6 +99,10 @@ room200.btnclick = function (name) {
                             chat(116, 200);
                         else
                             chat(117, 200);
+                        break;
+                    case 18:
+                        future.add("carnivalBlowNextCase", 3);
+                        chat(120, 200);
                         break;
                 }
             }
@@ -188,8 +200,7 @@ room200.chatcatch = function (callback) {
             nav.killall();
             nav.bg("200_frontOffice/work.jpg");
             
-
-            let activeCounter = 0;
+            var activeCounter = 0;
             $.each(g.internal.caseList, function (i, v) {
                 if (i < 4) {
                     nav.button({
@@ -632,6 +643,36 @@ room200.chatcatch = function (callback) {
             nav.kill();
             nav.bg("200_frontOffice/case_dam0.webp");
             chat(110, 200);
+            break;
+        case "case_carnival":
+            nav.kill();
+            nav.bg("200_frontOffice/case_carnival0.jpg");
+            chat(118, 200);
+            break;
+        case "case_saveralph":
+            nav.bg("200_frontOffice/case_saveralph.jpg");
+            chat(122, 200);
+            break;
+        case "case_saveralph_start":
+            future.add("case_saveralph", 1);
+            room200.chatcatch("case_afterExplaniation");
+            break;
+        case "case_saveralph_goodend":
+            gv.mod("money", 50);
+            missy.mod("mood", 100);
+            missy.caseComplete(18);
+            room200.chatcatch("case_complete_end");
+            break;
+        case "case_saveralph_badend":
+            missy.mod("mood", -50);
+            missy.caseComplete(18);
+            room200.chatcatch("case_complete_end");
+            break;
+        case "case_canival_end":
+            gv.mod("money", 500);
+            missy.mod("mood", 100);
+            missy.caseComplete(18);
+            room200.chatcatch("case_complete_end");
             break;
         case "case_dam_start":
             inv.addMulti("soda", 3);
@@ -1805,6 +1846,113 @@ room200.chat = function (chatID) {
                     ".",
                 button: [
                     { chatID: -1, text: "Sorry ma'am!", callback: "case_dam_end_bad" }
+                ]
+            },
+            {
+                chatID: 118,
+                speaker: "missy",
+                text: "I've been hearing around town that several girls have gone missing. Now this is far " +
+                    "too bold, and not the MO of the C.U.M. cult, so it has to be the work of someone else. " +
+                    "I have a few thoughts on who could do it that I'm going to follow up on. Most of them " +
+                    "were last seen going to the carnival. The police have already interviewed most of the " +
+                    "workers and have nothing to go on. But I can't help thinking there's something there. ",
+                button: [
+                    { chatID: 119, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 119,
+                speaker: "missy",
+                text: "You won't find anything going during the day, I need to you to sneak in after they close " +
+                    "after " + char.friendlyTime(22) + " and look around. Maybe poke around the tents to see " +
+                    "if there's anything that can help us confirm they were there. If you find anything worth " +
+                    "looking into give me a call. Don't be a hero, just call me. Ok. ",
+                button: [
+                    { chatID: -1, text: "Yes ma'am. Look around the carnival after they close and call if I find anything! ", callback: "case_afterExplaniation" }
+                ]
+            },
+            {
+                chatID: 120,
+                speaker: "missy",
+                text: "I'm so glad you're safe. Let this be a lesson for you that it's good you do what I tell " + 
+                    "becuase I'm always right. I'm still gathering information, but it appears there is group called " +
+                    "the Clown Clan that was part of the carnival workers. They would kidnap young girls and sell them " +
+                    "to the highest bidder. I think you saw the CUM cult there becuase they heard they could buy these girls, " +
+                    "but the CUM cult weren't the only buyers. I'm looking into others, but that will take time. The " +
+                    "good news is that we shut them down. The Clown Clan has escaped. I think they maybe either hiding " +
+                    "in the forest, or possibly the sewers, but I'll need more time. Really great job! ",
+                button: [
+                    { chatID: 121, text: "Thank you ma'am", callback: "" }
+                ]
+            },
+            {
+                chatID: 121,
+                speaker: "missy",
+                text: "As far as the explosions, I'm still not sure. My guess is they had rigged those " +
+                    "expostions to clear out any evidance, but at this time, it's only speculation. " +
+                    "Since you did such a great thing, I'm going to give you a little bonus, $500 for " +
+                    "this case. You should be proud of yourself. Now we must get back to work. ",
+                button: [
+                    { chatID: -1, text: "Yes ma'am", callback: "case_canival_end" }
+                ]
+            },
+            {
+                chatID: 122,
+                speaker: "missy",
+                text: "I've received word from my informant in the forest that the cult is going " +
+                    "to profile one of my pupils. This must not happen. " + sc.n("ralph") + " has somehow come under " +
+                    "the eye of the CUM cult. I need you to hang out at his house tonight and look for " +
+                    "the cult and report back to me if there's anything. ", 
+                button: [
+                    { chatID: 123, text: sc.n("ralph") + "?", callback: "" }
+                ]
+            },
+            {
+                chatID: 123,
+                speaker: "missy",
+                text: "Yes. It's very important that you don't tell him. From what I've gathered he doesn't " +
+                    "have the constitution to handle such a significant event and will do something... rather " +
+                    "stupid and draw more attention to himself. I'm not even quite sure why they've chosen him " +
+                    "since there are much better choices in the class, but chosen them they have. ",
+                button: [
+                    { chatID: -1, text: "Ok. I'll check " + sc.n("ralph") + "'s house tonight for the cult. ", callback: "case_saveralph_start" }
+                ]
+            },
+            {
+                chatID: 124,
+                speaker: "me",
+                text: "Telling Missy everything that happened",
+                button: [
+                    { chatID: 125, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 125,
+                speaker: "missy",
+                text: "Oh wow! This is troubling. The cult is getting bolder. Probably ramping for another " +
+                    "big ritual. I'm glad you were able to stop them. Looks like I've chosen the right " +
+                    "sissy to help me fight against the cult. Good job! ",
+                button: [
+                    { chatID: -1, text: "Thanks ma'am", callback: "case_saveralph_goodend" }
+                ]
+            },
+            {
+                chatID: 126,
+                speaker: "me",
+                text: "Telling Missy everything that happened",
+                button: [
+                    { chatID: 127, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 125,
+                speaker: "missy",
+                text: "Oh wow! This is troubling. The cult is getting bolder. Probably ramping for another " +
+                    "big ritual. It's too bad you couldn't stop them, but I'm sure " + sc.n("ralph") + 
+                    " is safe... for now. Let me devise a plan to resuce him. It will be hard. Really " +
+                    "hard. Until then, you keep your head down. I don't want to lose any more sissies. ",
+                button: [
+                    { chatID: -1, text: "Yes ma'am", callback: "case_saveralph_badend" }
                 ]
             },
         ];

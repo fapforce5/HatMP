@@ -360,10 +360,10 @@ g.rooms = [
     { roomID: 601, name: "Strip Club", image: "601_dance/bg.jpg", nightImage: "601_dance/bg.jpg", houseID: 600, btn: "roomBtn_600.png" },
     { roomID: 602, name: "Strip Club", image: "602_backroom/bg.jpg", nightImage: "602_backroom/bg.jpg", houseID: 600, btn: "roomBtn_600.png" },
 
-    { roomID: 625, name: "Carnival", image: "625_fair/bg.jpg", nightImage: "625_fair/bg.jpg", houseID: 600, btn: "roomBtn_625.png" },
-    { roomID: 626, name: "Ferris wheel", image: "626_ferris/bg.jpg", nightImage: "626_ferris/bg.jpg", houseID: 625, btn: "roomBtn_626.png" },
-    { roomID: 627, name: "Kabong", image: "627_bong/bg.jpg", nightImage: "627_bong/bg.jpg", houseID: 625, btn: "roomBtn_627.png" },
-    { roomID: 628, name: "Ball toss", image: "628_throw/bg.jpg", nightImage: "628_throw/bg.jpg", houseID: 625, btn: "roomBtn_628.png" },
+    { roomID: 625, name: "Carnival", image: "625_fair/bg.jpg", nightImage: "625_fair/bg_n.jpg", houseID: 600, btn: "roomBtn_625.png" },
+    { roomID: 626, name: "Ferris wheel", image: "626_ferris/bg.jpg", nightImage: "626_ferris/bg_n.jpg", houseID: 625, btn: "roomBtn_626.png" },
+    { roomID: 627, name: "Kabong", image: "627_bong/bg.jpg", nightImage: "627_bong/bg_n.jpg", houseID: 625, btn: "roomBtn_627.png" },
+    { roomID: 628, name: "Ball toss", image: "628_throw/bg.jpg", nightImage: "628_throw/bg_n.jpg", houseID: 625, btn: "roomBtn_628.png" },
 
     { roomID: 650, name: "Toys 'n Us", image: "650_toyStore/650_front.jpg", nightImage: "650_toyStore/650_front.jpg", houseID: 650, btn: "roomBtn_650.png" },
     { roomID: 651, name: "T'n U Hallway", image: "651_wackHallway/651_hallway.jpg", nightImage: "651_wackHallway/651_hallway.jpg", houseID: 650, btn: "roomBtn_651.png" },

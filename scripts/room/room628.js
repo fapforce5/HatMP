@@ -6,10 +6,10 @@ room628.main = function () {
         {
             "type": "btn",
             "name": "futa1",
-            "left": 458,
-            "top": 271,
-            "width": 287,
-            "height": 489,
+            "left": 523,
+            "top": 338,
+            "width": 249,
+            "height": 423,
             "image": "628_throw/futa1.png"
         }
     ];
@@ -72,7 +72,7 @@ room628.chat = function (chatID) {
         }
         else {
             if (g.internal.t1 && g.internal.t2 && g.internal.t3) {
-                nav.bg("628_throw/win.jpg");
+                nav.bg("628_throw/win.jpg", "628_throw/win_n.jpg");
                 if (g.pass.who === "lola") {
                     return {
                         chatID: 0,
@@ -96,7 +96,7 @@ room628.chat = function (chatID) {
                 }
             }
             else {
-                nav.bg("628_throw/empty.jpg");
+                nav.bg("628_throw/empty.jpg", "628_throw/empty_n.jpg");
                 return {
                     chatID: 0,
                     speaker: "futa1",
@@ -107,7 +107,7 @@ room628.chat = function (chatID) {
                 };
             }
         }
-        nav.bg("628_throw/" + img + ".jpg");
+        nav.bg("628_throw/" + img + ".jpg", "628_throw/" + img + "_n.jpg");
         if (goodToss)
             return {
                 chatID: 0,

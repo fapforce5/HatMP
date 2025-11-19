@@ -1,6 +1,7 @@
 ﻿//Room name
 var room485 = {};
 room485.main = function () {
+    gv.mod("485seller", 1);
     g.internal = {
         count: 0,
         i: 0

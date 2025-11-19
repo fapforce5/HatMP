@@ -5,6 +5,10 @@ room125.main = function () {
         chat(62, 125);
         nav.buildnav([0]);
     }
+    else if (sc.getMission("ralph", "cult").inProgress) {
+        nav.bg("125_poker/enter.jpg");
+        chat(99, 125);
+    }
     else {
         daily.set("cardgame");
         if (sc.getMission("kei", "cards").notStarted) {
@@ -261,6 +265,9 @@ room125.btnclick = function (name) {
                     nav.bg("125_poker/j0r.jpg");
                     chat(60, 125);
                 }
+            }
+            else if (gv.get("money") < 5) {
+                chat(98, 125);
             }
             else {
                 room125.chatcatch("deal");
@@ -2037,6 +2044,24 @@ room125.chat = function (chatID) {
                 text: "Yummy! I'll catch you girls later ",
                 button: [
                     { chatID: -1, text: "*mwah*", callback: "undoLeave" },
+                ]
+            },
+            {
+                chatID: 98,
+                speaker: "me",
+                text: "Boys, it looks like I'm low on money. I'll have to catch you all later. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "leave" },
+                ]
+            },
+            {
+                chatID: 99,
+                speaker: "jimmy",
+                text: "Poker games been cancelled on account of " + sc.n("ralph") + " being missing. " +
+                    "wouldn't feel right us having fun while he's lost out there, ya know. We're really " +
+                    "sorry we can't help find him. ",
+                button: [
+                    { chatID: -1, text: "Yeah. totally.", callback: "leave" },
                 ]
             },
         ];
