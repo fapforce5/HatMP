@@ -3,7 +3,16 @@ var room802 = {};
 room802.main = function () {
     if (sc.getMissionTask("ralph", "room", 9).inProgress) {
         sc.completeMissionTask("ralph", "room", 9);
-        chat(39, 802);
+        nav.button({
+            "type": "img",
+            "name": "ralph",
+            "left": 979,
+            "top": 86,
+            "width": 401,
+            "height": 994,
+            "image": "802_ralphbedroom/ralph0.webp"
+        }, 802);
+        chat(40, 802);
         return;
     }
     if (g.rand(0, 5) === 0 && !daily.get("ralphRandEvent")) {
@@ -103,6 +112,21 @@ room802.btnclick = function (name) {
             nav.killbutton("chat");
             nav.killbutton("game");
             break;
+        case "eatass":
+            if (g.internal > 6) {
+                nav.kill();
+                levels.gotbj("m", "ralph");
+                nav.bg("802_ralphbedroom/eatass1.webp");
+                chat(43, 802);
+            }
+            else if (g.internal === 6 && cl.c.chastity !== null) {
+                nav.bg("802_ralphbedroom/eatass6_c.webp");
+            }
+            else {
+                nav.bg("802_ralphbedroom/eatass" + g.internal + ".webp");
+            }
+            g.internal++;
+            break;
         default:
             break;
     }
@@ -114,6 +138,7 @@ room802.chatcatch = function (callback) {
             nav.bg("802_ralphbedroom/" + callback + ".webp");
             break;
         case "eatass0":
+            nav.kill();
             nav.bg("802_ralphbedroom/" + callback + ".webp");
             g.internal = 1;
             nav.next("eatass");
@@ -588,7 +613,7 @@ room802.chat = function (chatID) {
                 ]
             },
             {
-                chatID: 38,
+                chatID: 39,
                 speaker: "ralph",
                 text: "I'll figure something out. I can just change after I leave. I'm so excited!!! I'll see you there!!",
                 button: [
@@ -596,7 +621,7 @@ room802.chat = function (chatID) {
                 ]
             },
             {
-                chatID: 39,
+                chatID: 40,
                 speaker: "ralph",
                 text: "You are so my hero!!! No more night time walks in my panties I'll tell you what! I " +
                     "wonder what they wanted from me? I don't know, but I'm totally going to stay in at " +
@@ -604,12 +629,12 @@ room802.chat = function (chatID) {
                     "Anything, just name it! ",
                 button: [
                     { chatID: -1, text: "Having you as a friend is enough. ", callback: "scselect" },
-                    { chatID: 40, text: "I could use $50 ", callback: "" },
-                    { chatID: 41, text: "You could eat my ass ", callback: "" },
+                    { chatID: 41, text: "I could use $50 ", callback: "" },
+                    { chatID: 42, text: "You could eat my ass ", callback: "" },
                 ]
             },
             {
-                chatID: 40,
+                chatID: 41,
                 speaker: "ralph",
                 text: "Oh. yeah, sure. Thanks so much! ",
                 button: [
@@ -617,11 +642,19 @@ room802.chat = function (chatID) {
                 ]
             },
             {
-                chatID: 41,
+                chatID: 42,
                 speaker: "ralph",
                 text: "Oh. I didn't...uhhh... Sure. I did say anything. It would be an honor. ",
                 button: [
                     { chatID: -1, text: "Sweet! [Pull your pants down and bend over]", callback: "eatass0" },
+                ]
+            },
+            {
+                chatID: 43,
+                speaker: "ralph",
+                text: "Did I do good? ",
+                button: [
+                    { chatID: -1, text: "You did great. Those oral classes really payed off. ", callback: "scselect" },
                 ]
             },
         ];
