@@ -660,12 +660,12 @@ room200.chatcatch = function (callback) {
         case "case_saveralph_goodend":
             gv.mod("money", 50);
             missy.mod("mood", 100);
-            missy.caseComplete(18);
+            missy.caseComplete(7);
             room200.chatcatch("case_complete_end");
             break;
         case "case_saveralph_badend":
             missy.mod("mood", -50);
-            missy.caseComplete(18);
+            missy.caseComplete(7);
             room200.chatcatch("case_complete_end");
             break;
         case "case_canival_end":

@@ -2,6 +2,12 @@
 var room0 = {};
 room0.chatInput;
 room0.main = function () {
+    if (sc.getMissionTask("ralph", "cult", 1).inProgress) {
+        sc.completeMissionTask("ralph", "cult", 1);
+        nav.bg("203_entrance/rmom0.webp")
+        chat(29, 203);
+        return;
+    }
     g.pass = g.internal = "";
     $('#room_footer').hide();
     var tempMap = gv.get("map");

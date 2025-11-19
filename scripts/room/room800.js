@@ -402,8 +402,9 @@ room800.chatcatch = function (callback) {
             missy.set("activeCaseComplete", 2);
             char.addtime(157);
             sc.startMission("ralph", "cult");
-            sc.completeMissionTask("ralph", "cult", 0);
+            sc.startMissionTask("ralph", "cult", 0);
             sc.completeMission("ralph", "room");
+            future.kill("case_saveralph");
             if (sc.getMissionTask("ralph", "cards", 2).complete) {
                 sc.completeMissionTask("ralph", "cards");
             }
@@ -414,8 +415,17 @@ room800.chatcatch = function (callback) {
             break;
         case "case6_badEnd_lostFight":
             missy.set("activeCaseComplete", 2);
-            sc.setstep("ralph", 300);
-            missy.set("reusableCaseCounter", 1);
+            char.addtime(157);
+            sc.startMission("ralph", "cult");
+            sc.startMissionTask("ralph", "cult", 0);
+            sc.completeMission("ralph", "room");
+            future.kill("case_saveralph");
+            if (sc.getMissionTask("ralph", "cards", 2).complete) {
+                sc.completeMissionTask("ralph", "cards");
+            }
+            else {
+                sc.completeMissionTask("ralph", "cards", false);
+            }
             char.room(800);
             break;
         case "case6_wakeup":
@@ -427,6 +437,7 @@ room800.chatcatch = function (callback) {
             break;
         case "case6_6GoodEnd_complete":
             sc.startMissionTask("ralph", "room", 9);
+            future.kill("case_saveralph");
             missy.set("activeCaseComplete", 1);
             char.addtime(78);
             //sc.setstep("ralph", 200);
@@ -808,7 +819,7 @@ room800.chat = function (chatID) {
         {
             chatID: 24,
             speaker: "thinking",
-            text: "Oh no. They're all gone. I failed Ralph! Sorry I wasn't strong enough dear friend. I'll find a way to get you " +
+            text: "Oh no. They're all gone. I failed " + sc.n("ralph") + "! Sorry I wasn't strong enough dear friend. I'll find a way to get you " +
                 "free. ",
             button: [
                 { chatID: -1, text: "...", callback: "case6_badEnd_lostFight" }

@@ -1,6 +1,12 @@
 ﻿//Cecillia close up
 var room203 = {};
 room203.main = function () {
+    if (sc.getMissionTask("ralph", "cult", 1).inProgress) {
+        sc.completeMissionTask("ralph", "cult", 1);
+        nav.bg("203_entrance/rmom.webp")
+        chat(29, 203);
+        return;
+    }
     var outfit = cl.hasoutfit("public");
     var navList = new Array();
     var btnList = new Array();
@@ -257,6 +263,9 @@ room203.chatcatch = function (callback) {
             break;
         case "bathroom":
             char.room(201);
+            break;
+        case "endRalph":
+            char.room(g.roomID);
             break;
     }
 };
@@ -569,6 +578,35 @@ room203.chat = function (chatID) {
                 text: "Missy's PI, can I help you. ",
                 button: [
                     { chatID: -1, text: "Oh, no. I should be going. ", callback: "leave" }
+                ]
+            },
+            {
+                chatID: 29,
+                speaker: "ralphsmom",
+                text: "I was hoping to find you here! Little " + sc.n("ralph") + " was kidnapped last night! " +
+                    "I don't know who took him, but my husband said he saw them wearing robes. We've already " +
+                    "told the police, but if you see or hear anything can you let us know? ",
+                button: [
+                    { chatID: 30, text: "Oh, no. That's terrible! . ", callback: "" }
+                ]
+            },
+            {
+                chatID: 30,
+                speaker: "ralphsmom",
+                text: "I don't know what I'll do if we can't find him! He's my everything! Please, please " +
+                    "try to help us find him! ",
+                button: [
+                    { chatID: 31, text: "I'll do everything I can! ", callback: "endRalph" }
+                ]
+            },
+            {
+                chatID: 31,
+                speaker: "thinking",
+                text: "CRAP!!! I forgot to check on " + sc.n("ralph") + " yesterday and now it looks like " +
+                    "he's been kidnapped by the cult!!! You forget a friend and now he's gone. I need to " +
+                    "find a way to get him back!!! Damn. I need to tell Missy and see if she can help! ",
+                button: [
+                    { chatID: -1, text: "...", callback: "" }
                 ]
             },
         ];

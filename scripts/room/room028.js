@@ -428,6 +428,20 @@ room28.future = function () {
                     if (gv.get("sissyfinal_pageant") === null)
                         gv.set("sissyfinal_pageant", false);
                     break;
+                case "case_saveralph":
+                    missy.set("activeCaseComplete", 2);
+                    sc.startMission("ralph", "cult");
+                    sc.startMissionTask("ralph", "cult", 0);
+                    sc.startMissionTask("ralph", "cult", 1);
+                    sc.completeMission("ralph", "room");
+                    future.kill("case_saveralph");
+                    if (sc.getMissionTask("ralph", "cards", 2).complete) {
+                        sc.completeMissionTask("ralph", "cards");
+                    }
+                    else {
+                        sc.completeMissionTask("ralph", "cards", false);
+                    }
+                    break;
             }
             future.st.splice(i, 1);
         }

@@ -1145,6 +1145,7 @@ sc.charMission = [
                 missionName: "cult", mStatus: 0, title: "Cult", desc: "Taken by the cult", task:
                     [
                         { id: 0, txt: "Taken by the cult", show: true, mStatus: 0, roomId: 800 },
+                        { id: 1, txt: "Lost son", show: false, mStatus: 0, roomId: 800 },
                     ]
             },
         ]
