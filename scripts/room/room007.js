@@ -1279,7 +1279,7 @@ room7.chat = function (chatID) {
                 chatID: 43,
                 speaker: "bigguy",
                 text: "...but...*ugh* Since I pay the majority of the mortgage I'll just come up here in the " +
-                    "morning to collect $75 a week a week from you. You better pay up, or you'll be working for " +
+                    "morning to collect $75 a week from you. You better pay up, or you'll be working for " +
                     "me at my repair shop. Don't think you'll be slacking off either. You'll do all the shit " +
                     "work no one wants to do, like cleaning the rat traps. I'll start collecting next week.  ",
                 button: [
@@ -1289,7 +1289,7 @@ room7.chat = function (chatID) {
             {
                 chatID: 44,
                 speaker: "landlord",
-                text: "We talked about, and I think it's best. You can do some chores around the house and I'll pay " +
+                text: "We talked about it, and I think it's best. You can do some chores around the house and I'll pay " +
                     "part of your debt. You can start with the dishes. We should just be really thankful for " +
                     sc.n("bigguy") + " for helping us put a roof over our head for as long as he has. Now we'll " +
                     "let you get dressed. ",

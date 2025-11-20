@@ -1232,11 +1232,11 @@ room803.chat = function (chatID) {
         {
             chatID: 49,
             speaker: "ralphsmom",
-            text: "hehehe. I would be nice for someone to eat my honey buiscuits again. " +
+            text: "hehehe. I would be nice for someone to eat my honey biscuits again. " +
                 "mmmMMMmmm. I've got to get back to my book before we get into some " +
                 "kind of trouble. Why don't you go play. ",
             button: [
-                { chatID: -1, text: "Ok, but I do want to try your warm honey buiscit sometime. ", callback: "resettalk" },
+                { chatID: -1, text: "Ok, but I do want to try your warm honey biscuit sometime. ", callback: "resettalk" },
             ]
         },
         {

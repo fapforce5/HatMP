@@ -413,6 +413,7 @@ rape.phase1 = function () {
 
 rape.phase2 = function () {
     nav.killbutton("r1004bg");
+    zcl.kill();
     let isComplete = rape.char.phase2();
     
     if (!isComplete.default) {

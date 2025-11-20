@@ -1081,7 +1081,7 @@ room800.chat = function (chatID) {
             speaker: "ralphsmom",
             text: "Yes. We do have different needs. I need more foreplay  and oral. He needs to put it in a butt. So if " +
                 "you're interested we would love to use you to fulfill both our desires. You've already shown " +
-                "to be amazing at what you do with each of us, we would like to share you togther. But we do " +
+                "to be amazing at what you do with each of us, we would like to share you together. But we do " +
                 "need you to keep a secret from our little one and our neighbors. We would like to keep our " +
                 "sex life private. ",
             button: [

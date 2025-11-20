@@ -1512,7 +1512,7 @@ room170.chat = function (chatID) {
                 text: "I do appreciate the attention, but this is wrong. I don't want to give " +
                     "you any ideas of us dating. Plus my wife would be so angry if she saw this. ",
                 button: [
-                    { chatID: 42, text: "[Strock his cock outside his pants]", callback: "fashion5" },
+                    { chatID: 42, text: "[Rub his cock outside his pants]", callback: "fashion5" },
                     { chatID: -1, text: "Oh! sorry mister. [Return to the dressing room]", callback: "final_dressingRoom" },
                 ]
             },

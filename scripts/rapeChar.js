@@ -812,17 +812,20 @@
                 return { default: false, complete: false };
             },
             phase2: function () {
-                zcl.assup(650, 600, .6, "", true);
-                nav.button({
-                    "type": "img",
-                    "name": "r1004bg",
-                    "left": 729,
-                    "top": 385,
-                    "width": 935,
-                    "height": 677,
-                    "image": "1004_rape/wolf2/phase2_" + cl.pantiesTxt() + ".png"
-                }, 1004);
-                return { default: false, complete: false };
+                if (rape.phaseChange !== "submit") {
+                    zcl.assup(650, 600, .6, "", true);
+                    nav.button({
+                        "type": "img",
+                        "name": "r1004bg",
+                        "left": 729,
+                        "top": 385,
+                        "width": 935,
+                        "height": 677,
+                        "image": "1004_rape/wolf2/phase2_" + cl.pantiesTxt() + ".png"
+                    }, 1004);
+                    return { default: false, complete: true };
+                }
+                return { default: true, complete: null };
             },
             phase3: function () {
                 if (rape.phases[3].c === 0) {
@@ -1001,17 +1004,20 @@
                 return { default: false, complete: false };
             },
             phase2: function () {
-                zcl.assup(650, 600, .6, "", true);
-                nav.button({
-                    "type": "img",
-                    "name": "r1004bg",
-                    "left": 1064,
-                    "top": 507,
-                    "width": 600,
-                    "height": 554,
-                    "image": "1004_rape/wolf2/single_phase2_" + rape.modifier + ".png"
-                }, 1004);
-                return { default: false, complete: false };
+                if (rape.phaseChange !== "submit") {
+                    zcl.assup(650, 600, .6, "", true);
+                    nav.button({
+                        "type": "img",
+                        "name": "r1004bg",
+                        "left": 1064,
+                        "top": 507,
+                        "width": 600,
+                        "height": 554,
+                        "image": "1004_rape/wolf2/single_phase2_" + rape.modifier + ".png"
+                    }, 1004);
+                    return { default: false, complete: true };
+                }
+                return { default: true, complete: null };
             },
             phase3: function () {
                 zcl.kill();
