@@ -38,7 +38,8 @@ room486.main = function () {
         greenbutton: false,
         r1: g.rand(0, 3),
         r2: 0,
-        r3: -1
+        r3: -1,
+        r4: 0
     };
     nav.button({
         "type": "img",
@@ -241,6 +242,11 @@ room486.btnclick = function (name) {
             g.internal.inst = false;
             chat(14, 486);
             break;
+        case "room4_2":
+            nav.kill();
+            nav.bg("486_game/room4_0_2_" + gender.pronoun("f") + ".webp");
+            chat(16, 486);
+            break;
         default:
             break;
     }
@@ -248,6 +254,11 @@ room486.btnclick = function (name) {
 
 room486.chatcatch = function (callback) {
     switch (callback) {
+        case "room4_0_3":
+        case "room4_0_5":
+        case "room4_0_4":
+            nav.bg("486_game/" + callback + ".webp");
+            break;
         case "room0":
             nav.modbutton("room0", "486_game/room0_1.webp", null, null);
             g.setTimeout = setTimeout(function () {
@@ -278,6 +289,18 @@ room486.chatcatch = function (callback) {
             break;
         case "room4_0":
             zcl.facedown(800, 850, .2, "", false);
+            break;
+        case "room4_2":
+            nav.kill();
+            nav.bg("486_game/room4_0_1.webp");
+            nav.next("room4_2");
+            break;
+        case "greenlightRedraw":
+            nav.kill();
+            nav.bg("486_game/r" + g.internal.r + ".webp");
+            room486.btnclick("initroom");
+            g.internal.greenbutton = true;
+            room486.btnclick("drawbtns");
             break;
         case "greenbuttonON":
             g.internal.greenbutton = true;
@@ -361,12 +384,59 @@ room486.chat = function (chatID) {
                 { chatID: -1, text: "...", callback: "room4" }
             ]
         };
-        ////close pin on nipples - keep for rest of game (small energy drain)
-        ////10 spankings (big energy drain)
-        //carray = [
-        //    "Strip off your slimy clothes",
-        //    "Strip off your cream pie covered clown costume"
-        //];
+    }
+    else if (chatID === 10041) {
+        gv.mod("energy", -4);
+        let c10041 = [
+            "ONE! OOooo. That butt's going to be red!",
+            "TWO!!",
+            "THREE... ooo that one looked like it really hurt1",
+            "FOUR, " + gender.pronoun("she") + "'s screaming for more!",
+            "FIVE, we're half way there. " + gender.pronoun("she") + "'s living on a prayer1!",
+            "SIX!!",
+            "SEVEN!! We're in the stretch! ",
+            "EIGHT!!! Two more!",
+            "NINE!!!! One more to go!!",
+            "TEN!!!!!! " + gender.pronoun("she") + " won't be able to sit down for a week! "
+        ];
+        let c10041b = [
+            "AAAaaahhh!!!",
+            "ouchie ouchie ouchie",
+            "OOooohhhh f-f-f-fuck!",
+            "EEeggghhhhh"
+        ];
+        return {
+            chatID: 0,
+            speaker: "!ann",
+            text: c10041[g.internal.r4],
+            button: [
+                { chatID: 10042, text: c10041b[g.internal.r4 % c10041b.length], callback: "room4_0_5" }
+            ]
+        };
+    }
+    else if (chatID === 10042) {
+        g.internal.r4++;
+        let c10042 = [
+            "",
+            "Fuck that really hurt!",
+            "I don't know how many more I can take...",
+            "OH no!! I'm done, please I'm so done!",
+            "Stop! I quit! I said I'm done!",
+            "Ouchie, I quit! Red button! stop! No more please!!!!",
+            "Please!!! Please!!!! STOP!!! NO MORE!!!!",
+            "*screaming in pain*",
+            "*softly sobbing*",
+            "....",
+            "*sob*"
+        ];
+        return {
+            chatID: 0,
+            speaker: "me",
+            text: c10042[g.internal.r4],
+            button: [
+                { chatID: (g.internal.r4 === 10 ? 18 : 10041), text: "....", callback: "room4_0_4" }
+            ]
+        };
     }
     else if (chatID === 1005) {
         
@@ -574,6 +644,34 @@ room486.chat = function (chatID) {
                 button: [
                     { chatID: -1, text: "Oh. I knew that", callback: "room4_2" },
                     { chatID: -1, text: "[Change your mind]", callback: "room4" },
+                ]
+            },
+            {
+                chatID: 16,
+                speaker: "!barker",
+                text: "Onto the stage is " + sc.n("!seller") + "!!! The destroyer of asses, the breaker of souls, " +
+                    "the crusher of dream!! With him, his trusty paddle! I feel sorry for our poor contestant! " +
+                    gender.pronoun("she") + " is about to get the paddling of " + gender.pronoun("her") + " life!!",
+                button: [
+                    { chatID: 17, text: "*groan*", callback: "room4_0_3" },
+                ]
+            },
+            {
+                chatID: 17,
+                speaker: "!barker",
+                text: "Look at that ass ladies and gentlemen! It's a shame what's about to happen to it! " +
+                    sc.n("!seller") + " give " + gender.pronoun("her") + " the 10 hard spankings that she wants!!!!",
+                button: [
+                    { chatID: 10041, text: "*gulp*", callback: "room4_0_4" },
+                ]
+            },
+            {
+                chatID: 18,
+                speaker: "!barker",
+                text: sc.n("!seller") + " you may unlock " + gender.pronoun("her") + "! Lets see her crawl to " +
+                    "our next game!!!",
+                button: [
+                    { chatID: -1, text: "...", callback: "greenlightRedraw" },
                 ]
             },
         ];

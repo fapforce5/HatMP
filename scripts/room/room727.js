@@ -242,7 +242,7 @@ room727.chatcatch = function (callback) {
 
             break;
         case "tim2end":
-            gv.mod("giveOralMale", 1);
+            levels.oral(3, "m", "tim", true);
             daily.set("tim");
             sc.completeMissionTask("tim", "fuck", 1);
             char.addtime(60);

@@ -95,7 +95,7 @@ room318.btnclick = function (name) {
         case "dresser":
             nav.kill();
             nav.bg("318_janiceBedroom/panties.jpg");
-            levels.mod("xdress", 50, 0);
+            levels.mod("xdress", 50);
             if (levels.get("xdress").l > 0) {
                 if (cl.hasClothing("panties", "j"))
                     chat(4, 318);
@@ -112,7 +112,6 @@ room318.btnclick = function (name) {
             else {
                 nav.kill();
                 nav.bg("318_janiceBedroom/reddress.jpg");
-                levels.mod("xdress", 50, 0);
                 if (levels.get("xdress").l > 0) {
                     chat(7, 318);
                 }
@@ -318,7 +317,7 @@ room318.btnclick = function (name) {
                         }
                     }
                     else {
-                        levels.mod("beast", 20, 5);
+                        levels.mod("beast", 20);
                         nav.killbutton("jabari_dog");
                         nav.button({
                             "type": "img",
@@ -445,7 +444,7 @@ room318.chatcatch = function (callback) {
             break;
         case "steal":
             g.popUpNotice("You stole her panties. Pervert");
-            levels.mod("xdress", 25, 4);
+            levels.mod("xdress", 25);
             cl.add("panties", "j");
             cl.add("bra", "j");
             g.pass = 318;
@@ -453,7 +452,7 @@ room318.chatcatch = function (callback) {
             break;
         case "stealDress":
             cl.add("dress", "j");
-            levels.mod("xdress", 25, 4);
+            levels.mod("xdress", 25);
             g.pass = 318;
             char.room(8);
             break;

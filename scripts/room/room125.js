@@ -989,7 +989,9 @@ room125.chatcatch = function (callback) {
             nav.bg("125_poker/t11.jpg");
             break;
         case "t12":
-            gv.mod("giveOralMale", 3);
+            levels.oral(3, "m", "kei", true);
+            levels.oral(3, "m", "ralph", false);
+            levels.oral(3, "m", "jimmy", false);
             sc.setstep("kei", -2);
             char.room(0);
             break;
@@ -1008,7 +1010,9 @@ room125.chatcatch = function (callback) {
             break;
         case "tx11":
             char.addtime(120);
-            gv.mod("giveOralMale", 3);
+            levels.oral(3, "m", "kei", true);
+            levels.oral(3, "m", "ralph", false);
+            levels.oral(3, "m", "jimmy", false);
             char.room(0);
             break;
         case "reload":
