@@ -160,6 +160,7 @@ room475.btnclick = function (name) {
             }
             else if (m.fmap[g.map.row][g.map.col].used === "j") {
                 //dozen degrading doors
+                g.pass = null;
                 char.room(486);
             }
             break;

@@ -710,6 +710,23 @@ zcl.double = function (top, left, ratio, mod, reverse) {
         zcl.subDisplay("head_m.png", top, left, ratio, reverse, w, h, f);
 };
 
+zcl.hanging = function (top, left, ratio, mod, reverse) {
+    zcl.kill();
+    let w = 1400;
+    let h = 1900;
+    let f = "hanging";
+    if (cl.c.chest > 2)
+        zcl.subDisplay("body_f.webp", top, left, ratio, reverse, w, h, f);
+    else
+        zcl.subDisplay("body_m.webp", top, left, ratio, reverse, w, h, f);
+
+    
+    if (cl.c.hairLength > 1)
+        zcl.subDisplay("head_open_f.webp", top, left, ratio, reverse, w, h, f);
+    else
+        zcl.subDisplay("head_open_m.webp", top, left, ratio, reverse, w, h, f);
+};
+
 //mod -> up, open, insert, suck, cum, cumface
 //color = w, b, d
 zcl.face = function (top, left, ratio, mod, color, reverse) {

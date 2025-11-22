@@ -31,40 +31,81 @@
 //posters go up around town - raises fame
 var room486 = {};
 room486.main = function () {
-    gv.mod("486gamecounter", 1);
-    g.internal = {
-        r: 0,
-        inst: false,
-        greenbutton: false,
-        r1: g.rand(0, 3),
-        r2: 0,
-        r3: -1,
-        r4: 0
-    };
-    nav.button({
-        "type": "img",
-        "name": "bg-door",
-        "left": 672,
-        "top": 158,
-        "width": 703,
-        "height": 604,
-        "image": "486_game/r_openholder.webp"
-    }, 486);
-    room486.btnclick("drawbtns");
-    nav.button({
-        "type": "img",
-        "name": "room0",
-        "left": 0,
-        "top": 0,
-        "width": 1920,
-        "height": 1080,
-        "image": "486_game/room0.webp"
-    }, 486);
-    chat(0, 486);
+    if (g.pass === null) {
+        gv.mod("486gamecounter", 1);
+        g.pass = {
+            r: 0,
+            a1: [],
+            a2: [],
+            inst: false,
+            greenbutton: false,
+            r1: null,
+            r2: null,
+            r3: null,
+            r4: null,//nippleclip spank
+            r5: null,//anal pain
+            r6: null,//cum piss
+            r7: null,//hole
+            r8: null,
+        };
+        nav.button({
+            "type": "img",
+            "name": "bg-door",
+            "left": 672,
+            "top": 158,
+            "width": 703,
+            "height": 604,
+            "image": "486_game/r_openholder.webp"
+        }, 486);
+        room486.btnclick("drawbtns");
+        nav.button({
+            "type": "img",
+            "name": "room0",
+            "left": 0,
+            "top": 0,
+            "width": 1920,
+            "height": 1080,
+            "image": "486_game/room0.webp"
+        }, 486);
+        chat(0, 486);
+    }
+    else {
+        levels.mod("fame", 5);
+        g.pass.r++;
+        g.pass.inst = false;
+        g.pass.greenbutton = false;
+        nav.bg("486_game/r" + g.pass.r + ".webp");
+        nav.button({
+            "type": "img",
+            "name": "bg-door",
+            "left": 672,
+            "top": 158,
+            "width": 703,
+            "height": 604,
+            "image": "486_game/r_openholder.webp"
+        }, 486);
+        room486.btnclick("drawbtns");
+        room486.btnclick("initroom");
+    }
 };
 
 room486.btnclick = function (name) {
     switch (name) {
+        case "redrawroom":
+            nav.bg("486_game/r" + g.pass.r + ".webp");
+            nav.button({
+                "type": "img",
+                "name": "bg-door",
+                "left": 672,
+                "top": 158,
+                "width": 703,
+                "height": 604,
+                "image": "486_game/r_openholder.webp"
+            }, 486);
+            room486.btnclick("drawbtns");
+            room486.btnclick("initroom");
+
+            break;
         case "drawbtns":
             nav.killbutton("mask");
             nav.killbutton("redbutton");
@@ -76,7 +117,7 @@ room486.btnclick = function (name) {
                 "top": 463,
                 "width": 100,
                 "height": 180,
-                "image": "486_game/m" + g.internal.r + ".webp"
+                "image": "486_game/m" + g.pass.r + ".webp"
             }, 486);
             nav.killbutton("redbutton");
             nav.killbutton("greenbutton");
@@ -89,7 +130,7 @@ room486.btnclick = function (name) {
                 "height": 102,
                 "image": "486_game/redbutton.webp"
             }, 486);
-            if (g.internal.greenbutton)
+            if (g.pass.greenbutton)
                 nav.button({
                     "type": "hand",
                     "name": "greenbutton",
@@ -111,7 +152,9 @@ room486.btnclick = function (name) {
                 }, 486);
             break;
         case "initroom":
-            switch (g.internal.r) {
+            g.pass.temp = 0;
+            switch (g.pass.r) {
+                case 1: g.pass.temp = g.rand(0, 3); break;
                 case 2:
                     nav.button({
                         "type": "grab",
@@ -123,6 +166,7 @@ room486.btnclick = function (name) {
                         "image": "486_game/room2.webp"
                     }, 486);
                     break;
+                case 3: g.pass.temp = -1; break;
                 case 4:
                     nav.button({
                         "type": "clickthrough",
@@ -134,49 +178,60 @@ room486.btnclick = function (name) {
                         "image": "486_game/room4.webp"
                     }, 486);
                     break;
+                case 5:
+                    nav.button({
+                        "type": "clickthrough",
+                        "name": "room5",
+                        "left": 897,
+                        "top": 937,
+                        "width": 235,
+                        "height": 45,
+                        "image": "486_game/room5.webp"
+                    }, 486);
+                    break;
+                case 7:
+                    nav.button({
+                        "type": "clickthrough",
+                        "name": "room7",
+                        "left": 449,
+                        "top": 344,
+                        "width": 1182,
+                        "height": 736,
+                        "image": "486_game/room7.webp"
+                    }, 486);
+                    zcl.displayMain(600, 900, .065, "clothes", true);
+                    break;
             }
             break;
         case "mask":
-            switch (g.internal.r) {
+            switch (g.pass.r) {
                 case 0: chat(5, 486); break;
                 case 1: chat(1001, 486); break;
                 case 2: chat(1002, 486); break;
                 case 3: chat(1003, 486); break;
                 case 4: chat(1004, 486); break;
+                case 5: chat(1005, 486); break;
+                case 6: chat(1006, 486); break;
+                case 7: chat(1007, 486); break;
             }
             break;
         case "redbutton":
-            //if (g.internal.r === 0) {
+            //if (g.pass.r === 0) {
             //    chat(5, 486);
             //}
             break;
         case "greenbutton":
-            if (g.internal.greenbutton) {
+            if (g.pass.greenbutton) {
                 nav.killbutton("redbutton");
                 nav.killbutton("greenbutton");
-                nav.modbutton("mask", "486_game/m" + g.internal.r + ".webp", null, "img");
+                nav.modbutton("mask", "486_game/m" + g.pass.r + ".webp", null, "img");
                 nav.modbutton("bg-door", "486_game/r_open.webp", null, null);
                 g.roomTimeout = setTimeout(function () {
-                    nav.killall();
-                    g.internal.r++;
-                    g.internal.inst = false;
-                    g.internal.greenbutton = false;
-                    nav.bg("486_game/r" + g.internal.r + ".webp");
-                    nav.button({
-                        "type": "img",
-                        "name": "bg-door",
-                        "left": 672,
-                        "top": 158,
-                        "width": 703,
-                        "height": 604,
-                        "image": "486_game/r_openholder.webp"
-                    }, 486);
-                    room486.btnclick("drawbtns");
-                    room486.btnclick("initroom");
+                    char.room(486);
                 }, 1200);
             }
             else {
-                if (g.internal.r === 0)
+                if (g.pass.r === 0)
                     chat(5, 486);
                 else
                     chat(7, 486);
@@ -187,10 +242,10 @@ room486.btnclick = function (name) {
             chat(10011, 486);
             break;
         case "room2":
-            if (!g.internal.inst) {
+            if (!g.pass.inst) {
                 chat(8, 486);
             }
-            else if (!g.internal.greenbutton) {
+            else if (!g.pass.greenbutton) {
                 nav.modbutton("room2", "486_game/room2a.webp", null, "img");
                 cl.nude();
                 nav.button({
@@ -211,7 +266,7 @@ room486.btnclick = function (name) {
             nav.killbutton("room3_1");
             zcl.assup(800, 1200, .3, "", false);
             room486.chatcatch("greenbuttonON");
-            g.internal.r3 = 0;
+            g.pass.temp = 0;
             chat(11, 486);
             break;
         case "room3_1":
@@ -227,25 +282,241 @@ room486.btnclick = function (name) {
                 "height": 672,
                 "image": "486_game/room3_" + gender.pronoun("f") + ".webp"
             }, 486);
-            g.internal.r3 = 1;
+            g.pass.temp = 1;
             chat(12, 486);
             break;
         case "room4_0":
             nav.killbutton("room4_0");
             nav.killbutton("room4_1");
-            g.internal.inst = false;
+            g.pass.r4 = "spank";
+            g.pass.inst = true;
             chat(13, 486);
             break;
         case "room4_1":
             nav.killbutton("room4_0");
             nav.killbutton("room4_1");
-            g.internal.inst = false;
+            g.pass.inst = true;
             chat(14, 486);
             break;
         case "room4_2":
             nav.kill();
             nav.bg("486_game/room4_0_2_" + gender.pronoun("f") + ".webp");
             chat(16, 486);
+            break;
+        case "room5_0":
+            g.pass.r5 = "anal";
+            room486.btnclick("5_2");
+            break;
+        case "room5_1":
+            g.pass.r5 = "pain";
+            room486.btnclick("5_2");
+            break;
+        case "5_2":
+            nav.killbutton("room5_0");
+            nav.killbutton("room5_1");
+            nav.button({
+                "type": "clickthrough",
+                "name": "me",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "486_game/room50.webp"
+            }, 486);
+            if (g.pass.r4 === "spank") {
+                nav.button({
+                    "type": "clickthrough",
+                    "name": "me",
+                    "left": 0,
+                    "top": 0,
+                    "width": 1920,
+                    "height": 1080,
+                    "image": "486_game/room51.webp"
+                }, 486);
+            }
+            nav.button({
+                "type": "clickthrough",
+                "name": "me",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "486_game/room5" + (g.pass === "anal" ? "2" : "3") + ".webp"
+            }, 486);
+            chat(10051, 486);
+            break;
+        case "room6_0":
+            levels.mod("piss", 20);
+            nav.killbutton("room6_0");
+            nav.killbutton("room6_1");
+            g.pass.r6 = "piss";
+            nav.button({
+                "type": "clickthrough",
+                "name": "r6",
+                "left": 902,
+                "top": 0,
+                "width": 324,
+                "height": 753,
+                "image": "486_game/room6_0.webp"
+            }, 486);
+            nav.next("room6_01");
+            break;
+        case "room6_1":
+            levels.mod("cum", 20);
+            nav.killbutton("room6_0");
+            nav.killbutton("room6_1");
+            g.pass.r6 = "cum";
+            cl.c.cumface = true;
+            nav.button({
+                "type": "clickthrough",
+                "name": "r6",
+                "left": 902,
+                "top": 0,
+                "width": 324,
+                "height": 753,
+                "image": "486_game/room6_1.webp"
+            }, 486);
+            nav.next("room6_11");
+            break;
+        case "room6_01":
+        case "room6_11":
+            zcl.kill();
+            nav.killbutton("room6_01");
+            nav.killbutton("room6_11");
+            nav.killbutton("r6");
+            nav.button({
+                "type": "clickthrough",
+                "name": "r6",
+                "left": 789,
+                "top": 802,
+                "width": 444,
+                "height": 229,
+                "image": "486_game/" + name + ".webp"
+            }, 486);
+            room486.chatcatch("greenbuttonON");
+            chat(10061, 486);
+            break;
+        case "room7":
+            nav.kill();
+            nav.bg("486_game/room7_0_" + gender.pronoun("f") + ".webp");
+            if (levels.oralTake(5).canTake) {
+                chat(20, 486);
+            }
+            else {
+                g.pass.inst = false;
+                chat(26, 486);
+            }
+            break;
+        case "room8_0":
+            nav.killbutton("room8_0");
+            nav.killbutton("room8_1");
+            if (g.rand(0, 2) === 0) {
+                pil = levels.get("pi");
+                if (pil.l < 1)
+                    pil.l = 1;
+                levels.set("pi", 0, pil.l - 1);
+                g.popUpNotice("You have become dumber");
+                chat(24, 486);
+            }
+            else {
+                pil = levels.get("strength");
+                if (pil.l < 1)
+                    pil.l = 1;
+                levels.set("strength", 0, pil.l - 1);
+                g.popUpNotice("You have become weaker");
+                chat(25, 486);
+            }
+            room486.chatcatch("greenbuttonON");
+            break;
+        case "room8_1":
+            var room8_1trans = false;
+            if (cl.c.cock < 4) {
+                cl.c.cock++;
+                nav.button({
+                    "type": "zimg",
+                    "name": "hypno",
+                    "left": 0,
+                    "top": 0,
+                    "width": 1920,
+                    "height": 1080,
+                    "image": "28_transformation/cock_" + cl.c.cock + ".gif"
+                }, 219);
+                room8_1trans = true;
+            }
+            else if (cl.c.leg < 3) {
+                cl.c.leg++;
+                nav.button({
+                    "type": "zimg",
+                    "name": "hypno",
+                    "left": 0,
+                    "top": 0,
+                    "width": 1920,
+                    "height": 1080,
+                    "image": "28_transformation/leg_" + cl.c.leg + ".gif"
+                }, 219);
+                room8_1trans = true;
+            }
+            else if (cl.c.chest < 3) {
+                cl.c.chest++;
+                nav.button({
+                    "type": "zimg",
+                    "name": "hypno",
+                    "left": 0,
+                    "top": 0,
+                    "width": 1920,
+                    "height": 1080,
+                    "image": "28_transformation/chest_" + cl.c.chest + ".gif"
+                }, 219);
+                room8_1trans = true;
+            }
+            else if (cl.c.leg < 5) {
+                cl.c.leg++;
+                nav.button({
+                    "type": "zimg",
+                    "name": "hypno",
+                    "left": 0,
+                    "top": 0,
+                    "width": 1920,
+                    "height": 1080,
+                    "image": "28_transformation/leg_" + cl.c.leg + ".gif"
+                }, 219);
+                room8_1trans = true;
+            }
+            else if (cl.c.chest < 6) {
+                cl.c.chest++;
+                nav.button({
+                    "type": "zimg",
+                    "name": "hypno",
+                    "left": 0,
+                    "top": 0,
+                    "width": 1920,
+                    "height": 1080,
+                    "image": "28_transformation/chest_" + cl.c.chest + ".gif"
+                }, 219);
+                room8_1trans = true;
+            }
+            else if (cl.c.lips < 2) {
+                cl.c.lips++;
+                nav.button({
+                    "type": "zimg",
+                    "name": "hypno",
+                    "left": 0,
+                    "top": 0,
+                    "width": 1920,
+                    "height": 1080,
+                    "image": "28_transformation/lip_" + cl.c.lips + ".gif"
+                }, 219);
+                room8_1trans = true;
+            }
+
+            if (room8_1trans) {
+                g.roomTimeout = setTimeout(function () {
+
+                });
+            }
+            else {
+                //no change, you're the perfect bimbo!
+            }
             break;
         default:
             break;
@@ -259,6 +530,9 @@ room486.chatcatch = function (callback) {
         case "room4_0_4":
             nav.bg("486_game/" + callback + ".webp");
             break;
+        case "room7_2":
+            nav.bg("486_game/" + callback + "_" + gender.pronoun("f") + ".webp");
+            break;
         case "room0":
             nav.modbutton("room0", "486_game/room0_1.webp", null, null);
             g.setTimeout = setTimeout(function () {
@@ -267,25 +541,36 @@ room486.chatcatch = function (callback) {
             }, 1200);
             break;
         case "room1":
-            if (!g.internal.inst) {
+            if (!g.pass.inst) {
                 zcl.displayMain(600, 950, .055, "clothes", true);
-                sc.select("room1", "486_game/icon_r1_" + g.internal.r1 + ".webp", 0);
+                sc.select("room1", "486_game/icon_r1_" + g.pass.temp + ".webp", 0);
             }
-            g.internal.inst = true;
+            g.pass.inst = true;
             break;
         case "room3":
-            if (!g.internal.inst) {
+            if (!g.pass.inst) {
                 sc.select("room3_0", "486_game/icon_r3_0.webp", 0);
                 sc.select("room3_1", "486_game/icon_r3_1.webp", 1);
             }
-            g.internal.inst = true;
+            g.pass.inst = true;
             break;
         case "room4":
-            if (!g.internal.inst) {
+            if (!g.pass.inst) {
                 sc.select("room4_0", "486_game/icon_r4_0.webp", 0);
                 sc.select("room4_1", "486_game/icon_r4_1.webp", 1);
             }
-            g.internal.inst = true;
+            break;
+        case "room4_1":
+            nav.button({
+                "type": "img",
+                "name": "me",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "486_game/room4_1_" + gender.pronoun("f") + ".webp"
+            }, 486);
+            g.pass.r4 = "nippleclip";
             break;
         case "room4_0":
             zcl.facedown(800, 850, .2, "", false);
@@ -295,16 +580,83 @@ room486.chatcatch = function (callback) {
             nav.bg("486_game/room4_0_1.webp");
             nav.next("room4_2");
             break;
+        case "room5":
+            if (!g.pass.inst) {
+                sc.select("room5_0", "486_game/icon_r5_0.webp", 0);
+                sc.select("room5_1", "486_game/icon_r5_1.webp", 1);
+            }
+            g.pass.inst = true;
+            break;
+        case "room6":
+            if (!g.pass.inst) {
+                zcl.displayMain(600, 950, .055, "clothes", true);
+                sc.select("room6_0", "486_game/icon_r6_0.webp", 0);
+                sc.select("room6_1", "486_game/icon_r6_1.webp", 1);
+            }
+            g.pass.inst = true;
+            break;
+        case "room7":
+            if (!g.pass.inst) {
+                sc.select("room7", "486_game/icon_r7.webp", 0);
+            }
+            g.pass.inst = true;
+            break;
+        case "room7_1":
+            nav.bg("486_game/" + callback + ".webp");
+            if (levels.analSize(5).canTake) {
+                chat(21, 486);
+            }
+            else {
+                chat(27, 486);
+                g.pass.inst = false;
+            }
+            break;
+        case "room7_3":
+            room486.btnclick("redrawroom"); 
+            room486.chatcatch("greenbuttonON");
+            gv.mod("energy", -15);
+            levels.anal(5, false, "m", false, "!statue");
+            levels.oral(5, "m", "!statue", false, null, true);
+            nav.button({
+                "type": "clickthrough",
+                "name": "room7",
+                "left": 449,
+                "top": 344,
+                "width": 1182,
+                "height": 736,
+                "image": "486_game/room7.webp"
+            }, 486);
+            zcl.hanging(560, 865, .25, "", false);
+            break;
+        case "room8":
+            if (!g.pass.inst) {
+                sc.select("room8_0", "486_game/icon_r8_0.webp", 0);
+                sc.select("room8_1", "486_game/icon_r8_1.webp", 1);
+            }
+            g.pass.inst = true;
+            break;
         case "greenlightRedraw":
             nav.kill();
-            nav.bg("486_game/r" + g.internal.r + ".webp");
+            nav.bg("486_game/r" + g.pass.r + ".webp");
+            nav.button({
+                "type": "img",
+                "name": "bg-door",
+                "left": 672,
+                "top": 158,
+                "width": 703,
+                "height": 604,
+                "image": "486_game/r_openholder.webp"
+            }, 486);
             room486.btnclick("initroom");
-            g.internal.greenbutton = true;
+            g.pass.greenbutton = true;
             room486.btnclick("drawbtns");
             break;
         case "greenbuttonON":
-            g.internal.greenbutton = true;
+            g.pass.greenbutton = true;
             room486.btnclick("drawbtns");
+            break;
+        case "redrawroom":
+            room486.btnclick("redrawroom");
             break;
         default:
             break;
@@ -323,7 +675,7 @@ room486.chat = function (chatID) {
             chatID: 0,
             speaker: "!ann",
             text: "This first room starts off light, Shout the line with all your might! " +
-                carray[g.internal.r1] +
+                carray[g.pass.temp] +
                 " Let the crowd hear clear and true, Loud as thunder, that’s on you!",
             button: [
                 { chatID: -1, text: "Shout the line? ", callback: "room1" }
@@ -339,14 +691,14 @@ room486.chat = function (chatID) {
         return {
             chatID: 0,
             speaker: "me",
-            text: carray[g.internal.r1],
+            text: carray[g.pass.temp],
             button: [
                 { chatID: -1, text: "...", callback: "greenbuttonON" }
             ]
         };
     }
     else if (chatID === 1002) {
-        g.internal.inst = true;
+        g.pass.inst = true;
         return {
             chatID: 0,
             speaker: "!ann",
@@ -408,14 +760,14 @@ room486.chat = function (chatID) {
         return {
             chatID: 0,
             speaker: "!ann",
-            text: c10041[g.internal.r4],
+            text: c10041[g.pass.temp],
             button: [
-                { chatID: 10042, text: c10041b[g.internal.r4 % c10041b.length], callback: "room4_0_5" }
+                { chatID: 10042, text: c10041b[g.pass.temp % c10041b.length], callback: "room4_0_5" }
             ]
         };
     }
     else if (chatID === 10042) {
-        g.internal.r4++;
+        g.pass.temp++;
         let c10042 = [
             "",
             "Fuck that really hurt!",
@@ -432,42 +784,96 @@ room486.chat = function (chatID) {
         return {
             chatID: 0,
             speaker: "me",
-            text: c10042[g.internal.r4],
+            text: c10042[g.pass.temp],
             button: [
-                { chatID: (g.internal.r4 === 10 ? 18 : 10041), text: "....", callback: "room4_0_4" }
+                { chatID: (g.pass.temp === 10 ? 18 : 10041), text: "....", callback: "room4_0_4" }
             ]
         };
     }
     else if (chatID === 1005) {
-        
-        carray = [
-            "Put in this spinny butt plug",
-            "moon the audiance",
-            "put 5 pool balls in your ass"
-        ];
+        return {
+            chatID: 0,
+            speaker: "!ann",
+            text: "Two markers lie, pink and black," +
+                "Pick one, bend over, write beside your crack." +
+                "Pink for the 'Anal Whore' who craves ass destruction," +
+                "Black for the 'Pain Slut' who begs agony and abduction." +
+                "Ass up now choose and obey," +
+                "Which color’s staining your cheeks today?",
+            button: [
+                { chatID: -1, text: "...", callback: "room5" }
+            ]
+        };
+    }
+    else if (chatID === 10051) {
+        let r5txt;
+        if (g.pass.r5 === "pain")
+            r5txt = "It was hard to write, but it suits me. I am a little pain slut. I really hope it " +
+                "comes back to bite me. hehehe";
+        else
+            r5txt = "I have to admit, I do love cocks in my bussy! I guess everyone here knows that now! ";
+        return {
+            chatID: 0,
+            speaker: "thinking",
+            text: r5txt,
+            button: [
+                { chatID: -1, text: "...", callback: "greenlightRedraw" }
+            ]
+        };
     }
     else if (chatID === 1006) {
-        carray = [
-            "Shoot out the spinny butt plug into the hoop. ", //repeat until it goes in
-            "Dry hump the doll and yell how much you like it"
-        ];
+        return {
+            chatID: 0,
+            speaker: "!ann",
+            text: "You're halfway there, feeling that thrill," +
+                "Stand in the middle, let your voice spill, " +
+                "Pee or cum — your choice, make it quick, " +
+                "Drizzle or flood me, with your filthy pricks!",
+            button: [
+                { chatID: -1, text: "...", callback: "room6" }
+            ]
+        };
+    }
+    else if (chatID === 10061) {
+        return {
+            chatID: 0,
+            speaker: "me",
+            text:
+                g.pass.r6 === "piss" ? "I feel so gross right now. I think some of that piss has somehow " +
+                    "flowed into every hole of my body, or include my ear holes. I now know what piss sounds " +
+                    "like. " :
+                    "I feel so gross right now. It's a good thing cum is good for your skin becuase every " +
+                    "inch of my body is covered in it. *sigh*",
+            button: [
+                { chatID: -1, text: "...", callback: "" }
+            ]
+        };
     }
     else if (chatID === 1007) {
-        carray = [
-            "Lick the floor ", //someone from the crowd pees on the floor
-            "Suck on this man's toes. ",
-            "glory hole in window - give spectators bj"
-        ];
+        return {
+            chatID: 0,
+            speaker: "!ann",
+            text: "Two stone cocks, hard as sin. " +
+                "One splits your throat, one rams in. " +
+                "Mouth full, ass stretched, you're their whore. " +
+                "Double stuffed slut we all adore.",
+            button: [
+                { chatID: -1, text: "...", callback: "room7" }
+            ]
+        };
     }
     else if (chatID === 1008) {
-        carray = [
-            "Get on your knees and bark like a dog.",
-            "Write on your body you're a stupid whore",
-            "Nipple clamps",
-            "ball clamps",
-            "walk knotted rope with nipple clamps",
-            "Put in vibrator"
-        ];
+        return {
+            chatID: 0,
+            speaker: "!ann",
+            text: "The good doctor has left you alone with his gift. " +
+                "Blue cup steals your mind, to leave you adrift. " +
+                "Red cup breaks your body, then builds it anew. " +
+                "One erases the past, one the vessel you knew.",
+            button: [
+                { chatID: -1, text: "...", callback: "room8" }
+            ]
+        };
     }
     else if (chatID === 1009) {
         //tattoo
@@ -632,7 +1038,7 @@ room486.chat = function (chatID) {
                 speaker: "thinking",
                 text: "I suppose I just put these clothes pins on my nipples. Seems easy. ", 
                 button: [
-                    { chatID: -1, text: "[Put the clothes pins on your nipples]", callback: "room4_1" },
+                    { chatID: 19, text: "[Put the clothes pins on your nipples]", callback: "room4_1" },
                     { chatID: -1, text: "[Change your mind]", callback: "room4" },
                 ]
             },
@@ -672,6 +1078,86 @@ room486.chat = function (chatID) {
                     "our next game!!!",
                 button: [
                     { chatID: -1, text: "...", callback: "greenlightRedraw" },
+                ]
+            },
+            {
+                chatID: 19,
+                speaker: "thinking",
+                text: "Ouch! That's suprisingly painful! I hope I get to take them off soon!",
+                button: [
+                    { chatID: -1, text: "...", callback: "greenlightRedraw" },
+                ]
+            },
+            {
+                chatID: 20,
+                speaker: "thinking",
+                text: "How do I get up there. It's so high. Do I just put my mouth... No. How do I get the " +
+                    "other dick in my ass....",
+                button: [
+                    { chatID: -1, text: "...", callback: "room7_1" },
+                ]
+            },
+            {
+                chatID: 21,
+                speaker: "thinking",
+                text: "Maybe if I impale my ass first... No, it's too high. Can't get that cock in... Maybe " +
+                    "if I climb up on it and just....",
+                button: [
+                    { chatID: 22, text: "...", callback: "room7_2" },
+                ]
+            },
+            {
+                chatID: 22,
+                speaker: "thinking",
+                text: "Ok. I have the cock in my mouth, now to just angle the other cock up my ass....",
+                button: [
+                    { chatID: 23, text: "...", callback: "room7_3" },
+                ]
+            },
+            {
+                chatID: 23,
+                speaker: "thinking",
+                text: "I did it!!! But fuck. Those stone dicks don't bend at all! So big in my holes I can " +
+                    "feel them stretch me open! I'm going to have to really relax my hole to slip out of " +
+                    "this one. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 24,
+                speaker: "me",
+                text: "That tea was yummy! I wonder where bubbles go when they pop? ",
+                button: [
+                    { chatID: -1, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 25,
+                speaker: "me",
+                text: "That tea was yummy! I do hope to be overpowered by some big strong man! ",
+                button: [
+                    { chatID: -1, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 26,
+                speaker: "me",
+                text: "Crap. That stone penis is way too big for my mouth. I'll have to practice oral more " +
+                    "if I'm ever going to get through this. I guess I have to call it quits here. Damn me and " +
+                    "my tight mouth! ",
+                button: [
+                    { chatID: -1, text: "...", callback: "redrawroom" },
+                ]
+            },
+            {
+                chatID: 27,
+                speaker: "me",
+                text: "Crap. That stone penis is way too big for my bussy. I'll have to practice anal more " +
+                    "if I'm ever going to get through this. I guess I have to call it quits here. Damn me and " +
+                    "my tight asshole! ",
+                button: [
+                    { chatID: -1, text: "...", callback: "redrawroom" },
                 ]
             },
         ];
