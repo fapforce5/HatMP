@@ -454,7 +454,10 @@ rape.phase2 = function () {
             cl.display();
             rape.updateEnergy(null, null, 15, 3);
             rape.displayMenu("moan");
-            rape.message(["That's right, bitch. ", "Show me what you got!"]);
+            if (rape.name === "!wolf")
+                rape.message(["Grrrrrr "]);
+            else
+                rape.message(["That's right, bitch. ", "Show me what you got!"]);
             return;
         }
         else if (rape.phaseChange === "struggle" && rape.char.slap && g.rand(0, 3) === 0 && (cl.c.panties !== null)) { //panty rip

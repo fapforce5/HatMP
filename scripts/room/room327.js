@@ -103,7 +103,6 @@ room327.btnclick = function (name) {
             break;
         case "milk":
             nav.killbutton("milk");
-            
             chat(999, 327);
             break;
         case "chat":

@@ -201,6 +201,17 @@ room486.btnclick = function (name) {
                     }, 486);
                     zcl.displayMain(600, 900, .065, "clothes", true);
                     break;
+                case 8:
+                    nav.button({
+                        "type": "clickthrough",
+                        "name": "room7",
+                        "left": 706,
+                        "top": 826,
+                        "width": 642,
+                        "height": 242,
+                        "image": "486_game/room8.webp"
+                    }, 486);
+                    break;
             }
             break;
         case "mask":
@@ -213,6 +224,11 @@ room486.btnclick = function (name) {
                 case 5: chat(1005, 486); break;
                 case 6: chat(1006, 486); break;
                 case 7: chat(1007, 486); break;
+                case 8: chat(1008, 486); break;
+                case 9: chat(1009, 486); break;
+                case 10: chat(10010, 486); break;
+                case 11: chat(10011, 486); break;
+                case 12: chat(10012, 486); break;
             }
             break;
         case "redbutton":
@@ -429,6 +445,8 @@ room486.btnclick = function (name) {
             room486.chatcatch("greenbuttonON");
             break;
         case "room8_1":
+            nav.killbutton("room8_0");
+            nav.killbutton("room8_1");
             var room8_1trans = false;
             if (cl.c.cock < 4) {
                 cl.c.cock++;
@@ -511,11 +529,12 @@ room486.btnclick = function (name) {
 
             if (room8_1trans) {
                 g.roomTimeout = setTimeout(function () {
-
-                });
+                    nav.killbutton("hypno");
+                    chat(28, 486);
+                }, 6000);
             }
             else {
-                //no change, you're the perfect bimbo!
+                chat(29, 486);
             }
             break;
         default:
@@ -878,19 +897,15 @@ room486.chat = function (chatID) {
     else if (chatID === 1009) {
         //tattoo
         carray = [
-            "Take this pill to make your boobs bigger",
-            "Take this pill to make your weiner smaller",
-            "Take this pill to make your butt bigger",
-            "Take this pill to make your lips bigger",
-            "Take this pill to be dumber.",
-        ];
-    }
-    else if (chatID === 1010) {
-        carray = [
             "Shoot tennis ball up your asshole",
             "Ride the fuck machine for 10 minutes",
             "enema"
         ];
+    }
+    else if (chatID === 1010) {
+       //zcl.double(-100, -100, 1.2, "open", true)
+        //zcl.bj(100, 500, .8, "open", false)
+        //zcl.bj(100, 600, .8, "", false)
     }
     else if (chatID === 1011) {
         carray = [
@@ -1158,6 +1173,30 @@ room486.chat = function (chatID) {
                     "my tight asshole! ",
                 button: [
                     { chatID: -1, text: "...", callback: "redrawroom" },
+                ]
+            },
+            {
+                chatID: 28,
+                speaker: "me",
+                text: "I'm starting to look like a dumb ass slutty bimbo. Yeah me!!!! ",
+                button: [
+                    { chatID: -1, text: "...", callback: "greenbuttonON" },
+                ]
+            },
+            {
+                chatID: 29,
+                speaker: "me",
+                text: "Hey!!! Nothing happened!!! ",
+                button: [
+                    { chatID: -1, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 30,
+                speaker: "!barker",
+                text: "Oh... ummm. Probably because you're already the perfect bimbo. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "greenbuttonON" },
                 ]
             },
         ];

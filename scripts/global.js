@@ -287,6 +287,7 @@ g.rooms = [
     { roomID: 325, name: "Farm", image: "325_farm/bg.jpg", nightImage: "325_farm/bg_night.jpg", houseID: 325, btn: "roomBtn_325.png" },
     { roomID: 326, name: "Stable", image: "326_stable/bg1.jpg", nightImage: "326_stable/bg1.jpg", houseID: 325, btn: "roomBtn_326.png" },
     { roomID: 327, name: "milking", image: "327_milking/milkparlor.jpg", nightImage: "327_milking/milkparlor.jpg", houseID: 325, btn: "roomBtn_327.png" },
+    { roomID: 328, name: "ranch", image: "328_farm/meadowbg.webp", nightImage: "328_farm/meadowbg.webp", houseID: 325, btn: "roomBtn_327.png" },
 
     { roomID: 350, name: "Sperm Bank", image: "350_spermBank/350_spermbank.jpg", nightImage: "350_spermBank/350_spermbank.jpg", houseID: 350, btn: "roomBtn_350.png" },
     { roomID: 351, name: "Mu First Sissygasm", image: "351_spermJackoff/wallBg.jpg", nightImage: "351_spermJackoff/wallBg.jpg", houseID: 350, btn: "roomBtn_350.png" },

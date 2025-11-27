@@ -1,8 +1,21 @@
 ﻿//Room name
 var room325 = {};
 room325.main = function () {
+    if (g.pass === "endSleepyTime") {
+        nav.bg("325_farm/case5_" + gender.pronoun("f") + ".jpg");
+        if (sc.getMission("rachel", "milk").notStarted)
+            chat(49, 325);
+        else
+            chat(48, 325);
+        return;
+    }
     if (g.isNight()) {
-        chat(4, 325);
+        if (missy.activecase().caseId === 19) {
+            chat(40, 325);
+        }
+        else {
+            chat(4, 325);
+        }
     }
     else if (daily.get("rachel")) {
         chat(20, 325);
@@ -101,6 +114,19 @@ room325.btnclick = function (name) {
             }, 325);
             chat(16, 325);
             break;
+        case "case2pc":
+            nav.kill();
+            nav.bg("325_farm/case2_pc.jpg");
+            chat(43, 325);
+            break;
+        case "case2book":
+            revents.cultbook(325, "killbook");
+            break;
+        case "killbook":
+            nav.killall();
+            nav.bg("325_farm/case3.jpg");
+            chat(44, 325);
+            break;
         default:
             break;
     }
@@ -108,6 +134,14 @@ room325.btnclick = function (name) {
 
 room325.chatcatch = function (callback) {
     switch (callback) {
+        case "case0":
+        case "case1":
+            nav.bg("325_farm/" + callback + ".jpg");
+            break;
+        case "case4":
+            cl.nude();
+            nav.bg("325_farm/" + callback + "_" + gender.pronoun("f") + ".jpg");
+            break;
         case "leave":
             char.room(0);
             break;
@@ -211,6 +245,45 @@ room325.chatcatch = function (callback) {
                 "height": 1006,
                 "image": "325_farm/rachel.png"
             }, 325);
+            break;
+        case "case2":
+            nav.killall();
+            nav.bg("325_farm/case2.jpg");
+            nav.button({
+                "type": "hand",
+                "name": "case2book",
+                "left": 1495,
+                "top": 552,
+                "width": 170,
+                "height": 73,
+                "image": "325_farm/case2_book.webp"
+            }, 325);
+            nav.button({
+                "type": "hand",
+                "name": "case2pc",
+                "left": 410,
+                "top": 491,
+                "width": 118,
+                "height": 74,
+                "image": "325_farm/case2pc.webp"
+            }, 325);
+            break;
+        case "sleep":
+            g.pass = 325;
+            char.room(28);
+            break;
+        case "r328":
+            cl.c.buttplug = null;
+            cl.c.chastity = null;
+            cl.c.accessories = null;
+            cl.c.necklace = null;
+            cl.c.earring = null;
+            cl.c.nosering = null;
+            cl.c.bellyring = null;
+            cl.c.nipplering = null;
+            cl.display();
+            g.map = null;
+            char.room(328);
             break;
         default:
             break;
@@ -577,6 +650,110 @@ room325.chat = function (chatID) {
                 "if she'll do it. ",
             button: [
                 { chatID: -1, text: "I'll go talk to " + sc.n("envy") + "!!!", callback: "" }
+            ]
+        },
+        {
+            chatID: 40,
+            speaker: "thinking",
+            text: "This is going to be difficult. I can see one roaving guard outside, but I wonder if there's " +
+                "guards inside. I'm glad they have flashlights so at leaste I know where they're at. I should wait " +
+                "for him to go around back and try to sneak into the barn and start there. ",
+            button: [
+                { chatID: 41, text: "wait", callback: "case0" }
+            ]
+        },
+        {
+            chatID: 41,
+            speaker: "thinking",
+            text: "He's going around back. Now's my chance to sneak into the barn.",
+            button: [
+                { chatID: 42, text: "sneaky sneaky", callback: "case1" }
+            ]
+        },
+        {
+            chatID: 42,
+            speaker: "thinking",
+            text: "So creepy and loud in here. Let me see what's behind this door. ",
+            button: [
+                { chatID: -1, text: "sneaky sneaky", callback: "case2" }
+            ]
+        },
+        {
+            chatID: 43,
+            speaker: "thinking",
+            text: "Damn. It's locked. Let me look elsewhere.  ",
+            button: [
+                { chatID: -1, text: "...", callback: "case2" }
+            ]
+        },
+        {
+            chatID: 44,
+            speaker: "rachel",
+            text: "What are you doing sneaking around my farm! ",
+            button: [
+                { chatID: 45, text: "Oh uh...", callback: "" }
+            ]
+        },
+        {
+            chatID: 45,
+            speaker: "!security",
+            text: "I told you " + gender.pronoun("he") + " was working for Missy and shouldn't be allowed here. " +
+                "I know you like a good " + (sc.getMission("rachel", "milk").notStarted ? "farm hand" : "hucow") +
+                ", but " + gender.pronoun("he") + "'s going to destory our entire operation. We need to take " +
+                "care of " + gender.pronoun("her") + " so she doesn't destroy what we've built. ",
+            button: [
+                { chatID: 46, text: "Oh no. no. no. no. I just was curious...", callback: "" }
+            ]
+        },
+        {
+            chatID: 46,
+            speaker: "rachel",
+            text: "Fine. Do what you need for tonight. After I get some rest I'll decide what to do with " + gender.pronoun("her") +
+                ". ",
+            button: [
+                { chatID: 47, text: "Crap. ", callback: "case4" }
+            ]
+        },
+        {
+            chatID: 47,
+            speaker: "!security",
+            text: "Enjoy your night in the stable. Try to get a good night sleep, it may be your last. ",
+            button: [
+                { chatID: -1, text: "*sniffle*", callback: "sleep" }
+            ]
+        },
+        {
+            chatID: 48,
+            speaker: "rachel",
+            text: "You know there's some powerful people that want you dead. But I'm in the hucow business, " +
+                "and it would be a real shame to get rid of one of my milk producers. So I'm going to keep you " +
+                "around. You're going to go into my pen for bad little piggies. If you do the right thing it'll " +
+                "be easy on you. But if you misbehave, well... You're going to find out what happens to bad little " +
+                "piggies. Hahhaha. My ranch hands will take you from here. ",
+            button: [
+                { chatID: 50, text: "*sigh*", callback: "case4" }
+            ]
+        },
+        {
+            chatID: 49,
+            speaker: "rachel",
+            text: "You know there's some powerful people that want you dead. But I'm need of some new livestock " +
+                "and you may be able to earn your place as one of my hucows someday. So I'm going to keep you " +
+                "around. You're going to go into my pen for bad little piggies. If you do the right thing it'll " +
+                "be easy on you. But if you misbehave, well... You're going to find out what happens to bad little " +
+                "piggies. Hahhaha. My ranch hands will take you from here. ",
+            button: [
+                { chatID: 50, text: "*sigh*", callback: "case4" }
+            ]
+        },
+        {
+            chatID: 50,
+            speaker: "!security",
+            text: "I'm going to strip you of everything you have. If you're a bad little hucow Rachel says " +
+                "I get to keep you. I do hope you screw up hehehe. Then you'll really see the full power of " +
+                "the CUM Cult! ",
+            button: [
+                { chatID: -1, text: "*whimper*", callback: "r328" }
             ]
         },
     ];

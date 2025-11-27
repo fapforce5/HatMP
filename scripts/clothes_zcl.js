@@ -644,12 +644,31 @@ zcl.pucker = function (top, left, ratio, mod, reverse) {
     let f = "pucker";
     zcl.kill();
     let pg = gender.pronoun("f");
-    zcl.subDisplay("body_" + pg + ".webp", top, left, ratio, reverse, w, h, f);
+    if (mod === "back") {
+        zcl.subDisplay("body_back_" + pg + ".webp", top, left, ratio, reverse, w, h, f);
+    }
+    else {
+        zcl.subDisplay("body_" + pg + ".webp", top, left, ratio, reverse, w, h, f);
+    }
     if (cl.c.panties !== null)
         zcl.subDisplay("panties_" + pg + ".webp", top, left, ratio, reverse, w, h, f);
     if (cl.c.bra !== null)
         zcl.subDisplay("bra_" + pg + ".webp", top, left, ratio, reverse, w, h, f);
 
+};
+
+zcl.embarrass = function (top, left, ratio, mod, reverse) {
+    let w = 800;
+    let h = 1400;
+    let f = "embarrass";
+    zcl.kill();
+    let pg = gender.pronoun("f");
+    if (mod === "back") {
+        zcl.subDisplay("body_back_" + pg + ".png", top, left, ratio, reverse, w, h, f);
+    }
+    else {
+        zcl.subDisplay("body_front_" + pg + ".png", top, left, ratio, reverse, w, h, f);
+    }
 };
 
 zcl.armsup = function (top, left, ratio, mod, reverse) {

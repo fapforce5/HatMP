@@ -480,7 +480,7 @@ room326.chat = function (chatID) {
         },
         {
             chatID: 26,
-            speaker: "random",
+            speaker: "!security",
             text: "Stop right there scum! " + sc.n("rachel") + " sent me to make sure you weren't sucking that horse's cock. " +
                 "Gross, you little weird-o. Put your clothes back on and get out of here before you take a beating. ",
             button: [

@@ -830,6 +830,12 @@ sc.charMission = [
                         { id: 1, txt: "Hucow.", show: true, mStatus: 0, roomId: 325 },
                     ]
             },
+            {
+                missionName: "ranch", mStatus: 0, title: "Horse Brushing", desc: "Help out around the farm. ", task:
+                    [
+                        { id: 0, txt: "First day", show: true, mStatus: 0, roomId: 328 },
+                    ]
+            },
         ]
     },
     {
@@ -2895,6 +2901,18 @@ sc.trivial = function (charname) {
         case "!statue":
             name = "Stone Statue";
             image = "statue.png";
+            break;
+        case "!security":
+            name = "Security";
+            image = "security.png";
+            break;
+        case "!rancher":
+            name = "Rancher";
+            image = "rancher.png";
+            break;
+        case "!rancher1":
+            name = "Rancher";
+            image = "rancher1.png";
             break;
         default:
             console.log("unknown trivial char: (check capitilazation)" + charname);

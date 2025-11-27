@@ -649,6 +649,19 @@ room200.chatcatch = function (callback) {
             nav.bg("200_frontOffice/case_carnival0.jpg");
             chat(118, 200);
             break;
+        case "case_farm":
+            nav.kill();
+            nav.bg("200_frontOffice/case_farm0.jpg");
+            chat(128, 200);
+            break;
+        case "case_farm_start":
+            room200.chatcatch("case_afterExplaniation");
+            break;
+        case "case_farm_badend":
+            missy.set("activeCaseComplete", 0);
+            missy.caseComplete(19);
+            room200.chatcatch("case_complete_end");
+            break;
         case "case_saveralph":
             nav.bg("200_frontOffice/case_saveralph.jpg");
             chat(122, 200);
@@ -1945,7 +1958,7 @@ room200.chat = function (chatID) {
                 ]
             },
             {
-                chatID: 125,
+                chatID: 127,
                 speaker: "missy",
                 text: "Oh wow! This is troubling. The cult is getting bolder. Probably ramping for another " +
                     "big ritual. It's too bad you couldn't stop them, but I'm sure " + sc.n("ralph") + 
@@ -1953,6 +1966,61 @@ room200.chat = function (chatID) {
                     "hard. Until then, you keep your head down. I don't want to lose any more sissies. ",
                 button: [
                     { chatID: -1, text: "Yes ma'am", callback: "case_saveralph_badend" }
+                ]
+            },
+            {
+                chatID: 128,
+                speaker: "missy",
+                text: "After that amazing work taking down Clown Clan at the carnival I've uncovered that " +
+                    "Rachel, from Rachel's farm may have tried to purchase some of the more busty girls. Thanksfully " +
+                    "it appears that it didn't happen, but it may be worth looking into. I don't have a lot of " +
+                    "details, but the few I do have give me pause to send you on this case. ",
+                button: [
+                    { chatID: 129, text: "ma'am?", callback: "" }
+                ]
+            },
+            {
+                chatID: 129,
+                speaker: "missy",
+                text: "So a few things about Rachel. She doesn't work for the CUM Cult, but they do purchase a lot " +
+                    "of their milk from her. It makes some sense since she is the largest supplier of human breast milk " +
+                    "this side of the country. I do know that she has many girls that work for her to supply the milk. " +
+                    "While most are there voluntarily, it's possible some are there against their will. ",
+                button: [
+                    { chatID: 130, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 130,
+                speaker: "missy",
+                text: "Now I don't have any proof she has girls there against their will, and her security is " +
+                    "incredibly tight, so I haven't had a chance to properly look into her. This is where you come " +
+                    "in. I just need you to poke around, see if there's anything there and get me some details of " +
+                    "the inner workings. Given the danger and the lack of evidence, this case is optional for you. " +
+                    "Totally up to you if you want to look into her farm. So I'll leave it up to you. Do you want " +
+                    "to see if there's anything going on at Rachel's farm, or would it be better to look into other " +
+                    "cases? ",
+                button: [
+                    { chatID: 132, text: "We need to know what's going on. I'll do it!  ", callback: "" },
+                    { chatID: 131, text: "I'm going to skip this one. ", callback: "" }
+                ]
+            },
+            {
+                chatID: 131,
+                speaker: "missy",
+                text: "Perhaps you're right. We already have so much going on it's better to focus on other cases. ",
+                button: [
+                    { chatID: -1, text: "Thank you ma'am", callback: "case_farm_badend" }
+                ]
+            },
+            {
+                chatID: 132,
+                speaker: "missy",
+                text: "That's great to hear. Go to Rachel's farm, but only go at night, there's too many " +
+                    "people roaming around during the day. If it starts to trun bad, just leave and report " +
+                    "bad to me. ",
+                button: [
+                    { chatID: -1, text: "I will ma'am", callback: "case_farm_start" }
                 ]
             },
         ];

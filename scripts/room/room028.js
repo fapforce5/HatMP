@@ -511,8 +511,10 @@ room28.dreams = function () {
             g.pass = 322;
             nav.bg("322_dog/sleep2.webp");
         }
-        else if (g.pass === 322) 
+        else if (g.pass === 322)
             nav.bg("322_dog/sleep1.webp");
+        else if (g.pass === 325)
+            nav.bg("999_phone/black.jpg");
         
     }
     //console.log(hasText);

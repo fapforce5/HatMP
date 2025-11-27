@@ -394,7 +394,7 @@ room803.btnclick = function (name) {
                     nav.modbutton("bed_n", "803_parentbedroom/bed_n0.webp", null, null);
                 }, 2000);
             }
-            else if (g.internal.twat === 1) {
+            else {
                 if (!daily.get("803twatlick")) {
                     daily.set("803twatlick");
                     levels.oral(3, "f", "ralphsmom");

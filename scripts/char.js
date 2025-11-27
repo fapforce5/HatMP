@@ -725,6 +725,9 @@ menu.load = function (cookieName, btn, saveID) {
     char.room(g.roomID);
     char.menu();
     $('.hide-start').show();
+    if (g.roomID === 328) {
+        $("#room-inv").hide();
+    }
     $('.menu-button[data-type="close"]').click();
     $('.room-left').show();
     $('#room_footer').show();
