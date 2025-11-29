@@ -347,15 +347,15 @@ missy.getcases = function () {
                         }
                         break;
                     case "case_farm":
-                        if (missy.cases[18].complete) {
-                            caseList.push({
-                                caseId: i,
-                                active: true,
-                                icon: "case" + i.toString() + ".png",
-                                notReadyTxt: "N/A. ",
-                                callback: missy.cases[i].name
-                            });
-                        }
+                        //if (missy.cases[18].complete) {
+                        //    caseList.push({
+                        //        caseId: i,
+                        //        active: true,
+                        //        icon: "case" + i.toString() + ".png",
+                        //        notReadyTxt: "N/A. ",
+                        //        callback: missy.cases[i].name
+                        //    });
+                        //}
                         break;
                 }
             }

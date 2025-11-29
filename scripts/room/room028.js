@@ -494,7 +494,7 @@ room28.dreams = function () {
         else if (g.pass === 13)
             nav.bg("28_transformation/twin.jpg");
         else if (g.pass === 301)
-            nav.bg("301_living/envy159.jpg");
+            nav.bg("301_living/envy_159.jpg");
         else if (g.pass === 701)
             nav.bg("701_hospitalroom/sleep.jpg");
         else if (g.pass === 181)
@@ -515,7 +515,9 @@ room28.dreams = function () {
             nav.bg("322_dog/sleep1.webp");
         else if (g.pass === 325)
             nav.bg("999_phone/black.jpg");
-        
+        else if (g.pass === 328) {
+            nav.bg("328_farm/sleep_" + gender.pronoun("f") + ".webp");
+        }
     }
     //console.log(hasText);
     return hasText;

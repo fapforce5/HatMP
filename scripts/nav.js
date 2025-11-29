@@ -408,6 +408,14 @@ nav.progressBar = function (btn, roomId) {
             bgColor = "#333333";
             fgColor = "#e02626";
             break;
+        case "cum":
+            bgColor = "#8c2e16";
+            fgColor = "#FDFBD4";
+            break;
+        case "darkcum":
+            bgColor = "#8c2e16";
+            fgColor = "#bdac7b";
+            break;
         default:
             bgColor = "#333333";
             fgColor = "#FF5ED1";

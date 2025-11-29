@@ -449,11 +449,21 @@ room601.btnclick = function (name) {
             room601.btnclick("dance");
             break;
         case "privateBtn":
+            if (g.internal.danceCounter > g.internal.privateDances) {
+                nav.kill();
+                nav.bg("601_dance/d" + g.internal.private + ".jpg");
+                chat(16, 601);
+                return;
+            }
+            nav.kill("privateBtn");
             nav.killbutton("private_lap");
             nav.killbutton("private_bra");
             nav.killbutton("private_panties");
             nav.killbutton("private_getDressed");
-            sc.select("private_lap", "601_dance/icon_lap.png", -1);
+            nav.killbutton("private_hand");
+            nav.killbutton("private_lick");
+            
+            sc.select("private_lap", "601_dance/icon_lap.png", 0);
             if (cl.c.bra !== null)
                 sc.select("private_bra", "601_dance/icon_topless.png", -2);
             else if (cl.c.panties !== null)
@@ -461,24 +471,52 @@ room601.btnclick = function (name) {
             else 
                 sc.select("private_getDressed", "601_dance/icon_getdressed.png", -2);
 
-            sc.select("private_rub", "601_dance/icon_rub.png", 1);
-            
+            sc.select("private_rub", "601_dance/icon_rub.png", 6);
+            sc.select("private_hand", "601_dance/icon_hand.png", 2);
+            sc.select("private_lick", "601_dance/icon_lick.png", 4);
+
+            room601.btnclick("privateExcitement");
+            break;
+        case "privateExcitement":
+            nav.killbutton("howcum");
+            if (g.internal.privateExcitement < 0)
+                g.map.trust = 0;
+            else if (g.internal.privateExcitement > 100)
+                g.internal.privateExcitement = 100;
+
+            nav.progressBar({
+                "type": "img",
+                "name": "howcum",
+                "left": 400,
+                "top": 50,
+                "width": 1200,
+                "height": 10,
+                "color": (g.map.trust < 50 ? "darkcum" : "cum"),
+                "maxVal": 100,
+                "val": g.internal.privateExcitement,
+                "title": "Uncontrollable Orgasm!"
+            }, 322);
             break;
         case "private_bra":
+            nav.kill();
             nav.bg("601_dance/d" + g.internal.private + ".jpg");
             g.internal.privateExcitement += (cl.c.chest * 2) + g.rand(5, 15);
             cl.c.bra = null;
             cl.display();
             zcl.displayMain(-100, 400, .2, "clothes", true);
-            room601.btnclick("privateBtn");
+            room601.btnclick("privateExcitement");
+            nav.next("privateBtn");
             break;
         case "private_panties":
+            nav.kill();
             g.internal.privateExcitement += g.rand(10, 20);
+            room601.btnclick("privateExcitement");
             nav.bg("601_dance/d" + g.internal.private + ".jpg");
             cl.c.panties = null;
             cl.display();
             zcl.displayMain(-100, 400, .2, "clothes", true);
-            room601.btnclick("privateBtn");
+            room601.btnclick("privateExcitement");
+            nav.next("privateBtn");
             break;
         case "private_rub":
             gv.mod("arousal", 10);
@@ -513,21 +551,107 @@ room601.btnclick = function (name) {
             if (privateExcitement === 4)
                 nav.next("pivate_cumpants");
             else
-                room601.btnclick("privateBtn");
+                nav.next("privateBtn");
+            room601.btnclick("privateExcitement");
+            break;
+        case "private_hand":
+            nav.kill();
+            g.internal.danceCounter++;
+            if (g.internal.privateExcitement < 50) {
+                room601.btnclick("private_tipLow");
+                nav.bg("601_dance/handjoblimp.webp");
+                g.internal.privateExcitement += 10;
+            }
+            else {
+                room601.btnclick("private_tipHigh");
+                nav.bg("601_dance/handjob.gif");
+                g.internal.privateExcitement += g.rand(20, 30);
+            }
+
+            if (g.internal.privateExcitement > 97) {
+                nav.next("private_hand0")
+            }
+            else {
+                nav.next("privateBtn");
+            }
+            room601.btnclick("privateExcitement");
+            break;
+        case "private_hand0":
+            nav.killbutton("private_hand0");
+            nav.bg("601_dance/handjobcum0.webp");
+            room601.btnclick("private_tipHigh");
+            levels.gavehandjob("m", "!man");
+            nav.button({
+                "type": "tongue",
+                "name": "private_hand1",
+                "left": 903,
+                "top": 138,
+                "width": 40,
+                "height": 143,
+                "image": "601_dance/handjobcum1.webp"
+            }, 601);
+            g.internal.privateExcitement = 3;
+            room601.btnclick("privateExcitement");
+            nav.next("private_handend0")
+            break;
+        case "private_handend0":
+            nav.kill();
+            room601.btnclick("privateExcitement");
+            chat(15, 601);
+            break;
+        case "private_hand1":
+            nav.kill();
+            levels.swallowCum("m", "!man");
+            nav.bg("601_dance/handjobcum2.webp");
+            sc.select("private_hand2", "601_dance/icon_getdressed.png", -1);
+            break;
+        case "private_hand2":
+            cl.c.privateExcitement = 100;
+            cl.c.bra = g.internal.bra;
+            cl.c.panties = g.internal.panties;
+            room601.chatcatch("privateEnd");
+            break;
+        case "private_lick":
+            nav.kill();
+            g.internal.danceCounter++;
+            if (g.internal.privateExcitement < 70) {
+                room601.btnclick("private_tipLow");
+                nav.bg("601_dance/lick0.webp");
+                g.internal.privateExcitement += 10;
+            }
+            else {
+                room601.btnclick("private_tipHigh");
+                nav.bg("601_dance/lick1.webp");
+                g.internal.privateExcitement += g.rand(20, 30);
+            }
+
+            if (g.internal.privateExcitement > 97) {
+                nav.next("private_hand0")
+            }
+            else {
+                nav.next("privateBtn");
+            }
+            room601.btnclick("privateExcitement");
+
             break;
         case "pivate_cumpants":
             nav.killbutton("pivate_cumpants");
+            g.internal.excitement = 3;
+            room601.btnclick("privateExcitement");
             chat(15, 601);
             break;
         case "private_getDressed":
             nav.bg("601_dance/d" + g.internal.private + ".jpg");
             cl.c.bra = g.internal.bra;
             cl.c.panties = g.internal.panties;
+            g.internal.danceCounter += 2;
+            g.internal.privateExcitement -= 50;
             cl.display();
             zcl.displayMain(-100, 400, .2, "clothes", true);
             room601.btnclick("privateBtn");
             break;
         case "private_lap":
+            nav.kill();
             if (g.internal.sissySchool) {
                 if (g.gethourdecimal() < 3)
                     g.internal.excitement += 8;
@@ -540,13 +664,18 @@ room601.btnclick = function (name) {
             nav.bg("601_dance/d" + g.internal.private + ".jpg");
             var newPose1 = g.rand(0, 5);
             var poseClothing1 = 0;
-            if (cl.c.bra === null && cl.c.panties === null)
+            if (cl.c.bra === null && cl.c.panties === null) {
                 poseClothing1 = 2;
-            else if (cl.c.bra === null && cl.c.panties !== null)
+                g.internal.privateExcitement += 15;
+            }
+            else if (cl.c.bra === null && cl.c.panties !== null) {
                 poseClothing1 = 1;
-            else
+                g.internal.privateExcitement += 10;
+            }
+            else {
                 poseClothing1 = 0;
-
+                g.internal.privateExcitement += 5;
+            }
             while (newPose1 === g.internal.pose) {
                 newPose1 = g.rand(0, 5);
             }
@@ -573,11 +702,9 @@ room601.btnclick = function (name) {
                     break;
             }
             room601.btnclick("private_tipLow");
-            room601.btnclick("privateBtn");
             g.internal.danceCounter++;
-            if (g.internal.danceCounter > g.internal.privateDances) {
-                chat(16, 601);
-            }
+            room601.btnclick("privateExcitement");
+            nav.next("privateBtn");
             break;
         case "private_tipHigh":
             var th = Math.floor(g.internal.excitement / 10) + cl.appearance();
@@ -703,7 +830,8 @@ room601.chatcatch = function (callback) {
             g.internal.privateExcitement = 0;
             g.internal.privateMoney = 0;
             g.internal.danceCounter = 0;
-            g.internal.privateDances = g.rand(3, 6);
+            g.internal.privateDances = g.rand(5, 12);
+            room601.btnclick("privateExcitement");
             room601.btnclick("privateBtn");
             break;
         case "privateEnd":

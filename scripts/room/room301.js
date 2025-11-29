@@ -1,10 +1,12 @@
 ﻿//Envy Living Room
 var room301 = {};
 room301.main = function () {
-    //if (g.pass === "endSleepyTime") {
-    //    chat(108, 301);
-    //    nav.bg("301_living/envy160.jpg");
-    //}
+    if (g.pass === "endSleepyTime") {
+        g.pass = null;
+        nav.bg("301_living/envy160.jpg");
+        chat(108, 301);
+        return;
+    }
     //else {
     var navList = [0];
     nav.buildnav(navList);
@@ -82,6 +84,12 @@ room301.main = function () {
                 nav.bg("301_living/step14.jpg");
                 sc.select("leave", "301_living/icon_leave.png", 0);
                 sc.select("fuck", "301_living/icon_fuck.png", 1);
+                break;
+            case 11:
+                nav.bg("301_living/step14.jpg");
+                sc.select("leave", "301_living/icon_leave.png", 0);
+                sc.select("fuck", "301_living/icon_fuck.png", 1);
+                chat(89, 301);
                 break;
             //case 10:
             //    nav.bg("301_living/step14.jpg");
@@ -792,6 +800,7 @@ room301.chatcatch = function (callback) {
             char.room(0);
             break;
         case "envy150":
+            nav.kill();
             nav.bg("301_living/envy150.jpg");
             break;
         case "envy151":
@@ -814,22 +823,28 @@ room301.chatcatch = function (callback) {
             nav.bg("301_living/envy156.jpg");
             break;
         case "envy157":
-            if (cl.c.chastity !== null || cl.c.cock > 2) 
+            if (!gender.canUseCock()) {
                 chat(102, 301);
-            else 
+            }
+            else {
+                nav.bg("301_living/envy157.jpg");
                 chat(100, 301);
+            }
             break;
         case "envy158":
             nav.bg("301_living/envy158.jpg");
             break;
         case "envy159":
-            g.sleep();
+            g.pass = 301;
+            char.room(28);
             break;
         case "envy":
-            sc.setstep("envy", 16);
+            daily.set("noenvymilk");
+            sc.completeMission("envy", "hypno");
+            sc.completeMissionTask("envy", "hypno", 11);
+            sc.startMission("envy", "hucow");
             char.addtime(60);
             gv.mod("money", 500);
-            daily.set("rachel");
             gv.set("map", 0);
             char.room(325);
             break;
@@ -1789,7 +1804,7 @@ room301.chat = function (chatID) {
                     "able to talk her into being a hucow. How do I get some time with her alone to talk her into it? ",
                 button: [
                     { chatID: 90, text: "Check her room to see if there's a place to hide. ", callback: "envy150" },
-                    { chatID: -1, text: "Not worth it. Leave ", callback: "leave" },
+                    { chatID: -1, text: "Not worth it. ", callback: "" },
                 ]
             },
             {

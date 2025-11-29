@@ -52,7 +52,11 @@ room325.btnclick = function (name) {
                 chat(11, 325);
             }
             else if (!notStartedMilk) {
-                if (gv.get("milk") < .7) {
+                if (sc.taskGetStep("envy", "hypno") === 10) {
+                    sc.completeMissionTask("envy", "hypno", 10);
+                    chat(37, 325);
+                }
+                else if (gv.get("milk") < .7) {
                     chat(22, 325);
                 }
                 else {
@@ -273,16 +277,6 @@ room325.chatcatch = function (callback) {
             char.room(28);
             break;
         case "r328":
-            cl.c.buttplug = null;
-            cl.c.chastity = null;
-            cl.c.accessories = null;
-            cl.c.necklace = null;
-            cl.c.earring = null;
-            cl.c.nosering = null;
-            cl.c.bellyring = null;
-            cl.c.nipplering = null;
-            cl.display();
-            g.map = null;
             char.room(328);
             break;
         default:
@@ -644,7 +638,7 @@ room325.chat = function (chatID) {
         {
             chatID: 39,
             speaker: "thinking",
-            text: "Hmmm...... Who do I know with high tits and willing to be milked everyday? Hmmm....." +
+            text: "Hmmm...... Who do I know with giant fucking tits and willing to be milked everyday? Hmmm....." +
                 "Oh! I know! " + sc.n("envy") + "!!!! She's so deep under I bet I could just tell her to to get milked. " +
                 "Plus I know she was thinking of it before she became a fuck doll for the entire town. I'll visit her to see " +
                 "if she'll do it. ",

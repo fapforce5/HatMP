@@ -44,10 +44,12 @@ sc.char = [
     { name: "spanky", display: "Spanky", image: "spanky.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: false },
     { name: "keaton", display: "Keaton", image: "keaton.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: false },
     { name: "daddy", display: "Daddy", image: "daddy.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, q3: false },
-    { name: "envy", display: "Envy", image: "envy.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: true, q3: null },
-    { name: "rachel", display: "Rachel", image: "rachel.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: true,  q3: false },
+
+    { name: "rachel", display: "Rachel", image: "rachel.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: true, q3: false },
     { name: "kinsey", display: "Kinsey", image: "kinsey.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true,  q3: null },
-    { name: "horse", display: "Jimmy Dingler", image: "horse.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: false,  q3: null },
+    { name: "envy", display: "Envy", image: "envy.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: true, q3: null },
+    { name: "horse", display: "Jimmy Dingler", image: "horse.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: false, q3: null },
+
     { name: "dale", display: "Dale", image: "dale.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: false, q3: null },
 
     { name: "cult", display: "Cult", image: "cult.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
@@ -634,7 +636,16 @@ sc.charMission = [
                         { id: 7, txt: "Hypno 7", show: true, mStatus: 0, roomId: 301 },
                         { id: 8, txt: "Double team! Leave your cage at home.", show: true, mStatus: 0, roomId: 301 },
                         { id: 9, txt: "Broken.", show: true, mStatus: 0, roomId: 301 },
-                        { id: 10, txt: "Cum dump", show: true, mStatus: 0, roomId: 301 },
+                        { id: 10, txt: "Invite her to be a hucow", show: true, mStatus: 0, roomId: 325 },
+                        { id: 11, txt: "You're a hucow now!", show: true, mStatus: 0, roomId: 301 },
+                    ]
+            },
+            {
+                missionName: "hucow", mStatus: 0, title: "Hucow", desc: "I love it here!", task:
+                    [
+                        { id: 0, txt: "Last night!", show: true, mStatus: 0, roomId: 301 },
+                        { id: 1, txt: "Drake", show: true, mStatus: 0, roomId: 301 },
+                        { id: 2, txt: "TBD", show: true, mStatus: 0, roomId: 301 },
                     ]
             },
             {
@@ -848,7 +859,12 @@ sc.charMission = [
                         { id: 2, txt: "I'm not talking to Mooo either", show: true, mStatus: 0, roomId: 325 },
                         { id: 3, txt: "Get me an energy drink", show: true, mStatus: 0, roomId: 325 },
                         { id: 4, txt: "Thanks", show: true, mStatus: 0, roomId: 325 },
-                        { id: 5, txt: "End of path for nwo.", show: true, mStatus: 0, roomId: 325 },
+                    ]
+            },
+            {
+                missionName: "ranch", mStatus: 0, title: "Ranch", desc: "Fun on the Ranch", task:
+                    [
+                        { id: 0, txt: "First meeting", show: true, mStatus: 0, roomId: 325 },
                     ]
             },
         ]
@@ -2631,7 +2647,7 @@ sc.trivial = function (charname) {
             image = "madison.png";
             break;
         case "!boy":
-            name = "Boy's Voice";
+            name = "Boy";
             image = "boy.png";
             break;
         case "!man":
@@ -2639,7 +2655,7 @@ sc.trivial = function (charname) {
             image = "boy.png";
             break;
         case "!girl":
-            name = "Girl's Voice";
+            name = "Girl";
             image = "girl.png";
             break;
         case "!oldlady":
@@ -2907,7 +2923,7 @@ sc.trivial = function (charname) {
             image = "security.png";
             break;
         case "!rancher":
-            name = "Rancher";
+            name = "Drake";
             image = "rancher.png";
             break;
         case "!rancher1":

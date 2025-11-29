@@ -8,7 +8,18 @@ room300.main = function () {
         nav.bg("300_apartment/fight.jpg");
         chat(4, 300);
     }
-    else if (hypnoStep === 9 || hypnoStep === 10) {
+    else if (sc.getMission("envy", "hypno").success) {
+        nav.button({
+            "type": "btn",
+            "name": "doorevec",
+            "left": 930,
+            "top": 501,
+            "width": 231,
+            "height": 267,
+            "image": "300_apartment/door16.png"
+        }, 300);
+    }
+    else if (hypnoStep === 9 || hypnoStep === 10 || hypnoStep === 11) {
         nav.button({
                 "type": "btn",
                 "name": "door",
@@ -142,6 +153,9 @@ room300.btnclick = function (name) {
                 nav.bg("300_apartment/knock0.jpg");
                 chat(1000, 300);
             }
+            break;
+        case "doorevec":
+            chat(24, 300);
             break;
         case "stairs":
             char.room(310);

@@ -47,7 +47,7 @@ room327.main = function () {
 room327.btnclick = function (name) {
     switch (name) {
         case "getmilked":
-            if (false) {//sc.getstep("envy") > 15) {
+            if (sc.getMission("envy", "hucow").startedOrComplete && !daily.get("noenvymilk")) {
                 nav.killall();
                 nav.bg("327_milking/trio_bg.jpg");
                 nav.button({
@@ -111,18 +111,22 @@ room327.btnclick = function (name) {
                 case -1:
                     sc.startMission("kinsey", "milk");
                     sc.completeMissionTask("kinsey", "milk", 0);
+                    sc.modLevel("kinsey", 50);
                     chat(1, 327);
                     break;
                 case 1:
                     sc.completeMissionTask("kinsey", "milk", 1);
+                    sc.modLevel("kinsey", 50);
                     chat(3, 327);
                     break;
                 case 2:
                     sc.completeMissionTask("kinsey", "milk", 2);
+                    sc.modLevel("kinsey", 50);
                     chat(6, 327);
                     break;
                 case 3:
                     sc.completeMissionTask("kinsey", "milk", 3);
+                    sc.modLevel("kinsey", 50);
                     chat(8, 327);
                     break;
                 case 4:
@@ -134,16 +138,17 @@ room327.btnclick = function (name) {
             };
             break;
         case "envy":
-            switch (sc.getstep("envy")) {
-                case 16:
-                    sc.setstep("envy", 17);
+            switch (sc.taskGetStep("envy", "hucow")) {
+                case -1:
+                case 0:
+                    sc.completeMissionTask("envy", "hucow", 0);
                     chat(27, 327);
                     break;
-                case 17:
-                    sc.setstep("envy", 18);
+                case 1:
+                    sc.completeMissionTask("envy", "hucow", 1);
                     chat(30, 327);
                     break;
-                case 18:
+                case 2:
                     chat(34, 327);
                     break;
             }
@@ -158,6 +163,7 @@ room327.btnclick = function (name) {
                     nav.killall();
                     g.internal = true;
                     nav.bg("327_milking/energy.jpg");
+                    sc.modLevel("kinsey", 200, 10);
                     sc.completeMissionTask("kinsey", "milk", 4);
                     inv.use("soda");
                     chat(17, 327);
@@ -208,6 +214,11 @@ room327.chatcatch = function (callback) {
             nav.killall();
             nav.bg("327_milking/energy1.jpg");
             break;
+        case "r328":
+            g.map.event = "meadow";
+            char.addtime(60);
+            char.room(328);
+            break;
         default:
             break;
     }
@@ -236,12 +247,48 @@ room327.chat = function (chatID) {
             "I wonder who had the most cum in their butt in all of history, and is that on video?",
             "If someone pees in your ass, do you absorb that and they pee in now floating around your body?"
         ];
+        if (sc.getMission("rachel", "ranch").notStarted) {
+            return {
+                chatID: 999,
+                speaker: "thinking",
+                text: chararr[Math.floor(Math.random() * chararr.length)],
+                button: [
+                    { chatID: 0, text: "...", callback: "m2" }
+                ]
+            };
+        }
         return {
             chatID: 999,
             speaker: "thinking",
             text: chararr[Math.floor(Math.random() * chararr.length)],
             button: [
-                { chatID: 0, text: "...", callback: "m2" }
+                { chatID: 998, text: "...", callback: "m2" }
+            ]
+        };
+    }
+    else if (chatID === 998) {
+        let milk = gv.get("milk");
+        milk = (cl.c.chest * 300) * milk;
+        gv.set("milk", 0);
+        cl.display();
+        if (milk < 500) {
+            g.map.trust -= 2;
+            return {
+                chatID: 999,
+                speaker: "rachel",
+                text: "Only " + parseInt(milk) + " milliliters of milk. You need to eat more and try harder cow! ",
+                button: [
+                    { chatID: -1, text: "...", callback: "r328" }
+                ]
+            };
+        }
+        g.map.trust += 4;
+        return {
+            chatID: 999,
+            speaker: "thinking",
+            text: "Not bad " + parseInt(milk) + " milliliters of milk. I'm going to keep you around! ",
+            button: [
+                { chatID: -1, text: "...", callback: "r328" }
             ]
         };
     }
@@ -463,7 +510,7 @@ room327.chat = function (chatID) {
         {
             chatID: 26,
             speaker: "kinsey",
-            text: "That's it for this release. More in the future",
+            text: "I totally owe you one. When I get out of here I'll make it up to you. ",
             button: [
                 { chatID: 999, text: "...", callback: "m2" }
             ]
@@ -539,9 +586,9 @@ room327.chat = function (chatID) {
         {
             chatID: 34,
             speaker: "envy",
-            text: "More to cum in a future release ",
+            text: "I so much love it here! Thank you so much for brining me here!!!!",
             button: [
-                { chatID: 999, text: "...", callback: "m2" }
+                { chatID: 999, text: "I knew you would! ", callback: "m2" }
             ]
         },
     ];
