@@ -621,6 +621,9 @@ zcl.bj = function (top, left, ratio, mod, reverse) {
         case "open":
             zcl.subDisplay("head_open.png", top, left, ratio, reverse, w, h, f);
             break;
+        case "bj":
+            zcl.subDisplay("head_bj.png", top, left, ratio, reverse, w, h, f);
+            break;
         case "w":
             zcl.subDisplay("head_open.png", top, left, ratio, reverse, w, h, f);
             zcl.subDisplay("w.png", top, left, ratio, reverse, w, h, f);
@@ -652,9 +655,93 @@ zcl.pucker = function (top, left, ratio, mod, reverse) {
     }
     if (cl.c.panties !== null)
         zcl.subDisplay("panties_" + pg + ".webp", top, left, ratio, reverse, w, h, f);
+    else {
+        let cumamount = gv.getButtCum();
+        if (cumamount.total > 6)
+            zcl.subDisplay("cum_1.webp", top, left, ratio, reverse, w, h, f);
+        else if(cumamount.total > 0)
+            zcl.subDisplay("cum_0.webp", top, left, ratio, reverse, w, h, f);
+    }
     if (cl.c.bra !== null)
         zcl.subDisplay("bra_" + pg + ".webp", top, left, ratio, reverse, w, h, f);
+};
 
+//sad
+zcl.bellydown = function (top, left, ratio, mod, reverse) {
+    let w = 1800;
+    let h = 1500;
+    let f = "bellydown";
+    zcl.kill();
+    let pg = cl.c.hairLength > 2 ? "f" : "m";
+    let cumamount = gv.getButtCum();
+
+    if (mod === "sad") {
+        zcl.subDisplay("body_sad_" + pg + ".webp", top, left, ratio, reverse, w, h, f);
+    }
+    else {
+        zcl.subDisplay("body_" + pg + ".webp", top, left, ratio, reverse, w, h, f);
+    }
+        
+    if (cumamount.total > 6)
+        zcl.subDisplay("cum_1.webp", top, left, ratio, reverse, w, h, f);
+    else if (cumamount.total > 0)
+        zcl.subDisplay("cum_0.webp", top, left, ratio, reverse, w, h, f);
+};
+
+//closed w
+//c facial or swallow b
+zcl.bjpov = function (top, left, ratio, mod, reverse) {
+    let w = 1760;
+    let h = 1800;
+    let f = "bjpov";
+    let bjpovdick = mod.includes("black") ? "b" : "w";
+    zcl.kill();
+    let pg = gender.pronoun("f");
+
+    if (mod.includes("cum")) {
+        zcl.subDisplay("body_" + pg + ".webp", top, left, ratio, reverse, w, h, f);
+
+        if (mod.includes("facial"))
+            zcl.subDisplay("body_facial.webp", top, left, ratio, reverse, w, h, f);
+        else if (mod.includes("swallow"))
+            zcl.subDisplay("body_swallow.webp", top, left, ratio, reverse, w, h, f);
+
+        zcl.subDisplay("body_" + bjpovdick + ".webp", top, left, ratio, reverse, w, h, f);
+    }
+    else {
+        if (mod.includes("closed"))
+            zcl.subDisplay("bj_" + pg + "_closed_" + bjpovdick + ".webp", top, left, ratio, reverse, w, h, f);
+        else
+            zcl.subDisplay("bj_" + pg + "_open_" + bjpovdick + ".webp", top, left, ratio, reverse, w, h, f);
+    }
+};
+
+zcl.squat = function (top, left, ratio, mod, reverse) {
+    let w = 1600;
+    let h = 2048;
+    let f = "squat";
+    zcl.kill();
+    
+    if (cl.c.hairLength > 1) {
+        zcl.subDisplay("squat_f.png", top, left, ratio, reverse, w, h, f);
+    }
+    else {
+        zcl.subDisplay("squat_m.png", top, left, ratio, reverse, w, h, f);
+    }
+};
+
+zcl.pee = function (top, left, ratio, mod, reverse) {
+    let w = 1600;
+    let h = 1800;
+    let f = "pee";
+    zcl.kill();
+
+    zcl.subDisplay("body_" + gender.pronoun("f") + ".webp", top, left, ratio, reverse, w, h, f);
+
+    if(gender.isCockTooSmallForSex())
+        zcl.subDisplay("dick_s.webp", top, left, ratio, reverse, w, h, f);
+    else 
+        zcl.subDisplay("dick_l.webp", top, left, ratio, reverse, w, h, f);
 };
 
 zcl.embarrass = function (top, left, ratio, mod, reverse) {

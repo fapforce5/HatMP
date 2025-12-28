@@ -63,7 +63,7 @@ inv.master = [
     { type: "e", name: "cumjar", display: "A Jar full of cum", entry: false, count: 0, cost: -1, buy: 20, image: "cumjar.png", n: false, desc: "Gain 100 energy" },
     { type: "e", name: "dogcumjar", display: "A Jar full of dog cum", entry: false, count: 0, cost: -1, buy: 25, image: "dogcumjar.png", n: false, desc: "Gain 150 energy" },
     { type: "e", name: "horsecumjar", display: "A Jar full of horse cum", entry: false, count: 0, cost: -1, buy: 30, image: "horsecumjar.png", n: false, desc: "Gain 200 energy" },
-    { type: "e", name: "pigcumjar", display: "A Jar full of pig cum", entry: false, count: 0, cost: -1, buy: 40, image: "cumjar.png", n: false, desc: "Gain 300 energy" },
+    { type: "e", name: "pigcumjar", display: "A Jar full of pig cum", entry: false, count: 0, cost: -1, buy: 40, image: "pigcumjar.png", n: false, desc: "Gain 300 energy" },
 
     { type: "x", name: "pi_lic", display: "PI License", entry: false, count: null, cost: 0, buy: null, image: "piLic.png", n: false, desc: "License to work as a detective" },
     { type: "x", name: "studentid", display: "Student ID", entry: false, count: null, cost: 0, buy: null, image: "sudentid.png", n: false, desc: "Stolen Student ID" },

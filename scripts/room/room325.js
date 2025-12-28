@@ -690,7 +690,7 @@ room325.chat = function (chatID) {
         },
         {
             chatID: 45,
-            speaker: "!security",
+            speaker: "security",
             text: "I told you " + gender.pronoun("he") + " was working for Missy and shouldn't be allowed here. " +
                 "I know you like a good " + (sc.getMission("rachel", "milk").notStarted ? "farm hand" : "hucow") +
                 ", but " + gender.pronoun("he") + "'s going to destory our entire operation. We need to take " +
@@ -710,7 +710,7 @@ room325.chat = function (chatID) {
         },
         {
             chatID: 47,
-            speaker: "!security",
+            speaker: "security",
             text: "Enjoy your night in the stable. Try to get a good night sleep, it may be your last. ",
             button: [
                 { chatID: -1, text: "*sniffle*", callback: "sleep" }
@@ -742,7 +742,7 @@ room325.chat = function (chatID) {
         },
         {
             chatID: 50,
-            speaker: "!security",
+            speaker: "security",
             text: "I'm going to strip you of everything you have. If you're a bad little hucow Rachel says " +
                 "I get to keep you. I do hope you screw up hehehe. Then you'll really see the full power of " +
                 "the CUM Cult! ",

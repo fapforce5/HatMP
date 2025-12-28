@@ -40,7 +40,6 @@ room1010.btnclick = function (name) {
         else {
             currentpage = parseInt(name.replace("1010js_bookprev", ""));
         }
-        console.log(currentpage);
         nav.modbutton("1010js_book0", "1010_rand/book" + currentpage + ".webp");
         nav.killbuttonStartsWith("1010js_booknext");
         nav.killbuttonStartsWith("1010js_bookprev");

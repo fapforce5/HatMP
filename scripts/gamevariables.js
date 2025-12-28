@@ -827,6 +827,7 @@ gv.clearButtCum = function () {
             gv.st[i].t = 0;
         }
     }
+    cl.display();
 }
 
 levels.set = function (name, c, l) {
@@ -1755,6 +1756,7 @@ levels.swallowCum = function (gender = "m", name = null) {
         default: gv.mod("energy", 35); break;
     }
     levels.mod("cum", 25);
+    gv.mod("bladder", .05);
     sex.mod("drankcum", gender, name);
 };
 
@@ -1805,7 +1807,7 @@ levels.piss = function (drankpiss, analpiss, pissedon, gender, who = null) {
         levels.mod("piss", 25, 999);
         var pissLevel = levels.get("piss").l - 4;
         levels.mod("xdress", 15, 999);
-
+        gv.mod("bladder", .3);
         if (pissLevel > 0) {
             let pissEnergy = pissLevel * 5;
             if (gender === "f")

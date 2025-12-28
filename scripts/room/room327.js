@@ -77,6 +77,15 @@ room327.btnclick = function (name) {
                     "height": 887,
                     "image": "327_milking/trio_kinsey.png"
                 }, 327);
+                nav.button({
+                    "type": "btn",
+                    "name": "milk",
+                    "left": 907,
+                    "top": 109,
+                    "width": 156,
+                    "height": 487,
+                    "image": "327_milking/milk.png"
+                }, 327);
             }
             else {
                 nav.killall();
@@ -272,7 +281,8 @@ room327.chat = function (chatID) {
         gv.set("milk", 0);
         cl.display();
         if (milk < 500) {
-            g.map.trust -= 2;
+            room328.btnclick("addtrust");
+            g.map.trust += 2;
             return {
                 chatID: 999,
                 speaker: "rachel",
@@ -282,7 +292,7 @@ room327.chat = function (chatID) {
                 ]
             };
         }
-        g.map.trust += 4;
+        room328.btnclick("addtrust");
         return {
             chatID: 999,
             speaker: "thinking",

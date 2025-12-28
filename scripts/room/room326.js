@@ -5,19 +5,19 @@ room326.main = function () {
     nav.button({
         "type": "brush",
         "name": "horse",
-        "left": 491,
-        "top": 21,
-        "width": 1300,
-        "height": 1062,
+        "left": 264,
+        "top": 4,
+        "width": 1393,
+        "height": 1076,
         "image": "326_stable/horse.png"
     }, 326);
     nav.button({
         "type": "hand",
         "name": "cock",
-        "left": 857,
-        "top": 633,
-        "width": 80,
-        "height": 184,
+        "left": 649,
+        "top": 621,
+        "width": 134,
+        "height": 219,
         "image": "326_stable/cock0.png"
     }, 326);
     g.internal = 0;
@@ -46,10 +46,10 @@ room326.btnclick = function (name) {
                     nav.button({
                         "type": "hand",
                         "name": "cock1",
-                        "left": 865,
-                        "top": 623,
-                        "width": 250,
-                        "height": 263,
+                        "left": 661,
+                        "top": 603,
+                        "width": 252,
+                        "height": 273,
                         "image": "326_stable/cock1.png"
                     }, 326);
                 }
@@ -60,10 +60,10 @@ room326.btnclick = function (name) {
             nav.button({
                 "type": "hand",
                 "name": "cock2",
-                "left": 863,
-                "top": 621,
-                "width": 355,
-                "height": 219,
+                "left": 660,
+                "top": 577,
+                "width": 332,
+                "height": 251,
                 "image": "326_stable/cock2.png"
             }, 326);
             break;
@@ -79,22 +79,27 @@ room326.btnclick = function (name) {
             }
             else if (horseLevel < 4) {
                 nav.killall();
-                nav.bg("326_stable/horse5.jpg");
+                nav.bg("326_stable/horse5_" + gender.pronoun("f") + ".jpg");
                 chat(9, 326);
             }
             else if (sc.getMissionTask("horse", "sex", 1).notStarted) {
                 nav.killall();
-                nav.bg("326_stable/horse5.jpg");
+                nav.bg("326_stable/horse5_" + gender.pronoun("f") + ".jpg");
                 chat(14, 326);
+            }
+            else if (sc.getMission("rachel", "ranch").startedOrComplete) {
+                nav.killall();
+                nav.bg("326_stable/horse5_" + gender.pronoun("f") + ".jpg");
+                chat(28, 326);
             }
             else {
                 nav.killall();
-                nav.bg("326_stable/caught0.jpg");
+                nav.bg("326_stable/horse5_" + gender.pronoun("f") + ".jpg");
                 chat(25, 326);
             }
             break;
         case "bj":
-            nav.bg("326_stable/lick" + g.internal + ".jpg");
+            nav.bg("326_stable/lick" + g.internal + "_" + gender.pronoun("f") + ".jpg");
             if (g.internal === 11) {
                 cl.c.cumface = true;
                 levels.oral(6, "m", "horse", false, "horse");
@@ -110,30 +115,58 @@ room326.btnclick = function (name) {
 
 room326.chatcatch = function (callback) {
     switch (callback) {
+        case "horse100":
+            nav.kill();
+            nav.bg("326_stable/" + callback + ".webp");
+            break;
         case "brushEnd":
-            g.internal = "brush";
-            sc.modLevel("horse", 40, 4);
-            levels.mod("beast", 34, 3);
-            gv.mod("money", 20);
-            char.addtime(60);
-            char.room(0);
+            if (sc.getMission("rachel", "ranch").notStarted) {
+                g.internal = "brush";
+                sc.modLevel("horse", 40, 4);
+                levels.mod("beast", 34, 3);
+                gv.mod("money", 20);
+                char.addtime(60);
+                char.room(0);
+            }
+            else {
+                sc.modLevel("horse", 40, 4);
+                levels.mod("beast", 34, 3);
+                char.addtime(60);
+                char.room(329);
+            }
             break;
         case "badEnd":
             char.addtime(60);
-            char.room(0);
+            if (sc.getMission("rachel", "ranch").notStarted) {
+                char.room(0);
+            }
+            else {
+                char.room(329);
+            }
             break;
         case "stop":
+            nav.kill();
             nav.bg("326_stable/bg.jpg");
             break;
         case "horse4":
             nav.killall();
-            nav.bg("326_stable/horse4.jpg");
+            nav.bg("326_stable/horse3.jpg");
             break;
         case "horse5":
             nav.killall();
-            nav.bg("326_stable/horse5.jpg");
+            nav.button({
+                "type": "hand",
+                "name": "cock2",
+                "left": 573,
+                "top": 180,
+                "width": 775,
+                "height": 775,
+                "image": "326_stable/horse4.gif"
+            }, 326);
+            nav.bg("326_stable/horse4.jpg");
             break;
         case "horse6":
+            nav.kill();
             nav.bg("326_stable/horse6.jpg");
             break;
         case "horse7":
@@ -142,19 +175,19 @@ room326.chatcatch = function (callback) {
             nav.button({
                 "type": "img",
                 "name": "horse",
-                "left": 491,
-                "top": 21,
-                "width": 1300,
-                "height": 1062,
+                "left": 264,
+                "top": 4,
+                "width": 1393,
+                "height": 1076,
                 "image": "326_stable/horse.png"
             }, 326);
             nav.button({
                 "type": "img",
                 "name": "cock",
-                "left": 857,
-                "top": 633,
-                "width": 80,
-                "height": 184,
+                "left": 649,
+                "top": 621,
+                "width": 134,
+                "height": 219,
                 "image": "326_stable/cock0.png"
             }, 326);
             zcl.displayface();
@@ -169,7 +202,12 @@ room326.chatcatch = function (callback) {
             gv.mod("money", 20);
             levels.gavehandjob("m", "horse", "horse");
             char.addtime(60);
-            char.room(0);
+            if (sc.getMission("rachel", "ranch").notStarted) {
+                char.room(0);
+            }
+            else {
+                char.room(326);
+            }
             break;
         case "checkBrush":
             var checkHorse = sc.getLevel("horse");
@@ -204,56 +242,57 @@ room326.chatcatch = function (callback) {
             break;
         case "lick0":
             nav.killall();
-            nav.bg("326_stable/lick0.jpg");
+            nav.bg("326_stable/lick0_" + gender.pronoun("f") + ".jpg");
             break;
         case "lick1":
-            nav.bg("326_stable/lick1.jpg");
+            nav.bg("326_stable/lick1_" + gender.pronoun("f") + ".jpg");
             break;
         case "lick2":
-            nav.bg("326_stable/lick2.jpg");
+            nav.bg("326_stable/lick2_" + gender.pronoun("f") + ".jpg");
             break;
         case "lick3":
-            nav.bg("326_stable/lick3.jpg");
+            nav.bg("326_stable/lick3_" + gender.pronoun("f") + ".jpg");
             break;
         case "lick4":
-            nav.bg("326_stable/lick4.jpg");
+            nav.bg("326_stable/lick4_" + gender.pronoun("f") + ".jpg");
             break;
         case "lick5":
-            nav.bg("326_stable/lick5.jpg");
+            nav.bg("326_stable/lick5_" + gender.pronoun("f") + ".jpg");
             break;
         case "lick6":
-            nav.bg("326_stable/lick6.jpg");
+            nav.bg("326_stable/lick6_" + gender.pronoun("f") + ".jpg");
             g.internal = 7;
             nav.next("bj");
-            //nav.button({
-            //    "type": "btn",
-            //    "name": "bj",
-            //    "left": 1687,
-            //    "top": 615,
-            //    "width": 233,
-            //    "height": 150,
-            //    "image": "526_bar/arrowRight.png"
-            //}, 326);
             break;
         case "lick12":
-            nav.bg("326_stable/lick12.jpg");
+            nav.bg("326_stable/lick12_" + gender.pronoun("f") + ".jpg");
             break;
         case "lick13":
             sc.completeMissionTask("horse", "sex", 1);
             sc.modLevel("horse", 80, 8);
             levels.oral(5, "m", "horse", false, "horse");
             char.addtime(120);
-            char.room(0);
+            if (sc.getMission("rachel", "ranch").notStarted) {
+                char.room(0);
+            }
+            else {
+                char.room(329);
+            }
             break;
         case "horsey100":
             char.room(326);
             break;
         case "caught1":
-            nav.bg("326_stable/caught1.jpg");
+            nav.bg("326_stable/caught1_" + gender.pronoun("f") + ".jpg");
             break;
         case "caught2":
             char.addtime(60);
-            char.room(0);
+            if (sc.getMission("rachel", "ranch").notStarted) {
+                char.room(0);
+            }
+            else {
+                char.room(329);
+            }
             break;
         default:
             break;
@@ -291,7 +330,7 @@ room326.chat = function (chatID) {
             speaker: "thinking",
             text: "What the hell am I doing? I should stop this. ",
             button: [
-                { chatID: 4, text: "Rub his penis", callback: "horse4" },
+                { chatID: 4, text: "Touch his penis", callback: "horse4" },
                 { chatID: 6, text: "Stop", callback: "stop" }
             ]
         },
@@ -480,7 +519,7 @@ room326.chat = function (chatID) {
         },
         {
             chatID: 26,
-            speaker: "!security",
+            speaker: "security",
             text: "Stop right there scum! " + sc.n("rachel") + " sent me to make sure you weren't sucking that horse's cock. " +
                 "Gross, you little weird-o. Put your clothes back on and get out of here before you take a beating. ",
             button: [
@@ -488,11 +527,56 @@ room326.chat = function (chatID) {
             ]
         },
         {
-            chatID: 29,
+            chatID: 27,
             speaker: "thinking",
             text: "I'm not touching a horse cock! Gross! ",
             button: [
                 { chatID: -1, text: "[Need beast level 3]", callback: "" },
+            ]
+        },
+        {
+            chatID: 28,
+            speaker: "me",
+            text: "Hey " + sc.n("horse") + ". Can I fit you in my mouth?",
+            button: [
+                { chatID: 15, text: "Lick it", callback: "lick0" },
+                { chatID: 9, text: "Rub his weiner", callback: "horse5" },
+                { chatID: 29, text: "Rub your bussy on it", callback: "horse100" },
+                { chatID: -1, text: "Just brush it", callback: "horse" },
+            ]
+        },
+        {
+            chatID: 29,
+            speaker: "me",
+            text: "*ugh* It's so big and I can't quite push back on it",
+            button: [
+                { chatID: 30, text: "[Push harder!!!]", callback: "horse101" },
+            ]
+        },//keep guard busy / pay off guard
+        {
+            chatID: 30,
+            speaker: "rachel",
+            text: "Now you didn't think you could just push yourself on that big ol' horse cock without " +
+                "an audience did you?",
+            button: [
+                { chatID: 31, text: "*gasp*", callback: "" },
+            ]
+        },
+        {
+            chatID: 31,
+            speaker: "rachel",
+            text: "I already told you how expensive that cum is, but here you are trying to steal my horse cum " +
+                "again. You know what happens to bad little hucows?",
+            button: [
+                { chatID: 32, text: "What?", callback: "" },
+            ]
+        },
+        {
+            chatID: 32,
+            speaker: "rachel",
+            text: "I'll show you. Come here!",
+            button: [
+                { chatID: 33, text: "[Follow her]", callback: "" },
             ]
         },
     ];

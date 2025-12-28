@@ -46,7 +46,8 @@ sc.char = [
     { name: "daddy", display: "Daddy", image: "daddy.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, q3: false },
 
     { name: "rachel", display: "Rachel", image: "rachel.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: true, q3: false },
-    { name: "kinsey", display: "Kinsey", image: "kinsey.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true,  q3: null },
+    { name: "security", display: "CUM Gaurd", image: "security.png", step: 0, secret: 0, c: 0, l: 0, show: true, setName: false, phone: -1, p: true, q3: null },
+    { name: "kinsey", display: "Kinsey", image: "kinsey.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true, q3: null },
     { name: "envy", display: "Envy", image: "envy.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: true, q3: null },
     { name: "horse", display: "Jimmy Dingler", image: "horse.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: false, q3: null },
 
@@ -748,12 +749,18 @@ sc.charMission = [
     {
         name: "philbert", mission: [
             {
-                missionName: "bully", mStatus: 0, title: "Bully", desc: "Don't play in the park after dark.", task:
+                missionName: "bully", mStatus: 0, title: "Bully", desc: "You're my bitch", task:
                     [
                         { id: 0, txt: "Shows his bully side", show: false, mStatus: 0, roomId: 211 },
                         { id: 1, txt: "Blackmailed into sucking his cock", show: true, mStatus: 0, roomId: 211 },
                         { id: 2, txt: "Everyone knows", show: true, mStatus: 0, roomId: 211 },
                         { id: 3, txt: "Not made yet.", show: true, mStatus: 0, roomId: 211 },
+                    ]
+            },
+            {
+                missionName: "barn", mStatus: 0, title: "Barn", desc: "My little helper", task:
+                    [
+                        { id: 0, txt: "We meet again. ", show: false, mStatus: 0, roomId: 329 },
                     ]
             },
         ]
@@ -824,6 +831,14 @@ sc.charMission = [
                         { id: 3, txt: "You're her toilet", show: true, mStatus: 0, roomId: 461 },
                     ]
             },
+            {
+                missionName: "ranch", mStatus: 0, title: "Ranch", desc: "Wash my back, I'll wash yours", task:
+                    [
+                        { id: 0, txt: "First meeting.", show: true, mStatus: 0, roomId: 461 },
+                        { id: 1, txt: "Gave her water.", show: true, mStatus: 0, roomId: 461 },
+                        { id: 2, txt: "Gave her food.", show: true, mStatus: 0, roomId: 461 },
+                    ]
+            },
         ]
     },
     {
@@ -842,7 +857,7 @@ sc.charMission = [
                     ]
             },
             {
-                missionName: "ranch", mStatus: 0, title: "Horse Brushing", desc: "Help out around the farm. ", task:
+                missionName: "ranch", mStatus: 0, title: "Ranch", desc: "Life of a real hucow", task:
                     [
                         { id: 0, txt: "First day", show: true, mStatus: 0, roomId: 328 },
                     ]
@@ -1389,6 +1404,22 @@ sc.charMission = [
             },
         ]
     },
+    {
+        name: "security", mission: [
+            {
+                missionName: "ranch", mStatus: 0, title: "...", desc: "...", task:
+                    [
+                        { id: 0, txt: "For the first time", show: true, mStatus: 0, roomId: 328 },
+                        { id: 1, txt: "What made you, you?", show: true, mStatus: 0, roomId: 328 },
+                        { id: 2, txt: "Did you really suck his cock?", show: true, mStatus: 0, roomId: 328 },
+                        { id: 3, txt: "First step. ", show: true, mStatus: 0, roomId: 328 },
+                        { id: 4, txt: "Secret", show: true, mStatus: 0, roomId: 328 },
+                        { id: 5, txt: "Another secret!", show: true, mStatus: 0, roomId: 328 },
+                        { id: 10, txt: "For the last time", show: true, mStatus: 0, roomId: 328 },
+                    ]
+            },
+        ]
+    },
 ];
 
 sc.el = function () {
@@ -1410,8 +1441,13 @@ sc.setcharname = function (name, newName) {
     sc.char[sc.i(name)].display = newName;
 };
 
-sc.show = function(name){
-    sc.char[sc.i(name)].show = true;
+sc.show = function (name) {
+    if (name === "all") {
+        for (let i = 0; i < sc.char.length; i++)
+            sc.char[i].show = true;
+    }
+    else
+        sc.char[sc.i(name)].show = true;
 };
 
 //Levels ----------------------------------------------------------------------
@@ -2927,8 +2963,20 @@ sc.trivial = function (charname) {
             image = "rancher.png";
             break;
         case "!rancher1":
-            name = "Rancher";
+            name = "Clint";
             image = "rancher1.png";
+            break;
+        case "!hucow":
+            name = "Hucow";
+            image = "hucow.png";
+            break;
+        case "!pig":
+            name = "Piggy";
+            image = "pig.png";
+            break;
+        case "!horse":
+            name = "Horse";
+            image = "horse.png";
             break;
         default:
             console.log("unknown trivial char: (check capitilazation)" + charname);
