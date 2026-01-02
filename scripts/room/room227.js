@@ -452,7 +452,7 @@ room227.chatcatch = function (callback) {
             break;
         case "moneyend":
         case "badend":
-            tEnemy.updatePlayerStats(name === "moneyend" ? g.fight.e[0].money : 0);
+            //tEnemy.updatePlayerStats(name === "moneyend" ? g.fight.e[0].money : 0);
             g.internal = "nofight";
             $("#room-inv").show();
             $("#room-menu").show();

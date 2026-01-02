@@ -68,6 +68,7 @@ missy.init = function () {
         { caseId: 17, name: "case_sissyfinal", show: true, complete: false, success: false },
         { caseId: 18, name: "case_carnival", show: true, complete: false, success: false },
         { caseId: 19, name: "case_farm", show: true, complete: false, success: false },
+        { caseId: 20, name: "case_sewer", show: true, complete: false, success: false },
     ];
 }
 
@@ -146,6 +147,8 @@ missy.activecase = function () {
             { caseId: 17, name: "case_sissyfinal", txt: "Sissy Final! 1. Saturday fashion show at the pink room. 2. Pick up someone at the mall food court. 3. Friday stip club. 4. Get fucked  ", m: [200], isComplete: activeCaseComplete },
             { caseId: 18, name: "case_carnival", txt: "You need to find those missing girls from the carnival!", m: [625], isComplete: activeCaseComplete },
             { caseId: 19, name: "case_farm", txt: "Investigate Rachel's Farm.", m: [325], isComplete: activeCaseComplete },
+            { caseId: 20, name: "case_sewer", txt: "Talk to Dale in the homeless camp to get the crowbar then make you way to the back of the sewer next to the dance club till you find the robe.", m: [225], isComplete: activeCaseComplete },
+
         ];
         if (activecase > cases.length) {
             console.log("invalid missy.activecase" + activecase);
@@ -347,6 +350,17 @@ missy.getcases = function () {
                         }
                         break;
                     case "case_farm":
+                        if (missy.cases[18].complete) {
+                            caseList.push({
+                                caseId: i,
+                                active: true,
+                                icon: "case" + i.toString() + ".png",
+                                notReadyTxt: "N/A. ",
+                                callback: missy.cases[i].name
+                            });
+                        }
+                        break;
+                    case "case_sewer":
                         if (missy.cases[18].complete) {
                             caseList.push({
                                 caseId: i,

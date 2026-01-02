@@ -692,6 +692,7 @@ gv.mod = function (name, amount) {
                 g.checkPop(name, amount);
                 break;
             case "money":
+                amount = parseInt(amount);
                 gv.st[index].t += amount;
                 if (gv.st[index].t < 0)
                     gv.st[index].t = 0;

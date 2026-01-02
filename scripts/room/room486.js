@@ -31,7 +31,7 @@
 //posters go up around town - raises fame
 var room486 = {};
 room486.main = function () {
-    if (g.pass === null) {
+    if (g.pass === null || g.pass === "") {
         gv.mod("486gamecounter", 1);
         g.pass = {
             r: 0,
@@ -47,6 +47,7 @@ room486.main = function () {
             r6: null,//cum piss
             r7: null,//hole
             r8: null,
+            r9: null,
         };
         nav.button({
             "type": "img",
@@ -210,6 +211,22 @@ room486.btnclick = function (name) {
                         "width": 642,
                         "height": 242,
                         "image": "486_game/room8.webp"
+                    }, 486);
+                    break;
+                case 9:
+                    g.internal = {
+                        bucket: 0,
+                        c: [null, null, null, null, null] 
+                    };
+                    nav.bg("486_game/room9bg.webp");
+                    nav.button({
+                        "type": "btn",
+                        "name": "room9bucket",
+                        "left": 1516,
+                        "top": 807,
+                        "width": 112,
+                        "height": 111,
+                        "image": "486_game/room9_bucket.webp"
                     }, 486);
                     break;
             }
@@ -528,6 +545,7 @@ room486.btnclick = function (name) {
             }
 
             if (room8_1trans) {
+                cl.display();
                 g.roomTimeout = setTimeout(function () {
                     nav.killbutton("hypno");
                     chat(28, 486);
@@ -537,6 +555,19 @@ room486.btnclick = function (name) {
                 chat(29, 486);
             }
             break;
+        case "room9bucket":
+            if(g.internal.bucket === 0)
+            chat(10091, 486);
+            break;
+        case "room9c0":
+        case "room9c1":
+        case "room9c2":
+        case "room9c3":
+        case "room9c4":
+            var room9c = parseInt(name.replace("room9c", ""));
+
+            break;
+
         default:
             break;
     }
@@ -653,6 +684,53 @@ room486.chatcatch = function (callback) {
                 sc.select("room8_1", "486_game/icon_r8_1.webp", 1);
             }
             g.pass.inst = true;
+            break;
+        case "room9":
+            nav.kill();
+            var room9CockCounter = 0;
+            for (let i = 0; i < 5; i++) {
+                if (g.internal.c[i] === null) {
+                    switch (g.rand(0, 4)) {
+                        case 0: g.internal.c[i] = 0; break;
+                        case 1: g.internal.c[i] = 1; break;
+                    }
+                }
+            }
+            for (let i = 0; i < 5; i++) {
+                if (g.internal.c[i] === null) {
+                    room9CockCounter++;
+                }
+            }
+
+            if (room9CockCounter === 5) {
+                room486.chatcatch("room9");
+                return;
+            }
+
+            for (let i = 0; i < 5; i++) {
+                if (g.internal.c[i] !== null) {
+                    nav.button({
+                        "type": "img",
+                        "name": "cock",
+                        "left": 0,
+                        "top": 0,
+                        "width": 1920,
+                        "height": 1080,
+                        "image": "486_game/room9c_" + i.toString() + g.internal.c[i].toString() + ".webp"
+                    }, 486);
+                }
+            }
+            for (let i = 0; i < 5; i++) {
+                nav.button({
+                    "type": "btn",
+                    "name": "room9c" + i,
+                    "left": 50 + (i * 210),
+                    "top": 300,
+                    "width": 200,
+                    "height": 75,
+                    "image": "486_game/room9b_" + i.toString() + ".webp"
+                }, 486);
+            }
             break;
         case "greenlightRedraw":
             nav.kill();
@@ -896,11 +974,44 @@ room486.chat = function (chatID) {
     }
     else if (chatID === 1009) {
         //tattoo
-        carray = [
-            "Shoot tennis ball up your asshole",
-            "Ride the fuck machine for 10 minutes",
-            "enema"
-        ];
+        return {
+            chatID: 0,
+            speaker: "!ann",
+            text: "Empty bucket waits, cold and bare, "+
+                "cocks swollen, loaded, beyond compare. " +
+                "Stroke hard, erupt, let the hot ropes fly " +
+                "Fill that bucket till it's brimming high. " +
+                "Pump those cocks till they're ready to shoot. " +
+                "Hot cum churning, begging for route." +
+                "Slide it deep in your mouth or your ass so tight. " +
+                "Drain every drop straight into the bucket tonight.",
+            button: [
+                { chatID: -1, text: "...", callback: "room9" }
+            ]
+        };
+    }
+    else if (chatID === 10091) {
+        let c10091 = "";
+        if (g.internal.bucket === 0)
+            c10091 = "It's an empty bucket";
+        else if (g.internal.bucket < 4)
+            c10091 = "There's a little cum in this bucket";
+        else if (g.internal.bucket < 6)
+            c10091 = "This bucket is almost half full of cum. ";
+        else if (g.internal.bucket < 9)
+            c10091 = "This bucket is almost 3/4 full of cum. ";
+        else if (g.internal.bucket < 12)
+            c10091 = "This bucket is almost full of cum ";
+        else
+            c10091 = "It's bucket full of cum. So much cum!!";
+        return {
+            chatID: 0,
+            speaker: "thinking",
+            text: c10091,
+            button: [
+                { chatID: -1, text: "...", callback: "" }
+            ]
+        };
     }
     else if (chatID === 1010) {
        //zcl.double(-100, -100, 1.2, "open", true)
@@ -1199,6 +1310,7 @@ room486.chat = function (chatID) {
                     { chatID: -1, text: "...", callback: "greenbuttonON" },
                 ]
             },
+            
         ];
         if (cArray.length > chatID && chatID > -1)
             return cArray[chatID];

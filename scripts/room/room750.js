@@ -2,30 +2,26 @@
 var room750 = {};
 room750.main = function () {
     if (g.isNight()) {
-        
-        //if (sc.getstep("doc") < 3) {
-        //    nav.button({
-        //        "type": "btn",
-        //        "name": "doc",
-        //        "left": 1176,
-        //        "top": 295,
-        //        "width": 303,
-        //        "height": 710,
-        //        "image": "750_homeless/doctor.png"
-        //    }, 750);
-        //}
+        nav.button({
+            "type": "btn",
+            "name": "doc",
+            "left": 1176,
+            "top": 295,
+            "width": 303,
+            "height": 710,
+            "image": "750_homeless/doctor.png"
+        }, 750);
     }
-    //else {
-    //    nav.button({
-    //        "type": "btn",
-    //        "name": "daletent",
-    //        "left": 969,
-    //        "top": 443,
-    //        "width": 234,
-    //        "height": 139,
-    //        "image": "750_homeless/dale.png"
-    //    }, 750);
-    //}
+    nav.button({
+        "type": "btn",
+        "name": "daletent",
+        "left": 1490,
+        "top": 459,
+        "width": 306,
+        "height": 425,
+        "image": "750_homeless/dale.png",
+        "night": "750_homeless/daleNight.png"
+    }, 750);
     nav.button({
         "type": "btn",
         "name": "whoretent",
@@ -67,13 +63,22 @@ room750.btnclick = function (name) {
                     "height": 994,
                     "image": "750_homeless/doc1.png"
                 }, 750);
-                var doc = sc.getstep("doc");
-                if (doc === 0)
-                    chat(0, 750);
-                else if (sc.getEvent("landlord", -4)) 
-                    chat(10, 750);
-                else if (doc === 1)
-                    chat(6, 750);
+                switch (sc.taskGetStep("doc", "doc")) {
+                    case -1:
+                    case 0:
+                        sc.startMission("doc", "doc");
+                        sc.completeMissionTask("doc", "doc", 0);
+                        chat(0, 750);
+                        break;
+                    case 1:
+                        sc.completeMissionTask("doc", "doc", 1);
+                        chat(6, 750);
+                        break;
+                    default:
+                        chat(5, 750);
+                }
+                //else if (sc.getEvent("landlord", -4)) 
+                //    chat(10, 750);
             }
             else
                 chat(5, 750);
@@ -82,10 +87,31 @@ room750.btnclick = function (name) {
             char.room(751);
             break;
         case "daletent":
-            nav.killall();
-            nav.bg("750_homeless/dale.jpg");
-            if (sc.getstep("dale") === 0) {
+            nav.kill();
+            nav.bg("750_homeless/dalebg.webp");
+            nav.button({
+                "type": "btn",
+                "name": "dale",
+                "left": 641,
+                "top": 382,
+                "width": 480,
+                "height": 611,
+                "image": "750_homeless/dale.webp",
+            }, 750);
+            nav.buildnav([750, 0], true);
+            break;
+        case "dale":
+            if (missy.activecase().caseId === 20 && !inv.get("sewer").entry) {
+                chat(31, 750);
+            }
+            else if (sc.getMission("dale", "dale").notStarted) {
+                sc.show("dale");
+                sc.startMission("dale", "dale");
+                sc.completeMissionTask("dale", "dale");
                 chat(17, 750);
+            }
+            else {
+                chat(27, 750);
             }
             break;
         case "whoretent":
@@ -106,7 +132,16 @@ room750.chatcatch = function (callback) {
             break;
         case "doc1":
             if (inv.has('wine')) {
-                nav.modbutton("doc", "750_homeless/doc1d.png");
+                nav.killbutton("doc");
+                nav.button({
+                    "type": "btn",
+                    "name": "doc",
+                    "left": 950,
+                    "top": 86,
+                    "width": 645,
+                    "height": 994,
+                    "image": "750_homeless/doc1d.png"
+                }, 750);
                 sc.setstep("doc", 2);
                 chat(8, 750);
             }
@@ -114,7 +149,16 @@ room750.chatcatch = function (callback) {
                 chat(7, 750);
             break;
         case "doc1a":
-            nav.modbutton("doc", "750_homeless/doc1.png");
+            nav.killbutton("doc");
+            nav.button({
+                "type": "btn",
+                "name": "doc",
+                "left": 950,
+                "top": 86,
+                "width": 645,
+                "height": 994,
+                "image": "750_homeless/doc1.png"
+            }, 750);
             break;
         case "doc2":
             nav.killbutton("doc");
@@ -161,9 +205,32 @@ room750.chatcatch = function (callback) {
         case "int":
             levels.mod("pi", 40, 999);
             break;
+        case "pocketSand":
+            if (inv.get("pocketsand").count > 0) {
+                chat(28, 750);
+            }
+            else if (future.get("dalepocketsand") > -1) {
+                chat(30, 750);
+            }
+            else {
+                room750.chatcatch("buy");
+            }
+            break;
         case "buy":
-            g.pass = "dale";
-            char.room(401);
+            //g.pass = "dale";
+            //char.room(401);
+            if (gv.get("money") > 49) {
+                gv.mod("money", -50);
+                inv.addMulti("pocketsand", 1);
+                future.add("dalepocketsand", 14);
+                chat(26, 750);
+            }
+            else {
+                chat(25, 750);
+            }
+            break;
+        case "daleSewerEnd":
+            inv.add("sewer");
             break;
         default:
             break;
@@ -222,7 +289,7 @@ room750.chat = function (chatID) {
             speaker: "doc",
             text: "Go away, come back when you're a beer!",
             button: [
-                { chatID: -1, text: "...", callback: "" }
+                { chatID: -1, text: "...", callback: "reset" }
             ]
         },
         {
@@ -364,9 +431,8 @@ room750.chat = function (chatID) {
         {
             chatID: 22,
             speaker: "dale",
-            text: "Pocket sand and smelling salts. You take a little pocket sand and throw it in their face, Boom! They can't " +
-                "fight anymore! Unless they have no eyes. Then you can't fight. But you can use smelling salts to get back up! " +
-                "Do you carry pocket sand or smelling salts? You'll need them. ",
+            text: "Pocket sand. You take a little pocket sand and throw it in their face, Boom! They can't " +
+                "fight anymore! Unless they have no eyes. Do you carry around pocket sand? ",
             button: [
                 { chatID: 23, text: "I don't. ", callback: "" },
             ]
@@ -374,9 +440,112 @@ room750.chat = function (chatID) {
         {
             chatID: 23,
             speaker: "dale",
-            text: "Lucky for you I sell both! Come view my stuff man! ",
+            text: "Lucky for you I have some. Don't have a lot. I have to travel to the top of the moutain in " +
+                "the forest. It's a long trip. I go every 2 weeks. If you go too much they know what you're up " +
+                "to. But too little and you run out of pocket sand! Can I interest you in some pocket sand? " +
+                "Only $50 for one pocket full! ",
             button: [
-                { chatID: -1, text: "See what he has. ", callback: "buy" },
+                { chatID: -1, text: "Sure! ", callback: "buy" },
+                { chatID: 24, text: "I'll pass. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 24,
+            speaker: "dale",
+            text: "Ok. Suit yourself! ",
+            button: [
+                { chatID: 23, text: "I don't. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 25,
+            speaker: "dale",
+            text: "Hey! You don't have $50. You trying to swindle me!",
+            button: [
+                { chatID: -1, text: "oh, no. Sorry", callback: "" },
+            ]
+        },
+        {
+            chatID: 26,
+            speaker: "dale",
+            text: "Smart. You can never have too much pocketsand. Unless your pocket is full of sand. Then " +
+                "if you try to more more in you can have too much. So I guess you can have too much pocket sand.",
+            button: [
+                { chatID: -1, text: "Thanks!", callback: "" },
+            ]
+        },
+        {
+            chatID: 27,
+            speaker: "dale",
+            text: "What can I do you for stranger? ",
+            button: [
+                { chatID: -1, text: "I want some pocket sand. I have the $50. ", callback: "pocketSand" },
+                { chatID: -1, text: "Nothing. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 28,
+            speaker: "dale",
+            text: "Sure... wait, do you have pocket sand in your pocket right now? ",
+            button: [
+                { chatID: 29, text: "Yes? ", callback: "" },
+            ]
+        },
+        {
+            chatID: 29,
+            speaker: "dale",
+            text: "How are you going to put more sand in your pocket if it's already full of sand! " +
+                "You think you can just put this sand anywhere! It's pocket sand, not purse sand! No, " +
+                "you can't have more pocket sand!",
+            button: [
+                { chatID: -1, text: "oh ", callback: "" },
+            ]
+        },
+        {
+            chatID: 30,
+            speaker: "dale",
+            text: "I haven't been able to get back up the mountain to get more. I go every two weeks. ",
+            button: [
+                { chatID: -1, text: "oh ", callback: "" },
+            ]
+        },
+        {
+            chatID: 31,
+            speaker: "dale",
+            text: "Missy said you would be coming by. You know she's one cool chick. We used to have sex all " +
+                "the time. Until I got tired of her. ",
+            button: [
+                { chatID: 32, text: "really?", callback: "" },
+            ]
+        },
+        {
+            chatID: 32,
+            speaker: "dale",
+            text: "No. Not really. But it would be a whole lot cooler if we did. I did ask her for sex once, and " +
+                "she said she had enough crazy in her and didn't want more crazy in her. I get it. But she does " +
+                "let me spy for her. These cops in this town are so bad. My bike was stolen and you know what they did? ",
+            button: [
+                { chatID: 33, text: "what?", callback: "" },
+            ]
+        },
+        {
+            chatID: 33,
+            speaker: "dale",
+            text: "Nothin'! That's why I spy for Missy, to take them all down. So I'll help you. You'll need " +
+                "this crowbar to get in. Once you're in the sewer is a maze of tunnels. When you hit a grate " +
+                "you need to double back down and try a differnt path. ",
+            button: [
+                { chatID: 34, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 34,
+            speaker: "dale",
+            text: "Just keep going deep until you find what you're looking for. Just be careful of those damned " +
+                "clowns. The best way is to drop in, in the alley next to the dance club. And if you see any " +
+                "of those damned aliens just run for your life! Got it?",
+            button: [
+                { chatID: -1, text: "Yeah. thanks", callback: "daleSewerEnd" },
             ]
         },
     ];

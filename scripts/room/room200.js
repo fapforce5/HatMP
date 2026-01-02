@@ -190,13 +190,16 @@ room200.chatcatch = function (callback) {
         case "case_beaver0":
             nav.bg("200_frontOffice/" + callback + ".jpg");
             break;
-        case "case_ranch0":
         case "case_ranch1":
         case "case_ranch2":
         case "case_ranch3":
         case "case_ranch4":
         case "case_ranch5":
         case "case_ranch6":
+            nav.bg("200_frontOffice/" + callback + ".webp");
+            break;
+        case "case_ranch0":
+            nav.kill();
             nav.bg("200_frontOffice/" + callback + ".webp");
             break;
         case "minorInfraction":
@@ -674,6 +677,14 @@ room200.chatcatch = function (callback) {
             missy.caseComplete(19);
             room200.chatcatch("case_complete_end");
             break;
+        case "case_sewer":
+            nav.kill();
+            nav.bg("200_frontOffice/case_sewer.webp");
+            chat(160, 200);
+            break;
+        case "case_sewer_start":
+            room200.chatcatch("case_afterExplaniation");
+            break;
         case "case_saveralph":
             nav.bg("200_frontOffice/case_saveralph.jpg");
             chat(122, 200);
@@ -727,7 +738,7 @@ room200.chatcatch = function (callback) {
             break;
         case "case_ranch_endcheck":
             if (future.st.findIndex(item => item.name.includes("emptyjar")) !== -1) {
-                chat(158, 200);
+                chat(157, 200);
             }
             else {
                 room200.chatcatch("case_ranchEnd");
@@ -752,8 +763,9 @@ room200.chatcatch = function (callback) {
             room329.btnclick("stall_backDraw");
             $.each(g.map.jars, function (i, v) {
                 if (v.t > 0)
-                    inv.addMulti(g.map.jars.n, g.map.jars.t);
+                    inv.addMulti(v.n, v.t);
             });
+            g.map = null;
             break;
     };
 };
@@ -2247,46 +2259,46 @@ room200.chat = function (chatID) {
                 ]
             },
             {
-                chatID: 153,
+                chatID: 152,
                 speaker: "ppgirl",
                 text: "Daddy!!! Oh my god!! They kidnapped me and had me tied up all this time! Please get " +
                     "me out of here daddy! I don't want to me here any longer!!! Please let me go!!",
                 button: [
-                    { chatID: 154, text: "ohh...", callback: "" }
+                    { chatID: 153, text: "ohh...", callback: "" }
                 ]
             },
             {
-                chatID: 154,
+                chatID: 153,
                 speaker: "cop2",
                 text: "*into his radio* I need all units at " + sc.n("rachel") + "'s ranch. We have a 207, 261 " +
                     "and I don't know how many other crimes. Get me all units down here now!!!",
                 button: [
-                    { chatID: 155, text: "oh yeah!", callback: "case_ranch7" }
+                    { chatID: 154, text: "oh yeah!", callback: "case_ranch7" }
                 ]
             },
             {
-                chatID: 155,
+                chatID: 154,
                 speaker: "missy",
                 text: "Great work in there! So it turns out the girl you call " + sc.n("ppgirl") + "'s real " +
                     "name is Veronica, that fat cop's daughter. I'm hoping this is what the department needs " +
                     "to start taking the cult more seriously, but I'm not going to hold my breath. ",
                 button: [
-                    { chatID: 156, text: "What about the girls ma'am?", callback: "" }
+                    { chatID: 155, text: "What about the girls ma'am?", callback: "" }
                 ]
             },
             {
-                chatID: 156,
+                chatID: 155,
                 speaker: "missy",
                 text: "They herded them into the forest when we started up the road. All the girls execpt " +
                     "one has been accounted for. Some girl named " + sc.n("kinsey") + " make a run for it " +
                     "and was able to get away. The rest will be at the hospital for a bit for evaluations and " +
                     "treatment. ",
                 button: [
-                    { chatID: 157, text: "So what happens to the ranch now ma'am? ", callback: "" }
+                    { chatID: 156, text: "So what happens to the ranch now ma'am? ", callback: "" }
                 ]
             },
             {
-                chatID: 157,
+                chatID: 156,
                 speaker: "missy",
                 text: "Hard to say, but it's out of our hands now. Unfortunately I wasn't able to find a direct " +
                     "link to the cult. Simply having members working here isn't enough. You did good here kid, really " +
@@ -2298,30 +2310,72 @@ room200.chat = function (chatID) {
                 ]
             },
             {
-                chatID: 158,
+                chatID: 157,
                 speaker: "me",
                 text: "Ma'am, just one thing. I've got to go in and grab some of my stuff I left back in my " +
                     "stall. Is that ok? ",
                 button: [
-                    { chatID: 159, text: "[I've got to get my jars!]", callback: "" }
+                    { chatID: 158, text: "[I've got to get my jars!]", callback: "" }
                 ]
             },
             {
-                chatID: 159,
+                chatID: 158,
                 speaker: "missy",
                 text: "I'm sure the police are too disorganized to notice you walking around an active crime " +
                     "scene. Go ahead. ",
                 button: [
-                    { chatID: 160, text: "", callback: "case_ranch_cumjars" }
+                    { chatID: 159, text: "...", callback: "case_ranch_cumjars" }
                 ]
             },
             {
-                chatID: 160,
+                chatID: 159,
                 speaker: "me",
                 text: "Hello my beautiful collection of cum jars. You thought I left you, didn't you. Don't " +
                     "worry " + gender.pronoun("mommy") + " has come back for you. Now to get out of this place!  ",
                 button: [
-                    { chatID: -1, text: "", callback: "case_ranchEnd" }
+                    { chatID: -1, text: "...", callback: "case_ranchEnd" }
+                ]
+            },
+            {
+                chatID: 160,
+                speaker: "missy",
+                text: "Now that the carnival has been destroyed the clown clan has been spotted in the sewers. " +
+                    "To be honest, I could not care less if they stay down there until they're old and rotten, but " +
+                    "they're holding something that may be important to taking down the C.U.M. Cult! ",
+                button: [
+                    { chatID: 161, text: "Yes ma'am?", callback: "" }
+                ]
+            },
+            {
+                chatID: 161,
+                speaker: "missy",
+                text: "One of my informants told me that the cult sent the clan a box. A red box with a ribbon. " +
+                    "I don't know what's in the box, which is why I need you to go get it. It seems the box is " +
+                    "important for their next step. Since I don't know what's in it, I need you to go get it. ",
+                button: [
+                    { chatID: 162, text: "Where in the sewer is it ma'am?", callback: "" }
+                ]
+            },
+            {
+                chatID: 162,
+                speaker: "missy",
+                text: "I don't know. You'll need to search the sewer until you find it. Now the Clown Clan is down " +
+                    "there so you need to be ready for anything. They may fight you, or they may fuck you. You're " +
+                    "training has lead you to this moment. I know you can take their cocks, but you also need to " +
+                    "be ready to take their fists, and fist them back! Got it? ",
+                button: [
+                    { chatID: 163, text: "Yes ma'am!", callback: "" }
+                ]
+            },
+            {
+                chatID: 163,
+                speaker: "missy",
+                text: "Now to get to the sewers you'll need to talk to Dale. Dale's tent is in the homeless camp next " +
+                    "door. He's a great informant, but a little crazy. He'll give you anything you need to get into " +
+                    "the sewer. I do know the best place to drop in is in the alley next to the club. Dale will help " +
+                    "get you in. Any questions? ",
+                button: [
+                    { chatID: -1, text: "No ma'am. Talk to Dale, go into the sewer and find the box. ", callback: "case_sewer_start" }
                 ]
             },
         ];

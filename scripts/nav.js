@@ -309,10 +309,13 @@ nav.killbuttonStartsWith = function (name) {
 
 };
 
-nav.buildnav = function (roomIDList) {
+nav.buildnav = function (roomIDList, rebuild = false) {
     var i;
     if (!$('#room_footer').is(":visible") && !$(".room-speachGroup").is(":visible"))
         $('#room_footer').show();
+
+    if (rebuild)
+        $('#room_footer').html("");
 
     for (i = 0; i < roomIDList.length; i++) {
         $.each(g.rooms, function (j, u) {

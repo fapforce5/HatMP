@@ -581,8 +581,8 @@ room226.btnclick = function (name) {
                         else
                             thisEnemy = Math.floor(Math.random() * 2) === 0 ? "fr" : "fy";
                         //{ enemy0: "futaRed", enemy1: "futaYellow", enemy2: null, bg: "sewer", roomID: 0 };
-                        g.pass = { enemy0: thisEnemy, enemy1: null, enemy2: null, bg: "sewer", roomID: 226 };
-                        char.room(227);
+                        //g.pass = { enemy0: thisEnemy, enemy1: null, enemy2: null, bg: "sewer", roomID: 226 };
+                        //char.room(227);
                     }
                 }
                 else if (g.map.l[g.map.id].t === "e" && !g.map.slime) {

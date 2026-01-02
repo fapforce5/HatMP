@@ -348,12 +348,12 @@ room329.btnclick = function (name) {
             g.internal.steps++;
             if (g.internal.map[g.internal.x][g.internal.y] === 2)
                 g.internal.badStep++;
-            //if (g.internal.steps > 25 || g.internal.badStep > 2) {
-            //    nav.bg("329_barn/hole2.webp");
-            //    g.internal = null;
-            //    chat(78, 329);
-            //    return;
-            //}
+            if (g.internal.steps > 25 || g.internal.badStep > 2) {
+                nav.bg("329_barn/hole2.webp");
+                g.internal = null;
+                chat(78, 329);
+                return;
+            }
             if (g.internal.map[g.internal.y][g.internal.x + 1] > 0) {
                 g329mapBg.push({
                     "type": "img",
@@ -814,12 +814,12 @@ room329.chatcatch = function (callback) {
             }, 329);
             break;
         case "escape":
-            g.map = null;
             missy.set("activeCaseComplete", 1);
             char.addtime(30);
             future.add(JSON.stringify(g.map.jars), 15);
             future.add("room329hole_" + g.map.hole, 15);
             inv.show();
+            g.map = null;
             char.room(0);
             break;
         case "reset":

@@ -37,7 +37,8 @@ sc.char = [
     { name: "tiffany", display: "Tiffany", image: "tiffany.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: true,  q3: null },
     { name: "candy", display: "Candy", image: "candy.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: true,  q3: null },
     { name: "charlie", display: "Charlie", image: "charlie.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: false },
-    { name: "cop", display: "Big Cop", image: "cop.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: false },
+    { name: "wyatt", display: "Agent Wyatt", image: "wyatt.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, q3: null },
+    { name: "cop", display: "Big Cop", image: "cop.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, q3: false },
     { name: "cop2", display: "Idiot Cop", image: "cop2.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, q3: false },
     { name: "jada", display: "Jada", image: "jada.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: true,  q3: null },
     { name: "red", display: "Red", image: "red.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true,  q3: null },
@@ -50,8 +51,6 @@ sc.char = [
     { name: "kinsey", display: "Kinsey", image: "kinsey.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true, q3: null },
     { name: "envy", display: "Envy", image: "envy.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: true, q3: null },
     { name: "horse", display: "Jimmy Dingler", image: "horse.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: false, q3: null },
-
-    { name: "dale", display: "Dale", image: "dale.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: false, q3: null },
 
     { name: "cult", display: "Cult", image: "cult.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
     { name: "priapus", display: "Priapus", image: "Priapus.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
@@ -77,9 +76,10 @@ sc.char = [
 
     { name: "jones", display: "Mr. Jones", image: "jones.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: false },
 
-    { name: "wyatt", display: "Agent Wyatt", image: "wyatt.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
-    { name: "doc", display: "Dr. Strangelove", image: "doctor.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  q3: null },
-    { name: "librarian", display: "The Librarian", image: "librarian.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true,  q3: null },
+    { name: "librarian", display: "The Librarian", image: "librarian.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true, q3: null },
+
+    { name: "dale", display: "Dale", image: "dale.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: false, q3: null },
+    { name: "doc", display: "Dr. Strangelove", image: "doctor.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, q3: null },
     { name: "whore", display: "Dirty Whore", image: "whore.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, q3: null },
 
     { name: "cindy", display: "Cindy", image: "cindy.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true,  q3: null },
@@ -1410,7 +1410,7 @@ sc.charMission = [
     {
         name: "security", mission: [
             {
-                missionName: "ranch", mStatus: 0, title: "...", desc: "...", task:
+                missionName: "ranch", mStatus: 0, title: "Who am I", desc: "Secret desires", task:
                     [
                         { id: 0, txt: "For the first time", show: true, mStatus: 0, roomId: 328 },
                         { id: 1, txt: "What made you, you?", show: true, mStatus: 0, roomId: 328 },
@@ -1419,6 +1419,28 @@ sc.charMission = [
                         { id: 4, txt: "Secret", show: true, mStatus: 0, roomId: 328 },
                         { id: 5, txt: "Another secret!", show: true, mStatus: 0, roomId: 328 },
                         { id: 10, txt: "For the last time", show: true, mStatus: 0, roomId: 328 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "dale", mission: [
+            {
+                missionName: "dale", mStatus: 0, title: "...", desc: "...", task:
+                    [
+                        { id: 0, txt: "intro", show: true, mStatus: 0, roomId: 328 },
+                        { id: 1, txt: "Give me wine!", show: true, mStatus: 0, roomId: 328 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "doc", mission: [
+            {
+                missionName: "doc", mStatus: 0, title: "*hic*", desc: "I'm a drunk", task:
+                    [
+                        { id: 0, txt: "intro", show: true, mStatus: 0, roomId: 328 },
+                        { id: 1, txt: "Give me wine!", show: true, mStatus: 0, roomId: 328 },
                     ]
             },
         ]

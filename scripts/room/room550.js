@@ -136,9 +136,8 @@ room550.chatcatch = function (callback) {
             nav.bg("550_gymFront/" + callback + ".jpg");
             break;
         case "g7":
-            gv.mod("giveOralMale", 1);
-            gv.mod("creamPied", 1);
-            gv.mod("receiveAnalMale", 1);
+            levels.anal(4, false, "m", true, "!man");
+            levels.oral(4, "m", "chad", true);
             char.room(0);
             char.addtime(180);
             break;

@@ -2209,6 +2209,148 @@
                 return { default: true };
             }
         },
+        {
+            num: 14,
+            name: "futa1",
+            displayName: "",
+            location: ["sewer"],
+            img: "14_futa/icon.png",
+            openingLine: ["You will pay for ", "destroying my home!!"],
+            openingImg: null,
+            fight: g.rand(8, 15),
+            energy: 100,
+            arousal: 0,
+            options: ["oral", "oral", "anal"],
+            slap: true,
+            color: "w",
+            gender: "m",
+            t: "futa",
+            cocksize: 5,
+            kick: "14_futa/kick.webp",
+            phase0: function () { return { default: true, complete: null }; },
+            phase1: function () { return { default: true, complete: null }; },
+            phase2: function () { return { default: true, complete: null }; },
+            phase3: function () {
+                if (rape.phases[3].c === 0) {
+                    nav.button({
+                        "type": "img",
+                        "name": "r1004bg",
+                        "left": 0,
+                        "top": 0,
+                        "width": 1920,
+                        "height": 1080,
+                        "image": "1004_rape/14_futa/phase3_0.webp"
+                    }, 1004);
+                    return { complete: false, s: "futa1", message: "My panties are like a clown car " };
+                }
+                nav.button({
+                    "type": "img",
+                    "name": "r1004bg",
+                    "left": 0,
+                    "top": 0,
+                    "width": 1920,
+                    "height": 1080,
+                    "image": "1004_rape/14_futa/phase3_1.webp"
+                }, 1004);
+                return { complete: true, s: "futa1", message: "There's so much more than you expect!" };
+            },
+            phase4: function () {
+                return { default: true, complete: null };
+            },
+            phase5: function () {
+                if (rape.phases[5].c === 0) {
+                    if (rape.rapeType === "anal") {
+                        nav.button({
+                            "type": "img",
+                            "name": "r1004bg",
+                            "left": 619,
+                            "top": 440,
+                            "width": 985,
+                            "height": 594,
+                            "image": "1004_rape/futa1/phase5_anal_b.png"
+                        }, 1004);
+                        zcl.assup(650, 500, .7, "");
+                        nav.button({
+                            "type": "img",
+                            "name": "r1004bg",
+                            "left": 619,
+                            "top": 440,
+                            "width": 985,
+                            "height": 594,
+                            "image": "1004_rape/futa1/phase5_anal_f.png"
+                        }, 1004);
+                        nav.button({
+                            "type": "img",
+                            "name": "r1004bg",
+                            "left": 400,
+                            "top": 80,
+                            "width": 1415,
+                            "height": 357,
+                            "image": "1004_rape/anal_xray.gif"
+                        }, 1004);
+                    }
+                    else {
+                        zcl.bj(250, 400, .6, "open", true);
+                        nav.button({
+                            "type": "img",
+                            "name": "r1004bg",
+                            "left": 544,
+                            "top": 0,
+                            "width": 699,
+                            "height": 1080,
+                            "image": "1004_rape/futa1/phase6_oral.png"
+                        }, 1004);
+                    }
+                    return false;
+                }
+                return true;
+            },
+            phase6: function () {
+                if (rape.phases[6].c === 0) {
+                    if (rape.rapeType === "anal") {
+                        nav.button({
+                            "type": "img",
+                            "name": "r1004bg",
+                            "left": 619,
+                            "top": 440,
+                            "width": 985,
+                            "height": 594,
+                            "image": "1004_rape/futa1/phase5_anal_b.png"
+                        }, 1004);
+                        zcl.assup(650, 500, .7, "");
+                        nav.button({
+                            "type": "img",
+                            "name": "r1004bg",
+                            "left": 619,
+                            "top": 440,
+                            "width": 985,
+                            "height": 594,
+                            "image": "1004_rape/futa1/phase6_anal_f.png"
+                        }, 1004);
+                        levels.anal(5, false, "n", true, "!futa1");
+                        return { c: false, s: rape.char.name, m: "Oh fuck! I'm cummin'!!!!!" };
+                    }
+                    else {
+                        zcl.bj(0, 200, 1, "w", true);
+                        nav.button({
+                            "type": "img",
+                            "name": "r1004bg",
+                            "left": 522,
+                            "top": 0,
+                            "width": 1171,
+                            "height": 1080,
+                            "image": "1004_rape/futa1/phase7_oral.png"
+                        }, 1004);
+                        levels.oral(4, "n", "!futa1", true);
+                        return { c: false, s: rape.char.name, m: "Oh yeah! Feels so good baby!" };
+                    }
+                }
+                return { c: true, s: null, m: null };
+            },
+            phase7: function () {
+                return { default: true };
+            }
+        },
     ];
     if (num === null) {
         num = g.rand(0, retVar.length);
