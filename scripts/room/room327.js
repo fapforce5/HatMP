@@ -112,6 +112,14 @@ room327.btnclick = function (name) {
             break;
         case "milk":
             nav.killbutton("milk");
+            if (sc.getMission("rachel", "ranch").inProgress) {
+                if (sc.getLevel("kinsey") > 6 && sc.getMissionTask("kinsey", "ranch", 1).notStarted) {
+                    chat(35, 327);
+                }
+                else if (sc.getMissionTask("kinsey", "ranch", 2).notStarted && sc.getLevel("kinsey") > 8) {
+                    chat(35, 327);
+                }
+            }
             chat(999, 327);
             break;
         case "chat":
@@ -143,6 +151,9 @@ room327.btnclick = function (name) {
                     break;
                 case 5:
                     chat(26, 327);
+                    break;
+                default:
+                    chat(36, 327);
                     break;
             };
             break;
@@ -601,6 +612,22 @@ room327.chat = function (chatID) {
                 { chatID: 999, text: "I knew you would! ", callback: "m2" }
             ]
         },
+        {
+            chatID: 35,
+            speaker: "kinsey",
+            text: "Come talk to me when we're in the meadow. I've got an idea I can't talk about here. ",
+            button: [
+                { chatID: 999, text: "ok", callback: "m2" }
+            ]
+        },
+        {
+            chatID: 36,
+            speaker: "kinsey",
+            text: "These are the worst! My tits are sore and my nipples hurt so much!",
+            button: [
+                { chatID: 999, text: "for real. ", callback: "" }
+            ]
+        }
     ];
     if (cArray.length > chatID && chatID > -1)
         return cArray[chatID];

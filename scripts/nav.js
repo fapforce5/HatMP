@@ -416,6 +416,10 @@ nav.progressBar = function (btn, roomId) {
             bgColor = "#8c2e16";
             fgColor = "#bdac7b";
             break;
+        case "brown":
+            bgColor = "#d0d0d0";
+            fgColor = "#693706";
+            break;
         default:
             bgColor = "#333333";
             fgColor = "#FF5ED1";
@@ -545,39 +549,42 @@ nav.room = function (roomID) {
     char.room(roomID);
 };
 
-nav.suck = function (btnClickName) {
-    nav.drawButton("1001_rand/suck.png", btnClickName);
+nav.suck = function (btnClickName, sroomid = null) {
+    nav.drawButton("1001_rand/suck.png", btnClickName, sroomid);
 };
 
-nav.cancel = function (btnClickName) {
-    nav.drawButton("1001_rand/cancel.png", btnClickName);
+nav.cancel = function (btnClickName, sroomid = null) {
+    nav.drawButton("1001_rand/cancel.png", btnClickName, sroomid);
 };
 
-nav.close = function (btnClickName) {
-    nav.drawButton("1001_rand/close.png", btnClickName);
+nav.close = function (btnClickName, sroomid = null) {
+    nav.drawButton("1001_rand/close.png", btnClickName, sroomid);
 };
 
-nav.next = function (btnClickName) {
-    nav.drawButton("1001_rand/next.png", btnClickName);
+nav.next = function (btnClickName, sroomid = null) {
+    nav.drawButton("1001_rand/next.png", btnClickName, sroomid);
 };
 
-nav.back = function (btnClickName) {
-    nav.drawButton("1001_rand/back.png", btnClickName);
+nav.back = function (btnClickName, sroomid = null) {
+    nav.drawButton("1001_rand/back.png", btnClickName, sroomid);
 };
 
-nav.takeit = function (btnClickName) {
-    nav.drawButton("1001_rand/takeit.png", btnClickName);
+nav.takeit = function (btnClickName, sroomid = null) {
+    nav.drawButton("1001_rand/takeit.png", btnClickName, sroomid);
 };
 
-nav.cum = function (btnClickName) {
-    nav.drawButton("1001_rand/cum.png", btnClickName);
+nav.cum = function (btnClickName, sroomid = null) {
+    nav.drawButton("1001_rand/cum.png", btnClickName, sroomid);
 };
 
-nav.custom = function (btnClickName, img = "next") {
-    nav.drawButton("1001_rand/" + img + ".png", btnClickName);
+nav.custom = function (btnClickName, img = "next", sroomid = null) {
+    nav.drawButton("1001_rand/" + img + ".png", btnClickName, sroomid);
 };
 
-nav.drawButton = function (image, btnClickName) {
+nav.drawButton = function (image, btnClickName, sroomid = null) {
+    if (sroomid === null)
+        sroomid = g.roomID;
+
     nav.button({
         "type": "zbtn",
         "name": btnClickName,
@@ -586,7 +593,7 @@ nav.drawButton = function (image, btnClickName) {
         "width": 225,
         "height": 75,
         "image": image
-    }, g.roomID);
+    }, sroomid);
 };
 
 nav.wait = function (btnClickName) {

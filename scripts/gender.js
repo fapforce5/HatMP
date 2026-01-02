@@ -73,6 +73,9 @@ gender.pronoun = function (ptype) {
         case "handome":
         case "pretty":
             return sissy.st[0].ach ? "pretty" : "handsome";
+        case "mommy":
+        case "daddy":
+            return gender.isGirl() ? "mommy" : "daddy";
         default:
             console.log("gender.pronoun - not found: " + ptype);
     }

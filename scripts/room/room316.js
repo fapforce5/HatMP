@@ -2377,7 +2377,7 @@ room316.chat = function (chatID) {
                 text: "Oh man. That was the most embarrasing thing ever to happen to me. Do " +
                     "you think they posted that online. I would hate for anyone I know to see it. " +
                     "And " + sc.n("cecilia") + " seeing me and not helping. And you, " + sc.n("dog") +
-                    "have to stop doing that in public! *sigh* I know you won't since I'm your bitch, " +
+                    " have to stop doing that in public! *sigh* I know you won't since I'm your bitch, " +
                     "and you do what ever you want to me. But really. Please stop raping me in public. ",
                 button: [
                     { chatID: -1, text: "...", callback: "reset" },

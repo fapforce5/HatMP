@@ -903,7 +903,7 @@ room601.chatcatch = function (callback) {
 
 room601.chat = function (chatID) {
     if (chatID === 902) {
-        g.internal.money = + g.internal.privateMoney;
+        g.internal.money += g.internal.privateMoney;
         return {
             chatID: 902,
             speaker: "!frank",

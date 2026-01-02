@@ -834,9 +834,10 @@ sc.charMission = [
             {
                 missionName: "ranch", mStatus: 0, title: "Ranch", desc: "Wash my back, I'll wash yours", task:
                     [
-                        { id: 0, txt: "First meeting.", show: true, mStatus: 0, roomId: 461 },
-                        { id: 1, txt: "Gave her water.", show: true, mStatus: 0, roomId: 461 },
-                        { id: 2, txt: "Gave her food.", show: true, mStatus: 0, roomId: 461 },
+                        { id: 0, txt: "First meeting.", show: true, mStatus: 0, roomId: 329 },
+                        { id: 1, txt: "Gave her water.", show: true, mStatus: 0, roomId: 329 },
+                        { id: 2, txt: "Gave her food.", show: true, mStatus: 0, roomId: 329 },
+                        { id: 3, txt: "Talk her into distracting the guard.", show: true, mStatus: 0, roomId: 329 },
                     ]
             },
         ]
@@ -880,6 +881,8 @@ sc.charMission = [
                 missionName: "ranch", mStatus: 0, title: "Ranch", desc: "Fun on the Ranch", task:
                     [
                         { id: 0, txt: "First meeting", show: true, mStatus: 0, roomId: 325 },
+                        { id: 1, txt: "Break out plan #1", show: true, mStatus: 0, roomId: 328 },
+                        { id: 2, txt: "Break out plan #2", show: true, mStatus: 0, roomId: 328 },
                     ]
             },
         ]
@@ -2302,7 +2305,9 @@ sc.selectBg = function (name) {
     }, g.roomID);
 }
 
-sc.select = function (name, img, i) {
+sc.select = function (name, img, i, sRoomId = null) {
+    if (sRoomId === null)
+        sRoomId = g.roomID;
     nav.button({
         "type": "btn",
         "name": name,
@@ -2311,7 +2316,7 @@ sc.select = function (name, img, i) {
         "width": 600,
         "height": 100,
         "image": img
-    }, g.roomID);
+    }, sRoomId);
 };
 
 sc.selectCancel = function (name, i) {
@@ -2977,6 +2982,10 @@ sc.trivial = function (charname) {
         case "!horse":
             name = "Horse";
             image = "horse.png";
+            break;
+        case "!cowboy":
+            name = "Cowboy";
+            image = "cowboy.png";
             break;
         default:
             console.log("unknown trivial char: (check capitilazation)" + charname);

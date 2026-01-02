@@ -1043,14 +1043,11 @@ stats.mod = function (t, n, amount) {
 };
 
 future.add = function (name, daysleft) {
-    let alreadyExists = false;
-    for (let i = 0; i < future.st.length; i++) {
-        if (future.st[i] === name) {
-            alreadyExists = true;
-        }
-    }
-    if (!alreadyExists)
+    let alreadyExists = future.st.some(item => item.name === name);
+
+    if (!alreadyExists) {
         future.st.push({ name: name, daysleft: daysleft });
+    }
 };
 
 dreams.add = function (dream) {

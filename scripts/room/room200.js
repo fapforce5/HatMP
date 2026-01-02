@@ -104,6 +104,9 @@ room200.btnclick = function (name) {
                         future.add("carnivalBlowNextCase", 3);
                         chat(120, 200);
                         break;
+                    case 19:
+                        chat(133, 200);
+                        break;
                 }
             }
             else if (missyUniform === 0 && cl.pantiesTxt() === "panties") {
@@ -186,6 +189,15 @@ room200.chatcatch = function (callback) {
         case "case_beaver_bad1":
         case "case_beaver0":
             nav.bg("200_frontOffice/" + callback + ".jpg");
+            break;
+        case "case_ranch0":
+        case "case_ranch1":
+        case "case_ranch2":
+        case "case_ranch3":
+        case "case_ranch4":
+        case "case_ranch5":
+        case "case_ranch6":
+            nav.bg("200_frontOffice/" + callback + ".webp");
             break;
         case "minorInfraction":
             missy.mod("weeklyPay", -10);
@@ -708,6 +720,40 @@ room200.chatcatch = function (callback) {
             break;
         case "punish":
             char.room(217);
+            break;
+        case "case_ranch7":
+            nav.bg("200_frontOffice/case_ranch7.webp");
+            zcl.displayMain(100, 1000, .18, "clothes", true);
+            break;
+        case "case_ranch_endcheck":
+            if (future.st.findIndex(item => item.name.includes("emptyjar")) !== -1) {
+                chat(158, 200);
+            }
+            else {
+                room200.chatcatch("case_ranchEnd");
+            }
+            break;
+        case "case_ranchEnd":
+            gv.mod("money", 1000);
+            missy.mod("mood", 50);
+            levels.mod("pi", 100);
+            missy.caseComplete(19);
+            char.addtime(360);
+            gv.set("map", 0);
+            char.room(0);
+            break;
+        case "case_ranch_cumjars":
+            g.map = {
+                jars: null,
+                hole: -1
+            } 
+            g.map.jars = JSON.parse(future.st[future.st.findIndex(item => item.name.includes("emptyjar"))].name);
+            g.map.hole = parseInt(future.st.find(i => i.name.includes("room329hole_"))?.name.replace("room329hole_", "") ?? "-1");
+            room329.btnclick("stall_backDraw");
+            $.each(g.map.jars, function (i, v) {
+                if (v.t > 0)
+                    inv.addMulti(g.map.jars.n, g.map.jars.t);
+            });
             break;
     };
 };
@@ -2021,6 +2067,261 @@ room200.chat = function (chatID) {
                     "bad to me. ",
                 button: [
                     { chatID: -1, text: "I will ma'am", callback: "case_farm_start" }
+                ]
+            },
+            {
+                chatID: 133,
+                speaker: "me",
+                text: "So how did the ranch go? Did you find anything?",
+                button: [
+                    { chatID: 134, text: "[Tell Missy everything about the ranch]", callback: "" }
+                ]
+            },
+            {
+                chatID: 134,
+                speaker: "missy",
+                text: "I knew it! I fucking knew it!! Those lazy ass cops never do their job!! Come with me " +
+                    "to the police station. We're going to put a stop to this once and for all!!!",
+                button: [
+                    { chatID: 135, text: "[Follow her]", callback: "case_ranch0" }
+                ]
+            },
+            {
+                chatID: 135,
+                speaker: "cop2",
+                text: "Hi Missy. I didn't know you delivered blowjobs. I could sure use one now!",
+                button: [
+                    { chatID: 136, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 136,
+                speaker: "missy",
+                text: "Tell him. Tell him everything you told me. ",
+                button: [
+                    { chatID: 137, text: "[Tell the cop about the ranch]", callback: "" }
+                ]
+            },
+            {
+                chatID: 137,
+                speaker: "cop2",
+                text: "Now we've been over this. There's nothing going on over there. I talked to " + sc.n("rachel") +
+                    " myself last week. She assured me everything was good. I even talked to one of her hucows, the " +
+                    "blue haired one. She said everyone was there of their own free will. Making up stories isn't going " +
+                    "to change that. ",
+                button: [
+                    { chatID: 138, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 138,
+                speaker: "missy",
+                text: "You idiot! You can't just ask someone if they're commiting a crime, you have to actually " +
+                    "investigate it!! Now come with me so we can look into it or I'm going to call " + sc.n("wyatt") +
+                    " to let him know you're not doing your job! ",
+                button: [
+                    { chatID: 139, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 139,
+                speaker: "cop2",
+                text: "pssst. Fine we'll go check it out if that makes you feel better. But after this don't ever " +
+                    "come to me about the ranch again. Let's go. ",
+                button: [
+                    { chatID: 140, text: "[Follow them]", callback: "case_ranch1" }
+                ]
+            },
+            {
+                chatID: 140,
+                speaker: "rachel",
+                text: "Well hello officer. You caught me sunbathing. I hope you don't mind. I didn't have time " +
+                    "to get dressed when I saw you come over. I see you brought that crazy " + gender.pronoun("boy") +
+                    " that's been terrorizing my hucows! You need to get " + gender.pronoun("her") + " out of here. " +
+                    "Just the other day " + gender.pronoun("she") + " was running around my ranch trying to fight everyone! ",
+                button: [
+                    { chatID: 141, text: "Don't lie! You're keeping hucows here against their will!", callback: "" }
+                ]
+            },
+            {
+                chatID: 141,
+                speaker: "rachel",
+                text: "See I told you. " + gender.pronoun("she") + "'s crazy. I demand you remove her from my " +
+                    "property and lock " + gender.pronoun("her") + " up if " + gender.pronoun("she") + " tries " +
+                    "to come back! You know who's the biggest contributor to the policeman's ball in this town, " +
+                    "don't you! ",
+                button: [
+                    { chatID: 142, text: "I know where they're at! I can show you! ", callback: "" }
+                ]
+            },
+            {
+                chatID: 142,
+                speaker: "missy",
+                text: "Just have " + sc.n("me") + " show you where the girls are being held against their will. " +
+                    "won't take more than 15 minutes. If " + gender.pronoun("she") + "'s wrong I assure you " + 
+                    gender.pronoun("she") + "'ll never come back here. Let's go look officer. ",
+                button: [
+                    { chatID: 143, text: "Yeah lets! ", callback: "" }
+                ]
+            },
+            {
+                chatID: 143,
+                speaker: "rachel",
+                text: "Fine you can look. But 15 minutes! After that I never want to see you two again! ",
+                button: [
+                    { chatID: 144, text: "Let's go! " + sc.n("kinsey") + "'s probably in the pasture now!", callback: "case_ranch2" }
+                ]
+            },
+            {
+                chatID: 144,
+                speaker: "!rancher1",
+                text: "Hey Ms. " + sc.n("rachel") + ". Come to check our hucows? Who's this?",
+                button: [
+                    { chatID: 145, text: "Wait! Where'd all the girls go! There were more here!", callback: "" }
+                ]
+            },
+            {
+                chatID: 145,
+                speaker: "cop2",
+                text: "Like I've said, " +
+                    "I've already talked to both these girls in the field. They are both here of their " +
+                    "own free will. ",
+                button: [
+                    { chatID: 146, text: "Wait! We should check out the stable!", callback: "" }
+                ]
+            },
+            {
+                chatID: 146,
+                speaker: "rachel",
+                text: "Eight minutes are up. We'll look at the stable, but after that I'm done. I've got real " +
+                    "work to do. Unlike you that runs around terrorizing poor farmers. Let's go! ",
+                button: [
+                    { chatID: 147, text: "*hrumph*", callback: "case_ranch3" }
+                ]
+            },
+            {
+                chatID: 147,
+                speaker: "rachel",
+                text: "Keep that pervert away from my award winning horses. Last time " + gender.pronoun("f") +
+                    " was here " + gender.pronoun("she") + " tried to molest poor " + sc.n("horse") + "'s " +
+                    "penis. A real pervet she is. ",
+                button: [
+                    { chatID: 148, text: "You're lying. The girls are here, you're just hiding them! ", callback: "" }
+                ]
+            },
+            {
+                chatID: 148,
+                speaker: "cop2",
+                text: "Now now. I don't see anything I didn't see last time I was here. Our time is up. " +
+                    "Let's go. Next time I even hear you're poking around this poor woman's ranch I'll " +
+                    "have you locked up 'till you're old and grey. Now let's get going! ",
+                button: [
+                    { chatID: 149, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 149,
+                speaker: "thinking",
+                text: "She had to have hidden the girls when she saw us pull up the road! That must be how she " +
+                    "his the hucows last time this cop came looking. Damn! I have no idea where she would have " +
+                    "hidden them! WAIT! " + sc.n("ppgirl") + "!! She's bolted down and would be hard to move. I " +
+                    "bet she's still in her stall!!! It's my last chance!!!",
+                button: [
+                    { chatID: 150, text: "[Run past them to her stall]", callback: "case_ranch4" }
+                ]
+            },
+            {
+                chatID: 150,
+                speaker: "me",
+                text: "She's here!!! She's here!!!! Come look!!!",
+                button: [
+                    { chatID: 151, text: "...", callback: "case_ranch5" }
+                ]
+            },
+            {
+                chatID: 151,
+                speaker: "cop2",
+                text: "Veronica?!?!?!?!?!?",
+                button: [
+                    { chatID: 152, text: "Veronica?", callback: "case_ranch6" }
+                ]
+            },
+            {
+                chatID: 153,
+                speaker: "ppgirl",
+                text: "Daddy!!! Oh my god!! They kidnapped me and had me tied up all this time! Please get " +
+                    "me out of here daddy! I don't want to me here any longer!!! Please let me go!!",
+                button: [
+                    { chatID: 154, text: "ohh...", callback: "" }
+                ]
+            },
+            {
+                chatID: 154,
+                speaker: "cop2",
+                text: "*into his radio* I need all units at " + sc.n("rachel") + "'s ranch. We have a 207, 261 " +
+                    "and I don't know how many other crimes. Get me all units down here now!!!",
+                button: [
+                    { chatID: 155, text: "oh yeah!", callback: "case_ranch7" }
+                ]
+            },
+            {
+                chatID: 155,
+                speaker: "missy",
+                text: "Great work in there! So it turns out the girl you call " + sc.n("ppgirl") + "'s real " +
+                    "name is Veronica, that fat cop's daughter. I'm hoping this is what the department needs " +
+                    "to start taking the cult more seriously, but I'm not going to hold my breath. ",
+                button: [
+                    { chatID: 156, text: "What about the girls ma'am?", callback: "" }
+                ]
+            },
+            {
+                chatID: 156,
+                speaker: "missy",
+                text: "They herded them into the forest when we started up the road. All the girls execpt " +
+                    "one has been accounted for. Some girl named " + sc.n("kinsey") + " make a run for it " +
+                    "and was able to get away. The rest will be at the hospital for a bit for evaluations and " +
+                    "treatment. ",
+                button: [
+                    { chatID: 157, text: "So what happens to the ranch now ma'am? ", callback: "" }
+                ]
+            },
+            {
+                chatID: 157,
+                speaker: "missy",
+                text: "Hard to say, but it's out of our hands now. Unfortunately I wasn't able to find a direct " +
+                    "link to the cult. Simply having members working here isn't enough. You did good here kid, really " +
+                    "good. But what is going on at this ranch is nothing compared to the cult. I know it was rough, " +
+                    "so I'm going to give $1,000, mostly from my own pocket as a thank you. Now let's get ready to take " +
+                    "down the cult! ",
+                button: [
+                    { chatID: -1, text: "Yes ma'am!!!", callback: "case_ranch_endcheck" }
+                ]
+            },
+            {
+                chatID: 158,
+                speaker: "me",
+                text: "Ma'am, just one thing. I've got to go in and grab some of my stuff I left back in my " +
+                    "stall. Is that ok? ",
+                button: [
+                    { chatID: 159, text: "[I've got to get my jars!]", callback: "" }
+                ]
+            },
+            {
+                chatID: 159,
+                speaker: "missy",
+                text: "I'm sure the police are too disorganized to notice you walking around an active crime " +
+                    "scene. Go ahead. ",
+                button: [
+                    { chatID: 160, text: "", callback: "case_ranch_cumjars" }
+                ]
+            },
+            {
+                chatID: 160,
+                speaker: "me",
+                text: "Hello my beautiful collection of cum jars. You thought I left you, didn't you. Don't " +
+                    "worry " + gender.pronoun("mommy") + " has come back for you. Now to get out of this place!  ",
+                button: [
+                    { chatID: -1, text: "", callback: "case_ranchEnd" }
                 ]
             },
         ];

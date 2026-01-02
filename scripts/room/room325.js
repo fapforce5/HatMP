@@ -11,7 +11,10 @@ room325.main = function () {
     }
     if (g.isNight()) {
         if (missy.activecase().caseId === 19) {
-            chat(40, 325);
+            if (missy.activecase().isComplete)
+                chat(51, 325);
+            else
+                chat(40, 325);
         }
         else {
             chat(4, 325);
@@ -748,6 +751,14 @@ room325.chat = function (chatID) {
                 "the CUM Cult! ",
             button: [
                 { chatID: -1, text: "*whimper*", callback: "r328" }
+            ]
+        },
+        {
+            chatID: 51,
+            speaker: "thinking",
+            text: "I've got to be crazy coming back here!!!",
+            button: [
+                { chatID: -1, text: "leave", callback: "leave" }
             ]
         },
     ];

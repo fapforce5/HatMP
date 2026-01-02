@@ -1,6 +1,12 @@
 ﻿//Room name
 var room329 = {};
 room329.main = function () {
+    if (daily.get("328fight_lose")) {
+        daily.set("328fight_lose", false);
+        nav.bg("329_barn/hole3.webp");
+        chat(90, 329);
+        return;
+    }
     if (g.gethourdecimal() > 12 && !g.map.milked && !g.map.barnTooLong) {
         chat(10, 329);
     }
@@ -14,13 +20,13 @@ room329.main = function () {
     else {
         room329.chatcatch("menu");
     }
-
 };
 
 room329.btnclick = function (name) {
     switch (name) {
         case "icon_look":
             nav.killbuttonStartsWith("icon_");
+            nav.killbutton("guard");
             switch (g.rand(0, 3)) {
                 case 0:
                     if (!g.map.ppgirl) {
@@ -28,11 +34,25 @@ room329.btnclick = function (name) {
                         nav.bg("329_barn/ppgirl0.webp");
                         chat(29, 329);
                     }
+                    else if (g.map.hole === -1) {
+                        g.map.hole = 0;
+                        chat(75, 329);
+                    }
                     else if (g.map.av === 0) {
                         g.map.av = 1;
                         nav.kill();
                         nav.bg("329_barn/av0.webp");
                         chat(13, 329);
+                    }
+                    else if (g.map.hole === 0) {
+                        g.map.hole = 1;
+                        nav.kill();
+                        nav.bg("329_barn/hole0.webp");
+                        chat(73, 329);
+                    }
+                    else {
+                        char.addtime(20);
+                        chat(9, 329);
                     }
                     break;
                 case 1:
@@ -95,7 +115,6 @@ room329.btnclick = function (name) {
                 nav.kill();
                 chat(8, 329);
             }
-
             g.internal++;
             break;
         case "icon_barn":
@@ -108,40 +127,39 @@ room329.btnclick = function (name) {
             sc.select("icon_cumdrink", "329_barn/icon_cumdrink.webp", 2);
             break;
         case "icon_cumdrink":
-            //{ i: 0, n: "emptyjar", t: 0 },
-            //{ i: 1, n: "pissjarboy", t: 0 },
-            //{ i: 2, n: "pissjargirl", t: 0 },
-            //{ i: 3, n: "cumjar", t: 0 },
-            //{ i: 4, n: "dogcumjar", t: 0 },
-            //{ i: 5, n: "horsecumjar", t: 0 },
-            //{ i: 6, n: "pigcumjar", t: 0 }
+            g.map.temp = 1;
             nav.killbuttonStartsWith("icon_");
             var icon_cumdrinkCounter = 0;
             if (g.map.jars[1].t > 0) {
-                sc.select("icon_pissjarboy", "329_barn/icon_pissjarboy.webp", icon_cumdrinkCounter);
+                sc.select("icon_pissjarboy", "329_barn/icon_pissjarboy.webp", icon_cumdrinkCounter, 329);
                 icon_cumdrinkCounter++;
             }
             if (g.map.jars[2].t > 0) {
-                sc.select("icon_pissjargirl", "329_barn/icon_pissjargirl.webp", icon_cumdrinkCounter);
+                sc.select("icon_pissjargirl", "329_barn/icon_pissjargirl.webp", icon_cumdrinkCounter, 329);
                 icon_cumdrinkCounter++;
             }
             if (g.map.jars[3].t > 0) {
-                sc.select("icon_cumjar", "329_barn/icon_cumjar.webp", icon_cumdrinkCounter);
+                sc.select("icon_cumjar", "329_barn/icon_cumjar.webp", icon_cumdrinkCounter, 329);
                 icon_cumdrinkCounter++;
             }
             if (g.map.jars[4].t > 0) {
-                sc.select("icon_dogcumjar", "329_barn/icon_dogcumjar.webp", icon_cumdrinkCounter);
+                sc.select("icon_dogcumjar", "329_barn/icon_dogcumjar.webp", icon_cumdrinkCounter, 329);
                 icon_cumdrinkCounter++;
             }
             if (g.map.jars[5].t > 0) {
-                sc.select("icon_horsecumjar", "329_barn/icon_horsecumjar.webp", icon_cumdrinkCounter);
+                sc.select("icon_horsecumjar", "329_barn/icon_horsecumjar.webp", icon_cumdrinkCounter, 329);
                 icon_cumdrinkCounter++;
             }
             if (g.map.jars[6].t > 0) {
-                sc.select("icon_pigcumjar", "329_barn/icon_pigcumjar.webp", icon_cumdrinkCounter);
+                sc.select("icon_pigcumjar", "329_barn/icon_pigcumjar.webp", icon_cumdrinkCounter, 329);
                 icon_cumdrinkCounter++;
             }
-            sc.selectCancel("icon_stall", icon_cumdrinkCounter);
+            if (g.roomID === 328) {
+                sc.selectCancel("icon_bedturn", icon_cumdrinkCounter);
+            }
+            else {
+                sc.selectCancel("icon_stall", icon_cumdrinkCounter);
+            }
             break;
         case "icon_pissjarboy":
             g.map.jars[1].t--;
@@ -195,6 +213,7 @@ room329.btnclick = function (name) {
                 chat(52, 329);
             }
             else {
+                g.map.temp = 1;
                 nav.kill();
                 nav.bg("329_barn/cumjar.webp");
                 nav.button({
@@ -206,23 +225,23 @@ room329.btnclick = function (name) {
                     "height": 1080,
                     "image": "22_toilet/blurp0.png"
                 }, 329);
-                nav.next("icon_expel0");
+                nav.next("icon_expel0", 329);
             }
             break;
         case "icon_expel0":
             nav.modbutton("cumexpel", "22_toilet/blurp1.png", null, null);
             nav.killbutton("icon_expel0");
-            nav.next("icon_expel1");
+            nav.next("icon_expel1", 329);
             break;
         case "icon_expel1":
             nav.modbutton("cumexpel", "22_toilet/blurp2.png", null, null);
             nav.killbutton("icon_expel1");
-            nav.next("icon_expel2");
+            nav.next("icon_expel2", 329);
             break;
         case "icon_expel2":
             var getCum329 = gv.getButtCum();
             if (getCum329.total > 0) {
-                
+
                 for (let i = 0; i < g.map.jars.length; i++) {
                     if (g.map.jars[i].n === getCum329.cumType) {
                         g.map.jars[0].t -= 1;
@@ -233,13 +252,28 @@ room329.btnclick = function (name) {
             }
             gv.clearButtCum();
             levels.mod("xdress", 15, 999);
-            room329.btnclick("icon_stall");
+            if (g.roomID === 328)
+                room328.btnclick("icon_bedturn");
+            else
+                room329.btnclick("icon_stall");
             break;
         case "stall_backDraw":
             nav.kill();
             nav.bg("328_farm/sleep1.webp");
             var s329c = 0;
             var img329 = 0;
+            if (g.map.hole > -1) {
+                nav.button({
+                    "type": "img",
+                    "name": "mat",
+                    "left": 1168,
+                    "top": 841,
+                    "width": 349,
+                    "height": 109,
+                    "image": "328_farm/sleep_mat.webp"
+                }, 329);
+                room328.btnclick("hole_progress");
+            }
             for (let i = 0; i < g.map.jars.length; i++) {
                 img329 = inv.get(g.map.jars[i].n).image;
                 for (let j = 0; j < g.map.jars[i].t; j++) {
@@ -288,7 +322,184 @@ room329.btnclick = function (name) {
             chat(40, 329);
             break;
         case "icon_meadow":
+            g.map.ppgirldistract = false;
             char.room(328);
+            break;
+        case "icon_hole":
+            if (g.map.ppgirldistract) {
+                nav.kill();
+                g.map.ppgirldistract = false;
+                nav.bg("329_barn/hole0.webp");
+                g.roomTimeout = setTimeout(function () {
+                    nav.bg("329_barn/hole1.webp");
+                    chat(76, 329);
+                }, 1200);
+            }
+            else {
+                nav.kill();
+                nav.bg("329_barn/hole0.webp");
+                chat(979, 329);
+            }
+            break;
+        case "maze":
+            nav.kill();
+            var g329mapBg = [];
+            var g329mapButton = [];
+            g.internal.steps++;
+            if (g.internal.map[g.internal.x][g.internal.y] === 2)
+                g.internal.badStep++;
+            //if (g.internal.steps > 25 || g.internal.badStep > 2) {
+            //    nav.bg("329_barn/hole2.webp");
+            //    g.internal = null;
+            //    chat(78, 329);
+            //    return;
+            //}
+            if (g.internal.map[g.internal.y][g.internal.x + 1] > 0) {
+                g329mapBg.push({
+                    "type": "img",
+                    "name": "jar",
+                    "left": 0,
+                    "top": 0,
+                    "width": 1920,
+                    "height": 1080,
+                    "image": "329_barn/maze_r.webp"
+                });
+                g329mapButton.push({
+                    "type": "btn",
+                    "name": "east",
+                    "title": "East",
+                    "left": 1600,
+                    "top": 460,
+                    "width": 225,
+                    "height": 75,
+                    "image": "475_fight/de.png"
+                });
+            }
+            if (g.internal.map[g.internal.y][g.internal.x - 1] > 0) {
+                g329mapBg.push({
+                    "type": "img",
+                    "name": "jar",
+                    "left": 0,
+                    "top": 0,
+                    "width": 1920,
+                    "height": 1080,
+                    "image": "329_barn/maze_l.webp"
+                });
+                g329mapButton.push({
+                    "type": "btn",
+                    "name": "west",
+                    "title": "West",
+                    "left": 300,
+                    "top": 460,
+                    "width": 225,
+                    "height": 75,
+                    "image": "475_fight/dw.png"
+                });
+            }
+            if (g.internal.y < 12) {
+                if (g.internal.map[g.internal.y + 1][g.internal.x] > 0) {
+                    g329mapBg.push({
+                        "type": "img",
+                        "name": "jar",
+                        "left": 0,
+                        "top": 0,
+                        "width": 1920,
+                        "height": 1080,
+                        "image": "329_barn/maze_c.webp"
+                    });
+                    g329mapButton.push({
+                        "type": "btn",
+                        "name": "north",
+                        "title": "North",
+                        "left": 840,
+                        "top": 200,
+                        "width": 225,
+                        "height": 75,
+                        "image": "475_fight/dn.png"
+                    });
+                }
+            }
+            else {
+                g329mapBg.push({
+                    "type": "img",
+                    "name": "jar",
+                    "left": 0,
+                    "top": 0,
+                    "width": 1920,
+                    "height": 1080,
+                    "image": "329_barn/maze_escape.webp"
+                });
+                g329mapButton.push({
+                    "type": "btn",
+                    "name": "escape",
+                    "title": "North",
+                    "left": 840,
+                    "top": 200,
+                    "width": 225,
+                    "height": 75,
+                    "image": "329_barn/icon_escape.webp"
+                });
+            }
+            if (g.internal.y > 0) {
+                if (g.internal.map[g.internal.y - 1][g.internal.x] > 0) {
+                    g329mapButton.push({
+                        "type": "btn",
+                        "name": "south",
+                        "title": "South",
+                        "left": 840,
+                        "top": 880,
+                        "width": 225,
+                        "height": 75,
+                        "image": "475_fight/ds.png"
+                    });
+                }
+            }
+            else {
+                g329mapButton.push({
+                    "type": "btn",
+                    "name": "exitBarn",
+                    "title": "South",
+                    "left": 840,
+                    "top": 880,
+                    "width": 225,
+                    "height": 75,
+                    "image": "475_fight/ds.png"
+                });
+            }
+            $.each(g329mapBg, function (i, v) {
+                nav.button(v, 329);
+            });
+            $.each(g329mapButton, function (i, v) {
+                nav.button(v, 329);
+            });
+
+            console.log(g.internal.y + " " + g.internal.x + " " + g.internal.steps + " " + g.internal.badStep);
+            break;
+        case "north":
+            g.internal.y++;
+            room329.btnclick("maze");
+            break;
+        case "south":
+            g.internal.y--;
+            room329.btnclick("maze");
+            break;
+        case "east":
+            g.internal.x++;
+            room329.btnclick("maze");
+            break;
+        case "west":
+            g.internal.x--;
+            room329.btnclick("maze");
+            break;
+        case "exitBarn":
+            nav.kill();
+            nav.bg("329_barn/hole1.webp");
+            chat(77, 329);
+            break;
+        case "escape":
+            nav.kill();
+            nav.bg("329_barn/hole10.webp");
+            chat(84, 329);
             break;
         case "reset":
             char.room(329);
@@ -312,9 +523,11 @@ room329.chatcatch = function (callback) {
         case "ppgirl2":
         case "ppgirl3":
         case "ppgirlfeed":
+        case "hole4":
             nav.bg("329_barn/" + callback + ".webp");
             break;
         case "av4":
+        case "hole3":
             nav.kill();
             nav.bg("329_barn/" + callback + ".webp");
             break;
@@ -347,9 +560,32 @@ room329.chatcatch = function (callback) {
                 "image": "329_barn/ph2_assholeno.webp"
             }, 329);
             break;
+        case "stay":
+            g.map.staylonger++;
+            if (g.rand(0, 3 - g.map.staylonger) < 1) {
+                nav.bg("329_barn/trouble.webp");
+                g.map.anger += 80;
+                chat(74, 329);
+            }
+            else {
+                room329.chatcatch("menu");
+            }
+            break;
         case "menu":
             nav.kill();
+            room328.btnclick("progressbar");
             nav.bg("329_barn/bg.webp");
+            if (!g.map.ppgirldistract) {
+                nav.button({
+                    "type": "img",
+                    "name": "guard",
+                    "left": 880,
+                    "top": 474,
+                    "width": 251,
+                    "height": 318,
+                    "image": "329_barn/g_" + (sc.getMission("security", "ranch").complete ? "p" : "s") + ".webp"
+                }, 329);
+            }
             sc.select("icon_meadow", "329_barn/icon_meadow.webp", 0);
             sc.select("icon_brush", "329_barn/icon_brush.webp", 1);
             sc.select("icon_look", "329_barn/icon_look.webp", 2);
@@ -358,6 +594,9 @@ room329.chatcatch = function (callback) {
                 sc.select("icon_ppgirl", "329_barn/icon_ppgirl.webp", 4);
             if (g.map.av > 0) 
                 sc.select("icon_av", "329_barn/icon_av.webp", 5);
+            if (g.map.hole > 0)
+                sc.select("icon_hole", "329_barn/icon_hole.webp", 6);
+
             break;
         case "icon_stall":
             room329.btnclick("icon_stall");
@@ -462,16 +701,132 @@ room329.chatcatch = function (callback) {
                 chat(59, 329);
             }
             break;
+        case "ppgirldistract":
+            if (sc.getLevel("ppgirl") < 6) {
+                chat(62, 329);
+            }
+            else if (sc.getMissionTask("ppgirl", "ranch", 3).notStarted) {
+                sc.completeMissionTask("ppgirl", "ranch", 3);
+                chat(63, 329);
+            }
+            else if (daily.get("ppgirldistract")) {
+                nav.kill();
+                nav.bg("329_barn/ppgirl2.webp");
+                chat(72, 329);
+            }
+            else {
+                daily.set("ppgirldistract");
+                g.map.ppgirldistract = true;
+                chat(71, 329);
+            }
+            break;
         case "ppgirl_peejar":
             nav.kill();
             nav.bg("329_barn/ppgirl_peejar.webp");
             g.map.jars[0].t--;
             g.map.jars[2].t++;
             break;
+        case "vent0":
+            g.internal = {
+                x: 1,
+                y: 0,
+                steps: 0,
+                badStep: 0,
+                map: [
+                    //0,1, 2, 3, 4, 5, 6, 7, 8, 9, 0
+                    [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],//0
+                    [0, 1, 1, 2, 2, 0, 2, 2, 0, 0, 0],//1
+                    [0, 0, 1, 0, 0, 2, 2, 2, 2, 0, 0],//2
+                    [0, 2, 1, 0, 0, 2, 0, 0, 0, 0, 0],//3
+                    [0, 2, 1, 1, 1, 1, 1, 1, 2, 0, 0],//4
+                    [0, 0, 2, 0, 0, 2, 0, 1, 0, 2, 0],//5
+                    [0, 2, 0, 2, 0, 2, 0, 1, 2, 2, 0],//6
+                    [0, 2, 0, 2, 0, 0, 0, 1, 0, 0, 0],//7
+                    [0, 2, 0, 2, 2, 2, 2, 1, 1, 2, 0],//8
+                    [0, 2, 2, 2, 0, 2, 0, 0, 1, 0, 0],//9
+                    [0, 0, 0, 0, 0, 0, 2, 0, 1, 2, 0],//10
+                    [0, 0, 0, 2, 1, 1, 1, 1, 1, 0, 0],//11
+                    [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0],//12
+                ]
+            }; 
+            nav.kill();
+            nav.bg("329_barn/maze_bg.webp");
+            room329.btnclick("maze");
+            break;
+        case "hole5":
+            char.settime(18, 7);
+            nav.bg("326_stable/bg.jpg");
+            zcl.double(400, 300, .6, "open", true);
+            nav.button({
+                "type": "img",
+                "name": "rape",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "328_farm/moo4fb.webp"
+            }, 329);
+            nav.button({
+                "type": "img",
+                "name": "rapefg",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "329_barn/hole5.webp"
+            }, 329);
+            break;
+        case "hole6":
+            nav.killbutton("rapefg");
+            break;
+        case "hole7":
+            levels.anal(3, true, "m", true, "!rancher1");
+            levels.oral(3, "m", "!rancher", true);
+            nav.modbutton("rape", "328_farm/moo6fb.webp", null, null);
+            break;
+        case "hole8":
+            gv.mod("energy", -99999);
+            g.map.trust -= 10;
+            g.map.anger += 80;
+            g.map.milked = true;
+            char.addtime(30);
+            g.map.event = "bed";
+            char.room(328);
+            break;
+        case "hole11":
+            nav.bg("329_barn/hole11.webp");
+            zcl.embarrass(100, 600, .8, "front", true);
+            break;
+        case "hole12":
+            char.settime(23, 47);
+            nav.bg("329_barn/" + callback + ".webp");
+            break;
+        case "hole13":
+            nav.bg("325_farm/bg_night.jpg");
+            nav.button({
+                "type": "img",
+                "name": "rapefg",
+                "left": 1235,
+                "top": 814,
+                "width": 135,
+                "height": 82,
+                "image": "329_barn/hole13.webp"
+            }, 329);
+            break;
+        case "escape":
+            g.map = null;
+            missy.set("activeCaseComplete", 1);
+            char.addtime(30);
+            future.add(JSON.stringify(g.map.jars), 15);
+            future.add("room329hole_" + g.map.hole, 15);
+            inv.show();
+            char.room(0);
+            break;
         case "reset":
             char.room(329);
             break;
         case "leave":
+            g.map.staylonger = 0;
             g.map.event = "meadow";
             char.room(328);
             break;
@@ -505,6 +860,26 @@ room329.chat = function (chatID) {
                     "if you break it. ",
                 button: [
                     { chatID: -1, text: "oh. ok. ", callback: "reset" }
+                ]
+            };
+        }
+        else if (chatID === 980) {
+            return {
+                chatID: 980,
+                speaker: whospeak,
+                text: "Trying to suck that horse's dick? Get out of there. NOW!  ",
+                button: [
+                    { chatID: -1, text: "Movin' on out here boss. ", callback: "reset" }
+                ]
+            };
+        }
+        else if (chatID === 979) {
+            return {
+                chatID: 979,
+                speaker: whospeak,
+                text: "Trying to suck that horse's dick? Get out of there. NOW!  ",
+                button: [
+                    { chatID: -1, text: "[I'm going to have to distract that guard somehow if I'm going to slip out]", callback: "reset" }
                 ]
             };
         }
@@ -610,7 +985,7 @@ room329.chat = function (chatID) {
                 text: "I should get back to the meadow to get milked. ",
                 button: [
                     { chatID: -1, text: "Go back", callback: "leave" },
-                    { chatID: -1, text: "Stay here a bit longer. ", callback: "menu" },
+                    { chatID: -1, text: "Stay here a bit longer. ", callback: "stay" },
                 ]
             },
             {
@@ -619,7 +994,7 @@ room329.chat = function (chatID) {
                 text: "I should get back to eat. ",
                 button: [
                     { chatID: -1, text: "Go back", callback: "leave" },
-                    { chatID: -1, text: "Stay here a bit longer. ", callback: "menu" },
+                    { chatID: -1, text: "Stay here a bit longer. ", callback: "stay" },
                 ]
             },
             {
@@ -802,9 +1177,9 @@ room329.chat = function (chatID) {
             {
                 chatID: 33,
                 speaker: "ppgirl",
-                text: "That's terrible! They kidnapped me too. While I was running in the forest. They took " +
-                    "me to their castle thing and told me I had to jack off all the guys! I bit one guy's dick. " +
-                    "Hard. I told him not to put it in my face. So they sent me here. Those bastards! I told " +
+                text: "That's terrible! They kidnapped me too. While I was running in the forest. They " +
+                    "tried to milk me and put their penises in my face. I bit one guy's dick. " +
+                    "Hard. I told him not to put it in my face. So they tied me up here. Those bastards! I told " +
                     "that crazy milk lady I'll tear down this entire place if she didn't let me go so they " +
                     "chained me up here! ",
                 button: [
@@ -900,7 +1275,7 @@ room329.chat = function (chatID) {
                 button: [
                     { chatID: -1, text: "Please pee in my mouth", callback: "ppgirldrinkherpee" },
                     { chatID: -1, text: "Can you pee in a jar for me", callback: "ppgirljarpee" },
-                    { chatID: -1, text: "Call the guard over and *distract* him. ", callback: "" },
+                    { chatID: -1, text: "Call the guard over and *distract* him. ", callback: "ppgirldistract" },
                     { chatID: 40, text: "Never mind. ", callback: "ppreset" },
                 ]
             },
@@ -1054,6 +1429,258 @@ room329.chat = function (chatID) {
                 text: "The sound of peeing in a jar is kinda funny. glug glug glug!",
                 button: [
                     { chatID: 40, text: "[Take the jar of her fresh warm piss]", callback: "ppreset" },
+                ]
+            },
+            {
+                chatID: 62,
+                speaker: "ppgirl",
+                text: "I'm not doing you any favors like that! ",
+                button: [
+                    { chatID: 40, text: "[Need " + sc.n("ppgirl") + " Level 6]", callback: "ppreset" },
+                ]
+            },
+            {
+                chatID: 63,
+                speaker: "me",
+                text: "Can you do me a really really huge favor? I need to come up with a plan to get us all out of " +
+                    "here and need some help. ",
+                button: [
+                    { chatID: 64, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 64,
+                speaker: "ppgirl",
+                text: "Really! Yes! I'm so in. I'll do anything to get out of this horrible place! ",
+                button: [
+                    { chatID: 65, text: "Anything? ", callback: "" },
+                ]
+            },
+            {
+                chatID: 65,
+                speaker: "ppgirl",
+                text: "Yes, anything! wait... what do you mean by anything? ",
+                button: [
+                    { chatID: 66, text: "...", callback: "ppgirl2" },
+                ]
+            },
+            {
+                chatID: 66,
+                speaker: "me",
+                text: "You may need to have sex with the guard. And pretend to like it. No, wait hear me out. " +
+                    "Every time I try to move around and gather information the stupid guard gets in my way " +
+                    "forcing me back into my duties in this barn. I need some time to really look around and try to " +
+                    "find a way to contact the outside world to get us out of here. Now I would have sex with the guard, " +
+                    "but you can't look around. So you see you'll have to be the one that distracts him so I can find a " +
+                    "way out of this place. ",
+                button: [
+                    { chatID: 67, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 67,
+                speaker: "ppgirl",
+                text: "You son of a bitch!",
+                button: [
+                    { chatID: 68, text: "You don't have to have sex with him. You just have to distract him for like 20 minutes at a time. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 68,
+                speaker: "ppgirl",
+                text: "You know he's not going to just sit and listen to me talk for 20 minutes. You know " +
+                    "I'm going to have to willingly put his penis inside me! *grrrr*",
+                button: [
+                    { chatID: 69, text: "If there was another way I wouldn't ask. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 69,
+                speaker: "ppgirl",
+                text: "..fuck... But you better keep visiting me if you're going to use me like this. I " +
+                    "hate this place and when I get free I'm going to burn this entire barn and that castle " +
+                    "to the ground! ",
+                button: [
+                    { chatID: 70, text: "And I'll help, but first we have to get out of here. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 70,
+                speaker: "ppgirl",
+                text: "Fine. Just let me know when you need me to distract that fucker! ",
+                button: [
+                    { chatID: 40, text: "I will! ", callback: "ppreset" },
+                ]
+            },
+            {
+                chatID: 71,
+                speaker: "ppgirl",
+                text: "*grrr* I hate your plan, but I will.",
+                button: [
+                    { chatID: -1, text: "Thanks! ", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 72,
+                speaker: "ppgirl",
+                text: "I already took his cock once today! Ask again tomorrow. Or you take his cock and free " +
+                    "me from these chains! ",
+                button: [
+                    { chatID: -1, text: "oh. ok. ", callback: "ppreset" },
+                ]
+            },
+            {
+                chatID: 73,
+                speaker: "thinking",
+                text: "There's a small hole in this stable. Must have gone unnoticed since it's " +
+                    "too small for a horse, but big enough I can slip in. I should see what's through there. ",
+                button: [
+                    { chatID: 980, text: "oh. ok. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 74,
+                speaker: "rachel",
+                text: "You stupid ass hucow! You're goddamed late. Get your ass moving! NOW! Before I " +
+                    "brand a clock on your ass!",
+                button: [
+                    { chatID: -1, text: "I'm going!", callback: "leave" },
+                ]
+            },
+            {
+                chatID: 75,
+                speaker: "thinking",
+                text: "Oh look. There's an old dirty welcome mat. I bet I could put this in my room to " +
+                    "cover the hole if I make one. I'll put it in there. Plus it's so much better than dirt. ",
+                button: [
+                    { chatID: -1, text: "[Put that mat in your stall]", callback: "icon_stall" },
+                ]
+            },
+            {
+                chatID: 76,
+                speaker: "thinking",
+                text: "This must be a storage room. No way I can just go out the door. But that air vent " +
+                    "may work. I'll be like those action stars that crawl through the vents! ",
+                button: [
+                    { chatID: -1, text: "[Crawl into the vent]", callback: "vent0" },
+                    { chatID: -1, text: "[Too dangerous. Return to the barn. ]", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 77,
+                speaker: "thinking",
+                text: "*ugh* It's a maze in there! I better get back to the barn before they notice I'm missing. ",
+                button: [
+                    { chatID: -1, text: "[Return to the barn. ]", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 78,
+                speaker: "!rancher",
+                text: "Gotcha bitch! That guard said he hadn't seen you for a bit! come 'ere! I'm gunna drag " +
+                    "you ass into the barn! ",
+                button: [
+                    { chatID: 79, text: "eeep!", callback: "hole3" },
+                ]
+            },
+            {
+                chatID: 79,
+                speaker: "!rancher1",
+                text: "Looks like ya got a rat in the tunnels. You know what we do to rats? ",
+                button: [
+                    { chatID: 80, text: "huh? ", callback: "hole4" },
+                ]
+            },
+            {
+                chatID: 80,
+                speaker: "!rancher",
+                text: "Smash them! HEHEHEHE!!! ",
+                button: [
+                    { chatID: 81, text: "*lights out*", callback: "hole5" },
+                ]
+            },
+            {
+                chatID: 81,
+                speaker: "thinking",
+                text: "ooof. My head hurts so much! So dizzy. ",
+                button: [
+                    { chatID: 82, text: "...", callback: "hole6" },
+                ]
+            },
+            {
+                chatID: 82,
+                speaker: "!rancher1",
+                text: "Glad to see you've finally come around. Just in time to dump our cum in you! ",
+                button: [
+                    { chatID: 83, text: "*ugh*", callback: "hole7" },
+                ]
+            },
+            {
+                chatID: 83,
+                speaker: "!rancher",
+                text: "And in time to get punished! Hehehe! ",
+                button: [
+                    { chatID: -1, text: "wwwwhhaaa", callback: "hole8" },
+                ]
+            },
+            {
+                chatID: 84,
+                speaker: "thinking",
+                text: "Shit! I'm out of the stable, but still in the barn. Should I make a run for it " +
+                    "or hide until night when there's fewer people around? ",
+                button: [
+                    { chatID: 87, text: "Hide!", callback: "hole12" },
+                    { chatID: 85, text: "RUN!", callback: "hole11" },
+                ]
+            },
+            {
+                chatID: 85,
+                speaker: "!rancher",
+                text: "Well well well. Looks like one of our piggies is trying to escape. com 'ere. In the barn " +
+                    "piggy! ",
+                button: [
+                    { chatID: 86, text: "*sigh*", callback: "hole3" },
+                ]
+            },
+            {
+                chatID: 86,
+                speaker: "!rancher1",
+                text: "You know what we do with li'l piggies that try to escape?  ",
+                button: [
+                    { chatID: 80, text: "wha?", callback: "hole4" },
+                ]
+            },
+            {
+                chatID: 87,
+                speaker: "thinking",
+                text: "I think I heard the last car leave. Now I just need to sneak out of here. I must " +
+                    "be so very careful.",
+                button: [
+                    { chatID: 88, text: "...", callback: "hole13" },
+                ]
+            },
+            {
+                chatID: 88,
+                speaker: "thinking",
+                text: "Almost out of here! Also out. Slow and steady! ",
+                button: [
+                    { chatID: 89, text: "...", callback: "escape" },
+                ]
+            },
+            {
+                chatID: 89,
+                speaker: "thinking",
+                text: "Freedom!!! I need to tell Missy, but until I do, I really need to avoid this place! ",
+                button: [
+                    { chatID: -1, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 90,
+                speaker: "!rancher",
+                text: "You know what we do to hucows that try to get away? ",
+                button: [
+                    { chatID: 80, text: "what?", callback: "hole4" },
                 ]
             },
         ];

@@ -2,8 +2,14 @@
 var room328 = {};
 room328.main = function () {
     if (sc.getMission("rachel", "ranch").notStarted) {
+        let startingTrust = 20;
+        switch (gv.get("difficulty")) {
+            case 0: startingTrust = 40; break;
+            case 1: startingTrust = 20; break;
+            case 2: startingTrust = 0; break;
+        }
         g.map = {
-            trust: 20,
+            trust: startingTrust,
             anger: 0,
             event: "meadow",
             day: 1,
@@ -24,6 +30,11 @@ room328.main = function () {
             avclean: false,
             ppgirl: false,
             ppgirleat: false,
+            ppgirldistract: false,
+            hole: -1,
+            nomore: false,
+            staylonger: 0,
+            spade: false,
             jars: [
                 { i: 0, n: "emptyjar", t: 0 },
                 { i: 1, n: "pissjarboy", t: 0 },
@@ -93,13 +104,20 @@ room328.main = function () {
         else {
             room328.btnclick("meadow");
             sc.select("icon_stand", "328_farm/icon_stand.webp", -2);
-            sc.select("icon_frolic", "328_farm/icon_frolic.webp", -1);
-            sc.select("icon_nap", "328_farm/icon_nap.webp", 0);
-            sc.select("icon_moo", "328_farm/icon_moo.webp", 1);
+            sc.select("icon_nap", "328_farm/icon_nap.webp", -1);
+            sc.select("icon_frolic", "328_farm/icon_frolic.webp", 0);
+            
+            if (sc.getMission("envy", "hucow").startedOrComplete)
+                sc.select("icon_chat", "328_farm/icon_chat1.webp", 1);
+            else
+                sc.select("icon_chat", "328_farm/icon_chat0.webp", 1);
             sc.select("icon_drink", "328_farm/icon_drink.webp", 2);
             sc.select("icon_pee", "328_farm/icon_pee.webp", 3);
+            sc.select("icon_fight", "328_farm/icon_fight.webp", 4);
+            sc.select("icon_crawl", "328_farm/icon_crawl.webp", 5);
+            sc.select("icon_moo", "328_farm/icon_moo.webp", 6);
             if (g.map.barn)
-                sc.select("icon_barn", "328_farm/icon_barn.webp", 4);
+                sc.select("icon_barn", "328_farm/icon_barn.webp", 7);
         }
     }
 
@@ -193,6 +211,7 @@ room328.main = function () {
         g.map.eat = 0;
         g.map.anger = 0;
         g.map.ppgirleat = false;
+        g.map.staylonger = 0;
         room328.chatcatch("addtrust");
         g.map.nightvisit = false;
         nav.bg("328_farm/sleep_wake.webp");
@@ -248,9 +267,10 @@ room328.btnclick = function (name) {
             }, 322);
             break;
         case "pigrun_progress":
+            nav.kill("pigrun_progress");
             nav.progressBar({
                 "type": "img",
-                "name": "trust",
+                "name": "pigrun_progress",
                 "left": 400,
                 "top": 30,
                 "width": 1200,
@@ -258,7 +278,24 @@ room328.btnclick = function (name) {
                 "color": "pink",
                 "maxVal": 15,
                 "val": g.map.temp,
-                "title": "Rachel's Trust"
+                "title": "Progress"
+            }, 322);
+            break;
+        case "hole_progress":
+            if (g.map.hole > 200)
+                g.map.hole = 200;
+            nav.killbutton("hole_progress");
+            nav.progressBar({
+                "type": "img",
+                "name": "hole_progress",
+                "left": 400,
+                "top": 70,
+                "width": 1200,
+                "height": 10,
+                "color": "brown",
+                "maxVal": 200,
+                "val": g.map.hole,
+                "title": "Hole Progress"
             }, 322);
             break;
         case "icon_frolic":
@@ -267,7 +304,7 @@ room328.btnclick = function (name) {
             }
             else {
                 nav.kill();
-                if (g.rand(0, 3) === 0) {
+                if (g.rand(0, 2) === 0) {
                     if (g.map.trust < 50) {
                         nav.kill();
                         nav.bg("328_farm/frolicbg.webp");
@@ -294,7 +331,7 @@ room328.btnclick = function (name) {
                     }
                     else {
                         nav.bg("328_farm/frolicbg.webp");
-                        switch (g.rand(0, 2)) {
+                        switch (g.rand(0, 4)) {
                             case 0:
                                 nav.button({
                                     "type": "btn",
@@ -338,6 +375,50 @@ room328.btnclick = function (name) {
                                 }, 328);
                                 char.addtime(30);
                                 chat(43, 328);
+                                break;
+                            case 2:
+                                nav.button({
+                                    "type": "btn",
+                                    "name": "me",
+                                    "left": 689,
+                                    "top": 487,
+                                    "width": 443,
+                                    "height": 366,
+                                    "image": "328_farm/frolic0_" + gender.pronoun("f") + ".webp"
+                                }, 328);
+                                nav.button({
+                                    "type": "img ",
+                                    "name": "me",
+                                    "left": 1266,
+                                    "top": 509,
+                                    "width": 491,
+                                    "height": 348,
+                                    "image": "328_farm/frolic_r0.webp"
+                                }, 328);
+                                char.addtime(30);
+                                chat(750, 328);
+                                break;
+                            case 3:
+                                nav.button({
+                                    "type": "btn",
+                                    "name": "me",
+                                    "left": 689,
+                                    "top": 487,
+                                    "width": 443,
+                                    "height": 366,
+                                    "image": "328_farm/frolic0_" + gender.pronoun("f") + ".webp"
+                                }, 328);
+                                nav.button({
+                                    "type": "img ",
+                                    "name": "me",
+                                    "left": 1181,
+                                    "top": 27,
+                                    "width": 557,
+                                    "height": 865,
+                                    "image": "328_farm/frolic_r3.webp"
+                                }, 328);
+                                char.addtime(30);
+                                chat(146, 328);
                                 break;
                         }
                     }
@@ -391,6 +472,27 @@ room328.btnclick = function (name) {
             zcl.embarrass(200, 800, .65, "back", false);
             chat(0, 328);
             break;
+        case "icon_chat":
+            nav.killbuttonStartsWith("icon_");
+            sc.selectCancel("reset", -2);
+            break;
+        case "icon_crawl":
+            nav.killbuttonStartsWith("icon_");
+            zcl.double(600, -100, .3, "", false);
+            chat(172, 328);
+            break;
+        case "icon_fight":
+            nav.kill();
+            zcl.squat(350, 700, .4, "", true);
+            g.map.anger += 70;
+            g.map.trust -= 5;
+            room328.btnclick("progressbar");
+            chat(169, 328);
+            break;
+        case "reset":
+            char.addtime(-2);
+            char.room(328);
+            break;
         case "icon_moo":
             nav.killbuttonStartsWith("icon");
             nav.button({
@@ -424,39 +526,44 @@ room328.btnclick = function (name) {
             }
             break;
         case "icon_nap":
-            nav.killbuttonStartsWith("icon_");
-            sc.select("icon_nap2", "322_dog/icon_nap2.webp", -2);
-            sc.select("icon_nap4", "322_dog/icon_nap4.webp", -1);
-            sc.select("icon_napa", "322_dog/icon_napAll.webp", 0);
-            sc.selectCancel("icon_cancel", 1)
-            break;
-        case "icon_nap2":
-            nav.kill();
-            nav.bg("999_phone/black.jpg");
-            gv.mod("energy", 10);
-            g.roomTimeout = setTimeout(function () {
-                char.addtime(120);
-                char.room(328);
-            }, 1200);
-            break;
-        case "icon_nap4":
-            nav.kill();
-            nav.bg("999_phone/black.jpg");
-            gv.mod("energy", 20);
-            g.roomTimeout = setTimeout(function () {
-                char.addtime(240);
-                char.room(328);
-            }, 1200);
-            break;
-        case "icon_napa":
-            gv.mod("energy", 20);
+            gv.mod("energy", 30);
             nav.kill();
             nav.bg("999_phone/black.jpg");
             g.roomTimeout = setTimeout(function () {
-                char.settime(17, 2);
+                if (g.map.milked)
+                    char.settime(17, 2);
+                else
+                    char.settime(12, 2);
                 char.room(328);
             }, 1200);
             break;
+        //case "icon_nap2":
+        //    nav.kill();
+        //    nav.bg("999_phone/black.jpg");
+        //    gv.mod("energy", 10);
+        //    g.roomTimeout = setTimeout(function () {
+        //        char.addtime(120);
+        //        char.room(328);
+        //    }, 1200);
+        //    break;
+        //case "icon_nap4":
+        //    nav.kill();
+        //    nav.bg("999_phone/black.jpg");
+        //    gv.mod("energy", 20);
+        //    g.roomTimeout = setTimeout(function () {
+        //        char.addtime(240);
+        //        char.room(328);
+        //    }, 1200);
+        //    break;
+        //case "icon_napa":
+        //    gv.mod("energy", 20);
+        //    nav.kill();
+        //    nav.bg("999_phone/black.jpg");
+        //    g.roomTimeout = setTimeout(function () {
+        //        char.settime(17, 2);
+        //        char.room(328);
+        //    }, 1200);
+        //    break;
         case "icon_cancel":
             nav.killbuttonStartsWith("icon_");
             sc.select("icon_stand", "328_farm/icon_stand.webp", -2);
@@ -507,9 +614,61 @@ room328.btnclick = function (name) {
             }
             else {
                 g.map.temp = 0;
-                nav.bg("328_farm/sleep1.webp");
+                room329.btnclick("stall_backDraw");
                 sc.select("icon_bedturn", "328_farm/icon_turn.webp", -2);
                 sc.select("icon_sleep", "328_farm/icon_sleep.webp", -1);
+                sc.select("icon_expel", "329_barn/icon_cumfill.webp", 0, 329);
+                sc.select("icon_cumdrink", "329_barn/icon_cumdrink.webp", 1, 329);
+                if (g.map.hole === -1) {
+                    sc.select("icon_search", "328_farm/icon_search.webp", 2);
+                }
+                else {
+                    sc.select("icon_dig", "328_farm/icon_dig.webp", 2);
+                }
+            }
+            break;
+        case "icon_search":
+            chat(144, 328);
+            break;
+        case "icon_dig":
+            if (gv.get("energy") < 30) {
+                chat(145, 328);
+            }
+            else if (g.map.hole > 198) {
+                g.map.temp = 1;
+                chat(148, 328);
+                nav.button({
+                    "type": "img",
+                    "name": "mat",
+                    "left": 1184,
+                    "top": 621,
+                    "width": 337,
+                    "height": 367,
+                    "image": "328_farm/sleep_holeempty.webp"
+                }, 329);
+            }
+            else {
+                nav.killbuttonStartsWith("icon_");
+                gv.mod("energy", -50);
+                var holeDig = Math.floor((g.rand(3, 8) + (levels.get("strength").l / 2)) / 2);
+                if (g.map.spade)
+                    holeDig = Math.round(holeDig / 3);
+                g.map.hole += holeDig;
+                g.popUpNotice("You dug up " + (holeDig / 3.0).toFixed(2) + " cubic meters. ");
+                nav.killbutton("mat");
+                nav.button({
+                    "type": "img",
+                    "name": "mat",
+                    "left": 1184,
+                    "top": 621,
+                    "width": 337,
+                    "height": 367,
+                    "image": "328_farm/sleep_hole.webp"
+                }, 329);
+                g.roomTimeout = setTimeout(function () {
+                    g.map.temp = 1;
+                    room328.btnclick("icon_bedturn");
+                }, 2000);
             }
             break;
         case "icon_sleep":
@@ -703,17 +862,39 @@ room328.btnclick = function (name) {
                     sc.modLevel("kinsey", 25, 10);
                     chat(37, 328);
                 }
-                char.addtime(30);
-                nav.button({
-                    "type": "img",
-                    "name": "kinsey",
-                    "left": 0,
-                    "top": 0,
-                    "width": 1920,
-                    "height": 1080,
-                    "image": "328_farm/kinseyc_normal.webp"
-                }, 328);
-                chat(700, 328);
+                else if (sc.getLevel("kinsey") > 6 && sc.getMissionTask("kinsey", "ranch", 1).notStarted) {
+                    if (g.map.hole > -1) {
+                        chat(152, 328);
+                    }
+                    else {
+                        sc.startMissionTask("kinesy", "ranch", 1);
+                        chat(150, 328);
+                    }
+                }
+                else if (sc.getMissionTask("kinsey", "ranch", 1).inProgress && g.map.hole > -1) {
+                    chat(152, 328);
+                }
+                else if (sc.getMissionTask("kinsey", "ranch", 2).notStarted && sc.getLevel("kinsey") > 8) {
+                    sc.completeMissionTask("kinsey", "ranch", 2);
+                    chat(162, 328);
+                }
+                else {
+                    char.addtime(30);
+                    nav.button({
+                        "type": "img",
+                        "name": "kinsey",
+                        "left": 0,
+                        "top": 0,
+                        "width": 1920,
+                        "height": 1080,
+                        "image": "328_farm/kinseyc_normal.webp"
+                    }, 328);
+                    if (!daily.get("kinsey328chat")) {
+                        daily.set("kinsey328chat");
+                        sc.modLevel("kinsey", 25, 7);
+                    }
+                    chat(700, 328);
+                }
             }
             break;
         case "envy":
@@ -763,6 +944,7 @@ room328.btnclick = function (name) {
             room328.btnclick("pigrun_progress");
             if (g.map.temp > 14) {
                 nav.bg("328_farm/pig_finish.webp");
+                sc.modLevel("kinsey", 50, 10);
                 zcl.bellydown(100, 550, .7, "sad", false);
                 chat(946, 328);
                 return;
@@ -780,9 +962,13 @@ room328.btnclick = function (name) {
             }
             else {
                 for (let i = 0; i < 3; i++) {
-                    switch (g.rand(0, 2)) {
+                    switch (g.rand(0, 7)) {
                         case 0: g.map.pig[i] = "pig"; break;
                         case 1: g.map.pig[i] = "puddle"; break;
+                        case 2: g.map.pig[i] = "pig"; break;
+                        case 3: g.map.pig[i] = "puddle"; break;
+                        case 4: g.map.pig[i] = "pig"; break;
+                        case 5: g.map.pig[i] = "puddle"; break;
                     }
                 }
             }
@@ -1090,7 +1276,10 @@ room328.btnclick = function (name) {
             break;
         case "pig_struggle":
             nav.killbutton("pig_struggle");
-            gv.mod("energy", -30);
+            var pig_struggle328 = Math.floor(gv.get("maxenergy") / 6);
+            if (pig_struggle328 < 30)
+                pig_struggle328 = 30;
+            gv.mod("energy", pig_struggle328 * -1);
             if (gv.get("energy") < 1) {
                 nav.kill();
                 nav.bg("328_farm/pig_fuckbg0.webp");
@@ -1107,7 +1296,7 @@ room328.btnclick = function (name) {
                 nav.drawButton("1001_rand/cry.png", "pig_fuck0");
             }
             else {
-                g.popUpNotice("You freed yourself and used 30 points of energy!");
+                g.popUpNotice("You freed yourself and used " + pig_struggle328 + " points of energy!");
                 g.roomTimeout = setTimeout(function () {
                     room328.btnclick("pigPen");
                 }, 2000);
@@ -1265,17 +1454,17 @@ room328.btnclick = function (name) {
             chat(120, 328);
             break;
         case "pigkinsey":
-            if (g.map.kinsey === 0)
+            if (g.map.kinsey < 1)
                 return;
-            if (g.map.kinsey === 1) {
+            if (g.map.kinsey < 4) {
                 nav.button({
                     "type": "img",
                     "name": "pigkinsey",
-                    "left": 776,
-                    "top": 377,
-                    "width": 115,
-                    "height": 196,
-                    "image": "328_farm/pig_k_1.webp"
+                    "left": 698,
+                    "top": 386,
+                    "width": 311,
+                    "height": 201,
+                    "image": "328_farm/pig_k_" + g.map.kinsey + ".webp"
                 }, 328);
             }
             else {
@@ -1286,7 +1475,7 @@ room328.btnclick = function (name) {
                     "top": 299,
                     "width": 189,
                     "height": 104,
-                    "image": "328_farm/pig_k_" + (g.map.kinsey > 4 ? 4 : g.map.kinsey) + ".webp"
+                    "image": "328_farm/pig_k_" + (g.map.kinsey > 6 ? 6 : g.map.kinsey) + ".webp"
                 }, 328);
             }
             break;
@@ -1300,6 +1489,37 @@ room328.btnclick = function (name) {
                 "height": 1080,
                 "image": "328_farm/pig_finish0.webp"
             }, 328);
+            break;
+        case "fight_win":
+            if (g.internal === 8) {
+                nav.kill();
+                nav.bg("325_farm/bg.jpg");
+                zcl.embarrass(100, 800, .8, "front", false);
+                chat(171, 328);
+            }
+            else {
+                var fight_win_name = "";
+                var fight_win_power = 15;
+                switch (g.internal) {
+                    case 1: fight_win_name = "!rancher1"; fight_win_power = 25; break;
+                    case 2:
+                    case 3:
+                    case 4:
+                    case 6:
+                        fight_win_name = "!cowboy";
+                        break;
+                    case 5: fight_win_name = "!girl"; fight_win_power = 5; break;
+                    case 7: fight_win_name = "rachel"; fight_win_power = 10; break;
+                }
+                nav.bg("328_farm/fight" + g.internal + ".webp");
+                quickFight.init(fight_win_power, sc.n(fight_win_name), "fight_win", "fight_lose", "fight_lose", 328);
+                gv.mod("energy", -25);
+                g.internal++;
+            }
+            break;
+        case "fight_lose":
+            daily.set("328fight_lose");
+            char.room(329);
             break;
         case "icon_barn":
             char.room(329);
@@ -1329,14 +1549,27 @@ room328.chatcatch = function (callback) {
         case "sleep_visit17":
         case "sleep_visit18":
         case "sleep_visit19":
+        case "kinsey2":
+        case "kinsey3":
+        case "kinsey4":
+        case "kinsey5":
             nav.bg("328_farm/" + callback + ".webp");
             break;
         case "punish0_6":
         case "sleep_visit0":
         case "sleep_visit12":
         case "pig1":
+        case "sleep_holeescape":
+        case "kinsey1":
+        case "kinsey_map":
             nav.kill();
             nav.bg("328_farm/" + callback + ".webp");
+            //zcl.pucker(500, 1000, .1, "back", true)
+            break;
+        case "kinsey0":
+            nav.kill();
+            nav.bg("328_farm/" + callback + ".webp");
+            zcl.pucker(500, 1000, .1, "back", true);
             break;
         case "envyshok":
             nav.killbutton("envy");
@@ -1801,6 +2034,48 @@ room328.chatcatch = function (callback) {
             nav.kill();
             zcl.embarrass(-100, 0, 1.25, "back", true);
             break;
+        case "hole13":
+            nav.bg("325_farm/bg_night.jpg");
+            if (!g.isNight())
+                char.settime(21, 37);
+            nav.button({
+                "type": "img",
+                "name": "rapefg",
+                "left": 1235,
+                "top": 814,
+                "width": 135,
+                "height": 82,
+                "image": "329_barn/hole13.webp"
+            }, 329);
+            chat(88, 329);
+            break;
+        case "kinsey6":
+            levels.anal(5, true, "f", false, "kinsey");
+            nav.bg("328_farm/" + callback + ".webp");
+            break;
+        case "kinsey7":
+            room329.btnclick("stall_backDraw");
+            break;
+        case "kinseyComplete":
+            sc.completeMissionTask("kinsey", "ranch", 1);
+            g.map.spade = true;
+            char.addtime(45);
+            char.room(329);
+            break;
+        case "fight0":
+            g.internal = 1;
+            nav.kill();
+            nav.bg("328_farm/fight0.webp");
+            quickFight.init(20, sc.n("!rancher"), "fight_win", "fight_lose", "fight_lose", 328);
+            break;
+        case "fightescape":
+            room329.chatcatch("escape");
+            chat(89, 329);
+            break;
+        case "fight_lose":
+            daily.set("328fight_lose");
+            char.room(329);
+            break;
         case "reset":
             char.room(328);
             break;
@@ -1974,12 +2249,47 @@ room328.chat = function (chatID) {
             "Don't make them angry. You don't want to visit the pig pen. ",
             "Just be good and lay low. We'll get out of this. "
         ];
+        if (sc.getMissionTask("kinsey", "ranch", 2).complete) {
+            return {
+                chatID: 700,
+                speaker: "kinsey",
+                text: kinseychat[g.rand(0, kinseychat.length)],
+                button: [
+                    { chatID: -1, text: "... ", callback: "reset" },
+                    { chatID: 168, text: "Can I see the map again?", callback: "" },
+                ]
+            }
+        }
         return {
             chatID: 700,
             speaker: "kinsey",
             text: kinseychat[g.rand(0, kinseychat.length)],
             button: [
                 { chatID: -1, text: "... ", callback: "reset" },
+            ]
+        }
+    }
+    else if (chatID === 750) {
+        let hc328750 = [
+            "Bertha is such a bitch! Stay away from her.",
+            "My knees are so sore from crawling around so much. I wish I could just cut off my legs below the calf. Hehehe mooo! ",
+            "Don't tell Rachel, but sometimes I drink my own milk in my stall. It's so yummy. ",
+            "Mooo! hehehe",
+            "I wish I was a real cow! ",
+            "Don't you hate it when you're crawling around and stick your hand in a wet spot. I just know it's someone's pee. ",
+            "hehehe, moo! ",
+            "If I was a real cow I would the best cow ever!",
+            "I like eating grass. It's yummy, like lettuce. ",
+            "Rachel said I'm doing so much better at milking. I just wish my udders were bigger. ",
+            "Bertha thinks she's so great just becuase she's give great head. But I'm better at making milk. ",
+            "Bertha can eat my cow hole! I hate her so much! "
+        ];
+        return {
+            chatID: 750,
+            speaker: "!hucow",
+            text: hc328750[g.rand(0, hc328750.length)],
+            button: [
+                { chatID: -1, text: "...oh", callback: "reset" },
             ]
         }
     }
@@ -3310,6 +3620,268 @@ room328.chat = function (chatID) {
                     "got into my head? ",
                 button: [
                     { chatID: -1, text: "[Crawl back to the meadow]", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 144,
+                speaker: "thinking",
+                text: "I don't see any loose boards... The door is solid, but be locked from the outside. " +
+                    "The dirt is diggable, but there's no way I could dig a hole in a night. When they come " +
+                    "into my stall they would see a hole started. Can't do that. I may be able to dig a hole " +
+                    "if I get some way to cover it up. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 145,
+                speaker: "thinking",
+                text: "I don't have enough energy for that. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 146,
+                speaker: "!cowboy",
+                text: "Hey little hucow, what are you doing away from the pack? Wanna ride on my horse? ",
+                button: [
+                    { chatID: 147, text: "I do!", callback: "" },
+                    { chatID: -1, text: "No thanks. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 147,
+                speaker: "!cowboy",
+                text: "I do love you snuggling up on me. Makes me feel good. I gotta let you down 'for I get " +
+                    "in trouble. ",
+                button: [
+                    { chatID: -1, text: "Awwww", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 148,
+                speaker: "thinking",
+                text: "My hole is ready! I can leave whenever I want! ",
+                button: [
+                    { chatID: 149, text: "Escape!!", callback: "sleep_holeescape" },
+                    { chatID: -1, text: "Maybe later", callback: "icon_bedturn" },
+                ]
+            },
+            {
+                chatID: 149,
+                speaker: "thinking",
+                text: "Looks like the coast is clear. I bet get going while the goings good. ",
+                button: [
+                    { chatID: -1, text: "Sneak away", callback: "hole13" },
+                ]
+            },
+            {
+                chatID: 150,
+                speaker: "kinsey",
+                text: "Hey. *in a low voice* I'm working on a way out. I've been digging a hole in my cell " +
+                    "for a week and those fuckers found it. I've got a way to speed up the digging, but you " +
+                    "need a way to hide the hole. Do you have anything that will hide it? ",
+                button: [
+                    { chatID: 151, text: "Just they hay of my bed. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 151,
+                speaker: "kinsey",
+                text: "That won't work. That's what I was using, but once the hole gets too deep the hay " +
+                    "will shift and give it away. If you get anything to cover a hole come to me and let me " +
+                    "know ",
+                button: [
+                    { chatID: -1, text: "Totally", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 152,
+                speaker: "kinsey",
+                text: "*in a low voice* Hey. Follow me out to the pasture. I got a way out of here ",
+                button: [
+                    { chatID: 153, text: "ok", callback: "kinsey0" },
+                ]
+            },
+            {
+                chatID: 153,
+                speaker: "kinsey",
+                text: "Hey. *in a low voice* I'm working on a way out. I was able to get a spade and start " +
+                    "digging a hole out of my cell, but they found it. Those fuckers. Luckily I had hidden " +
+                    "the spade, but they're checking my stall every day. But maybe you can dig out and " +
+                    "let people know I'm here. Do you have anything in your stall to cover a hole? ",
+                button: [
+                    { chatID: 154, text: "oh! I have a welcome mat! It's great at hiding a hole! ", callback: "" },
+                ]
+            },
+            {
+                chatID: 154,
+                speaker: "kinsey",
+                text: "Perfect! Listen, I've been hiding this small spade up my ass for a week and I need to get " +
+                    "rid of it, the cramps are crazy. I'm going to give you my spade so you can dig out. I need " +
+                    "you to pull it out of my ass then drop it on the ground. Turn around and I'll hide it up " +
+                    "you ass. Got it? Remember small movements so the ranchers don't catch on. ",
+                button: [
+                    { chatID: 155, text: "Got it. Turn around. ", callback: "kinsey1" },
+                ]
+            },
+            {
+                chatID: 155,
+                speaker: "kinsey",
+                text: "Wait till I push it out a bit...",
+                button: [
+                    { chatID: -1, text: "...", callback: "kinsey2" },
+                ]
+            },
+            {
+                chatID: 156,
+                speaker: "kinsey",
+                text: "I feel it poking out a bit. Grab it with your teeth and drop it on the ground.",
+                button: [
+                    { chatID: 157, text: "...", callback: "kinsey3" },
+                ]
+            },
+            {
+                chatID: 157,
+                speaker: "kinsey",
+                text: "This is really hard getting in there. ",
+                button: [
+                    { chatID: 158, text: "errr", callback: "kinsey4" },
+                ]
+            },
+            {
+                chatID: 158,
+                speaker: "kinsey",
+                text: "I can't quite push it it. Let me work it back and forth...",
+                button: [
+                    { chatID: 159, text: "That really hurts...", callback: "kinsey5" },
+                ]
+            },
+            {
+                chatID: 159,
+                speaker: "kinsey",
+                text: "I can feel you loosening up. Almost in",
+                button: [
+                    { chatID: 160, text: "OOoooooo uhhhhh", callback: "kinsey6" },
+                ]
+            },
+            {
+                chatID: 160,
+                speaker: "kinsey",
+                text: "...did you just cum from me working in this spade? You are a weird one, but I guess " +
+                    "that's why I like you. Now go hide it under your welcome mat so no one finds it. ",
+                button: [
+                    { chatID: 161, text: "hehehehe. ok", callback: "kinsey7" },
+                ]
+            },
+            {
+                chatID: 161,
+                speaker: "me",
+                text: "I'll just hide this spade that up my ass under my welcome mat! This will speed up the " +
+                    "digging so much! Now to get back to the barn so no one's suspicious. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "kinseyComplete" },
+                ]
+            },
+            {
+                chatID: 162,
+                speaker: "kinsey",
+                text: "*low voice* Follow me to the pasture ",
+                button: [
+                    { chatID: 163, text: "ok", callback: "kinsey0" },
+                ]
+            },
+            {
+                chatID: 163,
+                speaker: "kinsey",
+                text: "There's another way to get out of here. I got close. Really close, but when I was " +
+                    "hiding those food pellets game me the worst gas ever I let out a squeeker and got caught. ", 
+                button: [
+                    { chatID: 164, text: "Oh. Where is it?", callback: "" },
+                ]
+            },
+            {
+                chatID: 164,
+                speaker: "kinsey",
+                text: "In the barn. They don't let me in the barn any more unless I'm under close eye. But there's " +
+                    "a hole in one of the horse stalls. Crawl through the hole and you'll get to a storage room. In " +
+                    "that room there's an air vent you can crawl in. Don't worry about screws, I undid them all. You just need to wedge " +
+                    "the vent back into place when you go in so they don't notice. ",
+                button: [
+                    { chatID: 165, text: "ok..", callback: "" },
+                ]
+            },
+            {
+                chatID: 165,
+                speaker: "kinsey",
+                text: "The vents are tricky. If you're in there too long they'll realize you're missing and " +
+                    "try to find you. Since I've already been caught in there it's going to be one of the places " +
+                    "they look. Also if you go down the wrong path they'll hear you crawling in there and catch you. " +
+                    "You have to take the right path and be quick!",
+                button: [
+                    { chatID: 166, text: "How do I know the right path? ", callback: "" },
+                ]
+            },
+            {
+                chatID: 166,
+                speaker: "kinsey",
+                text: "I've got it memorised. Let me draw you out a map on the ground. You've got to memorise it too. ",
+                button: [
+                    { chatID: 167, text: "How do I know the right path? ", callback: "kinsey_map" },
+                ]
+            },
+            {
+                chatID: 167,
+                speaker: "kinsey",
+                text: "When you get in the vents follow the blue rocks. Up 1 meter, left 1 meter, up 3 " +
+                    "meters and so on till you get to the end. The red rocks are over places they can " +
+                    "hear you, so don't go that way or they'll hear. Just make sure you don't toot in there. It " +
+                    "echos so loud everyone will know you're there. Just ask if you want me to make the map again. ",
+                button: [
+                    { chatID: -1, text: "Thanks! I'll get us free ", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 168,
+                speaker: "kinsey",
+                text: "Sure. Follow me to the pasture. ",
+                button: [
+                    { chatID: 167, text: "Follow her", callback: "kinsey_map" },
+                ]
+            },
+            {
+                chatID: 169,
+                speaker: "me",
+                text: "Ok you fuckers! You're going to let me go!! Now!!!",
+                button: [
+                    { chatID: 170, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 170,
+                speaker: "!rancher",
+                text: "Looks like some hucow has forgotten who they are! Everyone kick that dumb ass cow's ass!",
+                button: [
+                    { chatID: -1, text: "...", callback: "fight0" },
+                ]
+            },
+            {
+                chatID: 171,
+                speaker: "me",
+                text: "I was amazing!!! I kicked all their asses!! Too bad I have to run around town naked, but " +
+                    "I'm free!! FREEEE!!!",
+                button: [
+                    { chatID: -1, text: "...", callback: "fightescape" },
+                ]
+            },
+            {
+                chatID: 172,
+                speaker: "!rancher",
+                text: "That hucow is trying to get away! Grab " + gender.pronoun("her") + " and bring her to " +
+                    "the barn!!",
+                button: [
+                    { chatID: -1, text: "eep!!", callback: "fight_lose" },
                 ]
             },
         ];
