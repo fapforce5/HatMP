@@ -164,7 +164,7 @@ phone.saveMenu = function () {
                     "top": top,
                     "width": 125,
                     "height": 50,
-                    "title": "Save",
+                    "title": "Load",
                     "image": "999_phone/load.png",
                 }, 9999);
 
@@ -180,6 +180,19 @@ phone.saveMenu = function () {
             }
 
             if (i !== 9) {
+                if (!g.newLoad) {
+                    nav.button({
+                        "type": "zbtn",
+                        "name": "phone_save_replace_" + i,
+                        "left": 460,
+                        "top": top + 7,
+                        "width": 35,
+                        "height": 35,
+                        "title": "Overwrite Save",
+                        "image": "../general/save.png",
+                    }, 9999);
+                }
+
                 nav.button({
                     "type": "zbtn",
                     "name": "phone_save_delete_" + i,
@@ -213,7 +226,7 @@ phone.saveMenu = function () {
                 "image": "999_phone/export.png",
             }, 9999);
         }
-        else if (!g.newLoad) {
+        else if (!g.newLoad && i !== 9) {
             nav.button({
                 "type": "zbtn",
                 "name": "phone_save_save_" + i,
@@ -1573,6 +1586,77 @@ room9999.btnclick = function (name) {
             case "phone_save_save_8":
                 var saveID = name.replace("phone_save_save_", "");
                 menu.save('HatMP_' + saveID, true);
+                phone.saveMenu();
+                break;
+            case "phone_save_replace_0":
+            case "phone_save_replace_1":
+            case "phone_save_replace_2":
+            case "phone_save_replace_3":
+            case "phone_save_replace_4":
+            case "phone_save_replace_5":
+            case "phone_save_replace_6":
+            case "phone_save_replace_7":
+            case "phone_save_replace_8":
+                let replaceID = name.replace("phone_save_replace_", "");
+                nav.button({
+                    "type": "zimg",
+                    "name": "phone_replace_verify",
+                    "left": 0,
+                    "top": 0,
+                    "width": 1920,
+                    "height": 1080,
+                    "image": "999_phone/verify.png",
+                }, 9999);
+
+                nav.t({
+                    type: "zimg",
+                    name: "phone_",
+                    left: 650,
+                    top: 400,
+                    font: 30,
+                    hex: "#ffffff",
+                    text: "Are you sure you wish to overwrite save: "
+                }, 1);
+                nav.t({
+                    type: "zimg",
+                    name: "phone_",
+                    left: 650,
+                    top: 450,
+                    font: 30,
+                    hex: "#ffffff",
+                    text: $(".room-img[data-name='phone_save_load_name_" + replaceID + "']").text()
+                }, 1);
+                nav.button({
+                    "type": "zbtn",
+                    "name": "phone_save_replace_verify_" + replaceID,
+                    "left": 650,
+                    "top": 600,
+                    "width": 250,
+                    "height": 100,
+                    "image": "999_phone/save.png",
+                }, 9999);
+                nav.button({
+                    "type": "zbtn",
+                    "name": "phone_save_load_cancel",
+                    "left": 1030,
+                    "top": 600,
+                    "width": 250,
+                    "height": 100,
+                    "image": "999_phone/cancel_grey.png",
+                }, 9999);
+                break;
+            case "phone_save_replace_verify_0":
+            case "phone_save_replace_verify_1":
+            case "phone_save_replace_verify_2":
+            case "phone_save_replace_verify_3":
+            case "phone_save_replace_verify_4":
+            case "phone_save_replace_verify_5":
+            case "phone_save_replace_verify_6":
+            case "phone_save_replace_verify_7":
+            case "phone_save_replace_verify_8":
+                let replaceVerifyID = name.replace("phone_save_replace_verify_", "");
+                menu.saveDel('HatMP_' + replaceVerifyID);
+                menu.save('HatMP_' + replaceVerifyID, true);
                 phone.saveMenu();
                 break;
             case "phone_save_load_0":
