@@ -162,8 +162,12 @@ $(document).ready(function () {
 
     $('#room-menu').click(function () {
         phone.build(null);
+    }).on('auxclick',function (e) {
+        if (e?.which === 2) { // mouse-middle-click
+            phone.build("save");
+        }
     });
-    
+
     $("#room_export_load").click(function () {
         char.import(null);
     });

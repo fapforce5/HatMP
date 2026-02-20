@@ -160,7 +160,7 @@ phone.saveMenu = function () {
                 nav.button({
                     "type": "zbtn",
                     "name": "phone_save_load_" + i,
-                    "left": 500,
+                    "left": 520,
                     "top": top,
                     "width": 125,
                     "height": 50,
@@ -185,11 +185,11 @@ phone.saveMenu = function () {
                         "type": "zbtn",
                         "name": "phone_save_replace_" + i,
                         "left": 460,
-                        "top": top + 7,
-                        "width": 35,
-                        "height": 35,
+                        "top": top,
+                        "width": 50,
+                        "height": 50,
                         "title": "Overwrite Save",
-                        "image": "../general/save.png",
+                        "image": "999_phone/overwrite.png",
                     }, 9999);
                 }
 
@@ -230,7 +230,7 @@ phone.saveMenu = function () {
             nav.button({
                 "type": "zbtn",
                 "name": "phone_save_save_" + i,
-                "left": 500,
+                "left": 520,
                 "top": top,
                 "width": 125,
                 "height": 50,
@@ -252,7 +252,7 @@ phone.saveMenu = function () {
     nav.button({
         "type": "zbtn",
         "name": "phone_save_import",
-        "left": 500,
+        "left": 520,
         "top": 180 + (10 * 60),
         "width": 125,
         "height": 50,
