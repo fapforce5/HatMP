@@ -38,7 +38,7 @@ room182.btnclick = function (name) {
             nav.killall();
             nav.bg("182_test/final0.jpg");
             if (grade > 89) { //crown
-                levels.mod("xdress", 100, 999);
+                levels.mod("xdress", 100);
                 cl.add("accessories", "crown");
 
                 chat(78, 182);
@@ -313,7 +313,7 @@ room182.chatcatch = function (callback) {
             break;
         case "t1_20":
             var analLevel = levels.get("anal").l;
-            levels.mod("anal", 50, 999);
+            levels.mod("anal", 50);
             var analImg = "";
             nav.kill();
             if (analLevel > 9) {
@@ -530,7 +530,7 @@ room182.chatcatch = function (callback) {
             break;
         case "end":
             $("#room-inv").show();
-            levels.mod("xdress", 100, 999);
+            levels.mod("xdress", 100);
             sissy.passclass(true);
             break;
         default:

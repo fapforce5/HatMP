@@ -90,7 +90,7 @@ room725.btnclick = function (name) {
             }
             else {
                 gv.mod("money", -15);
-                levels.mod("xdress", 4, 999);
+                levels.mod("xdress", 4);
                 char.addtime(20);
                 beer725 = levels.beer(1);
                 g.internal = { n: "Pink Barbie Cocktail ", b: beer725 };
@@ -225,7 +225,7 @@ room725.chatcatch = function (callback) {
             levels.oral(3, "f", "chloe");
             levels.fuckass("chloe", "f");
             levels.fuckpussy("!emily");
-            levels.mod("xdress", 25, 999);
+            levels.mod("xdress", 25);
             char.addtime(185);
             char.room(0);
             break;

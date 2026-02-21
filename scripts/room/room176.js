@@ -31,7 +31,7 @@ room176.main = function () {
 room176.btnclick = function (name) {
     switch (name) {
         case "blackmailSuccess":
-            levels.mod("charisma", 20, 999);
+            levels.mod("charisma", 20);
             chat(34, 176);
             break;
         case "blackmailFail":
@@ -142,7 +142,7 @@ room176.btnclick = function (name) {
             nav.killall();
             if (g.internal.love > 2) {
                 nav.bg("176_oral/oral203_l_3.jpg");
-                levels.mod("oral", 50, 999);
+                levels.mod("oral", 50);
                 chat(56, 176);
             }
             else if (g.internal.love < -1) {
@@ -208,14 +208,14 @@ room176.chatcatch = function (callback) {
             nav.bg("176_oral/" + callback + ".jpg");
             break;
         case "oral5":
-            levels.mod("oral", 100, 999);
-            //levels.mod("oral", 20, 999);
+            levels.mod("oral", 100);
+            //levels.mod("oral", 20);
             nav.bg("176_oral/" + callback + ".jpg");
             break;
         case "oral7":
             nav.bg("176_oral/" + callback + ".jpg");
-            levels.mod("oral", 100, 999);
-            //levels.mod("oral", 40, 999);
+            levels.mod("oral", 100);
+            //levels.mod("oral", 40);
             if (levels.get("oral").l < 2)
                 chat(17, 176);
             else
@@ -227,12 +227,12 @@ room176.chatcatch = function (callback) {
                 inv.add("whiteDildo");
             break;
         case "sub":
-            levels.mod("oral", 100, 999);
-            //levels.mod("sub", 20, 999);
+            levels.mod("oral", 100);
+            //levels.mod("sub", 20);
             break;
         case "dom":
-            levels.mod("oral", 100, 999);
-            //levels.mod("dom", 20, 999);
+            levels.mod("oral", 100);
+            //levels.mod("dom", 20);
             break;
         case "oralEnd":
             gv.mod("sissySchoolClassDays", 1);

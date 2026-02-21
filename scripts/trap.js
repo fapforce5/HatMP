@@ -1469,19 +1469,12 @@ room1005.chatcatch = function (callback) {
                     }, 6000);
                     break;
                 default:
-                    var pil
                     if (g.rand(0, 2) === 0) {
-                        pil = levels.get("pi");
-                        if (pil.l < 1)
-                            pil.l = 1;
-                        levels.set("pi", 0, pil.l - 1);
+                        levels.modLevel("pi", -1);
                         g.popUpNotice("You have become dumber");
                     }
                     else {
-                        pil = levels.get("strength");
-                        if (pil.l < 1)
-                            pil.l = 1;
-                        levels.set("strength", 0, pil.l - 1);
+                        levels.modLevel("strength", -1);
                         g.popUpNotice("You have become weaker");
                     }
                     chat(40, 1005);

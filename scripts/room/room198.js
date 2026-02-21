@@ -160,7 +160,7 @@ room198.chatcatch = function (callback) {
             chat(998, 198);
             break;
         case "correct":
-            levels.mod("pi", 40, 4);
+            levels.mod("pi", 40);
             missy.mod("mood", 3);
             char.addtime(120);
             chat(8, 198);

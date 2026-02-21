@@ -21,7 +21,7 @@ room205.chatcatch = function (callback) {
     switch (callback) {
         case "chastity0Dom":
             missy.mod("mood", -20);
-            levels.mod("dom", 40, 999);
+            levels.mod("dom", 40);
             break;
         case "chast0_0":
             nav.killall();
@@ -62,12 +62,12 @@ room205.chatcatch = function (callback) {
             break;
         case "chast0_9_bad":
             missy.mod("mood", -100);
-            levels.mod("dom", 100, 999);
+            levels.mod("dom", 100);
             nav.bg("205_chastity/chast0_9_bad.jpg");
             break;
         case "chast0_9_good":
             missy.mod("mood", 100);
-            levels.mod("sub", 100, 999);
+            levels.mod("sub", 100);
             nav.bg("222_errands/laundry3.jpg");
             break;
         case "chastity_0_endBad":

@@ -309,7 +309,7 @@ room221.chatcatch = function (callback) {
             nav.bg("221_recip/" + callback + ".jpg");
             break;
         case "jefferyPanties1":
-            levels.mod("xdress", 10, 8);
+            levels.mod("xdress", 10);
             gv.mod("money", 50);
             nav.bg("221_recip/jefferyPanties1.jpg");
             break;
@@ -342,13 +342,13 @@ room221.chatcatch = function (callback) {
                 chat(400, 221);
             }
             else {
-                levels.mod("pi", 15, 999);
+                levels.mod("pi", 15);
                 chat(401, 221);
             }
             break;
         case "appNo":
             if (g.pass.events[0].pcDisplay === "Nothing") {
-                levels.mod("pi", 15, 999);
+                levels.mod("pi", 15);
                 chat(500, 221);
             }
             else
@@ -370,7 +370,7 @@ room221.chatcatch = function (callback) {
             break;
         case "zpeeguy2":
             missy.mod("mood", -20);
-            levels.mod("piss", 20, 999);
+            levels.mod("piss", 20);
             nav.bg("221_recip/blank.jpg");
 
             break;

@@ -210,7 +210,7 @@ room329.btnclick = function (name) {
             g.map.jars[3].t--;
             g.popUpNotice("You drank cum");
             gv.mod("energy", 100);
-            levels.mod("xdress", 10, 999);
+            levels.mod("xdress", 10);
             levels.mod("cum", 25);
             if (g.room === 329)
                 room329.btnclick("icon_stall");
@@ -221,7 +221,7 @@ room329.btnclick = function (name) {
             g.map.jars[4].t--;
             g.popUpNotice("You drank doggy cum");
             gv.mod("energy", 150);
-            levels.mod("xdress", 10, 999);
+            levels.mod("xdress", 10);
             levels.mod("cum", 25);
             if (g.room === 329)
                 room329.btnclick("icon_stall");
@@ -232,7 +232,7 @@ room329.btnclick = function (name) {
             g.map.jars[5].t--;
             g.popUpNotice("You drank horsey cum");
             gv.mod("energy", 200);
-            levels.mod("xdress", 10, 999);
+            levels.mod("xdress", 10);
             levels.mod("cum", 25);
             if (g.room === 329)
                 room329.btnclick("icon_stall");
@@ -243,7 +243,7 @@ room329.btnclick = function (name) {
             g.map.jars[6].t--;
             g.popUpNotice("You drank piggy cum");
             gv.mod("energy", 300);
-            levels.mod("xdress", 10, 999);
+            levels.mod("xdress", 10);
             levels.mod("cum", 25);
             if(g.room === 329)
                 room329.btnclick("icon_stall");
@@ -300,7 +300,7 @@ room329.btnclick = function (name) {
                 }
             }
             gv.clearButtCum();
-            levels.mod("xdress", 15, 999);
+            levels.mod("xdress", 15);
             if (g.roomID === 328)
                 room328.btnclick("icon_bedturn");
             else

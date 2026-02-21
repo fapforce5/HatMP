@@ -467,7 +467,7 @@ room12.chatcatch = function (callback) {
             char.room(12);
             break;
         case "lotion2":
-            levels.mod("xdress", 10, 3);
+            levels.mod("xdress", 10);
             if (gender.pronoun("f") === "m") 
                 nav.bg("12_bathroom/lotion2_man.jpg");
             else 

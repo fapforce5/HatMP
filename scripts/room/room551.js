@@ -288,8 +288,8 @@ room551.chatcatch = function (callback) {
             break;
         case "workedout":
             gv.mod("energy", -50);
-            levels.mod("fitness", 15, 999);
-            levels.mod("strength", 34, 999);
+            levels.mod("fitness", 15);
+            levels.mod("strength", 34);
             sc.completeMissionTask("g", "workout", 1, true);
             daily.set("g");
             nav.killall();
@@ -381,8 +381,8 @@ room551.chatcatch = function (callback) {
             break;
         case "endDay":
             gv.mod("energy", -50);
-            levels.mod("fitness", 15, 999);
-            levels.mod("strength", 30, 999);
+            levels.mod("fitness", 15);
+            levels.mod("strength", 30);
             daily.set("g");
             nav.killall();
             nav.bg("551_gymInside/551_gym.jpg");
@@ -460,7 +460,7 @@ room551.chatcatch = function (callback) {
             break;
         case "completeRun":
             gv.mod("energy", -30);
-            levels.mod("fitness", 51, 999);
+            levels.mod("fitness", 51);
             char.addtime(47);
             char.room(551);
             break;

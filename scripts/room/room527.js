@@ -139,7 +139,7 @@ room527.chatcatch = function (callback) {
             break;
         case "w2":
             if (levels.get("piss").l < 5) {
-                levels.mod("piss", 15, 999);
+                levels.mod("piss", 15);
                 chat(11, 527);
             }
             else {

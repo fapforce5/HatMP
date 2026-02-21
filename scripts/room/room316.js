@@ -78,8 +78,8 @@ room316.main = function () {
                     if (!daily.get("dsniff")) {
                         daily.set("dsniff");
                         sc.modLevel("dog", 20, 5);
-                        levels.mod("sub", 15, 999);
-                        levels.mod("beast", 10, 0);
+                        levels.mod("sub", 15);
+                        levels.mod("beast", 10);
                     }
 
                     zcl.assup(650, 500, .55, "");
@@ -87,7 +87,7 @@ room316.main = function () {
                 }
                 else if (cl.c.dress !== null) {
                     gv.mod("arousal", 10);
-                    levels.mod("beast", 10, 0);
+                    levels.mod("beast", 10);
                     zcl.assup(650, 500, .55, "reddress");
                     nav.bg("316_livingroom/dog_snif.jpg");
                 }
@@ -313,8 +313,8 @@ room316.btnclick = function (name) {
             if (!daily.get("dsniff")) {
                 daily.set("dsniff");
                 sc.modLevel("dog", 20, 5);
-                levels.mod("sub", 15, 999);
-                levels.mod("beast", 10, 0);
+                levels.mod("sub", 15);
+                levels.mod("beast", 10);
             }
             char.room(316);
             break;
@@ -332,7 +332,7 @@ room316.btnclick = function (name) {
                     nav.bg("316_livingroom/pbStand.jpg");
                     daily.set("dpb");
                     sc.modLevel("dog", 50, 2);
-                    levels.mod("beast", 10, 0);
+                    levels.mod("beast", 10);
                     chat(88, 316);
                 }
             }
@@ -466,7 +466,7 @@ room316.btnclick = function (name) {
             }
             if (g.internal === 5) {
                 levels.anal(3, false, "m", true, "dog", "dog");
-                levels.mod("fame", 25, 999);
+                levels.mod("fame", 25);
                 nav.killbutton("dwalkfuck");
                 chat(101, 316);
             }
@@ -493,7 +493,7 @@ room316.btnclick = function (name) {
             nav.killall();
             nav.bg("316_livingroom/pbStand.jpg");
             daily.set("dpb");
-            levels.mod("beast", 10, 0);
+            levels.mod("beast", 10);
             sc.modLevel("dog", 50, 1);
             chat(88, 316);
             break;
@@ -512,7 +512,7 @@ room316.btnclick = function (name) {
         case "icon_dcrawlpbButt1":
             nav.killbutton("icon_dcrawlpbButt1");
             daily.set("dpb");
-            levels.mod("beast", 20, 4);
+            levels.mod("beast", 20);
             sc.modLevel("dog", 35, 999);
             chat(90, 316);
             break;
@@ -671,7 +671,7 @@ room316.btnclick = function (name) {
             nav.killall();
             nav.bg("316_livingroom/task0_2.jpg");
             sc.modLevel("dog", 30, 4);
-            levels.mod("beast", 15, 2);
+            levels.mod("beast", 15);
             nav.next("buildMenu");
             break;
         case "iconPb":
@@ -715,7 +715,7 @@ room316.btnclick = function (name) {
             break;
         case "iconDickx":
             if (cl.c.chastity === null) {
-                levels.mod("dom", 25, 999);
+                levels.mod("dom", 25);
                 nav.bg("316_livingroom/dick.jpg");
                 chat(116, 316);
             }
@@ -731,7 +731,7 @@ room316.btnclick = function (name) {
             g.pass.dick = true;
             nav.killall();
             if (cl.c.chastity === null) {
-                levels.mod("dom", 25, 999);
+                levels.mod("dom", 25);
                 nav.bg("316_livingroom/dick.jpg");
                 chat(81, 316);
             }
@@ -1005,11 +1005,11 @@ room316.chatcatch = function (callback) {
             break;
         case "likedom":
             sc.modLevel("janice", -25, 999);
-            levels.mod("dom", 30, 999);
+            levels.mod("dom", 30);
             break;
         case "sub":
             sc.modLevel("janice", 25, 999);
-            levels.mod("sub", 50, 999);
+            levels.mod("sub", 50);
             break;
        
         case "peanutbutter":
@@ -1231,7 +1231,7 @@ room316.chatcatch = function (callback) {
         //    char.room(0);
         //    break;
         case "cuck_1_complete":
-            levels.mod("xdress", 15, 999);
+            levels.mod("xdress", 15);
             sc.completeMissionTask("janice", "femdom", 5);
             daily.set("janice");
             char.addtime(60);

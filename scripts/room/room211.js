@@ -244,7 +244,7 @@ room211.btnclick = function (name) {
             }
             break;
         case "icon_dress":
-            levels.mod("xdress", 10, 7);
+            levels.mod("xdress", 10);
             cl.c.bra = "p";
             cl.c.pants = "ss";
             cl.c.shirt = "ss";
@@ -256,7 +256,7 @@ room211.btnclick = function (name) {
             char.room(211);
             break;
         case "icon_dress1":
-            levels.mod("xdress", 20, 7);
+            levels.mod("xdress", 20);
             cl.nude();
             cl.c.pants = "sq";
             cl.c.shirt = "sq";

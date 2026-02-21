@@ -32,10 +32,7 @@ sstat.updateGraph = function () {
 
     for (i = 0; i < levels.st.length; i++) {
         if (levels.st[i].display) {
-            if (levels.st[i].compoundLevel)
-                barWidth = (levels.st[i].c / levels.getCap(levels.st[i].l)) * 100
-            else
-                barWidth = levels.st[i].c;
+            barWidth = (levels.st[i].c / levels.getPointsCapForLevel(levels.st[i])) * 100;
 
             var levelDesc = levels.desc(levels.st[i].n, levels.st[i].l);
             //console.log($(".rl-levelheader[data-name='" + levels.st[i].n + "']"));

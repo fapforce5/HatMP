@@ -29,23 +29,23 @@ room701.chatcatch = function (callback) {
             char.room(0);
             break;
         case "wake1":
-            levels.mod("charisma", 20, 999);
+            levels.mod("charisma", 20);
             nav.bg("701_hospitalroom/wake1.jpg");
             break;
         case "wake1CheckDick":
             if (cl.c.chastity !== null) {
                 nav.bg("701_hospitalroom/wake1laugh.jpg");
-                levels.mod("charisma", -20, 999);
+                levels.mod("charisma", -20);
                 chat(3, 701);
             }
             else if (cl.c.cock > 1) {
                 nav.bg("701_hospitalroom/wake1laugh.jpg");
-                levels.mod("charisma", -10, 999);
+                levels.mod("charisma", -10);
                 chat(4, 701);
             }
             else {
                 nav.bg("701_hospitalroom/wake2.jpg");
-                levels.mod("charisma", 30, 999);
+                levels.mod("charisma", 30);
                 chat(5, 701);
             }
             break;

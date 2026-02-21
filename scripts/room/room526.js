@@ -290,7 +290,7 @@ room526.chatcatch = function (callback) {
         case "sex1_15":
             sc.completeMissionTask("zoey", "sex", 2);
             levels.piss(false, false, true, "f", "stormy");
-            levels.mod("xdress", 40, 999);
+            levels.mod("xdress", 40);
             sc.show("stormy");
             sc.startMission("stormy", "property");
             sc.completeMissionTask("stormy", "property", 0);

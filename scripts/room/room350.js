@@ -153,7 +153,7 @@ room350.chatcatch = function (callback) {
             sc.startMission("raven", "bitch");
             sc.completeMissionTask("raven", "bitch", 0);
             sc.show("raven");
-            levels.mod("pi", 30, 999);
+            levels.mod("pi", 30);
             char.addtime(20);
             nav.bg("350_spermBank/350_spermbank.jpg");
             nav.button({

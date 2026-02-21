@@ -85,7 +85,7 @@ room219.btnclick = function (name) {
             }, 219);
             missy.st[13].c++;
             g.roomTimeout = setTimeout(function () {
-                levels.mod("sub", 50, 1);
+                levels.mod("sub", 50);
                 chat(6, 219);
                 room219.btnclick("hypnoComplete");
             }, 7000);
@@ -119,9 +119,8 @@ room219.btnclick = function (name) {
                 case "hypno4":
                     missy.st[16].c++;
                     hchatid = 12;
-                    var wi = levels.i("strength");
-                    if (levels.st[wi].l > 0) {
-                        levels.st[wi].l--;
+                    if (levels.get("strength").l > 0) {
+                        levels.modLevel("strength", -1);
                         g.popUpNotice("You are now weaker. ");
                     }
                     break;
@@ -150,9 +149,8 @@ room219.btnclick = function (name) {
                     "height": 411,
                     "image": "219_dataEntry/hypno4.jpg"
                 }, 219);
-                var wi1 = levels.i("strength");
-                if (levels.st[wi1].l > 0) {
-                    levels.st[wi1].l--;
+                if (levels.get("strength").l > 0) {
+                    levels.modLevel("strength", -1);
                     g.popUpNotice("You are now weaker. ");
                 }
                 g.roomTimeout = setTimeout(function () {

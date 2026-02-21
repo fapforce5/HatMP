@@ -1047,7 +1047,7 @@ room23.chatcatch = function (callback) {
             sc.modSecret("eva", 10);
             break;
         case "charisma":
-            levels.mod("charisma", 10, 999);
+            levels.mod("charisma", 10);
             break;
         case "arousal":
             gv.mod("arousal", 10);
@@ -1129,7 +1129,7 @@ room23.chatcatch = function (callback) {
             break;
         case "mepanties":
             nav.killall();
-            levels.mod("xdress", 25, 999);
+            levels.mod("xdress", 25);
             nav.bg("24_spinTheBottle/mepanties.jpg");
             cl.c.panties = "w";
             cl.display();

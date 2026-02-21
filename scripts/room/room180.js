@@ -99,7 +99,7 @@ room180.chatcatch = function (callback) {
             nav.bg("180_ballroom/" + callback + ".jpg");
             break;
         case "charisma":
-            levels.mod("charisma", 40, 999);
+            levels.mod("charisma", 40);
             break;
         case "shaveEnd":
             cl.shave();
@@ -108,7 +108,7 @@ room180.chatcatch = function (callback) {
             sissy.passclass(true);
             break;
         case "femend":
-            levels.mod("xdress", 50, 2);
+            levels.mod("xdress", 50);
             sissy.passclass(true);
             break;
         case "pee1":
@@ -126,7 +126,7 @@ room180.chatcatch = function (callback) {
             char.addtime(60);
             break;
         case "peeend":
-            levels.mod("piss", 100, 7);
+            levels.mod("piss", 100);
             sissy.passclass(true);
             break;
         case "fem103_1":
@@ -151,7 +151,7 @@ room180.chatcatch = function (callback) {
             cl.c.socks = "ss";
             cl.c.shoes = "ss";
             cl.display();
-            levels.mod("xdress", 50, 999);
+            levels.mod("xdress", 50);
             sissy.passclass(true);
             break;
         case "fem201_end":
@@ -174,12 +174,12 @@ room180.chatcatch = function (callback) {
             zcl.assup(750, 80, .5);
             break;
         case "enema205_7":
-            levels.mod("xdress", 50, 999);
+            levels.mod("xdress", 50);
             sissy.passclass(true);
             break;
         case "fem121_end":
-            levels.mod("heels", 100, 999);
-            levels.mod("xdress", 50, 999);
+            levels.mod("heels", 100);
+            levels.mod("xdress", 50);
             sissy.passclass(true);
             break;
         case "laser1":

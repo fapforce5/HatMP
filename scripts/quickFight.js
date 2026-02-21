@@ -340,8 +340,8 @@ quickFight.drawFight = function () {
         if (meAbsTotal > enemyAbsTotal) {
             g.fight.aftermath = "win";
             gv.mod("energy", -5);
-            levels.mod("strength", 15, 999);
-            levels.mod("dom", 20, 999);
+            levels.mod("strength", 15);
+            levels.mod("dom", 20);
             nav.t({
                 type: "img",
                 name: "quickfight",

@@ -32,11 +32,11 @@ room217.chatcatch = function (callback) {
             else
                 nav.bg("217_punish/squeezef.jpg");
 
-            levels.mod("dom", 20, 999);
+            levels.mod("dom", 20);
             missy.mod("mood", -10);
             break;
         case "disrobeVoluntary":
-            levels.mod("sub", 20, 999);
+            levels.mod("sub", 20);
             room217.chatcatch("disrobe");
             break;
         case "disrobe":
@@ -108,7 +108,7 @@ room217.chatcatch = function (callback) {
             }
             break;
         case "punishmentEnd":
-            levels.mod("sub", 50, 999);
+            levels.mod("sub", 50);
             gv.set("energy", 0);
             char.settime(17, 35);
             char.room(0);

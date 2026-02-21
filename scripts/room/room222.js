@@ -41,7 +41,7 @@ room222.btnclick = function (name) {
         case "laudry-panties":
             nav.killall();
             nav.bg("222_errands/laundry1-panties.jpg");
-            levels.mod("xdress", 25, 0);
+            levels.mod("xdress", 25);
             if (levels.get("xdress").l > 0 && !cl.hasClothing("panties", "missy")) {
                 chat(21, 222);
             }
@@ -189,7 +189,7 @@ room222.chatcatch = function (callback) {
             charisma.init(5, "case0charismaWin", "case0charismaLose", 222)
             break;
         case "case0-end":
-            levels.mod("pi", 20, 999); 
+            levels.mod("pi", 20); 
             room222.chatcatch("lunch");
             break;
         case "case0-2-bj":
@@ -220,7 +220,7 @@ room222.chatcatch = function (callback) {
             break;
         case "punishLunch":
             missy.didJob(4, .5, null);
-            levels.mod("pi", -10, 999); //pi skillz
+            levels.mod("pi", -10); //pi skillz
             g.pass = "punish";
             char.room(224);
             break;

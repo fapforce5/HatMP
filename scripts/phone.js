@@ -1327,7 +1327,7 @@ room9999.btnclick = function (name) {
         }
         else {
             var cheatLevel = name.replace("phone_cheatmod_level_", "");
-            levels.mod(cheatLevel, 100, 999);
+            levels.mod(cheatLevel, 100);
             phone.cheat();
             $('#char_alert').hide();
         }

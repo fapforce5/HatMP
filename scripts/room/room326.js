@@ -164,14 +164,14 @@ room326.chatcatch = function (callback) {
             if (sc.getMission("rachel", "ranch").notStarted) {
                 g.internal = "brush";
                 sc.modLevel("horse", 40, 4);
-                levels.mod("beast", 34, 3);
+                levels.mod("beast", 34);
                 gv.mod("money", 20);
                 char.addtime(60);
                 char.room(0);
             }
             else {
                 sc.modLevel("horse", 40, 4);
-                levels.mod("beast", 34, 3);
+                levels.mod("beast", 34);
                 char.addtime(60);
                 char.room(329);
             }

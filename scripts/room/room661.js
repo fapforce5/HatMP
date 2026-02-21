@@ -51,7 +51,7 @@ room661.chatcatch = function (callback) {
         case "recycle":
             char.addtime(60);
             g.internal++;
-            levels.mod("pi", 2, 3);
+            levels.mod("pi", 2);
             if (g.internal > 0 && missy.get("reusableCaseCounter") > 1) {
                 nav.bg("661_peephole/661_peephole8.jpg");
                 chat(17, 661);

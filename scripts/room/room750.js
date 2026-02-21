@@ -360,10 +360,10 @@ room750.chatcatch = function (callback) {
             char.room(750);
             break;
         case "char":
-            levels.mod("charisma", 40, 999);
+            levels.mod("charisma", 40);
             break;
         case "int":
-            levels.mod("pi", 40, 999);
+            levels.mod("pi", 40);
             break;
         case "pocketSand":
             if (inv.get("pocketsand").count > 0) {
