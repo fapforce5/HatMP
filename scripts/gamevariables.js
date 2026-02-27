@@ -165,15 +165,20 @@ gv.init = function () {
         { n: "jonesroom", t: 152, q: "int" },
         { n: "jonestotal", t: 0, q: "int" },
 
+        //map
+        { n: "sewerMap", t: "", q: "string" },
+        { n: "sewerID", t: 0, q: "int" },
+        { n: "sewerEnd", t: 0, q: "int" },
+        { n: "forestMapUpdate", t: null, q: "string" },
+        { n: "forestVisit", t: null, q: "string" },
+        { n: "forestFastravel1", t: false, q: "bool" },
+        { n: "forestFastravel2", t: false, q: "bool" },
+
+
         //{ n: "jobConstWorkToday", t: 0, q: "int" },
         //---------------------------------check not used------------------------------
 
         { n: "reddoorloc", t: 1, q: "int" },
-        { n: "sewerEnd", t: 0, q: "int" },
-        { n: "sewerMap", t: "", q: "string" },
-        { n: "sewerID", t: 0, q: "int" },
-        { n: "forestMapUpdate", t: null, q: "string" },
-        { n: "forestVisit", t: null, q: "string" },
         
         { n: "puter", t: false, q: "bool" },
         { n: "slimeMonsters", t: true, q: "bool" },

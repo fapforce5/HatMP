@@ -333,6 +333,7 @@ g.rooms = [
     { roomID: 486, name: "Dozen Degrading Doors", image: "486_game/bg0.webp", nightImage: "486_game/bg0.webp", houseID: 480, btn: "roomBtn_483.png" },
     { roomID: 487, name: "Cult Castle", image: "487_castle/bg.webp", nightImage: "487_castle/bgn.webp", houseID: 480, btn: "roomBtn_483.png" },
     { roomID: 488, name: "Morgan's Cabin", image: "488_cabin/bg.webp", nightImage: "488_cabin/bg_n.webp", houseID: 480, btn: "roomBtn_483.png" },
+    { roomID: 489, name: "Fast travel", image: "488_cabin/bg.webp", nightImage: "488_cabin/bg_n.webp", houseID: 480, btn: "roomBtn_483.png" },
 
     { roomID: 500, name: "Zoey's House", image: "500_jada/500_zoeyHouseDay.jpg", nightImage: "500_jada/500_zoeyHouseNight.jpg", houseID: 500, btn: "roomBtn_500.png" },
     { roomID: 501, name: "Zoey's Living Room", image: "501_jadaGame/501_game.jpg", nightImage: "501_jadaGame/501_game.jpg", houseID: 500, btn: "roomBtn_501.png" },
@@ -463,6 +464,7 @@ g.roomMapInit = function () {
         //{ roomID: 407, display: "Makeup", access: true, darkAccess: false, left: 257, top: 209, width: 129, height: 115, img: "map/407.png", night: "map/407_night.png", map: 2 },
         { roomID: 408, display: "Stormy's", access: true, darkAccess: true, left: 1056, top: 31, width: 316, height: 282, img: "map/408.png", night: "map/408_night.png", map: 1 },
         { roomID: 450, display: "Park", access: true, darkAccess: true, left: 1378, top: 483, width: 196, height: 211, img: "map/450.png", night: "map/450_night.png", map: 0 },
+        { roomID: 489, display: "Cave", access: false, darkAccess: false, left: 1270, top: 446, width: 74, height: 62, img: "map/489.png", night: "map/489_night.png", map: 0 },
         { roomID: 500, display: "Zoey's", access: true, darkAccess: true, left: 781, top: 51, width: 197, height: 142, img: "map/500.png", night: "map/500_night.png", map: 1 },
         { roomID: 525, display: "Zoey's Bar", access: false, darkAccess: true, left: 587, top: 389, width: 152, height: 276, img: "map/525.png", night: "map/525_night.png", map: 3 },
         { roomID: 535, display: "Keaton's Home", access: true, darkAccess: false, left: 1338, top: 151, width: 102, height: 90, img: "map/535.png", night: "map/535_night.png", map: 1 },

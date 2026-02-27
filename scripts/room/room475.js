@@ -91,12 +91,10 @@ room475.main = function () {
                 rape.init(null, currentLocation, 475, "reload");
                 break;
             case "rope":
-                if (currentLocation === "forest")
-                    trap.init("rope", currentLocation, 475, "reload", null);
+                trap.init("rope", currentLocation, 475, "reload", null);
                 break;
             case "hole":
-                if (currentLocation === "forest")
-                    trap.init("hole", currentLocation, 475, "reload", null);
+                trap.init("hole", currentLocation, 475, "reload", null);
                 break;
             case "random":
                 trap.init("encounter", currentLocation, 475, "reload", null);
@@ -121,7 +119,7 @@ room475.main = function () {
                 "image": "map/lewd.png"
             }, 0);
         }
-        if (g.rand(0, 6) === 0) {
+        if (g.rand(0, 6) === 0 && g.map.row > 50 || g.map.row < 25) {
             nav.button({
                 "type": "btn",
                 "name": "hornyGoatWeed",
@@ -186,7 +184,10 @@ room475.btnclick = function (name) {
             }
             else if (m.fmap[g.map.row][g.map.col].used === "s") {
                 //row 49 exit map
-                char.room(485); //row 42 can buy things 
+                if (g.map.row === 49 || g.map.row === 24)
+                    char.room(489);
+                else
+                    char.room(485); //row 42 can buy things 
             }
             else if (m.fmap[g.map.row][g.map.col].used === "j") {
                 //dozen degrading doors

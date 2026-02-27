@@ -57,7 +57,7 @@ inv.master = [
     { type: "g", name: "wine", display: "Rotting Grape Wine", entry: false, count: 0, cost: 12, buy: 4, image: "wine.png", n: false, desc: "Time to get drunk!" },
     { type: "g", name: "redbox", display: "Red Box", entry: false, count: null, cost: 0, buy: null, image: "redbox.png", n: false, desc: "Red box you need to deliver to Missy" },
     { type: "g", name: "emptyjar", display: "An empty jar", entry: false, count: 0, cost: -1, buy: 4, image: "emptyjar.png", n: false, desc: "Just an empty jar" },
-    { type: "g", name: "rawmeat", display: "Raw Meat", entry: false, count: 0, cost: -1, buy: 10, image: "meat.png", n: false, desc: "Raw Meat" },
+    { type: "g", name: "rawmeat", display: "Raw Meat", entry: false, count: 0, cost: 30, buy: 10, image: "meat.png", n: false, desc: "Raw Meat" },
 
     { type: "e", name: "acia", display: "Acia Berries", entry: false, count: 0, cost: 10, buy: 3, image: "acia.png", n: false, desc: "Gain 15 energy" },
     { type: "e", name: "soda", display: "Super Awesome Soda", entry: false, count: 0, cost: 30, buy: 10, image: "energyCola.png", n: false, desc: "Gain 50 energy" },

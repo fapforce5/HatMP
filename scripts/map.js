@@ -301,11 +301,16 @@ m.drawBackground = function (row, col) {
                 pathCounter++;
             }
         }
-        if (pathCounter === 0)
+        if (pathCounter === 0) {
+            g.map = null;
             char.room(460);
+        }
     }
     else if (webplogic) {
-        nav.bg("475_fight/z" + m.fmap[row][col].used + ".webp");
+        if (row === 49)
+            nav.bg("475_fight/zs1.webp");
+        else
+            nav.bg("475_fight/z" + m.fmap[row][col].used + ".webp");
         if (row > 0) {
             if (m.fmap[row - 1][col].used !== 'x') {
                 nav.button({
@@ -496,10 +501,6 @@ m.drawBackground = function (row, col) {
     }
     for (let i = 0; i < webpbuttons.length; i++) {
         nav.button(webpbuttons[i], 475);
-    }
-
-    if (m.fmap[row][col].used === "s" && row === 49) {
-        chat(8, 475);
     }
 };
 

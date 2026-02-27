@@ -13,6 +13,7 @@ trap.location;
 
 //hole, treasure, treasureAzrael, encounter, rope
 trap.init = function (trapType = "rope", location = "forest", roomId = g.roomID, callbackWin = "", trapNum = null) {
+    console.log(trapType);
     trap.phase = 0;
     trap.roomId = roomId;
     trap.callbackWin = callbackWin;
@@ -260,6 +261,8 @@ trap.message = function (message) {
 };
 
 trap.rope = function () {
+    if (rape.location === "cave")
+        trap.kill();
     let ropeChar = new Array();
     let flowers = ["fr", "fd", "fp"];
     let sb, sa;
@@ -465,6 +468,8 @@ trap.rope = function () {
 };
 
 trap.hole = function () {
+    if (trap.location !== "forest")
+        trap.kill();
     let holechar;
     let txt;
     if (trap.counter > 0)
@@ -719,7 +724,6 @@ trap.encounter = function () {
     if (gv.get("cat") === -1 && g.rand(0, 4) === 0 && !g.isNight() && trap.location === "forest") {
         charList.push({ n: "!cat", z: "cat", loc: ["forest"], l: 0, t: 0, w: 1920, h: 1080, i: "cat.jpg" });
     }
-   
 
     if (charList.length < 1) {
         charList.push({ n: "!girl", p: "girl", z: "nice", loc: ["street"], l: 857, t: 69, w: 524, h: 1011, i: "girl1.png" });
@@ -728,17 +732,17 @@ trap.encounter = function () {
         charList.push({ n: "!girl", p: "girl", z: "mean", loc: ["street"], l: 908, t: 191, w: 339, h: 889, i: "girl2.png" });
         charList.push({ n: "!boy", p: "boy", z: "nice", loc: ["forest"], l: 855, t: 173, w: 371, h: 907, i: "man2.png" });
         charList.push({ n: "!girl", p: "girl", z: "mean", loc: ["street"], l: 920, t: 148, w: 465, h: 932, i: "girl3.png" });
-        charList.push({ n: "!boy", p: "boy", z: "nice", loc: ["forest"], l: 900, t: 127, w: 342, h: 953, i: "man3.png" });
-        charList.push({ n: "!boy", p: "boy", z: "nice", loc: ["forest"], l: 703, t: 73, w: 812, h: 1007, i: "man4.png" });
+        charList.push({ n: "!boy", p: "boy", z: "nice", loc: ["forest", "street"], l: 900, t: 127, w: 342, h: 953, i: "man3.png" });
+        charList.push({ n: "!boy", p: "boy", z: "nice", loc: ["forest", "street"], l: 703, t: 73, w: 812, h: 1007, i: "man4.png" });
+        charList.push({ n: "!girl", p: "girl", z: "nice", loc: ["cave"], l: 760, t: 439, w: 402, h: 531, i: "a1.png" });
+        charList.push({ n: "!girl", p: "girl", z: "nice", loc: ["cave"], l: 760, t: 439, w: 402, h: 531, i: "a2.png" });
+        charList.push({ n: "!boy", p: "boy", z: "mean", loc: ["cave"], l: 760, t: 439, w: 402, h: 531, i: "a3.png" });
 
         //not really, add forest lesbians
         charList.push({ n: "!granola", p: "girl", z: "granola1", loc: ["forest"], l: 426, t: 83, w: 966, h: 935, i: "granola1.png" });
         charList.push({ n: "!girl", p: "girl", z: "foot1", loc: ["forest"], l: 674, t: 152, w: 503, h: 928, i: "girl4.png" });
 
-        for (let i = 0; i < charList.length; i++) {
-            if (!charList[i].loc.includes(trap.location))
-                charList.splice(i, 1);
-        }
+        charList = charList.filter(char => char.loc.includes(trap.location));
     }
 
     if (charList.length === 0) {
