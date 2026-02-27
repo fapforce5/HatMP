@@ -1,4 +1,7 @@
 ﻿var cl = {};
+cl.c = null;
+cl.list = new Array();
+cl.saveOutfit = new Array();
 
 cl.init = function () {
     cl.c = {
@@ -2117,7 +2120,7 @@ cl.cumdisplay = function (back) {
 };
 
 cl.display = function () {
-    if (!cl.c) {
+    if (cl.c === null) {
         // not yet initialized, display refresh probably triggered while we are still on the start screen
         return;
     }
