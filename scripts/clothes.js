@@ -1,18 +1,4 @@
 ﻿var cl = {};
-cl.list = new Array();
-cl.saveOutfit = new Array();
-
-cl.c = {
-    leg: 0, chest: 0, cock: 0, butthole: 0.0,
-    makeup: "n", lips: "thin", eyes: "gray", hairLength: 0, hairColor: "black", hairStyle: "straight", lastHairCut: 0, bodyhair: 180, wig: null,
-    shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null,
-    accessories: null,
-    tattoo: new Array(), buttplug: null, chastity: null, chastitylock: false,
-    necklace: null, earring: null, bellyring: null, nipplering: null, nosering: null, bracelets: null,
-    fingernail: null, toenail: null,
-    cumface: false, cumchest: false, cumbutt: false, pissface: null, pisschest: false, pisspants: false,
-    locktits: false, lockbutt: false
-};
 
 cl.init = function () {
     cl.c = {
@@ -2131,6 +2117,10 @@ cl.cumdisplay = function (back) {
 };
 
 cl.display = function () {
+    if (!cl.c) {
+        // not yet initialized, display refresh probably triggered while we are still on the start screen
+        return;
+    }
     var thisHair;
     $('.bladder-box').remove();
     $(".char-layer").css({
