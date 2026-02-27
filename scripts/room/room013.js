@@ -131,7 +131,7 @@ room13.main = function () {
                     "height": 70,
                     "image": "13_sisterRoom/13_eva_sittingboobs.png"
                 }];
-                g.internal = { lola: scc.getSet("lola"), eva: scc.getSet("eva") };
+                g.internal = { lola: null, eva: null };
                 //if (g.internal.lola.anyanyChanges || g.internal.eva.anyanyChanges) {
                     //put logic for changes / secret here
                 //}

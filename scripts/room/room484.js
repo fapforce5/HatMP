@@ -78,7 +78,7 @@ room484.chat = function (chatID) {
             text: "uh oh. They're pretty angry at me. Maybe I should change my clothes to something " +
                 "more natural. ",
             button: [
-                { chatID: -1, text: "", callback: "openingbad" }
+                { chatID: -1, text: "...", callback: "openingbad" }
             ]
         },
         {

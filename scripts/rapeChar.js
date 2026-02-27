@@ -1118,7 +1118,7 @@
             num: 6,
             name: "cult",
             displayName: "",
-            location: ["street","forest","cave"],
+            location: ["street", "forest", "cave","meadow"],
             img: "cult/icon.png",
             openingLine: ["I shall free your ass"],
             openingImg: null,
@@ -1246,7 +1246,7 @@
             num: 7,
             name: "cult",
             displayName: "",
-            location: ["street", "forest", "cave"],
+            location: ["street", "forest", "cave","meadow"],
             img: "cult/icon.png",
             openingLine: ["I shall free your ass"],
             openingImg: null,
@@ -1374,7 +1374,7 @@
             num: 8,
             name: "cult",
             displayName: "",
-            location: ["street", "forest", "cave"],
+            location: ["street", "forest", "cave","meadow"],
             img: "cult/icon.png",
             openingLine: ["I shall free your ass"],
             openingImg: null,
@@ -2636,8 +2636,7 @@
         if (location !== null) {
             retVar = retVar.filter(item => item.location.includes(location));
         }
-
-        num = g.rand(0, retVar.length);
+          num = g.rand(0, retVar.length);
     }
     
     return retVar[num];

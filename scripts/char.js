@@ -6,7 +6,7 @@ $(document).ready(function () {
 
     nav.setRatio();
     nav.buildRoom();
-    cl.display();
+    //cl.display();
 
     //$('#ohShitIFoundABug').click(function () {
     //    char.room(0);
@@ -348,7 +348,7 @@ char.map = function () {
     let cArray = new Array();
     let ttop = 100;
 
-    if (g.roomID > 3 && g.roomID < 50) {
+    if (g.roomID > 3 && g.roomID < 50 && g.room !== 28) {
         $('#room_left_map').html('');
         cArray.push({ t: sc.getTimeline("lola"), c: sc.n("lola") });
         cArray.push({ t: sc.getTimeline("eva"), c: sc.n("eva") });
@@ -376,6 +376,9 @@ char.map = function () {
     }
     else if (g.roomID === 451 || g.roomID === 203) {
         cArray.push({ t: sc.getTimeline("cecilia"), c: sc.n("cecilia") });
+    }
+    else if (g.roomID === 488) {
+        cArray.push({ t: sc.getTimeline("daria"), c: sc.n("daria") });
     }
 
     if (cArray.length > 0) {
@@ -644,7 +647,7 @@ menu.makeSaves = function () {
         inv: inv.save(),
         cl: cl.save(),
         sc: sc.save(),
-        scc: scc.save(),
+        //scc: scc.save(),
         pic: pic.save(),
         gv: gv.save(),
         missy: missy.save()
@@ -715,7 +718,7 @@ menu.load = function (cookieName, btn, saveID) {
     inv.load(tp.inv);
     cl.load(tp.cl);
     sc.load(tp.sc);
-    scc.load(tp.scc);
+    //scc.load(tp.scc);
     gv.load(tp.gv, saveVersion);
     missy.load(tp.missy);
     

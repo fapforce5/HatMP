@@ -681,6 +681,7 @@ room476.chatcatch = function (callback) {
             }
             break;
         case "cross_help2":
+            nav.kill();
             nav.button({
                 "type": "btn",
                 "name": "cross_other",

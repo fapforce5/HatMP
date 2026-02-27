@@ -14,7 +14,7 @@ m.col = 20;
 //q -> me
 m.drawBackground = function (row, col) {
     nav.killall();
-    let webplogic = row < 50;
+    let webplogic = row < 50 && row > 25;
     let webpbuttons = [];
     
     if (m.fmap[row][col].used === 'b') { //cave
@@ -61,12 +61,29 @@ m.drawBackground = function (row, col) {
     }
     else if (m.fmap[row][col].used === 'c' && row === 25) { //cave
         nav.bg("475_fight/c.webp");
-        nav.back("south");
-        chat(0, 475);
+        nav.button({
+            "type": "btn",
+            "name": "north",
+            "title": "North",
+            "left": 840,
+            "top": 200,
+            "width": 225,
+            "height": 75,
+            "image": "475_fight/dn.png"
+        }, 475);
+        nav.button({
+            "type": "zbtn",
+            "name": "south",
+            "title": "South",
+            "left": 712,
+            "top": 489,
+            "width": 458,
+            "height": 591,
+            "image": "475_fight/zs_b.png"
+        }, 475);
     }
     else if (m.fmap[row][col].used === "m" ||
-        m.fmap[row][col].used === "x" ||
-        m.fmap[row][col].used === "s") { //normal
+        m.fmap[row][col].used === "x") { //normal
         var bg = m.drawBackgroundSub(row, col);
         var pathCounter = 0;
 
@@ -498,7 +515,7 @@ m.drawBackgroundSub = function (row, col) {
         else
             bg = (col + row) % 2 === 0 ? "o0" : "o1";
     }
-    else if (row > 50) {
+    else if (row > 50 || row < 25) {
         bg = (col + row) % 2 === 0 ? "o0" : "o1";
     }
     else {

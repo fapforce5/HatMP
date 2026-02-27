@@ -344,7 +344,7 @@ room12.chatcatch = function (callback) {
             char.room(12);
             break;
         case "joinSisters":
-            if (sc.getstep("lola") < 200) {
+            if (sc.getMission("lola", "sissy").notStarted) {
                 nav.killbutton("sister4");
                 nav.killbutton("sister3");
                 nav.killbutton("sister5");
@@ -352,18 +352,18 @@ room12.chatcatch = function (callback) {
                 chat(21, 12);
             }
             else {
-                if (scc.get("lola").love < 50 || scc.get("eva").love < 50) {
-                    nav.killbutton("sister4");
-                    nav.killbutton("sister3");
-                    nav.killbutton("sister5");
-                    nav.button(room12.showerScene("joinSisters", 12));
-                    chat(25, 12);
-                }
-                else {
+                //if (scc.get("lola").love < 50 || scc.get("eva").love < 50) {
+                //    nav.killbutton("sister4");
+                //    nav.killbutton("sister3");
+                //    nav.killbutton("sister5");
+                //    nav.button(room12.showerScene("joinSisters", 12));
+                //    chat(25, 12);
+                //}
+                //else {
                     nav.killall();
                     nav.button(room12.showerScene("sister8", 12));
                     chat(27, 12);
-                }
+                //}
             }
             break;
         case "sisterGetNaked":
@@ -372,8 +372,8 @@ room12.chatcatch = function (callback) {
             break;
         case "sisterCheckFuckThem":
             // add minimum love here
-            scc.love("lola", -10, 100);
-            scc.love("eva", -10, 100);
+            //scc.love("lola", -10, 100);
+            //scc.love("eva", -10, 100);
             chat(23, 12);
             break;
         case "sisterRetreat":
@@ -542,8 +542,8 @@ room12.chatcatch = function (callback) {
                 chat(36, 12);
             break;
         case "200_finish0":
-            scc.love("lola", 5, 100);
-            scc.love("eva", 5, 100);
+            //scc.love("lola", 5, 100);
+            //scc.love("eva", 5, 100);
             room12.chatcatch("200_finish1");
             break;
         case "200_finish1":

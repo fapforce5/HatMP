@@ -468,7 +468,7 @@ room450.chatcatch = function(callback){
             gv.mod("fuckPussy", 1);
             daily.set("lola");
             cl.undo();
-            scc.love("lola", 200, 100);
+            //scc.love("lola", 200, 100);
             char.room(450);
             break;
         case "c0":

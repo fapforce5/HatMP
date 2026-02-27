@@ -147,6 +147,9 @@ nav.button = function (btn, roomNum) {
         else if (btn.type === "clickthrough") {
             classes = "room-img click-thru";
         }
+        else if (btn.type === "zclickthrough") {
+            classes = "room-img click-thru room-zindex";
+        }
         if ("char" in btn)
             charAttr = ' data-char="' + btn.char + ' "';
         line = '<img src="./images/room/' + thisImage + '" class="' + classes + '" data-name="' + btn.name + '" data-room="' + roomNum + '" title="' + (("title" in btn) ? btn.title : "") + charAttr + '" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:' + top + 'px; left:' + left + 'px;" />';

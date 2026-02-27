@@ -1,37 +1,59 @@
-﻿
-
-
-
-
-//Must pass through the Dozen Degrading Doors
-//Do you want to play a game
-//doll maker working with the mad professor from the woods
-//1. shoe on head
-//2. grow breasts
-//3. grow butt
-//4. grow lips
-//5. dildo in butt
-//6. dance like a fool
-//7. get peed on
-//8. tell a guy you're a giant whore
-//9. slime falls from the celing
-//10. wear a stupid outfit
-//11. clown makup level 3
-//12. drink a big cup of horse semen level 11
-//13. drink a big cup of pig semen level 11
-//14. moon the camera
-//15. shrink penis
-//16. wear clown shoes
-//17. lick a horse penis level 12
-//18. suck off a pig level 12
-//19. hug a weird doll
-//20. Yell "I'm a sissy cocksucker!" level 1
-//21. eat a cum fart
-
-//posters go up around town - raises fame
+﻿//posters go up around town - raises fame
 var room486 = {};
 room486.main = function () {
     if (g.pass === null || g.pass === "") {
+        nav.bg("486_game/a_entrance.webp");
+        nav.button({
+            "type": "zhand",
+            "name": "startgreen",
+            "left": 1156,
+            "top": 444,
+            "width": 94,
+            "height": 102,
+            "image": "486_game/greenbutton.webp"
+        }, 486);
+        nav.button({
+            "type": "zhand",
+            "name": "nodoor",
+            "left": 1627,
+            "top": 408,
+            "width": 220,
+            "height": 541,
+            "image": "486_game/a_entrance_no.webp"
+        }, 486);
+        sc.select("leave", "316_livingroom/icon_leave.png", -2);
+    }
+    else if (g.pass === "endSleepyTime") {
+        nav.bg("486_game/r0.webp");
+        nav.button({
+            "type": "zhand",
+            "name": "masknobegin0",
+            "left": 1398,
+            "top": 463,
+            "width": 100,
+            "height": 180,
+            "image": "486_game/m0.webp"
+        }, 486);
+        nav.button({
+            "type": "hand",
+            "name": "redbuttonbegin",
+            "left": 852,
+            "top": 444,
+            "width": 94,
+            "height": 102,
+            "image": "486_game/redbutton.webp"
+        }, 486);
+        nav.button({
+            "type": "zhand",
+            "name": "greenbutton_no",
+            "left": 1156,
+            "top": 444,
+            "width": 94,
+            "height": 102,
+            "image": "486_game/greenbuttonx.webp"
+        }, 486);
+    }
+    else if (g.pass === "beginTheGame486"){
         gv.mod("486gamecounter", 1);
         g.pass = {
             r: 0,
@@ -40,7 +62,6 @@ room486.main = function () {
             inst: false,
             greenbutton: false,
             cum: 0,
-            excitement: 0,
             r1: null,
             r2: null,
             r3: null,
@@ -54,6 +75,7 @@ room486.main = function () {
             r11: null,
             r12: null
         };
+
         nav.button({
             "type": "img",
             "name": "bg-door",
@@ -87,7 +109,7 @@ room486.main = function () {
             "top": 207,
             "width": 335,
             "height": 605,
-            "image": "486_game/w" + g.pass.cum + ".webp"
+            "image": "486_game/w" + (g.pass.r < 2 ? 2 : g.pass.r) + ".webp"
         }, 486);
         nav.button({
             "type": "img",
@@ -100,11 +122,137 @@ room486.main = function () {
         }, 486);
         room486.btnclick("drawbtns");
         room486.btnclick("initroom");
+        if (g.pass.r > 3 && g.pass.r < 12) {
+            if (g.pass.r6 !== null) {
+                nav.button({
+                    "type": "zimg",
+                    "name": "roomDisplay",
+                    "left": 0,
+                    "top": 0,
+                    "width": 1920,
+                    "height": 1080,
+                    "image": "486_game/a6_" + g.pass.r6 + ".webp"
+                }, 486);
+                if (g.pass.r6 === "piss")
+                    g.popUpNotice("I totally smell like piss");
+                else
+                    g.popUpNotice("I stink of old cum");
+            }
+            nav.button({
+                "type": "zimg",
+                "name": "roomDisplay",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "486_game/a_" + gender.pronoun("f") + ".webp"
+            }, 486);
+            if (g.pass.r5 !== null) {
+                nav.button({
+                    "type": "zimg",
+                    "name": "roomDisplay",
+                    "left": 0,
+                    "top": 0,
+                    "width": 1920,
+                    "height": 1080,
+                    "image": "486_game/a5_" + g.pass.r5 + ".webp"
+                }, 486);
+            }
+            if (g.pass.r > 7) {
+                nav.button({
+                    "type": "zimg",
+                    "name": "roomDisplay",
+                    "left": 0,
+                    "top": 0,
+                    "width": 1920,
+                    "height": 1080,
+                    "image": "486_game/a7.webp"
+                }, 486);
+            }
+            if (g.pass.r4 !== null) {
+                if (g.pass.r4 === "spank") {
+                    nav.button({
+                        "type": "zimg",
+                        "name": "roomDisplay",
+                        "left": 0,
+                        "top": 0,
+                        "width": 1920,
+                        "height": 1080,
+                        "image": "486_game/a4_1.webp"
+                    }, 486);
+                }
+                else {
+                    nav.button({
+                        "type": "zimg",
+                        "name": "roomDisplay",
+                        "left": 0,
+                        "top": 0,
+                        "width": 1920,
+                        "height": 1080,
+                        "image": "486_game/a4_" + gender.pronoun("f") + ".webp"
+                    }, 486);
+                    gv.mod("energy", -5);
+                    g.popUpNotice("These nipple clamps really hurt! [-5 energy]");
+                }
+            }
+            if (g.pass.r5 === "pain") {
+                nav.button({
+                    "type": "zimg",
+                    "name": "roomDisplay",
+                    "left": 0,
+                    "top": 0,
+                    "width": 1920,
+                    "height": 1080,
+                    "image": "486_game/a5_drip.webp"
+                }, 486);
+                gv.mod("energy", -3);
+                g.popUpNotice("Ouch! Candle wax dripped on my butt! [-3 energy]");
+            }
+            if (g.pass.r10 === "sh") {
+                nav.button({
+                    "type": "zimg",
+                    "name": "roomDisplay",
+                    "left": 0,
+                    "top": 0,
+                    "width": 1920,
+                    "height": 1080,
+                    "image": "486_game/a10_sh.webp"
+                }, 486);
+                gv.mod("energy", -20);
+                g.popUpNotice("OWOWOWOW! That plug just shocked by asshole! [-20 energy]");
+            }
+            else if (g.pass.r10 === "i") {
+                nav.button({
+                    "type": "zimg",
+                    "name": "roomDisplay",
+                    "left": 0,
+                    "top": 0,
+                    "width": 1920,
+                    "height": 1080,
+                    "image": "486_game/a10_i.webp"
+                }, 486);
+                if (g.pass.r === 11) {
+                    cl.c.buttplug = "i_1";
+                    cl.display();
+                    levels.mod("anal", 30);
+                    g.popUpNotice("Oh no! That plug just inflated on it's own! I think my asshole is going to fall out!");
+                }
+            }
+                
+            if (g.pass.r === 4) {
+                g.popUpNotice("I'm feeling so exposed infront of everyone! [-3 energy]"); 
+            }
+            nav.next("killroomDisplay");
+        }
     }
 };
 
 room486.btnclick = function (name) {
     switch (name) {
+        case "killroomDisplay":
+            nav.killbutton("roomDisplay");
+            nav.killbutton("killroomDisplay");
+            break;
         case "redrawroom":
             nav.kill();
             nav.bg("486_game/r" + g.pass.r + ".webp");
@@ -115,7 +263,7 @@ room486.btnclick = function (name) {
                 "top": 207,
                 "width": 335,
                 "height": 605,
-                "image": "486_game/w" + g.pass.cum + ".webp"
+                "image": "486_game/w" + (g.pass.r < 2 ? 2 : g.pass.r) + ".webp"
             }, 486);
             nav.button({
                 "type": "img",
@@ -188,7 +336,7 @@ room486.btnclick = function (name) {
             nav.killbutton("redbutton");
             nav.killbutton("greenbutton");
             nav.button({
-                "type": "hand",
+                "type": "zhand",
                 "name": "redbutton",
                 "left": 852,
                 "top": 444,
@@ -216,6 +364,67 @@ room486.btnclick = function (name) {
                     "height": 102,
                     "image": "486_game/greenbuttonx.webp"
                 }, 486);
+            break;
+        case "startgreen":
+            if (future.get("486_nextevent") > -1) {
+                chat(999, 486);
+            }
+            else {
+                nav.killbutton("startgreen");
+                nav.button({
+                    "type": "img",
+                    "name": "bg-door",
+                    "left": 672,
+                    "top": 158,
+                    "width": 703,
+                    "height": 604,
+                    "image": "486_game/r_open.webp"
+                }, 486);
+                nav.killbutton("leave");
+                sc.select("leave", "316_livingroom/icon_leave.png", -2);
+                sc.select("enterstart", "486_game/icon_enter.webp", -1);
+            }
+            break;
+        case "enterstart":
+            nav.kill();
+            nav.bg("486_game/r0.webp");
+            nav.button({
+                "type": "zhand",
+                "name": "masknobegin",
+                "left": 1398,
+                "top": 463,
+                "width": 100,
+                "height": 180,
+                "image": "486_game/m0.webp"
+            }, 486);
+            nav.button({
+                "type": "hand",
+                "name": "redbuttonbegin",
+                "left": 852,
+                "top": 444,
+                "width": 94,
+                "height": 102,
+                "image": "486_game/redbutton.webp"
+            }, 486);
+            nav.button({
+                "type": "zhand",
+                "name": "greenbutton_no",
+                "left": 1156,
+                "top": 444,
+                "width": 94,
+                "height": 102,
+                "image": "486_game/greenbuttonx.webp"
+            }, 486);
+            chat(44, 486);
+            break;
+        case "redbuttonbegin":
+            chat(45, 486);
+            break;
+        case "masknobegin":
+            chat(46, 486);
+            break;
+        case "masknobegin0":
+            chat(47, 486);
             break;
         case "initroom":
             g.pass.temp = 0;
@@ -257,7 +466,7 @@ room486.btnclick = function (name) {
                     break;
                 case 7:
                     nav.button({
-                        "type": "clickthrough",
+                        "type": "zclickthrough",
                         "name": "room7",
                         "left": 449,
                         "top": 344,
@@ -365,6 +574,11 @@ room486.btnclick = function (name) {
                         "image": "486_game/room11_1.webp"
                     }, 486);
                     break;
+                case 12:
+                    nav.kill();
+                    nav.bg("486_game/room12_0.webp");
+                    chat(36, 486);
+                    break;
             }
             break;
         case "mask":
@@ -385,12 +599,14 @@ room486.btnclick = function (name) {
             }
             break;
         case "redbutton":
-            //if (g.pass.r === 0) {
-            //    chat(5, 486);
-            //}
+            chat(48, 486);
             break;
         case "greenbutton":
             if (g.pass.greenbutton) {
+                if (gv.get("energy") < 1) {
+                    chat(50, 486);
+                    return;
+                }
                 nav.killbutton("redbutton");
                 nav.killbutton("greenbutton");
                 nav.modbutton("mask", "486_game/m" + g.pass.r + ".webp", null, "img");
@@ -407,9 +623,11 @@ room486.btnclick = function (name) {
                     chat(7, 486);
             }
             break;
+        case "nodoor":
+            chat(43, 486);
+            break;
         case "room1":
             nav.killbutton("room1");
-            g.pass.excitement += 20;
             chat(1011, 486);
             break;
         case "room2":
@@ -417,7 +635,6 @@ room486.btnclick = function (name) {
                 chat(8, 486);
             }
             else if (!g.pass.greenbutton) {
-                g.pass.excitement += 20;
                 nav.modbutton("room2", "486_game/room2a.webp", null, "img");
                 cl.nude();
                 nav.button({
@@ -436,7 +653,6 @@ room486.btnclick = function (name) {
         case "room3_0":
             nav.killbutton("room3_0");
             nav.killbutton("room3_1");
-            g.pass.excitement += 100;
             zcl.assup(800, 1200, .3, "", false);
             room486.chatcatch("greenbuttonON");
             g.pass.temp = 0;
@@ -445,12 +661,11 @@ room486.btnclick = function (name) {
         case "room3_1":
             nav.killbutton("room3_0");
             nav.killbutton("room3_1");
-            g.pass.excitement += 100;
             room486.chatcatch("greenbuttonON");
             nav.button({
                 "type": "img",
                 "name": "me",
-                "left": 1400,
+                "left": 950,
                 "top": 408,
                 "width": 546,
                 "height": 672,
@@ -463,13 +678,11 @@ room486.btnclick = function (name) {
             nav.killbutton("room4_0");
             nav.killbutton("room4_1");
             g.pass.r4 = "spank";
-            g.pass.excitement += 100;
             chat(13, 486);
             break;
         case "room4_1":
             nav.killbutton("room4_0");
             nav.killbutton("room4_1");
-            g.pass.excitement += 100;
             chat(14, 486);
             break;
         case "room4_2":
@@ -479,12 +692,10 @@ room486.btnclick = function (name) {
             break;
         case "room5_0":
             g.pass.r5 = "anal";
-            g.pass.excitement += 25;
             room486.btnclick("5_2");
             break;
         case "room5_1":
             g.pass.r5 = "pain";
-            g.pass.excitement += 25;
             room486.btnclick("5_2");
             break;
         case "5_2":
@@ -523,7 +734,6 @@ room486.btnclick = function (name) {
             break;
         case "room6_0":
             levels.mod("piss", 20);
-            g.pass.excitement += 50;
             nav.killbutton("room6_0");
             nav.killbutton("room6_1");
             g.pass.r6 = "piss";
@@ -540,7 +750,6 @@ room486.btnclick = function (name) {
             break;
         case "room6_1":
             levels.mod("cum", 20);
-            g.pass.excitement += 50;
             nav.killbutton("room6_0");
             nav.killbutton("room6_1");
             g.pass.r6 = "cum";
@@ -576,7 +785,6 @@ room486.btnclick = function (name) {
             break;
         case "room7":
             nav.kill();
-            g.pass.excitement += 100;
             nav.bg("486_game/room7_0_" + gender.pronoun("f") + ".webp");
             if (levels.oralTake(5).canTake) {
                 chat(20, 486);
@@ -760,7 +968,6 @@ room486.btnclick = function (name) {
         case "icon_room9anal2":
             fame.moanAnimateStop();
             nav.killbutton("icon_room9anal2");
-            g.pass.excitement += 45;
             room486.btnclick("window_draw");
             g.internal.bucket += gv.getButtCum().total;
             gv.clearButtCum();
@@ -779,7 +986,6 @@ room486.btnclick = function (name) {
         case "icon_room9oral2":
             fame.moanAnimateStop();
             nav.killbutton("icon_room9anal2");
-            g.pass.excitement += 25;
             room486.btnclick("window_draw");
             g.internal.bucket++;
             room486.btnclick("room9bucket_draw");
@@ -820,20 +1026,6 @@ room486.btnclick = function (name) {
             break;
         case "window_draw":
             nav.kill();
-            nav.bg("486_game/w_bg.webp");
-            if (g.pass.excitement > 99) {
-                g.pass.cum++;
-                g.pass.excitement = 0;
-                nav.button({
-                    "type": "img",
-                    "name": "room9bg_window",
-                    "left": 0,
-                    "top": 0,
-                    "width": 1920,
-                    "height": 1080,
-                    "image": "486_game/jo" + (g.pass.cum % 4) + ".webp"
-                }, 486);
-            }
             nav.button({
                 "type": "img",
                 "name": "room9bg_window",
@@ -841,7 +1033,7 @@ room486.btnclick = function (name) {
                 "top": 0,
                 "width": 1920,
                 "height": 1080,
-                "image": "486_game/wc" + (g.pass.cum > 8 ? 8: g.pass.cum) + ".webp"
+                "image": "486_game/w_bg" + (g.pass.r < 2 ? 2 : g.pass.r)+ ".webp"
             }, 486);
             break;
         case "room10_0":
@@ -898,6 +1090,15 @@ room486.btnclick = function (name) {
                 nav.killbutton("room11_0");
                 nav.killbutton("room11_1");
                 nav.button({
+                    "type": "img",
+                    "name": "bg-window",
+                    "left": 1585,
+                    "top": 207,
+                    "width": 335,
+                    "height": 605,
+                    "image": "486_game/w" + (g.pass.r < 2 ? 2 : g.pass.r) + ".webp"
+                }, 486);
+                nav.button({
                     "type": "zimg",
                     "name": "room11_kill",
                     "left": 0,
@@ -927,6 +1128,15 @@ room486.btnclick = function (name) {
                 nav.kill();
                 nav.killbutton("room11_0");
                 nav.killbutton("room11_1");
+                nav.button({
+                    "type": "img",
+                    "name": "bg-window",
+                    "left": 1585,
+                    "top": 207,
+                    "width": 335,
+                    "height": 605,
+                    "image": "486_game/w" + (g.pass.r < 2 ? 2 : g.pass.r) + ".webp"
+                }, 486);
                 nav.button({
                     "type": "zimg",
                     "name": "room11_kill",
@@ -996,6 +1206,58 @@ room486.btnclick = function (name) {
             }
             g.internal++;
             break;
+        case "room12":
+            if (g.internal === 4) {
+                nav.bg("486_game/room12_" + g.internal + "_" + gender.pronoun("f") + ".webp");
+            }
+            else if (g.internal < 7) {
+                levels.anal(3, false, "m", true, "!man");
+                levels.anal(g.rand(2, 4), false, "m", true, "!man");
+                levels.anal(g.rand(2, 4), false, "m", true, "!man");
+
+                levels.oral(3, "m", "!man", true);
+                levels.oral(g.rand(2, 4), "m", "!man", false);
+                levels.oral(g.rand(2, 4), "m", "!man", true);
+                nav.bg("486_game/room12_" + g.internal + ".webp");
+            }
+            else {
+                nav.bg("486_game/room12_" + g.internal + ".webp");
+                levels.oral(3, "n", "orchid", true);
+                levels.oral(4, "n", "poppy", true);
+                levels.anal(4, false, "n", true, "juniper");
+                zcl.bellydown(610, 870, .23, "sad", false);
+                nav.killbutton("room12");
+                chat(40, 486);
+            }
+            g.internal++;
+            break;
+        case "room12_treasure":
+            nav.killbutton("room12_treasure");
+            nav.button({
+                "type": "img",
+                "name": "room12_treasure",
+                "left": 1490,
+                "top": 728,
+                "width": 254,
+                "height": 250,
+                "image": "486_game/room12_treasure_empty.webp"
+            }, 486);
+            gv.mod("money", 2280);
+            g.pass.r12 = true;
+            break;
+        case "room12_leave":
+            if (g.pass.r12 === null) {
+                chat(42, 486);
+            }
+            else {
+                g.pass = null;
+                future.add("486_nextevent", 7);
+                char.room(475);
+            }
+            break;
+        case "leave":
+            char.room(475);
+            break;
         default:
             break;
     }
@@ -1006,6 +1268,9 @@ room486.chatcatch = function (callback) {
         case "room4_0_3":
         case "room4_0_5":
         case "room4_0_4":
+        case "room12_1":
+        case "room12_2":
+        case "room12_3":
             nav.bg("486_game/" + callback + ".webp");
             break;
         case "room7_2":
@@ -1033,8 +1298,10 @@ room486.chatcatch = function (callback) {
             g.pass.inst = true;
             break;
         case "room4":
-            if (!g.pass.inst) {
-                g.pass.inst = true;
+            g.pass.inst = true;
+            if (!g.pass.greenbutton) {
+                nav.killbutton("room4_0");
+                nav.killbutton("room4_1");
                 sc.select("room4_0", "486_game/icon_r4_0.webp", 0);
                 sc.select("room4_1", "486_game/icon_r4_1.webp", 1);
             }
@@ -1097,7 +1364,7 @@ room486.chatcatch = function (callback) {
             levels.anal(5, false, "m", false, "!statue");
             levels.oral(5, "m", "!statue", false, null, true);
             nav.button({
-                "type": "clickthrough",
+                "type": "zclickthrough",
                 "name": "room7",
                 "left": 449,
                 "top": 344,
@@ -1106,6 +1373,7 @@ room486.chatcatch = function (callback) {
                 "image": "486_game/room7.webp"
             }, 486);
             zcl.hanging(560, 865, .25, "", false);
+            $(".room-img[data-name='zzz-clothing-kill']").addClass("room-zindex");
             break;
         case "room8":
             if (!g.pass.inst) {
@@ -1139,7 +1407,7 @@ room486.chatcatch = function (callback) {
             for (let i = 0; i < 5; i++) {
                 if (g.internal.c[i] !== null) {
                     nav.button({
-                        "type": "img",
+                        "type": "clickthrough",
                         "name": "cock",
                         "left": 0,
                         "top": 0,
@@ -1154,7 +1422,7 @@ room486.chatcatch = function (callback) {
                     "type": "btn",
                     "name": "room9c" + (4 - i),
                     "left": 300 + (i * 210),
-                    "top": 400,
+                    "top": 300,
                     "width": 200,
                     "height": 75,
                     "image": "486_game/room9b_" + i.toString() + ".webp"
@@ -1184,6 +1452,32 @@ room486.chatcatch = function (callback) {
             room486.btnclick("redrawroom");
             phone.build("phone_pic");
             break;
+        case "room12_4":
+            g.internal = 4;
+            nav.next("room12");
+            break;
+        case "room12_end":
+            nav.kill();
+            nav.bg("486_game/room12_8.webp");
+            nav.button({
+                "type": "btn",
+                "name": "room12_leave",
+                "left": 669,
+                "top": 155,
+                "width": 709,
+                "height": 573,
+                "image": "486_game/room12_leave.webp"
+            }, 486);
+            nav.button({
+                "type": "btn",
+                "name": "room12_treasure",
+                "left": 1490,
+                "top": 728,
+                "width": 254,
+                "height": 250,
+                "image": "486_game/room12_treasure.webp"
+            }, 486);
+            break;
         case "greenlightRedraw":
             g.pass.greenbutton = true;
             room486.btnclick("redrawroom");
@@ -1195,6 +1489,57 @@ room486.chatcatch = function (callback) {
         case "redrawroom":
             room486.btnclick("redrawroom");
             break;
+        case "sleep":
+            g.pass = 486;
+            char.room(28);
+            break;
+        case "waitbegin":
+            char.settime(18, 47);
+            g.pass = "beginTheGame486";
+            char.room(486);
+            break;
+        case "leave":
+            room486.btnclick("room12_leave");
+            break;
+        case "redbuttonquit":
+            nav.button({
+                "type": "zimg",
+                "name": "kill",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "486_game/redbutton_quit.webp"
+            }, 486);
+            break;
+        case "redbuttonEnd":
+            char.addDays(1);
+            char.settime(14, 57);
+            if (sissy.st[21].ach) {
+                g.pass = "redbutton";
+                char.room(949);
+            }
+            else {
+                if (m.fmap === null) {
+                    m.createFmap();
+                }
+                outerLoop:
+                for (let i = 0; i < m.fmap.length; i++) {
+                    for (let j = 0; j < m.fmap[i].length; j++) {
+                        if (m.fmap[i][j].used === "h") {
+                            g.map.row = i;
+                            g.map.col = j;
+                            break outerLoop; // Stops the inner loop
+                        }
+                    }
+                }
+                m.fmap = null;
+                cl.nude();
+                g.pass = "room476_cross";
+                char.room(476);
+            }
+
+            break;
         default:
             break;
     }
@@ -1202,7 +1547,21 @@ room486.chatcatch = function (callback) {
 
 room486.chat = function (chatID) {
     let carray;
-    if (chatID === 1001) {
+    if (chatID === 999) {
+        let daysleft = future.get("486_nextevent");
+        return {
+            chatID: 0,
+            speaker: "!ann",
+            text: "The game has been played, the echoes fade slow<br/>" +
+                "We've had our fun, now the quiet winds blow<br/>" +
+                "Next new game waits, " + daysleft + " days to the line<br/>" +
+                "A pause in the play, but the pull stays divine",
+            button: [
+                { chatID: -1, text: "Damn! I so wanted to get gangbanged again! ", callback: "" }
+            ]
+        };
+    }
+    else if (chatID === 1001) {
         carray = [
             "I really love penises in my butt. They tickle my fancy, I'm a slut!'",
             "I would lick anyone’s butt on command. Rim job ready, I’m your biggest fan!",
@@ -1211,9 +1570,9 @@ room486.chat = function (chatID) {
         return {
             chatID: 0,
             speaker: "!ann",
-            text: "This first room starts off light, Shout the line with all your might! " +
+            text: "This first room starts off light<br/> Shout the line with all your might! <br/>" +
                 carray[g.pass.temp] +
-                " Let the crowd hear clear and true, Loud as thunder, that’s on you!",
+                "<br/>Let the crowd hear clear and true<br/>Loud as thunder, that’s on you!<br/>",
             button: [
                 { chatID: -1, text: "Shout the line? ", callback: "room1" }
             ]
@@ -1812,6 +2171,164 @@ room486.chat = function (chatID) {
                     "like a mix of body odor and day old fish. I hope I don't have to do anything with them. ",
                 button: [
                     { chatID: -1, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 36,
+                speaker: "!barker",
+                text: "Congratulations on making it to the 12th door! You'll be suprised on how few actually " +
+                    "make it here! Only the slutties, natiest sluts make it here, and you are one of them. To " +
+                    "achieve such a feat deserves a reward. ",
+                button: [
+                    { chatID: 37, text: "A reward? ", callback: "room12_1" },
+                ]
+            },
+            {
+                chatID: 37,
+                speaker: "!barker",
+                text: "Oh, not for you. For us. You see, my friends and I are always searching for the " +
+                    "the next hole to cum in, and you are that hole. We do appreciate the magnificant show " +
+                    "you put on for us. I mean, wow! We kept giving you nasiter and nastier tasks, and " +
+                    "you didn't even pause or try to leave. you just kept shoving cocks into all your " +
+                    "holes. ",
+                button: [
+                    { chatID: 38, text: "...", callback: "room12_2" },
+                ]
+            },
+            {
+                chatID: 38,
+                speaker: "!barker",
+                text: "And now we're all super horny and need to fuck!",
+                button: [
+                    { chatID: 39, text: "oh no", callback: "room12_3" },
+                ]
+            },
+            {
+                chatID: 39,
+                speaker: "!twat",
+                text: "Why are you looking at me? Oh, I'm not doing anything. I just came to watch you, the " +
+                    "biggest slut, take all these dicks. I'm not going to help or anything. So gross.",
+                button: [
+                    { chatID: -1, text: "*gulp*", callback: "room12_4" },
+                ]
+            },
+            {
+                chatID: 40,
+                speaker: "orchid",
+                text: "We're so impressed! Poppy tried to do the 12 room challenge last year, but got hung " +
+                    "up on the statue. Couldn't get the dick in her tiny mouth. haha. Juniper collapsed after " +
+                    "eight spankings. I haven't done it since I prefer to fuck. But you deserve your winnings. ",
+                button: [
+                    { chatID: 41, text: "My winnings? ", callback: "" },
+                ]
+            },
+            {
+                chatID: 41,
+                speaker: "orchid",
+                text: "Yeah. It's a $40 cover charge to come. If you make it to the end you get to keep it. " +
+                    "Nice deal really. Plus you get to keep all that cum in your butt! hehe! Anyway, good luck " +
+                    "we've got to get back. It's a long walk. Later babe! ",
+                button: [
+                    { chatID: -1, text: "Yeah. Later. ", callback: "room12_end" },
+                ]
+            },
+            {
+                chatID: 42,
+                speaker: "thinking",
+                text: "Did I really want to leave without taking the money?  ",
+                button: [
+                    { chatID: -1, text: "No, I should grab the money first", callback: "" },
+                    { chatID: -1, text: "Yeah. I'm out. ", callback: "leave" },
+                ]
+            },
+            {
+                chatID: 43,
+                speaker: "thinking",
+                text: "Hmmmm. Door won't budge. Must be locked. Maybe the green button opens something.",
+                button: [
+                    { chatID: -1, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 44,
+                speaker: "thinking",
+                text: "Huh. The door behind me closed on it's own. Did I just walk into a trap like an " +
+                    "idiot? What is this place? ",
+                button: [
+                    { chatID: -1, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 45,
+                speaker: "!ann",
+                text: "The game has not begun<br/>To leave now would be no fun</br>",
+                button: [
+                    { chatID: -1, text: "What the fuck? ", callback: "" },
+                ]
+            },
+            {
+                chatID: 46,
+                speaker: "!ann",
+                text: "We've been notified that you're here<br/>" +
+                    "Fear not—the gang is drawing near<br/>" +
+                    "Nothing to do but sleep in the black<br/>" +
+                    "Tomorrow they come and there's no way back",
+                button: [
+                    { chatID: -1, text: "Well, that's messed up. How do I get out of here. ", callback: "" },
+                    { chatID: -1, text: "Fuck. I don't know what this is, but I guess I should just sleep and hope for the best.", callback: "sleep" },
+                ]
+            },
+            {
+                chatID: 47,
+                speaker: "!ann",
+                text: "The sun has risen, pale and wrong<br/>" +
+                    "The men are coming, not for long<br/>" +
+                        "Just wait in silence, cold and deep<br/>" +
+                    "And soon the game begins; no retreat",
+                button: [
+                    { chatID: -1, text: "What the fuck! There's got to be a way out! ", callback: "" },
+                    { chatID: -1, text: "I guess I'll just wait [Space off for a few hours]", callback: "waitbegin" },
+                ]
+            },
+            {
+                chatID: 48,
+                speaker: "!ann",
+                text: "Quitting the game like that is so lame<br/>" +
+                    "We still wanna rail that asshole just the same<br/>" +
+                    "The penalty hits harder than you feared<br/>" +
+                    "Scream “I QUIT” three times to disappear",
+                button: [
+                    { chatID: 49, text: "I QUIT, I QUIT, I QUIT", callback: "redbuttonquit" },
+                    { chatID: -1, text: "ooops. That was an accident.", callback: "" },
+                ]
+            },
+            {
+                chatID: 49,
+                speaker: "!ann",
+                text: "Sleep now, your game is over<br/>" +
+                    "No more plays, no do-overs<br/>" +
+                    "Where you wake, the truth will sting<br/>" +
+                    "You will hate everything",
+                button: [
+                    { chatID: -1, text: "I feel so sleepy....", callback: "redbuttonEnd" },
+                ]
+            },
+            {
+                chatID: 50,
+                speaker: "thinking",
+                text: "I don't have enough energy to go to a new room. Should I grab a snack or hit " +
+                    "the red button and call it quits. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 51,
+                speaker: "!ann",
+                text: "The task is over, no more doom<br/>" +
+                    "Press the Green Button for the next room",
+                button: [
+                    { chatID: -1, text: "...", callback: "" },
                 ]
             },
         ];

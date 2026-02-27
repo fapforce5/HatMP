@@ -112,7 +112,8 @@ room500.chatcatch = function (callback) {
             char.room(0);
             break;
         case "zoeyLike":
-            scc.love("zoey", 5, 100);
+            sc.modLevel("zoey", 10, 10);
+            //scc.love("zoey", 5, 100);
             break;
         case "zoeyBed":
             sc.setstep("zoey", -2);

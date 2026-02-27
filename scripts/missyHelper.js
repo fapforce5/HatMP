@@ -354,7 +354,7 @@ missy.getcases = function () {
                         }
                         break;
                     case "case_carnival":
-                        if (sissy.st[21].ach) {
+                        if (sissy.st[21].ach && missy.cases.complete) {
                             caseList.push({
                                 caseId: i,
                                 active: true,

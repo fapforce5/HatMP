@@ -208,7 +208,7 @@ room485.chatcatch = function (callback) {
             }, 485);
             
             for (let i = 0; i < inv.master.length; i++) {
-                if (inv.master[i].buy !== null) {
+                if (inv.master[i].buy !== null && inv.master[i].count > 0) {
                     nav.button({
                         "type": "btn",
                         "name": "c_" + i,

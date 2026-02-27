@@ -500,8 +500,9 @@ room502.chatcatch = function (callback) {
             nav.bg("502_bedroom/s13.jpg");
             break;
         case "s14":
-            sc.setstep("zoey", 13);
-            scc.love("zoey", 10, 100);
+            //sc.setstep("zoey", 13);
+            scc.modLevel("zoey", 20, 5);
+            //scc.love("zoey", 10, 100);
             char.addtime(60);
             char.room(502);
             break;

@@ -520,6 +520,8 @@ room28.dreams = function () {
         else if (g.pass === 328) {
             nav.bg("328_farm/sleep_" + gender.pronoun("f") + ".webp");
         }
+        else if (g.pass = 486)
+            nav.bg("28_transformation/486.jpg");
     }
     //console.log(hasText);
     return hasText;
@@ -771,7 +773,7 @@ room28.chatcatch = function (callback) {
             break;
         case "endPills":
             gv.mod("energy", -100);
-            scc.love("missy", 5);
+            //scc.love("missy", 5);
             char.addtime(220);
             char.room(203);
             break;

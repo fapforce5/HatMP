@@ -714,48 +714,48 @@ room7.chatcatch = function (callback) {
         case "bigguy6b":
             nav.bg("7_mainCharRoomAlt/" + callback + ".jpg");
             break;
-        case "bigguy6c":
-            nav.bg("7_mainCharRoomAlt/" + callback + ".jpg");
-            gv.mod("receiveAnalMale", 1);
-            gv.mod("creamPied", 1);
-            char.room(10);
-            break;
-        case "b5e1":
-            nav.bg("7_mainCharRoomAlt/" + callback + ".jpg");
-            g.internal.e = true;
-            break;
-        case "b5l1":
-            nav.bg("7_mainCharRoomAlt/" + callback + ".jpg");
-            g.internal.l = true;
-            break;
-        case "b6":
-            if (!g.internal.l) {
-                nav.bg("7_mainCharRoomAlt/b5l1.jpg");
-                chat(98, 7);
-                g.internal.l = true;
-            }
-            else if (!g.internal.e) {
-                nav.bg("7_mainCharRoomAlt/b5e1.jpg");
-                chat(103, 7);
-                g.internal.e = true;
-            }
-            else {
-                nav.bg("7_mainCharRoomAlt/b6.jpg");
-                chat(108, 7);
-            }
-            break;
-        case "b7":
-            scc.love("eva", 200, 100);
-            scc.love("lola", 200, 100);
-            sc.setstep("eva", 13);
-            sc.setstep("lola", 14);
-            gv.mod("fuckPussy", 2);
-            gv.mod("giveAnalFemale", 1);
-            daily.set("lola");
-            daily.set("eva");
-            char.addtime(120);
-            char.room(10);
-            break;
+        //case "bigguy6c":
+        //    nav.bg("7_mainCharRoomAlt/" + callback + ".jpg");
+        //    gv.mod("receiveAnalMale", 1);
+        //    gv.mod("creamPied", 1);
+        //    char.room(10);
+        //    break;
+        //case "b5e1":
+        //    nav.bg("7_mainCharRoomAlt/" + callback + ".jpg");
+        //    g.internal.e = true;
+        //    break;
+        //case "b5l1":
+        //    nav.bg("7_mainCharRoomAlt/" + callback + ".jpg");
+        //    g.internal.l = true;
+        //    break;
+        //case "b6":
+        //    if (!g.internal.l) {
+        //        nav.bg("7_mainCharRoomAlt/b5l1.jpg");
+        //        chat(98, 7);
+        //        g.internal.l = true;
+        //    }
+        //    else if (!g.internal.e) {
+        //        nav.bg("7_mainCharRoomAlt/b5e1.jpg");
+        //        chat(103, 7);
+        //        g.internal.e = true;
+        //    }
+        //    else {
+        //        nav.bg("7_mainCharRoomAlt/b6.jpg");
+        //        chat(108, 7);
+        //    }
+        //    break;
+        //case "b7":
+        //    //scc.love("eva", 200, 100);
+        //    //scc.love("lola", 200, 100);
+        //    //sc.setstep("eva", 13);
+        //    //sc.setstep("lola", 14);
+        //    //gv.mod("fuckPussy", 2);
+        //    //gv.mod("giveAnalFemale", 1);
+        //    daily.set("lola");
+        //    daily.set("eva");
+        //    char.addtime(120);
+        //    char.room(10);
+        //    break;
         case "reset":
             char.room(10);
             break;

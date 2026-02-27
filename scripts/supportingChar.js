@@ -126,7 +126,8 @@ sc.char = [
 
 
     
-    { name: "librarian", display: "The Librarian", image: "librarian.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true, hex: "" },
+    { name: "librarian", display: "The Librarian", image: "librarian.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true, hex: "#A86448" },
+    { name: "crystal", display: "Crystal", image: "crystal.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true, hex: "" },
 
     
     
@@ -1356,6 +1357,12 @@ sc.charMission = [
                         { id: 1, txt: "You just can't get enough", show: true, mStatus: 0, roomId: 150 },
                     ]
             },
+            {
+                missionName: "kidnap", mStatus: 0, title: "Slave", desc: "A sissy's place is on her knees.", task:
+                    [
+                        { id: 0, txt: "Taken by the cult", show: true, mStatus: 0, roomId: 950 },
+                    ]
+            },
         ]
     },
     {
@@ -1538,6 +1545,26 @@ sc.charMission = [
                         { id: 6, txt: "Talk", show: true, mStatus: 0, roomId: 328 },
                         { id: 7, txt: "Talk", show: true, mStatus: 0, roomId: 328 },
                         { id: 8, txt: "Talk", show: true, mStatus: 0, roomId: 328 }
+                    ]
+            },
+        ]
+    },
+    {
+        name: "crystal", mission: [
+            {
+                missionName: "t", mStatus: 0, title: "Future", desc: "I can see your future. ", task:
+                    [
+                        { id: 0, txt: "Why hello", show: true, mStatus: 0, roomId: 328 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "daria", mission: [
+            {
+                missionName: "cabin", mStatus: 0, title: "Cabin", desc: "Welcome to my home, but leave.", task:
+                    [
+                        { id: 0, txt: "Introduction", show: true, mStatus: 0, roomId: 328 },
                     ]
             },
         ]
@@ -2368,6 +2395,13 @@ sc.getTimeline = function (char) {
         case "ralph":
             timeline = [
                 { d: [0, 1, 2, 3, 4, 5, 6], hstart: 0, hend: 24, roomId: 802, alt: null }, //bedroom
+            ];
+            break;
+        case "daria":
+            timeline = [
+                { d: [0, 1, 2, 3, 4, 5, 6], hstart: 0, hend: 9, roomId: 488, alt: null }, //home
+                { d: [0, 1, 2, 3, 4, 5, 6], hstart: 9, hend: 17, roomId: 949, alt: null }, //cult
+                { d: [0, 1, 2, 3, 4, 5, 6], hstart: 17, hend: 24, roomId: 488, alt: null }, //home
             ];
             break;
     }

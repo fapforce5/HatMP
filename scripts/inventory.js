@@ -56,11 +56,14 @@ inv.master = [
     { type: "g", name: "razor", display: "Razor", entry: false, count: 0, cost: 10, buy: 3, image: "razor.png", n: false, desc: "Shave your body" },
     { type: "g", name: "wine", display: "Rotting Grape Wine", entry: false, count: 0, cost: 12, buy: 4, image: "wine.png", n: false, desc: "Time to get drunk!" },
     { type: "g", name: "redbox", display: "Red Box", entry: false, count: null, cost: 0, buy: null, image: "redbox.png", n: false, desc: "Red box you need to deliver to Missy" },
-    { type: "g", name: "emptyjar", display: "An empty jar", entry: false, count: 0, cost: -1, buy: 20, image: "emptyjar.png", n: false, desc: "Just an empty jar" },
-    { type: "g", name: "rawmeat", display: "Raw Meat", entry: false, count: 0, cost: -1, buy: null, image: "meat.png", n: false, desc: "Raw Meat" },
+    { type: "g", name: "emptyjar", display: "An empty jar", entry: false, count: 0, cost: -1, buy: 4, image: "emptyjar.png", n: false, desc: "Just an empty jar" },
+    { type: "g", name: "rawmeat", display: "Raw Meat", entry: false, count: 0, cost: -1, buy: 10, image: "meat.png", n: false, desc: "Raw Meat" },
 
     { type: "e", name: "acia", display: "Acia Berries", entry: false, count: 0, cost: 10, buy: 3, image: "acia.png", n: false, desc: "Gain 15 energy" },
     { type: "e", name: "soda", display: "Super Awesome Soda", entry: false, count: 0, cost: 30, buy: 10, image: "energyCola.png", n: false, desc: "Gain 50 energy" },
+    { type: "e", name: "hornyGoatWeed", display: "Horny Goat Weed", entry: false, count: 0, cost: -1, buy: 10, image: "hornyGoatWeed.png", n: false, desc: "Gain 10 energy and become fully aroused." },
+
+    
     { type: "e", name: "pissjarboy", display: "A Jar full of piss", entry: false, count: 0, cost: -1, buy: 4, image: "cumjar.png", n: false, desc: "Gain 40 energy" },
     { type: "e", name: "pissjargirl", display: "A Jar full of piss", entry: false, count: 0, cost: -1, buy: 6, image: "pissjargirl.png", n: false, desc: "Gain 60 energy" },
     { type: "e", name: "cumjar", display: "A Jar full of cum", entry: false, count: 0, cost: -1, buy: 20, image: "cumjar.png", n: false, desc: "Gain 100 energy" },
@@ -395,11 +398,11 @@ inv.update = function (name, entry, count) {
     inv.backpackIcon();
 };
 
-inv.use = function (name) {
+inv.use = function (name, count = 1) {
     for (var i = 0; i < inv.master.length; i++) {
         if (inv.master[i].name === name) {
             if (inv.master[i].coun !== null) {
-                inv.master[i].count--;
+                inv.master[i].count -= count;
                 if (inv.master[i].count < 1) {
                     inv.master[i].count = 0;
                     inv.master[i].entry = false;
@@ -791,11 +794,17 @@ inv.createElements = function () {
                             case "soda":
                                 gv.mod("energy", 50);
                                 break;
+                            case "hornyGoatWeed":
+                                gv.mod("energy", 10);
+                                gv.mod("arousal", 100);
+                                gv.mod("cum", -2000) 
+                                cl.display();
+                                break;
                             case "cumjar":
                                 gv.mod("energy", 100);
                                 levels.mod("xdress", 10, 999);
                                 levels.mod("cum", 25);
-                                break;
+                                                                break;
                             case "pissjarboy":
                                 levels.piss(true, false, false, "m");
                                 break;

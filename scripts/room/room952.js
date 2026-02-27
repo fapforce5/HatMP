@@ -94,7 +94,7 @@ room952.btnclick = function (name) {
             break;
         case "escape2":
             nav.killall();
-            scc.love("cult", -20, 100);
+            //scc.love("cult", -20, 100);
             nav.bg("952_hallway/escape3.jpg");
             chat(18, 952);
             break;

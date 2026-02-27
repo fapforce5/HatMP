@@ -1037,8 +1037,12 @@ input[type=text]:disabled{
     padding-top:3px;
 }
 
-hr{
-    border:none;
+.menu-popup {
+    z-index: 3;
+}
+
+hr {
+    border: none;
 }
 
 #hideThisNoJavascript{

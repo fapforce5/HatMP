@@ -630,10 +630,18 @@ trap.hole = function () {
     }
 };
 
+trap.foundobjects = function () {
+
+    //horny goat weed, mushrooms... 
+}
+
 trap.treasure = function () {
     if (trap.phase === 0) {
         if (trap.type === "treasureAzrael") {
-            nav.bg("1005_trap/treasure/a.jpg", "1005_trap/treasure/a_night.jpg");
+            if (trap.location === "cave")
+                nav.bg("1005_trap/treasure/a_cave.jpg");
+            else
+                nav.bg("1005_trap/treasure/a.jpg", "1005_trap/treasure/a_night.jpg");
         }
         else {
             if (trap.location === "cave")
@@ -645,7 +653,7 @@ trap.treasure = function () {
     }
     else {
         if (trap.type === "treasureAzrael") {
-            if (daily.get("treasureAzrael")) {
+            if (daily.get("treasureAzrael_" + trap.location)) {
                 nav.button({
                     "type": "img",
                     "name": "r1004bg",
@@ -658,7 +666,7 @@ trap.treasure = function () {
                 chat(7, 1005);
             }
             else {
-                daily.set("treasureAzrael");
+                daily.set("treasureAzrael_" + trap.location);
                 nav.button({
                     "type": "img",
                     "name": "r1004bg",

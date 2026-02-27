@@ -13,7 +13,7 @@ room950.main = function () {
     }
     if (g.internal.interval > 3) {
         if (!g.internal.nightEvent) {
-            if (g.dt.getDay() === 5 && scc.get("cult").love > 90) {
+            if (g.dt.getDay() === 5) {// && scc.get("cult").love > 90) {
                 g.internal.nightEvent = true;
                 nav.bg("950_cell/work0.jpg");
                 chat(104, 950);
@@ -46,7 +46,7 @@ room950.main = function () {
             }
             else {
                 g.internal.nightEvent = true;
-                var cultLove = scc.get("cult").love;
+                var cultLove = null;// scc.get("cult").love;
                 if (cultLove > 30 && g.internal.job === 1) {
                     nav.bg("950_cell/work0.jpg");
                     g.internal.job = 2;
@@ -57,12 +57,12 @@ room950.main = function () {
                     g.internal.job = 3;
                     chat(122, 950);
                 }
-                else if (!g.internal.wander && scc.get("cult").love > 85 && g.internal.chaple > 0) {
-                    g.internal.wander = true;
-                    nav.killall();
-                    nav.bg("950_cell/work0.jpg");
-                    chat(106, 950);
-                }
+                //else if (!g.internal.wander && scc.get("cult").love > 85 && g.internal.chaple > 0) {
+                //    g.internal.wander = true;
+                //    nav.killall();
+                //    nav.bg("950_cell/work0.jpg");
+                //    chat(106, 950);
+                //}
                 else {
                     nav.bg("950_cell/cell_dark.jpg");
                     nav.button({
@@ -466,7 +466,7 @@ room950.btnclick = function (name) {
         case "bb3":
             nav.killall();
             nav.bg("950_cell/b2.jpg");
-            scc.love("bodhi", 10);
+            //scc.love("bodhi", 10);
             chat(72, 950);
             break;
         case "foodCarrot":
@@ -535,7 +535,7 @@ room950.chatcatch = function (callback) {
             nav.bg("950_cell/milk9.jpg");
             break;
         case "milk10":
-            scc.love("cult", 2, 50);
+            //scc.love("cult", 2, 50);
             room950.btnclick("increment");
             break;
         case "jo0":
@@ -552,7 +552,7 @@ room950.chatcatch = function (callback) {
             g.internal.constDayDirty = 0;
             g.internal.jo = false;
             char.changeMenu("hide", false, true);
-            scc.love("cult", -20, 100);
+            //scc.love("cult", -20, 100);
             g.roomTimeout = setTimeout(function () {
                 nav.bg("951_box/box.jpg");
                 chat(24, 950);
@@ -601,7 +601,7 @@ room950.chatcatch = function (callback) {
                 "title": "Eat the pussy"
             }, 950);
             nav.bg("950_cell/eatit1.jpg");
-            scc.love("cult", -20, 100);
+            //scc.love("cult", -20, 100);
             break;
         case "clean3":
             nav.killall();
@@ -732,7 +732,7 @@ room950.chatcatch = function (callback) {
             zcl.assup(700, 400, .6, "");
             break;
         case "mp11":
-            scc.love('cult', 15, 100);
+            //scc.love('cult', 15, 100);
             gv.mod("pissedonMale", 3);
             room950.btnclick("increment");
             break;
@@ -753,11 +753,11 @@ room950.chatcatch = function (callback) {
             nav.bg("950_cell/shower5.jpg");
             break;
         case "shower6":
-            scc.love('cult', 10, 100);
+            //scc.love('cult', 10, 100);
             room950.btnclick("increment");
             break;
         case "cancelJob":
-            scc.love("cult", -10, 100);
+            //scc.love("cult", -10, 100);
             break;
         case "bb31":
             zcl.kill();
@@ -788,7 +788,7 @@ room950.chatcatch = function (callback) {
             nav.bg("950_cell/sweepHallway1.jpg");
             break;
         case "sweepHallway1end":
-            scc.love("cult", 5, 100);
+            //scc.love("cult", 5, 100);
             room950.btnclick("increment");
             break;
         case "sweepHallway2":
@@ -825,7 +825,7 @@ room950.chatcatch = function (callback) {
         case "sweepHallway6end":
             gv.mod("giveOralMale", 1);
             gv.mod("loadSwollowed", 1);
-            scc.love("cult", 12, 100);
+            //scc.love("cult", 12, 100);
             room950.btnclick("increment");
             break;
         case "sweepHallway7":

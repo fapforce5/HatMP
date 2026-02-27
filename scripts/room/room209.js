@@ -116,7 +116,7 @@ room209.chat = function (chatID) {
         return {
             chatID: 999,
             speaker: "missy",
-            text: scc.changeText,
+            text: "ERROR - NEED TO FIX",
             button: [
                 { chatID: -1, text: "Thanks ma'am!", callback: "selectStart" }
             ]

@@ -602,7 +602,7 @@ room501.chatcatch = function (callback) {
         case "vaginaHide":
             nav.killbutton("vagina");
             room501.chatcatch("zForward");
-            scc.love("zoey", -5, 100);
+            //scc.love("zoey", -5, 100);
             break;
         case "munchTheTwat":
             nav.killbutton("vagina");
@@ -795,10 +795,11 @@ room501.chatcatch = function (callback) {
             break;
         case "zoeySleep":
             nav.bg("502_bedroom/sleepZoey.jpg");
-            scc.love("zoey", 40, 60);
-            sc.setstep("zoey", 6);
-            sc.setstep("zoey", -2);
-            sc.setstep("chloe", 3);
+            scc.modLevel("zoey", 40, 10);
+            //scc.love("zoey", 40, 60);
+            //sc.setstep("zoey", 6);
+            //sc.setstep("zoey", -2);
+            //sc.setstep("chloe", 3);
             g.roomTimeout = setTimeout(function () {
                 g.pass = 502;
                 char.room(28);
@@ -822,7 +823,7 @@ room501.chatcatch = function (callback) {
             chat(110, 501);
             break;
         case "gameEnd":
-            scc.love("zoey", 5, 90);
+            scc.modLevel("zoey", 20, 5);
             char.addtime(180);
             char.room(501);
             break;

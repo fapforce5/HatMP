@@ -599,7 +599,7 @@ room208.chatcatch = function (callback) {
                     if (gv.get("oncase") === "redroom") {
                         gv.set("oncase", null);
                         g.sissy[15].ach = true;
-                        scc.love("missy", 20, 100);
+                        //scc.love("missy", 20, 100);
                         chat(30, 208);
                     }
                     else

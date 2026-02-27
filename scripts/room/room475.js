@@ -77,8 +77,12 @@ room475.main = function () {
         g.map.eventCounter = g.rand(howOften, howOften + 3);
     }
 
-    let currentLocation = g.map.row < 50 ? "cave" : "forest";
     if (g.map.eventCounter === 0) {
+        let currentLocation = "forest";
+        if (g.map.row < 25)
+            currentLocation = "meadow";
+        else if (g.map.row < 50)
+            currentLocation = "cave";
         let thisEvent = g.map.ev[0];
         g.map.ev.shift();
         g.map.eventCounter = g.rand(howOften, howOften + 3);
@@ -87,10 +91,12 @@ room475.main = function () {
                 rape.init(null, currentLocation, 475, "reload");
                 break;
             case "rope":
-                trap.init("rope", currentLocation, 475, "reload", null);
+                if (currentLocation === "forest")
+                    trap.init("rope", currentLocation, 475, "reload", null);
                 break;
             case "hole":
-                trap.init("hole", currentLocation, 475, "reload", null);
+                if (currentLocation === "forest")
+                    trap.init("hole", currentLocation, 475, "reload", null);
                 break;
             case "random":
                 trap.init("encounter", currentLocation, 475, "reload", null);
@@ -114,6 +120,17 @@ room475.main = function () {
                 "height": 100,
                 "image": "map/lewd.png"
             }, 0);
+        }
+        if (g.rand(0, 6) === 0) {
+            nav.button({
+                "type": "btn",
+                "name": "hornyGoatWeed",
+                "left": 1313,
+                "top": 737,
+                "width": 278,
+                "height": 309,
+                "image": "475_fight/hornygoatweed.webp"
+            }, 475);
         }
         let maxenergy = gv.get("maxenergy");
         let currentMyEnergy = gv.get("energy");
@@ -153,11 +170,16 @@ room475.btnclick = function (name) {
             if (m.fmap[g.map.row][g.map.col].used === "i") { //forest queen
                 char.room(477);
             }
-            else if (m.fmap[g.map.row][g.map.col].used === "h") { //forest queen
+            else if (m.fmap[g.map.row][g.map.col].used === "h") { //cabin
                 char.room(476);
             }
-            else if (m.fmap[g.map.row][g.map.col].used === "g") { //forest queen
-                trap.init("treasureAzrael", "forest", 475, "reload");
+            else if (m.fmap[g.map.row][g.map.col].used === "g") { //treasure
+                var currentLocationx = "forest";
+                if (g.map.row < 25)
+                    currentLocationx = "meadow";
+                else if (g.map.row < 50 && g.map.row > 25)
+                    currentLocationx = "cave";
+                trap.init("treasureAzrael", currentLocationx, 475, "reload");
             }
             else if (m.fmap[g.map.row][g.map.col].used === "c") {
                 char.room(483);
@@ -171,6 +193,16 @@ room475.btnclick = function (name) {
                 g.pass = null;
                 char.room(486);
             }
+            else if (m.fmap[g.map.row][g.map.col].used === "r") {
+                char.room(487);
+            }
+            else if (m.fmap[g.map.row][g.map.col].used === "k") {
+                char.room(488); 
+            }
+            break;
+        case "hornyGoatWeed":
+            nav.killbutton("hornyGoatWeed");
+            inv.add("hornyGoatWeed");
             break;
         case "reload":
             char.room(475);

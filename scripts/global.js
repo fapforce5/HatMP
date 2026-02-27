@@ -331,6 +331,8 @@ g.rooms = [
     { roomID: 484, name: "Wolf's Den", image: "483_cave/cave0.jpg", nightImage: "483_cave/cave0.jpg", houseID: 480, btn: "roomBtn_483.png" },
     { roomID: 485, name: "Seller", image: "485_seller/bg.webp", nightImage: "485_seller/bg.webp", houseID: 480, btn: "roomBtn_483.png" },
     { roomID: 486, name: "Dozen Degrading Doors", image: "486_game/bg0.webp", nightImage: "486_game/bg0.webp", houseID: 480, btn: "roomBtn_483.png" },
+    { roomID: 487, name: "Cult Castle", image: "487_castle/bg.webp", nightImage: "487_castle/bgn.webp", houseID: 480, btn: "roomBtn_483.png" },
+    { roomID: 488, name: "Morgan's Cabin", image: "488_cabin/bg.webp", nightImage: "488_cabin/bg_n.webp", houseID: 480, btn: "roomBtn_483.png" },
 
     { roomID: 500, name: "Zoey's House", image: "500_jada/500_zoeyHouseDay.jpg", nightImage: "500_jada/500_zoeyHouseNight.jpg", houseID: 500, btn: "roomBtn_500.png" },
     { roomID: 501, name: "Zoey's Living Room", image: "501_jadaGame/501_game.jpg", nightImage: "501_jadaGame/501_game.jpg", houseID: 500, btn: "roomBtn_501.png" },
@@ -409,6 +411,7 @@ g.rooms = [
     { roomID: 910, name: "Licenses", image: "910_gov/bg.jpg", nightImage: "910_gov/910_gov.png", houseID: 911, btn: "roomBtn_910.png" },
     { roomID: 911, name: "City Hall", image: "911_cityhall/bg.jpg", nightImage: "911_cityhall/bg.jpg", houseID: 910, btn: "roomBtn_911.png" },
 
+    { roomID: 949, name: "Cult Compound", image: "950_cell/cell.jpg", nightImage: "950_cell/cell.png", houseID: 950, btn: "bg.jpg" },
     { roomID: 950, name: "Cell", image: "950_cell/cell.jpg", nightImage: "950_cell/cell.png", houseID: 950, btn: "bg.jpg" },
     { roomID: 951, name: "Box", image: "951_box/box.jpg", nightImage: "951_box/box.jpg", houseID: 950, btn: "bg.jpg" },
     { roomID: 952, name: "Hallway", image: "952_hallway/hallway.jpg", nightImage: "952_hallway/hallway.jpg", houseID: 950, btn: "bg.jpg" },
