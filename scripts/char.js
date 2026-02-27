@@ -161,7 +161,7 @@ $(document).ready(function () {
     });
 
     $('#room-menu').click(function () {
-        phone.build(null);
+        phone.build();
     }).on('auxclick',function (e) {
         if (e?.which === 2) { // mouse-middle-click
             phone.build("save");

@@ -3,7 +3,7 @@ var room9999 = {};
 phone.charPointer = 0;
 //var pic = {};
 
-phone.build = function (selection) {
+phone.build = function (selection = null) {
     phone.clear(true);
     inv.close();
     var btnList = [
