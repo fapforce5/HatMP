@@ -520,7 +520,7 @@ room28.dreams = function () {
         else if (g.pass === 328) {
             nav.bg("328_farm/sleep_" + gender.pronoun("f") + ".webp");
         }
-        else if (g.pass = 486)
+        else if (g.pass === 486)
             nav.bg("28_transformation/486.jpg");
     }
     //console.log(hasText);

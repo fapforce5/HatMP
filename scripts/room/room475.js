@@ -119,7 +119,7 @@ room475.main = function () {
                 "image": "map/lewd.png"
             }, 0);
         }
-        if (g.rand(0, 6) === 0 && g.map.row > 50 || g.map.row < 25) {
+        if (g.rand(0, 6) === 0 && (g.map.row > 50 || g.map.row < 25)) {
             nav.button({
                 "type": "btn",
                 "name": "hornyGoatWeed",

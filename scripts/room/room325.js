@@ -9,12 +9,22 @@ room325.main = function () {
             chat(48, 325);
         return;
     }
+    if (missy.activecase().caseId === 19 && missy.activecase().isComplete) {
+        nav.button({
+            "type": "img",
+            "name": "rachel",
+            "left": 0,
+            "top": 0,
+            "width": 1920,
+            "height": 1080,
+            "image": "325_farm/fuckup.webp"
+        }, 325);
+        chat(51, 325);
+        return;
+    }
     if (g.isNight()) {
         if (missy.activecase().caseId === 19) {
-            if (missy.activecase().isComplete)
-                chat(51, 325);
-            else
-                chat(40, 325);
+            chat(40, 325);
         }
         else {
             chat(4, 325);
@@ -281,6 +291,10 @@ room325.chatcatch = function (callback) {
             break;
         case "r328":
             char.room(328);
+            break;
+        case "room949":
+            g.pass = "rachel";
+            char.room(949);
             break;
         default:
             break;
@@ -754,10 +768,11 @@ room325.chat = function (chatID) {
         },
         {
             chatID: 51,
-            speaker: "thinking",
-            text: "I've got to be crazy coming back here!!!",
+            speaker: "rachel",
+            text: "You think you can break out, then just come moseying back in. I think you need to learn " +
+                "some manners. Boys take him away! ",
             button: [
-                { chatID: -1, text: "Leave", callback: "leave" }
+                { chatID: -1, text: "huh", callback: "room949" }
             ]
         },
     ];
