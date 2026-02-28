@@ -412,8 +412,8 @@ g.rooms = [
     { roomID: 910, name: "Licenses", image: "910_gov/bg.jpg", nightImage: "910_gov/910_gov.png", houseID: 911, btn: "roomBtn_910.png" },
     { roomID: 911, name: "City Hall", image: "911_cityhall/bg.jpg", nightImage: "911_cityhall/bg.jpg", houseID: 910, btn: "roomBtn_911.png" },
 
-    { roomID: 949, name: "Cult Compound", image: "950_cell/cell.jpg", nightImage: "950_cell/cell.png", houseID: 950, btn: "bg.jpg" },
-    { roomID: 950, name: "Cell", image: "950_cell/cell.jpg", nightImage: "950_cell/cell.png", houseID: 950, btn: "bg.jpg" },
+    { roomID: 949, name: "Cult Compound", image: "950_cell/cell.jpg", nightImage: "950_cell/cell.jpg", houseID: 950, btn: "bg.jpg" },
+    { roomID: 950, name: "Cell", image: "950_cell/cell.jpg", nightImage: "950_cell/cell.jpg", houseID: 950, btn: "bg.jpg" },
     { roomID: 951, name: "Box", image: "951_box/box.jpg", nightImage: "951_box/box.jpg", houseID: 950, btn: "bg.jpg" },
     { roomID: 952, name: "Hallway", image: "952_hallway/hallway.jpg", nightImage: "952_hallway/hallway.jpg", houseID: 950, btn: "bg.jpg" },
     { roomID: 953, name: "Chaple", image: "953_chaple/bg.jpg", nightImage: "953_chaple/bg.jpg", houseID: 950, btn: "roomBtn_953.png" },

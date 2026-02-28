@@ -2711,7 +2711,7 @@ sc.trivial = function (charname) {
     var name, image;
     switch (charname) {
         case "!blank":
-            name = "";
+            name = "DEV NOTES";
             image = "blank.png";
             break;
         case "!burlysecurity":

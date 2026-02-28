@@ -69,7 +69,7 @@ room556.btnclick = function (name) {
                 if (thisEnergyg < 50) {
                     chat(8, 556)
                 }
-                else if (levels.get("strength").l < 50) {
+                else if (levels.get("strength").l < 15) {
                     chat(14, 556);
                 }
             }
