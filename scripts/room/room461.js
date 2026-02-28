@@ -68,7 +68,7 @@ room461.main = function () {
                 }
 
                 gv.mod("energy", -30);
-                levels.mod("fitness", 30, 999);
+                levels.mod("fitness", 30);
                 char.addtime(60);
 
                 if (cl.c.chest < 1)
@@ -79,7 +79,7 @@ room461.main = function () {
         }
         else {
             gv.mod("energy", -30);
-            levels.mod("fitness", 30, 999);
+            levels.mod("fitness", 30);
             char.addtime(60);
 
             if (cl.c.chest < 1)
@@ -156,7 +156,7 @@ room461.btnclick = function (name) {
             nav.killall();
             nav.bg("461_run/path2.jpg");
             gv.mod("energy", -30);
-            levels.mod("fitness", 30, 999);
+            levels.mod("fitness", 30);
             char.addtime(60);
 
             if (cl.c.chest < 1)
@@ -182,7 +182,7 @@ room461.btnclick = function (name) {
                 sc.show("ppgirl");
             if (sc.getMission("ppgirl", "pp").notStarted) {
                 sc.modLevel("ppgirl", 100, 2);
-                levels.mod("piss", 25, 1);
+                levels.mod("piss", 25);
                 sc.startMission("ppgirl", "pp");
                 sc.completeMissionTask("ppgirl", "pp", 0);
                 nav.killall();
@@ -191,13 +191,13 @@ room461.btnclick = function (name) {
                 chat(22, 461);
             }
             else if (ppgirlStep === 1) {
-                levels.mod("piss", 25, 1);
+                levels.mod("piss", 25);
                 nav.killall();
                 nav.bg("461_run/pee3.jpg");
                 chat(25, 461);
             }
             else if (ppgirlStep === 2) {
-                levels.mod("piss", 25, 1);
+                levels.mod("piss", 25);
                 nav.killall();
                 nav.bg("461_run/pee3.jpg");
                 sc.setEvent("ppgirl", 2);
@@ -212,7 +212,7 @@ room461.btnclick = function (name) {
         case "pppee":
             nav.killall();
             if (levels.get("piss") < 2) {
-                levels.mod("piss", 25, 1);
+                levels.mod("piss", 25);
                 chat(37, 461);
             }
             else {
@@ -230,7 +230,7 @@ room461.btnclick = function (name) {
         case "ppcup":
             nav.killall();
             if (levels.get("piss") < 2) {
-                levels.mod("piss", 25, 1);
+                levels.mod("piss", 25);
                 chat(46, 461);
             }
             else {
@@ -253,7 +253,7 @@ room461.btnclick = function (name) {
             nav.bg("461_run/pee5.jpg");
             inv.use("emptyjar");
             inv.add("pissjargirl");
-            levels.mod("piss", 15, 999);
+            levels.mod("piss", 15);
             chat(29, 461);
             break;
         default:
@@ -368,7 +368,7 @@ room461.chatcatch = function (callback) {
         case "completeRun":
             nav.bg("461_run/path2.jpg");
             gv.mod("energy", -30);
-            levels.mod("fitness", 30, 999);
+            levels.mod("fitness", 30);
             char.addtime(60);
 
             if (cl.c.chest < 1)
@@ -409,13 +409,13 @@ room461.chatcatch = function (callback) {
             break;
        
         case "ppsub":
-            levels.mod("sub", 15, 999);
+            levels.mod("sub", 15);
             break;
         case "pporal":
-            levels.mod("oral", 15, 999);
+            levels.mod("oral", 15);
             break;
         case "ppcharisma":
-            levels.mod("charisma", 15, 999);
+            levels.mod("charisma", 15);
             break;
         case "pp5":
             sc.modLevel("ppgirl", 100, 4);
@@ -426,7 +426,7 @@ room461.chatcatch = function (callback) {
             //sc.completeMissionTask("ppgirl", "pp", 2);
             nav.bg("461_run/path2.jpg");
             gv.mod("energy", -30);
-            levels.mod("fitness", 30, 999);
+            levels.mod("fitness", 30);
             char.addtime(60);
 
             if (cl.c.chest < 1)

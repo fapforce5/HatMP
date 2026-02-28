@@ -90,7 +90,7 @@ room575.chatcatch = function (callback) {
         case "e_footsie3":
             nav.bg("575_fastfood/" + callback + ".jpg");
             levels.gavefootjob("m", "elijah");
-            levels.mod("xdress", 50, 999);
+            levels.mod("xdress", 50);
             break;
         case "e_horny2":
         case "e_horny":
@@ -98,7 +98,7 @@ room575.chatcatch = function (callback) {
         case "e_footsie2":
             nav.bg("575_fastfood/" + callback + ".jpg");
             g.popUpNotice("Elijah liked that");
-            levels.mod("pi", 15, 999);
+            levels.mod("pi", 15);
             break;
         
         case "e_fail":
@@ -112,7 +112,7 @@ room575.chatcatch = function (callback) {
             break;
         case "like":
             g.popUpNotice("Elijah liked that");
-            levels.mod("pi", 20, 999);
+            levels.mod("pi", 20);
             break;
         case "hit1":
             if (cl.c.cumface)

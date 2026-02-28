@@ -518,8 +518,8 @@ room14.btnclick = function (name) {
             break;
         case "task_9_b_2":
             nav.killbutton("task_9_b_2");
-            levels.mod("xdress", 20, 999);
-            levels.mod("cum", 20, 999);
+            levels.mod("xdress", 20);
+            levels.mod("cum", 20);
             chat(120, 14);
             break;
         case "screwdriver":
@@ -600,7 +600,7 @@ room14.btnclick = function (name) {
         case "bigguy_12_0":
             nav.modbutton("bigguy_12_0", "14_motherRoom/bigguy_12_" + g.internal + ".png", null, null);
             if (g.internal > 4) {
-                levels.mod("cum", 25, 999);
+                levels.mod("cum", 25);
                 sc.completeMissionTask("bigguy", "sissy", 1);
                 nav.killbutton("bigguy_12_0");
                 chat(134, 14);
@@ -800,7 +800,7 @@ room14.chatcatch = function (callback) {
         case "task1_3":
             nav.bg("14_motherRoom/" + callback + ".jpg");
             sc.modLevel("landlord", 30, 5);
-            levels.mod("dom", 53, 999);
+            levels.mod("dom", 53);
             break;
         case "reset":
             char.room(14);
@@ -810,11 +810,11 @@ room14.chatcatch = function (callback) {
             break;
         case "stealplug":
             cl.add("buttplug", "s");
-            levels.mod("xdress", 40, 2);
+            levels.mod("xdress", 40);
             room14.btnclick("dresser");
             break;
         case "domlaugh":
-            levels.mod("dom", 38, 999);
+            levels.mod("dom", 38);
             sc.modLevel("landlord", 20, 999);
             nav.modbutton("motherRobe", "14_motherRoom/14_motherRobeLaugh.png", null, null);
             break;
@@ -855,7 +855,7 @@ room14.chatcatch = function (callback) {
             char.room(21);
             break;
         case "dom":
-            levels.mod("dom", 20, 999);
+            levels.mod("dom", 20);
             break;
         case "leave":
             daily.set("landlord");
@@ -863,7 +863,7 @@ room14.chatcatch = function (callback) {
             break;
         case "leaveSub":
             daily.set("landlord");
-            levels.mod("sub", 30, 999);
+            levels.mod("sub", 30);
             char.room(16);
             break;
         case "bg_s_0_end":
@@ -875,13 +875,13 @@ room14.chatcatch = function (callback) {
             break;
         case "task2_1":
             nav.killall();
-            levels.mod("dom", 20, 999);
+            levels.mod("dom", 20);
             nav.bg("14_motherRoom/task1_2.jpg");
             break;
         
         case "task_3_1":
             nav.kill();
-            levels.mod("dom", 20, 999);
+            levels.mod("dom", 20);
             nav.bg("14_motherRoom/" + callback + ".jpg");
             break;
         case "task_3_3":
@@ -909,7 +909,7 @@ room14.chatcatch = function (callback) {
         case "task_3_end":
             levels.oral(3, "f", "landlord");
             gv.mod("arousal", 75);
-            levels.mod("oral", 50, 0);
+            levels.mod("oral", 50);
             char.addtime(60);
             sc.modLevel("landlord", 50, 10);
             sc.completeMissionTask("landlord", "man", 4, true);
@@ -919,7 +919,7 @@ room14.chatcatch = function (callback) {
         case "task_4_end":
             levels.oral(3, "f", "landlord");
             gv.mod("arousal", 75);
-            levels.mod("oral", 50, 0);
+            levels.mod("oral", 50);
             char.addtime(60);
             sc.modLevel("landlord", 5, 3);
             daily.set("landlord");

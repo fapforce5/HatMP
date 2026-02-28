@@ -1543,19 +1543,19 @@ room13.chatcatch = function (callback) {
                 sc.modSecret("eva", 5);
                 break;
             case "dom":
-                levels.mod("dom", 20, 999);
+                levels.mod("dom", 20);
                 break;
             case "sub":
-                levels.mod("sub", 20, 999);
+                levels.mod("sub", 20);
                 break;
             case "beast":
-                levels.mod("beast", 20, 999);
+                levels.mod("beast", 20);
                 break;
             case "charisma":
-                levels.mod("charisma", 25, 999);
+                levels.mod("charisma", 25);
                 break;
             case "xdress1":
-                levels.mod("xdress", 33, 1);
+                levels.mod("xdress", 33);
                 break;
             case "reset":
                 char.room(13);
@@ -1575,7 +1575,7 @@ room13.chatcatch = function (callback) {
                 break;
             case 'takePanties':
                 cl.add("panties", "w");
-                levels.mod("xdress", 50, 999);
+                levels.mod("xdress", 50);
                 nav.killbutton("panties");
                 break;
             case "killPantyIcon":

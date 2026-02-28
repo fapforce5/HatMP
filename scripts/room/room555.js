@@ -425,22 +425,22 @@ room555.chatcatch = function (callback) {
             setTimeout(function () { chat(15, 555); }, 5000);
             break;
         case "exitUpper":
-            levels.mod("strength", 55, 999);
-            levels.mod("fitness", 15, 999);
+            levels.mod("strength", 55);
+            levels.mod("fitness", 15);
             gv.mod("energy", -75);
             char.addtime(60);
             char.room(555);
             break;
         case "exitCardio":
-            levels.mod("fitness", 85, 999);
+            levels.mod("fitness", 85);
             gv.mod("energy", -75);
             levels.anal(3);
             char.addtime(60);
             char.room(555);
             break;
         case "exitMachine":
-            levels.mod("fitness", 50, 999);
-            levels.mod("strength", 25, 999);
+            levels.mod("fitness", 50);
+            levels.mod("strength", 25);
             gv.mod("energy", -75);
             levels.anal(3);
             char.addtime(60);
@@ -451,8 +451,8 @@ room555.chatcatch = function (callback) {
             room555.chatcatch("exitUpper");
             break;
         case "exitOral":
-            levels.mod("strength", 55, 999);
-            levels.mod("fitness", 15, 999);
+            levels.mod("strength", 55);
+            levels.mod("fitness", 15);
             gv.mod("energy", -75);
             levels.oral(3);
             char.addtime(60);
@@ -630,8 +630,8 @@ room555.chatcatch = function (callback) {
             nav.drawButton("555_backgym/down.png", "chad_squats");
             break;
         case "squatEnd":
-            levels.mod("fitness", 50, 999);
-            levels.mod("strength", 25, 999);
+            levels.mod("fitness", 50);
+            levels.mod("strength", 25);
             gv.mod("energy", -75);
             levels.anal(4, false, "m", true, "chad");
             char.addtime(60);

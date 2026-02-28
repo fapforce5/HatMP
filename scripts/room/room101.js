@@ -141,12 +141,12 @@ room101.chatcatch = function (callback) {
                 "height": 715,
                 "image": "101_constFrontOffice/laugh1.png"
             }, 101);
-            levels.mod("charisma", 15, 999);
+            levels.mod("charisma", 15);
             sc.modLevel("tina", 55, 5);
 
             break;
         case "nicePickupLine":
-            levels.mod("charisma", 12, 999);
+            levels.mod("charisma", 12);
             if (sc.getLevel("tina") < 2) {
                 sc.modLevel("tina", 55);
                 chat(15, 101);

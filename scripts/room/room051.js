@@ -272,7 +272,7 @@ room51.chatcatch = function (callback) {
             sc.startMission("candy", "cuck");
             sc.completeMissionTask("candy", "cuck", 0);
             gv.set("xdress", true);
-            levels.mod("xdress", 30, 999);
+            levels.mod("xdress", 30);
             missy.set("activeCaseComplete", 1);
             missy.caseComplete(11);
             char.settime(19, 57);

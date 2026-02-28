@@ -59,7 +59,7 @@ room103.btnclick = function (name) {
         default:
             break;
         case "hole":
-            levels.mod("anal", 5, 1);
+            levels.mod("anal", 5);
             chat(25, 103);
             break;
         case "pamphlet":
@@ -113,7 +113,7 @@ room103.chatcatch = function (callback) {
     switch (callback) {
         case "complete":
             char.settime(17, 50);
-            levels.mod("fitness", 4, 999);
+            levels.mod("fitness", 4);
             gv.mod("jobapplyconst", 1);
             daily.set("construction");
             char.room(101);
@@ -325,7 +325,7 @@ room103.chatcatch = function (callback) {
             break;
         case "give20":
             if (gv.get("money") > 19) {
-                levels.mod("charisma", 5, 999);
+                levels.mod("charisma", 5);
                 gv.mod("money", -20);
                 chat(17, 103);
             }
@@ -337,7 +337,7 @@ room103.chatcatch = function (callback) {
             g.internal = true;
             break;
         case "panties":
-            levels.mod("xdress", 5, 1);
+            levels.mod("xdress", 5);
             nav.bg("103_constSite/worker4.jpg");
             break;
         case "hole0":
@@ -398,19 +398,19 @@ room103.chatcatch = function (callback) {
             char.room(10);
             break;
         case "adddom":
-            levels.mod("dom", 5, 1);
+            levels.mod("dom", 5);
             break;
         case "addsub":
-            levels.mod("sub", 5, 1);
+            levels.mod("sub", 5);
             break;
         
         case "pamphlet":
             nav.killbutton("pamphlet2");
             gv.mod("pamphletConstSite", true);
-            levels.mod("pi", 20, 999);
+            levels.mod("pi", 20);
             break;
         case "intPlus":
-            levels.mod("pi", 15, 999);
+            levels.mod("pi", 15);
             break;
         case "fight0":
             nav.bg("103_constSite/fight0.jpg");

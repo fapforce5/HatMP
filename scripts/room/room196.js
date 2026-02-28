@@ -122,7 +122,7 @@ room196.chatcatch = function (callback) {
                 nav.bg("205_chastity/chast0_1.jpg");
             break;
         case "xdress":
-            levels.mod("xdress", 20, 2);
+            levels.mod("xdress", 20);
             break;
         default:
             break;

@@ -24,7 +24,7 @@ room178.btnclick = function (name) {
         case "cum201_2":
             nav.killbutton("cum201_2");
             gv.mod("energy", 200);
-            levels.mod("xdress", 10, 999);
+            levels.mod("xdress", 10);
             levels.mod("cum", 25);
             chat(29, 178);
             break;
@@ -65,7 +65,7 @@ room178.chatcatch = function (callback) {
             nav.bg("178_cum/" + callback + "_" + chastityx + ".jpg");
             break;
         case "cum9":
-            levels.mod("cum", 50, 999);
+            levels.mod("cum", 50);
             nav.bg("178_cum/" + callback + ".jpg");
             break;
         case "cumend":

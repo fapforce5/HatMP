@@ -270,14 +270,14 @@ room22.chatcatch = function (callback) {
             break;
         case "finishPeeMan":
             gv.set("bladder", 0);
-            levels.mod("dom", 5, 999);
+            levels.mod("dom", 5);
             char.addtime(15);
             char.room(22);
             break;
         case "finishPeeBitch":
             gv.set("bladder", 0);
-            levels.mod("sub", 5, 999);
-            levels.mod("xdress", 10, 999);
+            levels.mod("sub", 5);
+            levels.mod("xdress", 10);
             char.addtime(15);
             char.room(22);
             break;
@@ -288,7 +288,7 @@ room22.chatcatch = function (callback) {
                 inv.add(getCum.cumType);
             }
             gv.clearButtCum();
-            levels.mod("xdress", 15, 999);
+            levels.mod("xdress", 15);
             char.addtime(20);
             char.room(22);
             break;

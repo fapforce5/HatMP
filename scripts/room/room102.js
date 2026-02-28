@@ -49,7 +49,7 @@ room102.chatcatch = function (callback) {
             gv.set("jobConstGetRaise", true);
             break;
         case "dom":
-            levels.mod("dom", 10, 1);
+            levels.mod("dom", 10);
             break;
         case "showtits":
             nav.bg("102_constBoss/flash.jpg");
@@ -58,7 +58,7 @@ room102.chatcatch = function (callback) {
             nav.bg("102_constBoss/102_boss.jpg");
             break;
         case "sub":
-            levels.mod("sub", 10, 1);
+            levels.mod("sub", 10);
             break;
         default:
             break;

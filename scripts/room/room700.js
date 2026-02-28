@@ -91,7 +91,7 @@ room700.chatcatch = function (callback) {
             cl.display();
             break;
         case "nurseApply":
-            levels.mod("xdress", 5, 1);
+            levels.mod("xdress", 5);
             gv.set("jobapplynurse", 2);
             char.room(700);
             break;

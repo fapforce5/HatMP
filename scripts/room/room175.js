@@ -71,7 +71,7 @@ room175.chatcatch = function (callback) {
         case "anal212_7_w":
             var tw = callback.replace("_w", "");
             nav.bg("175_anal/" + tw + ".jpg");
-            levels.mod("anal", 15, 999);
+            levels.mod("anal", 15);
             break;
         case "anal212_8":
             nav.bg("175_anal/" + callback + ".gif");
@@ -87,7 +87,7 @@ room175.chatcatch = function (callback) {
             break;
         case "anal10":
             nav.bg("175_anal/" + callback + ".jpg");
-            levels.mod("xdress", 20, 999);
+            levels.mod("xdress", 20);
             break;
         case "anal15":
             nav.bg("175_anal/" + callback + ".jpg");
@@ -129,7 +129,7 @@ room175.chatcatch = function (callback) {
             sissy.passclass(true);
             break;
         case "charisma":
-            levels.mod("charisma", 20, 999);
+            levels.mod("charisma", 20);
             break;
         case "lubenotme":
             g.internal = "";

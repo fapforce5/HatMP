@@ -79,14 +79,14 @@ room173.btnclick = function (name) {
         case "save":
             var thisEntrySave = g.internal.a[g.internal.i];
             if (thisEntrySave.s)
-                levels.mod("pi", 4, 999);
+                levels.mod("pi", 4);
             g.internal.i++;
             room173.btnclick("next");
             break;
         case "trash":
             var thisEntryTrash = g.internal.a[g.internal.i];
             if (!thisEntryTrash.s)
-                levels.mod("pi", 4, 999);
+                levels.mod("pi", 4);
             g.internal.i++;
             room173.btnclick("next");
             break;
@@ -96,8 +96,8 @@ room173.btnclick = function (name) {
             else {
                 nav.killall();
                 nav.bg("173_trash/swallaw.jpg");
-                levels.mod("cum", 20, 999);
-                levels.mod("pi", 4, 999);
+                levels.mod("cum", 20);
+                levels.mod("pi", 4);
                 gv.mod("energy", 100);
                 chat(4, 173);
             }

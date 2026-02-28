@@ -531,7 +531,7 @@ room9.btnclick = function (name) {
             break;
         case "missyusbdoc":
             if (missy.get("reusableCaseCounter") < 3) {
-                levels.mod("pi", 50, 999);
+                levels.mod("pi", 50);
                 missy.set("reusableCaseCounter", 3);
             }
             nav.killall();

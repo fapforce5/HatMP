@@ -802,7 +802,7 @@ inv.createElements = function () {
                                 break;
                             case "cumjar":
                                 gv.mod("energy", 100);
-                                levels.mod("xdress", 10, 999);
+                                levels.mod("xdress", 10);
                                 levels.mod("cum", 25);
                                                                 break;
                             case "pissjarboy":
@@ -813,17 +813,17 @@ inv.createElements = function () {
                                 break;
                             case "dogcumjar":
                                 gv.mod("energy", 150);
-                                levels.mod("xdress", 10, 999);
+                                levels.mod("xdress", 10);
                                 levels.mod("cum", 25);
                                 break;
                             case "horsecumjar":
                                 gv.mod("energy", 200);
-                                levels.mod("xdress", 10, 999);
+                                levels.mod("xdress", 10);
                                 levels.mod("cum", 25);
                                 break;
                             case "pigcumjar":
                                 gv.mod("energy", 300);
-                                levels.mod("xdress", 10, 999);
+                                levels.mod("xdress", 10);
                                 levels.mod("cum", 25);
                                 break;
                             default:

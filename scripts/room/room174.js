@@ -439,7 +439,7 @@ room174.chatcatch = function (callback) {
             break;
         case "club_end":
             missy.set("activeCaseComplete", 1);
-            levels.mod("pi", 75, 999);
+            levels.mod("pi", 75);
             char.addtime(60);
             char.room(0);
             break;

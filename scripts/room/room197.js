@@ -209,13 +209,13 @@ room197.chatcatch = function (callback) {
             break;
         case "punish":
             g.pass = "insubordination";
-            levels.mod("dom", 25, 999);
+            levels.mod("dom", 25);
             missy.mod("mood", -25);
             char.room(217);
             break;
         case "sideDesk":
             nav.killall();
-            levels.mod("sub", 5, 5);
+            levels.mod("sub", 5);
             nav.bg("197_sub/sidedesk0.jpg");
             break;
         case "presentFoot":
@@ -276,7 +276,7 @@ room197.chatcatch = function (callback) {
             break;
        
         case "increaseSub":
-            levels.mod("sub", 5, 5);
+            levels.mod("sub", 5);
             break;
         case "oralup":
             levels.gavebj(5, "f", "missy");

@@ -13,6 +13,9 @@ var dreams = {};
 var confession = {};
 gv.difficulty = 0;
 
+const LEVEL_CAP_DEFAULT = 15;
+const LEVEL_POINTS_CAP_DEFAULT = 100;
+
 sex.st = new Array();
 levels.st = new Array();
 daily.st = new Array();
@@ -222,32 +225,32 @@ gv.init = function () {
     ];
 
     levels.st = [
-        { id: 0, n: "pi", d: "Intelligence", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true },
-        { id: 1, n: "xdress", d: "Sissy", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: false },
-        { id: 2, n: "sub", d: "Submissive", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true },
-        { id: 3, n: "dom", d: "Dominance", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true },
-        { id: 4, n: "oral", d: "Oral", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true },
-        { id: 5, n: "anal", d: "Anal", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true },
-        { id: 6, n: "cum", d: "Cum", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true },
-        { id: 7, n: "piss", d: "Piss", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true },
-        { id: 8, n: "beast", d: "Beast", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true },
-        { id: 9, n: "heels", d: "Heels", c: 0, l: 0, autoLevel: true, display: false, compoundLevel: true },
-        { id: 10, n: "charisma", d: "Charisma", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true },
-        { id: 11, n: "fame", d: "Fame", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true }, //how likely you are to get raped
+        { id: 0, n: "pi", d: "Intelligence", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true, cap: LEVEL_CAP_DEFAULT },
+        { id: 1, n: "xdress", d: "Sissy", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: false, cap: 100 },
+        { id: 2, n: "sub", d: "Submissive", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true, cap: LEVEL_CAP_DEFAULT },
+        { id: 3, n: "dom", d: "Dominance", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true, cap: LEVEL_CAP_DEFAULT },
+        { id: 4, n: "oral", d: "Oral", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true, cap: LEVEL_CAP_DEFAULT },
+        { id: 5, n: "anal", d: "Anal", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true, cap: LEVEL_CAP_DEFAULT },
+        { id: 6, n: "cum", d: "Cum", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true, cap: LEVEL_CAP_DEFAULT },
+        { id: 7, n: "piss", d: "Piss", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true, cap: LEVEL_CAP_DEFAULT },
+        { id: 8, n: "beast", d: "Beast", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true, cap: LEVEL_CAP_DEFAULT },
+        { id: 9, n: "heels", d: "Heels", c: 0, l: 0, autoLevel: true, display: false, compoundLevel: true, cap: LEVEL_CAP_DEFAULT },
+        { id: 10, n: "charisma", d: "Charisma", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true, cap: LEVEL_CAP_DEFAULT },
+        { id: 11, n: "fame", d: "Fame", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true, cap: LEVEL_CAP_DEFAULT }, //how likely you are to get raped
 
-        { id: 12, n: "fitness", d: "Fitness", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true },
-        { id: 13, n: "strength", d: "Strength [STR]", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true },
-        { id: 14, n: "makeup", d: "Makeup", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true },
-        { id: 15, n: "notused1", d: "Pain Tolerance", c: 0, l: 0, autoLevel: true, display: false, compoundLevel: true },
-        { id: 16, n: "cheer", d: "Cheerleader", c: 0, l: 0, autoLevel: false, display: true, compoundLevel: true },
-        { id: 17, n: "stripper", d: "Stripping", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true },
-        { id: 18, n: "whore", d: "Whore", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true },
+        { id: 12, n: "fitness", d: "Fitness", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true, cap: LEVEL_CAP_DEFAULT },
+        { id: 13, n: "strength", d: "Strength [STR]", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true, cap: LEVEL_CAP_DEFAULT },
+        { id: 14, n: "makeup", d: "Makeup", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true, cap: LEVEL_CAP_DEFAULT },
+        { id: 15, n: "notused1", d: "Pain Tolerance", c: 0, l: 0, autoLevel: true, display: false, compoundLevel: true, cap: LEVEL_CAP_DEFAULT },
+        { id: 16, n: "cheer", d: "Cheerleader", c: 0, l: 0, autoLevel: false, display: true, compoundLevel: false, cap: LEVEL_CAP_DEFAULT },
+        { id: 17, n: "stripper", d: "Stripping", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true, cap: LEVEL_CAP_DEFAULT },
+        { id: 18, n: "whore", d: "Whore", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true, cap: LEVEL_CAP_DEFAULT },
 
-        { id: 19, n: "not used", d: "Lock Picking", c: 0, l: 0, autoLevel: true, display: false, compoundLevel: true },
-        { id: 20, n: "dick", d: "Cock", c: 0, l: 0, autoLevel: true, display: false, compoundLevel: true },
-        { id: 21, n: "beer", d: "Alcohol Tolerance", c: 0, l: 0, autoLevel: true, display: false, compoundLevel: true },
-        { id: 22, n: "milk", d: "Breast Milk", c: 0, l: 0, autoLevel: true, display: false, compoundLevel: true },
-        { id: 23, n: "noop", d: "Not used", c: 0, l: 0, autoLevel: true, display: false, compoundLevel: true },
+        { id: 19, n: "not used", d: "Lock Picking", c: 0, l: 0, autoLevel: true, display: false, compoundLevel: true, cap: LEVEL_CAP_DEFAULT },
+        { id: 20, n: "dick", d: "Cock", c: 0, l: 0, autoLevel: true, display: false, compoundLevel: true, cap: LEVEL_CAP_DEFAULT },
+        { id: 21, n: "beer", d: "Alcohol Tolerance", c: 0, l: 0, autoLevel: true, display: false, compoundLevel: true, cap: LEVEL_CAP_DEFAULT },
+        { id: 22, n: "milk", d: "Breast Milk", c: 0, l: 0, autoLevel: true, display: false, compoundLevel: true, cap: LEVEL_CAP_DEFAULT },
+        { id: 23, n: "noop", d: "Not used", c: 0, l: 0, autoLevel: true, display: false, compoundLevel: true, cap: LEVEL_CAP_DEFAULT },
 
     ];
 
@@ -852,90 +855,57 @@ levels.set = function (name, c, l) {
     sstat.makeGraph();
 };
 
-levels.modLevel = function (name, amount) {
+// Modify full levels directly
+levels.modLevel = function (name, amount, zeroPoints = false, showDefaultNotice = false) {
+    if (!amount) { // also takes care of amount === 0
+        return;
+    }
     if (name === "xdress" && !sissy.st[0].ach) {
         return;
     }
+    let level = levels.st[levels.i(name)]
+    let startingLevel = {l: level.l, c: level.c, compoundLevel: level.compoundLevel};
+    let l = level.l += amount;
 
-    let i = levels.i(name);
-    let startLevel = levels.st[i].l;
-    levels.st[i].l += amount;
-    
-    if (levels.st[i].l < 0) {
-        levels.st[i].l = 0;
-        levels.st[i].c = 0;
+    level.l = g.limitRange(l, 0, level.cap);
+    if (l < 0 || (zeroPoints && (amount < 0 || level.l > startingLevel.l))) {
+        // Don't reduce points to 0 if we wanted to increase level but were already at cap
+        level.c = 0;
+    } else if (!zeroPoints) {
+        // Keep relative value of points in level
+        let maxPoints = levels.getPointsCapForLevel(level);
+        level.c = g.limitRange(Math.round((maxPoints / levels.getPointsCapForLevel(startingLevel)) * level.c), 0, maxPoints);
     }
 
-    let levelsChange = levels.st[i].l - startLevel;
-
-    if (levelsChange < 0)
-        g.popUpNotice("You lost " + Math.abs(levelsChange) + " LEVEL" + (levelsChange === -1 ? "" : "S") + " for " + levels.st[i].d + "!");
-    else if (levelsChange > 0)
-        g.popUpNotice("You gained " + levelsChange + " LEVEL" + (levelsChange === 1 ? "" : "S") + " for " + levels.st[i].d + "!");
+    if (showDefaultNotice) {
+        levels.modLevelNotice(level, startingLevel, amount);
+    }
+    sstat.makeGraph();
 };
 
+// Modify level points
 levels.mod = function (name, amount) {
-    let i, startingLevel;
-    
-    i = levels.i(name);
-    startingLevel = levels.st[i].l;
+    if (!amount) { // also takes care of amount === 0
+        return;
+    }
+    let level = levels.st[levels.i(name)];
+    let startingLevel = {l: level.l, c: level.c};
 
     //fix for old old level system - remove in the future;
-    if (levels.st[i].c === null || isNaN(levels.st[i].c))
-        levels.st[i].c = 0;
+    if (level.c === null || isNaN(level.c))
+        level.c = 0;
 
-    if (!levels.st[i].autoLevel) {
-        levels.st[i].c += amount;
-        if (levels.st[i].c < 0)
-            levels.st[i].c = 0;
-        if (levels.st[i].c > 100)
-            levels.st[i].c = 100;
-        if (amount > 0) {
-            if (levels.st[i].l > 15)
-                g.popUpNoticeBottom("You're maxed out for " + levels.st[i].d);
-            else if(amount > 0)
-                g.popUpNoticeBottom("You gained "  + amount + " points for " + levels.st[i].d + "!");
-            else
-                g.popUpNoticeBottom("You lost " + Math.abs(amount) + " points for " + levels.st[i].d + "!");
+    level.c += amount;
+    if (level.autoLevel && amount > 0) { // Only level increase, not decrease, with autoLevel
+        let pCap = levels.getPointsCapForLevel(level);
+        while (level.l < level.cap && level.c >= pCap) {
+            level.c -= pCap;
+            level.l++;
+            pCap = levels.getPointsCapForLevel(level);
         }
     }
-    else if (amount > 0) {
-        if (levels.st[i].compoundLevel) {
-            levels.st[i].c += amount;
-            while (levels.st[i].c >= levels.getCap(levels.st[i].l)) {
-                levels.st[i].c -= levels.getCap(levels.st[i].l);
-                levels.st[i].l++;
-            }
-            let levelsChange = levels.st[i].l - startingLevel;
-           
-            if (levelsChange > 0)
-                g.popUpNoticeBottom("You gained " + levelsChange + " LEVEL" + (levelsChange === 1 ? "" : "S") + " for " + levels.st[i].d + "!");
-            else
-                g.popUpNoticeBottom("You gained " + amount + " POINT" + (amount === 1 ? "" : "S") + " for " + levels.st[i].d + "!");
-        }
-        else if (levels.st[i].autoLevel) {
-            levels.st[i].c += amount;
-            while (levels.st[i].c >= 100) {
-                levels.st[i].c -= 100;
-                levels.st[i].l++;
-            }
-            let levelsChange = levels.st[i].l - startingLevel;
-            if (levelsChange > 0)
-                g.popUpNoticeBottom("You gained " + levelsChange + " LEVEL" + (levelsChange === 1 ? "" : "S") + " for " + levels.st[i].d + "!");
-            else
-                g.popUpNoticeBottom("You gained " + amount + " POINT" + (amount === 1 ? "" : "S") + " for " + levels.st[i].d + "!");
-        }
-    }
-    else if (amount < 0) {
-        if (levels.st[i].l >= 15) {
-            levels.st[i].l = 15;
-            return;
-        }
-        levels.st[i].c -= amount;
-        if (levels.st[i].c < 0)
-            levels.st[i].c = 0;
-        g.popUpNoticeBottom(levels.st[i].d + " points have decreased. ");
-    }
+    levels.applyLevelLimits(level);
+    levels.modNotice(level, startingLevel, amount);
 
     if (name === "fitness") {
         var fitnessEnd = levels.get("fitness").l;
@@ -945,24 +915,37 @@ levels.mod = function (name, amount) {
     sstat.makeGraph();
 };
 
-levels.getCap = function (levels) {
-    let interestRate = .3;
-    if (levels > 7)
-        interestRate = interestRate + .05;
-    var initialComp = Math.floor(55 * Math.pow(1 + interestRate, levels));
-    //if (initialComp > 500)
-    //    return 500;
-    return initialComp;
-};
+// Limit level and points between min and max values
+levels.applyLevelLimits = function(level) {
+    level.l = g.limitRange(level.l, 0, level.cap);
 
-levels.compute = function (level) {
-    var total = 0;
-    let i;
-    for (i = 0; i < level; i++) {
-        total += levels.getCap(i);
-    }
-    return total;
+    let maxPoints = levels.getPointsCapForLevel(level);
+    level.c = g.limitRange(level.c, 0, maxPoints);
 }
+
+levels.modLevelNotice = (level, oldLevel, amount) => levels.modNotice(level, oldLevel, amount, true)
+
+levels.modNotice = function(level, oldLevel, amount, modLevel = false) {
+    if (level.l >= level.cap && (modLevel || level.c >= levels.getPointsCapForLevel(level))) {
+        g.popUpNoticeBottom("You're maxed out for " + level.d);
+        return;
+    }
+    // if level changed, notice level change, else notice point change
+    let type = (modLevel || oldLevel.l !== level.l) ? "LEVEL" : "POINT";
+    let change = type === "LEVEL" ? (level.l - oldLevel.l) : (level.c - oldLevel.c);
+    let absChange = Math.abs(change);
+    if (!modLevel || absChange > 0) {
+        g.popUpNoticeBottom(`You ${change > 0 ? "gained" : "lost"} ${absChange} ${type}${absChange !== 1 ? "S" : ""} for ${level.d}!`);
+    }
+}
+
+levels.getPointsCapForLevel = function (level) {
+    if (!level.compoundLevel) {
+        return LEVEL_POINTS_CAP_DEFAULT;
+    }
+    let interestRate = level.l > 7 ? .35 : .3;
+    return Math.floor(55 * Math.pow(1 + interestRate, level.l));
+};
 
 sex.get = function (type, gender) {
     let gr;
@@ -1330,7 +1313,7 @@ levels.anal = function (size, sissygasm = false, gender = null, creampie = false
     }
 
     if (creampie) {
-        levels.mod("cum", 25, 999);
+        levels.mod("cum", 25);
         sex.mod("mudpie", gender, who);
         if (beast === null) {
             gv.mod("analCum", 1);
@@ -1350,7 +1333,7 @@ levels.anal = function (size, sissygasm = false, gender = null, creampie = false
 
     if (beast !== null) {
         sex.mod(beast, "m", who);
-        levels.mod("beast", 50, 10);
+        levels.mod("beast", 50);
         switch (beast) {
             case "dog": gv.mod("analCumDog", 1); break;
             case "horse": gv.mod("analCumHorse", 1); break;
@@ -1546,7 +1529,7 @@ levels.gavebj = function (size, gender, who, swallow = false, facialOverride = f
 };
 
 levels.oral = function (size, gender = null, who = null, swallow = false, beast = null, facialOverride = false) {
-    //levels.mod("oral", 25, 999);
+    //levels.mod("oral", 25);
     levels.oralSizes(size);
     gv.mod("arousal", 25);
 
@@ -1809,19 +1792,19 @@ sex.masturbate = function (t = null) {
 levels.piss = function (drankpiss, analpiss, pissedon, gender, who = null) {
     if (analpiss) {
         sex.mod("analpiss", gender, who);
-        levels.mod("piss", 40, 999);
-        levels.mod("xdress", 40, 999);
+        levels.mod("piss", 40);
+        levels.mod("xdress", 40);
     }
     else if (pissedon) {
         sex.mod("piss", gender, who);
-        levels.mod("piss", 15, 999);
-        levels.mod("xdress", 5, 999);
+        levels.mod("piss", 15);
+        levels.mod("xdress", 5);
     }
     else if (drankpiss) {
         sex.mod("drankpiss", gender, who);
-        levels.mod("piss", 25, 999);
+        levels.mod("piss", 25);
         var pissLevel = levels.get("piss").l - 4;
-        levels.mod("xdress", 15, 999);
+        levels.mod("xdress", 15);
         gv.mod("bladder", .3);
         if (pissLevel > 0) {
             let pissEnergy = pissLevel * 5;
@@ -1831,14 +1814,14 @@ levels.piss = function (drankpiss, analpiss, pissedon, gender, who = null) {
         }
     }
     else {
-        levels.mod("xdress", 5, 999);
-        levels.mod("piss", 15, 999);
+        levels.mod("xdress", 5);
+        levels.mod("piss", 15);
     }
 }
 
 levels.fuckpussy = function (who, gender = "f") {
     cl.doCum(false);
-    levels.mod("dick", 20, 999);
+    levels.mod("dick", 20);
     sex.mod("pussiesfucked", gender, who);
 };
 
@@ -2081,7 +2064,7 @@ sissy.passclass = function (normalRoom) {
     var currentClass = gv.get("sissySchoolClass");
     gv.set("sissySchoolClass", null);
     gv.set("sissySchoolClassDays", 0);
-    levels.mod("xdress", 30, 999);
+    levels.mod("xdress", 30);
     for (var i = 0; i < sissy.st.length; i++) {
         if (sissy.st[i].icon === currentClass) {
             sissy.st[i].ach = true;

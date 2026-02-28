@@ -145,7 +145,7 @@ room203.chatcatch = function (callback) {
                         if ((cl.hasClothing("shirt", "s") && cl.hasClothing("pants", "s") &&
                             cl.hasClothing("socks", "b") && cl.hasClothing("shoes", "d")) ||
                             gv.get("money") > 245) {
-                            levels.mod("pi", -10, 999);
+                            levels.mod("pi", -10);
                             chat(9, 203);
                         }
                         else {
@@ -153,7 +153,7 @@ room203.chatcatch = function (callback) {
                         }
                     }
                     else {
-                        levels.mod("pi", -10, 999);
+                        levels.mod("pi", -10);
                         chat(9, 203);
                     }
                 }
@@ -164,21 +164,21 @@ room203.chatcatch = function (callback) {
                         chat(22, 203);
                     }
                     else {
-                        levels.mod("xdress", 5, 3);
+                        levels.mod("xdress", 5);
                         cl.c.pants = null;
                         cl.c.pants = "s";
                         chat(23, 203);
                     }
                 }
                 else {
-                    levels.mod("pi", -10, 999);
+                    levels.mod("pi", -10);
                     chat(24, 203);
                 }
             }
             else if (myUniform === 2) {
                 if (cl.hasoutfit("suitwithpanties") === null) {
                     if (cl.getBodyHair() === null) {
-                        levels.mod("xdress", 5, 5);
+                        levels.mod("xdress", 5);
                         cl.c.pants = null;
                         cl.c.pants = "s";
                         chat(23, 203);
@@ -191,14 +191,14 @@ room203.chatcatch = function (callback) {
                     }
                 }
                 else {
-                    levels.mod("pi", -10, 999);
+                    levels.mod("pi", -10);
                     chat(24, 203);
                 }
             }
             else if (myUniform === 3) {
                 g.internal = cl.hasoutfit("officegirl");
                 if (g.internal === null) {
-                    levels.mod("xdress", 5, 5);
+                    levels.mod("xdress", 5);
                     if (missy.get("uniformNew") === 2) {
                         chat(27, 203);
                     }
@@ -257,7 +257,7 @@ room203.chatcatch = function (callback) {
             break;
         case "uniform1_0":
             cl.c.pants = null;
-            levels.mod("xdress", 5, 3);
+            levels.mod("xdress", 5);
             zcl.displayMain(180, 800, .09, "clothes", false);
             cl.c.pants = "s";
             break;

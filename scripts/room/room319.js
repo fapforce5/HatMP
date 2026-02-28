@@ -52,9 +52,9 @@ room319.main = function () {
         displayMenu = false;
         daily.set("dpee");
         sc.modLevel("dog", 50, 999);
-        levels.mod("piss", 25, 999);
-        levels.mod("beast", 25, 999);
-        levels.mod("sub", 25, 999);
+        levels.mod("piss", 25);
+        levels.mod("beast", 25);
+        levels.mod("sub", 25);
         zcl.assup(600, 790, .55, "");
         nav.button({
             "type": "img",
@@ -149,7 +149,7 @@ room319.btnclick = function (name) {
                 if (!daily.get("dball")) {
                     daily.set("dball");
                     sc.modLevel("dog", 15, 4);
-                    levels.mod("beast", 15, 4);
+                    levels.mod("beast", 15);
                 }
                 nav.button({
                     "type": "img",
@@ -223,7 +223,7 @@ room319.chatcatch = function (callback) {
     switch (callback) {
         case "finishPeeing":
             gv.mod("arousal", 50);
-            levels.mod("piss", 25, 2);
+            levels.mod("piss", 25);
             gv.mod("bladder", -1);
             sc.modLevel("dog", 25, 5);
             char.room(319);

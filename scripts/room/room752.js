@@ -91,11 +91,11 @@ room752.btnclick = function (name) {
                 chat(16, 752);
             break;
         case "charisma_win":
-            levels.mod("charisma", 25, 999);
+            levels.mod("charisma", 25);
             chat(12, 752);
             break;
         case "charisma_lose":
-            levels.mod("charisma", 15, 999);
+            levels.mod("charisma", 15);
             missy.set("reusableCaseCounter", 1);
             chat(15, 752);
             break;
@@ -141,13 +141,13 @@ room752.chatcatch = function (callback) {
             }
             break;
         case "getlocket":
-            levels.mod("pi", 100, 999);
+            levels.mod("pi", 100);
             inv.add("locket");
             missy.set("activeCaseComplete", 1);
             nav.bg("752_whore/bg.jpg");
             break;
         case "getlocketPanties":
-            levels.mod("pi", 100, 999);
+            levels.mod("pi", 100);
             inv.add("locket");
             missy.set("activeCaseComplete", 1);
             nav.killall();

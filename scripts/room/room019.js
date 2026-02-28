@@ -452,13 +452,13 @@ room19.chatcatch = function (callback) {
         case "emptyMilk":
             gv.set("milk", .0);
             cl.display();
-            levels.mod("milk", 25, 999);
+            levels.mod("milk", 25);
             char.room(19);
             break;
         case "pumpDrink":
             gv.set("milk", .0);
             cl.display();
-            levels.mod("milk", 25, 999);
+            levels.mod("milk", 25);
             gv.mod("energy", 100);
             nav.bg("19_layInBed/pumpDrink.jpg");
             break;

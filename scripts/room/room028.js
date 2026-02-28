@@ -253,7 +253,7 @@ room28.main = function () {
         }, 6000);
         return;
     }
-    if (cl.c.chest === 0 && levels.st[12].l > 0) {
+    if (cl.c.chest === 0 && levels.get("fitness").l > 0) {
         chat(0, 28);
         return;
     }
@@ -623,7 +623,7 @@ room28.btnclick = function (name) {
     }
     else if (name.startsWith("qgrow_")){
         var gid = parseInt(name.replace("qgrow_", ""));
-        levels.st[1].l = levels.st[1].l - qdress.st[gid].p;
+        levels.modLevel("xdress", -qdress.st[gid].p)
         qdress.st[gid].ach = true;
         switch (qdress.st[gid].icon) {
             case "qpanties":

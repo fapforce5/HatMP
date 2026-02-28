@@ -184,7 +184,7 @@ room58.btnclick = function (name) {
         case "icon_quit":
             clearTimeout(g.roomTimeout);
             gv.mod("money", g.internal.money);
-            gv.mod("xdress", 15);
+            levels.mod("xdress", 15);
             var maxfame = Math.ceil(g.internal.maxviews / 20);
             if (maxfame > 40)
                 maxfame = 40;

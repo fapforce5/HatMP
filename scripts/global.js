@@ -630,6 +630,11 @@ g.randn_bm = function() {
     return num
 }
 
+// Constrains a number to lower and upper bounds of a range
+g.limitRange = function(number, lowerBound, upperBound) {
+    return Math.min(Math.max(number, lowerBound), upperBound);
+}
+
 g.makeCss = function (height, width, top, left) {
     return " height:" + (height * g.ratio) + "px; width:" + (width * g.ratio) + "px; top:" + (top * g.ratio) + "px; left:" + (left * g.ratio) + "px; ";
 };

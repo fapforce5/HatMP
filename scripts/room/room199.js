@@ -86,7 +86,7 @@ room199.chatcatch = function (callback) {
         case "jump":
             nav.killall();
             gv.mod("energy", -15);
-            levels.mod("fitness", 7, 999);
+            levels.mod("fitness", 7);
             if (gv.get("energy") < 15) {
                 nav.bg("199_workout/tired.jpg");
                 chat(8, 199);
@@ -100,7 +100,7 @@ room199.chatcatch = function (callback) {
         case "toes":
             nav.killall();
             gv.mod("energy", -15);
-            levels.mod("fitness", 5, 999);
+            levels.mod("fitness", 5);
             if (gv.get("energy") < 15) {
                 nav.bg("199_workout/tired.jpg");
                 chat(8, 199);

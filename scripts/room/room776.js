@@ -151,7 +151,7 @@ room776.chatcatch = function (callback) {
                 chat(2, 776);
             else {
                 daily.set("pray_pi");
-                levels.modLevel("pi", -1);
+                levels.modLevel("pi", -1, false, true);
                 chat(3, 776);
             }
             break;
@@ -166,7 +166,7 @@ room776.chatcatch = function (callback) {
                 chat(2, 776);
             else {
                 daily.set("pray_strength");
-                levels.modLevel("strength", -1);
+                levels.modLevel("strength", -1, false, true);
                 chat(3, 776);
             }
             break;

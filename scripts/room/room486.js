@@ -798,18 +798,12 @@ room486.btnclick = function (name) {
             nav.killbutton("room8_0");
             nav.killbutton("room8_1");
             if (g.rand(0, 2) === 0) {
-                pil = levels.get("pi");
-                if (pil.l < 1)
-                    pil.l = 1;
-                levels.set("pi", 0, pil.l - 1);
+                levels.modLevel("pi", -1, true);
                 g.popUpNotice("You have become dumber");
                 chat(24, 486);
             }
             else {
-                pil = levels.get("strength");
-                if (pil.l < 1)
-                    pil.l = 1;
-                levels.set("strength", 0, pil.l - 1);
+                levels.modLevel("strength", -1, true);
                 g.popUpNotice("You have become weaker");
                 chat(25, 486);
             }

@@ -392,7 +392,7 @@ room170.chatcatch = function (callback) {
             break;
         case "classComplete":
             gv.mod("sissySchoolClassDays", 1);
-            levels.mod("xdress", 30, 999);
+            levels.mod("xdress", 30);
             levels.mod("fame", 100);
             char.settime(17, 15);
             char.room(201);

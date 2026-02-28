@@ -51,7 +51,7 @@ room216.btnclick = function (name) {
             nav.killall();
             nav.bg("216_pinkglory/pull3_" + gender.pronoun("f") + ".jpg");
             cl.c.cumface = true;
-            levels.mod("cum", 20, 999);
+            levels.mod("cum", 20);
             chat(5, 216);
             break;
         case "plugclean":
@@ -112,7 +112,7 @@ room216.btnclick = function (name) {
             nav.killall();
             nav.bg("216_pinkglory/clean_" + gender.pronoun("f") + ".jpg");
             gv.mod("energy", 100);
-            levels.mod("cum", 25, 999);
+            levels.mod("cum", 25);
             chat(7, 216);
             break;
     }

@@ -96,7 +96,7 @@ room556.btnclick = function (name) {
                 nav.bg("556_spar/loss" + g.internal + appendString + ".jpg");
                 if (g.internal === 6) {
                     levels.anal(3, true, "f", false, "g");
-                    levels.mod("fame", 30, 999);
+                    levels.mod("fame", 30);
                 }
             }
             else {
