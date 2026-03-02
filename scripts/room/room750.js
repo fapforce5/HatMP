@@ -131,11 +131,29 @@ room750.btnclick = function (name) {
             break;
         case "elitent":
             nav.kill();
-            if (daily.get("elijah")) {
+            var eliApp = cl.appearance();
+            if (sc.getMission("elijah", "betray").startedOrComplete) {
+                chat(66, 750);
+            }
+            else if (eliApp < 2 || eliApp === 5) {
+                nav.bg("750_homeless/elibg.webp");
+                nav.button({
+                    "type": "btn",
+                    "name": "eli",
+                    "left": 1093,
+                    "top": 0,
+                    "width": 470,
+                    "height": 1080,
+                    "image": "750_homeless/eli.webp",
+                }, 750);
+                chat(62, 750);
+            }
+            else if (daily.get("elijah")) {
                 nav.bg("750_homeless/elibg.webp");
                 chat(40, 750);
             }
             else {
+                daily.set("elijah");
                 if (sc.taskGetStep("elijah", "elijah") === 2) {
                     sc.completeMissionTask("elijah", "elijah", 2);
                 }
@@ -168,9 +186,20 @@ room750.btnclick = function (name) {
                         chat(59, 750);
                     }
                     else {
-
                         chat(58, 750);
                     }
+                    break;
+                case 7:
+                    sc.completeMissionTask("elijah", "elijah", 7);
+                    chat(67, 750);
+                    break;
+                case 8:
+                    if (cl.c.necklace === "eli") {
+                        chat(59, 750);
+                    }
+                    else {
+                        chat(58, 750);
+                    } 
                     break;
             }
             break;
@@ -233,20 +262,26 @@ room750.btnclick = function (name) {
         case "eliRub":
             nav.kill();
             nav.bg("750_homeless/eli6.webp");
+            if (sc.getMissionTask("elijah", "elijah", 6).complete) {
+                chat(70, 750);
+            }
             if (sc.getMissionTask("elijah", "elijah", 4).notStarted) {
                 sc.completeMissionTask("elijah", "elijah", 4);
                 sc.modLevel("elijah", 500, 4);
+                chat(41, 750);
             }
             else {
-                if (sc.taksGetStep("elijah", "elijah", 6).notStarted) {
+                if (sc.getMissionTask("elijah", "elijah", 6).notStarted) {
                     sc.completeMissionTask("elijah", "elijah", 6);
                     nav.bg("750_homeless/eli16.webp");
                     g.internal = 0;
                     nav.next("eliRub1");
                 }
+                else {
+                    chat(41, 750);
+                }
                 sc.modLevel("elijah", 100, 10);
             }
-            chat(41, 750);
             break;
         case "eliRub1":
             if (g.internal === 0) {
@@ -277,10 +312,10 @@ room750.chatcatch = function (callback) {
         case "eli5":
         case "eli7":
         case "eli12":
-        case "eli13":
             nav.bg("750_homeless/" + callback + ".webp");
             break;
         case "eli0":
+        case "eli13":
             nav.kill();
             nav.bg("750_homeless/" + callback + ".webp");
             break;
@@ -443,6 +478,7 @@ room750.chatcatch = function (callback) {
             char.room(750);
             break;
         case "eliEnd5":
+            daily.set("elijah");
             sc.modLevel("elijah", 200, 10);
             sc.completeMissionTaskAll("elijah", "elijah", 5);
             char.addtime(120);
@@ -451,10 +487,26 @@ room750.chatcatch = function (callback) {
         case "elibreakup":
             sc.completeMission("elijah", "elijah", false);
             sc.completeMissionTask("elijah", "betray", 1);
-            sc.completeMission("elijah", "betray", false);
+            sc.completeMission("elijah", "betray", true);
             char.addtime(120);
             gv.set("map", 0);
             char.room(460);
+            break;
+        case "elibreakupx":
+            sc.completeMission("elijah", "elijah", false);
+            sc.completeMissionTask("elijah", "betray", 2);
+            sc.completeMission("elijah", "betray", true);
+            char.addtime(120);
+            gv.set("map", 0);
+            char.room(750);
+            break;
+        case "eliWalk":
+            nav.kill();
+            nav.bg("750_homeless/eli10.webp");
+            zcl.displayMain(100, 850, .15, "clothes", true);
+            char.addtime(97);
+            sc.modLevel("elijah", 50, 10);
+            chat(71, 750);
             break;
         default:
             break;
@@ -1050,7 +1102,104 @@ room750.chat = function (chatID) {
                 text: "Oh yes. I just didn't expect to cum in front of you like this till we were married. " +
                     "I need to clean up. Thank you, but I feel so dirty. ",
                 button: [
-                    { chatID: 61, text: "Ok. See you tomorrow", callback: "reset" },
+                    { chatID: -1, text: "Ok. See you tomorrow", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 62,
+                speaker: "elijah",
+                text: "...Wait... Are you a boy?",
+                button: [
+                    { chatID: 64, text: "Yes", callback: "" },
+                    { chatID: 63, text: "No, I'm a girl. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 63,
+                speaker: "elijah",
+                text: "You have a penis don't you? ",
+                button: [
+                    { chatID: 64, text: "Yes, but it's more than a penis to make a boy, a boy.", callback: "" }
+                ]
+            },
+            {
+                chatID: 64,
+                speaker: "elijah",
+                text: "I'm sorry. I can't date you. You're an absolutly wonderful person, but my future " +
+                    "plans are for a woman, with a uterus to bear my children. I know you'll find the " +
+                    "right boy for you someday, but you're not the right girl for me. I'm sorry, but we " +
+                    "have to break up. ",
+                button: [
+                    { chatID: 65, text: "...but", callback: "" }
+                ]
+            },
+            {
+                chatID: 65,
+                speaker: "elijah",
+                text: "No buts. You are great, but this is over. ",
+                button: [
+                    { chatID: -1, text: "*tear* ok. ", callback: "elibreakupx" }
+                ]
+            },
+            {
+                chatID: 66,
+                speaker: "thinking",
+                text: "I broke up with " + sc.n("elijah") + ". There's no reason to bug him again. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 67,
+                speaker: "elijah",
+                text: "I'm a little embarrased to bring this up, but I'm hoping to save myself for marriage. " +
+                    "I love hanging out with you, but no more sex stuff. ok? ",
+                button: [
+                    { chatID: 68, text: "Yeah. Sure", callback: "" }
+                ]
+            },
+            {
+                chatID: 68,
+                speaker: "elijah",
+                text: "That's such a relief. Once I get a job, we'll be together forever and have our big " +
+                    "family with you as my wife. Just give me time. Maybe a lot of time. Jobs are hard.  ",
+                button: [
+                    { chatID: 69, text: "Sure. I'll just watch tv with you until the day comes that you can get a job. ", callback: "" }
+                ]
+            },
+            {
+                chatID: 69,
+                speaker: "elijah",
+                text: "So, do you want to watch some tv or go for a walk in the " +
+                    "forest? ",
+                button: [
+                    { chatID: -1, text: "Watch tv", callback: "eliWatch" },
+                    { chatID: -1, text: "Go for a walk. ", callback: "eliWalk" },
+                ]
+            },
+            {
+                chatID: 70,
+                speaker: "thinking",
+                text: "*sigh* I guess I'll wait until he's ready. When ever that is. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 71,
+                speaker: "elijah",
+                text: "*Talks about our wonder future together in the distant future.* ",
+                button: [
+                    { chatID: 72, text: "I would like that", callback: "" },
+                ]
+            },
+            {
+                chatID: 72,
+                speaker: "elijah",
+                text: "So glad we can just spend time together without worring about sex. I really do love " +
+                    "you. ",
+                button: [
+                    { chatID: -1, text: "And I you. ", callback: "reset" },
                 ]
             },
         ];

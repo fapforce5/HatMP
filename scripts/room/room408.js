@@ -924,7 +924,7 @@ room408.chat = function (chatID) {
             chatID: 51,
             speaker: "elijah",
             text: "Haha. I'm not going to date my step sister. Gross. " +
-                + sc.n("stormy") + "'s just letting me crash here for a bit. " +
+                sc.n("stormy") + "'s just letting me crash here for a bit. " +
                 "I totally lost my job and ended up losing my apartment " +
                 "trying to get even with that asshole, Mr. Rex! I'll make him pay for what he did to " +
                 "My sister, Reya! ",

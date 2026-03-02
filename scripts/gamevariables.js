@@ -208,7 +208,6 @@ gv.init = function () {
         { n: "spankyprices", t: false, q: "bool" },
 
         { n: "girlname", t: "Scarlett", q: "string" },
-        { n: "quest3", t: null, q: "string" },
 
         { n: "jobConstGetRaise", t: false, q: "bool" },
         { n: "lockboobs", t: false, q: "bool" },
@@ -934,7 +933,7 @@ levels.modNotice = function(level, oldLevel, amount, modLevel = false) {
     let type = (modLevel || oldLevel.l !== level.l) ? "LEVEL" : "POINT";
     let change = type === "LEVEL" ? (level.l - oldLevel.l) : (level.c - oldLevel.c);
     let absChange = Math.abs(change);
-    if (!modLevel || absChange > 0) {
+    if (absChange > 0) {
         g.popUpNoticeBottom(`You ${change > 0 ? "gained" : "lost"} ${absChange} ${type}${absChange !== 1 ? "S" : ""} for ${level.d}!`);
     }
 }

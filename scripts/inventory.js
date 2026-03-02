@@ -439,26 +439,44 @@ inv.phoneIcon = function () {
     }
 };
 
-inv.display = function () {
+inv.display = function (typeArray = null) {
     inv.createElements();
     var counter = 0;
     var totalCounter = 0;
     var i, prevI;
-    for (i = 0; i < inv.master.length; i++) {
-        if (inv.master[i].entry) {
-            if (totalCounter >= inv.page && counter < 31) {
-                $('#menu-bg_' + counter).html('<img src="./images/inv/' + inv.master[i].image + '" class="menu-select" data-inv="' + inv.master[i].name + '" title="' + inv.master[i].display + '">');
-                if (inv.master[i].n)
-                    $('#menu-bg_' + counter).append('<img src="./images/inv/new.png" title="New Inventory" class="display-top3 click-thru" title="' + inv.master[i].display + '">');
-                if (inv.master[i].count !== null)
-                    $('#menu-bg_' + counter).append('<div class="menu-popup-count" data-name="' + inv.master[i].name + '">' + inv.master[i].count + '</div>');
-                counter++;
+    if (typeArray === null) {
+        for (i = 0; i < inv.master.length; i++) {
+            if (inv.master[i].entry) {
+                if (totalCounter >= inv.page && counter < 31) {
+                    $('#menu-bg_' + counter).html('<img src="./images/inv/' + inv.master[i].image + '" class="menu-select" data-inv="' + inv.master[i].name + '" title="' + inv.master[i].display + '">');
+                    if (inv.master[i].n)
+                        $('#menu-bg_' + counter).append('<img src="./images/inv/new.png" title="New Inventory" class="display-top3 click-thru" title="' + inv.master[i].display + '">');
+                    if (inv.master[i].count !== null)
+                        $('#menu-bg_' + counter).append('<div class="menu-popup-count" data-name="' + inv.master[i].name + '">' + inv.master[i].count + '</div>');
+                    counter++;
+                }
+                totalCounter++;
             }
-            totalCounter++;
+            inv.master[i].n = false;
         }
-        inv.master[i].n = false;
     }
-
+    else {
+        inv.page = 0;
+        for (i = 0; i < inv.master.length; i++) {
+            if (inv.master[i].entry  && typeArray.includes(inv.master[i].type)) {
+                if (counter < 31) {
+                    $('#menu-bg_' + counter).html('<img src="./images/inv/' + inv.master[i].image + '" class="menu-select" data-inv="' + inv.master[i].name + '" title="' + inv.master[i].display + '">');
+                    if (inv.master[i].n)
+                        $('#menu-bg_' + counter).append('<img src="./images/inv/new.png" title="New Inventory" class="display-top3 click-thru" title="' + inv.master[i].display + '">');
+                    if (inv.master[i].count !== null)
+                        $('#menu-bg_' + counter).append('<div class="menu-popup-count" data-name="' + inv.master[i].name + '">' + inv.master[i].count + '</div>');
+                    counter++;
+                }
+                totalCounter++;
+            }
+            inv.master[i].n = false;
+        }
+    }
     counter++;
 
     inv.isFooter = $('#room_footer').is(":visible");
@@ -574,7 +592,8 @@ inv.display = function () {
     if(inv.page > 0)
         $('#room-menuButtons').append('<button id="inv_prev" class="btn btn-default pos-abs" style="width: ' + w + 'px; top: ' + t + 'px; left: ' + l + 'px;" >&lt;&lt; PREV</button>');
     $('#room-menuButtons').append('<button id="inv_close" class="btn btn-danger pos-abs" style="width: ' + w + 'px; top: ' + t + 'px; left: ' + (l + w) + 'px;" >Close</button>');
-    if(inv.page < inv.master.length)
+    console.log(totalCounter + ":" + inv.page + ":" + counter)
+    if (counter === 32 && typeArray === null)
         $('#room-menuButtons').append('<button id="inv_next" class="btn btn-danger pos-abs" style="width: ' + w + 'px; top: ' + t + 'px; left: ' + (l + (w * 2)) + 'px;" >NEXT &gt;&gt; </button>');
     $('#inv_close').click(function () {
         inv.close();
@@ -623,6 +642,7 @@ inv.displayClothesSub = function (img, e) {
 
 inv.close = function () {
     $('#room-menuButtons').html('').hide();
+    $(".menu_inventory_grouping").remove();
     if (inv.isFooter)
         $('#room_footer').show();
 };
@@ -645,7 +665,7 @@ inv.createElements = function () {
         }
     }
     //500x840
-    $('#room-menuButtons').append('<div id="menu_display" class="menu-display" style="width: ' + 500 * g.ratio + 'px; height: ' + 840 * g.ratio + 'px; top: ' + t + 'px; left: ' + ((6 * s) + l) + 'px; "> </div>');
+    $('#room-menuButtons').append('<div id="menu_display" class="menu-display" style="width: ' + 500 * g.ratio + 'px; height: ' + 840 * g.ratio + 'px; top: ' + t + 'px; left: ' + ((6 * s) + l) + 'px; z-index:2; "> </div>');
     $('#menu_display').html('<div id="menu_displayIcon" style="width: ' + 300 * g.ratio + 'px; height: ' + 300 * g.ratio + 'px; margin-top:' + 100 * g.ratio + 'px; margin-left:' + 100 * g.ratio + 'px; "></div>' +
         '<div id="menu_displayCost" class="menu-line" style="' + g.cssText(12) + ' margin-top:' + 30 * g.ratio + 'px;">Cost</div>' +
         '<div id="menu_displayName" class="menu-line" style="' + g.cssText(12) + ' margin-top:' + 10 * g.ratio + 'px;">Name</div>' +
@@ -665,6 +685,18 @@ inv.createElements = function () {
     $("#menu_displayCountLine").hide();
     $('#menu_displayAction').hide();
     $('#menu_displayAction2').hide();
+
+    $('.room-main').append('<button class="menu_inventory_grouping" data-val="q" style="' + g.cssText(12) + '; ' + g.makeCss(50, 260, 100, 90) + '; position:absolute; z-index:2;">View All</button>');
+    $('.room-main').append('<button class="menu_inventory_grouping" data-val="e" style="' + g.cssText(12) + '; ' + g.makeCss(50, 260, 200, 90) + '; position:absolute; z-index:2;">Energy Snack</button>');
+    $('.room-main').append('<button class="menu_inventory_grouping" data-val="b" style="' + g.cssText(12) + '; ' + g.makeCss(50, 260, 260, 90) + '; position:absolute; z-index:2;">Purse</button>');
+    $('.room-main').append('<button class="menu_inventory_grouping" data-val="p" style="' + g.cssText(12) + '; ' + g.makeCss(50, 260, 320, 90) + '; position:absolute; z-index:2;">Phone Case</button>');
+    $('.room-main').append('<button class="menu_inventory_grouping" data-val="r" style="' + g.cssText(12) + '; ' + g.makeCss(50, 260, 380, 90) + '; position:absolute; z-index:2;">Room Decore</button>');
+    $('.room-main').append('<button class="menu_inventory_grouping" data-val="m" style="' + g.cssText(12) + '; ' + g.makeCss(50, 260, 440, 90) + '; position:absolute; z-index:2;">Makeup</button>');
+    $('.room-main').append('<button class="menu_inventory_grouping" data-val="a" style="' + g.cssText(12) + '; ' + g.makeCss(50, 260, 500, 90) + '; position:absolute; z-index:2;">Gifts</button>');
+    $('.room-main').append('<button class="menu_inventory_grouping" data-val="d" style="' + g.cssText(12) + '; ' + g.makeCss(50, 260, 560, 90) + '; position:absolute; z-index:2;">Dildos</button>');
+    $('.room-main').append('<button class="menu_inventory_grouping" data-val="o" style="' + g.cssText(12) + '; ' + g.makeCss(50, 260, 620, 90) + '; position:absolute; z-index:2;">Keys</button>');
+
+
 
     $("#menu_displayUp").click(function () {
         var thisCost = parseInt($('#menu_displayUp').attr("data-price"));
@@ -691,6 +723,25 @@ inv.createElements = function () {
             room10.btnclick("drawRoom");
         }
     });
+
+    $('.menu_inventory_grouping').click(function () {
+        let t = $(this).attr("data-val");
+        inv.page = 0;
+        if (t === "q") {
+            inv.display();
+            return;
+        }
+        let typeArray = [];
+        if (t === "r")
+            typeArray = ["r", "1", "2", "3"];
+        else if (t === "d")
+            typeArray = ["d"];
+        else
+            typeArray = [t];
+
+        inv.display(typeArray);
+    });
+
     $("#menu_displayAction").click(function () {
         var thisIType = $(this).attr("data-itype");
         var thisType = $(this).attr("data-type");

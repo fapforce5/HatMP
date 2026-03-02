@@ -103,12 +103,9 @@ sc.char = [
 
     { name: "red", display: "Red", image: "red.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true, hex: "" },
 
-    
-    
     { name: "brayden", display: "Brayden", image: "brayden.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: false, hex: "" },
 
     { name: "govlady", display: "Ms. Pixie", image: "govlady.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true, hex: "" },
-    
     
     { name: "daddy", display: "Daddy", image: "daddy.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, hex: "" },
 
@@ -120,25 +117,15 @@ sc.char = [
     { name: "jen", display: "Jen", image: "jen.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true, hex: "" },
     { name: "ubel", display: "Ubel", image: "ubel.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  hex: "" },
 
-
-    
-   
-
-
-    
     { name: "librarian", display: "The Librarian", image: "librarian.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true, hex: "#A86448" },
     { name: "crystal", display: "Crystal", image: "crystal.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true, hex: "" },
-
-    
     
     { name: "dollmaker", display: "Doll maker", image: "dollmaker.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, hex: "" },
 
-    
     { name: "clownqueen", display: "Clown", image: "clownQueen.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  hex: "" },
     { name: "futa1", display: "Fink", image: "futaYellow.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  hex: "" },
     { name: "futa2", display: "Frown", image: "futaRed.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  hex: "" },
     //{ name: "slime", display: "Slime Girl", image: "slime.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  hex: "" },
-
     
     { name: "a", display: "Aethelreda", image: "aethelreda.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, hex: "" },
     { name: "vag", display: "Slutty Slave", image: "cockgobbler.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, hex: "" },
@@ -146,8 +133,6 @@ sc.char = [
     { name: "sammi", display: "Sammi Olifant", image: "sammi.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, hex: "" },
     { name: "aurora", display: "Aurora Kirei", image: "sammi.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, hex: "" },
     //add her to sissy cave
-
-    
     
     { name: "photo", display: "Photographer", image: "photo.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: 0, p: true, hex: "" },
 
@@ -1520,6 +1505,8 @@ sc.charMission = [
                         { id: 4, txt: "You tried to touch my erect penis!", show: true, mStatus: 0, roomId: 750 },
                         { id: 5, txt: "Gift for my girl.", show: true, mStatus: 0, roomId: 750 },
                         { id: 6, txt: "Hand job is still a job.", show: true, mStatus: 0, roomId: 750 },
+                        { id: 7, txt: "Please don't touch my no no square", show: true, mStatus: 0, roomId: 750 },
+                        { id: 8, txt: "Wait for the day we can get married", show: true, mStatus: 0, roomId: 750 }
                     ]
             },
             {
@@ -1527,6 +1514,7 @@ sc.charMission = [
                     [
                         { id: 0, txt: "Betrayed him. Told Missy where he is", show: true, mStatus: 0, roomId: 200 },
                         { id: 1, txt: "I just don't want to date you.", show: true, mStatus: 0, roomId: 408 },
+                        { id: 2, txt: "You're a boy!", show: true, mStatus: 0, roomId: 750 },
                     ]
             },
         ]

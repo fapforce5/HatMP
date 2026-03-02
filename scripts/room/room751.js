@@ -62,6 +62,7 @@ room751.chatcatch = function (callback) {
             break;
         case "hgw10":
             inv.use("hornyGoatWeed", 10); 
+            inv.add("cavekey");
             nav.button({
                 "type": "btn",
                 "name": "cavekey",
@@ -134,7 +135,7 @@ room751.chat = function (chatID) {
                 "woman soon enough if that path is taken when it comes. Much will change from you that you " +
                 "are not yet aware of. There are many ways to greatness, you must find your own way. ";
         }
-        else if (sc.getMission("cult", "kidnap").notStarted()) {
+        else if (sc.getMission("cult", "kidnap").notStarted) {
             storyLine = "I see you have done well. You have found your path and are on the way to greatness. " +
                 "There is one more thing I see in your future, but I can't quite make it out yet. It is a " +
                 "surprise that will be revealed when the time is right. ";
@@ -201,7 +202,7 @@ room751.chat = function (chatID) {
             text: "*sniff* *sniff* What's that I smell? Is that Horny Goat Weed! Please I need it. Give " +
                 "me 10 and I'll give you something of great value. ",
             button: [
-                { chatID: 6, text: "Sure [Give her 10 Horny Goat Weeds]", callback: "hgw10" },
+                { chatID: -1, text: "Sure [Give her 10 Horny Goat Weeds]", callback: "hgw10" },
                 { chatID: -1, text: "Some other time.", callback: "reset" },
             ]
         },

@@ -308,6 +308,7 @@ missy.getcases = function () {
                         break;
                     case "case_elijah_boyfriend":
                         if (missy.cases[13].success && future.get("case_elijah_complete") === -1) {
+                            canDoCase = true;
                             caseList.push({
                                 caseId: i,
                                 active: true,
@@ -354,7 +355,7 @@ missy.getcases = function () {
                         }
                         break;
                     case "case_carnival":
-                        if (sissy.st[21].ach && missy.cases.complete) {
+                        if (sissy.st[21].ach) {
                             caseList.push({
                                 caseId: i,
                                 active: true,

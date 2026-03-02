@@ -2514,7 +2514,7 @@ room200.chat = function (chatID) {
                 speaker: "missy",
                 text: "This is the Carnal Union of Mortals, or CUM's castle, built in the 1700's by an eccentric railroad tycoon. " +
                     "It used to be an astounding piece of architecture, but in the 1800's the river changed direction and flooded " +
-                    "the entire plains it was built on and flooded the area forcing him to abandon it, where it's sat" +
+                    "the entire plains it was built on and flooded the area forcing him to abandon it, where it's sat " +
                     "for the last few hundred years. ",
                 button: [
                     { chatID: 174, text: "...", callback: "case_cult1" },

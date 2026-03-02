@@ -22,6 +22,12 @@ room325.main = function () {
         chat(51, 325);
         return;
     }
+    if (missy.cases[19].complete) {
+        nav.kill();
+        nav.bg("325_farm/dead.webp", "325_farm/dead_n.webp");
+        chat(52, 325);
+        return;
+    }
     if (g.isNight()) {
         if (missy.activecase().caseId === 19) {
             chat(40, 325);
@@ -773,6 +779,16 @@ room325.chat = function (chatID) {
                 "some manners. Boys take him away! ",
             button: [
                 { chatID: -1, text: "huh", callback: "room949" }
+            ]
+        },
+        {
+            chatID: 52,
+            speaker: "thinking",
+            text: "Damn shame what happened here. It's so quiet since the police arrested " + sc.n("rachel") +
+                " and all the farm hands then set those poor girls free. I guess there's nothing left here until " +
+                "someone buys up this place. ",
+            button: [
+                { chatID: -1, text: "...", callback: "leave" }
             ]
         },
     ];

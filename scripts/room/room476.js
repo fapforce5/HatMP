@@ -486,14 +486,6 @@ room476.btnclick = function (name) {
             }
             g.internal++;
             break;
-        case "case_cult1":
-            nav.bg("476_cabin/case_cult1.webp");
-            break;
-        case "case_cult2":
-            missy.set("activeCaseComplete", 1);
-            missy.caseComplete(22);
-            char.room(950);
-            break;
         default:
             break;
     }
@@ -799,6 +791,14 @@ room476.chatcatch = function (callback) {
             char.addtime(47);
             nav.kill();
             nav.bg("476_cabin/case_cult0.webp");
+            break;
+        case "case_cult1":
+            nav.bg("476_cabin/case_cult1.webp");
+            break;
+        case "case_cult2":
+            missy.set("activeCaseComplete", 1);
+            missy.caseComplete(22);
+            char.room(949);
             break;
         default:
             break;
@@ -1355,7 +1355,7 @@ room476.chat = function (chatID) {
                     "You're going to wish you came with me the first time! Hahaha! Get him! He's coming with " +
                     "us! ",
                 button: [
-                    { chatID: -1, text: "Wait!!", callback: "case_cult1" },
+                    { chatID: 59, text: "Wait!!", callback: "case_cult1" },
                 ]
             },
             {
