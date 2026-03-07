@@ -177,9 +177,17 @@ gv.init = function () {
         { n: "forestFastravel1", t: false, q: "bool" },
         { n: "forestFastravel2", t: false, q: "bool" },
 
+        { n: "cultDays", t: 0, q: "int" },
+        { n: "cultDayCounter", t: 0, q: "int" },
+        { n: "cultbrick", t: 0, q: "int" },
+        { n: "cultwork", t: 1, q: "int" },
+        { n: "cultLastClean", t: null, q: "date" },
+        { n: "cultMilkCounter", t: 0, q: "int" },
 
         //{ n: "jobConstWorkToday", t: 0, q: "int" },
         //---------------------------------check not used------------------------------
+
+
 
         { n: "reddoorloc", t: 1, q: "int" },
         
@@ -630,7 +638,6 @@ gv.init = function () {
         { id: 43, t: "pig", n: "sex", c: 0 },
         { id: 44, t: "plant", n: "sex", c: 0 },
     ];
-
 
     trophy.st = [
         { id: 0, display: "Wear panties for the first time. ", img: "panties.png", ach: false, group: "sissy" },

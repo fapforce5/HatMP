@@ -1,8 +1,10 @@
 ﻿//Room name
 var room949 = {};
 room949.main = function () {
+    g.map = null;
     char.addtime(257);
     chat(0, 949);
+    sc.show("cult");
     //var btnList = [
     //    {
     //        "type": "btn",
@@ -37,6 +39,22 @@ room949.chatcatch = function (callback) {
             break;
         case "c2":
             nav.bg("950_cell/cell3.jpg");
+            break;
+        case "c3":
+            nav.bg("950_cell/ubel0.webp");
+            break;
+        case "c4":
+            nav.bg("950_cell/ubel1.webp");
+            break;
+        case "c5":
+            nav.bg("950_cell/ubel2.webp");
+            break;
+        case "c6":
+            nav.bg("950_cell/ubel3.webp");
+            break;
+        case "start":
+            gv.set("cultLastClean", g.dt);
+            char.room(950);
             break;
         default:
             break;
@@ -76,7 +94,46 @@ room949.chat = function (chatID) {
             speaker: "thinking",
             text: "I'm in some kind of prison cell. *ugh* It stinks of mold and dust. I wonder how I get out of here. ",
             button: [
-                { chatID: 4, text: "...", callback: "c2" },
+                { chatID: 4, text: "...", callback: "c3" },
+            ]
+        },
+        {
+            chatID: 4,
+            speaker: "ubel",
+            text: "So Missy's lap dog has finally decided to join us? hehe. I told her that if she " +
+                "left us be, we would leave you be. That rat she wanted to bait was getting too close. " +
+                "Now all deals are over. You are now ours. I suggest you fall in line and " +
+                "show Missy what a true believer is or you will be delivered to her door step in " +
+                "small pieces. ",
+            button: [
+                { chatID: 5, text: "LET ME OUT! ", callback: "c4" },
+            ]
+        },
+        {
+            chatID: 5,
+            speaker: "ubel",
+            text: "Treat 'em like the rest. No more special favors for this one. ",
+            button: [
+                { chatID: 6, text: "Hey! I said let me out!", callback: "c5" },
+            ]
+        },
+        {
+            chatID: 6,
+            speaker: "cult",
+            text: "We've had our eye on you for a while, hehe. Yell all you want, there's no one " +
+                "to hear you whining. We'll be back tomorrow to start your day. Better get some rest while " +
+                "you can. ",
+            button: [
+                { chatID: 7, text: "Hey! I said let me out!", callback: "c6" },
+            ]
+        },
+        {
+            chatID: 7,
+            speaker: "thinking",
+            text: "I've been in some bad places, but this one. This one scares me. I've got to find " +
+                "a way out of here or I might be trapped here forever. Worse yet I may even die here. ",
+            button: [
+                { chatID: -1, text: "...", callback: "c7" },
             ]
         },
     ];

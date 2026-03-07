@@ -1,445 +1,602 @@
 ﻿//Room name
 
 //sissies get walked around like dogs on leashes
-
-
 var room950 = {};
 room950.main = function () {
     $('#room-menu').show();
     $('#room_footer').hide();
-    setTimeout(function () { $('#room_footer').hide(); }, 500);
-    if (sc.getstep("daria") < 2) {
-        $('#room-menu').hide();
+
+    if (g.pass === "endSleepyTime") {
+        g.pass = null;
+        gv.set("cultDayCounter", 0);
     }
-    if (g.internal.interval > 3) {
-        if (!g.internal.nightEvent) {
-            if (g.dt.getDay() === 5) {// && scc.get("cult").love > 90) {
-                g.internal.nightEvent = true;
-                nav.bg("950_cell/work0.jpg");
-                chat(104, 950);
-            }
-            else if (g.dt.getDay() === 2) {
-                g.internal.nightEvent = true;
-                nav.bg("950_cell/work0.jpg");
-                chat(123, 950);
-            }
-            else if (g.internal.constDayDirty > 3) {
-                g.internal.nightEvent = true;
-                nav.bg("950_cell/cell3.jpg");
-                zcl.kneel(400, 900, .4, "");
-                nav.button({
-                    "type": "img",
-                    "name": "cult",
-                    "left": 501,
-                    "top": 0,
-                    "width": 378,
-                    "height": 1080,
-                    "image": "950_cell/cult_side.png"
-                }, 950);
-                chat(44, 950);
-            }
-            else if (cl.getBodyHair() !== null) {
-                g.internal.nightEvent = true;
-                nav.killall();
-                nav.bg("950_cell/work0.jpg");
-                chat(102, 950);
-            }
-            else {
-                g.internal.nightEvent = true;
-                var cultLove = null;// scc.get("cult").love;
-                if (cultLove > 30 && g.internal.job === 1) {
-                    nav.bg("950_cell/work0.jpg");
-                    g.internal.job = 2;
-                    chat(121, 950);
-                }
-                else if (cultLove > 50 && g.internal.job === 2) {
-                    nav.bg("950_cell/work0.jpg");
-                    g.internal.job = 3;
-                    chat(122, 950);
-                }
-                //else if (!g.internal.wander && scc.get("cult").love > 85 && g.internal.chaple > 0) {
-                //    g.internal.wander = true;
-                //    nav.killall();
-                //    nav.bg("950_cell/work0.jpg");
-                //    chat(106, 950);
-                //}
-                else {
-                    nav.bg("950_cell/cell_dark.jpg");
-                    nav.button({
-                        "type": "btn",
-                        "name": "sleep",
-                        "title": "Sleep",
-                        "left": 994,
-                        "top": 685,
-                        "width": 684,
-                        "height": 103,
-                        "image": "950_cell/bed_night.png"
-                    }, 950);
-                }
-            }
-        }
-        else {
-            nav.bg("950_cell/cell_dark.jpg");
-            nav.button({
-                "type": "btn",
-                "name": "sleep",
-                "title": "Sleep",
-                "left": 994,
-                "top": 685,
-                "width": 684,
-                "height": 103,
-                "image": "950_cell/bed_night.png"
-            }, 950);
-        }
+
+    room950.btnclick("drawBG");
+    let cultDayCounter = gv.get("cultDayCounter");
+    switch (cultDayCounter) {
+        case 0: char.settime(9, g.rand(3, 51)); break;
+        case 1: char.settime(11, g.rand(3, 51)); break;
+        case 2: char.settime(13, g.rand(3, 51)); break;
+        case 3: char.settime(16, g.rand(3, 51)); break;
+        case 4: char.settime(19, g.rand(3, 51)); break;
+        case 5: char.settime(23, g.rand(3, 51)); break;
     }
-    else if (g.internal.interval === 3) {
-        g.internal.interval = 4;
-        if (g.internal.jo) {
-            nav.bg("950_cell/milk0.jpg");
-            chat(21, 950);
+    room950.btnclick("bars");
+
+    if (cultDayCounter === 4) {
+        nav.bg("950_cell/milk0.jpg"); 
+        if (gv.get("cultMilkCounter") > 0) {
+
         }
-        else {
-            if (g.internal.day === 0) {
-                nav.bg("950_cell/milk0.jpg");
-                chat(2, 950);
-            }
-            else {
-                nav.bg("950_cell/milk0.jpg");
-                chat(17, 950);
-            }
-        }
+        return;
+    }
+
+    nav.button({
+        "type": "btn",
+        "name": "nap",
+        "title": "Sleep",
+        "left": 994,
+        "top": 685,
+        "width": 684,
+        "height": 103,
+        "image": "950_cell/bed.png"
+    }, 950);
+
+    if (!daily.get("food")) {
+        nav.button({
+            "type": "btn",
+            "name": "food",
+            "title": "Eat some food",
+            "left": 1300,
+            "top": 920,
+            "width": 307,
+            "height": 93,
+            "image": "950_cell/food.png"
+        }, 950);
+    }
+
+    nav.button({
+        "type": "btn",
+        "name": "window",
+        "title": "Stare out the window",
+        "left": 119,
+        "top": 0,
+        "width": 234,
+        "height": 308,
+        "image": "950_cell/window.png"
+    }, 950);
+
+
+    if (inv.has("chisel")) {
+        $("#room-inv").show();
+        nav.button({
+            "type": "btn",
+            "name": "brick",
+            "title": "Loose Stone",
+            "left": 832,
+            "top": 511,
+            "width": 132,
+            "height": 79,
+            "image": "950_cell/brick.png"
+        }, 950);
     }
     else {
-        if (g.internal.jo) {
-            nav.bg("950_cell/celljo.jpg");
-        }
-        else if (g.internal.constDayDirty > 3) {
-            nav.bg("950_cell/cell3.jpg");
-        }
-        else if (g.internal.constDayDirty > 2) {
-            nav.bg("950_cell/cell2.jpg");
-        }
-        else if (g.internal.constDayDirty > 1) {
-            nav.bg("950_cell/cell1.jpg");
-        }
-        var btnList = [
-            {
-                "type": "btn",
-                "name": "nap",
-                "title": "Sleep",
-                "left": 994,
-                "top": 685,
-                "width": 684,
-                "height": 103,
-                "image": "950_cell/bed.png"
-            },
-            {
-                "type": "btn",
-                "name": "window",
-                "title": "Stare out the window",
-                "left": 119,
-                "top": 0,
-                "width": 234,
-                "height": 308,
-                "image": "950_cell/window.png"
-            }
-        ];
-        if (g.internal.day > 0) {
-            btnList.push({
-                "type": "btn",
-                "name": "cock",
-                "title": "Play with your pp",
-                "left": 1680,
-                "top": 150,
-                "width": 200,
-                "height": 150,
-                "image": "950_cell/cock.png"
-            });
-            btnList.push({
-                "type": "btn",
-                "name": "brick",
-                "title": "Loose Stone",
-                "left": 832,
-                "top": 511,
-                "width": 132,
-                "height": 79,
-                "image": "950_cell/brick.png"
-            });
-        }
-        if (g.internal.constDayDirty > 0) {
-            btnList.push({
-                "type": "btn",
-                "name": "clean",
-                "title": "Clean your cell",
-                "left": 374,
-                "top": 392,
-                "width": 398,
-                "height": 484,
-                "image": "950_cell/clean.png"
-            });
-        }
-        if (gv.get("energy") > 49) {
-            btnList.push({
-                "type": "btn",
-                "name": "squat",
-                "title": "Do Squats",
-                "left": 1480,
-                "top": 150,
-                "width": 200,
-                "height": 150,
-                "image": "950_cell/squat.png"
-            });
-            btnList.push({
-                "type": "btn",
-                "name": "pushup",
-                "title": "Do Pushups",
-                "left": 1280,
-                "top": 150,
-                "width": 200,
-                "height": 150,
-                "image": "950_cell/pushup.png"
-            });
-        }
-        if (g.internal.job > 0) {
-            btnList.push({
-                "type": "btn",
-                "name": "work",
-                "title": "Work Outside",
-                "left": 1080,
-                "top": 150,
-                "width": 200,
-                "height": 150,
-                "image": "950_cell/work.png"
-            });
-        }
-        if (!g.internal.food) {
-            btnList.push({
-                "type": "btn",
-                "name": "food",
-                "title": "Eat some food",
-                "left": 1509,
-                "top": 987,
-                "width": 307,
-                "height": 93,
-                "image": "950_cell/food.png"
-            });
-        }
-        if (g.internal.wander) {
-            btnList.push({
-                "type": "btn",
-                "name": "exit",
-                "title": "Work Outside",
-                "left": 880,
-                "top": 150,
-                "width": 200,
-                "height": 150,
-                "image": "950_cell/exit.png"
-            });
-        }
-            
-        $.each(btnList, function (i, v) {
-            nav.button(v, 950);
-        });
-        
+        $("#room-inv").hide();
     }
+
+    sc.select("icon_activity", "950_cell/icon_activity.webp", 0);
+    sc.select("icon_call", "950_cell/icon_call.webp", 1);
+
+    //if (sc.getstep("daria") < 2) {
+    //    $('#room-menu').hide();
+    //}
+    //if (g.internal.interval > 3) {
+    //    if (!g.internal.nightEvent) {
+    //        if (g.dt.getDay() === 5) {// && scc.get("cult").love > 90) {
+    //            g.internal.nightEvent = true;
+    //            nav.bg("950_cell/work0.jpg");
+    //            chat(104, 950);
+    //        }
+    //        else if (g.dt.getDay() === 2) {
+    //            g.internal.nightEvent = true;
+    //            nav.bg("950_cell/work0.jpg");
+    //            chat(123, 950);
+    //        }
+    //        else if (g.internal.constDayDirty > 3) {
+    //            g.internal.nightEvent = true;
+    //            nav.bg("950_cell/cell3.jpg");
+    //            zcl.kneel(400, 900, .4, "");
+    //            nav.button({
+    //                "type": "img",
+    //                "name": "cult",
+    //                "left": 501,
+    //                "top": 0,
+    //                "width": 378,
+    //                "height": 1080,
+    //                "image": "950_cell/cult_side.png"
+    //            }, 950);
+    //            chat(44, 950);
+    //        }
+    //        else if (cl.getBodyHair() !== null) {
+    //            g.internal.nightEvent = true;
+    //            nav.killall();
+    //            nav.bg("950_cell/work0.jpg");
+    //            chat(102, 950);
+    //        }
+    //        else {
+    //            g.internal.nightEvent = true;
+    //            var cultLove = null;// scc.get("cult").love;
+    //            if (cultLove > 30 && g.internal.job === 1) {
+    //                nav.bg("950_cell/work0.jpg");
+    //                g.internal.job = 2;
+    //                chat(121, 950);
+    //            }
+    //            else if (cultLove > 50 && g.internal.job === 2) {
+    //                nav.bg("950_cell/work0.jpg");
+    //                g.internal.job = 3;
+    //                chat(122, 950);
+    //            }
+    //            //else if (!g.internal.wander && scc.get("cult").love > 85 && g.internal.chaple > 0) {
+    //            //    g.internal.wander = true;
+    //            //    nav.killall();
+    //            //    nav.bg("950_cell/work0.jpg");
+    //            //    chat(106, 950);
+    //            //}
+    //            else {
+    //                nav.bg("950_cell/cell_dark.jpg");
+    //                nav.button({
+    //                    "type": "btn",
+    //                    "name": "sleep",
+    //                    "title": "Sleep",
+    //                    "left": 994,
+    //                    "top": 685,
+    //                    "width": 684,
+    //                    "height": 103,
+    //                    "image": "950_cell/bed_night.png"
+    //                }, 950);
+    //            }
+    //        }
+    //    }
+    //    else {
+    //        nav.bg("950_cell/cell_dark.jpg");
+    //        nav.button({
+    //            "type": "btn",
+    //            "name": "sleep",
+    //            "title": "Sleep",
+    //            "left": 994,
+    //            "top": 685,
+    //            "width": 684,
+    //            "height": 103,
+    //            "image": "950_cell/bed_night.png"
+    //        }, 950);
+    //    }
+    //}
+    //else if (g.internal.interval === 3) {
+    //    g.internal.interval = 4;
+    //    if (g.internal.jo) {
+    //        nav.bg("950_cell/milk0.jpg");
+    //        chat(21, 950);
+    //    }
+    //    else {
+    //        if (g.internal.day === 0) {
+    //            nav.bg("950_cell/milk0.jpg");
+    //            chat(2, 950);
+    //        }
+    //        else {
+    //            nav.bg("950_cell/milk0.jpg");
+    //            chat(17, 950);
+    //        }
+    //    }
+    //}
+    //else {
+    //    if (g.internal.jo) {
+    //        nav.bg("950_cell/celljo.jpg");
+    //    }
+    //    else if (g.internal.constDayDirty > 3) {
+    //        nav.bg("950_cell/cell3.jpg");
+    //    }
+    //    else if (g.internal.constDayDirty > 2) {
+    //        nav.bg("950_cell/cell2.jpg");
+    //    }
+    //    else if (g.internal.constDayDirty > 1) {
+    //        nav.bg("950_cell/cell1.jpg");
+    //    }
+    //    var btnList = [
+    //        {
+    //            "type": "btn",
+    //            "name": "nap",
+    //            "title": "Sleep",
+    //            "left": 994,
+    //            "top": 685,
+    //            "width": 684,
+    //            "height": 103,
+    //            "image": "950_cell/bed.png"
+    //        },
+    //        {
+    //            "type": "btn",
+    //            "name": "window",
+    //            "title": "Stare out the window",
+    //            "left": 119,
+    //            "top": 0,
+    //            "width": 234,
+    //            "height": 308,
+    //            "image": "950_cell/window.png"
+    //        }
+    //    ];
+    //    if (g.internal.day > 0) {
+    //        btnList.push({
+    //            "type": "btn",
+    //            "name": "cock",
+    //            "title": "Play with your pp",
+    //            "left": 1680,
+    //            "top": 150,
+    //            "width": 200,
+    //            "height": 150,
+    //            "image": "950_cell/cock.png"
+    //        });
+    //        btnList.push({
+    //            "type": "btn",
+    //            "name": "brick",
+    //            "title": "Loose Stone",
+    //            "left": 832,
+    //            "top": 511,
+    //            "width": 132,
+    //            "height": 79,
+    //            "image": "950_cell/brick.png"
+    //        });
+    //    }
+    //    if (g.internal.constDayDirty > 0) {
+    //        btnList.push({
+    //            "type": "btn",
+    //            "name": "clean",
+    //            "title": "Clean your cell",
+    //            "left": 374,
+    //            "top": 392,
+    //            "width": 398,
+    //            "height": 484,
+    //            "image": "950_cell/clean.png"
+    //        });
+    //    }
+    //    if (gv.get("energy") > 49) {
+    //        btnList.push({
+    //            "type": "btn",
+    //            "name": "squat",
+    //            "title": "Do Squats",
+    //            "left": 1480,
+    //            "top": 150,
+    //            "width": 200,
+    //            "height": 150,
+    //            "image": "950_cell/squat.png"
+    //        });
+    //        btnList.push({
+    //            "type": "btn",
+    //            "name": "pushup",
+    //            "title": "Do Pushups",
+    //            "left": 1280,
+    //            "top": 150,
+    //            "width": 200,
+    //            "height": 150,
+    //            "image": "950_cell/pushup.png"
+    //        });
+    //    }
+    //    if (g.internal.job > 0) {
+    //        btnList.push({
+    //            "type": "btn",
+    //            "name": "work",
+    //            "title": "Work Outside",
+    //            "left": 1080,
+    //            "top": 150,
+    //            "width": 200,
+    //            "height": 150,
+    //            "image": "950_cell/work.png"
+    //        });
+    //    }
+    //    if (!g.internal.food) {
+    //        btnList.push({
+    //            "type": "btn",
+    //            "name": "food",
+    //            "title": "Eat some food",
+    //            "left": 1509,
+    //            "top": 987,
+    //            "width": 307,
+    //            "height": 93,
+    //            "image": "950_cell/food.png"
+    //        });
+    //    }
+    //    if (g.internal.wander) {
+    //        btnList.push({
+    //            "type": "btn",
+    //            "name": "exit",
+    //            "title": "Work Outside",
+    //            "left": 880,
+    //            "top": 150,
+    //            "width": 200,
+    //            "height": 150,
+    //            "image": "950_cell/exit.png"
+    //        });
+    //    }
+
+    //    $.each(btnList, function (i, v) {
+    //        nav.button(v, 950);
+    //    });
+
+    //}
 };
 // g.pass = { day: 0, interval: 0, cleaned: false };
 room950.btnclick = function (name) {
     switch (name) {
-        case "sleep":
-            nav.killall();
-            g.internal.nightEvent = false;
-            g.internal.interval = 0;
-            g.internal.constDayDirty++;
-            g.internal.day++;
-            g.internal.jo = false;
-            g.pass = 950;
-            g.internal.food = false;
-            char.room(28);
-            break;
-        case "nap":
-            nav.killall();
-            nav.bg("28_transformation/sleep.jpg");
-            gv.mod("energy", 50);
-            g.roomTimeout = setTimeout(function () {
-                room950.btnclick("increment");
-            }, 1000);
-            break;
-        case "food":
-            chat(74, 950);
-            break;
-        case "squat":
-            nav.killall();
-            nav.bg("950_cell/pubg.jpg");
-            nav.button({
+        case "bars":
+            var cult950 = sc.get("cult");
+            var cultbrick = gv.get("cultbrick");
+            cult950 = cult950.l * 100 + cult950.c;
+            nav.progressBar({
                 "type": "img",
-                "name": "pu",
-                "left": 160,
-                "top": 0,
-                "width": 1200,
-                "height": 1080,
-                "image": "950_cell/squat.gif"
-            }, 950);
-            chat(0, 950);
-            break;
-        case "pushup":
-            nav.killall();
-            nav.bg("950_cell/pubg.jpg");
-            nav.button({
-                "type": "img",
-                "name": "pu",
-                "left": 197,
-                "top": 0,
+                "name": "trust",
+                "left": 400,
+                "top": 30,
                 "width": 1000,
-                "height": 1080,
-                "image": "950_cell/pu.gif"
-            }, 950);
-            chat(1, 950);
-            break;
-        case "window":
-            if (g.internal.day < 1 || daily.get("cindy")) {
-                nav.killall();
-                nav.bg("950_cell/view.jpg");
-                chat(27, 950);
-            }
-            else {
-                daily.set("cindy", false);
-                var dariaStep = sc.getstep("daria");
-                if (dariaStep === 0) {
-                    nav.killall();
-                    nav.bg("950_cell/viewd.jpg");
-                    chat(28, 950);
-                }
-                else if (dariaStep === 1) {
-                    nav.killall();
-                    nav.bg("950_cell/viewd.jpg");
-                    chat(36, 950);
-                }
-                else if (dariaStep === 2) {
-                    if (g.internal.brick > 0) {
-                        nav.killall();
-                        nav.bg("950_cell/viewd.jpg");
-                        chat(50, 950);
-                    }
-                    else {
-                        nav.killall();
-                        nav.bg("950_cell/view.jpg");
-                        chat(27, 950);
-                    }
-                }
-                else if (dariaStep === 3) {
-                    nav.killall();
-                    nav.bg("950_cell/viewd.jpg");
-                    chat(52, 950);
-                }
-                else {
-                    nav.killall();
-                    nav.bg("950_cell/view.jpg");
-                    chat(27, 950);
-                }
+                "height": 10,
+                "color": (cult950 < 300 ? "red" : "green"),
+                "maxVal": 1000,
+                "val": cult950,
+                "title": "Cult's Trust"
+            }, 322);
+            if (cultbrick > 0 && cultbrick < 100) {
+                nav.progressBar({
+                    "type": "img",
+                    "name": "trust",
+                    "left": 400,
+                    "top": 60,
+                    "width": 1000,
+                    "height": 10,
+                    "color": "brown",
+                    "maxVal": 100,
+                    "val": cultbrick,
+                    "title": "Brick"
+                }, 322);
             }
             break;
         case "increment":
-            g.internal.interval++;
+            gv.mod("cultDayCounter", 1);
             char.room(950);
             break;
+        case "drawBG":
+            var cultLastClean = gv.get("cultLastClean");
+            if (gv.get("cultLastClean") === null) {
+                cultLastClean = g.dt;
+                gv.set("cultLastClean", g.dt);
+            }
+            var cultLastCleanNumDays = g.diffDatesByDays(cultLastClean, g.dt);
+            nav.bg("950_cell/cell" + (cultLastCleanNumDays > 3 ? 3 : cultLastCleanNumDays) + ".jpg");
+            if (daily.get("cumwall950")) {
+                nav.button({
+                    "type": "img",
+                    "name": "cell",
+                    "left": 0,
+                    "top": 0,
+                    "width": 1920,
+                    "height": 1080,
+                    "image": "950_cell/cell_cum.webp"
+                }, 950);
+            }
+            if (cultLastCleanNumDays > 0) {
+                nav.button({
+                    "type": "btn",
+                    "name": "clean",
+                    "title": "Clean your cell",
+                    "left": 374,
+                    "top": 392,
+                    "width": 398,
+                    "height": 484,
+                    "image": "950_cell/clean.png"
+                }, 950);
+            }
+            break;
         case "clean":
-            g.internal.constDayDirty = 0;
-            nav.killall();
-            nav.bg("950_cell/clean.jpg");
-            if (g.internal.jo) {
-                nav.killall();
-                nav.bg("950_cell/celljo.jpg");
-                chat(43, 950);
+            if (gv.get("energy") < 20) {
+                chat(49, 950); 
             }
             else {
-                g.setTimeout = setTimeout(function () {
-                    room950.btnclick("increment");
+                gv.mod("energy", -20);
+                nav.kill();
+                daily.set("cumwall950", false);
+                gv.set("cultLastClean", g.dt);
+                room950.btnclick("drawBG");
+                chat(52, 950);
+            }
+            break;
+        case "icon_activity":
+            nav.killbuttonStartsWith("icon_"); 
+            sc.select("icon_pushup", "950_cell/icon_pushup.webp", 0);
+            sc.select("icon_squats", "950_cell/icon_squats.webp", 1);
+            sc.select("icon_jackoff", "950_cell/icon_jackoff.webp", 2);
+            sc.select("icon_cancel", "950_cell/icon_cancel.webp", 3);
+            break;
+        case "icon_cancel":
+            nav.killbuttonStartsWith("icon_"); 
+            sc.select("icon_activity", "950_cell/icon_activity.webp", 0);
+            sc.select("icon_call", "950_cell/icon_call.webp", 1);
+            break;
+        case "icon_jackoff":
+            nav.kill();
+            nav.bg("950_cell/jack0_" + gender.pronoun("f") + ".webp"); 
+            nav.next("icon_jackoff1");
+            break;
+        case "icon_jackoff1":
+            nav.kill();
+            nav.bg("950_cell/jack1_" + gender.pronoun("f") + ".webp");
+            cl.doCum();
+            daily.set("cumwall950");
+            chat(51, 950);
+            break;
+        case "icon_pushup":
+            if (gv.get("energy") < 50) {
+                chat(49, 950);
+            }
+            else {
+                nav.killall();
+                levels.mod("strength", 35);
+                levels.mod("fitness", 15);
+                gv.mod("energy", -50);
+                nav.bg("950_cell/pubg.jpg");
+                nav.button({
+                    "type": "img",
+                    "name": "pu",
+                    "left": 197,
+                    "top": 0,
+                    "width": 1000,
+                    "height": 1080,
+                    "image": "950_cell/pu.gif"
+                }, 950);
+                chat(50, 950);
+            }
+            break;
+        case "icon_squats":
+            if (gv.get("energy") < 50) {
+                chat(49, 950);
+            }
+            else {
+                nav.killall();
+                levels.mod("strength", 15);
+                levels.mod("fitness", 35);
+                gv.mod("energy", -50);
+                nav.bg("950_cell/pubg.jpg");
+                nav.button({
+                    "type": "img",
+                    "name": "pu",
+                    "left": 160,
+                    "top": 0,
+                    "width": 1200,
+                    "height": 1080,
+                    "image": "950_cell/squat.gif"
+                }, 950);
+                chat(50, 950);
+            }
+            break;
+        case "icon_jackoff":
+
+            break;
+        case "food":
+            chat(0, 950);
+            break;
+        case "nap":
+            nav.killall();
+            if (gv.get("cultDayCounter") < 5) {
+                g.pass = null;
+                gv.mod("cultDayCounter", 1);
+                nav.bg("950_cell/nap.webp");
+                gv.mod("energy", 50);
+                g.roomTimeout = setTimeout(function () {
+                    char.room(950);
                 }, 1000);
             }
+            else {
+                g.pass = 950;
+                char.room(28);
+            }
             break;
-        case "cock":
-            nav.killall();
-            nav.bg("950_cell/jobg.jpg");
-            nav.button({
-                "type": "btn",
-                "name": "jo",
-                "left": 823,
-                "top": 590,
-                "width": 631,
-                "height": 490,
-                "image": "950_cell/jo.png"
-            }, 950);
+        case "foodCarrot":
+        case "foodBanana":
+        case "foodCucumber":
+        case "foodApple":
+            daily.set("food");
+            if (levels.analSize(inv.anal(name)).canTake) {
+                nav.killall();
+                gv.mod('dildobutt', 1);
+                levels.anal(inv.anal(name));
+                nav.bg("950_cell/" + name + "_stuff.jpg");
+                chat(3, 950);
+            }
+            else {
+                chat(2, 950);
+            }
             break;
-        case "jo":
-            nav.killall();
-            nav.bg("950_cell/jobg1.jpg");
-            cl.doCum();
-            g.internal.jo = true;
-            chat(42, 950);
-            break;
-        case "eatit":
-            nav.bg("950_cell/eatit2.jpg");
-            zcl.displayMain(400, 150, .4, "", true);
-            chat(46, 950);
-            break;
-        case "work":
-            nav.killall();
-            nav.bg("950_cell/work0.jpg");
-            chat(900, 950);
-            break;
-        case "exit":
-            nav.killall();
-            char.room(952);
+        case "window":
+            if (daily.get("daria")) {
+                nav.killall();
+                nav.bg("950_cell/view.jpg");
+                chat(5, 950);
+            }
+            else {
+                switch (sc.taskGetStep("daria", "cult")) {
+                    case -1:
+                    case 0:
+                        nav.killall();
+                        sc.show("daria");
+                        daily.set("daria");
+                        sc.startMission("daria", "cult");
+                        sc.completeMissionTask("daria", "cult", 0);
+                        nav.bg("950_cell/viewd.jpg");
+                        if (sc.getMission("daria", "cabin").notStarted)
+                            chat(6, 950);
+                        else
+                            chat(7, 950);
+                        break;
+                    case 1:
+                        nav.killall();
+                        daily.set("daria");
+                        nav.bg("950_cell/viewd.jpg");
+                        sc.completeMissionTask("daria", "cult", 1);
+                        chat(13, 950);
+                        break;
+                    case 2:
+                        nav.killall();
+                        daily.set("daria");
+                        inv.add("chisel");
+                        gv.set("cultbrick", 1);
+                        nav.bg("950_cell/viewd.jpg");
+                        sc.completeMissionTask("daria", "cult", 2);
+                        chat(20, 950);
+                        break;
+                    default:
+                        nav.killall();
+                        nav.bg("950_cell/view.jpg");
+                        chat(5, 950);
+                        break;
+                }
+            }
             break;
         case "brick":
-            if (g.internal.brick < 4) {
-                if (inv.has("chisel")) {
-                    if (gv.get("bodyLevel") < 2) {
-                        chat(49, 950);
-                    }
-                    else {
-                        g.internal.brick++;
-                        nav.killall();
-                        nav.bg("950_cell/chisel.jpg");
-                        chat(53, 950);
-                    }
+            if (sc.getMission("bodhi", "cult").notStarted) {
+                if (gv.get("energy") < 60) {
+                    chat(22, 950);
                 }
+                var brickStrength = (levels.get("strength").l * 3) + 10;
+                if (brickStrength > 50) {
+                    brickStrength = 51;
+                }
+                gv.mod("cultbrick", brickStrength);
+                gv.mod("energy", -60);
+                room950.btnclick("bars");
 
+                if (gv.get("cultbrick") < 100) {
+                    nav.bg("950_cell/chisel.jpg");
+                    chat(21, 950);
+                }
                 else {
-                    g.internal.brick = 1;
-                    chat(48, 950);
+                    sc.startMission("bodhi", "cult");
+                    sc.show("bodhi");
+                    sc.completeMissionTask("bodhi", "cult", 0);
+                    nav.bg("950_cell/b1.jpg");
+                    chat(23, 950);
                 }
             }
             else {
-                var bodhiStep = sc.getstep("bodhi");
-                nav.killall();
-                switch (bodhiStep) {
-                    case 0:
-                        g.internal.brick++;
-                        nav.bg("950_cell/chisel.jpg");
-                        chat(54, 950);
-                        break;
+                switch (sc.taskGetStep("bodhi", "cult")) {
                     case 1:
-                        zcl.displayMain(-200, -1000, .8, "", true);
+                        sc.completeMissionTask("bodhi", "cult", 1);
                         nav.bg("950_cell/b3.jpg");
-                        chat(61, 950);
+                        chat(29, 950);
                         break;
                     case 2:
-                        nav.bg("950_cell/bb0.jpg");
-                        chat(68, 950);
+                        sc.completeMissionTask("bodhi", "cult", 2);
+                        nav.bg("950_cell/b3.jpg");
+                        chat(36, 950);
                         break;
                     case 3:
-                        zcl.displayMain(-200, -1200, .8, "", true);
+                        sc.completeMissionTask("bodhi", "cult", 3);
                         nav.bg("950_cell/bb30.jpg");
-                        chat(90, 950);
-                        break;
-                    case 4:
-                        zcl.displayMain(-200, -1000, .8, "", true);
-                        nav.bg("950_cell/b2.jpg");
-                        chat(105, 950);
-                        break;
-                    default:
+                        chat(42, 950);
                         break;
                 }
             }
@@ -447,7 +604,7 @@ room950.btnclick = function (name) {
         case "bb0":
             nav.killall();
             nav.bg("950_cell/bb1.jpg");
-            chat(69, 950);
+            chat(37, 950);
             break;
         case "bb2":
             nav.killbutton("bb2");
@@ -461,32 +618,161 @@ room950.btnclick = function (name) {
                 "image": "950_cell/bb2.png",
                 "title": "Eat it sissy"
             }, 950);
-            chat(71, 950);
+            chat(39, 950);
             break;
         case "bb3":
             nav.killall();
             nav.bg("950_cell/b2.jpg");
-            //scc.love("bodhi", 10);
-            chat(72, 950);
+            sc.modLevel("bodhi", 100, 10); 
+            chat(40, 950);
             break;
-        case "foodCarrot":
-        case "foodBanana":
-        case "foodCucumber":
-        case "foodApple":
+        //case "sleep":
+        //    nav.killall();
+        //    g.internal.nightEvent = false;
+        //    g.internal.interval = 0;
+        //    g.internal.constDayDirty++;
+        //    g.internal.day++;
+        //    g.internal.jo = false;
+        //    g.pass = 950;
+        //    g.internal.food = false;
+        //    char.room(28);
+        //    break;
+       
+        
+        //case "squat":
+        //    nav.killall();
+        //    nav.bg("950_cell/pubg.jpg");
+        //    nav.button({
+        //        "type": "img",
+        //        "name": "pu",
+        //        "left": 160,
+        //        "top": 0,
+        //        "width": 1200,
+        //        "height": 1080,
+        //        "image": "950_cell/squat.gif"
+        //    }, 950);
+        //    chat(0, 950);
+        //    break;
+        //case "pushup":
+        //    nav.killall();
+        //    nav.bg("950_cell/pubg.jpg");
+        //    nav.button({
+        //        "type": "img",
+        //        "name": "pu",
+        //        "left": 197,
+        //        "top": 0,
+        //        "width": 1000,
+        //        "height": 1080,
+        //        "image": "950_cell/pu.gif"
+        //    }, 950);
+        //    chat(1, 950);
+        //    break;
+        
+       
+        //case "clean":
+        //    g.internal.constDayDirty = 0;
+        //    nav.killall();
+        //    nav.bg("950_cell/clean.jpg");
+        //    if (g.internal.jo) {
+        //        nav.killall();
+        //        nav.bg("950_cell/celljo.jpg");
+        //        chat(43, 950);
+        //    }
+        //    else {
+        //        g.setTimeout = setTimeout(function () {
+        //            room950.btnclick("increment");
+        //        }, 1000);
+        //    }
+        //    break;
+        //case "cock":
+        //    nav.killall();
+        //    nav.bg("950_cell/jobg.jpg");
+        //    nav.button({
+        //        "type": "btn",
+        //        "name": "jo",
+        //        "left": 823,
+        //        "top": 590,
+        //        "width": 631,
+        //        "height": 490,
+        //        "image": "950_cell/jo.png"
+        //    }, 950);
+        //    break;
+        //case "jo":
+        //    nav.killall();
+        //    nav.bg("950_cell/jobg1.jpg");
+        //    cl.doCum();
+        //    g.internal.jo = true;
+        //    chat(42, 950);
+        //    break;
+        //case "eatit":
+        //    nav.bg("950_cell/eatit2.jpg");
+        //    zcl.displayMain(400, 150, .4, "", true);
+        //    chat(46, 950);
+        //    break;
+        //case "work":
+        //    nav.killall();
+        //    nav.bg("950_cell/work0.jpg");
+        //    chat(900, 950);
+        //    break;
+        //case "exit":
+        //    nav.killall();
+        //    char.room(952);
+        //    break;
+        //case "brick":
+        //    if (g.internal.brick < 4) {
+        //        if (inv.has("chisel")) {
+        //            if (gv.get("bodyLevel") < 2) {
+        //                chat(49, 950);
+        //            }
+        //            else {
+        //                g.internal.brick++;
+        //                nav.killall();
+        //                nav.bg("950_cell/chisel.jpg");
+        //                chat(53, 950);
+        //            }
+        //        }
 
-            //update this!
-            if (levels.analSize(inv.anal(name)).c < 3) {
-                nav.killall();
-                gv.mod('dildobutt', 1);
-                cl.stretchButt(name, null);
-                nav.bg("950_cell/" + name + "_stuff.jpg");
-                g.internal.food = true;
-                chat(77, 950);
-            }
-            else {
-                chat(76, 950);
-            }
-            break;
+        //        else {
+        //            g.internal.brick = 1;
+        //            chat(48, 950);
+        //        }
+        //    }
+        //    else {
+        //        var bodhiStep = sc.getstep("bodhi");
+        //        nav.killall();
+        //        switch (bodhiStep) {
+        //            case 0:
+        //                g.internal.brick++;
+        //                nav.bg("950_cell/chisel.jpg");
+        //                chat(54, 950);
+        //                break;
+        //            case 1:
+        //                zcl.displayMain(-200, -1000, .8, "", true);
+        //                nav.bg("950_cell/b3.jpg");
+        //                chat(61, 950);
+        //                break;
+        //            case 2:
+        //                nav.bg("950_cell/bb0.jpg");
+        //                chat(68, 950);
+        //                break;
+        //            case 3:
+        //                zcl.displayMain(-200, -1200, .8, "", true);
+        //                nav.bg("950_cell/bb30.jpg");
+        //                chat(90, 950);
+        //                break;
+        //            case 4:
+        //                zcl.displayMain(-200, -1000, .8, "", true);
+        //                nav.bg("950_cell/b2.jpg");
+        //                chat(105, 950);
+        //                break;
+        //            default:
+        //                break;
+        //        }
+        //    }
+        //    break;
+       
+        
+        
         default:
             break;
     }
@@ -494,390 +780,416 @@ room950.btnclick = function (name) {
 
 room950.chatcatch = function (callback) {
     switch (callback) {
-        case "finishSquats":
-            gv.mod("leg", 34);
-            gv.mod("fitness", 20);
-            gv.mod("energy", -50);
-            room950.btnclick("increment");
-            break;
-        case "finsihPushups":
-            gv.mod("body", 34);
-            gv.mod("fitness", 20);
-            gv.mod("energy", -50);
-            room950.btnclick("increment");
-            break;
-        case "milk1":
-            nav.bg("950_cell/milk1.jpg");
-            break;
-        case "milk2":
-            nav.bg("950_cell/milk2.jpg");
-            break;
-        case "milk3":
-            nav.bg("950_cell/milk3.jpg");
-            break;
-        case "milk4":
-            nav.bg("950_cell/milk4.jpg");
-            break;
-        case "milk5":
-            nav.bg("950_cell/milk5.jpg");
-            break;
-        case "milk6":
-            nav.bg("950_cell/milk6.jpg");
-            break;
-        case "milk7":
-            cl.doCum(true);
-            nav.bg("950_cell/milk7.jpg");
-            break;
-        case "milk8":
-            nav.bg("950_cell/milk8.jpg");
-            break;
-        case "milk9":
-            nav.bg("950_cell/milk9.jpg");
-            break;
-        case "milk10":
-            //scc.love("cult", 2, 50);
-            room950.btnclick("increment");
-            break;
-        case "jo0":
-            nav.killall();
-            nav.bg("950_cell/jobg1.jpg");
-            break;
-        case "jo1":
-            nav.bg("950_cell/cellgas.jpg");
-            break;
-        case "jo2":
-            nav.bg("205_computerWork/blackBg.jpg");
-            g.internal.constDayDirty = 0;
-            g.internal.day++;
-            g.internal.constDayDirty = 0;
-            g.internal.jo = false;
-            char.changeMenu("hide", false, true);
-            //scc.love("cult", -20, 100);
-            g.roomTimeout = setTimeout(function () {
-                nav.bg("951_box/box.jpg");
-                chat(24, 950);
-            }, 1000);
-            break;
-        case "box":
-            g.internal.interval++;
-            char.room(951);
-            break;
-        case "resetWindow":
-            nav.bg("950_cell/view.jpg");
-            break;
-        case "daria1":
-            sc.setstep("daria", 1);
-            room950.btnclick("increment");
-            break;
-        case "daria2":
-            sc.setstep("daria", 2);
-            g.displaymenu = true;
-            gv.set("displayMenu", true);
-            $('#room-menu').show();
-            room950.btnclick("increment");
-            break;
-        case "daria3":
-            sc.setstep("daria", 3);
-            room950.btnclick("increment");
-            break;
-        case "daria4":
-            sc.setstep("daria", 4);
-            inv.add("chisel");
-            room950.btnclick("increment");
-            break;
-        case "reset":
-            room950.btnclick("increment");
-            break;
-        case "clean1":
-            nav.killall();
-            nav.button({
-                "type": "tongue",
-                "name": "eatit",
-                "left": 888,
-                "top": 623,
-                "width": 204,
-                "height": 203,
-                "image": "950_cell/eatit1.png",
-                "title": "Eat the pussy"
-            }, 950);
-            nav.bg("950_cell/eatit1.jpg");
-            //scc.love("cult", -20, 100);
-            break;
-        case "clean3":
-            nav.killall();
-            nav.bg("950_cell/eatit3.jpg");
-            gv.mod('giveOralFemale', 1);
-            break;
-        case "clean4":
-            room950.btnclick("clean");
-            break;
-        case "brick1":
-            zcl.displayMain(-200, -1000, .8, "", true);
-            nav.bg("950_cell/b1.jpg");
-            break;
-        case "b2":
-            nav.bg("950_cell/b2.jpg");
-            break;
         case "b1":
-            sc.setstep("bodhi", 1);
-            room950.btnclick("increment");
-            break;
+        case "b2":
+        case "b3":
         case "b4":
-            nav.bg("950_cell/b4.jpg");
-            break;
-        case "bodhi2":
-            sc.setstep("bodhi", 2);
-            room950.btnclick("increment");
-            break;
-        case "bb0":
-            nav.button({
-                "type": "btn",
-                "name": "bb0",
-                "left": 998,
-                "top": 302,
-                "width": 652,
-                "height": 561,
-                "image": "950_cell/bb0.png",
-                "title": "poke his butt"
-            }, 950);
-            break;
-        case "bb2":
-            nav.killall();
-            nav.bg("950_cell/bb2.jpg");
-            nav.button({
-                "type": "tongue",
-                "name": "bb2",
-                "left": 1205,
-                "top": 539,
-                "width": 186,
-                "height": 186,
-                "image": "950_cell/bb2.png",
-                "title": "Eat it sissy"
-            }, 950);
-            break;
-        case "bb4":
-            
-            sc.setstep("bodhi", 3);
-            room950.btnclick("increment");
-            break;
-        case "eat0":
-            g.internal.food = true;
-            gv.mod("energy", 100);
-            break;
-        case "food0":
-            nav.killall();
-            char.changeMenu("hide", false, true);
-            if(cl.c.butthole < 3)
-                nav.bg("950_cell/food0.jpg");
-            else
-                nav.bg("950_cell/food1.jpg");
-            nav.button({
-                "type": "btn",
-                "name": "foodCarrot",
-                "left": 50,
-                "top": 907,
-                "width": 687,
-                "height": 173 ,
-                "image": "950_cell/foodCarrot.png",
-                "title": "Put a carrot in your butt"
-            }, 950);
-            nav.button({
-                "type": "btn",
-                "name": "foodBanana",
-                "left": 50,
-                "top": 601,
-                "width": 471,
-                "height": 295,
-                "image": "950_cell/foodBanana.png",
-                "title": "Feed your hungy hole a banana"
-            }, 950);
-            nav.button({
-                "type": "btn",
-                "name": "foodCucumber",
-                "left": 50,
-                "top": 400,
-                "width": 770,
-                "height": 207,
-                "image": "950_cell/foodCucumber.png",
-                "title": "Shove a cucumber in sissy pussy"
-            }, 950);
-            nav.button({
-                "type": "btn",
-                "name": "foodApple",
-                "left": 50,
-                "top": 0,
-                "width": 371,
-                "height": 403,
-                "image": "950_cell/foodApple.png",
-                "title": "What are you doing? Slut!"
-            }, 950);
-            break;
-        case "food1":
-            gv.mod("dildobutt", 1);
-            break;
-        case "mp1":
-        case "mp2":
-        case "mp3":
-        case "mp4":
-        case "mp5":
-        case "mp6":
-        case "mp7":
-        case "mp8":
-        case "mp9":
+        case "b5":
+        case "bb31":
+        case "milk1":
+        case "milk2":
+        case "milk3":
+        case "milk4":
+        case "milk5":
+        case "milk6":
+        case "milk7":
+        case "milk8":
+        case "milk9":
             nav.bg("950_cell/" + callback + ".jpg");
             break;
-        case "mp10":
-            nav.bg("950_cell/mp10.jpg");
-            g.internal.constDayDirty = 4;
-            zcl.assup(700, 400, .6, "");
-            break;
-        case "mp11":
-            //scc.love('cult', 15, 100);
-            gv.mod("pissedonMale", 3);
+        case "increment":
             room950.btnclick("increment");
             break;
-        case "shower1":
-            nav.killall();
-            nav.bg("950_cell/shower1.jpg");
+            case "eat0":
+                daily.set("food");
+                gv.mod("energy", 100);
             break;
-        case "shower2":
-            nav.bg("950_cell/shower2.jpg");
+            case "food0":
+                nav.killall();
+                char.changeMenu("hide", false, true);
+                if(cl.c.butthole < 3)
+                    nav.bg("950_cell/food0.jpg");
+                else
+                    nav.bg("950_cell/food1.jpg");
+                nav.button({
+                    "type": "btn",
+                    "name": "foodCarrot",
+                    "left": 50,
+                    "top": 907,
+                    "width": 687,
+                    "height": 173 ,
+                    "image": "950_cell/foodCarrot.png",
+                    "title": "Put a carrot in your butt"
+                }, 950);
+                nav.button({
+                    "type": "btn",
+                    "name": "foodBanana",
+                    "left": 50,
+                    "top": 601,
+                    "width": 471,
+                    "height": 295,
+                    "image": "950_cell/foodBanana.png",
+                    "title": "Feed your hungy hole a banana"
+                }, 950);
+                nav.button({
+                    "type": "btn",
+                    "name": "foodCucumber",
+                    "left": 50,
+                    "top": 400,
+                    "width": 770,
+                    "height": 207,
+                    "image": "950_cell/foodCucumber.png",
+                    "title": "Shove a cucumber in sissy pussy"
+                }, 950);
+                nav.button({
+                    "type": "btn",
+                    "name": "foodApple",
+                    "left": 50,
+                    "top": 0,
+                    "width": 371,
+                    "height": 403,
+                    "image": "950_cell/foodApple.png",
+                    "title": "What are you doing? Slut!"
+                }, 950);
             break;
-        case "shower3":
-            nav.bg("950_cell/shower3.jpg");
+        case "bb0":
+                nav.button({
+                    "type": "btn",
+                    "name": "bb0",
+                    "left": 998,
+                    "top": 302,
+                    "width": 652,
+                    "height": 561,
+                    "image": "950_cell/bb0.png",
+                    "title": "poke his butt"
+                }, 950);
             break;
-        case "shower4":
-            nav.bg("950_cell/shower4.jpg");
-            break;
-        case "shower5":
-            nav.bg("950_cell/shower5.jpg");
-            break;
-        case "shower6":
-            //scc.love('cult', 10, 100);
-            room950.btnclick("increment");
-            break;
-        case "cancelJob":
-            //scc.love("cult", -10, 100);
-            break;
-        case "bb31":
-            zcl.kill();
-            nav.bg("950_cell/bb31.jpg");
-            break;
-        case "bb32":
-            sc.setstep("bodhi", 4);
-            g.internal.job = 1;
-            room950.btnclick("increment");
-            break;
-        case "shave1":
-            cl.c.cumface = false;
-            cl.nude();
-            zcl.displayMain(0, 400, .22, "shower", false);
-            cl.display();
-            nav.bg("950_cell/shave.jpg");
-            break;
-        case "shave2":
-            cl.shave();
-            cl.display();
-            room950.btnclick("increment");
-            break;
-        case "ceremony":
-            char.room(953);
-            break;
-        case "sweepHallway1":
-            nav.killall();
-            nav.bg("950_cell/sweepHallway1.jpg");
-            break;
-        case "sweepHallway1end":
-            //scc.love("cult", 5, 100);
-            room950.btnclick("increment");
-            break;
-        case "sweepHallway2":
-            nav.bg("950_cell/sweepHallway2.jpg");
-            break;
-        case "sweepHallway3":
-            nav.bg("950_cell/sweepHallway3.jpg");
-            break;
-        case "sweepHallway4":
-            nav.bg("950_cell/sweepHallway4.jpg");
-            break;
-        case "sweepHallway5":
-            if (sc.getEvent("daria", -1) && !sc.getEvent("daria", -2)) {
-                if (cl.c.butthole < 3) {
-                    chat(114, 950);
-                    nav.bg("950_cell/sweepHallway5.jpg");
-                }
-                else {
-                    chat(115, 950);
-                    nav.bg("950_cell/sweepHallway5x.jpg");
-                }
-            }
-            else {
-                nav.bg("950_cell/sweepHallway5.jpg");
-                chat(112, 950);
-            }
-            break;
-        case "sweepHallway6":
-            nav.bg("950_cell/sweepHallway6.jpg");
-            break;
-        case "sweepHallway6x":
-            nav.bg("950_cell/sweepHallway6x.jpg");
-            break;
-        case "sweepHallway6end":
-            gv.mod("giveOralMale", 1);
-            gv.mod("loadSwollowed", 1);
-            //scc.love("cult", 12, 100);
-            room950.btnclick("increment");
-            break;
-        case "sweepHallway7":
-            nav.bg("950_cell/sweepHallway7.jpg");
-            break;
-        case "sweepHallway8":
-            nav.bg("950_cell/sweepHallway8.jpg");
-            break;
-        case "sweepHallway9":
-            sc.setstep("daria", -2);
-            room950.btnclick("increment");
-            break;
-        case "sleepforNight":
-            room950.btnclick("increment");
-            break;
-        case "t0":
-            nav.killall();
-            nav.bg("950_cell/t0.jpg");
-            break;
-        case "t1":
-            nav.bg("950_cell/t1.jpg");
-            break;
-        case "t2":
-            nav.bg("950_cell/t2.jpg");
-            break;
-        case "t3":
-            nav.bg("950_cell/t3.jpg");
-            break;
-        case "t4":
-            nav.bg("950_cell/t4.jpg");
-            break;
-        case "t4x":
-            nav.bg("950_cell/t4x.jpg");
-            break;
-        case "t5":
-            nav.bg("950_cell/t5.jpg");
-            break;
-        case "t6":
-            g.internal.nightEvent = false;
-            cl.c.butthole += .35;
-            char.addDays(1);
-            char.settime(8, 0);
-            gv.set("energy", 0);
-            g.internal.nightEvent = false;
-            g.internal.interval = 1;
-            g.internal.constDayDirty++;
-            g.internal.day++;
-            g.internal.jo = false;
-            g.pass = 950;
-            g.internal.food = false;
-            char.room(950);
-            break;
+            case "bb2":
+                nav.killall();
+                nav.bg("950_cell/bb2.jpg");
+                nav.button({
+                    "type": "tongue",
+                    "name": "bb2",
+                    "left": 1205,
+                    "top": 539,
+                    "width": 186,
+                    "height": 186,
+                    "image": "950_cell/bb2.png",
+                    "title": "Eat it sissy"
+                }, 950);
+                break;
+            case "resetWindow":
+                nav.bg("950_cell/view.jpg");
+                break;
+        //case "finishSquats":
+        //    gv.mod("leg", 34);
+        //    gv.mod("fitness", 20);
+        //    gv.mod("energy", -50);
+        //    room950.btnclick("increment");
+        //    break;
+        
+    //    case "finsihPushups":
+    //        gv.mod("body", 34);
+    //        gv.mod("fitness", 20);
+    //        gv.mod("energy", -50);
+    //        room950.btnclick("increment");
+    //        break;
+    //    case "milk1":
+    //        nav.bg("950_cell/milk1.jpg");
+    //        break;
+    //    case "milk2":
+    //        nav.bg("950_cell/milk2.jpg");
+    //        break;
+    //    case "milk3":
+    //        nav.bg("950_cell/milk3.jpg");
+    //        break;
+    //    case "milk4":
+    //        nav.bg("950_cell/milk4.jpg");
+    //        break;
+    //    case "milk5":
+    //        nav.bg("950_cell/milk5.jpg");
+    //        break;
+    //    case "milk6":
+    //        nav.bg("950_cell/milk6.jpg");
+    //        break;
+    //    case "milk7":
+    //        cl.doCum(true);
+    //        nav.bg("950_cell/milk7.jpg");
+    //        break;
+    //    case "milk8":
+    //        nav.bg("950_cell/milk8.jpg");
+    //        break;
+    //    case "milk9":
+    //        nav.bg("950_cell/milk9.jpg");
+    //        break;
+    //    case "milk10":
+    //        //scc.love("cult", 2, 50);
+    //        room950.btnclick("increment");
+    //        break;
+    //    case "jo0":
+    //        nav.killall();
+    //        nav.bg("950_cell/jobg1.jpg");
+    //        break;
+    //    case "jo1":
+    //        nav.bg("950_cell/cellgas.jpg");
+    //        break;
+    //    case "jo2":
+    //        nav.bg("205_computerWork/blackBg.jpg");
+    //        g.internal.constDayDirty = 0;
+    //        g.internal.day++;
+    //        g.internal.constDayDirty = 0;
+    //        g.internal.jo = false;
+    //        char.changeMenu("hide", false, true);
+    //        //scc.love("cult", -20, 100);
+    //        g.roomTimeout = setTimeout(function () {
+    //            nav.bg("951_box/box.jpg");
+    //            chat(24, 950);
+    //        }, 1000);
+    //        break;
+    //    case "box":
+    //        g.internal.interval++;
+    //        char.room(951);
+    //        break;
+   
+    //    case "daria1":
+    //        sc.setstep("daria", 1);
+    //        room950.btnclick("increment");
+    //        break;
+    //    case "daria2":
+    //        sc.setstep("daria", 2);
+    //        g.displaymenu = true;
+    //        gv.set("displayMenu", true);
+    //        $('#room-menu').show();
+    //        room950.btnclick("increment");
+    //        break;
+    //    case "daria3":
+    //        sc.setstep("daria", 3);
+    //        room950.btnclick("increment");
+    //        break;
+    //    case "daria4":
+    //        sc.setstep("daria", 4);
+    //        inv.add("chisel");
+    //        room950.btnclick("increment");
+    //        break;
+    //    case "reset":
+    //        char.room(950);
+    //        break;
+    //    case "clean1":
+    //        nav.killall();
+    //        nav.button({
+    //            "type": "tongue",
+    //            "name": "eatit",
+    //            "left": 888,
+    //            "top": 623,
+    //            "width": 204,
+    //            "height": 203,
+    //            "image": "950_cell/eatit1.png",
+    //            "title": "Eat the pussy"
+    //        }, 950);
+    //        nav.bg("950_cell/eatit1.jpg");
+    //        //scc.love("cult", -20, 100);
+    //        break;
+    //    case "clean3":
+    //        nav.killall();
+    //        nav.bg("950_cell/eatit3.jpg");
+    //        gv.mod('giveOralFemale', 1);
+    //        break;
+    //    case "clean4":
+    //        room950.btnclick("clean");
+    //        break;
+    //    case "brick1":
+    //        zcl.displayMain(-200, -1000, .8, "", true);
+    //        nav.bg("950_cell/b1.jpg");
+    //        break;
+    //    case "b2":
+    //        nav.bg("950_cell/b2.jpg");
+    //        break;
+    //    case "b1":
+    //        sc.setstep("bodhi", 1);
+    //        room950.btnclick("increment");
+    //        break;
+    //    case "b4":
+    //        nav.bg("950_cell/b4.jpg");
+    //        break;
+    //    case "bodhi2":
+    //        sc.setstep("bodhi", 2);
+    //        room950.btnclick("increment");
+    //        break;
+    //    
+   
+    //    case "bb4":
+            
+    //        sc.setstep("bodhi", 3);
+    //        room950.btnclick("increment");
+    //        break;
+   
+   
+    //    case "food1":
+    //        gv.mod("dildobutt", 1);
+    //        break;
+    //    case "mp1":
+    //    case "mp2":
+    //    case "mp3":
+    //    case "mp4":
+    //    case "mp5":
+    //    case "mp6":
+    //    case "mp7":
+    //    case "mp8":
+    //    case "mp9":
+    //        nav.bg("950_cell/" + callback + ".jpg");
+    //        break;
+    //    case "mp10":
+    //        nav.bg("950_cell/mp10.jpg");
+    //        g.internal.constDayDirty = 4;
+    //        zcl.assup(700, 400, .6, "");
+    //        break;
+    //    case "mp11":
+    //        //scc.love('cult', 15, 100);
+    //        gv.mod("pissedonMale", 3);
+    //        room950.btnclick("increment");
+    //        break;
+    //    case "shower1":
+    //        nav.killall();
+    //        nav.bg("950_cell/shower1.jpg");
+    //        break;
+    //    case "shower2":
+    //        nav.bg("950_cell/shower2.jpg");
+    //        break;
+    //    case "shower3":
+    //        nav.bg("950_cell/shower3.jpg");
+    //        break;
+    //    case "shower4":
+    //        nav.bg("950_cell/shower4.jpg");
+    //        break;
+    //    case "shower5":
+    //        nav.bg("950_cell/shower5.jpg");
+    //        break;
+    //    case "shower6":
+    //        //scc.love('cult', 10, 100);
+    //        room950.btnclick("increment");
+    //        break;
+    //    case "cancelJob":
+    //        //scc.love("cult", -10, 100);
+    //        break;
+    //    case "bb31":
+    //        zcl.kill();
+    //        nav.bg("950_cell/bb31.jpg");
+    //        break;
+    //    case "bb32":
+    //        sc.setstep("bodhi", 4);
+    //        g.internal.job = 1;
+    //        room950.btnclick("increment");
+    //        break;
+    //    case "shave1":
+    //        cl.c.cumface = false;
+    //        cl.nude();
+    //        zcl.displayMain(0, 400, .22, "shower", false);
+    //        cl.display();
+    //        nav.bg("950_cell/shave.jpg");
+    //        break;
+    //    case "shave2":
+    //        cl.shave();
+    //        cl.display();
+    //        room950.btnclick("increment");
+    //        break;
+    //    case "ceremony":
+    //        char.room(953);
+    //        break;
+    //    case "sweepHallway1":
+    //        nav.killall();
+    //        nav.bg("950_cell/sweepHallway1.jpg");
+    //        break;
+    //    case "sweepHallway1end":
+    //        //scc.love("cult", 5, 100);
+    //        room950.btnclick("increment");
+    //        break;
+    //    case "sweepHallway2":
+    //        nav.bg("950_cell/sweepHallway2.jpg");
+    //        break;
+    //    case "sweepHallway3":
+    //        nav.bg("950_cell/sweepHallway3.jpg");
+    //        break;
+    //    case "sweepHallway4":
+    //        nav.bg("950_cell/sweepHallway4.jpg");
+    //        break;
+    //    case "sweepHallway5":
+    //        if (sc.getEvent("daria", -1) && !sc.getEvent("daria", -2)) {
+    //            if (cl.c.butthole < 3) {
+    //                chat(114, 950);
+    //                nav.bg("950_cell/sweepHallway5.jpg");
+    //            }
+    //            else {
+    //                chat(115, 950);
+    //                nav.bg("950_cell/sweepHallway5x.jpg");
+    //            }
+    //        }
+    //        else {
+    //            nav.bg("950_cell/sweepHallway5.jpg");
+    //            chat(112, 950);
+    //        }
+    //        break;
+    //    case "sweepHallway6":
+    //        nav.bg("950_cell/sweepHallway6.jpg");
+    //        break;
+    //    case "sweepHallway6x":
+    //        nav.bg("950_cell/sweepHallway6x.jpg");
+    //        break;
+    //    case "sweepHallway6end":
+    //        gv.mod("giveOralMale", 1);
+    //        gv.mod("loadSwollowed", 1);
+    //        //scc.love("cult", 12, 100);
+    //        room950.btnclick("increment");
+    //        break;
+    //    case "sweepHallway7":
+    //        nav.bg("950_cell/sweepHallway7.jpg");
+    //        break;
+    //    case "sweepHallway8":
+    //        nav.bg("950_cell/sweepHallway8.jpg");
+    //        break;
+    //    case "sweepHallway9":
+    //        sc.setstep("daria", -2);
+    //        room950.btnclick("increment");
+    //        break;
+    //    case "sleepforNight":
+    //        room950.btnclick("increment");
+    //        break;
+    //    case "t0":
+    //        nav.killall();
+    //        nav.bg("950_cell/t0.jpg");
+    //        break;
+    //    case "t1":
+    //        nav.bg("950_cell/t1.jpg");
+    //        break;
+    //    case "t2":
+    //        nav.bg("950_cell/t2.jpg");
+    //        break;
+    //    case "t3":
+    //        nav.bg("950_cell/t3.jpg");
+    //        break;
+    //    case "t4":
+    //        nav.bg("950_cell/t4.jpg");
+    //        break;
+    //    case "t4x":
+    //        nav.bg("950_cell/t4x.jpg");
+    //        break;
+    //    case "t5":
+    //        nav.bg("950_cell/t5.jpg");
+    //        break;
+    //    case "t6":
+    //        g.internal.nightEvent = false;
+    //        cl.c.butthole += .35;
+    //        char.addDays(1);
+    //        char.settime(8, 0);
+    //        gv.set("energy", 0);
+    //        g.internal.nightEvent = false;
+    //        g.internal.interval = 1;
+    //        g.internal.constDayDirty++;
+    //        g.internal.day++;
+    //        g.internal.jo = false;
+    //        g.pass = 950;
+    //        g.internal.food = false;
+    //        char.room(950);
+    //        break;
         default:
             break;
     }
@@ -914,33 +1226,457 @@ room950.chat = function (chatID) {
             {
                 chatID: 0,
                 speaker: "thinking",
-                text: "Finish my squats. ",
+                text: "It's nice that they at least feed me. ",
                 button: [
-                    { chatID: -1, text: "...", callback: "finishSquats" }
+                    { chatID: 1, text: "Eat the food", callback: "eat0" },
+                    { chatID: -1, text: "Play with the food", callback: "food0" },
+                    { chatID: -1, text: "cancel", callback: "" }
                 ]
             },
             {
                 chatID: 1,
                 speaker: "thinking",
-                text: "Finish my pushups. ",
+                text: "Mmmmm sure is good!",
                 button: [
-                    { chatID: -1, text: "...", callback: "finsihPushups" }
+                    { chatID: -1, text: "...", callback: "increment" }
                 ]
             },
             {
                 chatID: 2,
-                speaker: "cult",
-                text: "Are you ready to give your offering?",
+                speaker: "thinking",
+                text: "That's too big for my poor tight asshole. Maybe something smaller. ",
                 button: [
-                    { chatID: 3, text: "My offering?", callback: "" }
+                    { chatID: -1, text: "...", callback: "" }
                 ]
             },
             {
                 chatID: 3,
+                speaker: "thinking",
+                text: "That feels good. I needed something in my hole. ",
+                button: [
+                    { chatID: -1, text: "Finish", callback: "increment" },
+                    { chatID: 4, text: "Eat the food you just stuffed in your asshole", callback: "food1" }
+                ]
+            },
+            {
+                chatID: 4,
+                speaker: "thinking",
+                text: "I'm such a dirty dirty whore. I mean a really filthy fucking pig whore. There is no level I won't degrade myself " +
+                    "to. ",
+                button: [
+                    { chatID: -1, text: "Finish", callback: "increment" },
+                ]
+            },
+            {
+                chatID: 5,
+                speaker: "thinking",
+                text: "Nothing here.",
+                button: [
+                    { chatID: -1, text: "Stop Looking", callback: "increment" }
+                ]
+            },
+            {
+                chatID: 6,
+                speaker: "me",
+                text: "Oh! Hi.",
+                button: [
+                    { chatID: 8, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 7,
+                speaker: "daria",
+                text: "Hey dumbass. I thought I told you not to come here. You got what you deserve. Bye! ",
+                button: [
+                    { chatID: 8, text: "Wait. Don't take off. I've been taken prisoner and I need help. ", callback: "" }
+                ]
+            },
+            {
+                chatID: 8,
+                speaker: "daria",
+                text: "I heard. What did you do to get imprisoned anyway? Are you the one that pooped on the cafeteria floor? ",
+                button: [
+                    { chatID: 9, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 9,
+                speaker: "thinking",
+                text: "Can I talk to her. If she's out here she's obviously in the cult, but she's wearing normal clothes. I don't really " +
+                    "have a choice. I guess I can trust her, but not too much. Also who would poop on a cafeteria floor?",
+                button: [
+                    { chatID: 10, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 10,
+                speaker: "me",
+                text: "Oh gross, no. I would never poop in public. I just need to get out! ",
+                button: [
+                    { chatID: 11, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 11,
+                speaker: "daria",
+                text: "*Scoff* You must think I'm pretty dumb. Have fun in the cell. Bye",
+                button: [
+                    { chatID: 12, text: "Wait. Come back, I didn't get your name. ", callback: "resetWindow" }
+                ]
+            },
+            {
+                chatID: 12,
+                speaker: "thinking",
+                text: "That was weird. I wonder what she's doing out there. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "increment" }
+                ]
+            },
+            {
+                chatID: 13,
+                speaker: "daria",
+                text: "You again. If you wern't locked in a cell I would assume you're a stalker. ",
+                button: [
+                    { chatID: 14, text: "Oh hahaha. Hi. So what are you doing out here? ", callback: "" }
+                ]
+            },
+            {
+                chatID: 14,
+                speaker: "daria",
+                text: "I need fresh air and a sense of normalcy. The cult is entertaining at times, but can get a bit tedious. ",
+                button: [
+                    { chatID: 15, text: "Yeah it can. Want to trade places? ", callback: "" }
+                ]
+            },
+            {
+                chatID: 15,
+                speaker: "daria",
+                text: "Oh hahaha. You almost got me. I almost totally let you out. Almost. So I was asking around about you. Are you " +
+                    sc.n("me") + "?",
+                button: [
+                    { chatID: 16, text: "Yes, that's me. ", callback: "" }
+                ]
+            },
+            {
+                chatID: 16,
+                speaker: "daria",
+                text: "I know your " + sc.n("landlord") + "!",
+                button: [
+                    { chatID: 17, text: "Really?", callback: "" }
+                ]
+            },
+            {
+                chatID: 17,
+                speaker: "daria",
+                text: "Yes, I'm " + sc.n("daria") + ". I worked at the Sperm Bank a few years ago with her. " +
+                    "You've really put yourself into a mess you know. ",
+                button: [
+                    { chatID: 18, text: "Oh, I do", callback: "" }
+                ]
+            },
+            {
+                chatID: 18,
+                speaker: "daria",
+                text: "I wish there was something I could do, but there's so much security all over. ",
+                button: [
+                    { chatID: 19, text: "There is something. Can you get my stuff. Also a pick axe or something to break away this stone maybe?", callback: "" }
+                ]
+            },
+            {
+                chatID: 19,
+                speaker: "daria",
+                text: "I'll see what I can do.",
+                button: [
+                    { chatID: -1, text: "Thanks!", callback: "increment" }
+                ]
+            },
+            {
+                chatID: 20,
+                speaker: "daria",
+                text: "*psst* I got your bag. I also slipped a little gift in there for you; a chisel I found laying around. Maybe you can use it to " +
+                    "break out. I've got to run, I don't want them to see me helping you. Also you didn't get that from me if you get caught! ",
+                button: [
+                    { chatID: -1, text: "I will not talk; Bye.", callback: "increment" }
+                ]
+            },
+            {
+                chatID: 21,
+                speaker: "thinking",
+                text: "Working it... So damn hard! ",
+                button: [
+                    { chatID: -1, text: "...", callback: "increment" }
+                ]
+            },
+            {
+                chatID: 22,
+                speaker: "thinking",
+                text: "I'm too tired to chip away at that brick now. ",
+                button: [
+                    { chatID: -1, text: "[Need 60 Energy]", callback: "" }
+                ]
+            },
+            {
+                chatID: 23,
+                speaker: "me",
+                text: "Hello?",
+                button: [
+                    { chatID: 24, text: "...", callback: "b2" }
+                ]
+            },
+            {
+                chatID: 24,
+                speaker: "bodhi",
+                text: "Oh hay my dude! What is up! Are you in the here too?",
+                button: [
+                    { chatID: 25, text: "Oh hi and yes I am here too?", callback: "" }
+                ]
+            },
+            {
+                chatID: 25,
+                speaker: "bodhi",
+                text: "Totally awesome! Am I right? I get a blow-y every day and they gime me a bed and free grub! Best time " +
+                    "ever!",
+                button: [
+                    { chatID: 26, text: "But aren't you trapped in there?", callback: "" }
+                ]
+            },
+            {
+                chatID: 26,
+                speaker: "bodhi",
+                text: "Trapped? No, way José. Why would they trap us? This is the best thing ever! ",
+                button: [
+                    { chatID: 27, text: "Oh. I'm trapped. How do I get out?", callback: "" }
+                ]
+            },
+            {
+                chatID: 27,
+                speaker: "bodhi",
+                text: "Oh totally lame. Have you tried being awesome and not being a douche? Just enjoy the stay",
+                button: [
+                    { chatID: 28, text: "Groan. I need to get out. ", callback: "" }
+                ]
+            },
+            {
+                chatID: 28,
+                speaker: "bodhi",
+                text: "No can do! I'm going to catch some Z's. Take is sleazy! ",
+                button: [
+                    { chatID: -1, text: "Oh, yeah. Totally bro, sure. ", callback: "increment" }
+                ]
+            },
+            {
+                chatID: 29,
+                speaker: "me",
+                text: "*whisper* Hey " + sc.n("bodhi") + ". Over here.",
+                button: [
+                    { chatID: 30, text: "...", callback: "b4" }
+                ]
+            },
+            {
+                chatID: 30,
+                speaker: "bodhi",
+                text: "Huh? Oh, you again. What's up?",
+                button: [
+                    { chatID: 31, text: "Do you still want to stay here forever?", callback: "b2" }
+                ]
+            },
+            {
+                chatID: 31,
+                speaker: "bodhi",
+                text: "Oh no way dude. Forever is so long. It's cool for now. ",
+                button: [
+                    { chatID: 32, text: "But you're trapped in here and you have no choice. ", callback: "" }
+                ]
+            },
+            {
+                chatID: 32,
+                speaker: "bodhi",
+                text: "I'm trapped in the best place. You should try being good so they let you out. I'll show you around. ",
+                button: [
+                    { chatID: 33, text: "Grrr. ok. How do I get out. ", callback: "" }
+                ]
+            },
+            {
+                chatID: 33,
+                speaker: "bodhi",
+                text: "It's so easy dude. Just clean your cell and give them your cum. How do you not do that?",
+                button: [
+                    { chatID: 34, text: "Fine! I'll give that a try. ", callback: "" }
+                ]
+            },
+            {
+                chatID: 34,
+                speaker: "bodhi",
+                text: "Cool. Just learn to enjoy it here.  ",
+                button: [
+                    { chatID: 35, text: "Enjoy it? I'm trapped!", callback: "" }
+                ]
+            },
+            {
+                chatID: 35,
+                speaker: "bodhi",
+                text: "Hey Bodhisattva the path to enlightenment is through inner peace. You have to accept there is no fight, just " +
+                    "mellow and allow the pleasure. To earn their trust, you must be trustworthy. ",
+                button: [
+                    { chatID: -1, text: "Fine", callback: "increment" }
+                ]
+            },
+            {
+                chatID: 36,
+                speaker: "thinking",
+                text: "He doens't know I can see him. His butt is right there. Should I call out, or maybe I can surprise him..",
+                button: [
+                    { chatID: -1, text: "Surprise him", callback: "bb0" },
+                    { chatID: 41, text: "Call out", callback: "b2" }
+                ]
+            },
+            {
+                chatID: 37,
+                speaker: "bodhi",
+                text: "<span class='hl-pink'>MOAN</span>",
+                button: [
+                    { chatID: 38, text: "?", callback: "" }
+                ]
+            },
+            {
+                chatID: 38,
+                speaker: "bodhi",
+                text: "OOooo yeah. Lick it.",
+                button: [
+                    { chatID: -1, text: "...", callback: "bb2" }
+                ]
+            },
+            {
+                chatID: 39,
+                speaker: "bodhi",
+                text: "<span class='hl-pink'>Hahah Again!</span>",
+                button: [
+                    { chatID: -1, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 40,
+                speaker: "bodhi",
+                text: "I love a good sissy ass licking! It's totally sweet. I think we just became friends!",
+                button: [
+                    { chatID: 41, text: "Sweet", callback: "" }
+                ]
+            },
+            {
+                chatID: 41,
+                speaker: "bodhi",
+                text: "So I was talking to my owner. She says she may be able to help you, but you have to get on the cults good " +
+                    "side. Just lay low and do what they say. ",
+                button: [
+                    { chatID: -1, text: "Yeah, got it. Cool", callback: "increment" }
+                ]
+            },
+            {
+                chatID: 42,
+                speaker: "thinking",
+                text: "Oh! What's going on here?",
+                button: [
+                    { chatID: 43, text: "...", callback: "bb31" }
+                ]
+            },
+            {
+                chatID: 43,
+                speaker: "daria",
+                text: "Are you trying to peek at us? We like putting on a show don't we?",
+                button: [
+                    { chatID: 44, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 44,
+                speaker: "bodhi",
+                text: "Oh totally. I love to share our experience with others. Can " + sc.n("me") + " come over and play? " +
+                    "I told him to be a good. ",
+                button: [
+                    { chatID: 45, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 45,
+                speaker: "daria",
+                text: "Yes my toy. We do love sharing, however you're locked in your cell. We'll have to change that. You'll " +
+                    "find that if you behave and get the cult to trust you, you'll get more freedom. I'll tell my friends to " +
+                    "give you a chance to work jobs outside your cell. ",
+                button: [
+                    { chatID: 46, text: "Oh yes!", callback: "" }
+                ]
+            },
+            {
+                chatID: 46,
+                speaker: "daria",
+                text: "Behave yourself keep a low profile, and I'll work on a way to get you out. It will probably take some time. " +
+                    "But if your a good slut we may be able to invite you over for some fun. ",
+                button: [
+                    { chatID: 47, text: "Sweet!", callback: "" }
+                ]
+            },
+            {
+                chatID: 47,
+                speaker: "daria",
+                text: "No put that brick back before you get caught. I've got to finish off my little toy. ",
+                button: [
+                    { chatID: 48, text: "ok *sad face*", callback: "" }
+                ]
+            },
+            {
+                chatID: 48,
+                speaker: "thinking",
+                text: "If I want to work outside the cell I have to call the guard over. If I'm good I'll be able to get more freedoms. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "increment" }
+                ]
+            },
+            {
+                chatID: 49,
+                speaker: "thinking",
+                text: "Too tired to do that. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 50,
+                speaker: "thinking",
+                text: "Gotta get in shape to get out of here!",
+                button: [
+                    { chatID: -1, text: "...", callback: "increment" }
+                ]
+            },
+            {
+                chatID: 51,
+                speaker: "thinking",
+                text: "*whew* I needed that!",
+                button: [
+                    { chatID: -1, text: "...", callback: "increment" }
+                ]
+            },
+            {
+                chatID: 52,
+                speaker: "thinking",
+                text: "All clean!",
+                button: [
+                    { chatID: -1, text: "...", callback: "increment" }
+                ]
+            },
+            {
+                chatID: 53,
+                speaker: "cult",
+                text: "Are you ready to give your offering?",
+                button: [
+                    { chatID: 54, text: "My offering?", callback: "" }
+                ]
+            },
+            {
+                chatID: 54,
                 speaker: "cult",
                 text: "Yes. We all must do our part to bring the coming of Azreal, and you must do your part. Now come. ",
                 button: [
-                    { chatID: 4, text: "[Follow her]", callback: "milk1" }
+                    { chatID: 55, text: "[Follow her]", callback: "milk1" }
                 ]
             },
             {
@@ -1048,6 +1784,80 @@ room950.chat = function (chatID) {
                     { chatID: -1, text: "...", callback: "milk10" }
                 ]
             },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            {
+                chatID: 0,
+                speaker: "thinking",
+                text: "Finish my squats. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "finishSquats" }
+                ]
+            },
+            {
+                chatID: 1,
+                speaker: "thinking",
+                text: "Finish my pushups. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "finsihPushups" }
+                ]
+            },
+           
             {
                 chatID: 17,
                 speaker: "cult",
@@ -1128,130 +1938,9 @@ room950.chat = function (chatID) {
                     { chatID: -1, text: "...", callback: "box" }
                 ]
             },
-            {
-                chatID: 27,
-                speaker: "thinking",
-                text: "Nothing here.",
-                button: [
-                    { chatID: -1, text: "Stop Looking", callback: "reset" }
-                ]
-            },
-            {
-                chatID: 28,
-                speaker: "me",
-                text: "Oh! Hi.",
-                button: [
-                    { chatID: 29, text: "...", callback: "" }
-                ]
-            },
-            {
-                chatID: 29,
-                speaker: "random",
-                text: "I'm not supposed to talk to you. ",
-                button: [
-                    { chatID: 30, text: "Wait. Don't take off. I've been taken prisoner and I need help. ", callback: "" }
-                ]
-            },
-            {
-                chatID: 30,
-                speaker: "random",
-                text: "I heard. What did you do to get imprisoned anyway? Are you the one that pooped on the cafeteria floor? ",
-                button: [
-                    { chatID: 31, text: "...", callback: "" }
-                ]
-            },
-            {
-                chatID: 31,
-                speaker: "thinking",
-                text: "Can I talk to her. If she's out here she's obviously in the cult, but she's wearing normal clothes. I don't really " +
-                    "have a choice. I guess I can trust her, but not too much. Also who would poop on a cafeteria floor?",
-                button: [
-                    { chatID: 32, text: "...", callback: "" }
-                ]
-            },
-            {
-                chatID: 32,
-                speaker: "me",
-                text: "Oh gross, no. I would never poop in public. I was just passing a note to Jen. ",
-                button: [
-                    { chatID: 33, text: "...", callback: "" }
-                ]
-            },
-            {
-                chatID: 33,
-                speaker: "random",
-                text: "Ugh. She has the depth of an inflatable pool. You wern't trying to ask her out were you? She's incredibly loyal to " +
-                    "Ubel who treats her like a lap dog that he can fuck. ",
-                button: [
-                    { chatID: 34, text: "No, no no. Just trying to learn more about this place. ", callback: "" }
-                ]
-            },
-            {
-                chatID: 34,
-                speaker: "random",
-                text: "*Scoff* You must think I'm pretty dumb. Have fun in the cell. Bye",
-                button: [
-                    { chatID: 35, text: "Wait. Come back, I didn't get your name. ", callback: "resetWindow" }
-                ]
-            },
-            {
-                chatID: 35,
-                speaker: "thinking",
-                text: "That was weird. I wonder what she's doing out there. ",
-                button: [
-                    { chatID: -1, text: "...", callback: "daria1" }
-                ]
-            },
-            {
-                chatID: 36,
-                speaker: "random",
-                text: "You again. If you wern't locked in a cell I would assume you're a stalker. ",
-                button: [
-                    { chatID: 37, text: "Oh hahaha. Hi. So what are you doing out here? ", callback: "" }
-                ]
-            },
-            {
-                chatID: 37,
-                speaker: "random",
-                text: "I need fresh air and a sense of normalcy. The cult is entertaining at times, but can get a bit tedious. ",
-                button: [
-                    { chatID: 38, text: "Yeah it can. Want to trade places? ", callback: "" }
-                ]
-            },
-            {
-                chatID: 38,
-                speaker: "random",
-                text: "Oh hahaha. You almost got me. I almost totally let you out. Almost. So I was asking around about you. Are you " +
-                    sc.n("me") + "?",
-                button: [
-                    { chatID: 39, text: "Yes, that's me. ", callback: "" }
-                ]
-            },
-            {
-                chatID: 39,
-                speaker: "random",
-                text: "I know your " + sc.n("landlord") + "!",
-                button: [
-                    { chatID: 40, text: "Really?", callback: "" }
-                ]
-            },
-            {
-                chatID: 40,
-                speaker: "daria",
-                text: "Yes, I'm " + sc.n("daria") + ". I worked with her. You've really put yourself into a mess you know. ",
-                button: [
-                    { chatID: 41, text: "Oh I do", callback: "" }
-                ]
-            },
-            {
-                chatID: 41,
-                speaker: "daria",
-                text: "Here's your phone. You won't be able to get reception out here, no towers. I've got to go before someone " +
-                    "catches me. ",
-                button: [
-                    { chatID: -1, text: "Thanks!", callback: "daria2" }
-                ]
-            },
+           
+           
+            
             {
                 chatID: 42,
                 speaker: "thinking",
@@ -1317,39 +2006,9 @@ room950.chat = function (chatID) {
                     { chatID: -1, text: "...", callback: "reset" }
                 ]
             },
-            {
-                chatID: 50,
-                speaker: "daria",
-                text: "Hello. Sorry you're trapped in here. I wish there was something I could do, but there's so much security all over. ",
-                button: [
-                    { chatID: 51, text: "There is something. Can you get my stuff. Also a pick axe or something to break away this stone maybe?", callback: "" }
-                ]
-            },
-            {
-                chatID: 51,
-                speaker: "daria",
-                text: "I'll see what I can do.",
-                button: [
-                    { chatID: -1, text: "Thanks!", callback: "daria3" }
-                ]
-            },
-            {
-                chatID: 52,
-                speaker: "daria",
-                text: "I got your bag. I also slipped a little gift in there for you; a chisel I found laying around. Maybe you can use it to " +
-                    "break out. I've got to run, I don't want them to see me helping you. Also you didn't get that from me if you get caught! ",
-                button: [
-                    { chatID: -1, text: "I will not talk; Bye.", callback: "daria4" }
-                ]
-            },
-            {
-                chatID: 53,
-                speaker: "thinking",
-                text: "This is pretty loose. It shouldn't take me too long. ",
-                button: [
-                    { chatID: -1, text: "...", callback: "reset" }
-                ]
-            },
+            
+            
+            
             {
                 chatID: 54,
                 speaker: "thinking",
@@ -1358,112 +2017,8 @@ room950.chat = function (chatID) {
                     { chatID: 55, text: "...", callback: "brick1" }
                 ]
             },
-            {
-                chatID: 55,
-                speaker: "me",
-                text: "Hello?",
-                button: [
-                    { chatID: 56, text: "...", callback: "b2" }
-                ]
-            },
-            {
-                chatID: 56,
-                speaker: "bodhi",
-                text: "Oh hay dude! WAZZZ UP! Are you stuck in here too?",
-                button: [
-                    { chatID: 57, text: "Oh hi and yes I am", callback: "" }
-                ]
-            },
-            {
-                chatID: 57,
-                speaker: "bodhi",
-                text: "Totally awesome! Am I right? I get a blow-y every day and they gime me a bed and free grub! Best time " +
-                    "ever!",
-                button: [
-                    { chatID: 58, text: "But aren't you trapped in there?", callback: "" }
-                ]
-            },
-            {
-                chatID: 58,
-                speaker: "bodhi",
-                text: "Trapped? No, way José. Why would they trap us? This is the best thing ever! ",
-                button: [
-                    { chatID: 59, text: "Oh. I'm trapped. How do I get out?", callback: "" }
-                ]
-            },
-            {
-                chatID: 59,
-                speaker: "bodhi",
-                text: "Oh totally lame. Have you tried being awesome and not being a douche? Just enjoy the stay",
-                button: [
-                    { chatID: 60, text: "Groan. I need to get out. ", callback: "" }
-                ]
-            },
-            {
-                chatID: 60,
-                speaker: "bodhi",
-                text: "No can do! I'm going to catch some Z's. Take is sleazy! ",
-                button: [
-                    { chatID: -1, text: "Oh, yeah. Totally bro, sure. ", callback: "b1" }
-                ]
-            },
-            {
-                chatID: 61,
-                speaker: "me",
-                text: "*whisper* Hey " + sc.n("bodhi") + ". Over here.",
-                button: [
-                    { chatID: 62, text: "...", callback: "b4" }
-                ]
-            },
-            {
-                chatID: 62,
-                speaker: "bodhi",
-                text: "Huh? Oh, you again. What's up?",
-                button: [
-                    { chatID: 63, text: "Do you still want to stay here forever?", callback: "b2" }
-                ]
-            },
-            {
-                chatID: 63,
-                speaker: "bodhi",
-                text: "Oh no way dude. Forever is so long. It's cool for now. ",
-                button: [
-                    { chatID: 64, text: "But you're trapped in here and you have no choice. ", callback: "" }
-                ]
-            },
-            {
-                chatID: 64,
-                speaker: "bodhi",
-                text: "I'm trapped in the best place. You should try being good so they let you out. I'll show you around. ",
-                button: [
-                    { chatID: 65, text: "Grrr. ok. How do I get out. ", callback: "" }
-                ]
-            },
-            {
-                chatID: 65,
-                speaker: "bodhi",
-                text: "It's so easy dude. Just clean your cell and give them your cum. How do you not do that?",
-                button: [
-                    { chatID: 66, text: "Fine! I'll give that a try. ", callback: "" }
-                ]
-            },
-            {
-                chatID: 66,
-                speaker: "bodhi",
-                text: "Cool. Just learn to enjoy it here.  ",
-                button: [
-                    { chatID: 67, text: "Enjoy it? I'm trapped!", callback: "bodhi2" }
-                ]
-            },
-            {
-                chatID: 67,
-                speaker: "bodhi",
-                text: "Hey Bodhisattva the path to enlightenment is through inner peace. You have to accept there is no fight, just " +
-                    "mellow and allow the pleasure. To earn their trust, you must be trustworthy. ",
-                button: [
-                    { chatID: -1, text: "Fine", callback: "reset" }
-                ]
-            },
+            
+            
             {
                 chatID: 68,
                 speaker: "thinking",
@@ -1514,50 +2069,7 @@ room950.chat = function (chatID) {
                     { chatID: -1, text: "Yeah, got it. Cool", callback: "bb4" }
                 ]
             },
-            {
-                chatID: 74,
-                speaker: "thinking",
-                text: "It's nice that they at least feed me. ",
-                button: [
-                    { chatID: 75, text: "Eat the food", callback: "eat0" },
-                    { chatID: -1, text: "Play with the food", callback: "food0" },
-                    { chatID: -1, text: "cancel", callback: "" }
-                ]
-            },
-            {
-                chatID: 75,
-                speaker: "thinking",
-                text: "Mmmmm sure is good!",
-                button: [
-                    { chatID: -1, text: "...", callback: "reset" }
-                ]
-            },
-            {
-                chatID: 76,
-                speaker: "thinking",
-                text: "That's too big for my poor tight asshole. Maybe something smaller. ",
-                button: [
-                    { chatID: -1, text: "...", callback: "" }
-                ]
-            },
-            {
-                chatID: 77,
-                speaker: "thinking",
-                text: "That feels good. I needed something in my pussy. ",
-                button: [
-                    { chatID: -1, text: "Finish", callback: "reset" },
-                    { chatID: 78, text: "Eat the food you just stuffed in your asshole", callback: "food1" }
-                ]
-            },
-            {
-                chatID: 78,
-                speaker: "thinking",
-                text: "I'm such a dirty dirty whore. I mean a really filthy fucking pig whore. There is no level I won't degrade myself " +
-                    "to. ",
-                button: [
-                    { chatID: -1, text: "Finish", callback: "reset" },
-                ]
-            },
+            
             {
                 chatID: 79,
                 speaker: "cult",
@@ -1646,66 +2158,7 @@ room950.chat = function (chatID) {
                     { chatID: -1, text: "Groan", callback: "mp11" }
                 ]
             },
-            {
-                chatID: 90,
-                speaker: "thinking",
-                text: "Oh! What's going on here?",
-                button: [
-                    { chatID: 91, text: "...", callback: "bb31" }
-                ]
-            },
-            {
-                chatID: 91,
-                speaker: "daria",
-                text: "Are you trying to peek at us? We like putting on a show don't we?",
-                button: [
-                    { chatID: 92, text: "...", callback: "" }
-                ]
-            },
-            {
-                chatID: 92,
-                speaker: "bodhi",
-                text: "Oh totally. I love to share our experience with others. Can " + sc.n("me") + " come over and play? " +
-                    "I told him to be a good. ",
-                button: [
-                    { chatID: 93, text: "...", callback: "" }
-                ]
-            },
-            {
-                chatID: 93,
-                speaker: "daria",
-                text: "Yes my toy. We do love sharing, however you're locked in your cell. We'll have to change that. You'll " +
-                    "find that if you behave and get the cult to trust you, you'll get more freedom. I'll tell my friends to " +
-                    "give you a chance to work jobs outside your cell. ",
-                button: [
-                    { chatID: 94, text: "Oh yes!", callback: "" }
-                ]
-            },
-            {
-                chatID: 94,
-                speaker: "daria",
-                text: "Behave yourself keep a low profile, and I'll work on a way to get you out. It will probably take some time. " +
-                    "But if your a good slut we may be able to invite you over for some fun. ",
-                button: [
-                    { chatID: 95, text: "Sweet!", callback: "" }
-                ]
-            },
-            {
-                chatID: 95,
-                speaker: "daria",
-                text: "No put that brick back before you get caught. I've got to finish off my little toy. ",
-                button: [
-                    { chatID: 96, text: "ok *sad face*", callback: "bb32" }
-                ]
-            },
-            {
-                chatID: 96,
-                speaker: "thinking",
-                text: "If I want to work outside the cell I have to call the guard over. If I'm good I'll be able to get more freedoms. ",
-                button: [
-                    { chatID: -1, text: "...", callback: "" }
-                ]
-            },
+            
             {
                 chatID: 97,
                 speaker: "cult",

@@ -1555,6 +1555,27 @@ sc.charMission = [
                         { id: 0, txt: "Introduction", show: true, mStatus: 0, roomId: 328 },
                     ]
             },
+            {
+                missionName: "cult", mStatus: 0, title: "A new friend", desc: "Can she help?", task:
+                    [
+                        { id: 0, txt: "Did you poop?", show: true, mStatus: 0, roomId: 950 },
+                        { id: 1, txt: "Can you help?", show: true, mStatus: 0, roomId: 950 },
+                        { id: 2, txt: "A gift", show: true, mStatus: 0, roomId: 950 },
+                    ]
+            },
+        ]
+    },
+    {
+        name: "bodhi", mission: [
+            {
+                missionName: "cult", mStatus: 0, title: "A new new friend", desc: "Can he help?", task:
+                    [
+                        { id: 0, txt: "I'm not trapped", show: true, mStatus: 0, roomId: 950 },
+                        { id: 1, txt: "The path to enlightenment", show: true, mStatus: 0, roomId: 950 },
+                        { id: 2, txt: "Did we just become friends?", show: true, mStatus: 0, roomId: 950 },
+                        { id: 3, txt: "Can request work", show: true, mStatus: 0, roomId: 950 },
+                    ]
+            },
         ]
     },
 ];

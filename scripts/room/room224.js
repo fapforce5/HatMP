@@ -26,6 +26,7 @@ room224.main = function () {
 room224.btnclick = function (name) {
     switch (name) {
         case "skip":
+            nav.kill();
             room224.chatcatch("endlunch");
             break;
         case "punish":
@@ -90,8 +91,15 @@ room224.btnclick = function (name) {
             chat(997, 224);
             break;
         case "cecilia":
-            nav.bg("224_lunch/cecilia0.webp"); 
-            chat(7, 224);
+            nav.kill();
+            if (cl.c.chastity !== null) {
+                nav.bg("224_lunch/cecilia0.webp");
+                chat(7, 224);
+            }
+            else {
+                nav.bg("224_lunch/cecilia0.webp");
+                chat(9, 224);
+            }
             break;
         case "drawbg":
             nav.kill();
@@ -101,6 +109,18 @@ room224.btnclick = function (name) {
             else {
                 nav.bg("224_lunch/bgf.webp");
             }
+            break;
+        case "ceciliabj":
+            if (g.internal === 4) {
+                nav.kill();
+                levels.gotbj("f", "cecilia");
+                nav.bg("224_lunch/cecilia0.webp"); 
+                chat(8, 224);
+            }
+            else {
+                nav.bg("224_lunch/cecilia" + g.internal + ".webp"); 
+            }
+            g.internal++;
             break;
         default:
             break;
@@ -134,6 +154,12 @@ room224.chatcatch = function (callback) {
             nav.kill();
             levels.oral(3, "f", "envy", false);
             nav.bg("224_lunch/envy1.jpg"); 
+            break;
+        case "ceciliabj":
+            nav.kill();
+            nav.bg("224_lunch/cecilia1.webp"); 
+            g.internal = 2;
+            nav.next("ceciliabj");
             break;
         case "leave":
             char.room(203);
@@ -209,7 +235,7 @@ room224.chat = function (chatID) {
             };
         }
         else {
-            sc.modLevel("landlord", 26, 5);
+            sc.modLevel("janice", 26, 5);
             c = [
                 "So glad my man has a real job so he can take care of me. ",
                 "So glad you're working so you can take care of me. ",
@@ -352,8 +378,32 @@ room224.chat = function (chatID) {
             text: "Oh sweet! I've been staring at your cock all day and need a taste. Pleeeessseee!!! " +
                 "Can I suck your penis! ",
             button: [
-                { chatID: 8, text: "Fuck yeah!", callback: "" },
+                { chatID: -1, text: "Fuck yeah!", callback: "ceciliabj" },
                 { chatID: -1, text: "Oh. Some other time. ", callback: "endlunch" },
+            ]
+        },
+        {
+            chatID: 8,
+            speaker: "cecilia",
+            text: "Hehehe! Thanks for the cum. I won't have to go get lunch today! ",
+            button: [
+                { chatID: -1, text: "You're welcome!", callback: "endlunch" },
+            ]
+        },
+        {
+            chatID: 7,
+            speaker: "cecilia",
+            text: "Oh sweet! I've been wanting to suck a penis all day! ",
+            button: [
+                { chatID: 8, text: "Oh. I'm locked up ", callback: "" },
+            ]
+        },
+        {
+            chatID: 8,
+            speaker: "cecilia",
+            text: "Awww. Some other time then. ",
+            button: [
+                { chatID: -1, text: "...", callback: "endlunch" },
             ]
         },
     ];
