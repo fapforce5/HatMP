@@ -13,7 +13,7 @@ room401.main = function () {
     else
         navList = [400];
 
-    inv.createElements();
+    inv.createElements(false);
 
     g.pass = {
         roomID: switchName === "bra" ? 402 : 400,

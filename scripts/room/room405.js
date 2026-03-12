@@ -67,7 +67,7 @@ room405.chatcatch = function (callback) {
             if (gv.get("money") < 24)
                 chat(3, 405);
             else {
-                inv.createElements();
+                inv.createElements(false);
                 for (i = -1; i < cl.c.hairLength; i++)
                     $('#menu-bg_' + (i + 1)).html('<img src="./images/room/405_reds/trim' + i + '.png" data-name="' + i +'" data-type="trim" class="hair-change"/>');
             }
@@ -84,7 +84,7 @@ room405.chatcatch = function (callback) {
             if (gv.get("money") < 120)
                 chat(3, 405);
             else {
-                inv.createElements();
+                inv.createElements(false);
                 var colorTemp = 'black';
                 $('#menu-bg_0').html('<img src="./images/room/405_reds/color_' + colorTemp + '.png" data-name="' + colorTemp + '" data-type="color" class="hair-change"/>');
                 colorTemp = 'auburn';
@@ -124,7 +124,7 @@ room405.chatcatch = function (callback) {
             if (gv.get("money") < 80)
                 chat(3, 405);
             else {
-                inv.createElements();
+                inv.createElements(false);
                 var styleTemp = 'straight';
                 $('#menu-bg_0').html('<img src="./images/room/405_reds/style_' + styleTemp + '.png" data-name="' + styleTemp + '" data-type="style" class="hair-change"/>');
                 styleTemp = 'wavy';

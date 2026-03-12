@@ -9,6 +9,9 @@ room950.main = function () {
     if (g.pass === "endSleepyTime") {
         g.pass = null;
         gv.set("cultDayCounter", 0);
+        if (g.rand(0, 4) === 0) {
+            daily.set("celldoor_blonde");
+        }
     }
 
     room950.btnclick("drawBG");
@@ -19,15 +22,62 @@ room950.main = function () {
         case 2: char.settime(13, g.rand(3, 51)); break;
         case 3: char.settime(16, g.rand(3, 51)); break;
         case 4: char.settime(19, g.rand(3, 51)); break;
-        case 5: char.settime(23, g.rand(3, 51)); break;
+        default: char.settime(23, g.rand(3, 51)); break;
     }
     room950.btnclick("bars");
-
+    if (cultDayCounter > 4) {
+        nav.button({
+            "type": "btn",
+            "name": "nap",
+            "title": "Sleep",
+            "left": 994,
+            "top": 685,
+            "width": 684,
+            "height": 103,
+            "image": "950_cell/bed.png",
+            "night": "950_cell/bed_night.png"
+        }, 950);
+        return;
+    }
+    if (cl.stinky()) {
+        nav.kill();
+        nav.bg("950_cell/ubel2.webp");
+        chat(70, 950);
+        return;
+    }
     if (cultDayCounter === 4) {
-        nav.bg("950_cell/milk0.jpg"); 
-        if (gv.get("cultMilkCounter") > 0) {
-
+        if (g.dt.getDay() === 5) {
+            if (daily.get("celldoor_blonde")) {
+                nav.bg("950_cell/door_blonde.webp");
+            }
+            else {
+                nav.bg("950_cell/door_bg.webp");
+            }
+            nav.button({
+                "type": "img",
+                "name": "celldoor",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "950_cell/door_cult.webp",
+            }, 950);
+            chat(100, 950);
+            return;
         }
+        if (gv.get("cultIsSissy") ?? false) {
+
+            return;
+        }
+        sc.modLevel("cult", 25, 5);
+        nav.bg("950_cell/milk0.jpg"); 
+        if (gv.get("cultMilkCounter") === 0) {
+            chat(53, 950);
+        }
+        else {
+            chat(66, 950);
+        }
+        gv.mod("cultMilkCounter", 1);
         return;
     }
 
@@ -39,7 +89,8 @@ room950.main = function () {
         "top": 685,
         "width": 684,
         "height": 103,
-        "image": "950_cell/bed.png"
+        "image": "950_cell/bed.png",
+            "night": "950_cell/bed_night.png"
     }, 950);
 
     if (!daily.get("food")) {
@@ -329,9 +380,10 @@ room950.btnclick = function (name) {
             var cult950 = sc.get("cult");
             var cultbrick = gv.get("cultbrick");
             cult950 = cult950.l * 100 + cult950.c;
+            nav.killbutton("progress_trust");
             nav.progressBar({
-                "type": "img",
-                "name": "trust",
+                "type": "zimg",
+                "name": "progress_trust",
                 "left": 400,
                 "top": 30,
                 "width": 1000,
@@ -339,12 +391,12 @@ room950.btnclick = function (name) {
                 "color": (cult950 < 300 ? "red" : "green"),
                 "maxVal": 1000,
                 "val": cult950,
-                "title": "Cult's Trust"
+                "title": "Rank: Slave"
             }, 322);
             if (cultbrick > 0 && cultbrick < 100) {
                 nav.progressBar({
-                    "type": "img",
-                    "name": "trust",
+                    "type": "zimg",
+                    "name": "progress_trust",
                     "left": 400,
                     "top": 60,
                     "width": 1000,
@@ -367,29 +419,45 @@ room950.btnclick = function (name) {
                 gv.set("cultLastClean", g.dt);
             }
             var cultLastCleanNumDays = g.diffDatesByDays(cultLastClean, g.dt);
-            nav.bg("950_cell/cell" + (cultLastCleanNumDays > 3 ? 3 : cultLastCleanNumDays) + ".jpg");
-            if (daily.get("cumwall950")) {
-                nav.button({
-                    "type": "img",
-                    "name": "cell",
-                    "left": 0,
-                    "top": 0,
-                    "width": 1920,
-                    "height": 1080,
-                    "image": "950_cell/cell_cum.webp"
-                }, 950);
+            if (g.isNight()) {
+                nav.bg("950_cell/cell_dark.jpg");
+                if (daily.get("cumwall950")) {
+                    nav.button({
+                        "type": "img",
+                        "name": "cell",
+                        "left": 0,
+                        "top": 0,
+                        "width": 1920,
+                        "height": 1080,
+                        "image": "950_cell/cell_cum.webp"
+                    }, 950);
+                }
             }
-            if (cultLastCleanNumDays > 0) {
-                nav.button({
-                    "type": "btn",
-                    "name": "clean",
-                    "title": "Clean your cell",
-                    "left": 374,
-                    "top": 392,
-                    "width": 398,
-                    "height": 484,
-                    "image": "950_cell/clean.png"
-                }, 950);
+            else {
+                nav.bg("950_cell/cell" + (cultLastCleanNumDays > 3 ? 3 : cultLastCleanNumDays) + ".jpg");
+                if (cultLastCleanNumDays > 0) {
+                    nav.button({
+                        "type": "btn",
+                        "name": "clean",
+                        "title": "Clean your cell",
+                        "left": 374,
+                        "top": 392,
+                        "width": 398,
+                        "height": 484,
+                        "image": "950_cell/clean.png"
+                    }, 950);
+                }
+                if (daily.get("cumwall950")) {
+                    nav.button({
+                        "type": "img",
+                        "name": "cell",
+                        "left": 0,
+                        "top": 0,
+                        "width": 1920,
+                        "height": 1080,
+                        "image": "950_cell/cell_cum.webp"
+                    }, 950);
+                }
             }
             break;
         case "clean":
@@ -410,7 +478,8 @@ room950.btnclick = function (name) {
             sc.select("icon_pushup", "950_cell/icon_pushup.webp", 0);
             sc.select("icon_squats", "950_cell/icon_squats.webp", 1);
             sc.select("icon_jackoff", "950_cell/icon_jackoff.webp", 2);
-            sc.select("icon_cancel", "950_cell/icon_cancel.webp", 3);
+            sc.select("icon_door", "950_cell/icon_door.webp", 3);
+            sc.select("icon_cancel", "950_cell/icon_cancel.webp", 4);
             break;
         case "icon_cancel":
             nav.killbuttonStartsWith("icon_"); 
@@ -626,6 +695,190 @@ room950.btnclick = function (name) {
             sc.modLevel("bodhi", 100, 10); 
             chat(40, 950);
             break;
+        case "icon_call":
+            nav.kill();
+            if (sc.getMissionTask("daria", "cult", 2).completed) {
+                nav.bg("950_cell/ubel2.webp"); 
+                sc.select("icon_cultclean", "icon_cultclean.webp", 0);
+                sc.select("icon_cultsweep", "icon_cultsweep.webp", 1);
+                sc.select("icon_culttoilet", "icon_culttoilet.webp", 2);
+                sc.select("icon_dooropen", "950_cell/icon_dooropen.webp", 3);
+                sc.select("reset", "icon_cancel.webp", 4);
+
+            }
+            else {
+                nav.bg("950_cell/ubel2.webp"); 
+                chat(73, 950);
+            }
+            break;
+        case "icon_cultclean":
+            nav.kill();
+            chat(74, 950);
+            break;
+        case "icon_cultsweep":
+            nav.kill();
+            if (sc.getLevel("cult").l < 4)
+                chat(79, 950);
+            break;
+        case "icon_culttoilet":
+            nav.kill();
+            if (sc.getLevel("cult").l < 7)
+                chat(80, 950);
+            break;
+        case "icon_door":
+            nav.kill();
+            room950.btnclick("bars");
+            if (daily.get("celldoor_blonde")) {
+                nav.bg("950_cell/door_blonde.webp");
+            }
+            else {
+                nav.bg("950_cell/door_bg.webp");
+            }
+
+            if (sc.getMission("ralph", "cult").startedOrComplete && sc.getMissionTask("ralph", "cult", 0).notStarted) {
+                nav.button({
+                    "type": "img",
+                    "name": "celldoor",
+                    "left": 0,
+                    "top": 0,
+                    "width": 1920,
+                    "height": 1080,
+                    "image": "950_cell/door_ralph.webp",
+                }, 950);
+                chat(82, 950);
+            }
+            else {
+                switch (g.rand(0, 4)) {
+                    case 0:
+                        nav.button({
+                            "type": "img",
+                            "name": "celldoor",
+                            "left": 0,
+                            "top": 0,
+                            "width": 1920,
+                            "height": 1080,
+                            "image": "950_cell/door_empty.webp",
+                        }, 950);
+                        chat(86, 950);
+                        break;
+                    case 1:
+                        if (sc.getMission("ralph", "cult").notStarted) {
+                            nav.button({
+                                "type": "img",
+                                "name": "celldoor",
+                                "left": 0,
+                                "top": 0,
+                                "width": 1920,
+                                "height": 1080,
+                                "image": "950_cell/door_empty.webp",
+                            }, 950);
+                            chat(86, 950);
+                        }
+                        else {
+                            nav.bg("950_cell/door_ralph.webp");
+                            nav.button({
+                                "type": "img",
+                                "name": "celldoor",
+                                "left": 0,
+                                "top": 0,
+                                "width": 1920,
+                                "height": 1080,
+                                "image": "950_cell/door_ralph.webp",
+                            }, 950);
+                            chat(87, 950);
+                        }
+                    case 2:
+                        nav.button({
+                            "type": "img",
+                            "name": "celldoor",
+                            "left": 0,
+                            "top": 0,
+                            "width": 1920,
+                            "height": 1080,
+                            "image": "950_cell/door_bj.webp",
+                        }, 950);
+                        chat(88, 950);
+                        break;
+                    case 3:
+                        if (daily.get("cultMilkMaidChat")) {
+                            nav.button({
+                                "type": "img",
+                                "name": "celldoor",
+                                "left": 0,
+                                "top": 0,
+                                "width": 1920,
+                                "height": 1080,
+                                "image": "950_cell/door_empty.webp",
+                            }, 950);
+                            chat(86, 950);
+                        }
+                        else {
+                            daily.set("cultMilkMaidChat");
+                            sc.modLevel("cult", 15, 5);
+                            switch (gv.get("cultMilkMaidChat")) {
+                                case 0:
+                                    nav.button({
+                                        "type": "img",
+                                        "name": "celldoor",
+                                        "left": 0,
+                                        "top": 0,
+                                        "width": 1920,
+                                        "height": 1080,
+                                        "image": "950_cell/door_girl.webp",
+                                    }, 950);
+                                    gv.mod("cultMilkMaidChat", 1);
+                                    chat(91, 950);
+                                    break;
+                                case 1:
+                                    nav.button({
+                                        "type": "img",
+                                        "name": "celldoor",
+                                        "left": 0,
+                                        "top": 0,
+                                        "width": 1920,
+                                        "height": 1080,
+                                        "image": "950_cell/door_girl.webp",
+                                    }, 950);
+                                    gv.mod("cultMilkMaidChat", 1);
+                                    chat(95, 950);
+                                    break;
+                                default:
+                                    nav.button({
+                                        "type": "img",
+                                        "name": "celldoor",
+                                        "left": 0,
+                                        "top": 0,
+                                        "width": 1920,
+                                        "height": 1080,
+                                        "image": "950_cell/door_girlcan.webp",
+                                    }, 950);
+                                    chat(99, 950);
+                                    break;
+                            }
+                            break;
+                        }
+                    break;
+                }
+            }
+            break;
+        case "icon_dooropen":
+            if (sc.getLevel("cult").l < 10)
+                chat(81, 950);
+            break;
+        case "door_bj":
+            nav.modbutton("celldoor", "950_cell/door_bj" + g.internal + ".webp", null, null);
+            if (g.internal > 1) {
+                nav.killbutton("door_bj");
+                levels.oral(4, "m", "cult", true);
+                sc.modLevel("cult", 50, 10);
+                room950.btnclick("bars");
+                chat(90, 950);
+            }
+            g.internal++;
+            break;
+        case "reset":
+            char.room(950);
+            break;
         //case "sleep":
         //    nav.killall();
         //    g.internal.nightEvent = false;
@@ -788,14 +1041,53 @@ room950.chatcatch = function (callback) {
         case "bb31":
         case "milk1":
         case "milk2":
+        case "shower2":
+        case "shower3":
+        case "shower4":
+        case "shower5":
+            nav.bg("950_cell/" + callback + ".jpg");
+            break;
         case "milk3":
         case "milk4":
         case "milk5":
         case "milk6":
-        case "milk7":
         case "milk8":
         case "milk9":
-            nav.bg("950_cell/" + callback + ".jpg");
+            nav.bg("950_cell/" + callback + "_" + gender.pronoun("f") + ".jpg");
+            break;
+        case "milk7":
+            levels.gotbj("f", "!milkmaid");
+            nav.bg("950_cell/" + callback + "_" + gender.pronoun("f") + ".jpg");
+            break;
+        case "shower0":
+            nav.bg("950_cell/shower0.webp");
+            zcl.displayMain(400, 1150, .065, "", true);
+            nav.button({
+                "type": "img",
+                "name": "shower",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "950_cell/shower0_fg.webp"
+            }, 950);
+            cl.clean();
+            cl.shave();
+            break;
+        case "shower1":
+            nav.kill();
+            nav.bg("950_cell/shower1.webp");
+            zcl.bent(650, 1050, .2, "", false);
+            nav.button({
+                "type": "img",
+                "name": "shower",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "950_cell/shower1_fg.webp"
+            }, 950);
+            gv.clearButtCum();
             break;
         case "increment":
             room950.btnclick("increment");
@@ -880,7 +1172,19 @@ room950.chatcatch = function (callback) {
                 break;
             case "resetWindow":
                 nav.bg("950_cell/view.jpg");
-                break;
+            break;
+        case "door_bj0":
+            nav.modbutton("celldoor", "950_cell/door_bj0.webp", null, null);
+            g.internal = 1;
+            nav.next("door_bj");
+            break;
+        case "door_girlcan":
+            nav.modbutton("celldoor", "950_cell/door_girlcan.webp", null, null);
+            break;
+        case "surmon":
+            gv.mod("cultDayCounter", 1);
+            char.room(953);
+            break;
         //case "finishSquats":
         //    gv.mod("leg", 34);
         //    gv.mod("fitness", 20);
@@ -1680,136 +1984,393 @@ room950.chat = function (chatID) {
                 ]
             },
             {
-                chatID: 4,
+                chatID: 55,
                 speaker: "me",
                 text: "What is this? Please don't put me up there! *whimper*",
                 button: [
-                    { chatID: 5, text: "...", callback: "milk2" }
+                    { chatID: 56, text: "...", callback: "milk2" }
                 ]
             },
             {
-                chatID: 5,
+                chatID: 56,
                 speaker: "cult",
                 text: "All must give to Azreal, now up on the chains you before you also give the gift of pain. ",
                 button: [
-                    { chatID: 6, text: "...", callback: "milk3" }
+                    { chatID: 57, text: "...", callback: "milk3" }
                 ]
             },
             {
-                chatID: 6,
+                chatID: 57,
                 speaker: "me",
                 text: "Now what? What are you going to do to us? Let me down.",
                 button: [
-                    { chatID: 7, text: "...", callback: "" }
+                    { chatID: 58, text: "...", callback: "" }
                 ]
             },
             {
-                chatID: 7,
-                speaker: "random",
+                chatID: 58,
+                speaker: "!man",
                 text: "Hay! New person. Relax. This is the best part. ",
                 button: [
-                    { chatID: 8, text: "What do you mean? Are they going to torture us?", callback: "" }
+                    { chatID: 59, text: "What do you mean? Are they going to torture us?", callback: "" }
                 ]
             },
             {
-                chatID: 8,
-                speaker: "random",
+                chatID: 59,
+                speaker: "!man",
                 text: "Just relax and enjoy it. Also you're giving me a giant headache whining and whimpering, so just be quiet. ",
                 button: [
-                    { chatID: 9, text: "[Hang your head in defeat]", callback: "milk4" }
+                    { chatID: 60, text: "[Hang your head in defeat]", callback: "milk5" }
                 ]
             },
             {
-                chatID: 9,
-                speaker: "jen",
-                text: "This is what happens when you think you can fight against CUM; idiot. Well now you're going to work for us. Are " +
-                    "you ready for what's to come?",
-                button: [
-                    { chatID: 10, text: "What's coming?", callback: "" }
-                ]
-            },
-            {
-                chatID: 10,
-                speaker: "jen",
-                text: "Hahaha. You'll see. Bring them out!",
-                button: [
-                    { chatID: 11, text: "...", callback: "milk5" }
-                ]
-            },
-            {
-                chatID: 11,
+                chatID: 60,
                 speaker: "thinking",
                 text: "Oh no, what is this?",
                 button: [
-                    { chatID: 12, text: "...", callback: "milk6" }
+                    { chatID: 61, text: "...", callback: "milk6" }
                 ]
             },
             {
-                chatID: 12,
+                chatID: 61,
                 speaker: "thinking",
                 text: "Is she sucking my dick? ",
                 button: [
-                    { chatID: 13, text: "?", callback: "" }
+                    { chatID: 62, text: "?", callback: "" }
                 ]
             },
             {
-                chatID: 13,
+                chatID: 62,
                 speaker: "thinking",
                 text: "She's sucking my dick!",
                 button: [
-                    { chatID: 14, text: "!", callback: "milk7" }
+                    { chatID: 63, text: "!", callback: "milk7" }
                 ]
             },
             {
-                chatID: 14,
+                chatID: 63,
                 speaker: "me",
                 text: "UNGH!",
                 button: [
-                    { chatID: 15, text: "...", callback: "milk8" }
+                    { chatID: 64, text: "...", callback: "milk8" }
                 ]
             },
             {
-                chatID: 15,
-                speaker: "random",
+                chatID: 64,
+                speaker: "!milkmaid",
                 text: "First! ",
                 button: [
-                    { chatID: 16, text: "What are you doing with my cum?", callback: "milk9" }
+                    { chatID: 65, text: "What are you doing with my cum?", callback: "milk9" }
                 ]
             },
             {
-                chatID: 16,
+                chatID: 65,
                 speaker: "cult",
                 text: "Back to your cell slave. ",
                 button: [
-                    { chatID: -1, text: "...", callback: "milk10" }
+                    { chatID: -1, text: "...", callback: "increment" }
                 ]
             },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            {
+                chatID: 66,
+                speaker: "cult",
+                text: "Time to make your offering. ",
+                button: [
+                    { chatID: 67, text: "...", callback: "milk6" }
+                ]
+            },
+            {
+                chatID: 67,
+                speaker: "thinking",
+                text: "At least this part isn't so bad...",
+                button: [
+                    { chatID: 68, text: "...", callback: "milk7" }
+                ]
+            },
+            {
+                chatID: 68,
+                speaker: "me",
+                text: "ugh! ",
+                button: [
+                    { chatID: 69, text: "...", callback: "milk8" }
+                ]
+            },
+            {
+                chatID: 69,
+                speaker: "!milkmaid",
+                text: "The offering!",
+                button: [
+                    { chatID: -1, text: "...", callback: "increment" }
+                ]
+            },
+            {
+                chatID: 70,
+                speaker: "cult",
+                text: "Time for your shower, shave, and cleaning; outside and in, hehehe. ",
+                button: [
+                    { chatID: 71, text: "???", callback: "shower0" }
+                ]
+            },
+            {
+                chatID: 71,
+                speaker: "cult",
+                text: "Now to clean your insides. ",
+                button: [
+                    { chatID: 72, text: "*sigh*", callback: "shower1" }
+                ]
+            },
+            {
+                chatID: 72,
+                speaker: "cult",
+                text: "Back to your cell, slave! ",
+                button: [
+                    { chatID: -1, text: "[Back to your cell]", callback: "increment" }
+                ]
+            },
+            {
+                chatID: 73,
+                speaker: "cult",
+                text: "Keep it down you! ",
+                button: [
+                    { chatID: -1, text: "...", callback: "increment" }
+                ]
+            },
+            {
+                chatID: 74,
+                speaker: "cult",
+                text: "I'm glad you know your place is to serve. You will crawl to the showers, now down slave " +
+                    "and avert your eyes. ",
+                button: [
+                    { chatID: 75, text: "[Crawl on your hands and knees, eyes down to the shower]", callback: "shower2" }
+                ]
+            },
+            {
+                chatID: 75,
+                speaker: "cult",
+                text: "Keep your eyes on the floor while I pick someone for you. ",
+                button: [
+                    { chatID: 76, text: "...", callback: "shower3" }
+                ]
+            },
+            {
+                chatID: 76,
+                speaker: "cult",
+                text: "She'll do nicely. Now clean her good slave. ",
+                button: [
+                    { chatID: 77, text: "...", callback: "shower4" }
+                ]
+            },
+            {
+                chatID: 77,
+                speaker: "cult",
+                text: "Now that her front is clean, you need to clean the back. ",
+                button: [
+                    { chatID: 78, text: "...", callback: "shower5" }
+                ]
+            },
+            {
+                chatID: 78,
+                speaker: "cult",
+                text: "Good slave. Back to your cell. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "increment" }
+                ]
+            },
+            {
+                chatID: 79,
+                speaker: "cult",
+                text: "You aren't worthy to sweep our floors",
+                button: [
+                    { chatID: -1, text: "[Need cult level 4]", callback: "" }
+                ]
+            },
+            {
+                chatID: 80,
+                speaker: "cult",
+                text: "You aren't worthy of our piss",
+                button: [
+                    { chatID: -1, text: "[Need cult level 7]", callback: "" }
+                ]
+            },
+            {
+                chatID: 81,
+                speaker: "cult",
+                text: "You haven't proved yourself worthy of leaving this cell. ",
+                button: [
+                    { chatID: -1, text: "[Need cult level 10]", callback: "" }
+                ]
+            },
+            {
+                chatID: 82,
+                speaker: "ralph",
+                text: "Oh man! I thought I'd never see you again! Welcome to hell! Did they kidnap you too?",
+                button: [
+                    { chatID: 83, text: "Totally! So glad to see you! I was afraid you were dead!", callback: "" }
+                ]
+            },
+            {
+                chatID: 83,
+                speaker: "ralph",
+                text: "Not dead, just stuck. Also my ass and nipples really hurts! So glad there's another sissy " +
+                    "here to help take these horny men! Why is it every guy wants to twist my nipples and spank " +
+                    "my ass. Hard! It's like they don't even see me as a person! ",
+                button: [
+                    { chatID: 84, text: "Your boobs are really coming in. ", callback: "" }
+                ]
+            },
+            {
+                chatID: 84,
+                speaker: "ralph",
+                text: "They really are! I will say my breasts are really coming in. I do hope they get huge. " +
+                    "Mostly becuase I want my boobs to be bigger than my belly lol. But really I can't wait to get " +
+                    "out of here. No videos, no figures, no magazines, no nothing! I'm getting behind on my shows! " +
+                    "Also my parents are probably worried. ",
+                button: [
+                    { chatID: 85, text: "They are so worried! ", callback: "" }
+                ]
+            },
+            {
+                chatID: 85,
+                speaker: "ralph",
+                text: "*whispering* We gotta get a way out. I've heard things about sissies once they're done using " +
+                    "them that scares me. You have to play their game so we can make a plan to get out of here. Just " +
+                    "pretend to be their friend and they'll let you out. I've got to go sweep. Later",
+                button: [
+                    { chatID: -1, text: "Later", callback: "increment" }
+                ]
+            },
+            {
+                chatID: 86,
+                speaker: "thinking",
+                text: "No one's out right now. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "increment" }
+                ]
+            },
+            {
+                chatID: 87,
+                speaker: "ralph",
+                text: "Just be cool and play along. They'll let you out. Then we can try to get out of here.",
+                button: [
+                    { chatID: -1, text: "...", callback: "increment" }
+                ]
+            },
+            {
+                chatID: 88,
+                speaker: "cult",
+                text: "Hey. New " + gender.pronoun("boy") + ". Suck my dick? I know you want to.",
+                button: [
+                    { chatID: -1, text: "[Get on your knees suck his dick]", callback: "door_bj0" },
+                    { chatID: 89, text: "No way!", callback: "" }
+                ]
+            },
+            {
+                chatID: 89,
+                speaker: "cult",
+                text: "Hahaha! Ok. I'll get one of these other sissies to do it. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "increment" }
+                ]
+            },
+            {
+                chatID: 90,
+                speaker: "cult",
+                text: "Good " + gender.pronoun("sissy") + "! You know your worth!",
+                button: [
+                    { chatID: -1, text: "*swallows his cum*", callback: "increment" }
+                ]
+            },
+            {
+                chatID: 91,
+                speaker: "!milkmaid",
+                text: "May Azrael bless you. Welcome to our cult. I do hope these boys haven't been too rough with you. ",
+                button: [
+                    { chatID: 92, text: "Who are you?", callback: "" }
+                ]
+            },
+            {
+                chatID: 92,
+                speaker: "!milkmaid",
+                text: "I'm a milk maid. Unless you're asking my name. Then I'm a milk maid. Milk maids don't " +
+                    "have names or positions here. We all live to serve and follow the orders of the Studs. ",
+                button: [
+                    { chatID: 93, text: "The Studs?", callback: "" }
+                ]
+            },
+            {
+                chatID: 93,
+                speaker: "!milkmaid",
+                text: "Hehe! They're the boys that think they run this place. Really the only power they " +
+                    "have is where they put their penises. The real power is from the Priests and the High Priest. " +
+                    "They are the ones that will protect us from the coming of Azrael.",
+                button: [
+                    { chatID: 94, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 94,
+                speaker: "!milkmaid",
+                text: "You know, you're really cute. Some day I hope you'll join us. We can always use " +
+                    "more girls. There's just so many penises to drain the cum from. ",
+                button: [
+                    { chatID: -1, text: "yea. Cool. ", callback: "increment" }
+                ]
+            },
+            {
+                chatID: 95,
+                speaker: "!milkmaid",
+                text: "May Azrael bless you. How's your day going? ",
+                button: [
+                    { chatID: 96, text: "Oh. You know. So why are you here?", callback: "" }
+                ]
+            },
+            {
+                chatID: 96,
+                speaker: "!milkmaid",
+                text: "I'm here to serve Azreal silly. When Azrael comes to this world only the true " +
+                    "followers will be saved. All others will perish in hell fire. I don't want to perish " +
+                    "in hell fire silly. That would really hurt. ",
+                button: [
+                    { chatID: 97, text: "But what if Azrael isn't real? ", callback: "" }
+                ]
+            },
+            {
+                chatID: 97,
+                speaker: "!milkmaid",
+                text: "Oh haha. That's funny. If Azrael isn't really real, then why would we all be here. " +
+                    "He has to be real. I've seen things during Friday mass that can only be explained by " +
+                    "the coming of Azrael. ",
+                button: [
+                    { chatID: 98, text: "...", callback: "door_girlcan" }
+                ]
+            },
+            {
+                chatID: 98,
+                speaker: "!milkmaid",
+                text: "Don't worry your pretty little head about things. Here, have an energy drink! Every " +
+                    "time my brain starts to hurt from thinking I just drink one of these and I'm ready to " +
+                    "serve again! Hehe!",
+                button: [
+                    { chatID: -1, text: "...", callback: "increment" }
+                ]
+            },
+            {
+                chatID: 99,
+                speaker: "!milkmaid",
+                text: "May Azrael bless you. I brought you an energy drink! Can't wait for you to join " +
+                    "us as a Milk Maid. hehe",
+                button: [
+                    { chatID: -1, text: "Me too. ", callback: "increment" }
+                ]
+            },
+            {
+                chatID: 100,
+                speaker: "cult",
+                text: "The time for Sermon has come. Follow us. ",
+                button: [
+                    { chatID: -1, text: "[Follow them]", callback: "surmon" }
+                ]
+            },
 
 
 
@@ -2159,46 +2720,7 @@ room950.chat = function (chatID) {
                 ]
             },
             
-            {
-                chatID: 97,
-                speaker: "cult",
-                text: "I'm glad you know your place is to serve. You will crawl to the showers, now down slave.",
-                button: [
-                    { chatID: 98, text: "...", callback: "shower2" }
-                ]
-            },
-            {
-                chatID: 98,
-                speaker: "cult",
-                text: "Keep your eyes on the floor while I pick someone for you. ",
-                button: [
-                    { chatID: 99, text: "...", callback: "shower3" }
-                ]
-            },
-            {
-                chatID: 99,
-                speaker: "cult",
-                text: "She'll do nicely. Now clean her good slave. ",
-                button: [
-                    { chatID: 100, text: "...", callback: "shower4" }
-                ]
-            },
-            {
-                chatID: 100,
-                speaker: "cult",
-                text: "Now that her front is clean, you need to clean the back. ",
-                button: [
-                    { chatID: 101, text: "...", callback: "shower5" }
-                ]
-            },
-            {
-                chatID: 101,
-                speaker: "cult",
-                text: "Good slave. Back to your cell. ",
-                button: [
-                    { chatID: -1, text: "...", callback: "shower6" }
-                ]
-            },
+            
             {
                 chatID: 102,
                 speaker: "cult",

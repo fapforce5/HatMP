@@ -54,6 +54,9 @@ room949.chatcatch = function (callback) {
             break;
         case "start":
             gv.set("cultLastClean", g.dt);
+            cl.c.chastity = null;
+            cl.c.buttplug = null;
+            gv.set("shower", new Date(new Date(g.dt).setDate(new Date(g.dt).getDate() - 10)));
             char.room(950);
             break;
         default:

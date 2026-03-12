@@ -1,14 +1,24 @@
 ﻿//Room name
 var room953 = {};
 room953.main = function () {
-    if (g.internal.chaple === 0)
-        chat(0, 953);
-    else if (g.internal.chaple === 2) {
-        nav.bg("953_chaple/breakout1.jpg");
-        chat(37, 953);
+
+
+
+    switch (gv.get("cultchapelCounter")) {
+        case 0:
+            nav.bg("953_chaple/e2.jpg");
+            gv.mod("cultchapelCounter", 1); 
+            chat(0, 953);
+            break;
     }
-    else
-        chat(30, 953);
+    //if (g.internal.chaple === 0)
+    //    chat(0, 953);
+    //else if (g.internal.chaple === 2) {
+    //    nav.bg("953_chaple/breakout1.jpg");
+    //    chat(37, 953);
+    //}
+    //else
+    //    chat(30, 953);
 };
 
 room953.btnclick = function (name) {
@@ -35,12 +45,8 @@ room953.chatcatch = function (callback) {
         case "e11":
         case "e12":
         case "e12x":
-            nav.bg("953_chaple/" + callback + ".jpg");
-            break;
         case "e13":
-            g.internal.chaple = 1;
-            g.internal.interval++;
-            char.room(950);
+            nav.bg("953_chaple/" + callback + ".jpg");
             break;
         case "e13x":
             g.internal.interval++;
@@ -78,6 +84,67 @@ room953.chatcatch = function (callback) {
         case "breakout7":
             char.room(954);
             break;
+        case "e14":
+            nav.bg("953_chaple/wall.webp");
+            zcl.displayMain(350, 730, .14, "clothes", false);
+            nav.button({
+                "type": "img",
+                "name": "cell",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "953_chaple/wall_fg0.webp"
+            }, 950);
+            break;
+        case "e15":
+            nav.modbutton("cell", "953_chaple/wall_fg1.webp", null, null); 
+            break;
+        case "e16":
+            nav.modbutton("cell", "953_chaple/wall_fg2.webp", null, null);
+            break;
+        case "e17":
+            gv.set("cultIsSissy", true);
+            nav.modbutton("cell", "953_chaple/wall_fg3.webp", null, null);
+            break;
+        case "e18":
+            if (gender.pronoun("f") === "f") {
+                chat(16, 953);
+            }
+            else {
+                gv.set("cultIsSissy", false);
+                nav.modbutton("cell", "953_chaple/wall_fg3.webp", null, null);
+            }
+            break;
+        case "esissy":
+            gv.set("cultIsSissy", true);
+            break;
+        case "eman":
+            gv.set("cultIsSissy", false);
+            break;
+        case "e19":
+            nav.modbutton("cell", "953_chaple/wall_fg4.webp", null, null);
+            break;
+        case "e20":
+            if (gv.get("cultIsSissy")) {
+                chat(19, 950);
+            }
+            else {
+                nav.kill();
+                nav.bg("953_chaple/x0.webp");
+                chat(22, 950);
+            }
+            break;
+        case "x1":
+            nav.bg("953_chaple/x1.webp");
+            if (sc.getMissionTask("stormy", 0).complete) 
+                chat(23, 953);
+            else
+                chat(24, 953);
+            break;
+        case "room950":
+            char.room(950);
+            break;
         default:
             break;
     }
@@ -87,104 +154,283 @@ room953.chat = function (chatID) {
     var cArray = [
         {
             chatID: 0,
-            speaker: "cult",
-            text: "Clean the chapel. The room must be devoid of all impurities. ",
+            speaker: "thinking",
+            text: "It looks like this thing is about to start. " +
+                "I can't believe how may there are. There must be at least a hundred in here. It looks like " +
+                "this thing is about to begin. I'm going to try and get a better view.",
             button: [
-                { chatID: 1, text: "...", callback: "e1" }
+                { chatID: 1, text: "...", callback: "" }
             ]
         },
         {
             chatID: 1,
-            speaker: "cult",
-            text: "Just stay back here and wait for me. I will get you after the ceremony to clean up again. ",
-            button: [
-                { chatID: 2, text: "ok. ", callback: "e2" }
-            ]
-        },
-        {
-            chatID: 2,
-            speaker: "thinking",
-            text: "It looks like this thing is about to start. " +
-                "I can't believe how may there are. There must be at least a hundred in here. It looks like " + sc.n("ubel") +
-                " is in the front leading the sermon. ",
-            button: [
-                { chatID: 4, text: "...", callback: "" }
-            ]
-        },
-        {
-            chatID: 3,
-            speaker: "thinking",
-            text: "I can't believe how may there are. There must be at least a hundred in here. It looks like " + sc.n("ubel") +
-                " is in the front leading the sermon. ",
-            button: [
-                { chatID: 4, text: "...", callback: "" }
-            ]
-        },
-        {
-            chatID: 4,
             speaker: "ubel",
             text: "... and the light of the fire shall awaken, Azrael, the demon within! He will strike down all nonbelievers " +
                 "and wipe them from the earth. Leaving only you, the pure souls that brought his coming...",
             button: [
-                { chatID: 5, text: "...", callback: "" }
+                { chatID: 2, text: "...", callback: "" }
             ]
         },
         {
-            chatID: 5,
+            chatID: 2,
             speaker: "ubel",
             text: "... We shall bathe the chosen one in the semen of people and she will birth the demon from within her womb formed " +
                 "by the spirit of our beleif and power! But only if all of you truly believe. This is why all those that have lost " +
                 "their faith must be found and seperated by blood from our numbers...",
             button: [
-                { chatID: 6, text: "...", callback: "" }
+                { chatID: 3, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 3,
+            speaker: "ubel",
+            text: "...Bring forth the chosen one and bathe her in the semen of the people! ",
+            button: [
+                { chatID: 4, text: "[Sneak a closer look]", callback: "e3" }
+            ]
+        },
+        {
+            chatID: 4,
+            speaker: "ubel",
+            text: "We will now add the semen of the people to mix with the chosen one and birth Azrael!",
+            button: [
+                { chatID: 5, text: "?", callback: "e4" }
+            ]
+        },
+        {
+            chatID: 5,
+            speaker: "thinking",
+            text: "Oh wow, that's where all our cum goes...",
+            button: [
+                { chatID: 6, text: "...", callback: "e5" }
             ]
         },
         {
             chatID: 6,
-            speaker: "ubel",
-            text: "...Bring forth the chosen one and bathe her in the semen of the people! ",
+            speaker: "thinking",
+            text: "Hmmm I wonder what it's like to bathe in a bowl full of cum. I can totally smell it from here too. ",
             button: [
-                { chatID: 7, text: "[Sneak a closer look]", callback: "e3" }
+                { chatID: 7, text: "...", callback: "e6" }
             ]
         },
         {
             chatID: 7,
-            speaker: "ubel",
-            text: "We will now add the semen of the people to mix with the chosen one and birth Azrael!",
+            speaker: "thinking",
+            text: "That cum must get everywhere! I wonder if the little spermies can get into her pores? ",
             button: [
-                { chatID: 8, text: "?", callback: "e4" }
+                { chatID: 8, text: "...", callback: "e13" }
             ]
         },
         {
             chatID: 8,
-            speaker: "thinking",
-            text: "Oh wow, that's where all our cum goes...",
+            speaker: "ubel",
+            text: "Now, chosen people of Azrael, it is time to welcome our new slaves into the order and " +
+                "see who is worthy to wear the robe. Put them up against the wall!",
             button: [
-                { chatID: 9, text: "...", callback: "e5" }
+                { chatID: 9, text: "...", callback: "e14" }
             ]
         },
         {
             chatID: 9,
-            speaker: "thinking",
-            text: "Hmmm I wonder what it's like to bathe in a bowl full of cum. I can totally smell it from here too. ",
+            speaker: "ubel",
+            text: "You. Are you a Cum Supplier or cum receiver?",
             button: [
-                { chatID: 10, text: "...", callback: "e6" }
+                { chatID: 10, text: "...", callback: "" }
             ]
         },
         {
             chatID: 10,
-            speaker: "thinking",
-            text: "I bet that much cum would make a great slip and slide... ",
+            speaker: "!man",
+            text: "Man! Totaly Cum Supplier! I ain't to bitch! ",
             button: [
-                { chatID: 11, text: "...", callback: "" }
+                { chatID: 11, text: "...", callback: "e15" }
             ]
         },
         {
             chatID: 11,
+            speaker: "ubel",
+            text: "Are you a Cum Supplier or cum receiver?",
+            button: [
+                { chatID: 12, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 12,
+            speaker: "!jeremy",
+            text: "oh yeah, me? Cum Supplier. Total Cum Supplier. ",
+            button: [
+                { chatID: 13, text: "*pssst*", callback: "e16" }
+            ]
+        },
+        {
+            chatID: 13,
+            speaker: "ubel",
+            text: "Are you a Cum Supplier or cum receiver?",
+            button: [
+                { chatID: -1, text: "Cum Supplier", callback: "e18" },
+                { chatID: 14, text: "Cum receiver", callback: "e17" },
+            ]
+        },
+        {
+            chatID: 14,
+            speaker: "ubel",
+            text: "Are you a Cum Supplier or cum receiver?",
+            button: [
+                { chatID: 15, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 15,
+            speaker: "!man",
+            text: "Giver! I'm a Cum Supplier! ",
+            button: [
+                { chatID: 17, text: "...", callback: "e19" }
+            ]
+        },
+        {
+            chatID: 16,
+            speaker: "ubel",
+            text: "HAHAHAHA!!! Did she just say Cum Supplier! You look like the kind of bitch that that " +
+                "is addicted to cum. Are you sure you're really a Cum Supplier, or are you cum receiving sissy? ",
+            button: [
+                { chatID: 20, text: "You're right. I'm a cum receiving sissy.", callback: "esissy" },
+                { chatID: 21, text: "No. I'm really a Cum Supplier! ", callback: "eman" }
+            ]
+        },
+        {
+            chatID: 17,
+            speaker: "ubel",
+            text: "Selections are over. I welcome all of our new Cum Suppliers! We will not begin the welcoming " +
+                "ceremonies. The Milk Maids have provided a most excellent celebration for all. After we " +
+                "will give you each your robes and medallions and welcome you to the church. ",
+            button: [
+                { chatID: 18, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 18,
+            speaker: "ubel",
+            text: "Castellan! Remove the Cum Receivers from our sight and put them back in their cells. ",
+            button: [
+                { chatID: -1, text: "...", callback: "e20" }
+            ]
+        },
+        {
+            chatID: 19,
+            speaker: "thinking",
+            text: "What? Damn it! Why the hell do I have to sit in a cell and they get to fuck those girls " +
+                "and party! This is such bullshit!",
+            button: [
+                { chatID: -1, text: "...", callback: "room950" }
+            ]
+        },
+        {
+            chatID: 20,
+            speaker: "ubel",
+            text: "I know. We all know. It's ok, bimbo. Thinking is hard. Don't worry, you won't have " + 
+                "to use that brain of yours anymore",
+            button: [
+                { chatID: -1, text: "...", callback: "e17" }
+            ]
+        },
+        {
+            chatID: 21,
+            speaker: "thinking",
+            text: "Hmmm... Well, who am I to judge. Fine. ",
+            button: [
+                { chatID: -1, text: "...", callback: "e17" }
+            ]
+        }, 
+        {
+            chatID: 22,
+            speaker: "thinking",
+            text: "Holy shit! These chicks are just here to get fucked! Who am I going to stick my " +
+                "dick into first? ",
+            button: [
+                { chatID: -1, text: "...", callback: "x1" }
+            ]
+        },
+        {
+            chatID: 23,
+            speaker: "stormy",
+            text: "Hey. Sorry, I didn't know you were cool or I wouldn't have peed on you. " +
+                "Soooo, are you really a Cum Supplier. You know " +
+                "us Milk Maids have to do anything you say. ",
+            button: [
+                { chatID: 27, text: "Really? Well I am a Cum Supplier and my penis has something to say.", callback: "x2" },
+                { chatID: 25, text: "No. Just hanging out. ", callback: "x2" },
+            ]
+        },
+        {
+            chatID: 24,
+            speaker: "stormy",
+            text: "Hey sexy. You know " +
+                "us Milk Maids have to do anything the Cum Supplier says. ",
+            button: [
+                { chatID: 27, text: "...", callback: "x2" },
+                { chatID: 25, text: "No. Just hanging out. ", callback: "x2" },
+            ]
+        },
+        {
+            chatID: 25,
+            speaker: "stormy",
+            text: "Oh. Well that's too bad. In time you'll learn your power. I'm going to find someone " +
+                "who has already found their true power. Say bye bye to this fine ass baby. It's going to " +
+                "get fucked by a real man. ",
+            button: [
+                { chatID: 26, text: "awww. bye bye baby. ", callback: "xend" },
+            ]
+        },
+        {
+            chatID: 26,
+            speaker: "ubel",
+            text: "Unlike the others, you are not free to go. I don't trust your intentions. Tomorrow we " +
+                "shall do a test to see if you are who you claim to be. If you are, it will be quite the " +
+                "experience. For you. Take him back to his cell! ",
+            button: [
+                { chatID: -1, text: "*sigh*", callback: "room950" },
+            ]
+        },
+        {
+            chatID: 27,
+            speaker: "stormy",
+            text: "I do love a Cum Supplier that can appreciate a great ass. Fuck me here in front of " +
+                "everyone! I love being watched. ",
+            button: [
+                { chatID: -1, text: "*sigh*", callback: "room950" },
+            ]
+        },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        {
+            chatID: 8,
             speaker: "thinking",
             text: "...",
             button: [
-                { chatID: 12, text: "...", callback: "" }
+                { chatID: 9, text: "...", callback: "" }
             ]
         },
         {
@@ -216,7 +462,7 @@ room953.chat = function (chatID) {
         {
             chatID: 15,
             speaker: "cult",
-            text: "I know the nonbeliever among us! He pretends to follow the instuctions Azreal, but his actions are a lie! He " + 
+            text: "I know the nonbeliever among us! He pretends to follow the instuctions Azreal, but his actions are a lie! He " +
                 "deceives us all in his treachery!",
             button: [
                 { chatID: 16, text: "GULP!", callback: "" }
@@ -335,6 +581,23 @@ room953.chat = function (chatID) {
                 { chatID: -1, text: "Uhh yeah, sure.", callback: "e13" }
             ]
         },
+        {
+            chatID: 0,
+            speaker: "cult",
+            text: "Clean the chapel. The room must be devoid of all impurities. ",
+            button: [
+                { chatID: 1, text: "...", callback: "e1" }
+            ]
+        },
+        {
+            chatID: 1,
+            speaker: "cult",
+            text: "Just stay back here and wait for me. I will get you after the ceremony to clean up again. ",
+            button: [
+                { chatID: 2, text: "ok. ", callback: "e2" }
+            ]
+        },
+        
         {
             chatID: 30,
             speaker: "cult",

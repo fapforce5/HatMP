@@ -177,12 +177,16 @@ gv.init = function () {
         { n: "forestFastravel1", t: false, q: "bool" },
         { n: "forestFastravel2", t: false, q: "bool" },
 
+        { n: "cultIsSissy", t: null, q: "bool" },
         { n: "cultDays", t: 0, q: "int" },
         { n: "cultDayCounter", t: 0, q: "int" },
         { n: "cultbrick", t: 0, q: "int" },
         { n: "cultwork", t: 1, q: "int" },
         { n: "cultLastClean", t: null, q: "date" },
         { n: "cultMilkCounter", t: 0, q: "int" },
+        { n: "cultMilkMaidChat", t: 0, q: "int" },
+        { n: "cultchapelCounter", t: 0, q: "int" },
+
 
         //{ n: "jobConstWorkToday", t: 0, q: "int" },
         //---------------------------------check not used------------------------------
@@ -241,7 +245,7 @@ gv.init = function () {
         { id: 6, n: "cum", d: "Cum", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true, cap: LEVEL_CAP_DEFAULT },
         { id: 7, n: "piss", d: "Piss", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true, cap: LEVEL_CAP_DEFAULT },
         { id: 8, n: "beast", d: "Beast", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true, cap: LEVEL_CAP_DEFAULT },
-        { id: 9, n: "heels", d: "Heels", c: 0, l: 0, autoLevel: true, display: false, compoundLevel: true, cap: LEVEL_CAP_DEFAULT },
+        { id: 9, n: "heels", d: "Heels", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true, cap: LEVEL_CAP_DEFAULT },
         { id: 10, n: "charisma", d: "Charisma", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true, cap: LEVEL_CAP_DEFAULT },
         { id: 11, n: "fame", d: "Fame", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true, cap: LEVEL_CAP_DEFAULT }, //how likely you are to get raped
 
@@ -914,9 +918,9 @@ levels.mod = function (name, amount) {
     levels.modNotice(level, startingLevel, amount);
 
     if (name === "fitness") {
-        var fitnessEnd = levels.get("fitness").l;
-        if (startingLevel < fitnessEnd)
-            gv.mod("maxenergy", (fitnessEnd - startingLevel) * 4);
+        let fitnessEnd = levels.get("fitness").l;
+        if (startingLevel.l < fitnessEnd)
+            gv.mod("maxenergy", (fitnessEnd - startingLevel.l) * 4);
     }
     sstat.makeGraph();
 };
@@ -1238,6 +1242,21 @@ levels.desc = function (name, level) {
                 { id: 0, txt: "Light makeup" },
                 { id: 1, txt: "Makeup" },
                 { id: 2, txt: "Bimbo Makeup" },
+            ];
+            break;
+        case "heels":
+            levelsDesc = [
+                { id: 0, txt: "All heels hurt" },
+                { id: 1, txt: "All heels hurt" },
+                { id: 2, txt: "Cute heels" },
+                { id: 3, txt: "Cute heels" },
+                { id: 4, txt: "Sexy heels" },
+                { id: 5, txt: "Sexy heels" },
+                { id: 6, txt: "All heels" },
+                { id: 7, txt: "All heels" },
+                { id: 8, txt: "All heels" },
+                { id: 9, txt: "All heels" },
+                { id: 9, txt: "All heels" },
             ];
             break;
     };

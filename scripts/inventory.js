@@ -286,9 +286,14 @@ inv.phone = "phoneBasic";
 
 $(document).ready(function () {
     $('#room-inv').click(function () {
-        phone.clear(true);
-        inv.page = 0;
-        inv.display();
+        let ignoreList = [401, 405];
+        if (ignoreList.includes(g.roomID))
+            g.popUpNotice("Inventory not accessable");
+        else {
+            phone.clear(true);
+            inv.page = 0;
+            inv.display();
+        }
     });
 });
 
@@ -440,7 +445,7 @@ inv.phoneIcon = function () {
 };
 
 inv.display = function (typeArray = null) {
-    inv.createElements();
+    inv.createElements(true);
     var counter = 0;
     var totalCounter = 0;
     var i, prevI;
@@ -647,7 +652,7 @@ inv.close = function () {
         $('#room_footer').show();
 };
 
-inv.createElements = function () {
+inv.createElements = function (showFilter = true) {
     var w, t, l, s, rw, rl, rt, counter;
     w = 160 * g.ratio;
     s = 170 * g.ratio;
@@ -686,16 +691,17 @@ inv.createElements = function () {
     $('#menu_displayAction').hide();
     $('#menu_displayAction2').hide();
 
-    $('.room-main').append('<button class="menu_inventory_grouping" data-val="q" style="' + g.cssText(12) + '; ' + g.makeCss(50, 260, 100, 90) + '; position:absolute; z-index:2;">View All</button>');
-    $('.room-main').append('<button class="menu_inventory_grouping" data-val="e" style="' + g.cssText(12) + '; ' + g.makeCss(50, 260, 200, 90) + '; position:absolute; z-index:2;">Energy Snack</button>');
-    $('.room-main').append('<button class="menu_inventory_grouping" data-val="b" style="' + g.cssText(12) + '; ' + g.makeCss(50, 260, 260, 90) + '; position:absolute; z-index:2;">Purse</button>');
-    $('.room-main').append('<button class="menu_inventory_grouping" data-val="p" style="' + g.cssText(12) + '; ' + g.makeCss(50, 260, 320, 90) + '; position:absolute; z-index:2;">Phone Case</button>');
-    $('.room-main').append('<button class="menu_inventory_grouping" data-val="r" style="' + g.cssText(12) + '; ' + g.makeCss(50, 260, 380, 90) + '; position:absolute; z-index:2;">Room Decore</button>');
-    $('.room-main').append('<button class="menu_inventory_grouping" data-val="m" style="' + g.cssText(12) + '; ' + g.makeCss(50, 260, 440, 90) + '; position:absolute; z-index:2;">Makeup</button>');
-    $('.room-main').append('<button class="menu_inventory_grouping" data-val="a" style="' + g.cssText(12) + '; ' + g.makeCss(50, 260, 500, 90) + '; position:absolute; z-index:2;">Gifts</button>');
-    $('.room-main').append('<button class="menu_inventory_grouping" data-val="d" style="' + g.cssText(12) + '; ' + g.makeCss(50, 260, 560, 90) + '; position:absolute; z-index:2;">Dildos</button>');
-    $('.room-main').append('<button class="menu_inventory_grouping" data-val="o" style="' + g.cssText(12) + '; ' + g.makeCss(50, 260, 620, 90) + '; position:absolute; z-index:2;">Keys</button>');
-
+    if (showFilter) {
+        $('.room-main').append('<button class="menu_inventory_grouping" data-val="q" style="' + g.cssText(12) + '; ' + g.makeCss(50, 260, 100, 90) + '; position:absolute; z-index:2;">View All</button>');
+        $('.room-main').append('<button class="menu_inventory_grouping" data-val="e" style="' + g.cssText(12) + '; ' + g.makeCss(50, 260, 200, 90) + '; position:absolute; z-index:2;">Energy Snack</button>');
+        $('.room-main').append('<button class="menu_inventory_grouping" data-val="b" style="' + g.cssText(12) + '; ' + g.makeCss(50, 260, 260, 90) + '; position:absolute; z-index:2;">Purse</button>');
+        $('.room-main').append('<button class="menu_inventory_grouping" data-val="p" style="' + g.cssText(12) + '; ' + g.makeCss(50, 260, 320, 90) + '; position:absolute; z-index:2;">Phone Case</button>');
+        $('.room-main').append('<button class="menu_inventory_grouping" data-val="r" style="' + g.cssText(12) + '; ' + g.makeCss(50, 260, 380, 90) + '; position:absolute; z-index:2;">Room Decore</button>');
+        $('.room-main').append('<button class="menu_inventory_grouping" data-val="m" style="' + g.cssText(12) + '; ' + g.makeCss(50, 260, 440, 90) + '; position:absolute; z-index:2;">Makeup</button>');
+        $('.room-main').append('<button class="menu_inventory_grouping" data-val="a" style="' + g.cssText(12) + '; ' + g.makeCss(50, 260, 500, 90) + '; position:absolute; z-index:2;">Gifts</button>');
+        $('.room-main').append('<button class="menu_inventory_grouping" data-val="d" style="' + g.cssText(12) + '; ' + g.makeCss(50, 260, 560, 90) + '; position:absolute; z-index:2;">Dildos</button>');
+        $('.room-main').append('<button class="menu_inventory_grouping" data-val="o" style="' + g.cssText(12) + '; ' + g.makeCss(50, 260, 620, 90) + '; position:absolute; z-index:2;">Keys</button>');
+    }
 
 
     $("#menu_displayUp").click(function () {

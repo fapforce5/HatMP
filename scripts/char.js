@@ -552,10 +552,11 @@ char.room = function (roomID) {
     if ($('#room-menuButtons').is(":visible"))
         inv.close();
     let ignoreShoeRooms = [8, 28];
-    if (g.prevRoom !== roomID && !ignoreShoeRooms.includes(roomID)) {
+    if (g.prevRoom === roomID && !ignoreShoeRooms.includes(roomID)) {
         let shoedaring = cl.getEntry("shoes", cl.c.shoes).daring;
         let actualshoeLevel = levels.get("heels").l;
         let shoeLevel = Math.round(actualshoeLevel / 2);
+        console.log(shoedaring + " " + shoeLevel + " " + actualshoeLevel);
         if (shoedaring > 1 && actualshoeLevel < 8) {
             if (shoeLevel < shoedaring) {
                 let energyLoss = (shoeLevel - shoedaring) * 3;

@@ -1202,6 +1202,7 @@ sc.charMission = [
                     [
                         { id: 0, txt: "Taken by the cult", show: true, mStatus: 0, roomId: 800 },
                         { id: 1, txt: "Lost son", show: false, mStatus: 0, roomId: 800 },
+                        { id: 2, txt: "Welcome", show: false, mStatus: 0, roomId: 950 },
                     ]
             },
         ]
@@ -3130,6 +3131,10 @@ sc.trivial = function (charname) {
         case "!info":
             name = "Information";
             image = "info.png";
+            break;
+        case "!milkmaid":
+            name = "Milk Maid";
+            image = "milkmaid.png";
             break;
         default:
             console.log("unknown trivial char: (check capitilazation)" + charname);
