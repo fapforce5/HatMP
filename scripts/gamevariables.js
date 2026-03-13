@@ -249,8 +249,8 @@ gv.init = function () {
         { id: 10, n: "charisma", d: "Charisma", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true, cap: LEVEL_CAP_DEFAULT },
         { id: 11, n: "fame", d: "Fame", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true, cap: LEVEL_CAP_DEFAULT }, //how likely you are to get raped
 
-        { id: 12, n: "fitness", d: "Fitness", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true, cap: LEVEL_CAP_DEFAULT },
-        { id: 13, n: "strength", d: "Strength [STR]", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true, cap: LEVEL_CAP_DEFAULT },
+        { id: 12, n: "fitness", d: "Fitness", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true, cap: 999 },
+        { id: 13, n: "strength", d: "Strength", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true, cap: LEVEL_CAP_DEFAULT },
         { id: 14, n: "makeup", d: "Makeup", c: 0, l: 0, autoLevel: true, display: true, compoundLevel: true, cap: LEVEL_CAP_DEFAULT },
         { id: 15, n: "notused1", d: "Pain Tolerance", c: 0, l: 0, autoLevel: true, display: false, compoundLevel: true, cap: LEVEL_CAP_DEFAULT },
         { id: 16, n: "cheer", d: "Cheerleader", c: 0, l: 0, autoLevel: false, display: true, compoundLevel: false, cap: LEVEL_CAP_DEFAULT },
@@ -1088,7 +1088,7 @@ daily.newday = function () {
 
 levels.desc = function (name, level) {
     if (name === "fitness") {
-        return { count: -1, txt: (level * 4) + " Energy Boost" };
+        return { count: level, txt: (level * 4) + " Energy Boost" };
     }
     else if (name === "fame") {
         return { count: -1, txt: (level) + "x chance of rape " };
@@ -1127,7 +1127,7 @@ levels.desc = function (name, level) {
                 { id: 1, txt: "Can kiss Missy's feet" },
                 { id: 2, txt: "Can x Missy" },
                 { id: 3, txt: "Can offer mouth" },
-                { id: 4, txt: "can y missy" },
+                { id: 4, txt: "Can offer mouth" },
                 { id: 5, txt: "Can offer ass" },
                 { id: 6, txt: "TBD" },
                 { id: 7, txt: "TBD" },
@@ -1256,7 +1256,7 @@ levels.desc = function (name, level) {
                 { id: 7, txt: "All heels" },
                 { id: 8, txt: "All heels" },
                 { id: 9, txt: "All heels" },
-                { id: 9, txt: "All heels" },
+                { id: 10, txt: "All heels" },
             ];
             break;
     };
