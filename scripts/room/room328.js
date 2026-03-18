@@ -129,6 +129,7 @@ room328.main = function () {
                 sc.select("icon_chat", "328_farm/icon_chat1.webp", 1);
             else
                 sc.select("icon_chat", "328_farm/icon_chat0.webp", 1);
+
             sc.select("icon_drink", "328_farm/icon_drink.webp", 2);
             sc.select("icon_pee", "328_farm/icon_pee.webp", 3);
             sc.select("icon_fight", "328_farm/icon_fight.webp", 4);
@@ -2351,12 +2352,12 @@ room328.chat = function (chatID) {
                 break;
             case 7:
                 sc.completeMissionTask("lead", "ranch", 7);
-                leadtxt = "I told " + sc.n("rancher") + " that you pee your bed at night. He said that's " +
+                leadtxt = "I told " + sc.n("!rancher") + " that you pee your bed at night. He said that's " +
                     "gross. He'll never marry a hucow that pees the bed like you. ";
                 break;
             default:
                 sc.completeMissionTask("lead", "ranch", 8);
-                leadtxt = "Everyone hates you. You'll never be a real hucow like me. Even " + sc.n("rancher") +
+                leadtxt = "Everyone hates you. You'll never be a real hucow like me. Even " + sc.n("!rancher") +
                     " thinks so. You should just wander into the forest and die! ";
                 break;
         }

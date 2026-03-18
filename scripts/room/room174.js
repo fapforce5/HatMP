@@ -859,7 +859,7 @@ room174.chat = function (chatID) {
                 speaker: "!bill",
                 text: "Fine! Take me to Toys 'n Us. I need to crank one out. ",
                 button: [
-                    { chatID: 3, text: "Yeah. Lets go to Toys 'n Us", callback: "goth1" },
+                    { chatID: 3, text: "Yeah. Let's go to Toys 'n Us", callback: "goth1" },
                     { chatID: 10, text: "We can't go there! ", callback: "" },
                 ]
             },
@@ -1932,7 +1932,7 @@ room174.chat = function (chatID) {
             {
                 chatID: 124,
                 speaker: "lola",
-                text: "I am SO embarrased! Do you think she'll ground us? I can't get grounded, I have " +
+                text: "I am SO embarrassed! Do you think she'll ground us? I can't get grounded, I have " +
                     "a swim meet. Maybe we'll say he broke in and we got scared! ",
                 button: [
                     { chatID: 125, text: "...", callback: "" },

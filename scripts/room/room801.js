@@ -186,7 +186,7 @@ room801.chatcatch = function (callback) {
             zcl.displayMain(-1400, 0, .5, "clothes", true);
             break;
         case "assgrab1":
-            sc.modLevel("ralphsdad", 51, 4);
+            sc.modLevel("ralphsdad", 51, 5);
             sc.startMissionTask("ralphsdad", "main", 2);
             nav.kill();
             nav.bg("801_ralphlivingroom/assgrab_bg.webp");
@@ -215,7 +215,7 @@ room801.chatcatch = function (callback) {
             nav.modbutton("dadflowers", "801_ralphlivingroom/d.webp", null, null);
             break;
         case "likeDick":
-            sc.modLevel("ralphsdad", 51, 4);
+            sc.modLevel("ralphsdad", 51, 5);
             levels.mod("xdress", 15);
             break;
         case "kissgood":
@@ -238,6 +238,10 @@ room801.chatcatch = function (callback) {
                 "height": 1080,
                 "image": "801_ralphlivingroom/bj1.webp"
             }, 801);
+            break;
+        case "3some":
+            g.pass = "803-3some";
+            char.room(803);
             break;
         case "reset":
             char.room(801);

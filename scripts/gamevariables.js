@@ -306,7 +306,7 @@ gv.init = function () {
         },
         //oral
         {
-            id: 5, type: "gavebj", subdom: "sub", d: "Dicks Sucked", ent: [
+            id: 5, type: "gavebj", subdom: "sub", d: "Dicks/Clits Sucked", ent: [
                 { id: 0, gender: "m", c: 0, day: null, names: new Array() },
                 { id: 1, gender: "f", c: 0, day: null, names: new Array() },
                 { id: 2, gender: "n", c: 0, day: null, names: new Array() },
@@ -644,10 +644,38 @@ gv.init = function () {
     ];
 
     trophy.st = [
-        { id: 0, display: "Wear panties for the first time. ", img: "panties.png", ach: false, group: "sissy" },
-        { id: 1, display: "Lock the cock. ", img:"chastity.png", ach: false, group: "sissy" },
+        { id: 0, o: 1, title: "Panteis", display: "Wear panties for the first time. ", img: "panties.webp", ach: false, group: "panties", m: 0, s: 30, d: 0 },
+        { id: 1, o: 2, title: "#lola#'s Panties", display: "Steal #lola#'s panties. ", img: "pantieslola.webp", ach: false, group: "panties", m: 0, s: 30, d: 0 },
+        { id: 2, o: 3, title: "#landlord#'s Panties", display: "Steal #landlord#'s panties. ", img: "pantieslandlord.webp", ach: false, group: "panties", m: 0, s: 30, d: 0 },
+        { id: 3, o: 5, title: "#bimbo#'s Panties", display: "Steal #bimbo#'s panties. ", img: "pantiesbimbo.webp", ach: false, group: "panties", m: 0, s: 30, d: 0 },
+        { id: 4, o: 1, title: "Chastity", display: "Locked the cock. ", img: "chastity.png", ach: false, group: "sissy", m: 0, s: 30, d: 0 },
+        { id: 5, o: 1, title: "Bra", display: "Wear a bra for the first time ", img: "bra.webp", ach: false, group: "bra", m: 0, s: 30, d: 0 },
+        { id: 6, o: 2, title: "Fucked your #landlord#", display: "Balls deep in your #landlord#", img: "fucklandlord.webp", ach: false, group: "fuck", m: 0, s: 0, d: 50 },
+        { id: 7, o: 1, title: "Fucked #lola#", display: "Took #lola#'s virginity", img: "fucklola.webp", ach: false, group: "fuck", m: 0, s: 0, d: 100 },
+        { id: 8, o: 3, title: "Fucked #eva#", display: "Put your penis insde #eva#", img: "fuckeva.webp", ach: false, group: "fuck", m: 0, s: 0, d: 50 },
+        { id: 9, o: 4, title: "Fucked #janice#", display: "Creampied #janice#", img: "fuckjanice.webp", ach: false, group: "fuck", m: 0, s: 0, d: 50 },
+        { id: 10, o: 1, title: "Jail", display: "Lack of respect", img: "eventjail.webp", ach: false, group: "event", m: 0, s: 30, d: 0 },
+        { id: 11, o: 5, title: "Fucked #stormy#", display: "Cum Giver to #stormy#", img: "fuckstormy.webp", ach: false, group: "fuck", m: 0, s: 0, d: 50 },
+        { id: 12, o: 6, title: "Fucked #envy#", display: "Fucked #envy#", img: "fuckenvy.webp", ach: false, group: "fuck", m: 0, s: 0, d: 50 },
+        { id: 13, o: 4, title: "#ralphsmom#'s Panties", display: "Steal #ralphsmom#'s panties", img: "pantiesralphsmom.webp", ach: false, group: "panties", m: 0, s: 30, d: 0 },
+        { id: 14, o: 8, title: "Fucked #tina#", display: "Fucked #tina#", img: "fucktina.webp", ach: false, group: "fuck", m: 0, s: 0, d: 50 },
+        { id: 15, o: 1, title: "Anal", display: "Fucked up the ass", img: "anal1.webp", ach: false, group: "anal", m: 0, s: 30, d: 0 },
+        { id: 16, o: 2, title: "Anal", display: "Fucked up the ass 10 times", img: "anal10.webp", ach: false, group: "anal", m: 0, s: 50, d: 0 },
+        { id: 17, o: 3, title: "Anal", display: "Fucked up the ass 50 times", img: "anal50.webp", ach: false, group: "anal", m: 0, s: 100, d: 0 },
+        { id: 18, o: 4, title: "Anal", display: "Fucked up the ass 100 times", img: "anal100.webp", ach: false, group: "anal", m: 100, s: 100, d: 0 },
+        { id: 19, o: 5, title: "Anal", display: "Fucked up the ass 500 times", img: "anal500.webp", ach: false, group: "anal", m: 500, s: 100, d: 0 },
+        { id: 20, o: 1, title: "Oral", display: "Sucked a dick", img: "oral1.webp", ach: false, group: "oral", m: 0, s: 30, d: 0 },
+        { id: 21, o: 2, title: "Oral", display: "Sucked 10 dicks", img: "oral10.webp", ach: false, group: "oral", m: 0, s: 50, d: 0 },
+        { id: 22, o: 3, title: "Oral", display: "Sucked 50 dicks", img: "oral50.webp", ach: false, group: "oral", m: 0, s: 100, d: 0 },
+        { id: 23, o: 4, title: "Oral", display: "Sucked 100 dicks", img: "oral100.webp", ach: false, group: "oral", m: 100, s: 100, d: 0 },
+        { id: 24, o: 5, title: "Oral", display: "Sucked 500 dicks", img: "oral500.webp", ach: false, group: "oral", m: 500, s: 100, d: 0 },
+        { id: 25, o: 6, title: "Anal", display: "Took Monster Size Dick", img: "analmonster.webp", ach: false, group: "anal", m: 0, s: 50, d: 0 },
+        { id: 26, o: 1, title: "Sissy School", display: "Top Mid-term score", img: "schoolmidterm.webp", ach: false, group: "school", m: 50, s: 100, d: 0 },
+        { id: 27, o: 1, title: "Glory Hole", display: "Took 15 dicks in one session", img: "gloryhole15.webp", ach: false, group: "pinkroom", m: 100, s: 100, d: 0 },
+        { id: 28, o: 1, title: "Ranch", display: "Took down the ranch", img: "eventrachel.webp", ach: false, group: "event", m: 0, s: 100, d: 0 },
+        { id: 29, o: 6, title: "Missy's Panties", display: "Steal Missy's panties", img: "pantiesmissy.webp", ach: false, group: "panties", m: 0, s: 30, d: 0 },
     ];
-
+    
     future.st = new Array();
 
     dreams.st = new Array();
@@ -1369,6 +1397,20 @@ levels.anal = function (size, sissygasm = false, gender = null, creampie = false
 
     if (gender !== null) {
         sex.mod("tookituptheass", gender, who);
+
+        let totalAnal = sex.st[2].ent[0].c + sex.st[2].ent[1].c + sex.st[2].ent[2].c;
+        if (totalAnal > 0) 
+            trophy.add(15);
+        if (totalAnal > 10)
+            trophy.add(16);
+        if (totalAnal > 50)
+            trophy.add(17);
+        if (totalAnal > 100)
+            trophy.add(18);
+        if (totalAnal > 500)
+            trophy.add(19);
+        if (size > 6)
+            trophy.add(25);
     }
 };
 
@@ -1577,7 +1619,19 @@ levels.oral = function (size, gender = null, who = null, swallow = false, beast 
     }
 
     levels.beast(beast, gender, who, "oral");
-}
+
+    let totalOral = sex.st[5].ent[0].c + sex.st[5].ent[1].c + sex.st[5].ent[2].c;
+    if (totalOral > 0)
+        trophy.add(20);
+    if (totalOral > 10)
+        trophy.add(21);
+    if (totalOral > 50)
+        trophy.add(22);
+    if (totalOral > 100)
+        trophy.add(23);
+    if (totalOral > 500)
+        trophy.add(24);
+};
 
 levels.oralSizes = function (size) {
     if (levels.get("oral").l > 3) {
@@ -1848,6 +1902,15 @@ levels.fuckpussy = function (who, gender = "f") {
     cl.doCum(false);
     levels.mod("dick", 20);
     sex.mod("pussiesfucked", gender, who);
+    switch (who) {
+        case "lola": trophy.add(7); break;
+        case "landlord": trophy.add(6); break;
+        case "eva": trophy.add(8); break; 
+        case "janice": trophy.add(9); break;
+        case "stormy": trophy.add(11); break;
+        case "envy": trophy.add(12); break;
+        case "tina": trophy.add(14); break;
+    }
 };
 
 levels.beast = function (beast, gender = "m", who = null, type = "anal") {
@@ -1985,7 +2048,8 @@ gv.save = function () {
 
     //save by index if true
     for (i = 0; i < trophy.st.length; i++) {
-        retArray.trophy.push(trophy.st[i].ach);
+        if (trophy.st[i].ach)
+            retArray.trophy.push(i);
     }
     //{ name : "", daysleft: 0 }
     for (i = 0; i < future.st.length; i++) {
@@ -2063,7 +2127,7 @@ gv.load = function (rma, saveVersion) {
     
     if (typeof rma.trophy !== 'undefined') {
         for (i = 0; i < rma.trophy.length; i++) {
-            trophy.st[i].ach = rma.trophy[i];
+            trophy.st[i].ach = true;
         }
     }
 
@@ -2128,7 +2192,25 @@ qdress.all = function () {
     for (i = 0; i < qdress.st.length; i++) {
         qdress.st[i].ach = true;
     }
-}
+};
+
+trophy.add = function (id) {
+    if (!trophy.st[id].ach) {
+        trophy.st[id].ach = true;
+        if (trophy.st[id].s > 0)
+            levels.mod("xdress", trophy.st[id].s);
+        if (trophy.st[id].d > 0)
+            levels.mod("dom", trophy.st[id].d);
+        if (trophy.st[id].m > 0)
+            gv.mod("money", trophy.st[id].m); 
+        g.popUpNotice("You got an Achievement!!!<br/> " + sc.replace(trophy.st[id].title) + ": " + sc.replace(trophy.st[id].display));
+    }
+};
+
+trophy.all = function () {
+    for (i = 0; i < trophy.st.length; i++)
+        trophy.st[i].ach = true;
+};
 
 sex.stObject = function () {
     return {

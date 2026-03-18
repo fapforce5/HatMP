@@ -11,7 +11,7 @@ rape.phase = 0;
 rape.modifier = "";
 rape.charMessage;
 rape.phases = [
-    { i: 0, n: "Suprise", c: 0 },
+    { i: 0, n: "Surprise", c: 0 },
     { i: 1, n: "fully clothed only", c: 0 },
     { i: 2, n: "bra or panties only", c: 0 },
     { i: 3, n: "intro - choice", c: 0 },

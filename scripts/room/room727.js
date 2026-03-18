@@ -536,7 +536,7 @@ room727.chat = function (chatID) {
             {
                 chatID: 23,
                 speaker: "tina",
-                text: "Oh! I'm so embarrased! I guess you caught me going tinkle. Hehe. I just come " +
+                text: "Oh! I'm so embarrassed! I guess you caught me going tinkle. Hehe. I just come " +
                     "here sometimes to use the bathroom. My place doesn't have one. ",
                 button: [
                     { chatID: 24, text: "You don't have a bathroom?", callback: "" }

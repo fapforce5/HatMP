@@ -313,6 +313,11 @@ room486.btnclick = function (name) {
                         room486.chatcatch("room7");
                     }
                     break;
+                case 8:
+                    if (g.pass.inst && !g.pass.greenbutton) {
+                        room486.chatcatch("room8redraw");
+                    }
+                    break;
                 case 9:
                     if (g.pass.inst && !g.pass.greenbutton) {
                         room486.chatcatch("room9redraw");
@@ -1376,6 +1381,12 @@ room486.chatcatch = function (callback) {
             }
             g.pass.inst = true;
             break;
+        case "room8redraw":
+            if (g.pass.inst && !g.pass.greenbutton) {
+                sc.select("room8_0", "486_game/icon_r8_0.webp", 0);
+                sc.select("room8_1", "486_game/icon_r8_1.webp", 1);
+            }
+            break;
         case "room9":
             g.pass.inst = true;
             room486.btnclick("redrawroom"); 
@@ -2012,7 +2023,7 @@ room486.chat = function (chatID) {
             {
                 chatID: 18,
                 speaker: "!barker",
-                text: sc.n("!seller") + " you may unlock " + gender.pronoun("her") + "! Lets see her crawl to " +
+                text: sc.n("!seller") + " you may unlock " + gender.pronoun("her") + "! Let's see her crawl to " +
                     "our next game!!!",
                 button: [
                     { chatID: -1, text: "...", callback: "greenlightRedraw" },
@@ -2170,7 +2181,7 @@ room486.chat = function (chatID) {
             {
                 chatID: 36,
                 speaker: "!barker",
-                text: "Congratulations on making it to the 12th door! You'll be suprised on how few actually " +
+                text: "Congratulations on making it to the 12th door! You'll be surprised on how few actually " +
                     "make it here! Only the slutties, natiest sluts make it here, and you are one of them. To " +
                     "achieve such a feat deserves a reward. ",
                 button: [

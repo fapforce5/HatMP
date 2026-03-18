@@ -1232,7 +1232,7 @@ room301.chat = function (chatID) {
             {
                 chatID: 24,
                 speaker: "spanky",
-                text: "Hay, I saw you coming out of " + sc.n("envy") + "'s place. Are you fucking her? ",
+                text: "Hey, I saw you coming out of " + sc.n("envy") + "'s place. Are you fucking her? ",
                 button: [
                     { chatID: 25, text: "Oh no, we're just friends ", callback: "" }
                 ]
@@ -1293,7 +1293,7 @@ room301.chat = function (chatID) {
                 speaker: "spanky",
                 text: "I'll tell you what. I'm such an awesome guy I'll sell you the hypno videos. Stop by my " +
                     "store. If I sell them to you, you gotta play them though. Don't be a little bitch boy and " +
-                    "hold on to them. Also they only work on " + ("envy") + " so don't go fuckin' around with 'em. ",
+                    "hold on to them. Also they only work on " + sc.n("envy") + " so don't go fuckin' around with 'em. ",
                 button: [
                     { chatID: 31, text: "I won't", callback: "" }
                 ]

@@ -417,6 +417,7 @@ room526.chatcatch = function (callback) {
             levels.oral(3, "f", "zoey");
             sc.modLevel("zoey", 100, 7);
             g.pass = 502;
+            gv.set("map", 1);
             char.room(28);
             break;
         case "s4":
@@ -436,6 +437,7 @@ room526.chatcatch = function (callback) {
             levels.oral(3, "f", "zoey");
             sc.modLevel("zoey", 20, 7);
             g.pass = 502;
+            gv.set("map", 1);
             char.room(28);
             break;
         case "reset":

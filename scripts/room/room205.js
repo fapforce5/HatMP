@@ -59,6 +59,7 @@ room205.chatcatch = function (callback) {
             nav.bg("205_chastity/" + callback + ".jpg");
             cl.add("chastity", "cage");
             cl.c.chastity = "cage";
+            trophy.add(4);
             break;
         case "chast0_9_bad":
             missy.mod("mood", -100);

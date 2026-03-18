@@ -95,18 +95,18 @@ room40.chatcatch = function (callback) {
             break;
         case "chatOrClean":
             nav.bg("40_garage/chatOrClean.jpg");
-            char.settime(12, 17);
+            char.addtime(230);
             sc.select("chat", "40_garage/icon_chat.png", 0);
             sc.select("clean", "40_garage/icon_clean.png", 1);
             break;
         case "cleanOnly":
             nav.bg("40_garage/chatOrClean.jpg");
-            char.settime(12, 17);
+            char.addtime(230);
             sc.select("clean", "40_garage/icon_clean.png", 1);
             break;
         case "leave":
             gv.set("workMonday", false);
-            char.settime(15, 12);
+            char.addtime(230);
             gv.set("map", 3);
             char.room(0);
             break;

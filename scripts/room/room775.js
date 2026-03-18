@@ -543,7 +543,7 @@ room775.chat = function (chatID) {
             {
                 chatID: 21,
                 speaker: "priest",
-                text: "A wander tongue comes from the mouth of the devil. Satan uses your mouth to speak lies into the " +
+                text: "A wandering tongue comes from the mouth of the devil. Satan uses your mouth to speak lies into the " +
                     "most delicate areas of a young lady. So not only are you walking down the path to hell, but you lead that " +
                     "poor girl along that path with your forked tongue. ",
                 button: [
@@ -1028,7 +1028,7 @@ room775.chat = function (chatID) {
                 speaker: "priest",
                 text: "If it isn't little " + sc.n("me") + ". It's nice to see you back in the church. " +
                     "It's been so long since I've " +
-                    "seen you. Welcome back. I must say I'm a bit suprised. I don't " +
+                    "seen you. Welcome back. I must say I'm a bit surprised. I don't " +
                     "remember you coming to confess in the past. ",
                 button: [
                     { chatID: 74, text: "...", callback: "" },

@@ -166,6 +166,16 @@ sc.n = function (name) {
     return sc.get(name).display;
 };
 
+sc.replace = function (txt) {
+    if (txt.includes("#")) {
+        const output = txt.replace(/#([^#]+)#/g, (match, internalString) => {
+            return sc.n(internalString);
+        });
+        return output;
+    }
+    return txt;
+};
+
  //mStatus 0 = not started, 1 - 99 = inprogress, 100 = complete - success, 101 = complete - fail
 sc.charMission = [
     {
@@ -557,10 +567,10 @@ sc.charMission = [
                         { id: 0, txt: "Back from vacation!", show: true, mStatus: 0, roomId: 316 },
                         { id: 1, txt: "Webcam to earn cash", show: true, mStatus: 0, roomId: 316 },
                         { id: 2, txt: "She knows. ", show: true, mStatus: 0, roomId: 316 },
-                        { id: 3, txt: "Fist show was a bust. ", show: true, mStatus: 0, roomId: 316 },
+                        { id: 3, txt: "First show was a bust. ", show: true, mStatus: 0, roomId: 316 },
                         { id: 4, txt: "Get a strap-on. ", show: true, mStatus: 0, roomId: 316 },
                         { id: 5, txt: "The talk. ", show: true, mStatus: 0, roomId: 316 },
-                        { id: 6, txt: "Suprise", show: true, mStatus: 0, roomId: 316 },
+                        { id: 6, txt: "Surprise", show: true, mStatus: 0, roomId: 316 },
                         { id: 7, txt: "A whole new world!", show: true, mStatus: 0, roomId: 316 },
                     ]
             },
@@ -599,7 +609,7 @@ sc.charMission = [
                         { id: 3, txt: "Bitchsuit for a bitch", show: true, mStatus: 0, roomId: 316 },
                         { id: 4, txt: "First Day", show: true, mStatus: 0, roomId: 322 },
                         { id: 5, txt: "Webcam first time", show: true, mStatus: 0, roomId: 321 },
-                        { id: 6, txt: "Do I suprise her?", show: true, mStatus: 0, roomId: 322 },
+                        { id: 6, txt: "Do I surprise her?", show: true, mStatus: 0, roomId: 322 },
                         { id: 7, txt: "Freedom", show: true, mStatus: 0, roomId: 322 },
                     ]
             },

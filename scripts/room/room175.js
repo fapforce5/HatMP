@@ -543,7 +543,7 @@ room175.chat = function (chatID) {
         {
             chatID: 37,
             speaker: "p",
-            text: "Ok class now that we have our demonstrator I'm going to go over the proper way to lube your tight little " +
+            text: "Ok class now that we have our demonstrator. I'm going to go over the proper way to lube your tight little " +
                 "fuck holes. Bend over my bench and relax your cheeks. ",
             button: [
                 { chatID: 38, text: "...", callback: "lube3" }

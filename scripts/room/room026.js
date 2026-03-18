@@ -1686,7 +1686,7 @@ room26.chat = function (chatID) {
             {
                 chatID: 84,
                 speaker: "landlord",
-                text: "It's been too long since I've had a reason to wear this dress. Lets head to the park and have a nice picnic.",
+                text: "It's been too long since I've had a reason to wear this dress. Let's head to the park and have a nice picnic.",
                 button: [
                     { chatID: 85, text: "[Head to the park]", callback: "ll200_1" }
                 ]

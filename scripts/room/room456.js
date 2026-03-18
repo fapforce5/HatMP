@@ -328,7 +328,7 @@ room456.chat = function (chatID) {
         {
             chatID: 23,
             speaker: "cop",
-            text: "I can feel the back of your throat... oh yea.. oh fuck I'm going to cum...  ",
+            text: "I can feel the back of your throat... oh yeah.. oh fuck I'm going to cum...  ",
             button: [
                 { chatID: 24, text: "uuHHHmmmmm", callback: "cop8" }
             ]

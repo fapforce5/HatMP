@@ -358,7 +358,7 @@ room403.chat = function (chatID) {
         {
             chatID: 9,
             speaker: "tiffany",
-            text: "I'll bring it with us! Lets shop some more!",
+            text: "I'll bring it with us! Let's shop some more!",
             button: [
                 { chatID: 10, text: "Ok", callback: "mall" }
             ]
@@ -506,7 +506,7 @@ room403.chat = function (chatID) {
             chatID: 27,
             speaker: "jada",
             text: "Anything for " + sc.n("me") + ". I have a few that would look really cute with that little butt of his! " +
-                "Lets go back to the changing room so he can try them on. Everyone is going to get a kick out of this when they " +
+                "Let's go back to the changing room so he can try them on. Everyone is going to get a kick out of this when they " +
             "find out!",
             button: [
                 { chatID: 28, text: "....", callback: "changeRoom1" }
@@ -523,7 +523,7 @@ room403.chat = function (chatID) {
         {
             chatID: 29,
             speaker: "jada",
-            text: "Oh yea. He really is a cutie! I bet you'll look sexy in panties! I've got to help some other customers, I'll come back and check on you.",
+            text: "Oh yeah. He really is a cutie! I bet you'll look sexy in panties! I've got to help some other customers, I'll come back and check on you.",
             button: [
                 { chatID: 30, text: "ok, later " + sc.n("jada"), callback: "changeRoom3b" }
             ]
@@ -565,7 +565,7 @@ room403.chat = function (chatID) {
         {
             chatID: 34,
             speaker: "jada",
-            text: "So lets get to those panties mister! I wonder what " + sc.n("jada") + " brought us...",
+            text: "So let's get to those panties mister! I wonder what " + sc.n("jada") + " brought us...",
             button: [
                 { chatID: 35, text: "...", callback: "changeRoom4" }
             ]
@@ -609,7 +609,7 @@ room403.chat = function (chatID) {
         {
             chatID: 39,
             speaker: "tiffany",
-            text: "Ahahaha, I knew you were an butt slut! Nothing shows off your pretty butt-hole like a good thong!",
+            text: "Ahahaha, I knew you were a butt slut! Nothing shows off your pretty butt-hole like a good thong!",
             button: [
                 { chatID: 71, text: "I'm such a butt slut", callback: "changeRoom6bra" }
             ]
@@ -675,7 +675,7 @@ room403.chat = function (chatID) {
         {
             chatID: 47,
             speaker: "jada",
-            text: "I'm going to send you a pic! Check your phone sometime. I've got to help other customers before my boss get pissed off. " +
+            text: "I'm going to send you a pic! Check your phone sometime. I've got to help other customers before my boss gets pissed off. " +
             sc.n("tiffany") + " you fuckin' rock, later " + sc.n("me") + ". ",
             button: [
                 { chatID: 48, text: "Oh, don't share that photo!!!", callback: "changeRoom6a" }
@@ -693,7 +693,7 @@ room403.chat = function (chatID) {
         {
             chatID: 49,
             speaker: "tiffany",
-            text: "Awww ok, Lets get you dressed and back to our new home. Strip off those pesky male clothes!",
+            text: "Awww ok, Let's get you dressed and back to our new home. Strip off those pesky male clothes!",
             button: [
                 { chatID: 65, text: "ok", callback: "changeRoom11" }
             ]
@@ -815,7 +815,7 @@ room403.chat = function (chatID) {
         {
             chatID: 64,
             speaker: "tiffany",
-            text: "Your cock is amazing. I'm going to have to ride that again! It's time to get your all dressed up like a pretty girl and " +
+            text: "Your cock is amazing. I'm going to have to ride that again! It's time to get you all dressed up like a pretty girl and " +
                 "take you to your new home.",
             button: [
                 { chatID: -1, text: "...", callback: "jadajackoff" }

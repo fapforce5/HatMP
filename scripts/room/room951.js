@@ -363,7 +363,7 @@ room951.chat = function (chatID) {
         {
             chatID: 25,
             speaker: "cult",
-            text: "Lets let everyone else have a turn now. ",
+            text: "Let's let everyone else have a turn now. ",
             button: [
                 { chatID: -1, text: "oooOOooooo", callback: "fuckboxEnd" }
             ]

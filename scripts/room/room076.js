@@ -301,7 +301,7 @@ room76.chat = function (chatID) {
             speaker: "bimbo",
             text: "Oh, it's all locked up. Well, I guess there's not much I can do with that. Too bad, I bet your cum would have been yummy!",
             button: [
-                { chatID: -1, text: "oh yea.. oh well [leave]", callback: "leave1" }
+                { chatID: -1, text: "oh yeah.. oh well [leave]", callback: "leave1" }
             ]
         },
         {
@@ -309,7 +309,7 @@ room76.chat = function (chatID) {
             speaker: "bimbo",
             text: "Oh, I didn't realize you had a pussy! I thought you were one of those guys with tits. Oh well, I guess I'll get my cum from someone else.",
             button: [
-                { chatID: -1, text: "oh yea.. oh well [leave]", callback: "leave1" }
+                { chatID: -1, text: "oh yeah.. oh well [leave]", callback: "leave1" }
             ]
         },
         {
@@ -317,7 +317,7 @@ room76.chat = function (chatID) {
             speaker: "bimbo",
             text: "It's soooo tiny! I was going to rub my titties all over it, but my tits are sooo big that little thing will get lost. Sorry honey. ",
             button: [
-                { chatID: -1, text: "oh yea.. oh well [leave]", callback: "leave1" }
+                { chatID: -1, text: "oh yeah.. oh well [leave]", callback: "leave1" }
             ]
         },
         {

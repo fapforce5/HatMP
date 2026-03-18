@@ -458,7 +458,7 @@ room197.chat = function (chatID) {
             chatID: 13,
             speaker: "missy",
             text: "That's my good sissy. You may taste my leg and stare at Big Red. I want you to " +
-                "imagine what you want to Big Red to do to your tiny sissy body. ",
+                "imagine what you want Big Red to do to your tiny sissy body. ",
             button: [
                 { chatID: 14, text: "thank you ma'am", callback: "legworship2" },
             ]
@@ -537,8 +537,8 @@ room197.chat = function (chatID) {
         {
             chatID: 21,
             speaker: "missy",
-            text: "I have a treat for you my little sissy.I bet you like whip cream, don't you. " +
-                " I like my little sissys full of cream.",
+            text: "I have a treat for you my little sissy.I bet you like whipped cream, don't you. " +
+                " I like my little sissies full of cream.",
             button: [
                 { chatID: -1, text: "umm hmmm..", callback: "bj4" },
             ]

@@ -55,6 +55,7 @@ room78.chatcatch = function (callback) {
                 missy.set("activeCaseComplete", 1);
             }
             cl.add("panties", "bi");
+            trophy.add(3);
             char.room(78);
             break;
         case "reset":

@@ -2165,7 +2165,7 @@ room23.chat = function (chatID) {
             {
                 chatID: 78,
                 speaker: "lola",
-                text: "I'm so embarrased! Does it look good. I hope it looks good. ",
+                text: "I'm so embarrassed! Does it look good. I hope it looks good. ",
                 button: [
                     { chatID: -1, text: "...", callback: "nextTurn" },
                 ]
@@ -2682,7 +2682,7 @@ room23.buildInternal = function () {
         },
         {
             q: "Have you ever fantasized about a girl?",
-            l: "[BLUSH] yea...",
+            l: "[BLUSH] yeah...",
             e: "Oh yes, Girls are just so sexy and soft.",
             i: "q_2_4"
         },
@@ -2733,7 +2733,7 @@ room23.buildInternal = function () {
         {
             q: "Do you sleep in the nude?",
             l: "Yes, we both do sometimes. It's no big deal.",
-            e: "Oh yea. Clothes are so uncomfortable when you're trying to sleep. I don't know why people do it.",
+            e: "Oh yeah. Clothes are so uncomfortable when you're trying to sleep. I don't know why people do it.",
             i: "q_3_4"
         },
         {
@@ -2777,7 +2777,7 @@ room23.buildInternal = function () {
         {
             q: "What was the most embarrassing time you got turned on?",
             l: "Oh. Hmmmm. That's a real thinker. I don't really know. ",
-            e: "I'm never embarrased when I'm turned on. I sometimes think that's the problem. ",
+            e: "I'm never embarrassed when I'm turned on. I sometimes think that's the problem. ",
             i: "q_4_3"
         },
         {

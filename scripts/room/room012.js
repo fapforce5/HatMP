@@ -73,7 +73,15 @@ room12.main = function () {
         }
     }
     else {
-
+        nav.button({
+            "type": "btn",
+            "name": "shower",
+            "left": 407,
+            "top": 0,
+            "width": 662,
+            "height": 970,
+            "image": "12_bathroom/12_shower.png"
+        }, 12);
         nav.button({
             "type": "btn",
             "name": "mirror",
@@ -83,6 +91,16 @@ room12.main = function () {
             "height": 675,
             "image": "12_bathroom/12_mirror.png"
         }, 12);
+        nav.button({
+            "type": "btn",
+            "name": "toilet",
+            "left": 297,
+            "top": 729,
+            "width": 491,
+            "height": 351,
+            "image": "12_bathroom/12_toilet.png"
+        }, 12);
+
         g.internal = canGoOut;
         chat(18, 12);
     }

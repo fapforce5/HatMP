@@ -396,7 +396,7 @@ room203.chat = function (chatID) {
             {
                 chatID: 8,
                 speaker: "cecilia",
-                text: "Oh yeah you look yummy. you may enter",
+                text: "Oh yeah, you look yummy. You may enter.",
                 button: [
                     { chatID: -1, text: "[Enter " + sc.n("missy") + "'s office]", callback: "enter" }
                 ]

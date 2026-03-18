@@ -613,7 +613,7 @@ room28.btnclick = function (name) {
             tText += '<div style="color:#fedeff; font-size: ' + 25 * g.ratio + 'px; margin-top:' + (20 * g.ratio) + 'px;">Need to raise Estrogen</div>';
         }
         else if (points < qdress.st[id].p) {
-            tText += '<div style="color:#fedeff; font-size: ' + 25 * g.ratio + 'px; margin-top:' + (20 * g.ratio) + 'px;">Need ' + qdress.st[id].p + ' more ' + (qdress.st[id].p - points === 1 ? " Point" : " Points") + '</div>';
+            tText += '<div style="color:#fedeff; font-size: ' + 25 * g.ratio + 'px; margin-top:' + (20 * g.ratio) + 'px;">Need ' + (qdress.st[id].p - points) + ' more ' + (qdress.st[id].p - points === 1 ? " Point" : " Points") + '</div>';
         }
         else {
             tText += '<img src="./images/room/28_transformation/q_grow.png" class="room-btn rom-event" data-name="qgrow_' + id + '" data-room="28" style="width:' + (271 * g.ratio) + 'px; height:' + (72 * g.ratio) + 'px; position:relative; margin-top:' + (20 * g.ratio) + 'px;" />';

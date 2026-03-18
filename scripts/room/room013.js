@@ -1575,7 +1575,7 @@ room13.chatcatch = function (callback) {
                 break;
             case 'takePanties':
                 cl.add("panties", "w");
-                levels.mod("xdress", 50);
+                trophy.add(1);
                 nav.killbutton("panties");
                 break;
             case "killPantyIcon":
@@ -2166,7 +2166,7 @@ room13.chat = function (chatID) {
                     "She must have worn these all day and peed a bit in them. So dirty, but so sexy!  ",
                 button: [
                     { chatID: -1, text: "Put back her gross panties.", callback: "killPantyIcon" },
-                    { chatID: -1, text: "Steal her dirty peed stained panties. ", callback: "takePanties" }
+                    { chatID: -1, text: "Steal her dirty pee-stained panties. ", callback: "takePanties" }
                 ]
             },
             {
@@ -3272,7 +3272,7 @@ room13.chat = function (chatID) {
                     "in him. All he does is play cards with those losers down the " +
                     "street. She could do so much better than him.",
                 button: [
-                    { chatID: 130, text: "Hay!", callback: "" },
+                    { chatID: 130, text: "Hey!", callback: "" },
                 ]
             },
             {
@@ -3526,9 +3526,9 @@ room13.chat = function (chatID) {
             {
                 chatID: 158,
                 speaker: "lola",
-                text: "I love it. Turn around let us see that butt. Hehehe",
+                text: "I love it. Turn around, let us see that butt. Hehehe",
                 button: [
-                    { chatID: 159, text: "[Turn around show you butt] ", callback: "200_6" },
+                    { chatID: 159, text: "[Turn around and show you butt] ", callback: "200_6" },
                 ]
             },
             {
@@ -3553,7 +3553,7 @@ room13.chat = function (chatID) {
             {
                 chatID: 161,
                 speaker: "eva",
-                text: "I love you too, even if you are a wird-o pervert. ",
+                text: "I love you too, even if you are a weirdo pervert. ",
                 button: [
                     { chatID: 162, text: "So nice. ", callback: "" },
                 ]
@@ -3882,7 +3882,7 @@ room13.chat = function (chatID) {
                 text: "She's not a nice kind of girl! She loves it and I'll prove it to you! " +
                     "Deb throws a party every Friday at her place. It's mostly just our friends " +
                     "from college. Meet me here on Friday and I'll take you there as my slave. " +
-                    "Wear something cute. And don't wear that stuipid chastity thing! ",
+                    "Wear something cute. And don't wear that stupid chastity thing! ",
                 button: [
                     { chatID: 199, text: "I'll think about it. ", callback: "" },
                 ]

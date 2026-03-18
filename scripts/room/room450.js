@@ -854,7 +854,7 @@ room450.chat = function(chatID){
         {
             chatID: 35,
             speaker: "lola",
-            text: "Ok, in the mean time lets enjoy this picnic I packed all the way out here. ",
+            text: "Ok, in the mean time let's enjoy this picnic I packed all the way out here. ",
             button: [
                 { chatID: 36, text: "Yea, I'm so hungry", callback: "" }
             ]
@@ -939,7 +939,7 @@ room450.chat = function(chatID){
         {
             chatID: 45,
             speaker: "me",
-            text: "That was fun, now lets just enjoy the food and nature. ",
+            text: "That was fun, now let's just enjoy the food and nature. ",
             button: [
                 { chatID: -1, text: "Yum! [Make small talk and finish the date]", callback: "leaveAddTime" }
             ]
@@ -1139,7 +1139,7 @@ room450.chat = function(chatID){
         {
             chatID: 68,
             speaker: "cop",
-            text: "I can feel the back of your throat... oh yea.. oh fuck I'm going to cum...  ",
+            text: "I can feel the back of your throat... oh yeah.. oh fuck I'm going to cum...  ",
             button: [
                 { chatID: 69, text: "uuHHHmmmmm", callback: "cop8" }
             ]

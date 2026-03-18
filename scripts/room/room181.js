@@ -1117,7 +1117,7 @@ room181.chat = function (chatID) {
         {
             chatID: 94,
             speaker: "black",
-            text: "Welcome to the Black Room. I used to teach basic knot tying, but a few of my students when home " +
+            text: "Welcome to the Black Room. I used to teach basic knot tying, but a few of my students went home " +
                 "and really got themselves in some trouble when they couldn't free themselves. " +
                 "So now it's just a basic introduction so you idiots don't hurt yourselves. ",
             button: [

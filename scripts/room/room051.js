@@ -424,7 +424,7 @@ room51.chat = function (chatID) {
         {
             chatID: 14,
             speaker: "candy",
-            text: "Don't worry our little slut, we're going to make you into such a cock hungry whore!",
+            text: "Don't worry, our little slut, we're going to make you into such a cock hungry whore!",
             button: [
                 { chatID: 15, text: "Oh fuck yeah!", callback: "t11" }
             ]
@@ -652,7 +652,7 @@ room51.chat = function (chatID) {
         {
             chatID: 42,
             speaker: "candy",
-            text: "Sorry, but this is a girls only building. We can't have you accidentally letting " + sc.n("treyvon") + " know we snuck a boy in here.",
+            text: "Sorry, but this is a girls-only building. We can't have you accidentally letting " + sc.n("treyvon") + " know we snuck a boy in here.",
             button: [
                 { chatID: 43, text: "I won't wear them out, I promise", callback: "" }
             ]

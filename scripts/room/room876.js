@@ -1533,7 +1533,7 @@ room876.chat = function (chatID) {
                 speaker: "candy",
                 text: "You two went to far at the game! ",
                 button: [
-                    { chatID: 128, text: "Yea. You really hurt me. ", callback: "" }
+                    { chatID: 128, text: "Yeah. You really hurt me. ", callback: "" }
                 ]
             },
             {

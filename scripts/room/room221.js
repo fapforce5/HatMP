@@ -484,7 +484,7 @@ room221.chat = function (chatID) {
                 chatID: 3,
                 speaker: "thinking",
                 text: "Damn " + sc.n("cecilia") + "! I can't believe she just ran off without telling me " +
-                    "what I need to do! And what the hell in the pink room? It sounds like she's having " +
+                    "what I need to do! And what the hell is the pink room? It sounds like she's having " +
                     "fun while I'm just sitting here. Let me see if there's any notes on her computer to help ",
                 button: [
                     { chatID: -1, text: "...", callback: "start" }

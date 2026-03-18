@@ -1308,7 +1308,7 @@ room176.chat = function (chatID) {
                 chatID: 86,
                 speaker: "!sporty",
                 text: "'cause I need to get laid! Like right now! I don't care if it's " +
-                    "a suprise penis, which is my favorite penis, but I'm going in. Let's " +
+                    "a surprise penis, which is my favorite penis, but I'm going in. Let's " +
                     "go get laid girls! ",
                 button: [
                     { chatID: -1, text: "...", callback: "finalfinal" },

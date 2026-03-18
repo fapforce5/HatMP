@@ -80,6 +80,7 @@ room250.btnclick = function (name) {
                 chat(22, 250);
             }
             else if (gv.get("jobapplybeaver") === 1) {
+                gv.set("jobapplybeaver", 2); 
                 chat(5, 250);
             }
             else {

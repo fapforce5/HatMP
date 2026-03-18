@@ -1730,7 +1730,7 @@ room950.chat = function (chatID) {
             {
                 chatID: 24,
                 speaker: "bodhi",
-                text: "Oh hay my dude! What is up! Are you in the here too?",
+                text: "Oh hey my dude! What is up! Are you in the here too?",
                 button: [
                     { chatID: 25, text: "Oh hi and yes I am here too?", callback: "" }
                 ]
@@ -2010,7 +2010,7 @@ room950.chat = function (chatID) {
             {
                 chatID: 58,
                 speaker: "!man",
-                text: "Hay! New person. Relax. This is the best part. ",
+                text: "Hey! New person. Relax. This is the best part. ",
                 button: [
                     { chatID: 59, text: "What do you mean? Are they going to torture us?", callback: "" }
                 ]
@@ -2313,7 +2313,7 @@ room950.chat = function (chatID) {
                 text: "You know, you're really cute. Some day I hope you'll join us. We can always use " +
                     "more girls. There's just so many penises to drain the cum from. ",
                 button: [
-                    { chatID: -1, text: "yea. Cool. ", callback: "increment" }
+                    { chatID: -1, text: "yeah. Cool. ", callback: "increment" }
                 ]
             },
             {

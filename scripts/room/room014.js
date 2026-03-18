@@ -1942,7 +1942,7 @@ room14.chat = function (chatID) {
                 chatID: 78,
                 speaker: "landlord",
                 text: "You know " + sc.n("bigguy") + " is going through some stuff right now. " +
-                    "let me give him a call. We really should stop this. It's gone too far and " +
+                    "Let me give him a call. We really should stop this. It's gone too far and " +
                     "it isn't right. You need to stop coming to my room at night honey. ",
                 button: [
                     { chatID: 79, text: "...but", callback: "" },
@@ -2015,7 +2015,7 @@ room14.chat = function (chatID) {
             {
                 chatID: 86,
                 speaker: "landlord",
-                text: "This is so wrong. We really sholdn't do this. It doesn't matter how much we want " +
+                text: "This is so wrong. We really shouldn't do this. It doesn't matter how much we want " +
                     "it. ",
                 button: [
                     { chatID: 87, text: "I love you too much to not do this. [Slide your cock into her]", callback: "task_7_4" },
@@ -2156,7 +2156,7 @@ room14.chat = function (chatID) {
                 chatID: 102,
                 speaker: "eva",
                 text: "You know I really like dogs, so he has this German shepherd. And I was petting " +
-                    "him when he got this boner. Well on thing led to another and Samuel talked me into " +
+                    "him when he got this boner. Well one thing led to another and Samuel talked me into " +
                     "having sex with his dog. I thought Samuel would like me the way he was talking, but " +
                     "I got so lost in the sex that I let the dog cum in me! Now I'm worried that I'm " +
                     "pregnant from the dog and I don't know what to do! I don't want to have puppies. " +

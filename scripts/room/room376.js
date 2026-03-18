@@ -3,6 +3,7 @@ var room376 = {};
 room376.main = function () {
     if (g.pass === "endSleepyTime") {
         g.pass = null;
+        trophy.add(10);
         nav.bg("376_jail/welcome.webp");
         char.addtime(180);
         gv.set("energy", 10);

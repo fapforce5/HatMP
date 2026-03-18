@@ -610,7 +610,7 @@ room901.chat = function(chatID){
             speaker: "cindy",
             text: "Slow down turbo! You have to beat me first.",
             button: [
-                { chatID: -1, text: "Lets go!", callback: "swimfan" }
+                { chatID: -1, text: "Let's go!", callback: "swimfan" }
             ]
         },
         {

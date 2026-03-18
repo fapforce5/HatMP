@@ -40,7 +40,7 @@ room182.btnclick = function (name) {
             if (grade > 89) { //crown
                 levels.mod("xdress", 100);
                 cl.add("accessories", "crown");
-
+                trophy.add(26);
                 chat(78, 182);
             }
             else {
@@ -1091,7 +1091,7 @@ room182.chat = function (chatID) {
             {
                 chatID: 48,
                 speaker: "ralph",
-                text: "Really. Now push you ass back into you hole and lets finish this test! ",
+                text: "Really. Now push you ass back into you hole and let's finish this test! ",
                 button: [
                     { chatID: 49, text: "Thanks. Do you mind sitting back, I can feel you dick on in my crack. ", callback: "t1_24" },
                 ]

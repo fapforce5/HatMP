@@ -281,6 +281,7 @@ room222.chatcatch = function (callback) {
             nav.bg("222_errands/laundry2.jpg");
             break;
         case "steal":
+            trophy.add(29);
             cl.add("panties", "missy");
             break;
         case "case-2-jail":

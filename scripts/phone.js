@@ -1445,7 +1445,7 @@ room9999.btnclick = function (name) {
             type: "zimg",
             name: "phone_purity",
             left: 1100,
-            top: 300,
+            top: 180,
             font: 24,
             hex: "#ffffff",
             text: "Boys: "
@@ -1454,7 +1454,7 @@ room9999.btnclick = function (name) {
             type: "zimg",
             name: "phone_purity",
             left: 1250,
-            top: 300,
+            top: 180,
             font: 24,
             hex: "#ffffff",
             text: "Girls: "
@@ -1463,7 +1463,7 @@ room9999.btnclick = function (name) {
             type: "zimg",
             name: "phone_purity",
             left: 1400,
-            top: 300,
+            top: 180,
             font: 24,
             hex: "#ffffff",
             text: "Non-binary: "
@@ -1474,7 +1474,7 @@ room9999.btnclick = function (name) {
                     type: "zimg",
                     name: "phone_purity",
                     left: 1100 + (i * 150),
-                    top: 350 + (j * 25),
+                    top: 210 + (j * 25),
                     font: 20,
                     hex: "#ffffff",
                     text: g.trunc(sex.st[purid].ent[i].names[j], 15)
@@ -1537,7 +1537,31 @@ room9999.btnclick = function (name) {
                 }, 9999);
                 break;
             case "phone_ach":
+                phone.charPointer = 0;
+                room9999.btnclick("phone_ach_draw");
+                break;
+            case "phone_ach1":
+                phone.charPointer = 1;
+                room9999.btnclick("phone_ach_draw");
+                break;
+            case "phone_ach2":
+                phone.charPointer = 2;
+                room9999.btnclick("phone_ach_draw");
+                break;
+            case "phone_ach3":
+                phone.charPointer = 3;
+                room9999.btnclick("phone_ach_draw");
+                break;
+            case "phone_ach_draw":
                 phone.clear(false);
+                var phone_ach_draw;
+                switch (phone.charPointer) {
+                    case 0: phone_ach_draw = ["panties", "bra"]; break;
+                    case 1: phone_ach_draw = ["oral", "anal", "vaginal"]; break;
+                    case 2: phone_ach_draw = ["fuck"]; break;
+                    case 3: phone_ach_draw = ["event", "school", "pinkroom"]; break;
+                    default: phone_ach_draw = []; // Fallback so .includes() doesn't crash
+                }
                 nav.button({
                     "type": "zimg",
                     "name": "phone_",
@@ -1547,6 +1571,112 @@ room9999.btnclick = function (name) {
                     "height": 815,
                     "image": "999_phone/Achievements_bg.jpg",
                 }, 9999);
+                nav.t({
+                    type: "zbtn",
+                    name: "phone_ach",
+                    left: 550,
+                    top: 800,
+                    font: 30,
+                    hex: "#ffffff",
+                    text: "Clothing"
+                }, 9999);
+                nav.t({
+                    type: "zbtn",
+                    name: "phone_ach1",
+                    left: 750,
+                    top: 800,
+                    font: 30,
+                    hex: "#ffffff",
+                    text: "Sex"
+                }, 9999);
+                nav.t({
+                    type: "zbtn",
+                    name: "phone_ach2",
+                    left: 950,
+                    top: 800,
+                    font: 30,
+                    hex: "#ffffff",
+                    text: "Events"
+                }, 9999);
+                nav.t({
+                    type: "zbtn",
+                    name: "phone_ach3",
+                    left: 1150,
+                    top: 800,
+                    font: 30,
+                    hex: "#ffffff",
+                    text: "Other"
+                }, 9999);
+                
+                let newAchList = trophy.st
+                    // 1. Filter: Only keep items whose group is in the current draw list
+                    .filter(item => phone_ach_draw.includes(item.group))
+
+                    // 2. Sort: First by the group's position in phone_ach_draw, then by .o
+                    .sort((a, b) => {
+                        const indexA = phone_ach_draw.indexOf(a.group);
+                        const indexB = phone_ach_draw.indexOf(b.group);
+
+                        // If groups are different, sort by their order in phone_ach_draw
+                        if (indexA !== indexB) {
+                            return indexA - indexB;
+                        }
+
+                        // If groups are the same, sort by the .o property
+                        return a.o - b.o;
+                    });
+                for (let i = 0; i < newAchList.length; i++) {
+                    if (newAchList[i].ach) {
+                        nav.button({
+                            "type": "zimg",
+                            "name": "phone_",
+                            "left": (i % 3 * 380) + 485,
+                            "top": 200 + (Math.floor(i / 3) * 100),
+                            "width": 350,
+                            "height": 84,
+                            "image": "999_phone/ach/" + newAchList[i].img,
+                        }, 9999);
+                        nav.t({
+                            type: "zimg",
+                            name: "phone_",
+                            "left": (i % 3 * 380) + 580,
+                            "top": 250 + (Math.floor(i / 3) * 100),
+                            font: 16,
+                            hex: "#cccccc",
+                            text: sc.replace(newAchList[i].display)
+                        }, 9999);
+                    }
+                    else {
+                        nav.button({
+                            "type": "zimg",
+                            "name": "phone_",
+                            "left": (i % 3 * 380) + 485,
+                            "top": 200 + (Math.floor(i / 3) * 100),
+                            "width": 350,
+                            "height": 84,
+                            "image": "999_phone/ach/x.webp",
+                        }, 9999);
+                        nav.t({
+                            type: "zimg",
+                            name: "phone_",
+                            "left": (i % 3 * 380) + 580,
+                            "top": 250 + (Math.floor(i / 3) * 100),
+                            font: 16,
+                            hex: "#cccccc",
+                            text: "Not Achieved"
+                        }, 9999);
+                    }
+                    nav.t({
+                        type: "zimg",
+                        name: "phone_",
+                        "left": (i % 3 * 380) + 580,
+                        "top": 210 + (Math.floor(i / 3) * 100),
+                        font: 20,
+                        hex: "#ffffff",
+                        text: sc.replace(newAchList[i].title)
+                    }, 9999);
+                    
+                }
                 break;
             case "phone_time":
                 phone.passtime();

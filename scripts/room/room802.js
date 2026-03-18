@@ -185,12 +185,15 @@ room802.chatcatch = function (callback) {
             zcl.displayMain(0, 900, .2, "clothes", true);
             nav.modbutton("ralph", "802_ralphbedroom/ralph1.webp", null, null);
             if (cl.c.panties === null) {
+                sc.completeMissionTask("ralph", "room", 2, false);
                 chat(21, 802);
             }
             else if (cl.pantiesTxt() === "panties") {
+                sc.completeMissionTask("ralph", "room", 2);
                 chat(24, 802);
             }
             else {
+                sc.completeMissionTask("ralph", "room", 2, false);
                 chat(23, 802);
             }
             break;
@@ -227,7 +230,7 @@ room802.chat = function (chatID) {
     daily.set("ralphChat");
     if (chatID === 900) {
         let rchat = [
-            { t: "Did you ever think bug bunny was sexy when he dressed up like a girl bunny?", r1: "Fuck yeah she's hot!", r2: "Hahaha. No" }, 
+            { t: "Did you ever think Bugs Bunny was sexy when he dressed up like a girl bunny?", r1: "Fuck yeah she's hot!", r2: "Hahaha. No" }, 
             { t: "Oh man, I just ordered the new Kekko Kamen doll doing a muff attack. So excited for it to come! ", r1: "Fuck yeah!", r2: "You need to grow up" },
             { t: "Who do you think would win an arm wrestling contest, Hulk or Super Man?", r1: "Super Man", r2: "Hulk" },
             { t: "I would do anything to be enslaved by Snu Snus!  ", r1: "We all do", r2: "They're way too big" },
@@ -437,7 +440,7 @@ room802.chat = function (chatID) {
                 speaker: "ralph",
                 text: "I'm so excited you're in class too! Don't tell my parents. They think I'm just taking " +
                     "a class at the community college. I'm just so giddy! I didn't think anyone else I knew " +
-                    "would ever wear panties! Well except for girls, of course. It would be weird if the didn't. " +
+                    "would ever wear panties! Well except for girls, of course. It would be weird if they didn't. " +
                     "So are you wearing panties now? Can I see???",
                 button: [
                     { chatID: -1, text: "I total am!", callback: "showpanties" },

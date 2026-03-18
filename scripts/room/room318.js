@@ -510,7 +510,7 @@ room318.chatcatch = function (callback) {
                     }
                     else {
                         sc.completeMissionTask("janice", "datr", 1);
-                        chat(56, 318);
+                        chat(42, 318);
                     }
                     
                     break;
@@ -991,7 +991,7 @@ room318.chat = function (chatID) {
                 chatID: 36,
                 speaker: "janice",
                 text: "Awwww! I was looking forward to this. " + sc.n("me") + ", can you " +
-                    "just wait in the living room? You can still here us. ",
+                    "just wait in the living room? You can still hear us. ",
                 button: [
                     { chatID: 37, text: "...but", callback: "" },
                 ]

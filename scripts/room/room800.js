@@ -984,7 +984,7 @@ room800.chat = function (chatID) {
                 "take out the cookies. I guess we'll have to finish this some other time " +
                 "cutie. ",
             button: [
-                { chatID: -1, text: "...yea... some other time. ", callback: "cockgrabpremature" }
+                { chatID: -1, text: "...yeah... some other time. ", callback: "cockgrabpremature" }
             ]
         },
         {

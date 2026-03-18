@@ -126,7 +126,6 @@ room316.main = function () {
             return
         }
 
-
         daily.set("janice");
         g.pass = { money: false, dog: false, pb: false, talk: false, dick: false, tv: false };
         var janiceTask = sc.taskGetStep("janice", "date");
@@ -2538,7 +2537,7 @@ room316.chat = function (chatID) {
             {
                 chatID: 118,
                 speaker: "janice",
-                text: "We should go on the chat together! I have a special little suprise for " +
+                text: "We should go on the chat together! I have a special little surprise for " +
                     "you!",
                 button: [
                     { chatID: -1, text: "totally", callback: "buildMenu" },

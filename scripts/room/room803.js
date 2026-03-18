@@ -139,6 +139,7 @@ room803.btnclick = function (name) {
                 nav.bg("803_parentbedroom/cr.webp");
                 cl.add("panties", "cr");
                 cl.add("bra", "cr");
+                trophy.add(13);
                 chat(10, 803);
             }
             else if (!inv.has("blackDildo")) {
@@ -540,7 +541,7 @@ room803.chatcatch = function (callback) {
             else if (daily.get("803ralphmomfuck")) {
                 chat(87, 803);
             }
-            else if (sc.getTimeline("ralphsdad").roomID !== null) {
+            else if (sc.getTimeline("ralphsdad").roomID !== null && sc.getMissionTask("ralphsmom", "room", 4).notStarted) {
                 chat(53, 803);
             }
             else {

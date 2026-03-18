@@ -253,7 +253,7 @@ room479.chat = function (chatID) {
         {
             chatID: 0,
             speaker: "random",
-            text: "Hay stranger! I'd ask for a blow job, but it's going to take me a few minutes to get it " +
+            text: "Hey stranger! I'd ask for a blow job, but it's going to take me a few minutes to get it " +
                 "hard again!",
             button: [
                 { chatID: 1, text: "Oh, no, I was just..", callback: "bj1" }

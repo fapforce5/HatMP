@@ -1900,7 +1900,7 @@ room322.chat = function (chatID) {
             chatID: 99,
             speaker: "bbc",
             text: "Hehehe.. doggies.. I see one doggy and one bitch. Maybe they want to watch " +
-                "what you're going to do to you. ",
+                "what we're going to do to you. ",
             button: [
                 { chatID: 100, text: "...", callback: "" },
             ]

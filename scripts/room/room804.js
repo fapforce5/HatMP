@@ -149,7 +149,7 @@ room804.chatcatch = function (callback) {
             else {
                 if (!sc.getMissionTask("ralphsdad", "main", 2).complete) {
                     sc.completeMissionTask("ralphsdad", "random", 0);
-                    sc.modLevel("ralphsdad", 51, 4);
+                    sc.modLevel("ralphsdad", 51, 5);
                     nav.button({
                         "type": "img",
                         "name": "smack",

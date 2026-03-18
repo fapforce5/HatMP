@@ -455,7 +455,7 @@ room350.chat = function (chatID) {
             chatID: 21,
             speaker: "raven",
             text: "...you better find out what's happening with those missing specimens or I'll have " +
-                "to start investigating your operation more deeply. You wouldn't want to lost your " +
+                "to start investigating your operation more deeply. You wouldn't want to lose your " +
                 "sperm bank license would you? ",
             button: [
                 { chatID: 22, text: "...who's that talking to my " + sc.n("landlord") + "?", callback: "" },

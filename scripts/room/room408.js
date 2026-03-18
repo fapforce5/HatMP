@@ -973,7 +973,7 @@ room408.chat = function (chatID) {
         {
             chatID: 56,
             speaker: "thinking",
-            text: "He's kissing me? He's kissing me! A bit of a suprise, but his lips are so soft. He " +
+            text: "He's kissing me? He's kissing me! A bit of a surprise, but his lips are so soft. He " +
                 "is a good kisser. ",
             button: [
                 { chatID: 57, text: "*uncontrolled moan*", callback: "elijah1" },

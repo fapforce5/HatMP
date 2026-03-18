@@ -175,7 +175,7 @@ room402.chat = function (chatID) {
             speaker: "jada",
             text: "Just here to look around right?",
             button: [
-                { chatID: -1, text: "Oh yea... right", callback: "" }
+                { chatID: -1, text: "Oh yeah... right", callback: "" }
             ]
         },
         {

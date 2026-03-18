@@ -207,8 +207,8 @@ room8.btnclick = function (name) {
             case "shoes": cl.c.shoes = clname; cl.c.pj = null; break;
             case "socks": cl.c.socks = clname; cl.c.pj = null; cl.c.swimsuit = null; break;
             case "pants": cl.c.pants = clname; cl.c.pj = null; cl.c.swimsuit = null; cl.c.dress = null; break;
-            case "panties": cl.c.panties = clname; cl.c.pj = null; cl.c.swimsuit = null; break;
-            case "bra": cl.c.bra = clname; cl.c.pj = null; cl.c.swimsuit = null; break;
+            case "panties": cl.c.panties = clname; cl.c.pj = null; cl.c.swimsuit = null; trophy.add(0); break;
+            case "bra": cl.c.bra = clname; cl.c.pj = null; cl.c.swimsuit = null; trophy.add(5); break;
             case "shirt": cl.c.shirt = clname; cl.c.pj = null; cl.c.swimsuit = null; cl.c.dress = null; break;
             case "dress": cl.c.dress = clname; cl.c.pj = null; cl.c.swimsuit = null; cl.c.shirt = null; cl.c.pants = null; break;
             case "swimsuit": cl.c.swimsuit = clname; cl.c.pj = null; cl.c.dress = null; cl.c.shirt = null; cl.c.pants = null; cl.c.socks = null; cl.c.shoes = null; break;

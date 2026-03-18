@@ -2,6 +2,7 @@
 var room485 = {};
 room485.main = function () {
     gv.mod("485seller", 1);
+    g.pass = 0;
     g.internal = {
         count: 0,
         i: 0
@@ -14,9 +15,32 @@ room485.btnclick = function (name) {
     if (name === "leave") {
         char.room(485);
     }
+    else if (name === "qnext") {
+        g.pass += 40;
+        room485.chatcatch("sell");
+    }
+    else if (name === "qprev") {
+        g.pass -= 40;
+        room485.chatcatch("sell");
+    }
     else if (name === "e_up") {
         if (g.internal.count < inv.master[g.internal.i].count) {
             g.internal.count++;
+            nav.tmod("d_img_count", g.internal.count);
+            nav.killbutton("d_img_price");
+            nav.tcenter({
+                type: "clickthrough",
+                name: "d_img_price",
+                left: 1520,
+                top: 760,
+                width: 400,
+                font: 30,
+                hex: "#ffffff",
+                text: "Sell $" + g.internal.count * inv.master[g.internal.i].buy
+            }, 485);
+        }
+        else {
+            g.internal.count = 0;
             nav.tmod("d_img_count", g.internal.count);
             nav.killbutton("d_img_price");
             nav.tcenter({
@@ -47,11 +71,35 @@ room485.btnclick = function (name) {
                 text: "Sell $" + g.internal.count * inv.master[g.internal.i].buy
             }, 485);
         }
+        else {
+            g.internal.count = inv.master[g.internal.i].count;
+            nav.tmod("d_img_count", g.internal.count);
+            nav.killbutton("d_img_price");
+            nav.tcenter({
+                type: "clickthrough",
+                name: "d_img_price",
+                left: 1520,
+                top: 760,
+                width: 400,
+                font: 30,
+                hex: "#ffffff",
+                text: "Sell $" + g.internal.count * inv.master[g.internal.i].buy
+            }, 485);
+        }
     }
     else if (name === "e_sell") {
         if (g.internal.count === 0)
             return;
-        inv.master[g.internal.i].count -= g.internal.count;
+        if (inv.master[g.internal.i].count === null) {
+            inv.master[g.internal.i].entry = false;
+        }
+        else {
+            inv.master[g.internal.i].count -= g.internal.count;
+            if (inv.master[g.internal.i].count < 0)
+                inv.master[g.internal.i].count = 0;
+            if (inv.master[g.internal.i].count === 0)
+                inv.master[g.internal.i].entry = false;
+        }
         gv.mod("money", inv.master[g.internal.i].buy * g.internal.count);
         room485.chatcatch("sell");
         room485.btnclick("c_" + g.internal.i);
@@ -189,14 +237,16 @@ room485.btnclick = function (name) {
 };
 
 room485.chatcatch = function (callback) {
-    let c;
+    let c, actualCounter;
+
     switch (callback) {
         case "leave":
             char.room(475);
             break;
         case "sell":
             nav.kill();
-            c = 0;
+            c = actualCounter = 0;
+            
             nav.button({
                 "type": "img",
                 "name": "c_" + i,
@@ -209,38 +259,73 @@ room485.chatcatch = function (callback) {
             
             for (let i = 0; i < inv.master.length; i++) {
                 if (inv.master[i].buy !== null && inv.master[i].count > 0) {
-                    nav.button({
-                        "type": "btn",
-                        "name": "c_" + i,
-                        "left": ((c % 8) * 140) + 350,
-                        "top": 200 + (Math.floor(c / 8) * 140),
-                        "width": 120,
-                        "height": 120,
-                        "image": "485_seller/square.webp"
-                    }, 485);
-                    nav.button({
-                        "type": "btn",
-                        "name": "c_" + i,
-                        "left": ((c % 8) * 140) + 350,
-                        "top": 200 + (Math.floor(c / 8) * 140),
-                        "width": 120,
-                        "height": 120,
-                        "image": "../inv/" + inv.master[i].image
-                    }, 485);
+                    if (actualCounter >= g.pass) {
+                        nav.button({
+                            "type": "btn",
+                            "name": "c_" + i,
+                            "left": ((c % 8) * 140) + 350,
+                            "top": 200 + (Math.floor(c / 8) * 140),
+                            "width": 120,
+                            "height": 120,
+                            "image": "485_seller/square.webp"
+                        }, 485);
+                        nav.button({
+                            "type": "btn",
+                            "name": "c_" + i,
+                            "left": ((c % 8) * 140) + 350,
+                            "top": 200 + (Math.floor(c / 8) * 140),
+                            "width": 120,
+                            "height": 120,
+                            "image": "../inv/" + inv.master[i].image
+                        }, 485);
 
-                    nav.t({
-                        type: "clickthrough",
-                        name: "t",
-                        left: ((c % 8) * 140) + 355,
-                        top: 200 + (Math.floor(c / 8) * 145),
-                        font: 20,
-                        hex: "#ffffff",
-                        text: inv.master[i].count
-                    }, 485);
-                    c++;
+                        nav.t({
+                            type: "clickthrough",
+                            name: "t",
+                            left: ((c % 8) * 140) + 355,
+                            top: 200 + (Math.floor(c / 8) * 145),
+                            font: 20,
+                            hex: "#ffffff",
+                            text: inv.master[i].count
+                        }, 485);
+                        c++;
+                    }
+                    actualCounter++;
+                    if (c > 39)
+                        break;
                 }
             }
-            nav.back("leave");
+            if (c > 39) {
+                nav.button({
+                    "type": "btn",
+                    "name": "qnext",
+                    "left": 1180,
+                    "top": 920,
+                    "width": 225,
+                    "height": 75,
+                    "image": "1001_rand/next.png"
+                }, 485);
+            }
+            if (g.pass > 0) {
+                nav.button({
+                    "type": "btn",
+                    "name": "qprev",
+                    "left": 400,
+                    "top": 920,
+                    "width": 225,
+                    "height": 75,
+                    "image": "1001_rand/back_1.png"
+                }, 485);
+            }
+            nav.button({
+                "type": "btn",
+                "name": "leave",
+                "left": 790,
+                "top": 920,
+                "width": 225,
+                "height": 75,
+                "image": "1001_rand/cancel.png"
+            }, 485);
             break;
         default:
             break;

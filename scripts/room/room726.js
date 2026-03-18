@@ -474,7 +474,7 @@ room726.chat = function (chatID) {
         {
             chatID: 8,
             speaker: "tim",
-            text: "Hay, you aren't sexy enough for a dude like me. I like the total package, lips, tits, and ass. ",
+            text: "Hey, you aren't sexy enough for a dude like me. I like the total package, lips, tits, and ass. ",
             button: [
                 { chatID: 9, text: "Oh, you're really shallow", callback: "" }
             ]

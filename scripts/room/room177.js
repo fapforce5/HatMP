@@ -332,7 +332,7 @@ room177.chat = function (chatID) {
         {
             chatID: 15,
             speaker: "missy",
-            text: "So lets get this terrible cage off of you. Your clitty is begging for release isn't it? ",
+            text: "So let's get this terrible cage off of you. Your clitty is begging for release isn't it? ",
             button: [
                 { chatID: 16, text: "Oh yes ma'am", callback: "chastity5" }
             ]

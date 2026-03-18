@@ -800,6 +800,7 @@ room200.chatcatch = function (callback) {
             missy.caseComplete(19);
             char.addtime(360);
             gv.set("map", 0);
+            trophy.add(28);
             char.room(0);
             break;
         case "case_ranch_cumjars":
@@ -1242,7 +1243,7 @@ room200.chat = function (chatID) {
             {
                 chatID: 42,
                 speaker: "missy",
-                text: "All locked up. Now lets get to work. ",
+                text: "All locked up. Now let's get to work. ",
                 button: [
                     { chatID: -1, text: "Yes ma'am. ", callback: "reset" },
                 ]

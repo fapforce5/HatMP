@@ -207,9 +207,9 @@ room650.chatcatch = function (callback) {
             gv.mod("giveOralMale", 1);
             gv.mod("loadSwollowed", 1);
             gv.mod("arousal", 30);
-            if (q3.activeSearch("charlie"))
-                chat(47, 650);
-            else
+            //if (q3.activeSearch("charlie"))
+            //    chat(47, 650);
+            //else
                 chat(19, 650);
             break;
         case "c4":
@@ -219,9 +219,9 @@ room650.chatcatch = function (callback) {
             cl.c.cumface = true;
             cl.display();
             gv.mod("arousal", 30);
-            if (q3.activeSearch("charlie")) 
-                chat(47, 650);
-            else
+            //if (q3.activeSearch("charlie")) 
+            //    chat(47, 650);
+            //else
                 chat(19, 650);
             break;
         case "c5":
@@ -251,9 +251,9 @@ room650.chatcatch = function (callback) {
             break;
         
         case "cx":
-            if (q3.isItMe("charlie"))
-                chat(64, 650);
-            else
+            //if (q3.isItMe("charlie"))
+            //    chat(64, 650);
+            //else
                 chat(62, 650);
             break;
         case "cend":
@@ -571,7 +571,7 @@ room650.chat = function (chatID) {
             speaker: "candy",
             text: "Oh.. Sure. I would love that! I'm hungry now if you want to grab a bite at the Naked Beaver Diner?",
             button: [
-                { chatID: -1, text: "Yes I do! Lets go!", callback: "candy50" },
+                { chatID: -1, text: "Yes I do! Let's go!", callback: "candy50" },
                 { chatID: -1, text: "I'm busy right now. Maybe later", callback: "" }
             ]
         },
@@ -737,7 +737,7 @@ room650.chat = function (chatID) {
         {
             chatID: 41,
             speaker: "candy",
-            text: "Hay. How's my new friend doing! ",
+            text: "Hey. How's my new friend doing! ",
             button: [
                 { chatID: 42, text: "I want to take you out one more time. On a date.", callback: "" },
                 { chatID: -1, text: "Buy some toys!", callback: "toys" }

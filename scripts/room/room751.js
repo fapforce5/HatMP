@@ -101,11 +101,11 @@ room751.chat = function (chatID) {
             storyLine = "I see you have great potential. You will do great things, but you need to get " +
                 "off your flat lazy butt. Each journey has a beginning and yours is to get out there " +
                 "and start working. To see your true path you much travel the wrong path. Start working at " +
-                "the construction site. I see a suprise awaits you there. ";
+                "the construction site. I see a surprise awaits you there. ";
         }
         else if (gv.get("jobapplyconst") < 100) {
             storyLine = "You must continue working. The catalist for change will come from your own " +
-                "curiosity. I see a suprise awaits you there. ";
+                "curiosity. I see a surprise awaits you there. ";
         }
         else if (missy.get("totalDaysWorked") === 0) {
             storyLine = "Awww. I see your curiosity has placed with in a surprising oppurtunity. " +

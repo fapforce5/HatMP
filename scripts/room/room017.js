@@ -155,6 +155,7 @@ room17.chatcatch = function (callback) {
         case "pantiesTake":
             nav.killbutton("panties");
             cl.add("panties", "c");
+            trophy.add(2);
             levels.mod("xdress", 33);
             break;
         default:

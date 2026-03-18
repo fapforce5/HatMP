@@ -705,7 +705,7 @@ room750.chat = function (chatID) {
                 text: "Ok. good. You know the only power cops have is other people. If you get a bunch of people then you can be the " +
                     "the cops. But then you would be a cop and who wants that. ",
                 button: [
-                    { chatID: 20, text: "Yea... ", callback: "" },
+                    { chatID: 20, text: "Yeah... ", callback: "" },
                 ]
             },
             {
@@ -1091,7 +1091,7 @@ room750.chat = function (chatID) {
                 chatID: 60,
                 speaker: "elijah",
                 text: "Oh no! Sorry! I don't know what came over me... I guess cum came over me. So " +
-                    "sorry. I need to clean this up. I'm so embarrased right now.",
+                    "sorry. I need to clean this up. I'm so embarrassed right now.",
                 button: [
                     { chatID: 61, text: "It's ok. It's only cum.", callback: "" },
                 ]
@@ -1152,7 +1152,7 @@ room750.chat = function (chatID) {
             {
                 chatID: 67,
                 speaker: "elijah",
-                text: "I'm a little embarrased to bring this up, but I'm hoping to save myself for marriage. " +
+                text: "I'm a little embarrassed to bring this up, but I'm hoping to save myself for marriage. " +
                     "I love hanging out with you, but no more sex stuff. ok? ",
                 button: [
                     { chatID: 68, text: "Yeah. Sure", callback: "" }

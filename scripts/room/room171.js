@@ -384,6 +384,9 @@ room171.btnclick = function (name) {
                 if (depositCum && g.internal.i < 15) {
                     g.internal.i++;
                 }
+                else {
+                    trophy.add(27);//Took 15 dicks in one session
+                }
             }
             switch (g.internal.fuckers[2]) {
                 case 8: chat(2, 171); break;

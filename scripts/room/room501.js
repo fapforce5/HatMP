@@ -1362,7 +1362,7 @@ room501.chat = function (chatID) {
                 speaker: "zoey",
                 text: "You're right. I'm probably looking too much into it. I'm glad you're here to keep me sane. ",
                 button: [
-                    { chatID: 51, text: "Hay, it's what best friends are for!", callback: "zLook" }
+                    { chatID: 51, text: "Hey, it's what best friends are for!", callback: "zLook" }
                 ]
             },
             {
@@ -1403,7 +1403,7 @@ room501.chat = function (chatID) {
                 text: "Oh Chloé, I told you that in secret! Sorry " + sc.n("me") + ", I told her about that time in 11th grade when " +
                     "you made fun of Stacy on the lunch room and she kicked you in the balls so hard it looked like she broke them!",
                 button: [
-                    { chatID: 59, text: "ohhh, hahaha yea. They're better now, but feel free to check them.", callback: "" },
+                    { chatID: 59, text: "ohhh, hahaha yeah. They're better now, but feel free to check them.", callback: "" },
                     { chatID: 56, text: sc.n('zoey') + "!! I can't believe your told her that! So rude.", callback: "zhate" }
                 ]
             },
@@ -1436,7 +1436,7 @@ room501.chat = function (chatID) {
                 speaker: "chloe",
                 text: "You know " + sc.n("zoey") + " and I just may do that. We'd want to make sure nothing's broken.",
                 button: [
-                    { chatID: 60, text: "Oh yea...", callback: "" }
+                    { chatID: 60, text: "Oh yeah...", callback: "" }
                 ]
             },
             {

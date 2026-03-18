@@ -612,7 +612,7 @@ room954.chat = function (chatID) {
         {
             chatID: 53,
             speaker: "me",
-            text: "Hay! I need to get a cop! The cult is out there! They kidnapped my friend! ",
+            text: "Hey! I need to get a cop! The cult is out there! They kidnapped my friend! ",
             button: [
                 { chatID: 54, text: "...", callback: "" }
             ]
@@ -628,7 +628,7 @@ room954.chat = function (chatID) {
         {
             chatID: 55,
             speaker: "cop2",
-            text: "Hey hay hay. I'm got this!",
+            text: "Hey hey hey. I'm got this!",
             button: [
                 { chatID: 56, text: "I need your help! ", callback: "" }
             ]

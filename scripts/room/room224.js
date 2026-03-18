@@ -92,7 +92,7 @@ room224.btnclick = function (name) {
             break;
         case "cecilia":
             nav.kill();
-            if (cl.c.chastity !== null) {
+            if (cl.c.chastity === null) {
                 nav.bg("224_lunch/cecilia0.webp");
                 chat(7, 224);
             }
@@ -391,15 +391,15 @@ room224.chat = function (chatID) {
             ]
         },
         {
-            chatID: 7,
+            chatID: 9,
             speaker: "cecilia",
             text: "Oh sweet! I've been wanting to suck a penis all day! ",
             button: [
-                { chatID: 8, text: "Oh. I'm locked up ", callback: "" },
+                { chatID: 10, text: "Oh. I'm locked up ", callback: "" },
             ]
         },
         {
-            chatID: 8,
+            chatID: 10,
             speaker: "cecilia",
             text: "Awww. Some other time then. ",
             button: [
