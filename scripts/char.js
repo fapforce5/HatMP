@@ -380,6 +380,11 @@ char.map = function () {
     else if (g.roomID === 488) {
         cArray.push({ t: sc.getTimeline("daria"), c: sc.n("daria") });
     }
+    else if (g.roomID === 958) {
+        if (g.map !== null)
+            room958.btnclick("displayMap");
+        return;
+    }
 
     if (cArray.length > 0) {
         var ampm = gv.get("clock24") === "12";
@@ -556,7 +561,6 @@ char.room = function (roomID) {
         let shoedaring = cl.getEntry("shoes", cl.c.shoes).daring;
         let actualshoeLevel = levels.get("heels").l;
         let shoeLevel = Math.round(actualshoeLevel / 2);
-        console.log(shoedaring + " " + shoeLevel + " " + actualshoeLevel);
         if (shoedaring > 1 && actualshoeLevel < 8) {
             if (shoeLevel < shoedaring) {
                 let energyLoss = (shoeLevel - shoedaring) * 3;
@@ -689,8 +693,18 @@ menu.save = function (cookieName, saveToCookie) {
 
         g.saveState.savename = saveName;
         if (saveToCookie) {
-            localStorage[cookieName] = JSON.stringify(g.saveState);
-            return true;
+            try {
+                localStorage[cookieName] = JSON.stringify(g.saveState);
+                return true;
+            }
+            catch (err) {
+                if (!g.saveAlert) {
+                    g.saveAlert = true;
+                    alert("Unable to save. Your browser may be blocking the save or you're in incognito mode that doesn't allow saving."); 
+                    console.error("Save failed:", e);
+                }
+                return false;
+            }
         }
         else {
             return JSON.stringify(g.saveState);

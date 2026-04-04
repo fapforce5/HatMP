@@ -1,8 +1,10 @@
 ﻿//Room name
 var room952 = {};
-room952.main = function () {
-    var btnList = [
-        {
+room952.main = function() {
+    g.map = null;
+    let btnList = [];
+    if (g.pass?.e === "panties") {
+        btnList = [{
             "type": "btn",
             "name": "mine",
             "left": 244,
@@ -14,26 +16,6 @@ room952.main = function () {
         },
         {
             "type": "btn",
-            "name": "bodhi",
-            "left": 652,
-            "top": 239,
-            "width": 138,
-            "height": 638,
-            "title": "Bodhi's Cell",
-            "image": "952_hallway/hallway2.png"
-        },
-        {
-            "type": "btn",
-            "name": "bigdick",
-            "left": 858,
-            "top": 357,
-            "width": 60,
-            "height": 467,
-            "title": "Last Cell",
-            "image": "952_hallway/hallway3.png"
-        },
-        {
-            "type": "btn",
             "name": "escape",
             "left": 1206,
             "top": 445,
@@ -41,8 +23,52 @@ room952.main = function () {
             "height": 243,
             "title": "Attempt and escape",
             "image": "952_hallway/escape.png"
-        }
-    ];
+        }];
+    }
+    else {
+        btnList = [
+            {
+                "type": "btn",
+                "name": "mine",
+                "left": 244,
+                "top": 27,
+                "width": 298,
+                "height": 942,
+                "title": "Return to your cell",
+                "image": "952_hallway/hallway1.png"
+            },
+            {
+                "type": "btn",
+                "name": "bodhi",
+                "left": 652,
+                "top": 239,
+                "width": 138,
+                "height": 638,
+                "title": "Bodhi's Cell",
+                "image": "952_hallway/hallway2.png"
+            },
+            {
+                "type": "btn",
+                "name": "bigdick",
+                "left": 858,
+                "top": 357,
+                "width": 60,
+                "height": 467,
+                "title": "Last Cell",
+                "image": "952_hallway/hallway3.png"
+            },
+            {
+                "type": "btn",
+                "name": "escape",
+                "left": 1206,
+                "top": 445,
+                "width": 173,
+                "height": 243,
+                "title": "Attempt and escape",
+                "image": "952_hallway/escape.png"
+            }
+        ];
+    }
     $.each(btnList, function (i, v) {
         nav.button(v, 952);
     });
@@ -87,7 +113,8 @@ room952.btnclick = function (name) {
             chat(2, 952);
             break;
         case "escape":
-            chat(16, 952);
+            g.map = null;
+            char.room(958);
             break;
         case "escape2cancel":
             char.room(952);

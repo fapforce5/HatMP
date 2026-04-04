@@ -721,11 +721,12 @@ zcl.bjpov = function (top, left, ratio, mod, reverse) {
 
 //closed w
 //c facial or swallow b
-zcl.legsup = function (top, left, ratio, mod, reverse) {
+zcl.legsup = function (top, left, ratio, mod, reverse, color = "w") {
     let w = 1700;
     let h = 2100;
     let f = "legsup";
     let face = "smile";
+    zcl.kill();
     if (mod.includes("eyes"))
         face = "eyes";
     else if (mod.includes("open"))
@@ -739,6 +740,9 @@ zcl.legsup = function (top, left, ratio, mod, reverse) {
             dick = "small";
     }
 
+    if (mod.includes("sg0"))
+        dick = dick + "_sg0";
+
     let anus = "anus";
     if (mod.includes("c1"))
         anus = "anus_c1";
@@ -746,10 +750,25 @@ zcl.legsup = function (top, left, ratio, mod, reverse) {
         anus = "anus_c2";
     else if (mod.includes("c3"))
         anus = "anus_c3";
+    else if (mod.includes("compare")) {
+        anus = "compare_" + color;
+        zcl.subDisplay("body_" + gender.pronoun("f") + "_" + face + ".webp", top, left, ratio, reverse, w, h, f);
+        if (mod.includes("sg1"))
+            zcl.subDisplay("sg1.webp", top, left, ratio, reverse, w, h, f);
+        zcl.subDisplay(anus + ".webp", top, left, ratio, reverse, w, h, f);
+        zcl.subDisplay(dick + ".webp", top, left, ratio, reverse, w, h, f);
+        return;
+    }
+    else if (mod.includes("fuck"))
+        anus = "fuck_" + color;
+    else if (mod.includes("creampie"))
+        anus = "creampie_" + color;
 
-    zcl.kill();
+    
 
     zcl.subDisplay("body_" + gender.pronoun("f") + "_" + face + ".webp", top, left, ratio, reverse, w, h, f);
+    if (mod.includes("sg1"))
+        zcl.subDisplay("sg1.webp", top, left, ratio, reverse, w, h, f);
     zcl.subDisplay(dick + ".webp", top, left, ratio, reverse, w, h, f);
     zcl.subDisplay(anus + ".webp", top, left, ratio, reverse, w, h, f);
 
@@ -981,6 +1000,23 @@ zcl.poseExpose = function (top, left, ratio, mod, reverse) {
 
     if (cl.c.chastity !== null && cl.c.panties === null)
         zcl.subDisplay("chastity.png", top, left, ratio, reverse, w, h, f);
+};
+
+zcl.handjob = function (top, left, ratio, mod, reverse, color = "w", small = false) {
+    zcl.kill();
+    let w = 1800;
+    let h = 1500;
+    let f = "handjob";
+    let gender = cl.c.chest > 2 ? "f" : "m";
+    let colorActual = color;
+    if (small && color === "w")
+        colorActual = "sw";
+    zcl.subDisplay("body_" + gender + "_" + colorActual + ".webp", top, left, ratio, reverse, w, h, f);
+
+    if (mod === "stroke")
+        zcl.subDisplay("stroke.webp", top, left, ratio, reverse, w, h, f);
+    else if (mod === "cum")
+        zcl.subDisplay("cum_" + gender + ".webp", top, left, ratio, reverse, w, h, f);
 };
 
 zcl.facedown = function (top, left, ratio, mod, reverse) {

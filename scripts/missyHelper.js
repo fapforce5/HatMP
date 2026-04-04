@@ -164,14 +164,14 @@ missy.activecase = function () {
 };
 
 missy.jobs = [
-    { id: 0, n: "Clean Toilet", img: "errand3.png", pay: 20, page: 220, thisWeek: 6 },
-    { id: 1, n: "File Documents", img: "errand1.png", pay: 40, page: 204, thisWeek: 7 },
-    { id: 2, n: "Data Entry", img: "errand0.png", pay: 25, page: 219, thisWeek: 5 },
-    { id: 3, n: "Work Reception", img: "errand2.png", pay: 40, page: 221, thisWeek: 8 },
-    { id: 4, n: "Run Errands", img: "errand5.png", pay: 30, page: 222, thisWeek: 9 },
-    { id: 5, n: "Cum Dump Maid", img: "errand6.png", pay: 35, page: 216, thisWeek: 10 },
-    { id: 6, n: "Glory Hole", img: "errand7.png", pay: 50, page: 212, thisWeek: 11 },
-    { id: 7, n: "Search the trash", img: "errand8.png", pay: 15, page: 173, thisWeek: 12 },
+    { id: 0, n: "Clean Toilet", img: "errand3.png", pay: 40, page: 220, thisWeek: 6 },
+    { id: 1, n: "File Documents", img: "errand1.png", pay: 80, page: 204, thisWeek: 7 },
+    { id: 2, n: "Data Entry", img: "errand0.png", pay: 50, page: 219, thisWeek: 5 },
+    { id: 3, n: "Work Reception", img: "errand2.png", pay: 80, page: 221, thisWeek: 8 },
+    { id: 4, n: "Run Errands", img: "errand5.png", pay: 60, page: 222, thisWeek: 9 },
+    { id: 5, n: "Cum Dump Maid", img: "errand6.png", pay: 70, page: 216, thisWeek: 10 },
+    { id: 6, n: "Glory Hole", img: "errand7.png", pay: 100, page: 212, thisWeek: 11 },
+    { id: 7, n: "Search the trash", img: "errand8.png", pay: 30, page: 173, thisWeek: 12 },
 ];
 
 missy.didJob = function (jobId, payMulti, payOverride) {

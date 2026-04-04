@@ -32,6 +32,7 @@ g.fmap;
 g.nextRoomId = 0;
 g.pastSaves = new Array();
 g.skipChat = false;
+g.saveAlert = false;
 g.gt = function (first, second) {
     return gv.get(first) > gv.get(second);
 };
@@ -418,10 +419,11 @@ g.rooms = [
     { roomID: 952, name: "Hallway", image: "952_hallway/hallway.jpg", nightImage: "952_hallway/hallway.jpg", houseID: 950, btn: "bg.jpg" },
     { roomID: 953, name: "Chaple", image: "953_chaple/bg.jpg", nightImage: "953_chaple/bg.jpg", houseID: 950, btn: "roomBtn_953.png" },
     { roomID: 954, name: "Torture Room", image: "954_torture/bg.jpg", nightImage: "954_torture/bg.jpg", houseID: 950, btn: "bg.jpg" },
+    { roomID: 955, name: "Escape", image: "954_torture/bg.jpg", nightImage: "954_torture/bg.jpg", houseID: 950, btn: "bg.jpg" },
+    { roomID: 956, name: "Science", image: "956_science/bg.webp", nightImage: "956_science/bg.webp", houseID: 950, btn: "bg.jpg" },
+    { roomID: 957, name: "Work", image: "956_science/bg.webp", nightImage: "956_science/bg.webp", houseID: 950, btn: "bg.jpg" },
+    { roomID: 958, name: "Map", image: "956_science/bg.webp", nightImage: "956_science/bg.webp", houseID: 950, btn: "bg.jpg" },
 
-    { roomID: 999, name: "Quick Fight", image: "954_torture/bg.jpg", nightImage: "954_torture/bg.jpg", houseID: 999, btn: "bg.jpg" },
-
-    //{ roomID: , name: "", image: "", houseID: , main: false, btn: "roomBtn_.png" }
 ];
 
 g.fr = function(roomID){

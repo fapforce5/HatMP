@@ -415,6 +415,13 @@ sc.charMission = [
                     ]
             },
             {
+                missionName: "cult", mStatus: 0, title: "Cult", desc: "Good times at the cult", task:
+                    [
+                        { id: 0, txt: "Whose the daddy.", show: true, mStatus: 0, roomId: 955 },
+                        { id: 0, txt: "Got the first", show: true, mStatus: 0, roomId: 955 },
+                    ]
+            },
+            {
                 missionName: "ex", mStatus: 0, title: "Ex [Not built yet]", desc: "Not allowed back!", task:
                     [
                         { id: 0, txt: "Never coming back!", show: true, mStatus: 0, roomId: 40 },
@@ -1056,6 +1063,12 @@ sc.charMission = [
                         { id: 0, txt: "Get to work!", show: true, mStatus: 0, roomId: 250 },
                     ]
             },
+            {
+                missionName: "cult", mStatus: 0, title: "Cult", desc: "The panties?", task:
+                    [
+                        { id: 0, txt: "Have you brought me the panties?", show: true, mStatus: 0, roomId: 950 },
+                    ]
+            },
         ]
     },
     {
@@ -1342,6 +1355,12 @@ sc.charMission = [
                         { id: 1, txt: "Why not?", show: true, mStatus: 0, roomId: 150 },
                     ]
             },
+            {
+                missionName: "cult", mStatus: 0, title: "Exam", desc: "The transformation", task:
+                    [
+                        { id: 0, txt: "The examination", show: true, mStatus: 0, roomId: 956 },
+                    ]
+            },
         ]
     },
     {
@@ -1571,7 +1590,8 @@ sc.charMission = [
                     [
                         { id: 0, txt: "Did you poop?", show: true, mStatus: 0, roomId: 950 },
                         { id: 1, txt: "Can you help?", show: true, mStatus: 0, roomId: 950 },
-                        { id: 2, txt: "A gift", show: true, mStatus: 0, roomId: 950 },
+                        { id: 2, txt: "You need the proper rank.", show: true, mStatus: 0, roomId: 950 },
+                        { id: 3, txt: "A gift", show: true, mStatus: 0, roomId: 950 },
                     ]
             },
         ]
@@ -3141,6 +3161,10 @@ sc.trivial = function (charname) {
         case "!info":
             name = "Information";
             image = "info.png";
+            break;
+        case "!fatman":
+            name = "Fat Man";
+            image = "fatman.png";
             break;
         case "!milkmaid":
             name = "Milk Maid";

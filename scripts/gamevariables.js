@@ -177,7 +177,7 @@ gv.init = function () {
         { n: "forestFastravel1", t: false, q: "bool" },
         { n: "forestFastravel2", t: false, q: "bool" },
 
-        { n: "cultIsSissy", t: null, q: "bool" },
+        { n: "cultRank", t: "Slave", q: "string" }, //Slave, Sissy?, Sissy, Cum Supplier
         { n: "cultDays", t: 0, q: "int" },
         { n: "cultDayCounter", t: 0, q: "int" },
         { n: "cultbrick", t: 0, q: "int" },
@@ -186,7 +186,7 @@ gv.init = function () {
         { n: "cultMilkCounter", t: 0, q: "int" },
         { n: "cultMilkMaidChat", t: 0, q: "int" },
         { n: "cultchapelCounter", t: 0, q: "int" },
-
+        { n: "cultCumJob", t: 0, q: "int" }, //1, 2 setup, 3 sweep
 
         //{ n: "jobConstWorkToday", t: 0, q: "int" },
         //---------------------------------check not used------------------------------
@@ -674,6 +674,11 @@ gv.init = function () {
         { id: 27, o: 1, title: "Glory Hole", display: "Took 15 dicks in one session", img: "gloryhole15.webp", ach: false, group: "pinkroom", m: 100, s: 100, d: 0 },
         { id: 28, o: 1, title: "Ranch", display: "Took down the ranch", img: "eventrachel.webp", ach: false, group: "event", m: 0, s: 100, d: 0 },
         { id: 29, o: 6, title: "Missy's Panties", display: "Steal Missy's panties", img: "pantiesmissy.webp", ach: false, group: "panties", m: 0, s: 30, d: 0 },
+        { id: 30, o: 6, title: "Sociopath", display: "Do whatever it takes", img: "cultempathy.webp", ach: false, group: "events", m: 0, s: 0, d: 100 },
+        { id: 31, o: 6, title: "Exit before entry", display: "Lost anal virginity before penis", img: "analfirst.webp", ach: false, group: "anal", m: 0, s: 75, d: 0 },
+
+
+        
     ];
     
     future.st = new Array();

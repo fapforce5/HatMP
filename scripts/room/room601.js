@@ -491,7 +491,7 @@ room601.btnclick = function (name) {
                 "top": 50,
                 "width": 1200,
                 "height": 10,
-                "color": (g.map.trust < 50 ? "darkcum" : "cum"),
+                "color": (g.internal.privateExcitement < 50 ? "darkcum" : "cum"),
                 "maxVal": 100,
                 "val": g.internal.privateExcitement,
                 "title": "Uncontrollable Orgasm!"
