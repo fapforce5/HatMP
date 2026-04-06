@@ -1225,7 +1225,10 @@ sc.charMission = [
                     [
                         { id: 0, txt: "Taken by the cult", show: true, mStatus: 0, roomId: 800 },
                         { id: 1, txt: "Lost son", show: false, mStatus: 0, roomId: 800 },
-                        { id: 2, txt: "Welcome", show: false, mStatus: 0, roomId: 950 },
+                        { id: 2, txt: "Welcome", show: false, mStatus: 0, roomId: 952 },
+                        { id: 3, txt: "Can I go home?", show: false, mStatus: 0, roomId: 952 },
+                        { id: 4, txt: "I need some lotion", show: false, mStatus: 0, roomId: 952 },
+                        { id: 5, txt: "I'm ready to be broken again", show: false, mStatus: 0, roomId: 952 },
                     ]
             },
         ]
@@ -1497,6 +1500,12 @@ sc.charMission = [
                         { id: 4, txt: "Secret", show: true, mStatus: 0, roomId: 328 },
                         { id: 5, txt: "Another secret!", show: true, mStatus: 0, roomId: 328 },
                         { id: 6, txt: "For the last time", show: true, mStatus: 0, roomId: 328 },
+                    ]
+            },
+            {
+                missionName: "cult", mStatus: 0, title: "Changes", desc: "I'm a sissy now!", task:
+                    [
+                        { id: 0, txt: "First meeting", show: true, mStatus: 0, roomId: 328 },
                     ]
             },
         ]

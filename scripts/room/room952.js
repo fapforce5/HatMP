@@ -68,6 +68,7 @@ room952.main = function() {
                 "image": "952_hallway/escape.png"
             }
         ];
+        nav.drawButton("1001_rand/turnaround.png", "turnaround", 952);
     }
     $.each(btnList, function (i, v) {
         nav.button(v, 952);
@@ -78,6 +79,52 @@ room952.btnclick = function (name) {
     switch (name) {
         case "mine":
             chat(0, 952);
+            break;
+        case "turnaround":
+            nav.kill();
+            if (daily.get("celldoor_blonde")) {
+                nav.bg("950_cell/bg-1.webp");
+            }
+            else if (daily.get("celldoor_ralph")) {
+                nav.bg("950_cell/bg-2.webp");
+            }
+            else {
+                nav.bg("952_hallway/bg.webp");
+            }
+            nav.button({
+                "type": "btn",
+                "name": "c1",
+                "left": 1378,
+                "top": 27,
+                "width": 298,
+                "height": 942,
+                "title": "Return to your cell",
+                "image": "952_hallway/hallway1r.png"
+            }, 952);
+            nav.button({
+                "type": "btn",
+                "name": "c2",
+                "left": 1130,
+                "top": 239,
+                "width": 138,
+                "height": 638,
+                "title": "Bodhi's Cell",
+                "image": "952_hallway/hallway2r.png"
+            }, 952);
+            nav.button({
+                "type": "btn",
+                "name": "c3",
+                "left": 1002,
+                "top": 357,
+                "width": 60,
+                "height": 467,
+                "title": "Last Cell",
+                "image": "952_hallway/hallway3r.png"
+            }, 952);
+            nav.drawButton("1001_rand/turnaround.png", "reset", 952);
+            break;
+        case "reset":
+            char.room(952);
             break;
         case "bodhi":
             chat(1, 952);
@@ -146,6 +193,122 @@ room952.btnclick = function (name) {
                 chat(52, 952);
             g.pass++;
             break;
+        case "c1":
+            nav.kill();
+            nav.bg("952_hallway/bbg.jpg");
+            if (sc.getMission("ralph", "cult").startedOrComplete) {
+                if (!daily.get("celldoor_ralph")) {
+                    nav.button({
+                        "type": "btn",
+                        "name": "ralph",
+                        "left": 960,
+                        "top": 252,
+                        "width": 340,
+                        "height": 828,
+                        "image": "952_hallway/ralph0.webp"
+                    }, 952);
+                }
+            }
+            else {
+
+            }
+            nav.back("turnaround");
+            break;
+        case "ralph":
+            if (daily.get("ralph")){
+                chat(20, 952);
+            }
+            else if (sc.taskGetStep("ralph", "cult") < 3) {
+                sc.completeMissionTask("ralph", "cult", 0);
+                sc.completeMissionTask("ralph", "cult", 1);
+                sc.completeMissionTask("ralph", "cult", 2);
+                chat(1, 952);
+            }
+            else {
+                sc.select("icon_chat_ralph", "952_hallway/icon_chat", 0);
+                sc.select("icon_boys_ralph", "952_hallway/icon_boys", 1);
+            }
+            daily.set("ralph");
+            break;
+        case "icon_chat_ralph":
+            nav.killbutton("icon_chat_ralph"); 
+            nav.killbutton("icon_boys_ralph");
+            switch (sc.taskGetStep("ralph", "cult")) {
+                case 3:
+                    sc.completeMissionTask("ralph", "cult", 3);
+                    future.add("ralphPole", 3);
+                    chat(58, 952);
+                    break;
+                case 4:
+                    if (future.get("ralphPole") > -1) {
+                        chat(20, 952);
+                    }
+                    else {
+                        sc.completeMissionTask("ralph", "cult", 4); 
+                        future.add("ralphNoFuck", 3);
+                        chat(25, 952);
+                    }
+                    break;
+            }
+            break;
+        case "icon_boys_ralph":
+            if (future.get("ralphNoFuck") > -1) {
+                chat(58, 952);
+            }
+            else {
+                chat(59, 952);
+            }
+            break;
+        case "c2":
+            nav.kill();
+            nav.bg("952_hallway/bbg.jpg");
+            if (sc.getMissionTask("security", "ranch", 6).startedOrComplete) {
+                nav.button({
+                    "type": "btn",
+                    "name": "security",
+                    "left": 999,
+                    "top": 154,
+                    "width": 441,
+                    "height": 926,
+                    "image": "952_hallway/security.webp"
+                }, 952);
+            }
+            else {
+
+            }
+            nav.back("turnaround");
+            break;
+        case "security":
+            switch (sc.taskGetStep("security", "cult")) {
+                case -1:
+                case 0:
+                    sc.startMission("security", "cult");
+                    sc.completeMissionTask("security", "cult", 0); 
+                    chat(6, 952);
+                    break;
+                case 1:
+
+                    break;
+            }
+            break;
+        case "c3":
+            nav.kill();
+            nav.bg("952_hallway/bbg.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "double",
+                "left": 863,
+                "top": 98,
+                "width": 572,
+                "height": 982,
+                "image": "952_hallway/double.webp"
+            }, 952);
+            nav.back("turnaround");
+            break;
+        case "double":
+            if (sissy.st[0].ach)
+                chat(12, 952);
+            break;
         default:
             break;
     }
@@ -153,9 +316,19 @@ room952.btnclick = function (name) {
 
 room952.chatcatch = function (callback) {
     switch (callback) {
-        case "return":
-            g.internal.interval++;
-            char.room(950);
+        case "ralph2":
+        case "ralph6":
+            nav.kill();
+            nav.bg("952_hallway/" + callback + ".jpg"); 
+            break;
+        case "ralph4":
+        case "ralph5":
+            nav.bg("952_hallway/" + callback + "_" + gender.pronoun("f") + ".jpg"); 
+            break;
+        case "reset_c2":
+        case "reset_c3": 
+        case "reset_c1":
+            room952.btnclick(callback.replace("reset_", ""));
             break;
         case "reset":
             char.room(952);
@@ -304,7 +477,7 @@ room952.chatcatch = function (callback) {
                 "height": 927,
                 "image": "952_hallway/b1.png"
             }, 952);
-            break;
+            break
         case "b2":
             nav.killall();
             nav.bg("952_hallway/b2.jpg");
@@ -349,6 +522,24 @@ room952.chatcatch = function (callback) {
             g.internal.interval++;
             char.room(950);
             break;
+        case "double1":
+            if (cl.c.cock < 4) {
+                inv.add("tinypp");
+                nav.modbutton("double", "952_hallway/double1.webp", null, null);
+                chat(19, 952);
+            }
+            else {
+                chat(18, 952);
+            }
+            break;
+        case "doubleReset":
+            room952.btnclick("c3");
+            break;
+        case "ralph3":
+            nav.kill();
+            nav.bg("952_hallway/ralph3.webp");
+            zcl.displayMain(100, 1300, .16, "clothes", true);
+            break;
         default:
             break;
     }
@@ -365,6 +556,301 @@ room952.chat = function (chatID) {
                 { chatID: -1, text: "No. Stay out here a bit longer. ", callback: "" }
             ]
         },
+        {
+            chatID: 1,
+            speaker: "ralph",
+            text: "Oh wow, am I glad you're here! " + sc.n("!chris") + " and " + sc.n("!timothy") + 
+                " are great and all, but they really just want to hang out together. I always feel like " +
+                "the odd one out. Finally my buddy is here! So did they tell you? Are you a girl too? ",
+            button: [
+                { chatID: 2, text: "A girl too?", callback: "" }
+            ]
+        },
+        {
+            chatID: 2,
+            speaker: "ralph",
+            text: "That doctor guy, what's his name. He put that thing in my butt and told me I have a " +
+                "pussy under my balls. I don't know if that's true. I've been checking and I don't see " +
+                "a pussy, but he says I'm really a girl. Boy will dad be suprised! I think Mom will be " +
+                "ok with it though. I still don't know how to get to my pussy. I kinda want to play with it, " +
+                "ya know. Just to see how it's like. ",
+            button: [
+                { chatID: 3, text: "Oh yeah, that. Yes, I'm a girl too. ", callback: "" }
+            ]
+        },
+        {
+            chatID: 3,
+            speaker: "ralph",
+            text: "That's so awesome! I wonder how they knew we were girls? I mean, I didn't even know. But " +
+                "the cool thing is when these guys have sex with me it's ok, since I'm a girl. They're just having " +
+                "sex with a girl. ",
+            button: [
+                { chatID: 4, text: "Lol, A girl that can't find her vagina. ", callback: "" }
+            ]
+        },
+        {
+            chatID: 4,
+            speaker: "ralph",
+            text: "haha, yeah. I keep looking, but I have no idea where it is. They said I had to earn " +
+                "the chance to find my vagina, but I'm ok with just hanging out in here. They can " +
+                "sweep their own floors. And the other things. Gross! Do you know they asked me to " +
+                "get peed on! Like who would do that! Not me! I have too much respect for myself for that! ",
+            button: [
+                { chatID: 5, text: "oh... yeah me too. ", callback: "" }
+            ]
+        },
+        {
+            chatID: 5,
+            speaker: "ralph",
+            text: "Yeah. It's pretty boring here, but you now I like that. I get to just hang out, they feed " +
+                "me, and every once in a while someone comes over for sex. I do wish more girls would come " +
+                "over, but *sigh* just guys. All guys. So many pensises, I've lost count. But anytime you " +
+                "just want to hang out, I'm here. ",
+            button: [
+                { chatID: -1, text: "Ok ", callback: "reset_c1" }
+            ]
+        },
+        {
+            chatID: 6,
+            speaker: "security",
+            text: "Oh crap! Hello! I'm so happy to see you! I thought you'd be trapped at " + sc.n("rachel") +
+                "'s forever when I left! I was so happy when I heard you made it here! You are, after all, " +
+                "the reason my life has meaning now. ",
+            button: [
+                { chatID: 7, text: "Who are you? ", callback: "" }
+            ]
+        },
+        {
+            chatID: 7,
+            speaker: "security",
+            text: sc.n("security") + "! I was your guard at " + sc.n("rachel") + "'s. At least I was the guard " +
+                "before you showed me who I really am. You gave me my first sissygasm! So good. Now I'm here. I tell you " +
+                "those hormones the doctor hands are are really potent! I can't wait for my giant soft titties! ",
+            button: [
+                { chatID: 8, text: "Oh yeah! I remember you! ", callback: "" }
+            ]
+        },
+        {
+            chatID: 8,
+            speaker: "security",
+            text: "Listen, I'm sorry I was such a dick to you before I found myself. The cult really messes " +
+                "with your mind. They really brain wash you into thinking sissies are just cum holes and not " +
+                "real people. I have done some terrible things before I found myself. I guess my only real problem " +
+                "is now that I've found myself I'm trapped here, I don't know what happens next, but I know it's bad. ",
+            button: [
+                { chatID: 9, text: "Bad? ", callback: "" }
+            ]
+        },
+        {
+            chatID: 9,
+            speaker: "security",
+            text: "Yeah. Like the sows on the farm, we're here to get bred and bring about Azrael. So far no " +
+                "Sissy turned girl has given birth to Azrael. A couple girls have been pregnant with real babies, " +
+                "a bunch miscarried, but most aren't able to conceive. I don't know what happens after they've been " +
+                "deemed a failure, but I do know they disappear. The rumor is they are either killed or sent to the " +
+                "swamps to die there. ",
+            button: [
+                { chatID: 10, text: "The swamps?", callback: "" }
+            ]
+        },
+        {
+            chatID: 10,
+            speaker: "security",
+            text: "Yes. There's been a lot lately. I think Ubels tired of waiting. I'm trying to play " +
+                "it safe. Be good enough to get fucked, but not so good they try to impregnate me. Just " +
+                "need to buy some time to get out of here. Maybe steal a bunch of those suppositories before " +
+                "I get out of here. It's just really hard to escape. ",
+            button: [
+                { chatID: 11, text: "If you do escape, you should take me with you. ", callback: "" }
+            ]
+        },
+        {
+            chatID: 11,
+            speaker: "security",
+            text: "Yeah. You look for a way out of here too. We'll work together. Just be good and do what " +
+                "they say in the mean time. ",
+            button: [
+                { chatID: -1, text: "Nice! ", callback: "" }
+            ]
+        },
+        {
+            chatID: 12,
+            speaker: "!timothy",
+            text: "We were wondering when you'd finally get out of your cage! ",
+            button: [
+                { chatID: 13, text: "Oh wow! Hi!", callback: "" }
+            ]
+        },
+        {
+            chatID: 13,
+            speaker: "!chris",
+            text: "I was just tellin' " + sc.n("!timothy") + " it would be so fun when you finally get out! " +
+                "You are one of the fun ones. ",
+            button: [
+                { chatID: 14, text: "Thanks", callback: "" }
+            ]
+        },
+        {
+            chatID: 14,
+            speaker: "!timothy",
+            text: "Yeah. There's just so much dick here! Really we get to just sit back, eat and get fucked " +
+                "all day! This is so heaven! My prostate is so empty of cum right now. We had 10 sissygasms " +
+                "before lunch! ",
+            button: [
+                { chatID: 15, text: "Wow, 10?", callback: "" }
+            ]
+        },
+        {
+            chatID: 15,
+            speaker: "!chris",
+            text: "She had 10 sissygasms. I was with this guy that had a little penis. It took him " +
+                "forever to cum. He said he was just really nervous, he's never been with a girl as beautiful as " +
+                "me. It was really cute. ",
+            button: [
+                { chatID: 16, text: "Awww you are beautiful. ", callback: "" }
+            ]
+        },
+        {
+            chatID: 16,
+            speaker: "!timothy",
+            text: "Those pills really do make us hot. And that penis shirnking cream is the best! So glad " +
+                sc.n("!chris") + " was able to talk the doctor into letting us use it. ",
+            button: [
+                { chatID: 17, text: "Penis shrinking cream?", callback: "" }
+            ]
+        },
+        {
+            chatID: 17,
+            speaker: "!chris",
+            text: "Oh yes. I told the doctor I wanted a vagina now, my penis is way too big. He said it's " +
+                "too soon, but he game me this cream and told me to use it every day. My clit is so small and " +
+                "limp I have to sit down to pee or I pee all over my balls. ",
+            button: [
+                { chatID: -1, text: "Really?", callback: "double1" }
+            ]
+        },
+        {
+            chatID: 18,
+            speaker: "!chris",
+            text: "I would offer you some, but your clit is as tiny as ours! hehehe. ",
+            button: [
+                { chatID: -1, text: "Hehe. I do have a tiny pee pee.", callback: "" }
+            ]
+        },
+        {
+            chatID: 19,
+            speaker: "!chris",
+            text: "Yeah. Our clits are as tiny as they're going to get. You can take my jar. Just put it " +
+                "on and while you sleep your clitty will shrink. It works really good! That doctor is amazing. ",
+            button: [
+                { chatID: -1, text: "Thanks, I think. ", callback: "doubleReset" }
+            ]
+        },
+        {
+            chatID: 20,
+            speaker: "ralph",
+            text: "I wish I could tell my parents I'm ok, but I do like it here. ",
+            button: [
+                { chatID: -1, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 21,
+            speaker: "ralph",
+            text: "Were you able to see my parents? I hope they're not too worried.",
+            button: [
+                { chatID: 22, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 22,
+            speaker: "me",
+            text: "They are both so worried. No one knew exactly what happened, we all just knew " +
+                "that the cult had something to do with it. They talked to the police, but you know, " +
+                "the police aren't going to do anything. We have to figure out a way out of here and get you " +
+                "back to them. ",
+            button: [
+                { chatID: 23, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 23,
+            speaker: "ralph",
+            text: "Damn. Yeah. If not for my parents I would probably try to stay here forever. Maybe they'll " +
+                "let me out if I promise to come back? ",
+            button: [
+                { chatID: 24, text: "I don't think so, but I guess it can't hurt to ask. ", callback: "" }
+            ]
+        },
+        {
+            chatID: 24,
+            speaker: "ralph",
+            text: "I'll do that! When they take me up to room eight to milk the penises I'll ask around and " +
+                "see if they'll let me out of here! There's got to be a way! ",
+            button: [
+                { chatID: -1, text: "You should do that! ", callback: "reset_c1" }
+            ]
+        },
+        {
+            chatID: 25,
+            speaker: "ralph",
+            text: "oh wow! They had me sit on that pole with a dildo in my mouth for three days! Three " +
+                "days! The only water I drank was piss! That was the only thing I could drink! For three " +
+                "days! My hole is still sore! Please rub some lotion on it. I can't reach. So chapped! ",
+            button: [
+                { chatID: 26, text: "*ugh* Fine", callback: "ralph2" }
+            ]
+        },
+        {
+            chatID: 26,
+            speaker: "ralph",
+            text: "Oh god! That feels so good. You have no idea how much my butthole hurts! Every time " +
+                "I squat I can feel my hole scream in pain. ",
+            button: [
+                { chatID: 27, text: "Do you know why they put you out there?", callback: "" }
+            ]
+        },
+        {
+            chatID: 27,
+            speaker: "ralph",
+            text: "So I was in room eight giving this guy and hand job and I asked him if I can go home for " +
+                "a bit, just to let my parents know I'm safe. He laughed and came on my face. Then he talked " +
+                "to this other guy and told me to ask him. Well I asked him if I could go home for a tiny bit. ",
+            button: [
+                { chatID: 28, text: "uh huh..", callback: "" }
+            ]
+        },
+        {
+            chatID: 28,
+            speaker: "ralph",
+            text: "He said fuck no. How dare I even ask. He then ordered me to lay down, ass up and spanked me " +
+                "in front of everyone. Told everyone I was trying to escape. I tried to say I was just asking, but " +
+                "he accused me of lying. Next thing I know I have this foot long dildo down my throat and that " +
+                "horrible horrible stick up my butt. ",
+            button: [
+                { chatID: 29, text: "Those assholes!", callback: "" }
+            ]
+        },
+        {
+            chatID: 29,
+            speaker: "ralph",
+            text: "Yeah. I suddenly don't want to be here anymore. It's just hand jobs from me from now " +
+                "on! Thanks for putting that lotion on my hole. It's so sore. ",
+            button: [
+                { chatID: -1, text: "No problem. ", callback: "reset_c1" }
+            ]
+        },
+
+
+
+
+
+
+
+
+
+
+
         {
             chatID: 1,
             speaker: "thinking",
@@ -413,7 +899,7 @@ room952.chat = function (chatID) {
         {
             chatID: 6,
             speaker: "daria",
-            text: "I'm not entirly sure, but I do know that they choose one of you from the cells. From what I understand " +
+            text: "I'm not entirly sure, but I do know that theychoose one of you from the cells. From what I understand " +
                 "he picks the most feminine slave and forces them to take part. He gives them some drug then puts them in the tub " +
                 "of cum and they are forced to stay there until they drink the entire tub. It usually takes a few days to drink that " +
                 "much cum. I've been there on the third day and the smell is absolutly horrible. ",
@@ -651,8 +1137,8 @@ room952.chat = function (chatID) {
             text: "We didn't find the cult right away, so I got a job with your " + sc.n("landlord") + " working at the sperm bank so " +
                 "we wern't living on the streets. But one day we were having a picnic in the park saw some people in robes. " +
                 "They offered to take us straight " +
-                "here. Even fed us on the way. I told them I was the only one that could milk " + sc.n("bodhi") + " and they readily " +
-                "agreed. No one jacks off my toy but me, and I get to make sure he only has sissygasms. No touching the clitty for him!",
+                "here. Even fed us on the way. I told them Iwas the only one that could milk " + sc.n("bodhi") + " and they readily " +
+                "agreed. No one jacks off my toy but me, and I get to make sure he onlyhas sissygasms. No touching the clitty for him!",
             button: [
                 { chatID: 33, text: "Really", callback: "" }
             ]
@@ -864,9 +1350,60 @@ room952.chat = function (chatID) {
         {
             chatID: 57,
             speaker: "random",
-            text: "Allright slut. Get out. I need a nap. ",
+            text: "Allright slut. Get out. I needa nap. ",
             button: [
-                { chatID: -1, text: "ok", callback: "b5" }
+                { chatID: -1, text: "ok", callback: "b5" } 
+            ]
+        },
+        {
+            chatID: 58,
+            speaker: "ralph",
+            text: "My ass is too sore! Maybe later. ",
+            button: [
+                { chatID: -1, text: "ok", callback: "" }
+            ]
+        },
+        {
+            chatID: 59,
+            speaker: "ralph",
+            text: "YES! I woke up so horny today! So want to get railed with you! One second I know " +
+                "someone. He always says how much he likes my Badonkadonk. That means he likes my butt, hehe. ",
+            button: [
+                { chatID: 60, text: "Go get him!", callback: "ralph3" }
+            ]
+        },
+        {
+            chatID: 60,
+            speaker: "cult",
+            text: "Get over here you two. Pleasure this dick",
+            button: [
+                { chatID: 61, text: "[Pleasure his dick]", callback: "ralph4" }
+            ]
+        },
+        {
+            chatID: 61,
+            speaker: "cult",
+            text: "Oh yeah bitch, swollow that cock. Bottom bitch, gobble my balls. ",
+            button: [
+                { chatID: 62, text: "[Move down to his balls]", callback: "ralph5" }
+            ]
+        },
+        {
+            chatID: 62,
+            speaker: "cult",
+            text: "You two make a great couple. A great couple of cock suckers. Nut gobbler, bend over, " +
+                "I'm gunna start with that ass. ",
+            button: [
+                { chatID: 63, text: "[Bend your ass over for his penis]", callback: "ralph6" }
+            ]
+        },
+        {
+            chatID: 63,
+            speaker: "cult",
+            text: "Oh shit that's a great asshole. Fuck. Fat sissy bend your ass over. I'm going to " +
+                "finish up in that big ass badonkadonk of yours! ",
+            button: [
+                { chatID: 63, text: "[Switch places]", callback: "ralph6" }
             ]
         },
     ];

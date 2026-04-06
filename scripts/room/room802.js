@@ -78,6 +78,7 @@ room802.btnclick = function (name) {
                     room802.btnclick("chat");
                     return;
                 }
+                sc.completeMissionTask("ralph", "room", 2);
                 chat(20, 802);
             }
             else if (sissy.st[10].ach && sc.getMissionTask("ralph", "room", 3).notStarted) {

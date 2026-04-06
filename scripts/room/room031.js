@@ -109,7 +109,6 @@ room31.btnclick = function (name) {
             nav.killbutton("password");
 
             if (g.internal === "unicorn") {
-                gv.mod("puter", true);
                 nav.killall();
                 nav.t({
                     type: "img",

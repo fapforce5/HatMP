@@ -635,9 +635,14 @@ room957.chatcatch = function (callback) {
             break;
         case "toilet_back0":
             nav.kill();
+            gv.set("shower", new Date(new Date(g.dt).setDate(new Date(g.dt).getDate() - 10)));
+            cl.display();
             if (g.internal.asspiss > 0) {
                 nav.bg("957_jobs/toilet_back0.webp"); 
-                chat(48, 957);
+                if (inv.has("emptyjar"))
+                    chat(53, 957);
+                else
+                    chat(48, 957);
             }
             else {
                 room957.chatcatch("leave");
@@ -664,6 +669,12 @@ room957.chatcatch = function (callback) {
                 "image": "957_jobs/toilet_back2.webp"
             }, 957);
             zcl.assup(730, 400, .5, "", false);
+            break;
+        case "toilet_back3":
+            nav.kill();
+            inv.use("emptyjar");
+            inv.add("pissjarboy");
+            nav.bg("957_jobs/toilet_back3.webp"); 
             break;
         default:
             break;
@@ -1126,7 +1137,7 @@ room957.chat = function (chatID) {
         {
             chatID: 47,
             speaker: "cult",
-            text: "Shift's over. Back to your cell, sissy. ",
+            text: "You fuckin' stink like old piss. Back to your cell, sissy. ",
             button: [
                 { chatID: -1, text: "[Return to your cell]", callback: "toilet_back0" },
             ]
@@ -1134,7 +1145,7 @@ room957.chat = function (chatID) {
         {
             chatID: 48,
             speaker: "thinking",
-            text: "My colon is so full of piss. I can hear it sloshing around.. So cramp!!! ",
+            text: "My colon is so full of piss. I can hear it sloshing around.. So cramped!!! ",
             button: [
                 { chatID: 49, text: "[Keep waddling to your cell]", callback: "toilet_back1" },
             ]
@@ -1142,9 +1153,9 @@ room957.chat = function (chatID) {
         {
             chatID: 49,
             speaker: "thinking",
-            text: "My colon is so full of piss. I can hear it sloshing around.. So cramp!!! ",
+            text: "*aarg* I can't even stand. Cramping too hard! Must release ass piss! ",
             button: [
-                { chatID: 50, text: "[Keep waddling to your cell]", callback: "toilet_back2" },
+                { chatID: 50, text: "[Relax your anus]", callback: "toilet_back2" },
             ]
         },
         {
@@ -1171,6 +1182,23 @@ room957.chat = function (chatID) {
             text: "I didn't ask. Just don't go anywhere dumb. Later.",
             button: [
                 { chatID: -1, text: "*groan*", callback: "delivery1" },
+            ]
+        },
+        {
+            chatID: 53,
+            speaker: "thinking",
+            text: "My colon is so full of piss. I can hear it sloshing around.. So cramped!!! ",
+            button: [
+                { chatID: 49, text: "[Waddle to your cell]", callback: "toilet_back1" },
+                { chatID: 54, text: "[Waddle back and release your ass piss in a jar]", callback: "toilet_back3" },
+            ]
+        },
+        {
+            chatID: 54,
+            speaker: "thinking",
+            text: "OOOOooooooo mmmmyyyy god. That feels better than an orgasm. ",
+            button: [
+                { chatID: -1, text: "[Wait for the last of your piss enema to drip down your balls into the jar]", callback: "leave" },
             ]
         },
     ];

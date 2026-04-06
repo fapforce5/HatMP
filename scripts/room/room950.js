@@ -21,7 +21,10 @@ room950.main = function () {
             chat(91, 950);
             return;
         }
-        if (g.rand(0, 4) === 0) {
+        if (future.get("ralphPole") > -1) {
+            daily.set("celldoor_ralph");
+        }
+        else if (g.rand(0, 4) === 0) {
             daily.set("celldoor_blonde");
         }
 
@@ -89,6 +92,9 @@ room950.main = function () {
             //set the background person
             if (daily.get("celldoor_blonde")) {
                 nav.bg("950_cell/door_bg0.webp");
+            }
+            else if (daily.get("celldoor_ralph")) {
+                nav.bg("950_cell/door_bg1.webp");
             }
             else {
                 nav.bg("950_cell/door_bg.webp");
@@ -589,6 +595,9 @@ room950.btnclick = function (name) {
             if (daily.get("celldoor_blonde")) {
                 nav.bg("950_cell/door_bg0.webp");
             }
+            else if (daily.get("celldoor_ralph")) {
+                nav.bg("950_cell/door_bg1.webp");
+            }
             else {
                 nav.bg("950_cell/door_bg.webp");
             }
@@ -728,7 +737,7 @@ room950.btnclick = function (name) {
             if (g.internal > 1) {
                 nav.killbutton("door_bj");
                 levels.oral(4, "m", "cult", true);
-                sc.modLevel("cult", 50, 10);
+                sc.modLevel("cult", 20, 10);
                 room950.btnclick("bars");
                 chat(35, 950);
             }

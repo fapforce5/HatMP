@@ -64,7 +64,7 @@ inv.master = [
     { type: "e", name: "hornyGoatWeed", display: "Horny Goat Weed", entry: false, count: 0, cost: -1, buy: 3, image: "hornyGoatWeed.png", n: false, desc: "Gain 10 energy and become fully aroused." },
 
     
-    { type: "e", name: "pissjarboy", display: "A Jar full of piss", entry: false, count: 0, cost: -1, buy: 4, image: "cumjar.png", n: false, desc: "Gain 40 energy" },
+    { type: "e", name: "pissjarboy", display: "A Jar full of piss", entry: false, count: 0, cost: -1, buy: 4, image: "pissjarboy.png", n: false, desc: "Gain 40 energy" },
     { type: "e", name: "pissjargirl", display: "A Jar full of piss", entry: false, count: 0, cost: -1, buy: 6, image: "pissjargirl.png", n: false, desc: "Gain 60 energy" },
     { type: "e", name: "cumjar", display: "A Jar full of cum", entry: false, count: 0, cost: -1, buy: 20, image: "cumjar.png", n: false, desc: "Gain 100 energy" },
     { type: "e", name: "dogcumjar", display: "A Jar full of dog cum", entry: false, count: 0, cost: -1, buy: 25, image: "dogcumjar.png", n: false, desc: "Gain 150 energy" },

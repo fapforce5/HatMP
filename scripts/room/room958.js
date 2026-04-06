@@ -271,6 +271,7 @@ room958.chatcatch = function (callback) {
             g.pass.compete = true;
             cl.display();
             nav.bg("958_wander/panties_complete.webp");
+            sc.modLevel("cult", 30, 10);
             zcl.displayMain(0, 300, .2, "clothes", true);
             break;
         case "pantiesReset":

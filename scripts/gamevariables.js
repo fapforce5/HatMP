@@ -43,6 +43,7 @@ gv.init = function () {
         { n: "map", t: 1, q: "int" },
         { n: "mapopen", t: false, q: "bool" },
         { n: "bladder", t: 0, q: "bladder" },
+        { n: "milk", t: -1, q: "int" },
         { n: "cum", t: g.startDate, q: "date" },
         { n: "chastityCounter", t: 0, q: "zero" },
         { n: "missyWeekly", t: "", q: "string" },
@@ -80,6 +81,7 @@ gv.init = function () {
 
         //ralph
         { n: "ralphcycle", t: -1, q: "int" },
+
         //room decoration
         { n: "painting", t: "", q: "string" },
         { n: "mr_paint", t: "mr_blue", q: "string" },
@@ -87,6 +89,7 @@ gv.init = function () {
         { n: "mr_poster_r", t: null, q: "string" },
         { n: "mr_bed", t: null, q: "string" },
         { n: "mr_rug", t: null, q: "string" },
+        { n: "cat", t: -1, q: "int" },
 
         //firstTime
         { n: "firstTimeInWardrobe", t: false, q: "bool" },
@@ -190,41 +193,17 @@ gv.init = function () {
 
         //{ n: "jobConstWorkToday", t: 0, q: "int" },
         //---------------------------------check not used------------------------------
-
-
-
         { n: "reddoorloc", t: 1, q: "int" },
         
-        { n: "puter", t: false, q: "bool" },
         { n: "slimeMonsters", t: true, q: "bool" },
 
-        { n: "displayMenu", t: true, q: "bool" },
-        { n: "daysCult", t: 0, q: "int" },
-
-        { n: "mascot", t: 0, q: "int" },
-        { n: "subdom", t: 50, q: "hundred" },
-        
-        { n: "milk", t: -1, q: "int" },
-        { n: "cat", t: -1, q: "int" },
-        //{ n: "cheerleader", t: 0, q: "hundred" },
-        //{ n: "cheerlevel", t: 0, q: "int" },
         { n: "waitressSteal", t: false, q: "bool" },
 
-        { n: "fightsex", t: 1250, q: "int" },
-        { n: "fightWon", t: 0, q: "int" },
-        { n: "fightLost", t: 0, q: "int" },
-        { n: "fightControlWon", t: 0, q: "int" },
-        { n: "fightControlLost", t: 0, q: "int" },
-        { n: "superPunch", t: 0, q: "int" },
-        { n: "fame", t: 0, q: "hundred" },
         { n: "spankyprices", t: false, q: "bool" },
 
         { n: "girlname", t: "Scarlett", q: "string" },
 
         { n: "jobConstGetRaise", t: false, q: "bool" },
-        { n: "lockboobs", t: false, q: "bool" },
-        { n: "lockbutt", t: false, q: "bool" },
-
     ];
 
     //save by index
