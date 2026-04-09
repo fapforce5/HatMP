@@ -82,15 +82,7 @@ room952.btnclick = function (name) {
             break;
         case "turnaround":
             nav.kill();
-            if (daily.get("celldoor_blonde")) {
-                nav.bg("950_cell/bg-1.webp");
-            }
-            else if (daily.get("celldoor_ralph")) {
-                nav.bg("950_cell/bg-2.webp");
-            }
-            else {
-                nav.bg("952_hallway/bg.webp");
-            }
+            nav.bg("952_hallway/bg.webp");
             nav.button({
                 "type": "btn",
                 "name": "c1",
@@ -127,6 +119,20 @@ room952.btnclick = function (name) {
             char.room(952);
             break;
         case "bodhi":
+            nav.kill();
+            if (sc.getMissionTask("bodhi", "cult", 4).notStarted) {
+                sc.startMission("bodhi", "cult");
+                sc.completeMissionTask("bodhi", "cult", 0);
+                sc.completeMissionTask("bodhi", "cult", 1);
+                sc.completeMissionTask("bodhi", "cult", 2);
+                sc.completeMissionTask("bodhi", "cult", 3);
+                sc.startMissionTask("bodhi", "cult", 4);
+                nav.bg("952_hallway/bodhi0.jpg");
+                chat(30, 952);
+            }
+            else {
+
+            }
             chat(1, 952);
             break;
         case "bigdick":
@@ -237,7 +243,7 @@ room952.btnclick = function (name) {
                 case 3:
                     sc.completeMissionTask("ralph", "cult", 3);
                     future.add("ralphPole", 3);
-                    chat(58, 952);
+                    chat(21 , 952);
                     break;
                 case 4:
                     if (future.get("ralphPole") > -1) {
@@ -253,10 +259,10 @@ room952.btnclick = function (name) {
             break;
         case "icon_boys_ralph":
             if (future.get("ralphNoFuck") > -1) {
-                chat(58, 952);
+                chat(42, 952);
             }
             else {
-                chat(59, 952);
+                chat(43, 952);
             }
             break;
         case "c2":
@@ -318,12 +324,23 @@ room952.chatcatch = function (callback) {
     switch (callback) {
         case "ralph2":
         case "ralph6":
+        case "ralph7":
             nav.kill();
             nav.bg("952_hallway/" + callback + ".jpg"); 
             break;
         case "ralph4":
         case "ralph5":
+        case "ralph9":
             nav.bg("952_hallway/" + callback + "_" + gender.pronoun("f") + ".jpg"); 
+            break;
+        case "ralph8":
+            levels.anal(4, true, "m", false, "cult");
+            nav.bg("952_hallway/" + callback + "_" + gender.pronoun("f") + ".jpg");
+            break;
+        case "ralph20":
+            levels.oralass("m", "ralph");
+            trophy.add(32);
+            nav.bg("952_hallway/" + callback + "_" + gender.pronoun("f") + ".jpg");
             break;
         case "reset_c2":
         case "reset_c3": 
@@ -539,6 +556,10 @@ room952.chatcatch = function (callback) {
             nav.kill();
             nav.bg("952_hallway/ralph3.webp");
             zcl.displayMain(100, 1300, .16, "clothes", true);
+            break;
+        case "leave":
+            gv.mod("cultDayCounter", 1);
+            char.room(950);
             break;
         default:
             break;
@@ -840,6 +861,375 @@ room952.chat = function (chatID) {
                 { chatID: -1, text: "No problem. ", callback: "reset_c1" }
             ]
         },
+        {
+            chatID: 30,
+            speaker: "daria",
+            text: "We need to talk. With the failed ritual they sacrificed the chosen one to appease Azreal. ",
+            button: [
+                { chatID: 31, text: "The chosen one?", callback: "" },
+            ]
+        },
+        {
+            chatID: 31,
+            speaker: "daria",
+            text: "Yes. The girl you saw that was bathed in cum. It will be a while before a new chosen one is selected, " +
+                "but I overheard the list of names and both of you are on it. ",
+            button: [
+                { chatID: 32, text: "What? Me? But I can't be one! ", callback: "" },
+            ]
+        },
+        {
+            chatID: 32,
+            speaker: "daria",
+            text: "Oh that. It's funny how word gets around and it's always wrong. The cum bath ritual that brings about the coming " +
+                "of Azreal is done with girl that was born a boy. They have a lot of dumb rituals, but this one is for real. " +
+                sc.n("ubel") + " has figured out how to turn a guy into a full on chick, pussy and everything. ",
+            button: [
+                { chatID: 33, text: "Really, how do they do that?", callback: "" }
+            ]
+        },
+        {
+            chatID: 33,
+            speaker: "daria",
+            text: "I'm not entirly sure, but I do know that they choose one of you from the cells. From what I understand " +
+                "he picks the most submissive slave and forces them to take part. He gives them some drug then puts them in the tub " +
+                "of cum and they are forced to stay there until they drink the entire tub. It usually takes a few days to drink that " +
+                "much cum. I've been there on the third day and the smell is absolutly horrible. ",
+            button: [
+                { chatID: 34, text: "But why us?", callback: "" }
+            ]
+        },
+        {
+            chatID: 34,
+            speaker: "daria",
+            text: "I'm not sure if you pay attention, but it will consume all the femboys in this place. " +
+                "That's why we need to get out of " +
+                "here, all three of us. I have a plan, but I'll need your help. ",
+            button: [
+                { chatID: 35, text: "Sweet! What do you need?", callback: "" }
+            ]
+        },
+        {
+            chatID: 35,
+            speaker: "daria",
+            text: "Each week they do the ceremony which brings almost everyone into the main room, to " +
+                "include most of the guards. This is the perfect time for our getaway. I know a rarely used side entrance. It has a " +
+                "camera monitoring it, but I can clip those wires the day before the ceremony so they won't see us sneaking out. " +
+                "It usually takes a few days to get supplies this far back in the woods, so that camera should stay down. I'll be " +
+                "able to create a diversion to draw any guard away if they choose to guard that door. ",
+            button: [
+                { chatID: 36, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 36,
+            speaker: "daria",
+            text: "After the way is cleared you'll need to follow me. I know a side trail in the swamp that will take us to the city, but once we reach " +
+                "the city " + sc.n("bodhi") + " and I are going to disappear so you'll be on your own. Now the door to the side entrace is locked and I'll " +
+                "need your help unlocking it. ",
+            button: [
+                { chatID: 37, text: "What do you need from me?", callback: "" }
+            ]
+        },
+        {
+            chatID: 37,
+            speaker: "daria",
+            text: "When you sweep up you'll need a way to pull the keys off the desk. I don't care how you do it, but you need " +
+                "those keys. I know they guard. He's an absolute tool who thinks he can never fuck up. If you can get them " +
+                "he won't tell anyone because he doesn't want to get in trouble. But you'll have to hide them... in your body.",
+            button: [
+                { chatID: 38, text: "In my body?", callback: "" }
+            ]
+        },
+        {
+            chatID: 38,
+            speaker: "daria",
+            text: "Up your butt dummy. You can't get caught, so make sure you can fit those big skelton keys in your butt before " +
+                "you try to steal them or this entire plan is sunk. ",
+            button: [
+                { chatID: 39, text: "I can do that. ", callback: "" }
+            ]
+        },
+        {
+            chatID: 39,
+            speaker: "daria",
+            text: "I know, you butt freak. After you get the keys I'll come get them from you. Then just act cool and wait until you're invited to " +
+                "the next ceremony. Act cool and do whatever they tell you to do. ",
+            button: [
+                { chatID: 41, text: "Ok. ", callback: "" },
+                { chatID: 40, text: "But what if I want to stay and be turned into a girl? ", callback: "" },
+            ]
+        },
+        {
+            chatID: 40,
+            speaker: "daria",
+            text: "Having a pussy is great, but you don't want to be their chosen one. " +
+                "You'll be locked away in a special cell with no way to escape. You be made to bathe in the cum and one of two things will " +
+                "happen. One. The cult is real and Azreal will burst from your womb and split you open killing you. Or two, the cult is " +
+                "bullshit and they'll sacrafice you to appease Azreal. Either way you end up dead. It would take a full on FBI raid " +
+                "with a ton of bloodshed for you to ever see the light of day again. ",
+            button: [
+                { chatID: 41, text: "Oh.", callback: "" }
+            ]
+        },
+        {
+            chatID: 41,
+            speaker: "daria",
+            text: "Remember to get those keys! Shove them way up there so you aren't discovered. I mean " +
+                "Really deep in that ass so when you get pounded they aren't slamming their dick into the " +
+                "keys. ",
+            button: [
+                { chatID: -1, text: "Right. Shove the keys deep in my ass. ", callback: "leave" }
+            ]
+        },
+        {
+            chatID: 42,
+            speaker: "ralph",
+            text: "My ass is too sore! Maybe later. ",
+            button: [
+                { chatID: -1, text: "ok", callback: "" }
+            ]
+        },
+        {
+            chatID: 43,
+            speaker: "ralph",
+            text: "YES! I woke up so horny today! So want to get railed with you! One second I know " +
+                "someone. He always says how much he likes my Badonkadonk. That means he likes my butt, hehe. ",
+            button: [
+                { chatID: 44, text: "Go get him!", callback: "ralph3" }
+            ]
+        },
+        {
+            chatID: 44,
+            speaker: "cult",
+            text: "Get over here you two. Pleasure this dick",
+            button: [
+                { chatID: 45, text: "[Pleasure his dick]", callback: "ralph4" }
+            ]
+        },
+        {
+            chatID: 45,
+            speaker: "cult",
+            text: "Oh yeah bitch, swollow that cock. Bottom bitch, gobble my balls. ",
+            button: [
+                { chatID: 46, text: "[Move down to his balls]", callback: "ralph5" }
+            ]
+        },
+        {
+            chatID: 46,
+            speaker: "cult",
+            text: "You two make a great couple. A great couple of cock suckers. Nut gobbler, bend over, " +
+                "I'm gunna start with that ass. ",
+            button: [
+                { chatID: 47, text: "[Bend your ass over for his penis]", callback: "ralph6" }
+            ]
+        },
+        {
+            chatID: 47,
+            speaker: "cult",
+            text: "Oh shit that's a great asshole. Really loves to take a pouding!  ",
+            button: [
+                { chatID: 48, text: "I think I'm... I think... I'm...", callback: "ralph7" }
+            ]
+        },
+        {
+            chatID: 48,
+            speaker: "me",
+            text: "Cumming!!!! Oh god! Don't stop! ",
+            button: [
+                { chatID: 49, text: "I'm gunna cum again!!", callback: "" }
+            ]
+        },
+        {
+            chatID: 49,
+            speaker: "cult",
+            text: "Oh shit that's a great asshole. Fuck. Fat sissy bend your ass over. I'm going to " +
+                "finish up in that big ass badonkadonk of yours! ",
+            button: [
+                { chatID: 50, text: "[Switch places]", callback: "ralph8" }
+            ]
+        },
+        {
+            chatID: 50,
+            speaker: "cult",
+            text: "Love the way that ass shakes when I pound my fat dick up in it! Skinny sissy, I hope " +
+                "you're hungry for more than the taste of your girlfriends asshole. ",
+            button: [
+                { chatID: 51, text: "*slurp* *lick*", callback: "ralph9" }
+            ]
+        },
+        {
+            chatID: 51,
+            speaker: "cult",
+            text: "Now slurp that cum right out of his asshole like it's a fucking bowl of oatmeal.",
+            button: [
+                { chatID: 52, text: "[Eat up all that yummy thick cum]", callback: "ralph10" }
+            ]
+        },
+        {
+            chatID: 52,
+            speaker: "cult",
+            text: "Good girls. ",
+            button: [
+                { chatID: -1, text: "[Return to your cell]", callback: "leave" }
+            ]
+        },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        {
+            chatID: 30,
+            speaker: "daria",
+            text: "That's a long story, " + sc.n("bodhi") + " was the one that brought it up, but I wasn't sure about coming here. " +
+                "He convinced me " +
+                "we would have a great time and neither of us would have to work. We could just fuck each other all day every day. ",
+            button: [
+                { chatID: 31, text: "Oh wow! Is that why you're here?", callback: "" }
+            ]
+        },
+        {
+            chatID: 31,
+            speaker: "daria",
+            text: "Yes, " + sc.n("bodhi") + " had just lost his job selling surf boards, and I was working in a book store. We both " +
+                "hated working these doldrum jobs so much that when we heard about this place we gave up everything and came here. ",
+            button: [
+                { chatID: 32, text: "That's crazy", callback: "" }
+            ]
+        },
+        {
+            chatID: 32,
+            speaker: "daria",
+            text: "We didn't find the cult right away, so I got a job with your " + sc.n("landlord") + " working at the sperm bank so " +
+                "we wern't living on the streets. But one day we were having a picnic in the park saw some people in robes. " +
+                "They offered to take us straight " +
+                "here. Even fed us on the way. I told them Iwas the only one that could milk " + sc.n("bodhi") + " and they readily " +
+                "agreed. No one jacks off my toy but me, and I get to make sure he onlyhas sissygasms. No touching the clitty for him!",
+            button: [
+                { chatID: 33, text: "Really", callback: "" }
+            ]
+        },
+        {
+            chatID: 33,
+            speaker: "bodhi",
+            text: "I haven't had a normal manly orgasm in almost 2 years! Once you get in touch with your sissy pussy it's the only way! " +
+                "My orgasms are so intense they usually last for 5 minutes. " + sc.n("daria") + " really is the best! ",
+            button: [
+                { chatID: 34, text: "Wow", callback: "" }
+            ]
+        },
+        {
+            chatID: 34,
+            speaker: "daria",
+            text: "She really is a hungry butt slut. The best thing is there's plenty of well endowed men here that I can grab at any time " +
+                "to fill both of our holes. No more searching, I just ask in the hallway on my way here. ",
+            button: [
+                { chatID: 35, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 35,
+            speaker: "bodhi",
+            text: "That cultist Tom is my favorite! I've never seen you orgasm so hard that when he was fucking you while I licked your clit. " +
+                "He really filled us both so much! Nacy is fun too! Her fist is the perfect size for both of us! ",
+            button: [
+                { chatID: 36, text: "I want to play!", callback: "" }
+            ]
+        },
+        {
+            chatID: 36,
+            speaker: "daria",
+            text: "I suppose we'll let you. We like to be fucked by strong manly men, but you're not manly. If you want you can play " +
+                "as our sissy. I'll even let you pick. I can fuck you both, or both of you can serve me. ",
+            button: [
+                { chatID: 37, text: "I want to get fucked!", callback: "" },
+                { chatID: 47, text: "I want to serve you", callback: "" },
+            ]
+        },
+        {
+            chatID: 37,
+            speaker: "daria",
+            text: "I love fucking sissies! Assume the position! ",
+            button: [
+                { chatID: 38, text: "Oh?", callback: "" }
+            ]
+        },
+        {
+            chatID: 38,
+            speaker: "bodhi",
+            text: "I get bottom! ",
+            button: [
+                { chatID: 39, text: "I guess I get top", callback: "butt1" }
+            ]
+        },
+        {
+            chatID: 39,
+            speaker: "daria",
+            text: "You two are really a couple of eager sluts. ",
+            button: [
+                { chatID: -1, text: "Yes we are!", callback: "butt2" }
+            ]
+        },
+
+
+
+
+
+
+
 
 
 
@@ -869,124 +1259,7 @@ room952.chat = function (chatID) {
                 { chatID: -1, text: "Oh no. Sorry I'm leaving ", callback: "reset" }
             ]
         },
-        {
-            chatID: 3,
-            speaker: "daria",
-            text: "We need to talk. With the failed ritual they sacrificed the chosen one to appease Azreal. ",
-            button: [
-                { chatID: 4, text: "The chosen one?", callback: "" },
-            ]
-        },
-        {
-            chatID: 4,
-            speaker: "daria",
-            text: "Yes. The girl you saw that was bathed in cum. It will be a few weeks before a new chosen one is selected, " +
-                "but I overheard the list of names and both of you are on it. ",
-            button: [
-                { chatID: 5, text: "I thought you had to be a hermaphrodite to be chosen. ", callback: "" },
-            ]
-        },
-        {
-            chatID: 5,
-            speaker: "daria",
-            text: "Oh that. It's funny how word gets around and it's always wrong. The cum bath ritual that brings about the coming " +
-                "of Azreal is done with girl that was born a boy. They have a lot of dumb rituals, but this one is for real. " +
-                sc.n("ubel") + " has figured out how to turn a guy into a full on chick, pussy and everything. ",
-            button: [
-                { chatID: 6, text: "Really, how do they do that?", callback: "" }
-            ]
-        },
-        {
-            chatID: 6,
-            speaker: "daria",
-            text: "I'm not entirly sure, but I do know that theychoose one of you from the cells. From what I understand " +
-                "he picks the most feminine slave and forces them to take part. He gives them some drug then puts them in the tub " +
-                "of cum and they are forced to stay there until they drink the entire tub. It usually takes a few days to drink that " +
-                "much cum. I've been there on the third day and the smell is absolutly horrible. ",
-            button: [
-                { chatID: 7, text: "But why us?", callback: "" }
-            ]
-        },
-        {
-            chatID: 7,
-            speaker: "daria",
-            text: "I'm not sure if you pay attention, but you two are the most femboys in this place. That's why we need to get out of " +
-                "here, all three of us. I have a plan, but I'll need your help. ",
-            button: [
-                { chatID: 8, text: "Sweet! What do you need?", callback: "" }
-            ]
-        },
-        {
-            chatID: 8,
-            speaker: "daria",
-            text: "Each week they do the ceremony which brings almost everyone into the main room, to " +
-                "include most of the guards. This is the perfect time for our getaway. I know a rarely used side entrance. It has a " +
-                "camera monitoring it, but I can clip those wires the day before the ceremony so they won't see us sneaking out. " +
-                "It usually takes a few days to get supplies this far back in the woods, so that camera should stay down. I'll be " +
-                "able to create a diversion to draw any guard away if they choose to guard that door. ",
-            button: [
-                { chatID: 9, text: "...", callback: "" }
-            ]
-        },
-        {
-            chatID: 9,
-            speaker: "daria",
-            text: "After the way is cleared you'll need to follow me. I know a side trail in the swamp that will take us to the city, but once we reach " +  
-                "the city " + sc.n("bodhi") + " and I are going to disappear so you'll be on your own. Now the door to the side entrace is locked and I'll " +
-                "need your help unlocking it. ",
-            button: [
-                { chatID: 10, text: "What do you need from me?", callback: "" }
-            ]
-        },
-        {
-            chatID: 10,
-            speaker: "daria",
-            text: "When you sweep up you'll need a way to pull the keys off the desk. I don't care how you do it, but you need " +  
-                "those keys. I know they guard. He's an absolute tool who thinks he can never fuck up. If you can get them " +
-                "he won't tell anyone because he doesn't want to get in trouble. But you'll have to hide them... in your body.",
-            button: [
-                { chatID: 11, text: "In my body?", callback: "" }
-            ]
-        },
-        {
-            chatID: 11,
-            speaker: "daria",
-            text: "Up your butt dummy. You can't get caught, so make sure you can fit those big skelton keys in your butt before " +    
-                "you try to steal them or this entire plan is sunk. ",
-            button: [
-                { chatID: 12, text: "I can do that. ", callback: "" }
-            ]
-        },
-        {
-            chatID: 12,
-            speaker: "daria",
-            text: "I know, you butt freak. After you get the keys I'll come get them from you. Then just act cool and wait until you're invited to " +  
-                "the next ceremony. Act cool and do whatever they tell you to do. ",
-            button: [
-                { chatID: 14, text: "Ok. ", callback: "" },
-                { chatID: 13, text: "But what if I want to stay and be turned into a girl? ", callback: "" },
-            ]
-        },
-        {
-            chatID: 13,
-            speaker: "daria",
-            text: "Having a pussy is great, but you don't want to be their chosen one. " +
-                "You'll be locked away in a special cell with no way to escape. You be made to bathe in the cum and one of two things will " +
-                "happen. One. The cult is real and Azreal will burst from your womb and split you open killing you. Or two, the cult is " +
-                "bullshit and they'll sacrafice you to appease Azreal. Either way you end up dead. It would take a full on FBI raid " +
-                "with a ton of bloodshed for you to ever see the light of day again. ",
-            button: [
-                { chatID: 14, text: "Oh.", callback: "" }
-            ]
-        },
-        {
-            chatID: 14,
-            speaker: "daria",
-            text: "I'm going to do my appointed rounds so they don't get suspicious. Remember to get those keys! ",
-            button: [
-                { chatID: -1, text: "Right. Shove they keys up my ass. ", callback: "end1" }
-            ]
-        },
+        
         {
             chatID: 15,
             speaker: "daria",
@@ -1112,98 +1385,7 @@ room952.chat = function (chatID) {
                 { chatID: 30, text: "So what are you two doing here?", callback: "" }
             ]
         },
-        {
-            chatID: 30,
-            speaker: "daria",
-            text: "That's a long story, " + sc.n("bodhi") + " was the one that brought it up, but I wasn't sure about coming here. " +
-                "He convinced me " +
-                "we would have a great time and neither of us would have to work. We could just fuck each other all day every day. ",
-            button: [
-                { chatID: 31, text: "Oh wow! Is that why you're here?", callback: "" }
-            ]
-        },
-        {
-            chatID: 31,
-            speaker: "daria",
-            text: "Yes, " + sc.n("bodhi") + " had just lost his job selling surf boards, and I was working in a book store. We both " +
-                "hated working these doldrum jobs so much that when we heard about this place we gave up everything and came here. ",
-            button: [
-                { chatID: 32, text: "That's crazy", callback: "" }
-            ]
-        },
-        {
-            chatID: 32,
-            speaker: "daria",
-            text: "We didn't find the cult right away, so I got a job with your " + sc.n("landlord") + " working at the sperm bank so " +
-                "we wern't living on the streets. But one day we were having a picnic in the park saw some people in robes. " +
-                "They offered to take us straight " +
-                "here. Even fed us on the way. I told them Iwas the only one that could milk " + sc.n("bodhi") + " and they readily " +
-                "agreed. No one jacks off my toy but me, and I get to make sure he onlyhas sissygasms. No touching the clitty for him!",
-            button: [
-                { chatID: 33, text: "Really", callback: "" }
-            ]
-        },
-        {
-            chatID: 33,
-            speaker: "bodhi",
-            text: "I haven't had a normal manly orgasm in almost 2 years! Once you get in touch with your sissy pussy it's the only way! " +
-                "My orgasms are so intense they usually last for 5 minutes. " + sc.n("daria") + " really is the best! ",
-            button: [
-                { chatID: 34, text: "Wow", callback: "" }
-            ]
-        },
-        {
-            chatID: 34,
-            speaker: "daria",
-            text: "She really is a hungry butt slut. The best thing is there's plenty of well endowed men here that I can grab at any time " +  
-                "to fill both of our holes. No more searching, I just ask in the hallway on my way here. ",
-            button: [
-                { chatID: 35, text: "...", callback: "" }
-            ]
-        },
-        {
-            chatID: 35,
-            speaker: "bodhi",
-            text: "That cultist Tom is my favorite! I've never seen you orgasm so hard that when he was fucking you while I licked your clit. " +
-                "He really filled us both so much! Nacy is fun too! Her fist is the perfect size for both of us! ",
-            button: [
-                { chatID: 36, text: "I want to play!", callback: "" }
-            ]
-        },
-        {
-            chatID: 36,
-            speaker: "daria",
-            text: "I suppose we'll let you. We like to be fucked by strong manly men, but you're not manly. If you want you can play " +
-                "as our sissy. I'll even let you pick. I can fuck you both, or both of you can serve me. ",
-            button: [
-                { chatID: 37, text: "I want to get fucked!", callback: "" },
-                { chatID: 47, text: "I want to serve you", callback: "" },
-            ]
-        },
-        {
-            chatID: 37,
-            speaker: "daria",
-            text: "I love fucking sissies! Assume the position! ",
-            button: [
-                { chatID: 38, text: "Oh?", callback: "" }
-            ]
-        },
-        {
-            chatID: 38,
-            speaker: "bodhi",
-            text: "I get bottom! ",
-            button: [
-                { chatID: 39, text: "I guess I get top", callback: "butt1" }
-            ]
-        },
-        {
-            chatID: 39,
-            speaker: "daria",
-            text: "You two are really a couple of eager sluts. ",
-            button: [
-                { chatID: -1, text: "Yes we are!", callback: "butt2" }
-            ]
-        },
+        
         {
             chatID: 40,
             speaker: "daria",
@@ -1355,57 +1537,7 @@ room952.chat = function (chatID) {
                 { chatID: -1, text: "ok", callback: "b5" } 
             ]
         },
-        {
-            chatID: 58,
-            speaker: "ralph",
-            text: "My ass is too sore! Maybe later. ",
-            button: [
-                { chatID: -1, text: "ok", callback: "" }
-            ]
-        },
-        {
-            chatID: 59,
-            speaker: "ralph",
-            text: "YES! I woke up so horny today! So want to get railed with you! One second I know " +
-                "someone. He always says how much he likes my Badonkadonk. That means he likes my butt, hehe. ",
-            button: [
-                { chatID: 60, text: "Go get him!", callback: "ralph3" }
-            ]
-        },
-        {
-            chatID: 60,
-            speaker: "cult",
-            text: "Get over here you two. Pleasure this dick",
-            button: [
-                { chatID: 61, text: "[Pleasure his dick]", callback: "ralph4" }
-            ]
-        },
-        {
-            chatID: 61,
-            speaker: "cult",
-            text: "Oh yeah bitch, swollow that cock. Bottom bitch, gobble my balls. ",
-            button: [
-                { chatID: 62, text: "[Move down to his balls]", callback: "ralph5" }
-            ]
-        },
-        {
-            chatID: 62,
-            speaker: "cult",
-            text: "You two make a great couple. A great couple of cock suckers. Nut gobbler, bend over, " +
-                "I'm gunna start with that ass. ",
-            button: [
-                { chatID: 63, text: "[Bend your ass over for his penis]", callback: "ralph6" }
-            ]
-        },
-        {
-            chatID: 63,
-            speaker: "cult",
-            text: "Oh shit that's a great asshole. Fuck. Fat sissy bend your ass over. I'm going to " +
-                "finish up in that big ass badonkadonk of yours! ",
-            button: [
-                { chatID: 63, text: "[Switch places]", callback: "ralph6" }
-            ]
-        },
+        
     ];
     if (cArray.length > chatID && chatID > -1)
         return cArray[chatID];

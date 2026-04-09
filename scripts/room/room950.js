@@ -193,7 +193,7 @@ room950.btnclick = function (name) {
         case "bars":
             var cult950 = sc.get("cult");
             var cultbrick = gv.get("cultbrick");
-            cult950 = cult950.l * 100 + cult950.c;
+            cult950x = cult950.l * 100 + cult950.c;
             nav.progressBar({
                 "type": "zimg",
                 "name": "progress_trust",
@@ -201,10 +201,10 @@ room950.btnclick = function (name) {
                 "top": 30,
                 "width": 1000,
                 "height": 10,
-                "color": (cult950 < 300 ? "red" : "green"),
+                "color": (cult950x < 300 ? "red" : "green"),
                 "maxVal": 1000,
-                "val": cult950,
-                "title": "Rank: " + gv.get("cultRank") + ". Days till Chaple: " + ((5 - g.dt.getDay() + 7) % 7)
+                "val": cult950x,
+                "title": "Rank: " + gv.get("cultRank") + " Level: " + cult950.l + ". Days till Chaple: " + ((5 - g.dt.getDay() + 7) % 7)
             }, 322);
 
             if (cultbrick > 0 && cultbrick < 100) {
@@ -527,6 +527,7 @@ room950.btnclick = function (name) {
             break;
         case "icon_call":
             nav.kill();
+            room950.btnclick("bars");
             if (gv.get("cultCumJob") > 1) {
                 nav.bg("950_cell/ubel2.webp"); 
                 sc.select("icon_cultclean", "950_cell/icon_cultclean.webp", 0);
@@ -731,6 +732,8 @@ room950.btnclick = function (name) {
         case "icon_dooropen":
             if (sc.getLevel("cult").l < 7)
                 chat(25, 950);
+            else
+                char.room(952);
             break;
         case "door_bj":
             nav.modbutton("celldoor", "950_cell/door_bj" + g.internal + ".webp", null, null);

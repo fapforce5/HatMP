@@ -653,8 +653,9 @@ gv.init = function () {
         { id: 27, o: 1, title: "Glory Hole", display: "Took 15 dicks in one session", img: "gloryhole15.webp", ach: false, group: "pinkroom", m: 100, s: 100, d: 0 },
         { id: 28, o: 1, title: "Ranch", display: "Took down the ranch", img: "eventrachel.webp", ach: false, group: "event", m: 0, s: 100, d: 0 },
         { id: 29, o: 6, title: "Missy's Panties", display: "Steal Missy's panties", img: "pantiesmissy.webp", ach: false, group: "panties", m: 0, s: 30, d: 0 },
-        { id: 30, o: 6, title: "Sociopath", display: "Do whatever it takes", img: "cultempathy.webp", ach: false, group: "events", m: 0, s: 0, d: 100 },
+        { id: 30, o: 6, title: "Sociopath", display: "Escape as a Cum Giver", img: "cultempathy.webp", ach: false, group: "event", m: 0, s: 0, d: 100 },
         { id: 31, o: 6, title: "Exit before entry", display: "Lost anal virginity before penis", img: "analfirst.webp", ach: false, group: "anal", m: 0, s: 75, d: 0 },
+        { id: 32, o: 6, title: "#ralph#", display: "Slurped cum from his asshole", img: "ralph.webp", ach: false, group: "event", m: 0, s: 75, d: 0 },
 
 
         
