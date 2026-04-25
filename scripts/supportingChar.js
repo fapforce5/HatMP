@@ -1615,6 +1615,7 @@ sc.charMission = [
                         { id: 2, txt: "Did we just become friends?", show: true, mStatus: 0, roomId: 950 },
                         { id: 3, txt: "Can request work", show: true, mStatus: 0, roomId: 950 },
                         { id: 4, txt: "Steal the Keys", show: true, mStatus: 0, roomId: 952 },
+                        { id: 5, txt: "Have some fun?", show: true, mStatus: 0, roomId: 952 },
                     ]
             },
         ]

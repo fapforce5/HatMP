@@ -996,7 +996,7 @@ room950.chatcatch = function (callback) {
             char.room(956);
             break;
         case "room952":
-            char.room(952);
+            char.room(958);
             break;
         case "reset":
             char.room(950);

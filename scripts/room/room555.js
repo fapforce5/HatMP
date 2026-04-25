@@ -600,8 +600,7 @@ room555.chatcatch = function (callback) {
             nav.drawButton("555_backgym/thrust.png", "g_thrust");
             break;
         case "thrustPreg":
-            cl.doCum(false);
-
+            levels.fuckpussy("g", "f");
             if (sc.getMission("g", "mom").notStarted) {
                 sc.startMission("g", "mom");
                 sc.completeMissionTask("g", "mom", 0);

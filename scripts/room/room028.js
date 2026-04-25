@@ -418,8 +418,10 @@ room28.future = function () {
                 case "j-jabari": gv.set("janiceDatr", "jabari"); break;
                 case "j-brad": gv.set("janiceDatr", "brad"); break;
                 case "lolaboy":
-                    sc.completeMissionTask("lola", "sissy", 5, false);
-                    sc.completeMission("lola", "tom", false); 
+                    if (sc.getMissionTask("lola", "tom", 1).notStarted) {
+                        sc.completeMissionTask("lola", "sissy", 5, false);
+                        sc.completeMission("lola", "tom", false);
+                    }
                     break;
                 case "case_dam":
                     if (missy.get("activeCaseComplete") === 0) {

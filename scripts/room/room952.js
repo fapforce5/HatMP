@@ -120,6 +120,7 @@ room952.btnclick = function (name) {
             break;
         case "bodhi":
             nav.kill();
+            nav.bg("952_hallway/bodhi0.jpg");
             if (sc.getMissionTask("bodhi", "cult", 4).notStarted) {
                 sc.startMission("bodhi", "cult");
                 sc.completeMissionTask("bodhi", "cult", 0);
@@ -127,13 +128,13 @@ room952.btnclick = function (name) {
                 sc.completeMissionTask("bodhi", "cult", 2);
                 sc.completeMissionTask("bodhi", "cult", 3);
                 sc.startMissionTask("bodhi", "cult", 4);
-                nav.bg("952_hallway/bodhi0.jpg");
                 chat(30, 952);
             }
             else {
-
+                if (sc.getMissionTask("bodhi", "cult", 5).notStarted) {
+                    chat(53, 952);
+                }
             }
-            chat(1, 952);
             break;
         case "bigdick":
             nav.killall();
@@ -167,6 +168,11 @@ room952.btnclick = function (name) {
             break;
         case "escape":
             g.map = null;
+            g.pass = {
+                e: null,
+                compete: false,
+                q: null
+            };
             char.room(958);
             break;
         case "escape2cancel":
@@ -179,7 +185,7 @@ room952.btnclick = function (name) {
             chat(18, 952);
             break;
         case "butt2":
-            chat(40, 952);
+            chat(65, 952);
             nav.killbutton("butt2");
             break;
         case "t1":
@@ -188,7 +194,8 @@ room952.btnclick = function (name) {
             else {
                 nav.killbutton("t1");
                 nav.bg("952_hallway/l4.jpg");
-                chat(48, 952);
+                levels.oral(3, "f", "daria");
+                chat(72, 952);
             }
             g.pass++;
             break;
@@ -231,8 +238,8 @@ room952.btnclick = function (name) {
                 chat(1, 952);
             }
             else {
-                sc.select("icon_chat_ralph", "952_hallway/icon_chat", 0);
-                sc.select("icon_boys_ralph", "952_hallway/icon_boys", 1);
+                sc.select("icon_chat_ralph", "952_hallway/icon_chat.webp", 0);
+                sc.select("icon_boys_ralph", "952_hallway/icon_boys.webp", 1);
             }
             daily.set("ralph");
             break;
@@ -326,21 +333,24 @@ room952.chatcatch = function (callback) {
         case "ralph6":
         case "ralph7":
             nav.kill();
-            nav.bg("952_hallway/" + callback + ".jpg"); 
+            nav.bg("952_hallway/" + callback + ".webp"); 
             break;
-        case "ralph4":
         case "ralph5":
         case "ralph9":
-            nav.bg("952_hallway/" + callback + "_" + gender.pronoun("f") + ".jpg"); 
+            nav.bg("952_hallway/" + callback + "_" + gender.pronoun("f") + ".webp"); 
+            break;
+        case "ralph4":
+            nav.kill();
+            nav.bg("952_hallway/" + callback + "_" + gender.pronoun("f") + ".webp");
             break;
         case "ralph8":
             levels.anal(4, true, "m", false, "cult");
-            nav.bg("952_hallway/" + callback + "_" + gender.pronoun("f") + ".jpg");
+            nav.bg("952_hallway/" + callback + "_" + gender.pronoun("f") + ".webp");
             break;
         case "ralph20":
             levels.oralass("m", "ralph");
             trophy.add(32);
-            nav.bg("952_hallway/" + callback + "_" + gender.pronoun("f") + ".jpg");
+            nav.bg("952_hallway/" + callback + "_" + gender.pronoun("f") + ".webp");
             break;
         case "reset_c2":
         case "reset_c3": 
@@ -351,6 +361,17 @@ room952.chatcatch = function (callback) {
             char.room(952);
             break;
         case "bodhi":
+            nav.kill();
+            nav.bg("952_hallway/bodhi0.jpg");
+            if (sc.getMission("bodhi", "cult", 4).notStarted) {
+                sc.startMission("bodhi", "cult");
+                sc.completeMissionTask("bodhi", "cult", 0);
+                sc.completeMissionTask("bodhi", "cult", 1);
+                sc.completeMissionTask("bodhi", "cult", 2);
+                sc.completeMissionTask("bodhi", "cult", 3);
+                sc.show("bodhi");
+                chat()
+            }
             if (g.internal.chaple > 0 && !sc.getEvent("daria", -1)) {
                 nav.killall();
                 nav.bg("952_hallway/bodhi0.jpg");
@@ -444,42 +465,18 @@ room952.chatcatch = function (callback) {
             break;
         case "butt2":
             nav.bg("952_hallway/butt2.jpg");
-            nav.button({
-                "type": "btn",
-                "name": "butt2",
-                "left": 0,
-                "top": 0,
-                "width": 1920,
-                "height": 1080,
-                "title": "Get in position",
-                "image": "952_hallway/butt2.jpg"
-            }, 952);
+            nav.next("butt2");
             break;
         case "butt3":
             nav.bg("952_hallway/butt3.jpg");
             break;
         case "butt4":
-            gv.mod("receiveAnalFemale", 1);
-            gv.mod("sissygasm", 1);
-            g.internal.interval++;
-            char.room(950);
+            levels.anal(4, true, "f", false, "daria");
+            room952.chatcatch("leave");
             break;
         case "l0":
             g.pass = 0;
-            nav.button({
-                "type": "btn",
-                "name": "t1",
-                "left": 1687,
-                "top": 900,
-                "width": 233,
-                "height": 150,
-                "image": "526_bar/arrowRight.png",
-            }, 952);
-            break;
-        case "l4":
-            gv.mod("giveOralFemale", 1);
-            g.internal.interval++;
-            char.room(950);
+            nav.next("t1");
             break;
         case "b1":
             g.pass = 0;
@@ -1074,155 +1071,236 @@ room952.chat = function (chatID) {
                 { chatID: -1, text: "[Return to your cell]", callback: "leave" }
             ]
         },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         {
-            chatID: 30,
-            speaker: "daria",
-            text: "That's a long story, " + sc.n("bodhi") + " was the one that brought it up, but I wasn't sure about coming here. " +
-                "He convinced me " +
-                "we would have a great time and neither of us would have to work. We could just fuck each other all day every day. ",
+            chatID: 53,
+            speaker: "me",
+            text: "So what brings you two here?",
             button: [
-                { chatID: 31, text: "Oh wow! Is that why you're here?", callback: "" }
+                { chatID: 54, text: "...", callback: "" }
             ]
         },
         {
-            chatID: 31,
+            chatID: 54,
             speaker: "daria",
-            text: "Yes, " + sc.n("bodhi") + " had just lost his job selling surf boards, and I was working in a book store. We both " +
+            text: "That's a long story. I've kind of always been here, but " + sc.n("bodhi") + " was a " +
+                "searcher. He found his way here looking to live and fuck and eat. Really a simple boy. ",
+            button: [
+                { chatID: 55, text: "Really?", callback: "" }
+            ]
+        },
+        {
+            chatID: 55,
+            speaker: "daria",
+            text: "Yes, " + sc.n("bodhi") + " had just lost his job selling surf boards. He " +
                 "hated working these doldrum jobs so much that when we heard about this place we gave up everything and came here. ",
             button: [
-                { chatID: 32, text: "That's crazy", callback: "" }
+                { chatID: 56, text: "That's crazy", callback: "" }
             ]
         },
         {
-            chatID: 32,
+            chatID: 56,
             speaker: "daria",
-            text: "We didn't find the cult right away, so I got a job with your " + sc.n("landlord") + " working at the sperm bank so " +
-                "we wern't living on the streets. But one day we were having a picnic in the park saw some people in robes. " +
-                "They offered to take us straight " +
-                "here. Even fed us on the way. I told them Iwas the only one that could milk " + sc.n("bodhi") + " and they readily " +
-                "agreed. No one jacks off my toy but me, and I get to make sure he onlyhas sissygasms. No touching the clitty for him!",
+            text: "Yeah. He goofed up when they asked if he was a cum giver or sissy. His last girlfriend was " +
+                "named Cissey and he thought they asked if anyone else dated Cissey. My boy's not super bright. But " +
+                "he was examined and they found that he does have a uterus, so now he's stuck as my bitch. ",
             button: [
-                { chatID: 33, text: "Really", callback: "" }
+                { chatID: 57, text: "Really", callback: "" }
             ]
         },
         {
-            chatID: 33,
+            chatID: 57,
             speaker: "bodhi",
             text: "I haven't had a normal manly orgasm in almost 2 years! Once you get in touch with your sissy pussy it's the only way! " +
                 "My orgasms are so intense they usually last for 5 minutes. " + sc.n("daria") + " really is the best! ",
             button: [
-                { chatID: 34, text: "Wow", callback: "" }
+                { chatID: 58, text: "Wow", callback: "" }
             ]
         },
         {
-            chatID: 34,
+            chatID: 58,
             speaker: "daria",
             text: "She really is a hungry butt slut. The best thing is there's plenty of well endowed men here that I can grab at any time " +
                 "to fill both of our holes. No more searching, I just ask in the hallway on my way here. ",
             button: [
-                { chatID: 35, text: "...", callback: "" }
+                { chatID: 59, text: "...", callback: "" }
             ]
         },
         {
-            chatID: 35,
+            chatID: 59,
             speaker: "bodhi",
             text: "That cultist Tom is my favorite! I've never seen you orgasm so hard that when he was fucking you while I licked your clit. " +
                 "He really filled us both so much! Nacy is fun too! Her fist is the perfect size for both of us! ",
             button: [
-                { chatID: 36, text: "I want to play!", callback: "" }
+                { chatID: 60, text: "I want to play!", callback: "" }
             ]
         },
         {
-            chatID: 36,
+            chatID: 60,
             speaker: "daria",
             text: "I suppose we'll let you. We like to be fucked by strong manly men, but you're not manly. If you want you can play " +
                 "as our sissy. I'll even let you pick. I can fuck you both, or both of you can serve me. ",
             button: [
-                { chatID: 37, text: "I want to get fucked!", callback: "" },
-                { chatID: 47, text: "I want to serve you", callback: "" },
+                { chatID: 62, text: "I want to get fucked!", callback: "" },
+                { chatID: 71, text: "I want to serve you", callback: "" },
+                { chatID: -1, text: "No thanks", callback: "reset" },
             ]
         },
         {
-            chatID: 37,
+            chatID: 61,
+            speaker: "daria",
+            text: "So what do you want to do? ",
+            button: [
+                { chatID: 62, text: "I want to get fucked!", callback: "" },
+                { chatID: 71, text: "I want to serve you", callback: "" },
+                { chatID: -1, text: "Nothing", callback: "reset" },
+            ]
+        },
+        {
+            chatID: 62,
             speaker: "daria",
             text: "I love fucking sissies! Assume the position! ",
             button: [
-                { chatID: 38, text: "Oh?", callback: "" }
+                { chatID: 63, text: "Yes!", callback: "" }
             ]
         },
         {
-            chatID: 38,
+            chatID: 63,
             speaker: "bodhi",
             text: "I get bottom! ",
             button: [
-                { chatID: 39, text: "I guess I get top", callback: "butt1" }
+                { chatID: 64, text: "I guess I get top", callback: "butt1" }
             ]
         },
         {
-            chatID: 39,
+            chatID: 64,
             speaker: "daria",
             text: "You two are really a couple of eager sluts. ",
             button: [
                 { chatID: -1, text: "Yes we are!", callback: "butt2" }
             ]
         },
+        {
+            chatID: 65,
+            speaker: "daria",
+            text: "You like it when I alternate my strokes between your pussies? ",
+            button: [
+                { chatID: 66, text: "Oh yeah", callback: "" }
+            ]
+        },
+        {
+            chatID: 66,
+            speaker: "daria",
+            text: "It gets me so hot shoving my cock into your soft warm pussies. ",
+            button: [
+                { chatID: 67, text: "*moan*", callback: "" }
+            ]
+        },
+        {
+            chatID: 67,
+            speaker: "bodhi",
+            text: "I'm going to cum all over you! I'm so close! ",
+            button: [
+                { chatID: 68, text: "Fuck, I'm going to cum all over you too!", callback: "" }
+            ]
+        },
+        {
+            chatID: 68,
+            speaker: "daria",
+            text: "You sluts are so easy. Now clean my cock!",
+            button: [
+                { chatID: 69, text: "Ok. ", callback: "butt3" }
+            ]
+        },
+        {
+            chatID: 69,
+            speaker: "daria",
+            text: "Oh yeah. Lick it up sluts. Taste your yummy pussies. ",
+            button: [
+                { chatID: 70, text: "Yummy!", callback: "" }
+            ]
+        },
+        {
+            chatID: 70,
+            speaker: "daria",
+            text: "Nice and clean. You are both good sluts. Now run along, I've got to attend to my sissy. ",
+            button: [
+                { chatID: -1, text: "Ok. ", callback: "butt4" }
+            ]
+        },
+        {
+            chatID: 71,
+            speaker: "daria",
+            text: "Oh good. I do love it when I can relax and go at a slower pace. You sissies always want a hard fucking, spitting, " +
+                "slapping and anal, but you think you're serving me. I'm going to show you what real service looks like. Lay down " +
+                "while I sit on your face. ",
+            button: [
+                { chatID: -1, text: "...", callback: "l0" },
+            ]
+        },
+        {
+            chatID: 72,
+            speaker: "daria",
+            text: "I love your lips " + sc.n("bodhi") + ". And you " + sc.n("me") + " you're not bad. You really know how to serve a " +
+                "woman. Come back anytime to eat my pussy. ",
+            button: [
+                { chatID: -1, text: "...", callback: "leave" },
+            ]
+        },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
 
 
 
@@ -1386,54 +1464,7 @@ room952.chat = function (chatID) {
             ]
         },
         
-        {
-            chatID: 40,
-            speaker: "daria",
-            text: "You like it when I alternate my strokes between your pussies? ",
-            button: [
-                { chatID: 41, text: "Oh yeah", callback: "" }
-            ]
-        },
-        {
-            chatID: 41,
-            speaker: "daria",
-            text: "It gets me so hot shoving my cock into your soft warm pussies. ",
-            button: [
-                { chatID: 42, text: "*moan*", callback: "" }
-            ]
-        },
-        {
-            chatID: 42,
-            speaker: "bodhi",
-            text: "I'm going to cum all over you! I'm so close! ",
-            button: [
-                { chatID: 43, text: "Fuck, I'm going to cum all over you too!", callback: "" }
-            ]
-        },
-        {
-            chatID: 43,
-            speaker: "daria",
-            text: "You sluts are so easy. Now clean my cock!",
-            button: [
-                { chatID: 44, text: "Ok. ", callback: "butt3" }
-            ]
-        },
-        {
-            chatID: 44,
-            speaker: "daria",
-            text: "Oh yeah. Lick it up sluts. Taste your yummy pussies. ",
-            button: [
-                { chatID: 45, text: "Yummy!", callback: "" }
-            ]
-        },
-        {
-            chatID: 45,
-            speaker: "daria",
-            text: "Nice and clean. You are both good sluts. Now run along, I've got to attend to my sissy. ",
-            button: [
-                { chatID: -1, text: "Ok. ", callback: "butt4" }
-            ]
-        },
+        
         {
             chatID: 46,
             speaker: "daria",

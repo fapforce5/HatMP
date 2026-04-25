@@ -640,7 +640,6 @@ menu.makeSaves = function () {
             inv: v.inv
         });
     });
-
     g.saveState = {
         savename: "",
         saveDt: new Date(),

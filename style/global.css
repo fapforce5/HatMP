@@ -911,14 +911,19 @@ input[type=text]:disabled{
 .map-tile-i, .map-tile-j, .map-tile-k, .map-tile-c, .map-tile-h, .map-tile-s, .map-tile-r {
     background: #ce2281;
 }
+
+.map-tile-test{
+    background:red;
+}
+
 .switch-group {
     background: linear-gradient(90deg, rgba(28,77,104,1) 0%, rgba(0,0,0,1) 20%, rgba(0,0,0,1) 80%, rgba(28,77,104,1) 100%);
     text-align: center;
     margin-top: 10px;
     padding-top: 10px;
     padding-bottom: 20px;
-    color:#fff;
-    font-weight:bold;
+    color: #fff;
+    font-weight: bold;
 }
 .switch-field {
     margin-top: 15px;

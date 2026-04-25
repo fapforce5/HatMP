@@ -681,6 +681,9 @@ zcl.bellydown = function (top, left, ratio, mod, reverse) {
     if (mod === "sad") {
         zcl.subDisplay("body_sad_" + pg + ".webp", top, left, ratio, reverse, w, h, f);
     }
+    else if (mod === "back") {
+        zcl.subDisplay("body_back_" + pg + ".webp", top, left, ratio, reverse, w, h, f);
+    }
     else {
         zcl.subDisplay("body_" + pg + ".webp", top, left, ratio, reverse, w, h, f);
     }
@@ -700,6 +703,11 @@ zcl.bjpov = function (top, left, ratio, mod, reverse) {
     let bjpovdick = mod.includes("black") ? "b" : "w";
     zcl.kill();
     let pg = gender.pronoun("f");
+
+    if (mod === "body") {
+        zcl.subDisplay("body_" + pg + ".webp", top, left, ratio, reverse, w, h, f);
+        return;
+    }
 
     if (mod.includes("cum")) {
         zcl.subDisplay("body_" + pg + ".webp", top, left, ratio, reverse, w, h, f);

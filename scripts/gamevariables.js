@@ -190,6 +190,7 @@ gv.init = function () {
         { n: "cultMilkMaidChat", t: 0, q: "int" },
         { n: "cultchapelCounter", t: 0, q: "int" },
         { n: "cultCumJob", t: 0, q: "int" }, //1, 2 setup, 3 sweep
+        { n: "cultdog", t: 0, q: "int" },
 
         //{ n: "jobConstWorkToday", t: 0, q: "int" },
         //---------------------------------check not used------------------------------
@@ -285,7 +286,7 @@ gv.init = function () {
         },
         //oral
         {
-            id: 5, type: "gavebj", subdom: "sub", d: "Dicks/Clits Sucked", ent: [
+            id: 5, type: "gavebj", subdom: "sub", d: "Cocks Sucked", ent: [
                 { id: 0, gender: "m", c: 0, day: null, names: new Array() },
                 { id: 1, gender: "f", c: 0, day: null, names: new Array() },
                 { id: 2, gender: "n", c: 0, day: null, names: new Array() },

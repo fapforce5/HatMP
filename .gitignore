@@ -25,3 +25,5 @@ build/
 .DS_Store
 Thumbs.db
 desktop.ini
+/.gitignore
+/.gitignore

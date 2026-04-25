@@ -183,6 +183,7 @@ room211.btnclick = function (name) {
             char.room(210);
             break;
         case "elevator-x":
+            nav.killbutton("elevator-x");
             nav.bg("211_meeting/elevator.jpg");
             $.each(["button_penthouse", "button_white", "button_red", "button_pink", "button_lobby", "button_black"], function (i, v) {
                 nav.button({
