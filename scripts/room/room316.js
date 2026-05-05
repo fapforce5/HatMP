@@ -977,6 +977,7 @@ room316.chatcatch = function (callback) {
             sc.modLevel("dog", 50, 4);
             break;
         case "task4_11":
+            levels.oral(3, "f", "janice");
             sc.completeMissionTask("janice", "date", 4, true);
             break;
         case "date2_16":

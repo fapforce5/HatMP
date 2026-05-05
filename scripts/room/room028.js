@@ -446,6 +446,12 @@ room28.future = function () {
                         sc.completeMissionTask("ralph", "cards", false);
                     }
                     break;
+                case "cultdouble1":
+                    gv.set("cultdouble", 1);
+                    break;
+                case "cultdouble2":
+                    gv.set("cultdouble", 2);
+                    break;
             }
             future.st.splice(i, 1);
         }

@@ -16,7 +16,7 @@ room958.main = function () {
                 /*03*/[{ x: "x", y: "_" }, { x: "u", y: "_" }, { x: "u", y: "_" }, { x: "x", y: "_" }, { x: "u", y: "_" }, { x: "u", y: "_" }, { x: "u", y: "_" }, { x: "u", y: "t" }, { x: "u", y: "_" }, { x: "x", y: "_" }, { x: "u", y: "_" }, { x: "u", y: "a" }],
                 /*04*/[{ x: "x", y: "_" }, { x: "x", y: "_" }, { x: "u", y: "_" }, { x: "u", y: "_" }, { x: "u", y: "_" }, { x: "x", y: "_" }, { x: "u", y: "p" }, { x: "x", y: "_" }, { x: "u", y: "_" }, { x: "x", y: "_" }, { x: "u", y: "_" }, { x: "x", y: "_" }],
                 /*05*/[{ x: "x", y: "_" }, { x: "x", y: "_" }, { x: "u", y: "_" }, { x: "x", y: "_" }, { x: "x", y: "_" }, { x: "x", y: "_" }, { x: "x", y: "_" }, { x: "x", y: "_" }, { x: "u", y: "_" }, { x: "u", y: "_" }, { x: "u", y: "_" }, { x: "x", y: "_" }],
-                /*06*/[{ x: "u", y: "_" }, { x: "u", y: "_" }, { x: "u", y: "_" }, { x: "x", y: "_" }, { x: "x", y: "e" }, { x: "x", y: "_" }, { x: "u", y: "_" }, { x: "u", y: "_" }, { x: "u", y: "_" }, { x: "x", y: "_" }, { x: "x", y: "_" }, { x: "x", y: "_" }],
+                /*06*/[{ x: "u", y: "e" }, { x: "u", y: "_" }, { x: "u", y: "_" }, { x: "x", y: "_" }, { x: "x", y: "e" }, { x: "x", y: "_" }, { x: "u", y: "_" }, { x: "u", y: "_" }, { x: "u", y: "_" }, { x: "x", y: "_" }, { x: "x", y: "_" }, { x: "x", y: "_" }],
                 /*07*/[{ x: "x", y: "_" }, { x: "x", y: "_" }, { x: "u", y: "_" }, { x: "u", y: "a" }, { x: "x", y: "_" }, { x: "x", y: "_" }, { x: "u", y: "_" }, { x: "x", y: "_" }, { x: "x", y: "_" }, { x: "x", y: "_" }, { x: "x", y: "_" }, { x: "x", y: "_" }],
                 /*08*/[{ x: "x", y: "_" }, { x: "x", y: "_" }, { x: "u", y: "_" }, { x: "x", y: "_" }, { x: "u", y: "a" }, { x: "u", y: "_" }, { x: "u", y: "_" }, { x: "u", y: "_" }, { x: "u", y: "_" }, { x: "x", y: "_" }, { x: "x", y: "_" }, { x: "x", y: "_" }],
                 /*09*/[{ x: "x", y: "_" }, { x: "u", y: "a" }, { x: "u", y: "_" }, { x: "x", y: "_" }, { x: "x", y: "_" }, { x: "u", y: "a" }, { x: "x", y: "_" }, { x: "x", y: "_" }, { x: "u", y: "_" }, { x: "x", y: "_" }, { x: "u", y: "_" }, { x: "u", y: "u" }],
@@ -26,10 +26,13 @@ room958.main = function () {
         };
         char.changeMenu("map", false, true);
     }
-    console.log(g.map.x + " , " + g.map.y); 
     g.map.map[g.map.y][g.map.x].x = "c"; 
-    room958.btnclick("displayBackground");
     
+    room958.btnclick("displayBackground");
+    if (gv.get("energy") < 1) {
+        chat(67, 958);
+        return;
+    }
     switch (g.map.map[g.map.y][g.map.x].y) {
         case "e":
             if (g.map.counter > 0) {
@@ -57,9 +60,7 @@ room958.main = function () {
                     chat(18, 958);
                     break;
                 case "d":
-                    room958.btnclick("displayDirection");
                     chat(22, 958);
-                    return;
                     break;
                 case "e":
                     chat(27, 958);
@@ -138,7 +139,17 @@ room958.main = function () {
             }
             break;
         case "u":
-            //stairs
+            nav.kill();
+            if (sc.getMission("bodhi", "escape").inProgress) {
+                nav.bg("958_wander/stairs_alt.webp");
+                chat(68, 958);
+                return;
+            }
+            else {
+                nav.bg("958_wander/stairs.webp");
+                chat(66, 958);
+            }
+            return;
             break;
         case "z":
             nav.bg("958_wander/octogon.webp");
@@ -371,6 +382,7 @@ room958.btnclick = function (name) {
             g.internal = 4;
             nav.killbutton("event_d2");
             levels.swallowCum("m", "cult");
+            gv.mod("energy", -25);
             nav.button({
                 "type": "tongue",
                 "name": "event_d3",
@@ -387,6 +399,7 @@ room958.btnclick = function (name) {
             if (g.internal > 7) {
                 nav.kill();
                 levels.oral(3, "f", "!milkmaid");
+                gv.mod("energy", -25);
                 nav.bg("958_wander/event_d.webp");
                 chat(25, 958);
             }
@@ -399,6 +412,39 @@ room958.btnclick = function (name) {
             nav.kill();
             nav.bg("958_wander/event_h1.webp");
             chat(52, 958);
+            break;
+        case "glose":
+            nav.kill();
+            nav.bg("958_wander/event_h10.webp");
+            chat(60, 958);
+            break;
+        case "event_h10":
+            if (g.internal > 14) {
+                nav.kill();
+                chat(61, 958);
+                return;
+            }
+            nav.bg("958_wander/event_h" + g.internal + ".webp");
+            g.internal++;
+            break;
+        case "event_h17":
+            if (g.internal > 23) {
+                nav.kill();
+                nav.cum("event_h17");
+            }
+            if (g.internal > 24) {
+                nav.kill();
+                chat(65, 958);
+                nav.bg("958_wander/event_h18.webp");
+                levels.anal(4, true, "f", false, "g");
+                gv.mod("energy", -25);
+                return;
+            }
+            nav.bg("958_wander/event_h" + ((g.internal % 2) + 16) + ".webp");
+            g.internal++;
+            break;
+        case "runAway":
+            room958.chatcatch("RunAway");
             break;
         default:
             break;
@@ -414,6 +460,9 @@ room958.chatcatch = function (callback) {
         case "event_e3":
         case "event_f1":
         case "event_f4":
+        case "event_h10":
+        case "event_h15":
+        case "event_h16":
             nav.bg("958_wander/" + callback + ".webp");
             break;
         case "octogon6":
@@ -519,6 +568,7 @@ room958.chatcatch = function (callback) {
             nav.bg("958_wander/" + callback + "_" + gender.pronoun("f") + ".webp");
             levels.oral(4, "m", "!dog", true, "dog");
             levels.anal(4, true, "m", true, "!dog", "dog");
+            gv.mod("energy", -50);
             break;
         case "octogon7":
             nav.bg("958_wander/octogon4.webp");
@@ -582,10 +632,12 @@ room958.chatcatch = function (callback) {
         case "event_e5_s":
             zcl.bjpov(-180, 400, .7, "black swallow cum", false, "b");
             levels.oral(4, "m", "cult", true);
+            gv.mod("energy", -25);
             break;
         case "event_e5_f":
             zcl.bjpov(-180, 400, .7, "black facial cum", false, "b");
             levels.oral(4, "m", "cult", false);
+            gv.mod("energy", -25);
             break;
         case "event_f2":
             zcl.squat(560, 670, .4, "", true);
@@ -606,6 +658,7 @@ room958.chatcatch = function (callback) {
         case "event_f8":
             levels.anal(4, true, "m", true, "!boxes");
             zcl.legsup(-180, 700, .6, "creampie eyes sg1", false, "w");
+            gv.mod("energy", -25);
             break;
         case "event_f9":
             zcl.face(0, 300, 1, "suck", "w", false);
@@ -614,7 +667,7 @@ room958.chatcatch = function (callback) {
             zcl.face(0, 300, 1, "up", "w", false);
             break;
         case "event_g1":
-            quickFight.init(16, sc.n("g"), "gwin", "glose", "glose", 958);
+            quickFight.init(16, sc.n("g"), "gwin", "glose", "runAway", 958);
             break;
         case "event_h2":
             nav.kill();
@@ -647,8 +700,27 @@ room958.chatcatch = function (callback) {
                 sc.completeMissionTask("g", "mom", 0);
             }
             break;
+        case "event_h10a":
+            g.internal = 11;
+            nav.next("event_h10");
+            break;
+        case "event_h17a":
+            g.internal = 17;
+            nav.next("event_h17");
+            break;
+        case "dariaComplete":
+            sc.completeMission("bodhi", "escape", false);
+            room958.btnclick("displayDirection");
+            break;
         case "displayDirection":
             room958.btnclick("displayDirection");
+            break;
+        case "escape":
+            g.pass = "escape";
+            char.room(954); 
+            break;
+        case "room952":
+            char.room(952);
             break;
         case "reset":
             char.room(958);
@@ -871,7 +943,7 @@ room958.chat = function (chatID) {
                 "that much enthusiasm! Now lick that clit. I need to cum so bad!!",
             button: [
                 { chatID: -1, text: "[Lick that horny clit]", callback: "" },
-                { chatID: -1, text: "[Gulp down her cunt cum and run away!]", callback: "" }
+                { chatID: -1, text: "[Gulp down her cunt cum and run away!]", callback: "displayDirection" }
             ]
         },
         {
@@ -1182,6 +1254,98 @@ room958.chat = function (chatID) {
                 "my uterus. ",
             button: [
                 { chatID: -1, text: "Oh. Thanks?", callback: "displayDirection" },
+            ]
+        },
+        {
+            chatID: 60,
+            speaker: "g",
+            text: "I guess losers have to get punished!",
+            button: [
+                { chatID: -1, text: "What are you doing?", callback: "event_h10a" },
+            ]
+        },
+        {
+            chatID: 61,
+            speaker: "me",
+            text: "Do you just keep that in there all the time?",
+            button: [
+                { chatID: 62, text: "...", callback: "event_h10" },
+            ]
+        },
+        {
+            chatID: 62,
+            speaker: "g",
+            text: "Uh, yeah! I push it in and out to keep that butthole tight. Now get over my knees loser " +
+                "I'm going to work out your butthole! ",
+            button: [
+                { chatID: 63, text: "*gulp*", callback: "event_h15" },
+            ]
+        },
+        {
+            chatID: 63,
+            speaker: "g",
+            text: "The secret to working out the anal sphincter is repition, speed, and force. You may " +
+                "think you just go low and slow, but I found it's more beneficial to just jam it up there. " +
+                "Fast, hard, and brutal! ",
+            button: [
+                { chatID: 64, text: "*whimper*", callback: "event_h16" },
+            ]
+        },
+        {
+            chatID: 64,
+            speaker: "g",
+            text: "Don't go clenching up on me. My ass toy is going to make friends with your ass. Clench " +
+                "too hard and you're going to get tearing and we don't want that. Now relax so I can work " +
+                "that ass baby! ",
+            button: [
+                { chatID: -1, text: "*exhale*", callback: "event_h17a" },
+            ]
+        },
+        {
+            chatID: 65,
+            speaker: "g",
+            text: "There you go. Good workout. Now go hit the showers! ",
+            button: [
+                { chatID: -1, text: "*moans of sissy pleasure*", callback: "displayDirection" },
+            ]
+        },
+        {
+            chatID: 66,
+            speaker: "cult",
+            text: "Trying to break out of here? Haha. Just kidding. But really, sissies aren't allowed " +
+                "to go any further. ",
+            button: [
+                { chatID: -1, text: "...", callback: "displayDirection" },
+            ]
+        },
+        {
+            chatID: 67,
+            speaker: "thinking",
+            text: "I'm too tired to go any further. Must head back",
+            button: [
+                { chatID: -1, text: "...", callback: "room952" },
+            ]
+        },
+        {
+            chatID: 68,
+            speaker: "daria",
+            text: "About time you got here. The guard should be back any minute. We have to go now " +
+                "if we're going to go. ",
+            button: [
+                { chatID: -1, text: "Let's escape this dump!", callback: "escape" },
+                { chatID: 69, text: "I changed my mind. I'm going to stay. I want to see if I can really get a vagina.", callback: "" },
+            ]
+        },
+        {
+            chatID: 69,
+            speaker: "daria",
+            text: "The only thing you'll find here is pain and misery. It's your dumb ass crotch. I'm " +
+                "through with this place. " + sc.n("bodhi") + " and I are going to get out of here. It " +
+                "was nice while we were here, but I fear " + sc.n("bodhi") + " is next after the cut your " +
+                "dick off and I don't want to see him dead. Good luck in there. You deserve every bit of " +
+                "pain and misery that coming. Let's go " + sc.n("bodhi") + ". I'm not going to see you die. " ,
+            button: [
+                { chatID: -1, text: "Good luck", callback: "dariaComplete" },
             ]
         },
     ]

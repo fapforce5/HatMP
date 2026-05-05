@@ -1,14 +1,44 @@
 ﻿//Room name
 var room956 = {};
 room956.main = function () {
-    if (gv.get("cultRank", "Sissy?")){
+    if (gv.get("cultRank") === "Sissy?") {
         gv.set("cultRank", "Sissy");
         sc.show("dr");
         sc.startMission("dr", "cult");
         sc.completeMissionTask("dr", "cult", 0);
         chat(0, 956);
     }
-    
+    else if (gv.get("cultRank") === "Mother Candidate") {
+        if (g.pass === "endSleepyTime") {
+            switch (g.map.c) {
+                case 0:
+                    nav.bg("999_phone/black.jpg");
+                    chat(17, 956);
+                    break;
+                case 1:
+                    nav.bg("999_phone/black.jpg");
+                    chat(18, 956);
+                    break;
+                case 2:
+                    nav.bg("999_phone/black.jpg");
+                    chat(19, 956);
+                    break;
+                case 3:
+                    nav.bg("999_phone/black.jpg");
+                    chat(20, 956);
+                    break;
+                case 4:
+                    nav.bg("956_science/f5.webp");
+                    chat(24, 956);
+                    break;
+            }
+            g.map.c++;
+        }
+        else {
+            g.map = { c: 0 };
+            chat(13, 956);
+        }
+    }
 };
 
 room956.btnclick = function (name) {
@@ -27,7 +57,66 @@ room956.chatcatch = function (callback) {
         case "e2":
         case "e3":
         case "e4":
+        case "f2":
+        case "f3":
+        case "f4":
+        case "f6":
+        case "f7":
+        case "f8":
+        case "f9":
+        case "f10":
+        case "f11":
+        case "f12":
+        case "f13":
+        case "f14":
+        case "f15":
+        case "f16":
+        case "f17":
+        case "f18":
             nav.bg("956_science/" + callback + ".webp"); 
+            break;
+        case "f14":
+        case "f15":
+        case "f20":
+            nav.bg("956_science/" + callback + "_" + gender.pronoun("f") + ".webp");
+            break;
+            break;
+        case "f19":
+            nav.bg("954_torture/t25.jpg"); 
+            break;
+        case "f1":
+            nav.bg("999_phone/black.jpg");
+            g.roomTimeout = setTimeout(function () {
+                chat(16, 956);
+            }, 1000);
+            break;
+        case "f13":
+            g.pass = "azrael956";
+            char.room(975);
+            break;
+        case "f21":
+            g.pass = "lone";
+            char.room(954);
+            break;
+        case "pussy":
+            cl.nude();
+            cl.c.cock = 5;
+            cl.display();
+            g.pass = 956;
+            char.room(28);
+            break;
+        case "sleep":
+            g.pass = 956;
+            char.room(28);
+            break;
+        case "sleep1":
+            char.addDays(1);
+            g.pass = 956;
+            char.room(28);
+            break;
+        case "room954":
+            g.pass = "pussy";
+            char.room(954);
             break;
         case "leave":
             gv.mod("cultDayCounter", 1);
@@ -157,6 +246,269 @@ room956.chat = function (chatID) {
                 "Ubel know that we have another candidate! ",
             button: [
                 { chatID: -1, text: "...", callback: "leave" }
+            ]
+        },
+        {
+            chatID: 13,
+            speaker: "dr",
+            text: "Welcome back. It seems you have chosen the right path. Lay right down and we will get " +
+                "started! Oh happy day! ",
+            button: [
+                { chatID: 14, text: "[Lay on the bed]", callback: "e0" }
+            ]
+        },
+        {
+            chatID: 14,
+            speaker: "dr",
+            text: "Well look at that. A good look. That aweful boy part will soon be gone. Gone forever. " +
+                "But I'm sure you'll find some pleasure in the Clitoris. Much smaller, but much more " +
+                "pleasurable. ",
+            button: [
+                { chatID: 15, text: "...", callback: "f0" }
+            ]
+        },
+        {
+            chatID: 15,
+            speaker: "dr",
+            text: "Now just relax. When you wake up you'll be a whole new woman. ",
+            button: [
+                { chatID: -1, text: "...pssssstttt", callback: "f1" }
+            ]
+        },
+        {
+            chatID: 16,
+            speaker: "thinking",
+            text: "Ooofff. Soooo dizzy.... so...",
+            button: [
+                { chatID: -1, text: "...", callback: "pussy" }
+            ]
+        },
+        {
+            chatID: 17,
+            speaker: "thinking",
+            text: "I feel weird. My whole body hurts. too tired...",
+            button: [
+                { chatID: -1, text: "...", callback: "sleep" }
+            ]
+        },
+        {
+            chatID: 18,
+            speaker: "thinking",
+            text: "I don't feel my penis... but there's something else... what is that....",
+            button: [
+                { chatID: -1, text: "...", callback: "sleep" }
+            ]
+        },
+        {
+            chatID: 19,
+            speaker: "thinking",
+            text: "It's so moist between my legs. Did I pee myself... I can't...",
+            button: [
+                { chatID: -1, text: "...", callback: "sleep" }
+            ]
+        },
+        {
+            chatID: 20,
+            speaker: "thinking",
+            text: "I must open my eyes. I cant' sleep forever. ",
+            button: [
+                { chatID: 21, text: "[Try to open your eyes]", callback: "f2" }
+            ]
+        },
+        {
+            chatID: 21,
+            speaker: "thinking",
+            text: "huh? ",
+            button: [
+                { chatID: 22, text: "...", callback: "f3" }
+            ]
+        },
+        {
+            chatID: 22,
+            speaker: "dr",
+            text: "Now now. Can't have you waking up before the big show. Don't want you to ruin your new " +
+                "vagina. ",
+            button: [
+                { chatID: 23, text: "...", callback: "f4" }
+            ]
+        },
+        {
+            chatID: 23,
+            speaker: "dr",
+            text: "Just sleep. Soon. Soon you'll see my greatest triumph! ",
+            button: [
+                { chatID: -1, text: "...", callback: "sleep1" }
+            ]
+        },
+        {
+            chatID: 24,
+            speaker: "dr",
+            text: "This newest specimin is the finest of the hidden uterus I've ever had! I mean really, " +
+                "it's amazing her penis even existed. Mother nature made a mistake with this one, but I " +
+                sc.n("dr") + " have fixed her mistake! ",
+            button: [
+                { chatID: 25, text: "...", callback: "f6" }
+            ]
+        },
+        {
+            chatID: 25,
+            speaker: "ubel",
+            text: "I am just simply amazed. She looks like she's had a pussy her entire life. Are you sure " +
+                "she can give birth? ",
+            button: [
+                { chatID: 26, text: "...", callback: "f7" }
+            ]
+        },
+        {
+            chatID: 26,
+            speaker: "dr",
+            text: "I am! She's even ovulating now. She is at her ripest and will most certainly be able to " +
+                "carry a child when you soak her into the cum bath. It's amazing really. She was always meant " +
+                "to be a girl and now thanks to my brilliance, she always will be. ",
+            button: [
+                { chatID: 27, text: "...", callback: "f8" }
+            ]
+        },
+        {
+            chatID: 27,
+            speaker: "ubel",
+            text: "I am so.... aaak!!! *grunt* ",
+            button: [
+                { chatID: 28, text: "...", callback: "f9" }
+            ]
+        },
+        {
+            chatID: 29,
+            speaker: "missy",
+            text: "Ooooo. Wow. As much as I hate " + sc.n("dr") + " and his forced penectomies, he really did " +
+                "some amazing work! I mean wow! Your vagina is so much prettier than mine! I want so much to " +
+                "play with it! Wow! ",
+            button: [
+                { chatID: 30, text: "huh?", callback: "" }
+            ]
+        },
+        {
+            chatID: 30,
+            speaker: "missy",
+            text: "*hrumph* We don't really have time right now! We have to go! On your feet. I know a way. Let's get " +
+                "out of here! ",
+            button: [
+                { chatID: 31, text: "*ugh* I'm so tired.", callback: "f10" }
+            ]
+        },
+        {
+            chatID: 30,
+            speaker: "missy",
+            text: "You need to make yourself untired right the fuck now! Unless you want to stay here until " +
+                "you die, which won't be long from now! Now get up! Let's go! ",
+            button: [
+                { chatID: 36, text: "Coming!", callback: "f14" },
+                { chatID: 31, text: "No. I'm staying here", callback: "" }
+            ]
+        },
+        {
+            chatID: 31,
+            speaker: "missy",
+            text: "What the fuck do you mean, no?",
+            button: [
+                { chatID: 32, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 32,
+            speaker: "me",
+            text: "I mean I'm staying here. All my life has been leading up to this moment. " +
+                "It is my destiny to carry Azrael in my womb. I alone can bring about the coming " +
+                "of our savior. I'm sorry you thought you could just come in here and rescue me, but " +
+                "I don't need to be rescued. I am where I'm supposed to be. ",
+            button: [
+                { chatID: 33, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 33,
+            speaker: "missy",
+            text: "I am going to knock you the fuck out and drag your ass out of here! You have been completely " +
+                "brain washed by these assholes! Now stop playing around and let's go!",
+            button: [
+                { chatID: 34, text: "...", callback: "f11" }
+            ]
+        },
+        {
+            chatID: 34,
+            speaker: "me",
+            text: "No. It's you that's been brain washed. Brain washed into thinking you're always right. " +
+                "Not this time. This time I'm the one that's right! This time I'm the chosen one to bring " +
+                "about the coming of Azrael! ",
+            button: [
+                { chatID: 35, text: "...", callback: "f12" }
+            ]
+        },
+        {
+            chatID: 35,
+            speaker: "ubel",
+            text: "Not only are you the chosen one, but you have gifted me a new pet. Missy will make an " +
+                "excelling doggy to serve us all as we bring about the coming of Azrael! Come let us " +
+                "join the masses and bring about the new age! ",
+            button: [
+                { chatID: -1, text: "[Follow him]", callback: "f13" }
+            ]
+        },
+        {
+            chatID: 36,
+            speaker: "missy",
+            text: "We need to hurry. I haven't had a chance to properly scout these passagess. ",
+            button: [
+                { chatID: 37, text: "...", callback: "f15" }
+            ]
+        },
+        {
+            chatID: 37,
+            speaker: "cult",
+            text: "HEY!!!! WE FOUND THEM!!! EVERYONE, THIS WAY!!!!! ",
+            button: [
+                { chatID: 38, text: "...", callback: "f16" }
+            ]
+        },
+        {
+            chatID: 38,
+            speaker: "missy",
+            text: "Fuck. Do what I say now! You keep running, I'll hold them off. What ever you do, do " +
+                "not stop running! GO!",
+            button: [
+                { chatID: 39, text: "Yes ma'am!", callback: "f17" }
+            ]
+        },
+        {
+            chatID: 39,
+            speaker: "thinking",
+            text: "Shit! I can hear them coming! There's no way I'll be able to escape! ",
+            button: [
+                { chatID: 40, text: "*huff* *puff*", callback: "f18" }
+            ]
+        },
+        {
+            chatID: 40,
+            speaker: "thinking",
+            text: "That beem is broken. If I can just hit that post hard enough it just may collapse ",
+            button: [
+                { chatID: 41, text: "[Hit it with all your might]", callback: "f19" }
+            ]
+        },
+        {
+            chatID: 41,
+            speaker: "me",
+            text: "Wow! No one is ever getting through there again! ",
+            button: [
+                { chatID: 42, text: "...", callback: "f20" }
+            ]
+        },
+        {
+            chatID: 42,
+            speaker: "me",
+            text: "oh crap. There's a tunnel to here? Let me just hop down...",
+            button: [
+                { chatID: -1, text: "...", callback: "f21" }
             ]
         },
     ];

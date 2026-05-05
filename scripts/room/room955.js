@@ -56,14 +56,17 @@ room955.btnclick = function (name) {
                     nav.suck("icon_bj");
                     break;
                 case 1:
+                    nav.killbutton("icon_bj");
                     nav.suck("icon_bj");
-                    fame.moanAnimate("right");
                     zcl.face(0, 400, 1, "insert", g.pass.c, false);
+                    fame.moanAnimate("right");
                     nav.next("icon_bj");
                     break;
                 case 2:
                     nav.killbutton("icon_bj");
                     zcl.face(0, 400, 1, "suck", g.pass.c, false);
+                    fame.moankill();
+                    fame.moanAnimate("right");
                     nav.suck("icon_bj");
                     break;
                 case 3:

@@ -2022,6 +2022,7 @@ room1004.btnclick = function (name) {
     nav.killbutton("m1004");
     switch (name) {
         case "flee":
+            gv.mod("energy", -20);
             g.popUpNotice("You escaped!");
             rape.kill();
             break;

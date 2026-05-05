@@ -13,10 +13,15 @@ room953.main = function () {
             chat(34, 953);
             break;
         default:
-            nav.bg("953_chaple/e2.jpg");
-            chat(53, 953);
+            if (sc.getLevel("cult") > 8) {
+                nav.bg("953_chaple/e2.jpg");
+                chat(58, 953);
+            }
+            else {
+                nav.bg("953_chaple/e2.jpg");
+                chat(53, 953);
+            }
             break;
-
     }
     //if (g.internal.chaple === 0)
     //    chat(0, 953);
@@ -60,6 +65,7 @@ room953.chatcatch = function (callback) {
         case "x4":
         case "x5":
         case "x6":
+        case "change1":
             nav.bg("953_chaple/" + callback + ".webp");
             break;
         case "x7":
@@ -134,6 +140,7 @@ room953.chatcatch = function (callback) {
             else {
                 gv.set("cultRank", "Cum Supplier");
                 nav.modbutton("cell", "953_chaple/wall_fg3.webp", null, null);
+                chat(17, 953);
             }
             break;
         case "esissy":
@@ -164,6 +171,11 @@ room953.chatcatch = function (callback) {
                 chat(24, 953);
             break;
         case "room950":
+            gv.set("cultDayCounter", 5);
+            char.room(950);
+            break;
+        case "change2":
+            gv.set("cultRank", "Mother Candidate");
             gv.set("cultDayCounter", 5);
             char.room(950);
             break;
@@ -352,7 +364,7 @@ room953.chat = function (chatID) {
             text: "I know. We all know. It's ok, bimbo. Thinking is hard. Don't worry, you won't have " + 
                 "to use that brain of yours anymore",
             button: [
-                { chatID: -1, text: "...", callback: "e17" }
+                { chatID: 14, text: "...", callback: "e17" }
             ]
         },
         {
@@ -670,6 +682,50 @@ room953.chat = function (chatID) {
             text: "Send the sissies and put our new selections up against the wall!",
             button: [
                 { chatID: -1, text: "...", callback: "room950" }
+            ]
+        },
+        {
+            chatID: 58,
+            speaker: "ubel",
+            text: "CUM GIVERS!!! We have had many failures to bring about the coming of Azrael! You see " +
+                "these sissies are weak! They're broken, inside and out! They're unworth of Azrael. " +
+                "They were FAILURES!!! ",
+            button: [
+                { chatID: 59, text: "...", callback: "e7" }
+            ]
+        },
+        {
+            chatID: 59,
+            speaker: "ubel",
+            text: "They were, but now. Now we have a sissy with the worth, the strength, the uterus to " +
+                "bring about the coming of Azrael!!! Her father was one of us a long time ago when I was just " +
+                "getting started in the church. Her father was impregnated with the seeds of your fathers. " +
+                "Her father became pregnant with Azrael. Her father almost brought about the birth of our savior! ",
+            button: [
+                { chatID: 60, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 60,
+            speaker: "ubel",
+            text: "But the chosen one was killed by the fanatics to stop the coming of Azrael! She were six " +
+                "months into her pregnancy. The furthest any sissy has come to bringing the birth of Azrael. " +
+                "Some say the failures of every sissy since then was due to Azrael's anger in us not protecting " +
+                "the chosen one. But now. Now we will be in Azraels graces again. " + sc.n("me") + " step " +
+                "forward! Come into the light of the new world! ",
+            button: [
+                { chatID: 61, text: "...", callback: "change1" }
+            ]
+        },
+        {
+            chatID: 61,
+            speaker: "ubel",
+            text: "Take the chosen one to her cell! In the morning she will visit the doctor. Next week she will bathe in the cum and bring about " +
+                "the end of times for all the nonbelievers! Then tonight. Tonight we shall release all our " +
+                "cum into each other so we can save the rest of the week for *her* hehehe. Now take her so we " +
+                "may enjoy the flesh and cum of our sisters and brothers! ",
+            button: [
+                { chatID: -1, text: "...", callback: "change2" }
             ]
         },
         //{

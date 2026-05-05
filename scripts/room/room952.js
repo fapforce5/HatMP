@@ -26,18 +26,18 @@ room952.main = function() {
         }];
     }
     else {
-        btnList = [
-            {
-                "type": "btn",
-                "name": "mine",
-                "left": 244,
-                "top": 27,
-                "width": 298,
-                "height": 942,
-                "title": "Return to your cell",
-                "image": "952_hallway/hallway1.png"
-            },
-            {
+        btnList = [{
+            "type": "btn",
+            "name": "mine",
+            "left": 244,
+            "top": 27,
+            "width": 298,
+            "height": 942,
+            "title": "Return to your cell",
+            "image": "952_hallway/hallway1.png"
+        }];
+        if (!sc.getMission("bodhi", "escape").complete) {
+            btnList.push({
                 "type": "btn",
                 "name": "bodhi",
                 "left": 652,
@@ -46,28 +46,28 @@ room952.main = function() {
                 "height": 638,
                 "title": "Bodhi's Cell",
                 "image": "952_hallway/hallway2.png"
-            },
-            {
-                "type": "btn",
-                "name": "bigdick",
-                "left": 858,
-                "top": 357,
-                "width": 60,
-                "height": 467,
-                "title": "Last Cell",
-                "image": "952_hallway/hallway3.png"
-            },
-            {
-                "type": "btn",
-                "name": "escape",
-                "left": 1206,
-                "top": 445,
-                "width": 173,
-                "height": 243,
-                "title": "Attempt and escape",
-                "image": "952_hallway/escape.png"
-            }
-        ];
+            });
+        }
+        btnList.push({
+            "type": "btn",
+            "name": "bigdick",
+            "left": 858,
+            "top": 357,
+            "width": 60,
+            "height": 467,
+            "title": "Last Cell",
+            "image": "952_hallway/hallway3.png"
+        });
+        btnList.push({
+            "type": "btn",
+            "name": "escape",
+            "left": 1206,
+            "top": 445,
+            "width": 173,
+            "height": 243,
+            "title": "Attempt and escape",
+            "image": "952_hallway/escape.png"
+        });
         nav.drawButton("1001_rand/turnaround.png", "turnaround", 952);
     }
     $.each(btnList, function (i, v) {
@@ -194,6 +194,7 @@ room952.btnclick = function (name) {
             else {
                 nav.killbutton("t1");
                 nav.bg("952_hallway/l4.jpg");
+                sc.completeMissionTask("bodhi", "cult", 5);
                 levels.oral(3, "f", "daria");
                 chat(72, 952);
             }
@@ -306,21 +307,75 @@ room952.btnclick = function (name) {
             break;
         case "c3":
             nav.kill();
-            nav.bg("952_hallway/bbg.jpg");
-            nav.button({
-                "type": "btn",
-                "name": "double",
-                "left": 863,
-                "top": 98,
-                "width": 572,
-                "height": 982,
-                "image": "952_hallway/double.webp"
-            }, 952);
+            switch (gv.get("cultdouble")) {
+                case 0:
+                    nav.bg("952_hallway/bbg.jpg");
+                    nav.button({
+                        "type": "btn",
+                        "name": "double",
+                        "left": 863,
+                        "top": 98,
+                        "width": 572,
+                        "height": 982,
+                        "image": "952_hallway/double.webp"
+                    }, 952);
+                    break;
+                case 1:
+                    nav.bg("952_hallway/double_bg.webp");
+                    nav.button({
+                        "type": "btn",
+                        "name": "double",
+                        "left": 818,
+                        "top": 297,
+                        "width": 257,
+                        "height": 704,
+                        "image": "952_hallway/double_chris.webp"
+                    }, 952);
+                    break;
+                default:
+                    nav.bg("952_hallway/double_chris3.webp")
+                    break;
+            }
             nav.back("turnaround");
             break;
         case "double":
-            if (sissy.st[0].ach)
-                chat(12, 952);
+            nav.killbutton("turnaround");
+            if (!daily.get("cultdouble")) {
+                switch (gv.get("cultdouble")) {
+                    case 0:
+                        future.add("cultdouble1", 1);
+                        if (sissy.st[0].ach)
+                            chat(12, 952);
+                        else
+                            chat(73, 952);
+                        break;
+                    case 1:
+                        future.add("cultdouble2", 1);
+                        chat(79, 952);
+                        break;
+                }
+                daily.set("cultdouble");
+            }
+            else {
+                switch (gv.get("cultdouble")) {
+                    case 0:
+                        chat(78, 952);
+                        break;
+                    case 1:
+                        chat(82, 952);
+                        break;
+                }
+                
+            }
+            break;
+        case "double_bj":
+            if (g.internal > 4) {
+                nav.kill();
+                chat(76, 952);
+                return;
+            }
+            nav.bg("952_hallway/double_bj" + g.internal + ".webp");
+            g.internal++;
             break;
         default:
             break;
@@ -332,6 +387,8 @@ room952.chatcatch = function (callback) {
         case "ralph2":
         case "ralph6":
         case "ralph7":
+        case "double_bj0":
+        case "double_chris2":
             nav.kill();
             nav.bg("952_hallway/" + callback + ".webp"); 
             break;
@@ -340,6 +397,7 @@ room952.chatcatch = function (callback) {
             nav.bg("952_hallway/" + callback + "_" + gender.pronoun("f") + ".webp"); 
             break;
         case "ralph4":
+        case "double_chris1":
             nav.kill();
             nav.bg("952_hallway/" + callback + "_" + gender.pronoun("f") + ".webp");
             break;
@@ -390,11 +448,6 @@ room952.chatcatch = function (callback) {
                     chat(46, 952);
                 }
             }
-            break;
-        case "end1":
-            sc.setstep("daria", -1);
-            g.internal.interval++;
-            char.room(950);
             break;
         case "escape1":
             nav.killall();
@@ -471,6 +524,7 @@ room952.chatcatch = function (callback) {
             nav.bg("952_hallway/butt3.jpg");
             break;
         case "butt4":
+            sc.completeMissionTask("bodhi", "cult", 5);
             levels.anal(4, true, "f", false, "daria");
             room952.chatcatch("leave");
             break;
@@ -554,6 +608,18 @@ room952.chatcatch = function (callback) {
             nav.bg("952_hallway/ralph3.webp");
             zcl.displayMain(100, 1300, .16, "clothes", true);
             break;
+        case "doublebj":
+            nav.kill();
+            nav.bg("952_hallway/double_bj1.webp");
+            g.internal = 2;
+            nav.next("double_bj");
+            break;
+        case "double_chris3":
+            char.room(955);
+            break;
+        case "turnaround":
+            nav.back("turnaround");
+            break;
         case "leave":
             gv.mod("cultDayCounter", 1);
             char.room(950);
@@ -570,7 +636,7 @@ room952.chat = function (chatID) {
             speaker: "thinking",
             text: "Return to my cell?",
             button: [
-                { chatID: -1, text: "Yes. Return to my cell.", callback: "return" },
+                { chatID: -1, text: "Yes. Return to my cell.", callback: "leave" },
                 { chatID: -1, text: "No. Stay out here a bit longer. ", callback: "" }
             ]
         },
@@ -1246,15 +1312,110 @@ room952.chat = function (chatID) {
                 { chatID: -1, text: "...", callback: "leave" },
             ]
         },
-
-
-
-
-
-
-
-
-
+        {
+            chatID: 73,
+            speaker: "!timothy",
+            text: "We were wondering when you'd finally get out and come visit us! We do love your cock! " +
+                "How about you let us have a taste? ",
+            button: [
+                { chatID: 74, text: "Totally!", callback: "" },
+                { chatID: -1, text: "Some other time. ", callback: "turnaround" },
+            ]
+        },
+        {
+            chatID: 74,
+            speaker: "!chris",
+            text: "Oh please! I need penis so bad! ",
+            button: [
+                { chatID: 75, text: "My dick is all yours, sissies! ", callback: "double_bj0" },
+            ]
+        },
+        {
+            chatID: 75,
+            speaker: "me",
+            text: "You girls love the cock! Bend over, I have to feel you both from the inside!",
+            button: [
+                { chatID: -1, text: "...", callback: "doublebj" },
+            ]
+        },
+        {
+            chatID: 76,
+            speaker: "!chris",
+            text: "Hehe. I can feel your creampie drip down my crack and balls. hehe",
+            button: [
+                { chatID: 77, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 77,
+            speaker: "!timothy",
+            text: "I'm only complete when cum is dripping from my hole. I so much need more! hehe",
+            button: [
+                { chatID: -1, text: "...", callback: "turnaround" },
+            ]
+        },
+        {
+            chatID: 78,
+            speaker: "!chris",
+            text: "So giddy for tonight! Love that I get to pick where they put their penis! I should " +
+                "tease them, but I always put it in my butt! Hehe!",
+            button: [
+                { chatID: -1, text: "...", callback: "turnaround" },
+            ]
+        },
+        {
+            chatID: 79,
+            speaker: "!chris",
+            text: "They took her. She's gone",
+            button: [
+                { chatID: 80, text: sc.n("!timothy") + "? Where did she go? ", callback: "" },
+            ]
+        },
+        {
+            chatID: 80,
+            speaker: "!chris",
+            text: "She went to the doctor to get her vagina. She was so happy. I was so happy. Then they " +
+                "came and said she's barren. No eggs. They said a sissy without eggs is not welcome here. They " +
+                "beat her up really bad and took her away. They just took her. I don't know if I'll ever see her again. ",
+            button: [
+                { chatID: 81, text: "Oh no! No no no ", callback: "" },
+            ]
+        },
+        {
+            chatID: 81,
+            speaker: "!chris",
+            text: "I have to go in tomorrow. I'm so scared. What if I don't have eggs! Are the going to get " +
+                "rid of me too! I tried to escape, but there's no way out of here. There's no way out! I just " +
+                "have to sit here and hope I don't die tomorrow! I don't want to die. I don't want to die! ",
+            button: [
+                { chatID: 83, text: "I'll stay here as long as they let me. ", callback: "double_chris1" },
+                { chatID: -1, text: "Oh. Well, good luck with that. ", callback: "turnaround" },
+            ]
+        },
+        {
+            chatID: 82,
+            speaker: "!chris",
+            text: "I don't want to die. ",
+            button: [
+                { chatID: -1, text: "Oh. Well, good luck with that. ", callback: "turnaround" },
+            ]
+        },
+        {
+            chatID: 83,
+            speaker: "!chris",
+            text: "*softly sobbing into your shoulder*",
+            button: [
+                { chatID: 84, text: "...", callback: "double_chris2" },
+            ]
+        },
+        {
+            chatID: 84,
+            speaker: "cult",
+            text: "Ok you two. Time to empty some dicks. ",
+            button: [
+                { chatID: -1, text: "[Sadly move]", callback: "double_chris3" },
+            ]
+        },
 
 
 

@@ -1,7 +1,33 @@
 ﻿//Room name
 var room954 = {};
 room954.main = function () {
-    chat(0, 954);
+    gv.set("cultescape", g.pass);
+    switch (g.pass) {
+        case "escape":
+            nav.bg("954_torture/e1.webp");
+            chat(67, 954);
+            break;
+        case "lone":
+            nav.bg("225_sewer/sewer.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "t29",
+                "left": 1525,
+                "top": 430,
+                "width": 94,
+                "height": 228,
+                "image": "225_sewer/up.png",
+                "title": "Notify the police."
+            }, 228);
+            chat(74, 954);
+            break;
+        case "martin":
+            nav.bg("956_science/f16.webp");
+            chat(75, 954);
+            break;
+    }
+    g.pass = null;
+    //chat(0, 954);
 };
 
 room954.btnclick = function (name) {
@@ -25,10 +51,15 @@ room954.btnclick = function (name) {
 
 room954.chatcatch = function (callback) {
     switch (callback) {
+        case "e2":
+        case "e3":
+            nav.bg("954_torture/" + callback + ".webp");
+            break;
         case "t0":
             cl.nude();
             nav.bg("954_torture/t0.jpg");
             break;
+        case "bg":
         case "t1":
         case "t2":
         case "t3":
@@ -45,21 +76,20 @@ room954.chatcatch = function (callback) {
         case "t24":
         case "t25":
         case "t33":
+        case "t24x":
             nav.killall();
             nav.bg("954_torture/" + callback + ".jpg");
             break;
+        case "f17":
+        case "f18":
+            nav.bg("956_science/" + callback + ".webp");
+            break;
+        case "f20":
+            nav.bg("956_science/" + callback + "_" + gender.pronoun("f") + ".webp");
+            break;
         case "t4x":
             g.internal = 5;
-            nav.button({
-                "type": "btn",
-                "name": "tnext",
-                "left": 1687,
-                "top": 900,
-                "width": 233,
-                "height": 150,
-                "image": "526_bar/arrowRight.png",
-                "title": "Keep getting fuck sissy"
-            }, 954);
+            nav.next("tnext");
             break;
         case "t13":
             nav.bg("7_mainCharRoomAlt/black.jpg");
@@ -71,15 +101,7 @@ room954.chatcatch = function (callback) {
         case "t18":
             nav.bg("954_torture/t18.jpg");
             zcl.displayMain(100, 800, .22, "", false);
-            nav.button({
-                "type": "img",
-                "name": "tnext",
-                "left": 422,
-                "top": 0,
-                "width": 960,
-                "height": 1080,
-                "image": "954_torture/t18.png"
-            }, 954);
+            nav.next("tnext");
             break;
         case "t19":
             nav.killall();
@@ -120,19 +142,19 @@ room954.chatcatch = function (callback) {
             }, 1500);
             break;
         case "t34":
-            g.sissy[55].ach = true;
-            g.sissy[58].ach = true;
-            g.sissy[59].ach = true;
-            sc.setstep("missy", 100);
-            cl.c.swimsuit = null;
-            cl.c.dress = null;
-            cl.c.pants = "p";
-            cl.c.shirt = "j";
-            cl.display();
-            char.room(0);
-            gv.set("oncase", null);
-            $('#room-menu').show();
-            $("#room-inv").show();
+            //g.sissy[55].ach = true;
+            //g.sissy[58].ach = true;
+            //g.sissy[59].ach = true;
+            //sc.setstep("missy", 100);
+            //cl.c.swimsuit = null;
+            //cl.c.dress = null;
+            //cl.c.pants = "p";
+            //cl.c.shirt = "j";
+            //cl.display();
+            //char.room(0);
+            //gv.set("oncase", null);
+            //$('#room-menu').show();
+            //$("#room-inv").show();
             break;
         default:
             break;
@@ -489,7 +511,7 @@ room954.chat = function (chatID) {
             speaker: "daria",
             text: "There's too many of them, they have her. If we don't knock this down they'll have us too! We have to act NOW!",
             button: [
-                { chatID: 40, text: "We can't do that, she'll be trapped!", callback: "" }
+                { chatID: 40, text: "We can't do that, she'll be trapped!", callback: "t24x" }
             ]
         },
         {
@@ -498,7 +520,7 @@ room954.chat = function (chatID) {
             text: "They already have her and if we don't act fast they'll have us too! " + sc.n("bodhi") + " help me knock " +
                 "this over!",
             button: [
-                { chatID: 41, text: "Noooooo!", callback: "" }
+                { chatID: 41, text: "Noooooo!", callback: "t25" }
             ]
         },
         {
@@ -514,7 +536,7 @@ room954.chat = function (chatID) {
             speaker: "daria",
             text: "It's done. We need to keep going.",
             button: [
-                { chatID: 43, text: "*Sob* Ok, follow me. ", callback: "t25" }
+                { chatID: 43, text: "*Sob* Ok, follow me. ", callback: "t26" }
             ]
         },
         {
@@ -522,7 +544,7 @@ room954.chat = function (chatID) {
             speaker: "bodhi",
             text: "It's too high. I'm going to break my head.",
             button: [
-                { chatID: 44, text: "...", callback: "t26" }
+                { chatID: 44, text: "...", callback: "" }
             ]
         },
         {
@@ -729,6 +751,139 @@ room954.chat = function (chatID) {
             text: "Now that's a smart thing to do. Don't worry, if she's there we'll get her out. ",
             button: [
                 { chatID: -1, text: "Humph. ok ", callback: "t34" }
+            ]
+        },
+        {
+            chatID: 67,
+            speaker: "daria",
+            text: "That key you shoved up your ass will unlock this side door. Now stay close to me and no talking once I " +
+                "open it. We'll need to move quickly. ",
+            button: [
+                { chatID: 68, text: "ok", callback: "e2" }
+            ]
+        },
+        {
+            chatID: 68,
+            speaker: "daria",
+            text: "Remember. Not a word. Let's go",
+            button: [
+                { chatID: 69, text: "*gulp*", callback: "e3" }
+            ]
+        },
+        {
+            chatID: 69,
+            speaker: "ubel",
+            text: "*tsk* *tsk* " + sc.n("daria") + ". Your father will be very unhappy with this turn of " +
+                "events. Did you really think you could just walk out of here and no one would know? I " +
+                "know everything that happens here, I just wasn't sure if you all were stupid enough to " +
+                "actually go through with it. ",
+            button: [
+                { chatID: 70, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 70,
+            speaker: "ubel",
+            text: "Now your lives are on your own. You have strayed from the path of Azreal and only " +
+                "those on the path can remain. I will give you the choice. Choice one is to remain " +
+                "here and go though my personal intensive training. It will be filled with pain and " +
+                "suffering like you've never experainced. You will lose your very definition of self " +
+                "as you are tortured and used by all who live here. ",
+            button: [
+                { chatID: 71, text: "What's choice two?", callback: "" }
+            ]
+        },
+        {
+            chatID: 71,
+            speaker: "ubel",
+            text: "Hahaha. Choice two is death. No one betrays Azreal on these grounds. ",
+            button: [
+                { chatID: 72, text: "*gulp*", callback: "" }
+            ]
+        },
+        {
+            chatID: 72,
+            speaker: "daria",
+            text: "I'm so sorry! Please don't kill us, I'll do anything to be able to see Bodhi again. " +
+                "We won't try to break out ever again. I promise! ",
+            button: [
+                { chatID: 73, text: "Please. We want to live.", callback: "" }
+            ]
+        },
+        {
+            chatID: 73,
+            speaker: "ubel",
+            text: "Through pain you shall find salvation. Follow me. ",
+            button: [
+                { chatID: 0, text: "[Follow him]", callback: "bg" }
+            ]
+        },
+        {
+            chatID: 74,
+            speaker: "thinking",
+            text: "There's no way I can get Missy out on my own. I really do need the help of the cops. ",
+            button: [
+                { chatID: 53, text: "Go to the police. ", callback: "t29" }
+            ]
+        },
+        {
+            chatID: 75,
+            speaker: "missy",
+            text: "Fuck, they've found us. You two just run and don't stop running. I'll slow them down! " +
+                "Don't stop running!!",
+            button: [
+                { chatID: 76, text: "Run! ", callback: "f17" }
+            ]
+        },
+        {
+            chatID: 76,
+            speaker: "!martin",
+            text: "Oh crap! I can hear them coming. They're getting closer! ",
+            button: [
+                { chatID: 77, text: "*huff* *puff* ", callback: "f18" }
+            ]
+        },
+        {
+            chatID: 77,
+            speaker: "me",
+            text: "That beam looks like it's already broken. Maybe we can knock it down! Help me! ",
+            button: [
+                { chatID: 78, text: "[Knock down the beam]", callback: "t25" }
+            ]
+        },
+        {
+            chatID: 78,
+            speaker: "!martin",
+            text: "That'll stop them. c'mon. Let's keep going.  ",
+            button: [
+                { chatID: 79, text: "[Knock down the beam]", callback: "f20" }
+            ]
+        },
+        {
+            chatID: 79,
+            speaker: "me",
+            text: "There's a room. Let's get out of here",
+            button: [
+                { chatID: 80, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 80,
+            speaker: "!martin",
+            text: "I'm getting out of here. I hope I never see you again asshole! I can't tell you how " +
+                "much I really hate you right now you son of a bitch! ",
+            button: [
+                { chatID: 81, text: "I guess that's fair. Good luck anyways. ", callback: "t28" }
+            ]
+        },
+        {
+            chatID: 81,
+            speaker: "thinking",
+            text: "At least we got away. I guess " + sc.n("martin") + " will always probably hate me. " +
+                "Too late for that. I've got to get Missy free. I can't do this alone. I should go " +
+                "straight to the police and see if they'll help me out. ",
+            button: [
+                { chatID: 53, text: "Go to the police. ", callback: "t29" }
             ]
         },
     ];

@@ -11,6 +11,20 @@ room950.main = function () {
         g.pass = null;
         gv.set("cultDayCounter", 0);
         let cultRank = gv.get("cultRank");
+        if (cultRank === "Mother Candidate") {
+            room950.btnclick("drawBG");
+            nav.button({
+                "type": "img",
+                "name": "eatit",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "950_cell/eatit0.webp",
+            }, 950);
+            chat(97, 950);
+            return;
+        }
         if (cultRank === "Cum Supplier") {
             nav.bg("950_cell/work0.jpg");
             chat(47, 950);
@@ -88,6 +102,12 @@ room950.main = function () {
     }
 
     if (cultDayCounter === 4) { //sperm
+        if (daily.get("cumwall950")){
+            nav.bg("950_cell/ubel2.webp");
+            daily.set("cumwall950", false);
+            chat(126, 950);
+            return;
+        }
         if (g.dt.getDay() === 5) {
             //set the background person
             if (daily.get("celldoor_blonde")) {
@@ -469,41 +489,44 @@ room950.btnclick = function (name) {
 
                 if (gv.get("cultbrick") < 100) {
                     nav.bg("950_cell/chisel.jpg");
-                    chat(21, 950);
+                    chat(98, 950);
                 }
                 else {
                     sc.startMission("bodhi", "cult");
                     sc.show("bodhi");
                     sc.completeMissionTask("bodhi", "cult", 0);
                     nav.bg("950_cell/b1.jpg");
-                    chat(23, 950);
+                    chat(99, 950);
                 }
             }
             else {
-                //switch (sc.taskGetStep("bodhi", "cult")) {
-                //    case 1:
-                //        sc.completeMissionTask("bodhi", "cult", 1);
-                //        nav.bg("950_cell/b3.jpg");
-                //        chat(29, 950);
-                //        break;
-                //    case 2:
-                //        sc.completeMissionTask("bodhi", "cult", 2);
-                //        gv.set("cultCumJob", 1);
-                //        nav.bg("950_cell/b3.jpg");
-                //        chat(36, 950);
-                //        break;
-                //    case 3:
-                //        sc.completeMissionTask("bodhi", "cult", 3);
-                //        nav.bg("950_cell/bb30.jpg");
-                //        chat(42, 950);
-                //        break;
-                //}
+                switch (sc.taskGetStep("bodhi", "cult")) {
+                    case 1:
+                        nav.kill();
+                        sc.completeMissionTask("bodhi", "cult", 1);
+                        nav.bg("950_cell/b3.jpg");
+                        chat(105, 950);
+                        break;
+                    case 2:
+                        nav.kill();
+                        sc.completeMissionTask("bodhi", "cult", 2);
+                        gv.set("cultCumJob", 1);
+                        nav.bg("950_cell/b3.jpg");
+                        chat(113, 950);
+                        break;
+                    case 3:
+                        nav.kill();
+                        sc.completeMissionTask("bodhi", "cult", 3);
+                        nav.bg("950_cell/bb30.jpg");
+                        chat(119, 950);
+                        break;
+                }
             }
             break;
         case "bb0":
             nav.killall();
             nav.bg("950_cell/bb1.jpg");
-            chat(37, 950);
+            chat(114, 950);
             break;
         case "bb2":
             nav.killbutton("bb2");
@@ -517,13 +540,13 @@ room950.btnclick = function (name) {
                 "image": "950_cell/bb2.png",
                 "title": "Eat it sissy"
             }, 950);
-            chat(39, 950);
+            chat(116, 950);
             break;
         case "bb3":
             nav.killall();
             nav.bg("950_cell/b2.jpg");
             sc.modLevel("bodhi", 100, 10); 
-            chat(40, 950);
+            chat(117, 950);
             break;
         case "icon_call":
             nav.kill();
@@ -946,9 +969,12 @@ room950.chatcatch = function (callback) {
             gv.mod("cultDayCounter", 1);
             char.room(951);
             break;
-        case "room955":
-            char.addtime(120);
-            char.room(955);
+        case "room951":
+            char.room(951);
+            break;
+        case "room954":
+            g.pass = "martin";
+            char.room(954);
             break;
         case "eatit1":
             nav.killall();
@@ -1060,7 +1086,7 @@ room950.chat = function (chatID) {
                 speaker: "thinking",
                 text: "Nothing here.",
                 button: [
-                    { chatID: -1, text: "Stop Looking", callback: "increment" }
+                    { chatID: -1, text: "Stop Looking", callback: "reset" }
                 ]
             },
             {
@@ -1590,7 +1616,7 @@ room950.chat = function (chatID) {
                 text: "We don't have a lot of time, I had to rush my plan so your dumb ass didn't kill " +
                     "poor " + sc.n("!martin") + " here. Just follow me and don't stop running!",
                 button: [
-                    { chatID: -1, text: "Yeah!", callback: "room955" },
+                    { chatID: -1, text: "Yeah!", callback: "room954" },
                 ]
             },
             {
@@ -1860,12 +1886,254 @@ room950.chat = function (chatID) {
                     { chatID: -1, text: "[Put on the panties and deliver them]", callback: "room952" }
                 ]
             },
-
-
-
-
-
-
+            {
+                chatID: 97,
+                speaker: "cult",
+                text: "Come. The time of your destiy has arrived. ",
+                button: [
+                    { chatID: -1, text: "[Follow her]", callback: "room956" }
+                ]
+            },
+            {
+                chatID: 98,
+                speaker: "thinking",
+                text: "Working it... So damn hard! If I was stronger it would be faster. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "increment" }
+                ]
+            },
+            {
+                chatID: 99,
+                speaker: "me",
+                text: "Hello?",
+                button: [
+                    { chatID: 100, text: "...", callback: "b2" }
+                ]
+            },
+            {
+                chatID: 100,
+                speaker: "bodhi",
+                text: "Oh hey my dude! What is up! Are you in the here too?",
+                button: [
+                    { chatID: 101, text: "Oh hi and yes I am here too?", callback: "" }
+                ]
+            },
+            {
+                chatID: 101,
+                speaker: "bodhi",
+                text: "Totally awesome! Am I right? I get a blow-y every day and they gime me a bed and free grub! Best time " +
+                    "ever!",
+                button: [
+                    { chatID: 102, text: "But aren't you trapped in there?", callback: "" }
+                ]
+            },
+            {
+                chatID: 102,
+                speaker: "bodhi",
+                text: "Trapped? No, way José. Why would they trap us? This is the best thing ever! ",
+                button: [
+                    { chatID: 103, text: "Oh. I'm trapped. How do I get out?", callback: "" }
+                ]
+            },
+            {
+                chatID: 103,
+                speaker: "bodhi",
+                text: "Oh totally lame. Have you tried being awesome and not being a douche? Just enjoy the stay",
+                button: [
+                    { chatID: 104, text: "Groan. I need to get out. ", callback: "" }
+                ]
+            },
+            {
+                chatID: 104,
+                speaker: "bodhi",
+                text: "No can do! I'm going to catch some Z's. Take is sleazy! ",
+                button: [
+                    { chatID: -1, text: "Oh, yeah. Totally bro, sure. ", callback: "increment" }
+                ]
+            },
+            {
+                chatID: 105,
+                speaker: "me",
+                text: "*whisper* Hey " + sc.n("bodhi") + ". Over here.",
+                button: [
+                    { chatID: 106, text: "...", callback: "b4" }
+                ]
+            },
+            {
+                chatID: 106,
+                speaker: "bodhi",
+                text: "Huh? Oh, you again. What's up?",
+                button: [
+                    { chatID: 107, text: "Do you still want to stay here forever?", callback: "b2" }
+                ]
+            },
+            {
+                chatID: 107,
+                speaker: "bodhi",
+                text: "Oh no way dude. Forever is so long. It's cool for now. ",
+                button: [
+                    { chatID: 108, text: "But you're trapped in here and you have no choice. ", callback: "" }
+                ]
+            },
+            {
+                chatID: 108,
+                speaker: "bodhi",
+                text: "I'm trapped in the best place. You should try being good so they let you out. I'll show you around. ",
+                button: [
+                    { chatID: 110, text: "Grrr. ok. How do I get out. ", callback: "" }
+                ]
+            },
+            {
+                chatID: 109,
+                speaker: "me",
+                text: "noop",
+                button: [
+                    { chatID: -1, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 110,
+                speaker: "bodhi",
+                text: "It's so easy dude. Just clean your cell and do what they say. How do you not do that?",
+                button: [
+                    { chatID: 111, text: "Fine! I'll give that a try. ", callback: "" }
+                ]
+            },
+            {
+                chatID: 111,
+                speaker: "bodhi",
+                text: "Cool. Just learn to enjoy it here.  ",
+                button: [
+                    { chatID: 112, text: "Enjoy it? I'm trapped!", callback: "" }
+                ]
+            },
+            {
+                chatID: 112,
+                speaker: "bodhi",
+                text: "Hey Bodhisattva the path to enlightenment is through inner peace. You have to accept there is no fight, just " +
+                    "mellow and allow the pleasure. To earn their trust, you must be trustworthy. ",
+                button: [
+                    { chatID: -1, text: "Fine", callback: "increment" }
+                ]
+            },
+            {
+                chatID: 113,
+                speaker: "thinking",
+                text: "He doens't know I can see him. His butt is right there. Should I call out, or maybe I can surprise him..",
+                button: [
+                    { chatID: -1, text: "Surprise him", callback: "bb0" },
+                    { chatID: 118, text: "Call out", callback: "b2" }
+                ]
+            },
+            {
+                chatID: 114,
+                speaker: "bodhi",
+                text: "<span class='hl-pink'>MOAN</span>",
+                button: [
+                    { chatID: 115, text: "?", callback: "" }
+                ]
+            },
+            {
+                chatID: 115,
+                speaker: "bodhi",
+                text: "OOooo yeah. Lick it.",
+                button: [
+                    { chatID: -1, text: "...", callback: "bb2" }
+                ]
+            },
+            {
+                chatID: 116,
+                speaker: "bodhi",
+                text: "<span class='hl-pink'>Hahah Again!</span>",
+                button: [
+                    { chatID: -1, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 117,
+                speaker: "bodhi",
+                text: "I love a good sissy ass licking! It's totally sweet. I think we just became friends!",
+                button: [
+                    { chatID: 118, text: "Sweet", callback: "" }
+                ]
+            },
+            {
+                chatID: 118,
+                speaker: "bodhi",
+                text: "So I was talking to my owner. She says she may be able to help you, but you have to get on the cults good " +
+                    "side. Just lay low and do what they say. ",
+                button: [
+                    { chatID: -1, text: "Yeah, got it. Cool", callback: "increment" }
+                ]
+            },
+            {
+                chatID: 119,
+                speaker: "thinking",
+                text: "Oh! What's going on here?",
+                button: [
+                    { chatID: 120, text: "...", callback: "bb31" }
+                ]
+            },
+            {
+                chatID: 120,
+                speaker: "daria",
+                text: "Are you trying to peek at us? We like putting on a show don't we?",
+                button: [
+                    { chatID: 121, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 121,
+                speaker: "bodhi",
+                text: "Oh totally. I love to share our experience with others. Can " + sc.n("me") + " come over and play? " +
+                    "I told him to be a good. ",
+                button: [
+                    { chatID: 122, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 122,
+                speaker: "daria",
+                text: "Yes my toy. We do love sharing, however you're locked in your cell. We'll have to change that. You'll " +
+                    "find that if you behave and get the cult to trust you, you'll get more freedom. I'll tell my friends to " +
+                    "give you a chance to work jobs outside your cell. ",
+                button: [
+                    { chatID: 123, text: "Oh yes!", callback: "" }
+                ]
+            },
+            {
+                chatID: 123,
+                speaker: "daria",
+                text: "Behave yourself keep a low profile, and I'll work on a way to get you out. It will probably take some time. " +
+                    "But if your a good slut we may be able to invite you over for some fun. ",
+                button: [
+                    { chatID: 124, text: "Sweet!", callback: "" }
+                ]
+            },
+            {
+                chatID: 124,
+                speaker: "daria",
+                text: "No put that brick back before you get caught. I've got to finish off my little toy. ",
+                button: [
+                    { chatID: 125, text: "ok *sad face*", callback: "" }
+                ]
+            },
+            {
+                chatID: 125,
+                speaker: "thinking",
+                text: "If I want to work outside the cell I have to call the guard over. If I'm good I'll be able to get more freedoms. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "increment" }
+                ]
+            },
+            {
+                chatID: 126,
+                speaker: "cult",
+                text: "What the fuck! Is that spilt cum on your wall! Come with me, you're going in the box!",
+                button: [
+                    { chatID: -1, text: "*gulp*", callback: "room951" }
+                ]
+            },
 
 
 
@@ -1899,231 +2167,11 @@ room950.chat = function (chatID) {
                     { chatID: -1, text: "I will not talk; Bye.", callback: "increment" }
                 ]
             },
-            {
-                chatID: 21,
-                speaker: "thinking",
-                text: "Working it... So damn hard! ",
-                button: [
-                    { chatID: -1, text: "...", callback: "increment" }
-                ]
-            },
+            
            
-            {
-                chatID: 23,
-                speaker: "me",
-                text: "Hello?",
-                button: [
-                    { chatID: 24, text: "...", callback: "b2" }
-                ]
-            },
-            {
-                chatID: 24,
-                speaker: "bodhi",
-                text: "Oh hey my dude! What is up! Are you in the here too?",
-                button: [
-                    { chatID: 25, text: "Oh hi and yes I am here too?", callback: "" }
-                ]
-            },
-            {
-                chatID: 25,
-                speaker: "bodhi",
-                text: "Totally awesome! Am I right? I get a blow-y every day and they gime me a bed and free grub! Best time " +
-                    "ever!",
-                button: [
-                    { chatID: 26, text: "But aren't you trapped in there?", callback: "" }
-                ]
-            },
-            {
-                chatID: 26,
-                speaker: "bodhi",
-                text: "Trapped? No, way José. Why would they trap us? This is the best thing ever! ",
-                button: [
-                    { chatID: 27, text: "Oh. I'm trapped. How do I get out?", callback: "" }
-                ]
-            },
-            {
-                chatID: 27,
-                speaker: "bodhi",
-                text: "Oh totally lame. Have you tried being awesome and not being a douche? Just enjoy the stay",
-                button: [
-                    { chatID: 28, text: "Groan. I need to get out. ", callback: "" }
-                ]
-            },
-            {
-                chatID: 28,
-                speaker: "bodhi",
-                text: "No can do! I'm going to catch some Z's. Take is sleazy! ",
-                button: [
-                    { chatID: -1, text: "Oh, yeah. Totally bro, sure. ", callback: "increment" }
-                ]
-            },
-            {
-                chatID: 29,
-                speaker: "me",
-                text: "*whisper* Hey " + sc.n("bodhi") + ". Over here.",
-                button: [
-                    { chatID: 30, text: "...", callback: "b4" }
-                ]
-            },
-            {
-                chatID: 30,
-                speaker: "bodhi",
-                text: "Huh? Oh, you again. What's up?",
-                button: [
-                    { chatID: 31, text: "Do you still want to stay here forever?", callback: "b2" }
-                ]
-            },
-            {
-                chatID: 31,
-                speaker: "bodhi",
-                text: "Oh no way dude. Forever is so long. It's cool for now. ",
-                button: [
-                    { chatID: 32, text: "But you're trapped in here and you have no choice. ", callback: "" }
-                ]
-            },
-            {
-                chatID: 32,
-                speaker: "bodhi",
-                text: "I'm trapped in the best place. You should try being good so they let you out. I'll show you around. ",
-                button: [
-                    { chatID: 33, text: "Grrr. ok. How do I get out. ", callback: "" }
-                ]
-            },
-            {
-                chatID: 33,
-                speaker: "bodhi",
-                text: "It's so easy dude. Just clean your cell and give them your cum. How do you not do that?",
-                button: [
-                    { chatID: 34, text: "Fine! I'll give that a try. ", callback: "" }
-                ]
-            },
-            {
-                chatID: 34,
-                speaker: "bodhi",
-                text: "Cool. Just learn to enjoy it here.  ",
-                button: [
-                    { chatID: 35, text: "Enjoy it? I'm trapped!", callback: "" }
-                ]
-            },
-            {
-                chatID: 35,
-                speaker: "bodhi",
-                text: "Hey Bodhisattva the path to enlightenment is through inner peace. You have to accept there is no fight, just " +
-                    "mellow and allow the pleasure. To earn their trust, you must be trustworthy. ",
-                button: [
-                    { chatID: -1, text: "Fine", callback: "increment" }
-                ]
-            },
-            {
-                chatID: 36,
-                speaker: "thinking",
-                text: "He doens't know I can see him. His butt is right there. Should I call out, or maybe I can surprise him..",
-                button: [
-                    { chatID: -1, text: "Surprise him", callback: "bb0" },
-                    { chatID: 41, text: "Call out", callback: "b2" }
-                ]
-            },
-            {
-                chatID: 37,
-                speaker: "bodhi",
-                text: "<span class='hl-pink'>MOAN</span>",
-                button: [
-                    { chatID: 38, text: "?", callback: "" }
-                ]
-            },
-            {
-                chatID: 38,
-                speaker: "bodhi",
-                text: "OOooo yeah. Lick it.",
-                button: [
-                    { chatID: -1, text: "...", callback: "bb2" }
-                ]
-            },
-            {
-                chatID: 39,
-                speaker: "bodhi",
-                text: "<span class='hl-pink'>Hahah Again!</span>",
-                button: [
-                    { chatID: -1, text: "...", callback: "" }
-                ]
-            },
-            {
-                chatID: 40,
-                speaker: "bodhi",
-                text: "I love a good sissy ass licking! It's totally sweet. I think we just became friends!",
-                button: [
-                    { chatID: 41, text: "Sweet", callback: "" }
-                ]
-            },
-            {
-                chatID: 41,
-                speaker: "bodhi",
-                text: "So I was talking to my owner. She says she may be able to help you, but you have to get on the cults good " +
-                    "side. Just lay low and do what they say. ",
-                button: [
-                    { chatID: -1, text: "Yeah, got it. Cool", callback: "increment" }
-                ]
-            },
-            {
-                chatID: 42,
-                speaker: "thinking",
-                text: "Oh! What's going on here?",
-                button: [
-                    { chatID: 43, text: "...", callback: "bb31" }
-                ]
-            },
-            {
-                chatID: 43,
-                speaker: "daria",
-                text: "Are you trying to peek at us? We like putting on a show don't we?",
-                button: [
-                    { chatID: 44, text: "...", callback: "" }
-                ]
-            },
-            {
-                chatID: 44,
-                speaker: "bodhi",
-                text: "Oh totally. I love to share our experience with others. Can " + sc.n("me") + " come over and play? " +
-                    "I told him to be a good. ",
-                button: [
-                    { chatID: 45, text: "...", callback: "" }
-                ]
-            },
-            {
-                chatID: 45,
-                speaker: "daria",
-                text: "Yes my toy. We do love sharing, however you're locked in your cell. We'll have to change that. You'll " +
-                    "find that if you behave and get the cult to trust you, you'll get more freedom. I'll tell my friends to " +
-                    "give you a chance to work jobs outside your cell. ",
-                button: [
-                    { chatID: 46, text: "Oh yes!", callback: "" }
-                ]
-            },
-            {
-                chatID: 46,
-                speaker: "daria",
-                text: "Behave yourself keep a low profile, and I'll work on a way to get you out. It will probably take some time. " +
-                    "But if your a good slut we may be able to invite you over for some fun. ",
-                button: [
-                    { chatID: 47, text: "Sweet!", callback: "" }
-                ]
-            },
-            {
-                chatID: 47,
-                speaker: "daria",
-                text: "No put that brick back before you get caught. I've got to finish off my little toy. ",
-                button: [
-                    { chatID: 48, text: "ok *sad face*", callback: "" }
-                ]
-            },
-            {
-                chatID: 48,
-                speaker: "thinking",
-                text: "If I want to work outside the cell I have to call the guard over. If I'm good I'll be able to get more freedoms. ",
-                button: [
-                    { chatID: -1, text: "...", callback: "increment" }
-                ]
-            },
+            
+            
+            
             
             {
                 chatID: 57,

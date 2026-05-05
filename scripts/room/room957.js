@@ -382,6 +382,8 @@ room957.chatcatch = function (callback) {
         case "sweepHallway4":
         case "sweepHallway5x":
         case "sweepHallway6x":
+        case "sweepHallway7":
+        case "sweepHallway8":
             nav.bg("957_jobs/" + callback + ".jpg"); 
             break;
         case "toilet_8_2":
@@ -402,7 +404,22 @@ room957.chatcatch = function (callback) {
             break;
         case "sweepHallway5":
             nav.bg("957_jobs/" + callback + ".jpg"); 
-            chat(7, 957);
+            if (sc.getMissionTask("bodhi", "cult", 4).inProgress) {
+                chat(55, 957);
+            }
+            else {
+                chat(7, 957);
+            }
+            break;
+        case "sweepHallway6steal":
+            if (levels.get("anal") < 7) {
+                chat(56, 957);
+            }
+            else {
+                nav.kill();
+                nav.bg("957_jobs/sweepHallway5x.jpg");
+                chat(57, 957);
+            }
             break;
         case "sweepHallway6":
             levels.oral(3, "m", "cult", true);
@@ -669,6 +686,11 @@ room957.chatcatch = function (callback) {
                 "image": "957_jobs/toilet_back2.webp"
             }, 957);
             zcl.assup(730, 400, .5, "", false);
+            break;
+        case "sweepHallway9":
+            sc.completeMissionTask("bodhi", "cult", 4);
+            sc.startMission("bodhi", "escape");
+            room957.chatcatch("leave");
             break;
         case "toilet_back3":
             nav.kill();
@@ -1199,6 +1221,73 @@ room957.chat = function (chatID) {
             text: "OOOOooooooo mmmmyyyy god. That feels better than an orgasm. ",
             button: [
                 { chatID: -1, text: "[Wait for the last of your piss enema to drip down your balls into the jar]", callback: "leave" },
+            ]
+        },
+        {
+            chatID: 55,
+            speaker: "cult",
+            text: "Oh fuck! Swallow my cum slut! ",
+            button: [
+                { chatID: -1, text: "[Attempt to steal his keys]", callback: "sweepHallway6steal" },
+                { chatID: 8, text: "GURGLE, Slurp, swollow", callback: "sweepHallway6" }
+            ]
+        },
+        {
+            chatID: 56,
+            speaker: "thinking",
+            text: "Those keys are so BIG! I need to stretch my ass out more if I want to fit them in! Maybe I'll use " +
+                "those vegetables to stretch me out more. ",
+            button: [
+                { chatID: 8, text: "[Need anal level 7]", callback: "sweepHallway6" }
+            ]
+        },
+        {
+            chatID: 57,
+            speaker: "thinking",
+            text: "I'll just grab these keys really quick while he's got his eyes closed and shove them deep up my ass. ",
+            button: [
+                { chatID: 58, text: "GURGLE, Slurp, swollow", callback: "sweepHallway6x" }
+            ]
+        },
+        {
+            chatID: 58,
+            speaker: "thinking",
+            text: "Oh wow. They are so cold! Now to sneak these keys back to my cell and get it to " + sc.n("daria") + ". ",
+            button: [
+                { chatID: 59, text: "...", callback: "sweepHallway7" }
+            ]
+        },
+        {
+            chatID: 59,
+            speaker: "daria",
+            text: "I saw you blowing that guy. Did you get the keys?",
+            button: [
+                { chatID: 60, text: "I did. They're in hidden in my butt. ", callback: "" }
+            ]
+        },
+        {
+            chatID: 60,
+            speaker: "daria",
+            text: "Good. Turn around really quick, I'll grab them.",
+            button: [
+                { chatID: 61, text: "Wha...", callback: "sweepHallway8" }
+            ]
+        },
+        {
+            chatID: 61,
+            speaker: "daria",
+            text: "I think I feel them. Your asshole is so stretched out. One second... Got them.",
+            button: [
+                { chatID: 62, text: "OOooooo", callback: "sweepHallway7" }
+            ]
+        },
+        {
+            chatID: 62 ,
+            speaker: "daria",
+            text: "Everything's set. The next time they do the ceremony we'll break out of here! I can't stay long. Keep a " +
+                "low profile. ",
+            button: [
+                { chatID: -1, text: "Sweet", callback: "sweepHallway9" }
             ]
         },
     ];

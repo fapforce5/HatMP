@@ -423,6 +423,8 @@ g.rooms = [
     { roomID: 957, name: "Work", image: "956_science/bg.webp", nightImage: "956_science/bg.webp", houseID: 950, btn: "bg.jpg" },
     { roomID: 958, name: "Map", image: "956_science/bg.webp", nightImage: "956_science/bg.webp", houseID: 950, btn: "bg.jpg" },
 
+    { roomID: 975, name: "The End", image: "956_science/bg.webp", nightImage: "956_science/bg.webp", houseID: 950, btn: "bg.jpg" },
+
 ];
 
 g.fr = function(roomID){

@@ -1,7 +1,10 @@
 ﻿//Room name
 var room951 = {};
 room951.main = function () {
-    char.changeMenu("hide", false, true);
+    g.internal = {
+        box: g.rand(0, 2),
+        interval: 0
+    };
     var btnList = [
         {
             "type": "btn",

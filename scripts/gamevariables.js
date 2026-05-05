@@ -63,6 +63,7 @@ gv.init = function () {
         { n: "transformation", t: "voluntary", q: "string" },
         { n: "breastSelect", t: 0, q: "int" },
         { n: "assSelect", t: 0, q: "int" },
+        { n: "multiPlayThrough", t: false, q: "bool" },
 
         //jobs
         { n: "jobapplynurse", t: 0, q: "int" },
@@ -180,7 +181,7 @@ gv.init = function () {
         { n: "forestFastravel1", t: false, q: "bool" },
         { n: "forestFastravel2", t: false, q: "bool" },
 
-        { n: "cultRank", t: "Slave", q: "string" }, //Slave, Sissy?, Sissy, Cum Supplier
+        { n: "cultRank", t: "Slave", q: "string" }, //Slave, Sissy?, Sissy, Cum Supplier, Mother of Azreal, Mother Candidate
         { n: "cultDays", t: 0, q: "int" },
         { n: "cultDayCounter", t: 0, q: "int" },
         { n: "cultbrick", t: 0, q: "int" },
@@ -191,6 +192,8 @@ gv.init = function () {
         { n: "cultchapelCounter", t: 0, q: "int" },
         { n: "cultCumJob", t: 0, q: "int" }, //1, 2 setup, 3 sweep
         { n: "cultdog", t: 0, q: "int" },
+        { n: "cultdouble", t: 0, q: "int" },
+        { n: "cultescape", t: "", q: "string" },
 
         //{ n: "jobConstWorkToday", t: 0, q: "int" },
         //---------------------------------check not used------------------------------
@@ -657,9 +660,7 @@ gv.init = function () {
         { id: 30, o: 6, title: "Sociopath", display: "Escape as a Cum Giver", img: "cultempathy.webp", ach: false, group: "event", m: 0, s: 0, d: 100 },
         { id: 31, o: 6, title: "Exit before entry", display: "Lost anal virginity before penis", img: "analfirst.webp", ach: false, group: "anal", m: 0, s: 75, d: 0 },
         { id: 32, o: 6, title: "#ralph#", display: "Slurped cum from his asshole", img: "ralph.webp", ach: false, group: "event", m: 0, s: 75, d: 0 },
-
-
-        
+        { id: 33, o: 500, title: "Bad End", display: "The virgin birth", img: "end_azrael.webp", ach: false, group: "end", m: 100, s: 100, d: 0 },
     ];
     
     future.st = new Array();

@@ -1552,6 +1552,10 @@ room9999.btnclick = function (name) {
                 phone.charPointer = 3;
                 room9999.btnclick("phone_ach_draw");
                 break;
+            case "phone_ach4":
+                phone.charPointer = 4;
+                room9999.btnclick("phone_ach_draw");
+                break;
             case "phone_ach_draw":
                 phone.clear(false);
                 var phone_ach_draw;
@@ -1560,6 +1564,7 @@ room9999.btnclick = function (name) {
                     case 1: phone_ach_draw = ["oral", "anal", "vaginal"]; break;
                     case 2: phone_ach_draw = ["fuck"]; break;
                     case 3: phone_ach_draw = ["event", "school", "pinkroom"]; break;
+                    case 4: phone_ach_draw = ["end"]; break;
                     default: phone_ach_draw = []; // Fallback so .includes() doesn't crash
                 }
                 nav.button({
@@ -1606,6 +1611,15 @@ room9999.btnclick = function (name) {
                     font: 30,
                     hex: "#ffffff",
                     text: "Other"
+                }, 9999);
+                nav.t({
+                    type: "zbtn",
+                    name: "phone_ach4",
+                    left: 1350,
+                    top: 800,
+                    font: 30,
+                    hex: "#ffffff",
+                    text: "Endings"
                 }, 9999);
                 
                 let newAchList = trophy.st
