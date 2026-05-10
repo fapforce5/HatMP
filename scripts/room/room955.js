@@ -153,8 +153,8 @@ room955.btnclick = function (name) {
                         nav.next("chalice"); 
                         break;
                 }
+                g.internal++;
             }
-            g.internal++;
             break;
         case "icon_footjob":
             switch (g.internal) {
@@ -306,7 +306,7 @@ room955.chat = function (chatID) {
                 break;
             case "bigguy":
                 if (sc.getMissionTask("lola", "sissy", 13).startedOrComplete) {
-                    switch (sc.taskGetStep.taskGetStep("bigguy", "cult")) {
+                    switch (sc.taskGetStep("bigguy", "cult")) {
                         case -1:
                         case 0:
                             sc.startMission("bigguy", "cult");

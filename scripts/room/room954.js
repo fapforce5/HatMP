@@ -750,8 +750,10 @@ room954.chat = function (chatID) {
             speaker: "cop2",
             text: "Now that's a smart thing to do. Don't worry, if she's there we'll get her out. ",
             button: [
-                { chatID: -1, text: "Humph. ok ", callback: "t34" }
-            ]
+                { chatID: -1, text: "Humph. ok [STOPS HERE - ]", callback: "t34" },
+                { chatID: -1, text: "End of this release", callback: "t34" },
+                { chatID: -1, text: "End of this release", callback: "t34" },
+                { chatID: -1, text: "End of this release", callback: "t34" },            ]
         },
         {
             chatID: 67,

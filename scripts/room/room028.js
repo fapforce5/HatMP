@@ -135,7 +135,6 @@ room28.main = function () {
         cl.display();
     }
 
-
     //chastity
     if (cl.c.cock < 5) {
         if (cl.c.chastity !== null) {
@@ -530,6 +529,22 @@ room28.dreams = function () {
         }
         else if (g.pass === 486)
             nav.bg("28_transformation/486.jpg");
+        else if (g.pass === 950)
+            nav.bg("950_cell/nap.webp");
+        else if (g.pass === 952) {
+            g.pass = 950;
+            nav.bg("950_cell/whip_sleep.webp");
+            zcl.allfours(290, 600, .5, "whip5", false);
+            nav.button({
+                "type": "img",
+                "name": "kill",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "950_cell/whip_sleep_" + gender.pronoun("f") + ".webp",
+            }, 28);
+        }
     }
     //console.log(hasText);
     return hasText;

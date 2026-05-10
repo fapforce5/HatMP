@@ -1222,7 +1222,7 @@ sc.init = function () {
                     missionName: "book", mStatus: 0, title: "Bedroom", desc: "Wha cha reading?", task:
                         [
                             { id: 0, txt: "Tell me about your book. ", show: true, mStatus: 0, roomId: 803 },
-                            { id: 1, txt: "Honey Buiscuits", show: true, mStatus: 0, roomId: 803 },
+                            { id: 1, txt: "Honey Biscuits", show: true, mStatus: 0, roomId: 803 },
                             { id: 2, txt: "Tell me even more", show: true, mStatus: 0, roomId: 803 },
                             { id: 3, txt: "One great fuck!", show: true, mStatus: 0, roomId: 803 },
                             { id: 4, txt: "A dissapointing tiny dick", show: true, mStatus: 0, roomId: 803 },
@@ -1413,6 +1413,13 @@ sc.init = function () {
                     missionName: "dirty", mStatus: 0, title: "Web of lies", desc: "Get trapped in the web of lies", task:
                         [
                             { id: 0, txt: "Dirty girl", show: true, mStatus: 0, roomId: 775 },
+                            { id: 1, txt: "Next release", show: true, mStatus: 0, roomId: 775 },
+                        ]
+                },
+                {
+                    missionName: "cult", mStatus: 0, title: "Connections", desc: "Meet as a sissy", task:
+                        [
+                            { id: 0, txt: "Reintroduce", show: true, mStatus: 0, roomId: 950 },
                             { id: 1, txt: "Next release", show: true, mStatus: 0, roomId: 775 },
                         ]
                 },

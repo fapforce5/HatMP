@@ -3,8 +3,14 @@ var room223 = {};
 room223.main = function () {
     var missyUniform = missy.get("uniform");
     if (missyUniform === 0) {
-        sc.modSecret("missy", 100);
-        chat(0, 223);
+        if (cl.pantiesTxt() !== "panties") {
+            sc.modSecret("missy", 100);
+            chat(19, 223);
+        }
+        else {
+            sc.modSecret("missy", 100);
+            chat(0, 223);
+        }
     }
     else if (missyUniform === 2) {
         chat(14, 223);
@@ -25,6 +31,38 @@ room223.btnclick = function (name) {
 
 room223.chatcatch = function (callback) {
     switch (callback) {
+        case "panties_update0":
+            cl.c.pants = null;
+            zcl.displayMain(-300, 600, .3, "clothes", true);
+            break;
+        case "panties_update1":
+            nav.kill();
+            gv.mod("arousal", 100);
+            nav.bg("223_panties/panties_update1.webp");
+            cl.c.panties = null;
+            zcl.displayMain(-300, 600, .3, "clothes", true);
+            break;
+        case "panties_update2":
+        case "panties_update3":
+            nav.bg("223_panties/" + callback + ".webp");
+            break;
+        case "panties_update4":
+            cl.add("panties", "missy");
+            cl.c.panties = "missy";
+            zcl.displayMain(-300, 600, .3, "clothes", true);
+            nav.bg("223_panties/" + callback + ".webp");
+            break;
+        case "panties_update5":
+            cl.c.pants = "s";
+            cl.display();
+            missy.set("uniform", 1);
+            missy.set("uniformNew", 0);
+            char.settime(11, 30);
+            if (missy.payday().paydayHasPay)
+                char.room(196);
+            else
+                char.room(0);
+            break;
         case "panties0":
             cl.c.pants = null;
             zcl.displayMain(-300, 600, .3, "clothes", true);
@@ -276,6 +314,118 @@ room223.chat = function (chatID) {
                 "your clothing. Let's see what you're working with.",
             button: [
                 { chatID: 8, text: "Strip?", callback: "" },
+            ]
+        },
+        {
+            chatID: 19,
+            speaker: "missy",
+            text: "Today I'm going to have you sort my files and cross reference them by case date. Ready. ",
+            button: [
+                { chatID: 20, text: "*Groan* Yes ma'am", callback: "" }
+            ]
+        },
+        {
+            chatID: 20,
+            speaker: "missy",
+            text: "I'm just kidding. Listen. I know who you are. You don't know who you are, but I do. I've " +
+                "never been more sure of anything in my life. Take you pants off. ",
+            button: [
+                { chatID: 21, text: "My pants?", callback: "" }
+            ]
+        },
+        {
+            chatID: 21,
+            speaker: "missy",
+            text: "Yes. I said take your pants off. Not ask stuipid questions. Now take them off.  ",
+            button: [
+                { chatID: 22, text: "Yes ma'am", callback: "panties_update0" }
+            ]
+        },
+        {
+            chatID: 22,
+            speaker: "missy",
+            text: "*ugh* Boy's underwear. Why is it always so ugly. You know you're not an ugly boy, " +
+                "why do you wear ugly underware. That ends today. I'm going to make you pretty, starting " +
+                "from the inside where true beauty starts. Take those horrible things off. ",
+            button: [
+                { chatID: 23, text: "My underwear? ", callback: "" }
+            ]
+        },
+        {
+            chatID: 23,
+            speaker: "missy",
+            text: "My god are you dumb. Yes your underware. I never want to see those terrible things again. " +
+                "Take them off. ",
+            button: [
+                { chatID: 24, text: "Yes ma'am", callback: "panties_update1" }
+            ]
+        },
+        {
+            chatID: 24,
+            speaker: "missy",
+            text: "Now look at my panties. Does getting a peek make your penis start to get hard? I bet you " +
+                "wish you wish you weren't locked in that chastity cage right now. Panties are just the " +
+                "best best way to show our femininity. ",
+            button: [
+                { chatID: 25, text: "...", callback: "panties_update2" }
+            ]
+        },
+        {
+            chatID: 25,
+            speaker: "missy",
+            text: "Image how ugly this would look if I was sliding down ugly boy underwear right now. " +
+                "*ugh* No one wants to see ugly boy underware. All ratty and drab. A tiny tight set " + 
+                "of panties is what people love to see. Everyone loves to look at panties. ",
+            button: [
+                { chatID: 26, text: "...", callback: "panties_update3" }
+            ]
+        },
+        {
+            chatID: 26,
+            speaker: "missy",
+            text: "Here. Sniff my panties. Don't they just smell amazing? You know I can see your penis " +
+                "dripping a cute little drop of pre cum. Is it the lingering smell of my sex in my panties " +
+                " or the peek of my vagina that " +
+                "is making your penis press against it's cage and leak cum? ",
+            button: [
+                { chatID: 27, text: "The smell of your panties ma'am", callback: "" },
+                { chatID: 28, text: "The peek of your vagina ma'am", callback: "" },
+            ]
+        },
+        {
+            chatID: 27,
+            speaker: "missy",
+            text: "MMmmmm. A girl loves to hear how wonder her vagina smells. I have good news for " +
+                "you. You take take that smell home with you and smell at your leisure. ",
+            button: [
+                { chatID: 29, text: "ma'am?", callback: "" }
+            ]
+        },
+        {
+            chatID: 28,
+            speaker: "missy",
+            text: "Well you're in luck. These panties have been rubbing against my vagina all morning. " +
+                "You can feel that they're slightly damp from my aroused wet pussy. I have good news " +
+                "for you. You can take a small piece of my warm wet pussy with you. ",
+            button: [
+                { chatID: 29, text: "ma'am?", callback: "" }
+            ]
+        },
+        {
+            chatID: 29,
+            speaker: "missy",
+            text: "Take my warm moist panties and put them on. I want to see your precum leak into them. ",
+            button: [
+                { chatID: 30, text: "Yes ma'am!", callback: "panties_update4" }
+            ]
+        },
+        {
+            chatID: 30,
+            speaker: "missy",
+            text: "So cute!!!! Your body was made to wear panties. From now on you'll be required to wear your panties, " +
+                "my dainty femboy. ",
+            button: [
+                { chatID: -1, text: "Yes ma'am!", callback: "panties_update5" }
             ]
         },
     ];

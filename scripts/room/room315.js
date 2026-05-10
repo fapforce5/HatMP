@@ -36,7 +36,9 @@ room315.btnclick = function (name) {
                 char.room(316);
             }
             else if (g.gethourdecimal() > 22 || g.gethourdecimal() < 6) {
-                if (inv.has("lockpick"))
+                if (inv.has("keyJanice")) 
+                    chat(28, 315)
+                else if (inv.has("lockpick"))
                     chat(15, 315);
                 else
                     chat(3, 315);
@@ -435,6 +437,15 @@ room315.chat = function (chatID) {
             text: "That's so disrespectful! Go put on clothes before coming here!",
             button: [
                 { chatID: -1, text: "Oh. Of course.", callback: "leave" },
+            ]
+        },
+        {
+            chatID: 28,
+            speaker: "thinking",
+            text: "Should I use my key and break into her house? ",
+            button: [
+                { chatID: -1, text: "Sneak in", callback: "picked" },
+                { chatID: -1, text: "No. That's creepy. ", callback: "reset" },
             ]
         },
     ];

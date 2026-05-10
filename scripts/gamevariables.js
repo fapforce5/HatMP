@@ -194,6 +194,16 @@ gv.init = function () {
         { n: "cultdog", t: 0, q: "int" },
         { n: "cultdouble", t: 0, q: "int" },
         { n: "cultescape", t: "", q: "string" },
+        { n: "cultwhip", t: 0, q: "int" },
+
+        //magazine
+        { n: "magman", t: false, q: "bool" },
+        { n: "magcosmo", t: false, q: "bool" },
+        { n: "magpi", t: false, q: "bool" },
+        { n: "magmaster", t: false, q: "bool" },
+        { n: "magchar", t: false, q: "bool" },
+        { n: "magpee", t: false, q: "bool" },
+        { n: "magfemboy", t: false, q: "bool" },
 
         //{ n: "jobConstWorkToday", t: 0, q: "int" },
         //---------------------------------check not used------------------------------
@@ -627,7 +637,7 @@ gv.init = function () {
     ];
 
     trophy.st = [
-        { id: 0, o: 1, title: "Panteis", display: "Wear panties for the first time. ", img: "panties.webp", ach: false, group: "panties", m: 0, s: 30, d: 0 },
+        { id: 0, o: 1, title: "Panties", display: "Wear panties for the first time. ", img: "panties.webp", ach: false, group: "panties", m: 0, s: 30, d: 0 },
         { id: 1, o: 2, title: "#lola#'s Panties", display: "Steal #lola#'s panties. ", img: "pantieslola.webp", ach: false, group: "panties", m: 0, s: 30, d: 0 },
         { id: 2, o: 3, title: "#landlord#'s Panties", display: "Steal #landlord#'s panties. ", img: "pantieslandlord.webp", ach: false, group: "panties", m: 0, s: 30, d: 0 },
         { id: 3, o: 5, title: "#bimbo#'s Panties", display: "Steal #bimbo#'s panties. ", img: "pantiesbimbo.webp", ach: false, group: "panties", m: 0, s: 30, d: 0 },
@@ -2114,7 +2124,7 @@ gv.load = function (rma, saveVersion) {
     
     if (typeof rma.trophy !== 'undefined') {
         for (i = 0; i < rma.trophy.length; i++) {
-            trophy.st[i].ach = true;
+            trophy.st[rma.trophy[i]].ach = true;
         }
     }
 

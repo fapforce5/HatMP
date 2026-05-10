@@ -32,6 +32,9 @@ revents.cultbook = function (roomNum, btnclickName) {
 };
 
 room1010.btnclick = function (name) {
+    if (name === "magazineCloseInventory") {
+        nav.killbutton("magazineCloseInventory");
+    }
     if (name.startsWith("1010js_booknext") || name.startsWith("1010js_bookprev")) {
         let currentpage;
         if (name.startsWith("1010js_booknext")) {

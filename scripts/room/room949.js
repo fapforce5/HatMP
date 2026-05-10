@@ -3,7 +3,7 @@ var room949 = {};
 room949.main = function () {
     g.map = null;
     char.addtime(257);
-    chat(0, 949);
+    chat(1, 949);
     sc.show("cult");
     //var btnList = [
     //    {
@@ -57,7 +57,7 @@ room949.chatcatch = function (callback) {
             cl.c.chastity = null;
             cl.c.buttplug = null;
             gv.set("shower", new Date(new Date(g.dt).setDate(new Date(g.dt).getDate() - 10)));
-            gv.set("cultRank", "slave");
+            gv.set("cultRank", "Slave");
             char.room(950);
             break;
         default:
@@ -137,7 +137,7 @@ room949.chat = function (chatID) {
             text: "I've been in some bad places, but this one. This one scares me. I've got to find " +
                 "a way out of here or I might be trapped here forever. Worse yet I may even die here. ",
             button: [
-                { chatID: -1, text: "...", callback: "c7" },
+                { chatID: -1, text: "...", callback: "start" },
             ]
         },
     ];

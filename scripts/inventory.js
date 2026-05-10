@@ -31,6 +31,7 @@ inv.t = [
     { t: "i", n: "Dale's Fighting" },
     { t: "l", n: "Lock Pick" },
     { t: "m", n: "Makeup" },
+    { t: "n", n: "Magazine" },
     { t: "o", n: "Key" },
     { t: "p", n: "Phone Case" },
     { t: "q", n: "Milk Pump" },
@@ -57,7 +58,7 @@ inv.init = function () {
         { type: "g", name: "locket", display: "Locket for Missy's Case", entry: false, count: null, cost: -1, buy: null, image: "locket.png", n: false, desc: "Give this to Missy. " },
         { type: "h", name: "hormone", display: "Sissy Bimbo Pills", entry: false, count: 0, cost: 5, buy: 2, image: "hormone.png", n: false, desc: "Take 1 pill a day to increase your female hormone level" },
         { type: "g", name: "lube", display: "Stuff My Butt Lube", entry: false, count: 0, cost: 2, buy: 1, image: "lube.png", n: false, desc: "Lube for stuffing your Sissy Pussy" },
-        { type: "g", name: "razor", display: "Razor", entry: false, count: 0, cost: 10, buy: 3, image: "razor.png", n: false, desc: "Shave your body" },
+        { type: "g", name: "razor", display: "Razor", entry: false, count: 0, cost: 3, buy: 1, image: "razor.png", n: false, desc: "Shave your body" },
         { type: "g", name: "wine", display: "Rotting Grape Wine", entry: false, count: 0, cost: 12, buy: 4, image: "wine.png", n: false, desc: "Time to get drunk!" },
         { type: "g", name: "redbox", display: "Red Box", entry: false, count: null, cost: 0, buy: null, image: "redbox.png", n: false, desc: "Red box you need to deliver to Missy" },
         { type: "g", name: "emptyjar", display: "An empty jar", entry: false, count: 0, cost: -1, buy: 4, image: "emptyjar.png", n: false, desc: "Just an empty jar" },
@@ -153,6 +154,14 @@ inv.init = function () {
         { type: "g", name: "pizza", display: "Frozen Pizza", entry: false, count: 0, cost: 24, buy: 3, image: "pizza.png", n: false, desc: "Frozen pizza for date night. " },
         { type: "g", name: "peanutbutter", display: "Peanut Butter", entry: false, count: 0, cost: 12, buy: 3, image: "peanutbutter.png", n: false, desc: "Jar of Peanut Butter. " },
         { type: "g", name: "sleepingpills", display: "Sleeping pills", entry: false, count: 0, cost: -1, buy: null, image: "sleepingpills.png", n: false, desc: "Sleeping pills for you know who" },
+
+        { type: "n", name: "magman", display: "Men's Magazine", entry: false, count: 0, cost: 20, buy: 2, image: "magman.png", n: false, desc: "For the Fashionable Male" },
+        { type: "n", name: "magcosmo", display: "Cosmo", entry: false, count: 0, cost: 20, buy: 2, image: "magcosmo.png", n: false, desc: "The Fun Fearless Female" },
+        { type: "n", name: "magpi", display: "PI Magazine", entry: false, count: 0, cost: 20, buy: 2, image: "magpi.png", n: false, desc: "Learn the Tricks of the Trade!" },
+        { type: "n", name: "magmaster", display: "Outside", entry: false, count: 0, cost: 20, buy: 2, image: "magmaster.png", n: false, desc: "Tame the Wild Wilderness" },
+        { type: "n", name: "magchar", display: "Influencer", entry: false, count: 0, cost: 20, buy: 2, image: "magchar.png", n: false, desc: "Coat your Silver Tongue in Gold" },
+        { type: "n", name: "magpee", display: "Urin Aficionado", entry: false, count: 0, cost: 20, buy: 2, image: "magpee.png", n: false, desc: "Enjoy Nature's Own Delicacy" },
+        { type: "n", name: "magfemboy", display: "Femboy Magazine", entry: false, count: 0, cost: 20, buy: 2, image: "magfemboy.png", n: false, desc: "For the Feminine Fawning" },
 
         { type: "z", name: "teddybear", display: "Teddy Bear", entry: false, count: 0, cost: -1, buy: 5, image: "teddybear.png", n: false, desc: "Teddy bear" },
         { type: "a", name: "bouquet", display: "Bouquet ", entry: false, count: 0, cost: 24, buy: 7, image: "bouquet.png", n: false, desc: "Lovely bouquet of flowers" },
@@ -527,6 +536,13 @@ inv.display = function (typeArray = null) {
                 $("#menu_displayDesc").append(" - Max Energy: " + gv.get("maxenergy"));
                 $("#menu_displayAction").show();
                 break;
+            case "n"://magazine
+                $("#menu_displayAction").attr("data-itype", "magazine");
+                $("#menu_displayAction").attr("data-type", thisItem.type);
+                $("#menu_displayAction").attr("data-name", thisItem.name);
+                $("#menu_displayAction").html("Read Magazine");
+                $("#menu_displayAction").show();
+                break;
             case "p"://phone case
                 $("#menu_displayAction").attr("data-itype", "bag");
                 $("#menu_displayAction").attr("data-type", thisItem.type);
@@ -707,6 +723,8 @@ inv.createElements = function (showFilter = true) {
         $('.room-main').append('<button class="menu_inventory_grouping" data-val="a" style="' + g.cssText(12) + '; ' + g.makeCss(50, 260, 500, 90) + '; position:absolute; z-index:2;">Gifts</button>');
         $('.room-main').append('<button class="menu_inventory_grouping" data-val="d" style="' + g.cssText(12) + '; ' + g.makeCss(50, 260, 560, 90) + '; position:absolute; z-index:2;">Dildos</button>');
         $('.room-main').append('<button class="menu_inventory_grouping" data-val="o" style="' + g.cssText(12) + '; ' + g.makeCss(50, 260, 620, 90) + '; position:absolute; z-index:2;">Keys</button>');
+        $('.room-main').append('<button class="menu_inventory_grouping" data-val="n" style="' + g.cssText(12) + '; ' + g.makeCss(50, 260, 680, 90) + '; position:absolute; z-index:2;">Magazine</button>');
+
     }
 
 
@@ -990,6 +1008,54 @@ inv.createElements = function (showFilter = true) {
         }
         else if (thisIType === "tEnemy") {
             tEnemy.invClickCatch(thisName);
+        }
+        else if (thisIType === "magazine") {
+            let magFirstTime = gv.get(thisName);
+            if (!magFirstTime) {
+                gv.set(thisName, true);
+                switch (thisName) {
+                    case "magman":
+                        g.popUpNotice("You can buy RAZORS and shave.");
+                        break;
+                    case "magcosmo":
+                        levels.mod("xdress", 100);
+                        break;
+                    case "magpi":
+                        levels.mod("pi", 100);
+                        break;
+                    case "magmaster":
+                        levels.mod("dom", 100);
+                        break;
+                    case "magchar":
+                        levels.mod("charisma", 100);
+                        break;
+                    case "magpee":
+                        levels.mod("piss", 100);
+                        break;
+                    case "magfemboy":
+                        g.popUpNotice("You can buy LUBE.");
+                        break;
+                }
+            }
+            inv.close();
+            nav.button({
+                "type": "zimg",
+                "name": "magazineCloseInventory",
+                "left": 400,
+                "top": 100,
+                "width": 1200,
+                "height": 900,
+                "image": "1010_rand/mag/" + thisName + ".webp"
+            }, 1010);
+            nav.button({
+                "type": "zbtn",
+                "name": "magazineCloseInventory",
+                "left": 1375,
+                "top": 925,
+                "width": 225,
+                "height": 75,
+                "image": "1001_rand/close.png"
+            }, 1010);
         }
         else {
             console.log("wrong button i type" + thisIType);

@@ -982,6 +982,25 @@ zcl.backOfHead = function (top, left, ratio, mod, reverse) {
         }
 }
 
+zcl.allfours = function (top, left, ratio, mod, reverse) {
+    zcl.kill();
+    let w = 2048;
+    let h = 1584;
+    let f = "allfours";
+    var match = mod.match(/whip[1-8]/);
+
+    zcl.subDisplay("body_" + gender.pronoun("f") + ".webp", top, left, ratio, reverse, w, h, f);
+
+    if (match) {
+        zcl.subDisplay(match + ".webp", top, left, ratio, reverse, w, h, f);
+    }
+
+    if (gender.canUseCock())
+        zcl.subDisplay("penis_big.webp", top, left, ratio, reverse, w, h, f);
+    else
+        zcl.subDisplay("penis_small.webp", top, left, ratio, reverse, w, h, f);
+};
+
 zcl.poseExpose = function (top, left, ratio, mod, reverse) {
     zcl.kill();
     let w = 2048;

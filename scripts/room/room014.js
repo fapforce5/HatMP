@@ -1262,6 +1262,9 @@ room14.chatcatch = function (callback) {
             char.addtime(120);
             char.room(16);
             break;
+        case "apoligize":
+            chat(188, 14);
+            break;
         default:
             break;
     }
@@ -2924,6 +2927,15 @@ room14.chat = function (chatID) {
                     "to bed and let me decompress. ok. ",
                 button: [
                     { chatID: -1, text: "Ok. ", callback: "confess_win_end" },
+                ]
+            },
+            {
+                chatID: 188,
+                speaker: "me",
+                text: "Maybe we're taking this too far. I should go take a cold shower. Love you " + sc.n("landlord") +
+                    ". ",
+                button: [
+                    { chatID: -1, text: "...", callback: "leave" },
                 ]
             },
         ];

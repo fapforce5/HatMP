@@ -145,6 +145,10 @@ room200.btnclick = function (name) {
                 g.pass = "morning";
                 char.room(197);
             }
+            else if (g.dt.getDay() === 5 && missyUniform === 0 && cl.c.chastity !== null) {
+                g.pass = "missyGivesPanties";
+                char.room(223);
+            }
             else
                 room200.chatcatch("selectJob");
         break;

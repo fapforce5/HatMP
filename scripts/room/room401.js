@@ -122,7 +122,7 @@ room401.main = function () {
         case "general":
             nav.bg("404_spankys/404_bodega.jpg", "404_spankys/404_bodega.jpg");
             var priceMult = 1;
-            var spankyInv = ["e", "g"];
+            var spankyInv = ["e", "g", "n"];
             if (sc.getMissionTask("spanky", "shop", 1).complete)
                 spankyInv.push("h");
             if (sc.getMission("spanky", "hypno").inProgress)
@@ -399,7 +399,7 @@ room401.makeInv = function (typeArray, canbuy, priceMult = 1) {
         for (i = 0; i < inv.master.length; i++) {
             if ((inv.master[i].type === type && !(inv.master[i].entry && inv.master[i].count === null)) && inv.master[i].cost > 0) {
                 if (inv.master[i].name === "razor") {
-                    if (sissy.st[1].ach) {
+                    if (sissy.st[1].ach || gv.get("magman")) {
                         $('#menu-bg_' + g.internal).html('<img src="./images/inv/' + inv.master[i].image + '" data-name="' + inv.master[i].name + '" data-canbuy="' + canbuy + '" class="store-inv" title="' + inv.master[i].display + '"/>');
                         $('#menu-bg_' + g.internal).append('<div>$' + Math.floor(inv.master[i].cost * priceMult) + '</div>');
                     }
@@ -410,7 +410,7 @@ room401.makeInv = function (typeArray, canbuy, priceMult = 1) {
                     }
                 }
                 else if (inv.master[i].name === "lube") {
-                    if (sissy.st[2].ach) {
+                    if (sissy.st[2].ach || gv.get("magfemboy")) {
                         $('#menu-bg_' + g.internal).html('<img src="./images/inv/' + inv.master[i].image + '" data-name="' + inv.master[i].name + '" data-canbuy="' + canbuy + '" class="store-inv"  title="' + inv.master[i].display + '"/>');
                         $('#menu-bg_' + g.internal).append('<div>$' + Math.floor(inv.master[i].cost * priceMult) + '</div>');
                     }
