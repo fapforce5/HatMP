@@ -1803,6 +1803,8 @@ sc.modLevel = function (name, amount, targetLevel = 10) {
         return;
 
     if (amount > 0) {
+        if (gv.get("difficulty") === 0)
+            amount = Math.floor(amount * 1.5);
         var currentTotalPoints = (char.l * 100) + char.c;
         var newTotalPoints = currentTotalPoints + amount;
 

@@ -398,6 +398,7 @@ room958.btnclick = function (name) {
         case "event_d3":
             if (g.internal > 7) {
                 nav.kill();
+                sc.modLevel("cult", 10, 10);
                 levels.oral(3, "f", "!milkmaid");
                 gv.mod("energy", -25);
                 nav.bg("958_wander/event_d.webp");
@@ -436,6 +437,7 @@ room958.btnclick = function (name) {
                 nav.kill();
                 chat(65, 958);
                 nav.bg("958_wander/event_h18.webp");
+                sc.modLevel("cult", 10, 10);
                 levels.anal(4, true, "f", false, "g");
                 gv.mod("energy", -25);
                 return;
@@ -631,11 +633,13 @@ room958.chatcatch = function (callback) {
             break;
         case "event_e5_s":
             zcl.bjpov(-180, 400, .7, "black swallow cum", false, "b");
+            sc.modLevel("cult", 3, 10);
             levels.oral(4, "m", "cult", true);
             gv.mod("energy", -25);
             break;
         case "event_e5_f":
             zcl.bjpov(-180, 400, .7, "black facial cum", false, "b");
+            sc.modLevel("cult", 10, 10);
             levels.oral(4, "m", "cult", false);
             gv.mod("energy", -25);
             break;
@@ -661,6 +665,7 @@ room958.chatcatch = function (callback) {
             gv.mod("energy", -25);
             break;
         case "event_f9":
+            sc.modLevel("cult", 10, 10);
             zcl.face(0, 300, 1, "suck", "w", false);
             break;
         case "event_f10":

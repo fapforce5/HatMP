@@ -166,7 +166,8 @@ room950.main = function () {
             gv.mod("cultwhip", 1);
             return;
         }
-        else if (g.dt.getDay() === 0 && crank === "Sissy") {
+        else if (g.dt.getDay() === 0 && crank === "Sissy" && !daily.get("priestSissy")) {
+            daily.set("priestSissy");
             room950.btnclick("bars");
             if (daily.get("celldoor_blonde")) {
                 nav.bg("950_cell/door_bg0.webp");
@@ -192,7 +193,28 @@ room950.main = function () {
                 chat(132, 950);
             }
             else {
-
+                room950.btnclick("drawBG");
+                nav.kill();
+                nav.button({
+                    "type": "img",
+                    "name": "priestbg",
+                    "left": 482,
+                    "top": 259,
+                    "width": 254,
+                    "height": 602,
+                    "image": "950_cell/priest_bg.webp",
+                }, 250);
+                nav.button({
+                    "type": "img",
+                    "name": "priest",
+                    "left": 0,
+                    "top": 0,
+                    "width": 1920,
+                    "height": 1080,
+                    "image": "950_cell/priest1.webp",
+                }, 250);
+                zcl.embarrass(0, 900, .8, "back", false);
+                chat(151, 950);
             }
             return;
         }
@@ -282,10 +304,10 @@ room950.btnclick = function (name) {
                 "top": 30,
                 "width": 1000,
                 "height": 10,
-                "color": (cult950x < 300 ? "red" : "green"),
+                "color": "red",
                 "maxVal": 1000,
                 "val": cult950x,
-                "title": "Rank: " + gv.get("cultRank") + ". Days till Chaple: " + ((5 - g.dt.getDay() + 7) % 7)
+                "title": "Rank: " + gv.get("cultRank") + " [Level: " + cult950.l + "] Days till Chaple: " + ((5 - g.dt.getDay() + 7) % 7)
             }, 322);
 
             if (cultbrick > 0 && cultbrick < 100) {
@@ -637,8 +659,7 @@ room950.btnclick = function (name) {
             break;
         case "icon_cultsweep":
             if (sc.getLevel("cult") < 2) {
-                nav.kill();
-                chat(127, 950);
+                chat(23, 950);
             }
             else {
                 g.pass = "sweep";
@@ -646,7 +667,6 @@ room950.btnclick = function (name) {
             }
             break;
         case "icon_kissingbooth":
-            nav.kill();
             if (sc.getLevel("cult") < 3)
                 chat(127, 950);
             else {
@@ -655,11 +675,11 @@ room950.btnclick = function (name) {
             }
             break;
         case "icon_delivery":
-            nav.kill();
-            if (sc.getLevel("cult") < 6) {
+            if (sc.getLevel("cult") < 5) {
                 chat(94, 950);
             }
             else {
+                nav.kill();
                 g.pass = {
                     e: "panties",
                     compete: false,
@@ -673,8 +693,7 @@ room950.btnclick = function (name) {
             }
             break;
         case "icon_toilet":
-            nav.kill();
-            if (sc.getLevel("cult").l < 4)
+            if (sc.getLevel("cult") < 4)
                 chat(24, 950);
             else {
                 g.pass = "toilet";
@@ -821,7 +840,7 @@ room950.btnclick = function (name) {
             }
             break;
         case "icon_dooropen":
-            if (sc.getLevel("cult").l < 7)
+            if (sc.getLevel("cult") < 6)
                 chat(25, 950);
             else
                 char.room(952);
@@ -915,6 +934,14 @@ room950.chatcatch = function (callback) {
         case "s12":
             nav.bg("950_cell/" + callback + ".webp");
             break;
+        case "priest6":
+            nav.kill();
+            nav.bg("950_cell/" + callback + ".webp");
+            break;
+        case "priest7":
+            nav.kill();
+            nav.bg("950_cell/" + callback + "_" + gender.pronoun("f") + ".webp");
+            break;
         case "s4":
             nav.bg("950_cell/s2.webp");
             if (sissy.st[17].ach)
@@ -955,86 +982,90 @@ room950.chatcatch = function (callback) {
         case "increment":
             room950.btnclick("increment");
             break;
-            case "eat0":
-                daily.set("food");
-                gv.mod("energy", 100);
+        case "eat0":
+            daily.set("food");
+            gv.mod("energy", 50);
             break;
-            case "food0":
-                nav.killall();
-                char.changeMenu("hide", false, true);
-                if(cl.c.butthole < 3)
-                    nav.bg("950_cell/food0.jpg");
-                else
-                    nav.bg("950_cell/food1.jpg");
-                nav.button({
-                    "type": "btn",
-                    "name": "foodCarrot",
-                    "left": 50,
-                    "top": 907,
-                    "width": 687,
-                    "height": 173 ,
-                    "image": "950_cell/foodCarrot.png",
-                    "title": "Put a carrot in your butt"
-                }, 950);
-                nav.button({
-                    "type": "btn",
-                    "name": "foodBanana",
-                    "left": 50,
-                    "top": 601,
-                    "width": 471,
-                    "height": 295,
-                    "image": "950_cell/foodBanana.png",
-                    "title": "Feed your hungy hole a banana"
-                }, 950);
-                nav.button({
-                    "type": "btn",
-                    "name": "foodCucumber",
-                    "left": 50,
-                    "top": 400,
-                    "width": 770,
-                    "height": 207,
-                    "image": "950_cell/foodCucumber.png",
-                    "title": "Shove a cucumber in sissy pussy"
-                }, 950);
-                nav.button({
-                    "type": "btn",
-                    "name": "foodApple",
-                    "left": 50,
-                    "top": 0,
-                    "width": 371,
-                    "height": 403,
-                    "image": "950_cell/foodApple.png",
-                    "title": "What are you doing? Slut!"
-                }, 950);
+        case "food0":
+            nav.killall();
+            char.changeMenu("hide", false, true);
+            if (cl.c.butthole < 3)
+                nav.bg("950_cell/food0.jpg");
+            else
+                nav.bg("950_cell/food1.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "foodCarrot",
+                "left": 50,
+                "top": 907,
+                "width": 687,
+                "height": 173,
+                "image": "950_cell/foodCarrot.png",
+                "title": "Put a carrot in your butt"
+            }, 950);
+            nav.button({
+                "type": "btn",
+                "name": "foodBanana",
+                "left": 50,
+                "top": 601,
+                "width": 471,
+                "height": 295,
+                "image": "950_cell/foodBanana.png",
+                "title": "Feed your hungy hole a banana"
+            }, 950);
+            nav.button({
+                "type": "btn",
+                "name": "foodCucumber",
+                "left": 50,
+                "top": 400,
+                "width": 770,
+                "height": 207,
+                "image": "950_cell/foodCucumber.png",
+                "title": "Shove a cucumber in sissy pussy"
+            }, 950);
+            nav.button({
+                "type": "btn",
+                "name": "foodApple",
+                "left": 50,
+                "top": 0,
+                "width": 371,
+                "height": 403,
+                "image": "950_cell/foodApple.png",
+                "title": "What are you doing? Slut!"
+            }, 950);
+            break;
+        case "food1":
+            gv.mod("energy", 100);
+            daily.set("food");
             break;
         case "bb0":
-                nav.button({
-                    "type": "btn",
-                    "name": "bb0",
-                    "left": 998,
-                    "top": 302,
-                    "width": 652,
-                    "height": 561,
-                    "image": "950_cell/bb0.png",
-                    "title": "poke his butt"
-                }, 950);
+            nav.button({
+                "type": "btn",
+                "name": "bb0",
+                "left": 998,
+                "top": 302,
+                "width": 652,
+                "height": 561,
+                "image": "950_cell/bb0.png",
+                "title": "poke his butt"
+            }, 950);
             break;
-            case "bb2":
-                nav.killall();
-                nav.bg("950_cell/bb2.jpg");
-                nav.button({
-                    "type": "tongue",
-                    "name": "bb2",
-                    "left": 1205,
-                    "top": 539,
-                    "width": 186,
-                    "height": 186,
-                    "image": "950_cell/bb2.png",
-                    "title": "Eat it sissy"
-                }, 950);
-                break;
-            case "resetWindow":
-                nav.bg("950_cell/view.jpg");
+        case "bb2":
+            nav.killall();
+            nav.bg("950_cell/bb2.jpg");
+            nav.button({
+                "type": "tongue",
+                "name": "bb2",
+                "left": 1205,
+                "top": 539,
+                "width": 186,
+                "height": 186,
+                "image": "950_cell/bb2.png",
+                "title": "Eat it sissy"
+            }, 950);
+            break;
+        case "resetWindow":
+            nav.bg("950_cell/view.jpg");
             break;
         case "door_bj0":
             nav.modbutton("celldoor", "950_cell/door_bj0.webp", null, null);
@@ -1085,7 +1116,7 @@ room950.chatcatch = function (callback) {
             g.internal = 1;
             break;
         case "eatit3":
-            nav.bg("950_cell/eatit3.jpg"); 
+            nav.bg("950_cell/eatit3.jpg");
             break;
         case "eatit4":
             daily.set("eatit950");
@@ -1132,9 +1163,67 @@ room950.chatcatch = function (callback) {
             future.add("whipSleep950", 2);
             char.room(28);
             break;
+        case "sleep":
+            g.pass = 950;
+            char.room(28);
+            break;
         case "serve":
-            gv.set("cultCumJob", 2); 
+            gv.set("cultCumJob", 2);
             room950.btnclick("icon_call");
+            break;
+        case "priest1":
+            room950.btnclick("drawBG");
+            nav.kill();
+            nav.button({
+                "type": "img",
+                "name": "priestbg",
+                "left": 482,
+                "top": 259,
+                "width": 254,
+                "height": 602,
+                "image": "950_cell/priest_bg.webp",
+            }, 250);
+            nav.button({
+                "type": "img",
+                "name": "priest",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "950_cell/priest1.webp",
+            }, 250);
+            zcl.embarrass(0, 900, .8, "back", false);
+            break;
+        case "priest2":
+            nav.modbutton("priestbg", "950_cell/priest_bg_ew.webp");
+            nav.modbutton("priest", "950_cell/priest2.webp");
+            zcl.squat(450, 650, .45, "", false);
+            break;
+        case "priest3":
+            nav.modbutton("priestbg", "950_cell/priest_bg_laugh.webp");
+            nav.modbutton("priest", "950_cell/priest3.webp");
+            zcl.bellydown(850, 600, .4, "back", false);
+            break;
+        case "priest4":
+            nav.modbutton("priestbg", "950_cell/priest_bg.webp");
+            if (gender.pronoun("f") === "m")
+                zcl.pucker(500, 560, .4, "back", true);
+            else
+                zcl.pucker(550, 600, .4, "back", true)
+
+            break;
+        case "priest5":
+            nav.modbutton("priestbg", "950_cell/priest_bg_sup.webp");
+            nav.modbutton("priest", "950_cell/priest5.webp");
+            zcl.facedown(800, 600, .4, "", true);
+            break;
+        case "priest8":
+            sc.modLevel("cult", 20, 10);
+            levels.anal(3, false, "m", true, "priest");
+            nav.bg("950_cell/priest8.webp");
+            break;
+        case "priest10":
+            nav.killbutton("priest");
             break;
         case "room956":
             char.room(956);
@@ -1164,7 +1253,7 @@ room950.chat = function (chatID) {
                     { chatID: -1, text: "Play with the food", callback: "food0" },
                     { chatID: -1, text: "cancel", callback: "" }
                 ]
-            },
+            }, 
             {
                 chatID: 1,
                 speaker: "thinking",
@@ -1368,7 +1457,7 @@ room950.chat = function (chatID) {
                 speaker: "cult",
                 text: "You haven't proved yourself worthy of leaving this cell. ",
                 button: [
-                    { chatID: -1, text: "[Need cult level 7]", callback: "" }
+                    { chatID: -1, text: "[Need cult level 6]", callback: "" }
                 ]
             },
             {
@@ -1984,7 +2073,7 @@ room950.chat = function (chatID) {
                 speaker: "cult",
                 text: "You aren't worthy. ",
                 button: [
-                    { chatID: -1, text: "[Need cult level 6]", callback: "" }
+                    { chatID: -1, text: "[Need cult level 5]", callback: "" }
                 ]
             },
             {
@@ -2257,7 +2346,7 @@ room950.chat = function (chatID) {
                 speaker: "cult",
                 text: "You aren't worthy of such a task",
                 button: [
-                    { chatID: -1, text: "[Need Cult level 3]", callback: "reset" }
+                    { chatID: -1, text: "[Need Cult level 3]", callback: "" }
                 ]
             },
             {
@@ -2328,13 +2417,13 @@ room950.chat = function (chatID) {
                 speaker: "ubel",
                 text: "Haha. She does have a fuckable ass. So you want a go with this one? ",
                 button: [
-                    { chatID: 136, text: "...", callback: "" }
+                    { chatID: 137, text: "...", callback: "" }
                 ]
             },
             {
                 chatID: 136,
-                speaker: "ubel",
-                text: "Haha. She does have a fuckable ass. So you want a go with this one? ",
+                speaker: "me",
+                text: "NOOP",
                 button: [
                     { chatID: 137, text: "...", callback: "" }
                 ]
@@ -2345,7 +2434,148 @@ room950.chat = function (chatID) {
                 text: "I do. " + gender.pronoun("she") + "'s been a subject of much arousal for me lately " +
                     "and I need to let out these demons. You can leave us so that I may enjoy this one. ",
                 button: [
-                    { chatID: 138, text: "...", callback: "" }
+                    { chatID: 138, text: "...", callback: "priest1" }
+                ]
+            },
+            {
+                chatID: 138,
+                speaker: "priest",
+                text: "I want you to strip my underwear off with your teeth. ",
+                button: [
+                    { chatID: 139, text: "...", callback: "priest2" }
+                ]
+            },
+            {
+                chatID: 139,
+                speaker: "priest",
+                text: "You know my favorite thing about your kind. I have taken a vow of chastity, which " +
+                    "means I'm not allowed to have sex with any person. I am allowed to be aroused, just not " +
+                    "able to sexually gratify myself with a person. Kiss my feet and show me you're a lower " +
+                    "being that normal people. ",
+                button: [
+                    { chatID: 140, text: "...", callback: "priest3" }
+                ]
+            },
+            {
+                chatID: 140,
+                speaker: "priest",
+                text: "Since a sissy is a corruption of society. Not a normal person, I'm free to sexually " +
+                    "gratify myself with your kind. Now put my penis in your mouth and make it erect. ",
+                button: [
+                    { chatID: 141, text: "I'm a person", callback: "priest4" }
+                ]
+            },
+            {
+                chatID: 141,
+                speaker: "priest",
+                text: "Oh yeah. Can you feel my penis growin hard in your mouth? I spent so many years " +
+                    "denying my own humanity. The need for sexual gratification until I figured out the " +
+                    "answer. Admittedly " + sc.n("ubel") + " assisted in my epiphany. Turn around " +
+                    "show me your anus. I do love seeing a bare anus winking at me. ",
+                button: [
+                    { chatID: 142, text: "*suck* *slurp*", callback: "priest5" }
+                ]
+            },
+            {
+                chatID: 142,
+                speaker: "priest",
+                text: "Look at that. I need to purge myself of my lustful thoughts. ",
+                button: [
+                    { chatID: 143, text: "*winking your anus*", callback: "priest6" }
+                ]
+            },
+            {
+                chatID: 143,
+                speaker: "priest",
+                text: "And the best way to purge lustful thoughts is to purge the demons.",
+                button: [
+                    { chatID: 144, text: "*moan in anticipation*", callback: "priest7" }
+                ]
+            },
+            {
+                chatID: 144,
+                speaker: "priest",
+                text: "Take my demons up your ass!! Take them!",
+                button: [
+                    { chatID: 145, text: "*ugh* *ugh*", callback: "priest8" }
+                ]
+            },
+            {
+                chatID: 145,
+                speaker: "priest",
+                text: "Ohhhh. wow... I really needed that. ",
+                button: [
+                    { chatID: 146, text: "*panting*", callback: "priest1" }
+                ]
+            },
+            {
+                chatID: 146,
+                speaker: "priest",
+                text: "Oh *ahem* ummm. Yes. May you go with god my child. uh, you are loved. I really should " +
+                    "go. Have a blessed day. ",
+                button: [
+                    { chatID: 147, text: "oh. you too. ", callback: "priest10" }
+                ]
+            },
+            {
+                chatID: 147,
+                speaker: "!milkmaid",
+                text: "PNC ",
+                button: [
+                    { chatID: 148, text: "huh?", callback: "" }
+                ]
+            },
+            {
+                chatID: 148,
+                speaker: "!milkmaid",
+                text: "PNC. Post Nut Clarity. He does this everytime. Damns you sissies to hell, cums, " +
+                    "then blesses you and runs off. It's sad really. Well, it would be sad if he wasn't so " +
+                    "evil. I mean everyone is evil, just you wouldn't expect him to be evil too. Since.. you know. ",
+                button: [
+                    { chatID: 149, text: "What do you mean evil? ", callback: "" }
+                ]
+            },
+            {
+                chatID: 149,
+                speaker: "!milkmaid",
+                text: "Oh he's been handing over you sissies for years. I actually feel bad. You're supposed to be " +
+                    "able to trust a priest, but this one is evil. A few of the girls here are also becuase of him. " +
+                    "They confided in him that sex with multiple partners only to find themselves kidnapped and brain washed " +
+                    "by the cult. Myself included. He really is an asshole. I wish I could take him down, but I'm stuck here. ",
+                button: [
+                    { chatID: 150, text: "Yeah. Me too. ", callback: "" }
+                ]
+            },
+            {
+                chatID: 150,
+                speaker: "!milkmaid",
+                text: "Well, I have to go give handjobs now. See ya.  ",
+                button: [
+                    { chatID: -1, text: "bye. ", callback: "reset" }
+                ]
+            },
+            {
+                chatID: 151,
+                speaker: "priest",
+                text: "It's been such a long week. Show me that ass so I may relieve myself of my demons. ",
+                button: [
+                    { chatID: 152, text: "[Lay on your back, legs up]", callback: "priest7" }
+                ]
+            },
+            {
+                chatID: 152,
+                speaker: "priest",
+                text: "Take my demons up your ass!! Take them!",
+                button: [
+                    { chatID: 153, text: "*ugh* *ugh*", callback: "priest8" }
+                ]
+            },
+            {
+                chatID: 153,
+                speaker: "priest",
+                text: "Oh my. May the lord bless you",
+                button: [
+                    { chatID: -1, text: "*sigh* So much cum leaking out of my ass. ", callback: "reset" }
                 ]
             },
         ];

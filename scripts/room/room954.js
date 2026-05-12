@@ -750,10 +750,8 @@ room954.chat = function (chatID) {
             speaker: "cop2",
             text: "Now that's a smart thing to do. Don't worry, if she's there we'll get her out. ",
             button: [
-                { chatID: -1, text: "Humph. ok [STOPS HERE - ]", callback: "t34" },
-                { chatID: -1, text: "End of this release", callback: "t34" },
-                { chatID: -1, text: "End of this release", callback: "t34" },
-                { chatID: -1, text: "End of this release", callback: "t34" },            ]
+                { chatID: 82, text: "Humph. ok [STOPS HERE - ]", callback: "t34" },
+            ]
         },
         {
             chatID: 67,
@@ -881,11 +879,28 @@ room954.chat = function (chatID) {
         {
             chatID: 81,
             speaker: "thinking",
-            text: "At least we got away. I guess " + sc.n("martin") + " will always probably hate me. " +
+            text: "At least we got away. I guess " + sc.n("!martin") + " will always probably hate me. " +
                 "Too late for that. I've got to get Missy free. I can't do this alone. I should go " +
                 "straight to the police and see if they'll help me out. ",
             button: [
                 { chatID: 53, text: "Go to the police. ", callback: "t29" }
+            ]
+        },
+        {
+            chatID: 82,
+            speaker: "!nar",
+            text: "Now I know you're excited to get on with the game, some of you will have a brand new " +
+                "vagina, some will not. When you're set free I want to give you the maximum number " +
+                "of ways you can choose to play with your new vagina, so it will stop here so I can build " +
+                "the world as you have changed, and all your choices in the world have changed the world. " +
+                "I'll have some sneak peeks in Patreon, but the entire game will be complete at the end " +
+                "of the year. ",
+            button: [
+                { chatID: 82, text: "End", callback: "" },
+                { chatID: 82, text: "End", callback: "" },
+                { chatID: 82, text: "End", callback: "" },
+                { chatID: 82, text: "End", callback: "" },
+                { chatID: -1, text: "Click this one so I know you've read.", callback: "" },
             ]
         },
     ];

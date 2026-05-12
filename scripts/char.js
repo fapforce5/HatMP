@@ -27,8 +27,10 @@ $(document).ready(function () {
     });
 
     $('.help-history').click(function () {
-        console.log(g.pastSaves.length);
-        g.pastSaves.splice(g.pastSaves.length - 1, 1);
+        if (g.roomID === 955)
+            g.pastSaves.splice(g.pastSaves.length - 2, 2);
+        else
+            g.pastSaves.splice(g.pastSaves.length - 1, 1);
         privateChat.kill();
         clearTimeout(g.roomTimeout);
         clearTimeout(g.roomTimeout2);

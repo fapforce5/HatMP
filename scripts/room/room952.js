@@ -138,7 +138,7 @@ room952.btnclick = function (name) {
             break;
         case "bigdick":
             nav.killall();
-            nav.bg("950_cell/cell.jpg");
+            nav.bg("952_hallway/cell.webp");
             nav.button({
                 "type": "btn",
                 "name": "bexit",
@@ -164,7 +164,7 @@ room952.btnclick = function (name) {
             char.room(952);
             break;
         case "b0":
-            chat(2, 952);
+            chat(85, 952);
             break;
         case "escape":
             g.map = null;
@@ -202,9 +202,9 @@ room952.btnclick = function (name) {
             break;
         case "b1":
             if (g.pass === 1)
-                chat(51, 952);
+                chat(88, 952);
             else 
-                chat(52, 952);
+                chat(89, 952);
             g.pass++;
             break;
         case "c1":
@@ -549,16 +549,18 @@ room952.chatcatch = function (callback) {
         case "b2":
             nav.killall();
             nav.bg("952_hallway/b2.jpg");
-            zcl.kneel(-200, -200, 1.3, "open", true);
+            zcl.kneelRedux(60, 80, 1.3, "open", true);
             break;
         case "b2a":
             nav.bg("952_hallway/b2.jpg");
             break;
         case "b3":
+            zcl.kneelRedux(0, 200, 1.4, "open", true);
             nav.bg("952_hallway/b3.jpg");
             break;
         case "b4s":
             nav.bg("952_hallway/bbg.jpg");
+            zcl.kneelRedux(40, 260, 1.4, "open", true);
             nav.button({
                 "type": "img",
                 "name": "xx",
@@ -567,8 +569,7 @@ room952.chatcatch = function (callback) {
                 "width": 1080,
                 "image": "952_hallway/b4s.png"
             }, 952);
-            gv.mod("giveOralMale", 1);
-            gv.mod("loadSwollowed", 1);
+            levels.oral(4, "m", "!bwc", true);
             break;
         case "b4f":
             nav.bg("952_hallway/bbg.jpg");
@@ -583,12 +584,7 @@ room952.chatcatch = function (callback) {
                 "height": 441,
                 "image": "952_hallway/b4f.png"
             }, 952);
-            gv.mod("giveOralMale", 1);
-            gv.mod("loadSpit", 1);
-            break;
-        case "b5":
-            g.internal.interval++;
-            char.room(950);
+            levels.oral(4, "m", "!bwc", false);
             break;
         case "double1":
             if (cl.c.cock < 4) {
@@ -1416,8 +1412,89 @@ room952.chat = function (chatID) {
                 { chatID: -1, text: "[Sadly move]", callback: "double_chris3" },
             ]
         },
-
-
+        {
+            chatID: 85,
+            speaker: "!bwc",
+            text: "So you think it's cool to just walk into my cell? ",
+            button: [
+                { chatID: 86, text: "Sorry, the door was open", callback: "" },
+                { chatID: -1, text: "Oh no. Sorry I'm leaving ", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 86,
+            speaker: "!bwc",
+            text: "You can't stop staring at my cock huh? It's really pretty. I bet you want me to shove it in your face. ",
+            button: [
+                { chatID: 87, text: "huh?", callback: "b1" },
+                { chatID: -1, text: "Yelp [Run away]", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 87,
+            speaker: "!bwc",
+            text: "It's pretty ain't it. Kiss it.",
+            button: [
+                { chatID: -1, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 88,
+            speaker: "!bwc",
+            text: "Good slut. Kiss it again. ",
+            button: [
+                { chatID: -1, text: "MMmmMmmmm", callback: "" },
+            ]
+        },
+        {
+            chatID: 89,
+            speaker: "!bwc",
+            text: "I bet you want to wrap your sissy lips around this cock huh? It's too pretty not to be deep down your throat. ",
+            button: [
+                { chatID: 90, text: "mmmmm yes.", callback: "b2" },
+            ]
+        },
+        {
+            chatID: 90,
+            speaker: "!bwc",
+            text: "Now swollow this dick! ",
+            button: [
+                { chatID: 91, text: "glog", callback: "b3" },
+            ]
+        },
+        {
+            chatID: 91,
+            speaker: "!bwc",
+            text: "Your throat is so tight",
+            button: [
+                { chatID: 92, text: "Gasp", callback: "b2" },
+            ]
+        },
+        {
+            chatID: 92,
+            speaker: "!bwc",
+            text: "Your face is so fuckable.",
+            button: [
+                { chatID: 93, text: "GLUG", callback: "b3" },
+            ]
+        },
+        {
+            chatID: 93,
+            speaker: "!bwc",
+            text: "Should I shoot it down your throat, or all over your face?",
+            button: [
+                { chatID: 94, text: "Swollow", callback: "b4s" },
+                { chatID: 94, text: "Cum on my face", callback: "b4f" },
+            ]
+        },
+        {
+            chatID: 94,
+            speaker: "!bwc",
+            text: "Alright slut. Get out. I need a nap. ",
+            button: [
+                { chatID: -1, text: "ok", callback: "leave" }
+            ]
+        },
 
 
 
@@ -1489,15 +1566,7 @@ room952.chat = function (chatID) {
                 { chatID: -1, text: "No. Stay out here a bit longer. ", callback: "" }
             ]
         },
-        {
-            chatID: 2,
-            speaker: "random",
-            text: "So you think it's cool to just walk into my cell? ",
-            button: [
-                { chatID: 49, text: "Sorry, the door was open", callback: "" },
-                { chatID: -1, text: "Oh no. Sorry I'm leaving ", callback: "reset" }
-            ]
-        },
+        
         
         {
             chatID: 15,
@@ -1655,80 +1724,7 @@ room952.chat = function (chatID) {
                 { chatID: -1, text: "...", callback: "l4" },
             ]
         },
-        {
-            chatID: 49,
-            speaker: "random",
-            text: "You can't stop staring at my cock huh? It's really pretty. I bet you want me to shove it in your face. ",
-            button: [
-                { chatID: 50, text: "huh?", callback: "b1" },
-                { chatID: -1, text: "Yelp [Run away]", callback: "reset" }
-            ]
-        },
-        {
-            chatID: 50,
-            speaker: "random",
-            text: "It's pretty ain't it. Kiss it.",
-            button: [
-                { chatID: -1, text: "...", callback: "" },
-            ]
-        },
-        {
-            chatID: 51,
-            speaker: "random",
-            text: "Good slut. Kiss it again. ",
-            button: [
-                { chatID: -1, text: "MMmmMmmmm", callback: "" },
-            ]
-        },
-        {
-            chatID: 52,
-            speaker: "random",
-            text: "I bet you want to wrap your sissy lips around this cock huh? It's too pretty not to be deep down your throat. ",
-            button: [
-                { chatID: 53, text: "mmmmm yes.", callback: "b2" },
-            ]
-        },
-        {
-            chatID: 53,
-            speaker: "random",
-            text: "Now swollow this dick! ",
-            button: [
-                { chatID: 54, text: "glog", callback: "b3" },
-            ]
-        },
-        {
-            chatID: 54,
-            speaker: "random",
-            text: "Your Your throat is so tight",
-            button: [
-                { chatID: 55, text: "Gasp", callback: "b2" },
-            ]
-        },
-        {
-            chatID: 55,
-            speaker: "random",
-            text: "Your face is so fuckable.",
-            button: [
-                { chatID: 56, text: "GLUG", callback: "b3" },
-            ]
-        },
-        {
-            chatID: 56,
-            speaker: "random",
-            text: "Should I shoot it down your throat, or all over your face?",
-            button: [
-                { chatID: 57, text: "Swollow", callback: "b4s" },
-                { chatID: 57, text: "Cum on my face", callback: "b4f" },
-            ]
-        },
-        {
-            chatID: 57,
-            speaker: "random",
-            text: "Allright slut. Get out. I needa nap. ",
-            button: [
-                { chatID: -1, text: "ok", callback: "b5" } 
-            ]
-        },
+        
         
     ];
     if (cArray.length > chatID && chatID > -1)

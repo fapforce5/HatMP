@@ -48,7 +48,7 @@ room1.main = function () {
         font: 40,
         hex: "#ffffff",
         stroke: "black",
-        text: g.versionText + "<br/>Everthing up to the cult"
+        text: g.versionText + "<br/>The cult; Your journey is nearly complete"
     }, 1);
 
 };
