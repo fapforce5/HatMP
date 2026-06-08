@@ -135,6 +135,8 @@ sc.init = function () {
         { name: "cock", display: "Cock Gobbler", image: "cockgobbler.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, hex: "" },
         { name: "sammi", display: "Sammi Olifant", image: "sammi.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, hex: "" },
         { name: "aurora", display: "Aurora Kirei", image: "sammi.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, hex: "" },
+        { name: "amputee", display: "Deb", image: "amputee.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, hex: "" },
+
         //add her to sissy cave
 
         { name: "photo", display: "Photographer", image: "photo.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: 0, p: true, hex: "" },
@@ -185,8 +187,8 @@ sc.init = function () {
                             { id: 1, txt: "Give me a day to get ready. ", show: true, mStatus: 0, roomId: 13 },
                             { id: 2, txt: "Come by before dark for our first practice date. ", show: true, mStatus: 0, roomId: 13 },
                             { id: 3, txt: "Won a teddy bear ", show: false, mStatus: 0, roomId: 13 },
-                            { id: 4, txt: "Meet her in her room. Go on dates. ", show: false, mStatus: 0, roomId: 13 },
-                            { id: 5, txt: "Creampie is the best pie. ", show: false, mStatus: 0, roomId: 13 },
+                            { id: 4, txt: "Meet her in her room. Go on dates. ", show: true, mStatus: 0, roomId: 13 },
+                            { id: 5, txt: "Creampie is the best pie. ", show: true, mStatus: 0, roomId: 13 },
                             { id: 6, txt: "Threesome is best cum.", show: true, mStatus: 0, roomId: 13 },
                         ]
                 },
@@ -222,6 +224,24 @@ sc.init = function () {
                         [
                             { id: 0, txt: "Steal her clothes [Need locker combo]", show: true, mStatus: 0, roomId: 902 },
                             { id: 1, txt: "Sneaky sleep fuck", show: true, mStatus: 0, roomId: 13 },
+                        ]
+                },
+                {
+                    missionName: "*wife", mStatus: 0, title: "Mother", desc: "Mother of my child", task:
+                        [
+                            { id: 0, txt: "Reunion", show: true, mStatus: 0, roomId: 902 },
+                        ]
+                },
+                {
+                    missionName: "*tom2", mStatus: 0, title: "Fairy Tale", desc: "Her own happily ever after", task:
+                        [
+                            { id: 0, txt: "Reunion", show: true, mStatus: 0, roomId: 902 },
+                        ]
+                },
+                {
+                    missionName: "*cumdump", mStatus: 0, title: "Cum Dump", desc: "Whore for all", task:
+                        [
+                            { id: 0, txt: "Reunion", show: true, mStatus: 0, roomId: 902 },
                         ]
                 },
             ],
@@ -289,6 +309,18 @@ sc.init = function () {
                             { id: 1, txt: "Walk the dog", show: true, mStatus: 0, roomId: 13 },
                         ]
                 },
+                {
+                    missionName: "*student", mStatus: 0, title: "Student", desc: "Keep on keeping on", task:
+                        [
+                            { id: 0, txt: "Reunion", show: true, mStatus: 0, roomId: 902 },
+                        ]
+                },
+                {
+                    missionName: "*cumdump", mStatus: 0, title: "Cum Dump", desc: "Whore for all", task:
+                        [
+                            { id: 0, txt: "Reunion", show: true, mStatus: 0, roomId: 902 },
+                        ]
+                },
             ],
         },
         {
@@ -303,10 +335,6 @@ sc.init = function () {
                             { id: 4, txt: "You're so sexy", show: true, mStatus: 0, roomId: 26 },
                             { id: 5, txt: "Practice Date", show: true, mStatus: 0, roomId: 26 },
                             { id: 6, txt: "Your past", show: true, mStatus: 0, roomId: 26 },
-                            //{ id: 7, txt: "She's catching feeling for you.", show: true, mStatus: 0, roomId: 26 },
-                            //{ id: 8, txt: "She loves your dick", show: true, mStatus: 0, roomId: 26 },
-                            //{ id: 9, txt: "Fucking!", show: true, mStatus: 0, roomId: 26 },
-                            //{ id: 10, txt: "Cum sponge", show: true, mStatus: 0, roomId: 26 },
                         ]
                 },
                 {
@@ -350,6 +378,18 @@ sc.init = function () {
                         [
                             { id: 0, txt: "Have the talk", show: true, mStatus: 0, roomId: 14 },
                             { id: 1, txt: "When you're ready wear a polka dot dress", show: true, mStatus: 0, roomId: 26 },
+                        ]
+                },
+                {
+                    missionName: "*mother", mStatus: 0, title: "tbd", desc: "tbd", task:
+                        [
+                            { id: 0, txt: "Reunion", show: true, mStatus: 0, roomId: 902 },
+                        ]
+                },
+                {
+                    missionName: "*cumdump", mStatus: 0, title: "Cum Dump", desc: "Whore for all", task:
+                        [
+                            { id: 0, txt: "Reunion", show: true, mStatus: 0, roomId: 902 },
                         ]
                 },
             ]
@@ -449,6 +489,18 @@ sc.init = function () {
                     missionName: "xfriends", mStatus: -1, title: "Ex-friends", desc: "You've lost her trust. ", task:
                         [
                             { id: 0, txt: "Always trust your friends. ", show: true, mStatus: 0, roomId: 501 },
+                        ]
+                },
+                {
+                    missionName: "*wife", mStatus: -1, title: "Wives?", desc: "Our forever", task:
+                        [
+                            { id: 0, txt: "My new vagina", show: true, mStatus: 0, roomId: 525 },
+                        ]
+                },
+                {
+                    missionName: "*bff", mStatus: -1, title: "Best Friends Forever", desc: "Never be more than friends", task:
+                        [
+                            { id: 0, txt: "New petite amie.", show: true, mStatus: 0, roomId: 525 },
                         ]
                 },
             ]
@@ -599,6 +651,24 @@ sc.init = function () {
                     missionName: "random", mStatus: 0, title: "Misc Events", desc: "", task:
                         [
                             { id: 0, txt: "Dog park", show: true, mStatus: 0, roomId: 322 },
+                        ]
+                },
+                {
+                    missionName: "*boyfriend", mStatus: 0, title: "My Boyfriend", desc: "You don't matter to me.", task:
+                        [
+                            { id: 0, txt: "Why are you here?", show: true, mStatus: 0, roomId: 315 },
+                        ]
+                },
+                {
+                    missionName: "*doggy", mStatus: 0, title: "My Boyfriend", desc: "You don't matter to me.", task:
+                        [
+                            { id: 0, txt: "Why are you here?", show: true, mStatus: 0, roomId: 315 },
+                        ]
+                },
+                {
+                    missionName: "*cuck", mStatus: 0, title: "My Boyfriend", desc: "You don't matter to me.", task:
+                        [
+                            { id: 0, txt: "Why are you here?", show: true, mStatus: 0, roomId: 315 },
                         ]
                 },
             ]
@@ -890,6 +960,13 @@ sc.init = function () {
                             { id: 2, txt: "Break out plan #2", show: true, mStatus: 0, roomId: 328 },
                         ]
                 },
+                {
+                    missionName: "*post", mStatus: 0, title: "Owner", desc: "I'm the boss around here", task:
+                        [
+                            { id: 0, txt: "First meeting", show: true, mStatus: 0, roomId: 325 },
+                            { id: 1, txt: "Free roam", show: true, mStatus: 0, roomId: 325 },
+                        ]
+                },
             ]
         },
         {
@@ -931,6 +1008,13 @@ sc.init = function () {
                             { id: 2, txt: "Waitress first time", show: true, mStatus: 0, roomId: 213 },
                             { id: 3, txt: "Gloryhole first time", show: true, mStatus: 0, roomId: 213 },
                             { id: 4, txt: "Your own room", show: true, mStatus: 0, roomId: 213 },
+                        ]
+                },
+                {
+                    missionName: "*missy", mStatus: 0, title: "Free Missy", desc: "What you need to do ", task:
+                        [
+                            { id: 0, txt: "Met at Missy's", show: true, mStatus: 0, roomId: 203 },
+                            { id: 1, txt: "Get More information from the Forest Queen", show: true, mStatus: 0, roomId: 477 },
                         ]
                 },
             ]
@@ -1605,6 +1689,49 @@ sc.init = function () {
                 }
             ]
         },
+        {
+            name: "amputee", mission: [
+                {
+                    missionName: "chat", mStatus: 0, title: "Chat", desc: "Leave me be", task:
+                        [
+                            { id: 0, txt: "First attempt", show: true, mStatus: 0, roomId: 950 },
+                            { id: 1, txt: "Second attempt", show: true, mStatus: 0, roomId: 950 },
+                            { id: 2, txt: "Third attempt", show: true, mStatus: 0, roomId: 950 },
+                            { id: 3, txt: "Good attempt", show: true, mStatus: 0, roomId: 950 },
+                        ]
+                },
+                {
+                    missionName: "escape", mStatus: 0, title: "Escape!", desc: "Meet at the stairs", task:
+                        [
+                            { id: 0, txt: "Meet us at the stairs to escape!", show: true, mStatus: 0, roomId: 950 },
+                        ]
+                }
+            ]
+        },
+        {
+            name: "a", mission: [
+                {
+                    missionName: "hole", mStatus: 0, title: "Welcome", desc: "Gain information", task:
+                        [
+                            { id: 0, txt: "Welcome friend", show: true, mStatus: 0, roomId: 480 },
+                        ]
+                },
+                {
+                    missionName: "info", mStatus: 0, title: "Learn our ways", desc: "Talk to at least three sissies. ", task:
+                        [
+                            { id: 0, txt: "Rim Job Recipient and Ass Eater", show: true, mStatus: 0, roomId: 478 },
+                            { id: 1, txt: "Pookykins and her pets", show: true, mStatus: 0, roomId: 478 },
+                            { id: 2, txt: "Glamour bitches", show: true, mStatus: 0, roomId: 478 },
+                            { id: 3, txt: "Need some smokes", show: true, mStatus: 0, roomId: 478 },
+                            { id: 4, txt: "Tangerine Tease", show: true, mStatus: 0, roomId: 478 },
+                            { id: 5, txt: "Deb's missing leg", show: true, mStatus: 0, roomId: 479 },
+                            { id: 6, txt: "Old friends in the shower", show: true, mStatus: 0, roomId: 482 },
+                            { id: 7, txt: "My toilet has a name", show: true, mStatus: 0, roomId: 482 },
+                            { id: 8, txt: "BJ girl", show: true, mStatus: 0, roomId: 479 },
+                        ]
+                },
+            ]
+        },
     ];
 
 }
@@ -1654,6 +1781,8 @@ sc.mStatus = function (mStatus) {
         return "Completed";
     else if (mStatus === 101)
         return "Failed";
+    else if (mStatus === 102)
+        return "Closed";
     return "In Progress";
 
 }
@@ -1863,6 +1992,7 @@ sc.getMission = function (name, missionName) {
                         success: sc.charMission[i].mission[j].mStatus === 100,
                         fail: sc.charMission[i].mission[j].mStatus === 101,
                         startedOrComplete: sc.charMission[i].mission[j].mStatus > 0,
+                        startedOrSuccess: sc.charMission[i].mission[j].mStatus > 0 && sc.charMission[i].mission[j].mStatus !== 101,
                         i: i,
                         j: j
                     };
@@ -1893,6 +2023,23 @@ sc.getMissionTask = function (name, missionName, taskId) {
             };
         }
     }
+};
+
+sc.taskGetStepEndMission = function (name) {
+    for (let i = 0; i < sc.charMission.length; i++) {
+        if (name === sc.charMission[i].name) {
+            for (let j = 0; j < sc.charMission[i].mission.length; j++) {
+                if (sc.charMission[i].mission[j].missionName.startsWith("*")
+                    && sc.charMission[i].mission[j].mStatus > 0
+                    && sc.charMission[i].mission[j].mStatus < 102) {
+
+                    let step = sc.taskGetStep(name, sc.charMission[i].mission[j].missionName);
+                    return { missionName: sc.charMission[i].mission[j].missionName, step: step };
+                }
+            }
+        }
+    }
+    return { missionName: "", step: -1 };
 };
 
 sc.getMissionTaskId = function (nameId, missionId, taskId) {
@@ -1931,6 +2078,31 @@ sc.completeAllUnstartedMissionAndTasks = function (name, missionName, success) {
     }
 };
 
+sc.completeMissionTopLevelOnly = function (name, missionName) {
+    let ind = sc.getMission(name, missionName);
+    if (sc.charMission[ind.i].mission[ind.j] > 99)
+        return;
+    let total = 0;
+    let completedSuccess = 0;
+    let completedFail = 0;
+    for (let i = 0; i < sc.charMission[ind.i].mission[ind.j].task.length; i++) {
+        if (sc.charMission[ind.i].mission[ind.j].task[i].show) {
+            total += 1;
+            if (sc.charMission[ind.i].mission[ind.j].task[i].mStatus === 100)
+                completedSuccess += 1;
+            else if (sc.charMission[ind.i].mission[ind.j].task[i].mStatus === 101)
+                completedFail += 1;
+        }
+        if (sc.charMission[ind.i].mission[ind.j].task[i].mStatus > 0 && sc.charMission[ind.i].mission[ind.j].task[i].mStatus < 100)
+            sc.charMission[ind.i].mission[ind.j].task[i].mStatus = 102;
+    }
+    
+    if (completedSuccess > (total * .75) && completedFail === 0)
+        sc.charMission[ind.i].mission[ind.j].mStatus = 100;
+    else
+        sc.charMission[ind.i].mission[ind.j].mStatus = 102;
+};
+
 sc.completeMissionTaskAll = function (name, missionName, taskId, success = true) {
     let ind = sc.getMission(name, missionName);
     for (let i = 0; i < sc.charMission[ind.i].mission[ind.j].task.length; i++) {
@@ -1964,9 +2136,16 @@ sc.modMissionTask = function (name, missionName, taskId, modNum) {
     }
 };
 
-sc.completeMission = function (name, missionName, success = true) {
+sc.completeMission = function (name, missionName, success = true, closed = false) {
+    let thisMstatus;
+    if (closed)
+        thisMstatus = 102;
+    else if (success)
+        thisMstatus = 100
+    else
+        thisMstatus = 101;
     if (!sc.getMission(name, missionName).complete)
-        sc.setMission(name, missionName, success ? 100 : 101);
+        sc.setMission(name, missionName, thisMstatus);
 };
 
 sc.taskGetStep = function (name, missionName) {
@@ -2026,16 +2205,16 @@ sc.modSecret = function (name, amount) {
                     sc.startMission("eva", "sissy");
                     sc.startMission("landlord", "sissy");
 
-                    sc.completeMission("lola", "massage", sc.getMissionTask("lola", "massage", 3).complete);
-                    sc.completeMission("lola", "games", sc.getMissionTask("lola", "games", 2).complete);
+                    sc.completeMission("lola", "massage", false, true);
+                    sc.completeMission("lola", "games", false, true);
                     sc.completeMission("lola", "date", sc.getMissionTask("lola", "date", 5).complete);
-                    sc.completeMission("lola", "talk", sc.getMissionTask("lola", "talk", 2).complete);
+                    sc.completeMission("lola", "talk", false, true);
 
                     
-                    sc.completeMission("eva", "massage", sc.getMissionTask("eva", "massage", 3).complete);
-                    sc.completeMission("eva", "games", sc.getMissionTask("eva", "games", 1).complete);
+                    sc.completeMission("eva", "massage", false, true);
+                    sc.completeMission("eva", "games", false, true);
                     sc.completeMission("eva", "fuck", sc.getMissionTask("eva", "fuck", 1).complete);
-                    sc.completeMission("eva", "talk", sc.getMissionTask("eva", "talk", 1).complete);
+                    sc.completeMission("eva", "talk", false, true);
 
                     //sc.completeMission("landlord", "talk", sc.getMissionTask("landlord", "talk", 9).complete);
                     sc.completeMission("landlord", "man", sc.getMissionTask("landlord", "man", 8).complete);
@@ -3203,6 +3382,34 @@ sc.trivial = function (charname) {
         case "!milkmaid":
             name = "Milk Maid";
             image = "milkmaid.png";
+            break;
+        case "!sissy_ass":
+            name = "Rim Job Recipient ";
+            image = "sissy_ass.png";
+            break;
+        case "!sissy_trio":
+            name = "Pookykins";
+            image = "sissy_trio.png";
+            break;
+        case "!sissy_duo":
+            name = "Sapphire";
+            image = "sissy_duo.png";
+            break;
+        case "!sissy_duo1":
+            name = "Onyx";
+            image = "sissy_duo1.png";
+            break;
+        case "!sissy_smoke":
+            name = "Salvatore";
+            image = "sissy_smoke.png";
+            break;
+        case "!sissy_tiedup":
+            name = "Tangerine Tease";
+            image = "sissy_tiedup.png";
+            break;
+        case "!sissy_toilet":
+            name = "Toilet";
+            image = "sissy_toilet.png";
             break;
         case "!nar":
             name = "Narrator ";

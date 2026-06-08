@@ -18,8 +18,8 @@ g.tview = "f";
 g.cockDisplay = "c";
 g.prevRoom;
 g.prevview = null;
-g.passtime = [0, 10, 11, 15, 16, 29, 50, 51, 52, 55, 100, 184, 185, 225, 450, 475, 484, 500, 503, 585, 586, 650, 750, 901, 902, 408, 478, 479, 480];
-g.roomChange = [10, 12, 56, 184, 185, 201, 209, 318, 320, 451, 452, 484, 503, 527, 552, 553, 602, 727, 875, 902, 903];
+g.passtime = [0, 10, 11, 15, 16, 29, 50, 51, 52, 55, 100, 184, 185, 225, 408, 450, 475, 478, 479, 480, 482, 484, 500, 503, 585, 586, 650, 750, 901, 902];
+g.roomChange = [10, 12, 56, 184, 185, 201, 209, 318, 320, 451, 452, 482, 484, 503, 527, 552, 553, 602, 727, 875, 902, 903];
 g.popArray = new Array();
 g.roomID = 1;
 g.dt = g.startDate;
@@ -171,6 +171,7 @@ g.rooms = [
     { roomID: 29, name: "Back yard", image: "29_backyard/bg.jpg", nightImage: "29_backyard/night.jpg", houseID: 29, btn: "roomBtn_29.png" },
     { roomID: 30, name: "Girl's Room Peak", image: "30_peek/bg.jpg", nightImage: "30_peek/bgnight.jpg", houseID: 29, btn: "roomBtn_29.png" },
     { roomID: 31, name: "Lola's Puter", image: "31_puter/bg.jpg", nightImage: "31_puter/bg.jpg", houseID: 16, btn: "roomBtn_31.png" },
+    { roomID: 32, name: "Girl's Room", image: "13_sisterRoom/room.jpg", nightImage: "13_sisterRoom/roomNight.jpg", houseID: 16, btn: "roomBtn_13.png" },
 
     { roomID: 40, name: "Auto Repair", image: "31_puter/bg.jpg", nightImage: "31_puter/bg.jpg", houseID: 40, btn: "roomBtn_10.png" },
     { roomID: 41, name: "Auto Repair", image: "41_garage/bg.jpg", nightImage: "41_garage/bg.jpg", houseID: 40, btn: "roomBtn_10.png" },
@@ -290,6 +291,7 @@ g.rooms = [
     { roomID: 327, name: "milking", image: "327_milking/milkparlor.jpg", nightImage: "327_milking/milkparlor.jpg", houseID: 325, btn: "roomBtn_327.png" },
     { roomID: 328, name: "ranch", image: "328_farm/meadowbg.webp", nightImage: "328_farm/meadowbg.webp", houseID: 325, btn: "roomBtn_327.png" },
     { roomID: 329, name: "Stable", image: "329_barn/bg.webp", nightImage: "329_barn/bg.webp", houseID: 325, btn: "roomBtn_326.png" },
+    { roomID: 330, name: "Farm", image: "329_barn/bg.webp", nightImage: "329_barn/bg.webp", houseID: 325, btn: "roomBtn_326.png" },
 
     { roomID: 350, name: "Sperm Bank", image: "350_spermBank/350_spermbank.jpg", nightImage: "350_spermBank/350_spermbank.jpg", houseID: 350, btn: "roomBtn_350.png" },
     { roomID: 351, name: "Mu First Sissygasm", image: "351_spermJackoff/wallBg.jpg", nightImage: "351_spermJackoff/wallBg.jpg", houseID: 350, btn: "roomBtn_350.png" },
@@ -322,10 +324,11 @@ g.rooms = [
     { roomID: 476, name: "Cabin", image: "476_cabin/bg.jpg", nightImage: "476_cabin/bg_night.jpg", houseID: 450, btn: "roomBtn_475.png" },
     { roomID: 477, name: "Cottage", image: "477_cottage/bg1.jpg", nightImage: "477_cottage/bg1_n.jpg", houseID: 450, btn: "roomBtn_477.png" },
 
-    { roomID: 478, name: "Cave Kitchen", image: "478_kitchen/bg.jpg", nightImage: "478_kitchen/bg.jpg", houseID: 480, btn: "roomBtn_478.png" },
+    { roomID: 478, name: "Cave Kitchen", image: "478_kitchen/bg.webp", nightImage: "478_kitchen/bgnight.webp", houseID: 480, btn: "roomBtn_478.png" },
     { roomID: 479, name: "Cave Hall", image: "479_hall/bg.jpg", nightImage: "479_hall/bg.jpg", houseID: 480, btn: "roomBtn_479.png" },
     { roomID: 480, name: "Cave Throne", image: "480_throne/bg.jpg", nightImage: "480_throne/bg.jpg", houseID: 480, btn: "roomBtn_480.png" },
     { roomID: 481, name: "Cave Bedroom", image: "481_bedroom/bg.jpg", nightImage: "481_bedroom/bg.jpg", houseID: 480, btn: "roomBtn_481.png" },
+    { roomID: 482, name: "Cave Bathroom", image: "482_bathroom/bg.webp", nightImage: "482_bathroom/bg.webp", houseID: 480, btn: "roomBtn_481.png" },
 
     { roomID: 483, name: "Den Entrance", image: "483_cave/bg.jpg", nightImage: "483_cave/bg_night.jpg", houseID: 480, btn: "roomBtn_483.png" },
     { roomID: 484, name: "Wolf's Den", image: "483_cave/cave0.jpg", nightImage: "483_cave/cave0.jpg", houseID: 480, btn: "roomBtn_483.png" },
@@ -421,7 +424,7 @@ g.rooms = [
     { roomID: 955, name: "Cum Donation", image: "954_torture/bg.jpg", nightImage: "954_torture/bg.jpg", houseID: 950, btn: "bg.jpg" },
     { roomID: 956, name: "Science", image: "956_science/bg.webp", nightImage: "956_science/bg.webp", houseID: 950, btn: "bg.jpg" },
     { roomID: 957, name: "Work", image: "956_science/bg.webp", nightImage: "956_science/bg.webp", houseID: 950, btn: "bg.jpg" },
-    { roomID: 958, name: "Map", image: "956_science/bg.webp", nightImage: "956_science/bg.webp", houseID: 950, btn: "bg.jpg" },
+    { roomID: 958, name: "Dungeon", image: "956_science/bg.webp", nightImage: "956_science/bg.webp", houseID: 950, btn: "bg.jpg" },
 
     { roomID: 975, name: "The End", image: "956_science/bg.webp", nightImage: "956_science/bg.webp", houseID: 950, btn: "bg.jpg" },
 

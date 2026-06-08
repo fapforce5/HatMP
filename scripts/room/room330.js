@@ -1,0 +1,547 @@
+﻿//Room name
+var room330 = {};
+room330.main = function () {
+    if (g.pass === "horse") {
+        nav.bg("326_stable/bg1.jpg", "326_stable/bg1.jpg");
+        nav.button({
+            "type": "brush",
+            "name": "horse",
+            "left": 264,
+            "top": 4,
+            "width": 1393,
+            "height": 1076,
+            "image": "326_stable/horse.png"
+        }, 330);
+        nav.button({
+            "type": "hand",
+            "name": "cock",
+            "left": 649,
+            "top": 621,
+            "width": 134,
+            "height": 219,
+            "image": "326_stable/cock0.png"
+        }, 330);
+    }
+    else {
+
+    }
+    
+    nav.buildnav([325, 0]);
+};
+
+room330.btnclick = function (name) {
+    switch (name) {
+        case "horse":
+            nav.killall();
+            nav.bg("326_stable/brush1.jpg");
+            chat(0, 330);
+            break;
+        case "checkBrush":
+            sc.modLevel("horse", 40, 4);
+            levels.mod("beast", 34);
+            char.addtime(60);
+            char.room(325);
+            break;
+            if (levels.get("beast").l < 3) {
+                chat(17, 330);
+            }
+            else {
+                var horseLove2 = sc.getLevel("horse");
+                if (horseLove2 < 2) {
+                    chat(2, 330);
+                }
+                else {
+                    nav.killbutton("cock");
+                    nav.button({
+                        "type": "hand",
+                        "name": "cock1",
+                        "left": 661,
+                        "top": 603,
+                        "width": 252,
+                        "height": 273,
+                        "image": "326_stable/cock1.png"
+                    }, 330);
+                }
+            }
+            break;
+        case "cock":
+            if (levels.get("beast").l < 3) {
+                chat(2, 330);
+            }
+            else {
+                var horseLove2 = sc.getLevel("horse");
+                if (horseLove2 < 2) {
+                    chat(2, 330);
+                }
+                else {
+                    nav.killbutton("cock");
+                    nav.button({
+                        "type": "hand",
+                        "name": "cock1",
+                        "left": 661,
+                        "top": 603,
+                        "width": 252,
+                        "height": 273,
+                        "image": "326_stable/cock1.png"
+                    }, 330);
+                }
+            }
+            break;
+        case "cock1":
+            nav.killbutton("cock1");
+            nav.button({
+                "type": "hand",
+                "name": "cock2",
+                "left": 660,
+                "top": 577,
+                "width": 332,
+                "height": 251,
+                "image": "326_stable/cock2.png"
+            }, 330);
+            break;
+        case "cock2":
+            var horseLevel = sc.getLevel("horse").l;
+            if (horseLevel < 3) {
+                chat(2, 330);
+            }
+            else if (sc.getMission("horse", "sex").notStarted) {
+                chat(3, 330);
+            }
+            else if (horseLevel < 4) {
+                nav.killall();
+                nav.bg("326_stable/horse5_" + gender.pronoun("f") + ".jpg");
+                chat(9, 330);
+            }
+            else {
+                nav.killall();
+                nav.bg("326_stable/horse5_" + gender.pronoun("f") + ".jpg");
+                chat(14, 330);
+            }
+            break;
+        case "lick001":
+            switch (g.internal) {
+                case 1: nav.bg("326_stable/lick1_" + gender.pronoun("f") + ".jpg"); break;
+                case 2: nav.bg("326_stable/lick700_" + gender.pronoun("f") + ".jpg"); break;
+                case 3: nav.bg("326_stable/lick800_" + gender.pronoun("f") + ".jpg"); break;
+                case 4: nav.bg("326_stable/lick900_" + gender.pronoun("f") + ".jpg"); break;
+                case 5: nav.bg("326_stable/lick10_" + gender.pronoun("f") + ".jpg"); break;
+                case 6:
+                    nav.kill();
+                    levels.oral(6, "m", "horse", false, "horse");
+                    chat(19, 330);
+                    break;
+            }
+            g.internal++;
+            break;
+        default:
+            break;
+    }
+};
+
+room330.chatcatch = function (callback) {
+    switch (callback) {
+        case "horse108":
+        case "horse109":
+        case "horse110":
+        case "horse111":
+        case "horse117":
+        case "horse118":
+            nav.kill();
+            nav.bg("326_stable/" + callback + "_" + gender.pronoun("f") + ".webp");
+            break;
+        case "horse112":
+        case "horse113":
+        case "horse114":
+        case "horse115":
+        case "horse116":
+            nav.bg("326_stable/" + callback + ".webp");
+            break;
+        case "checkBrush":
+            var checkHorse = sc.getLevel("horse");
+            if (checkHorse === 0)
+                chat(1, 330);
+            else if (checkHorse === 1)
+                chat(10, 330);
+            else if (checkHorse === 2)
+                chat(11, 330);
+            else if (checkHorse === 3)
+                chat(12, 330);
+            else
+                chat(13, 330);
+            break;
+        case "brushEnd":
+            sc.modLevel("horse", 40, 4);
+            levels.mod("beast", 34);
+            char.addtime(60);
+            gv.mod("money", 20);
+            char.room(325);
+            break;
+        case "horse4":
+            nav.killall();
+            nav.bg("326_stable/horse3.jpg");
+            break;
+        case "horse5":
+            nav.killall();
+            nav.button({
+                "type": "hand",
+                "name": "cock2",
+                "left": 573,
+                "top": 180,
+                "width": 775,
+                "height": 775,
+                "image": "326_stable/horse4.gif"
+            }, 330);
+            nav.bg("326_stable/horse4.jpg");
+            break;
+        case "horse6":
+            nav.kill();
+            nav.bg("326_stable/horse6.jpg");
+            break;
+        case "horse7":
+            cl.c.cumface = true;
+            nav.bg("326_stable/bg1.jpg");
+            nav.button({
+                "type": "img",
+                "name": "horse",
+                "left": 264,
+                "top": 4,
+                "width": 1393,
+                "height": 1076,
+                "image": "326_stable/horse.png"
+            }, 326);
+            nav.button({
+                "type": "img",
+                "name": "cock",
+                "left": 649,
+                "top": 621,
+                "width": 134,
+                "height": 219,
+                "image": "326_stable/cock0.png"
+            }, 326);
+            zcl.displayface();
+            cl.display();
+            break;
+        case "horseJackitEnd":
+            if (sc.getMission("horse", "sex").notStarted) {
+                sc.startMission("horse", "sex");
+                sc.completeMissionTask("horse", "sex", 0);
+            }
+            levels.gavehandjob("m", "horse", "horse");
+            char.addtime(60);
+            char.room(325);
+            break;
+        case "horseJackRepeat":
+            nav.killall();
+            nav.button({
+                "type": "hand",
+                "name": "cock2",
+                "left": 573,
+                "top": 180,
+                "width": 775,
+                "height": 775,
+                "image": "326_stable/horse4.gif"
+            }, 330);
+            nav.bg("326_stable/horse4.jpg");
+            break;
+        case "lick000":
+            nav.killall();
+            nav.bg("326_stable/lick0_" + gender.pronoun("f") + ".jpg");
+            break;
+        case "lick001":
+            g.internal = 1;
+            nav.next("lick001");
+            break;
+        case "horse100":
+            nav.killall();
+            nav.bg("326_stable/horse100.webp");
+            break;
+        case "horse_end":
+            levels.anal(6, true, "m", true, "horse", "horse");
+            gv.mod("energy", -30);
+            char.room(325);
+            break;
+        case "stop":
+            nav.kill();
+            nav.bg("326_stable/bg.jpg");
+            break;
+        case "leave":
+            char.room(325);
+            break;
+        default:
+            break;
+    }
+};
+
+room330.chat = function (chatID) {
+    var cArray = [
+        {
+            chatID: 0,
+            speaker: "horse",
+            text: "*Whinny* *Sigh*",
+            button: [
+                { chatID: -1, text: "...", callback: "checkBrush" }
+            ]
+        },
+        {
+            chatID: 1,
+            speaker: "me",
+            text: "That's a good boy. All brushed up. If I keep brushing you I'm sure you'll trust me.",
+            button: [
+                { chatID: -1, text: "...", callback: "brushEnd" }
+            ]
+        },
+        {
+            chatID: 2,
+            speaker: "horse",
+            text: "*Snort* *Groan*",
+            button: [
+                { chatID: -1, text: "I don't think he liked that. Probably doesn't trust me enough yet.", callback: "" }
+            ]
+        },
+        {
+            chatID: 3,
+            speaker: "thinking",
+            text: "What the hell am I doing? I should stop this.",
+            button: [
+                { chatID: 4, text: "Touch his penis", callback: "horse4" },
+                { chatID: 6, text: "Stop", callback: "stop" }
+            ]
+        },
+        {
+            chatID: 4,
+            speaker: "thinking",
+            text: "Really. I should stop, what a fucking degenerate I am.",
+            button: [
+                { chatID: 5, text: "Stroke his penis", callback: "horse5" },
+                { chatID: 6, text: "Stop, Really", callback: "stop" }
+            ]
+        },
+        {
+            chatID: 5,
+            speaker: "thinking",
+            text: "STOP YOU SICK FUCK. Stop stop stop!",
+            button: [
+                { chatID: 7, text: "Stroke faster!", callback: "horse6" },
+                { chatID: 6, text: "Stop or he's going to blow!", callback: "stop" }
+            ]
+        },
+        {
+            chatID: 6,
+            speaker: "me",
+            text: "I'll just put " + sc.n("horse") + " back and never speak of this.",
+            button: [
+                { chatID: -1, text: "...", callback: "leave" }
+            ]
+        },
+        {
+            chatID: 7,
+            speaker: "horse",
+            text: "*Whinny* *Neight* *Sigh*",
+            button: [
+                { chatID: 8, text: "AAAAAaaahhhhh!", callback: "horse7" }
+            ]
+        },
+        {
+            chatID: 8,
+            speaker: "me",
+            text: "BLECH! I'm covered in horse cum!",
+            button: [
+                { chatID: -1, text: "I guess I'll have to walk home and show everyone how disgusting I am.", callback: "horseJackitEnd" }
+            ]
+        },
+        {
+            chatID: 9,
+            speaker: "thinking",
+            text: "Here I go, jacking off horses again.",
+            button: [
+                { chatID: 7, text: "...", callback: "horse6" }
+            ]
+        },
+        {
+            chatID: 10,
+            speaker: "me",
+            text: "That's a good boy. He doesn't trust me yet, but it's getting closer.",
+            button: [
+                { chatID: -1, text: "...", callback: "brushEnd" }
+            ]
+        },
+        {
+            chatID: 11,
+            speaker: "me",
+            text: "I'm almost there. I can feel the horse trusting me more.",
+            button: [
+                { chatID: -1, text: "...", callback: "brushEnd" }
+            ]
+        },
+        {
+            chatID: 12,
+            speaker: "me",
+            text: "I'm pretty sure the horse trusts me pretty well now.",
+            button: [
+                { chatID: -1, text: "...", callback: "brushEnd" }
+            ]
+        },
+        {
+            chatID: 13,
+            speaker: "me",
+            text: "I'm sure the horse completely trusts me now.",
+            button: [
+                { chatID: -1, text: "...", callback: "brushEnd" }
+            ]
+        },
+        {
+            chatID: 14,
+            speaker: "me",
+            text: "Hey " + sc.n("horse") + ". Can I fit you in my mouth?",
+            button: [
+                { chatID: 9, text: "Rub his weiner", callback: "horseJackRepeat" },
+                { chatID: 18, text: "Lick it", callback: "lick000" },
+                { chatID: 20, text: "Rub your bussy on it", callback: "horse100" },
+                { chatID: -1, text: "Just brush it", callback: "horse" },
+            ]
+        },
+        {
+            chatID: 15,
+            speaker: "thinking",
+            text: "Not as bad as I thought. I wonder if I can fit it in my mouth?",
+            button: [
+                { chatID: 16, text: "...", callback: "lick1" },
+            ]
+        },
+        {
+            chatID: 16,
+            speaker: "thinking",
+            text: "So big! I don't think I can fit any more in! I hope I'm deep enough to make him cum.",
+            button: [
+                { chatID: 14, text: "...", callback: "lick2" },
+            ]
+        },
+        {
+            chatID: 17,
+            speaker: "thinking",
+            text: "I'm not touching a horse cock! Gross!",
+            button: [
+                { chatID: -1, text: "[Need beast level 3]", callback: "" },
+            ]
+        },
+        {
+            chatID: 18,
+            speaker: "thinking",
+            text: "MMmmmm tastes like a mix of musk, barn, and a little salty.",
+            button: [
+                { chatID: -1, text: "[Suck that horse cock]", callback: "lick001" },
+            ]
+        },
+        {
+            chatID: 19,
+            speaker: "thinking",
+            text: "...so much cum. I'm such a dirty slut.",
+            button: [
+                { chatID: -1, text: "Put " + sc.n("horse") + " back in his stable.", callback: "leave" },
+            ]
+        },
+        {
+            chatID: 20,
+            speaker: "me",
+            text: "*ugh* It's so big and I can't quite push back on it. I'm going to have to put a bench under " +
+                "that beam; get him to mount me.",
+            button: [
+                { chatID: 21, text: "[Move the bench]", callback: "horse108" },
+            ]
+        },
+        {
+            chatID: 21,
+            speaker: "thinking",
+            text: "Hehehe. I can feel his breath on my little bum.",
+            button: [
+                { chatID: 22, text: "...", callback: "horse109" },
+            ]
+        },
+        {
+            chatID: 22,
+            speaker: "thinking",
+            text: "OOOofff that's thick! Must relax. Must relax my hole.",
+            button: [
+                { chatID: 23, text: "...", callback: "horse110" },
+            ]
+        },
+        {
+            chatID: 23,
+            speaker: "me",
+            text: "*muffled* aaaak!!!",
+            button: [
+                { chatID: 24, text: "...", callback: "horse111" },
+            ]
+        },
+        {
+            chatID: 24,
+            speaker: "thinking",
+            text: "He's fucking me so hard and so thick! I'm gonna cum! Oh wow I'm going to cum so hard!",
+            button: [
+                { chatID: 25, text: "...", callback: "horse112" },
+            ]
+        },
+        {
+            chatID: 25,
+            speaker: "thinking",
+            text: "My entire body is orgasming!",
+            button: [
+                { chatID: 26, text: "...", callback: "horse113" },
+            ]
+        },
+        {
+            chatID: 26,
+            speaker: "thinking",
+            text: "He's not stopping! So much cock inside me!",
+            button: [
+                { chatID: 27, text: "...", callback: "horse114" },
+            ]
+        },
+        {
+            chatID: 27,
+            speaker: "thinking",
+            text: "I'm cumming again!!! My entire body is shaking so hard!! I need just a minute!",
+            button: [
+                { chatID: 28, text: "...", callback: "horse115" },
+            ]
+        },
+        {
+            chatID: 28,
+            speaker: "thinking",
+            text: "I can't get away! I'm trapped between this bench and his hard thrusting cock! Fuck " +
+                "these orgasms are so strong!!",
+            button: [
+                { chatID: 29, text: "...", callback: "horse116" },
+            ]
+        },
+        {
+            chatID: 29,
+            speaker: "thinking",
+            text: "I can't stop cumming! I don't think I've ever cum so many times in a row! Fuck it's so good!!!",
+            button: [
+                { chatID: 30, text: "...", callback: "horse117" },
+            ]
+        },
+        {
+            chatID: 30,
+            speaker: "thinking",
+            text: "So much cum in my bussy.... *argh*",
+            button: [
+                { chatID: 31, text: "...", callback: "horse118" },
+            ]
+        },
+        {
+            chatID: 31,
+            speaker: "thinking",
+            text: "So good. So very very good. My legs are still shaking from all those orgasms. " +
+                "I should put " + sc.n("horse") + " back before I get caught.",
+            button: [
+                { chatID: -1, text: "...", callback: "horse_end" },
+            ]
+        },
+    ];
+    if (cArray.length > chatID && chatID > -1)
+        return cArray[chatID];
+    else
+        return [];
+};

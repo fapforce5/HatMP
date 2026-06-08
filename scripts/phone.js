@@ -267,11 +267,15 @@ phone.saveMenu = function () {
 phone.settings = function () {
     phone.clear(false);
     
-    var fantasyCreatures = gv.get("fantasyCreatures");
     var difficulty = gv.get("difficulty");
     var clock24 = gv.get("clock24");
+    let encM = gv.get("encM");
+    let encF = gv.get("encF");
+    let encBeast = gv.get("encBeast");
+    let encMyth = gv.get("encMyth");
     let transformation = gv.get("transformation");
-    
+    let pronouns = gv.get("pronouns");
+
     nav.button({
         "type": "zimg",
         "name": "phone_",
@@ -287,18 +291,23 @@ phone.settings = function () {
         { y: 0, x: 2, b: 3, n: "diff2", i: "diffHard", active: difficulty === 2 },
         { y: 1, x: 0, b: 2, n: "clock12", i: "clock12", active: clock24 === "12" },
         { y: 1, x: 1, b: 2, n: "clock24", i: "clock24", active: clock24 === "24" },
-        { y: 2, x: 0, b: 2, n: "fantOff", i: "fantOff", active: !fantasyCreatures },
-        { y: 2, x: 1, b: 2, n: "fantOn", i: "fantOn", active: fantasyCreatures },
+        { y: 2, x: 0, b: 4, n: "encM", i: "encM", active: encM },
+        { y: 2, x: 1, b: 4, n: "encF", i: "encF", active: encF },
+        { y: 2, x: 2, b: 4, n: "encBeast", i: "encBeast", active: encBeast },
+        { y: 2, x: 3, b: 4, n: "encMyth", i: "encMyth", active: encMyth },
         { y: 3, x: 0, b: 3, n: "d_on", i: "d_on", active: transformation === "voluntary" },
         { y: 3, x: 1, b: 3, n: "d_off", i: "d_off", active: transformation === "voluntaryoff" },
         { y: 3, x: 2, b: 3, n: "d_auto", i: "d_auto", active: transformation === "forced" },
+        { y: 4, x: 0, b: 3, n: "m", i: "ident_male", active: pronouns === "m" },
+        { y: 4, x: 1, b: 3, n: "f", i: "ident_female", active: pronouns === "f" },
+        { y: 4, x: 2, b: 3, n: "a", i: "ident_appearance", active: pronouns === "a" },
     ];
     $.each(settings, function (i, v) {
         nav.button({
             "type": "zbtn",
             "name": "phone_setting_" + v.n,
             "left": 925 + (v.x * (600/v.b)),
-            "top": 240 + (v.y * 160),
+            "top": 220 + (v.y * 125),
             "width": 600/v.b,
             "height": 50,
             "image": "999_phone/" + v.i + "_" + (v.active ? "active" : "inactive") + ".png",
@@ -592,29 +601,37 @@ phone.characterSelect = function (name) {
         var sissySchoolInvite = "Attend Sissy School Monday - Thursday.";
         var mmood = missy.get("mood");
         var mmoodtxt = "";
-        if (!sissy.st[17].ach)
-            sissySchoolInvite = g.linebreak("You haven't proven yourself worth of attending the sissy school. Easiest way is to go to work and complete the cases. ", 50);
-        else if (sissy.st[21].ach)
-            sissySchoolInvite = g.linebreak("Congratulations on passing and proving yourself a true sissy! You can visit the school for additional training. Just take the elevator. ", 50);
+        let mtxt;
 
-        if (mmood > 70)
-            mmoodtxt = "Loves her little " + gender.pronoun("sissy") + ".";
-        else if (mmood > 30)
-            mmoodtxt = "Good " + gender.pronoun("sissy") + ", but do better.";
-        else if (mmood > 0)
-            mmoodtxt = "You're ok, try harder";
-        else if (mmood > -30)
-            mmoodtxt = "Disappointed in her " + gender.pronoun("sissy") + ". ";
-        else
-            mmoodtxt = "Angry at her " + gender.pronoun("sissy") + ". ";
+        if (gv.get("cultEscape") === null) {
+            if (!sissy.st[17].ach)
+                sissySchoolInvite = g.linebreak("You haven't proven yourself worth of attending the sissy school. Easiest way is to go to work and complete the cases. ", 50);
+            else if (sissy.st[21].ach)
+                sissySchoolInvite = g.linebreak("Congratulations on passing and proving yourself a true sissy! You can visit the school for additional training. Just take the elevator. ", 50);
 
-        var mtxt =
-            "Mood: " + mmoodtxt + "<br/>" +
-            "Weekly Pay: $" + missy.get("weeklyPay") + "<br/><hr/>" +
-            "Current case: <br/>" +
-            g.linebreak(missy.activecase().txt, 50) + "<hr />" +
-            "Sissy School: <br/>" +
-            sissySchoolInvite;
+            if (mmood > 70)
+                mmoodtxt = "Loves her little " + gender.pronoun("sissy") + ".";
+            else if (mmood > 30)
+                mmoodtxt = "Good " + gender.pronoun("sissy") + ", but do better.";
+            else if (mmood > 0)
+                mmoodtxt = "You're ok, try harder";
+            else if (mmood > -30)
+                mmoodtxt = "Disappointed in her " + gender.pronoun("sissy") + ". ";
+            else
+                mmoodtxt = "Angry at her " + gender.pronoun("sissy") + ". ";
+
+            mtxt =
+                "Mood: " + mmoodtxt + "<br/>" +
+                "Weekly Pay: $" + missy.get("weeklyPay") + "<br/><hr/>" +
+                "Current case: <br/>" +
+                g.linebreak(missy.activecase().txt, 50) + "<hr />" +
+                "Sissy School: <br/>" +
+                sissySchoolInvite;
+        }
+        else {
+            mtxt = "Free Missy!"
+        }
+        
         nav.t({
             type: "zimg",
             name: "phone_charselx",
@@ -709,31 +726,76 @@ phone.characterSelect = function (name) {
                         case "Failed": tcolor = "#cc3333"; mstatus = " [Fail]"; break;
                         case "Completed": tcolor = "#33cc33"; mstatus = " ☑"; break;
                         case "Not Started": tcolor = "#999999"; mstatus = ""; break;
+                        case "Closed": tcolor = "#3e3e5c"; mstatus = ""; break;
                         default: tcolor = "#ffffff"; mstatus = "";
                     }
-                    nav.t({
-                        type: "zimg",
-                        name: "phone_charsel_",
-                        "left": 850,
-                        "top": 180 + (j * 100),
-                        font: 30,
-                        hex: tcolor,
-                        text: sc.charMission[i].mission[j].title + mstatus
-                    }, 9999);
-                    nav.t({
-                        type: "zimg",
-                        name: "phone_charsel_",
-                        "left": 900,
-                        "top": 220 + (j * 100),
-                        font: 20,
-                        hex: "#ffffff",
-                        text: sc.charMission[i].mission[j].desc
-                    }, 1);
+                    
+                    if (sc.charMission[i].mission[j].missionName.startsWith("*")) {
+                        if (tcolor === "#999999")
+                            tcolor = "#444444";
+                        nav.t({
+                            type: "zimg",
+                            name: "phone_charsel_",
+                            "left": 850,
+                            "top": 180 + (j * 80),
+                            font: 30,
+                            hex: tcolor,
+                            text: sc.charMission[i].mission[j].title + mstatus
+                        }, 9999);
+                        nav.t({
+                            type: "zimg",
+                            name: "phone_charsel_",
+                            "left": 1500,
+                            "top": 180 + (j * 80),
+                            font: 10,
+                            hex: tcolor,
+                            text: "Ending"
+                        }, 9999);
+                        nav.t({
+                            type: "zimg",
+                            name: "phone_charsel_",
+                            "left": 900,
+                            "top": 220 + (j * 80),
+                            font: 20,
+                            hex: "#999999",
+                            text: sc.charMission[i].mission[j].desc
+                        }, 1);
+                    }
+                    else {
+                        nav.t({
+                            type: "zimg",
+                            name: "phone_charsel_",
+                            "left": 850,
+                            "top": 180 + (j * 80),
+                            font: 30,
+                            hex: tcolor,
+                            text: sc.charMission[i].mission[j].title + mstatus
+                        }, 9999);
+                        nav.t({
+                            type: "zimg",
+                            name: "phone_charsel_",
+                            "left": 900,
+                            "top": 220 + (j * 80),
+                            font: 20,
+                            hex: "#999999",
+                            text: sc.charMission[i].mission[j].desc
+                        }, 1);
+                        nav.t({
+                            type: "zimg",
+                            name: "phone_charsel_",
+                            "left": 900,
+                            "top": 220 + (j * 80),
+                            font: 20,
+                            hex: "#ffffff",
+                            text: sc.charMission[i].mission[j].desc
+                        }, 1);
+                    }
+                    
                     nav.button({
                         "type": "zbtn",
                         "name": "phone_charsel_" + sc.charMission[i].name + "_" + sc.charMission[i].mission[j].missionName,
                         "left": 800,
-                        "top": 180 + (j * 100),
+                        "top": 180 + (j * 80),
                         "width": 40,
                         "height": 40,
                         "image": "999_phone/char_left.png",
@@ -1706,9 +1768,20 @@ room9999.btnclick = function (name) {
                 gv.set("clock24", name.replace("phone_setting_clock", ""));
                 phone.settings();
                 break;
-            case "phone_setting_fantOff":
-            case "phone_setting_fantOn":
-                gv.set("fantasyCreatures", name === "phone_setting_fantOn");
+            case "phone_setting_encM":
+                gv.set("encM", !gv.get("encM"));
+                phone.settings();
+                break;
+            case "phone_setting_encF":
+                gv.set("encF", !gv.get("encF"));
+                phone.settings();
+                break;
+            case "phone_setting_encBeast":
+                gv.set("encBeast", !gv.get("encBeast"));
+                phone.settings();
+                break;
+            case "phone_setting_encMyth":
+                gv.set("encMyth", !gv.get("encMyth"));
                 phone.settings();
                 break;
             case "phone_setting_d_on":
@@ -1717,6 +1790,12 @@ room9999.btnclick = function (name) {
                 break;
             case "phone_setting_d_off":
                 gv.set("transformation", "voluntaryoff");
+                phone.settings();
+                break;
+            case "phone_setting_m":
+            case "phone_setting_f":
+            case "phone_setting_a":
+                gv.set("pronouns", name.replace("phone_setting_", ""));
                 phone.settings();
                 break;
             case "phone_setting_d_auto":

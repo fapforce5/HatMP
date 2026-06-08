@@ -12,15 +12,19 @@ gender.isCockTooSmallForSex = function(){
 };
 
 gender.isGirl = function () {
-    var appearance = cl.appearance();
-    if (appearance === 5) {
-        if (cl.c.chest > 2)
-            return true;
-        else if (cl.c.chest === 2 && cl.c.hairLength > 1)
-            return true;
-        return false;
+    let tpronoun = gv.get("pronouns");
+    if (tpronoun === "a") {
+        var appearance = cl.appearance();
+        if (appearance === 5) {
+            if (cl.c.chest > 2)
+                return true;
+            else if (cl.c.chest === 2 && cl.c.hairLength > 1)
+                return true;
+            return false;
+        }
+        return cl.appearance() > 1;
     }
-    return cl.appearance() > 1;
+    else return tpronoun === "f";
 }
 
 gender.cock = function () {

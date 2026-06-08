@@ -7,6 +7,18 @@ room203.main = function () {
         chat(29, 203);
         return;
     }
+    else if (gv.get("cultEscape") !== null) {
+        if (sc.getMission("p", "*missy").notStarted) {
+            sc.startMission("p", "*missy");
+            sc.completeMissionTask("p", "*missy", 0);
+            sc.startMissionTask("p", "*missy", 1);
+            nav.bg("203_entrance/p0.webp");
+            chat(32, 203);
+        }
+
+        nav.buildnav([201, 207, 0]);
+        return;
+    }
     var outfit = cl.hasoutfit("public");
     var navList = new Array();
     var btnList = new Array();
@@ -109,6 +121,10 @@ room203.btnclick = function (name) {
 
 room203.chatcatch = function (callback) {
     switch (callback) {
+        case "p1":
+        case "p2":
+            nav.bg("203_entrance/" + callback + ".webp");
+            break;
         case "enter":
             char.room(200);
             break;
@@ -607,6 +623,62 @@ room203.chat = function (chatID) {
                     "find a way to get him back!!! Damn. I need to tell Missy and see if she can help! ",
                 button: [
                     { chatID: -1, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 32,
+                speaker: "p",
+                text: "Oh good, you're back. Is Missy with you? ",
+                button: [
+                    { chatID: 33, text: "Oh no [Tell them everything that happened]", callback: "p1" }
+                ]
+            },
+            {
+                chatID: 33,
+                speaker: "p",
+                text: "Fuck. I told her she needed more help. Fuck, fuck. I knew this would happen. Listen " +
+                    "the only person that has information is the Forest Queen. ",
+                button: [
+                    { chatID: 34, text: "The forest queen? ", callback: "" }
+                ]
+            },
+            {
+                chatID: 34,
+                speaker: "p",
+                text: "Yes. She's in the forest, not too deep. Now listen, she's not going to want to help you. " +
+                    "We've talked to her and she's afraid if she helps you it will bring down the cult on her " +
+                    "little operation. She does have information hidden in her house on how to sneak into the cult " +
+                    "compound. ",
+                button: [
+                    { chatID: 35, text: "ok", callback: "p2" }
+                ]
+            },
+            {
+                chatID: 35,
+                speaker: "p",
+                text: "Oh fuck, oh fuck. Don't stop " + sc.n("cecilia") + "! OOOoooo",
+                button: [
+                    { chatID: 36, text: "ummm", callback: "p1" }
+                ]
+            },
+            {
+                chatID: 36,
+                speaker: "p",
+                text: "Good girl, slup up all the pussy juice. Now you. You need to sneak into her " +
+                    "house and steal it. It's the only way. I recommend you try breaking in " +
+                    "in at night. Put those detecive skills to work. Do not get caught or she'll destroy everything " +
+                    "she has. Got it. ",
+                button: [
+                    { chatID: 37, text: "Yes. Sneak into the Forest Queen's house at night. Get the plans for the compound. ", callback: "p2" }
+                ]
+            },
+            {
+                chatID: 37,
+                speaker: "p",
+                text: "Oh fuck! I feel another coming! Fuck fuck fuck! Go. Go save Missy! " + sc.n("cecilia") +
+                    " keep licking! Fuck! ",
+                button: [
+                    { chatID: -1, text: "...ok. I'm going to go see the Forest Queen... bye ?", callback: "leave" }
                 ]
             },
         ];

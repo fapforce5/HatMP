@@ -70,8 +70,8 @@ room326.btnclick = function (name) {
         case "cock2":
             var horseLevel = sc.getLevel("horse").l;
             if (horseLevel < 3) {
-                nav.killall();
-                nav.bg("326_stable/horse3.jpg");
+                //nav.killall();
+                //nav.bg("326_stable/horse3.jpg");
                 chat(2, 326);
             }
             else if (sc.getMission("horse", "sex").notStarted) {

@@ -2,7 +2,42 @@
 var room16 = {};
 
 room16.main = function () {
-    if (sc.getMissionTask("landlord", "misc", 4).inProgress) {
+    let lolapostcult = gv.get("lolapostcult");
+    if (lolapostcult !== null) {
+        if (lolapostcult === "wife") {
+            gv.set("lolapostcult", null);
+            nav.button({
+                "type": "img",
+                "name": "wife",
+                "left": 589,
+                "top": 14,
+                "width": 768,
+                "height": 1066,
+                "image": "16_livingRoom/wife0.webp"
+            }, 16);
+            chat(45, 16);
+        }
+        else if (lolapostcult === "tom") {
+            gv.set("lolapostcult", null);
+            nav.button({
+                "type": "img",
+                "name": "wife",
+                "left": 589,
+                "top": 14,
+                "width": 768,
+                "height": 1066,
+                "image": "16_livingRoom/tom0.webp"
+            }, 16);
+            chat(52, 16);
+        }
+        else {
+            gv.set("lolapostcult", null);
+            nav.bg("16_livingRoom/cumdump0.webp");
+            fame.moanAnimate("center");
+            chat(62, 16);
+        }
+    }
+    else if (sc.getMissionTask("landlord", "misc", 4).inProgress) {
         nav.button({
             "type": "img",
             "name": "caught",
@@ -255,6 +290,9 @@ room16.btnclick = function (name) {
 
 room16.chatcatch = function (callback) {
     switch (callback) {
+        case "cumdump1":
+            nav.bg("16_livingRoom/" + callback + ".webp");
+            break;
         case "kungfu":
             nav.button({
                 "type": "video",
@@ -436,6 +474,13 @@ room16.chatcatch = function (callback) {
             cl.undo();
             g.pass = "chastity";
             char.room(21);
+            break;
+        case "wife1":
+            nav.modbutton("wife", "16_livingRoom/wife1.webp", null, null);
+            break;
+        case "cumdump2":
+            fame.moanAnimateStop();
+            nav.bg("16_livingRoom/cumdump2.webp");
             break;
         case "leave":
             char.room(0);
@@ -802,6 +847,185 @@ room16.chat = function (chatID) {
             text: "You're not wearing your chastity cage!!! Come with me!",
             button: [
                 { chatID: -1, text: "ok", callback: "spank" }
+            ]
+        },
+        {
+            chatID: 45,
+            speaker: "landlord",
+            text: "*eeep* They let you go?",
+            button: [
+                { chatID: 46, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 46,
+            speaker: "lola",
+            text: "I was so worried! *sniffle* I thought I would never see you again! ",
+            button: [
+                { chatID: 47, text: "...you're pregnant", callback: "" }
+            ]
+        },
+        {
+            chatID: 47,
+            speaker: "eva",
+            text: "Looks like the great detective solved this case, you big dummy. You're next big mystery " +
+                "is who knocked her up! ",
+            button: [
+                { chatID: 48, text: "who?", callback: "wife1" }
+            ]
+        },
+        {
+            chatID: 48,
+            speaker: "lola",
+            text: "I'm so sorry! I just didn't know what to do when I found out! I was just so afriad you " +
+                "would never speak to me again once you found out. And now this. You're the only person " +
+                "I've ever slept with. Please don't be mad at me!",
+            button: [
+                { chatID: 49, text: "I'm not mad", callback: "" }
+            ]
+        },
+        {
+            chatID: 49,
+            speaker: "landlord",
+            text: "You're damn right you're not mad. I know you're going to step up and do what's right for " +
+                "my little girl! ",
+            button: [
+                { chatID: 50, text: "oh. yeah. of course. ", callback: "" }
+            ]
+        },
+        {
+            chatID: 50,
+            speaker: "landlord",
+            text: "It does my heart good to hear that. From now on you and " + sc.n("lola") + " are going to " +
+                "share her room. " + sc.n("eva") + " will get your room. I'm sure she could use the privacy. Also " +
+                "you can attend to her needs now. A pregnant woman has many needs that have to be met. ",
+            button: [
+                { chatID: 51, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 51,
+            speaker: "landlord",
+            text: "Now I know you had a terrible ordeal, but but we're just going to have to keep going in life. " +
+                "Now I'm sure you two want some alone time in your new room. It's so good having you back.  ",
+            button: [
+                { chatID: -1, text: "...", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 52,
+            speaker: "landlord",
+            text: "*eeep* They let you go?",
+            button: [
+                { chatID: 53, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 53,
+            speaker: "lola",
+            text: "I was so worried! *sniffle* I thought I would never see you again! ",
+            button: [
+                { chatID: 54, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 54,
+            speaker: "eva",
+            text: "For real! So glad you're back, this place was smelling too nice without your farts around.  ",
+            button: [
+                { chatID: 55, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 55,
+            speaker: "tom",
+            text: "Yeah. Welcome back buddy!",
+            button: [
+                { chatID: 56, text: "Why are you here?", callback: "" }
+            ]
+        },
+        {
+            chatID: 56,
+            speaker: "lola",
+            text: "Oh. You know " + sc.n("tom") + ". He's my fiance! We're set to be married! ",
+            button: [
+                { chatID: 57, text: "oh", callback: "" }
+            ]
+        },
+        {
+            chatID: 57,
+            speaker: "landlord",
+            text: "Oh honey. When we heard about what happened we thought you were gone for good. We all " +
+                "cried for a week. Luckily " + sc.n("tom") + " was here for " + sc.n("lola") + " and really " +
+                "he was here for all of us. And when we found out he was living on the street we invited " +
+                "him into our home. Now " + sc.n("lola") + "'s my little girl, but she's not a little " +
+                "girl anymore. That's why I let him sleep in " + sc.n("lola") + "'s room. ",
+            button: [
+                { chatID: 58, text: "Cool, so where does " + sc.n("eva") + " sleep? ", callback: "" }
+            ]
+        },
+        {
+            chatID: 58,
+            speaker: "eva",
+            text: "I got your smelly room, fart breath! By the way, your collection of dildos smell like " +
+                "ass you pervert! ",
+            button: [
+                { chatID: 59, text: "Don't touch those you troll faced frog licker! ", callback: "" }
+            ]
+        },
+        {
+            chatID: 59,
+            speaker: "landlord",
+            text: "*sigh* So I can't just kick " + sc.n("tom") + " into the streets. And there's no way I'm " +
+                "going to make either of you leave, so " + sc.n("eva") + " and " + sc.n("me") + " will just " +
+                "have to share your room. It's only for now until these two can get their own place. ",
+            button: [
+                { chatID: 60, text: "Wha? ", callback: "" }
+            ]
+        },
+        {
+            chatID: 60,
+            speaker: "eva",
+            text: "Ewwww! It's bad enough I had to move out of my own room, now I have to share a room with " +
+                "this pimple popper!",
+            button: [
+                { chatID: 61, text: "Yeah! That's my room! ", callback: "" }
+            ]
+        },
+        {
+            chatID: 61,
+            speaker: "landlord",
+            text: "Enough. I don't want to hear it. You two will share and that's the end of it. " + sc.n("me") +
+                " we're all so glad you're back if you need anything just let us know. ",
+            button: [
+                { chatID: -1, text: "Thanks " + sc.n("landlord") + ". ", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 62,
+            speaker: "me",
+            text: "What the hell?",
+            button: [
+                { chatID: -1, text: "...", callback: "cumdump1" }
+            ]
+        },
+        {
+            chatID: 63,
+            speaker: "lola",
+            text: "Oh my god! You're back! One second, just let " + sc.n("chad") + " dump his load in me " +
+                "so we can talk. Don't go anywhere! ",
+            button: [
+                { chatID: 64, text: "...", callback: "cumdump2" }
+            ]
+        },
+        {
+            chatID: 64,
+            speaker: "thinking",
+            text: "What the hell! Where's my " + sc.n("landlord") + "? She would kill any of us if she " +
+                "caught us fucking on her couch! And " + sc.n("lola") + " just taking cock without any " +
+                "embarrasement. ",
+            button: [
+                { chatID: 64, text: "...", callback: "cumdump3" }
             ]
         },
     ];

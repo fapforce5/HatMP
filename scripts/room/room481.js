@@ -14,11 +14,11 @@ room481.main = function () {
             "image": "481_folder/hole.png"
         }
     ];
-    var navList = [478, 479, 480];
+   
     $.each(btnList, function (i, v) {
         nav.button(v, 481);
     });
-    nav.buildnav(navList);
+    nav.buildnav([480, 478, 479, 481, 482]);
 };
 
 room481.btnclick = function (name) {

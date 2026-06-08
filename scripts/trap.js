@@ -490,8 +490,10 @@ trap.hole = function () {
                 { id: 6, n: "!caveslave", rape: null, onlyAsk: true, g: "f" },
                 { id: 8, n: "!jenna", rape: null, onlyAsk: true, g: "f" },
                 { id: 9, n: "cult", rape: null, onlyAsk: false, g: "m" },
-                { id: 10, n: "!plant", rape: null, onlyAsk: false, g: "f" },
             ];
+
+            if (gv.get("encMyth"))
+                holechar.push({ id: 10, n: "!plant", rape: null, onlyAsk: false, g: "f" });
 
             //if (missy.cases[16].complete) {
             //    holechar.push({ id: 7, n: "!damselle", rape: false, onlyAsk: true });

@@ -2,6 +2,9 @@
 var room477 = {};
 room477.main = function () {
     if (g.isNight()) {
+        if (sc.getMissionTask("p", "*missy", 1).inProgress) {
+            chat(23, 477);
+        }
         nav.button({
             "type": "btn",
             "name": "door",
@@ -14,6 +17,9 @@ room477.main = function () {
         }, 477);
     }
     else {
+        if (sc.getMissionTask("p", "*missy", 1).inProgress) {
+            chat(24, 477);
+        }
         nav.button({
             "type": "btn",
             "name": "queen",
@@ -96,36 +102,36 @@ room477.btnclick = function (name) {
             g.pass = 477;
             char.room(8);
             break;
-        //case "window":
-        //    chat(0, 477);
-        //    break;
-        //case "l1":
-        //case "l2":
-        //case "l3":
-        //case "l4":
-        //case "l5":
-        //case "l6":
-        //    nav.killall();
-        //    g.internal = g.removeItemByValue(g.internal, name);
-        //    nav.bg("477_cottage/" + name + ".jpg");
-        //    switch (name) {
-        //        case "l5":
-        //            chat(22, 477);
-        //            break;
-        //        case "l6":
-        //            chat(23, 477);
-        //            break;
-        //        case "l1":
-        //            chat(24, 477);
-        //            break;
-        //        default:
-        //            chat(3, 477);
-        //            break;
-        //    }
-        //    break;
-        //case "cave1":
-        //    chat(15, 477);
-        //    break;
+        case "window":
+            chat(0, 477);
+            break;
+        case "l1":
+        case "l2":
+        case "l3":
+        case "l4":
+        case "l5":
+        case "l6":
+            nav.killall();
+            g.internal = g.removeItemByValue(g.internal, name);
+            nav.bg("477_cottage/" + name + ".jpg");
+            switch (name) {
+                case "l5":
+                    chat(25, 477);
+                    break;
+                case "l6":
+                    chat(26, 477);
+                    break;
+                case "l1":
+                    chat(27, 477);
+                    break;
+                default:
+                    chat(3, 477);
+                    break;
+            }
+            break;
+        case "cave1":
+            chat(15, 477);
+            break;
         default:
             break;
     }
@@ -142,153 +148,175 @@ room477.chatcatch = function (callback) {
         case "reset":
             char.room(477);
             break;
+        case "window":
+            nav.kill();
+            nav.bg("477_cottage/bg.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "window",
+                "left": 1322,
+                "top": 379,
+                "width": 128,
+                "height": 238,
+                "title": "Sneak into the cottage",
+                "image": "477_cottage/window.png"
+            }, 477);
+            break;
         case "leave":
             char.room(475);
             break;
-        //case "s0":
-        //    nav.killall();
-        //    nav.bg('477_cottage/interior.jpg');
-        //    break;
-        //case "s1":
-        //    nav.bg('477_cottage/bedroom.jpg');
-        //    break;
-        //case "s2":
-        //    nav.killall();
-        //    g.internal = ["l1", "l2", "l3", "l4", "l5", "l6"];
-        //    room477.chatcatch("drawBoxes");
-        //    break;
-        //case "drawBoxes":
-        //    nav.bg('477_cottage/interior.jpg');
-        //    for (i = 0; i < g.internal.length; i++) {
-        //        switch (g.internal[i]) {
-        //            case "l1":
-        //                nav.button({
-        //                    "type": "btn",
-        //                    "name": "l1",
-        //                    "left": 1031,
-        //                    "top": 576,
-        //                    "width": 550,
-        //                    "height": 322,
-        //                    "image": "477_cottage/l1.png"
-        //                }, 477);
-        //                break;
-        //            case "l2":
-        //                nav.button({
-        //                    "type": "btn",
-        //                    "name": "l2",
-        //                    "left": 346,
-        //                    "top": 453,
-        //                    "width": 111,
-        //                    "height": 126,
-        //                    "image": "477_cottage/l2.png"
-        //                }, 477);
-        //                break;
-        //            case "l3":
-        //                nav.button({
-        //                    "type": "btn",
-        //                    "name": "l3",
-        //                    "left": 611,
-        //                    "top": 492,
-        //                    "width": 297,
-        //                    "height": 77,
-        //                    "image": "477_cottage/l3.png"
-        //                }, 477);
-        //                break;
-        //            case "l4":
-        //                nav.button({
-        //                    "type": "btn",
-        //                    "name": "l4",
-        //                    "left": 75,
-        //                    "top": 799,
-        //                    "width": 297,
-        //                    "height": 247,
-        //                    "image": "477_cottage/l4.png"
-        //                }, 477);
-        //                break;
-        //            case "l5":
-        //                nav.button({
-        //                    "type": "btn",
-        //                    "name": "l5",
-        //                    "left": 405,
-        //                    "top": 366,
-        //                    "width": 101,
-        //                    "height": 76,
-        //                    "image": "477_cottage/l5.png"
-        //                }, 477);
-        //                break;
-        //            case "l6":
-        //                nav.button({
-        //                    "type": "btn",
-        //                    "name": "l6",
-        //                    "left": 556,
-        //                    "top": 400,
-        //                    "width": 84,
-        //                    "height": 51,
-        //                    "image": "477_cottage/l6.png"
-        //                }, 477);
-        //                break;
-        //        }
-        //    }
-        //    break;
-        //case "resetsearch":
-        //    if (g.internal.length > 2) {
-        //        room477.chatcatch("drawBoxes");
-        //    }
-        //    else {
-        //        nav.bg("477_cottage/c0.jpg");
-        //        chat(4, 477);
-        //    }
-        //    break;
-        //case "c1":
-        //    nav.bg("477_cottage/c1.jpg");
-        //    break;
-        //case "c2":
-        //    nav.bg("477_cottage/c2.jpg");
-        //    break;
-        //case "c3":
-        //    nav.bg("477_cottage/c3.jpg");
-        //    break;
-        //case "c4":
-        //    char.addtime(720);
-        //    nav.bg("477_cottage/c4.jpg");
-        //    break;
-        //case "c5":
-        //    char.addtime(720);
-        //    nav.bg("477_cottage/c5.jpg");
-        //    break;
-        //case "c6":
-        //    char.addtime(720);
-        //    nav.bg("477_cottage/c6.jpg");
-        //    break;
-        //case "c7":
-        //    char.addtime(720);
-        //    nav.bg("477_cottage/c7.jpg");
-        //    break;
-        //case "c8":
-        //    char.addtime(720);
-        //    nav.bg("477_cottage/c8.jpg");
-        //    break;
-        //case "c9":
-        //    inv.add("envelope");
-        //    char.addtime(120);
-        //    gv.set("oncase", null);
-        //    char.room(460);
-        //    break;
-        //case "cave0":
-        //    nav.bg("212_black/black.jpg");
-        //    break;
-        //case "cave1":
-        //    nav.bg("477_cottage/cave1.jpg");
-        //    nav.button({
-        //        "type": "btn",
-        //        "name": "cave1",
-        //        "left": 762,
-        //        "top": 161,
-        //        "width": 487,
-        //        "height": 747,
-        //        "image": "477_cottage/cave1.png"
-        //    }, 477);
-        //    break;
+        case "s0":
+            nav.killall();
+            nav.bg('477_cottage/interior.jpg');
+            break;
+        case "s1":
+            nav.bg('477_cottage/bedroom.jpg');
+            break;
+        case "s2":
+            nav.killall();
+            g.internal = ["l1", "l2", "l3", "l4", "l5", "l6"];
+            room477.chatcatch("drawBoxes");
+            break;
+        case "drawBoxes":
+            nav.bg('477_cottage/interior.jpg');
+            for (i = 0; i < g.internal.length; i++) {
+                switch (g.internal[i]) {
+                    case "l1":
+                        nav.button({
+                            "type": "btn",
+                            "name": "l1",
+                            "left": 1031,
+                            "top": 576,
+                            "width": 550,
+                            "height": 322,
+                            "image": "477_cottage/l1.png"
+                        }, 477);
+                        break;
+                    case "l2":
+                        nav.button({
+                            "type": "btn",
+                            "name": "l2",
+                            "left": 346,
+                            "top": 453,
+                            "width": 111,
+                            "height": 126,
+                            "image": "477_cottage/l2.png"
+                        }, 477);
+                        break;
+                    case "l3":
+                        nav.button({
+                            "type": "btn",
+                            "name": "l3",
+                            "left": 611,
+                            "top": 492,
+                            "width": 297,
+                            "height": 77,
+                            "image": "477_cottage/l3.png"
+                        }, 477);
+                        break;
+                    case "l4":
+                        nav.button({
+                            "type": "btn",
+                            "name": "l4",
+                            "left": 75,
+                            "top": 799,
+                            "width": 297,
+                            "height": 247,
+                            "image": "477_cottage/l4.png"
+                        }, 477);
+                        break;
+                    case "l5":
+                        nav.button({
+                            "type": "btn",
+                            "name": "l5",
+                            "left": 405,
+                            "top": 366,
+                            "width": 101,
+                            "height": 76,
+                            "image": "477_cottage/l5.png"
+                        }, 477);
+                        break;
+                    case "l6":
+                        nav.button({
+                            "type": "btn",
+                            "name": "l6",
+                            "left": 556,
+                            "top": 400,
+                            "width": 84,
+                            "height": 51,
+                            "image": "477_cottage/l6.png"
+                        }, 477);
+                        break;
+                }
+            }
+            break;
+        case "resetsearch":
+            if (g.internal.length > 2) {
+                room477.chatcatch("drawBoxes");
+            }
+            else {
+                nav.bg("477_cottage/c0.jpg");
+                chat(4, 477);
+            }
+            break;
+        case "c1":
+            nav.bg("477_cottage/c1.jpg");
+            break;
+        case "c2":
+            nav.bg("477_cottage/c2.jpg");
+            break;
+        case "c3":
+            cl.nude();
+            nav.bg("477_cottage/c3.jpg");
+            break;
+        case "c4":
+            char.addtime(720);
+            nav.bg("477_cottage/c4.jpg");
+            break;
+        case "c5":
+            char.addtime(720);
+            nav.bg("477_cottage/c5.jpg");
+            break;
+        case "c6":
+            char.addtime(720);
+            nav.bg("477_cottage/c6.jpg");
+            break;
+        case "c7":
+            char.addtime(720);
+            nav.bg("477_cottage/c7.jpg");
+            break;
+        case "c8":
+            char.addtime(720);
+            nav.bg("477_cottage/c8.jpg");
+            break;
+        case "c9":
+            inv.add("envelope");
+            char.addtime(120);
+            gv.set("oncase", null);
+            char.room(460);
+            break;
+        case "cave0":
+            nav.bg("999_phone/black.jpg");
+            break;
+        case "cave1":
+            nav.bg("477_cottage/cave1.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "cave1",
+                "left": 762,
+                "top": 161,
+                "width": 487,
+                "height": 747,
+                "image": "477_cottage/cave1.png"
+            }, 477);
+            break;
+        case "cave2":
+            nav.kill();
+            nav.bg("477_cottage/cave2.jpg");
+            break;
+        case "cave3":
+            char.room(480);
+            break;
         default:
             break;
     }
@@ -340,7 +368,7 @@ room477.chat = function (chatID) {
         {
             chatID: 5,
             speaker: "queen",
-            text: "You're not very convincing. A lost person does not appear in houses.   ",
+            text: "You're not very convincing. A lost person does not appear in houses.",
             button: [
                 { chatID: 6, text: "I... uhh... I... ....", callback: "c2" },
             ]
@@ -429,12 +457,12 @@ room477.chat = function (chatID) {
             speaker: "thinking",
             text: "That looks like a way. I guess I'll have to see where it leads. ",
             button: [
-                { chatID: -1, text: "...", callback: "cave2" },
+                { chatID: 16, text: "...", callback: "cave2" },
             ]
         },
         {
             chatID: 16,
-            speaker: "thinking",
+            speaker: "me",
             text: "AAAaaaaaa ",
             button: [
                 { chatID: -1, text: "...", callback: "cave3" },
@@ -495,7 +523,47 @@ room477.chat = function (chatID) {
                 { chatID: -1, text: "...", callback: "" },
             ]
         },
-
+        {
+            chatID: 23,
+            speaker: "thinking",
+            text: sc.n("p") + " said I need to break in and try to find information. The front door " +
+                "is too obvious, let me see if there's another way in. ",
+            button: [
+                { chatID: -1, text: "[Look around for an open window]", callback: "window" },
+            ]
+        },
+        {
+            chatID: 24,
+            speaker: "thinking",
+            text: "Oh! I came during the day. I should come back at night when she's asleep. ",
+            button: [
+                { chatID: -1, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 25,
+            speaker: "thinking",
+            text: "He looks pissed at me... ",
+            button: [
+                { chatID: -1, text: "...", callback: "resetsearch" },
+            ]
+        },
+        {
+            chatID: 26,
+            speaker: "thinking",
+            text: "That's a lot of sissy pills. I wonder what she's doing with all those.  ",
+            button: [
+                { chatID: -1, text: "...", callback: "resetsearch" },
+            ]
+        },
+        {
+            chatID: 27,
+            speaker: "thinking",
+            text: "That's a lot of food for just one person. ",
+            button: [
+                { chatID: -1, text: "...", callback: "resetsearch" },
+            ]
+        },
         //{
         //    chatID: 13,
         //    speaker: "queen",

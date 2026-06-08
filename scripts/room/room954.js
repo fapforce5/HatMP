@@ -1,7 +1,7 @@
 ﻿//Room name
 var room954 = {};
 room954.main = function () {
-    gv.set("cultescape", g.pass);
+    gv.set("cultEscape", g.pass);
     switch (g.pass) {
         case "escape":
             nav.bg("954_torture/e1.webp");
@@ -141,20 +141,184 @@ room954.chatcatch = function (callback) {
                 chat(58, 954);
             }, 1500);
             break;
-        case "t34":
-            //g.sissy[55].ach = true;
-            //g.sissy[58].ach = true;
-            //g.sissy[59].ach = true;
-            //sc.setstep("missy", 100);
-            //cl.c.swimsuit = null;
-            //cl.c.dress = null;
-            //cl.c.pants = "p";
-            //cl.c.shirt = "j";
-            //cl.display();
-            //char.room(0);
-            //gv.set("oncase", null);
-            //$('#room-menu').show();
-            //$("#room-inv").show();
+        case "restart":
+            if (sc.getMissionTask("lola", "sissy", 6).success) {
+                sc.completeMission("lola", "*wife", false, true);
+                sc.completeMission("lola", "*tom2", false, true);
+                sc.startMission("lola", "*cumdump");
+
+                sc.completeMission("eva", "*student", false, true);
+                sc.startMission("eva", "*cumdump");
+                sc.completeMission("landlord", "*mother", false, true);
+                sc.startMission("landlord", "*cumdump");
+                gv.set("lolapostcult", "cumdump");
+            }
+            else {
+                if (sc.getMission("lola", "sissy").notStarted && sc.getMissionTask("lola", "date", 5).success) {
+                    sc.startMission("lola", "*wife");
+                    sc.completeMission("lola", "*tom2", false, true);
+                    sc.completeMission("lola", "*cumdump", false, true);
+                    gv.set("lolapostcult", "wife");
+                }
+                else {
+                    sc.completeMission("lola", "*wife", false, true);
+                    sc.startMission("lola", "*tom2");
+                    sc.completeMission("lola", "*cumdump", false, true);
+                    gv.set("lolapostcult", "tom");
+                }
+                sc.startMission("eva", "*student");
+                sc.completeMission("eva", "*cumdump", false, true);
+                sc.startMission("landlord", "*mother");
+                sc.completeMission("landlord", "*cumdump", false, true);
+            }
+
+            if (cl.c.cock === 5 && sc.getMission("zoey", "xfriends").notStarted && sc.getMission("zoey", "sex").startedOrComplete) {
+                sc.startMission("zoey", "*wife");
+                sc.completeMission("zoey", "*bff", false, true);
+            }
+            else {
+                sc.completeMission("zoey", "*wife", false, true);
+                sc.startMission("zoey", "*bff");
+            }
+
+            if (sc.getMission("janice", "breakup").startedOrComplete || sc.getMission("janice", "datr").startedOrSuccess) {
+                sc.startMission("janice", "*boyfriend");
+                sc.completeMission("janice", "*doggy", false, true);
+                sc.completeMission("janice", "*cuck", false, true);
+            }
+            else if (sc.getMissionTask("janice", "dog-x", 3).startedOrComplete) {
+                sc.completeMission("janice", "*boyfriend", false, true);
+                sc.startMission("janice", "*doggy");
+                sc.completeMission("janice", "*cuck", false, true);
+            }
+            else {
+                sc.completeMission("janice", "*boyfriend", false, true);
+                sc.completeMission("janice", "*doggy", false, true);
+                sc.startMission("janice", "*cuck");
+            }
+
+            if (missy.cases[19].success) {
+                sc.completeMissionTopLevelOnly("rachel", "horse");
+                sc.completeMissionTopLevelOnly("rachel", "milk");
+                sc.completeMissionTopLevelOnly("rachel", "ranch");
+                sc.completeMissionTopLevelOnly("kinsey", "milk");
+                sc.completeMissionTopLevelOnly("kinsey", "ranch");
+                //sc.completeMissionTopLevelOnly("horse", "sex"); --keep this for progression
+                sc.startMission("kinsey", "*post");
+            }
+            else {
+                //maybe do nothing.
+            }
+
+            sc.completeMissionTopLevelOnly("lola", "talk");
+            sc.completeMissionTopLevelOnly("lola", "massage");
+            sc.completeMissionTopLevelOnly("lola", "games");
+            sc.completeMissionTopLevelOnly("lola", "date");
+            sc.completeMissionTopLevelOnly("lola", "sissy");
+            sc.completeMissionTopLevelOnly("lola", "tom");
+            sc.completeMissionTopLevelOnly("eva", "talk");
+            sc.completeMissionTopLevelOnly("eva", "massage");
+            sc.completeMissionTopLevelOnly("eva", "games");
+            sc.completeMissionTopLevelOnly("eva", "fuck");
+            sc.completeMissionTopLevelOnly("eva", "sissy");
+            sc.completeMissionTopLevelOnly("eva", "teach");
+            sc.completeMissionTopLevelOnly("landlord", "talk");
+            sc.completeMissionTopLevelOnly("landlord", "spermbank");
+            sc.completeMissionTopLevelOnly("landlord", "man");
+            sc.completeMissionTopLevelOnly("landlord", "sissy");
+            sc.completeMissionTopLevelOnly("bigguy", "straight");
+            sc.completeMissionTopLevelOnly("bigguy", "rent");
+            sc.completeMissionTopLevelOnly("bigguy", "sissy");
+            sc.completeMissionTopLevelOnly("zoey", "friends");
+            sc.completeMissionTopLevelOnly("zoey", "cheating");
+            sc.completeMissionTopLevelOnly("zoey", "sex");
+            sc.completeMissionTopLevelOnly("stormy", "property");
+            sc.completeMissionTopLevelOnly("chad", "membership");
+            sc.completeMissionTopLevelOnly("g", "workout");
+            sc.completeMissionTopLevelOnly("g", "spar");
+            sc.completeMissionTopLevelOnly("g", "secret");
+            sc.completeMissionTopLevelOnly("janice", "date");
+            sc.completeMissionTopLevelOnly("janice", "femdom");
+            sc.completeMissionTopLevelOnly("janice", "webcam");
+            sc.completeMissionTopLevelOnly("janice", "datr");
+            sc.completeMissionTopLevelOnly("janice", "dog-x");
+            sc.completeMissionTopLevelOnly("dog", "vacation");
+            sc.completeMissionTopLevelOnly("envy", "meet");
+            sc.completeMissionTopLevelOnly("envy", "hypno");
+            sc.completeMissionTopLevelOnly("envy", "hucow");
+            sc.completeMissionTopLevelOnly("envy", "gf");
+            sc.completeMissionTopLevelOnly("envy", "breakup");
+            sc.completeMissionTopLevelOnly("spanky", "hypno");
+            sc.completeMissionTopLevelOnly("tiffany", "friend");
+            sc.completeMissionTopLevelOnly("candy", "cuck");
+            sc.completeMissionTopLevelOnly("candy", "cheer");
+            sc.completeMissionTopLevelOnly("cop", "bitch");
+            sc.completeMissionTopLevelOnly("philbert", "bully");
+            sc.completeMissionTopLevelOnly("philbert", "barn");
+            sc.completeMissionTopLevelOnly("cecilia", "gloryhole");
+            sc.completeMissionTopLevelOnly("bimbo", "fuck");
+            sc.completeMissionTopLevelOnly("raven", "bitch");
+            sc.completeMissionTopLevelOnly("ppgirl", "pp");
+            sc.completeMissionTopLevelOnly("ppgirl", "ranch");
+            
+            sc.completeMissionTopLevelOnly("black", "punish");
+            sc.completeMissionTopLevelOnly("black", "talent");
+            sc.completeMissionTopLevelOnly("p", "pink");
+            sc.completeMissionTopLevelOnly("construction", "sex");
+            sc.completeMissionTopLevelOnly("holly", "bar");
+            sc.completeMissionTopLevelOnly("holly", "case");
+            sc.completeMissionTopLevelOnly("holly", "happy");
+            sc.completeMissionTopLevelOnly("holly", "mad");
+            sc.completeMissionTopLevelOnly("dolly", "case");
+            sc.completeMissionTopLevelOnly("dolly", "happy");
+            sc.completeMissionTopLevelOnly("dolly", "mad");
+            sc.completeMissionTopLevelOnly("molly", "case");
+            sc.completeMissionTopLevelOnly("molly", "happy");
+            sc.completeMissionTopLevelOnly("molly", "mad");
+            sc.completeMissionTopLevelOnly("jeffery", "work");
+            sc.completeMissionTopLevelOnly("jeffery", "cult");
+            sc.completeMissionTopLevelOnly("orchid", "slut");
+            sc.completeMissionTopLevelOnly("river", "bully");
+            sc.completeMissionTopLevelOnly("tina", "cat");
+            sc.completeMissionTopLevelOnly("cindy", "fuck");
+            sc.completeMissionTopLevelOnly("tim", "fuck");
+            sc.completeMissionTopLevelOnly("stacy", "cheer");
+            sc.completeMissionTopLevelOnly("chuck", "fuck");
+            sc.completeMissionTopLevelOnly("kei", "cards");
+            sc.completeMissionTopLevelOnly("jimmy", "cards");
+            sc.completeMissionTopLevelOnly("ralph", "room");
+            sc.completeMissionTopLevelOnly("ralph", "cards");
+            sc.completeMissionTopLevelOnly("ralph", "cult");
+            sc.completeMissionTopLevelOnly("ralphsmom", "room");
+            sc.completeMissionTopLevelOnly("ralphsmom", "book");
+            sc.completeMissionTopLevelOnly("ralphsdad", "main");
+            sc.completeMissionTopLevelOnly("jones", "invite");
+            sc.completeMissionTopLevelOnly("bitch", "bitch");
+            sc.completeMissionTopLevelOnly("chef", "chef");
+            sc.completeMissionTopLevelOnly("dr", "meet");
+            sc.completeMissionTopLevelOnly("dr", "cult");
+            sc.completeMissionTopLevelOnly("priest", "confession");
+            sc.completeMissionTopLevelOnly("liam", "date");
+            sc.completeMissionTopLevelOnly("martha", "sissy");
+            sc.completeMissionTopLevelOnly("security", "ranch");
+            sc.completeMissionTopLevelOnly("elijah", "elijah");
+            sc.completeMissionTopLevelOnly("elijah", "betray");
+            sc.completeMissionTopLevelOnly("lead", "ranch");
+            sc.completeMissionTopLevelOnly("daria", "cabin");
+            sc.completeMissionTopLevelOnly("daria", "cult");
+            sc.completeMissionTopLevelOnly("bodhi", "cult");
+            sc.completeMissionTopLevelOnly("bodhi", "escape");
+
+            missy.set("activeCase", -1);
+            missy.set("activeCaseComplete", 0);
+            missy.set("reusableCaseCounter", 0);
+
+            $('#room-menu').show();
+            $("#room-inv").show();
+            g.map = null;
+            g.pass = null;
+            gv.set("map", 2);
+            char.room(0);
             break;
         default:
             break;

@@ -1,20 +1,31 @@
 ﻿//Room name
 var room479 = {};
 room479.main = function () {
-    g.internal = { arrive: g.dt, talkList: new Array(), amputee: 0, secretPath: 0, tod: 1, single: null };
-
-    room480.chatcatch("settod");
-    var btnList = [
-        {
-            "type": "btn",
-            "name": "left",
-            "left": 53,
-            "top": 118,
-            "width": 166,
-            "height": 533,
-            "image": "479_hall/left.png"
-        },
-        {
+    let l479 = 0;
+    let loop0479 = future.get("loop0479") > -1;
+    let loop0479a = future.get("loop0479a") > -1;
+    if (!loop0479 && !loop0479a) {
+        future.add("loop0479", 3);
+    }
+    else if (loop0479) {
+        future.kill("loop0479");
+        future.add("loop0479a", 3);
+        l479 = 1;
+    }
+    else {
+        future.kill("loop0479a");
+        l479 = 2;
+    }
+    nav.button({
+        "type": "btn",
+        "name": "left",
+        "left": 53,
+        "top": 118,
+        "width": 166,
+        "height": 533,
+        "image": "479_hall/left.png"
+    }, 479);
+    nav.button({
             "type": "btn",
             "name": "right",
             "left": 1660,
@@ -22,8 +33,8 @@ room479.main = function () {
             "width": 260,
             "height": 594,
             "image": "479_hall/right.png"
-        },
-        {
+    }, 479);
+        nav.button({
             "type": "btn",
             "name": "up",
             "left": 1160,
@@ -31,18 +42,9 @@ room479.main = function () {
             "width": 261,
             "height": 178,
             "image": "479_hall/up.png"
-        },
-        
-    ];
-
-    var navList = [478, 480, 481];
-    $.each(btnList, function (i, v) {
-        nav.button(v, 479);
-    });
-    nav.buildnav(navList);
-
-    room480.displaychar([
-        {
+        }, 479);
+    if (!g.isNight() ) {
+        nav.button({
             "type": "img",
             "name": "bggirls",
             "left": 699,
@@ -50,51 +52,63 @@ room479.main = function () {
             "width": 357,
             "height": 235,
             "image": "479_hall/bggirls.png",
-            "tod": [1, 2, 3]
-        },
-        {
-            "type": "btn",
-            "name": "ledge",
-            "left": 631,
-            "top": 293,
-            "width": 85,
-            "height": 247,
-            "image": "479_hall/high.png",
-            "tod": [1, 3]
-        },
-        {
-            "type": "btn",
-            "name": "amputee",
-            "left": 441,
-            "top": 485,
-            "width": 378,
-            "height": 406,
-            "image": "479_hall/amputee.png",
-            "tod": [1]
-        },
-        {
-            "type": "btn",
-            "name": "bj",
-            "left": 741,
-            "top": 516,
-            "width": 616,
-            "height": 627,
-            "image": "479_hall/bj.png",
-            "tod": [1]
-        },
-        {
-            "type": "btn",
-            "name": "dance",
-            "left": 712,
-            "top": 76,
-            "width": 432,
-            "height": 661,
-            "image": "479_hall/dance.png",
-            "tod": [2]
-        },
+        }, 479);
+    }
+    switch (l479) {
+        case 0:
+            nav.button({
+                "type": "btn",
+                "name": "ledge",
+                "left": 631,
+                "top": 293,
+                "width": 85,
+                "height": 247,
+                "image": "479_hall/high.png",
+            }, 479);
 
-        
-    ]);
+            nav.button({
+                "type": "btn",
+                "name": "amputee",
+                "left": 441,
+                "top": 485,
+                "width": 378,
+                "height": 406,
+                "image": "479_hall/amputee.png",
+            }, 479);
+            nav.button({
+                "type": "btn",
+                "name": "bj",
+                "left": 741,
+                "top": 516,
+                "width": 616,
+                "height": 627,
+                "image": "479_hall/bj.png",
+            }, 479);
+            break;
+        case 1:
+            nav.button({
+                "type": "btn",
+                "name": "dance",
+                "left": 710,
+                "top": 48,
+                "width": 429,
+                "height": 674,
+                "image": "479_hall/dance.png",
+            }, 479);
+            break;
+        default:
+            nav.button({
+                "type": "btn",
+                "name": "ledge",
+                "left": 631,
+                "top": 293,
+                "width": 85,
+                "height": 247,
+                "image": "479_hall/high.png",
+            }, 479);
+            break;
+    }
+    nav.buildnav([480, 478, 479, 481, 482]);
 };
 
 room479.btnclick = function (name) {
@@ -111,8 +125,12 @@ room479.btnclick = function (name) {
         case "bj":
             nav.killall();
             nav.bg("479_hall/bj0.jpg");
-            if (!g.internal.talkList.includes("bj"))
-                chat(0, 479);
+            if (sc.getMissionTask("a", "info", 8).notStarted) {
+                if (cl.c.cock === 5)
+                    chat(37, 479);
+                else
+                    chat(0, 479);
+            }
             else
                 chat(11, 479);
             break;
@@ -129,13 +147,16 @@ room479.btnclick = function (name) {
         case "amputee":
             nav.killall();
             nav.bg("479_hall/amputee.jpg");
-            if (g.internal.amputee === 0)
+            if (sc.getMission("amputee", "chat").notStarted) {
+                sc.startMission("amputee", "chat");
+                sc.completeMissionTask("amputee", "chat", 0);
                 chat(14, 479);
-            else if (g.internal.amputee === 1)
+            }
+            else if (sc.taskGetStep("amputee", "chat") === 1)
                 chat(19, 479);
-            else if (g.internal.amputee === 2)
+            else if (sc.taskGetStep("amputee", "chat") === 2)
                 chat(20, 479);
-            else if (g.internal.amputee === 3)
+            else if (sc.taskGetStep("amputee", "chat") === 3)
                 chat(21, 479);
             else 
                 chat(13, 479);
@@ -149,10 +170,7 @@ room479.btnclick = function (name) {
                 chat(32, 479);
             break;
         case "dance":
-            if (!g.internal.talkList.includes("dance"))
-                chat(33, 479);
-            else
-                chat(9999, 479);
+            chat(33, 479);
             break;
         default:
             break;
@@ -171,9 +189,10 @@ room479.chatcatch = function (callback) {
         case "bj5":
             gv.mod("receiveOralFemale", 1);
             cl.doCum("false");
-            if (!g.internal.talkList.includes("bj"))
-                g.internal.talkList.push("bj");
-            room480.chatcatch("incrementtod");
+            levels.gotbj("n", "!girl");
+            if (sc.getMissionTask("a", "info", 8).notStarted)
+                sc.completeMissionTask("a", "info", 8);
+            char.addtime(30);
             char.room(479);
             break;
         case "bj2x":
@@ -201,25 +220,27 @@ room479.chatcatch = function (callback) {
             char.room(479);
             break;
         case "amputee0":
-            room480.chatcatch("incrementtod");
-            g.internal.amputee = 1;
+            char.addtime(20);
+            sc.completeMissionTask("amputee", "chat", 0);
             char.room(479);
             break;
         case "amputee1":
-            room480.chatcatch("incrementtod");
-            g.internal.amputee = 2;
+            char.addtime(20);
+            sc.completeMissionTask("amputee", "chat", 1);
             char.room(479);
             break;
         case "amputee2":
-            room480.chatcatch("incrementtod");
-            g.internal.amputee = 3;
+            char.addtime(20);
+            sc.completeMissionTask("amputee", "chat", 2);
             char.room(479);
             break;
         case "amputee3":
-            if (!g.internal.talkList.includes("amputee"))
-                g.internal.talkList.push("amputee");
-            room480.chatcatch("incrementtod");
-            g.internal.amputee = 4;
+            if (sc.getMissionTask("a", "info", 5).notStarted) {
+                sc.completeMissionTask("a", "info", 5);
+                sc.completeMissionTask("amputee", "chat", 3);
+                sc.completeMission("amputee", "chat");
+            }
+            char.addtime(20);
             char.room(479);
             break;
         case "ledge0":
@@ -229,18 +250,19 @@ room479.chatcatch = function (callback) {
             break;
         case "dance1":
             nav.killall();
-            nav.killbutton("dance");
             cl.nude();
+            nav.killbutton("dance");
             cl.c.panties = cl.cTemp.panties;
             cl.display();
+            var panties479 = cl.c.panties === null ? "" : "_c";
             nav.button({
                 "type": "btn",
                 "name": "dance",
-                "left": 712,
-                "top": 49,
-                "width": 432,
-                "height": 688,
-                "image": "479_hall/dance1.png",
+                "left": 710,
+                "top": 48,
+                "width": 429,
+                "height": 674,
+                "image": "479_hall/dance_" + gender.pronoun("f") + panties479 + ".webp",
             }, 479);
             break;
         default:
@@ -280,7 +302,7 @@ room479.chat = function (chatID) {
             chatID: 3,
             speaker: "random",
             text: "Feel her tongue flicking right at the base of you dick? Really soft and playful. Hard to hold " +
-                "back with your head bobbing against her throat. ",
+                "back and orgasm with your dick head sliding in and out of her throat. ",
             button: [
                 { chatID: 4, text: "OOooohhhh fffffff", callback: "bj4" },
             ]
@@ -383,7 +405,7 @@ room479.chat = function (chatID) {
         },
         {
             chatID: 14,
-            speaker: "random",
+            speaker: "amputee",
             text: "Yeah?",
             button: [
                 { chatID: 15, text: "I was just going around talking to people. ", callback: "" },
@@ -391,7 +413,7 @@ room479.chat = function (chatID) {
         },
         {
             chatID: 15,
-            speaker: "random",
+            speaker: "amputee",
             text: "oh",
             button: [
                 { chatID: 16, text: "So.. uh what happened to your legs?", callback: "" },
@@ -400,7 +422,7 @@ room479.chat = function (chatID) {
         },
         {
             chatID: 16,
-            speaker: "random",
+            speaker: "amputee",
             text: "Normally people start a conversation with a 'hello, how are you', but you go stright to my legs. ",
             button: [
                 { chatID: 17, text: "Oh. Hello. How are you? ", callback: "" },
@@ -408,7 +430,7 @@ room479.chat = function (chatID) {
         },
         {
             chatID: 17,
-            speaker: "random",
+            speaker: "amputee",
             text: "Fine. ",
             button: [
                 { chatID: 18, text: "Sooooo. About your leg? ", callback: "" },
@@ -416,7 +438,7 @@ room479.chat = function (chatID) {
         },
         {
             chatID: 18,
-            speaker: "random",
+            speaker: "amputee",
             text: "I've got to go. Maybe I'll find someone that knows how to talk to a guy. ",
             button: [
                 { chatID: -1, text: "oh. sorry. ", callback: "amputee0" },
@@ -448,7 +470,7 @@ room479.chat = function (chatID) {
         },
         {
             chatID: 22,
-            speaker: "random",
+            speaker: "amputee",
             text: "You're persistent. I guess you want to know what happened to my legs. ",
             button: [
                 { chatID: 23, text: "I sure do. ", callback: "" },
@@ -456,7 +478,7 @@ room479.chat = function (chatID) {
         },
         {
             chatID: 23,
-            speaker: "random",
+            speaker: "amputee",
             text: "It's funny, before the cult crushed my legs no one would just come up to me and talk to me. " +
                 "Now that my legs are all fucked up that's all everyone wants to talk about. Did you know I was " +
                 "a wilderness guide and survival expert? I've trained hundereds of people who to get out of " +
@@ -467,7 +489,7 @@ room479.chat = function (chatID) {
         },
         {
             chatID: 24,
-            speaker: "random",
+            speaker: "amputee",
             text: "Of course you didn't, because you were so fixated on my legs. No one wants a wilderness guide " +
                 "that can't even walk. The cult may have given me a great set of tits, but they took away my " +
                 "purpose. ",
@@ -477,7 +499,7 @@ room479.chat = function (chatID) {
         },
         {
             chatID: 25,
-            speaker: "random",
+            speaker: "amputee",
             text: "You know what's better than a prosthetic leg? My real leg. This place is stupid. The cult is " +
                 "stuipd. I'm done talking. Once my other leg is healed up I plan on getting out of here and " +
                 "hiding in the forest. so I don't have to have stupid converstations with people. ",
@@ -556,7 +578,7 @@ room479.chat = function (chatID) {
         },
         {
             chatID: 34,
-            speaker: "random",
+            speaker: "!girl",
             text: "Strip down to your panties and get up here and dance bitch!",
             button: [
                 { chatID: 35, text: "I don't know. I'm not that good of a dancer..", callback: "" },
@@ -564,11 +586,65 @@ room479.chat = function (chatID) {
         },
         {
             chatID: 35,
-            speaker: "random",
+            speaker: "!girl",
             text: "No one cares. We're all terrible. Just get up here and have fun!",
             button: [
-                { chatID: -1, text: "Strip down and Go Dance!", callback: "dance1" },
+                { chatID: 36, text: "Strip down and Go Dance!", callback: "dance1" },
                 { chatID: -1, text: "Maybe next time", callback: "reset" },
+            ]
+        },
+        {
+            chatID: 36,
+            speaker: "!girl",
+            text: "Isn't this better than walking around! Wooo! In here you can just have fun, not care " +
+                "about all the stupid of out there! Woooo hooo!",
+            button: [
+                { chatID: -1, text: "So much fun!", callback: "reset" },
+            ]
+        },
+        {
+            chatID: 37,
+            speaker: "random",
+            text: "Hey stranger! I'd ask for a blow job, but it's going to take me a few minutes to get it " +
+                "hard again!",
+            button: [
+                { chatID: 38, text: "Oh, no, I was just..", callback: "bj1" }
+            ]
+        },
+        {
+            chatID: 38,
+            speaker: "random",
+            text: "Oh! you your pussy licked? I don't do that, but my slave does! Slave eat her pussy!",
+            button: [
+                { chatID: 39, text: "Well ok! ", callback: "bj2" },
+                { chatID: 5, text: "I'm just here to ask some questions. ", callback: "bj0" },
+            ]
+        },
+        {
+            chatID: 39,
+            speaker: "random",
+            text: "You're going to love her tongue. ",
+            button: [
+                { chatID: 40, text: "MMmmmm", callback: "bj3" },
+            ]
+        },
+        {
+            chatID: 40,
+            speaker: "random",
+            text: "Feel her tongue flicking under your hood, right into your clit? Really soft and playful. Hard to hold " +
+                "back with her crazy tongue flicking action. ",
+            button: [
+                { chatID: 4, text: "OOooohhhh fffffff", callback: "bj4" },
+            ]
+        },
+        {
+            chatID: 4,
+            speaker: "random",
+            text: "She was so terrible when she got here. I had to hold her by her ears and correct years of bad " +
+                "training. But as you can see with your girl cum running down her throat, she has nearly perfected the " +
+                "oral. ",
+            button: [
+                { chatID: 5, text: "Oh Yeah!", callback: "bj0" },
             ]
         },
     ];

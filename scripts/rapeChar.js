@@ -2636,7 +2636,28 @@
         if (location !== null) {
             retVar = retVar.filter(item => item.location.includes(location));
         }
-          num = g.rand(0, retVar.length);
+        let encM = gv.get("encM");
+        let encF = gv.get("encF");
+        let encBeast = gv.get("encBeast");
+        let encMyth = gv.get("encMyth");
+        
+        if (!encMyth)
+            retVar = retVar.filter(item => !item.t.includes("plant"));
+        if (!encBeast) {
+            retVar = retVar.filter(item => !item.t.includes("duowolf"));
+            retVar = retVar.filter(item => !item.t.includes("wolf"));
+        }
+        if (!encM) {
+            const filteredList = retVar.filter(item => !item.gender.includes("m") || item.t.includes("futa"));
+            if (filteredList.length > 0)
+                retVar = retVar.filter(item => !item.gender.includes("m") || item.t.includes("futa"));
+        }
+        if (!encF) {
+            const filteredList = retVar.filter(item => !item.gender.includes("f") || item.t.includes("futa"));
+            if (filteredList.length > 0)
+                retVar = retVar.filter(item => !item.gender.includes("f") || item.t.includes("futa"));
+        }
+        num = g.rand(0, retVar.length);
     }
     
     return retVar[num];

@@ -4,6 +4,10 @@ room10.main = function () {
     if (inv.has("tifgift")) {
         chat(36, 10);
     }
+    else if (cl.c.cock === 5 && !gv.get("playWithPussy")) {
+        gv.set("playWithPussy");
+        chat(47, 10);
+    }
     else {
         $('.room-topper').show();
         room10.btnclick("drawRoom");
@@ -900,6 +904,15 @@ room10.chat = function (chatID) {
                 text: "I'm such a bimbo brain! I'm not wearing heels",
                 button: [
                     { chatID: -1, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 47,
+                speaker: "thinking",
+                text: "Finally! Home alone. Now I have time to explore my new vagina! ",
+                button: [
+                    { chatID: -1, text: "Explore new vagina [to do]", callback: "" },
+                    { chatID: -1, text: "Naw. I don't need to do that. ", callback: "reset" },
                 ]
             },
         ];

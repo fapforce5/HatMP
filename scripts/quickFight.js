@@ -22,12 +22,15 @@ var room1002 = {};
 //also need inside character's head / I'm in so much pain / I'm so horny / please don't based on user input
 
 quickFight.getStats = function (enemyFightLevel, enemyEnergy = 100) {
+    let energy = gv.get("energy");
+    if (energy > 120)
+        energy = 120;
     if (enemyEnergy < 1)
         enemyFightLevel = 0;
     else
         enemyFightLevel = Math.round(enemyFightLevel * (enemyEnergy / 100));
     var punchPower = levels.get("strength").l;
-    var energyMult = parseFloat(gv.get("energy") / 100).toFixed(2);
+    var energyMult = parseFloat(energy / 100).toFixed(2);
     var total = Math.round((punchPower) * energyMult);
 
     return { punchPower: punchPower, energyMult: energyMult, total: total, enemyFightLevel: enemyFightLevel, winProb: quickFight.getProb(enemyFightLevel, total).txt };

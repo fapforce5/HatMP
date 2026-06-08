@@ -722,6 +722,8 @@ zcl.bjpov = function (top, left, ratio, mod, reverse) {
     else {
         if (mod.includes("closed"))
             zcl.subDisplay("bj_" + pg + "_closed_" + bjpovdick + ".webp", top, left, ratio, reverse, w, h, f);
+        else if (mod.includes("back"))
+            zcl.subDisplay("bj_" + pg + "_back_" + bjpovdick + ".webp", top, left, ratio, reverse, w, h, f);
         else
             zcl.subDisplay("bj_" + pg + "_open_" + bjpovdick + ".webp", top, left, ratio, reverse, w, h, f);
     }
@@ -741,7 +743,9 @@ zcl.legsup = function (top, left, ratio, mod, reverse, color = "w") {
         face = "open";
 
     let dick = "big";
-    if (!gender.canUseCock()) {
+    if (cl.c.cock === 5)
+        dick = "pussy";
+    else if (!gender.canUseCock()) {
         if (cl.c.chastity !== null)
             dick = "chastity";
         else
@@ -767,6 +771,12 @@ zcl.legsup = function (top, left, ratio, mod, reverse, color = "w") {
         zcl.subDisplay(dick + ".webp", top, left, ratio, reverse, w, h, f);
         return;
     }
+    else if (mod.includes("pussy")) {
+        if (mod.includes("creampie"))
+            dick = "pussy_" + color + "_" + "creampie";
+        else
+            dick = "pussy_" + color;
+    }
     else if (mod.includes("fuck"))
         anus = "fuck_" + color;
     else if (mod.includes("creampie"))
@@ -777,8 +787,15 @@ zcl.legsup = function (top, left, ratio, mod, reverse, color = "w") {
     zcl.subDisplay("body_" + gender.pronoun("f") + "_" + face + ".webp", top, left, ratio, reverse, w, h, f);
     if (mod.includes("sg1"))
         zcl.subDisplay("sg1.webp", top, left, ratio, reverse, w, h, f);
-    zcl.subDisplay(dick + ".webp", top, left, ratio, reverse, w, h, f);
-    zcl.subDisplay(anus + ".webp", top, left, ratio, reverse, w, h, f);
+    if (cl.c.cock === 5) {
+        zcl.subDisplay(anus + ".webp", top, left, ratio, reverse, w, h, f);
+        zcl.subDisplay(dick + ".webp", top, left, ratio, reverse, w, h, f);
+    }
+    else {
+        zcl.subDisplay(dick + ".webp", top, left, ratio, reverse, w, h, f);
+        zcl.subDisplay(anus + ".webp", top, left, ratio, reverse, w, h, f);
+    }
+    
 
 };
 
@@ -867,19 +884,17 @@ zcl.double = function (top, left, ratio, mod, reverse) {
     let w = 2000;
     let h = 1500;
     let f = "double";
-    if (cl.c.chest > 2) 
-        zcl.subDisplay("body_f.png", top, left, ratio, reverse, w, h, f);
-    else
-        zcl.subDisplay("body_m.png", top, left, ratio, reverse, w, h, f);
+    let genderDouble = gender.pronoun("f");
 
-    if (mod === "open" && cl.c.hairLength > 1)
-        zcl.subDisplay("head_open_f.png", top, left, ratio, reverse, w, h, f);
-    else if(mod === "open")
-        zcl.subDisplay("head_open_m.png", top, left, ratio, reverse, w, h, f);
-    else if (cl.c.hairLength > 1)
-        zcl.subDisplay("head_f.png", top, left, ratio, reverse, w, h, f);
-    else
-        zcl.subDisplay("head_m.png", top, left, ratio, reverse, w, h, f);
+    zcl.subDisplay("body_" + genderDouble + ".png", top, left, ratio, reverse, w, h, f);
+
+    if (mod === "open")
+        zcl.subDisplay("head_open_" + genderDouble + ".png", top, left, ratio, reverse, w, h, f);
+    else if (mod === "smile")
+        zcl.subDisplay("head_smile_" + genderDouble + ".png", top, left, ratio, reverse, w, h, f);
+    else 
+        zcl.subDisplay("head_" + genderDouble + ".png", top, left, ratio, reverse, w, h, f);
+    
 };
 
 zcl.hanging = function (top, left, ratio, mod, reverse) {

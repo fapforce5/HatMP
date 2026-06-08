@@ -2,6 +2,10 @@
 var room13 = {};
 
 room13.main = function () {
+    if (gv.get("cultEscape") !== null) {
+        char.room(32);
+        return;
+    }
     g.internal = "";
     var btnList = new Array();
     var lockdrawer = gv.get("lockdrawer");

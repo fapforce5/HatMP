@@ -1,6 +1,28 @@
 ﻿//Room name
 var room480 = {};
 room480.main = function () {
+    if (sc.getMission("a", "hole").notStarted) {
+        nav.button({
+            "type": "btn",
+            "name": "cock2",
+            "left": 1439,
+            "top": 268,
+            "width": 248,
+            "height": 752,
+            "image": "480_throne/s.png"
+        }, 480);
+        nav.button({
+            "type": "btn",
+            "name": "a2",
+            "left": 853,
+            "top": 40,
+            "width": 360,
+            "height": 740,
+            "image": "480_throne/a.png"
+        }, 480);
+
+        return;
+    }
     g.internal = { arrive: g.dt, talkList: new Array(), amputee: 0, secretPath: 0, tod: 1, single: null };
 
     room480.chatcatch("settod");
@@ -60,7 +82,7 @@ room480.main = function () {
                 "image": "480_throne/a.png"
             }, 480);
         }
-        nav.buildnav([478, 479, 481]);
+        nav.buildnav([480, 478, 479, 481, 482]);
     }
 };
 
@@ -73,10 +95,20 @@ room480.btnclick = function (name) {
             chat(1, 480);
             break;
         case "a2":
-            chat(999, 480);
+            if (sc.getMission("a", "hole").notStarted) {
+                chat(1, 480);
+            }
+            else {
+                chat(999, 480);
+            }
             break;
         case "cock2":
-            chat(8, 480);
+            if (sc.getMission("a", "hole").notStarted) {
+                chat(21, 480);
+            }
+            else {
+                chat(8, 480);
+            }
             break;
         case "gaurds":
             chat(20, 480);
@@ -122,8 +154,10 @@ room480.chatcatch = function (callback) {
                 g.internal.tod = 4;
             break;
         case "quest0":
-            g.internal = { arrive: g.dt, talkList: new Array(), amputee: 0, secretPath: 0, tod: 1, single: null };
-            sc.setstep("a", 1);
+            sc.startMission("a", "hole");
+            sc.completeMissionTask("a", "hole", 0);
+            sc.show("a");
+            sc.show("cock");
             char.room(480);
             break;
         case "cg1":
@@ -372,6 +406,14 @@ room480.chat = function (chatID) {
                 text: "None shall pass! ",
                 button: [
                     { chatID: -1, text: "ok", callback: "" },
+                ]
+            },
+            {
+                chatID: 21,
+                speaker: "cock",
+                text: "All new arrivals must first speak with " + sc.n("a") + ". ",
+                button: [
+                    { chatID: -1, text: "...", callback: "" },
                 ]
             },
         ];

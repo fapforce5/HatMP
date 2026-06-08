@@ -9,6 +9,25 @@ room325.main = function () {
             chat(48, 325);
         return;
     }
+    if (sc.getMission("kinsey", "*post").inProgress) {
+        nav.button({
+            "type": "btn",
+            "name": "kinsey",
+            "left": 1053,
+            "top": 119,
+            "width": 331,
+            "height": 961,
+            "image": "325_farm/kinsey.webp"
+        }, 325);
+        if (taskGetStep("kinsey", "*post") < 1) {
+            chat(53, 325);
+        }
+        else {
+            chat(60, 325);
+        }
+        nav.buildnav([0]);
+        return;
+    }
     if (missy.activecase().caseId === 19 && missy.activecase().isComplete) {
         nav.button({
             "type": "img",
@@ -149,6 +168,9 @@ room325.btnclick = function (name) {
             nav.killall();
             nav.bg("325_farm/case3.jpg");
             chat(44, 325);
+            break;
+        case "kinsey":
+            chat(53, 325);
             break;
         default:
             break;
@@ -789,6 +811,86 @@ room325.chat = function (chatID) {
                 "someone buys up this place. ",
             button: [
                 { chatID: -1, text: "...", callback: "leave" }
+            ]
+        },
+        {
+            chatID: 53,
+            speaker: "kinsey",
+            text: "Well stuff my butt with an energy soda! " + sc.n("me") + "! Welcome to my farm.",
+            button: [
+                { chatID: 54, text: "Your farm? How is it your farm?", callback: "" }
+            ]
+        },
+        {
+            chatID: 54,
+            speaker: "kinsey",
+            text: "So I made a break for it when they pulled us all into the forest. Hid under a log for 2 days " +
+                "before I even tried to make my escape. Well you could imagine my suprise when I was spying on the " +
+                "farm and saw that NO ONE was there! Like empty. Well, I saw a cop come up when I ran to him to " +
+                "tell him everything going on here. ",
+            button: [
+                { chatID: 55, text: "Yes", callback: "" }
+            ]
+        },
+        {
+            chatID: 55,
+            speaker: "kinsey",
+            text: "Only I found out that you, you beautiful mother fucker, took them all down. Every last one " +
+                "of them! Well I got to asking around and with everyone in prison and the farm confiscated there " +
+                "wasn't anyone to take care of the animals. The horses were looking pretty rough. ",
+            button: [
+                { chatID: 56, text: "Oh no.", callback: "" }
+            ]
+        },
+        {
+            chatID: 56,
+            speaker: "kinsey",
+            text: "So I had some help from my family, but I'm working on buying the entire farm. Cheap. " +
+                "While it's going through they allowed me to run things and take care of the animals. Now I " +
+                "can make sure what happened to us never happens to anyone else. So the entire thing is mine! ",
+            button: [
+                { chatID: 57, text: "Oh wow! So I see some hucows over there? ", callback: "" }
+            ]
+        },
+        {
+            chatID: 57,
+            speaker: "kinsey",
+            text: "That was the hard part. A lot of the girls are so used to being hucows that they didn't know " +
+                "what to do with their freedom. So I let them stay if they want. Everyone is free to come or go " +
+                "when ever they want. I also started some profit sharing with everyone. It's not alot now, " +
+                "since I now have a big loan, but I'll keep working it so everyone gets their fair share. ",
+            button: [
+                { chatID: 58, text: "That's amazing!", callback: "" }
+            ]
+        },
+        {
+            chatID: 58,
+            speaker: "kinsey",
+            text: "I know. Added bonus is now that I'm the owner I rehired some ranch hands just so I could " +
+                "punch them in the balls whenever I feel like. I didn't want to, but I needed the help. Feel " +
+                "free to punch any ranch hands you see in the balls. If they step out of line, just punch them. " +
+                "It really is fun! ",
+            button: [
+                { chatID: 59, text: "Haha, I will. ", callback: "" }
+            ]
+        },
+        {
+            chatID: 59,
+            speaker: "kinsey",
+            text: "If you ever want to visit or wander around, you can do what ever you want, since we " +
+                "all owe our freedom to you. Think of this as me casa is your farm too. Just ask! ",
+            button: [
+                { chatID: -1, text: "Sweet. Thanks!", callback: "" }
+            ]
+        },
+        {
+            chatID: 60,
+            speaker: "kinsey",
+            text: "What do you want to do? ",
+            button: [
+                { chatID: -1, text: "Get milked!", callback: "" },
+                { chatID: -1, text: "Wander around the barn", callback: "" },
+                { chatID: -1, text: "Nothing. ", callback: "" },
             ]
         },
     ];

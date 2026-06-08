@@ -38,6 +38,7 @@ gv.init = function () {
         { n: "arousal", t: 5, q: "hundred" },
         { n: "xdress", t: false, q: "bool" },
         { n: "shower", t: g.startDate, q: "date" },
+        { n: "cultEscape", t: null, q: "string" }, //null: not started, 
 
         //character
         { n: "map", t: 1, q: "int" },
@@ -53,14 +54,19 @@ gv.init = function () {
         { n: "dildooral", t: 0, q: "int" },
         { n: "beer", t: 0, q: "zero" },
         { n: "sissySchoolDream", t: false, q: "bool" },
+        { n: "playWithPussy", t: false, q: "bool" },
 
         //Settings
-        { n: "fantasyCreatures", t: false, q: "bool" },
+        { n: "encM", t: true, q: "bool" },
+        { n: "encF", t: true, q: "bool" },
+        { n: "encBeast", t: true, q: "bool" },
+        { n: "encMyth", t: true, q: "bool" },
         { n: "fightspeed", t: 1250, q: "int" },
         { n: "difficulty", t: 1, q: "int" }, //0: easy, 1: normal, 2: hard
         { n: "clock24", t: "12", q: "string" },
         { n: "cheatMode", t: false, q: "bool" },
-        { n: "transformation", t: "voluntary", q: "string" },
+        { n: "transformation", t: "voluntary", q: "string" }, //voluntary, voluntaryoff, forced
+        { n: "pronouns", t: "a", q: "string" },
         { n: "breastSelect", t: 0, q: "int" },
         { n: "assSelect", t: 0, q: "int" },
         { n: "multiPlayThrough", t: false, q: "bool" },
@@ -79,6 +85,7 @@ gv.init = function () {
 
         //lola / eva
         { n: "lockdrawer", t: false, q: "bool" },
+        { n: "lolapostcult", t: null, q: "string" },
 
         //ralph
         { n: "ralphcycle", t: -1, q: "int" },
@@ -118,6 +125,8 @@ gv.init = function () {
         { n: "analCumHorse", t: 0, q: "int" },
         { n: "analCumPig", t: 0, q: "int" },
         { n: "analCumPlant", t: 0, q: "int" },
+
+        { n: "pussyCum", t: 0, q: "int" },
 
         { n: "jobConstructionPay", t: 0, q: "zero" },
         { n: "forbotenLove", t: 0, q: "zero" },
@@ -193,7 +202,6 @@ gv.init = function () {
         { n: "cultCumJob", t: 0, q: "int" }, //1, 2 setup, 3 sweep
         { n: "cultdog", t: 0, q: "int" },
         { n: "cultdouble", t: 0, q: "int" },
-        { n: "cultescape", t: "", q: "string" },
         { n: "cultwhip", t: 0, q: "int" },
 
         //magazine
@@ -863,6 +871,17 @@ gv.getButtCum = function () {
     };
 };
 
+gv.getPussyCum = function () {
+    return {
+        human: 0,
+        dog: 0,
+        horse: 0,
+        pig: 0,
+        cumType: null,
+        total: 0
+    };
+}
+
 gv.clearButtCum = function () {
     for (i = 0; i < gv.st.length; i++) {
         if (gv.st[i].n === "analCum") {
@@ -879,7 +898,25 @@ gv.clearButtCum = function () {
         }
     }
     cl.display();
-}
+};
+
+gv.clearPussyCum = function () {
+    //for (i = 0; i < gv.st.length; i++) {
+    //    if (gv.st[i].n === "analCum") {
+    //        gv.st[i].t = 0;
+    //    }
+    //    else if (gv.st[i].n === "analCumDog") {
+    //        gv.st[i].t = 0;
+    //    }
+    //    else if (gv.st[i].n === "analCumHorse") {
+    //        gv.st[i].t = 0;
+    //    }
+    //    else if (gv.st[i].n === "analCumPig") {
+    //        gv.st[i].t = 0;
+    //    }
+    //}
+    //cl.display();
+};
 
 levels.set = function (name, c, l) {
     let i = levels.i(name);
@@ -1895,6 +1932,68 @@ levels.piss = function (drankpiss, analpiss, pissedon, gender, who = null) {
     }
 }
 
+levels.fuckedinpussy = function (orgasm = false, gender = null, creampie = false, who = null, beast = null) {
+    if (orgasm) {
+        cl.doCum(false);
+    }
+    else {
+        gv.mod("arousal", 30);
+    }
+
+    if (gender !== null) {
+        daily.set("fameEventHypno");
+    }
+
+    if (creampie) {
+        levels.mod("cum", 25);
+        sex.mod("creampie", gender, who);
+        gv.mod("pussyCum", 1);
+        //if (beast === null) {
+        //    gv.mod("analCum", 1);
+        //}
+        //else if (beast === "dog") {
+        //    gv.mod("analCumDog", 1);
+        //}
+        //else if (beast === "horse") {
+        //    gv.mod("analCumHorse", 1);
+        //}
+        //else if (beast === "pig") {
+        //    gv.mod("analCumPig", 1);
+        //}
+        //if (gv.getButtCum().total === 1) //only fire off on the first instance of cream pie
+        //    cl.display();
+    }
+
+    if (beast !== null) {
+        sex.mod(beast, "m", who);
+        levels.mod("beast", 50);
+        //switch (beast) {
+        //    case "dog": gv.mod("analCumDog", 1); break;
+        //    case "horse": gv.mod("analCumHorse", 1); break;
+        //    case "pig": gv.mod("analCumPig", 1); break;
+        //    case "vines": gv.mod("analCumPlant", 1); break;
+        //}
+    }
+
+    if (gender !== null) {
+        sex.mod("fuckedinpussy", gender, who);
+
+        //let totalAnal = sex.st[2].ent[0].c + sex.st[2].ent[1].c + sex.st[2].ent[2].c;
+        //if (totalAnal > 0)
+        //    trophy.add(15);
+        //if (totalAnal > 10)
+        //    trophy.add(16);
+        //if (totalAnal > 50)
+        //    trophy.add(17);
+        //if (totalAnal > 100)
+        //    trophy.add(18);
+        //if (totalAnal > 500)
+        //    trophy.add(19);
+        //if (size > 6)
+        //    trophy.add(25);
+    }
+};
+
 levels.fuckpussy = function (who, gender = "f") {
     cl.doCum(false);
     levels.mod("dick", 20);
@@ -2124,7 +2223,8 @@ gv.load = function (rma, saveVersion) {
     
     if (typeof rma.trophy !== 'undefined') {
         for (i = 0; i < rma.trophy.length; i++) {
-            trophy.st[rma.trophy[i]].ach = true;
+            if (Number.isInteger(rma.trophy[i]))
+                trophy.st[rma.trophy[i]].ach = true;
         }
     }
 

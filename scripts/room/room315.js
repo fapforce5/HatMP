@@ -48,6 +48,35 @@ room315.btnclick = function (name) {
                 nav.bg("315_girlfriend/day.jpg", "315_girlfriend/night.jpg");
                 chat(14, 315);
             }
+            else if (gv.get("cultEscape") !== null) {
+                let currentEvent = sc.taskGetStepEndMission("janice");
+                switch (currentEvent.missionName) {
+                    case "*boyfriend":
+                        nav.bg("315_girlfriend/bg.jpg", "315_girlfriend/bg_night.jpg");
+                        nav.button({
+                            "type": "img",
+                            "name": "janice",
+                            "left": 958,
+                            "top": 0,
+                            "width": 728,
+                            "height": 1080,
+                            "image": "315_girlfriend/boyfriend.webp"
+                        }, 315);
+                        if (currentEvent.step < 1) {
+                            sc.completeMissionTask("janice", "*boyfriend", 0);
+                            chat(29, 315);
+                        }
+                        else {
+                            chat(32, 315);
+                        }
+                        break;
+                    case "*doggy":
+                    case "*cuck":
+                        nav.bg("315_girlfriend/day.jpg", "315_girlfriend/night.jpg")
+                        chat(33, 315);
+                        break;
+                }
+            }
             else if (sc.taskGetStep("janice", "femdom") === 1) {
                 sc.completeMissionTask("janice", "femdom", 1);
                 chat(18, 315);
@@ -186,6 +215,9 @@ room315.chatcatch = function (callback) {
             break;
         case "completeBitch3":
             char.room(316);
+            break;
+        case "room323":
+            char.room(323);
             break;
         default:
             break;
@@ -446,6 +478,46 @@ room315.chat = function (chatID) {
             button: [
                 { chatID: -1, text: "Sneak in", callback: "picked" },
                 { chatID: -1, text: "No. That's creepy. ", callback: "reset" },
+            ]
+        },
+        {
+            chatID: 29,
+            speaker: "janice",
+            text: "Hey " + sc.n("me") + "! What are you doing here? ",
+            button: [
+                { chatID: 30, text: "Just thought I would come by. See you wanted to hang out?", callback: "" },
+            ]
+        },
+        {
+            chatID: 30,
+            speaker: "janice",
+            text: "I'm just hanging out with my boyfriend. We were just about to hehehe, you know. hehe ",
+            button: [
+                { chatID: 31, text: "oh", callback: "" },
+            ]
+        },
+        {
+            chatID: 31,
+            speaker: "!bbc",
+            text: "This is the Poindexter you dated? Hahaha. Run along Poindexter, she has a real man now. ",
+            button: [
+                { chatID: -1, text: "ok. Have fun...", callback: "leave" },
+            ]
+        },
+        {
+            chatID: 32,
+            speaker: "!bbc",
+            text: "Thought I told you to fuck off! She got a real man, not some fake like you! ",
+            button: [
+                { chatID: -1, text: "I'm going, I'm going. ", callback: "leave" },
+            ]
+        },
+        {
+            chatID: 33,
+            speaker: "janice",
+            text: "Hey sexy! Come on in! ",
+            button: [
+                { chatID: -1, text: "[Go in]", callback: "room323" },
             ]
         },
     ];

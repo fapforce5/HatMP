@@ -389,6 +389,26 @@ room28.main = function () {
         }
         
     }
+    if (sissy.st[0].ach) {
+        let timg = null;
+        if (trasnformationSetting === "forced") {
+            timg = "trans_auto.webp";
+        }
+        else if (trasnformationSetting === "voluntaryoff") {
+            timg = "trans_off.webp";
+        }
+        if (timg !== null) {
+            nav.button({
+                "type": "zimg",
+                "name": "kill",
+                "left": 1600,
+                "top": 900,
+                "width": 300,
+                "height": 72,
+                "image": "28_transformation/" + timg,
+            }, 28);
+        }
+    }
     room28.endSleepyTime(true);
 };
 
@@ -546,6 +566,7 @@ room28.dreams = function () {
             }, 28);
         }
     }
+    
     //console.log(hasText);
     return hasText;
 };

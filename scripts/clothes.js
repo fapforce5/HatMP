@@ -169,7 +169,6 @@ cl.init = function () {
         { type: "nipple", name: "n_g", display: "Nipple Balls", img: "nipple_bell.png", sex: "f", inv: false, daring: 1, price: 45 },
         { type: "nipple", name: "n_b", display: "Nipple Bondage", img: "nipple_bondage.png", sex: "f", inv: false, daring: 1, price: 50 },
 
-        
         { type: "ear", name: "e_s", display: "Stud Earing", img: "ear_stud.png", sex: "m", inv: false, daring: 0, price: 20 },
         { type: "ear", name: "e_h", display: "Heart Earring", img: "ear_heart.png", sex: "f", inv: false, daring: 2, price: 50 },
         { type: "ear", name: "e_l", display: "Loop Earring", img: "ear_loop.png", sex: "f", inv: false, daring: 4, price: 10 },
