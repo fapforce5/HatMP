@@ -172,15 +172,6 @@ room954.chatcatch = function (callback) {
                 sc.completeMission("landlord", "*cumdump", false, true);
             }
 
-            if (cl.c.cock === 5 && sc.getMission("zoey", "xfriends").notStarted && sc.getMission("zoey", "sex").startedOrComplete) {
-                sc.startMission("zoey", "*wife");
-                sc.completeMission("zoey", "*bff", false, true);
-            }
-            else {
-                sc.completeMission("zoey", "*wife", false, true);
-                sc.startMission("zoey", "*bff");
-            }
-
             if (sc.getMission("janice", "breakup").startedOrComplete || sc.getMission("janice", "datr").startedOrSuccess) {
                 sc.startMission("janice", "*boyfriend");
                 sc.completeMission("janice", "*doggy", false, true);

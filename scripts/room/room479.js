@@ -4,28 +4,40 @@ room479.main = function () {
     let l479 = 0;
     let loop0479 = future.get("loop0479") > -1;
     let loop0479a = future.get("loop0479a") > -1;
-    if (!loop0479 && !loop0479a) {
-        future.add("loop0479", 3);
-    }
-    else if (loop0479) {
-        future.kill("loop0479");
-        future.add("loop0479a", 3);
-        l479 = 1;
+    if (g.isNight()) {
+        nav.button({
+            "type": "btn",
+            "name": "ledge",
+            "left": 631,
+            "top": 293,
+            "width": 85,
+            "height": 247,
+            "image": "479_hall/high.png",
+        }, 479);
     }
     else {
-        future.kill("loop0479a");
-        l479 = 2;
-    }
-    nav.button({
-        "type": "btn",
-        "name": "left",
-        "left": 53,
-        "top": 118,
-        "width": 166,
-        "height": 533,
-        "image": "479_hall/left.png"
-    }, 479);
-    nav.button({
+        if (!loop0479 && !loop0479a) {
+            future.add("loop0479", 3);
+        }
+        else if (loop0479) {
+            future.kill("loop0479");
+            future.add("loop0479a", 3);
+            l479 = 1;
+        }
+        else {
+            future.kill("loop0479a");
+            l479 = 2;
+        }
+        nav.button({
+            "type": "btn",
+            "name": "left",
+            "left": 53,
+            "top": 118,
+            "width": 166,
+            "height": 533,
+            "image": "479_hall/left.png"
+        }, 479);
+        nav.button({
             "type": "btn",
             "name": "right",
             "left": 1660,
@@ -33,7 +45,7 @@ room479.main = function () {
             "width": 260,
             "height": 594,
             "image": "479_hall/right.png"
-    }, 479);
+        }, 479);
         nav.button({
             "type": "btn",
             "name": "up",
@@ -43,70 +55,71 @@ room479.main = function () {
             "height": 178,
             "image": "479_hall/up.png"
         }, 479);
-    if (!g.isNight() ) {
-        nav.button({
-            "type": "img",
-            "name": "bggirls",
-            "left": 699,
-            "top": 462,
-            "width": 357,
-            "height": 235,
-            "image": "479_hall/bggirls.png",
-        }, 479);
-    }
-    switch (l479) {
-        case 0:
+        if (!g.isNight()) {
             nav.button({
-                "type": "btn",
-                "name": "ledge",
-                "left": 631,
-                "top": 293,
-                "width": 85,
-                "height": 247,
-                "image": "479_hall/high.png",
+                "type": "img",
+                "name": "bggirls",
+                "left": 699,
+                "top": 462,
+                "width": 357,
+                "height": 235,
+                "image": "479_hall/bggirls.png",
             }, 479);
+        }
+        switch (l479) {
+            case 0:
+                nav.button({
+                    "type": "btn",
+                    "name": "ledge",
+                    "left": 631,
+                    "top": 293,
+                    "width": 85,
+                    "height": 247,
+                    "image": "479_hall/high.png",
+                }, 479);
 
-            nav.button({
-                "type": "btn",
-                "name": "amputee",
-                "left": 441,
-                "top": 485,
-                "width": 378,
-                "height": 406,
-                "image": "479_hall/amputee.png",
-            }, 479);
-            nav.button({
-                "type": "btn",
-                "name": "bj",
-                "left": 741,
-                "top": 516,
-                "width": 616,
-                "height": 627,
-                "image": "479_hall/bj.png",
-            }, 479);
-            break;
-        case 1:
-            nav.button({
-                "type": "btn",
-                "name": "dance",
-                "left": 710,
-                "top": 48,
-                "width": 429,
-                "height": 674,
-                "image": "479_hall/dance.png",
-            }, 479);
-            break;
-        default:
-            nav.button({
-                "type": "btn",
-                "name": "ledge",
-                "left": 631,
-                "top": 293,
-                "width": 85,
-                "height": 247,
-                "image": "479_hall/high.png",
-            }, 479);
-            break;
+                nav.button({
+                    "type": "btn",
+                    "name": "amputee",
+                    "left": 441,
+                    "top": 485,
+                    "width": 378,
+                    "height": 406,
+                    "image": "479_hall/amputee.png",
+                }, 479);
+                nav.button({
+                    "type": "btn",
+                    "name": "bj",
+                    "left": 741,
+                    "top": 516,
+                    "width": 616,
+                    "height": 627,
+                    "image": "479_hall/bj.png",
+                }, 479);
+                break;
+            case 1:
+                nav.button({
+                    "type": "btn",
+                    "name": "dance",
+                    "left": 710,
+                    "top": 48,
+                    "width": 429,
+                    "height": 674,
+                    "image": "479_hall/dance.png",
+                }, 479);
+                break;
+            default:
+                nav.button({
+                    "type": "btn",
+                    "name": "ledge",
+                    "left": 631,
+                    "top": 293,
+                    "width": 85,
+                    "height": 247,
+                    "image": "479_hall/high.png",
+                }, 479);
+                break;
+        }
     }
     nav.buildnav([480, 478, 479, 481, 482]);
 };
@@ -126,23 +139,34 @@ room479.btnclick = function (name) {
             nav.killall();
             nav.bg("479_hall/bj0.jpg");
             if (sc.getMissionTask("a", "info", 8).notStarted) {
-                if (cl.c.cock === 5)
+                if (sc.getMissionTask("a", "info", 8).notStarted)
+                    sc.completeMissionTask("a", "info", 8);
+                if (cl.c.chastity !== null)
+                    chat(42, 479);
+                else if (cl.c.cock === 5)
                     chat(37, 479);
                 else
                     chat(0, 479);
             }
-            else
-                chat(11, 479);
+            else {
+                if (cl.c.chastity !== null)
+                    chat(45, 479);
+                else if (cl.c.cock === 5)
+                    chat(44, 479);
+                else
+                    chat(11, 479);
+            }
             break;
         case "bj2":
-            if (g.internal.single === 5) {
-                nav.bg("479_hall/bj0.jpg");
+            var bj2vag = cl.c.cock === 5 ? "_v" : "";
+            if (g.internal === 5) {
+                nav.bg("479_hall/bj0" + bj2vag + ".jpg");
                 nav.killbutton("bj2");
                 chat(12, 479);
             }
             else
-                nav.bg("479_hall/bj" + g.internal.single + ".jpg");
-            g.internal.single++;
+                nav.bg("479_hall/bj" + g.internal + bj2vag + ".jpg");
+            g.internal++;
             break;
         case "amputee":
             nav.killall();
@@ -164,10 +188,17 @@ room479.btnclick = function (name) {
         case "ledge":
             nav.killall();
             nav.bg("479_hall/ledge.jpg");
-            if (g.internal.secretPath === 0)
+            if (sc.getMissionTask("a", "secret", 0).notStarted) {
+                if (sc.getMission("a", "secret").notStarted)
+                    sc.startMission("a", "secret");
                 chat(26, 479);
-            else if (g.internal.secretPath === 1)
-                chat(32, 479);
+            }
+            else if (sc.getMissionTask("a", "secret", 0).complete) {
+                if (g.isNight())
+                    chat(46, 479);
+                else
+                    chat(32, 479);
+            }
             break;
         case "dance":
             chat(33, 479);
@@ -184,32 +215,28 @@ room479.chatcatch = function (callback) {
         case "bj2":
         case "bj3":
         case "bj4":
+        case "bj2_v":
+        case "bj3_v":
+        case "bj4_v":
+        case "bj0_v":
             nav.bg("479_hall/" + callback + ".jpg");
             break;
         case "bj5":
-            gv.mod("receiveOralFemale", 1);
-            cl.doCum("false");
             levels.gotbj("n", "!girl");
-            if (sc.getMissionTask("a", "info", 8).notStarted)
-                sc.completeMissionTask("a", "info", 8);
             char.addtime(30);
             char.room(479);
             break;
         case "bj2x":
-            nav.bg("479_hall/bj2.jpg");
-            g.internal.single = 3;
-            nav.button({
-                "type": "btn",
-                "name": "bj2",
-                "left": 1650,
-                "top": 785,
-                "width": 232,
-                "height": 150,
-                "image": "526_bar/arrowRight.png"
-            }, 479);
+            if (cl.c.cock === 5)
+                nav.bg("479_hall/bj2_v.jpg");
+            else
+                nav.bg("479_hall/bj2.jpg");
+            g.internal = 3;
+            nav.next("bj2");
             break;
         case "bj2x1":
-            room480.chatcatch("incrementtod");
+            levels.gotbj("n", "!girl");
+            char.addtime(30);
             char.room(479);
             break;
         case "reset":
@@ -244,9 +271,17 @@ room479.chatcatch = function (callback) {
             char.room(479);
             break;
         case "ledge0":
-            room480.chatcatch("incrementtod");
-            g.internal.secretPath = 1;
             char.room(479);
+            break;
+        case "ledge1":
+            nav.killall();
+            nav.bg("479_hall/ledge1.webp");
+            if (sc.getMissionTask("a", "secret", 1).complete) {
+
+            }
+            else {
+                chat(47, 479);
+            }
             break;
         case "dance1":
             nav.killall();
@@ -509,7 +544,7 @@ room479.chat = function (chatID) {
         },
         {
             chatID: 26,
-            speaker: "random",
+            speaker: "!ledja",
             text: "Hi you. ",
             button: [
                 { chatID: 27, text: "So what are you doing way up here?", callback: "" },
@@ -517,7 +552,7 @@ room479.chat = function (chatID) {
         },
         {
             chatID: 27,
-            speaker: "random",
+            speaker: "!ledja",
             text: "Just waiting till night time. What are you doing way up here? ",
             button: [
                 { chatID: 28, text: "I came to visit you. ", callback: "" },
@@ -525,7 +560,7 @@ room479.chat = function (chatID) {
         },
         {
             chatID: 28,
-            speaker: "random",
+            speaker: "!ledja",
             text: "Smooth. You just may be what I'm looking for. Are you an obedient sissy? ",
             button: [
                 { chatID: 30, text: "I am very submissive. ", callback: "" },
@@ -535,15 +570,15 @@ room479.chat = function (chatID) {
         },
         {
             chatID: 29,
-            speaker: "random",
+            speaker: "!ledja",
             text: "I guess I was wrong about you. ",
             button: [
-                { chatID: -1, text: "Oh... ", callback: "increment" },
+                { chatID: -1, text: "Oh... ", callback: "reset" },
             ]
         },
         {
             chatID: 30,
-            speaker: "random",
+            speaker: "!ledja",
             text: "That's not what I asked.  ",
             button: [
                 { chatID: -1, text: "Oh... ", callback: "reset" },
@@ -551,7 +586,7 @@ room479.chat = function (chatID) {
         },
         {
             chatID: 31,
-            speaker: "random",
+            speaker: "!ledja",
             text: "Say I am an obedient fuck slut that will do anything anyone tells me. I only live to serve " +
                 "my superiors and their pleasure is what I live for.  ",
             button: [
@@ -562,8 +597,8 @@ room479.chat = function (chatID) {
         },
         {
             chatID: 32,
-            speaker: "random",
-            text: "Good! Meet me in the kitchen after 5 PM, but before bedtime. ",
+            speaker: "!ledja",
+            text: "Good! Meet me here at night, but before midnight. ",
             button: [
                 { chatID: -1, text: "I'll be there! ", callback: "ledge0" },
             ]
@@ -614,9 +649,9 @@ room479.chat = function (chatID) {
         {
             chatID: 38,
             speaker: "random",
-            text: "Oh! you your pussy licked? I don't do that, but my slave does! Slave eat her pussy!",
+            text: "Oh! Do you want your pussy licked? I don't do that, but my slave does! Slave eat her pussy!",
             button: [
-                { chatID: 39, text: "Well ok! ", callback: "bj2" },
+                { chatID: 39, text: "Well ok! ", callback: "bj2_v" },
                 { chatID: 5, text: "I'm just here to ask some questions. ", callback: "bj0" },
             ]
         },
@@ -625,7 +660,7 @@ room479.chat = function (chatID) {
             speaker: "random",
             text: "You're going to love her tongue. ",
             button: [
-                { chatID: 40, text: "MMmmmm", callback: "bj3" },
+                { chatID: 40, text: "MMmmmm", callback: "bj3_v" },
             ]
         },
         {
@@ -634,17 +669,77 @@ room479.chat = function (chatID) {
             text: "Feel her tongue flicking under your hood, right into your clit? Really soft and playful. Hard to hold " +
                 "back with her crazy tongue flicking action. ",
             button: [
-                { chatID: 4, text: "OOooohhhh fffffff", callback: "bj4" },
+                { chatID: 41, text: "OOooohhhh fffffff", callback: "bj4_v" },
             ]
         },
         {
-            chatID: 4,
+            chatID: 41,
             speaker: "random",
             text: "She was so terrible when she got here. I had to hold her by her ears and correct years of bad " +
                 "training. But as you can see with your girl cum running down her throat, she has nearly perfected the " +
                 "oral. ",
             button: [
-                { chatID: 5, text: "Oh Yeah!", callback: "bj0" },
+                { chatID: 5, text: "Oh Yeah!", callback: "bj0_v" },
+            ]
+        },
+        {
+            chatID: 42,
+            speaker: "random",
+            text: "Hey stranger! I'd ask for a blow job, but it's going to take me a few minutes to get it " +
+                "hard again! Do you want a blowie? ",
+            button: [
+                { chatID: 43, text: "Well ok! ", callback: "" },
+                { chatID: 5, text: "I'm just here to ask some questions. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 43,
+            speaker: "random",
+            text: "You're wearing a chastity cage silly! She can't blow you! ",
+            button: [
+                { chatID: 5, text: "Oh duh. Do you mind if I ask some questions? ", callback: "" },
+            ]
+        },
+        {
+            chatID: 44,
+            speaker: "random",
+            text: "So you've come back for a pussy lick? ",
+            button: [
+                { chatID: -1, text: "Yes I have", callback: "bj2x" },
+                { chatID: -1, text: "Nope. Just bored. ", callback: "reset" },
+            ]
+        },
+        {
+            chatID: 45,
+            speaker: "random",
+            text: "I'm getting a blowie. Come back when you're not wearing that dumb cage!",
+            button: [
+                { chatID: -1, text: "Well ok! ", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 46,
+            speaker: "!ledja",
+            text: "Follow me down the path obedient fuck slut that will do anything " +
+                "anyone tells you to do?",
+            button: [
+                { chatID: -1, text: "Follow her", callback: "ledge1" }
+            ]
+        },
+        {
+            chatID: 47,
+            speaker: "me",
+            text: "So where does this lead? ",
+            button: [
+                { chatID: 48, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 48,
+            speaker: "!ledja",
+            text: "Obedient fuck sluts don't talk, they just do. ",
+            button: [
+                { chatID: 49, text: "oh.", callback: "" }
             ]
         },
     ];

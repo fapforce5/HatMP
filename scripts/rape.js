@@ -10,6 +10,7 @@ rape.phaseChange = "";
 rape.phase = 0;
 rape.modifier = "";
 rape.charMessage;
+rape.location;
 rape.phases = [
     { i: 0, n: "Surprise", c: 0 },
     { i: 1, n: "fully clothed only", c: 0 },
@@ -26,6 +27,7 @@ rape.phases = [
 rape.init = function (charNum = null, location = "street", roomId = g.roomID, callback = "") {
     nav.killall();
     inv.hide();
+    rape.location = location;
     rape.phase = 0;
     rape.kickCounter = 1;
     rape.clothingLost = null;
@@ -1519,6 +1521,13 @@ rape.displayMenu = function (menu) {
             }
             
             btnList.push({ n: "next", i: "icon_limp.png" });
+            if (inv.has("pocketsand")) {
+                btnList.push({ n: "icon_pocketsand", i: "icon_pocketsand.png" });
+            }
+            let wovlesId = [4, 5];
+            if (inv.has("horn") && rape.location === "forest" && !wovlesId.includes(rape.char.num)) {
+                btnList.push({ n: "icon_horn", i: "icon_horn.png" });
+            }
             break;
         case "choice":
             var subLevelChoice = levels.get("sub").l;
@@ -1651,6 +1660,9 @@ rape.displayMenu = function (menu) {
             break;
         case "escape":
             btnList.push({ n: "flee", i: "icon_flee.png" });
+            break;
+        case "goodflee":
+            btnList.push({ n: "goodflee", i: "icon_flee.png" });
             break;
         case "phase2":
             btnList.push({ n: "struggle", i: "icon_struggle.png" });
@@ -2026,12 +2038,45 @@ room1004.btnclick = function (name) {
             g.popUpNotice("You escaped!");
             rape.kill();
             break;
+        case "goodflee":
+            g.popUpNotice("You escaped!");
+            rape.kill();
+            break;
         case "struggle":
             nav.killbuttonStartsWith("b1004-");
             rape.rolldice(true);
             break;
         case "kick":
             rape.kick();
+            break;
+        case "icon_pocketsand":
+            inv.use("pocketsand");
+            nav.killbuttonStartsWith("b1004-");
+            nav.button({
+                "type": "img",
+                "name": "r1004bg",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "1004_rape/pocketsand.webp"
+            }, 1004);
+            rape.message("You used your pocket sand and escaped!", "thinking");
+            rape.displayMenu("goodflee");
+            break;
+        case "icon_horn":
+            nav.killbuttonStartsWith("b1004-");
+            nav.button({
+                "type": "img",
+                "name": "r1004bg",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "1004_rape/horn.webp"
+            }, 1004);
+            rape.message("You called the wolves and escaped!", "thinking");
+            rape.displayMenu("goodflee");
             break;
         case "submit":
             if (rape.phase === 0) {

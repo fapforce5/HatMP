@@ -325,9 +325,9 @@ g.rooms = [
     { roomID: 477, name: "Cottage", image: "477_cottage/bg1.jpg", nightImage: "477_cottage/bg1_n.jpg", houseID: 450, btn: "roomBtn_477.png" },
 
     { roomID: 478, name: "Cave Kitchen", image: "478_kitchen/bg.webp", nightImage: "478_kitchen/bgnight.webp", houseID: 480, btn: "roomBtn_478.png" },
-    { roomID: 479, name: "Cave Hall", image: "479_hall/bg.jpg", nightImage: "479_hall/bg.jpg", houseID: 480, btn: "roomBtn_479.png" },
+    { roomID: 479, name: "Cave Hall", image: "479_hall/bg.jpg", nightImage: "479_hall/bg_night.webp", houseID: 480, btn: "roomBtn_479.png" },
     { roomID: 480, name: "Cave Throne", image: "480_throne/bg.jpg", nightImage: "480_throne/bg.jpg", houseID: 480, btn: "roomBtn_480.png" },
-    { roomID: 481, name: "Cave Bedroom", image: "481_bedroom/bg.jpg", nightImage: "481_bedroom/bg.jpg", houseID: 480, btn: "roomBtn_481.png" },
+    { roomID: 481, name: "Cave Bedroom", image: "481_bedroom/bg.webp", nightImage: "481_bedroom/bg.webp", houseID: 480, btn: "roomBtn_481.png" },
     { roomID: 482, name: "Cave Bathroom", image: "482_bathroom/bg.webp", nightImage: "482_bathroom/bg.webp", houseID: 480, btn: "roomBtn_481.png" },
 
     { roomID: 483, name: "Den Entrance", image: "483_cave/bg.jpg", nightImage: "483_cave/bg_night.jpg", houseID: 480, btn: "roomBtn_483.png" },

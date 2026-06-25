@@ -107,27 +107,6 @@ room478.main = function () {
         "image": "478_kitchen/chef.webp",
     }, 478);
     nav.buildnav([480, 478, 479, 481, 482]);
-    //nav.button({
-    //        "type": "btn",
-    //        "name": "chef",
-    //        "left": 243,
-    //        "top": 163,
-    //        "width": 456,
-    //        "height": 917,
-    //        "image": "478_kitchen/chef.webp",
-    //    }, 478);
-        
-       
-    //    {
-    //        "type": "btn",
-    //        "name": "eat",
-    //        "left": 1064,
-    //        "top": 457,
-    //        "width": 856,
-    //        "height": 619,
-    //        "image": "478_kitchen/eat.webp",
-    //    },
-    //]);
 };
 
 room478.btnclick = function (name) {

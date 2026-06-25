@@ -5,7 +5,7 @@ room10.main = function () {
         chat(36, 10);
     }
     else if (cl.c.cock === 5 && !gv.get("playWithPussy")) {
-        gv.set("playWithPussy");
+        gv.set("playWithPussy", true);
         chat(47, 10);
     }
     else {
@@ -153,59 +153,76 @@ room10.btnclick = function (name) {
                 }, 10);
 
             }
-            if (gv.get("sissySchoolClass") === "anal102" || gv.get("sissySchoolClass") === "oral101") {
-                nav.button({
-                    "type": "btn",
-                    "name": "nightStand",
-                    "left": 373,
-                    "top": 604,
-                    "width": 137,
-                    "height": 197,
-                    "title": "Toybox - play with your dildos (if you have them)",
-                    "image": "10_mainchar/nightstandPracticeDay.png",
-                    "night": "10_mainchar/nightstandPracticeNight.png"
-                }, 10);
+            if (sc.getTimeline("lola").thisRoom) {
+                if (sc.getMissionTask("lola", "*wife", 1).complete && (g.hourBetween(22, 25) || g.hourBetween(0, 7))) {
+                    nav.modbutton("Bed", "10_mainchar/10_bedNight_lola.png", "lolabed", null);
+                }
+                else {
+                    nav.button({
+                        "type": "btn",
+                        "name": "lola",
+                        "left": 280,
+                        "top": 160,
+                        "width": 309,
+                        "height": 920,
+                        "image": "10_mainchar/lola.webp",
+                    }, 10);
+                }
             }
             else {
-                nav.button({
-                    "type": "btn",
-                    "name": "nightStand",
-                    "left": 373,
-                    "top": 604,
-                    "width": 137,
-                    "height": 197,
-                    "title": "Toybox - play with your dildos (if you have them)",
-                    "image": "10_mainchar/10_nightstand.png",
-                    "night": "10_mainchar/10_nightstandNight.png"
-                }, 10);
-            }
+                if (gv.get("sissySchoolClass") === "anal102" || gv.get("sissySchoolClass") === "oral101") {
+                    nav.button({
+                        "type": "btn",
+                        "name": "nightStand",
+                        "left": 373,
+                        "top": 604,
+                        "width": 137,
+                        "height": 197,
+                        "title": "Toybox - play with your dildos (if you have them)",
+                        "image": "10_mainchar/nightstandPracticeDay.png",
+                        "night": "10_mainchar/nightstandPracticeNight.png"
+                    }, 10);
+                }
+                else {
+                    nav.button({
+                        "type": "btn",
+                        "name": "nightStand",
+                        "left": 373,
+                        "top": 604,
+                        "width": 137,
+                        "height": 197,
+                        "title": "Toybox - play with your dildos (if you have them)",
+                        "image": "10_mainchar/10_nightstand.png",
+                        "night": "10_mainchar/10_nightstandNight.png"
+                    }, 10);
+                }
 
-            if (levels.get("cheer").l > 0) {
-                nav.button({
-                    "type": "btn",
-                    "name": "cheerleader",
-                    "left": 1033,
-                    "top": 86,
-                    "width": 236,
-                    "height": 251,
-                    "title": "Practice Cheerleading",
-                    "image": "10_mainchar/cheerleader.png",
-                }, 10);
+                if (levels.get("cheer").l > 0) {
+                    nav.button({
+                        "type": "btn",
+                        "name": "cheerleader",
+                        "left": 1033,
+                        "top": 86,
+                        "width": 236,
+                        "height": 251,
+                        "title": "Practice Cheerleading",
+                        "image": "10_mainchar/cheerleader.png",
+                    }, 10);
+                }
+                let shoeLevels = levels.get("heels").l < 8;
+                if (sissy.st[16].ach && !daily.get("practiceHeels") && shoeLevels) {
+                    nav.button({
+                        "type": "btn",
+                        "name": "heels",
+                        "left": 783,
+                        "top": 86,
+                        "width": 236,
+                        "height": 251,
+                        "title": "Practice Walking in heels",
+                        "image": "10_mainchar/heels.png",
+                    }, 10);
+                }
             }
-            let shoeLevels = levels.get("heels").l < 8;
-            if (sissy.st[16].ach && !daily.get("practiceHeels") && shoeLevels) {
-                nav.button({
-                    "type": "btn",
-                    "name": "heels",
-                    "left": 783,
-                    "top": 86,
-                    "width": 236,
-                    "height": 251,
-                    "title": "Practice Walking in heels",
-                    "image": "10_mainchar/heels.png",
-                }, 10);
-            }
-
 
             break;
         case "computer":
@@ -222,6 +239,79 @@ room10.btnclick = function (name) {
         case "nightStand":
             g.pass = 10;
             char.room(19);
+            break;
+        case "lolabed":
+            nav.kill();
+            nav.bg("10_mainchar/lola_sleep0.webp");
+            nav.button({
+                "type": "grab",
+                "name": "lola_sleep1",
+                "left": 0,
+                "top": 438,
+                "width": 1650,
+                "height": 642,
+                "image": "10_mainchar/lola_sleep1.webp",
+            }, 10);
+            sc.select("sleep", "328_farm/icon_sleep.webp", 0);
+            sc.selectCancel("reset", 1);
+            break;
+        case "sleep":
+            room10.chatcatch("nap_sleep");
+            break;
+        case "lola_sleep1":
+            nav.kill();
+            nav.bg("10_mainchar/lola_sleep2.webp");
+            nav.button({
+                "type": "grab",
+                "name": "lola_sleep2",
+                "left": 560,
+                "top": 450,
+                "width": 288,
+                "height": 563,
+                "image": "10_mainchar/lola_sleep2Panties.webp",
+            }, 10);
+            break;
+        case "lola_sleep2":
+            nav.killbutton("lola_sleep2");
+            if (cl.c.chastity !== null) {
+                sc.select("sleep", "328_farm/icon_sleep.webp", 0);
+                sc.selectCancel("reset", 1);
+                chat(68, 10);
+            }
+            else if (cl.c.cock === 5) {
+                if (inv.has("straponSmall")) {
+                    chat(70, 10)
+                }
+                else {
+                    sc.select("sleep", "328_farm/icon_sleep.webp", 0);
+                    sc.selectCancel("reset", 1);
+                    chat(69, 10);
+                }
+            }
+            else {
+                chat(71, 10);
+            }
+            break;
+        case "lola":
+            nav.kill();
+            nav.button({
+                "type": "img",
+                "name": "lola",
+                "left": 1058,
+                "top": 32,
+                "width": 415,
+                "height": 1048,
+                "image": "10_mainchar/lola1.webp",
+            }, 10);
+            switch (sc.taskGetStep("lola", "*wife")) {
+                case 1:
+                    sc.completeMissionTask("lola", "*wife", 1);
+                    chat(48, 10);
+                    break;
+                default:
+                    chat(800, 10);
+                    break;
+            }
             break;
         case "cat":
             if (gv.get("cat") === 1) {
@@ -330,6 +420,39 @@ room10.btnclick = function (name) {
                 chat(46, 10);
             }
             break;
+        case "lola_lick":
+            if (g.internal > 4) {
+                levels.oral(3, "f", "lola");
+                nav.kill();
+                nav.bg("10_mainchar/10_bedroom.png", "10_mainchar/10_bedroomNight.png");
+                nav.button({
+                    "type": "img",
+                    "name": "lola",
+                    "left": 1058,
+                    "top": 32,
+                    "width": 415,
+                    "height": 1048,
+                    "image": "10_mainchar/lola1_nude.webp",
+                }, 10);
+                chat(56, 10);
+            }
+            else {
+                nav.bg("10_mainchar/lola_lick" + g.internal + ".webp");
+                g.internal++;
+            }
+            break;
+        case "lola_fuck":
+            if (g.internal > 8) {
+                nav.kill();
+                nav.bg("10_mainchar/lola_fuck3.webp");
+                levels.fuckpussy("lola", "f");
+                chat(67, 10);
+            }
+            else {
+                nav.bg("10_mainchar/lola_fuck" + ((g.internal % 2) + 1) + ".webp");
+                g.internal++;
+            }
+            break;
         case "reset":
             char.room(10);
             break;
@@ -339,7 +462,6 @@ room10.btnclick = function (name) {
 };
 
 room10.chatcatch = function (callback) {
-
     switch (callback) {
         case "nap_1hour":
             char.addtime(60);
@@ -498,6 +620,109 @@ room10.chatcatch = function (callback) {
             nav.killbutton("cheerx");
             char.addtime(60);
             break;
+        case "lola1":
+            cl.nude();
+            zcl.displayMain(-500, -100, .4, "", true);
+            if (cl.c.chastity !== null) {
+                nav.modbutton("lola", "10_mainchar/lola1_sad.webp", null, null);
+                chat(50, 10);
+            }
+            else if (cl.c.cock === 5) {
+                nav.modbutton("lola", "10_mainchar/lola1_sad.webp", null, null);
+                chat(51, 10);
+            }
+            else {
+                chat(65, 10);
+            }
+            break;
+        case "lola2":
+            nav.modbutton("lola", "10_mainchar/lola1_nude.webp", null, null);
+            break;
+        case "lola_lick":
+            nav.kill();
+            nav.bg("10_mainchar/lola_lick.webp");
+            g.internal = 1;
+            nav.button({
+                "type": "tongue",
+                "name": "lola_lick",
+                "left": 888,
+                "top": 424,
+                "width": 152,
+                "height": 152,
+                "image": "10_mainchar/lola_lick_hole.webp"
+            }, 10);
+            break;
+        case "lola_fuck":
+            nav.kill();
+            nav.bg("10_mainchar/lola_fuck0.webp");
+            break;
+        case "lola_fuck1":
+            g.internal = 2;
+            nav.next("lola_fuck");
+            break;
+        case "displaypair":
+            nav.kill();
+            zcl.displayMain(0, 400, .25, "clothes", false);
+            nav.button({
+                "type": "img",
+                "name": "lola",
+                "left": 1058,
+                "top": 32,
+                "width": 415,
+                "height": 1048,
+                "image": "10_mainchar/lola1_nude.webp",
+            }, 10);
+            nav.button({
+                "type": "img",
+                "name": "lola",
+                "left": 688,
+                "top": 0,
+                "width": 820,
+                "height": 1080,
+                "image": "10_mainchar/lola_ll.webp",
+            }, 10);
+            break;
+        case "lola_lick5":
+            nav.kill();
+            nav.bg("10_mainchar/lola_lick5_bg.webp");
+            zcl.legsup(-1040, 80, 1, "", true);
+            nav.button({
+                "type": "img",
+                "name": "lola",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "10_mainchar/lola_lick5.webp",
+            }, 10);
+            break;
+        case "lola_lick6":
+        case "lola_lick7":
+        case "lola_lick8":
+        case "lola_lick9":
+        case "lola_lick10":
+            nav.modbutton("lola", "10_mainchar/" + callback + ".webp", null, null);
+            break;
+        case "lola_lick11":
+            levels.gotbj("f", "lola");
+            char.addtime(90);
+            char.room(10);
+            break;
+        case "lola_sleep3":
+            nav.kill();
+            nav.bg("10_mainchar/lola_sleep3_" + (cl.c.cock === 5 ? "f" : "m") + ".webp");
+            break;
+        case "lola_sleep4":
+            nav.bg("10_mainchar/lola_sleep4_" + (cl.c.cock === 5 ? "f" : "m") + ".webp");
+            break;
+        case "lola_sleep5":
+            levels.fuckpussy("lola", "f");
+            nav.bg("10_mainchar/lola_sleep5_" + (cl.c.cock === 5 ? "f" : "m") + ".webp");
+            break;
+        case "lola_sleep_end":
+            g.pass = -7;
+            char.room(28);
+            break;
         default:
             break;
     }
@@ -518,6 +743,25 @@ room10.chat = function (chatID) {
             speaker: "thinking",
             text: "I can't go out like this! <span class='hl'>I'm missing my " + g.pass + ".</span>",
             button: [{ chatID: -1, text: "Get Dressed.. again", callback: "kickOut1" }]
+        };
+    }
+    else if (chatID === 800) {
+        char.addtime(15);
+        let lolatalk = [
+            "I can't wait until we get married. It will be so amazing!",
+            "You and I will be together forever. ",
+            "I wonder if it's a little boy or girl. I told them we want to be suprised. ",
+            "If it's a girl I'm going to name her Delilah after our great grandma. If it's a boy you can name him. Hehe",
+            "ooof! My feet hurt, like all the time now. You have no idea. ",
+            "So excited for our first. I think I want to have three kids. Maybe more. I don't know. Hmmm. Maybe four.",
+            "You're going to make such a great daddy. I can't wait to see you play with our new little one at the playground!",
+            "So tired all the time. ugh. "
+        ];
+        return {
+            chatID: 998,
+            speaker: "lola",
+            text: lolatalk[g.rand(0, lolatalk.length)],
+            button: [{ chatID: -1, text: "[Chat for a bit about your futures]", callback: "reset" }]
         };
     }
     else {
@@ -613,11 +857,11 @@ room10.chat = function (chatID) {
             {
                 chatID: 12,
                 speaker: "me",
-                text: "How long to Nap?",
+                text: "Sleep until morning?",
                 button: [
-                    { chatID: 1, text: "1 Hour", callback: "nap_1hour" },
-                    { chatID: 2, text: "3 Hours", callback: "nap_3hour" },
-                    { chatID: -1, text: "Till 10:00PM", callback: "nap_10pm" }
+                    { chatID: -1, text: "Sleep", callback: "nap_sleep" },
+                    { chatID: -1, text: "Mess with " + sc.n("lola"), callback: "lolamolest" },
+                    { chatID: -1, text: "Cancel", callback: "" }
                 ]
             },
             {
@@ -913,6 +1157,245 @@ room10.chat = function (chatID) {
                 button: [
                     { chatID: -1, text: "Explore new vagina [to do]", callback: "" },
                     { chatID: -1, text: "Naw. I don't need to do that. ", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 48,
+                speaker: "lola",
+                text: "I'm so glad you're back! I've been thinking about you every day since you've been gone! ",
+                button: [
+                    { chatID: 49, text: "I've only been thinking about you everyday I was locked up", callback: "" },
+                ]
+            },
+            {
+                chatID: 49,
+                speaker: "lola",
+                text: "I have so many questions, so much to say, but my hormones are going crazy since I've " +
+                    "gotten pregnant! I just need sex right now to calm my mind so I can get out my questions! " +
+                    "Quick! Take your pants off! ",
+                button: [
+                    { chatID: -1, text: "Oh my! [strip!]", callback: "lola1" },
+                ]
+            },
+            {
+                chatID: 50,
+                speaker: "lola",
+                text: "Oh what! Why is that on your penis! If you ever want to have sex again you'll get " +
+                    "that stupid thing off your penis! Hrrrrmp!! You have no idea how mad I am! ",
+                button: [
+                    { chatID: -1, text: "Oh yeah. Ok", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 51,
+                speaker: "lola",
+                text: "Huh? ... I mean... Wait. You had a penis. I know it was there or I wouldn't be pregnant. " +
+                    "You the only boy I've ever been with. That is a vagina right? Is the penis there... I... uhhh...",
+                button: [
+                    { chatID: 52, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 52,
+                speaker: "me",
+                text: "Oh... Well when I was kidnapped A lot of bad things happened. [Tell her most of the things " +
+                    "that happened, except the parts she wouldn't want to hear. ]",
+                button: [
+                    { chatID: 53, text: "...", callback: "lola2" },
+                ]
+            },
+            {
+                chatID: 53,
+                speaker: "lola",
+                text: "That's terrible what they did! But you know what. I have a vagina too! I guess our " +
+                    "kids going to have two loving moms. Too bad I don't have a penis or I would make you pregnant " +
+                    "next hehe. Look. I love you. All of you. I don't care if you have a penis or not. We're going " +
+                    "to be together forever! ",
+                button: [
+                    { chatID: 54, text: "So you don't care that I don't have a penis anymore? ", callback: "" },
+                ]
+            },
+            {
+                chatID: 54,
+                speaker: "lola",
+                text: "I mean... No. I don't care. We're going to get a great collection of toys and vibrators that " +
+                    "we can use on each other. Hehe. I'm just thinking of all the wonderful penises we'll use on each " +
+                    "other! But for now I'm still really horny! Like so horny! You just need to be better than " + sc.n("eva") +
+                    " at licking my vagina! Now get in there and give me my orgasm that I so much need! ",
+                button: [
+                    { chatID: 55, text: "Oh yeah!", callback: "lola_lick" },
+                ]
+            },
+            {
+                chatID: 55,
+                speaker: "lola",
+                text: "I hope you don't mind my ass in your face. It's too uncomfortable to lay on " +
+                    "my back. Now get in there and make me moan! ",
+                button: [
+                    { chatID: -1, text: "[Lick her vagina]", callback: "" },
+                ]
+            },
+            {
+                chatID: 56,
+                speaker: "lola",
+                text: "Way better than " + sc.n("eva") + "! Wow I so needed that! She always complains her " +
+                    "tongue is tired and I have to finish up myself. But you! I got all the way there! ",
+                button: [
+                    { chatID: 57, text: "Oh you!", callback: "" },
+                ]
+            },
+            {
+                chatID: 57,
+                speaker: "lola",
+                text: "I love you. I'm so looking forward to spending forever with you! ",
+                button: [
+                    { chatID: 58, text: "I love you too", callback: "displaypair" },
+                ]
+            },
+            {
+                chatID: 58,
+                speaker: "lola",
+                text: "Oh my. She's right you know. I do need to show you how to use that thing! Lay " +
+                    "back! Let me make you feel good too! ",
+                button: [
+                    { chatID: 59, text: "oh yeah!", callback: "lola_lick5" },
+                ]
+            },
+            {
+                chatID: 59,
+                speaker: "lola",
+                text: "So this that I'm fingering is your outer lips. I do love it when " + sc.n("eva") +
+                    " runs her finger nails over it. A light tease that starts me up so good. ",
+                button: [
+                    { chatID: 60, text: "mmMmmmm", callback: "lola_lick6" },
+                ]
+            },
+            {
+                chatID: 60,
+                speaker: "lola",
+                text: "Now these are your inner lips. Do you like how I rub my fingers between them.  ",
+                button: [
+                    { chatID: 61, text: "Hehe. Oh yeah. Feels so good. ", callback: "lola_lick7" },
+                ]
+            },
+            {
+                chatID: 61,
+                speaker: "lola",
+                text: "Most boys think that we get all our pleasure our vaginal hole. It does feel so good, but " +
+                    "this...",
+                button: [
+                    { chatID: 62, text: "oh yeah. It does feel good. ", callback: "lola_lick8" },
+                ]
+            },
+            {
+                chatID: 62,
+                speaker: "lola",
+                text: "This is the real pleasure button! Hehe. You're so wet, I can see it dripping out. Now let " +
+                    "me show your the ultimate. Fingers and tongue. ",
+                button: [
+                    { chatID: 63, text: "eeep!", callback: "lola_lick9" },
+                ]
+            },
+            {
+                chatID: 63,
+                speaker: "me",
+                text: "Oh my. oh my. oh my!!! Oh! oh ohohohohohohohohohooooooooo ",
+                button: [
+                    { chatID: 64, text: "...", callback: "lola_lick10" },
+                ]
+            },
+            {
+                chatID: 64,
+                speaker: "lola",
+                text: "And that's how you give a vaginal orgasm! ",
+                button: [
+                    { chatID: -1, text: "oh my!", callback: "lola_lick11" },
+                ]
+            },
+            {
+                chatID: 65,
+                speaker: "lola",
+                text: "Oh wow I miss that penis. I hope it's ok if we skip the foreplay and jump right to " +
+                    "it! I just need to have sex with your right now! ",
+                button: [
+                    { chatID: 66, text: "Oh yeah!", callback: "lola_fuck" },
+                ]
+            },
+            {
+                chatID: 66,
+                speaker: "lola",
+                text: "Go easy. I haven't had a penis in me since last time we had sex. ",
+                button: [
+                    { chatID: -1, text: "[Ease your penis in her vagina]", callback: "lola_fuck1" },
+                ]
+            },
+            {
+                chatID: 67,
+                speaker: "lola",
+                text: "Hehe. Happy pussy! I look forward to many days and nights make our fun places happy! ",
+                button: [
+                    { chatID: -1, text: "Oh yeah!", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 68,
+                speaker: "thinking",
+                text: "Oh yeah. I'm wearing a chastity cage. Duh! ",
+                button: [
+                    { chatID: -1, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 69,
+                speaker: "thinking",
+                text: "Such a hot naked body. I wish I had a penis to fuck her right now. Maybe I should " +
+                    "buy a strapon at the Toy 'n' Us!",
+                button: [
+                    { chatID: -1, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 70,
+                speaker: "thinking",
+                text: "Should I put my strapon on and fuck her pussy?",
+                button: [
+                    { chatID: 72, text: "Yes! ", callback: "lola_sleep3" },
+                    { chatID: -1, text: "No", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 71,
+                speaker: "thinking",
+                text: "Should I slide my penis between her legs?",
+                button: [
+                    { chatID: 72, text: "Yes! ", callback: "lola_sleep3" },
+                    { chatID: -1, text: "No", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 72,
+                speaker: "thinking",
+                text: "She's still sleeping. So hot. Should I slide inside her pussy?",
+                button: [
+                    { chatID: 73, text: "Yes! ", callback: "lola_sleep4" },
+                    { chatID: -1, text: "No", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 73,
+                speaker: "thinking",
+                text: "She's so wet. I can feel her pussy juice splash on my legs. My " + g.makeSingular(sc.n("el")) +
+                    " is so hot and ready for dick. ",
+                button: [
+                    { chatID: 74, text: "Finish off", callback: "lola_sleep5" },
+                ]
+            },
+            {
+                chatID: 74,
+                speaker: "thinking",
+                text: "Hehe. I heard her moan. She so needed that. Fall asleep while still inside her. ",
+                button: [
+                    { chatID: -1, text: "[Sleep]", callback: "lola_sleep_end" },
                 ]
             },
         ];

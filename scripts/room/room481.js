@@ -1,17 +1,20 @@
 ﻿//Room name
 var room481 = {};
 room481.main = function () {
-    g.internal = { arrive: g.dt, talkList: new Array(), amputee: 0, secretPath: 0, tod: 1, single: null };
-
+    if (g.pass === "endSleepyTime") {
+        g.pass = null;
+        chat(1, 481);
+    }
     var btnList = [
         {
             "type": "btn",
-            "name": "name",
-            "left": 1741,
-            "top": 618,
-            "width": 130,
-            "height": 252,
-            "image": "481_folder/hole.png"
+            "name": "bed",
+            "left": 517,
+            "top": 783,
+            "width": 967,
+            "height": 297,
+            "image": "481_bedroom/bed.webp",
+            "title": "Sleep"
         }
     ];
    
@@ -23,7 +26,8 @@ room481.main = function () {
 
 room481.btnclick = function (name) {
     switch (name) {
-        case "":
+        case "bed":
+            chat(0, 481);
             break;
         default:
             break;
@@ -32,7 +36,32 @@ room481.btnclick = function (name) {
 
 room481.chatcatch = function (callback) {
     switch (callback) {
-        case "nap_1hour":
+        case "sleep":
+            g.pass = 481;
+            char.room(28);
+            break;
+        case "o5":
+            char.room(481);
+            break;
+        case "o0":
+        case "o1":
+        case "o2":
+        case "o3":
+        case "o4":
+            var thisEntry = parseInt(callback[1]);
+            var q;
+            cl.c.shoes = cl.saveOutfit[thisEntry].shoes;
+            cl.c.socks = cl.saveOutfit[thisEntry].socks;
+            cl.c.pants = cl.saveOutfit[thisEntry].pants;
+            cl.c.panties = cl.saveOutfit[thisEntry].panties;
+            cl.c.bra = cl.saveOutfit[thisEntry].bra;
+            cl.c.shirt = cl.saveOutfit[thisEntry].shirt;
+            cl.c.dress = cl.saveOutfit[thisEntry].dress;
+            cl.c.swimsuit = cl.saveOutfit[thisEntry].swimsuit;
+            cl.c.accessories = cl.saveOutfit[thisEntry].accessories;
+            cl.c.pj = cl.saveOutfit[thisEntry].pj;
+            cl.display();
+            char.room(481);
             break;
         default:
             break;
@@ -43,12 +72,26 @@ room481.chat = function (chatID) {
     var cArray = [
         {
             chatID: 0,
-            speaker: "me",
-            text: "",
+            speaker: "thinking",
+            text: "Sleep until morning",
             button: [
-                { chatID: 1, text: "", callback: "" }
+                { chatID: -1, text: "Sleep", callback: "sleep" },
+                { chatID: -1, text: "Cancel", callback: "" }
             ]
-        }
+        },
+        {
+            chatID: 1,
+            speaker: "me",
+            text: "What to wear.",
+            button: [
+                { chatID: -1, text: '<img src="./images/general/shirt.png" /> ' + cl.saveOutfit[0].name, callback: "o0" },
+                { chatID: -1, text: '<img src="./images/general/shirt.png" /> ' + cl.saveOutfit[1].name, callback: "o1" },
+                { chatID: -1, text: '<img src="./images/general/shirt.png" /> ' + cl.saveOutfit[2].name, callback: "o2" },
+                { chatID: -1, text: '<img src="./images/general/shirt.png" /> ' + cl.saveOutfit[3].name, callback: "o3" },
+                { chatID: -1, text: '<img src="./images/general/shirt.png" /> ' + cl.saveOutfit[4].name, callback: "o4" },
+                { chatID: -1, text: "Get Up", callback: "o5" }
+            ]
+        },
     ];
     if (cArray.length > chatID && chatID > -1)
         return cArray[chatID];

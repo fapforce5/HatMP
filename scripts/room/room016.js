@@ -6,6 +6,7 @@ room16.main = function () {
     if (lolapostcult !== null) {
         if (lolapostcult === "wife") {
             gv.set("lolapostcult", null);
+            sc.completeMissionTask("lola", "*wife", 0);
             nav.button({
                 "type": "img",
                 "name": "wife",
@@ -16,6 +17,7 @@ room16.main = function () {
                 "image": "16_livingRoom/wife0.webp"
             }, 16);
             chat(45, 16);
+            return;
         }
         else if (lolapostcult === "tom") {
             gv.set("lolapostcult", null);
@@ -484,6 +486,9 @@ room16.chatcatch = function (callback) {
             break;
         case "leave":
             char.room(0);
+            break;
+        case "reset":
+            char.room(16);
             break;
         default:
             break;

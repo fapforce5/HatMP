@@ -91,7 +91,10 @@ room475.main = function () {
                 rape.init(null, currentLocation, 475, "reload");
                 break;
             case "rope":
-                trap.init("rope", currentLocation, 475, "reload", null);
+                if (currentLocation === "cave")
+                    trap.init("encounter", currentLocation, 475, "reload", null);
+                else
+                    trap.init("rope", currentLocation, 475, "reload", null);
                 break;
             case "hole":
                 trap.init("hole", currentLocation, 475, "reload", null);

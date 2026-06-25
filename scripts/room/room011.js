@@ -32,6 +32,8 @@ room11.main = function () {
     if (g.hasAccess(16).access) {
         var motherLocation = sc.getTimeline("landlord").roomID;
         var sisterLocation = sc.getTimeline("lola").roomID;
+        if (sc.getTimeline("eva").roomID === 13)
+            sisterLocation = 13;
         var openDoor = g.hourBetween(7, 21);
         var btnList = new Array();
         var navList = [16, 10];

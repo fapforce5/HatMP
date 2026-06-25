@@ -36,6 +36,11 @@ room200.btnclick = function (name) {
                 missy.set("uniformNew", 3);
                 chat(51, 200);
             }
+            else if ((sissy.st[7].active || sissy.st[7].ach) && missy.st[39].c === 0) {
+                missy.st[39].c = 1;
+                g.pass = "h12_cock";
+                char.room(202);
+            }
             else if (activeCase > 3 && activeCaseComplete !== 0) {
                 switch (activeCase) {
                     case 4:

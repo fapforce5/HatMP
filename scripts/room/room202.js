@@ -407,10 +407,9 @@ room202.chatcatch = function (callback) {
             break;
         case "pose11":
             g.sissy[12].ach = true;
-            gv.mod("giveOralFemale", 1);
+            levels.oral(4, "f", "missy");
             gv.mod("money", 50);
-            //scc.love("missy", 20, 100);
-            room209.chatcatch("end");
+            char.room(200);
             break;
         case "repeatstoolend":
             g.pass = "repeatstoolendend";

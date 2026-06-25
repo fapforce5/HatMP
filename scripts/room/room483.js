@@ -24,7 +24,7 @@ room483.main = function () {
             sc.select("leave", "483_cave/icon_leave.png", 3);
             break;
         default:
-            nav.bg("483_cave/bg_x.jpg", "483_cave/bg_x_night.jpg");
+            nav.bg("483_cave/bg_empty.jpg", "483_cave/bg_x_night.jpg");
             sc.select("enter", "483_cave/icon_enter.png", 0);
             sc.select("leave", "483_cave/icon_leave.png", 1);
             sc.select("wardrobe", "483_cave/icon_leave.png", 1);

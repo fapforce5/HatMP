@@ -1067,6 +1067,31 @@ zcl.facedown = function (top, left, ratio, mod, reverse) {
     let h = 1129;
     let f = "facedown";
     zcl.subDisplay("body_" + gender.pronoun("f") + ".webp", top, left, ratio, reverse, w, h, f);
+    if (mod === "closed")
+        zcl.subDisplay("closed.webp", top, left, ratio, reverse, w, h, f);
+};
+
+zcl.assupNew = function (top, left, ratio, mod, reverse) {
+    zcl.kill();
+    let w = 2716;
+    let h = 1352;
+    let f = "assup";
+    let hairLength = "2_";
+
+    if (cl.c.chest < 3)
+        zcl.subDisplay("body_male.png", top, left, ratio, reverse, w, h, f);
+    else
+        zcl.subDisplay("body_female.png", top, left, ratio, reverse, w, h, f);
+
+    switch (mod) {
+        case "reddress":
+            zcl.subDisplay("reddress.png", top, left, ratio, reverse, w, h, f);
+            break;
+    }
+    if (cl.c.hairLength < 3)
+        hairLength = "1_";
+
+    zcl.subDisplay(hairLength + cl.c.hairColor + ".png", top, left, ratio, reverse, w, h, f);
 };
 
 zcl.assup = function (top, left, ratio, mod) {

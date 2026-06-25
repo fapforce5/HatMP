@@ -565,6 +565,17 @@ room28.dreams = function () {
                 "image": "950_cell/whip_sleep_" + gender.pronoun("f") + ".webp",
             }, 28);
         }
+        else if (g.pass === -7) {
+            nav.bg("10_mainchar/lola_sleep6_" + (cl.c.cock === 5 ? "f" : "m") + ".webp");
+        }
+        else if (g.pass === 7) {
+            if (sc.getMission("lola", "*wife").startedOrComplete) {
+                nav.bg("10_mainchar/sleep_wife.webp");
+            }
+            else if (gv.get("cat") > 0) {
+                nav.bg("10_mainchar/sleep_cat.jpg");
+            }
+        }
     }
     
     //console.log(hasText);
@@ -572,7 +583,7 @@ room28.dreams = function () {
 };
 
 room28.endSleepyTime = function (hasTimeout) {
-    let returnRoomID = g.pass;
+    let returnRoomID = Math.abs(g.pass);
     g.pass = "endSleepyTime";
 
     if (hasTimeout) {
@@ -796,7 +807,7 @@ room28.chatcatch = function (callback) {
 
             break;
         case "returnToRoom":
-            char.room(g.pass);
+            char.room(Math.abs(g.pass));
             break;
         case "tinypp":
             nav.killall();
@@ -815,12 +826,12 @@ room28.chatcatch = function (callback) {
                 room28.endSleepyTime(false);
             }, 6000);
             break;
-        case "endPills":
-            gv.mod("energy", -100);
-            //scc.love("missy", 5);
-            char.addtime(220);
-            char.room(203);
-            break;
+        //case "endPills":
+        //    gv.mod("energy", -100);
+        //    //scc.love("missy", 5);
+        //    char.addtime(220);
+        //    char.room(203);
+        //    break;
         case "endDream":
             room28.endSleepyTime(false);
             break;

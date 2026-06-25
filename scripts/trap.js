@@ -261,8 +261,8 @@ trap.message = function (message) {
 };
 
 trap.rope = function () {
-    if (rape.location === "cave")
-        trap.kill();
+    //if (trap.location === "cave")
+    //    trap.kill();
     let ropeChar = new Array();
     let flowers = ["fr", "fd", "fp"];
     let sb, sa;

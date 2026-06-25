@@ -229,7 +229,8 @@ sc.init = function () {
                 {
                     missionName: "*wife", mStatus: 0, title: "Mother", desc: "Mother of my child", task:
                         [
-                            { id: 0, txt: "Reunion", show: true, mStatus: 0, roomId: 902 },
+                            { id: 0, txt: "Reunion", show: true, mStatus: 0, roomId: 14 },
+                            { id: 1, txt: "Proper welcome back", show: true, mStatus: 0, roomId: 10 },
                         ]
                 },
                 {
@@ -482,7 +483,8 @@ sc.init = function () {
                             { id: 1, txt: "Mystery friend at night. ", show: true, mStatus: 0, roomId: 502 },
                             { id: 2, txt: "Handcuffs and chastity. ", show: true, mStatus: 0, roomId: 525 },
                             { id: 3, txt: "Mon cœur souffre pour toi", show: true, mStatus: 0, roomId: 525 },
-                            { id: 4, txt: "Sex at home, sex at work, sex everywhere", show: true, mStatus: 0, roomId: 502 },
+                            { id: 4, txt: "Sex at home, sex at work, sex everywhere [Loop]", show: true, mStatus: 0, roomId: 502 },
+                            { id: 5, txt: "My new vagina [After you get a vagina]", show: true, mStatus: 0, roomId: 500 },
                         ]
                 },
                 {
@@ -491,18 +493,18 @@ sc.init = function () {
                             { id: 0, txt: "Always trust your friends. ", show: true, mStatus: 0, roomId: 501 },
                         ]
                 },
-                {
-                    missionName: "*wife", mStatus: -1, title: "Wives?", desc: "Our forever", task:
-                        [
-                            { id: 0, txt: "My new vagina", show: true, mStatus: 0, roomId: 525 },
-                        ]
-                },
-                {
-                    missionName: "*bff", mStatus: -1, title: "Best Friends Forever", desc: "Never be more than friends", task:
-                        [
-                            { id: 0, txt: "New petite amie.", show: true, mStatus: 0, roomId: 525 },
-                        ]
-                },
+                //{
+                //    missionName: "*wife", mStatus: -1, title: "Wives?", desc: "Our forever", task:
+                //        [
+                //            { id: 0, txt: "My new vagina", show: true, mStatus: 0, roomId: 525 },
+                //        ]
+                //},
+                //{
+                //    missionName: "*bff", mStatus: -1, title: "Best Friends Forever", desc: "Never be more than friends", task:
+                //        [
+                //            { id: 0, txt: "New petite amie.", show: true, mStatus: 0, roomId: 525 },
+                //        ]
+                //},
             ]
         },
         {
@@ -1358,6 +1360,7 @@ sc.init = function () {
                             { id: 0, txt: "Met for the first time", show: true, mStatus: 0, roomId: 483 },
                             { id: 1, txt: "Gain their trust", show: true, mStatus: 0, roomId: 483 },
                             { id: 2, txt: "Welcome to the pack", show: true, mStatus: 0, roomId: 483 },
+                            { id: 3, txt: "Recieve the horn [Need level 10]", show: true, mStatus: 0, roomId: 483 },
                         ]
                 },
             ]
@@ -1728,6 +1731,13 @@ sc.init = function () {
                             { id: 6, txt: "Old friends in the shower", show: true, mStatus: 0, roomId: 482 },
                             { id: 7, txt: "My toilet has a name", show: true, mStatus: 0, roomId: 482 },
                             { id: 8, txt: "BJ girl", show: true, mStatus: 0, roomId: 479 },
+                        ]
+                },
+                {
+                    missionName: "secret", mStatus: 0, title: "Secret Path", desc: "Attend the secret event", task:
+                        [
+                            { id: 0, txt: "Are you submissive enough? ", show: true, mStatus: 0, roomId: 479 },
+                            { id: 1, txt: "First time? ", show: true, mStatus: 0, roomId: 479 },
                         ]
                 },
             ]
@@ -2192,7 +2202,7 @@ sc.modSecret = function (name, amount) {
             case "lola":
             case "eva":
             case "landlord":
-                if (sc.getMission("lola", "sissy").notStarted) {
+                if (sc.getMission("lola", "sissy").notStarted && gv.get("cultEscape") === null) {
                     let x = sc.i("lola");
                     let y = sc.i("eva");
                     let z = sc.i("landlord");
@@ -2466,7 +2476,91 @@ sc.getTimeline = function (char) {
         case "lola":
         case "eva":
             var lolaStep = sc.taskGetStep("lola", "sissy");
-            if (lolaStep === 11 || lolaStep === 12) {
+            if (sc.getMission("lola", "*wife").inProgress) {
+                if (char === "lola") {
+                    timeline = [
+                        //sunday
+                        { d: [0], hstart: 0, hend: 7, roomId: 10, alt: null }, //bedroom
+                        { d: [0], hstart: 7, hend: 10, roomId: 775, alt: null }, //church
+                        { d: [0], hstart: 10, hend: 11, roomId: 12, alt: null }, //bathroom
+                        { d: [0], hstart: 11, hend: 24, roomId: 10, alt: null }, //their room
+
+                        //monday, wed, frid
+                        { d: [1, 2, 3, 4, 5], hstart: 0, hend: 7, roomId: 10, alt: null }, //bedroom
+                        { d: [1, 2, 3, 4, 5], hstart: 7, hend: 9, roomId: 25, alt: null }, //kitchen
+                        { d: [1, 2, 3, 4, 5], hstart: 9, hend: 14, roomId: 900, alt: null }, //school
+                        { d: [1, 2, 3, 4, 5], hstart: 14, hend: 17, roomId: 901, alt: null }, //pool
+                        { d: [1, 2, 3, 4, 5], hstart: 17, hend: 18, roomId: 25, alt: null }, //dining 
+                        { d: [1, 2, 3, 4, 5], hstart: 18, hend: 24, roomId: 10, alt: null }, //room
+
+                        //saturday
+                        { d: [6], hstart: 0, hend: 7, roomId: 10, alt: null }, //bathroom
+                        { d: [6], hstart: 7, hend: 9, roomId: 25, alt: null }, //bathroom
+                        { d: [6], hstart: 9, hend: 24, roomId: 10, alt: null }, //bedroom room
+                    ];
+                }
+                else {
+                    timeline = [
+                        //sunday
+                        { d: [0, 6], hstart: 0, hend: 7, roomId: 13, alt: null }, //bedroom
+                        { d: [0, 6], hstart: 7, hend: 10, roomId: 775, alt: null }, //church
+                        { d: [0, 6], hstart: 10, hend: 11, roomId: 12, alt: null }, //bathroom
+                        { d: [0, 6], hstart: 11, hend: 19, roomId: 400, alt: null }, //their room
+                        { d: [0, 6], hstart: 19, hend: 24, roomId: 13, alt: null }, //their room
+
+                        //monday, wed, frid
+                        { d: [1, 2, 3, 4, 5], hstart: 0, hend: 7, roomId: 13, alt: null }, //bedroom
+                        { d: [1, 2, 3, 4, 5], hstart: 7, hend: 9, roomId: 25, alt: null }, //kitchen
+                        { d: [1, 2, 3, 4, 5], hstart: 9, hend: 14, roomId: 900, alt: null }, //school
+                        { d: [1, 2, 3, 4, 5], hstart: 14, hend: 17, roomId: 400, alt: null }, //pool
+                        { d: [1, 2, 3, 4, 5], hstart: 17, hend: 18, roomId: 25, alt: null }, //dining 
+                        { d: [1, 2, 3, 4, 5], hstart: 18, hend: 24, roomId: 13, alt: null }, //room
+                    ];
+                }
+            }
+            else if (sc.getMission("lola", "*tom2").inProgress) {
+                if (char === "lola") {
+                    timeline = [
+                        //sunday
+                        { d: [0], hstart: 0, hend: 7, roomId: 13, alt: null }, //bedroom
+                        { d: [0], hstart: 7, hend: 10, roomId: 775, alt: null }, //church
+                        { d: [0], hstart: 10, hend: 11, roomId: 12, alt: null }, //bathroom
+                        { d: [0], hstart: 11, hend: 24, roomId: 13, alt: null }, //their room
+
+                        //monday, wed, frid
+                        { d: [1, 2, 3, 4, 5], hstart: 0, hend: 7, roomId: 13, alt: null }, //bedroom
+                        { d: [1, 2, 3, 4, 5], hstart: 7, hend: 9, roomId: 25, alt: null }, //kitchen
+                        { d: [1, 2, 3, 4, 5], hstart: 9, hend: 14, roomId: 900, alt: null }, //school
+                        { d: [1, 2, 3, 4, 5], hstart: 14, hend: 17, roomId: 901, alt: null }, //pool
+                        { d: [1, 2, 3, 4, 5], hstart: 17, hend: 18, roomId: 25, alt: null }, //dining 
+                        { d: [1, 2, 3, 4, 5], hstart: 18, hend: 24, roomId: 13, alt: null }, //room
+
+                        //saturday
+                        { d: [6], hstart: 0, hend: 7, roomId: 13, alt: null }, //bathroom
+                        { d: [6], hstart: 7, hend: 9, roomId: 25, alt: null }, //bathroom
+                        { d: [6], hstart: 9, hend: 24, roomId: 13, alt: null }, //bedroom room
+                    ];
+                }
+                else {
+                    timeline = [
+                        //sunday
+                        { d: [0, 6], hstart: 0, hend: 7, roomId: 10, alt: null }, //bedroom
+                        { d: [0, 6], hstart: 7, hend: 10, roomId: 775, alt: null }, //church
+                        { d: [0, 6], hstart: 10, hend: 11, roomId: 12, alt: null }, //bathroom
+                        { d: [0, 6], hstart: 11, hend: 19, roomId: 400, alt: null }, //their room
+                        { d: [0, 6], hstart: 19, hend: 24, roomId: 10, alt: null }, //their room
+
+                        //monday, wed, frid
+                        { d: [1, 2, 3, 4, 5], hstart: 0, hend: 7, roomId: 10, alt: null }, //bedroom
+                        { d: [1, 2, 3, 4, 5], hstart: 7, hend: 9, roomId: 25, alt: null }, //kitchen
+                        { d: [1, 2, 3, 4, 5], hstart: 9, hend: 14, roomId: 900, alt: null }, //school
+                        { d: [1, 2, 3, 4, 5], hstart: 14, hend: 17, roomId: 400, alt: null }, //pool
+                        { d: [1, 2, 3, 4, 5], hstart: 17, hend: 18, roomId: 25, alt: null }, //dining 
+                        { d: [1, 2, 3, 4, 5], hstart: 18, hend: 24, roomId: 10, alt: null }, //room
+                    ];
+                }
+            }
+            else if (lolaStep === 11 || lolaStep === 12) {
                 timeline = [
                     //sunday
                     { d: [0], hstart: 0, hend: 7, roomId: 13, alt: null }, //bedroom
@@ -3411,9 +3505,17 @@ sc.trivial = function (charname) {
             name = "Toilet";
             image = "sissy_toilet.png";
             break;
+        case "!ledja":
+            name = "Ledja";
+            image = "ledja.png";
+            break;
         case "!nar":
             name = "Narrator ";
             image = "nar.png";
+            break;
+        case "!wolfgirl":
+            name = "Snail Trail";
+            image = "wolfgirl.png";
             break;
         default:
             console.log("unknown trivial char: (check capitilazation)" + charname);

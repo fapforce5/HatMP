@@ -151,6 +151,17 @@ room13.main = function () {
                 }
             }
         }
+        else if (sc.getTimeline("eva").thisRoom) {
+            btnList = [{
+                "type": "btn",
+                "name": "evaLoop",
+                "left": 760,
+                "top": 295,
+                "width": 291,
+                "height": 785,
+                "image": (g.isNight() ? "13_sisterRoom/13_eva_pj.png" : "13_sisterRoom/13_eva_sitting.png")
+            }];
+        }
         else {
             btnList = [
                 {
@@ -470,6 +481,9 @@ room13.btnclick = function (name) {
                     sc.selectCancel("icon_evaCancel", 2);
                 }
             }
+            break;
+        case "evaLoop":
+            chat(800, 13);
             break;
         case "icon_evaCancel":
             nav.killbutton("chatSissy10");
@@ -2109,6 +2123,23 @@ room13.chat = function (chatID) {
             speaker: "me",
             text: "error",
             button: []
+        };
+    }
+    else if (chatID === 800) {
+        let evawife = [
+            "So happy you two buttheads could get together. You really are perfect for each other. ",
+            "I'm totally going to be the cool aunt. ",
+            "You should name the baby after me! That way you know she's going to be awesome! ",
+            "She's always been talking about being your wife. So glad you two are having a baby so she'll finally shut up about that! ",
+            "You two will be the best couple ever. The Buttheads! "
+        ];
+        return {
+            chatID: 800,
+            speaker: "eva",
+            text: evawife[g.rand(0, evawife.length)],
+            button: [
+                { chatID: -1, text: "...", callback: "" },
+            ]
         };
     }
     else {

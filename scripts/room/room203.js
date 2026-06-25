@@ -14,10 +14,8 @@ room203.main = function () {
             sc.startMissionTask("p", "*missy", 1);
             nav.bg("203_entrance/p0.webp");
             chat(32, 203);
+            return;
         }
-
-        nav.buildnav([201, 207, 0]);
-        return;
     }
     var outfit = cl.hasoutfit("public");
     var navList = new Array();
@@ -66,6 +64,12 @@ room203.btnclick = function (name) {
         case "recep":
             nav.kill("recep");
             nav.bg("203_entrance/203_frontDeskCloseup.jpg");
+            if (sc.getMission("p", "*missy").inProgress) {
+                if (sc.getMissionTaskId("p", "missy", 1).inProgress) {
+                    chat(38, 203);
+                }
+                return;
+            }
             if (gv.get("jobapplyconst") < 100) {
                 chat(28, 203);
             }
@@ -679,6 +683,16 @@ room203.chat = function (chatID) {
                     " keep licking! Fuck! ",
                 button: [
                     { chatID: -1, text: "...ok. I'm going to go see the Forest Queen... bye ?", callback: "leave" }
+                ]
+            },
+            {
+                chatID: 38,
+                speaker: "ceclia",
+                text: "To save Missy, first we need the Forest Queen's information. She lives in the forest, before " +
+                    "the cave. She's not trusting of outsiders, so you'll need to sneak into her cabin at night " +
+                    "and find the information then bring it back to us so we can come up with a plan. ",
+                button: [
+                    { chatID: -1, text: "Ok. Thanks!", callback: "reset" }
                 ]
             },
         ];

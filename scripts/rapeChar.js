@@ -958,12 +958,16 @@
             kick: null,
             phase0: function () {
                 if (rape.phases[0].c === 0) {
-                    switch (g.rand(0, 3)) {
-                        case 0: rape.modifier = "w"; break;
-                        case 1: rape.modifier = "b"; break;
-                        case 2: rape.modifier = "r"; break;
+                    if (location === "cave")
+                        rape.modifier = "w";
+                    else {
+                        switch (g.rand(0, 3)) {
+                            case 0: rape.modifier = "w"; break;
+                            case 1: rape.modifier = "b"; break;
+                            case 2: rape.modifier = "r"; break;
+                        }
                     }
-                    
+
                     nav.button({
                         "type": "img",
                         "name": "r1004bg",

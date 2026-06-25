@@ -201,6 +201,7 @@ room52.chatcatch = function (callback) {
         case "o1":
         case "o2":
         case "o3":
+        case "o4":
             var thisEntry = parseInt(callback[1]);
             var q;
             cl.c.shoes = cl.saveOutfit[thisEntry].shoes;
@@ -223,7 +224,7 @@ room52.chatcatch = function (callback) {
             //}
             char.room(52);
             break;
-        case "o4":
+        case "o5":
             g.pass = "";
             char.room(52);
             break;
@@ -285,7 +286,8 @@ room52.chat = function (chatID) {
                 { chatID: -1, text: '<img src="./images/general/shirt.png" /> ' + cl.saveOutfit[1].name, callback: "o1" },
                 { chatID: -1, text: '<img src="./images/general/shirt.png" /> ' + cl.saveOutfit[2].name, callback: "o2" },
                 { chatID: -1, text: '<img src="./images/general/shirt.png" /> ' + cl.saveOutfit[3].name, callback: "o3" },
-                { chatID: -1, text: "Get Up", callback: "o4" }
+                { chatID: -1, text: '<img src="./images/general/shirt.png" /> ' + cl.saveOutfit[4].name, callback: "o4" },
+                { chatID: -1, text: "Get Up", callback: "o5" }
             ]
         },
         {

@@ -104,7 +104,8 @@ inv.init = function () {
         { type: "o", name: "lolalocker", display: "Locker combo", entry: false, count: null, cost: 0, buy: null, image: "lolalocker.png", n: false, desc: "Lola's Swim Locker Combo" },
         { type: "o", name: "evaphoto", display: "Boobie Pictures", entry: false, count: 0, cost: 0, buy: null, image: "eva_pic.png", n: false, desc: "Eva's Boobie Pictures" },
 
-        { type: "i", name: "pocketsand", display: "Pocket Sand", entry: false, count: 0, cost: 50, buy: 1, image: "pocketsand.png", n: false, desc: "Decrease Enemy's fight total by 30 points." },
+        { type: "i", name: "horn", display: "Wolf Horn", entry: false, count: null, cost: 0, buy: null, image: "horn.png", n: false, desc: "Escape a rape by calling for help in the forest" },
+        { type: "i", name: "pocketsand", display: "Pocket Sand", entry: false, count: 0, cost: 50, buy: 1, image: "pocketsand.png", n: false, desc: "Escape a rape" },
         { type: "i", name: "smellingsalts", display: "Smelling Salts", entry: false, count: 0, cost: 200, buy: null, image: "smellingsalts.png", n: false, desc: "Reroll your fight. " },
 
         { type: "b", name: "backpack", display: "Backpack", entry: false, count: null, cost: 0, buy: null, image: "backpack.png", n: false, desc: "Default Backpack" },
@@ -153,6 +154,7 @@ inv.init = function () {
         { type: "g", name: "chisel", display: "Chisel", entry: false, count: null, cost: -1, buy: 5, image: "chisel.png", n: false, desc: "Used to break out of prison. " },
         { type: "g", name: "pizza", display: "Frozen Pizza", entry: false, count: 0, cost: 24, buy: 3, image: "pizza.png", n: false, desc: "Frozen pizza for date night. " },
         { type: "g", name: "peanutbutter", display: "Peanut Butter", entry: false, count: 0, cost: 12, buy: 3, image: "peanutbutter.png", n: false, desc: "Jar of Peanut Butter. " },
+        { type: "g", name: "pickles", display: "Pickles", entry: false, count: 0, cost: 12, buy: 3, image: "pickles.png", n: false, desc: "Jar of Peanut Butter. " },
         { type: "g", name: "sleepingpills", display: "Sleeping pills", entry: false, count: 0, cost: -1, buy: null, image: "sleepingpills.png", n: false, desc: "Sleeping pills for you know who" },
 
         { type: "n", name: "magman", display: "Men's Magazine", entry: false, count: 0, cost: 20, buy: 2, image: "magman.png", n: false, desc: "For the Fashionable Male" },

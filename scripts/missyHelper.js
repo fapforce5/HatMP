@@ -45,6 +45,7 @@ missy.init = function () {
         { id: 36, n: "sissySuppositories", c: 0 },
         { id: 37, n: "193caseExplain", c: 0 },
         { id: 38, n: "jobRunErrandsTotalDaysWorked", c: 0 },
+        { id: 39, n: "bjInOffice", c: 0 },
     ];
 
     missy.cases = [

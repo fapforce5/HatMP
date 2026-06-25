@@ -55,6 +55,12 @@ room501.main = function () {
 room501.btnclick = function (name) {
     switch (name) {
         case "zoey":
+            if (cl.c.cock === 5 && sc.taskGetStep("zoey", "sex") === 4) {
+                sc.completeMissionTask("zoey", "sex", 4);
+                sc.completeMissionTask("zoey", "sex", 5);
+                chat(110, 501);
+                return;
+            }
             sc.selectBg("icon_kill");
             sc.select("icon_chat", "501_jadaGame/icon_chat.png", 0);
             sc.select("icon_game", "501_jadaGame/icon_game.png", 1);
@@ -424,6 +430,18 @@ room501.btnclick = function (name) {
             break;
         case "cancelPeek":
             room501.chatcatch("cheating6");
+            break;
+        case "pussy3":
+            if (g.internal === 6) {
+                nav.kill();
+                levels.oral(3, "f", "zoey");
+                levels.gotbj("f", "zoey");
+                chat(115, 501);
+            }
+            else {
+                nav.bg("501_jadaGame/pussy" + g.internal + ".webp");
+            }
+            g.internal++;
             break;
         default:
             break;
@@ -881,6 +899,25 @@ room501.chatcatch = function (callback) {
             nav.killall();
             nav.bg("501_jadaGame/win0.jpg");
             chat(105, 501);
+            break;
+        case "pussy0":
+            nav.kill();
+            nav.bg("501_jadaGame/pussy0.webp");
+            break;
+        case "pussy1":
+            nav.bg("501_jadaGame/pussy1.webp");
+            break;
+        case "pussy2":
+            nav.bg("501_jadaGame/pussy2.webp");
+            break;
+        case "pussy3":
+            g.internal = 4;
+            nav.bg("501_jadaGame/pussy3.webp");
+            nav.next("pussy3")
+            break;
+        case "sleep":
+            g.pass = 502;
+            char.room(28);
             break;
         default:
             break;
@@ -1890,156 +1927,72 @@ room501.chat = function (chatID) {
                 ]
             },
             {
-                chatID: 108,
+                chatID: 109,
                 speaker: "zoey",
                 text: "Awww I am poopies at this game. You are the winner. ",
                 button: [
                     { chatID: -1, text: "[Totally won this game - Try again sometime to lose]", callback: "gamewin" },
                 ]
             },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            {
-                chatID: 100,
-                speaker: "zoey",
-                text: "I'm so glad you're around. You can lick my ass in video games! ",
-                button: [
-                    { chatID: -1, text: "Sure, I'll lick your ass good", callback: "checkLove" },
-                    { chatID: -1, text: "Sorry, Gotta run.", callback: "" },
-                ]
-            },
-            {
-                chatID: 101,
-                speaker: "zoey",
-                text: "Phénoménale! She's so amazing! I have such a lightening bolt for " + sc.n("chloe") + ". " +
-                    "I'm so glad you talked me out of doing crazy. ",
-                button: [
-                    { chatID: 102, text: "of course", callback: "zForward" }
-                ]
-            },
-            {
-                chatID: 102,
-                speaker: "zoey",
-                text: "I'm going to get back to killing these noobs! You should stop by the bar sometime.",
-                button: [
-                    { chatID: -1, text: "Yeah, that'd be cool", callback: "repeat6" }
-                ]
-            },
-            {
-                chatID: 103,
-                speaker: "zoey",
-                text: "In progress",
-                button: [
-                    { chatID: -1, text: "...", callback: "repeat6" }
-                ]
-            },
-            {
-                chatID: 104,
-                speaker: "zoey",
-                text: "ooooooooohhhhh right there",
-                button: [
-                    { chatID: -1, text: "[Silently leave]", callback: "peek2" }
-                ]
-            },
-            {
-                chatID: 105,
-                speaker: "zoey",
-                text: "I just found out " + sc.n("chloe") + " has been cheating on me. I confronted her about it and she admitted everything. ",
-                button: [
-                    { chatID: 106, text: "oh", callback: "" }
-                ]
-            },
-            {
-                chatID: 106,
-                speaker: "zoey",
-                text: "I can't believe my best friend wouldn't support me. Tu ne me fais pas confiance. My best friend has to support me and  " +
-                    "since you can't support me, we aren't friends anymore. You should go now. I don't think I can look at you again. ",
-                button: [
-                    { chatID: 107, text: "but...", callback: "" }
-                ]
-            },
-            {
-                chatID: 107,
-                speaker: "zoey",
-                text: "No, not my butt. We're done. Goodbye.",
-                button: [
-                    { chatID: -1, text: "Sad whimper.", callback: "zoeyDestroy" }
-                ]
-            },
-            {
-                chatID: 108,
-                speaker: "zoey",
-                text: "Soooo, I'm pretty bored, do you want to eat my chatte?",
-                button: [
-                    { chatID: 109, text: "What about your friend?", callback: "" },
-                    { chatID: -1, text: "No. I've got to run", callback: "" }
-                ]
-            },
-            {
-                chatID: 109,
-                speaker: "zoey",
-                text: "Oh, we are just doing la sex, she is not mon petite amie, just an amie with benefits. Sooo, do you want a taste?",
-                button: [
-                    { chatID: -1, text: "Yes I do!", callback: "gotohouse" }
-                ]
-            },
             {
                 chatID: 110,
                 speaker: "zoey",
-                text: "Merci. I had a lot of fun!",
+                text: "Is time you came up here! I'm so tired of playing against the dumb. Sit down " +
+                    "so I can beat you up too!",
                 button: [
-                    { chatID: -1, text: "Me too", callback: "gameEnd" }
+                    { chatID: 111, text: "Before we do that I have something to show you! ", callback: "" }
                 ]
             },
             {
                 chatID: 111,
                 speaker: "zoey",
-                text: "So, " + sc.n("stormy") + " wants you to watch us have sex, and I though the idea was sexy. If you want to " +
-                    "do that she has some rules. You have to wear a appareil de chasteté and bring some handcuffs. If you do not want " +
-                    "to, I am understanding. ",
+                text: "Yes?",
                 button: [
-                    { chatID: -1, text: "Oh, cool.", callback: "" }
+                    { chatID: 112, text: "[Show her your new vagina!]", callback: "pussy0" }
                 ]
             },
             {
                 chatID: 112,
                 speaker: "zoey",
-                text: "So, " + sc.n("stormy") + " wants you to watch us have sex like a cocue. I think it's kind of sexy, but I " +
-                    "am understanding if you do not want to. ",
+                text: "It that a...",
                 button: [
-                    { chatID: 113, text: "Oh yes! I totally do", callback: "" },
-                    { chatID: -1, text: "No, I think I'll pass", callback: "" }
+                    { chatID: 113, text: "yep!", callback: "pussy1" }
                 ]
             },
             {
                 chatID: 113,
                 speaker: "zoey",
-                text: "Ça le fait! Wait while I call her to come over.",
+                text: "L'amour de mon chéri! I lick? Oh let me taste you!",
                 button: [
-                    { chatID: -1, text: "Sweet", callback: "gotohouse" }
+                    { chatID: 114, text: "...", callback: "pussy2" }
                 ]
             },
             {
                 chatID: 114,
                 speaker: "zoey",
-                text: "I'm busy making this person eat my salad. You should catch me at the bar. ",
+                text: "Give me pussy!!!",
                 button: [
-                    { chatID: -1, text: "Ok, cool.", callback: "" }
+                    { chatID: -1, text: "Eeeep!!", callback: "pussy3" }
+                ]
+            },
+            {
+                chatID: 115,
+                speaker: "zoey",
+                text: "So tired. All I smell is sweat, pussy, and love. L'amour de mon chéri. *whew* " +
+                    "I just want to sleep in that vagina for the rest of my life. My heart is for you my " +
+                    "love. My heart wants to only know you. ",
+                button: [
+                    { chatID: 116, text: "My heart is for you too", callback: "" }
+                ]
+            },
+            {
+                chatID: 116,
+                speaker: "zoey",
+                text: "Sleep with me. Sleep with me forever. I want to only lay in your arms now. I love " +
+                    "you. ",
+                button: [
+                    { chatID: -1, text: "I love you too. ", callback: "sleep" },
+                    { chatID: -1, text: "Ditto. ", callback: "sleep" },
                 ]
             },
         ];
