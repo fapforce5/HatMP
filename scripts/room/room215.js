@@ -182,7 +182,7 @@ room215.btnclick = function (name) {
                             "height": 832,
                             "image": "215_pink/beaver0.webp"
                         }, 215);
-                        if (sc.getMission("holly", "mad").startedOrComplete) {
+                        if (sc.getMission("holly", "mad").success) {
                             chat(14, 215);
                         }
                         else {

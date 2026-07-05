@@ -66,7 +66,8 @@ room475.main = function () {
             g.map.ev = ["noop", "noop", "noop", "noop"];
         }
         else {
-            eventArray = ["rope", "rope", "hole", "random", "random", "treasure"];
+            //eventArray = ["rope", "rope", "hole", "tree", "random", "random", "treasure"];
+            eventArray = ["tree", "tree"]
             for (let i = 0; i < fameLevel - 4; i++) {
                 eventArray.push("rape");
             }
@@ -98,6 +99,9 @@ room475.main = function () {
                 break;
             case "hole":
                 trap.init("hole", currentLocation, 475, "reload", null);
+                break;
+            case "tree":
+                trap.init("tree", currentLocation, 475, "reload", null);
                 break;
             case "random":
                 trap.init("encounter", currentLocation, 475, "reload", null);

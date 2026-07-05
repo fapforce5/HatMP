@@ -221,6 +221,10 @@ room479.chatcatch = function (callback) {
         case "bj0_v":
             nav.bg("479_hall/" + callback + ".jpg");
             break;
+        case "ledge2":
+        case "ledge3":
+            nav.bg("479_hall/" + callback + ".webp");
+            break;
         case "bj5":
             levels.gotbj("n", "!girl");
             char.addtime(30);
@@ -271,13 +275,14 @@ room479.chatcatch = function (callback) {
             char.room(479);
             break;
         case "ledge0":
+            sc.completeMissionTask("a", "secret", 0);
             char.room(479);
             break;
         case "ledge1":
             nav.killall();
             nav.bg("479_hall/ledge1.webp");
             if (sc.getMissionTask("a", "secret", 1).complete) {
-
+                chat(49, 479);
             }
             else {
                 chat(47, 479);
@@ -299,6 +304,14 @@ room479.chatcatch = function (callback) {
                 "height": 674,
                 "image": "479_hall/dance_" + gender.pronoun("f") + panties479 + ".webp",
             }, 479);
+            break;
+        case "ledge5":
+            nav.kill();
+            nav.bg("479_hall/ledge5.webp");
+            zcl.squat(100, 700, .5, "forward", false)
+            break;
+        case "ledge6":
+            zcl.bellydown(450, 600, .5, "back", false);
             break;
         default:
             break;
@@ -600,7 +613,7 @@ room479.chat = function (chatID) {
             speaker: "!ledja",
             text: "Good! Meet me here at night, but before midnight. ",
             button: [
-                { chatID: -1, text: "I'll be there! ", callback: "ledge0" },
+                { chatID: -1, text: "I'll be there! ", callback: "reset" },
             ]
         },
         {
@@ -739,7 +752,74 @@ room479.chat = function (chatID) {
             speaker: "!ledja",
             text: "Obedient fuck sluts don't talk, they just do. ",
             button: [
-                { chatID: 49, text: "oh.", callback: "" }
+                { chatID: 50, text: "oh.", callback: "ledge2" }
+            ]
+        },
+        {
+            chatID: 49,
+            speaker: "!ledja",
+            text: "Welcome back fuck hole! ",
+            button: [
+                { chatID: 999, text: "oh.", callback: "ledge2" }
+            ]
+        },
+        {
+            chatID: 50,
+            speaker: "ff",
+            text: "Well well well. " + sc.n("!ledja") + ", you brought someone to replace you. This " +
+                "replacement will do nicely. Per our agreement you're free to go. Remember, one word to " +
+                "anyone and you'll be back in the dungeons of the cult. Now scat! ",
+            button: [
+                { chatID: 51, text: "?", callback: "" }
+            ]
+        },
+        {
+            chatID: 51,
+            speaker: "!ledja",
+            text: "Thank you ma'am! Thank you, thank you, thank you! Not one word from be mistress. Not " +
+                "a single word! You'll never hear or see me again. Thank you, thank you! ",
+            button: [
+                { chatID: 52, text: "W-W-what's going on?", callback: "ledge3" }
+            ]
+        },
+        {
+            chatID: 52,
+            speaker: "ff",
+            text: "I'm " + sc.n("ff") + " and my friends and I now own your ass. You see, for quite some " +
+                "time we've known about this little hole filled with run away sissies. The only reason you " +
+                "all are still here is becuase they haven't told " + sc.n("ubel") + " about this place. If " +
+                "he knew the entire cult would come down on you and all your sissy friends. And it would be bad. " +
+                "Really bad. ",
+            button: [
+                { chatID: 53, text: "What do you want?", callback: "" }
+            ]
+        },
+        {
+            chatID: 53,
+            speaker: "ff",
+            text: "Simple. We love fucking sissies. Each night you're going to crawl your ass down " +
+                "that hole you came through and let us use you however we want. You're going to do it " +
+                "every night. If you skip a night we're going to bring hell on earth to your sissy friends. ",
+            button: [
+                { chatID: 54, text: "For how long? ", callback: "" }
+            ]
+        },
+        {
+            chatID: 54,
+            speaker: "ff",
+            text: "Forever. Or until you trick some other sissy into taking your place. We don't really care " +
+                "who we get to fuck, but some sissy ass is going to be plopped down here each night for us. Now " +
+                "with that out of the way, it's time to fuck!",
+            button: [
+                { chatID: 55, text: "*gulp*", callback: "ledge4" }
+            ]
+        },
+        {
+            chatID: 55,
+            speaker: "ff",
+            text: "Get ready for the best night of our lives! Hahaha! ",
+            button: [
+                { chatID: -1, text: "eeep!", callback: "ledge5" } //has pussy?
             ]
         },
     ];

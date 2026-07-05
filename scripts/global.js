@@ -62,8 +62,9 @@ g.checkPop = function (name, amount) {
         case "energy":
             if (amount > 0)
                 g.popUpNotice("You Gained " + amount.toString() + " Energy");
+            else if (amount < 0)
+                g.popUpNoticeBottom("You lost " + Math.abs(amount).toString() + " Energy");
             cl.energydisplay();
-            //sstat.makeGraph();
             break;
         case "arousal": //0-100
             cl.cockDisplay();

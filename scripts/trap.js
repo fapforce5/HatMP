@@ -68,7 +68,6 @@ trap.init = function (trapType = "rope", location = "forest", roomId = g.roomID,
         "image": "1005_trap/trap_message.png"
     }, 1005);
     trap.displayMenu("init");
-    
 };
 
 trap.roll = function () {
@@ -637,6 +636,88 @@ trap.hole = function () {
     }
 };
 
+trap.tree = function () {
+    nav.bg("475_fight/clearing.jpg", "475_fight/clearingNight.jpg");
+    trap.internal = { t: null, c: null };
+    let ci = null;
+    nav.killbuttonStartsWith("m1004");
+    nav.killbuttonStartsWith("b1004");
+    if (cl.c.dress !== null) {
+        ci = cl.getEntry("dress", cl.c.dress);
+    }
+    else if (cl.c.swimsuit !== null) {
+        ci = cl.getEntry("swimsuit", cl.c.swimsuit);
+    }
+    else if (cl.c.pj !== null) {
+        ci = cl.getEntry("pj", cl.c.pj);
+    }
+    else if (cl.c.shirt !== null) {
+        ci = cl.getEntry("shirt", cl.c.shirt);
+    }
+    else if (cl.c.pants !== null) {
+        ci = cl.getEntry("pants", cl.c.pants);
+    }
+    else if (cl.c.bra !== null) {
+        ci = cl.getEntry("bra", cl.c.bra);
+    }
+    else if (cl.c.panties !== null) {
+        ci = cl.getEntry("panties", cl.c.panties);
+    }
+    else {
+        nav.button({
+            "type": "img",
+            "name": "r1004bg",
+            "left": 0,
+            "top": 0,
+            "width": 1920,
+            "height": 1080,
+            "image": "1005_trap/tree/trip_" + gender.pronoun("f") + ".webp"
+        }, 1005);
+        trap.internal = 0;
+        nav.next("tree_trip", 1005);
+        return;
+    }
+
+    trap.internal = { t: ci.type, d: ci.display, c: ci.sex === "f" ? "pink" : "blue" };
+    nav.button({
+        "type": "img",
+        "name": "r1004bg",
+        "left": 0,
+        "top": 0,
+        "width": 1920,
+        "height": 1080,
+        "image": "1005_trap/tree/" + trap.internal.c + ".webp"
+    }, 1005);
+    chat(600, 1005)
+};
+
+trap.ff = function () {
+    nav.bg("475_fight/clearing.jpg", "475_fight/clearingNight.jpg");
+    nav.button({
+        "type": "img",
+        "name": "r1004bg",
+        "left": 817,
+        "top": 292,
+        "width": 327,
+        "height": 609,
+        "image": "1005_trap/tree/" + trap.internal.c + ".webp"
+    }, 1005);
+    if (sc.getMission("ff", "forest").notStarted) {
+        sc.show("ff");
+        sc.startMission("ff", "forest");
+        sc.completeMissionTask("ff", "forest", 0);
+        chat(67, 1005);
+    }
+    else {
+        switch (sc.taskGetStep("ff", "forest")) {
+            case 1:
+                sc.completeMissionTask("ff", "forest", 1);
+                chat(72, 1005);
+                break;
+        }
+    }
+};
+
 trap.foundobjects = function () {
 
     //horny goat weed, mushrooms... 
@@ -882,6 +963,9 @@ room1005.btnclick = function (name) {
                     break;
                 case "rope":
                     trap.rope();
+                    break;
+                case "tree":
+                    trap.tree();
                     break;
             }
             break;
@@ -1170,6 +1254,67 @@ room1005.btnclick = function (name) {
                     chat(63, 1005);
                     break;
             }
+            break;
+        case "tree_trip":
+            nav.kill();
+            nav.bg("475_fight/clearing_blur.webp", "475_fight/clearingNight_blur.webp");
+            let tree_trip = cl.c.cock === 5 ? "v" : (cl.c.chastity === null ? "d" : "c");
+            nav.button({
+                "type": "img",
+                "name": "r1004bg",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "1005_trap/tree/trip0_" + tree_trip + ".webp"
+            }, 1005);
+            if (cl.c.cock === 5) {
+                chat(66, 1005);
+            }
+            else {
+                chat(64, 1005);
+            }
+            break;
+        case "tree_trip1":
+            let tree_trip1 = cl.c.cock === 5 ? "v" : (cl.c.chastity === null ? "d" : "c");
+            nav.killbutton("r1004bg_treetrip");
+            if (trap.internal > 8) {
+                nav.button({
+                    "type": "img",
+                    "name": "r1004bg_treetrip",
+                    "left": 0,
+                    "top": 0,
+                    "width": 1920,
+                    "height": 1080,
+                    "image": "1005_trap/tree/trip3_" + tree_trip1 + ".webp"
+                }, 1005);
+                nav.killbutton("tree_trip1");
+                if (tree_trip1 === "v")
+                    levels.fuckedinpussy(true, "n", false, "!tree");
+                else
+                    levels.anal(5, true, "n", false, "!tree");
+                chat(65, 1005);
+            }
+            else {
+                nav.button({
+                    "type": "img",
+                    "name": "r1004bg_treetrip",
+                    "left": 0,
+                    "top": 0,
+                    "width": 1920,
+                    "height": 1080,
+                    "image": "1005_trap/tree/trip" + ((trap.internal % 2) + 1) + "_" + tree_trip1 + ".webp"
+                }, 1005);
+            }
+            trap.internal++;
+            break;
+        case "r1004bg_pit0":
+            nav.killbutton("r1004bg_pit0");
+            chat(70, 1005);
+            break;
+        case "r1004bg_pit1":
+            nav.killbutton("r1004bg_pit0");
+            chat(71, 1005);
             break;
     }
 };
@@ -1593,6 +1738,82 @@ room1005.chatcatch = function (callback) {
             }, 1005);
             trap.internal = 0;
             break;
+        case "tree_remove":
+            nav.killbutton("r1004bg");
+            switch (trap.internal.t) {
+                case "dress": cl.c.dress = null; break;
+                case "swimsuit": cl.c.swimsuit = null; break;
+                case "pj": cl.c.pj = null; break;
+                case "shirt": cl.c.shirt = null; break;
+                case "pants": cl.c.pants = null; break;
+                case "bra": cl.c.bra = null; break;
+                case "panties": cl.c.panties = null; break;
+            }
+            cl.display();
+            zcl.displayClothed();
+            break;
+        case "tree_free":
+            gv.mod("energy", -40);
+            trap.kill(null);
+            break;
+        case "tree_trip1":
+            nav.kill();
+            let tree_trip1 = cl.c.cock === 5 ? "v" : (cl.c.chastity === null ? "d" : "c");
+            nav.button({
+                "type": "img",
+                "name": "r1004bg_treetrip",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "1005_trap/tree/trip1_" + tree_trip1 + ".webp"
+            }, 1005);
+            trap.internal = 1;
+            nav.takeit("tree_trip1", 1005);
+            break;
+        case "ff_pit0":
+            nav.killbutton("r1004bg");
+            nav.button({
+                "type": "img",
+                "name": "r1004bg",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "1005_trap/ff/pit0.webp"
+            }, 1005);
+            nav.button({
+                "type": "tongue",
+                "name": "r1004bg_pit0",
+                "left": 714,
+                "top": 193,
+                "width": 92,
+                "height": 283,
+                "image": "1005_trap/ff/pit0_sweat.webp"
+            }, 1005);
+            break;
+        case "ff_pit0":
+            nav.killbutton("r1004bg");
+            nav.killbutton("r1004bg_pit0");
+            nav.button({
+                "type": "img",
+                "name": "r1004bg",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "1005_trap/ff/pit1.webp"
+            }, 1005);
+            nav.button({
+                "type": "tongue",
+                "name": "r1004bg_pit1",
+                "left": 1299,
+                "top": 193,
+                "width": 92,
+                "height": 283,
+                "image": "1005_trap/ff/pit0_sweat.webp"
+            }, 1005);
+            break;
         default:
             break;
     }
@@ -1944,6 +2165,40 @@ room1005.chat = function (chatID) {
                 "! ",
             button: [
                 { chatID: -1, text: "[Take everything!]", callback: "kill_r1004bg" }
+            ]
+        };
+    }
+    else if (chatID === 600) {
+        if (gv.get("energy") > 39) {
+            return {
+                chatID: 600,
+                speaker: "me",
+                text: "Oh crap my " + trap.internal.d + " is caught in this tree!",
+                button: [
+                    { chatID: -1, text: "Pull it free [40 energy]", callback: "tree_free" },
+                    { chatID: 601, text: "Remove your " + trap.internal.d + ".", callback: "tree_remove" },
+                ]
+            };
+        }
+        else {
+            return {
+                chatID: 600,
+                speaker: "me",
+                text: "Oh crap my " + trap.internal.d + " is caught in this tree! I don't have enough energy " +
+                    "to pull it free [Requires 40 energy]",
+                button: [
+                    { chatID: 601, text: "Remove your " + trap.internal.d + ".", callback: "tree_remove" },
+                ]
+            };
+        }
+    }
+    else if (chatID === 601) {
+        return {
+            chatID: 600,
+            speaker: "me",
+            text: "There goes my " + trap.internal.d + ". ",
+            button: [
+                { chatID: -1, text: "...", callback: "kill" }
             ]
         };
     }
@@ -2520,6 +2775,86 @@ room1005.chat = function (chatID) {
                 text: "Dirty girl! Enjoy the taste of my ass in your mouth. hehe",
                 button: [
                     { chatID: -1, text: "Yeah. Your ass has totally coated my tongue. ", callback: "kill" }
+                ]
+            },
+            {
+                chatID: 64,
+                speaker: "me",
+                text: "*squeel* Oh wow that's painful... but it kind hit's my sissy spot just right... Mmmmm. " +
+                    "No one's around to see me fuck this tree...",
+                button: [
+                    { chatID: -1, text: "Ride the branch? ", callback: "tree_trip1" },
+                    { chatID: -1, text: "Pull the branch out of your asshole. ", callback: "kill" },
+                ]
+            },
+            {
+                chatID: 65,
+                speaker: "me",
+                text: "If only my " + sc.n("landlord") + " could see me now, fucking myself on a tree branch. ",
+                button: [
+                    { chatID: -1, text: "Pull the branch out of your filthy hole. ", callback: "kill" },
+                ]
+            },
+            {
+                chatID: 66,
+                speaker: "me",
+                text: "*oof* Right up my cunt! *wiggle* but in a weird way this stick is rubbing me the " +
+                    "right way. Good thing I'm already grooly from walking around naked. " +
+                    "No one's around to see me fuck this tree...",
+                button: [
+                    { chatID: -1, text: "Ride the branch? ", callback: "tree_trip1" },
+                    { chatID: -1, text: "Pull the branch out of your juicy cunt. ", callback: "kill" },
+                ]
+            },
+            {
+                chatID: 67,
+                speaker: "ff",
+                text: "Don't see many sissies wandering around the forest by themselves. You must be one " +
+                    "of those brain dead bimbo sissies we all love! ",
+                button: [
+                    { chatID: 68, text: "I'm just...", callback: "" },
+                ]
+            },
+            {
+                chatID: 68,
+                speaker: "ff",
+                text: "I don't care what you were just doing. Listen, it's hot out here and my pits stink. " +
+                    "Come here, you're going to give me a quick bitch bath. ",
+                button: [
+                    { chatID: 69, text: "huh? ", callback: "ff_pit0" },
+                ]
+            },
+            {
+                chatID: 69,
+                speaker: "ff",
+                text: "Lick the sweat off my pit. You better do a good job or I'll break you in half.  ",
+                button: [
+                    { chatID: -1, text: "*sigh*", callback: "" },
+                ]
+            },
+            {
+                chatID: 70,
+                speaker: "ff",
+                text: "Good bitch. Now clean my other stinky sweaty arm pit. ",
+                button: [
+                    { chatID: -1, text: "*sigh* ok", callback: "ff_pit1" },
+                ]
+            },
+            {
+                chatID: 71,
+                speaker: "ff",
+                text: "That's my good little bitch. I'm sure I'll see you again. ",
+                button: [
+                    { chatID: -1, text: "*ugh* My mouth tastes like musky sweat! ", callback: "kill" },
+                ]
+            },
+            {
+                chatID: 72,
+                speaker: "ff",
+                text: "Oh good. My little bitch has returned. Listen. My feet are starting to get smelly " +
+                    "and I need them cleaned up. Come here! ",
+                button: [
+                    { chatID: -1, text: "*ugh* My mouth tastes like musky sweat! ", callback: "kill" },
                 ]
             },
         ];

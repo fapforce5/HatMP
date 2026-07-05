@@ -512,6 +512,11 @@ room28.dreams = function () {
                 break;
         }
     }
+    else if (sc.getMission("dog", "vacation").inProgress) {
+        nav.bg("28_transformation/dream_feed.jpg");
+        hasText = true;
+        chat(29, 28);
+    }
     else {
         if (g.pass === 502) {
             nav.bg("502_bedroom/sleepZoey.jpg");
@@ -1164,6 +1169,14 @@ room28.chat = function (chatID) {
                     "will ever know about! I do so love wearing girl panties!",
                 button: [
                     { chatID: -1, text: "[Wearing panties in public is now unlocked]", callback: "endDream" }
+                ]
+            },
+            {
+                chatID: 29,
+                speaker: "thinking",
+                text: "I need to make sure I feed " + sc.n("cooper") + " tomorrow. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "endDream" }
                 ]
             },
         ];

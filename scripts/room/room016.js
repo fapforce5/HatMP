@@ -37,6 +37,7 @@ room16.main = function () {
             nav.bg("16_livingRoom/cumdump0.webp");
             fame.moanAnimate("center");
             chat(62, 16);
+            return;
         }
     }
     else if (sc.getMissionTask("landlord", "misc", 4).inProgress) {
@@ -219,16 +220,32 @@ room16.main = function () {
             });
         }
         else if (thisMomRoomID.roomID === 26) {
-            btnList.push({
-                "type": "btn",
-                "name": "living",
-                "left": 1059,
-                "top": 200,
-                "width": 351,
-                "height": 385,
-                "image": "16_livingRoom/livingM.png",
-                "night": "16_livingRoom/livingMN.png"
-            });
+            if (sc.getMission("lola", "*cumdump").inProgress) {
+                btnList.push({
+                    "type": "btn",
+                    "name": "living",
+                    "left": 1059,
+                    "top": 200,
+                    "width": 351,
+                    "height": 385,
+                    "title": "Living Room",
+                    "image": "16_livingRoom/livingP.png",
+                    "night": "16_livingRoom/livingPN.png"
+                });
+            }
+            else {
+                btnList.push({
+                    "type": "btn",
+                    "name": "living",
+                    "left": 1059,
+                    "top": 200,
+                    "width": 351,
+                    "height": 385,
+                    "title": "Living Room",
+                    "image": "16_livingRoom/livingM.png",
+                    "night": "16_livingRoom/livingMN.png"
+                });
+            }
         }
         else {
             btnList.push({
@@ -293,6 +310,13 @@ room16.btnclick = function (name) {
 room16.chatcatch = function (callback) {
     switch (callback) {
         case "cumdump1":
+        case "cumdump3":
+        case "cumdump6":
+        case "cumdump7":
+            nav.bg("16_livingRoom/" + callback + ".webp");
+            break;
+        case "cumdump5":
+            nav.kill();
             nav.bg("16_livingRoom/" + callback + ".webp");
             break;
         case "kungfu":
@@ -483,6 +507,28 @@ room16.chatcatch = function (callback) {
         case "cumdump2":
             fame.moanAnimateStop();
             nav.bg("16_livingRoom/cumdump2.webp");
+            break;
+        case "cumdump4":
+            nav.bg("16_livingRoom/cumdump4.webp");
+            zcl.bjpov(-150, 500, .7, "closed", false);
+            break;
+        case "cumdump8":
+            if (cl.hasoutfit("nude") === null) {
+                if (cl.c.cock === 5)
+                    chat(73, 16);
+                else
+                    chat(74, 16);
+            }
+            else {
+                cl.nude();
+                chat(72, 16);
+            }
+            break;
+        case "cumdump9":
+            if (cl.c.cock === 5)
+                chat(73, 16);
+            else
+                chat(74, 16);
             break;
         case "leave":
             char.room(0);
@@ -1011,13 +1057,13 @@ room16.chat = function (chatID) {
             speaker: "me",
             text: "What the hell?",
             button: [
-                { chatID: -1, text: "...", callback: "cumdump1" }
+                { chatID: 63, text: "...", callback: "cumdump1" }
             ]
         },
         {
             chatID: 63,
             speaker: "lola",
-            text: "Oh my god! You're back! One second, just let " + sc.n("chad") + " dump his load in me " +
+            text: "Oh my god! You're back! One second, just let this guy dump his load in me " +
                 "so we can talk. Don't go anywhere! ",
             button: [
                 { chatID: 64, text: "...", callback: "cumdump2" }
@@ -1028,9 +1074,117 @@ room16.chat = function (chatID) {
             speaker: "thinking",
             text: "What the hell! Where's my " + sc.n("landlord") + "? She would kill any of us if she " +
                 "caught us fucking on her couch! And " + sc.n("lola") + " just taking cock without any " +
-                "embarrasement. ",
+                "embarrasement. Also who the hell is that? ",
             button: [
-                { chatID: 64, text: "...", callback: "cumdump3" }
+                { chatID: 65, text: "...", callback: "cumdump3" }
+            ]
+        },
+        {
+            chatID: 65,
+            speaker: "cult",
+            text: "Oh hey! It's the new slut! Clean your " + g.makeSingular(sc.n("el")) + "'s pussy off " +
+                "my cock slut!",
+            button: [
+                { chatID: 66, text: "Hey! I'm not....", callback: "cumdump4" }
+            ]
+        },
+        {
+            chatID: 66,
+            speaker: "cult",
+            text: "Good slut. Clean that pussy juice off my cock",
+            button: [
+                { chatID: 67, text: "Gluk!", callback: "cumdump5" }
+            ]
+        },
+        {
+            chatID: 67,
+            speaker: "cult",
+            text: "I've got to get home. I'll see you two sluts later heheh. ",
+            button: [
+                { chatID: 68, text: "....", callback: "cumdump6" }
+            ]
+        },
+        {
+            chatID: 68,
+            speaker: "eva",
+            text: "Hey! I thought I heard your voice! Welcome home booger butt! It's going to be so great having you " +
+                "here! So tired of getting fucked, like all the time! A pervert like you is totally going " +
+                "to help! ",
+            button: [
+                { chatID: 69, text: "....", callback: "" }
+            ]
+        },
+        {
+            chatID: 69,
+            speaker: "lola",
+            text: "Oh my. Yes! I tried to read a book in my room, but " + sc.n("eva") + "'s so loud " +
+                "when she has sex. So I came down here to read and that guy just walked in and bent me " +
+                "over. I'll never finish my book! ",
+            button: [
+                { chatID: 70, text: "....", callback: "cumdump7" }
+            ]
+        },
+        {
+            chatID: 70,
+            speaker: "landlord",
+            text: "Oh thank god you're back! I was so worried! All three of my little girls are safe at home! ",
+            button: [
+                { chatID: 71, text: "You're ALL pregnant?!?!", callback: "" }
+            ]
+        },
+        {
+            chatID: 71,
+            speaker: "landlord",
+            text: "*sigh* Yes. Again. It's a long story, but " + sc.n("bigguy") + " said a girl's purpose is to be bred. If a girl " +
+                "can't be bred she has no purpose. He then took all our birth control pills and flushed them down " +
+                "the toilet and invited all his friends at at CUM over. Made me put everything in his name. It was a rough losing my Sperm " +
+                "Bank, but we are better now that we are cum receptacles. Gives life a new meaning. No " +
+                "need to worry about silly things like school or work. We're better as mothers. ",
+            button: [
+                { chatID: -1, text: "but...", callback: "cumdump8" }
+            ]
+        },
+        {
+            chatID: 72,
+            speaker: "landlord",
+            text: "Shhh. No thinking. You're wearing too many clothes to be in this house. " + sc.n("bigguy") +
+                " also said cum sluts don't wear clothes at home. Now be a good little girl and strip off " +
+                "those nasty clothes. ",
+            button: [
+                { chatID: -1, text: "Yes " + sc.n("landlord") + " [strip slut]", callback: "cumdump9" },
+                { chatID: -1, text: "No way! Run away from home! ", callback: "leave" },
+            ]
+        },
+        {
+            chatID: 73,
+            speaker: "landlord",
+            text: "Oh my! They really did give you a vagina! I can't wait for the boys to get you pregnant! " +
+                "You're going to look so cute with a baby in you! It really does make the skin glow. I'm sure " +
+                "the boys will be so excited to see who can impregnate you first. When " + sc.n("bigguy") +
+                " let the boys come over the first time, poor " + sc.n("lola") + " had so many penises ejaculate " +
+                "in her vagina she kept slipping on the all the cum leaking out of her. ",
+            button: [
+                { chatID: 75, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 74,
+            speaker: "landlord",
+            text: "Don't worry about not having a vagina. These boys that come over will be more than " +
+                "happy to try and breed you. It will be so nice having another set of holes around here. " +
+                "I can't tell you enough how much I hate it when they put their penis in my anus. They're " +
+                "going to just love you. ",
+            button: [
+                { chatID: 75, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 75,
+            speaker: "landlord",
+            text: "Remember, a girl never says no to the boys. We're happiest when they're happy. Now " +
+                "you three run along and play. I'm going to catch up on my shows while I have a chance. ",
+            button: [
+                { chatID: -1, text: "Yes " + sc.n("landlord") + ". ", callback: "reset" },
             ]
         },
     ];

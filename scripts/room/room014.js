@@ -21,26 +21,52 @@ room14.main = function () {
 
         if (!g.hourBetween(6, 22)) {
             if (sc.getTimeline("bigguy").thisRoom) {
-                btnList = [{
-                    "type": "btn",
-                    "name": "dickSleep",
-                    "left": 986,
-                    "top": 696,
-                    "width": 713,
-                    "height": 193,
-                    "image": "14_motherRoom/14_motherAsleepDick.png"
-                }];
+                if (sc.getMission("lola", "*cumdump").inProgress) {
+                    btnList = [{
+                        "type": "btn",
+                        "name": "dickSleep",
+                        "left": 986,
+                        "top": 696,
+                        "width": 713,
+                        "height": 197,
+                        "image": "14_motherRoom/14_motherAsleepDick_preg.png"
+                    }];
+                }
+                else {
+                    btnList = [{
+                        "type": "btn",
+                        "name": "dickSleep",
+                        "left": 986,
+                        "top": 696,
+                        "width": 713,
+                        "height": 193,
+                        "image": "14_motherRoom/14_motherAsleepDick.png"
+                    }];
+                } 
             }
             else {
-                btnList = [{
-                    "type": "btn",
-                    "name": "motherSleep",
-                    "left": 1031,
-                    "top": 779,
-                    "width": 591,
-                    "height": 114,
-                    "image": "14_motherRoom/14_motherAsleep.png"
-                }];
+                if (sc.getMission("lola", "*cumdump").inProgress) {
+                    btnList = [{
+                        "type": "btn",
+                        "name": "motherSleep",
+                        "left": 1182,
+                        "top": 732,
+                        "width": 422,
+                        "height": 161,
+                        "image": "14_motherRoom/14_motherAsleep_preg.png"
+                    }];
+                }
+                else {
+                    btnList = [{
+                        "type": "btn",
+                        "name": "motherSleep",
+                        "left": 1031,
+                        "top": 779,
+                        "width": 591,
+                        "height": 114,
+                        "image": "14_motherRoom/14_motherAsleep.png"
+                    }];
+                }
             }
         }
         else if (sc.getTimeline("landlord").thisRoom) {
@@ -380,28 +406,46 @@ room14.btnclick = function (name) {
             break;
         case "motherSleep":
             nav.kill();
-            nav.bg("14_motherRoom/sleep_bed.jpg");
-            if (!pic.has("landlordSleep")) {
+            if (sc.getMission("lola", "*cumdump").inProgress) {
+                nav.bg("14_motherRoom/sleep_preg.webp");
+                if (!daily.get("mothersleepcream14")) {
+                    nav.button({
+                        "type": "tongue",
+                        "name": "sleepcum",
+                        "left": 1012,
+                        "top": 649,
+                        "width": 206,
+                        "height": 200,
+                        "image": "14_motherRoom/sleep_preg_cum.webp"
+                    }, 14);
+                }
+                else
+                    chat(189, 14);
+            }
+            else {
+                nav.bg("14_motherRoom/sleep_bed.jpg");
+                if (!pic.has("landlordSleep")) {
+                    nav.button({
+                        "type": "btn",
+                        "name": "takePic",
+                        "left": 502,
+                        "top": 381,
+                        "width": 259,
+                        "height": 124,
+                        "image": "14_motherRoom/camera.png"
+                    }, 14);
+                }
+
                 nav.button({
                     "type": "btn",
-                    "name": "takePic",
-                    "left": 502,
-                    "top": 381,
-                    "width": 259,
-                    "height": 124,
-                    "image": "14_motherRoom/camera.png"
+                    "name": "sleepmolest",
+                    "left": 959,
+                    "top": 481,
+                    "width": 297,
+                    "height": 409,
+                    "image": "14_motherRoom/sleepmolest.png"
                 }, 14);
             }
-            
-            nav.button({
-                "type": "btn",
-                "name": "sleepmolest",
-                "left": 959,
-                "top": 481,
-                "width": 297,
-                "height": 409,
-                "image": "14_motherRoom/sleepmolest.png"
-            }, 14);
             break;
         case "takePic":
             nav.killall();
@@ -734,6 +778,12 @@ room14.btnclick = function (name) {
                 nav.bg("14_motherRoom/bigguy_" + g.internal + ".jpg");
             }
             g.internal++;
+            break;
+        case "sleepcum":
+            daily.set("mothersleepcream14");
+            nav.killbutton("sleepcum");
+            levels.swallowCum("m", "cult");
+            chat(190, 14);
             break;
         default:
             break;
@@ -2936,6 +2986,23 @@ room14.chat = function (chatID) {
                     ". ",
                 button: [
                     { chatID: -1, text: "...", callback: "leave" },
+                ]
+            },
+            {
+                chatID: 189,
+                speaker: "thinking",
+                text: "She's had a big day and lots of cocks. I'll let her sleep. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 190,
+                speaker: "thinking",
+                text: "The should let her sleep better. She's so tired she doesn't even have the energy to " +
+                    "clean the cum from her pussy. Sleep well " + sc.n("landlord") + ". ",
+                button: [
+                    { chatID: -1, text: "...", callback: "reset" },
                 ]
             },
         ];

@@ -6,7 +6,9 @@ room10.main = function () {
     }
     else if (cl.c.cock === 5 && !gv.get("playWithPussy")) {
         gv.set("playWithPussy", true);
+        room10.btnclick("drawRoom");
         chat(47, 10);
+        return;
     }
     else {
         $('.room-topper').show();
@@ -463,6 +465,15 @@ room10.btnclick = function (name) {
 
 room10.chatcatch = function (callback) {
     switch (callback) {
+        case "pussy0":
+        case "pussy1":
+        case "pussy2":
+        case "pussy3":
+        case "pussy4":
+        case "pussy5":
+            nav.kill();
+            nav.bg("10_mainchar/" + callback + ".webp");
+            break;
         case "nap_1hour":
             char.addtime(60);
             char.room(10);
@@ -722,6 +733,20 @@ room10.chatcatch = function (callback) {
         case "lola_sleep_end":
             g.pass = -7;
             char.room(28);
+            break;
+        case "pussy6":
+            nav.bg("10_mainchar/10_bedroom.png", "10_mainchar/10_bedroomNight.png");
+            zcl.legsup(450, 650, .14, "", true);
+            nav.button({
+                "type": "img",
+                "name": "lola",
+                "left": 933,
+                "top": 0,
+                "width": 524,
+                "height": 1080,
+                "image": "10_mainchar/pussy_m.webp",
+            }, 10);
+            gv.mod("masturbate_pussy", 1);
             break;
         default:
             break;
@@ -1155,7 +1180,7 @@ room10.chat = function (chatID) {
                 speaker: "thinking",
                 text: "Finally! Home alone. Now I have time to explore my new vagina! ",
                 button: [
-                    { chatID: -1, text: "Explore new vagina [to do]", callback: "" },
+                    { chatID: 75, text: "Explore your new vagina", callback: "pussy0" },
                     { chatID: -1, text: "Naw. I don't need to do that. ", callback: "reset" },
                 ]
             },
@@ -1396,6 +1421,66 @@ room10.chat = function (chatID) {
                 text: "Hehe. I heard her moan. She so needed that. Fall asleep while still inside her. ",
                 button: [
                     { chatID: -1, text: "[Sleep]", callback: "lola_sleep_end" },
+                ]
+            },
+            {
+                chatID: 75,
+                speaker: "thinking",
+                text: "*hmmm* Kinda hard to see your own pussy standing up...",
+                button: [
+                    { chatID: 76, text: "[Get a different angle]", callback: "pussy1" },
+                ]
+            },
+            {
+                chatID: 76,
+                speaker: "thinking",
+                text: "I've got to hand it to that doctor, it is a hot pussy. I know if I had a dick I " +
+                    "would fuck it! I wonder how it feels...",
+                button: [
+                    { chatID: 77, text: "[Touch your pussy]", callback: "pussy2" },
+                ]
+            },
+            {
+                chatID: 77,
+                speaker: "thinking",
+                text: "Oh. It's so moist. hehe. Oooo that feels good. MMmmmm. I wonder what inside the hole " +
+                    "feels...",
+                button: [
+                    { chatID: 78, text: "[Slide your fingers inside your pussy]", callback: "pussy3" },
+                ]
+            },
+            {
+                chatID: 78,
+                speaker: "thinking",
+                text: "Wow! That feels amazing too! Like electricity coming out of me. I need more! Oh more! ",
+                button: [
+                    { chatID: 79, text: "[Shove your fingers up your ass and rub your clitty]", callback: "pussy4" },
+                ]
+            },
+            {
+                chatID: 79,
+                speaker: "thinking",
+                text: "Oh fuck! Fuck that's amazing!!! I need to cum. I need it!",
+                button: [
+                    { chatID: 80, text: "[Rub your clitty and fuck your asshole with your fingers]", callback: "pussy5" },
+                ]
+            },
+            {
+                chatID: 80,
+                speaker: "me",
+                text: "*screaming out* AAaAAAAAaaaaAAaaaaa SO GOOOOOD!!!!!!!!",
+                button: [
+                    { chatID: 81, text: "[Enjoy your amazing orgasm!]", callback: "pussy6" },
+                ]
+            },
+            {
+                chatID: 81,
+                speaker: "landlord",
+                text: "Are you ok! I heard screaming... Oh. I see you've found your vagina. hehe. " +
+                    "I'll leave you to it. A girl's alone time is the best time. Go ahead and keep " +
+                    "masturbating, just try to keep it down a bit. ",
+                button: [
+                    { chatID: -1, text: "Yes " + sc.n("landlord") + ". ", callback: "reset" },
                 ]
             },
         ];

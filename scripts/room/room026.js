@@ -47,15 +47,28 @@ room26.main = function () {
         }
         else {
             nav.bg("26_livingRoom/day.jpg", "26_livingRoom/night.jpg");
-            btnList.push({
-                "type": "btn",
-                "name": "landlord",
-                "left": 977,
-                "top": 69,
-                "width": 634,
-                "height": 942,
-                "image": "26_livingRoom/ll.png"
-            });
+            if (sc.getMission("lola", "*cumdump").inProgress) {
+                btnList.push({
+                    "type": "btn",
+                    "name": "landlordp",
+                    "left": 977,
+                    "top": 69,
+                    "width": 634,
+                    "height": 942,
+                    "image": "26_livingRoom/llp.png"
+                });
+            }
+            else {
+                btnList.push({
+                    "type": "btn",
+                    "name": "landlord",
+                    "left": 977,
+                    "top": 69,
+                    "width": 634,
+                    "height": 942,
+                    "image": "26_livingRoom/ll.png"
+                });
+            }
         }
     }
 

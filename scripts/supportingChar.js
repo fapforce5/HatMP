@@ -130,12 +130,13 @@ sc.init = function () {
         { name: "futa2", display: "Frown", image: "futaRed.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, hex: "" },
         //{ name: "slime", display: "Slime Girl", image: "slime.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false,  hex: "" },
 
-        { name: "a", display: "Aethelreda", image: "aethelreda.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, hex: "" },
-        { name: "vag", display: "Slutty Slave", image: "cockgobbler.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, hex: "" },
-        { name: "cock", display: "Cock Gobbler", image: "cockgobbler.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, hex: "" },
-        { name: "sammi", display: "Sammi Olifant", image: "sammi.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, hex: "" },
-        { name: "aurora", display: "Aurora Kirei", image: "sammi.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, hex: "" },
-        { name: "amputee", display: "Deb", image: "amputee.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, hex: "" },
+        { name: "a", display: "Aethelreda", image: "aethelreda.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, hex: "#b58e2b" },
+        { name: "vag", display: "Slutty Slave", image: "cockgobbler.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, hex: "#b58e2b" },
+        { name: "cock", display: "Cock Gobbler", image: "cockgobbler.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, hex: "#b58e2b" },
+        { name: "sammi", display: "Sammi Olifant", image: "sammi.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, hex: "#b58e2b" },
+        { name: "aurora", display: "Aurora Kirei", image: "sammi.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, hex: "#b58e2b" },
+        { name: "amputee", display: "Deb", image: "amputee.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, hex: "#b58e2b" },
+        { name: "ff", display: "Futa Fuckhammer", image: "ff.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, hex: "#b58e2b" },
 
         //add her to sissy cave
 
@@ -1738,6 +1739,22 @@ sc.init = function () {
                         [
                             { id: 0, txt: "Are you submissive enough? ", show: true, mStatus: 0, roomId: 479 },
                             { id: 1, txt: "First time? ", show: true, mStatus: 0, roomId: 479 },
+                        ]
+                },
+            ]
+        },
+        {
+            name: "ff", mission: [
+                {
+                    missionName: "forest", mStatus: 0, title: "Forest", desc: "My slut", task:
+                        [
+                            { id: 0, txt: "What are you doing here?", show: true, mStatus: 0, roomId: 4775 },
+                        ]
+                },
+                {
+                    missionName: "sissy", mStatus: 0, title: "The sissy cave", desc: "Serve us!", task:
+                        [
+                            { id: 0, txt: "Accepted the invite", show: true, mStatus: 0, roomId: 479 },
                         ]
                 },
             ]
@@ -3516,6 +3533,10 @@ sc.trivial = function (charname) {
         case "!wolfgirl":
             name = "Snail Trail";
             image = "wolfgirl.png";
+            break;
+        case "!tree":
+            name = "Tree branch";
+            image = "tree.png";
             break;
         default:
             console.log("unknown trivial char: (check capitilazation)" + charname);

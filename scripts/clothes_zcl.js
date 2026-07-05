@@ -678,6 +678,7 @@ zcl.bellydown = function (top, left, ratio, mod, reverse) {
     let pg = cl.c.hairLength > 2 ? "f" : "m";
     let cumamount = gv.getButtCum();
 
+
     if (mod === "sad") {
         zcl.subDisplay("body_sad_" + pg + ".webp", top, left, ratio, reverse, w, h, f);
     }
@@ -687,11 +688,19 @@ zcl.bellydown = function (top, left, ratio, mod, reverse) {
     else {
         zcl.subDisplay("body_" + pg + ".webp", top, left, ratio, reverse, w, h, f);
     }
-        
+
+    if(cl.c.cock !== 5)
+        zcl.subDisplay("dick.png", top, left, ratio, reverse, w, h, f);
+    else if (gv.get("pussyCum") > 0)
+        zcl.subDisplay("cum_pussy.webp", top, left, ratio, reverse, w, h, f);
+
+
     if (cumamount.total > 6)
         zcl.subDisplay("cum_1.webp", top, left, ratio, reverse, w, h, f);
     else if (cumamount.total > 0)
         zcl.subDisplay("cum_0.webp", top, left, ratio, reverse, w, h, f);
+
+    
 };
 
 //closed w
@@ -805,6 +814,12 @@ zcl.squat = function (top, left, ratio, mod, reverse) {
     let f = "squat";
     zcl.kill();
     
+    if(cl.c.cock === 5)
+        zcl.subDisplay("pussy.png", top, left, ratio, reverse, w, h, f);
+    else
+        zcl.subDisplay("balls.png", top, left, ratio, reverse, w, h, f);
+
+
     if (cl.c.hairLength > 1) {
         zcl.subDisplay("squat_f.png", top, left, ratio, reverse, w, h, f);
     }
