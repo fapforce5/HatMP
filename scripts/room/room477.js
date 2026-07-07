@@ -74,7 +74,7 @@ room477.btnclick = function (name) {
                 chat(17, 477);
             }
             else
-                room477.btnclick("drawSelect");
+                invoker.invokeCurrent("btnclick", "drawSelect");
             break;
         case "drawSelect":
             sc.select("wardrobe", "316_livingroom/icon_wardrobe.png", 0);
@@ -140,7 +140,7 @@ room477.btnclick = function (name) {
 room477.chatcatch = function (callback) {
     switch (callback) {
         case "drawSelect":
-            room477.btnclick("drawSelect");
+            invoker.invokeCurrent("btnclick", "drawSelect");
             break;
         case "goToPark":
             char.room(450);
@@ -175,7 +175,7 @@ room477.chatcatch = function (callback) {
         case "s2":
             nav.killall();
             g.internal = ["l1", "l2", "l3", "l4", "l5", "l6"];
-            room477.chatcatch("drawBoxes");
+            invoker.invokeCurrent("chatcatch", "drawBoxes");
             break;
         case "drawBoxes":
             nav.bg('477_cottage/interior.jpg');
@@ -252,7 +252,7 @@ room477.chatcatch = function (callback) {
             break;
         case "resetsearch":
             if (g.internal.length > 2) {
-                room477.chatcatch("drawBoxes");
+                invoker.invokeCurrent("chatcatch", "drawBoxes");
             }
             else {
                 nav.bg("477_cottage/c0.jpg");
@@ -682,3 +682,5 @@ room477.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(477, room477);

@@ -70,7 +70,7 @@ room700.chatcatch = function (callback) {
         case "follow":
             char.changeMenu("body", false, true);
             nav.killall();
-            nav.bg("701_hospitalroom/rooms.jpg");
+            nav.bg("701_hospitalroom/old- delete/rooms.jpg");
             if (g.internal === "boob")
                 chat(7, 700);
             else
@@ -267,3 +267,5 @@ room700.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(700, room700);

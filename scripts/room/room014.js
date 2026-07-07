@@ -466,7 +466,8 @@ room14.btnclick = function (name) {
                 sc.select("icon_finger", "14_motherRoom/icon_finger.png", 0);
                 sc.select("icon_ass", "14_motherRoom/icon_ass.png", 1);
                 sc.select("icon_lickass", "14_motherRoom/icon_lickass.png", 2);
-                sc.select("icon_fuck", "14_motherRoom/icon_fuck.png", 3);
+                if (cl.c.chastity === null)
+                    sc.select("icon_fuck", "14_motherRoom/icon_fuck.png", 3);
                 sc.selectCancel("motherSleep", 4);
                 nav.killbutton("sleepmolest");
                 nav.killbutton("takePic");
@@ -856,12 +857,12 @@ room14.chatcatch = function (callback) {
             char.room(14);
             break;
         case "resetDresser":
-            room14.btnclick("dresser");
+            invoker.invokeCurrent("btnclick", "dresser");
             break;
         case "stealplug":
             cl.add("buttplug", "s");
             levels.mod("xdress", 40);
-            room14.btnclick("dresser");
+            invoker.invokeCurrent("btnclick", "dresser");
             break;
         case "domlaugh":
             levels.mod("dom", 38);
@@ -1293,7 +1294,7 @@ room14.chatcatch = function (callback) {
             nav.next("confess4");
             break;
         case "confess5":
-            nav.bg("14_motherRoom/16_downStairsNight.jpg");
+            nav.bg("16_livingRoom/16_downStairsNight.jpg");
             break;
         case "confess_end":
             sc.completeMissionTaskAll("bigguy", "sissy", 4);
@@ -1319,6 +1320,8 @@ room14.chatcatch = function (callback) {
             break;
     }
 };
+
+invoker.registerRoom(14, room14);
 
 room14.chat = function (chatID) {
     if (chatID === 999) {

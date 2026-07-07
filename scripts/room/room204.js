@@ -40,7 +40,7 @@ room204.countdown = function (timer) {
             g.roomTimeout = setTimeout(function () { room204.countdown(timer) }, 1000);
         }
         else {
-            room204.chatcatch("endgame");
+            invoker.invokeCurrent("chatcatch", "endgame");
         }
     }
 };
@@ -59,7 +59,7 @@ room204.btnclick = function (name) {
             $('.room-btn[data-name=' + name + ']').addClass("room-204fail");
         }
         if (g.pass.length === 0) {
-            room204.chatcatch("endgame");
+            invoker.invokeCurrent("chatcatch", "endgame");
             ////gv.mod("money", 60);
             ////g.roomTimeout = null;
             ////if (sc.getstep("missy") === 5)
@@ -95,6 +95,8 @@ room204.btnclick = function (name) {
         }
     }
 };
+
+invoker.registerRoom(204, room204);
 
 room204.startGame = function () {
     var thisArousal = gv.get("arousal");

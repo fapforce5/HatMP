@@ -257,8 +257,61 @@ room9.btnclick = function (name) {
             chat(1, 9);
             break;
         case "files":
-
-
+            nav.killall();
+            nav.button({
+                "type": "img",
+                "name": "filesBG",
+                "left": 442,
+                "top": 46,
+                "width": 1425,
+                "height": 737,
+                "image": "9_computer/09_jobBackground.png"
+            }, 9);
+            nav.button({
+                "type": "img",
+                "name": "school",
+                "left": 654,
+                "top": 250,
+                "width": 157,
+                "height": 162,
+                "image": "31_puter/school.png"
+            }, 9);
+            nav.button({
+                "type": "img",
+                "name": "english",
+                "left": 831,
+                "top": 250,
+                "width": 157,
+                "height": 162,
+                "image": "31_puter/english.png"
+            }, 9);
+            nav.button({
+                "type": "img",
+                "name": "history",
+                "left": 1008,
+                "top": 250,
+                "width": 157,
+                "height": 162,
+                "image": "31_puter/history.png"
+            }, 9);
+            nav.button({
+                "type": "img",
+                "name": "math",
+                "left": 1185,
+                "top": 250,
+                "width": 157,
+                "height": 162,
+                "image": "31_puter/math.png"
+            }, 9);
+            nav.button({
+                "type": "btn",
+                "name": "close",
+                "left": 450,
+                "top": 53,
+                "width": 42,
+                "height": 42,
+                "image": "9_computer/09_close.png"
+            }, 9);
             break;
         case "porn":
             nav.killall();
@@ -471,7 +524,7 @@ room9.btnclick = function (name) {
                 nav.bg("9_computer/52_computer.jpg");
             else
                 nav.bg("9_computer/09_computer.jpg");
-            room9.btnclick(g.internal);
+            invoker.invokeCurrent("btnclick", g.internal);
             break;
         case "jackitNo1":
             char.room(9);
@@ -579,14 +632,14 @@ room9.chatcatch = function (callback) {
             char.room(9);
             break;
         case "internet":
-            room9.btnclick("internet");
+            invoker.invokeCurrent("btnclick", "internet");
             break;
         case "jackoff2":
         case "jackoffCaught":
             nav.bg("9_computer/" + callback + ".jpg");
             break;
         case "powerOff":
-            room9.btnclick("powerOff");
+            invoker.invokeCurrent("btnclick", "powerOff");
             break;
         case "jackoffEnd":
             levels.gottitjob("f", "landlord");
@@ -596,7 +649,7 @@ room9.chatcatch = function (callback) {
             break;
         case "porn":
             nav.bg("9_computer/09_computer.jpg");
-            room9.btnclick("porn");
+            invoker.invokeCurrent("btnclick", "porn");
             break;
         default:
             break;
@@ -747,3 +800,5 @@ room9.chat = function(chatID){
         return cArray[chatID];
 
 }
+
+invoker.registerRoom(9, room9);

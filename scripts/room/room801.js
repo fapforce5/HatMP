@@ -1,5 +1,16 @@
 ﻿//Room name
 var room801 = {};
+room801.addDadButton = function (name, image, type = "btn") {
+    nav.button({
+        "type": type,
+        "name": name,
+        "left": 926,
+        "top": 86,
+        "width": 437,
+        "height": 994,
+        "image": image
+    }, 801);
+};
 //after sissy school day 1 > find out Ralph told him mom everything
 //after sissy school > mom buys and brings panties to Ralph
 room801.main = function () {
@@ -10,65 +21,25 @@ room801.main = function () {
             sc.startMission("ralphsdad", "main");
             sc.completeMissionTask("ralphsdad", "main", 0);
             nav.bg("801_ralphlivingroom/dad.webp");
-            nav.button({
-                "type": "btn",
-                "name": "dad",
-                "left": 926,
-                "top": 86,
-                "width": 437,
-                "height": 994,
-                "image": "801_ralphlivingroom/d.webp"
-            }, 801);
+            room801.addDadButton("dad", "801_ralphlivingroom/d.webp");
             chat(0, 801);
         }
         else if (daily.get("room800dad")) {
-            nav.button({
-                "type": "btn",
-                "name": "dad",
-                "left": 926,
-                "top": 86,
-                "width": 437,
-                "height": 994,
-                "image": "801_ralphlivingroom/d.webp"
-            }, 801);
+            room801.addDadButton("dad", "801_ralphlivingroom/d.webp");
         }
         else if (cl.appearance() > 1) {
             daily.set("room800dad");
             if (!sc.getMissionTask("ralphsdad", "main", 1).complete) {
                 if (sc.getMissionTask("ralphsdad", "main", 1).notStarted) {
-                    nav.button({
-                        "type": "btn",
-                        "name": "dadflowers",
-                        "left": 926,
-                        "top": 86,
-                        "width": 437,
-                        "height": 994,
-                        "image": "801_ralphlivingroom/d_f.webp"
-                    }, 801);
+                    room801.addDadButton("dadflowers", "801_ralphlivingroom/d_f.webp");
                 }
                 else {
-                    nav.button({
-                        "type": "btn",
-                        "name": "dadflowers",
-                        "left": 926,
-                        "top": 86,
-                        "width": 437,
-                        "height": 994,
-                        "image": "801_ralphlivingroom/d_r.webp"
-                    }, 801);
+                    room801.addDadButton("dadflowers", "801_ralphlivingroom/d_r.webp");
                 }
             }
             else if (!sc.getMissionTask("ralphsdad", "main", 6).complete) {
                 if (sc.getMissionTask("ralphsdad", "main", 2).notStarted) {
-                    nav.button({
-                        "type": "btn",
-                        "name": "dadbuttgrab",
-                        "left": 926,
-                        "top": 86,
-                        "width": 437,
-                        "height": 994,
-                        "image": "801_ralphlivingroom/d.webp"
-                    }, 801);
+                    room801.addDadButton("dadbuttgrab", "801_ralphlivingroom/d.webp");
                 }
                 else {
                     if (sc.getLevel("ralphsdad") > 4) {
@@ -80,15 +51,7 @@ room801.main = function () {
                     else {
                         switch (sc.getMissionTask("ralphsdad", "main", 2).mStatus % 2) {
                             case 0:
-                                nav.button({
-                                    "type": "btn",
-                                    "name": "daddick",
-                                    "left": 926,
-                                    "top": 86,
-                                    "width": 437,
-                                    "height": 994,
-                                    "image": "801_ralphlivingroom/d_d.webp"
-                                }, 801);
+                                room801.addDadButton("daddick", "801_ralphlivingroom/d_d.webp");
                                 break;
                             case 1:
                                 nav.bg("801_ralphlivingroom/assgrab_bg.webp");
@@ -113,29 +76,13 @@ room801.main = function () {
             }
             else {
                 daily.set("room800dad");
-                nav.button({
-                    "type": "btn",
-                    "name": "daddick",
-                    "left": 926,
-                    "top": 86,
-                    "width": 437,
-                    "height": 994,
-                    "image": "801_ralphlivingroom/d_d.webp"
-                }, 801);
+                room801.addDadButton("daddick", "801_ralphlivingroom/d_d.webp");
                 chat(22, 801);
             }
         }
         else {
             nav.bg("801_ralphlivingroom/dad.webp");
-            nav.button({
-                "type": "btn",
-                "name": "dad",
-                "left": 926,
-                "top": 86,
-                "width": 437,
-                "height": 994,
-                "image": "801_ralphlivingroom/d.webp"
-            }, 801);
+            room801.addDadButton("dad", "801_ralphlivingroom/d.webp");
         }
     }
     if (daily.get("noRoom803"))
@@ -490,3 +437,5 @@ room801.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(801, room801);

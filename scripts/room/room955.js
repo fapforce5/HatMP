@@ -19,7 +19,7 @@ room955.main = function () {
             chat(0, 955);
         }
         else {
-            room950.btnclick("bars");
+            invoker.invoke(950, "btnclick", "bars");
             if (daily.get("celldoor_blonde")) {
                 nav.bg("950_cell/door_bg0.webp");
             }
@@ -719,3 +719,5 @@ room955.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(955, room955);

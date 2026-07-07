@@ -94,3 +94,5 @@ room228.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(228, room228);

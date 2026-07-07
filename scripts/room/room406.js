@@ -61,7 +61,7 @@ room406.btnclick = function (name) {
         case "hazel":
         case "lightblue":
         case "purple":
-            room406.btnclick("cancel");
+            invoker.invokeCurrent("btnclick", "cancel");
             gv.mod("money", -40);
             cl.c.eyes = name;
             cl.display();
@@ -194,3 +194,5 @@ room406.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(406, room406);

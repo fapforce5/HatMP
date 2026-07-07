@@ -32,7 +32,7 @@ room322.main = function () {
         }
     }
     else {
-        room322.btnclick("livingroom");
+        invoker.invokeCurrent("btnclick", "livingroom");
     }
 };
 
@@ -74,14 +74,14 @@ room322.btnclick = function (name) {
         case "livingroom":
             char.addtime(3);
             nav.kill();
-            room322.btnclick("progressbar");
+            invoker.invokeCurrent("btnclick", "progressbar");
             if (cl.stinky()) {
                 nav.bg("322_dog/livingroom.webp");
                 chat(115, 322);
             }
             else if (g.gethourdecimal() > 20) {
                 if (daily.get("janicePhoneGangbang")) {
-                    room322.btnclick("f0");
+                    invoker.invokeCurrent("btnclick", "f0");
                     return;
                 }
                 var janiceRand = gv.get("janiceRand");
@@ -115,10 +115,10 @@ room322.btnclick = function (name) {
                             chat(24, 322);
                             break;
                         case 1:
-                            room322.btnclick("waiter0")
+                            invoker.invokeCurrent("btnclick", "waiter0")
                             break;
                         case 2:
-                            room322.btnclick("pl0")
+                            invoker.invokeCurrent("btnclick", "pl0")
                             break;
                     }
                     gv.mod("janiceAfternoon", 1);
@@ -131,10 +131,10 @@ room322.btnclick = function (name) {
                             chat(24, 322);
                             break;
                         case 1:
-                            room322.btnclick("waiter0");
+                            invoker.invokeCurrent("btnclick", "waiter0");
                             break;
                         case 2:
-                            room322.btnclick("pl0");
+                            invoker.invokeCurrent("btnclick", "pl0");
                             break;
                         case 3:
                             chat(110, 322);
@@ -204,7 +204,7 @@ room322.btnclick = function (name) {
             break;
         case "dogbed":
             nav.kill();
-            room322.btnclick("progressbar");
+            invoker.invokeCurrent("btnclick", "progressbar");
             var dogbedchast = cl.c.chastity === null ? "_n" : "_c";
             nav.bg("322_dog/dogbed" + dogbedchast + ".webp");
             sc.select("nap2", "322_dog/icon_nap2.webp", 0);
@@ -218,10 +218,10 @@ room322.btnclick = function (name) {
                 daily.set("doggybeds");
                 sc.modLevel("dog", 50, 10);
             }
-            room322.btnclick("progressbar");
+            invoker.invokeCurrent("btnclick", "progressbar");
             char.addtime(120);
             g.roomTimeout = setTimeout(function () {
-                room322.btnclick("livingroom");
+                invoker.invokeCurrent("btnclick", "livingroom");
             }, 2000);
             break;
         case "nap4":
@@ -230,10 +230,10 @@ room322.btnclick = function (name) {
                 daily.set("doggybeds");
                 sc.modLevel("dog", 50, 10);
             }
-            room322.btnclick("progressbar");
+            invoker.invokeCurrent("btnclick", "progressbar");
             char.addtime(240);
             g.roomTimeout = setTimeout(function () {
-                room322.btnclick("livingroom");
+                invoker.invokeCurrent("btnclick", "livingroom");
             }, 2000);
             break;
         case "napAll":
@@ -242,15 +242,15 @@ room322.btnclick = function (name) {
                 daily.set("doggybeds");
                 sc.modLevel("dog", 50, 10);
             }
-            room322.btnclick("progressbar");
+            invoker.invokeCurrent("btnclick", "progressbar");
             char.settime(19, 56);
             g.roomTimeout = setTimeout(function () {
-                room322.btnclick("livingroom");
+                invoker.invokeCurrent("btnclick", "livingroom");
             }, 2000);
             break;
         case "backyard":
             nav.kill();
-            room322.btnclick("progressbar");
+            invoker.invokeCurrent("btnclick", "progressbar");
             nav.bg("319_backyard/bg.jpg");
             sc.select("yardrun", "322_dog/icon_yardRun.webp", 0);
             sc.select("yardlay", "322_dog/icon_yardLay.webp", 1);
@@ -259,7 +259,7 @@ room322.btnclick = function (name) {
             break;
         case "yardpee":
             nav.kill();
-            room322.btnclick("progressbar");
+            invoker.invokeCurrent("btnclick", "progressbar");
             if (gv.get("bladder") > 0) {
                 gv.mod("bladder", -1)
                 let ypchastity = cl.c.chastity === null ? "_n" : "_c";
@@ -270,7 +270,7 @@ room322.btnclick = function (name) {
                 else {
                     nav.bg("322_dog/yardpeelaugh" + ypchastity + ".webp");
                     sc.modLevel("janice", 3, 9);
-                    room322.btnclick("progressbar");
+                    invoker.invokeCurrent("btnclick", "progressbar");
                     chat(8, 322);
                 }
             }
@@ -280,17 +280,17 @@ room322.btnclick = function (name) {
             break;
         case "yardlay":
             nav.kill();
-            room322.btnclick("progressbar");
+            invoker.invokeCurrent("btnclick", "progressbar");
             gv.mod("energy", 30);
             nav.bg("322_dog/yard_layinsun.webp");
             char.addtime(180);
             g.roomTimeout = setTimeout(function () {
-                room322.btnclick("backyard");
+                invoker.invokeCurrent("btnclick", "backyard");
             }, 2000);
             break;
         case "yardrun":
             nav.kill();
-            room322.btnclick("progressbar");
+            invoker.invokeCurrent("btnclick", "progressbar");
             if (sc.getLevel("dog") > 6 && g.rand(0, 2) === 0 && !daily.get("dogYardFuck")) {
                 daily.set("dogYardFuck");
                 nav.bg("322_dog/yardPlay0.webp");
@@ -307,7 +307,7 @@ room322.btnclick = function (name) {
                 else
                     nav.bg("322_dog/yardPlay0.webp");
                 g.roomTimeout = setTimeout(function () {
-                    room322.btnclick("backyard");
+                    invoker.invokeCurrent("btnclick", "backyard");
                 }, 2000);
             }
             else {
@@ -317,7 +317,7 @@ room322.btnclick = function (name) {
         case "kitchen":
             char.addtime(30);
             nav.kill();
-            room322.btnclick("progressbar");
+            invoker.invokeCurrent("btnclick", "progressbar");
             nav.bg("317_janiceKitchen/kitchen.jpg");
             sc.select("livingroom", "322_dog/icon_living.webp", 0);
             sc.select("backyard", "322_dog/icon_backyard.webp", 1);
@@ -333,7 +333,7 @@ room322.btnclick = function (name) {
             break;
         case "feet":
             nav.kill();
-            room322.btnclick("progressbar");
+            invoker.invokeCurrent("btnclick", "progressbar");
             sc.select("couch", "322_dog/icon_couch.webp", 0);
             sc.select("nap2x", "322_dog/icon_nap2.webp", 1);
             sc.select("nap4x", "322_dog/icon_nap4.webp", 2);
@@ -345,7 +345,7 @@ room322.btnclick = function (name) {
             nav.kill();
             gv.mod("energy", -20);
             gv.mod("janiceAnnoyance", 60);
-            room322.btnclick("progressbar");
+            invoker.invokeCurrent("btnclick", "progressbar");
             char.addtime(15);
             nav.bg("322_dog/couch.webp");
             chat(6, 322);
@@ -358,9 +358,9 @@ room322.btnclick = function (name) {
                 daily.set("naplay");
                 sc.modLevel("janice", 5, 9);
             }
-            room322.btnclick("progressbar");
+            invoker.invokeCurrent("btnclick", "progressbar");
             g.roomTimeout = setTimeout(function () {
-                room322.btnclick("livingroom");
+                invoker.invokeCurrent("btnclick", "livingroom");
             }, 2000);
             break;
         case "nap4x":
@@ -371,9 +371,9 @@ room322.btnclick = function (name) {
                 daily.set("naplay");
                 sc.modLevel("janice", 5, 9);
             }
-            room322.btnclick("progressbar");
+            invoker.invokeCurrent("btnclick", "progressbar");
             g.roomTimeout = setTimeout(function () {
-                room322.btnclick("livingroom");
+                invoker.invokeCurrent("btnclick", "livingroom");
             }, 2000);
             break;
         case "napAllx":
@@ -384,17 +384,17 @@ room322.btnclick = function (name) {
                 daily.set("naplay");
                 sc.modLevel("janice", 5, 9);
             }
-            room322.btnclick("progressbar");
+            invoker.invokeCurrent("btnclick", "progressbar");
             g.roomTimeout = setTimeout(function () {
-                room322.btnclick("livingroom");
+                invoker.invokeCurrent("btnclick", "livingroom");
             }, 2000);
             break;
         case "nuzzle":
             nav.kill();
-            room322.btnclick("progressbar");
+            invoker.invokeCurrent("btnclick", "progressbar");
             if (gv.get("janiceAnnoyance") > 98) {
                 gv.mod("janiceAnnoyance", 10);
-                room322.btnclick("progressbar");
+                invoker.invokeCurrent("btnclick", "progressbar");
                 nav.bg("322_dog/shoo.webp");
                 char.addtime(30);
                 chat(67, 322);
@@ -407,28 +407,28 @@ room322.btnclick = function (name) {
                 switch (g.rand(0, 4)) {
                     case 0:
                         gv.mod("janiceAnnoyance", 40);
-                        room322.btnclick("progressbar");
+                        invoker.invokeCurrent("btnclick", "progressbar");
                         nav.bg("322_dog/shoo.webp");
                         char.addtime(30);
                         chat(67, 322);
                         break;
                     case 1:
                         gv.mod("janiceAnnoyance", 26);
-                        room322.btnclick("progressbar");
+                        invoker.invokeCurrent("btnclick", "progressbar");
                         nav.bg("322_dog/shoo.webp");
                         char.addtime(30);
                         chat(68, 322);
                         break;
                     case 2:
                         gv.mod("janiceAnnoyance", 26);
-                        room322.btnclick("progressbar");
+                        invoker.invokeCurrent("btnclick", "progressbar");
                         nav.bg("322_dog/t0.webp");
                         char.addtime(30);
                         chat(76, 322);
                         break;
                     case 3:
                         gv.mod("janiceAnnoyance", 26);
-                        room322.btnclick("progressbar");
+                        invoker.invokeCurrent("btnclick", "progressbar");
                         nav.bg("322_dog/shoo.webp");
                         char.addtime(30);
                         chat(103, 322);
@@ -445,7 +445,7 @@ room322.btnclick = function (name) {
             }
             else {
                 nav.kill();
-                room322.btnclick("progressbar");
+                invoker.invokeCurrent("btnclick", "progressbar");
                 nav.bg("322_dog/kitchen.webp");
                 chat(1, 322);
             }
@@ -454,13 +454,13 @@ room322.btnclick = function (name) {
             daily.set("room322Eat");
             nav.killbutton("feed2");
             sc.modLevel("janice", 3, 9);
-            room322.btnclick("progressbar");
+            invoker.invokeCurrent("btnclick", "progressbar");
             gv.mod("bladder", .8);
             chat(4, 322);
             break;
         case "yardfuck":
             if (g.internal > 7) {
-                room322.btnclick("backyard");
+                invoker.invokeCurrent("btnclick", "backyard");
                 return;
             }
             else
@@ -502,7 +502,7 @@ room322.btnclick = function (name) {
             chat(111, 322);
             break;
         case "sphone":
-            room322.btnclick("phoneDraw");
+            invoker.invokeCurrent("btnclick", "phoneDraw");
             break;
         case "phoneDraw":
             nav.kill();
@@ -773,7 +773,7 @@ room322.btnclick = function (name) {
 room322.chatcatch = function (callback) {
     switch (callback) {
         case "backyard":
-            room322.btnclick(callback);
+            invoker.invokeCurrent("btnclick", callback);
             break;
         case "livingroom":
             char.room(322);
@@ -824,7 +824,7 @@ room322.chatcatch = function (callback) {
         case "pl1":
         case "f0":
             nav.kill();
-            room322.btnclick("progressbar");
+            invoker.invokeCurrent("btnclick", "progressbar");
             nav.bg("322_dog/" + callback + ".webp");
             break;
         case "waiter4":
@@ -862,11 +862,11 @@ room322.chatcatch = function (callback) {
         case "kitchenbad":
             nav.bg("322_dog/" + callback + ".webp");
             gv.mod("janiceAnnoyance", 75);
-            room322.btnclick("progressbar");
+            invoker.invokeCurrent("btnclick", "progressbar");
             daily.set("room322EatBad")
             break;
         case "kitchen":
-            room322.btnclick(callback);
+            invoker.invokeCurrent("btnclick", callback);
             break;
         case "kitchenEat":
             nav.bg("322_dog/kitchen_bowl.webp");
@@ -889,7 +889,7 @@ room322.chatcatch = function (callback) {
                 case 0:
                     nav.bg("322_dog/walk0.webp");
                     sc.modLevel("janice", 3, 9);
-                    room322.btnclick("progressbar");
+                    invoker.invokeCurrent("btnclick", "progressbar");
                     sc.modLevel("janice", 4, 9);
                     chat(13, 322);
                     break;
@@ -910,7 +910,7 @@ room322.chatcatch = function (callback) {
                 case 2:
                     nav.kill();
                     sc.modLevel("janice", 5, 9);
-                    room322.btnclick("progressbar");
+                    invoker.invokeCurrent("btnclick", "progressbar");
                     if (sc.getMissionTask("janice", "random", 0).notStarted) {
                         sc.completeMissionTask("janice", "random", 0);
                         nav.bg("322_dog/park1_0.webp");
@@ -937,7 +937,7 @@ room322.chatcatch = function (callback) {
             break;
         case "bed":
             nav.kill();
-            room322.btnclick("progressbar");
+            invoker.invokeCurrent("btnclick", "progressbar");
             nav.bg("322_dog/e10.webp");
             var asldkfjaslkdjf = sc.getLevelDetails("janice");
             if (asldkfjaslkdjf.c > 65 || asldkfjaslkdjf.l > 9) {
@@ -962,7 +962,7 @@ room322.chatcatch = function (callback) {
             levels.oral(4, "m", "dog", true, "dog");
             sc.modLevel("janice", 7, 9);
             char.addtime(90);
-            room322.btnclick("progressbar");
+            invoker.invokeCurrent("btnclick", "progressbar");
             break;
         case "ds5a":
             nav.bg("322_dog/ds5a.webp");
@@ -971,30 +971,30 @@ room322.chatcatch = function (callback) {
             sc.modLevel("janice", 2, 9);
             gv.mod("janiceAnnoyance", 50);
             char.addtime(90);
-            room322.btnclick("progressbar");
+            invoker.invokeCurrent("btnclick", "progressbar");
             break;
         case "backyardannoy":
             gv.mod("janiceAnnoyance", 30);
-            room322.btnclick("progressbar");
-            room322.btnclick("backyard");
+            invoker.invokeCurrent("btnclick", "progressbar");
+            invoker.invokeCurrent("btnclick", "backyard");
             break;
         case "livingroomannoy":
             gv.mod("janiceAnnoyance", 30);
-            room322.btnclick("livingroom");
+            invoker.invokeCurrent("btnclick", "livingroom");
             break;
         case "tEnd":
             sc.modLevel("janice", 5, 9);
             gv.mod("energy", 25);
-            room322.btnclick("livingroom");
+            invoker.invokeCurrent("btnclick", "livingroom");
             break;
         case "tEndbad":
             gv.mod("janiceAnnoyance", 100);
-            room322.btnclick("livingroom");
+            invoker.invokeCurrent("btnclick", "livingroom");
             break;
         case "ppend":
             levels.mod("piss", 20);
             gv.mod("janiceAnnoyance", 85);
-            room322.btnclick("livingroom");
+            invoker.invokeCurrent("btnclick", "livingroom");
             break;
         case "f3":
             g.internal = 4;
@@ -1004,12 +1004,12 @@ room322.chatcatch = function (callback) {
         case "f11":
             sc.modLevel("janice", 100, 9);
             levels.swallowCum("m", "!bbc");
-            room322.chatcatch("bed");
+            invoker.invokeCurrent("chatcatch", "bed");
             break;
         case "k_end":
             gv.mod("energy", -30);
             sc.modLevel("janice", 2, 9);
-            room322.btnclick("livingroom");
+            invoker.invokeCurrent("btnclick", "livingroom");
             break;
         case "reset":
             char.room(322);
@@ -2061,3 +2061,5 @@ room322.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(322, room322);

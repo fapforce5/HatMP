@@ -77,7 +77,7 @@ room213.btnclick = function (name) {
                 sc.completeMissionTask("p", "pink", 2);
                 nav.killall();
                 nav.bg("213_pink/bgc.jpg");
-                room213.btnclick("drawCloseupBgChar");
+                invoker.invokeCurrent("btnclick", "drawCloseupBgChar");
 
                 if (missy.get("pinkEntrance") === 0) {
                     nav.button({
@@ -95,7 +95,7 @@ room213.btnclick = function (name) {
             else {
                 nav.killall();
                 nav.bg("213_pink/bgc.jpg");
-                room213.btnclick("drawCloseupBgChar");
+                invoker.invokeCurrent("btnclick", "drawCloseupBgChar");
                 nav.button({
                     "type": "img",
                     "name": "g",
@@ -154,7 +154,7 @@ room213.chatcatch = function (callback) {
             }, 213);
             break;
         case "g1":
-            room213.btnclick("drawCloseupBgChar");
+            invoker.invokeCurrent("btnclick", "drawCloseupBgChar");
             nav.killbutton("g");
             nav.button({
                 "type": "img",
@@ -169,7 +169,7 @@ room213.chatcatch = function (callback) {
             break;
         case "_0":
             nav.killall();
-            room213.btnclick("drawCloseupBgChar");
+            invoker.invokeCurrent("btnclick", "drawCloseupBgChar");
             if (sc.getMissionTask("spanky", "shop", 1).notStarted) {
                 sc.completeMissionTask("spanky", "shop", 1);
                 nav.button({
@@ -184,7 +184,7 @@ room213.chatcatch = function (callback) {
                 chat(36, 213);
             }
             else {
-                room213.chatcatch("_0_" + g.rand(0, 3));
+                invoker.invokeCurrent("chatcatch", "_0_" + g.rand(0, 3));
             }
             return;
         case "_0_0":
@@ -257,8 +257,8 @@ room213.chatcatch = function (callback) {
             break;
         case "_1":
             nav.killall();
-            room213.btnclick("drawCloseupBgChar");
-            room213.chatcatch("_1_" + g.rand(0, 3));
+            invoker.invokeCurrent("btnclick", "drawCloseupBgChar");
+            invoker.invokeCurrent("chatcatch", "_1_" + g.rand(0, 3));
             break;
         case "_1_0":
             nav.button({
@@ -299,8 +299,8 @@ room213.chatcatch = function (callback) {
         case "_2":
             nav.killall();
             nav.bg("213_pink/bgc.jpg");
-            room213.btnclick("drawCloseupBgChar");
-            room213.chatcatch("_2_" + g.rand(0, 3));
+            invoker.invokeCurrent("btnclick", "drawCloseupBgChar");
+            invoker.invokeCurrent("chatcatch", "_2_" + g.rand(0, 3));
             break;
         case "_2_0":
             nav.button({
@@ -371,7 +371,7 @@ room213.chatcatch = function (callback) {
         case "_3":
             nav.killall();
             nav.bg("213_pink/bgc.jpg");
-            room213.btnclick("drawCloseupBgChar");
+            invoker.invokeCurrent("btnclick", "drawCloseupBgChar");
             gv.mod("energy", -33);
             gv.mod("money", 25);
             gv.mod("pink", 1);
@@ -439,7 +439,7 @@ room213.chatcatch = function (callback) {
                         "title": "Free Use Slut"
                     }, 171);
                 }
-            room171.btnclick("fuckers");
+            invoker.invoke(171, "btnclick", "fuckers");
             nav.button({
                 "type": "btn",
                 "name": "p",
@@ -904,3 +904,5 @@ room213.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(213, room213);

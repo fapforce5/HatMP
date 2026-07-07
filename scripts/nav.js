@@ -1,5 +1,41 @@
 ﻿var nav = {};
 
+nav.clearRoomTimeouts = function () {
+    if (g.roomTimeout !== null) {
+        clearTimeout(g.roomTimeout);
+        g.roomTimeout = null;
+    }
+    if (g.roomTimeout2 !== null) {
+        clearTimeout(g.roomTimeout2);
+        g.roomTimeout2 = null;
+    }
+};
+
+nav.getButtonClasses = function (type) {
+    switch (type) {
+        case "dark": return "room-img img-dark";
+        case "btn": return "room-btn rom-event";
+        case "btnNoHover": return "room-btnNoHover rom-event";
+        case "kiss": return "room-btn-lips rom-event";
+        case "tongue": return "room-btn-tongue rom-event";
+        case "ztongue": return "room-btn-tongue rom-event room-zindex";
+        case "dick": return "room-btn-dick rom-event";
+        case "brush": return "room-btn-brush rom-event";
+        case "hand": return "room-btn-hand rom-event";
+        case "zhand": return "room-btn-hand rom-event room-zindex";
+        case "grab": return "room-btn-grab rom-event";
+        case "vib": return "room-btn-vib rom-event";
+        case "btnflat": return "room-btnflat room-btn rom-event";
+        case "zimg": return "room-img room-zindex";
+        case "zbtn": return "room-btn rom-event room-zindex";
+        case "btnhover": return "room-btn rom-event fight-hover";
+        case "imghover": return "room-img fight-hover-element";
+        case "clickthrough": return "room-img click-thru";
+        case "zclickthrough": return "room-img click-thru room-zindex";
+        default: return "room-img";
+    }
+};
+
 nav.setRatio = function () {
     var width = $(window).width();
     var height = $(window).height();
@@ -11,14 +47,7 @@ nav.buildRoom = function () {
     nav.killvideo();
     var vList = null;
 
-    if (g.roomTimeout !== null) {
-        clearTimeout(g.roomTimeout);
-        g.roomTimeout = null;
-    }
-    if (g.roomTimeout2 !== null) {
-        clearTimeout(g.roomTimeout2);
-        g.roomTimeout2 = null;
-    }
+    nav.clearRoomTimeouts();
     $('#room-animationFront').html('');
     $('#room-animationStandby').html('');
 
@@ -36,7 +65,7 @@ nav.buildRoom = function () {
         $('#room-buttons').html("");
         $('#room_footer').html('');
         try {
-            window[g.room(vList.roomID)]["main"]();
+            invoker.invoke(vList.roomID, "main");
         }
         catch (ex) {
             console.log(ex);
@@ -49,33 +78,62 @@ nav.buildRoom = function () {
 };
 
 nav.killall = function () {
-    if (g.roomTimeout !== null) {
-        clearTimeout(g.roomTimeout);
-        g.roomTimeout = null;
-    }
-    if (g.roomTimeout2 !== null) {
-        clearTimeout(g.roomTimeout2);
-        g.roomTimeout2 = null;
-    }
+    nav.clearRoomTimeouts();
     $('#room-buttons').html("");
     $('#room_footer').html("");
 };
 
 nav.kill = function () {
-    if (g.roomTimeout !== null) {
-        clearTimeout(g.roomTimeout);
-        g.roomTimeout = null;
-    }
-    if (g.roomTimeout2 !== null) {
-        clearTimeout(g.roomTimeout2);
-        g.roomTimeout2 = null;
-    }
+    nav.clearRoomTimeouts();
     $('#room-buttons').html("");
 };
 
-nav.bg = function (image, night) {
+nav.resolveMapCloseFallback = function (image, night) {
+    var match = /map\/(\d+)_close(?:night)?\.jpg$/.exec(image);
+    if (match === null) {
+        return null;
+    }
+
+    var roomId = parseInt(match[1], 10);
+    var roomMeta = null;
+    $.each(g.rooms, function (i, room) {
+        if (room.roomID === roomId) {
+            roomMeta = room;
+            return false;
+        }
+    });
+
+    if (roomMeta === null) {
+        return null;
+    }
+
+    return {
+        image: roomMeta.image,
+        night: roomMeta.nightImage === undefined ? roomMeta.image : roomMeta.nightImage
+    };
+};
+
+nav.buildBgTag = function (src, gameWidth, gameHeight, fallbackSrc) {
+    var onError = fallbackSrc === undefined || fallbackSrc === null
+        ? ""
+        : ' onerror="this.onerror=null;this.src=\'./images/room/' + fallbackSrc + '\';"';
+    return '<img src="./images/room/' + src + '" style="width:' + gameWidth + 'px; height:' + gameHeight + ';"' + onError + '/>';
+};
+
+nav.bg = function (image, night, fallbackImage, fallbackNight) {
     if (night === undefined)
         night = image;
+    if (fallbackNight === undefined)
+        fallbackNight = fallbackImage;
+
+    if (fallbackImage === undefined) {
+        var mapCloseFallback = nav.resolveMapCloseFallback(image, night);
+        if (mapCloseFallback !== null) {
+            fallbackImage = mapCloseFallback.image;
+            fallbackNight = mapCloseFallback.night;
+        }
+    }
+
     var gameWidth = 1920 * g.ratio;
     var gameHeight = 1080 * g.ratio;
     if (image.endsWith(".mp4")) {
@@ -85,9 +143,9 @@ nav.bg = function (image, night) {
             '</video>');
     }
     else if (g.isNight())
-        $('#room-background').html('<img src="./images/room/' + night + '" style="width:' + gameWidth + 'px; height:' + gameHeight + ';"/>');
+        $('#room-background').html(nav.buildBgTag(night, gameWidth, gameHeight, fallbackNight));
     else
-        $('#room-background').html('<img src="./images/room/' + image + '" style="width:' + gameWidth + 'px; height:' + gameHeight + ';"/>');
+        $('#room-background').html(nav.buildBgTag(image, gameWidth, gameHeight, fallbackImage));
 };
 
 nav.button = function (btn, roomNum) {
@@ -104,55 +162,15 @@ nav.button = function (btn, roomNum) {
         $("#room-video")[0].load();
     }
     else {
-        var classes = "room-img";
+        var classes = nav.getButtonClasses(btn.type);
         var charAttr = "";
+        var spaceAdvanceAttr = btn.spaceAdvance ? ' data-space-advance="true"' : "";
         var thisImage = btn.image;
         if (g.isNight() && (typeof btn.night !== "undefined"))
             thisImage = btn.night;
-
-        if (btn.type === "dark")
-            classes = "room-img img-dark";
-        else if (btn.type === "btn")
-            classes = "room-btn rom-event";
-        else if (btn.type === "btnNoHover")
-            classes = "room-btnNoHover rom-event";
-        else if (btn.type === "kiss")
-            classes = "room-btn-lips rom-event";
-        else if (btn.type === "tongue")
-            classes = "room-btn-tongue rom-event";
-        else if (btn.type === "ztongue")
-            classes = "room-btn-tongue rom-event room-zindex";
-        else if (btn.type === "dick")
-            classes = "room-btn-dick rom-event";
-        else if (btn.type === "brush")
-            classes = "room-btn-brush rom-event";
-        else if (btn.type === "hand")
-            classes = "room-btn-hand rom-event";
-        else if (btn.type === "zhand")
-            classes = "room-btn-hand rom-event room-zindex";
-        else if (btn.type === "grab")
-            classes = "room-btn-grab rom-event";
-        else if (btn.type === "vib")
-            classes = "room-btn-vib rom-event";
-        else if (btn.type === "btnflat")
-            classes = "room-btnflat room-btn rom-event";
-        else if (btn.type === "zimg")
-            classes = "room-img room-zindex";
-        else if (btn.type === "zbtn")
-            classes = "room-btn rom-event room-zindex";
-        else if (btn.type === "btnhover")
-            classes = "room-btn rom-event fight-hover";
-        else if (btn.type === "imghover")
-            classes = "room-img fight-hover-element";
-        else if (btn.type === "clickthrough") {
-            classes = "room-img click-thru";
-        }
-        else if (btn.type === "zclickthrough") {
-            classes = "room-img click-thru room-zindex";
-        }
         if ("char" in btn)
             charAttr = ' data-char="' + btn.char + ' "';
-        line = '<img src="./images/room/' + thisImage + '" class="' + classes + '" data-name="' + btn.name + '" data-room="' + roomNum + '" title="' + (("title" in btn) ? btn.title : "") + charAttr + '" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:' + top + 'px; left:' + left + 'px;" />';
+        line = '<img src="./images/room/' + thisImage + '" class="' + classes + '" data-name="' + btn.name + '" data-room="' + roomNum + '"' + spaceAdvanceAttr + ' title="' + (("title" in btn) ? btn.title : "") + charAttr + '" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:' + top + 'px; left:' + left + 'px;" />';
         $('#room-buttons').append(line);
     }
     $('img').on('dragstart', function (event) { event.preventDefault(); });
@@ -171,31 +189,10 @@ nav.t = function (btn, roomNum) {
     var top = btn.top * g.ratio;
     var left = btn.left * g.ratio;
 
-    var classes = "room-img";
+    var classes = nav.getButtonClasses(btn.type);
     var thisHex = "#000000";
     if (g.isNight() && (typeof btn.night !== "undefined"))
         thisImage = btn.night;
-
-    if (btn.type === "btn")
-        classes = "room-btn rom-event";
-    else if (btn.type === "kiss")
-        classes = "room-btn-lips rom-event";
-    else if (btn.type === "tongue")
-        classes = "room-btn-tongue rom-event";
-    else if (btn.type === "hand")
-        classes = "room-btn-hand rom-event";
-    else if (btn.type === "grab")
-        classes = "room-btn-grab rom-event";
-    else if (btn.type === "btnflat")
-        classes = "room-btnflat room-btn rom-event";
-    else if (btn.type === "zimg")
-        classes = "room-img room-zindex";
-    else if (btn.type === "zbtn")
-        classes = "room-btn rom-event room-zindex";
-    else if(btn.type === "btnhover")
-        classes = "room-btn rom-event fight-hover";
-    else if (btn.type === "clickthrough")
-        classes = "room-img click-thru";
 
     if (btn.font === 12)
         classes += " char-12 ";
@@ -225,38 +222,11 @@ nav.inputbox = function (btn, roomNum) {
     var left = btn.left * g.ratio;
     var btnWidth = btn.width * g.ratio;
     var btnHeight = btn.height * g.ratio;
-    var classes = "room-img";
+    var classes = nav.getButtonClasses(btn.type);
     var charAttr = "";
     var thisImage = btn.image;
     if (g.isNight() && (typeof btn.night !== "undefined"))
         thisImage = btn.night;
-
-    if (btn.type === "dark")
-        classes = "room-img img-dark";
-    else if (btn.type === "btn")
-        classes = "room-btn rom-event";
-    else if (btn.type === "btnNoHover")
-        classes = "room-btnNoHover rom-event";
-    else if (btn.type === "kiss")
-        classes = "room-btn-lips rom-event";
-    else if (btn.type === "tongue")
-        classes = "room-btn-tongue rom-event";
-    else if (btn.type === "brush")
-        classes = "room-btn-brush rom-event";
-    else if (btn.type === "hand")
-        classes = "room-btn-hand rom-event";
-    else if (btn.type === "grab")
-        classes = "room-btn-grab rom-event";
-    else if (btn.type === "btnflat")
-        classes = "room-btnflat room-btn rom-event";
-    else if (btn.type === "zimg")
-        classes = "room-img room-zindex";
-    else if (btn.type === "zbtn")
-        classes = "room-btn rom-event room-zindex";
-    else if (btn.type === "btnhover")
-        classes = "room-btn rom-event fight-hover";
-    else if (btn.type === "imghover")
-        classes = "room-img fight-hover-element";
 
     line = '<input type="text" class="resize-font ' + classes + '" data-name="' + btn.name + '" data-room="' + roomNum + '" value="' + (("title" in btn) ? btn.title : "") + charAttr + '" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:' + top + 'px; left:' + left + 'px;" />';
 
@@ -264,30 +234,16 @@ nav.inputbox = function (btn, roomNum) {
 };
 
 nav.modbutton = function (name, newImage, newName, newType) {
+    var element = nav.getButtonElement(name);
     if (newName === null)
         newName = name;
     if(newImage !== null)
-        $('img[data-name="' + name + '"]').attr("src", "./images/room/" + newImage).attr("data-name", newName);
+        element.attr("src", "./images/room/" + newImage).attr("data-name", newName);
     else
-        $('img[data-name="' + name + '"]').attr("data-name", newName);
+        element.attr("data-name", newName);
 
-    if (newType !== null) {
-        $('img[data-name="' + name + '"]')
-            .removeClass("room-btn")
-            .removeClass("room-btn-grab")
-            .removeClass("rom-event")
-            .removeClass("rom-tongue")
-            .removeClass("room-btn-lips");
-
-        if (newType === "img")
-            $('img[data-name="' + name + '"]').addClass("room-img");
-        else if (newType === "btn")
-            $('img[data-name="' + name + '"]').addClass("room-btn rom-event");
-        else if (newType === "kiss")
-            $('img[data-name="' + name + '"]').addClass("room-btn-lips rom-event");
-        else if (newType === "tongue")
-            $('img[data-name="' + name + '"]').addClass("room-btn-tongue rom-event");
-    }
+    if (newType !== null)
+        nav.applyModButtonType(element, newType);
 };
 
 nav.flash = function (thisImage, length) {
@@ -314,6 +270,28 @@ nav.killbutton = function (name) {
 nav.killbuttonStartsWith = function (name) {
     $('[data-name^="' + name + '"]').remove();
 
+};
+
+nav.getButtonElement = function (name) {
+    return $('img[data-name="' + name + '"]');
+};
+
+nav.applyModButtonType = function (element, newType) {
+    element
+        .removeClass("room-btn")
+        .removeClass("room-btn-grab")
+        .removeClass("rom-event")
+        .removeClass("rom-tongue")
+        .removeClass("room-btn-lips");
+
+    if (newType === "img")
+        element.addClass("room-img");
+    else if (newType === "btn")
+        element.addClass("room-btn rom-event");
+    else if (newType === "kiss")
+        element.addClass("room-btn-lips rom-event");
+    else if (newType === "tongue")
+        element.addClass("room-btn-tongue rom-event");
 };
 
 nav.buildnav = function (roomIDList, rebuild = false) {
@@ -384,7 +362,7 @@ nav.progressBar = function (btn, roomId) {
     let maxVal = btn.maxVal;
     let val = btn.val;
     let bgColor, fgColor;
-    let classes = "room-img";
+    let classes = nav.getButtonClasses(btn.type);
     if (val > maxVal)
         val = maxVal;
     if (val < 0)
@@ -436,39 +414,6 @@ nav.progressBar = function (btn, roomId) {
             break;
     }
 
-    if (btn.type === "dark")
-        classes = "room-img img-dark";
-    else if (btn.type === "btn")
-        classes = "room-btn rom-event";
-    else if (btn.type === "btnNoHover")
-        classes = "room-btnNoHover rom-event";
-    else if (btn.type === "kiss")
-        classes = "room-btn-lips rom-event";
-    else if (btn.type === "tongue")
-        classes = "room-btn-tongue rom-event";
-    else if (btn.type === "dick")
-        classes = "room-btn-dick rom-event";
-    else if (btn.type === "brush")
-        classes = "room-btn-brush rom-event";
-    else if (btn.type === "hand")
-        classes = "room-btn-hand rom-event";
-    else if (btn.type === "grab")
-        classes = "room-btn-grab rom-event";
-    else if (btn.type === "vib")
-        classes = "room-btn-vib rom-event";
-    else if (btn.type === "btnflat")
-        classes = "room-btnflat room-btn rom-event";
-    else if (btn.type === "zimg")
-        classes = "room-img room-zindex";
-    else if (btn.type === "zbtn")
-        classes = "room-btn rom-event room-zindex";
-    else if (btn.type === "btnhover")
-        classes = "room-btn rom-event fight-hover";
-    else if (btn.type === "imghover")
-        classes = "room-img fight-hover-element";
-    else if (btn.type === "clickthrough") {
-        classes = "room-img click-thru";
-    }
     nav.killbutton(btn.name);
     $('#room-buttons').append('<div class="resize ' + classes + '" data-name="' + btn.name + '" data-room="' + roomId + '" style=" ' + bgCss + '  background: ' + bgColor + '; border-radius:100px;" ></div>');
     $('#room-buttons').append('<div class="resize ' + classes + '" data-name="' + btn.name + '" data-room="' + roomId + '" style=" ' + fgCss + '  background: ' + fgColor + '; border-radius:100px;" ></div>');
@@ -572,7 +517,16 @@ nav.close = function (btnClickName, sroomid = null) {
 };
 
 nav.next = function (btnClickName, sroomid = null) {
-    nav.drawButton("1001_rand/next.png", btnClickName, sroomid);
+    nav.button({
+        "type": "zbtn",
+        "name": btnClickName,
+        "left": 1695,
+        "top": 920,
+        "width": 225,
+        "height": 75,
+        "image": "1001_rand/next.png",
+        "spaceAdvance": true
+    }, sroomid === null ? g.roomID : sroomid);
 };
 
 nav.back = function (btnClickName, sroomid = null) {

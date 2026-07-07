@@ -13,7 +13,7 @@ room450.main = function () {
         chat(84, 450);
     }
     else if (g.pass === "lolaPark" || g.pass === "lolaPark2") {
-        room450.btnclick(g.pass);
+        invoker.invokeCurrent("btnclick", g.pass);
         g.pass = null;
     }
     else {
@@ -72,7 +72,7 @@ room450.main = function () {
             }
             else {
                 if (daily.get("parkNight")) {
-                    room450.chatcatch("enterPark");
+                    invoker.invokeCurrent("chatcatch", "enterPark");
                 }
                 else {
                     daily.set("parkNight");
@@ -1296,3 +1296,5 @@ room450.chat = function(chatID){
     ];
     return cArray[chatID];
 }
+
+invoker.registerRoom(450, room450);

@@ -430,12 +430,7 @@ cl.displayMainWhere = function (thisArray, entry, top, left, ratio, dback) {
 
 zcl.displayMainSub = function (thisImage, top, left, ratio) {
     if (thisImage !== null) {
-        var btnWidth, btnHeight;
-        btnWidth = 2075 * ratio * g.ratio;
-        btnWidth = 4200 * ratio * g.ratio;
-        top = top * g.ratio;
-        left = left * g.ratio;
-        $('#room-buttons').append('<img src="./images/mainChar/' + thisImage + '" class="room-img" data-name="zzz-clothing-kill" style="width:' + btnWidth + 'px; top:' + top + 'px; left:' + left + 'px;" />');
+        zcl.renderImage("./images/mainChar/" + thisImage, top, left, 4200 * ratio * g.ratio, null, false);
     }
 };
 
@@ -1132,12 +1127,7 @@ zcl.assup = function (top, left, ratio, mod) {
 };
 
 cl.assupSub = function (thisImage, top, left, ratio) {
-    var btnWidth, btnHeight;
-    btnWidth = 2716 * ratio * g.ratio;
-    btnWidth = 1352 * ratio * g.ratio;
-    top = top * g.ratio;
-    left = left * g.ratio;
-    $('#room-buttons').append('<img src="./images/mainChar/assup/' + thisImage + '" class="room-img" data-name="zzz-clothing-kill" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:' + top + 'px; left:' + left + 'px;" />');
+    zcl.renderImage("./images/mainChar/assup/" + thisImage, top, left, 1352 * ratio * g.ratio, null, false);
 };
 
 
@@ -1173,10 +1163,14 @@ zcl.bent = function (top, left, ratio, mod, reverse = false) {
 
 
 zcl.subDisplay = function (thisImage, top, left, ratio, reverse, w, h, f) {
-    var btnWidth, btnHeight;
-    btnWidth = w * ratio * g.ratio;
-    btnHeight = h * ratio * g.ratio;
+    zcl.renderImage("./images/mainChar/" + f + "/" + thisImage, top, left, w * ratio * g.ratio, h * ratio * g.ratio, reverse);
+};
+
+zcl.renderImage = function (src, top, left, width, height, reverse) {
     top = top * g.ratio;
     left = left * g.ratio;
-    $('#room-buttons').append('<img src="./images/mainChar/' + f + '/' + thisImage + '" class="room-img" data-name="zzz-clothing-kill" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:' + top + 'px; left:' + left + 'px; ' + (reverse ? ' transform: scaleX(-1); ' : '') + '" />');
+    $('#room-buttons').append('<img src="' + src + '" class="room-img" data-name="zzz-clothing-kill" style="width:' + width + 'px;' +
+        (height === null ? '' : ' height:' + height + 'px;') +
+        ' top:' + top + 'px; left:' + left + 'px;' +
+        (reverse ? ' transform: scaleX(-1);' : '') + '" />');
 };

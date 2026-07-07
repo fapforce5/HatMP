@@ -6,13 +6,13 @@ room10.main = function () {
     }
     else if (cl.c.cock === 5 && !gv.get("playWithPussy")) {
         gv.set("playWithPussy", true);
-        room10.btnclick("drawRoom");
+        invoker.invokeCurrent("btnclick", "drawRoom");
         chat(47, 10);
         return;
     }
     else {
         $('.room-topper').show();
-        room10.btnclick("drawRoom");
+        invoker.invokeCurrent("btnclick", "drawRoom");
         var navList = [];
         var missingClothing = cl.hasoutfit("public");
 
@@ -258,7 +258,7 @@ room10.btnclick = function (name) {
             sc.selectCancel("reset", 1);
             break;
         case "sleep":
-            room10.chatcatch("nap_sleep");
+            invoker.invokeCurrent("chatcatch", "nap_sleep");
             break;
         case "lola_sleep1":
             nav.kill();
@@ -1488,3 +1488,5 @@ room10.chat = function (chatID) {
         return cArray[chatID];
     }
 }
+
+invoker.registerRoom(10, room10);

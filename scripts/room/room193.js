@@ -288,14 +288,14 @@ room193.btnclick = function (name) {
             char.addtime(61);
             g.popUpNoticeBottom("An hour passes");
             g.internal.step++;
-            room193.btnclick("pic");
+            invoker.invokeCurrent("btnclick", "pic");
             break;
         case "ppic":
             char.addtime(61);
             g.internal.pictures.push(g.internal.events[g.internal.step]);
             g.internal.step++;
             g.internal.totalPics++;
-            room193.btnclick("pic");
+            invoker.invokeCurrent("btnclick", "pic");
             break;
         case "pantyLockpickFail":
             chat(22, 193);
@@ -393,7 +393,7 @@ room193.chatcatch = function (callback) {
             break;
         case "pic0":
             char.settime(13, 30);
-            room193.btnclick("pic");
+            invoker.invokeCurrent("btnclick", "pic");
             break;
         case "picSetup":
             nav.bg("193_afternoon/pic" + g.internal.bg + "_0.webp");
@@ -442,6 +442,8 @@ room193.chatcatch = function (callback) {
             break;
     }
 };
+
+invoker.registerRoom(193, room193);
 
 room193.chat = function (chatID) {
     if (chatID === 900) {

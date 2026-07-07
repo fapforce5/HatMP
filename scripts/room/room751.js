@@ -79,7 +79,7 @@ room751.chatcatch = function (callback) {
             }, 1200);
             break;
         case "select":
-            room751.btnclick("mainMenu");
+            invoker.invokeCurrent("btnclick", "mainMenu");
             break;
         case "fortune1":
             if (gv.get("money") < 5) {
@@ -87,7 +87,7 @@ room751.chatcatch = function (callback) {
                 return;
             }
             gv.mod("money", -5);
-            room751.btnclick("mainMenu");
+            invoker.invokeCurrent("btnclick", "mainMenu");
             break;
         default:
             break;
@@ -231,3 +231,5 @@ room751.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(751, room751);

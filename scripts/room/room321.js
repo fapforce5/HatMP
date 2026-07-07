@@ -101,7 +101,7 @@ room321.main = function () {
                 }
                 else {
                     g.internal.button = "main";
-                    room321.btnclick("buttons");
+                    invoker.invokeCurrent("btnclick", "buttons");
                     nav.bg("321_whorechat/wait_" + gender.pronoun("f") + ".jpg");
                 }
                 break;
@@ -117,7 +117,7 @@ room321.main = function () {
         cl.nude();
         nav.bg("321_whorechat/wait_" + gender.pronoun("m") + ".jpg");
         g.internal.button = "main";
-        room321.btnclick("buttons");
+        invoker.invokeCurrent("btnclick", "buttons");
     }
     g.roomTimeout = setTimeout(function () { room321.gameloop(); }, 800);
 };
@@ -273,7 +273,7 @@ room321.btnclick = function (name) {
             gv.mod("arousal", 35);
             if (gv.get("arousal") > 95){
                 g.internal.button = "sissygasm";
-                room321.btnclick("buttons");
+                invoker.invokeCurrent("btnclick", "buttons");
                 return;
             }
             else {
@@ -296,7 +296,7 @@ room321.btnclick = function (name) {
                 "image": "321_whorechat/strapfuck2.png"
             }, 321);
             g.internal.button = "quit";
-            room321.btnclick("buttons");
+            invoker.invokeCurrent("btnclick", "buttons");
             break;
         case "icon_mainRedraw":
             zcl.kill();
@@ -312,44 +312,44 @@ room321.btnclick = function (name) {
             }, 321);
             nav.bg("321_whorechat/wait_" + gender.pronoun("m") + ".jpg");
             g.internal.button = "main";
-            room321.btnclick("buttons");
+            invoker.invokeCurrent("btnclick", "buttons");
             break;
         case "icon_main":
             g.internal.button = "main";
-            room321.btnclick("buttons");
+            invoker.invokeCurrent("btnclick", "buttons");
             break;
         case "icon_chat":
             g.internal.button = "chat";
-            room321.btnclick("buttons");
+            invoker.invokeCurrent("btnclick", "buttons");
             return;
         case "icon_show":
             g.internal.button = "show";
-            room321.btnclick("buttons");
+            invoker.invokeCurrent("btnclick", "buttons");
             break;
         case "icon_chattips":
             g.internal.button = "main";
-            room321.btnclick("buttons");
+            invoker.invokeCurrent("btnclick", "buttons");
             nav.bg("321_whorechat/wait_" + gender.pronoun("m") + ".jpg");
             g.internal.money += 2;
             room321.sidechat("tips");
             break;
         case "icon_chatflirt":
             g.internal.button = "main";
-            room321.btnclick("buttons");
+            invoker.invokeCurrent("btnclick", "buttons");
             nav.bg("321_whorechat/wait_" + gender.pronoun("m") + ".jpg");
             g.internal.money += 4;
             room321.sidechat("flirt");
             break;
         case "icon_chatInsult":
             g.internal.button = "main";
-            room321.btnclick("buttons");
+            invoker.invokeCurrent("btnclick", "buttons");
             nav.bg("321_whorechat/wait_" + gender.pronoun("m") + ".jpg");
             g.internal.money += 4;
             room321.sidechat("insult");
             break;
         case "icon_wait":
             g.internal.button = "main";
-            room321.btnclick("buttons");
+            invoker.invokeCurrent("btnclick", "buttons");
             nav.bg("321_whorechat/wait_" + gender.pronoun("f") + ".jpg");
             room321.sidechat(null);
             break;
@@ -373,7 +373,7 @@ room321.btnclick = function (name) {
                 "image": "321_whorechat/strapsuck.png"
             }, 321);
             g.internal.button = "getsucked1";
-            room321.btnclick("buttons");
+            invoker.invokeCurrent("btnclick", "buttons");
             break;
         case "icon_suckdick":
             g.internal.excitement++;
@@ -383,13 +383,13 @@ room321.btnclick = function (name) {
                 g.internal.button = "getsucked1";
             else
                 g.internal.button = "suckdick2";
-            room321.btnclick("buttons");
+            invoker.invokeCurrent("btnclick", "buttons");
             break;
         case "icon_suckdick2":
             g.internal.excitement++;
             nav.bg("321_whorechat/bj1.jpg");
             g.internal.button = "suckdick3";
-            room321.btnclick("buttons");
+            invoker.invokeCurrent("btnclick", "buttons");
             break;
         case "icon_suckdick3":
             g.internal.excitement++;
@@ -398,7 +398,7 @@ room321.btnclick = function (name) {
             levels.gotbj("f", "janice");
             room321.sidechat("suckeddick");
             g.internal.button = "quit";
-            room321.btnclick("buttons");
+            invoker.invokeCurrent("btnclick", "buttons");
             break;
         case "icon_anal":
             nav.bg("321_whorechat/anal1.jpg");
@@ -434,7 +434,7 @@ room321.btnclick = function (name) {
                 }, 321);
                 room321.sidechat(null);
                 g.internal.button = "fuckcum";
-                room321.btnclick("buttons");
+                invoker.invokeCurrent("btnclick", "buttons");
             }
             break;
         case "icon_fuckcum":
@@ -443,7 +443,7 @@ room321.btnclick = function (name) {
             nav.bg("321_whorechat/fuckcum.jpg");
             sc.modLevel("janice", 50);
             g.internal.button = "quit";
-            room321.btnclick("buttons");
+            invoker.invokeCurrent("btnclick", "buttons");
             break;
         case "icon_eatpussy":
             gv.mod("arousal", 15);
@@ -456,7 +456,7 @@ room321.btnclick = function (name) {
             if (g.internal.excitement < 30)
                 g.internal.excitement += 2;
             g.internal.button = "main";
-            room321.btnclick("buttons");
+            invoker.invokeCurrent("btnclick", "buttons");
             break;
         case "icon_quit":
             cl.undo();
@@ -497,7 +497,7 @@ room321.chatcatch = function (callback) {
                 cl.nude();
                 nav.bg("321_whorechat/wait_" + gender.pronoun("m") + ".jpg");
                 g.internal.button = "main";
-                room321.btnclick("buttons");
+                invoker.invokeCurrent("btnclick", "buttons");
             }
             else {
                 nav.bg("321_whorechat/chastity.jpg");
@@ -506,7 +506,7 @@ room321.chatcatch = function (callback) {
             }
             break;
         case "fuck":
-            room321.btnclick("icon_fuck");
+            invoker.invokeCurrent("btnclick", "icon_fuck");
             break;
         case "femdom_makeup":
             nav.bg("321_whorechat/femdom_makeup.jpg");
@@ -526,7 +526,7 @@ room321.chatcatch = function (callback) {
             zcl.kill();
             nav.bg("321_whorechat/eatpussy_" + gender.pronoun("f") + ".jpg");
             g.internal.button = "femdom0";
-            room321.btnclick("buttons");
+            invoker.invokeCurrent("btnclick", "buttons");
             break;
         case "femdom_message0":
             room321.sidechat("femdom_message0");
@@ -597,10 +597,10 @@ room321.chatcatch = function (callback) {
                 "image": "321_whorechat/strapfuck1.png"
             }, 321);
             g.internal.button = "strap";
-            room321.btnclick("buttons");
+            invoker.invokeCurrent("btnclick", "buttons");
             break;
         case "leave":
-            room321.btnclick("icon_quit");
+            invoker.invokeCurrent("btnclick", "icon_quit");
             break;
         case "room316":
             clearTimeout(g.roomTimeout);
@@ -608,7 +608,7 @@ room321.chatcatch = function (callback) {
             char.room(316);
             break;
         case "begin":
-            room321.btnclick("buttons");
+            invoker.invokeCurrent("btnclick", "buttons");
             break;
         case "doggy1":
         case "doggy2":
@@ -1150,3 +1150,5 @@ room321.sidechat = function (metalk) {
         }, 321);
     }
 };
+
+invoker.registerRoom(321, room321);

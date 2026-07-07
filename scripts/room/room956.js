@@ -1155,3 +1155,5 @@ room956.chat = function (chatID) {
                 { chatID: -1, text: "*Grumble*", callback: "t6" }
             ]
         },*/
+
+invoker.registerRoom(956, room956);

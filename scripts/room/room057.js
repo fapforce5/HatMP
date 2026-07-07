@@ -12,7 +12,7 @@ room57.main = function () {
             "height": 1080,
             "image": "57_pussyPalace/fuck.gif"
         }, 57);
-        g.roomTimeout = setTimeout(function () { room57.btnclick("f1"); }, 3000);
+        g.roomTimeout = setTimeout(function () { invoker.invokeCurrent("btnclick", "f1"); }, 3000);
     }
     else {
         var btnList = [
@@ -62,7 +62,7 @@ room57.btnclick = function (name) {
                 "image": "57_pussyPalace/c3.gif"
             }, 57);
             nav.bg("57_pussyPalace/c3.jpg");
-            g.roomTimeout = setTimeout(function () { room57.btnclick("c4"); }, 2000);
+            g.roomTimeout = setTimeout(function () { invoker.invokeCurrent("btnclick", "c4"); }, 2000);
             break;
         case "c4":
             nav.bg("57_pussyPalace/c4.jpg");
@@ -538,3 +538,5 @@ room57.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(57, room57);

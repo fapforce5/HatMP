@@ -512,7 +512,7 @@ room12.chatcatch = function (callback) {
             }
             else {
                 cl.nude();
-                room12.chatcatch("200_2");
+                invoker.invokeCurrent("chatcatch", "200_2");
             }
             break;
         case "200_2":
@@ -562,7 +562,7 @@ room12.chatcatch = function (callback) {
         case "200_finish0":
             //scc.love("lola", 5, 100);
             //scc.love("eva", 5, 100);
-            room12.chatcatch("200_finish1");
+            invoker.invokeCurrent("chatcatch", "200_finish1");
             break;
         case "200_finish1":
             char.addtime(120);
@@ -1016,3 +1016,5 @@ room12.chat = function(chatID){
 
     return cArray[chatID];
 }
+
+invoker.registerRoom(12, room12);

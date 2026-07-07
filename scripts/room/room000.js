@@ -12,18 +12,21 @@ room0.main = function () {
     $('#room_footer').hide();
     var tempMap = gv.get("map");
     if (tempMap === 0)
-        room0.btnclick("map_0");
+        invoker.invokeCurrent("btnclick", "map_0");
     else if (tempMap === 2)
-        room0.btnclick("map_2");
+        invoker.invokeCurrent("btnclick", "map_2");
     else if (tempMap === 3)
-        room0.btnclick("map_3");
+        invoker.invokeCurrent("btnclick", "map_3");
     else
-        room0.btnclick("map_1");
+        invoker.invokeCurrent("btnclick", "map_1");
     if (!gv.get("panties") && cl.getEntry("panties", cl.c.panties).sex === "f") {
         gv.set("panties", true);
         dreams.add("firstTimeInPanties");
     }
-    setTimeout(function () { $('#room_footer').hide(); }, 200);
+    g.roomTimeout2 = setTimeout(function () {
+        g.roomTimeout2 = null;
+        $('#room_footer').hide();
+    }, 200);
     
 };
 
@@ -41,25 +44,25 @@ room0.btnclick = function (name) {
         nav.bg("map/map0.jpg", "map/map0_night.jpg");
         gv.set("map", 0);
         char.map();
-        room0.btnclick("redrawIcons");
+        invoker.invokeCurrent("btnclick", "redrawIcons");
     }
     else if (name === "map_1") {
         nav.bg("map/map1.jpg", "map/map1_night.jpg");
         gv.set("map", 1);
         char.map();
-        room0.btnclick("redrawIcons");
+        invoker.invokeCurrent("btnclick", "redrawIcons");
     }
     else if (name === "map_2") {
         nav.bg("map/map2.jpg", "map/map2_night.jpg");
         gv.set("map", 2);
         char.map();
-        room0.btnclick("redrawIcons");
+        invoker.invokeCurrent("btnclick", "redrawIcons");
     }
     else if (name === "map_3") {
         nav.bg("map/map3.jpg", "map/map3_night.jpg");
         gv.set("map", 3);
         char.map();
-        room0.btnclick("redrawIcons");
+        invoker.invokeCurrent("btnclick", "redrawIcons");
     }
     else if (name === "redrawIcons") {
         nav.killall();
@@ -67,7 +70,7 @@ room0.btnclick = function (name) {
         var btnList = new Array();
         var tempMap = gv.get("map");
         g.internal = tempMap;
-        room0.chatcatch("walk");
+        invoker.invokeCurrent("chatcatch", "walk");
         let carnival = gv.get("carnival");
         $.each(g.roomMap, function (i, v) {
             if (tempMap === v.map) {
@@ -179,7 +182,8 @@ room0.btnclick = function (name) {
                     "height": 327,
                     "image": "map/money.png"
                 }, 0);
-                setTimeout(function () {
+                g.roomTimeout = setTimeout(function () {
+                    g.roomTimeout = null;
                     char.room(roomnum);
                 }, 4000);
             }
@@ -222,7 +226,8 @@ room0.btnclick = function (name) {
                     }
                 }
                 
-                setTimeout(function () {
+                g.roomTimeout = setTimeout(function () {
+                    g.roomTimeout = null;
                     char.room(roomnum);
                 }, 800);
             }
@@ -273,7 +278,7 @@ room0.chatcatch = function (callback) {
             g.internal = null;
             break;
         case "moveChar":
-            room0.btnclick("moveChar");
+            invoker.invokeCurrent("btnclick", "moveChar");
             break;
         default:
             break;
@@ -343,3 +348,5 @@ room0.chat = function (chatID) {
     ];
     return cArray[chatID];
 };
+
+invoker.registerRoom(0, room0);

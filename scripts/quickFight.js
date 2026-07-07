@@ -54,29 +54,7 @@ quickFight.getProb = function (enemy, me) {
     return { txt: "Extremely Easy", num: 3 };
 };
 
-quickFight.init = function (enemyFightLevel, enemyName, btnPressWin, btnPressLost, btnPressRun, roomID) {
-    inv.hide();
-    var i = 0;
-    var stats = quickFight.getStats(enemyFightLevel);
-    nav.killbuttonStartsWith("quickfight");
-    nav.button({
-        "type": "img",
-        "name": "quickfight",
-        "left": 0,
-        "top": 0,
-        "width": 1920,
-        "height": 1080,
-        "image": "1002_quickfight/bg.png"
-    }, 1002);
-    //nav.button({
-    //    "type": "img",
-    //    "name": "quickfight",
-    //    "left": 1597,
-    //    "top": 147,
-    //    "width": 306,
-    //    "height": 712,
-    //    "image": "227_fight/menu.png"
-    //}, 1002);
+quickFight.showMainMenu = function () {
     nav.button({
         "type": "btn",
         "name": "quickfightFight",
@@ -106,6 +84,88 @@ quickFight.init = function (enemyFightLevel, enemyName, btnPressWin, btnPressLos
         "height": 100,
         "image": "1002_quickfight/run.png"
     }, 1002);
+};
+
+quickFight.showInventoryMenu = function () {
+    var btnCounter = 0;
+    nav.killbutton("quickfightFight");
+    nav.killbutton("quickfightInventory");
+    nav.killbutton("quickfightRun");
+
+    for (var i = 0; i < inv.master.length; i++) {
+        if ((inv.master[i].type === "e" || inv.master[i].type === "i") && inv.master[i].count > 0) {
+            nav.button({
+                "type": "btn",
+                "name": "quickfightinv_" + i,
+                "left": 760,
+                "top": 100 + (btnCounter * 125),
+                "width": 400,
+                "height": 100,
+                "image": "1002_quickfight/i_" + inv.master[i].name + ".png"
+            }, 1002);
+            btnCounter++;
+        }
+    }
+    nav.button({
+        "type": "btn",
+        "name": "quickfightGoBack",
+        "left": 760,
+        "top": 100 + (btnCounter * 125),
+        "width": 400,
+        "height": 100,
+        "image": "1002_quickfight/goback.png"
+    }, 1002);
+};
+
+quickFight.closeInventoryMenu = function () {
+    nav.killbuttonStartsWith("quickfightinv_");
+    nav.killbutton("quickfightGoBack");
+    quickFight.showMainMenu();
+};
+
+quickFight.resolveAftermathButton = function () {
+    if (g.fight.aftermath === "run")
+        return g.fight.btnPressRun;
+    if (g.fight.aftermath === "win")
+        return g.fight.btnPressWin;
+    return g.fight.btnPressLost;
+};
+
+quickFight.hideShellPanels = function () {
+    quickFight.prevPanel = char.currentMenuPanel();
+    char.hideMenuPanels();
+};
+
+quickFight.restoreShellPanels = function () {
+    if (quickFight.prevPanel && quickFight.prevPanel !== "hide")
+        char.changeMenu(quickFight.prevPanel, false, true);
+};
+
+quickFight.init = function (enemyFightLevel, enemyName, btnPressWin, btnPressLost, btnPressRun, roomID) {
+    inv.hide();
+    quickFight.hideShellPanels();
+    var i = 0;
+    var stats = quickFight.getStats(enemyFightLevel);
+    nav.killbuttonStartsWith("quickfight");
+    nav.button({
+        "type": "img",
+        "name": "quickfight",
+        "left": 0,
+        "top": 0,
+        "width": 1920,
+        "height": 1080,
+        "image": "1002_quickfight/bg.png"
+    }, 1002);
+    //nav.button({
+    //    "type": "img",
+    //    "name": "quickfight",
+    //    "left": 1597,
+    //    "top": 147,
+    //    "width": 306,
+    //    "height": 712,
+    //    "image": "227_fight/menu.png"
+    //}, 1002);
+    quickFight.showMainMenu();
 
     nav.t({
         type: "zimg",
@@ -367,7 +427,7 @@ quickFight.drawFight = function () {
         else {
             g.fight.aftermath = "lose";
             gv.mod("energy", -39);
-            gv.mod("strength", 15);
+            levels.mod("strength", 15);
             nav.t({
                 type: "img",
                 name: "quickfight",
@@ -391,7 +451,6 @@ quickFight.drawFight = function () {
 };
 
 room1002.btnclick = function (name) {
-    var i;
     if (name.startsWith("quickfightinv_")) {
         var invIndex = parseInt(name.replace("quickfightinv_", ""));
         switch (inv.master[invIndex].name) {
@@ -450,66 +509,10 @@ room1002.btnclick = function (name) {
                 quickFight.drawFight();
                 break;
             case "quickfightInventory":
-                nav.killbutton("quickfightFight");
-                nav.killbutton("quickfightInventory");
-                nav.killbutton("quickfightRun");
-                var btnCounter = 0;
-                for (i = 0; i < inv.master.length; i++) {
-                    if ((inv.master[i].type === "e" || inv.master[i].type === "i") && inv.master[i].count > 0) {
-                        nav.button({
-                            "type": "btn",
-                            "name": "quickfightinv_" + i,
-                            "left": 760,
-                            "top": 100 + (btnCounter * 125),
-                            "width": 400,
-                            "height": 100,
-                            "image": "1002_quickfight/i_" + inv.master[i].name + ".png"
-                        }, 1002);
-                        btnCounter++;
-                    }
-                }
-                nav.button({
-                    "type": "btn",
-                    "name": "quickfightGoBack",
-                    "left": 760,
-                    "top": 100 + (btnCounter * 125),
-                    "width": 400,
-                    "height": 100,
-                    "image": "1002_quickfight/goback.png"
-                }, 1002);
+                quickFight.showInventoryMenu();
                 break;
             case "quickfightGoBack":
-                nav.killbuttonStartsWith("quickfightinv_");
-                nav.killbutton("quickfightGoBack");
-                nav.button({
-                    "type": "btn",
-                    "name": "quickfightFight",
-                    "left": 760,
-                    "top": 300,
-                    "width": 400,
-                    "height": 100,
-                    "image": "1002_quickfight/fight.png"
-                }, 1002);
-
-                nav.button({
-                    "type": "btn",
-                    "name": "quickfightInventory",
-                    "left": 760,
-                    "top": 450,
-                    "width": 400,
-                    "height": 100,
-                    "image": "1002_quickfight/inventory.png"
-                }, 1002);
-
-                nav.button({
-                    "type": "btn",
-                    "name": "quickfightRun",
-                    "left": 760,
-                    "top": 600,
-                    "width": 400,
-                    "height": 100,
-                    "image": "1002_quickfight/run.png"
-                }, 1002);
+                quickFight.closeInventoryMenu();
                 break;
             case "quickfightRun":
                 quickFight.run();
@@ -541,15 +544,18 @@ quickFight.run = function () {
 quickFight.complete = function () {
     inv.show();
     nav.killbuttonStartsWith("quickfight");
-    var name;
     var roomId = g.fight.roomID;
-    if (g.fight.aftermath === "run")
-        name = g.fight.btnPressRun;
-    else if (g.fight.aftermath === "win")
-        name = g.fight.btnPressWin;
-    else
-        name = g.fight.btnPressLost;
+    var name = quickFight.resolveAftermathButton();
+    var pastSaveCount = g.pastSaves.length;
 
     g.fight = null;
-    window[g.room(roomId)]["btnclick"](name);
+    quickFight.restoreShellPanels();
+    invoker.invoke(roomId, "btnclick", name);
+    if (g.roomID === roomId && g.pastSaves.length > pastSaveCount) {
+        g.pastSaves.splice(pastSaveCount, g.pastSaves.length - pastSaveCount);
+        if (char.currentMenuPanel() === "walk")
+            char.makeWalk();
+    }
 };
+
+invoker.registerRoom(1002, room1002);

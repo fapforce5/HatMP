@@ -25,7 +25,7 @@ room480.main = function () {
     }
     g.internal = { arrive: g.dt, talkList: new Array(), amputee: 0, secretPath: 0, tod: 1, single: null };
 
-    room480.chatcatch("settod");
+    invoker.invokeCurrent("chatcatch", "settod");
     if (sc.getstep("a") === 0) {
         char.addDays(1);
         char.settime(11, 27);
@@ -138,7 +138,7 @@ room480.chatcatch = function (callback) {
                 char.settime(23, Math.floor(Math.random() * 59));
             else 
                 char.settime(7, 0);
-            room480.chatcatch("settod");
+            invoker.invokeCurrent("chatcatch", "settod");
             break;
         case "settod":
             var hour = g.gethourdecimal();
@@ -176,7 +176,7 @@ room480.chatcatch = function (callback) {
         case "cg3":
             if (!g.internal.talkList.includes("vag"))
                 g.internal.talkList.push("vag");
-            room480.chatcatch("incrementtod");
+            invoker.invokeCurrent("chatcatch", "incrementtod");
             char.room(480);
             break;
         case "reset":
@@ -186,6 +186,8 @@ room480.chatcatch = function (callback) {
             break;
     }
 };
+
+invoker.registerRoom(480, room480);
 
 room480.chat = function (chatID) {
     if (chatID === 999) {

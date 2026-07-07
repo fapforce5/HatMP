@@ -270,12 +270,12 @@ room125.btnclick = function (name) {
                 chat(98, 125);
             }
             else {
-                room125.chatcatch("deal");
+                invoker.invokeCurrent("chatcatch", "deal");
             }
             break;
         case "fold":
             g.internal[3].playing = false;
-            room125.btnclick("winner");
+            invoker.invokeCurrent("btnclick", "winner");
             break;
         case "play":
             g.internal[3].playing = true;
@@ -291,7 +291,7 @@ room125.btnclick = function (name) {
                 hex: "#ffffff",
                 text: "Pot $" + g.pass.pot
             }, 125);
-            room125.btnclick("winner");
+            invoker.invokeCurrent("btnclick", "winner");
             break;
         case "winner":
             nav.killbutton("fold");
@@ -445,7 +445,7 @@ room125.btnclick = function (name) {
             };
             if (sc.getMissionTask("ralph", "cards", 2).complete) {
                 g.internal.icons.splice(1, 1);
-                room125.chatcatch("suck0");
+                invoker.invokeCurrent("chatcatch", "suck0");
             }
             else {
                 sc.completeMissionTask("ralph", "cards", 2);
@@ -563,7 +563,7 @@ room125.chatcatch = function (callback) {
         case "keiInc":
             if (sc.getstep("kei") < 3)
                 sc.incstep("kei", 1);
-            room125.chatcatch("deal");
+            invoker.invokeCurrent("chatcatch", "deal");
             break;
         case "deal":
             $('#room_footer').hide();
@@ -698,7 +698,7 @@ room125.chatcatch = function (callback) {
 
             if (willplay) {
                 g.internal[0].b = 6;
-                room125.chatcatch("keiPlay");
+                invoker.invokeCurrent("chatcatch", "keiPlay");
             }
             else {
                 chat(4, 125);
@@ -717,7 +717,7 @@ room125.chatcatch = function (callback) {
 
             if (willplay) {
                 g.internal[1].b = 6;
-                room125.chatcatch("jimmyPlay");
+                invoker.invokeCurrent("chatcatch", "jimmyPlay");
             }
             else {
                 g.internal[1].v1 = 0;
@@ -738,7 +738,7 @@ room125.chatcatch = function (callback) {
 
             if (willplay) {
                 g.internal[2].b = 6;
-                room125.chatcatch("mePlay");
+                invoker.invokeCurrent("chatcatch", "mePlay");
             }
             else {
                 chat(5, 125);
@@ -751,28 +751,28 @@ room125.chatcatch = function (callback) {
             nav.killbutton("ralphcard");
             g.internal[0].v1 = 0;
             g.internal[0].v2 = 0;
-            room125.chatcatch("keiPlay");
+            invoker.invokeCurrent("chatcatch", "keiPlay");
             break;
         case "keifold":
             nav.killbutton("keiback");
             nav.killbutton("keicard");
             g.internal[1].v1 = 0;
             g.internal[1].v2 = 0;
-            room125.chatcatch("jimmyPlay");
+            invoker.invokeCurrent("chatcatch", "jimmyPlay");
             break;
         case "jimmyfold":
             nav.killbutton("jimmyback");
             nav.killbutton("jimmycard");
             g.internal[2].v1 = 0;
             g.internal[2].v2 = 0;
-            room125.chatcatch("mePlay");
+            invoker.invokeCurrent("chatcatch", "mePlay");
             break;
         case "fold":
             gv.mod("money", -1);
             nav.killbutton("mycard");
             g.internal[3].v1 = 0;
             g.internal[3].v2 = 0;
-            room125.chatcatch("call");
+            invoker.invokeCurrent("chatcatch", "call");
             break;
         case "mePlay":
             if (g.internal[0].b + g.internal[1].b + g.internal[2].b === 18)
@@ -1028,7 +1028,7 @@ room125.chatcatch = function (callback) {
             nav.bg("125_poker/j1.jpg");
             break;
         case "reset":
-            room125.btnclick("reset");
+            invoker.invokeCurrent("btnclick", "reset");
             break;
         case "Rachel":
         case "Ralphina":
@@ -1055,7 +1055,7 @@ room125.chatcatch = function (callback) {
             sc.select("leave", "125_poker/icon_leave.png", 1);
             break;
         case "bjbitch":
-            room125.btnclick("bjbitch");
+            invoker.invokeCurrent("btnclick", "bjbitch");
             break;
         case "suck0":
             nav.killall();
@@ -2007,3 +2007,5 @@ room125.chat = function (chatID) {
             return [];
     }
 };
+
+invoker.registerRoom(125, room125);

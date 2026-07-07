@@ -54,7 +54,7 @@ room407.btnclick = function (name) {
         case "makeup_orange":
         case "makeup_white":
             g.internal.m = name.replace("makeup_", "");
-            room407.btnclick("eyeshadow");
+            invoker.invokeCurrent("btnclick", "eyeshadow");
             break;
         case "eyeshadow":
             nav.killall();
@@ -75,7 +75,7 @@ room407.btnclick = function (name) {
         case "eyeliner_blue":
         case "eyeliner_rainbow":
             g.internal.e = name.replace("eyeliner_", "");
-            room407.btnclick("lipstick")
+            invoker.invokeCurrent("btnclick", "lipstick")
             break;
         case "lipstick":
             nav.killall();
@@ -130,13 +130,15 @@ room407.chatcatch = function (callback) {
                 nav.bg("407_makeup/bg2.jpg");
                 g.internal = { l: null, e: null, m: "n" };
                 
-                room407.btnclick("makeup");
+                invoker.invokeCurrent("btnclick", "makeup");
             }
             break;
         default:
             break;
     }
 };
+
+invoker.registerRoom(407, room407);
 
 room407.chat = function (chatID) {
     var cArray = [

@@ -32,9 +32,9 @@ room58.main = function () {
     if (!cl.naked())
         chat(0, 58);
     else
-        room58.btnclick("sit");
+        invoker.invokeCurrent("btnclick", "sit");
 
-    room58.btnclick("buttons");
+    invoker.invokeCurrent("btnclick", "buttons");
     g.roomTimeout = setTimeout(function () { room58.gameloop(); }, 800);
 };
 
@@ -192,48 +192,48 @@ room58.btnclick = function (name) {
             char.room(57);
             break;
         case "icon_wait":
-            room58.btnclick("sit");
+            invoker.invokeCurrent("btnclick", "sit");
             g.internal.excitement -= 1;
             gv.mod("energy", -2);
             g.internal.prev = "wait";
             break;
         case "icon_chat":
             g.internal.button = "chat";
-            room58.btnclick("buttons");
+            invoker.invokeCurrent("btnclick", "buttons");
             break;
         case "icon_chattips":
             g.internal.ticks = 0;
-            room58.btnclick("sit");
+            invoker.invokeCurrent("btnclick", "sit");
             room58.sidechat("tips");
             g.internal.button = "main";
-            room58.btnclick("buttons");
+            invoker.invokeCurrent("btnclick", "buttons");
             break;
         case "icon_chatflirt":
             g.internal.ticks = 0;
-            room58.btnclick("sit");
+            invoker.invokeCurrent("btnclick", "sit");
             room58.sidechat("flirt");
             g.internal.button = "main";
-            room58.btnclick("buttons");
+            invoker.invokeCurrent("btnclick", "buttons");
             break;
         case "icon_chatInsult":
             g.internal.ticks = 0;
-            room58.btnclick("sit");
+            invoker.invokeCurrent("btnclick", "sit");
             room58.sidechat("insult");
             g.internal.button = "main";
-            room58.btnclick("buttons");
+            invoker.invokeCurrent("btnclick", "buttons");
             break;
         case "icon_main":
             g.internal.button = "main";
-            room58.btnclick("buttons");
+            invoker.invokeCurrent("btnclick", "buttons");
             break;
         case "icon_show":
             g.internal.button = "show";
-            room58.btnclick("buttons");
+            invoker.invokeCurrent("btnclick", "buttons");
             break;
         case "icon_showdildo":
             g.internal.ticks = 0;
             gv.mod("arousal", 20);
-            room58.btnclick("dildo");
+            invoker.invokeCurrent("btnclick", "dildo");
             g.internal.excitement += 1;
             gv.mod("energy", -10);
             if (gv.get("arousal") > 95) {
@@ -242,39 +242,39 @@ room58.btnclick = function (name) {
             else {
                 g.internal.button = "keepdildo";
             }
-            room58.btnclick("buttons");
+            invoker.invokeCurrent("btnclick", "buttons");
             break;
         case "icon_shoedildocum":
             g.internal.ticks = 0;
-            room58.btnclick("dildocum");
+            invoker.invokeCurrent("btnclick", "dildocum");
             g.internal.excitement += 4;
             gv.mod("energy", -15);
             levels.anal(3, true);
             g.internal.button = "quit";
-            room58.btnclick("buttons");
+            invoker.invokeCurrent("btnclick", "buttons");
             break;
         case "icon_showsuck":
             g.internal.ticks = 0;
             gv.mod("arousal", 5);
-            room58.btnclick("suck");
+            invoker.invokeCurrent("btnclick", "suck");
             g.internal.excitement += 1;
             gv.mod("energy", -4);
             g.internal.button = "main";
-            room58.btnclick("buttons");
+            invoker.invokeCurrent("btnclick", "buttons");
             break;
         case "icon_showbutthole":
             g.internal.ticks = 0;
             gv.mod("arousal", 5);
-            room58.btnclick("butthole");
+            invoker.invokeCurrent("btnclick", "butthole");
             g.internal.excitement += 1;
             gv.mod("energy", -4);
             g.internal.button = "main";
-            room58.btnclick("buttons");
+            invoker.invokeCurrent("btnclick", "buttons");
             break;
         case "icon_strokecock":
             g.internal.ticks = 0;
             gv.mod("arousal", 25);
-            room58.btnclick("strokecock");
+            invoker.invokeCurrent("btnclick", "strokecock");
             g.internal.excitement += 2;
             gv.mod("energy", -10);
             if (gv.get("arousal") > 95) {
@@ -283,18 +283,18 @@ room58.btnclick = function (name) {
             else {
                 g.internal.button = "keepstroking";
             }
-            room58.btnclick("buttons");
+            invoker.invokeCurrent("btnclick", "buttons");
             break;
         case "icon_strokecum":
             g.internal.ticks = 0;
             gv.mod("arousal", 25);
-            room58.btnclick("strokecum");
+            invoker.invokeCurrent("btnclick", "strokecum");
             g.internal.excitement += 4;
             gv.mod("energy", -15);
             cl.doCum(false);
             gv.mod("masturbate_dick", 1);
             g.internal.button = "quit";
-            room58.btnclick("buttons");
+            invoker.invokeCurrent("btnclick", "buttons");
             break;
         default:
             break;
@@ -307,7 +307,7 @@ room58.chatcatch = function (callback) {
             char.room(55);
             break;
         case "strip":
-            room58.btnclick("sit");
+            invoker.invokeCurrent("btnclick", "sit");
             cl.nude();
             break;
         default:
@@ -564,3 +564,5 @@ room58.sidechat = function (metalk) {
         }, 58);
     }
 };
+
+invoker.registerRoom(58, room58);

@@ -234,3 +234,5 @@ room452.chat = function (chatID) {
     ];
     return cArray[chatID];
 };
+
+invoker.registerRoom(452, room452);

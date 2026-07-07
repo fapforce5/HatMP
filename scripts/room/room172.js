@@ -62,7 +62,7 @@ room172.chatcatch = function (callback) {
         case "goAgain":
             cl.c.chastity = null;
             cl.nude();
-            room172.chatcatch("selection");
+            invoker.invokeCurrent("chatcatch", "selection");
             return;
         case "selection":
             nav.killall();
@@ -182,26 +182,26 @@ room172.chatcatch = function (callback) {
         case "xtieEnd0":
             levels.anal(1, false, "n", false, "black");
             gv.mod("energy", -9999);
-            room172.chatcatch("snuggle");
+            invoker.invokeCurrent("chatcatch", "snuggle");
             return;
         case "xtieEnd1":
             levels.anal(3, false, "n", false, "black");
             gv.mod("energy", -9999);
-            room172.chatcatch("snuggle");
+            invoker.invokeCurrent("chatcatch", "snuggle");
             return;
         case "xtieEnd2":
             levels.anal(5, false, "n", false, "black");
             gv.mod("energy", -9999);
-            room172.chatcatch("snuggle");
+            invoker.invokeCurrent("chatcatch", "snuggle");
             return;
         case "xtieEnd3":
             levels.anal(6, false, "n", false, "black");
             gv.mod("energy", -9999);
-            room172.chatcatch("snuggle");
+            invoker.invokeCurrent("chatcatch", "snuggle");
             return;
         case "xhorend":
             gv.mod("energy", -9999);
-            room172.chatcatch("snuggle");
+            invoker.invokeCurrent("chatcatch", "snuggle");
             return;
         case "snuggle":
             nav.bg("172_punishblack/snuggle0.jpg");
@@ -856,3 +856,5 @@ room172.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(172, room172);

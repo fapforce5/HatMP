@@ -39,7 +39,7 @@ room4.main = function () {
 room4.btnclick = function (name) {
     switch (name) {
         case "massageFinish":
-            room4.chatcatch("massageFinish");
+            invoker.invokeCurrent("chatcatch", "massageFinish");
             break;
         case "massage1Shirt":
             nav.killbutton("massage1Shirt");
@@ -158,12 +158,12 @@ room4.btnclick = function (name) {
                 charisma.init(g.internal.level + 1 + 7, "charisma5Win", "charisma5Lose", 4);
             }
             else {
-                room4.btnclick("massage5_2");
+                invoker.invokeCurrent("btnclick", "massage5_2");
             }
             break;
         case "charisma6Win":
             sc.modLevel("lola", 100, 7);
-            room4.btnclick("massage5_2");
+            invoker.invokeCurrent("btnclick", "massage5_2");
             break;
         case "massage5_2":
             nav.killall();
@@ -192,10 +192,10 @@ room4.btnclick = function (name) {
             break;
         case "charisma4Win":
             sc.modLevel("lola", 100, 7);
-            room4.btnclick("massage4");
+            invoker.invokeCurrent("btnclick", "massage4");
             break;
         case "charisma5Win":
-            room4.btnclick("massage5_2");
+            invoker.invokeCurrent("btnclick", "massage5_2");
             break;
         case "cancel":
             char.room(13);
@@ -553,3 +553,5 @@ room4.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(4, room4);

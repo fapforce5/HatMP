@@ -18,8 +18,8 @@ room3.main = function () {
         'Click Next to play the game. Press "Exit Game" to exit.<br />'  +
         'Happy Fapping!<br />' +
         
-        '<button style="width:49%; margin-right:1%;" class="intro-button" onclick="room3.btnclick(0)">Next</button>' +
-        '<button style="width:49%;" class="intro-button" onclick="room3.btnclick(1)">Exit Game (Underage)</button>' +
+        '<button style="width:49%; margin-right:1%;" class="intro-button" onclick="invoker.invoke(3, \'btnclick\', 0)">Next</button>' +
+        '<button style="width:49%;" class="intro-button" onclick="invoker.invoke(3, \'btnclick\', 1)">Exit Game (Underage)</button>' +
         
         
         '</div>');
@@ -63,3 +63,5 @@ room3.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(3, room3);

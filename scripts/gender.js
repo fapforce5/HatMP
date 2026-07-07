@@ -110,133 +110,135 @@ gender.cIndex = function (name) {
     return -1;
 }
 
+gender.entry = function (name) {
+    return gender.changes[gender.cIndex(name)];
+};
+
+gender.currentValue = function (cType) {
+    switch (cType) {
+        case "xdress": return cl.isCrossdressing();
+        case "panties": return cl.pantiesTxt() === "panties";
+        case "chest": return cl.c.chest;
+        case "leg": return cl.c.leg;
+        case "hairLength": return cl.c.hairLength;
+        case "hairColor": return cl.c.hairColor;
+        case "cock": return cl.c.cock;
+        case "chastity": return cl.c.chastity !== null;
+        default: console.log("gender.currentValue cType not found: " + cType); break;
+    }
+};
+
+gender.syncChangeField = function (entry, changes, field, currentValue) {
+    if (entry[field] === null) {
+        entry[field] = currentValue;
+    }
+    else if (entry[field] !== currentValue) {
+        changes[field] = true;
+        entry[field] = currentValue;
+    }
+};
+
 gender.changesGetSet = function (name, characterCanSeeCock) {
     var changes = {
         anyChanges: false,
         xdress: false,
+        panties: false,
         chest: false,
         leg: false,
-        hair: false,
-        haircolor: false,
+        hairLength: false,
+        hairColor: false,
         cock: false,
         chastity: false
     };
-    var i = gender.cIndex(name);
+    var entry = gender.entry(name);
     //xdress
-    if (!gender.changes[i].xdress && cl.isCrossdressing()) {
+    if (!entry.xdress && cl.isCrossdressing()) {
         changes.xdress = true;
-        gender.changes[i].xdress = true;
+        entry.xdress = true;
     }
 
     //panties
 
-    if (!gender.changes[i].panties && cl.pantiesTxt() === "panties") {
+    if (!entry.panties && cl.pantiesTxt() === "panties") {
         changes.panties = true;
-        gender.changes[i].panties = true;
+        entry.panties = true;
     }
 
-    //chest
-    if (gender.changes[i].chest === null) {
-        gender.changes[i].chest = cl.c.chest;
-    }
-    else if (cl.c.chest !== gender.changes[i].chest) {
-        changes.chest = true;
-        gender.changes[i].chest = cl.c.chest;
-    }
+    gender.syncChangeField(entry, changes, "chest", cl.c.chest);
+    gender.syncChangeField(entry, changes, "leg", cl.c.leg);
+    gender.syncChangeField(entry, changes, "hairLength", cl.c.hairLength);
+    gender.syncChangeField(entry, changes, "hairColor", cl.c.hairColor);
 
-    //leg (butt)
-    if (gender.changes[i].leg === null) {
-        gender.changes[i].leg = cl.c.leg;
+    if (entry.cock === null) {
+        entry.cock = cl.c.cock;
     }
-    else if (cl.c.leg !== gender.changes[i].leg) {
-        changes.leg = true;
-        gender.changes[i].leg = cl.c.leg;
-    }
-
-    //hair length
-    if (gender.changes[i].hairLength === null) {
-        gender.changes[i].hairLength = cl.c.hairLength;
-    }
-    else if (cl.c.hairLength !== gender.changes[i].hairLength) {
-        changes.hairLength = true;
-        gender.changes[i].hairLength = cl.c.hairLength;
-    }
-
-    //hair color
-    if (gender.changes[i].hairColor === null) {
-        gender.changes[i].hairColor = cl.c.hairColor;
-    }
-    else if (cl.c.hairColor !== gender.changes[i].hairColor) {
-        changes.hairColor = true;
-        gender.changes[i].hairColor = cl.c.hairColor;
-    }
-
-    if (gender.changes[i].cock === null) {
-        gender.changes[i].cock = cl.c.cock;
-    }
-    else if (cl.c.cock !== gender.changes[i].cock && characterCanSeeCock) {
+    else if (cl.c.cock !== entry.cock && characterCanSeeCock) {
         changes.cock = true;
-        gender.changes[i].cock = cl.c.cock;
+        entry.cock = cl.c.cock;
     }
 
-    if (cl.c.chastity !== null && characterCanSeeCock && !gender.changes[i].chastity) {
+    if (cl.c.chastity !== null && characterCanSeeCock && !entry.chastity) {
         changes.chastity = true;
-        gender.changes[i].cock = true;
+        entry.chastity = true;
     }
 
-    changes.anyChanges = (changes.xdress || changes.panties || changes.chest || changes.leg || changes.hairLength || changes.haircolor || changes.cock || changes.chastity);
+    changes.anyChanges = (changes.xdress || changes.panties || changes.chest || changes.leg || changes.hairLength || changes.hairColor || changes.cock || changes.chastity);
     return changes;
 };
 
 gender.setChanges = function (name, cType) {
-    var i = gender.cIndex(name);
+    var entry = gender.entry(name);
 
     switch (cType) {
-        case "xdress": gender.changes[i].xdress = cl.isCrossdressing(); break;
+        case "xdress": entry.xdress = cl.isCrossdressing(); break;
         case "panties":
             if (cl.pantiesTxt() === "panties")
-                gender.changes[i].panties = true;
+                entry.panties = true;
             break;
-        case "chest": gender.changes[i].chest = cl.c.chest; break;
-        case "leg": gender.changes[i].leg = cl.c.leg; break;
-        case "hairLength": gender.changes[i].hairLength = cl.c.hairLength; break;
-        case "hairColor": gender.changes[i].hairColor = cl.c.hairColor; break;
-        case "cock": gender.changes[i].cock = cl.c.cock; break;
+        case "chest":
+        case "leg":
+        case "hairLength":
+        case "hairColor":
+        case "cock":
+            entry[cType] = gender.currentValue(cType);
+            break;
         case "chastity":
             if (cl.c.chastity !== null)
-                gender.changes[i].chastity = true;
+                entry.chastity = true;
             break;
         default: console.log("gender.setChanges cType not found: " + cType); break;
     }
 };
 
 gender.getChange = function (name, cType) {
-    var i = gender.cIndex(name);
+    var entry = gender.entry(name);
 
     switch (cType) {
-        case "xdress": return gender.changes[i].xdress; 
-        case "panties": return gender.changes[i].panties; 
-        case "chest": return gender.changes[i].chest !== cl.c.chest; 
-        case "leg": return gender.changes[i].leg !== cl.c.leg; 
-        case "hairLength": return gender.changes[i].hairLength !== cl.c.hairLength; 
-        case "hairColor": return gender.changes[i].hairColor !== cl.c.hairColor; 
-        case "cock": return gender.changes[i].cock !== cl.c.cock; 
-        case "chastity": return gender.changes[i].chastity
+        case "xdress": return entry.xdress; 
+        case "panties": return entry.panties; 
+        case "chastity": return entry.chastity;
+        case "chest":
+        case "leg":
+        case "hairLength":
+        case "hairColor":
+        case "cock":
+            return entry[cType] !== gender.currentValue(cType);
         default: console.log("gender.setChanges cType not found: " + cType); break;
     }
 };
 
 gender.get = function (name, cType) {
-    var i = gender.cIndex(name);
+    var entry = gender.entry(name);
     switch (cType) {
-        case "xdress": return gender.changes[i].xdress;
-        case "panties": return gender.changes[i].panties;
-        case "chest": return gender.changes[i].chest;
-        case "leg": return gender.changes[i].leg;
-        case "hairLength": return gender.changes[i].hairLength;
-        case "hairColor": return gender.changes[i].hairColor;
-        case "cock": return gender.changes[i].cock;
-        case "chastity": return gender.changes[i].chastity
+        case "xdress":
+        case "panties":
+        case "chest":
+        case "leg":
+        case "hairLength":
+        case "hairColor":
+        case "cock":
+        case "chastity":
+            return entry[cType];
         default: console.log("gender.setChanges cType not found: " + cType); break;
     }
 };
@@ -251,13 +253,19 @@ gender.load = function (ra) {
     gender.init();
 
     $.each(ra, function (i, v) {
+        var entry = gender.entry(ra[i].name);
+        if (entry === undefined)
+            return;
         saveloop: for (j = 0; j < gender.changes.length; j++) {
             if (ra[i].name === gender.changes[j].name) {
                 gender.changes[j].xdress = ra[i].xdress;
+                gender.changes[j].panties = ra[i].panties !== undefined ? ra[i].panties : gender.changes[j].panties;
                 gender.changes[j].chest = ra[i].chest;
                 gender.changes[j].leg = ra[i].leg;
-                gender.changes[j].hair = ra[i].hair;
+                gender.changes[j].hairLength = ra[i].hairLength !== undefined ? ra[i].hairLength : ra[i].hair;
+                gender.changes[j].hairColor = ra[i].hairColor !== undefined ? ra[i].hairColor : gender.changes[j].hairColor;
                 gender.changes[j].cock = ra[i].cock;
+                gender.changes[j].chastity = ra[i].chastity !== undefined ? ra[i].chastity : gender.changes[j].chastity;
                 break saveloop;
             }
         }

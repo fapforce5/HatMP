@@ -187,7 +187,7 @@ room803.btnclick = function (name) {
             }
             break;
         case "cancelHide":
-            room803.chatcatch("closet");
+            invoker.invokeCurrent("chatcatch", "closet");
             break;
         case "keephiding":
             if (g.isNight()) {
@@ -210,7 +210,7 @@ room803.btnclick = function (name) {
             break;
         case "bed_l0":
             g.internal.p += 5;
-            room803.btnclick("bedprogress");
+            invoker.invokeCurrent("btnclick", "bedprogress");
             nav.killbutton("bed_l0");
             
             nav.button({
@@ -231,7 +231,7 @@ room803.btnclick = function (name) {
         case "bed_l1":
             g.internal.p += 5;
             g.internal.pants = false;
-            room803.btnclick("bedprogress");
+            invoker.invokeCurrent("btnclick", "bedprogress");
             nav.killbutton("bed_l1");
             nav.modbutton("bed_n", "803_parentbedroom/bed_n3.webp", null, null);
             clearTimeout(g.roomTimeout);
@@ -241,7 +241,7 @@ room803.btnclick = function (name) {
             break;
         case "bed_p0":
             g.internal.p += 3;
-            room803.btnclick("bedprogress");
+            invoker.invokeCurrent("btnclick", "bedprogress");
             nav.killbutton("bed_p0");
             nav.button({
                 "type": "grab",
@@ -262,7 +262,7 @@ room803.btnclick = function (name) {
         case "bed_p1":
             g.internal.p += 7;
             g.internal.panties = false;
-            room803.btnclick("bedprogress");
+            invoker.invokeCurrent("btnclick", "bedprogress");
             nav.killbutton("bed_p1");
             nav.modbutton("bed_n", "803_parentbedroom/bed_n3.webp", null, null);
             clearTimeout(g.roomTimeout);
@@ -273,7 +273,7 @@ room803.btnclick = function (name) {
         case "bed_s0":
             g.internal.p += 5;
             g.internal.shirt = false;
-            room803.btnclick("bedprogress");
+            invoker.invokeCurrent("btnclick", "bedprogress");
             nav.killbutton("bed_s0");
             nav.modbutton("bed_n", "803_parentbedroom/bed_n3.webp", null, null);
             clearTimeout(g.roomTimeout);
@@ -293,11 +293,11 @@ room803.btnclick = function (name) {
             }, 803);
             if (g.internal.kiss === 0) {
                 g.internal.p += 20;
-                room803.btnclick("bedprogress");
+                invoker.invokeCurrent("btnclick", "bedprogress");
             }
             else {
                 g.internal.p += 10;
-                room803.btnclick("bedprogress");
+                invoker.invokeCurrent("btnclick", "bedprogress");
             }
             nav.next("bed_kill");
             nav.modbutton("bed_n", "803_parentbedroom/bed_n4.webp", null, null);
@@ -319,11 +319,11 @@ room803.btnclick = function (name) {
             }, 803);
             if (g.internal.niplick === 0) {
                 g.internal.p += 10;
-                room803.btnclick("bedprogress");
+                invoker.invokeCurrent("btnclick", "bedprogress");
             }
             else if (g.internal.niplick === 1) {
                 g.internal.p += 3;
-                room803.btnclick("bedprogress");
+                invoker.invokeCurrent("btnclick", "bedprogress");
             }
             nav.next("bed_kill");
             nav.modbutton("bed_n", "803_parentbedroom/bed_n1.webp", null, null);
@@ -345,11 +345,11 @@ room803.btnclick = function (name) {
             }, 803);
             if (g.internal.boobsqueeze === 0) {
                 g.internal.p += 5;
-                room803.btnclick("bedprogress");
+                invoker.invokeCurrent("btnclick", "bedprogress");
             }
             else if (g.internal.boobsqueeze === 1) {
                 g.internal.p += 2;
-                room803.btnclick("bedprogress");
+                invoker.invokeCurrent("btnclick", "bedprogress");
             }
             nav.next("bed_kill");
             nav.modbutton("bed_n", "803_parentbedroom/bed_n1.webp", null, null);
@@ -367,7 +367,7 @@ room803.btnclick = function (name) {
                 }
                 g.internal.twat = 1;
                 g.internal.p += 7;
-                room803.btnclick("bedprogress");
+                invoker.invokeCurrent("btnclick", "bedprogress");
                 if (g.internal.p > 29) {
                     nav.killbutton("bed_twat");
                     nav.button({
@@ -402,7 +402,7 @@ room803.btnclick = function (name) {
                 }
                 g.internal.twat = 2;
                 g.internal.p += 20;
-                room803.btnclick("bedprogress");
+                invoker.invokeCurrent("btnclick", "bedprogress");
                 if (g.internal.p > 95 && !g.internal.shirt && !g.internal.pants && !g.internal.panties) {
                     nav.killbutton("bed_twat");
                     nav.button({
@@ -623,7 +623,7 @@ room803.chatcatch = function (callback) {
                 pants: true,
                 panties: true
             };
-            room803.btnclick("bedprogress");
+            invoker.invokeCurrent("btnclick", "bedprogress");
             nav.bg("803_parentbedroom/bed_bg.webp");
             nav.button({
                 "type": "img",
@@ -1594,3 +1594,5 @@ room803.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(803, room803);

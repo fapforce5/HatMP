@@ -195,7 +195,7 @@ room101.chatcatch = function (callback) {
                 "height": 711,
                 "image": "101_constFrontOffice/jackit2.png"
             }, 101);
-            room101.btnclick("tina");
+            invoker.invokeCurrent("btnclick", "tina");
             break;
         case "endday":
             char.settime(18, 15);
@@ -205,6 +205,8 @@ room101.chatcatch = function (callback) {
             break;
     }
 };
+
+invoker.registerRoom(101, room101);
 
 room101.chat = function (chatID) {
     if (chatID === 900) {

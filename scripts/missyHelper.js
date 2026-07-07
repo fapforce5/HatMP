@@ -184,6 +184,16 @@ missy.didJob = function (jobId, payMulti, payOverride) {
         missy.mod("weeklyPay", payOverride);
 };
 
+missy.buildCaseEntry = function (caseId, active, notReadyTxt, callback) {
+    return {
+        caseId: caseId,
+        active: active,
+        icon: "case" + caseId.toString() + (active ? "" : "_no") + ".png",
+        notReadyTxt: notReadyTxt,
+        callback: callback
+    };
+};
+
 missy.getcases = function () {
     var i;
     var caseList = new Array();
@@ -205,13 +215,7 @@ missy.getcases = function () {
     //must do first case (Has explaination)
     if (completeCounter === 0) {
         canDoCase = cl.c.chest > 0;
-        caseList.push({
-            caseId: 4,
-            active: canDoCase,
-            icon: "case4" + (canDoCase ? "" : "_no") + ".png",
-            notReadyTxt: "Need to get in shape first piggy. oink oink!",
-            callback: missy.cases[4].name
-        });
+        caseList.push(missy.buildCaseEntry(4, canDoCase, "Need to get in shape first piggy. oink oink!", missy.cases[4].name));
     } //list all cases
     else {
         for (i = 0; i < missy.cases.length; i++) {
@@ -219,184 +223,88 @@ missy.getcases = function () {
                 switch (missy.cases[i].name) {
                     case "case_booth":
                         canDoCase = piLevel > 0;
-                        caseList.push({
-                            caseId: i,
-                            active: canDoCase,
-                            icon: "case" + i.toString() + (canDoCase ? "" : "_no") + ".png",
-                            notReadyTxt: "Need to increase improve your Invistation expertise (Level 1).",
-                            callback: missy.cases[i].name
-                        });
+                        caseList.push(missy.buildCaseEntry(i, canDoCase, "Need to increase improve your Invistation expertise (Level 1).", missy.cases[i].name));
                         break;
                     case "case_lostgirl":
                         canDoCase = piLevel > 1;
-                        caseList.push({
-                            caseId: i,
-                            active: canDoCase,
-                            icon: "case" + i.toString() + (canDoCase ? "" : "_no") + ".png",
-                            notReadyTxt: "Need to increase improve your Invistation expertise (Level 2).",
-                            callback: missy.cases[i].name
-                        });
+                        caseList.push(missy.buildCaseEntry(i, canDoCase, "Need to increase improve your Invistation expertise (Level 2).", missy.cases[i].name));
                         break;
                     case "case_trash":
                         if (completeCounter > 1) {
                             canDoCase = piLevel > 2;
-                            caseList.push({
-                                caseId: i,
-                                active: canDoCase,
-                                icon: "case" + i.toString() + (canDoCase ? "" : "_no") + ".png",
-                                notReadyTxt: "Need to increase improve your Invistation expertise (Level 3).",
-                                callback: missy.cases[i].name
-                            });
+                            caseList.push(missy.buildCaseEntry(i, canDoCase, "Need to increase improve your Invistation expertise (Level 3).", missy.cases[i].name));
                         }
                         break;
                     case "case_goth":
                         canDoCase = piLevel > 1;
-                        caseList.push({
-                            caseId: i,
-                            active: canDoCase,
-                            icon: "case" + i.toString() + (canDoCase ? "" : "_no") + ".png",
-                            notReadyTxt: "Need to increase improve your Invistation expertise (Level 2).",
-                            callback: missy.cases[i].name
-                        });
+                        caseList.push(missy.buildCaseEntry(i, canDoCase, "Need to increase improve your Invistation expertise (Level 2).", missy.cases[i].name));
                         break;
                     case "case_shopping":
                         if (qdress.st[1].ach) {
                             canDoCase = qdress.st[3].ach;
-                            caseList.push({
-                                caseId: i,
-                                active: canDoCase,
-                                icon: "case" + i.toString() + (canDoCase ? "" : "_no") + ".png",
-                                notReadyTxt: "Find it in yourself to wear women's clothing. [Unlock Women's clothing in your dreams]",
-                                callback: missy.cases[i].name
-                            });
+                            caseList.push(missy.buildCaseEntry(i, canDoCase, "Find it in yourself to wear women's clothing. [Unlock Women's clothing in your dreams]", missy.cases[i].name));
                         }
                         break;
                     case "case_bimbopanties":
                         if (levels.get("pi").l > 2) {
                             canDoCase = inv.has("lockpick");
-                            caseList.push({
-                                caseId: i,
-                                active: canDoCase,
-                                icon: "case" + i.toString() + (canDoCase ? "" : "_no") + ".png",
-                                notReadyTxt: "Work everyday till Missy decides you're worthy of the lock picking class Intelligence Level 4. ",
-                                callback: missy.cases[i].name
-                            });
+                            caseList.push(missy.buildCaseEntry(i, canDoCase, "Work everyday till Missy decides you're worthy of the lock picking class Intelligence Level 4. ", missy.cases[i].name));
                         }
                         break;
                     case "case_elijah_origin": 
                         if (levels.get("pi").l > 2) {
                             canDoCase = piLevel > 3;
-                            caseList.push({
-                                caseId: i,
-                                active: canDoCase,
-                                icon: "case" + i.toString() + (canDoCase ? "" : "_no") + ".png",
-                                notReadyTxt: "Raise your PI Level. ",
-                                callback: missy.cases[i].name
-                            });
+                            caseList.push(missy.buildCaseEntry(i, canDoCase, "Raise your PI Level. ", missy.cases[i].name));
                         }
                         break;
                     case "case_elijah":
                         if (qdress.st[3].ach && sissy.st[10].ach && missy.cases[15].success) {
                             canDoCase = true;
-                            caseList.push({
-                                caseId: i,
-                                active: canDoCase,
-                                icon: "case" + i.toString() + (canDoCase ? "" : "_no") + ".png",
-                                notReadyTxt: "Raise your PI Level. ",
-                                callback: missy.cases[i].name
-                            });
+                            caseList.push(missy.buildCaseEntry(i, canDoCase, "Raise your PI Level. ", missy.cases[i].name));
                         }
                         break;
                     case "case_elijah_boyfriend":
                         if (missy.cases[13].success && future.get("case_elijah_complete") === -1) {
                             canDoCase = true;
-                            caseList.push({
-                                caseId: i,
-                                active: true,
-                                icon: "case" + i.toString() + (canDoCase ? "" : "_no") + ".png",
-                                notReadyTxt: "Raise your PI Level. ",
-                                callback: missy.cases[i].name
-                            });
+                            caseList.push(missy.buildCaseEntry(i, true, "Raise your PI Level. ", missy.cases[i].name));
                         }
                         break;
                     case "case_beaver":
                         if (missy.get("uniform") > 0) {
                             canDoCase = piLevel > 2;
-                            caseList.push({
-                                caseId: i,
-                                active: canDoCase,
-                                icon: "case" + i.toString() + (canDoCase ? "" : "_no") + ".png",
-                                notReadyTxt: "Raise your PI Level. ",
-                                callback: missy.cases[i].name
-                            });
+                            caseList.push(missy.buildCaseEntry(i, canDoCase, "Raise your PI Level. ", missy.cases[i].name));
                         }
                         break;
                     case "case_saveralph":
                         if (sissy.st[10].ach) {
                             canDoCase = true;
-                            caseList.push({
-                                caseId: i,
-                                active: canDoCase,
-                                icon: "case" + i.toString() + (canDoCase ? "" : "_no") + ".png",
-                                notReadyTxt: "...",
-                                callback: missy.cases[i].name
-                            });
+                            caseList.push(missy.buildCaseEntry(i, canDoCase, "...", missy.cases[i].name));
                         }
                         break;
                     case "case_damselle":
                         if (cl.pantiesTxt() === "panties" && cl.c.chest > 0 && g.dt.getDay() < 4)  {
                             canDoCase = piLevel > 2;
-                            caseList.push({
-                                caseId: i,
-                                active: canDoCase,
-                                icon: "case" + i.toString() + (canDoCase ? "" : "_no") + ".png",
-                                notReadyTxt: "Raise your PI Level. ",
-                                callback: missy.cases[i].name
-                            });
+                            caseList.push(missy.buildCaseEntry(i, canDoCase, "Raise your PI Level. ", missy.cases[i].name));
                         }
                         break;
                     case "case_carnival":
                         if (sissy.st[21].ach) {
-                            caseList.push({
-                                caseId: i,
-                                active: true,
-                                icon: "case" + i.toString() + ".png",
-                                notReadyTxt: "Raise your PI Level. ",
-                                callback: missy.cases[i].name
-                            });
+                            caseList.push(missy.buildCaseEntry(i, true, "Raise your PI Level. ", missy.cases[i].name));
                         }
                         break;
                     case "case_farm":
                         if (missy.cases[18].complete) {
-                            caseList.push({
-                                caseId: i,
-                                active: true,
-                                icon: "case" + i.toString() + ".png",
-                                notReadyTxt: "N/A. ",
-                                callback: missy.cases[i].name
-                            });
+                            caseList.push(missy.buildCaseEntry(i, true, "N/A. ", missy.cases[i].name));
                         }
                         break;
                     case "case_sewer":
                         if (missy.cases[18].complete) {
-                            caseList.push({
-                                caseId: i,
-                                active: true,
-                                icon: "case" + i.toString() + ".png",
-                                notReadyTxt: "N/A. ",
-                                callback: missy.cases[i].name
-                            });
+                            caseList.push(missy.buildCaseEntry(i, true, "N/A. ", missy.cases[i].name));
                         }
                         break;
                     case "case_cult": 
                         if (missy.cases[20].complete) {
-                            caseList.push({
-                                caseId: i,
-                                active: true,
-                                icon: "case" + i.toString() + ".png",
-                                notReadyTxt: "N/A. ",
-                                callback: missy.cases[i].name
-                            });
+                            caseList.push(missy.buildCaseEntry(i, true, "N/A. ", missy.cases[i].name));
                         }
                         break;
                 }
@@ -437,10 +345,10 @@ missy.save = function () {
 missy.load = function (saveData) {
     var i;
     missy.init();
-    for (i = 0; i < saveData.st.length; i++) {
+    for (i = 0; i < saveData.st.length && i < missy.st.length; i++) {
         missy.st[i].c = saveData.st[i];
     }
-    for (i = 0; i < saveData.cases.length; i++) {
+    for (i = 0; i < saveData.cases.length && i < missy.cases.length; i++) {
         missy.cases[i].complete = saveData.cases[i].complete;
         missy.cases[i].success = saveData.cases[i].success;
     }

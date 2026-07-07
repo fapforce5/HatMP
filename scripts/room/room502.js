@@ -931,3 +931,5 @@ room502.chat = function (chatID) {
             return [];
     }
 };
+
+invoker.registerRoom(502, room502);

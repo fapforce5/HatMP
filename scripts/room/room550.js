@@ -14,7 +14,7 @@ room550.main = function () {
         chat(13, 550);
     }
     else if (inv.has("gym")) {
-        char.room(551);
+        char.roomWithoutHistory(551);
     }
     else {
         var btnList = [
@@ -327,3 +327,5 @@ room550.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(550, room550);

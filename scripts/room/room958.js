@@ -28,7 +28,7 @@ room958.main = function () {
     }
     g.map.map[g.map.y][g.map.x].x = "c"; 
     
-    room958.btnclick("displayBackground");
+    invoker.invokeCurrent("btnclick", "displayBackground");
     if (gv.get("energy") < 1) {
         chat(67, 958);
         return;
@@ -88,7 +88,7 @@ room958.main = function () {
             else
                 nav.bg("958_wander/event_c3piss.webp");
             nav.kill();
-            room958.btnclick("displayDirection");
+            invoker.invokeCurrent("btnclick", "displayDirection");
             return;
         case "d":
             nav.bg("958_wander/event_empty.webp");
@@ -255,7 +255,7 @@ room958.btnclick = function (name) {
                     "image": "958_wander/bg_north.webp",
                 }, 958);
             }
-            room958.btnclick("displayDirection");
+            invoker.invokeCurrent("btnclick", "displayDirection");
             break;
         case "displayDirection":
             if (curY > 0 && grid[curY - 1][curX].x !== "x") {
@@ -446,7 +446,7 @@ room958.btnclick = function (name) {
             g.internal++;
             break;
         case "runAway":
-            room958.chatcatch("RunAway");
+            invoker.invokeCurrent("chatcatch", "RunAway");
             break;
         default:
             break;
@@ -604,7 +604,7 @@ room958.chatcatch = function (callback) {
             daily.set("958_slurppiss");
             levels.piss(true, false, false, "f", "!milkmaid");
             nav.bg("958_wander/event_c3.webp");
-            room958.btnclick("displayDirection");
+            invoker.invokeCurrent("btnclick", "displayDirection");
             break;
         case "event_d2":
             nav.bg("958_wander/event_d2.webp");
@@ -715,10 +715,10 @@ room958.chatcatch = function (callback) {
             break;
         case "dariaComplete":
             sc.completeMission("bodhi", "escape", false);
-            room958.btnclick("displayDirection");
+            invoker.invokeCurrent("btnclick", "displayDirection");
             break;
         case "displayDirection":
-            room958.btnclick("displayDirection");
+            invoker.invokeCurrent("btnclick", "displayDirection");
             break;
         case "escape":
             g.pass = "escape";
@@ -1359,3 +1359,5 @@ room958.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(958, room958);

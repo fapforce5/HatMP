@@ -39,7 +39,7 @@ room752.btnclick = function (name) {
             }
             break;
         case "whore_chat":
-            room752.btnclick("whore_cancel");
+            invoker.invokeCurrent("btnclick", "whore_cancel");
             chat(0, 752);
             break;
         case "whore_cancel":
@@ -49,7 +49,7 @@ room752.btnclick = function (name) {
             nav.killbutton("whore_cancel");
             break;
         case "whore_dick":
-            room752.btnclick("whore_cancel");
+            invoker.invokeCurrent("btnclick", "whore_cancel");
             if (cl.c.chastity !== null)
                 chat(1, 752);
             else if (gv.get("money") < 75)
@@ -84,7 +84,7 @@ room752.btnclick = function (name) {
             chat(6, 752);
             break;
         case "whore_locket":
-            room752.btnclick("whore_cancel");
+            invoker.invokeCurrent("btnclick", "whore_cancel");
             if (missy.get("reusableCaseCounter") === 0)
                 chat(7, 752);
             else
@@ -499,3 +499,5 @@ room752.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(752, room752);

@@ -10,6 +10,35 @@ trap.callbackWin;
 trap.name;
 trap.internal;
 trap.location;
+trap.actionButtonLeft = 1600;
+trap.actionButtonTop = 480;
+trap.actionButtonSpacing = 75;
+
+trap.drawPanelBackground = function (image = "1005_trap/trap_message.png", name = "m1004-dx") {
+    nav.button({
+        "type": "zimg",
+        "name": name,
+        "left": 1600,
+        "top": 150,
+        "width": 300,
+        "height": 318,
+        "image": image
+    }, 1005);
+};
+
+trap.renderActionButtons = function (btnList, top = trap.actionButtonTop) {
+    for (let i = 0; i < btnList.length; i++) {
+        nav.button({
+            "type": "zbtn",
+            "name": "b1004-" + btnList[i].n,
+            "left": trap.actionButtonLeft,
+            "top": top + (i * trap.actionButtonSpacing),
+            "width": 300,
+            "height": 72,
+            "image": "1005_trap/" + btnList[i].i
+        }, 1005);
+    }
+};
 
 //hole, treasure, treasureAzrael, encounter, rope
 trap.init = function (trapType = "rope", location = "forest", roomId = g.roomID, callbackWin = "", trapNum = null) {
@@ -30,16 +59,7 @@ trap.init = function (trapType = "rope", location = "forest", roomId = g.roomID,
     }
 
     if (trap.type === "treasure" || trap.type === "treasureAzrael") {
-
-        nav.button({
-            "type": "zimg",
-            "name": "m1004-dx",
-            "left": 1600,
-            "top": 150,
-            "width": 300,
-            "height": 318,
-            "image": "1005_trap/trap_message_treasure.png"
-        }, 1005);
+        trap.drawPanelBackground("1005_trap/trap_message_treasure.png");
         trap.treasure(trapNum);
         return;
     }
@@ -58,29 +78,13 @@ trap.init = function (trapType = "rope", location = "forest", roomId = g.roomID,
     else if (location === "cave") {
         nav.bg("1005_trap/trap_c.jpg");
     }
-    nav.button({
-        "type": "zimg",
-        "name": "m1004-dx",
-        "left": 1600,
-        "top": 150,
-        "width": 300,
-        "height": 318,
-        "image": "1005_trap/trap_message.png"
-    }, 1005);
+    trap.drawPanelBackground();
     trap.displayMenu("init");
 };
 
 trap.roll = function () {
     nav.killbutton("m1004-dx");
-    nav.button({
-        "type": "zimg",
-        "name": "m1004-dx",
-        "left": 1600,
-        "top": 150,
-        "width": 300,
-        "height": 318,
-        "image": "1004_rape/icon_bg.png"
-    }, 1005);
+    trap.drawPanelBackground("1004_rape/icon_bg.png");
 
     var diceArray = new Array();
     var i;
@@ -225,17 +229,7 @@ trap.displayMenu = function (menu) {
             break;
     }
 
-    for (i = 0; i < btnList.length; i++) {
-        nav.button({
-            "type": "zbtn",
-            "name": "b1004-" + btnList[i].n,
-            "left": 1600,
-            "top": 480 + (i * 75),
-            "width": 300,
-            "height": 72,
-            "image": "1005_trap/" + btnList[i].i
-        }, 1005);
-    }
+    trap.renderActionButtons(btnList);
 };
 
 trap.message = function (message) {
@@ -941,7 +935,7 @@ trap.kill = function (roomId = null) {
     trap.counter = 0;
     if (roomId === null) {
         nav.killall();
-        window[g.room(trap.roomId)]["btnclick"](trap.callbackWin);
+        invoker.invoke(trap.roomId, "btnclick", trap.callbackWin);
     }
     else if(roomId === 701) {
         g.pass = 701;
@@ -2865,3 +2859,5 @@ room1005.chat = function (chatID) {
             return [];
     }
 };
+
+invoker.registerRoom(1005, room1005);

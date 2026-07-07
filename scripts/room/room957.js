@@ -71,7 +71,7 @@ room957.btnclick = function (name) {
             if (g.internal.counter > 7) {
                 nav.kill();
                 nav.bg("957_jobs/kissing1.webp");
-                room950.btnclick("bars")
+                invoker.invoke(950, "btnclick", "bars")
                 zcl.poseExpose(250, 900, .3, "", false);
                 nav.button({
                     "type": "img",
@@ -86,7 +86,7 @@ room957.btnclick = function (name) {
             }
             else if (g.rand(0, 2) === 1) {
                 nav.kill();
-                room950.btnclick("bars")
+                invoker.invoke(950, "btnclick", "bars")
                 nav.bg("957_jobs/kissing1.webp");
                 zcl.poseExpose(250, 900, .3, "", false);
                 nav.button({
@@ -103,7 +103,7 @@ room957.btnclick = function (name) {
             }
             else {
                 nav.kill();
-                room950.btnclick("bars")
+                invoker.invoke(950, "btnclick", "bars")
                 nav.bg("957_jobs/kissing1.webp");
                 zcl.poseExpose(250, 900, .3, "", false);
                 nav.button({
@@ -175,7 +175,7 @@ room957.btnclick = function (name) {
         case "toiletDraw":
             nav.kill();
             nav.bg("957_jobs/toilet_bg.webp");
-            room950.btnclick("bars");
+            invoker.invoke(950, "btnclick", "bars");
             nav.button({
                 "type": "img",
                 "name": "char",
@@ -234,7 +234,7 @@ room957.btnclick = function (name) {
             break;
         case "toilet":
             if (g.internal.counter > 13) {
-                room957.btnclick("toiletDraw");
+                invoker.invokeCurrent("btnclick", "toiletDraw");
                 nav.button({
                     "type": "img",
                     "name": "char",
@@ -249,7 +249,7 @@ room957.btnclick = function (name) {
             else {
                 switch (g.internal.events[0]) {
                     case 0:
-                        room957.btnclick("toiletDraw");
+                        invoker.invokeCurrent("btnclick", "toiletDraw");
                         nav.button({
                             "type": "img",
                             "name": "char",
@@ -265,7 +265,7 @@ room957.btnclick = function (name) {
                     case 1:
                     case 2:
                     case 3:
-                        room957.btnclick("toiletDraw");
+                        invoker.invokeCurrent("btnclick", "toiletDraw");
                         g.internal.asspiss++;
                         nav.button({
                             "type": "img",
@@ -283,7 +283,7 @@ room957.btnclick = function (name) {
                         break;
                     case 4:
                     case 5:
-                        room957.btnclick("toiletDraw");
+                        invoker.invokeCurrent("btnclick", "toiletDraw");
                         g.internal.facepiss++;
                         nav.button({
                             "type": "img",
@@ -301,7 +301,7 @@ room957.btnclick = function (name) {
                         chat(801, 957);
                         break;
                     case 6:
-                        room957.btnclick("toiletDraw");
+                        invoker.invokeCurrent("btnclick", "toiletDraw");
                         nav.button({
                             "type": "img",
                             "name": "char",
@@ -314,7 +314,7 @@ room957.btnclick = function (name) {
                         chat(35, 957);
                         break;
                     case 7:
-                        room957.btnclick("toiletDraw");
+                        invoker.invokeCurrent("btnclick", "toiletDraw");
                         nav.button({
                             "type": "img",
                             "name": "char",
@@ -332,7 +332,7 @@ room957.btnclick = function (name) {
                         chat(43, 957);
                         break;
                     case 9:
-                        room957.btnclick("toiletDraw");
+                        invoker.invokeCurrent("btnclick", "toiletDraw");
                         nav.button({
                             "type": "img",
                             "name": "char",
@@ -360,7 +360,7 @@ room957.btnclick = function (name) {
                 levels.piss(false, false, true, (value === "cult" ? "m" : "f"), value);
             });
             g.internal.facepissWho = [];
-            room957.chatcatch("toilet");
+            invoker.invokeCurrent("chatcatch", "toilet");
             break;
         case "toilet_swallow":
             $.each(g.internal.facepissWho, function (index, value) {
@@ -368,7 +368,7 @@ room957.btnclick = function (name) {
                 levels.piss(true, false, false, (value === "cult" ? "m" : "f"), value);
             });
             g.internal.facepissWho = [];
-            room957.chatcatch("toilet");
+            invoker.invokeCurrent("chatcatch", "toilet");
             break;
         default:
             break;
@@ -391,7 +391,7 @@ room957.chatcatch = function (callback) {
             nav.bg("957_jobs/" + callback + ".webp"); 
             break;
         case "toilet_8_4":
-            room957.btnclick("toiletDraw");
+            invoker.invokeCurrent("btnclick", "toiletDraw");
             nav.button({
                 "type": "img",
                 "name": "bg",
@@ -443,7 +443,7 @@ room957.chatcatch = function (callback) {
             break;
         case "kissing_ev0":
             g.internal.pose = "s";
-            room957.btnclick("kissingClose");
+            invoker.invokeCurrent("btnclick", "kissingClose");
             sc.modLevel("cult", 5, 10);
             nav.button({
                 "type": "img",
@@ -484,7 +484,7 @@ room957.chatcatch = function (callback) {
         case "kissing_ev3":
             nav.kill();
             g.internal.pose = "t";
-            room957.btnclick("kissingClose");
+            invoker.invokeCurrent("btnclick", "kissingClose");
             nav.button({
                 "type": "img",
                 "name": "bg",
@@ -502,7 +502,7 @@ room957.chatcatch = function (callback) {
         case "kissing_ev4":
             nav.kill();
             g.internal.pose = "w";
-            room957.btnclick("kissingClose");
+            invoker.invokeCurrent("btnclick", "kissingClose");
             nav.button({
                 "type": "img",
                 "name": "kissing_ev4",
@@ -515,7 +515,7 @@ room957.chatcatch = function (callback) {
             break;
         case "kissing_ev4_1":
             g.internal.pose = "t";
-            room957.btnclick("kissingClose");
+            invoker.invokeCurrent("btnclick", "kissingClose");
             nav.button({
                 "type": "img",
                 "name": "kissing_ev4",
@@ -533,7 +533,7 @@ room957.chatcatch = function (callback) {
         case "kissing_ev5":
             nav.kill();
             g.internal.pose = "t";
-            room957.btnclick("kissingClose");
+            invoker.invokeCurrent("btnclick", "kissingClose");
             nav.button({
                 "type": "img",
                 "name": "bg",
@@ -586,12 +586,12 @@ room957.chatcatch = function (callback) {
         case "kissingReset":
             nav.kill();
             nav.bg("957_jobs/kissing1.webp");
-            room950.btnclick("bars")
+            invoker.invoke(950, "btnclick", "bars")
             zcl.poseExpose(250, 900, .3, "", false);
             nav.wait("kissing"); 
             break;
         case "toilet":
-            room957.btnclick("toiletDraw");
+            invoker.invokeCurrent("btnclick", "toiletDraw");
             if (g.internal.facepissWho.length > 0) {
                 nav.button({
                     "type": "zbtn",
@@ -617,7 +617,7 @@ room957.chatcatch = function (callback) {
             }
             break;
         case "toilet_6_1":
-            room957.btnclick("toiletDraw");
+            invoker.invokeCurrent("btnclick", "toiletDraw");
             g.internal.facepiss++;
             nav.button({
                 "type": "img",
@@ -662,18 +662,18 @@ room957.chatcatch = function (callback) {
                     chat(48, 957);
             }
             else {
-                room957.chatcatch("leave");
+                invoker.invokeCurrent("chatcatch", "leave");
             }
             break;
         case "toilet_back1":
             nav.kill();
-            room950.btnclick("drawBG");
+            invoker.invoke(950, "btnclick", "drawBG");
             nav.killbutton("clean");
             zcl.assup(730, 400, .5, "", false);
             break;
         case "toilet_back2":
             gv.set("cultLastClean", new Date(gv.get("cultLastClean").getTime() - 604800000));
-            room950.btnclick("drawBG");
+            invoker.invoke(950, "btnclick", "drawBG");
             nav.killbutton("clean");
             nav.kill();
             nav.button({
@@ -690,7 +690,7 @@ room957.chatcatch = function (callback) {
         case "sweepHallway9":
             sc.completeMissionTask("bodhi", "cult", 4);
             sc.startMission("bodhi", "escape");
-            room957.chatcatch("leave");
+            invoker.invokeCurrent("chatcatch", "leave");
             break;
         case "toilet_back3":
             nav.kill();
@@ -1296,3 +1296,5 @@ room957.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(957, room957);

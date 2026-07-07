@@ -221,7 +221,7 @@ room76.chatcatch = function (callback) {
                 "height": 1080,
                 "image": "76_bimboRoom/76_boobjob1.gif"
             }, 76);
-            g.roomTimeout = setTimeout(function () { room76.chatcatch("titfuck3"); }, 4600);
+            g.roomTimeout = setTimeout(function () { invoker.invokeCurrent("chatcatch", "titfuck3"); }, 4600);
             break;
         case "titfuck3":
             nav.killbutton("bimbo");
@@ -422,3 +422,5 @@ room76.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(76, room76);

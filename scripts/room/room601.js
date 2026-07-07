@@ -21,9 +21,9 @@ room601.main = function () {
         rapeCounter: 0,
         rapechar: g.shuffleArray([0, 2, 9, 12, 13]),
     };
-    room601.btnclick("getCustCount");
-    room601.btnclick("btnDefault");
-    room601.btnclick("showExcitement");
+    invoker.invokeCurrent("btnclick", "getCustCount");
+    invoker.invokeCurrent("btnclick", "btnDefault");
+    invoker.invokeCurrent("btnclick", "showExcitement");
 };
 
 room601.btnclick = function (name) {
@@ -240,7 +240,7 @@ room601.btnclick = function (name) {
                 if (cl.c.panties === null)
                     cl.c.panties = g.internal.panties;
 
-                room601.btnclick("fatfrank");
+                invoker.invokeCurrent("btnclick", "fatfrank");
                 chat(1, 601);
                 return;
             }
@@ -251,12 +251,12 @@ room601.btnclick = function (name) {
                 if (cl.c.panties === null)
                     cl.c.panties = g.internal.panties;
 
-                room601.btnclick("fatfrank");
+                invoker.invokeCurrent("btnclick", "fatfrank");
                 chat(0, 601);
                 return;
             }
             nav.kill();
-            room601.btnclick("getCustCount");
+            invoker.invokeCurrent("btnclick", "getCustCount");
 
             char.addtime(12);
             var danceMoney = Math.floor((g.internal.cust + (levels.get("stripper").l * 3) + (g.internal.excitement / 12)) * (g.rand(1, 7) / 1.5));
@@ -330,35 +330,35 @@ room601.btnclick = function (name) {
 
             g.internal.mingleCounter = 0;
             g.internal.danceCounter++;
-            room601.btnclick("showExcitement");
+            invoker.invokeCurrent("btnclick", "showExcitement");
             break;
         case "topless":
             g.internal.danceCounter -= 1;
             cl.c.bra = null;
-            room601.btnclick("dance");
+            invoker.invokeCurrent("btnclick", "dance");
             break;
         case "panties":
             g.internal.danceCounter = -1;
             cl.c.panties = null;
-            room601.btnclick("dance");
+            invoker.invokeCurrent("btnclick", "dance");
             break;
         case "mingle":
             if (g.gethourdecimal() > 3 && g.gethourdecimal() < 17) {
-                room601.btnclick("fatfrank");
+                invoker.invokeCurrent("btnclick", "fatfrank");
                 chat(901, 601);
             }
             else if (g.internal.mingleCounter > 4) {
-                room601.btnclick("fatfrank");
+                invoker.invokeCurrent("btnclick", "fatfrank");
                 chat(12, 601);
             }
             else {
                 nav.kill();
                 nav.bg("601_dance/bg.jpg");
-                room601.btnclick("getCustCount");
-                room601.btnclick("randDance");
+                invoker.invokeCurrent("btnclick", "getCustCount");
+                invoker.invokeCurrent("btnclick", "randDance");
                 zcl.displayMain(100, 500, .15, "clothes", true);
-                room601.btnclick("showExcitement");
-                room601.btnclick("mingleBtn");
+                invoker.invokeCurrent("btnclick", "showExcitement");
+                invoker.invokeCurrent("btnclick", "mingleBtn");
             }
             if (g.internal.sissySchool)
                 g.internal.excitement += 4;
@@ -378,8 +378,8 @@ room601.btnclick = function (name) {
         case "fatfrank":
             nav.killall();
             nav.bg("601_dance/bg.jpg");
-            room601.btnclick("getCustCount");
-            room601.btnclick("randDance");
+            invoker.invokeCurrent("btnclick", "getCustCount");
+            invoker.invokeCurrent("btnclick", "randDance");
             nav.button({
                 "type": "img",
                 "name": "name",
@@ -390,7 +390,7 @@ room601.btnclick = function (name) {
                 "image": "601_dance/fatfrank.png"
             }, 601);
             zcl.displayMain(250, 900, .14, "clothes", true);
-            room601.btnclick("showExcitement");
+            invoker.invokeCurrent("btnclick", "showExcitement");
             break;
         case "bar":
             nav.kill();
@@ -432,7 +432,7 @@ room601.btnclick = function (name) {
             
             if (foundSomeone) {
                 g.internal.private = g.rand(0, 4);
-                room601.btnclick("fatfrank");
+                invoker.invokeCurrent("btnclick", "fatfrank");
                 chat(14, 601);
             }
             else {
@@ -446,7 +446,7 @@ room601.btnclick = function (name) {
             break;
         case "dance1":
             g.internal.danceCounter = 0;
-            room601.btnclick("dance");
+            invoker.invokeCurrent("btnclick", "dance");
             break;
         case "privateBtn":
             if (g.internal.danceCounter > g.internal.privateDances) {
@@ -475,7 +475,7 @@ room601.btnclick = function (name) {
             sc.select("private_hand", "601_dance/icon_hand.png", 2);
             sc.select("private_lick", "601_dance/icon_lick.png", 4);
 
-            room601.btnclick("privateExcitement");
+            invoker.invokeCurrent("btnclick", "privateExcitement");
             break;
         case "privateExcitement":
             nav.killbutton("howcum");
@@ -504,18 +504,18 @@ room601.btnclick = function (name) {
             cl.c.bra = null;
             cl.display();
             zcl.displayMain(-100, 400, .2, "clothes", true);
-            room601.btnclick("privateExcitement");
+            invoker.invokeCurrent("btnclick", "privateExcitement");
             nav.next("privateBtn");
             break;
         case "private_panties":
             nav.kill();
             g.internal.privateExcitement += g.rand(10, 20);
-            room601.btnclick("privateExcitement");
+            invoker.invokeCurrent("btnclick", "privateExcitement");
             nav.bg("601_dance/d" + g.internal.private + ".jpg");
             cl.c.panties = null;
             cl.display();
             zcl.displayMain(-100, 400, .2, "clothes", true);
-            room601.btnclick("privateExcitement");
+            invoker.invokeCurrent("btnclick", "privateExcitement");
             nav.next("privateBtn");
             break;
         case "private_rub":
@@ -547,23 +547,23 @@ room601.btnclick = function (name) {
                 "height": 1080,
                 "image": "601_dance/drub_throb" + privateExcitement + ".webp"
             }, 601);
-            room601.btnclick("private_tipHigh");
+            invoker.invokeCurrent("btnclick", "private_tipHigh");
             if (privateExcitement === 4)
                 nav.next("pivate_cumpants");
             else
                 nav.next("privateBtn");
-            room601.btnclick("privateExcitement");
+            invoker.invokeCurrent("btnclick", "privateExcitement");
             break;
         case "private_hand":
             nav.kill();
             g.internal.danceCounter++;
             if (g.internal.privateExcitement < 50) {
-                room601.btnclick("private_tipLow");
+                invoker.invokeCurrent("btnclick", "private_tipLow");
                 nav.bg("601_dance/handjoblimp.webp");
                 g.internal.privateExcitement += 10;
             }
             else {
-                room601.btnclick("private_tipHigh");
+                invoker.invokeCurrent("btnclick", "private_tipHigh");
                 nav.bg("601_dance/handjob.gif");
                 g.internal.privateExcitement += g.rand(20, 30);
             }
@@ -574,12 +574,12 @@ room601.btnclick = function (name) {
             else {
                 nav.next("privateBtn");
             }
-            room601.btnclick("privateExcitement");
+            invoker.invokeCurrent("btnclick", "privateExcitement");
             break;
         case "private_hand0":
             nav.killbutton("private_hand0");
             nav.bg("601_dance/handjobcum0.webp");
-            room601.btnclick("private_tipHigh");
+            invoker.invokeCurrent("btnclick", "private_tipHigh");
             levels.gavehandjob("m", "!man");
             nav.button({
                 "type": "tongue",
@@ -591,12 +591,12 @@ room601.btnclick = function (name) {
                 "image": "601_dance/handjobcum1.webp"
             }, 601);
             g.internal.privateExcitement = 3;
-            room601.btnclick("privateExcitement");
+            invoker.invokeCurrent("btnclick", "privateExcitement");
             nav.next("private_handend0")
             break;
         case "private_handend0":
             nav.kill();
-            room601.btnclick("privateExcitement");
+            invoker.invokeCurrent("btnclick", "privateExcitement");
             chat(15, 601);
             break;
         case "private_hand1":
@@ -609,18 +609,18 @@ room601.btnclick = function (name) {
             cl.c.privateExcitement = 100;
             cl.c.bra = g.internal.bra;
             cl.c.panties = g.internal.panties;
-            room601.chatcatch("privateEnd");
+            invoker.invokeCurrent("chatcatch", "privateEnd");
             break;
         case "private_lick":
             nav.kill();
             g.internal.danceCounter++;
             if (g.internal.privateExcitement < 70) {
-                room601.btnclick("private_tipLow");
+                invoker.invokeCurrent("btnclick", "private_tipLow");
                 nav.bg("601_dance/lick0.webp");
                 g.internal.privateExcitement += 10;
             }
             else {
-                room601.btnclick("private_tipHigh");
+                invoker.invokeCurrent("btnclick", "private_tipHigh");
                 nav.bg("601_dance/lick1.webp");
                 g.internal.privateExcitement += g.rand(20, 30);
             }
@@ -631,13 +631,13 @@ room601.btnclick = function (name) {
             else {
                 nav.next("privateBtn");
             }
-            room601.btnclick("privateExcitement");
+            invoker.invokeCurrent("btnclick", "privateExcitement");
 
             break;
         case "pivate_cumpants":
             nav.killbutton("pivate_cumpants");
             g.internal.excitement = 3;
-            room601.btnclick("privateExcitement");
+            invoker.invokeCurrent("btnclick", "privateExcitement");
             chat(15, 601);
             break;
         case "private_getDressed":
@@ -648,7 +648,7 @@ room601.btnclick = function (name) {
             g.internal.privateExcitement -= 50;
             cl.display();
             zcl.displayMain(-100, 400, .2, "clothes", true);
-            room601.btnclick("privateBtn");
+            invoker.invokeCurrent("btnclick", "privateBtn");
             break;
         case "private_lap":
             nav.kill();
@@ -701,9 +701,9 @@ room601.btnclick = function (name) {
                     }, 601);
                     break;
             }
-            room601.btnclick("private_tipLow");
+            invoker.invokeCurrent("btnclick", "private_tipLow");
             g.internal.danceCounter++;
-            room601.btnclick("privateExcitement");
+            invoker.invokeCurrent("btnclick", "privateExcitement");
             nav.next("privateBtn");
             break;
         case "private_tipHigh":
@@ -727,7 +727,7 @@ room601.btnclick = function (name) {
             g.internal.danceCounter++;
             break;
         case "finish":
-            room601.btnclick("fatfrank");
+            invoker.invokeCurrent("btnclick", "fatfrank");
             if (g.internal.sissySchool)
                 daily.set("stripper");
             chat(901, 601);
@@ -794,34 +794,34 @@ room601.chatcatch = function (callback) {
         case "chrisPrivateEnd":
             g.internal.money += 150;
             g.popUpNotice("You earned $150");
-            room601.btnclick("mingle");
+            invoker.invokeCurrent("btnclick", "mingle");
             break;
         case "mingle":
             //sc.select("mingle", "601_dance/icon_mingle.png", 8);
             //sc.select("mingle", "601_dance/icon_mingle.png", 10);
             //sc.select("finish", "601_dance/icon_finish.png", 11);
             nav.kill();
-            room601.btnclick("mingle");
+            invoker.invokeCurrent("btnclick", "mingle");
             break;
         case "mingleInc":
             char.addtime(20);
             g.internal.mingleCounter++;
-            room601.btnclick("mingle");
+            invoker.invokeCurrent("btnclick", "mingle");
             break;
         case "excitementInc":
             g.internal.excitement += levels.get("stripper").l + 12;
-            room601.btnclick("showExcitement");
+            invoker.invokeCurrent("btnclick", "showExcitement");
             g.popUpNoticeBottom("Everyone loved that!");
             break;
         case "dance":
             g.internal.danceCounter = 0;
             g.internal.mingleCounter = 0;
-            room601.btnclick("dance");
+            invoker.invokeCurrent("btnclick", "dance");
             break;
         case "mingleStart":
             g.internal.mingleCounter = 0;
             g.internal.danceCounter = 0;
-            room601.btnclick("mingle");
+            invoker.invokeCurrent("btnclick", "mingle");
             break;
         case "private":
             nav.kill();
@@ -831,8 +831,8 @@ room601.chatcatch = function (callback) {
             g.internal.privateMoney = 0;
             g.internal.danceCounter = 0;
             g.internal.privateDances = g.rand(5, 12);
-            room601.btnclick("privateExcitement");
-            room601.btnclick("privateBtn");
+            invoker.invokeCurrent("btnclick", "privateExcitement");
+            invoker.invokeCurrent("btnclick", "privateBtn");
             break;
         case "privateEnd":
             nav.kill();
@@ -874,7 +874,7 @@ room601.chatcatch = function (callback) {
         case "dance1":
             nav.kill();
             nav.bg("601_dance/bg.jpg");
-            room601.btnclick("dance");
+            invoker.invokeCurrent("btnclick", "dance");
             break;
         case "sissyEvent4":
             g.internal.sissySchoolEventCounter = 5;
@@ -1532,3 +1532,5 @@ room601.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(601, room601);

@@ -3,6 +3,28 @@ fame.niceCounter = 0;
 fame.rapeCounter = 0;
 fame.moanCounter = null;
 fame.animateTimeout = null;
+
+fame.nextMoanFrame = function () {
+    if (fame.moanCounter === null)
+        fame.moanCounter = g.rand(0, 9);
+    fame.moanCounter++;
+    if (fame.moanCounter > 8)
+        fame.moanCounter = 0;
+    return fame.moanCounter;
+};
+
+fame.drawMoan = function (left, top, size) {
+    nav.button({
+        "type": "img",
+        "name": "fame.moan-kill",
+        "left": left,
+        "top": top,
+        "width": size * 2,
+        "height": size,
+        "image": "1001_rand/moan" + fame.nextMoanFrame() + ".webp"
+    }, 1010);
+};
+
 fame.event = function (roomId, returnBtn) {
     if (g.isNight()) {
         let orallevel = levels.get("oral").l;
@@ -67,7 +89,7 @@ fame.moanAnimate = function (side) {
     if (fame.animateTimeout !== null) return;
     fame.moan(side);
     fame.animateTimeout = setInterval(function () {
-        nav.killbutton("fame.moan-kill"); 
+        fame.moankill();
         fame.moan(side);
     }, 1200);
 };
@@ -81,72 +103,26 @@ fame.moanAnimateStop = function () {
 fame.moan = function (side = "center") {
     //0-8
     fame.moankill();
-    let initmoan0 = g.rand(150, 201);
-    let initmoan1 = g.rand(150, 201);
+    let primarySize = g.rand(150, 201);
+    let secondarySize = g.rand(150, 201);
     let top = g.rand(200, 700);
-    let left = g.rand(100, 540);
-    let center = g.rand(540, 1180);
-    let right = g.rand(1180, 1500);
-    if (fame.moanCounter === null)
-        fame.moanCounter = g.rand(0, 9);
-    fame.moanCounter++;
-    if (fame.moanCounter > 8)
-        fame.moanCounter = 0;
-    
+    let positions = {
+        left: g.rand(100, 540),
+        center: g.rand(540, 1180),
+        right: g.rand(1180, 1500)
+    };
+
     if (side === "left") {
-        nav.button({
-            "type": "img",
-            "name": "fame.moan-kill",
-            "left": left,
-            "top": top,
-            "width": initmoan0 * 2,
-            "height": initmoan0,
-            "image": "1001_rand/moan" + fame.moanCounter + ".webp"
-        }, 1010);
+        fame.drawMoan(positions.left, top, primarySize);
     }
     else if (side === "right") {
-        nav.button({
-            "type": "img",
-            "name": "fame.moan-kill",
-            "left": right,
-            "top": top,
-            "width": initmoan0 * 2,
-            "height": initmoan0,
-            "image": "1001_rand/moan" + fame.moanCounter + ".webp"
-        }, 1010);
+        fame.drawMoan(positions.right, top, primarySize);
     }
     else if (side === "center") {
-        nav.button({
-            "type": "img",
-            "name": "fame.moan-kill",
-            "left": center,
-            "top": top,
-            "width": initmoan0 * 2,
-            "height": initmoan0,
-            "image": "1001_rand/moan" + fame.moanCounter + ".webp"
-        }, 1010);
+        fame.drawMoan(positions.center, top, primarySize);
     }
     else if (side === "double") {
-        nav.button({
-            "type": "img",
-            "name": "fame.moan-kill",
-            "left": left,
-            "top": g.rand(400, 700),
-            "width": initmoan1 * 2,
-            "height": initmoan1,
-            "image": "1001_rand/moan" + fame.moanCounter + ".webp"
-        }, 1010);
-        fame.moanCounter++;
-        if (fame.moanCounter > 8)
-            fame.moanCounter = 0;
-        nav.button({
-            "type": "img",
-            "name": "fame.moan-kill",
-            "left": right,
-            "top": top,
-            "width": initmoan0 * 2,
-            "height": initmoan0,
-            "image": "1001_rand/moan" + fame.moanCounter + ".webp"
-        }, 1010);
+        fame.drawMoan(positions.left, g.rand(400, 700), secondarySize);
+        fame.drawMoan(positions.right, top, primarySize);
     }
 };

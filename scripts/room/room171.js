@@ -63,7 +63,7 @@ room171.main = function () {
             }, 171);
         }
     }
-    room171.btnclick("fuckers");
+    invoker.invokeCurrent("btnclick", "fuckers");
     if (gv.get("pinkGloryHole") === 0) {
         nav.button({
             "type": "img",
@@ -249,13 +249,13 @@ room171.btnclick = function (name) {
             else {
                 nav.bg("171_gh/face_t5.jpg");
             }
-            room171.btnclick("drawButtons");
+            invoker.invokeCurrent("btnclick", "drawButtons");
             break;
         case "cam1":
             nav.killall();
             g.internal.cam = name;
-            room171.btnclick("cumRoom");
-            room171.btnclick("fuckers");
+            invoker.invokeCurrent("btnclick", "cumRoom");
+            invoker.invokeCurrent("btnclick", "fuckers");
             if (g.internal.fuckers[2] !== null) {
                 nav.button({
                     "type": "img",
@@ -289,7 +289,7 @@ room171.btnclick = function (name) {
                     "image": "171_gh/zl" + g.rand(0, 3) + ".png",
                 }, 171);
             }
-            room171.btnclick("drawButtons");
+            invoker.invokeCurrent("btnclick", "drawButtons");
             break;
         case "cam2":
             nav.killall();
@@ -317,7 +317,7 @@ room171.btnclick = function (name) {
                     "image": "171_gh/gif" + g.internal.fuckersDick[g.internal.fuckers[2]] + ".gif",
                 }, 171);
             }
-            room171.btnclick("drawButtons");
+            invoker.invokeCurrent("btnclick", "drawButtons");
             break;
         case "cam3":
             nav.killall();
@@ -328,7 +328,7 @@ room171.btnclick = function (name) {
             else {
                 nav.bg("171_gh/gix.jpg");
             }
-            room171.btnclick("drawButtons");
+            invoker.invokeCurrent("btnclick", "drawButtons");
             break;
         case "nextCock":
             if (gv.get("energy") < 33) {
@@ -348,7 +348,7 @@ room171.btnclick = function (name) {
                         g.internal.fuckers.push(null);
                     }
                 }
-                room171.btnclick(g.internal.cam);
+                invoker.invokeCurrent("btnclick", g.internal.cam);
             }
             break;
         case "takeit":
@@ -395,7 +395,7 @@ room171.btnclick = function (name) {
                 default: chat(999, 171); break;
             }
             g.internal.fuckers[2] = null;
-            room171.btnclick(g.internal.cam);
+            invoker.invokeCurrent("btnclick", g.internal.cam);
             break;
         default:
             break;
@@ -405,7 +405,7 @@ room171.btnclick = function (name) {
 room171.chatcatch = function (callback) {
     switch (callback) {
         case "cumRoom":
-            room171.btnclick("cam1");
+            invoker.invokeCurrent("btnclick", "cam1");
             break;
         case "reset":
             char.room(171);
@@ -575,3 +575,5 @@ room171.chat = function (chatID) {
             return [];
     }
 };
+
+invoker.registerRoom(171, room171);

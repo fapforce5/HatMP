@@ -92,7 +92,7 @@ room625.chatcatch = function (callback) {
                 s2: false,
                 s3: false
             };
-            room625.chatcatch("sneak0");
+            invoker.invokeCurrent("chatcatch", "sneak0");
             break;
         case "sneak0":
             nav.kill();
@@ -268,3 +268,5 @@ room625.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(625, room625);

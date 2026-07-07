@@ -2,7 +2,7 @@
 var room19 = {};
 
 room19.main = function () {
-    room19.chatcatch("toybox");
+    invoker.invokeCurrent("chatcatch", "toybox");
     nav.button({
         "type": "img",
         "name": "bghide",
@@ -404,11 +404,11 @@ room19.chatcatch = function (callback) {
             break;
         case "bj":
             g.internal = "bj";
-            room19.chatcatch("toybox");
+            invoker.invokeCurrent("chatcatch", "toybox");
             break;
         case "analtoy":
             g.internal = "anal";
-            room19.chatcatch("toybox");
+            invoker.invokeCurrent("chatcatch", "toybox");
             break;
         case "addFinger":
             g.internal.f += 1;
@@ -622,3 +622,5 @@ room19.chat = function (chatID) {
 
     return cArray[chatID];
 };
+
+invoker.registerRoom(19, room19);

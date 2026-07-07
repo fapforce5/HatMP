@@ -187,7 +187,7 @@ room804.chatcatch = function (callback) {
             sc.modLevel("ralphsmom", 51, 3);
             break;
         case "mom":
-            room804.btnclick("mom");
+            invoker.invokeCurrent("btnclick", "mom");
             break;
         case "muffdiveEnd":
             levels.oral(3, "f", "ralphsmom");
@@ -416,3 +416,5 @@ room804.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(804, room804);

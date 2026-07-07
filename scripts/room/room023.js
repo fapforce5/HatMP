@@ -474,16 +474,16 @@ room23.chatcatch = function (callback) {
         case "myDare":
             if (g.internal.gamephase > g.internal.myphase) {
                 if (g.internal.nextTurn === "lola")
-                    room23.chatcatch("lolatalk evasit");
+                    invoker.invokeCurrent("chatcatch", "lolatalk evasit");
                 else
-                    room23.chatcatch("evatalk lolasit");
+                    invoker.invokeCurrent("chatcatch", "evatalk lolasit");
                 chat(701, 23);
             }
             else {
                 if (g.internal.nextTurn === "lola")
-                    room23.chatcatch("lolatalk evasit");
+                    invoker.invokeCurrent("chatcatch", "lolatalk evasit");
                 else
-                    room23.chatcatch("evatalk lolasit");
+                    invoker.invokeCurrent("chatcatch", "evatalk lolasit");
                 chat(702, 23);
             }
             break;
@@ -513,7 +513,7 @@ room23.chatcatch = function (callback) {
                     if (cl.c.bra !== null) {
                         sc.modSecret("eva", 100);
                         sc.modSecret("lola", 100);
-                        room23.chatcatch("lolasad evagiggle");
+                        invoker.invokeCurrent("chatcatch", "lolasad evagiggle");
                         chat(84, 23);
                     }
                     else {
@@ -530,7 +530,7 @@ room23.chatcatch = function (callback) {
                     if (cl.getEntry("panties", cl.c.panties).sex === "f") {
                         sc.modSecret("eva", 100);
                         sc.modSecret("lola", 100);
-                        room23.chatcatch("lolasad evagiggle");
+                        invoker.invokeCurrent("chatcatch", "lolasad evagiggle");
                         chat(85, 23);
                     }
                     else {
@@ -545,7 +545,7 @@ room23.chatcatch = function (callback) {
                     if (cl.c.chastity !== null) {
                         sc.modSecret("eva", 100);
                         sc.modSecret("lola", 100);
-                        room23.chatcatch("lolasad evagiggle");
+                        invoker.invokeCurrent("chatcatch", "lolasad evagiggle");
                         chat(86, 23);
                     }
                     else {
@@ -784,8 +784,8 @@ room23.chatcatch = function (callback) {
                     "height": 732,
                     "image": "24_spinTheBottle/talent_lola.png"
                 }, 13);
-                room23.chatcatch("lolaWine");
-                room23.chatcatch("evatalk");
+                invoker.invokeCurrent("chatcatch", "lolaWine");
+                invoker.invokeCurrent("chatcatch", "evatalk");
                 chat(42, 23);
             }
             else {
@@ -799,7 +799,7 @@ room23.chatcatch = function (callback) {
                     "height": 732,
                     "image": "24_spinTheBottle/talent_eva.png"
                 }, 13);
-                room23.chatcatch("evaWin");
+                invoker.invokeCurrent("chatcatch", "evaWin");
                 chat(42, 23);
             }
             //g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
@@ -831,12 +831,12 @@ room23.chatcatch = function (callback) {
                 g.internal.gamephase = 2;
                 if (g.internal.nextTurn === "lola") {
                     g.internal.lolaphase = 2;
-                    room23.chatcatch("lolatalk");
+                    invoker.invokeCurrent("chatcatch", "lolatalk");
                     chat(54, 23);
                 }
                 else {
                     g.internal.evaphase = 2;
-                    room23.chatcatch("evatalk");
+                    invoker.invokeCurrent("chatcatch", "evatalk");
                     chat(55, 23);
                 }
             }
@@ -929,11 +929,11 @@ room23.chatcatch = function (callback) {
 
         case "dareLickCock":
             if (g.internal.nextTurn === "lola") {
-                room23.chatcatch("evagiggle lolahappy");
+                invoker.invokeCurrent("chatcatch", "evagiggle lolahappy");
                 chat(79, 23);
             }
             else {
-                room23.chatcatch("evascared lolasad");
+                invoker.invokeCurrent("chatcatch", "evascared lolasad");
                 chat(80, 23);
             }
             nav.button({
@@ -3573,3 +3573,5 @@ room23.getTheirQuestion = function () {
         ]
     };
 };
+
+invoker.registerRoom(23, room23);

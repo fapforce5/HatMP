@@ -52,6 +52,10 @@ gv.init = function () {
         { n: "dildoanal", t: 0, q: "int" },
         { n: "fingeranal", t: 0, q: "int" },
         { n: "dildooral", t: 0, q: "int" },
+        { n: "receiveOralMale", t: 0, q: "int" },
+        { n: "receiveOralFemale", t: 0, q: "int" },
+        { n: "receiveAnalMale", t: 0, q: "int" },
+        { n: "receiveAnalFemale", t: 0, q: "int" },
         { n: "beer", t: 0, q: "zero" },
         { n: "sissySchoolDream", t: false, q: "bool" },
         { n: "playWithPussy", t: false, q: "bool" },
@@ -740,6 +744,11 @@ gv.mod = function (name, amount) {
     var i, index, type;
     index = gv.i(name);
 
+    if (index === -1 && levels.i(name) > -1) {
+        levels.mod(name, amount);
+        return;
+    }
+
     if (index > -1) {
         type = gv.st[index].q;
         switch (type) {
@@ -831,47 +840,20 @@ gv.mod = function (name, amount) {
 };
 
 gv.getButtCum = function () {
-    var pig, horse, dog, human, cumType;
-    cumType = null;
-    pig = horse = dog = human = 0;
-    counter = 0;
+    var buttCum = gv.emptyCumTotals();
     for (i = 0; i < gv.st.length; i++) {
-        if (gv.st[i].n === "analCum") {
-            if (gv.st[i].t > 0) {
-                human = gv.st[i].t;
-                cumType = "cumjar";
-            }
-        }
-        else if (gv.st[i].n === "analCumDog") {
-            if (gv.st[i].t > 0) {
-                dog = gv.st[i].t;
-                cumType = "dogcumjar";
-            }
-        }
-        else if (gv.st[i].n === "analCumHorse") {
-            if (gv.st[i].t > 0) {
-                horse = gv.st[i].t;
-                cumType = "horsecumjar";
-            }
-        }
-        else if (gv.st[i].n === "analCumPig") {
-            if (gv.st[i].t > 0) {
-                pig = gv.st[i].t;
-                cumType = "pigcumjar";
+        for (let j = 0; j < gv.buttCumKeys.length; j++) {
+            if (gv.st[i].n === gv.buttCumKeys[j].stat && gv.st[i].t > 0) {
+                buttCum[gv.buttCumKeys[j].key] = gv.st[i].t;
+                buttCum.cumType = gv.buttCumKeys[j].cumType;
             }
         }
     }
-    return {
-        human: human,
-        dog: dog,
-        horse: horse,
-        pig: pig,
-        cumType: cumType,
-        total: human + dog + horse + pig
-    };
+    buttCum.total = buttCum.human + buttCum.dog + buttCum.horse + buttCum.pig;
+    return buttCum;
 };
 
-gv.getPussyCum = function () {
+gv.emptyCumTotals = function () {
     return {
         human: 0,
         dog: 0,
@@ -880,21 +862,26 @@ gv.getPussyCum = function () {
         cumType: null,
         total: 0
     };
-}
+};
+
+gv.buttCumKeys = [
+    { stat: "analCum", key: "human", cumType: "cumjar" },
+    { stat: "analCumDog", key: "dog", cumType: "dogcumjar" },
+    { stat: "analCumHorse", key: "horse", cumType: "horsecumjar" },
+    { stat: "analCumPig", key: "pig", cumType: "pigcumjar" }
+];
+
+gv.getPussyCum = function () {
+    return gv.emptyCumTotals();
+};
 
 gv.clearButtCum = function () {
     for (i = 0; i < gv.st.length; i++) {
-        if (gv.st[i].n === "analCum") {
-            gv.st[i].t = 0;
-        }
-        else if (gv.st[i].n === "analCumDog") {
-            gv.st[i].t = 0;
-        }
-        else if (gv.st[i].n === "analCumHorse") {
-            gv.st[i].t = 0;
-        }
-        else if (gv.st[i].n === "analCumPig") {
-            gv.st[i].t = 0;
+        for (let j = 0; j < gv.buttCumKeys.length; j++) {
+            if (gv.st[i].n === gv.buttCumKeys[j].stat) {
+                gv.st[i].t = 0;
+                break;
+            }
         }
     }
     cl.display();

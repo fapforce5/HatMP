@@ -4,7 +4,7 @@ room170.main = function () {
     if (gv.get("sissySchoolClass") === "ex317") {
         if (g.pass === 170) {
             g.pass = null;
-            room170.btnclick("dressingRoom");
+            invoker.invokeCurrent("btnclick", "dressingRoom");
             return;
         }
         switch (gv.get("sissySchoolClassDays")) {
@@ -317,7 +317,7 @@ room170.chatcatch = function (callback) {
             break;
         case "ex317_3":
             cl.add("dress", "rose");
-            room170.chatcatch("dressingRoom");
+            invoker.invokeCurrent("chatcatch", "dressingRoom");
             return;
         case "dressingRoom":
             nav.bg("170_stage/hallway.jpg");
@@ -332,7 +332,7 @@ room170.chatcatch = function (callback) {
             }, 170);
             break;
         case "gotoDressingRoom":
-            room170.btnclick("dressingRoom");
+            invoker.invokeCurrent("btnclick", "dressingRoom");
             break;
         case "hallwayCatwalk":
             nav.kill();
@@ -459,12 +459,12 @@ room170.chatcatch = function (callback) {
         case "fashion27":
             nav.kill();
             nav.bg("170_stage/fashion27.webp");
-            room170.chatcatch("makeScore");
+            invoker.invokeCurrent("chatcatch", "makeScore");
             break;
         case "fashion28": //cheerleader
             nav.kill();
             nav.bg("170_stage/fashion28.webp");
-            room170.chatcatch("makeScore");
+            invoker.invokeCurrent("chatcatch", "makeScore");
             var xcoord1 = [359, 653, 894, 1195, 1453];
             if (cl.hasoutfit("cheerleaderOptional") === null) {
                 var cheerLevel = levels.get("cheer").l;
@@ -502,13 +502,13 @@ room170.chatcatch = function (callback) {
                 chat(800, 170);
             }
             else {
-                room170.chatcatch("makeScore");
+                invoker.invokeCurrent("chatcatch", "makeScore");
             }
             break;
         case "fashion28-s": //stripper
             nav.kill();
             nav.bg("170_stage/fashion28.webp");
-            room170.chatcatch("makeScore");
+            invoker.invokeCurrent("chatcatch", "makeScore");
             var xcoord1s = [359, 653, 894, 1195, 1453];
             if (cl.hasoutfit("braAndPantiesIgnored") === null) {
                 var stripLevel = levels.get("stripper").l;
@@ -546,7 +546,7 @@ room170.chatcatch = function (callback) {
                 chat(800, 170);
             }
             else {
-                room170.chatcatch("makeScore");
+                invoker.invokeCurrent("chatcatch", "makeScore");
             }
             break;
         case "fashion28-w":
@@ -592,7 +592,7 @@ room170.chatcatch = function (callback) {
         case "fashion29":
             nav.kill();
             nav.bg("170_stage/fashion29.webp");
-            room170.chatcatch("makeScore");
+            invoker.invokeCurrent("chatcatch", "makeScore");
             break;
         case "fashion35":
             nav.kill();
@@ -2103,3 +2103,5 @@ room170.chat = function (chatID) {
             return [];
     }
 };
+
+invoker.registerRoom(170, room170);

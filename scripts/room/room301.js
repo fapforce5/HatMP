@@ -15,19 +15,19 @@ room301.main = function () {
         var meetStep = sc.taskGetStep("envy", "meet");
         switch (meetStep) {
             case 1:
-                room301.chatcatch("drawbg");
+                invoker.invokeCurrent("chatcatch", "drawbg");
                 chat(0, 301);
                 break;
             case 2:
-                room301.chatcatch("drawbg");
+                invoker.invokeCurrent("chatcatch", "drawbg");
                 chat(10, 301);
                 break;
             case 3:
-                room301.chatcatch("drawbg");
+                invoker.invokeCurrent("chatcatch", "drawbg");
                 chat(21, 301);
                 break;
             case 4:
-                room301.chatcatch("drawbg");
+                invoker.invokeCurrent("chatcatch", "drawbg");
                 chat(32, 301);
                 break;
 
@@ -37,38 +37,38 @@ room301.main = function () {
     else if (sc.getMission("envy", "hypno").inProgress) {
         switch (sc.taskGetStep("envy", "hypno")) {
             case 1:
-                room301.chatcatch("drawbg");
-                room301.chatcatch("drawEnvySitting");
+                invoker.invokeCurrent("chatcatch", "drawbg");
+                invoker.invokeCurrent("chatcatch", "drawEnvySitting");
                 chat(46, 301);
                 break;
             case 2:
-                room301.chatcatch("drawbg");
-                room301.chatcatch("drawEnvySitting");
+                invoker.invokeCurrent("chatcatch", "drawbg");
+                invoker.invokeCurrent("chatcatch", "drawEnvySitting");
                 chat(50, 301);
                 break;
             case 3:
-                room301.chatcatch("drawbg");
-                room301.chatcatch("drawEnvySitting");
+                invoker.invokeCurrent("chatcatch", "drawbg");
+                invoker.invokeCurrent("chatcatch", "drawEnvySitting");
                 chat(52, 301);
                 break;
             case 4:
-                room301.chatcatch("drawbg");
-                room301.chatcatch("drawEnvySitting");
+                invoker.invokeCurrent("chatcatch", "drawbg");
+                invoker.invokeCurrent("chatcatch", "drawEnvySitting");
                 chat(54, 301);
                 break;
             case 5:
-                room301.chatcatch("drawbg");
-                room301.chatcatch("drawEnvySitting");
+                invoker.invokeCurrent("chatcatch", "drawbg");
+                invoker.invokeCurrent("chatcatch", "drawEnvySitting");
                 chat(57, 301);
                 break;
             case 6:
-                room301.chatcatch("drawbg");
-                room301.chatcatch("drawEnvySitting");
+                invoker.invokeCurrent("chatcatch", "drawbg");
+                invoker.invokeCurrent("chatcatch", "drawEnvySitting");
                 chat(67, 301);
                 break;
             case 7:
-                room301.chatcatch("drawbg");
-                room301.chatcatch("drawEnvySitting");
+                invoker.invokeCurrent("chatcatch", "drawbg");
+                invoker.invokeCurrent("chatcatch", "drawEnvySitting");
                 chat(74, 301);
                 break;
             case 8:
@@ -101,11 +101,11 @@ room301.main = function () {
         var gfstep = sc.taskGetStep("envy", "gf");
         switch (gfstep) {
             case 1:
-                room301.chatcatch("drawEnvySitting");
+                invoker.invokeCurrent("chatcatch", "drawEnvySitting");
                 chat(127, 301);
                 break;
             case 4:
-                room301.chatcatch("drawEnvySitting");
+                invoker.invokeCurrent("chatcatch", "drawEnvySitting");
                 chat(130, 301);
                 break;
             case 5:
@@ -136,8 +136,8 @@ room301.btnclick = function (name) {
             //var envyStepTouchbg = sc.getstep("envy");
             //if (envyStepTouchbg < 10) {
                 nav.killall();
-                room301.chatcatch("drawbggame");
-                room301.chatcatch("drawEnvySitting");
+                invoker.invokeCurrent("chatcatch", "drawbggame");
+                invoker.invokeCurrent("chatcatch", "drawEnvySitting");
                 chat(33, 301);
             //}
             //else {
@@ -313,7 +313,7 @@ room301.chatcatch = function (callback) {
             nav.bg("301_living/startwars.jpg");
             break;
         case "startwars1":
-            room301.chatcatch("drawEnvySitting");
+                invoker.invokeCurrent("chatcatch", "drawEnvySitting");
             nav.bg("301_living/startwars1.jpg");
             break;
         case "envy2":
@@ -359,19 +359,19 @@ room301.chatcatch = function (callback) {
             break;
         case "t0":
             g.internal.t = 0;
-            room301.chatcatch("incrementMovie");
+            invoker.invokeCurrent("chatcatch", "incrementMovie");
             break;
         case "t1":
             g.internal.t++;
-            room301.chatcatch("incrementMovie");
+            invoker.invokeCurrent("chatcatch", "incrementMovie");
             break;
         case "incrementMovie":
             g.internal.m++;
             if (g.internal.t > 4) {
-                room301.chatcatch("movie2");
+                invoker.invokeCurrent("chatcatch", "movie2");
             }
             if (g.internal.m > 10) {
-                room301.chatcatch("movie2");
+                invoker.invokeCurrent("chatcatch", "movie2");
             }
             else {
                 switch (g.internal.t) {
@@ -482,8 +482,8 @@ room301.chatcatch = function (callback) {
             break;
         case "boardgameset":
             nav.killall();
-            room301.chatcatch("drawEnvySitting");
-            room301.chatcatch("drawbggame");
+            invoker.invokeCurrent("chatcatch", "drawEnvySitting");
+            invoker.invokeCurrent("chatcatch", "drawbggame");
             break;
         case "boardgameend":
             daily.set("envy");
@@ -617,8 +617,8 @@ room301.chatcatch = function (callback) {
             break;
         case "hypnoLoop1":
             nav.killall();
-            room301.chatcatch("drawbg");
-            room301.chatcatch("drawEnvySitting");
+            invoker.invokeCurrent("chatcatch", "drawbg");
+            invoker.invokeCurrent("chatcatch", "drawEnvySitting");
             break;
         case "drawEnvySitting":
             var envyImg = "sit0.png";
@@ -2373,3 +2373,5 @@ room301.chat = function (chatID) {
             return [];
     }
 };
+
+invoker.registerRoom(301, room301);

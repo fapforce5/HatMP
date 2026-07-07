@@ -2,6 +2,104 @@
 var menu = {};
 //char.clothesholder = null;
 
+char.isTypingTarget = function (target) {
+    if (!target)
+        return false;
+
+    var tagName = target.tagName ? target.tagName.toLowerCase() : "";
+    return tagName === "input" || tagName === "textarea" || tagName === "select" || target.isContentEditable;
+};
+
+char.toggleMainInventoryHotkey = function () {
+    if (!$("#room-inv").is(":visible"))
+        return false;
+
+    if (inv.isOpen) {
+        inv.close();
+        return true;
+    }
+
+    return inv.openMain();
+};
+
+char.getVisibleAdvanceRoomButtons = function (selector) {
+    var buttons = $('#room-buttons .rom-event:visible').filter(function () {
+        var name = $(this).data('name');
+        return name !== "zzzNOOPzzzIgnore";
+    });
+
+    if (selector)
+        buttons = buttons.filter(selector);
+
+    return buttons;
+};
+
+char.getSingleSharedActionButton = function (buttons) {
+    if (buttons.length === 1)
+        return buttons.eq(0);
+    if (buttons.length === 0)
+        return null;
+
+    var firstName = buttons.eq(0).data('name');
+    var firstRoom = buttons.eq(0).data('room');
+    var isSingleAction = true;
+
+    buttons.each(function () {
+        if ($(this).data('name') !== firstName || $(this).data('room') !== firstRoom) {
+            isSingleAction = false;
+            return false;
+        }
+    });
+
+    return isSingleAction ? buttons.eq(0) : null;
+};
+
+char.isLegacySpaceAdvanceButton = function (button) {
+    var $button = $(button);
+    var name = ($button.data('name') || "").toString().toLowerCase();
+    var image = ($button.attr('src') || "").toString().toLowerCase();
+
+    if (name.indexOf("cancel") !== -1 || name.indexOf("back") !== -1 || name.indexOf("exit") !== -1)
+        return true;
+
+    return image.indexOf("/next.png") !== -1 ||
+        image.indexOf("/back.png") !== -1 ||
+        image.indexOf("/cancel.png") !== -1 ||
+        image.indexOf("/close.png") !== -1 ||
+        image.indexOf("/up.png") !== -1 ||
+        image.indexOf("/down.png") !== -1;
+};
+
+char.getSingleAdvanceRoomButton = function () {
+    var explicitAdvanceButtons = char.getVisibleAdvanceRoomButtons('[data-space-advance="true"]');
+    var explicitButton = char.getSingleSharedActionButton(explicitAdvanceButtons);
+    if (explicitButton !== null)
+        return explicitButton;
+
+    var legacyAdvanceButtons = char.getVisibleAdvanceRoomButtons().filter(function () {
+        return char.isLegacySpaceAdvanceButton(this);
+    });
+
+    return char.getSingleSharedActionButton(legacyAdvanceButtons);
+};
+
+char.triggerSpaceAdvanceHotkey = function () {
+    if ($('.room-nativeChoice:visible').length > 0)
+        return false;
+
+    var button = char.getSingleAdvanceRoomButton();
+    if (button === null)
+        return false;
+
+    button.click();
+    return true;
+};
+
+char.roomWithoutHistory = function (roomID) {
+    g.skipNextRoomSave = true;
+    char.room(roomID);
+};
+
 $(document).ready(function () {
 
     nav.setRatio();
@@ -13,13 +111,16 @@ $(document).ready(function () {
     //    $('.menu-close').click();
     //});
     $('#room_footer').on('click', '.room-changeRoomBtn', function () {
-        char.room(parseInt($(this).data('roomid')));
+        var targetRoomID = parseInt($(this).data('roomid'));
+        if (g.roomID === 401 && typeof room401 !== "undefined")
+            room401.restoreExitState(targetRoomID);
+        char.room(targetRoomID);
     });
 
     $('#room-buttons').on('click', '.rom-event', function () {
         var name = $(this).data('name');
         var roomID = parseInt($(this).data('room'));
-        window[g.room(roomID)]["btnclick"](name);
+        invoker.invoke(roomID, "btnclick", name);
     });
 
     $('#room_closeVideo').click(function () {
@@ -32,8 +133,7 @@ $(document).ready(function () {
         else
             g.pastSaves.splice(g.pastSaves.length - 1, 1);
         privateChat.kill();
-        clearTimeout(g.roomTimeout);
-        clearTimeout(g.roomTimeout2);
+        nav.clearRoomTimeouts();
         char.import(g.pastSaves[g.pastSaves.length - 1].data);
         g.pastSaves.splice(g.pastSaves.length - 1, 1);
         char.makeWalk();
@@ -48,49 +148,11 @@ $(document).ready(function () {
         g.setRatio();
         var gameWidth = 1920 * g.ratio;
         var gameHeight = 1080 * g.ratio;
-        let w, h, t, l, f;
         cl.display();
         $('#room-background').find('img').css({ "width": gameWidth + "px", "height": gameHeight + "px" });
-        $('#room-buttons').find('img').each(function () {
-            w = $(this).css("width").replace('px', '') / ogRatio;
-            h = $(this).css("height").replace('px', '') / ogRatio;
-            t = $(this).css("top").replace('px', '') / ogRatio;
-            l = $(this).css("left").replace('px', '') / ogRatio;
-            $(this).css({
-                "width": (w * g.ratio) + "px",
-                "height": (h * g.ratio) + "px",
-                "top": (t * g.ratio) + "px",
-                "left": (l * g.ratio) + "px"
-            });
-        });
-
-        $(".resize").each(function () {
-            w = $(this).css("width").replace('px', '') / ogRatio;
-            h = $(this).css("height").replace('px', '') / ogRatio;
-            t = $(this).css("top").replace('px', '') / ogRatio;
-            l = $(this).css("left").replace('px', '') / ogRatio;
-            $(this).css({
-                "width": (w * g.ratio) + "px",
-                "height": (h * g.ratio) + "px",
-                "top": (t * g.ratio) + "px",
-                "left": (l * g.ratio) + "px"
-            });
-        });
-
-        $(".resize-font").each(function () {
-            w = $(this).css("width").replace('px', '') / ogRatio;
-            h = $(this).css("height").replace('px', '') / ogRatio;
-            t = $(this).css("top").replace('px', '') / ogRatio;
-            l = $(this).css("left").replace('px', '') / ogRatio;
-            f = $(this).css("font-size").replace('px', '') / ogRatio;
-            $(this).css({
-                //"width": (w * g.ratio) + "px",
-                //"height": (h * g.ratio) + "px",
-                "top": (t * g.ratio) + "px",
-                "left": (l * g.ratio) + "px",
-                "font-size": (f * g.ratio) + "px"
-            });
-        });
+        char.rescaleRoomImages($('#room-buttons').find('img'), ogRatio);
+        char.rescalePositionedElements($(".resize"), ogRatio);
+        char.rescaleFontElements($(".resize-font"), ogRatio);
 
         $('.room-left').css({ "height": 1050 * g.ratio + "px", "top": (30 * g.ratio) + "px" });
 
@@ -101,59 +163,21 @@ $(document).ready(function () {
             width: 75 * g.ratio + "px",
             height: 75 * g.ratio + "px"
         });
-        $(".rl-change[data-type='body']").css({
-            left: "0px",
-            top: "0px",
-            width: 75 * g.ratio + "px",
-            height: 50 * g.ratio + "px"
-        });
-        $(".rl-change[data-type='map']").css({
-            left: 75 * g.ratio + "px",
-            top: "0px",
-            width: 75 * g.ratio + "px",
-            height: 50 * g.ratio + "px"
-        });
-        $(".rl-change[data-type='graph']").css({
-            left: 150 * g.ratio + "px",
-            top: "0px",
-            width: 75 * g.ratio + "px",
-            height: 50 * g.ratio + "px"
-        });
-        $(".rl-change[data-type='walk']").css({
-            left: 225 * g.ratio + "px",
-            top: "0px",
-            width: 75 * g.ratio + "px",
-            height: 50 * g.ratio + "px"
-        });
-        $(".left-menu").css({
-            width: 300 * g.ratio + "px",
-        });
-        $(".char-12").css({
-            "font-size": 12 * g.ratio + "px"
-        });
-        $(".char-20").css({
-            "font-size": 20 * g.ratio + "px"
-        });
         $(".char-30").css({
             "font-size": 30 * g.ratio + "px"
         });
-        $(".mt-10").css({
-            "margin-top": 20 * g.ratio + "px"
-        });
-        $(".mt-60").css({
-            "margin-top": 60 * g.ratio + "px"
-        });
-        $(".resize-height").css({
-            height: 12 * g.ratio + "px"
+        char.applyScaledShellStyles({
+            leftMenuWidth: 300,
+            menuBoxWidth: 300,
+            menuBoxHeight: 90,
+            menuBoxImgWidth: 296,
+            menuBoxImgHeight: 90,
+            resizeHeight: 12
         });
         $("#room_chatskip").css({
             "height": (54 * g.ratio) + "px",
             "width": (72 * g.ratio) + "px"
         });
-        $(".mt-300x").css({ "margin-top": (400 * g.ratio) + "px" });
-        $(".mt-50x").css({ "margin-top": (50 * g.ratio) + "px" });
-        $(".menu-box").css({ "width": (300 * g.ratio) + "px", "height": (90 * g.ratio) + "px", "margin-top": (15 * g.ratio) + "px" });
-        $(".menu-box-img").css({ "width": (296 * g.ratio) + "px", "height": (90 * g.ratio) + "px" });
         $("#help_backButton").css({"width": (200 * g.ratio) + "px", "height": (66.6 * g.ratio) + "px", "top": (75 * g.ratio) + "px", "left": (30 * g.ratio) + "px" });
         char.menu();
     };
@@ -183,7 +207,42 @@ $(document).ready(function () {
     });
 
     $("#room_export_hide").click(function () {
-        $("#room_export").slideUp();
+        char.hideExportDialog();
+    });
+
+    $(document).bind('keyup', function (e) {
+        if (e.which !== 73 || e.altKey || e.ctrlKey || e.metaKey)
+            return;
+        if (char.isTypingTarget(e.target))
+            return;
+        if ($('#room_export').is(":visible"))
+            return;
+        if ($('#room_chatOverlay').is(":visible"))
+            return;
+
+        if (char.toggleMainInventoryHotkey())
+            e.preventDefault();
+    });
+
+    $(document).bind('keyup', function (e) {
+        if (e.which !== 32 || e.altKey || e.ctrlKey || e.metaKey)
+            return;
+        if (char.isTypingTarget(e.target))
+            return;
+        if (g.suppressSpaceAdvanceKeyup) {
+            g.suppressSpaceAdvanceKeyup = false;
+            e.preventDefault();
+            return;
+        }
+        if ($('#room_export').is(":visible"))
+            return;
+        if ($('#room_chatOverlay').is(":visible"))
+            return;
+        if ($('#room-menuButtons').is(":visible"))
+            return;
+
+        if (char.triggerSpaceAdvanceHotkey())
+            e.preventDefault();
     });
 
     $('.char-modBtn').click(function () {
@@ -200,6 +259,220 @@ $(document).ready(function () {
             cl.display();
         }
     });
+    char.applyScaledShellStyles({
+        leftMenuWidth: 300,
+        menuBoxWidth: 290,
+        menuBoxHeight: 88,
+        menuBoxImgWidth: 290,
+        menuBoxImgHeight: 88,
+        resizeHeight: 4,
+        graphBarHeight: 15,
+        hideLeftMenu: true,
+        walkSubHeight: 1000
+    });
+    $(".rl-change").click(function () {
+        char.changeMenu($(this).data("type"), true, false);
+    });
+    $("#room-change").click(function () {
+        g.pass = g.roomID;
+        char.room(8);
+    });
+    $("#room-time").click(function () {
+        phone.build("time");
+        //$("#room-menu").click();
+        //menu.mClick("time");
+
+    });
+    $("#rl_pageSelect").children("button").click(function () {
+        g.statpage = $(this).data("number");
+        $(".rl-selectButton-active").removeClass("rl-selectButton-active");
+        $(this).addClass("rl-selectButton-active");
+        sstat.makeGraph();
+    });
+
+    $('.rl-bar').css({ "height": (15 * g.ratio) + "px" });
+    char.init();
+    char.resizewindow();
+});
+
+char.changeMenu = function (menu, update, override) {
+    if (update)
+        g.prevview = menu;
+    $("#help_backButton").hide();
+    switch (menu) {
+        case "body":
+            char.setMenuPanel("body", override);
+            break;
+        case "map":
+            char.setMenuPanel("map", override);
+            char.map();
+            break;
+        case "graph":
+            char.setMenuPanel("graph", override);
+            sstat.makeGraph();
+            break;
+        case "walk":
+            char.setMenuPanel("walk", override);
+            char.makeWalk();
+            break;
+        case "hide":
+            char.hideMenuPanels();
+            break;
+        default:
+            console.log("invalid menu: " + menu);
+            break;
+    }
+};
+
+char.showGameShell = function () {
+    $('.room-left').show();
+    $('#room_footer').show();
+    $(".room-topper").show();
+    $('.menu-tab').show();
+};
+
+char.rescaleRoomImages = function (elements, originalRatio) {
+    elements.each(function () {
+        const width = $(this).css("width").replace('px', '') / originalRatio;
+        const height = $(this).css("height").replace('px', '') / originalRatio;
+        const top = $(this).css("top").replace('px', '') / originalRatio;
+        const left = $(this).css("left").replace('px', '') / originalRatio;
+        $(this).css({
+            "width": (width * g.ratio) + "px",
+            "height": (height * g.ratio) + "px",
+            "top": (top * g.ratio) + "px",
+            "left": (left * g.ratio) + "px"
+        });
+    });
+};
+
+char.rescalePositionedElements = function (elements, originalRatio) {
+    elements.each(function () {
+        const css = {};
+        const width = $(this).css("width");
+        const height = $(this).css("height");
+        const top = $(this).css("top");
+        const left = $(this).css("left");
+
+        if (width.endsWith("px"))
+            css.width = ((parseFloat(width) / originalRatio) * g.ratio) + "px";
+        if (height.endsWith("px"))
+            css.height = ((parseFloat(height) / originalRatio) * g.ratio) + "px";
+        if (top.endsWith("px"))
+            css.top = ((parseFloat(top) / originalRatio) * g.ratio) + "px";
+        if (left.endsWith("px"))
+            css.left = ((parseFloat(left) / originalRatio) * g.ratio) + "px";
+
+        $(this).css(css);
+    });
+};
+
+char.rescaleFontElements = function (elements, originalRatio) {
+    elements.each(function () {
+        const css = {};
+        const top = $(this).css("top");
+        const left = $(this).css("left");
+        const fontSize = $(this).css("font-size");
+
+        if (top.endsWith("px"))
+            css.top = ((parseFloat(top) / originalRatio) * g.ratio) + "px";
+        if (left.endsWith("px"))
+            css.left = ((parseFloat(left) / originalRatio) * g.ratio) + "px";
+        if (fontSize.endsWith("px"))
+            css["font-size"] = ((parseFloat(fontSize) / originalRatio) * g.ratio) + "px";
+
+        $(this).css(css);
+    });
+};
+
+char.menuPanels = {
+    body: "#room_left_char",
+    map: "#room_left_map",
+    graph: "#room_left_graph",
+    walk: "#room_left_walk"
+};
+
+char.hideMenuPanels = function () {
+    $("#room_left_char").hide();
+    $("#room_left_map").hide();
+    $("#room_left_graph").hide();
+    $("#room_left_walk").hide();
+    $("#help_backButton").hide();
+};
+
+char.setMenuPanel = function (panel, override) {
+    var selector = char.menuPanels[panel];
+    var wasVisible;
+    if (!selector)
+        return false;
+
+    wasVisible = $(selector).is(":visible");
+    char.hideMenuPanels();
+    if (override)
+        $(selector).show();
+    else if (!wasVisible)
+        $(selector).toggle();
+    return true;
+};
+
+char.currentMenuPanel = function () {
+    if ($("#room_left_char").is(":visible"))
+        return "body";
+    if ($("#room_left_map").is(":visible"))
+        return "map";
+    if ($("#room_left_graph").is(":visible"))
+        return "graph";
+    if ($("#room_left_walk").is(":visible"))
+        return "walk";
+    return "hide";
+};
+
+char.showExportDialog = function (options) {
+    $("#room_export").slideDown();
+    $("#room_export_data").val(options.data === undefined ? '' : options.data);
+
+    $('#room_export_load').toggle(!!options.showLoad);
+    $('#room_export_load_file').toggle(!!options.showLoadFile);
+    $('#room_export_file').toggle(!!options.showSaveFile);
+    $('#room-export-text').toggle(!!options.showExportText);
+    $('#room-import-text').toggle(!!options.showImportText);
+
+    if (options.saveID !== undefined)
+        $('#room_export_file').data('saveID', options.saveID);
+};
+
+char.hideExportDialog = function () {
+    $("#room_export").slideUp();
+};
+
+char.updateRoomActionButtons = function () {
+    if (g.roomChange.includes(g.roomID))
+        $("#room-change").show();
+    else if (g.roomID === 354) {
+        if (sc.getMissionTask("landlord", "spermbank", 2).complete)
+            $("#room-change").show();
+        else
+            $("#room-change").hide();
+    }
+    else
+        $("#room-change").hide();
+
+    if (g.passtime.includes(g.roomID))
+        $("#room-time").show();
+    else
+        $("#room-time").hide();
+};
+
+char.applyScaledShellStyles = function (options) {
+    const rlHeight = options.rlHeight;
+    const leftMenuWidth = options.leftMenuWidth;
+    const menuBoxWidth = options.menuBoxWidth;
+    const menuBoxHeight = options.menuBoxHeight;
+    const menuBoxImgWidth = options.menuBoxImgWidth;
+    const menuBoxImgHeight = options.menuBoxImgHeight;
+    const resizeHeight = options.resizeHeight;
+    const graphBarHeight = options.graphBarHeight === undefined ? null : options.graphBarHeight;
+
     $(".rl-change[data-type='body']").css({
         left: "0px",
         top: "0px",
@@ -225,10 +498,7 @@ $(document).ready(function () {
         height: 50 * g.ratio + "px"
     });
     $(".left-menu").css({
-        width: 300 * g.ratio + "px",
-    }).hide();
-    $(".rl-change").click(function () {
-        char.changeMenu($(this).data("type"), true, false);
+        width: leftMenuWidth * g.ratio + "px",
     });
     $(".char-12").css({
         "font-size": 12 * g.ratio + "px"
@@ -243,93 +513,53 @@ $(document).ready(function () {
         "margin-top": 60 * g.ratio + "px"
     });
     $(".resize-height").css({
-        height: 4 * g.ratio + "px"
+        height: resizeHeight * g.ratio + "px"
     });
     $(".mt-300x").css({ "margin-top": (400 * g.ratio) + "px" });
     $(".mt-50x").css({ "margin-top": (50 * g.ratio) + "px" });
-    $("#room-change").click(function () {
-        g.pass = g.roomID;
-        char.room(8);
+    $(".menu-box").css({
+        "width": menuBoxWidth * g.ratio + "px",
+        "height": menuBoxHeight * g.ratio + "px",
+        "margin-top": (15 * g.ratio) + "px"
     });
-    $("#room_left_walk_sub").css({
-        height: 1000 * g.ratio + "px"
+    $(".menu-box-img").css({
+        "width": menuBoxImgWidth * g.ratio + "px",
+        "height": menuBoxImgHeight * g.ratio + "px"
     });
-    $("#room-time").click(function () {
-        phone.build("time");
-        //$("#room-menu").click();
-        //menu.mClick("time");
+    if (graphBarHeight !== null)
+        $('.left-graph-char-bar').css({ "height": (graphBarHeight * g.ratio) + "px" });
 
-    });
-    $("#rl_pageSelect").children("button").click(function () {
-        g.statpage = $(this).data("number");
-        $(".rl-selectButton-active").removeClass("rl-selectButton-active");
-        $(this).addClass("rl-selectButton-active");
-        sstat.makeGraph();
-    });
+    if (options.hideLeftMenu)
+        $(".left-menu").hide();
 
-    $(".menu-box").css({ "width": (290 * g.ratio) + "px", "height": (88 * g.ratio) + "px", "margin-top": (15 * g.ratio) + "px" });
-    $(".menu-box-img").css({ "width": (290 * g.ratio) + "px", "height": (88 * g.ratio) + "px" });
-    $('.rl-bar').css({ "height": (15 * g.ratio) + "px" });
-    $('.left-graph-char-bar').css({ "height": (15 * g.ratio) + "px" });
-    char.init();
-    char.resizewindow();
-});
+    if (options.walkSubHeight !== undefined)
+        $("#room_left_walk_sub").css({ height: options.walkSubHeight * g.ratio + "px" });
+};
 
-char.changeMenu = function (menu, update, override) {
-    if (update)
-        g.prevview = menu;
-    $("#help_backButton").hide();
-    switch (menu) {
-        case "body":
-            if (override)
-                $("#room_left_char").show();
-            else
-                $("#room_left_char").is(":visible") ? $("#room_left_char").hide() : $("#room_left_char").show();
-            $("#room_left_map").hide();
-            $("#room_left_graph").hide();
-            $("#room_left_walk").hide();
-            break;
-        case "map":
-            $("#room_left_char").hide();
-            if (override)
-                $("#room_left_map").show();
-            else
-                $("#room_left_map").is(":visible") ? $("#room_left_map").hide() : $("#room_left_map").show();
-            $("#room_left_graph").hide();
-            $("#room_left_walk").hide();
-            char.map();
-            break;
-        case "graph":
-            $("#room_left_char").hide();
-            $("#room_left_map").hide();
-            if (override)
-                $("#room_left_graph").show();
-            else
-                $("#room_left_graph").is(":visible") ? $("#room_left_graph").hide() : $("#room_left_graph").show();
-            $("#room_left_walk").hide();
-            sstat.makeGraph();
-            break;
-        case "walk":
-            $("#room_left_char").hide();
-            $("#room_left_map").hide();
-            $("#room_left_graph").hide();
-            if (override) {
-                $("#room_left_walk").show();
-            }
-            else
-                $("#room_left_walk").is(":visible") ? $("#room_left_walk").hide() : $("#room_left_walk").show();
-            char.makeWalk();
-            break;
-        case "hide":
-            $("#room_left_char").hide();
-            $("#room_left_map").hide();
-            $("#room_left_graph").hide();
-            $("#room_left_walk").hide();
-            break;
-        default:
-            console.log("invalid menu: " + menu);
-            break;
-    }
+char.clearMapPanel = function () {
+    $('#room_left_map').html('');
+};
+
+char.addMapText = function (left, top, text, color = "#fff") {
+    $('#room_left_map').append('<div class="width-l resize-font killmap" style="color: ' + color + '; position:absolute; font-size: ' + 20 * g.ratio + 'px; left: ' + left * g.ratio + 'px; top: ' + (top + 5) * g.ratio + 'px; " >' +
+        text +
+        '</div>');
+};
+
+char.addMapImage = function (src, height, width, top, left) {
+    $('#room_left_map').append('<img src="' + src + '" class="width-l resize killmap" style="position:absolute; ' +
+        g.makeCss(height, width, top, left) + '" />');
+};
+
+char.getMapDayNightIcons = function (roomMapEntry, top) {
+    var dayNight = roomMapEntry.access ? '<img src="./images/general/day.png" class="resize" style="position:absolute; ' + g.makeCss(16, 16, top + 5, 260) + '"/>' : '';
+    dayNight += roomMapEntry.darkAccess ? '<img src="./images/general/night.png" class="resize" style="position:absolute; ' + g.makeCss(16, 16, top + 5, 280) + '"/>' : '';
+    return dayNight;
+};
+
+char.addWalkText = function (text, fontSize = null, className = "resize-font") {
+    var style = fontSize === null ? '' : ' style="font-size: ' + fontSize * g.ratio + 'px"';
+    $("#room_left_walk_sub").append('<div class="' + className + '"' + style + '>' + text + '</div>');
 };
 
 char.addtime = function (minutes) {
@@ -384,33 +614,29 @@ char.map = function () {
     }
     else if (g.roomID === 958) {
         if (g.map !== null)
-            room958.btnclick("displayMap");
+            invoker.invoke(958, "btnclick", "displayMap");
         return;
     }
 
     if (cArray.length > 0) {
         var ampm = gv.get("clock24") === "12";
-        $('#room_left_map').html('');
+        char.clearMapPanel();
         for (i = 0; i < cArray.length; i++) {
             ttop += 20;
-            $('#room_left_map').append('<div class="width-l resize-font killmap" style="color: #fff; position:absolute; font-size: ' + 20 * g.ratio + 'px; left: ' + 10 * g.ratio + 'px; top: ' + (ttop + 5) * g.ratio + 'px; " >' +
-                cArray[i].c +
-                '</div>');
+            char.addMapText(10, ttop, cArray[i].c, "#fff");
             ttop += 30;
             for (j = 0; j < cArray[i].t.subList.length; j++) {
                 if (cArray[i].t.subList[j].current) {
-                    $('#room_left_map').append('<div class="width-l resize-font killmap" style="color: #fdd; position:absolute; font-size: ' + 20 * g.ratio + 'px; left: ' + 15 * g.ratio + 'px; top: ' + (ttop + 5) * g.ratio + 'px; " >' +
+                    char.addMapText(15, ttop,
                         char.friendlyTime(cArray[i].t.subList[j].hstart, ampm) + " to " +
                         char.friendlyTime(cArray[i].t.subList[j].hend, ampm) + " - " +
-                        cArray[i].t.subList[j].room + " *" +
-                        '</div>');
+                        cArray[i].t.subList[j].room + " *", "#fdd");
                 }
                 else {
-                    $('#room_left_map').append('<div class="width-l resize-font killmap" style="color: #ccc; position:absolute; font-size: ' + 20 * g.ratio + 'px; left: ' + 15 * g.ratio + 'px; top: ' + (ttop + 5) * g.ratio + 'px; " >' +
+                    char.addMapText(15, ttop,
                         char.friendlyTime(cArray[i].t.subList[j].hstart, ampm) + " - " +
                         char.friendlyTime(cArray[i].t.subList[j].hend, ampm) + " - " +
-                        cArray[i].t.subList[j].room +
-                        '</div>');
+                        cArray[i].t.subList[j].room, "#ccc");
                 }
                 ttop += 25;
             }
@@ -419,15 +645,13 @@ char.map = function () {
     else {
         if (!(exRoom.includes(g.roomID))) {
             var tm = gv.get("map");
-            $('#room_left_map').html('');
+            char.clearMapPanel();
             for (i = 0; i < g.roomMap.length; i++) {
                 if (g.roomMap[i].map === tm) {
                     var newRatio = 45 / g.roomMap[i].height;
-                    var dayNight = g.roomMap[i].access ? '<img src="./images/general/day.png" class="resize" style="position:absolute; ' + g.makeCss(16, 16, ttop + 5, 260) + '"/>' : '';
-                    dayNight += g.roomMap[i].darkAccess ? '<img src="./images/general/night.png" class="resize" style="position:absolute; ' + g.makeCss(16, 16, ttop + 5, 280) + '"/>' : '';
-                    $('#room_left_map').append('<img src="./images/room/' + g.roomMap[i].img + '" class="width-l resize killmap" style="position:absolute; ' + g.makeCss(g.roomMap[i].height * newRatio, g.roomMap[i].width * newRatio, ttop, 10) + '" />');
-                    $('#room_left_map').append(dayNight);
-                    $('#room_left_map').append('<div class="width-l resize-font killmap" style="color: #fff; position:absolute; font-size: ' + 20 * g.ratio + 'px; left: ' + 100 * g.ratio + 'px; top: ' + (ttop + 5) * g.ratio + 'px; " >' + g.roomMap[i].display + '</div>');
+                    char.addMapImage("./images/room/" + g.roomMap[i].img, g.roomMap[i].height * newRatio, g.roomMap[i].width * newRatio, ttop, 10);
+                    $('#room_left_map').append(char.getMapDayNightIcons(g.roomMap[i], ttop));
+                    char.addMapText(100, ttop, g.roomMap[i].display, "#fff");
                     ttop += 50;
                 }
             }
@@ -454,21 +678,21 @@ char.friendlyTime = function (hour, ampm = null) {
 char.makeWalk = function () {
     $("#room_left_walk_sub").html("'<br/><br/>");
     if (g.pastSaves.length > 1) {
-        $("#room_left_walk_sub").append('<div class="resize-font"><br/><br/><br/><br/>Go back a room to: ' + g.pastSaves[g.pastSaves.length - 2].name + '</div>');
+        char.addWalkText('<br/><br/><br/><br/>Back to: ' + g.pastSaves[g.pastSaves.length - 2].name);
         if ($("#room_left_walk").is(":visible")) {
             $("#help_backButton").show();
         }
     }
     else {
-        $("#room_left_walk_sub").append('<div class="resize-font" style="font-size: ' + 20 * g.ratio + 'px"><br/><br/><br/><br/></div>');
+        char.addWalkText('<br/><br/><br/><br/>', 20);
         $("#help_backButton").hide();
     }
-    $("#room_left_walk_sub").append('<div class="resize-font" style="font-size: ' + 30 * g.ratio + 'px;"><br/>Popup History:</div>');
+    char.addWalkText('<br/>History:', 30);
     if (g.popArray.length === 0) {
-        $("#room_left_walk_sub").append('<div class="popUpHistory resize-font" style="font-size: ' + 20 * g.ratio + 'px">None</div>');
+        char.addWalkText('None', 20, "popUpHistory resize-font");
     }
     for (let i = 0; i < g.popArray.length; i++) {
-        $("#room_left_walk_sub").append('<div class="popUpHistory resize-font" style="font-size: ' + 20 * g.ratio + 'px">' + g.popArray[i] + '</div>');
+        char.addWalkText(g.popArray[i], 20, "popUpHistory resize-font");
     }
 };
 
@@ -579,7 +803,12 @@ char.room = function (roomID) {
 
     g.roomID = roomID;
     g.dt = char.addMinutes(g.dt, 2);
-    menu.makeSaves();
+    if (g.skipNextRoomSave) {
+        g.skipNextRoomSave = false;
+    }
+    else {
+        menu.makeSaves();
+    }
     nav.buildRoom();
     cl.cockDisplay();
     cl.energydisplay();
@@ -593,26 +822,12 @@ char.room = function (roomID) {
             char.changeMenu(g.prevview, false, true);
     }
     else if(!(g.roomID === 0 || g.roomID === 28))
-        g.prevview = $("#room_left_char").is(":visible") ? "body" : ($("#room_left_map").is(":visible") ? "map" : ($("#room_left_graph").is(":visible") ? "graph" : "hide"));
+        g.prevview = char.currentMenuPanel();
 
-    if (g.roomChange.includes(g.roomID)) 
-        $("#room-change").show();
-    else if (g.roomID === 354) {
-        if (sc.getMissionTask("landlord", "spermbank", 2).complete)
-            $("#room-change").show();
-        else
-            $("#room-change").hide();
-    }
-    else 
-        $("#room-change").hide();
-
-
-    if (g.passtime.includes(g.roomID))
-        $("#room-time").show();
-    else
-        $("#room-time").hide();
+    char.updateRoomActionButtons();
 
     phone.clear(true);
+    phone.preservedMenuOverlay = null;
 };
 
 char.addMinutes = function (date, minutes) {
@@ -716,63 +931,17 @@ menu.save = function (cookieName, saveToCookie) {
 menu.load = function (cookieName, btn, saveID) {
     fame.moanAnimateStop();
     if (g.newLoad) {
-        $('.room-left').show();
-        $('#room_footer').show();
-        $(".room-topper").show();
-        $('.menu-tab').show();
+        char.showGameShell();
     }
     g.newLoad = false;
 
     var tp = JSON.parse(localStorage[cookieName]);
-    var i;
-    let saveVersion = tp.version;
-    g.pass = tp.pass;
-    g.internal = tp.internal;
-    g.prevRoom = tp.prevRoom;
-    
-    g.load(tp.g);
-    inv.load(tp.inv);
-    cl.load(tp.cl);
-    sc.load(tp.sc);
-    //scc.load(tp.scc);
-    gv.load(tp.gv, saveVersion);
-    missy.load(tp.missy);
-    
-    try {
-        pic.load(tp.pic);
-    }
-    catch (err) {
-        console.log(err);
-    }
-    char.map();
-    cl.display();
-    char.room(g.roomID);
-    char.menu();
-    $('.hide-start').show();
-    if (g.roomID === 328) {
-        $("#room-inv").hide();
-    }
-    $('.menu-button[data-type="close"]').click();
-    $('.room-left').show();
-    $('#room_footer').show();
-    $(".room-topper").show();
-    $('.menu-tab').show();
-    if (g.roomChange.includes(g.roomID)) 
-        $("#room-change").show();
-    else 
-        $("#room-change").hide();
-
-    if (g.passtime.includes(g.roomID))
-        $("#room-time").show();
-    else
-        $("#room-time").hide();
-
-    if (tp.version < 22) {
-        sissy.st[7].ach = false;
-        sissy.st[8].ach = false;
-    }
-    $(".rl-change").show();
-    g.pastSaves = new Array();
+    let saveVersion = char.applyLoadedState(tp);
+    char.finishLoadedState(saveVersion, {
+        updateMap: true,
+        hideExportDialog: false,
+        resetPastSaves: true
+    });
 };
 
 menu.saveDel = function (cookieName) {
@@ -889,14 +1058,68 @@ char.menu = function () {
 char.export = function (saveID) {
     var cookieName = 'HatMP_' + saveID;
     var tp = localStorage[cookieName];
-    $("#room_export").slideDown();
-    $('#room_export_load').hide();
-    $('#room_export_load_file').hide();
-    $('#room_export_file').show();
-    $('#room_export_file').data('saveID', saveID);
-    $("#room_export_data").val(tp);
-    $('#room-export-text').show();
-    $('#room-import-text').hide();
+    char.showExportDialog({
+        data: tp,
+        saveID: saveID,
+        showLoad: false,
+        showLoadFile: false,
+        showSaveFile: true,
+        showExportText: true,
+        showImportText: false
+    });
+};
+
+char.applyLoadedState = function (tp) {
+    let saveVersion = tp.version;
+
+    g.pass = tp.pass;
+    g.internal = tp.internal;
+    g.prevRoom = tp.prevRoom;
+
+    g.load(tp.g);
+    inv.load(tp.inv);
+    cl.load(tp.cl);
+    sc.load(tp.sc);
+    gv.load(tp.gv, saveVersion);
+    missy.load(tp.missy);
+
+    try {
+        pic.load(tp.pic);
+    }
+    catch (err) {
+        console.log(err);
+    }
+
+    return saveVersion;
+};
+
+char.finishLoadedState = function (saveVersion, options) {
+    if (options.updateMap)
+        char.map();
+
+    cl.display();
+    char.room(g.roomID);
+    char.menu();
+
+    if (saveVersion < 22) {
+        sissy.st[7].ach = false;
+        sissy.st[8].ach = false;
+    }
+
+    $('.hide-start').show();
+    if (g.roomID === 328)
+        $("#room-inv").hide();
+
+    $('.menu-button[data-type="close"]').click();
+    char.showGameShell();
+    char.updateRoomActionButtons();
+    $(".rl-change").show();
+
+    if (options.hideExportDialog)
+        char.hideExportDialog();
+
+    if (options.resetPastSaves)
+        g.pastSaves = new Array();
 };
 
 char.import = function (importData) {
@@ -907,42 +1130,13 @@ char.import = function (importData) {
         tp = JSON.parse(importData);
 
     g.newLoad = false;
-    $('.room-left').show();
-    $('#room_footer').show();
-    $(".room-topper").show();
-    $('.menu-tab').show();
-    console.log("v: " + tp.version);
-    g.pass = tp.pass;
-    g.internal = tp.internal;
-    g.prevRoom = tp.prevRoom;
-    let saveVersion = tp.version;
-
-    g.load(tp.g);
-    inv.load(tp.inv);
-    cl.load(tp.cl);
-    sc.load(tp.sc);
-    gv.load(tp.gv, saveVersion);
-    missy.load(tp.missy);
-    try {
-        pic.load(tp.pic);
-    }
-    catch (err) {
-        console.log(err);
-    }
-    cl.display();
-    char.room(g.roomID);
-    char.menu();
-
-    if (tp.version < 22) {
-        sissy.st[7].ach = false;
-        sissy.st[8].ach = false;
-    }
-
-    $('.hide-start').show();
-    $('.menu-button[data-type="close"]').click();
-
-    $("#room_export").slideUp();
-    $(".rl-change").show();
+    char.showGameShell();
+    let saveVersion = char.applyLoadedState(tp);
+    char.finishLoadedState(saveVersion, {
+        updateMap: false,
+        hideExportDialog: true,
+        resetPastSaves: false
+    });
 };
 
 char.file_export = function (saveID) {

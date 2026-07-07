@@ -245,7 +245,7 @@ room451.btnclick = function (name) {
                     if (gv.get("energy") < 20)
                         chat(63, 451);
                     else
-                        room451.chatcatch("suck1");
+                        invoker.invokeCurrent("chatcatch", "suck1");
                 }
             }
             else
@@ -326,12 +326,12 @@ room451.btnclick = function (name) {
             break;
         case "gc3":
             if (g.pass === 1) {
-                nav.bg("451_parkMensRoom/gc4.jpg");
+                nav.bg("451_parkMensRoom/trash/gc4.jpg");
                 chat(20, 451);
                 g.pass = 2;
             }
             else if (g.pass === 2) {
-                nav.bg("451_parkMensRoom/gc5.jpg");
+                nav.bg("451_parkMensRoom/trash/gc5.jpg");
                 nav.button({
                     "type": "btn",
                     "name": "gc3",
@@ -339,13 +339,13 @@ room451.btnclick = function (name) {
                     "top": 0,
                     "width": 992,
                     "height": 1080,
-                    "image": "451_parkMensRoom/gc5.png"
+                    "image": "451_parkMensRoom/trash/gc5.png"
                 }, 451);
                 g.pass = 3;
             }
             else if (g.pass === 3) {
                 nav.killall();
-                nav.bg("451_parkMensRoom/gc6.jpg");
+                nav.bg("451_parkMensRoom/trash/gc6.jpg");
                 chat(21, 451);
             }
             break;
@@ -355,12 +355,12 @@ room451.btnclick = function (name) {
                 g.sissy[17].ach = true;
             }
             else if (g.sissy[17].ach) {
-                nav.bg("451_parkMensRoom/gbgcock.jpg");
+                nav.bg("451_parkMensRoom/trash/gbgcock.jpg");
                 chat(46, 451);
             }
             else {
                 nav.killall();
-                nav.bg("451_parkMensRoom/gbgcockx.jpg");
+                nav.bg("451_parkMensRoom/trash/gbgcockx.jpg");
                 chat(45, 451);
             }
             
@@ -390,7 +390,7 @@ room451.btnclick = function (name) {
             break;
         case "gh_pass":
             char.addtime(60);
-            room451.btnclick("stall1");
+            invoker.invokeCurrent("btnclick", "stall1");
             break;
         case "suck2":
             nav.killbutton("gh_pass");
@@ -615,22 +615,22 @@ room451.chatcatch = function (callback) {
             break;
         case "gc7":
             nav.killall();
-            nav.bg("451_parkMensRoom/gc7.jpg");
+            nav.bg("451_parkMensRoom/trash/gc7.jpg");
             break;
         case "gc8_swollow":
-            nav.bg("451_parkMensRoom/gc6.jpg");
+            nav.bg("451_parkMensRoom/trash/gc6.jpg");
             break;
         case "gc8_swollow1":
             gv.mod("giveOralMale", 1);
             gv.mod("loadSwollowed", 1);
-            nav.bg("451_parkMensRoom/gc8_swollow1.jpg");
+            nav.bg("451_parkMensRoom/trash/gc8_swollow1.jpg");
             break;
         case "gc8_face":
             gv.mod("giveOralMale", 1);
             gv.mod("loadSpit", 1);
             cl.c.cumface = true;
             cl.display();
-            nav.bg("451_parkMensRoom/gc8_face.jpg");
+            nav.bg("451_parkMensRoom/trash/gc8_face.jpg");
             break;
         case "endgc1":
             char.addtime(60);
@@ -751,11 +751,11 @@ room451.chatcatch = function (callback) {
             break;
         case "gloryholeEmpty":
             char.addtime (30);
-            room451.btnclick("stall1");
+            invoker.invokeCurrent("btnclick", "stall1");
             break;
         case "resetStall1":
             g.pass = "";
-            room451.btnclick("stall1");
+            invoker.invokeCurrent("btnclick", "stall1");
             break;
         case "suckit1":
             nav.killall();
@@ -777,12 +777,12 @@ room451.chatcatch = function (callback) {
             gv.mod("money", 20);
             gv.mod("giveOralMale", 1);
             char.addtime(60);
-            room451.btnclick("stall1");
+            invoker.invokeCurrent("btnclick", "stall1");
             break;
         case "suckit5":
             gv.mod("giveOralMale", 1);
             char.addtime(60);
-            room451.btnclick("stall1");
+            invoker.invokeCurrent("btnclick", "stall1");
             break;
         case "anal1":
             cl.nude();
@@ -822,13 +822,13 @@ room451.chatcatch = function (callback) {
             gv.mod("receiveAnalMale", 1);
             gv.mod("creamPied", 1);
             char.addtime(60);
-            room451.btnclick("stall1");
+            invoker.invokeCurrent("btnclick", "stall1");
             break;
         case "ass4":
             gv.mod("receiveAnalMale", 1);
             gv.mod("creamPied", 1);
             char.addtime(60);
-            room451.btnclick("stall1");
+            invoker.invokeCurrent("btnclick", "stall1");
             break;
         case "duo1":
             nav.killall();
@@ -873,12 +873,14 @@ room451.chatcatch = function (callback) {
             sc.select("gh_anal", "451_parkMensRoom/icon_anal.png", 11);
             break;
         case "resetRoom":
-            room451.btnclick("stall1");
+            invoker.invokeCurrent("btnclick", "stall1");
             break;
         default:
             break;
     }
 };
+
+invoker.registerRoom(451, room451);
 
 room451.chat = function (chatID) {
     if (chatID === 999) {

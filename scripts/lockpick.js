@@ -1,5 +1,62 @@
-﻿lockpick = {};
+lockpick = {};
 var room1003 = {};
+
+lockpick.clearTimer = function () {
+    if (g.roomTimeout2 !== null) {
+        clearTimeout(g.roomTimeout2);
+        g.roomTimeout2 = null;
+    }
+};
+
+lockpick.scheduleTick = function () {
+    g.roomTimeout2 = setTimeout(function () {
+        invoker.invoke(1003, "btnclick", "tick");
+    }, 1000);
+};
+
+lockpick.showTimer = function () {
+    nav.t({
+        type: "img",
+        name: "lockpickq_timer",
+        left: 1020,
+        top: 420,
+        font: 30,
+        hex: "#000000",
+        text: "Time left: " + g.fight.timer
+    }, 1003);
+};
+
+lockpick.showResult = function (name, image) {
+    nav.button({
+        "type": "img",
+        "name": "lockpickq_kill",
+        "left": 0,
+        "top": 0,
+        "width": 1920,
+        "height": 1080,
+        "image": "1001_rand/black_25.png"
+    }, 1003);
+
+    nav.button({
+        "type": "btn",
+        "name": name,
+        "left": 915,
+        "top": 360,
+        "width": 400,
+        "height": 100,
+        "image": image
+    }, 1003);
+};
+
+lockpick.finish = function (buttonName, giveReward) {
+    lockpick.clearTimer();
+    if (giveReward)
+        levels.mod("pi", 25);
+    nav.killbuttonStartsWith("lockpickq_");
+    $('#room_footer').show();
+    invoker.invoke(g.fight.roomID, "btnclick", buttonName);
+};
+
 //difficulty: 1, 2, 3, 4 (number of key slots)
 lockpick.init = function (difficulty, btnPressWin, btnPressLost, timer, roomID) {
     $('#room_footer').hide();
@@ -98,15 +155,14 @@ lockpick.init = function (difficulty, btnPressWin, btnPressLost, timer, roomID) 
         }
     }
 
-    nav.t({
-        type: "img",
-        name: "lockpickq_timer",
-        left: 1020,
-        top: 420,
-        font: 30,
-        hex: "#000000",
-        text: "Time left: " + timer
-    }, 1003);
+    g.fight = {
+        btnPressWin: btnPressWin,
+        btnPressLost: btnPressLost,
+        roomID: roomID,
+        timer: timer
+    };
+
+    lockpick.showTimer();
 
     nav.button({
         "type": "img",
@@ -135,16 +191,8 @@ lockpick.init = function (difficulty, btnPressWin, btnPressLost, timer, roomID) 
             "image": "1003_lockpick/" + (i + 1) + "_" + thisKey + "x.png"
         }, 1003);
     }
-    g.fight = {
-        btnPressWin: btnPressWin,
-        btnPressLost: btnPressLost,
-        roomID: roomID,
-        timer: timer
-    };
 
-    g.roomTimeout2 = setTimeout(function () {
-        room1003.btnclick("tick");
-    }, 1000);
+    lockpick.scheduleTick();
 };
 
 room1003.btnclick = function (callback) {
@@ -152,75 +200,22 @@ room1003.btnclick = function (callback) {
         nav.killbutton("lockpickq_timer");
         g.fight.timer--;
         if (g.fight.timer < 1) {
-            nav.button({
-                "type": "img",
-                "name": "lockpickq_kill",
-                "left": 0,
-                "top": 0,
-                "width": 1920,
-                "height": 1080,
-                "image": "1001_rand/black_25.png"
-            }, 1003);
-
-            nav.button({
-                "type": "btn",
-                "name": "lockpickq_fail",
-                "left": 915,
-                "top": 360,
-                "width": 400,
-                "height": 100,
-                "image": "1003_lockpick/time.png"
-            }, 1003);
+            lockpick.showResult("lockpickq_fail", "1003_lockpick/time.png");
         }
         else {
-            nav.t({
-                type: "img",
-                name: "lockpickq_timer",
-                left: 1020,
-                top: 420,
-                font: 30,
-                hex: "#000000",
-                text: "Time left: " + g.fight.timer
-            }, 1003);
-            g.roomTimeout2 = setTimeout(function () {
-                room1003.btnclick("tick");
-            }, 1000);
+            lockpick.showTimer();
+            lockpick.scheduleTick();
         }
     }
     else if (callback === "lockpickq_winner") {
-        clearTimeout(g.roomTimeout2);
-        nav.button({
-            "type": "img",
-            "name": "lockpickq_kill",
-            "left": 0,
-            "top": 0,
-            "width": 1920,
-            "height": 1080,
-            "image": "1001_rand/black_25.png"
-        }, 1003);
-
-        nav.button({
-            "type": "btn",
-            "name": "lockpickq_success",
-            "left": 915,
-            "top": 360,
-            "width": 400,
-            "height": 100,
-            "image": "1003_lockpick/success.png"
-        }, 1003);
+        lockpick.clearTimer();
+        lockpick.showResult("lockpickq_success", "1003_lockpick/success.png");
     }
     else if (callback === "lockpickq_success") {
-        clearTimeout(g.roomTimeout2);
-        levels.mod("pi", 25);
-        nav.killbuttonStartsWith("lockpickq_");
-        $('#room_footer').show();
-        window[g.room(g.fight.roomID)]["btnclick"](g.fight.btnPressWin);
+        lockpick.finish(g.fight.btnPressWin, true);
     }
     else if (callback === "lockpickq_fail") {
-        clearTimeout(g.roomTimeout2);
-        nav.killbuttonStartsWith("lockpickq_");
-        $('#room_footer').show();
-        window[g.room(g.fight.roomID)]["btnclick"](g.fight.btnPressLost);
+        lockpick.finish(g.fight.btnPressLost, false);
     }
     else {
         nav.killbutton(callback);
@@ -249,3 +244,5 @@ room1003.btnclick = function (callback) {
         //}
     }
 };
+
+invoker.registerRoom(1003, room1003);

@@ -118,7 +118,7 @@ room206.main = function () {
             ]
         },
     ]
-    room206.chatcatch("questions");
+    invoker.invokeCurrent("chatcatch", "questions");
     $('#room_footer').hide();
 };
 
@@ -140,7 +140,7 @@ room206.chatcatch = function (callback) {
                 if (g.pass.q < g.internal.length) {
                     $('#q206').html((g.pass.q === 0 ? "" : g.pass.q.toString() + ". ") + g.internal[g.pass.q].t);
                     $.each(g.internal[g.pass.q].b, function (i, v) {
-                        $('#q206').append('<div><button style="background:none; border:none; margin-top:10px; display:block; margin-left:20px;" class="q206-btn" data-a="' + i + '">' +
+                        $('#q206').append('<div><button style="background:none; border:none; margin-top:10px; display:block; margin-left:20px;" class="q206-btn room-nativeChoice" data-a="' + i + '">' +
                             '<img src="./images/room/206_questions/' + v.t + '" style="height: ' + (100 * g.ratio) + 'px; width: ' + (800 * g.ratio) + 'px;" />' +
                             '</button> </div>');
                     });
@@ -149,7 +149,7 @@ room206.chatcatch = function (callback) {
                         var thisEntry = parseInt($(this).data('a'));
                         g.internal[g.pass.q].b[thisEntry].a = true;
                         g.pass.q++;
-                        room206.chatcatch("questions");
+                        invoker.invokeCurrent("chatcatch", "questions");
                     });
                 }
                 else {
@@ -534,6 +534,8 @@ room206.chatcatch = function (callback) {
         }
     });
 };
+
+invoker.registerRoom(206, room206);
 
 room206.chat = function (chatID) {
     var cArray = [

@@ -117,18 +117,20 @@ room40.chatcatch = function (callback) {
             sc.completeMission("lola", "sissy");
             sc.startMission("lola", "tom");
             sc.completeMissionTask("lola", "tom", 0);
-            room40.chatcatch("cleanOnly");
+            invoker.invokeCurrent("chatcatch", "cleanOnly");
             break;
         case "endlolaboyChad":
             future.kill("lolaboy");
             sc.completeMissionTask("lola", "sissy", 5, false);
             sc.completeMission("lola", "tom", false);
-            room40.chatcatch("cleanOnly");
+            invoker.invokeCurrent("chatcatch", "cleanOnly");
             break;
         default:
             break;
     }
 };
+
+invoker.registerRoom(40, room40);
 
 room40.chat = function (chatID) {
     if (chatID === 1000) {

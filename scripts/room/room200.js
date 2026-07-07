@@ -155,7 +155,7 @@ room200.btnclick = function (name) {
                 char.room(223);
             }
             else
-                room200.chatcatch("selectJob");
+                invoker.invokeCurrent("chatcatch", "selectJob");
         break;
         case "job_0":
         case "job_1":
@@ -179,7 +179,7 @@ room200.btnclick = function (name) {
             else {
                 nav.bg("200_frontOffice/bg.jpg");
                 nav.killall();
-                room200.chatcatch(g.internal.activeCase.callback);
+                invoker.invokeCurrent("chatcatch", g.internal.activeCase.callback);
             }
             break;
         case "case_beaver_end_good":
@@ -334,7 +334,7 @@ room200.chatcatch = function (callback) {
             missy.mod("mood", 20);
             levels.mod("pi", 100);
             missy.caseComplete(5);
-            room200.chatcatch("case_complete_end");
+            invoker.invokeCurrent("chatcatch", "case_complete_end");
             break;
         case "case_booth_complete_bad":
             missy.caseComplete(5);
@@ -347,14 +347,14 @@ room200.chatcatch = function (callback) {
             break;
         case "case_lostgirl2":
             pic.add("case_lostgirl");
-            room200.chatcatch("case_afterExplaniation");
+            invoker.invokeCurrent("chatcatch", "case_afterExplaniation");
             break;
         case "case_lostgirl_goodend":
             gv.mod("money", 250);
             missy.mod("mood", 20);
             levels.mod("pi", 100);
             missy.caseComplete(6);
-            room200.chatcatch("case_complete_end");
+            invoker.invokeCurrent("chatcatch", "case_complete_end");
             break;
         case "case_lostgirl_badend":
             missy.caseComplete(6);
@@ -374,7 +374,7 @@ room200.chatcatch = function (callback) {
             levels.mod("pi", 100);
             inv.use("missyusb");
             missy.caseComplete(4);
-            room200.chatcatch("case_complete_end");
+            invoker.invokeCurrent("chatcatch", "case_complete_end");
             break;
         case "case_trash":
             nav.killall();
@@ -398,7 +398,7 @@ room200.chatcatch = function (callback) {
             break;
         case "case_elijah_start":
             pic.add("case_elijah");
-            room200.chatcatch("case_afterExplaniation");
+            invoker.invokeCurrent("chatcatch", "case_afterExplaniation");
             break;
         case "case_elijah_origin_endBad":
             missy.mod("mood", -40);
@@ -409,14 +409,14 @@ room200.chatcatch = function (callback) {
             gv.mod("money", 100);
             missy.mod("mood", 20);
             missy.caseComplete(15);
-            room200.chatcatch("case_complete_end");
+            invoker.invokeCurrent("chatcatch", "case_complete_end");
             break;
         case "case_elijah_complete":
             gv.mod("money", 150);
             missy.mod("mood", 20);
             missy.caseComplete(13);
             future.add("case_elijah_complete", 3);
-            room200.chatcatch("case_complete_end");
+            invoker.invokeCurrent("chatcatch", "case_complete_end");
             break;
         case "case_elijah_completeBad":
             missy.mod("mood", -40);
@@ -428,14 +428,14 @@ room200.chatcatch = function (callback) {
             chat(164, 200);
             break;
         case "case_elijah_boyfriend_start":
-            room200.chatcatch("case_afterExplaniation");
+            invoker.invokeCurrent("chatcatch", "case_afterExplaniation");
             break;
         case "case_elijah_boyfriend_bad":
             sc.startMission("elijah", "elijah");
             sc.startMissionTask("elijah", "elijah", 0);
             missy.set("activeCaseComplete", 0);
             missy.caseComplete(21);
-            room200.chatcatch("case_complete_end");
+            invoker.invokeCurrent("chatcatch", "case_complete_end");
             break;
         case "case_elijah_boyfriend_good":
             sc.completeMission("elijah", "betray");
@@ -444,7 +444,7 @@ room200.chatcatch = function (callback) {
             gv.mod("money", 350);
             missy.mod("mood", 20);
             missy.caseComplete(21);
-            room200.chatcatch("case_complete_end");
+            invoker.invokeCurrent("chatcatch", "case_complete_end");
             break;
         case "case_beaver":
             nav.bg("200_frontOffice/case_beaver0.jpg");
@@ -455,7 +455,7 @@ room200.chatcatch = function (callback) {
                 chat(38, 200);
             }
             else {
-                room200.chatcatch("case_afterExplaniation");
+                invoker.invokeCurrent("chatcatch", "case_afterExplaniation");
             }
             break;
         case "case_trash_lockedup":
@@ -469,7 +469,7 @@ room200.chatcatch = function (callback) {
             gv.mod("money", 200);
             missy.mod("mood", 20);
             missy.caseComplete(8);
-            room200.chatcatch("case_complete_end");
+            invoker.invokeCurrent("chatcatch", "case_complete_end");
             break;
         case "case_trash_badend":
             missy.mod("mood", -50);
@@ -498,7 +498,7 @@ room200.chatcatch = function (callback) {
             gv.mod("money", 75);
             missy.mod("mood", 20);
             missy.caseComplete(9);
-            room200.chatcatch("case_complete_end");
+            invoker.invokeCurrent("chatcatch", "case_complete_end");
             break;
         case "case_shopping":
             chat(58, 200);
@@ -527,12 +527,12 @@ room200.chatcatch = function (callback) {
             gv.mod("money", 250);
             missy.mod("mood", 20);
             missy.caseComplete(12);
-            room200.chatcatch("case_complete_end");
+            invoker.invokeCurrent("chatcatch", "case_complete_end");
             break;
         case "case_complete_end":
             if (g.gethourdecimal() < 10) {
                 g.internal = { caseList: missy.getcases(), activeCase: null };
-                room200.chatcatch("selectJob");
+                invoker.invokeCurrent("chatcatch", "selectJob");
             }
             else if (g.dt.getDay === 5)
                 char.room(196);
@@ -598,7 +598,7 @@ room200.chatcatch = function (callback) {
             chat(26, 200);
             break;
         case "missyBtnClick":
-            room200.btnclick("missy");
+            invoker.invokeCurrent("btnclick", "missy");
             break;
         case "bimbopantiesWearing":
             if (cl.c.panties === "bi")
@@ -625,7 +625,7 @@ room200.chatcatch = function (callback) {
             sc.startMission("holly", "case");
             sc.startMission("molly", "case");
             sc.startMission("dolly", "case");
-            room200.chatcatch("case_afterExplaniation");
+            invoker.invokeCurrent("chatcatch", "case_afterExplaniation");
             break;
         case "case_beaver_end0":
             nav.bg("200_frontOffice/case_beaver0.jpg");
@@ -671,7 +671,7 @@ room200.chatcatch = function (callback) {
             sc.startMission("jeffery", "work");
             sc.modSecret("jeffery", 100);
 
-            room200.chatcatch("case_complete_end");
+            invoker.invokeCurrent("chatcatch", "case_complete_end");
             break;
         case "case_beaver_end_bad":
             missy.mod("mood", -40);
@@ -716,12 +716,12 @@ room200.chatcatch = function (callback) {
             chat(128, 200);
             break;
         case "case_farm_start":
-            room200.chatcatch("case_afterExplaniation");
+            invoker.invokeCurrent("chatcatch", "case_afterExplaniation");
             break;
         case "case_farm_badend":
             missy.set("activeCaseComplete", 0);
             missy.caseComplete(19);
-            room200.chatcatch("case_complete_end");
+            invoker.invokeCurrent("chatcatch", "case_complete_end");
             break;
         case "case_sewer":
             nav.kill();
@@ -729,13 +729,13 @@ room200.chatcatch = function (callback) {
             chat(160, 200);
             break;
         case "case_sewer_start":
-            room200.chatcatch("case_afterExplaniation");
+            invoker.invokeCurrent("chatcatch", "case_afterExplaniation");
             break;
         case "case_sewer_end":
             cl.add("dress", "robe");
             gv.mod("money", 250);
             missy.caseComplete(20);
-            room200.chatcatch("case_complete_end");
+            invoker.invokeCurrent("chatcatch", "case_complete_end");
             break;
         case "case_cult":
             chat(172, 200);
@@ -746,40 +746,40 @@ room200.chatcatch = function (callback) {
             break;
         case "case_saveralph_start":
             future.add("case_saveralph", 1);
-            room200.chatcatch("case_afterExplaniation");
+            invoker.invokeCurrent("chatcatch", "case_afterExplaniation");
             break;
         case "case_saveralph_goodend":
             gv.mod("money", 50);
             missy.mod("mood", 100);
             missy.caseComplete(7);
-            room200.chatcatch("case_complete_end");
+            invoker.invokeCurrent("chatcatch", "case_complete_end");
             break;
         case "case_saveralph_badend":
             missy.mod("mood", -50);
             missy.caseComplete(7);
-            room200.chatcatch("case_complete_end");
+            invoker.invokeCurrent("chatcatch", "case_complete_end");
             break;
         case "case_canival_end":
             gv.mod("money", 500);
             missy.mod("mood", 100);
             missy.caseComplete(18);
-            room200.chatcatch("case_complete_end");
+            invoker.invokeCurrent("chatcatch", "case_complete_end");
             break;
         case "case_dam_start":
             inv.addMulti("soda", 3);
             future.add("case_dam", 6 - g.dt.getDay() - 1);
             gv.set("mapopen", true);
-            room200.chatcatch("case_afterExplaniation");
+            invoker.invokeCurrent("chatcatch", "case_afterExplaniation");
             break;
         case "case_cult_start":
-            room200.chatcatch("case_afterExplaniation");
+            invoker.invokeCurrent("chatcatch", "case_afterExplaniation");
             break;
         case "case_dam_end":
             future.kill("case_dam");
             gv.mod("money", 100);
             missy.mod("mood", 100);
             missy.caseComplete(16);
-            room200.chatcatch("case_complete_end");
+            invoker.invokeCurrent("chatcatch", "case_complete_end");
             break;
         case "case_dam_end_bad":
             future.kill("case_dam");
@@ -799,7 +799,7 @@ room200.chatcatch = function (callback) {
                 chat(157, 200);
             }
             else {
-                room200.chatcatch("case_ranchEnd");
+                invoker.invokeCurrent("chatcatch", "case_ranchEnd");
             }
             break;
         case "case_ranchEnd":
@@ -819,7 +819,7 @@ room200.chatcatch = function (callback) {
             } 
             g.map.jars = JSON.parse(future.st[future.st.findIndex(item => item.name.includes("emptyjar"))].name);
             g.map.hole = parseInt(future.st.find(i => i.name.includes("room329hole_"))?.name.replace("room329hole_", "") ?? "-1");
-            room329.btnclick("stall_backDraw");
+            invoker.invoke(329, "btnclick", "stall_backDraw");
             $.each(g.map.jars, function (i, v) {
                 if (v.t > 0)
                     inv.addMulti(v.n, v.t);
@@ -828,6 +828,8 @@ room200.chatcatch = function (callback) {
             break;
     };
 };
+
+invoker.registerRoom(200, room200);
 
 room200.chat = function (chatID) {
     if (chatID === 999) {

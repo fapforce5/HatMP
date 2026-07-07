@@ -41,7 +41,7 @@ room212.main = function () {
             chat(0, 212);
             break;
         default:
-            room212.btnclick("resetview");
+            invoker.invokeCurrent("btnclick", "resetview");
             chat(9, 212);
             break;
     }
@@ -91,7 +91,7 @@ room212.btnclick = function (name) {
             break;
         case "sportyCock1":
             sc.modLevel("sporty", 20, 3);
-            room212.btnclick("resetview");
+            invoker.invokeCurrent("btnclick", "resetview");
             chat(1001, 212);
             break;
         case "resetview":
@@ -142,7 +142,7 @@ room212.btnclick = function (name) {
             else {
                 nav.killbutton("nextCock");
                 nav.killbutton("snacks");
-                room212.chatcatch("d" + g.rand(0, 4));
+                invoker.invokeCurrent("chatcatch", "d" + g.rand(0, 4));
             }
             g.internal.counter++;
             break;
@@ -222,10 +222,10 @@ room212.chatcatch = function (callback) {
             break;
         
         case "sportyCock0":
-            room212.chatcatch("s" + g.internal.num);
+            invoker.invokeCurrent("chatcatch", "s" + g.internal.num);
             break;
         case "nextCock":
-            room212.btnclick("resetview");
+            invoker.invokeCurrent("btnclick", "resetview");
             nav.wait("nextCock");
             break;
         case "start":
@@ -242,7 +242,7 @@ room212.chatcatch = function (callback) {
             sc.select("sporty", "212_gloryhole/icon_sporty.png", 1);
             break;
         case "resetview":
-            room212.btnclick("resetview");
+            invoker.invokeCurrent("btnclick", "resetview");
             break;
         case "endEvent":
             cl.undo();
@@ -395,3 +395,5 @@ room212.chat = function (chatID) {
             return [];
     }
 };
+
+invoker.registerRoom(212, room212);

@@ -130,11 +130,11 @@ room408.btnclick = function (name) {
                 "height": 979,
                 "image": "408_tattoo/stormy.png",
             }, 408);
-            room408.btnclick("stormy");
+            invoker.invokeCurrent("btnclick", "stormy");
             break;
         case "tattoo_cancel":
             nav.kill();
-            room408.btnclick("tattooStart");
+            invoker.invokeCurrent("btnclick", "tattooStart");
             break;
         case "tattoo_kill":
             nav.killbutton("has_tattoo");
@@ -147,7 +147,7 @@ room408.btnclick = function (name) {
             nav.killbutton("tattoo_cancel");
             return;
         case "tattoo_womb":
-            room408.btnclick("tattoo_kill");
+            invoker.invokeCurrent("btnclick", "tattoo_kill");
             zcl.displayMain(50, 1200, .14, "nude", false);
             sc.select("womb_trans", "408_tattoo/icon_womb_trans.png", 0);
             sc.select("womb_qos", "408_tattoo/icon_womb_qos.png", 2);
@@ -157,7 +157,7 @@ room408.btnclick = function (name) {
             sc.selectCancel("tattoo_cancel", 10);
             break;
         case "tattoo_ut":
-            room408.btnclick("tattoo_kill");
+            invoker.invokeCurrent("btnclick", "tattoo_kill");
             zcl.displayMain(50, 1200, .14, "nude", false);
             sc.select("ut_rose", "408_tattoo/icon_ut_rose.png", 0);
             sc.select("ut_kiss", "408_tattoo/icon_ut_kiss.png", 2);
@@ -166,7 +166,7 @@ room408.btnclick = function (name) {
             sc.selectCancel("tattoo_cancel", 8);
             break;
         case "tattoo_butt":
-            room408.btnclick("tattoo_kill");
+            invoker.invokeCurrent("btnclick", "tattoo_kill");
             zcl.displayMain(50, 1200, .14, "nude", true);
             sc.select("butt_paws", "408_tattoo/icon_butt_paws.png", 0);
             sc.select("butt_sperm", "408_tattoo/icon_butt_sperm.png", 2);
@@ -175,7 +175,7 @@ room408.btnclick = function (name) {
             sc.selectCancel("tattoo_cancel", 8);
             break;
         case "tattoo_tramp":
-            room408.btnclick("tattoo_kill");
+            invoker.invokeCurrent("btnclick", "tattoo_kill");
             zcl.displayMain(50, 1200, .14, "nude", true);
             sc.select("tramp_butterfly", "408_tattoo/icon_tramp_butterfly.png", 0);
             sc.select("tramp_design", "408_tattoo/icon_tramp_design.png", 2);
@@ -186,7 +186,7 @@ room408.btnclick = function (name) {
             sc.selectCancel("tattoo_cancel", 12);
             break;
         case "tattoo_back":
-            room408.btnclick("tattoo_kill");
+            invoker.invokeCurrent("btnclick", "tattoo_kill");
             zcl.displayMain(50, 1200, .14, "nude", true);
             sc.select("back_butterfly", "408_tattoo/icon_back_butterfly.png", 0);
             sc.select("back_rose", "408_tattoo/icon_back_rose.png", 2);
@@ -208,7 +208,7 @@ room408.btnclick = function (name) {
                 b: false,
                 s: 1
             };
-            room408.btnclick("getit1");
+            invoker.invokeCurrent("btnclick", "getit1");
             break;
         case "tramp_butterfly":
         case "tramp_design":
@@ -229,7 +229,7 @@ room408.btnclick = function (name) {
                 b: true,
                 s: 1
             };
-            room408.btnclick("getit1");
+            invoker.invokeCurrent("btnclick", "getit1");
             break;
         case "getit1":
             nav.kill();
@@ -275,20 +275,20 @@ room408.btnclick = function (name) {
         case "tattoo_cancel_back":
             nav.kill();
             if (g.internal.t.startsWith("womb_"))
-                 room408.btnclick("tattoo_womb");
+                 invoker.invokeCurrent("btnclick", "tattoo_womb");
             else if (g.internal.t.startsWith("ut_"))
-                room408.btnclick("tattoo_ut");
+                invoker.invokeCurrent("btnclick", "tattoo_ut");
             else if (g.internal.t.startsWith("back_"))
-                room408.btnclick("tattoo_back");
+                invoker.invokeCurrent("btnclick", "tattoo_back");
             else if (g.internal.t.startsWith("tramp_"))
-                room408.btnclick("tattoo_tramp");
+                invoker.invokeCurrent("btnclick", "tattoo_tramp");
             else if (g.internal.t.startsWith("butt_"))
-                room408.btnclick("tattoo_butt");
+                invoker.invokeCurrent("btnclick", "tattoo_butt");
 
             g.internal = null;
             break;
         case "tattooStartNo":
-            room408.btnclick("selectCancel");
+            invoker.invokeCurrent("btnclick", "selectCancel");
             chat(41, 408);
             break;
         case "pStart":
@@ -323,7 +323,7 @@ room408.chatcatch = function (callback) {
             char.room(0);
             break;
         case "reset":
-            room408.btnclick("door");
+            invoker.invokeCurrent("btnclick", "door");
             break;
         case "nipple":
             g.pass = "nipple";
@@ -399,7 +399,7 @@ room408.chatcatch = function (callback) {
                 b: false,
                 s: 1
             };
-            room408.btnclick("getit2");
+            invoker.invokeCurrent("btnclick", "getit2");
             break;
         case "elijah_case_end":
             missy.set("activeCaseComplete", 1);
@@ -1153,3 +1153,5 @@ room408.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(408, room408);

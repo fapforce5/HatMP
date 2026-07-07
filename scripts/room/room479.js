@@ -247,7 +247,7 @@ room479.chatcatch = function (callback) {
             char.room(479);
             break;
         case "increment":
-            room480.chatcatch("incrementtod");
+            invoker.invoke(480, "chatcatch", "incrementtod");
             char.room(479);
             break;
         case "amputee0":
@@ -828,3 +828,5 @@ room479.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(479, room479);

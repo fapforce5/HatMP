@@ -306,7 +306,7 @@ room876.chatcatch = function (callback) {
                 chat(51, 876);
             }
             else {
-                room876.chatcatch("routine1");
+                invoker.invokeCurrent("chatcatch", "routine1");
                 g.internal.alone = true;
                 g.internal.finish = 1;
                 chat(1001, 876);
@@ -338,7 +338,7 @@ room876.chatcatch = function (callback) {
             char.room(0);
             break;
         case "routine2_1":
-            room876.chatcatch("routine2");
+            invoker.invokeCurrent("chatcatch", "routine2");
             chat(1000, 876);
             break;
         case "routine2_3":
@@ -351,7 +351,7 @@ room876.chatcatch = function (callback) {
             char.room(0);
             break;
         case "routine2_1_1":
-            room876.chatcatch("routine2");
+            invoker.invokeCurrent("chatcatch", "routine2");
             g.internal.alone = true;
             g.internal.finish = 3;
             chat(1001, 876);
@@ -411,6 +411,8 @@ room876.chatcatch = function (callback) {
             break;
     }
 };
+
+invoker.registerRoom(876, room876);
 
 room876.chat = function (chatID) {
     if (chatID === 999) {

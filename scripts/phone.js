@@ -1,28 +1,495 @@
 ﻿var phone = {};
 var room9999 = {};
 phone.charPointer = 0;
+phone.preservedMenuOverlay = null;
 //var pic = {};
 
-phone.build = function (selection = null) {
-    phone.clear(true);
-    inv.close();
-    var btnList = [
+phone.mainButtons = function () {
+    return [
         { n: "phone_save", img: "bSave", x: 0, y: 0 },
         { n: "phone_rel", img: "bRelationships", x: 1, y: 0 },
         { n: "phone_contacts", img: "bContacts", x: 2, y: 0 },
         { n: "phone_pic", img: "bPic", x: 3, y: 0 },
-        
-        //{ n: "phone_stats", img: "bStats", x: 0, y: 1 },
         { n: "phone_time", img: "bTime", x: 0, y: 1 },
         { n: "phone_purity", img: "bPurity", x: 1, y: 1 },
         { n: "phone_ach", img: "bAch", x: 2, y: 1 },
         { n: "phone_settings", img: "bSettings", x: 3, y: 1 },
-
         { n: "phone_cheat", img: "bCheat", x: 0, y: 2 },
         { n: "phone_help", img: "bHelp", x: 1, y: 2 },
         { n: "phone_patron", img: "bPatron", x: 2, y: 2 },
         { n: "phone_thankyou", img: "bPatreon", x: 3, y: 2 }
     ];
+};
+
+phone.findMainButton = function (name) {
+    return phone.mainButtons().find(function (button) {
+        return button.n === name;
+    }) || null;
+};
+
+phone.getAchievementGroups = function (index) {
+    switch (index) {
+        case 0: return ["panties", "bra"];
+        case 1: return ["oral", "anal", "vaginal"];
+        case 2: return ["fuck"];
+        case 3: return ["event", "school", "pinkroom"];
+        case 4: return ["end"];
+        default: return [];
+    }
+};
+
+phone.showAchievementGroup = function (index) {
+    phone.charPointer = index;
+    invoker.invoke(9999, "btnclick", "phone_ach_draw");
+};
+
+phone.isOpen = function () {
+    return $('[data-name="phonex_reserve"]:visible').length > 0;
+};
+
+phone.close = function () {
+    if (!phone.isOpen())
+        return false;
+
+    phone.clear(true);
+    phone.restoreMenuOverlay();
+    return true;
+};
+
+phone.handleSaveMenuAction = function (name) {
+    let slotId;
+
+    if (name === "phone_save_load_cancel") {
+        phone.saveMenu();
+        return true;
+    }
+
+    if (name.startsWith("phone_save_replace_verify_")) {
+        slotId = name.replace("phone_save_replace_verify_", "");
+        menu.saveDel('HatMP_' + slotId);
+        menu.save('HatMP_' + slotId, true);
+        phone.saveMenu();
+        return true;
+    }
+
+    if (name.startsWith("phone_save_replace_")) {
+        slotId = name.replace("phone_save_replace_", "");
+        phone.showSaveConfirmDialog({
+            overlayName: "phone_replace_verify",
+            promptLeft: 650,
+            promptText: "Are you sure you wish to overwrite save: ",
+            slotId: slotId,
+            confirmName: "phone_save_replace_verify_" + slotId,
+            confirmImage: "999_phone/save.png",
+            cancelImage: "999_phone/cancel_grey.png"
+        });
+        return true;
+    }
+
+    if (name.startsWith("phone_save_load_verify_")) {
+        slotId = name.replace("phone_save_load_verify_", "");
+        chat(-1, 0);
+        menu.load('HatMP_' + slotId);
+        return true;
+    }
+
+    if (name.startsWith("phone_save_load_")) {
+        slotId = name.replace("phone_save_load_", "");
+        if (g.newLoad) {
+            chat(-1, 0);
+            menu.load('HatMP_' + slotId);
+        }
+        else {
+            phone.showSaveConfirmDialog({
+                overlayName: "phone_load_verify",
+                promptLeft: 750,
+                promptText: "Are you sure you wish to load: ",
+                slotId: slotId,
+                confirmName: "phone_save_load_verify_" + slotId,
+                confirmImage: "999_phone/load.png",
+                cancelImage: "999_phone/cancel.png"
+            });
+        }
+        return true;
+    }
+
+    if (name.startsWith("phone_save_delete_verify_")) {
+        slotId = name.replace("phone_save_delete_verify_", "");
+        menu.saveDel('HatMP_' + slotId);
+        phone.saveMenu();
+        return true;
+    }
+
+    if (name.startsWith("phone_save_delete_")) {
+        slotId = name.replace("phone_save_delete_", "");
+        phone.showSaveConfirmDialog({
+            overlayName: "phone_load_verify",
+            promptLeft: 750,
+            promptText: "Are you sure you wish to delete: ",
+            slotId: slotId,
+            confirmName: "phone_save_delete_verify_" + slotId,
+            confirmImage: "999_phone/delete.png",
+            cancelImage: "999_phone/cancel_grey.png"
+        });
+        return true;
+    }
+
+    if (name.startsWith("phone_save_export_")) {
+        slotId = name.replace("phone_save_export_", "");
+        char.export(slotId);
+        return true;
+    }
+
+    if (name.startsWith("phone_save_save_")) {
+        slotId = name.replace("phone_save_save_", "");
+        menu.save('HatMP_' + slotId, true);
+        phone.saveMenu();
+        return true;
+    }
+
+    return false;
+};
+
+phone.handleSettingsAction = function (name) {
+    if (name.startsWith("phone_setting_diff")) {
+        gv.set("difficulty", parseInt(name.replace("phone_setting_diff", "")));
+        phone.settings();
+        return true;
+    }
+
+    if (name.startsWith("phone_setting_clock")) {
+        gv.set("clock24", name.replace("phone_setting_clock", ""));
+        nav.buildclock();
+        phone.settings();
+        return true;
+    }
+
+    if (name === "phone_setting_encM" || name === "phone_setting_encF" ||
+        name === "phone_setting_encBeast" || name === "phone_setting_encMyth") {
+        gv.set(name.replace("phone_setting_", ""), !gv.get(name.replace("phone_setting_", "")));
+        phone.settings();
+        return true;
+    }
+
+    if (name === "phone_setting_d_on") {
+        gv.set("transformation", "voluntary");
+        phone.settings();
+        return true;
+    }
+
+    if (name === "phone_setting_d_off") {
+        gv.set("transformation", "voluntaryoff");
+        phone.settings();
+        return true;
+    }
+
+    if (name === "phone_setting_d_auto") {
+        gv.set("transformation", "forced");
+        phone.settings();
+        return true;
+    }
+
+    if (name === "phone_setting_m" || name === "phone_setting_f" || name === "phone_setting_a") {
+        gv.set("pronouns", name.replace("phone_setting_", ""));
+        phone.settings();
+        return true;
+    }
+
+    return false;
+};
+
+phone.handlePrefixAction = function (name) {
+    if (name.startsWith("phone_photo_")) {
+        phone.clear(false);
+        var imgName = name.replace("phone_photo_", "");
+        for (var i = 0; i < pic.master.length; i++) {
+            if (pic.master[i].name === imgName) {
+                nav.button({
+                    "type": "zimg",
+                    "name": "phone_photo_",
+                    "left": 451,
+                    "top": 155,
+                    "width": 1185,
+                    "height": 815,
+                    "image": "999_phone/pic/" + pic.master[i].image,
+                }, 9999);
+            }
+            phone.backbutton("phone_pic");
+        }
+        return true;
+    }
+
+    if (name.startsWith("phone_charselect_")) {
+        phone.characterSelect(name.replace("phone_charselect_", ""));
+        return true;
+    }
+
+    if (name.startsWith("phone_modtime")) {
+        var modTime = name.replace("phone_modtime_", "");
+        if (modTime === "x") {
+            char.addtime(58);
+            char.room(g.roomID);
+        }
+        else {
+            var timeHour = parseInt(modTime);
+            if (timeHour === 0)
+                g.dt.setDate(g.dt.getDate() + 1);
+            char.settime(parseInt(modTime), 0);
+            char.room(g.roomID);
+        }
+        return true;
+    }
+
+    if (name.startsWith("phone_charsel_")) {
+        nav.killbuttonStartsWith("phone_charsel_");
+        var charstep1 = name.replace("phone_charsel_", "");
+        var varstep2 = charstep1.split("_");
+        var ch = sc.getMission(varstep2[0], varstep2[1]);
+        var roomList = "";
+        nav.t({
+            type: "zimg",
+            name: "phone_charsel_" + sc.charMission[ch.i].name + "_" + sc.charMission[ch.i].mission[ch.j].missionName,
+            "left": 850,
+            "top": 250,
+            font: 30,
+            hex: "#ffffff",
+            text: sc.charMission[ch.i].mission[ch.j].title + " [" + sc.mStatus(sc.charMission[ch.i].mission[ch.j].mStatus) + "]"
+        }, 9999);
+        nav.t({
+            type: "zimg",
+            name: "phone_charsel_",
+            "left": 900,
+            "top": 300,
+            font: 20,
+            hex: "#ffffff",
+            text: sc.charMission[ch.i].mission[ch.j].desc
+        }, 1);
+        nav.button({
+            "type": "zbtn",
+            "name": "phone_charselect_" + varstep2[0],
+            "left": 800,
+            "top": 250,
+            "width": 40,
+            "height": 40,
+            "image": "999_phone/char_down.png",
+        }, 9999);
+        let taskcounter = 0;
+        for (i = 0; i < sc.charMission[ch.i].mission[ch.j].task.length; i++) {
+            if (sc.charMission[ch.i].mission[ch.j].task[i].show) {
+                roomList = " @: " + (g.getRooms(sc.charMission[ch.i].mission[ch.j].task[i].roomId).name ?? "");
+                var tcolor = "#ffffff";
+                var mstatus;
+                switch (sc.mStatus(sc.charMission[ch.i].mission[ch.j].task[i].mStatus)) {
+                    case "Failed": tcolor = "#cc3333"; mstatus = " ✘ "; break;
+                    case "Completed": tcolor = "#33cc33"; mstatus = " ☑ "; break;
+                    case "Not Started": tcolor = "#999999"; mstatus = " ☐ "; break;
+                    default: tcolor = "#ffffff"; mstatus = " ";
+                }
+                nav.t({
+                    type: "zimg",
+                    name: "phone_charsel_",
+                    "left": 910,
+                    "top": 350 + (taskcounter * 40),
+                    font: 24,
+                    hex: tcolor,
+                    text: mstatus + sc.charMission[ch.i].mission[ch.j].task[i].txt + roomList
+                }, 1);
+                taskcounter++;
+            }
+        }
+        return true;
+    }
+
+    if (name.startsWith("phone_cheatmod")) {
+        if (name === "phone_cheatmod_money") {
+            gv.mod("money", 100);
+            phone.cheat();
+            $('#char_alert').hide();
+        }
+        else if (name === "phone_cheatmod_on") {
+            gv.set("cheatMode", true);
+            phone.cheat();
+        }
+        else {
+            var cheatLevel = name.replace("phone_cheatmod_level_", "");
+            levels.mod(cheatLevel, 100);
+            phone.cheat();
+            $('#char_alert').hide();
+        }
+        return true;
+    }
+
+    if (name.startsWith("phone_charRename_")) {
+        var charrename = name.replace("phone_charRename_", "");
+        sc.setcharname(charrename, $(".room-img[data-name='phone_charRenameDisplay']").val());
+        g.popUpNoticeBottom(sc.n(charrename) + " has been renamed.");
+        return true;
+    }
+
+    if (name.startsWith("phone_purity_")) {
+        let purid = parseInt(name.replace("phone_purity_", ""));
+        nav.killbuttonStartsWith("phone_purity");
+        phone.backbutton("phone_purity");
+        phone.showPanel("999_phone/purity_bg.jpg", "phone_purity");
+        phone.addPurityText({
+            left: 500,
+            top: 200,
+            font: 60,
+            hex: "#000000",
+            text: sex.st[purid].d,
+            zindex: 1
+        });
+        phone.addPurityDetailRow(300, "Boys: ", sex.st[purid].ent[0], 1);
+        phone.addPurityDetailRow(350, "Girls: ", sex.st[purid].ent[1], 1);
+        phone.addPurityDetailRow(400, "Non-binary: ", sex.st[purid].ent[2], 1);
+        phone.addPurityNamesColumnHeaders();
+        phone.addPurityNames(sex.st[purid], 1);
+        return true;
+    }
+
+    return false;
+};
+
+phone.changeCharacterPage = function (delta) {
+    phone.charPointer += delta;
+    phone.characters();
+};
+
+phone.openExternal = function (url) {
+    window.open(url, "_blank");
+};
+
+phone.help = function () {
+    phone.clear(false);
+    $('#room-buttons').append('<div class="room-img resize" data-name="phone_help_bg" style="position:absolute; z-index:2; ' +
+        g.makeCss(815, 1185, 155, 451) + ' background:#111114;"></div>');
+    $('#room-buttons').append('<div class="room-img resize" data-name="phone_help_inner" style="position:absolute; z-index:2; ' +
+        g.makeCss(735, 1095, 195, 496) + ' background:#19191d; border:2px solid #2f3140; border-radius:18px;"></div>');
+
+    nav.t({
+        type: "zimg",
+        name: "phone_help",
+        left: 550,
+        top: 225,
+        font: 42,
+        hex: "#ffffff",
+        text: "Keyboard Shortcuts"
+    }, 9999);
+
+    nav.t({
+        type: "zimg",
+        name: "phone_help",
+        left: 550,
+        top: 325,
+        font: 26,
+        hex: "#ffffff",
+        text: "I  -  Open or close inventory"
+    }, 9999);
+    nav.t({
+        type: "zimg",
+        name: "phone_help",
+        left: 550,
+        top: 385,
+        font: 26,
+        hex: "#ffffff",
+        text: "Space  -  Advance single-step dialog or Next scenes"
+    }, 9999);
+    nav.t({
+        type: "zimg",
+        name: "phone_help",
+        left: 550,
+        top: 445,
+        font: 26,
+        hex: "#ffffff",
+        text: "S  -  Toggle chat auto-skip when available"
+    }, 9999);
+    nav.t({
+        type: "zimg",
+        name: "phone_help",
+        left: 550,
+        top: 505,
+        font: 26,
+        hex: "#ffffff",
+        text: "1-9  -  Pick visible chat choices by order"
+    }, 9999);
+    nav.t({
+        type: "zimg",
+        name: "phone_help",
+        left: 550,
+        top: 565,
+        font: 26,
+        hex: "#ffffff",
+        text: "Middle Click Phone  -  Open save menu"
+    }, 9999);
+    nav.t({
+        type: "zimg",
+        name: "phone_help",
+        left: 550,
+        top: 625,
+        font: 26,
+        hex: "#ffffff",
+        text: "Esc  -  Close phone"
+    }, 9999);
+    nav.t({
+        type: "zimg",
+        name: "phone_help",
+        left: 550,
+        top: 695,
+        font: 22,
+        hex: "#ffd7f5",
+        text: "Some scenes still require direct clicks."
+    }, 9999);
+
+    $('#room-buttons').append('<div class="room-img resize" data-name="phone_help_site" style="position:absolute; z-index:2; ' +
+        g.makeCss(68, 360, 735, 550) + ' background:#1f3a8a; border:2px solid #ffffff; border-radius:12px;"></div>');
+    nav.button({
+        "type": "zbtn",
+        "name": "phone_help_site",
+        "left": 550,
+        "top": 735,
+        "width": 360,
+        "height": 68,
+        "image": "1002_quickfight/black20Alpha.png",
+    }, 9999);
+    nav.tcenter({
+        type: "zbtn",
+        name: "phone_help_site",
+        left: 550,
+        width: 360,
+        top: 755,
+        font: 26,
+        hex: "#ffffff",
+        text: "Open Support Site"
+    }, 9999);
+};
+
+phone.drawAchievements = function () {
+    phone.clear(false);
+    var groups = phone.getAchievementGroups(phone.charPointer);
+    phone.showPanel("999_phone/Achievements_bg.jpg");
+    phone.drawAchievementTabs();
+
+    let newAchList = trophy.st
+        .filter(item => groups.includes(item.group))
+        .sort((a, b) => {
+            const indexA = groups.indexOf(a.group);
+            const indexB = groups.indexOf(b.group);
+
+            if (indexA !== indexB)
+                return indexA - indexB;
+
+            return a.o - b.o;
+        });
+
+    for (let i = 0; i < newAchList.length; i++)
+        phone.addAchievementCard(newAchList[i], i);
+};
+
+phone.build = function (selection = null) {
+    phone.clear(true);
+    phone.captureMenuOverlay();
+    inv.close(phone.preservedMenuOverlay !== null);
+    var btnList = phone.mainButtons();
 
     nav.button({
         "type": "zimg",
@@ -65,18 +532,48 @@ phone.build = function (selection = null) {
 
     if (selection !== null) {
         if (selection === "save") {
-            room9999.btnclick("phone_save");
+            invoker.invoke(9999, "btnclick", "phone_save");
             nav.killbutton("phonex_menu");
         }
         else if (selection === "time") {
-            room9999.btnclick("phone_time");
+            invoker.invoke(9999, "btnclick", "phone_time");
             nav.killbutton("phonex_menu");
         }
         else {
-            room9999.btnclick(selection);
+            invoker.invoke(9999, "btnclick", selection);
             nav.killbutton("phonex_menu");
         }
     }
+};
+
+phone.captureMenuOverlay = function () {
+    var overlay = $('#room-menuButtons');
+
+    if (inv.isOpen || !overlay.is(":visible") || overlay.children().length === 0) {
+        phone.preservedMenuOverlay = null;
+        return;
+    }
+
+    phone.preservedMenuOverlay = {
+        background: overlay.css('background'),
+        children: overlay.children().detach()
+    };
+    overlay.hide().html('');
+};
+
+phone.restoreMenuOverlay = function () {
+    var overlay = $('#room-menuButtons');
+
+    if (phone.preservedMenuOverlay === null)
+        return false;
+
+    overlay.html('');
+    if (phone.preservedMenuOverlay.background)
+        overlay.css('background', phone.preservedMenuOverlay.background);
+    overlay.append(phone.preservedMenuOverlay.children);
+    overlay.show();
+    phone.preservedMenuOverlay = null;
+    return true;
 };
 
 phone.clear = function (clearAll) {
@@ -86,35 +583,311 @@ phone.clear = function (clearAll) {
 };
 
 phone.backbutton = function (icon) {
-    var btnList = [
-        { n: "phone_save", img: "bSave", x: 0, y: 0 },
-        { n: "phone_rel", img: "bRelationships", x: 1, y: 0 },
-        { n: "phone_contacts", img: "bContacts", x: 2, y: 0 },
-        { n: "phone_pic", img: "bPic", x: 3, y: 0 },
+    var button = phone.findMainButton(icon);
+    if (button !== null) {
+        nav.button({
+            "type": "zbtn",
+            "name": button.n,
+            "left": 1662,
+            "top": 525,
+            "width": 90,
+            "height": 112,
+            "image": "999_phone/" + button.img + ".png",
+        }, 9999);
+    }
+};
 
-        //{ n: "phone_stats", img: "bStats", x: 0, y: 1 },
-        { n: "phone_time", img: "bTime", x: 0, y: 1 },
-        { n: "phone_ach", img: "bAch", x: 2, y: 1 },
-        { n: "phone_settings", img: "bSettings", x: 3, y: 1 },
+phone.showSaveConfirmDialog = function (config) {
+    nav.button({
+        "type": "zimg",
+        "name": config.overlayName,
+        "left": 0,
+        "top": 0,
+        "width": 1920,
+        "height": 1080,
+        "image": "999_phone/verify.png",
+    }, 9999);
 
-        { n: "phone_help", img: "bHelp", x: 0, y: 2 },
-        { n: "phone_patron", img: "bPatron", x: 2, y: 2 },
-        { n: "phone_thankyou", img: "bPatreon", x: 3, y: 2 },
-        { n: "phone_purity", img: "bPurity", x: 1, y: 1 }
-    ];
-    for (i = 0; i < btnList.length; i++) {
-        if (icon === btnList[i].n) {
-            nav.button({
-                "type": "zbtn",
-                "name": btnList[i].n,
-                "left": 1662,
-                "top": 525,
-                "width": 90,
-                "height": 112,
-                "image": "999_phone/" + btnList[i].img + ".png",
-            }, 9999);
+    nav.t({
+        type: "zimg",
+        name: "phone_",
+        left: config.promptLeft,
+        top: 400,
+        font: 30,
+        hex: "#ffffff",
+        text: config.promptText
+    }, 1);
+    nav.t({
+        type: "zimg",
+        name: "phone_",
+        left: 650,
+        top: 450,
+        font: 30,
+        hex: "#ffffff",
+        text: $("[data-name='phone_save_load_name_" + config.slotId + "']").text()
+    }, 1);
+    nav.button({
+        "type": "zbtn",
+        "name": config.confirmName,
+        "left": 650,
+        "top": 600,
+        "width": 250,
+        "height": 100,
+        "image": config.confirmImage,
+    }, 9999);
+    nav.button({
+        "type": "zbtn",
+        "name": "phone_save_load_cancel",
+        "left": 1030,
+        "top": 600,
+        "width": 250,
+        "height": 100,
+        "image": config.cancelImage,
+    }, 9999);
+};
+
+phone.showPanel = function (image, name = "phone_") {
+    nav.button({
+        "type": "zimg",
+        "name": name,
+        "left": 451,
+        "top": 155,
+        "width": 1185,
+        "height": 815,
+        "image": image,
+    }, 9999);
+};
+
+phone.addCharacterCard = function (character, row, column) {
+    const top = 180 + (row * 220);
+    const left = 485 + (column * 190);
+
+    $('#room-buttons').append('<div class="room-img resize" data-name="phone_char_bg" ' +
+        'style="position: absolute; background: ' + character.hex + '; z-index:2; ' +
+        g.makeCss(150, 150, top, left) + '">' +
+        '</div>');
+
+    nav.button({
+        "type": "zbtn",
+        "name": "phone_charselect_" + character.name,
+        "left": left,
+        "top": top,
+        "width": 150,
+        "height": 150,
+        "image": "../speaker/" + character.image,
+    }, 9999);
+
+    nav.t({
+        type: "zimg",
+        name: "phone_char_",
+        "left": left,
+        "top": top + 150,
+        font: character.display.length < 20 ? 20 : 12,
+        hex: "#ffffff",
+        text: character.display,
+    }, 1);
+
+    $('#room-buttons').append('<div class="resize room-img" data-name="phone_char_" data-room="999" style=" ' +
+        g.makeCss(5, (character.l * 15), top + 180, left) +
+        '  background: #00ff00; border-radius:100px; z-index:2" ></div>');
+
+    nav.t({
+        type: "zimg",
+        name: "phone_char_",
+        "left": left,
+        "top": top + 185,
+        font: 20,
+        hex: "#ffc2ff",
+        text: character.secret > 99 ? "They know" : (character.secret === 0 ? "" : "Suspicious"),
+    }, 1);
+};
+
+phone.addStatBar = function (config) {
+    nav.t({
+        type: "zimg",
+        name: config.name || "phone_",
+        "left": config.left,
+        "top": config.top,
+        font: config.font || 30,
+        hex: config.hex || "#ffffff",
+        text: config.label
+    }, 1);
+
+    $('#room-buttons').append('<div class="room-img" data-name="phone_charbar" style="position: absolute; bottom: 1%; background: #2d2d40; ' +
+        g.makeCss(config.height || 10, config.width, config.top + (config.barOffsetTop || 20), config.left) + ' z-index:2;">' +
+        '<div style="background: ' + config.barColor + '; border-radius: 20px; height: ' + g.ratio * (config.height || 10) + 'px; width: ' + config.value + '%;" class="resize-height rl-bar"></div>' +
+        '</div>');
+};
+
+phone.addPurityText = function (config) {
+    nav.t({
+        type: config.type || "zimg",
+        name: config.name || "phone_purity",
+        left: config.left,
+        top: config.top,
+        font: config.font || 24,
+        hex: config.hex || "#ffffff",
+        text: config.text
+    }, config.zindex || 9999);
+};
+
+phone.addPurityColumnHeaders = function (left, top, hex, labels) {
+    for (let i = 0; i < labels.length; i++) {
+        phone.addPurityText({
+            left: left + (i * 50),
+            top: top,
+            hex: hex,
+            text: labels[i]
+        });
+    }
+};
+
+phone.addPurityNamesColumnHeaders = function () {
+    const labels = ["Boys: ", "Girls: ", "Non-binary: "];
+    for (let i = 0; i < labels.length; i++) {
+        phone.addPurityText({
+            left: 1100 + (i * 150),
+            top: 180,
+            hex: "#ffffff",
+            text: labels[i]
+        });
+    }
+};
+
+phone.addPurityFirstTime = function (left, top, day, hex, zindex = 9999) {
+    phone.addPurityText({
+        left: left,
+        top: top,
+        hex: hex,
+        text: day === null ? "" : "First time: Day " + day,
+        zindex: zindex
+    });
+};
+
+phone.addPurityDetailRow = function (top, label, entry, zindex = 9999) {
+    phone.addPurityText({
+        left: 500,
+        top: top,
+        hex: "#000000",
+        text: label,
+        zindex: zindex
+    });
+    phone.addPurityText({
+        left: 650,
+        top: top,
+        hex: "#000000",
+        text: entry.c,
+        zindex: zindex
+    });
+    phone.addPurityFirstTime(750, top, entry.day, "#000000", zindex);
+};
+
+phone.addPurityNames = function (purity, zindex = 9999) {
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < purity.ent[i].names.length; j++) {
+            phone.addPurityText({
+                left: 1100 + (i * 150),
+                top: 210 + (j * 25),
+                font: 20,
+                text: g.trunc(purity.ent[i].names[j], 15),
+                zindex: zindex
+            });
         }
     }
+};
+
+phone.addPurityOverviewRow = function (purity, top, color, labelLeft, countLefts) {
+    phone.addPurityText({
+        type: "zbtn",
+        name: "phone_purity_" + purity.id,
+        left: labelLeft,
+        top: top,
+        hex: color,
+        text: purity.d
+    });
+    for (let i = 0; i < 3; i++) {
+        phone.addPurityText({
+            type: "zbtn",
+            name: "phone_purity_" + purity.id,
+            left: countLefts[i],
+            top: top,
+            hex: color,
+            text: purity.ent[i].c
+        });
+    }
+};
+
+phone.addPuritySummaryLine = function (top, text) {
+    phone.addPurityText({
+        left: 750,
+        top: top,
+        text: text
+    });
+};
+
+phone.addPurityStatLine = function (top, text) {
+    phone.addPurityText({
+        type: "zbtn",
+        left: 1100,
+        top: top,
+        text: text
+    });
+};
+
+phone.addAchievementTab = function (name, left, text) {
+    nav.t({
+        type: "zbtn",
+        name: name,
+        left: left,
+        top: 800,
+        font: 30,
+        hex: "#ffffff",
+        text: text
+    }, 9999);
+};
+
+phone.drawAchievementTabs = function () {
+    phone.addAchievementTab("phone_ach", 550, "Clothing");
+    phone.addAchievementTab("phone_ach1", 750, "Sex");
+    phone.addAchievementTab("phone_ach2", 950, "Events");
+    phone.addAchievementTab("phone_ach3", 1150, "Other");
+    phone.addAchievementTab("phone_ach4", 1350, "Endings");
+};
+
+phone.addAchievementCard = function (achievement, index) {
+    const left = (index % 3 * 380) + 485;
+    const top = 200 + (Math.floor(index / 3) * 100);
+    const achieved = achievement.ach;
+
+    nav.button({
+        "type": "zimg",
+        "name": "phone_",
+        "left": left,
+        "top": top,
+        "width": 350,
+        "height": 84,
+        "image": achieved ? "999_phone/ach/" + achievement.img : "999_phone/ach/x.webp",
+    }, 9999);
+
+    nav.t({
+        type: "zimg",
+        name: "phone_",
+        "left": left + 95,
+        "top": top + 50,
+        font: 16,
+        hex: "#cccccc",
+        text: achieved ? sc.replace(achievement.display) : "Not Achieved"
+    }, 9999);
+
+    nav.t({
+        type: "zimg",
+        name: "phone_",
+        "left": left + 95,
+        "top": top + 10,
+        font: 20,
+        hex: "#ffffff",
+        text: sc.replace(achievement.title)
+    }, 9999);
 };
 
 phone.saveMenu = function () {
@@ -123,15 +896,7 @@ phone.saveMenu = function () {
     let mostRecentRow = null;
     let saveByOrder = new Array();
     phone.clear(false);
-    nav.button({
-        "type": "zimg",
-        "name": "phone_",
-        "left": 451,
-        "top": 155,
-        "width": 1185,
-        "height": 815,
-        "image": "999_phone/save_bg.jpg",
-    }, 9999);
+    phone.showPanel("999_phone/save_bg.jpg");
     let newestSave = new Date(1900, 0, 0);
     let newestSaveId = -1;
     let savedt;
@@ -276,15 +1041,7 @@ phone.settings = function () {
     let transformation = gv.get("transformation");
     let pronouns = gv.get("pronouns");
 
-    nav.button({
-        "type": "zimg",
-        "name": "phone_",
-        "left": 451,
-        "top": 155,
-        "width": 1185,
-        "height": 815,
-        "image": "999_phone/settingbg.jpg",
-    }, 9999);
+    phone.showPanel("999_phone/settingbg.jpg");
     var settings = [
         { y: 0, x: 0, b: 3, n: "diff0", i: "diffEasy", active: difficulty === 0 },
         { y: 0, x: 1, b: 3, n: "diff1", i: "diffNormal", active: difficulty === 1 },
@@ -317,16 +1074,8 @@ phone.settings = function () {
 
 phone.pictures = function () {
     phone.clear(false);
-    
-    nav.button({
-        "type": "zimg",
-        "name": "phone_",
-        "left": 451,
-        "top": 155,
-        "width": 1185,
-        "height": 815,
-        "image": "999_phone/pics_bg.jpg",
-    }, 9999);
+
+    phone.showPanel("999_phone/pics_bg.jpg");
     var c = 0;
     for (var i = 0; i < pic.master.length; i++) {
         if (pic.master[i].entry) {
@@ -346,15 +1095,7 @@ phone.pictures = function () {
 
 phone.characters = function () {
     phone.clear(false);
-    nav.button({
-        "type": "zimg",
-        "name": "phone_",
-        "left": 451,
-        "top": 155,
-        "width": 1185,
-        "height": 815,
-        "image": "999_phone/rel_bg.jpg",
-    }, 9999);
+    phone.showPanel("999_phone/rel_bg.jpg");
     
     let j = 0;
     let i;
@@ -362,51 +1103,7 @@ phone.characters = function () {
     for (i = 0; i < sc.char.length; i++) {
         if (sc.char[i].show) {
             if (showCharcterCounter >= phone.charPointer && j < 18) {
-                $('#room-buttons').append('<div class="room-img resize" data-name="phone_char_bg" ' +
-                    'style="position: absolute; background: ' + sc.char[i].hex + '; z-index:2; ' +
-                    g.makeCss(150, 150, 180 + (Math.floor(j / 6) * 220), 485 + ((j % 6) * 190)) + '">' +
-                    '</div>');
-                nav.button({
-                    "type": "zbtn",
-                    "name": "phone_charselect_" + sc.char[i].name,
-                    "left": 485 + ((j % 6) * 190),
-                    "top": 180 + (Math.floor(j / 6) * 220),
-                    "width": 150,
-                    "height": 150,
-                    "image": "../speaker/" + sc.char[i].image,
-                }, 9999);
-
-                nav.t({
-                    type: "zimg",
-                    name: "phone_char_",
-                    "left": 485 + ((j % 6) * 190),
-                    "top": 330 + (Math.floor(j / 6) * 220),
-                    font: sc.char[i].display.length < 20 ? 20 : 12,
-                    hex: "#ffffff",
-                    text: sc.char[i].display,
-                }, 1);
-
-                $('#room-buttons').append('<div class="resize room-img" data-name="phone_char_" data-room="999" style=" ' + g.makeCss(5, (sc.char[i].l * 15), 360 + (Math.floor(j / 6) * 220), 485 + ((j % 6) * 190)) + '  background: #00ff00; border-radius:100px; z-index:2" ></div>');
-
-                //nav.t({
-                //    type: "zimg",
-                //    name: "phone_char_",
-                //    "left": 485 + ((j % 6) * 190),
-                //    "top": 360 + (Math.floor(j / 6) * 220),
-                //    font: 30,
-                //    hex: "#ffffff",
-                //    text: sc.levelName(i),
-                //}, 1);
-
-                nav.t({
-                    type: "zimg",
-                    name: "phone_char_",
-                    "left": 485 + ((j % 6) * 190),
-                    "top": 365 + (Math.floor(j / 6) * 220),
-                    font: 20,
-                    hex: "#ffc2ff",
-                    text: sc.char[i].secret > 99 ? "They know" : (sc.char[i].secret === 0 ? "" : "Suspicious"),
-                }, 1);
+                phone.addCharacterCard(sc.char[i], Math.floor(j / 6), j % 6);
                 j++;
             }
             showCharcterCounter++;
@@ -441,15 +1138,7 @@ phone.characterSelect = function (name) {
 
     var thisChar = sc.get(name);
 
-    nav.button({
-        "type": "zimg",
-        "name": "phone_",
-        "left": 451,
-        "top": 155,
-        "width": 1185,
-        "height": 815,
-        "image": "999_phone/rel_bg.jpg",
-    }, 9999);
+    phone.showPanel("999_phone/rel_bg.jpg");
 
     nav.button({
         "type": "zimg",
@@ -501,30 +1190,25 @@ phone.characterSelect = function (name) {
         hex: "#ffffff",
         text: sc.levelName(sc.i(name))
     }, 1);
-    nav.t({
-        type: "zimg",
-        name: "phone_",
-        "left": 500,
-        "top": 580,
+    phone.addStatBar({
+        left: 500,
+        top: 580,
         font: 14,
         hex: "#aaaaaa",
-        text: "Till Next Level"
-    }, 1);
-    $('#room-buttons').append('<div class="room-img" data-name="phone_charbar" style="position: absolute; bottom: 1%; background: #2d2d40; ' + g.makeCss(10, 250, 600, 500) + ' z-index:2;">' +
-        '<div style="background: #FF76FF; border-radius: 20px; height: ' + g.ratio * 10 + 'px; width: ' + thisChar.c + '%;" class="resize-height rl-bar"></div>' +
-            '</div>');
-    nav.t({
-        type: "zimg",
-        name: "phone_",
-        "left": 500,
-        "top": 620,
-        font: 30,
-        hex: "#ffffff",
-        text: "Secret:"
-    }, 1);
-    $('#room-buttons').append('<div class="room-img" data-name="phone_charbar" style="position: absolute; bottom: 1%; background: #2d2d40; ' + g.makeCss(10, 250, 650, 500) + ' z-index:2;">' +
-        '<div style="background: #189000; border-radius: 20px; height: ' + g.ratio * 10 + 'px; width: ' + thisChar.secret + '%;" class="resize-height rl-bar"></div>' +
-        '</div>');
+        label: "Till Next Level",
+        width: 250,
+        value: thisChar.c,
+        barColor: "#FF76FF"
+    });
+    phone.addStatBar({
+        left: 500,
+        top: 620,
+        label: "Secret:",
+        width: 250,
+        value: thisChar.secret,
+        barColor: "#189000",
+        barOffsetTop: 30
+    });
     var thisTimeline = sc.getTimeline(name);
     
     for (i = 0; i < thisTimeline.subList.length; i++) {
@@ -809,15 +1493,7 @@ phone.characterSelect = function (name) {
 phone.thankyou = function () {
     phone.clear(false);
 
-    nav.button({
-        "type": "zimg",
-        "name": "phone_",
-        "left": 451,
-        "top": 155,
-        "width": 1185,
-        "height": 815,
-        "image": "999_phone/thankyou_bg.jpg",
-    }, 9999);
+    phone.showPanel("999_phone/thankyou_bg.jpg");
     var l = [
         "Arothiel", "Asako", "Discretlysinful (Aaron M )",
         "Fuck you Arin",
@@ -855,15 +1531,7 @@ phone.passtime = function () {
     else if (currentTime >= 6)
         bgnum = 1;
 
-    nav.button({
-        "type": "zimg",
-        "name": "phone_",
-        "left": 451,
-        "top": 155,
-        "width": 1185,
-        "height": 815,
-        "image": "999_phone/time_bg_" + bgnum + ".jpg",
-    }, 9999);
+    phone.showPanel("999_phone/time_bg_" + bgnum + ".jpg");
     nav.t({
         type: "zimg",
         name: "phone_time_currenttime",
@@ -924,16 +1592,7 @@ phone.cheat = function () {
     phone.clear(false);
 
     if (gv.get("cheatMode")) {
-
-        nav.button({
-            "type": "zimg",
-            "name": "phone_",
-            "left": 451,
-            "top": 155,
-            "width": 1185,
-            "height": 815,
-            "image": "999_phone/cheat_bg.jpg",
-        }, 9999);
+        phone.showPanel("999_phone/cheat_bg.jpg");
 
         var levelToMod = ["fitness", "charisma"];
 
@@ -981,15 +1640,7 @@ phone.cheat = function () {
         }
     }
     else {
-        nav.button({
-            "type": "zimg",
-            "name": "phone_",
-            "left": 451,
-            "top": 155,
-            "width": 1185,
-            "height": 815,
-            "image": "999_phone/cheat_bg1.jpg",
-        }, 9999);
+        phone.showPanel("999_phone/cheat_bg1.jpg");
 
         nav.button({
             "type": "zbtn",
@@ -1010,70 +1661,9 @@ phone.purity = function () {
     let pussyvirgin = sex.getvirgin(28);
     let analvirgin = sex.getvirgin(26);
 
-    nav.button({
-        "type": "zimg",
-        "name": "phone_purity",
-        "left": 451,
-        "top": 155,
-        "width": 1185,
-        "height": 815,
-        "image": "999_phone/purity_bg.jpg",
-    }, 9999);
-    
-    nav.t({
-        type: "zimg",
-        name: "phone_purity",
-        "left": 850,
-        "top": 170,
-        font: 24,
-        hex: "#000",
-        text: "Boy"
-    }, 9999);
-    nav.t({
-        type: "zimg",
-        name: "phone_purity",
-        "left": 900,
-        "top": 170,
-        font: 24,
-        hex: "#000",
-        text: "Girl"
-    }, 9999);
-    nav.t({
-        type: "zimg",
-        name: "phone_purity",
-        "left": 950,
-        "top": 170,
-        font: 24,
-        hex: "#000",
-        text: "NB"
-    }, 9999);
-    nav.t({
-        type: "zimg",
-        name: "phone_purity",
-        "left": 1450,
-        "top": 170,
-        font: 24,
-        hex: "#fff",
-        text: "Boy"
-    }, 9999);
-    nav.t({
-        type: "zimg",
-        name: "phone_purity",
-        "left": 1500,
-        "top": 170,
-        font: 24,
-        hex: "#fff",
-        text: "Girl"
-    }, 9999);
-    nav.t({
-        type: "zimg",
-        name: "phone_purity",
-        "left": 1550,
-        "top": 170,
-        font: 24,
-        hex: "#fff",
-        text: "NB"
-    }, 9999);
+    phone.showPanel("999_phone/purity_bg.jpg", "phone_purity");
+    phone.addPurityColumnHeaders(850, 170, "#000", ["Boy", "Girl", "NB"]);
+    phone.addPurityColumnHeaders(1450, 170, "#fff", ["Boy", "Girl", "NB"]);
     
     let subcount, domcounter, l, t, col, lm, lf, ln;
     subcount = domcounter = 0;
@@ -1099,42 +1689,7 @@ phone.purity = function () {
                 domcounter++;
             }
 
-            nav.t({
-                type: "zbtn",
-                name: "phone_purity_" + sex.st[i].id,
-                "left": l,
-                "top": t,
-                font: 24,
-                hex: col,
-                text: sex.st[i].d
-            }, 9999);
-            nav.t({
-                type: "zbtn",
-                name: "phone_purity_" + sex.st[i].id,
-                "left": lm,
-                "top": t,
-                font: 24,
-                hex: col,
-                text: sex.st[i].ent[0].c
-            }, 9999);
-            nav.t({
-                type: "zbtn",
-                name: "phone_purity_" + sex.st[i].id,
-                "left": lf,
-                "top": t,
-                font: 24,
-                hex: col,
-                text: sex.st[i].ent[1].c
-            }, 9999);
-            nav.t({
-                type: "zbtn",
-                name: "phone_purity_" + sex.st[i].id,
-                "left": ln,
-                "top": t,
-                font: 24,
-                hex: col,
-                text: sex.st[i].ent[2].c
-            }, 9999);
+            phone.addPurityOverviewRow(sex.st[i], t, col, l, [lm, lf, ln]);
         }
     }
     let penisVirginTxt, analVirginTxt, pussyVirginTxt, oralVirginTxt;
@@ -1180,374 +1735,40 @@ phone.purity = function () {
     else
         analVirginTxt = "Lost your anal virginity to " + analvirgin.who + " on day: " + analvirgin.day;
 
-    nav.t({
-        type: "zimg",
-        name: "phone_purity",
-        "left": 750,
-        "top": 840,
-        font: 24,
-        hex: "#ffffff",
-        text: penisVirginTxt
-    }, 9999);
-    nav.t({
-        type: "zimg",
-        name: "phone_purity",
-        "left": 750,
-        "top": 870,
-        font: 24,
-        hex: "#ffffff",
-        text: analVirginTxt
-    }, 9999);
-    nav.t({
-        type: "zimg",
-        name: "phone_purity",
-        "left": 750,
-        "top": 900,
-        font: 24,
-        hex: "#ffffff",
-        text: oralVirginTxt
-    }, 9999);
-    nav.t({
-        type: "zimg",
-        name: "phone_purity",
-        "left": 750,
-        "top": 930,
-        font: 24,
-        hex: "#ffffff",
-        text: pussyVirginTxt
-    }, 9999);
+    phone.addPuritySummaryLine(840, penisVirginTxt);
+    phone.addPuritySummaryLine(870, analVirginTxt);
+    phone.addPuritySummaryLine(900, oralVirginTxt);
+    phone.addPuritySummaryLine(930, pussyVirginTxt);
 
     domcounter = 13;
     if (cl.c.cock === 5) {
-        nav.t({
-            type: "zbtn",
-            name: "phone_purity",
-            "left": 1100,
-            "top": (domcounter * 30) + 240,
-            font: 24,
-            hex: "#ffffff",
-            text: "Times you played with your pussy: " + gv.get("masturbate_pussy")
-        }, 9999);
+        phone.addPurityStatLine((domcounter * 30) + 240, "Times you played with your pussy: " + gv.get("masturbate_pussy"));
     }
     domcounter++;
-    nav.t({
-        type: "zbtn",
-        name: "phone_purity",
-        "left": 1100,
-        "top": (domcounter * 30) + 240,
-        font: 24,
-        hex: "#ffffff",
-        text: "Times you played with your penis: " + gv.get("masturbate_dick")
-    }, 9999);
+    phone.addPurityStatLine((domcounter * 30) + 240, "Times you played with your penis: " + gv.get("masturbate_dick"));
     domcounter++;
-    nav.t({
-        type: "zbtn",
-        name: "phone_purity",
-        "left": 1100,
-        "top": (domcounter * 30) + 240,
-        font: 24,
-        hex: "#ffffff",
-        text: "Times you used a vibrator on your penis: " + gv.get("masturbate_vibrator")
-    }, 9999);
+    phone.addPurityStatLine((domcounter * 30) + 240, "Times you used a vibrator on your penis: " + gv.get("masturbate_vibrator"));
     domcounter++;
-    nav.t({
-        type: "zbtn",
-        name: "phone_purity",
-        "left": 1100,
-        "top": (domcounter * 30) + 240,
-        font: 24,
-        hex: "#ffffff",
-        text: "Times sucked on a dildo: " + gv.get("masturbate_oral")
-    }, 9999);
+    phone.addPurityStatLine((domcounter * 30) + 240, "Times sucked on a dildo: " + gv.get("masturbate_oral"));
     domcounter++;
-    nav.t({
-        type: "zbtn",
-        name: "phone_purity",
-        "left": 1100,
-        "top": (domcounter * 30) + 240,
-        font: 24,
-        hex: "#ffffff",
-        text: "Times slid your finger in your anus: " + gv.get("masturbate_finger")
-    }, 9999);
+    phone.addPurityStatLine((domcounter * 30) + 240, "Times slid your finger in your anus: " + gv.get("masturbate_finger"));
     domcounter++;
-    nav.t({
-        type: "zbtn",
-        name: "phone_purity",
-        "left": 1100,
-        "top": (domcounter * 30) + 240,
-        font: 24,
-        hex: "#ffffff",
-        text: "Times you fucked a dildo: " + gv.get("masturbate_dildo")
-    }, 9999);
+    phone.addPurityStatLine((domcounter * 30) + 240, "Times you fucked a dildo: " + gv.get("masturbate_dildo"));
 };
 
 room9999.btnclick = function (name) {
-    if (name.startsWith("phone_photo_")) {
-        phone.clear(false);
-        var imgName = name.replace("phone_photo_", "");
-        for (var i = 0; i < pic.master.length; i++) {
-            if (pic.master[i].name === imgName) {
-                nav.button({
-                    "type": "zimg",
-                    "name": "phone_photo_",
-                    "left": 451,
-                    "top": 155,
-                    "width": 1185,
-                    "height": 815,
-                    "image": "999_phone/pic/" + pic.master[i].image,
-                }, 9999);
-            }
-            phone.backbutton("phone_pic");
-        }
-    }
-    else if (name.startsWith("phone_charselect_")) {
-        phone.characterSelect(name.replace("phone_charselect_", ""));
-    }
-    else if (name.startsWith("phone_modtime")) {
-        var modTime = name.replace("phone_modtime_", "");
-        if (modTime === "x") {
-            char.addtime(58);
-            char.room(g.roomID);
-            //phone.build("time");
-        }
-        else {
-            var timeHour = parseInt(modTime);
-            if (timeHour === 0)
-                g.dt.setDate(g.dt.getDate() + 1);
-            char.settime(parseInt(modTime), 0);
-            char.room(g.roomID);
-            //phone.build("time");
-        }
-    }
-    else if (name.startsWith("phone_charsel_")) {
-        nav.killbuttonStartsWith("phone_charsel_");
-        var charstep1 = name.replace("phone_charsel_", "");
-        var varstep2 = charstep1.split("_");
-        var ch = sc.getMission(varstep2[0], varstep2[1]);
-        var roomList = "";
-        nav.t({
-            type: "zimg",
-            name: "phone_charsel_" + sc.charMission[ch.i].name + "_" + sc.charMission[ch.i].mission[ch.j].missionName,
-            "left": 850,
-            "top": 250,
-            font: 30,
-            hex: "#ffffff",
-            text: sc.charMission[ch.i].mission[ch.j].title + " [" + sc.mStatus(sc.charMission[ch.i].mission[ch.j].mStatus) + "]"
-        }, 9999);
-        nav.t({
-            type: "zimg",
-            name: "phone_charsel_",
-            "left": 900,
-            "top": 300,
-            font: 20,
-            hex: "#ffffff",
-            text: sc.charMission[ch.i].mission[ch.j].desc
-        }, 1);
-        nav.button({
-            "type": "zbtn",
-            "name": "phone_charselect_" + varstep2[0],
-            "left": 800,
-            "top": 250,
-            "width": 40,
-            "height": 40,
-            "image": "999_phone/char_down.png",
-        }, 9999);
-        let taskcounter = 0;
-        for (i = 0; i < sc.charMission[ch.i].mission[ch.j].task.length; i++) {
-            if (sc.charMission[ch.i].mission[ch.j].task[i].show) {
-                roomList = " @: " + (g.getRooms(sc.charMission[ch.i].mission[ch.j].task[i].roomId).name ?? "");
-                var tcolor = "#ffffff";
-                var mstatus;
-                switch (sc.mStatus(sc.charMission[ch.i].mission[ch.j].task[i].mStatus)) {
-                    case "Failed": tcolor = "#cc3333"; mstatus = " ✘ "; break;
-                    case "Completed": tcolor = "#33cc33"; mstatus = " ☑ "; break;
-                    case "Not Started": tcolor = "#999999"; mstatus = " ☐ "; break;
-                    default: tcolor = "#ffffff"; mstatus = " ";
-                }
-                nav.t({
-                    type: "zimg",
-                    name: "phone_charsel_",
-                    "left": 910,
-                    "top": 350 + (taskcounter * 40),
-                    font: 24,
-                    hex: tcolor,
-                    text: mstatus + sc.charMission[ch.i].mission[ch.j].task[i].txt + roomList
-                }, 1);
-                taskcounter++;
-            }
-        }
-    }
-    else if (name.startsWith("phone_cheatmod")) {
-        if (name === "phone_cheatmod_money") {
-            gv.mod("money", 100);
-            phone.cheat();
-            $('#char_alert').hide();
-        }
-        else if (name === "phone_cheatmod_on") {
-            gv.set("cheatMode", true);
-            phone.cheat();
-        }
-        else {
-            var cheatLevel = name.replace("phone_cheatmod_level_", "");
-            levels.mod(cheatLevel, 100);
-            phone.cheat();
-            $('#char_alert').hide();
-        }
-    }
-    else if (name.startsWith("phone_charRename_")) {
-        var charrename = name.replace("phone_charRename_", "");
-        sc.setcharname(charrename, $(".room-img[data-name='phone_charRenameDisplay']").val());
-        g.popUpNoticeBottom(sc.n(charrename) + " has been renamed.");
-    }
-    else if (name.startsWith("phone_purity_")) {
-        let purid = parseInt(name.replace("phone_purity_", ""));
-        nav.killbuttonStartsWith("phone_purity");
-        phone.backbutton("phone_purity");
-        nav.button({
-            "type": "zimg",
-            "name": "phone_purity",
-            "left": 451,
-            "top": 155,
-            "width": 1185,
-            "height": 815,
-            "image": "999_phone/purity_bg.jpg",
-        }, 9999);
-        nav.t({
-            type: "zimg",
-            name: "phone_purity",
-            left: 500,
-            top: 200,
-            font: 60,
-            hex: "#000000",
-            text: sex.st[purid].d
-        }, 1);
-        nav.t({
-            type: "zimg",
-            name: "phone_purity",
-            left: 500,
-            top: 300,
-            font: 24,
-            hex: "#000000",
-            text: "Boys: "
-        }, 1);
-        nav.t({
-            type: "zimg",
-            name: "phone_purity",
-            left: 500,
-            top: 350,
-            font: 24,
-            hex: "#000000",
-            text: "Girls: "
-        }, 1);
-        nav.t({
-            type: "zimg",
-            name: "phone_purity",
-            left: 500,
-            top: 400,
-            font: 24,
-            hex: "#000000",
-            text: "Non-binary: "
-        }, 1);
-        nav.t({
-            type: "zimg",
-            name: "phone_purity",
-            left: 650,
-            top: 300,
-            font: 24,
-            hex: "#000000",
-            text: sex.st[purid].ent[0].c
-        }, 1);
-        nav.t({
-            type: "zimg",
-            name: "phone_purity",
-            left: 650,
-            top: 350,
-            font: 24,
-            hex: "#000000",
-            text: sex.st[purid].ent[1].c
-        }, 1);
-        nav.t({
-            type: "zimg",
-            name: "phone_purity",
-            left: 650,
-            top: 400,
-            font: 24,
-            hex: "#000000",
-            text: sex.st[purid].ent[2].c
-        }, 1);
-        nav.t({
-            type: "zimg",
-            name: "phone_purity",
-            left: 750,
-            top: 300,
-            font: 24,
-            hex: "#000000",
-            text: sex.st[purid].ent[0].day === null ? "" : "First time: Day " + sex.st[purid].ent[0].day
-        }, 1);
-        nav.t({
-            type: "zimg",
-            name: "phone_purity",
-            left: 750,
-            top: 350,
-            font: 24,
-            hex: "#000000",
-            text: sex.st[purid].ent[1].day === null ? "" : "First time: Day " + sex.st[purid].ent[1].day
-        }, 1);
-        nav.t({
-            type: "zimg",
-            name: "phone_purity",
-            left: 750,
-            top: 400,
-            font: 24,
-            hex: "#000000",
-            text: sex.st[purid].ent[2].day === null ? "" : "First time: Day " + sex.st[purid].ent[2].day
-        }, 1);
-        //who
-        nav.t({
-            type: "zimg",
-            name: "phone_purity",
-            left: 1100,
-            top: 180,
-            font: 24,
-            hex: "#ffffff",
-            text: "Boys: "
-        }, 1);
-        nav.t({
-            type: "zimg",
-            name: "phone_purity",
-            left: 1250,
-            top: 180,
-            font: 24,
-            hex: "#ffffff",
-            text: "Girls: "
-        }, 1);
-        nav.t({
-            type: "zimg",
-            name: "phone_purity",
-            left: 1400,
-            top: 180,
-            font: 24,
-            hex: "#ffffff",
-            text: "Non-binary: "
-        }, 1);
-        for (let i = 0; i < 3; i++) {
-            for (let j = 0; j < sex.st[purid].ent[i].names.length; j++) {
-                nav.t({
-                    type: "zimg",
-                    name: "phone_purity",
-                    left: 1100 + (i * 150),
-                    top: 210 + (j * 25),
-                    font: 20,
-                    hex: "#ffffff",
-                    text: g.trunc(sex.st[purid].ent[i].names[j], 15)
-                }, 1);
-            }
-        }
-    }
+    if (phone.handlePrefixAction(name))
+        return;
     else {
+        if (phone.handleSaveMenuAction(name))
+            return;
+
+        if (phone.handleSettingsAction(name))
+            return;
+
         switch (name) {
             case "phonex_power":
-                phone.clear(true);
+                phone.close();
                 break;
             case "phonex_menu":
                 phone.clear(true);
@@ -1561,12 +1782,10 @@ room9999.btnclick = function (name) {
                 phone.characters();
                 break;
             case "phone_rel_next":
-                phone.charPointer += 18;
-                phone.characters();
+                phone.changeCharacterPage(18);
                 break;
             case "phone_rel_prev":
-                phone.charPointer -= 18;
-                phone.characters();
+                phone.changeCharacterPage(-18);
                 break;
             case "phone_settings":
                 phone.settings();
@@ -1578,532 +1797,51 @@ room9999.btnclick = function (name) {
                 phone.cheat();
                 break;
             case "phone_help":
-                window.open("http://fapforce5.com", "_blank");
+                phone.help();
+                break;
+            case "phone_help_site":
+                phone.openExternal("http://fapforce5.com");
                 break;
             case "phone_patron":
-                window.open("https://www.patreon.com/FF5", "_blank");
+                phone.openExternal("https://www.patreon.com/FF5");
                 break;
             case "phone_thankyou":
                 phone.thankyou();
                 break;
             case "phone_contacts":
                 phone.clear(false);
-                nav.button({
-                    "type": "zimg",
-                    "name": "phone_",
-                    "left": 451,
-                    "top": 155,
-                    "width": 1185,
-                    "height": 815,
-                    "image": "999_phone/call_bg.jpg",
-                }, 9999);
+                phone.showPanel("999_phone/call_bg.jpg");
                 break;
             case "phone_ach":
-                phone.charPointer = 0;
-                room9999.btnclick("phone_ach_draw");
+                phone.showAchievementGroup(0);
                 break;
             case "phone_ach1":
-                phone.charPointer = 1;
-                room9999.btnclick("phone_ach_draw");
+                phone.showAchievementGroup(1);
                 break;
             case "phone_ach2":
-                phone.charPointer = 2;
-                room9999.btnclick("phone_ach_draw");
+                phone.showAchievementGroup(2);
                 break;
             case "phone_ach3":
-                phone.charPointer = 3;
-                room9999.btnclick("phone_ach_draw");
+                phone.showAchievementGroup(3);
                 break;
             case "phone_ach4":
-                phone.charPointer = 4;
-                room9999.btnclick("phone_ach_draw");
+                phone.showAchievementGroup(4);
                 break;
             case "phone_ach_draw":
-                phone.clear(false);
-                var phone_ach_draw;
-                switch (phone.charPointer) {
-                    case 0: phone_ach_draw = ["panties", "bra"]; break;
-                    case 1: phone_ach_draw = ["oral", "anal", "vaginal"]; break;
-                    case 2: phone_ach_draw = ["fuck"]; break;
-                    case 3: phone_ach_draw = ["event", "school", "pinkroom"]; break;
-                    case 4: phone_ach_draw = ["end"]; break;
-                    default: phone_ach_draw = []; // Fallback so .includes() doesn't crash
-                }
-                nav.button({
-                    "type": "zimg",
-                    "name": "phone_",
-                    "left": 451,
-                    "top": 155,
-                    "width": 1185,
-                    "height": 815,
-                    "image": "999_phone/Achievements_bg.jpg",
-                }, 9999);
-                nav.t({
-                    type: "zbtn",
-                    name: "phone_ach",
-                    left: 550,
-                    top: 800,
-                    font: 30,
-                    hex: "#ffffff",
-                    text: "Clothing"
-                }, 9999);
-                nav.t({
-                    type: "zbtn",
-                    name: "phone_ach1",
-                    left: 750,
-                    top: 800,
-                    font: 30,
-                    hex: "#ffffff",
-                    text: "Sex"
-                }, 9999);
-                nav.t({
-                    type: "zbtn",
-                    name: "phone_ach2",
-                    left: 950,
-                    top: 800,
-                    font: 30,
-                    hex: "#ffffff",
-                    text: "Events"
-                }, 9999);
-                nav.t({
-                    type: "zbtn",
-                    name: "phone_ach3",
-                    left: 1150,
-                    top: 800,
-                    font: 30,
-                    hex: "#ffffff",
-                    text: "Other"
-                }, 9999);
-                nav.t({
-                    type: "zbtn",
-                    name: "phone_ach4",
-                    left: 1350,
-                    top: 800,
-                    font: 30,
-                    hex: "#ffffff",
-                    text: "Endings"
-                }, 9999);
-                
-                let newAchList = trophy.st
-                    // 1. Filter: Only keep items whose group is in the current draw list
-                    .filter(item => phone_ach_draw.includes(item.group))
-
-                    // 2. Sort: First by the group's position in phone_ach_draw, then by .o
-                    .sort((a, b) => {
-                        const indexA = phone_ach_draw.indexOf(a.group);
-                        const indexB = phone_ach_draw.indexOf(b.group);
-
-                        // If groups are different, sort by their order in phone_ach_draw
-                        if (indexA !== indexB) {
-                            return indexA - indexB;
-                        }
-
-                        // If groups are the same, sort by the .o property
-                        return a.o - b.o;
-                    });
-                for (let i = 0; i < newAchList.length; i++) {
-                    if (newAchList[i].ach) {
-                        nav.button({
-                            "type": "zimg",
-                            "name": "phone_",
-                            "left": (i % 3 * 380) + 485,
-                            "top": 200 + (Math.floor(i / 3) * 100),
-                            "width": 350,
-                            "height": 84,
-                            "image": "999_phone/ach/" + newAchList[i].img,
-                        }, 9999);
-                        nav.t({
-                            type: "zimg",
-                            name: "phone_",
-                            "left": (i % 3 * 380) + 580,
-                            "top": 250 + (Math.floor(i / 3) * 100),
-                            font: 16,
-                            hex: "#cccccc",
-                            text: sc.replace(newAchList[i].display)
-                        }, 9999);
-                    }
-                    else {
-                        nav.button({
-                            "type": "zimg",
-                            "name": "phone_",
-                            "left": (i % 3 * 380) + 485,
-                            "top": 200 + (Math.floor(i / 3) * 100),
-                            "width": 350,
-                            "height": 84,
-                            "image": "999_phone/ach/x.webp",
-                        }, 9999);
-                        nav.t({
-                            type: "zimg",
-                            name: "phone_",
-                            "left": (i % 3 * 380) + 580,
-                            "top": 250 + (Math.floor(i / 3) * 100),
-                            font: 16,
-                            hex: "#cccccc",
-                            text: "Not Achieved"
-                        }, 9999);
-                    }
-                    nav.t({
-                        type: "zimg",
-                        name: "phone_",
-                        "left": (i % 3 * 380) + 580,
-                        "top": 210 + (Math.floor(i / 3) * 100),
-                        font: 20,
-                        hex: "#ffffff",
-                        text: sc.replace(newAchList[i].title)
-                    }, 9999);
-                    
-                }
+                phone.drawAchievements();
                 break;
             case "phone_time":
                 phone.passtime();
                 break;
-            case "phone_setting_diff0":
-            case "phone_setting_diff1":
-            case "phone_setting_diff2":
-                gv.set("difficulty", parseInt(name.replace("phone_setting_diff", "")));
-                phone.settings();
-                break;
-            case "phone_setting_clock12":
-            case "phone_setting_clock24":
-                gv.set("clock24", name.replace("phone_setting_clock", ""));
-                phone.settings();
-                break;
-            case "phone_setting_encM":
-                gv.set("encM", !gv.get("encM"));
-                phone.settings();
-                break;
-            case "phone_setting_encF":
-                gv.set("encF", !gv.get("encF"));
-                phone.settings();
-                break;
-            case "phone_setting_encBeast":
-                gv.set("encBeast", !gv.get("encBeast"));
-                phone.settings();
-                break;
-            case "phone_setting_encMyth":
-                gv.set("encMyth", !gv.get("encMyth"));
-                phone.settings();
-                break;
-            case "phone_setting_d_on":
-                gv.set("transformation", "voluntary");
-                phone.settings();
-                break;
-            case "phone_setting_d_off":
-                gv.set("transformation", "voluntaryoff");
-                phone.settings();
-                break;
-            case "phone_setting_m":
-            case "phone_setting_f":
-            case "phone_setting_a":
-                gv.set("pronouns", name.replace("phone_setting_", ""));
-                phone.settings();
-                break;
-            case "phone_setting_d_auto":
-                gv.set("transformation", "forced");
-                phone.settings();
-                break;
-            case "phone_save_save_0":
-            case "phone_save_save_1":
-            case "phone_save_save_2":
-            case "phone_save_save_3":
-            case "phone_save_save_4":
-            case "phone_save_save_5":
-            case "phone_save_save_6":
-            case "phone_save_save_7":
-            case "phone_save_save_8":
-                var saveID = name.replace("phone_save_save_", "");
-                menu.save('HatMP_' + saveID, true);
-                phone.saveMenu();
-                break;
-            case "phone_save_replace_0":
-            case "phone_save_replace_1":
-            case "phone_save_replace_2":
-            case "phone_save_replace_3":
-            case "phone_save_replace_4":
-            case "phone_save_replace_5":
-            case "phone_save_replace_6":
-            case "phone_save_replace_7":
-            case "phone_save_replace_8":
-                let replaceID = name.replace("phone_save_replace_", "");
-                nav.button({
-                    "type": "zimg",
-                    "name": "phone_replace_verify",
-                    "left": 0,
-                    "top": 0,
-                    "width": 1920,
-                    "height": 1080,
-                    "image": "999_phone/verify.png",
-                }, 9999);
-
-                nav.t({
-                    type: "zimg",
-                    name: "phone_",
-                    left: 650,
-                    top: 400,
-                    font: 30,
-                    hex: "#ffffff",
-                    text: "Are you sure you wish to overwrite save: "
-                }, 1);
-                nav.t({
-                    type: "zimg",
-                    name: "phone_",
-                    left: 650,
-                    top: 450,
-                    font: 30,
-                    hex: "#ffffff",
-                    text: $(".room-img[data-name='phone_save_load_name_" + replaceID + "']").text()
-                }, 1);
-                nav.button({
-                    "type": "zbtn",
-                    "name": "phone_save_replace_verify_" + replaceID,
-                    "left": 650,
-                    "top": 600,
-                    "width": 250,
-                    "height": 100,
-                    "image": "999_phone/save.png",
-                }, 9999);
-                nav.button({
-                    "type": "zbtn",
-                    "name": "phone_save_load_cancel",
-                    "left": 1030,
-                    "top": 600,
-                    "width": 250,
-                    "height": 100,
-                    "image": "999_phone/cancel_grey.png",
-                }, 9999);
-                break;
-            case "phone_save_replace_verify_0":
-            case "phone_save_replace_verify_1":
-            case "phone_save_replace_verify_2":
-            case "phone_save_replace_verify_3":
-            case "phone_save_replace_verify_4":
-            case "phone_save_replace_verify_5":
-            case "phone_save_replace_verify_6":
-            case "phone_save_replace_verify_7":
-            case "phone_save_replace_verify_8":
-                let replaceVerifyID = name.replace("phone_save_replace_verify_", "");
-                menu.saveDel('HatMP_' + replaceVerifyID);
-                menu.save('HatMP_' + replaceVerifyID, true);
-                phone.saveMenu();
-                break;
-            case "phone_save_load_0":
-            case "phone_save_load_1":
-            case "phone_save_load_2":
-            case "phone_save_load_3":
-            case "phone_save_load_4":
-            case "phone_save_load_5":
-            case "phone_save_load_6":
-            case "phone_save_load_7":
-            case "phone_save_load_8":
-            case "phone_save_load_9":
-                var loadId = name.replace("phone_save_load_", "");
-                if (g.newLoad) {
-                    chat(-1, 0);
-                    menu.load('HatMP_' + loadId);
-                }
-                else {
-                    nav.button({
-                        "type": "zimg",
-                        "name": "phone_load_verify",
-                        "left": 0,
-                        "top": 0,
-                        "width": 1920,
-                        "height": 1080,
-                        "image": "999_phone/verify.png",
-                    }, 9999);
-
-                    nav.t({
-                        type: "zimg",
-                        name: "phone_",
-                        left: 750,
-                        top: 400,
-                        font: 30,
-                        hex: "#ffffff",
-                        text: "Are you sure you wish to load: "
-                    }, 1);
-                    nav.t({
-                        type: "zimg",
-                        name: "phone_",
-                        left: 650,
-                        top: 450,
-                        font: 30,
-                        hex: "#ffffff",
-                        text: $(".room-img[data-name='phone_save_load_name_" + loadId + "']").text()
-                    }, 1);
-                    nav.button({
-                        "type": "zbtn",
-                        "name": "phone_save_load_verify_" + loadId,
-                        "left": 650,
-                        "top": 600,
-                        "width": 250,
-                        "height": 100,
-                        "image": "999_phone/load.png",
-                    }, 9999);
-                    nav.button({
-                        "type": "zbtn",
-                        "name": "phone_save_load_cancel",
-                        "left": 1030,
-                        "top": 600,
-                        "width": 250,
-                        "height": 100,
-                        "image": "999_phone/cancel.png",
-                    }, 9999); nav.button({
-                        "type": "zimg",
-                        "name": "phone_load_verify",
-                        "left": 0,
-                        "top": 0,
-                        "width": 1920,
-                        "height": 1080,
-                        "image": "999_phone/verify.png",
-                    }, 9999);
-
-                    nav.t({
-                        type: "zimg",
-                        name: "phone_",
-                        left: 750,
-                        top: 400,
-                        font: 30,
-                        hex: "#ffffff",
-                        text: "Are you sure you wish to load: "
-                    }, 1);
-                    nav.t({
-                        type: "zimg",
-                        name: "phone_",
-                        left: 650,
-                        top: 450,
-                        font: 30,
-                        hex: "#ffffff",
-                        text: $(".room-img[data-name='phone_save_load_name_" + loadId + "']").text()
-                    }, 1);
-                    nav.button({
-                        "type": "zbtn",
-                        "name": "phone_save_load_verify_" + loadId,
-                        "left": 650,
-                        "top": 600,
-                        "width": 250,
-                        "height": 100,
-                        "image": "999_phone/load.png",
-                    }, 9999);
-                    nav.button({
-                        "type": "zbtn",
-                        "name": "phone_save_load_cancel",
-                        "left": 1030,
-                        "top": 600,
-                        "width": 250,
-                        "height": 100,
-                        "image": "999_phone/cancel.png",
-                    }, 9999);
-
-                }
-                break;
-            case "phone_save_load_cancel":
-                phone.saveMenu();
-                break;
-            case "phone_save_load_verify_0":
-            case "phone_save_load_verify_1":
-            case "phone_save_load_verify_2":
-            case "phone_save_load_verify_3":
-            case "phone_save_load_verify_4":
-            case "phone_save_load_verify_5":
-            case "phone_save_load_verify_6":
-            case "phone_save_load_verify_7":
-            case "phone_save_load_verify_8":
-            case "phone_save_load_verify_9":
-                var loadverifyId = name.replace("phone_save_load_verify_", "");
-                chat(-1, 0);
-                menu.load('HatMP_' + loadverifyId);
-                break;
-            case "phone_save_delete_0":
-            case "phone_save_delete_1":
-            case "phone_save_delete_2":
-            case "phone_save_delete_3":
-            case "phone_save_delete_4":
-            case "phone_save_delete_5":
-            case "phone_save_delete_6":
-            case "phone_save_delete_7":
-            case "phone_save_delete_8":
-                var delId = name.replace("phone_save_delete_", "");
-                nav.button({
-                    "type": "zimg",
-                    "name": "phone_load_verify",
-                    "left": 0,
-                    "top": 0,
-                    "width": 1920,
-                    "height": 1080,
-                    "image": "999_phone/verify.png",
-                }, 9999);
-
-                nav.t({
-                    type: "zimg",
-                    name: "phone_",
-                    left: 750,
-                    top: 400,
-                    font: 30,
-                    hex: "#ffffff",
-                    text: "Are you sure you wish to delete: "
-                }, 1);
-                nav.t({
-                    type: "zimg",
-                    name: "phone_",
-                    left: 650,
-                    top: 450,
-                    font: 30,
-                    hex: "#ffffff",
-                    text: $(".room-img[data-name='phone_save_load_name_" + delId + "']").text()
-                }, 1);
-                nav.button({
-                    "type": "zbtn",
-                    "name": "phone_save_delete_verify_" + delId,
-                    "left": 650,
-                    "top": 600,
-                    "width": 250,
-                    "height": 100,
-                    "image": "999_phone/delete.png",
-                }, 9999);
-                nav.button({
-                    "type": "zbtn",
-                    "name": "phone_save_load_cancel",
-                    "left": 1030,
-                    "top": 600,
-                    "width": 250,
-                    "height": 100,
-                    "image": "999_phone/cancel_grey.png",
-                }, 9999);
-                break;
-            case "phone_save_delete_verify_0":
-            case "phone_save_delete_verify_1":
-            case "phone_save_delete_verify_2":
-            case "phone_save_delete_verify_3":
-            case "phone_save_delete_verify_4":
-            case "phone_save_delete_verify_5":
-            case "phone_save_delete_verify_6":
-            case "phone_save_delete_verify_7":
-            case "phone_save_delete_verify_8":
-                var deleteId = name.replace("phone_save_delete_verify_", "");
-                menu.saveDel('HatMP_' + deleteId);
-                phone.saveMenu();
-                break;
-            case "phone_save_export_0":
-            case "phone_save_export_1":
-            case "phone_save_export_2":
-            case "phone_save_export_3":
-            case "phone_save_export_4":
-            case "phone_save_export_5":
-            case "phone_save_export_6":
-            case "phone_save_export_7":
-            case "phone_save_export_8":
-            case "phone_save_export_9":
-                var exportId = name.replace("phone_save_export_", "");
-                char.export(exportId);
-                break;
             case "phone_save_import":
-                $('#room-export-text').hide();
-                $('#room-import-text').show();
-                $("#room_export").slideDown();
-                $("#room_export_data").val('');
-                $('#room_export_load').show();
-                $('#room_export_load_file').show();
-                $('#room_export_file').hide();
+                char.showExportDialog({
+                    data: '',
+                    showLoad: true,
+                    showLoadFile: true,
+                    showSaveFile: false,
+                    showExportText: false,
+                    showImportText: true
+                });
                 break;
             case "phone_purity":
                 phone.purity();
@@ -2113,3 +1851,17 @@ room9999.btnclick = function (name) {
         }
     }
 };
+
+invoker.registerRoom(9999, room9999);
+
+$(document).bind('keyup', function (e) {
+    if (e.which !== 27 || e.altKey || e.ctrlKey || e.metaKey)
+        return;
+    if (char.isTypingTarget(e.target))
+        return;
+    if ($('#room_export').is(":visible"))
+        return;
+
+    if (phone.close())
+        e.preventDefault();
+});

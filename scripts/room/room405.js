@@ -77,7 +77,7 @@ room405.chatcatch = function (callback) {
                 if ($(this).data('type') === "cancel")
                     char.room(405);
                 else
-                    room405.btnclick($(this).data('type'));
+                    invoker.invokeCurrent("btnclick", $(this).data('type'));
             });
             break;
         case "dye":
@@ -115,7 +115,7 @@ room405.chatcatch = function (callback) {
                             return;
                         }
                     }
-                    room405.btnclick(thisType);
+                    invoker.invokeCurrent("btnclick", thisType);
 
                 }
             });
@@ -144,7 +144,7 @@ room405.chatcatch = function (callback) {
                 if ($(this).data('type') === "cancel")
                     char.room(405);
                 else
-                    room405.btnclick($(this).data('type'));
+                    invoker.invokeCurrent("btnclick", $(this).data('type'));
             });
             break;
         default:
@@ -214,3 +214,5 @@ room405.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(405, room405);

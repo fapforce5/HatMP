@@ -328,11 +328,11 @@ room901.chatcatch = function (callback) {
             char.room(901);
             break;
         case "cindyInc1":
-            room901.chatcatch("reset");
+            invoker.invokeCurrent("chatcatch", "reset");
             break;
         case "cindyInc2":
             sc.completeMissionTask("cindy", "fuck", 0);
-            room901.chatcatch("reset");
+            invoker.invokeCurrent("chatcatch", "reset");
             break;
         case "lola-2":
             char.addtime(120);
@@ -431,7 +431,7 @@ room901.chatcatch = function (callback) {
             break;
         case "boy1":
             sc.completeMissionTask("tim", "fuck", 0);
-            room901.chatcatch("reset");
+            invoker.invokeCurrent("chatcatch", "reset");
             break;
         case "leave":
             char.room(0);
@@ -813,3 +813,5 @@ room901.chat = function(chatID){
 
     return cArray[chatID];
 };
+
+invoker.registerRoom(901, room901);

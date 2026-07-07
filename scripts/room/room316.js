@@ -41,7 +41,7 @@ room316.main = function () {
             }
             else if (dogLevel > 6 && g.rand(0, 5) === 0) {
                 displayMenus = false;
-                room316.btnclick("dsex0");
+                invoker.invokeCurrent("btnclick", "dsex0");
             }
         }
 
@@ -110,7 +110,7 @@ room316.main = function () {
                 chat(114, 316);
             }
             else if (cl.hasoutfit("nude") === null) {
-                room316.chatcatch("picklock1");
+                invoker.invokeCurrent("chatcatch", "picklock1");
                 return;
             }
             else {
@@ -168,7 +168,7 @@ room316.main = function () {
                 nav.button(v, 316);
             });
             nav.buildnav(navList);
-            room316.btnclick("buildMenu");
+            invoker.invokeCurrent("btnclick", "buildMenu");
         }
     }
     else {
@@ -233,7 +233,7 @@ room316.main = function () {
             tv: false,
             webcam: webcam
         };
-        room316.btnclick("buildMenuCuck");
+        invoker.invokeCurrent("btnclick", "buildMenuCuck");
     }
         //else if (sc.getMission("janice", "cuck").inProgress) {
     //    if (sc.taskGetStep("janice", "dog") === 2) {
@@ -260,7 +260,6 @@ room316.main = function () {
     //            }
     //            else {
     //                g.pass = { money: false, dog: false, pb: false, talk: false, dick: false, datr: false };
-    //                room316.btnclick("buildMenuCuck");
     //            }
     //            break;
     //    }
@@ -290,7 +289,6 @@ room316.main = function () {
     //    }
     //    else {
     //        g.pass = { money: false, dog: false, pb: false, talk: false, dick: false, datr: false, webcam: daily.get("janiceWebcam") };
-    //        room316.btnclick("buildMenuCuck");
     //        return;
     //    } 
     //}
@@ -476,7 +474,7 @@ room316.btnclick = function (name) {
                 char.room(0);
             else {
                 if (dogLevel > 6 && !daily.get("dsex")) {
-                    room316.btnclick("dsex0");
+                    invoker.invokeCurrent("btnclick", "dsex0");
                 }
                 else {
                     chat(800, 316);
@@ -860,11 +858,11 @@ room316.btnclick = function (name) {
             break;
         case "datr_next":
             g.internal.s += 4;
-            room316.btnclick("datr");
+            invoker.invokeCurrent("btnclick", "datr");
             break;
         case "datr_prev":
             g.internal.s -= 4;
-            room316.btnclick("datr");
+            invoker.invokeCurrent("btnclick", "datr");
             break;
         case "datr_mike":
         case "datr_albert": 
@@ -1094,9 +1092,9 @@ room316.chatcatch = function (callback) {
             break;
         case "buildMenu":
             if(sc.getMission("janice", "femdom").notStarted)
-                room316.btnclick("buildMenu");
+                invoker.invokeCurrent("btnclick", "buildMenu");
             else
-                room316.btnclick("buildMenuCuck");
+                invoker.invokeCurrent("btnclick", "buildMenuCuck");
             break;
         case "dsex2":
             if (cl.c.chastity === null)
@@ -1143,7 +1141,7 @@ room316.chatcatch = function (callback) {
                 chat(104, 316);
             }
             else {
-                room316.chatcatch("kiss");
+                invoker.invokeCurrent("chatcatch", "kiss");
                 chat(107, 316);
                 return;
             }
@@ -1183,7 +1181,7 @@ room316.chatcatch = function (callback) {
                 chat(113, 316);
             }
             else {
-                room316.btnclick("buildMenu");
+                invoker.invokeCurrent("btnclick", "buildMenu");
                 //nav.bg("316_livingroom/task4_4.jpg");
                 //daily.set("janice");
                 //chat(134, 316);
@@ -1241,7 +1239,6 @@ room316.chatcatch = function (callback) {
         //    sc.completeMissionTask("janice", "cuck", 3);
         //    char.addtime(15);
         //    g.popUpNotice("You can now choose her date. ");
-        //    room316.btnclick("buildMenuCuck");
         //    break;
         case "bedroom":
             nav.killall();
@@ -1257,12 +1254,12 @@ room316.chatcatch = function (callback) {
             nav.killall();
             nav.bg("316_livingroom/phoneBg.jpg");
             g.internal = { s: 0, d: "" };
-            room316.btnclick("datr");
+            invoker.invokeCurrent("btnclick", "datr");
             break;
         case "datrScroll1":
             nav.killall();
             nav.bg("316_livingroom/phoneBg.jpg");
-            room316.btnclick("datr");
+            invoker.invokeCurrent("btnclick", "datr");
             break;
         case "failJaniceDog":
             sc.completeMission("janice", "dog-x", false);
@@ -3011,3 +3008,5 @@ room316.chat = function (chatID) {
             return [];
     }
 };
+
+invoker.registerRoom(316, room316);

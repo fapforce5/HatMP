@@ -120,21 +120,21 @@ room221.btnclick = function (name) {
                 { n: "notes", i: "notes.png" },
                 { n: "pics", i: "pics.png" }
             ];
-            room221.btnclick("drawScreen");
+            invoker.invokeCurrent("btnclick", "drawScreen");
             break;
         case "notes":
             g.internal = {
                 b: "main",
                 i: "notes.jpg"
             };
-            room221.btnclick("drawBG");
+            invoker.invokeCurrent("btnclick", "drawBG");
             break;
         case "sch":
             g.internal = {
                 b: "main",
                 i: "sch.jpg"
             };
-            room221.btnclick("drawBG");
+            invoker.invokeCurrent("btnclick", "drawBG");
             $.each(g.pass.events, function (i, v) {
                 nav.t({
                     type: "img",
@@ -161,7 +161,7 @@ room221.btnclick = function (name) {
                 { n: "pic9", i: "img9.png" },
                 { n: "pic10", i: "img10.png" },
             ];
-            room221.btnclick("drawScreen");
+            invoker.invokeCurrent("btnclick", "drawScreen");
             break;
         case "pic1":
         case "pic2":
@@ -177,7 +177,7 @@ room221.btnclick = function (name) {
                 b: "pics",
                 i: name + ".jpg"
             };
-            room221.btnclick("drawBG");
+            invoker.invokeCurrent("btnclick", "drawBG");
             break;
         case "passtime":
             nav.killall();
@@ -192,7 +192,7 @@ room221.btnclick = function (name) {
                     chat(22, 221);
                 }
                 else {
-                    room221.btnclick(g.pass.events[0].btnclick);
+                    invoker.invokeCurrent("btnclick", g.pass.events[0].btnclick);
                 }
 
             }
@@ -328,7 +328,7 @@ room221.chatcatch = function (callback) {
                 "height": 233,
                 "image": "221_recip/passtime.png"
             }, 221);
-            room221.btnclick("main");
+            invoker.invokeCurrent("btnclick", "main");
             break;
         case "lunch":
             missy.didJob(3, 1, null);
@@ -378,12 +378,14 @@ room221.chatcatch = function (callback) {
             g.pass.t++;
             if (g.pass.events.length > 0)
                 g.pass.events.splice(0, 1);
-            room221.chatcatch("start");
+            invoker.invokeCurrent("chatcatch", "start");
             break;
         default:
             break;
     }
 };
+
+invoker.registerRoom(221, room221);
 
 room221.chat = function (chatID) {
     if (chatID === 999) {
