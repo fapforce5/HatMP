@@ -2,7 +2,7 @@
 var room6 = {};
 room6.main = function () {
     g.internal = q3.list();
-    room6.chatcatch("drawmain");
+    invoker.invokeCurrent("chatcatch", "drawmain");
 };
 
 //room6.getNameList = function () {
@@ -49,26 +49,26 @@ room6.btnclick = function (name) {
         }
         else if (g.internal.level === 1) {
             g.internal.level = 0;
-            room6.chatcatch("drawmain");
+            invoker.invokeCurrent("chatcatch", "drawmain");
         }
         else if (g.internal.level === 2) {
             g.internal.level = 1;
             nav.killall();
-            room6.chatcatch("drawscreen");
+            invoker.invokeCurrent("chatcatch", "drawscreen");
         }
         else if (g.internal.level === 3) {
             g.internal.level = 1;
             nav.killall();
-            room6.chatcatch("drawinactive");
+            invoker.invokeCurrent("chatcatch", "drawinactive");
         }
     }
     else if (name === "zzzactive") {
         nav.killall();
-        room6.chatcatch("drawscreen");
+        invoker.invokeCurrent("chatcatch", "drawscreen");
     }
     else if (name === "zzzinactive") {
         nav.killall();
-        room6.chatcatch("drawinactive");
+        invoker.invokeCurrent("chatcatch", "drawinactive");
     }
     else if (name === "zzznotes") {
         g.internal.level = 1;
@@ -562,3 +562,5 @@ room6.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(6, room6);

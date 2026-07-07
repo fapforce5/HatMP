@@ -37,7 +37,7 @@ room217.chatcatch = function (callback) {
             break;
         case "disrobeVoluntary":
             levels.mod("sub", 20);
-            room217.chatcatch("disrobe");
+            invoker.invokeCurrent("chatcatch", "disrobe");
             break;
         case "disrobe":
             nav.bg("217_punish/punishStart.jpg");
@@ -88,7 +88,7 @@ room217.chatcatch = function (callback) {
             break;
         case "punishmentEndDress":
             cl.undo();
-            room217.chatcatch("punishmentEnd");
+            invoker.invokeCurrent("chatcatch", "punishmentEnd");
             break;
         case "punishmentEndCheckEvent":
             if (g.pass === "lic") {
@@ -355,3 +355,5 @@ room217.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(217, room217);

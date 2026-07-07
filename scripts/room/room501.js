@@ -108,47 +108,47 @@ room501.btnclick = function (name) {
                 switch (friends) {
                     case 0:
                         nav.killall();
-                        room501.chatcatch("zForward");
+                        invoker.invokeCurrent("chatcatch", "zForward");
                         sc.completeMissionTask("zoey", "friends", 0);
                         daily.set("zoeytalk");
                         chat(0, 501);
                         break;
                     case 1:
                         nav.killall();
-                        room501.chatcatch("zLook");
+                        invoker.invokeCurrent("chatcatch", "zLook");
                         sc.completeMissionTask("zoey", "friends", 1);
                         daily.set("zoeytalk");
                         chat(6, 501);
                         break;
                     case 2:
                         nav.killall();
-                        room501.chatcatch("zLook");
+                        invoker.invokeCurrent("chatcatch", "zLook");
                         chat(8, 501);
                         break;
                     case 3:
                         nav.killall();
-                        room501.chatcatch("zLook");
+                        invoker.invokeCurrent("chatcatch", "zLook");
                         sc.completeMissionTask("zoey", "friends", 3);
                         daily.set("zoey");
                         chat(17, 501);
                         break;
                     case 4:
                         nav.killall();
-                        room501.chatcatch("zLook");
+                        invoker.invokeCurrent("chatcatch", "zLook");
                         sc.completeMissionTask("zoey", "friends", 4);
                         daily.set("zoeytalk");
                         chat(40, 501);
                         break;
                     case 5:
                         nav.killall();
-                        room501.chatcatch("zLook");
+                        invoker.invokeCurrent("chatcatch", "zLook");
                         sc.completeMissionTask("zoey", "friends", 4);
                         daily.set("zoeytalk");
                         chat(64, 501);
                         break;
                     case 6:
                         nav.killall();
-                        room501.chatcatch("zLook");
+                        invoker.invokeCurrent("chatcatch", "zLook");
                         sc.completeMissionTask("zoey", "friends", 4);
                         daily.set("zoeytalk");
                         chat(64, 501);
@@ -158,7 +158,7 @@ room501.btnclick = function (name) {
             else if (sc.getMission("zoey", "cheating").inProgress) {
                 if (!sc.getMissionTask("zoey", "cheating", 0).complete) {
                     nav.killall();
-                    room501.chatcatch("zLook");
+                    invoker.invokeCurrent("chatcatch", "zLook");
                     chat(800, 501);
                 }
             }
@@ -168,27 +168,27 @@ room501.btnclick = function (name) {
                     case -1:
                     case 0:
                         nav.killall();
-                        room501.chatcatch("zLook");
+                        invoker.invokeCurrent("chatcatch", "zLook");
                         chat(98, 501);
                         break;
                     case 1:
                         nav.killall();
-                        room501.chatcatch("zLook");
+                        invoker.invokeCurrent("chatcatch", "zLook");
                         chat(99, 501);
                         break;
                     case 2:
                         nav.killall();
-                        room501.chatcatch("zLook");
+                        invoker.invokeCurrent("chatcatch", "zLook");
                         chat(100, 501);
                         break;
                     case 3:
                         nav.killall();
-                        room501.chatcatch("zLook");
+                        invoker.invokeCurrent("chatcatch", "zLook");
                         chat(101, 501);
                         break;
                     case 4:
                         nav.killall();
-                        room501.chatcatch("zLookx");
+                        invoker.invokeCurrent("chatcatch", "zLookx");
                         chat(102, 501);
                         break;
                 }
@@ -429,7 +429,7 @@ room501.btnclick = function (name) {
             g.internal++;
             break;
         case "cancelPeek":
-            room501.chatcatch("cheating6");
+            invoker.invokeCurrent("chatcatch", "cheating6");
             break;
         case "pussy3":
             if (g.internal === 6) {
@@ -619,7 +619,7 @@ room501.chatcatch = function (callback) {
             break;
         case "vaginaHide":
             nav.killbutton("vagina");
-            room501.chatcatch("zForward");
+            invoker.invokeCurrent("chatcatch", "zForward");
             //scc.love("zoey", -5, 100);
             break;
         case "munchTheTwat":
@@ -677,19 +677,19 @@ room501.chatcatch = function (callback) {
             sc.completeMission("zoey", "friends");
             sc.startMission("zoey", "cheating");
             daily.set("zoey");
-            room501.chatcatch("zLook");
+            invoker.invokeCurrent("chatcatch", "zLook");
             break;
         case "cheat2":
             sc.modLevel("zoey", 20, 5);
             sc.completeMission("zoey", "friends");
             sc.startMission("zoey", "cheating");
             daily.set("zoey");
-            room501.chatcatch("zSuprise");
+            invoker.invokeCurrent("chatcatch", "zSuprise");
             break;
         case "noCheat":
             sc.modLevel("zoey", -50, 999);
             daily.set("zoey");
-            room501.chatcatch("zLook");
+            invoker.invokeCurrent("chatcatch", "zLook");
             break;
         case "chloeLeave":
             daily.set("zoey");
@@ -784,7 +784,7 @@ room501.chatcatch = function (callback) {
         case "5midway":
             g.dt = new Date(g.dt.getFullYear(), g.dt.getMonth(), g.dt.getDate(), 23, 0, 0, 0);
             char.addtime(10);
-            room501.chatcatch("zShock");
+            invoker.invokeCurrent("chatcatch", "zShock");
             break;
         case "phoneRandom":
         case "phone69":
@@ -837,7 +837,7 @@ room501.chatcatch = function (callback) {
             break;
         case "checkLove":
             nav.killall();
-            nav.bg("501_jadaGame/game.jpg");
+            nav.bg("501_jadaGame/501_game.jpg");
             chat(110, 501);
             break;
         case "gameEnd":
@@ -2003,3 +2003,5 @@ room501.chat = function (chatID) {
             return [];
     }
 };
+
+invoker.registerRoom(501, room501);

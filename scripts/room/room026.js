@@ -1,5 +1,37 @@
 ﻿//Living Room
 var room26 = {};
+room26.landlordOverlayButtons = [
+    "chatbg",
+    "chat_cancel",
+    "sit_landlord",
+    "sit_dick",
+    "sissy_confess",
+    "chat_landlord",
+    "chat_landlordSissy",
+    "sit_dickSissy",
+    "confess_bigguy",
+    "icon_girl",
+    "icon_paint"
+];
+room26.showLandlordOverlay = function () {
+    nav.button({
+        "type": "img",
+        "name": "chatbg",
+        "left": 0,
+        "top": 0,
+        "width": 1920,
+        "height": 1080,
+        "image": "1001_rand/black_25.png"
+    }, g.roomID);
+};
+room26.selectLandlordOverlayOption = function (name, image, slot) {
+    sc.select(name, image, slot);
+};
+room26.closeLandlordOverlay = function () {
+    $.each(room26.landlordOverlayButtons, function (i, buttonName) {
+        nav.killbutton(buttonName);
+    });
+};
 room26.main = function () {
     var btnList = new Array();
 
@@ -83,46 +115,38 @@ room26.main = function () {
 room26.btnclick = function (name) {
     switch (name) {
         case "landlord":
-            nav.button({
-                "type": "img",
-                "name": "chatbg",
-                "left": 0,
-                "top": 0,
-                "width": 1920,
-                "height": 1080,
-                "image": "1001_rand/black_25.png"
-            }, g.roomID);
+            room26.showLandlordOverlay();
             if (sc.getMission("landlord", "sissy").notStarted) {
                 if (!daily.get("landlordChat")) {
-                    sc.select("chat_landlord", "26_livingRoom/chat_landlord.png", 0);
+                    room26.selectLandlordOverlayOption("chat_landlord", "26_livingRoom/chat_landlord.png", 0);
                 }
                 if (sc.getMissionTask("landlord", "talk", 2).complete) {
-                    sc.select("sit_landlord", "26_livingRoom/icon_tv.png", 1);
-                    sc.select("sit_dick", "26_livingRoom/icon_dick.png", 2);
+                    room26.selectLandlordOverlayOption("sit_landlord", "26_livingRoom/icon_tv.png", 1);
+                    room26.selectLandlordOverlayOption("sit_dick", "26_livingRoom/icon_dick.png", 2);
                 }
 
                 if (sissy.getNumPassed() > 5)
-                    sc.select("sissy_confess", "26_livingRoom/icon_sissy.png", 3);
+                    room26.selectLandlordOverlayOption("sissy_confess", "26_livingRoom/icon_sissy.png", 3);
                 sc.selectCancel("chat_cancel", 4);
             }
             else {
                 if (!daily.get("landlordChat")) {
-                    sc.select("chat_landlordSissy", "26_livingRoom/chat_landlord.png", 0);
+                    room26.selectLandlordOverlayOption("chat_landlordSissy", "26_livingRoom/chat_landlord.png", 0);
                     daily.set("landlordChat");
                 }
-                sc.select("sit_dickSissy", "26_livingRoom/icon_bussy.png", 1);
+                room26.selectLandlordOverlayOption("sit_dickSissy", "26_livingRoom/icon_bussy.png", 1);
                 if (sc.getMissionTask("bigguy", "rent", 2).complete && sc.getMissionTask("bigguy", "rent", 3).notStarted) {
-                    sc.select("confess_bigguy", "26_livingRoom/icon_confess.png", 3);
+                    room26.selectLandlordOverlayOption("confess_bigguy", "26_livingRoom/icon_confess.png", 3);
                 }
-                sc.select("icon_girl", "26_livingRoom/icon_girl.png", 2);
+                room26.selectLandlordOverlayOption("icon_girl", "26_livingRoom/icon_girl.png", 2);
                 if (gv.get("mr_paint") === "mr_blue" || gv.get("mr_paint") === null) {
-                    sc.select("icon_paint", "26_livingRoom/icon_paint.webp", 4);
+                    room26.selectLandlordOverlayOption("icon_paint", "26_livingRoom/icon_paint.webp", 4);
                 }
                 sc.selectCancel("chat_cancel", 5);
             }
             break;
         case "chat_landlordSissy":
-            room26.btnclick("chat_cancel");
+            room26.closeLandlordOverlay();
             switch (sc.taskGetStep("landlord", "sissy")) {
                 case -1:
                 case 0:
@@ -142,24 +166,24 @@ room26.btnclick = function (name) {
             }
             break;
         case "icon_girl":
-            room26.btnclick("chat_cancel");
+            room26.closeLandlordOverlay();
             chat(109, 26);
             break;
         case "sit_dickSissy":
-            room26.btnclick("chat_cancel");
+            room26.closeLandlordOverlay();
             cl.nude();
             chat(101, 26);
             break;
         case "confess_bigguy":
-            room26.btnclick("chat_cancel");
+            room26.closeLandlordOverlay();
             chat(106, 26);
             break;
         case "sissy_confess":
-            room26.btnclick("chat_cancel");
+            room26.closeLandlordOverlay();
             chat(73, 26);
             break;
         case "sit_dick":
-            room26.btnclick("chat_cancel");
+            room26.closeLandlordOverlay();
             if (cl.c.chastity !== null) {
                 sc.modSecret("landlord", 100);
                 chat(59, 26);
@@ -183,20 +207,10 @@ room26.btnclick = function (name) {
             }
             break;
         case "chat_cancel":
-            nav.killbutton("chatbg");
-            nav.killbutton("chat_cancel");
-            nav.killbutton("sit_landlord");
-            nav.killbutton("sit_dick");
-            nav.killbutton("sissy_confess");
-            nav.killbutton("chat_landlord");
-            nav.killbutton("chat_landlordSissy");
-            nav.killbutton("sit_dickSissy");
-            nav.killbutton("confess_bigguy");
-            nav.killbutton("icon_girl");
-            nav.killbutton("icon_paint");
+            room26.closeLandlordOverlay();
             return;
         case "chat_landlord":
-            room26.btnclick("chat_cancel");
+            room26.closeLandlordOverlay();
             daily.set("landlordChat");
             var jobapplyconst = gv.get("jobapplyconst");
             var chatEvent = sc.taskGetStep("landlord", "talk");
@@ -455,7 +469,7 @@ room26.btnclick = function (name) {
             chat(131, 26);
             break;
         case "icon_paint":
-            room26.btnclick("chat_cancel");
+            room26.closeLandlordOverlay();
             chat(149, 26);
             break;
         default:
@@ -687,7 +701,7 @@ room26.chatcatch = function (callback) {
                 }, 26);
                 break;
             case "e_tv":
-                room26.btnclick("e_tv");
+                invoker.invokeCurrent("btnclick", "e_tv");
                 break;
             case "m5":
                 if (sc.getLevel("lola") > 4) {
@@ -768,7 +782,7 @@ room26.chatcatch = function (callback) {
                 nav.kill();
                 gv.set("mr_paint", "mr_pink");
                 char.addtime(180);
-                room10.btnclick("drawRoom");
+                invoker.invoke(10, "btnclick", "drawRoom");
                 nav.button({
                     "type": "img",
                     "name": "ll",
@@ -2352,3 +2366,5 @@ room26.chat = function (chatID) {
             return [];
     }
 };
+
+invoker.registerRoom(26, room26);

@@ -17,11 +17,11 @@ room485.btnclick = function (name) {
     }
     else if (name === "qnext") {
         g.pass += 40;
-        room485.chatcatch("sell");
+        invoker.invokeCurrent("chatcatch", "sell");
     }
     else if (name === "qprev") {
         g.pass -= 40;
-        room485.chatcatch("sell");
+        invoker.invokeCurrent("chatcatch", "sell");
     }
     else if (name === "e_up") {
         if (g.internal.count < inv.master[g.internal.i].count) {
@@ -101,8 +101,8 @@ room485.btnclick = function (name) {
                 inv.master[g.internal.i].entry = false;
         }
         gv.mod("money", inv.master[g.internal.i].buy * g.internal.count);
-        room485.chatcatch("sell");
-        room485.btnclick("c_" + g.internal.i);
+        invoker.invokeCurrent("chatcatch", "sell");
+        invoker.invokeCurrent("btnclick", "c_" + g.internal.i);
     }
     else if (name.startsWith("c_")) {
         let c = parseInt(name.replace("c_", ""));
@@ -394,3 +394,5 @@ room485.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(485, room485);

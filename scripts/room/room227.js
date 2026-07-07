@@ -75,7 +75,7 @@ room227.btnclick = function (name) {
             tEnemy.changeEnergy(energyGains, null, null);
             g.popUpNoticeBottom("You gained " + energyGains + " energy. ");
             g.roomTimeout = setTimeout(function () {
-                room227.chatcatch("counterAction");
+                invoker.invokeCurrent("chatcatch", "counterAction");
             }, g.fight.fighttimer);
             break;
         case "lb_blockkick":
@@ -129,7 +129,7 @@ room227.btnclick = function (name) {
             }
             tEnemy.drawEnemy();
             g.roomTimeout = setTimeout(function () {
-                room227.chatcatch("main");
+                invoker.invokeCurrent("chatcatch", "main");
             }, g.fight.fighttimer);
             break;
         case "lb_slut":
@@ -152,11 +152,7 @@ room227.btnclick = function (name) {
                     //g.fight.e[0].p = "bjpose";
                     //tEnemy.drawEnemy();
                     //tEnemy.changeEnergy(null, -10, { t: "grapple", me: false });
-                    //g.roomTimeout = setTimeout(function () {
-                    //    tEnemy.drawChar("bjpose");
-                    //    room227.chatcatch("main-tain");
-                    //}, g.fight.fighttimer);
-                    room227.btnclick("lb_submitbj");
+                    invoker.invokeCurrent("btnclick", "lb_submitbj");
                 }, g.fight.fightsex);
             }
             else {
@@ -166,7 +162,7 @@ room227.btnclick = function (name) {
                 tEnemy.changeEnergy(null, -10, { t: "grapple", me: false });
                 g.roomTimeout = setTimeout(function () {
                     tEnemy.drawChar("bjpose");
-                    room227.chatcatch("main-tain");
+                    invoker.invokeCurrent("chatcatch", "main-tain");
                 }, g.fight.fightsex);
             }
             break;
@@ -180,7 +176,7 @@ room227.btnclick = function (name) {
                 g.fight.e[0].p = "strip";
                 tEnemy.drawEnemy();
                 g.roomTimeout = setTimeout(function () {
-                    room227.btnclick("lb_submitass");
+                    invoker.invokeCurrent("btnclick", "lb_submitass");
                 }, g.fight.fightsex);
             }
             else {
@@ -190,7 +186,7 @@ room227.btnclick = function (name) {
                 tEnemy.changeEnergy(null, -10, { t: "grapple", me: false });
                 g.roomTimeout = setTimeout(function () {
                     tEnemy.drawChar("asspose");
-                    room227.chatcatch("main-tain");
+                    invoker.invokeCurrent("chatcatch", "main-tain");
                 }, g.fight.fightsex);
             }
             break;
@@ -200,7 +196,7 @@ room227.btnclick = function (name) {
             tEnemy.drawButtonList("close");
             tEnemy.drawChar("stripclothes");
             g.roomTimeout = setTimeout(function () {
-                room227.chatcatch("main");
+                invoker.invokeCurrent("chatcatch", "main");
             }, g.fight.fightsex);
             break;
         case "lb_teabag":
@@ -211,7 +207,7 @@ room227.btnclick = function (name) {
             tEnemy.drawEnemy();
             tEnemy.changeEnergy(null, -10, { t: "grapple", me: true });
             g.roomTimeout = setTimeout(function () {
-                room227.chatcatch("counterAction");
+                invoker.invokeCurrent("chatcatch", "counterAction");
             }, g.fight.fightsex);
                         break;
         case "lb_steal":
@@ -223,7 +219,7 @@ room227.btnclick = function (name) {
             g.fight.e[0].clothingLevel--;
             tEnemy.changeEnergy(null, null, { t: "steal", me: true });
             g.roomTimeout = setTimeout(function () {
-                room227.chatcatch("counterAction");
+                invoker.invokeCurrent("chatcatch", "counterAction");
             }, g.fight.fightsex);
             break;
         case "box0":
@@ -269,7 +265,7 @@ room227.btnclick = function (name) {
                 }
                 tEnemy.drawEnemy();
                 g.roomTimeout2 = setTimeout(function () {
-                    room227.chatcatch("counterAction");
+                    invoker.invokeCurrent("chatcatch", "counterAction");
                 }, g.fight.fighttimer);
             }, g.fight.fighttimer);
             break;
@@ -310,35 +306,35 @@ room227.btnclick = function (name) {
             break;
         case "lb_domfacefuck":
             g.internal = tEnemy.getDomEnemy(name);
-            room227.btnclick("drawDom");
+            invoker.invokeCurrent("btnclick", "drawDom");
             break;
         case "lb_domfist":
             g.internal = tEnemy.getDomEnemy(name);
-            room227.btnclick("drawDom");
+            invoker.invokeCurrent("btnclick", "drawDom");
             break;
         case "lb_domPowerbottom":
             g.internal = tEnemy.getDomEnemy(name);
-            room227.btnclick("drawDom");
+            invoker.invokeCurrent("btnclick", "drawDom");
             break;
         case "lb_domFoot":
             g.internal = tEnemy.getDomEnemy(name);
-            room227.btnclick("drawDom");
+            invoker.invokeCurrent("btnclick", "drawDom");
             break;
         case "lb_domFuckem":
             g.internal = tEnemy.getDomEnemy(name);
-            room227.btnclick("drawDom");
+            invoker.invokeCurrent("btnclick", "drawDom");
             break;
         case "lb_handjob":
             g.internal = tEnemy.getDomEnemy(name);
-            room227.btnclick("drawDom");
+            invoker.invokeCurrent("btnclick", "drawDom");
             break;
         case "lb_domUseMouth":
             g.internal = tEnemy.getDomEnemy(name);
-            room227.btnclick("drawDom");
+            invoker.invokeCurrent("btnclick", "drawDom");
             break;
         case "lb_domEatPussy":
             g.internal = tEnemy.getDomEnemy(name);
-            room227.btnclick("drawDom");
+            invoker.invokeCurrent("btnclick", "drawDom");
             break;
         case "lb_grappleSingleleg":
         case "lb_grappleLapeldrag":
@@ -363,7 +359,7 @@ room227.btnclick = function (name) {
                 g.fight.e[0].p = "block";
                 tEnemy.drawEnemy();
                 g.roomTimeout2 = setTimeout(function () {
-                    room227.chatcatch("counterAction");
+                    invoker.invokeCurrent("chatcatch", "counterAction");
                 }, g.fight.fighttimer);
             }
             break;
@@ -506,3 +502,5 @@ room227.chat = function (chatID) {
             return [];
     }
 };
+
+invoker.registerRoom(227, room227);

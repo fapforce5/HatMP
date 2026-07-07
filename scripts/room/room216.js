@@ -7,7 +7,7 @@ room216.main = function () {
         chat(0, 216);
     }
     else {
-        room216.chatcatch("cumRoom");
+        invoker.invokeCurrent("chatcatch", "cumRoom");
         if (g.internal
             && sc.getMissionTask("zoey", "friends", 2).complete
             && sc.getMissionTask("zoey", "cheating", 3).notStarted) {
@@ -295,3 +295,5 @@ room216.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(216, room216);

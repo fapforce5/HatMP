@@ -136,7 +136,7 @@ room150.btnclick = function (name) {
                     chat(902, 150);
                     break;
                 default:
-                    room150.chatcatch("exposedCleanWait");
+                    invoker.invokeCurrent("chatcatch", "exposedCleanWait");
                     break;
             }
             break;
@@ -664,3 +664,5 @@ room150.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(150, room150);

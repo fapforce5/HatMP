@@ -110,17 +110,17 @@ room27.btnclick = function (name) {
             char.room(27);
             break;
         case "menu":
-            room27.chatcatch("checkmakeup");
+            invoker.invokeCurrent("chatcatch", "checkmakeup");
             break;
         case "reset":
             char.room(27);
             break;
         case "wash":
             cl.clean("face");
-            room27.chatcatch("checkmakeup");
+            invoker.invokeCurrent("chatcatch", "checkmakeup");
             break;
         case "makeup":
-            room27.btnclick("clear");
+            invoker.invokeCurrent("btnclick", "clear");
             if (inv.has("makeup") || g.pass === 57) {
                 sc.select("makeup_natural", "27_mirror/icon_natural.png", 3);
                 if (makeuplevel > 0)
@@ -147,7 +147,7 @@ room27.btnclick = function (name) {
                 chat(1, 27);
             break;
         case "lipstick":
-            room27.btnclick("clear");
+            invoker.invokeCurrent("btnclick", "clear");
             if (inv.has("redl"))
                 sc.select("lipstick_red", "27_mirror/icon_lipstick_red.png", 7);
             if (inv.has("pinkl"))
@@ -162,7 +162,7 @@ room27.btnclick = function (name) {
             sc.selectBack("menu", 13);
             break;
         case "eyeshadow":
-            room27.btnclick("clear");
+            invoker.invokeCurrent("btnclick", "clear");
             if (makeuplevel > 2 || g.pass === 170) {
                 if (inv.get("eyeshadow").count < 1) {
                     chat(28, 27);
@@ -940,3 +940,5 @@ room27.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(27, room27);

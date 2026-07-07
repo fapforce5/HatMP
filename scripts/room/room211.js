@@ -94,7 +94,7 @@ room211.main = function () {
             nav.bg("211_meeting/change.jpg");
         }
         else
-            room211.btnclick("drawGroups");
+            invoker.invokeCurrent("btnclick", "drawGroups");
     }
     else if (sissy.st[10].ach) {
         if (cl.c.shirt !== "sq") {
@@ -108,7 +108,7 @@ room211.main = function () {
             return;
         }
         else
-            room211.btnclick("drawGroups");
+            invoker.invokeCurrent("btnclick", "drawGroups");
     }
     else {
         nav.bg("211_meeting/filled.jpg");
@@ -490,8 +490,8 @@ room211.chatcatch = function (callback) {
             char.room(203);
             break;
         case "initviewtrainee":
-            room211.btnclick("initviewtrainee");
-            room211.btnclick("drawGroups");
+            invoker.invokeCurrent("btnclick", "initviewtrainee");
+            invoker.invokeCurrent("btnclick", "drawGroups");
             break;
         case "moveit":
             g.pass = "moveitMoveIt";
@@ -945,3 +945,5 @@ room211.chat = function (chatID) {
             return [];
     }
 };
+
+invoker.registerRoom(211, room211);

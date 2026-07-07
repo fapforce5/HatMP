@@ -51,7 +51,7 @@ room802.main = function () {
 room802.btnclick = function (name) {
     switch (name) {
         case "game":
-            room802.btnclick("killbtns");
+            invoker.invokeCurrent("btnclick", "killbtns");
             if (g.gethourdecimal() > 19) {
                 chat(3, 802);
             }
@@ -63,7 +63,7 @@ room802.btnclick = function (name) {
             }
             break;
         case "chat":
-            room802.btnclick("killbtns");
+            invoker.invokeCurrent("btnclick", "killbtns");
             if (sc.getMissionTask("ralph", "room", 0).notStarted) {
                 sc.startMission("ralph", "room");
                 sc.completeMissionTask("ralph", "room", 0);
@@ -75,7 +75,7 @@ room802.btnclick = function (name) {
             else if (sissy.st[0].ach && sc.getMissionTask("ralph", "room", 2).notStarted) {
                 if (cl.isCrossdressing()) {
                     sc.completeMissionTask("ralph", "room", 2, false);
-                    room802.btnclick("chat");
+                    invoker.invokeCurrent("btnclick", "chat");
                     return;
                 }
                 sc.completeMissionTask("ralph", "room", 2);
@@ -84,7 +84,7 @@ room802.btnclick = function (name) {
             else if (sissy.st[10].ach && sc.getMissionTask("ralph", "room", 3).notStarted) {
                 if (sissy.st[21].ach) {
                     sc.completeMissionTask("ralph", "room", 3, false);
-                    room802.btnclick("chat");
+                    invoker.invokeCurrent("btnclick", "chat");
                     return;
                 }
                 sc.completeMissionTask("ralph", "room", 3);
@@ -668,3 +668,5 @@ room802.chat = function (chatID) {
             return [];
     }
 };
+
+invoker.registerRoom(802, room802);

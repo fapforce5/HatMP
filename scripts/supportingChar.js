@@ -2004,22 +2004,13 @@ sc.startMission = function (name, missionName, mStatus = 1) {
         sc.setMission(name, missionName, mStatus);
 };
 
-sc.getMission = function (name, missionName) {
+sc.getMissionEntry = function (name, missionName) {
     for (var i = 0; i < sc.charMission.length; i++) {
         if (sc.charMission[i].name === name) {
-
-            for (j = 0; j < sc.charMission[i].mission.length; j++) {
+            for (var j = 0; j < sc.charMission[i].mission.length; j++) {
                 if (sc.charMission[i].mission[j].missionName === missionName) {
-
                     return {
-                        mStatus: sc.charMission[i].mission[j].mStatus,
-                        notStarted: sc.charMission[i].mission[j].mStatus < 1,
-                        inProgress: sc.charMission[i].mission[j].mStatus > 0 && sc.charMission[i].mission[j].mStatus < 100,
-                        complete: sc.charMission[i].mission[j].mStatus > 99,
-                        success: sc.charMission[i].mission[j].mStatus === 100,
-                        fail: sc.charMission[i].mission[j].mStatus === 101,
-                        startedOrComplete: sc.charMission[i].mission[j].mStatus > 0,
-                        startedOrSuccess: sc.charMission[i].mission[j].mStatus > 0 && sc.charMission[i].mission[j].mStatus !== 101,
+                        mission: sc.charMission[i].mission[j],
                         i: i,
                         j: j
                     };
@@ -2032,24 +2023,61 @@ sc.getMission = function (name, missionName) {
     return null;
 };
 
-sc.getMissionTask = function (name, missionName, taskId) {
-    var ml = sc.getMission(name, missionName);
-    let i;
-    for (i = 0; i < sc.charMission[ml.i].mission[ml.j].task.length; i++) {
-        if (sc.charMission[ml.i].mission[ml.j].task[i].id === taskId) {
-            var mstatus = sc.charMission[ml.i].mission[ml.j].task[i].mStatus;
+sc.getMission = function (name, missionName) {
+    var missionEntry = sc.getMissionEntry(name, missionName);
+    if (missionEntry === null)
+        return null;
+
+    var mission = missionEntry.mission;
+    return {
+        mStatus: mission.mStatus,
+        notStarted: mission.mStatus < 1,
+        inProgress: mission.mStatus > 0 && mission.mStatus < 100,
+        complete: mission.mStatus > 99,
+        success: mission.mStatus === 100,
+        fail: mission.mStatus === 101,
+        startedOrComplete: mission.mStatus > 0,
+        startedOrSuccess: mission.mStatus > 0 && mission.mStatus !== 101,
+        i: missionEntry.i,
+        j: missionEntry.j
+    };
+};
+
+sc.getMissionTaskEntry = function (name, missionName, taskId) {
+    var missionInfo = sc.getMission(name, missionName);
+    if (missionInfo === null)
+        return null;
+
+    var taskList = sc.charMission[missionInfo.i].mission[missionInfo.j].task;
+    for (var i = 0; i < taskList.length; i++) {
+        if (taskList[i].id === taskId) {
             return {
-                mStatus: mstatus,
-                notStarted: mstatus < 1,
-                inProgress: mstatus > 0 && mstatus < 100,
-                complete: mstatus > 99,
-                success: mstatus === 100,
-                fail: mstatus === 101,
-                startedOrComplete: mstatus > 0,
+                task: taskList[i],
+                mission: missionInfo,
                 i: i
             };
         }
     }
+
+    return null;
+};
+
+sc.getMissionTask = function (name, missionName, taskId) {
+    var taskEntry = sc.getMissionTaskEntry(name, missionName, taskId);
+    if (taskEntry === null)
+        return null;
+
+    var mstatus = taskEntry.task.mStatus;
+    return {
+        mStatus: mstatus,
+        notStarted: mstatus < 1,
+        inProgress: mstatus > 0 && mstatus < 100,
+        complete: mstatus > 99,
+        success: mstatus === 100,
+        fail: mstatus === 101,
+        startedOrComplete: mstatus > 0,
+        i: taskEntry.i
+    };
 };
 
 sc.taskGetStepEndMission = function (name) {
@@ -2153,14 +2181,9 @@ sc.startMissionTask = function (name, missionName, taskId) {
 };
 
 sc.modMissionTask = function (name, missionName, taskId, modNum) {
-    var ml = sc.getMission(name, missionName);
-
-    for (var k = 0; k < sc.charMission[ml.i].mission[ml.j].task.length; k++) {
-        if (sc.charMission[ml.i].mission[ml.j].task[k].id === taskId) {
-            sc.charMission[ml.i].mission[ml.j].task[k].mStatus += modNum;
-            return;
-        }
-    }
+    var taskEntry = sc.getMissionTaskEntry(name, missionName, taskId);
+    if (taskEntry !== null)
+        taskEntry.task.mStatus += modNum;
 };
 
 sc.completeMission = function (name, missionName, success = true, closed = false) {
@@ -2181,12 +2204,12 @@ sc.taskGetStep = function (name, missionName) {
         return -1;
     else if (ml.fail)
         return -2;
-    for (var k = 0; k < sc.charMission[ml.i].mission[j].task.length; k++) {
-        if (sc.charMission[ml.i].mission[j].task[k].mStatus < 100)
-            return sc.charMission[ml.i].mission[j].task[k].id;
+    for (var k = 0; k < sc.charMission[ml.i].mission[ml.j].task.length; k++) {
+        if (sc.charMission[ml.i].mission[ml.j].task[k].mStatus < 100)
+            return sc.charMission[ml.i].mission[ml.j].task[k].id;
     }
 
-    return sc.charMission[ml.i].mission[j].task.length;
+    return sc.charMission[ml.i].mission[ml.j].task.length;
 };
 
 sc.setMission = function (name, missionName, mStatus) {
@@ -2195,14 +2218,9 @@ sc.setMission = function (name, missionName, mStatus) {
 };
 
 sc.setMissionTask = function (name, missionName, taskId, mStatus) {
-    var ml = sc.getMission(name, missionName);
-
-    for (var k = 0; k < sc.charMission[ml.i].mission[ml.j].task.length; k++) {
-        if (sc.charMission[ml.i].mission[ml.j].task[k].id === taskId) {
-            sc.charMission[ml.i].mission[ml.j].task[k].mStatus = mStatus;
-            return;
-        }
-    }
+    var taskEntry = sc.getMissionTaskEntry(name, missionName, taskId);
+    if (taskEntry !== null)
+        taskEntry.task.mStatus = mStatus;
 }
 
 sc.modSecret = function (name, amount) {
@@ -2285,25 +2303,47 @@ sc.getSecret = function (name) {
 };
 
 sc.getstep = function (name) {
-    //alert("sc.getstep: " + name);
-    console.log("error");
+    var i = sc.i(name);
+    if (i < 0)
+        return 0;
+    return sc.char[i].step;
 };
 
 sc.setstep = function (name, step) {
-    //alert(name + step);
-    console.log("error");
+    if (step < 0) {
+        sc.setEvent(name, step);
+        return;
+    }
+    var i = sc.i(name);
+    if (i < 0)
+        return;
+    sc.char[i].step = step;
 };
 
 sc.incstep = function (name, amount) {
-    console.log("error");
+    var i = sc.i(name);
+    if (i < 0)
+        return;
+    sc.char[i].step += amount;
 };
 
 sc.getEvent = function (name, step) {
-    console.log("error");
+    var i = sc.i(name);
+    if (i < 0)
+        return false;
+    if (!Array.isArray(sc.char[i].events))
+        sc.char[i].events = [];
+    return sc.char[i].events.includes(step);
 };
 
 sc.setEvent = function (name, step) {
-    console.log("error");
+    var i = sc.i(name);
+    if (i < 0)
+        return;
+    if (!Array.isArray(sc.char[i].events))
+        sc.char[i].events = [];
+    if (!sc.char[i].events.includes(step))
+        sc.char[i].events.push(step);
 };
 
 sc.save = function () {
@@ -2317,6 +2357,8 @@ sc.save = function () {
     for (i = 0; i < sc.char.length; i++) {
         retArra.char.push({
             name: sc.char[i].name,
+            step: sc.char[i].step,
+            events: Array.isArray(sc.char[i].events) ? sc.char[i].events.slice() : [],
             c: sc.char[i].c,
             l: sc.char[i].l,
             display: sc.char[i].display,
@@ -2347,6 +2389,8 @@ sc.load = function (ra) {
         for (j = 0; j < sc.char.length; j++) {
             if (ra.char[i].name === sc.char[j].name) {
                 sc.char[j].display = ra.char[i].display;
+                sc.char[j].step = typeof ra.char[i].step === "number" ? ra.char[i].step : 0;
+                sc.char[j].events = Array.isArray(ra.char[i].events) ? ra.char[i].events.slice() : [];
                 sc.char[j].c = ra.char[i].c;
                 sc.char[j].l = ra.char[i].l;
                 if (typeof ra.char[i].secret !== "undefined")
@@ -2788,29 +2832,50 @@ sc.getTimeline = function (char) {
     return retVar;
 };
 
-sc.selectBg = function (name) {
+sc.selectButtonPosition = function (index) {
+    return {
+        left: 400 + ((Math.abs(index) % 2) * 700),
+        top: 200 + (Math.floor(index / 2) * 120)
+    };
+};
+
+sc.drawSelectionButton = function (config, roomId = null) {
+    if (roomId === null)
+        roomId = g.roomID;
+
     nav.button({
-        "type": "img",
-        "name": name,
-        "left": 0,
-        "top": 0,
-        "width": 1920,
-        "height": 1080,
-        "image": "1001_rand/black_25.png"
-    }, g.roomID);
-}
+        "type": config.type,
+        "name": config.name,
+        "left": config.left,
+        "top": config.top,
+        "width": config.width,
+        "height": config.height,
+        "image": config.image
+    }, roomId);
+};
+
+sc.selectBg = function (name) {
+    sc.drawSelectionButton({
+        type: "img",
+        name: name,
+        left: 0,
+        top: 0,
+        width: 1920,
+        height: 1080,
+        image: "1001_rand/black_25.png"
+    });
+};
 
 sc.select = function (name, img, i, sRoomId = null) {
-    if (sRoomId === null)
-        sRoomId = g.roomID;
-    nav.button({
-        "type": "btn",
-        "name": name,
-        "left": 400 + ((Math.abs(i) % 2) * 700),
-        "top": 200 + (Math.floor(i / 2) * 120),
-        "width": 600,
-        "height": 100,
-        "image": img
+    const position = sc.selectButtonPosition(i);
+    sc.drawSelectionButton({
+        type: "btn",
+        name: name,
+        left: position.left,
+        top: position.top,
+        width: 600,
+        height: 100,
+        image: img
     }, sRoomId);
 };
 
@@ -2900,7 +2965,7 @@ sc.phone = function (char) {
                     else if (g.roomID === 10) {
                         g.pass = "phonecall";
                         menu.mClick("close");
-                        room7.main();
+                        invoker.invoke(7, "main");
                     }
                     else {
                         clist = [
@@ -2990,7 +3055,7 @@ sc.phone = function (char) {
                         else {
                             menu.mClick("close");
                             menu.mClick("close");
-                            room450.btnclick("lolaPark");
+                            invoker.invoke(450, "btnclick", "lolaPark");
                         }
                     }
                     else {
@@ -3017,7 +3082,7 @@ sc.phone = function (char) {
                         else {
                             menu.mClick("close");
                             menu.mClick("close");
-                            room450.btnclick("lolaPark12");
+                            invoker.invoke(450, "btnclick", "lolaPark12");
                         }
                     }
                     else {
@@ -3071,39 +3136,129 @@ sc.phoneChat = function (chatList, char) {
 };
 
 
+sc.trivialLookup = {
+    "!blank": { display: "DEV NOTES", image: "blank.png" },
+    "!burlysecurity": { display: "Security", image: "burlySecurity.png" },
+    "!fatdogguy": { display: "Fatty McGillicutty", image: "fatdogguy.png" },
+    "!constworker0": { display: "Tits McGee", image: "constWorker0.png" },
+    "!sanaria": { display: "Sanaria", image: "sanaria.png" },
+    "!philbert": { display: "Philbert", image: "philbert.png" },
+    "!sporty": { display: "Sporty", image: "sporty.png" },
+    "!jeremy": { display: "Jeremy", image: "jeremy.png" },
+    "!martin": { display: "Martin", image: "martin.png" },
+    "!missyguardday": { display: "Guard", image: "missyguardday.png" },
+    "!missyguardnight": { display: "Guard", image: "missyguardnight.png" },
+    "!stoner": { display: "Stoney", image: "stoner.png" },
+    "!cheezy": { display: "Cheezy Poof", image: "cheezy.png" },
+    "!nips": { display: "Nips McTits", image: "nips.png" },
+    "!lep": { display: "Telchar", image: "lep.png" },
+    "bitch": { display: "Bitch Face", image: "bitch.png" },
+    "!twat": { display: "Twaty Honey", image: "twat.png" },
+    "!madison": { display: "Nurse Madison", image: "madison.png" },
+    "!boy": { display: "Boy", image: "boy.png" },
+    "!man": { display: "Man", image: "boy.png" },
+    "!girl": { display: "Girl", image: "girl.png" },
+    "!oldlady": { display: "Old lady", image: "oldlady.png" },
+    "!football": { display: "Player", image: "football.png" },
+    "!waiter": { display: "Waiter", image: "waiter.png" },
+    "!plumber": { display: "Plumber", image: "plumber.png" },
+    "!bill": { display: "Bill", image: "bill.png" },
+    "!punk": { display: "Punk Rocker", image: "punk.png" },
+    "!m": { display: "Marilyn", image: "m.png" },
+    "!peeguy": { display: "Peeing Asshole", image: "peeguy.png" },
+    "!chem": { display: "Chemist", image: "chem.png" },
+    "!rex": { display: "Mr. Rex", image: "rex.png" },
+    "!gamerboy": { display: "Gamer", image: "gamerboy.png" },
+    "!gamergirl": { display: "Miss M.", image: "gamergirl.png" },
+    "!gameman": { display: "Some guy", image: "gameman.png" },
+    "!g": { display: "Geoffrey", image: "g.png" },
+    "!glory": { display: "Glory Hole Customer", image: "unk.png" },
+    "!poppy": { display: "Poppy", image: "poppy.png" },
+    "!juniper": { display: "Juniper", image: "juniper.png" },
+    "!emily": { display: "Emily", image: "emily.png" },
+    "!cindy": { display: "Cindy", image: "cindy.png" },
+    "!missx": { display: "Mistress Anaru", image: "missx.png" },
+    "!jenna": { display: "Jenna", image: "jenna.png" },
+    "!footballguard": { display: "Security", image: "footballguard.png" },
+    "!airwrecka": { display: "Airwrecka", image: "airwrecka.png" },
+    "!boxes": { display: "Mike", image: "boxes.png" },
+    "!bwc": { display: "BWC", image: "bwc.png" },
+    "!bbc": { display: "BBC", image: "bbc.png" },
+    "!deb": { display: "Deb", image: "deb.png" },
+    "!latika": { display: "Latika", image: "latika.png" },
+    "!doofus": { display: "Doofus", image: "doofus.png" },
+    "!custbitch": { display: "Mean girl", image: "custbitch.png" },
+    "!jabari": { display: "Jabari", image: "jabari.png" },
+    "!rape0": { display: "Rapist", image: "rape0.png" },
+    "!rape12": { display: "Big Benny Cox", image: "rape12.png" },
+    "!duo13": { display: "Abbot", image: "duo13.png" },
+    "!duo13a": { display: "Costello", image: "duo13a.png" },
+    "!peggy": { display: "Peggy", image: "peggy.png" },
+    "!caveslave": { display: "Slave", image: "caveslave.png" },
+    "!damselle": { display: "Damselle", image: "damselle.png" },
+    "!futa0": { display: "Domina Dix", image: "futa0.png" },
+    "!futa1": { display: "Jessica", image: "futa1.png" },
+    "!plant": { display: "Vines", image: "futa0.png" },
+    "!granola": { display: "Wild River", image: "granola.png" },
+    "!girl2": { display: "Tits McGee", image: "girl2.png" },
+    "!girl3": { display: "Delilah", image: "girl3.png" },
+    "!girl3a": { display: "Willow", image: "girl3a.png" },
+    "!butler": { display: "The Butler", image: "butler.png" },
+    "!cat": { display: "Kitty", image: "cat.png" },
+    "!jarome": { display: "Jarome", image: "jarome.png" },
+    "!freddy": { display: "Fat Freddy", image: "freddy.png" },
+    "!frank": { display: "Fat Franky", image: "frank.png" },
+    "!wolf": { display: "Dire wolf", image: "wolf.png" },
+    "!crystal": { display: "Crystal", image: "crystal.png" },
+    "!judge": { display: "Reginald Esq. III", image: "judge.png" },
+    "!fatnun": { display: "Sister Edna", image: "fatnun.png" },
+    "!jail0": { display: "Fat dick prisoner", image: "jail0.png" },
+    "!jail1": { display: "Long dick prisoner", image: "jail1.png" },
+    "!music": { display: "", image: "music.png" },
+    "!skank": { display: "Skanky Bitch", image: "skank.png" },
+    "!belle": { display: "Belle", image: "belle.png" },
+    "!seller": { display: "LeRoy", image: "seller.png" },
+    "!dog": { display: "Doggy", image: "dog.png" },
+    "!ann": { display: "Announcer", image: "ann.png" },
+    "!barker": { display: "Barker", image: "barker.png" },
+    "!statue": { display: "Stone Statue", image: "statue.png" },
+    "!security": { display: "Security", image: "security.png" },
+    "!rancher": { display: "Drake", image: "rancher.png" },
+    "!rancher1": { display: "Clint", image: "rancher1.png" },
+    "!hucow": { display: "Hucow", image: "hucow.png" },
+    "!pig": { display: "Piggy", image: "pig.png" },
+    "!horse": { display: "Horse", image: "horse.png" },
+    "!cowboy": { display: "Cowboy", image: "cowboy.png" },
+    "!chef": { display: "Fat Bastard", image: "chef.png" },
+    "!info": { display: "Information", image: "info.png" },
+    "!fatman": { display: "Fat Man", image: "fatman.png" },
+    "!milkmaid": { display: "Milk Maid", image: "milkmaid.png" },
+    "!sissy_ass": { display: "Rim Job Recipient ", image: "sissy_ass.png" },
+    "!sissy_trio": { display: "Pookykins", image: "sissy_trio.png" },
+    "!sissy_duo": { display: "Sapphire", image: "sissy_duo.png" },
+    "!sissy_duo1": { display: "Onyx", image: "sissy_duo1.png" },
+    "!sissy_smoke": { display: "Salvatore", image: "sissy_smoke.png" },
+    "!sissy_tiedup": { display: "Tangerine Tease", image: "sissy_tiedup.png" },
+    "!sissy_toilet": { display: "Toilet", image: "sissy_toilet.png" },
+    "!ledja": { display: "Ledja", image: "ledja.png" },
+    "!nar": { display: "Narrator ", image: "nar.png" },
+    "!wolfgirl": { display: "Snail Trail", image: "wolfgirl.png" },
+    "!tree": { display: "Tree branch", image: "tree.png" }
+};
+
 sc.trivial = function (charname) {
     var name, image;
+    var trivialEntry = sc.trivialLookup[charname];
+    if (trivialEntry)
+        return { display: trivialEntry.display, image: trivialEntry.image };
+
     switch (charname) {
-        case "!blank":
-            name = "DEV NOTES";
-            image = "blank.png";
-            break;
-        case "!burlysecurity":
-            name = "Security";
-            image = "burlySecurity.png";
-            break;
-        case "!fatdogguy":
-            name = "Fatty McGillicutty";
-            image = "fatdogguy.png";
-            break;
-        case "!constworker0":
-            name = "Tits McGee";
-            image = "constWorker0.png";
-            break;
-        case "!sanaria":
-            name = "Sanaria";
-            image = "sanaria.png";
-            break;
         case "!kareem":
             if (sissy.st[10].ach)
                 name = "Kesia"
             else
                 name = "Kareem";
             image = "kareem.png";
-            break;
-        case "!philbert":
-            name = "Philbert";
-            image = "philbert.png";
             break;
         case "!chris":
             if (sissy.st[10].ach)
@@ -3127,416 +3282,6 @@ sc.trivial = function (charname) {
                 name = "Timothy";
             }
             image = "timothy.png";
-            break;
-        case "!sporty":
-            name = "Sporty";
-            image = "sporty.png";
-            break;
-        case "!jeremy":
-            //if (sissy.st[10].ach) {
-            //    name = "Jenny"
-            //}
-            //else {
-            //    name = "Jeremy";
-            //}
-            name = "Jeremy";
-            image = "jeremy.png";
-            break;
-        case "!martin":
-            name = "Martin";
-            image = "martin.png";
-            break;
-        case "!missyguardday":
-            name = "Guard"; 
-            image = "missyguardday.png";
-            break;
-        case "!missyguardnight":
-            name = "Guard";
-            image = "missyguardnight.png";
-            break;
-        case "!stoner":
-            name = "Stoney";
-            image = "stoner.png";
-            break;
-        case "!cheezy":
-            name = "Cheezy Poof";
-            image = "cheezy.png";
-            break;
-        case "!nips":
-            name = "Nips McTits";
-            image = "nips.png";
-            break;
-        case "!lep":
-            name = "Telchar";
-            image = "lep.png";
-            break;
-        case "bitch":
-            name = "Bitch Face";
-            image = "bitch.png";
-            break;
-        case "!twat":
-            name = "Twaty Honey";
-            image = "twat.png";
-            break;
-        case "!madison":
-            name = "Nurse Madison";
-            image = "madison.png";
-            break;
-        case "!boy":
-            name = "Boy";
-            image = "boy.png";
-            break;
-        case "!man":
-            name = "Man";
-            image = "boy.png";
-            break;
-        case "!girl":
-            name = "Girl";
-            image = "girl.png";
-            break;
-        case "!oldlady":
-            name = "Old lady";
-            image = "oldlady.png";
-            break;
-        case "!football":
-            name = "Player";
-            image = "football.png";
-            break;
-        case "!waiter":
-            name = "Waiter";
-            image = "waiter.png";
-            break;
-        case "!plumber":
-            name = "Plumber";
-            image = "plumber.png";
-            break;
-        case "!bill":
-            name = "Bill";
-            image = "bill.png";
-            break;
-        case "!punk":
-            name = "Punk Rocker";
-            image = "punk.png";
-            break;
-        case "!m":
-            name = "Marilyn";
-            image = "m.png";
-            break;
-        case "!peeguy":
-            name = "Peeing Asshole";
-            image = "peeguy.png";
-            break;
-        case "!chem":
-            name = "Chemist";
-            image = "chem.png";
-            break;
-        case "!rex":
-            name = "Mr. Rex";
-            image = "rex.png";
-            break;
-        case "!gamerboy":
-            name = "Gamer";
-            image = "gamerboy.png";
-            break;
-        case "!gamergirl":
-            name = "Miss M.";
-            image = "gamergirl.png";
-            break;
-        case "!gameman":
-            name = "Some guy";
-            image = "gameman.png";
-            break;
-        case "!g":
-            name = "Geoffrey";
-            image = "g.png";
-            break;
-        case "!glory":
-            name = "Glory Hole Customer";
-            image = "unk.png";
-            break;
-        case "!poppy":
-            name = "Poppy";
-            image = "poppy.png";
-            break;
-        case "!juniper":
-            name = "Juniper";
-            image = "juniper.png";
-            break;
-        case "!emily":
-            name = "Emily";
-            image = "emily.png";
-            break;
-        case "!cindy":
-            name = "Cindy";
-            image = "cindy.png";
-            break;
-        case "!missx":
-            name = "Mistress Anaru";
-            image = "missx.png";
-            break;
-        case "!jenna":
-            name = "Jenna";
-            image = "jenna.png";
-            break;
-        case "!footballguard":
-            name = "Security";
-            image = "footballguard.png";
-            break;
-        case "!airwrecka":
-            name = "Airwrecka";
-            image = "airwrecka.png";
-            break;
-        case "!boxes":
-            name = "Mike";
-            image = "boxes.png";
-            break;
-        case "!bwc":
-            name = "BWC";
-            image = "bwc.png";
-            break;
-        case "!bbc":
-            name = "BBC";
-            image = "bbc.png";
-            break;
-        case "!deb":
-            name = "Deb";
-            image = "deb.png";
-            break;
-        case "!latika":
-            name = "Latika";
-            image = "latika.png";
-            break;
-        case "!doofus":
-            name = "Doofus";
-            image = "doofus.png";
-            break;
-        case "!custbitch":
-            name = "Mean girl";
-            image = "custbitch.png";
-            break;
-        case "!jabari":
-            name = "Jabari";
-            image = "jabari.png";
-            break;
-        case "!rape0":
-            name = "Rapist";
-            image = "rape0.png";
-            break;
-        case "!rape12":
-            name = "Big Benny Cox";
-            image = "rape12.png";
-            break;
-        case "!duo13":
-            name = "Abbot";
-            image = "duo13.png";
-            break;
-        case "!duo13a":
-            name = "Costello";
-            image = "duo13a.png";
-            break;
-        case "!peggy":
-            name = "Peggy";
-            image = "peggy.png";
-            break;
-        case "!caveslave":
-            name = "Slave";
-            image = "caveslave.png";
-            break;
-        case "!damselle":
-            name = "Damselle";
-            image = "damselle.png";
-            break;
-        case "!futa0":
-            name = "Domina Dix";
-            image = "futa0.png";
-            break;
-        case "!futa1":
-            name = "Jessica";
-            image = "futa1.png";
-            break;
-        case "!plant":
-            name = "Vines";
-            image = "futa0.png";
-            break;
-        case "!granola":
-            name = "Wild River"
-            image = "granola.png";
-            break;
-        case "!girl2":
-            name = "Tits McGee";
-            image = "girl2.png"
-            break;
-        case "!girl3":
-            name = "Delilah";
-            image = "girl3.png"
-            break;
-        case "!girl3a":
-            name = "Willow";
-            image = "girl3a.png"
-            break;
-        case "!butler":
-            name = "The Butler";
-            image = "butler.png";
-            break;
-        case "!cat":
-            name = "Kitty";
-            image = "cat.png";
-            break;
-        case "!jarome":
-            name = "Jarome";
-            image = "jarome.png";
-            break;
-        case "!freddy":
-            name = "Fat Freddy";
-            image = "freddy.png";
-            break;
-        case "!frank":
-            name = "Fat Franky";
-            image = "frank.png";
-            break;
-        case "!wolf":
-            name = "Dire wolf";
-            image = "wolf.png";
-            break;
-        case "!crystal":
-            name = "Crystal";
-            image = "crystal.png";
-            break;
-        case "!judge":
-            name = "Reginald Esq. III";
-            image = "judge.png";
-            break;
-        case "!fatnun":
-            name = "Sister Edna";
-            image = "fatnun.png";
-            break;
-        case "!jail0":
-            name = "Fat dick prisoner";
-            image = "jail0.png";
-            break;
-        case "!jail1":
-            name = "Long dick prisoner";
-            image = "jail1.png";
-            break;
-        case "!music":
-            name = "";
-            image = "music.png";
-            break;
-        case "!skank":
-            name = "Skanky Bitch";
-            image = "skank.png";
-            break;
-        case "!belle":
-            name = "Belle";
-            image = "belle.png";
-            break;
-        case "!seller":
-            name = "LeRoy";
-            image = "seller.png";
-            break;
-        case "!dog":
-            name = "Doggy";
-            image = "dog.png";
-            break;
-        case "!ann":
-            name = "Announcer";
-            image = "ann.png";
-            break;
-        case "!barker":
-            name = "Barker";
-            image = "barker.png";
-            break;
-        case "!statue":
-            name = "Stone Statue";
-            image = "statue.png";
-            break;
-        case "!security":
-            name = "Security";
-            image = "security.png";
-            break;
-        case "!rancher":
-            name = "Drake";
-            image = "rancher.png";
-            break;
-        case "!rancher1":
-            name = "Clint";
-            image = "rancher1.png";
-            break;
-        case "!hucow":
-            name = "Hucow";
-            image = "hucow.png";
-            break;
-        case "!pig":
-            name = "Piggy";
-            image = "pig.png";
-            break;
-        case "!horse":
-            name = "Horse";
-            image = "horse.png";
-            break;
-        case "!cowboy":
-            name = "Cowboy";
-            image = "cowboy.png";
-            break;
-        case "!chef":
-            name = "Fat Bastard";
-            image = "chef.png";
-            break;
-        case "!info":
-            name = "Information";
-            image = "info.png";
-            break;
-        case "!fatman":
-            name = "Fat Man";
-            image = "fatman.png";
-            break;
-        case "!milkmaid":
-            name = "Milk Maid";
-            image = "milkmaid.png";
-            break;
-        case "!sissy_ass":
-            name = "Rim Job Recipient ";
-            image = "sissy_ass.png";
-            break;
-        case "!sissy_trio":
-            name = "Pookykins";
-            image = "sissy_trio.png";
-            break;
-        case "!sissy_duo":
-            name = "Sapphire";
-            image = "sissy_duo.png";
-            break;
-        case "!sissy_duo1":
-            name = "Onyx";
-            image = "sissy_duo1.png";
-            break;
-        case "!sissy_smoke":
-            name = "Salvatore";
-            image = "sissy_smoke.png";
-            break;
-        case "!sissy_tiedup":
-            name = "Tangerine Tease";
-            image = "sissy_tiedup.png";
-            break;
-        case "!sissy_toilet":
-            name = "Toilet";
-            image = "sissy_toilet.png";
-            break;
-        case "!ledja":
-            name = "Ledja";
-            image = "ledja.png";
-            break;
-        case "!nar":
-            name = "Narrator ";
-            image = "nar.png";
-            break;
-        case "!wolfgirl":
-            name = "Snail Trail";
-            image = "wolfgirl.png";
-            break;
-        case "!tree":
-            name = "Tree branch";
-            image = "tree.png";
             break;
         default:
             console.log("unknown trivial char: (check capitilazation)" + charname);

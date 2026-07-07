@@ -4,7 +4,7 @@ var room483 = {};
 room483.main = function () {
     if (g.pass === 483 && cl.isLewd()) {
         g.pass = null;
-        room483.btnclick("enter");
+        invoker.invokeCurrent("btnclick", "enter");
         return;
     }
     g.pass = null;
@@ -56,7 +56,7 @@ room483.btnclick = function (name) {
             }
             break;
         case "approach":
-            room483.btnclick("killbtn");
+            invoker.invokeCurrent("btnclick", "killbtn");
             nav.button({
                 "type": "img",
                 "name": "grr",
@@ -69,7 +69,7 @@ room483.btnclick = function (name) {
             chat(3, 483);
             break;
         case "beta":
-            room483.btnclick("killbtn");
+            invoker.invokeCurrent("btnclick", "killbtn");
             if (levels.get("beast").l < 5) {
                 chat(5, 483);
             }
@@ -301,3 +301,5 @@ room483.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(483, room483);

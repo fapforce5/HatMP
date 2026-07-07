@@ -27,7 +27,7 @@ room224.btnclick = function (name) {
     switch (name) {
         case "skip":
             nav.kill();
-            room224.chatcatch("endlunch");
+            invoker.invokeCurrent("chatcatch", "endlunch");
             break;
         case "punish":
             nav.killall();
@@ -35,7 +35,7 @@ room224.btnclick = function (name) {
             chat(1, 224);
             break;
         case "mom":
-            room224.btnclick("drawbg");
+            invoker.invokeCurrent("btnclick", "drawbg");
             nav.button({
                 "type": "img",
                 "name": "fg",
@@ -48,7 +48,7 @@ room224.btnclick = function (name) {
             chat(1000, 224);
             break;
         case "janice":
-            room224.btnclick("drawbg");
+            invoker.invokeCurrent("btnclick", "drawbg");
             nav.button({
                 "type": "img",
                 "name": "fg",
@@ -61,7 +61,7 @@ room224.btnclick = function (name) {
             chat(999, 224);
             break;
         case "elijah":
-            room224.btnclick("drawbg");
+            invoker.invokeCurrent("btnclick", "drawbg");
             nav.button({
                 "type": "img",
                 "name": "fg",
@@ -74,11 +74,11 @@ room224.btnclick = function (name) {
             chat(998, 224);
             break;
         case "zoey":
-            room224.btnclick("drawbg");
+            invoker.invokeCurrent("btnclick", "drawbg");
             chat(5, 224);
             break;
         case "envy":
-            room224.btnclick("drawbg");
+            invoker.invokeCurrent("btnclick", "drawbg");
             nav.button({
                 "type": "img",
                 "name": "fg",
@@ -141,11 +141,11 @@ room224.chatcatch = function (callback) {
             break;
         case "endlunchEnergy":
             gv.mod("energy", 50);
-            room224.chatcatch("endlunch");
+            invoker.invokeCurrent("chatcatch", "endlunch");
             break;
         case "endlunchPunish":
             gv.mod("energy", -20);
-            room224.chatcatch("endlunch");
+            invoker.invokeCurrent("chatcatch", "endlunch");
             break;
         case "standInCorner":
             nav.bg("224_lunch/punish0.jpg");
@@ -153,7 +153,7 @@ room224.chatcatch = function (callback) {
         case "eatpussy":
             nav.kill();
             levels.oral(3, "f", "envy", false);
-            nav.bg("224_lunch/envy1.jpg"); 
+            nav.bg("224_lunch/envy1.webp"); 
             break;
         case "ceciliabj":
             nav.kill();
@@ -412,3 +412,5 @@ room224.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(224, room224);

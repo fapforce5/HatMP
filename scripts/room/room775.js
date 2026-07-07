@@ -12,6 +12,7 @@ room775.main = function () {
         }
         else {
             g.roomTimeout = setTimeout(function () {
+                g.roomTimeout = null;
                 nav.bg("775_church/boy.jpg");
                 char.settime(9, 0);
                 g.internal = 0;
@@ -1157,3 +1158,5 @@ room775.chat = function (chatID) {
             return [];
     }
 };
+
+invoker.registerRoom(775, room775);

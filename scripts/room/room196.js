@@ -35,7 +35,7 @@ room196.chatcatch = function (callback) {
                 chat(999, 196);
             }
             else {
-                room196.chatcatch("checkBeforeComplete");
+                invoker.invokeCurrent("chatcatch", "checkBeforeComplete");
             }
             break;
         case "truepay":
@@ -128,6 +128,8 @@ room196.chatcatch = function (callback) {
             break;
     }
 };
+
+invoker.registerRoom(196, room196);
 
 room196.chat = function (chatID) {
     if (chatID === 999) {

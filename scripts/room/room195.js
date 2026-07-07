@@ -104,7 +104,7 @@ room195.chatcatch = function (callback) {
         case "iteration1":
             g.internal.iteration = 1;
             g.internal.key = 7;
-            room195.chatcatch("lock0");
+            invoker.invokeCurrent("chatcatch", "lock0");
             break;
         case "iteration2":
             nav.killall();
@@ -261,3 +261,5 @@ room195.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(195, room195);

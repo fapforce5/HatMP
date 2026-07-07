@@ -413,7 +413,7 @@ room952.chatcatch = function (callback) {
         case "reset_c2":
         case "reset_c3": 
         case "reset_c1":
-            room952.btnclick(callback.replace("reset_", ""));
+            invoker.invokeCurrent("btnclick", callback.replace("reset_", ""));
             break;
         case "reset":
             char.room(952);
@@ -526,7 +526,7 @@ room952.chatcatch = function (callback) {
         case "butt4":
             sc.completeMissionTask("bodhi", "cult", 5);
             levels.anal(4, true, "f", false, "daria");
-            room952.chatcatch("leave");
+            invoker.invokeCurrent("chatcatch", "leave");
             break;
         case "l0":
             g.pass = 0;
@@ -597,7 +597,7 @@ room952.chatcatch = function (callback) {
             }
             break;
         case "doubleReset":
-            room952.btnclick("c3");
+            invoker.invokeCurrent("btnclick", "c3");
             break;
         case "ralph3":
             nav.kill();
@@ -1732,3 +1732,5 @@ room952.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(952, room952);

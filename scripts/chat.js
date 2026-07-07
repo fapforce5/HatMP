@@ -1,9 +1,98 @@
 ﻿var privateChat = {};
 
+privateChat.resetButtons = function () {
+    $('.room-chatBtnClick').html('').hide().data('chatid', 0).data('roomid', 0).data('callback', '');
+};
+
+privateChat.hideOverlay = function () {
+    $('#room_chatOverlay').hide();
+    $('#room_footerSpeach').html("");
+    $('#room_chatSpeaker').html('');
+    $('#room_footer').show();
+};
+
+privateChat.close = function () {
+    privateChat.hideOverlay();
+    privateChat.resetButtons();
+    g.skipChat = false;
+};
+
+privateChat.setButton = function (index, text, chatID, roomID, callback) {
+    $('#room_chatBtn' + index)
+        .html(text)
+        .data('chatid', chatID)
+        .data('roomid', roomID)
+        .data('callback', callback)
+        .attr('title', 'Shortcut: ' + (index + 1))
+        .show();
+};
+
+privateChat.updateSkipButton = function (buttonCount) {
+    if (g.skipChat) {
+        setTimeout(function () {
+            privateChat.skipChat();
+        }, 100);
+    }
+    else if (buttonCount === 1)
+        $("#room_chatskip").show();
+    else
+        $("#room_chatskip").hide();
+};
+
+privateChat.visibleButtons = function () {
+    return $('.room-chatBtnClick:visible');
+};
+
+privateChat.selectButtonByIndex = function (index) {
+    var buttons = privateChat.visibleButtons();
+    if (index < 0 || index >= buttons.length)
+        return false;
+
+    buttons.eq(index).click();
+    return true;
+};
+
+privateChat.getShortcutIndexFromEvent = function (e) {
+    if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey)
+        return null;
+
+    if (e.which >= 49 && e.which <= 57)
+        return e.which - 49;
+
+    if (e.which >= 97 && e.which <= 105)
+        return e.which - 97;
+
+    if (e.code && e.code.startsWith("Digit")) {
+        var digitIndex = parseInt(e.code.replace("Digit", ""), 10) - 1;
+        return digitIndex >= 0 && digitIndex < 9 ? digitIndex : null;
+    }
+
+    if (e.code && e.code.startsWith("Numpad")) {
+        var numpadIndex = parseInt(e.code.replace("Numpad", ""), 10) - 1;
+        return numpadIndex >= 0 && numpadIndex < 9 ? numpadIndex : null;
+    }
+
+    return null;
+};
+
+privateChat.isTypingTarget = function (target) {
+    if (!target)
+        return false;
+
+    var tagName = target.tagName ? target.tagName.toLowerCase() : "";
+    return tagName === "input" || tagName === "textarea" || tagName === "select" || target.isContentEditable;
+};
+
+privateChat.canHandleSpace = function (target) {
+    return $('#room_chatOverlay').is(":visible") &&
+        !$('#room_export').is(":visible") &&
+        !privateChat.isTypingTarget(target);
+};
+
 function chat(chatID, roomID) {
 
     if (chatID !== -1) {
-        privateChat.makeChat(window[g.room(roomID)]["chat"](chatID), chatID, roomID);
+        privateChat.makeChat(invoker.invoke(roomID, "chat", chatID), chatID, roomID);
     }
     if (window.getSelection) {
         window.getSelection().removeAllRanges();
@@ -14,11 +103,8 @@ function chat(chatID, roomID) {
 }
 
 privateChat.kill = function(){
-    $('#room_chatOverlay').hide();
-    $('.room-chatBtnClick').html('').hide().data('chatid', 0).data('roomid', 0).data('callback', '');
-    $('#room_footerSpeach').html("");
-    $('#room_chatSpeaker').html('');
-    $('#room_footer').show();
+    privateChat.hideOverlay();
+    privateChat.resetButtons();
 };
 
 privateChat.makeChat = function (entry, chatID, roomID) {
@@ -30,32 +116,22 @@ privateChat.makeChat = function (entry, chatID, roomID) {
             //$('#char_charDisplay').hide();
         }
         var counter = 0;
-        $('.room-chatBtnClick').html('').hide().data('chatid', 0).data('roomid', 0).data('callback', '');
+        privateChat.resetButtons();
         $('#room_footerSpeach').html(entry.text);
         $('#room_chatSpeaker').html('<img src="' + thisSpeaker.img + '" /><br/>' + (thisSpeaker.name === "Random" ? "" : thisSpeaker.name));
         if (entry.button.length === 0) {
-            $('#room_chatBtn0').html('Close').show().data('chatid', -1).data('roomid', roomID).data('callback', '');
+            privateChat.setButton(0, 'Close', -1, roomID, '');
             counter = 1;
         }
         else {
             $.each(entry.button, function (i, v) {
-                $('#room_chatBtn' + i).html(v.text).data('chatid', v.chatID).data('roomid', roomID).data('callback', v.callback).show();
+                privateChat.setButton(i, v.text, v.chatID, roomID, v.callback);
                 counter++;
             });
         }
         counter = (counter === 0 ? counter = 1 : counter);
         $('.room-chatBtn').css('width', "calc(" + (100 / counter) + '% - ' + ((72 * g.ratio) / counter) + "px)");
-        if (g.skipChat) {
-            setTimeout(function () {
-                privateChat.skipChat();
-            }, 100);
-        }
-        else {
-            if(counter === 1)
-                $("#room_chatskip").show();
-            else
-                $("#room_chatskip").hide();
-        }
+        privateChat.updateSkipButton(counter);
     }
     else {
         g.error("chat", "chatID:" + chatID + " roomID: " + roomID);
@@ -112,22 +188,49 @@ privateChat.speakerInfo = function (charName) {
 };
 
 privateChat.skipChat = function () {
-    if (g.roomTimeout === null && g.roomTimeout2 === null) {
-        if ($('#room_chatBtn0').is(":visible")) {
-            if (!$('#room_chatBtn1').is(":visible") && !$('#room_chatBtn2').is(":visible")) {
-                $('#room_chatBtn0').click();
-            }
-            else {
-                g.skipChat = false;
-            }
-        }
+    var buttons = privateChat.visibleButtons();
+    if (buttons.length === 1) {
+        buttons.eq(0).click();
+    }
+    else if (buttons.length > 1) {
+        g.skipChat = false;
     }
 };
 
 $(document).ready(function () {
+    $(document).bind('keydown', function (e) {
+        if (e.which === 32) {//space bar
+            if (!privateChat.canHandleSpace(e.target))
+                return;
+
+            if (privateChat.visibleButtons().length === 1) {
+                g.suppressSpaceAdvanceKeyup = true;
+                e.preventDefault();
+                privateChat.skipChat();
+            }
+        }
+
+        var shortcutIndex = privateChat.getShortcutIndexFromEvent(e);
+        if (shortcutIndex === null)
+            return;
+        if (!privateChat.canHandleSpace(e.target))
+            return;
+
+        if (privateChat.selectButtonByIndex(shortcutIndex))
+            e.preventDefault();
+    });
+
     $(document).bind('keyup', function (e) {
         if (e.which === 32) {//space bar
-            privateChat.skipChat();
+            if (!privateChat.canHandleSpace(e.target))
+                return;
+
+            if (privateChat.visibleButtons().length === 1)
+                e.preventDefault();
+        }
+        else if (privateChat.getShortcutIndexFromEvent(e) !== null) {
+            if (privateChat.canHandleSpace(e.target))
+                e.preventDefault();
         }
         else if(e.which === 83){
             if ($("#room_chatskip").is(":visible")) {
@@ -153,18 +256,13 @@ $(document).ready(function () {
         var callback = $(this).data('callback');
 
         if (chatID < 0) {
-            $('#room_chatOverlay').hide();
-            $('.room-chatBtnClick').html('').hide().data('chatid', 0).data('roomid', 0).data('callback', '');
-            $('#room_footerSpeach').html("");
-            $('#room_chatSpeaker').html('');
-            $('#room_footer').show();
-            g.skipChat = false;
+            privateChat.close();
             //$('#char_charDisplay').show();
         }
         else
             chat(chatID, roomID);
         if (callback !== '')
-            window[g.room(roomID)]["chatcatch"](callback);
+            invoker.invoke(roomID, "chatcatch", callback);
 
     });
 });

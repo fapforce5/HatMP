@@ -419,8 +419,8 @@ room226.main = function () {
     else
         setTimeout(function () { $("#room_footer").hide(); }, 200);
 
-    room226.btnclick("drawMap");
-    room226.btnclick("midSave");
+    invoker.invokeCurrent("btnclick", "drawMap");
+    invoker.invokeCurrent("btnclick", "midSave");
 }; 
 
 room226.btnclick = function (name) {
@@ -607,15 +607,15 @@ room226.btnclick = function (name) {
             g.map.id = g.map.l[g.map.id].l;
             g.map.l[g.map.id].v = true;
             gv.mod("energy", -2);
-            room226.btnclick("drawMap");
-            room226.btnclick("midSave");
+            invoker.invokeCurrent("btnclick", "drawMap");
+            invoker.invokeCurrent("btnclick", "midSave");
             break;
         case "right":
             g.map.id = g.map.l[g.map.id].r;
             g.map.l[g.map.id].v = true;
             gv.mod("energy", -2);
-            room226.btnclick("drawMap");
-            room226.btnclick("midSave");
+            invoker.invokeCurrent("btnclick", "drawMap");
+            invoker.invokeCurrent("btnclick", "midSave");
             break;
         case "back":
             if (g.map.id === 0) {
@@ -625,16 +625,16 @@ room226.btnclick = function (name) {
             else {
                 g.map.id = g.map.l[g.map.id].b;
                 gv.mod("energy", -2);
-                room226.btnclick("drawMap");
-                room226.btnclick("midSave");
+                invoker.invokeCurrent("btnclick", "drawMap");
+                invoker.invokeCurrent("btnclick", "midSave");
             }
             break;
         case "backRoom":
             nav.killbutton("redbox");
             nav.killbutton("backRoom");
             g.map.id = 0;
-            room226.btnclick("drawMap");
-            room226.btnclick("midSave");
+            invoker.invokeCurrent("btnclick", "drawMap");
+            invoker.invokeCurrent("btnclick", "midSave");
             break;
         case "midSave":
             var mi;
@@ -694,7 +694,7 @@ room226.chatcatch = function (callback) {
             nav.bg("225_sewer/slime5.jpg");
             break;
         case "slimereset":
-            room226.btnclick("drawMap");
+            invoker.invokeCurrent("btnclick", "drawMap");
             gv.mod("fuckPussy", 1);
             cl.doCum(false);
             break;
@@ -871,3 +871,5 @@ room226.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(226, room226);

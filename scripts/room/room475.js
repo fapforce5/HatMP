@@ -145,6 +145,8 @@ room475.main = function () {
     }
 };
 
+invoker.registerRoom(475, room475);
+
 room475.btnclick = function (name) {
     switch (name) {
         case "north":

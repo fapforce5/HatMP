@@ -530,7 +530,7 @@ room13.btnclick = function (name) {
             nav.killbutton("practiceDate");
             break
         case "lolachat":
-            room13.btnclick("clearChat");
+            invoker.invokeCurrent("btnclick", "clearChat");
             if (daily.get("lolatalk")) {
                 chat(24, 13);
             }
@@ -545,7 +545,7 @@ room13.btnclick = function (name) {
             }
             break;
         case "evachat":
-            room13.btnclick("clearChat");
+            invoker.invokeCurrent("btnclick", "clearChat");
             if (daily.get("evatalk")) {
                 chat(46, 13);
             }
@@ -559,7 +559,7 @@ room13.btnclick = function (name) {
             break;
         case "lolamassage":
             if (g.isNight()) {
-                room13.btnclick("clearChat");
+                invoker.invokeCurrent("btnclick", "clearChat");
                 chat(42, 13);
             }
             else
@@ -567,7 +567,7 @@ room13.btnclick = function (name) {
             break;
         case "evamassage":
             if (g.isNight()) {
-                room13.btnclick("clearChat");
+                invoker.invokeCurrent("btnclick", "clearChat");
                 chat(41, 13);
             }
             else
@@ -575,7 +575,7 @@ room13.btnclick = function (name) {
             break;
         case "spin":
             if (!inv.has("wine")) {
-                room13.btnclick("clearChat");
+                invoker.invokeCurrent("btnclick", "clearChat");
                 chat(43, 13)
             }
             else if (!g.isNight()) {
@@ -587,7 +587,7 @@ room13.btnclick = function (name) {
             break;
         case "tord":
             if (cl.c.shirt === null || cl.c.pants === null) {
-                room13.btnclick("clearChat");
+                invoker.invokeCurrent("btnclick", "clearChat");
                 chat(205, 13);
             }
             else if (!inv.has("wine")) {
@@ -603,7 +603,7 @@ room13.btnclick = function (name) {
         case "dick":
             if (!daily.get("lolaDick")) {
                 daily.set("lolaDick");
-                room13.btnclick("clearChat");
+                invoker.invokeCurrent("btnclick", "clearChat");
                 if (cl.c.chastity !== null) {
                     sc.modSecret("lola", 100);
                     sc.modSecret("eva", 100);
@@ -696,7 +696,7 @@ room13.btnclick = function (name) {
                     "height": 801,
                     "image": "13_sisterRoom/13_sheet1.png"
                 }, 13);
-                room13.chatcatch("displaySnore");
+                invoker.invokeCurrent("chatcatch", "displaySnore");
             }
             break;
         case "sheet1":
@@ -779,7 +779,7 @@ room13.btnclick = function (name) {
                     "image": "13_sisterRoom/pj_eva_pants.png"
                 }, 13);
             }
-            room13.chatcatch("displaySnore");
+            invoker.invokeCurrent("chatcatch", "displaySnore");
             g.internal.step = 0;
             if (g.internal.lolaPanties)
                 sc.select("lolaStrip", "13_sisterRoom/icon_focuslolastrip.png", 0);
@@ -800,10 +800,10 @@ room13.btnclick = function (name) {
                 else if (g.internal.step === 3) {
                     g.internal.lolaPants = false;
                     if (!daily.get("lolaDrunk")) {
-                        room13.btnclick("sleepAngry");
+                        invoker.invokeCurrent("btnclick", "sleepAngry");
                         return;
                     }
-                    room13.btnclick("choice");
+                    invoker.invokeCurrent("btnclick", "choice");
                     daily.set("elsleep");
                 }
                 else {
@@ -873,10 +873,10 @@ room13.btnclick = function (name) {
                 else if (g.internal.step === 4) {
                     g.internal.lolaPanties = false;
                     if (!daily.get("lolaDrunk")) {
-                        room13.btnclick("sleepAngry");
+                        invoker.invokeCurrent("btnclick", "sleepAngry");
                         return;
                     }
-                    room13.btnclick("choice");
+                    invoker.invokeCurrent("btnclick", "choice");
                 }
             }
             break;
@@ -892,11 +892,11 @@ room13.btnclick = function (name) {
                 else if (g.internal.step === 4) {
                     g.internal.evaPants = false;
                     if (!daily.get("evaDrunk")) {
-                        room13.btnclick("sleepAngry");
+                        invoker.invokeCurrent("btnclick", "sleepAngry");
                         return;
                     }
                     else {
-                        room13.btnclick("choice");
+                        invoker.invokeCurrent("btnclick", "choice");
                         daily.set("elsleep");
                     }
                 }
@@ -955,10 +955,10 @@ room13.btnclick = function (name) {
                 else if (g.internal.step === 3) {
                     g.internal.evaPanties = false;
                     if (!daily.get("evaDrunk")) {
-                        room13.btnclick("sleepAngry");
+                        invoker.invokeCurrent("btnclick", "sleepAngry");
                         return;
                     }
-                    room13.btnclick("choice");
+                    invoker.invokeCurrent("btnclick", "choice");
                 }
             }
             break;
@@ -1338,7 +1338,7 @@ room13.btnclick = function (name) {
             chat(57, 13);
             break;
         case "practiceDate":
-            room13.btnclick("clearChat");
+            invoker.invokeCurrent("btnclick", "clearChat");
             switch (sc.taskGetStep("lola", "date")) {
                 case 0: chat(61, 13); break;
                 case 1: chat(65, 13); break;
@@ -1362,7 +1362,7 @@ room13.btnclick = function (name) {
             nav.killbutton("dateFair");
             nav.killbutton("dateHere");
             nav.killbutton("dateCancel");
-            room13.btnclick("lola");
+            invoker.invokeCurrent("btnclick", "lola");
             break;
         case "dateFair":
             g.pass = { who: "lola", ferrisWheel: false, bong: false, ball: false };
@@ -1638,7 +1638,7 @@ room13.chatcatch = function (callback) {
                 break;
             case "sleepReset":
                 nav.bg("13_sisterRoom/bedbg.jpg");
-                room13.btnclick("bothRoll");
+                invoker.invokeCurrent("btnclick", "bothRoll");
                 break;
             case "evaSleepingJackTits":
                 nav.button({
@@ -2115,6 +2115,8 @@ room13.chatcatch = function (callback) {
         }
     });
 };
+
+invoker.registerRoom(13, room13);
 
 room13.chat = function (chatID) {
     if (chatID === 999) {

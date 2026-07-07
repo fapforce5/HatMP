@@ -67,7 +67,7 @@ room353.btnclick = function (name) {
         case "icon_ignore":
             nav.killall();
             g.internal.ev.splice(0, 1);
-            room353.chatcatch("newperson");
+            invoker.invokeCurrent("chatcatch", "newperson");
             break;
         case "icon_donateg":
             g.internal.ev.splice(0, 1);
@@ -619,3 +619,5 @@ room353.chat = function (chatID) {
             return [];
     }
 };
+
+invoker.registerRoom(353, room353);

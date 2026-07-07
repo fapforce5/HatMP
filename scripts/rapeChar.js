@@ -1,4 +1,25 @@
 ﻿function getRapeChar(location = null, num = null) {
+    function rapeCharImage(left, top, width, height, image, roomId = 1004, title = null) {
+        var button = {
+            "type": "img",
+            "name": "r1004bg",
+            "left": left,
+            "top": top,
+            "width": width,
+            "height": height,
+            "image": image
+        };
+
+        if (title !== null)
+            button.title = title;
+
+        nav.button(button, roomId);
+    }
+
+    function rapeCharFullscreen(image, roomId = 1004, title = null) {
+        rapeCharImage(0, 0, 1920, 1080, image, roomId, title);
+    }
+
     let retVar = [
         {
             num: 0,
@@ -23,15 +44,7 @@
             phase2: function () { return { default: true, complete: null }; },
             phase3: function () {
                 if (rape.phases[3].c === 0) {
-                    nav.button({
-                        "type": "img",
-                        "name": "r1004bg",
-                        "left": 0,
-                        "top": 0,
-                        "width": 1920,
-                        "height": 1080,
-                        "image": "1004_rape/rapeman0/rape0.png"
-                    }, 1004);
+                    rapeCharFullscreen("1004_rape/rapeman0/rape0.png");
                     nav.button({
                         "type": "img",
                         "name": "r1004bg",
@@ -43,15 +56,7 @@
                     }, 1004);
                     return { complete: false, s: "!rape0", message: "I'm going to love raping your tight little holes " + gender.pronoun("girl") + "!" };
                 }
-                nav.button({
-                    "type": "img",
-                    "name": "r1004bg",
-                    "left": 0,
-                    "top": 0,
-                    "width": 1920,
-                    "height": 1080,
-                    "image": "1004_rape/rapeman0/rape1.png"
-                }, 1004);
+                rapeCharFullscreen("1004_rape/rapeman0/rape1.png");
                 return { complete: true, s: "!rape0", message: "Show me how much you want this fat cock inside your tiny little body." };
             },
             phase4: function(){
@@ -61,15 +66,7 @@
                 if (rape.phases[5].c === 0) {
                     if (rape.rapeType === "anal") {
                         zcl.assup(650, 500, .7, "");
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 0,
-                            "top": 0,
-                            "width": 1920,
-                            "height": 1080,
-                            "image": "1004_rape/rapeman0/rape3.png"
-                        }, 1004);
+                        rapeCharFullscreen("1004_rape/rapeman0/rape3.png");
                         nav.button({
                             "type": "img",
                             "name": "r1004bg",
@@ -100,15 +97,7 @@
                 if (rape.phases[6].c === 0) {
                     if (rape.rapeType === "anal") {
                         zcl.assup(650, 500, .7, "");
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 0,
-                            "top": 0,
-                            "width": 1920,
-                            "height": 1080,
-                            "image": "1004_rape/rapeman0/rape3.png"
-                        }, 1004);
+                        rapeCharFullscreen("1004_rape/rapeman0/rape3.png");
                         nav.button({
                             "type": "img",
                             "name": "r1004bg",
@@ -201,15 +190,7 @@
                         return { default: false, complete: false };
                     }
                     else if (rape.phaseChange === "phase3cover") {
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 0,
-                            "top": 0,
-                            "width": 1920,
-                            "height": 1080,
-                            "image": "1004_rape/missx/slap_" + gender.pronoun("f") + ".png"
-                        }, 1004);
+                        rapeCharFullscreen("1004_rape/missx/slap_" + gender.pronoun("f") + ".png");
                         return { default: false, complete: false };
                     }
                     else if (rape.phaseChange === "phase3sub" || rape.phaseChange === "limp" || rape.phaseChange === "struggle") {
@@ -286,15 +267,7 @@
                     }
                     else {
                         zcl.bj(100, -50, 1, "", true);
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 0,
-                            "top": 0,
-                            "width": 1920,
-                            "height": 1080,
-                            "image": "1004_rape/missx/phase5_oral.png"
-                        }, 1004);
+                        rapeCharFullscreen("1004_rape/missx/phase5_oral.png");
                         return { c: false, s: rape.char.name, m: "FFFFffuuucckkkk! You are a great pussy muncher! " }
                     }
                 }
@@ -304,27 +277,11 @@
                 if (rape.phases[7].c === 0) {
                     if (rape.rapeType === "anal") {
                         zcl.kill();
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 0,
-                            "top": 0,
-                            "width": 1920,
-                            "height": 1080,
-                            "image": "1004_rape/missx/phase6_" + gender.pronoun("f") + ".png"
-                        }, 1004);
+                        rapeCharFullscreen("1004_rape/missx/phase6_" + gender.pronoun("f") + ".png");
                     }
                     else {
                         zcl.kill();
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 456,
-                            "top": 0,
-                            "width": 1084,
-                            "height": 1080,
-                            "image": "1004_rape/phase6_cun_" + gender.pronoun("f") + ".png"
-                        }, 1004);
+                        rapeCharImage(456, 0, 1084, 1080, "1004_rape/phase6_cun_" + gender.pronoun("f") + ".png");
                     }
                     return false;
                 }
@@ -374,29 +331,13 @@
                     }, 1004);
                     return { complete: false, s: "!futa0", message: "So what do you like better in a futa? The big fat titties..." };
                 }
-                nav.button({
-                    "type": "img",
-                    "name": "r1004bg",
-                    "left": 476,
-                    "top": 56,
-                    "width": 969,
-                    "height": 969,
-                    "image": "1004_rape/futa0/phase2_1.png"
-                }, 1004);
+                rapeCharImage(476, 56, 969, 969, "1004_rape/futa0/phase2_1.png");
                 return { complete: true, s: "!futa0", message: "..or the cute little dicky?" };
             },
             phase4: function () {
                 if (rape.rapeType === "cunnilugus") {
                     if (rape.phases[4].c === 0) {
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 360,
-                            "top": 0,
-                            "width": 1187,
-                            "height": 1080,
-                            "image": "1004_rape/futa0/phase2_oral.png"
-                        }, 1004);
+                        rapeCharImage(360, 0, 1187, 1080, "1004_rape/futa0/phase2_oral.png");
                         return { default: false, complete: false };
                     }
                     return { default: false, complete: true };
@@ -406,15 +347,7 @@
             phase5: function () {
                 if (rape.phases[5].c === 0) {
                     if (rape.rapeType === "anal") {
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 605,
-                            "top": 425,
-                            "width": 1063,
-                            "height": 595,
-                            "image": "1004_rape/futa0/phase4_anal_bottom.png"
-                        }, 1004);
+                        rapeCharImage(605, 425, 1063, 595, "1004_rape/futa0/phase4_anal_bottom.png");
                         zcl.assup(600, 500, .75, "");
                         nav.button({
                             "type": "img",
@@ -437,15 +370,7 @@
                     }
                     else {
                         zcl.bj(200, 300, .5, "open", true);
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 652,
-                            "top": 103,
-                            "width": 820,
-                            "height": 977,
-                            "image": "1004_rape/futa0/phase4_oral.png"
-                        }, 1004);
+                        rapeCharImage(652, 103, 820, 977, "1004_rape/futa0/phase4_oral.png");
                     }
                     return false;
                 }
@@ -454,39 +379,15 @@
             phase6: function () {
                 if (rape.phases[6].c === 0) {
                     if (rape.rapeType === "anal") {
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 605,
-                            "top": 425,
-                            "width": 1063,
-                            "height": 595,
-                            "image": "1004_rape/futa0/phase4_anal_bottom.png"
-                        }, 1004);
+                        rapeCharImage(605, 425, 1063, 595, "1004_rape/futa0/phase4_anal_bottom.png");
                         zcl.assup(600, 500, .75, "");
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 605,
-                            "top": 425,
-                            "width": 1063,
-                            "height": 595,
-                            "image": "1004_rape/futa0/phase5_anal_top.png"
-                        }, 1004);
+                        rapeCharImage(605, 425, 1063, 595, "1004_rape/futa0/phase5_anal_top.png");
                         levels.anal(3, false, "n", true, "!futa0");
                         return { c: false, s: rape.char.name, m: "The best pussy to cum in is a smooth sissy bussy!" }
                     }
                     else {
                         zcl.bj(200, 300, .5, "open", true);
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 652,
-                            "top": 103,
-                            "width": 820,
-                            "height": 977,
-                            "image": "1004_rape/futa0/phase5_oral.png"
-                        }, 1004);
+                        rapeCharImage(652, 103, 820, 977, "1004_rape/futa0/phase5_oral.png");
                         return { c: false, s: rape.char.name, m: "Oh fuck! I'm cumming! Fuck yeah you're a great pussy eater!" }
                     }
                 }
@@ -516,25 +417,9 @@
             kick: null,
             phase0: function () {
                 if (rape.phase === 0) {
-                    nav.button({
-                        "type": "img",
-                        "name": "r1004bg",
-                        "left": 0,
-                        "top": 0,
-                        "width": 1920,
-                        "height": 1080,
-                        "image": "1004_rape/plant/p0_b.png"
-                    }, 1004);
+                    rapeCharFullscreen("1004_rape/plant/p0_b.png");
                     zcl.displayMain(-1200, 400, .3, "clothes", false);
-                    nav.button({
-                        "type": "img",
-                        "name": "r1004bg",
-                        "left": 0,
-                        "top": 0,
-                        "width": 1920,
-                        "height": 1080,
-                        "image": "1004_rape/plant/p0_f.png"
-                    }, 1004);
+                    rapeCharFullscreen("1004_rape/plant/p0_f.png");
                     return { default: false, complete: false };
                 }
                 else return { default: false, complete: true };
@@ -550,15 +435,7 @@
                     else
                         img += "n_";
                     img += (cl.c.chest > 2 ? "f" : "m") + ".png";
-                    nav.button({
-                        "type": "img",
-                        "name": "r1004bg",
-                        "left": 0,
-                        "top": 0,
-                        "width": 1920,
-                        "height": 1080,
-                        "image": "1004_rape/plant/phase1_b.png"
-                    }, 1004);
+                    rapeCharFullscreen("1004_rape/plant/phase1_b.png");
                     nav.button({
                         "type": "img",
                         "name": "r1004bg",
@@ -568,15 +445,7 @@
                         "height": 1080,
                         "image": "1004_rape/plant/" + img
                     }, 1004);
-                    nav.button({
-                        "type": "img",
-                        "name": "r1004bg",
-                        "left": 0,
-                        "top": 0,
-                        "width": 1920,
-                        "height": 1080,
-                        "image": "1004_rape/plant/phase1_f.png"
-                    }, 1004);
+                    rapeCharFullscreen("1004_rape/plant/phase1_f.png");
                     return { default: false, complete: false };
                 }
                 else
@@ -585,15 +454,7 @@
             phase2: function () {
                 if (rape.phases[2].c === 0) {
                     zcl.kill();
-                    nav.button({
-                        "type": "img",
-                        "name": "r1004bg",
-                        "left": 0,
-                        "top": 0,
-                        "width": 1920,
-                        "height": 1080,
-                        "image": "1004_rape/plant/phase2_panties.png"
-                    }, 1004);
+                    rapeCharFullscreen("1004_rape/plant/phase2_panties.png");
                     return { default: false, complete: false };
                 }
                 return { default: false, complete: true };
@@ -619,27 +480,11 @@
                         "height": 1080,
                         "image": "1004_rape/plant/" + img
                     }, 1004);
-                    nav.button({
-                        "type": "img",
-                        "name": "r1004bg",
-                        "left": 0,
-                        "top": 0,
-                        "width": 1920,
-                        "height": 1080,
-                        "image": "1004_rape/plant/phase3_0.png"
-                    }, 1004);
+                    rapeCharFullscreen("1004_rape/plant/phase3_0.png");
                     return { complete: false, s: "me", message: "Oh gross. It's so slimey." };
                 }
                 else if (rape.phases[3].c === 1) {
-                    nav.button({
-                        "type": "img",
-                        "name": "r1004bg",
-                        "left": 0,
-                        "top": 0,
-                        "width": 1920,
-                        "height": 1080,
-                        "image": "1004_rape/plant/phase3_1_" + gender.pronoun("f") + ".png"
-                    }, 1004);
+                    rapeCharFullscreen("1004_rape/plant/phase3_1_" + gender.pronoun("f") + ".png");
                     return { complete: false, s: "thinking", message: "Hruck! So deep down my throat!" };
                 }
                 else if (rape.phases[3].c > 1 && rape.phases[3].c < 7) {
@@ -691,15 +536,7 @@
                         "height": 1080,
                         "image": "1004_rape/plant/" + img
                     }, 1004);
-                    nav.button({
-                        "type": "img",
-                        "name": "r1004bg",
-                        "left": 0,
-                        "top": 0,
-                        "width": 1920,
-                        "height": 1080,
-                        "image": "1004_rape/plant/phase4_" + chest
-                    }, 1004);
+                    rapeCharFullscreen("1004_rape/plant/phase4_" + chest);
                     nav.button({
                         "type": "img",
                         "name": "r1004bg",
@@ -715,15 +552,7 @@
             },
             phase6: function () {
                 if (rape.phases[6].c === 0) {
-                    nav.button({
-                        "type": "img",
-                        "name": "r1004bg",
-                        "left": 0,
-                        "top": 0,
-                        "width": 1920,
-                        "height": 1080,
-                        "image": "1004_rape/plant/phase5.png"
-                    }, 1004);
+                    rapeCharFullscreen("1004_rape/plant/phase5.png");
                     return { c: false, s: "thinking", m: "GAK! I can feel it pollinating me! My holes are totally coated in this thick green slime!" }
                 }
                 return { c: true, s: null, m: null };
@@ -746,15 +575,7 @@
                     }
                     else {
                         zcl.kill();
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 456,
-                            "top": 0,
-                            "width": 1084,
-                            "height": 1080,
-                            "image": "1004_rape/phase6_oral_" + gender.pronoun("f") + ".png"
-                        }, 1004);
+                        rapeCharImage(456, 0, 1084, 1080, "1004_rape/phase6_oral_" + gender.pronoun("f") + ".png");
                     }
                     return false;
                 }
@@ -851,27 +672,11 @@
                 if (cl.c.hairLength > 2)
                     img = "f";
                 if (rape.phases[4].c === 0) {
-                    nav.button({
-                        "type": "img",
-                        "name": "r1004bg",
-                        "left": 0,
-                        "top": 0,
-                        "width": 1920,
-                        "height": 1080,
-                        "image": "1004_rape/wolf2/phase2_0_" + img + ".png"
-                    }, 1004);
+                    rapeCharFullscreen("1004_rape/wolf2/phase2_0_" + img + ".png");
                     return { default: false, complete: false };
                 }
                 else if (rape.phases[4].c === 1) {
-                    nav.button({
-                        "type": "img",
-                        "name": "r1004bg",
-                        "left": 0,
-                        "top": 0,
-                        "width": 1920,
-                        "height": 1080,
-                        "image": "1004_rape/wolf2/phase2_1_" + img + ".png"
-                    }, 1004);
+                    rapeCharFullscreen("1004_rape/wolf2/phase2_1_" + img + ".png");
                     return { default: false, complete: false };
                 }
                 return { default: false, complete: true };
@@ -879,25 +684,9 @@
             phase5: function () {
 
                 if (rape.phases[5].c === 0) {
-                    nav.button({
-                        "type": "img",
-                        "name": "r1004bg",
-                        "left": 0,
-                        "top": 0,
-                        "width": 1920,
-                        "height": 1080,
-                        "image": "1004_rape/wolf2/phase5_u.png"
-                    }, 1004);
+                    rapeCharFullscreen("1004_rape/wolf2/phase5_u.png");
                     zcl.double(370, 600, .5, "open", false)
-                    nav.button({
-                        "type": "img",
-                        "name": "r1004bg",
-                        "left": 0,
-                        "top": 0,
-                        "width": 1920,
-                        "height": 1080,
-                        "image": "1004_rape/wolf2/phase5_t.png"
-                    }, 1004);
+                    rapeCharFullscreen("1004_rape/wolf2/phase5_t.png");
                     return false;
                 }
                 return true;
@@ -908,28 +697,12 @@
                     levels.oral(4, "m", "!wolf", true, "dog");
                     zcl.double(250, 700, 1, "", false);
 
-                    nav.button({
-                        "type": "img",
-                        "name": "r1004bg",
-                        "left": 0,
-                        "top": 0,
-                        "width": 1920,
-                        "height": 1080,
-                        "image": "1004_rape/wolf2/phase6_0.png"
-                    }, 1004);
+                    rapeCharFullscreen("1004_rape/wolf2/phase6_0.png");
                     return { c: false, s: "thinking", m: "GAK! dire wolf cum is so bitter...." }
                 }
                 else if (rape.phases[6].c === 1) {
                     zcl.double(-100, -200, 1, "", false);
-                    nav.button({
-                        "type": "img",
-                        "name": "r1004bg",
-                        "left": 0,
-                        "top": 0,
-                        "width": 1920,
-                        "height": 1080,
-                        "image": "1004_rape/wolf2/phase6_1.png"
-                    }, 1004);
+                    rapeCharFullscreen("1004_rape/wolf2/phase6_1.png");
                     return { c: false, s: "thinking", m: "But their knots are so thick! Damn it's so good! " }
                 }
                 return { c: true, s: null, m: null };
@@ -1053,27 +826,11 @@
                 if (rape.phases[5].c === 0) {
                     if (rape.rapeType === "oral") {
                         zcl.double(370, 600, .5, "open", false);
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 0,
-                            "top": 0,
-                            "width": 1920,
-                            "height": 1080,
-                            "image": "1004_rape/wolf2/single_phase5_oral_" + rape.modifier + ".png"
-                        }, 1004);
+                        rapeCharFullscreen("1004_rape/wolf2/single_phase5_oral_" + rape.modifier + ".png");
                     }
                     else {
                         zcl.assup(550, 300, .8, true);
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 0,
-                            "top": 0,
-                            "width": 1920,
-                            "height": 1080,
-                            "image": "1004_rape/wolf2/single_phase5_anal_" + rape.modifier + ".png"
-                        }, 1004);
+                        rapeCharFullscreen("1004_rape/wolf2/single_phase5_anal_" + rape.modifier + ".png");
                     }
 
                     return false;
@@ -1085,30 +842,14 @@
                     if (rape.rapeType === "oral") {
                         levels.oral(4, "m", "!wolf", true, "dog");
                         zcl.double(250, 700, 1, "", false);
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 0,
-                            "top": 0,
-                            "width": 1920,
-                            "height": 1080,
-                            "image": "1004_rape/wolf2/single_phase6_oral_" + rape.modifier + ".png"
-                        }, 1004);
+                        rapeCharFullscreen("1004_rape/wolf2/single_phase6_oral_" + rape.modifier + ".png");
                         return { c: false, s: "thinking", m: "OOooo that cum is so thick and bitter. I'm such a lowly fuck hole... " }
 
                     }
                     else {
                         levels.anal(5, false, "m", true, "!wolf", "dog");
                         zcl.double(-100, -200, 1, "", false);
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 0,
-                            "top": 0,
-                            "width": 1920,
-                            "height": 1080,
-                            "image": "1004_rape/wolf2/phase6_1.png"
-                        }, 1004);
+                        rapeCharFullscreen("1004_rape/wolf2/phase6_1.png");
                         return { c: false, s: "me", m: "I just got fucked and used like a cum sock by a dire wolf. " }
                     }
                 }
@@ -1143,15 +884,7 @@
             phase1: function () { return { default: true, complete: null }; },
             phase2: function () { return { default: true, complete: null }; },
             phase3: function () {
-                nav.button({
-                    "type": "img",
-                    "name": "r1004bg",
-                    "left": 496,
-                    "top": 0,
-                    "width": 875,
-                    "height": 1080,
-                    "image": "1004_rape/cult/phase_3_" + rape.modifier + ".png"
-                }, 1004);
+                rapeCharImage(496, 0, 875, 1080, "1004_rape/cult/phase_3_" + rape.modifier + ".png");
                 zcl.displayMain(400, 500, .3, "clothes", true);
                 return { complete: true, s: "cult", message: "In the name of Azrael, you will empty my balls!" };
             },
@@ -1162,15 +895,7 @@
                 if (rape.phases[5].c === 0) {
                     if (rape.rapeType === "anal") {
                         zcl.assup(650, 500, .7, "");
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 628,
-                            "top": 332,
-                            "width": 991,
-                            "height": 736,
-                            "image": "1004_rape/cult/phase5_anal_" + rape.modifier + ".png"
-                        }, 1004);
+                        rapeCharImage(628, 332, 991, 736, "1004_rape/cult/phase5_anal_" + rape.modifier + ".png");
                         nav.button({
                             "type": "img",
                             "name": "r1004bg",
@@ -1182,25 +907,9 @@
                         }, 1004);
                     }
                     else {
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 535,
-                            "top": 0,
-                            "width": 648,
-                            "height": 1080,
-                            "image": "1004_rape/cult/phase5_oral_0_b_0.png"
-                        }, 1004);
+                        rapeCharImage(535, 0, 648, 1080, "1004_rape/cult/phase5_oral_0_b_0.png");
                         zcl.bj(0, 200, .7, "open", true);
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 535,
-                            "top": 0,
-                            "width": 648,
-                            "height": 1080,
-                            "image": "1004_rape/cult/phase5_oral_0_f_" + rape.modifier + ".png"
-                        }, 1004);
+                        rapeCharImage(535, 0, 648, 1080, "1004_rape/cult/phase5_oral_0_f_" + rape.modifier + ".png");
                     }
                     return false;
                 }
@@ -1210,15 +919,7 @@
                 if (rape.phases[6].c === 0) {
                     if (rape.rapeType === "anal") {
                         zcl.assup(650, 500, .7, "");
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 628,
-                            "top": 332,
-                            "width": 991,
-                            "height": 736,
-                            "image": "1004_rape/cult/phase6_anal_" + rape.modifier + ".png"
-                        }, 1004);
+                        rapeCharImage(628, 332, 991, 736, "1004_rape/cult/phase6_anal_" + rape.modifier + ".png");
                         if(rape.modifier === 2)
                             levels.anal(4, false, "m", true, "cult");
                         else
@@ -1271,15 +972,7 @@
             phase1: function () { return { default: true, complete: null }; },
             phase2: function () { return { default: true, complete: null }; },
             phase3: function () {
-                nav.button({
-                    "type": "img",
-                    "name": "r1004bg",
-                    "left": 496,
-                    "top": 0,
-                    "width": 875,
-                    "height": 1080,
-                    "image": "1004_rape/cult/phase_3_" + rape.modifier + ".png"
-                }, 1004);
+                rapeCharImage(496, 0, 875, 1080, "1004_rape/cult/phase_3_" + rape.modifier + ".png");
                 zcl.displayMain(400, 500, .3, "clothes", true);
                 return { complete: true, s: "cult", message: "I'm going to enjoy raping a tasty treat like you!" };
             },
@@ -1290,15 +983,7 @@
                 if (rape.phases[5].c === 0) {
                     if (rape.rapeType === "anal") {
                         zcl.assup(650, 500, .7, "");
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 628,
-                            "top": 332,
-                            "width": 991,
-                            "height": 736,
-                            "image": "1004_rape/cult/phase5_anal_" + rape.modifier + ".png"
-                        }, 1004);
+                        rapeCharImage(628, 332, 991, 736, "1004_rape/cult/phase5_anal_" + rape.modifier + ".png");
                         nav.button({
                             "type": "img",
                             "name": "r1004bg",
@@ -1310,25 +995,9 @@
                         }, 1004);
                     }
                     else {
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 535,
-                            "top": 0,
-                            "width": 648,
-                            "height": 1080,
-                            "image": "1004_rape/cult/phase5_oral_0_b_0.png"
-                        }, 1004);
+                        rapeCharImage(535, 0, 648, 1080, "1004_rape/cult/phase5_oral_0_b_0.png");
                         zcl.bj(0, 200, .7, "open", true);
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 535,
-                            "top": 0,
-                            "width": 648,
-                            "height": 1080,
-                            "image": "1004_rape/cult/phase5_oral_0_f_" + rape.modifier + ".png"
-                        }, 1004);
+                        rapeCharImage(535, 0, 648, 1080, "1004_rape/cult/phase5_oral_0_f_" + rape.modifier + ".png");
                     }
                     return false;
                 }
@@ -1338,15 +1007,7 @@
                 if (rape.phases[6].c === 0) {
                     if (rape.rapeType === "anal") {
                         zcl.assup(650, 500, .7, "");
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 628,
-                            "top": 332,
-                            "width": 991,
-                            "height": 736,
-                            "image": "1004_rape/cult/phase6_anal_" + rape.modifier + ".png"
-                        }, 1004);
+                        rapeCharImage(628, 332, 991, 736, "1004_rape/cult/phase6_anal_" + rape.modifier + ".png");
                         if (rape.modifier === 2)
                             levels.anal(4, false, "m", true, "cult");
                         else
@@ -1399,15 +1060,7 @@
             phase1: function () { return { default: true, complete: null }; },
             phase2: function () { return { default: true, complete: null }; },
             phase3: function () {
-                nav.button({
-                    "type": "img",
-                    "name": "r1004bg",
-                    "left": 496,
-                    "top": 0,
-                    "width": 875,
-                    "height": 1080,
-                    "image": "1004_rape/cult/phase_3_" + rape.modifier + ".png"
-                }, 1004);
+                rapeCharImage(496, 0, 875, 1080, "1004_rape/cult/phase_3_" + rape.modifier + ".png");
                 zcl.displayMain(400, 500, .3, "clothes", true);
                 return { complete: true, s: "cult", message: "I love tearing " + gender.pronoun("faggot") + " holes open!" };
             },
@@ -1418,15 +1071,7 @@
                 if (rape.phases[5].c === 0) {
                     if (rape.rapeType === "anal") {
                         zcl.assup(650, 500, .7, "");
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 628,
-                            "top": 332,
-                            "width": 991,
-                            "height": 736,
-                            "image": "1004_rape/cult/phase5_anal_" + rape.modifier + ".png"
-                        }, 1004);
+                        rapeCharImage(628, 332, 991, 736, "1004_rape/cult/phase5_anal_" + rape.modifier + ".png");
                         nav.button({
                             "type": "img",
                             "name": "r1004bg",
@@ -1438,25 +1083,9 @@
                         }, 1004);
                     }
                     else {
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 535,
-                            "top": 0,
-                            "width": 648,
-                            "height": 1080,
-                            "image": "1004_rape/cult/phase5_oral_0_b_0.png"
-                        }, 1004);
+                        rapeCharImage(535, 0, 648, 1080, "1004_rape/cult/phase5_oral_0_b_0.png");
                         zcl.bj(0, 200, .7, "open", true);
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 535,
-                            "top": 0,
-                            "width": 648,
-                            "height": 1080,
-                            "image": "1004_rape/cult/phase5_oral_0_f_" + rape.modifier + ".png"
-                        }, 1004);
+                        rapeCharImage(535, 0, 648, 1080, "1004_rape/cult/phase5_oral_0_f_" + rape.modifier + ".png");
                     }
                     return false;
                 }
@@ -1466,15 +1095,7 @@
                 if (rape.phases[6].c === 0) {
                     if (rape.rapeType === "anal") {
                         zcl.assup(650, 500, .7, "");
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 628,
-                            "top": 332,
-                            "width": 991,
-                            "height": 736,
-                            "image": "1004_rape/cult/phase6_anal_" + rape.modifier + ".png"
-                        }, 1004);
+                        rapeCharImage(628, 332, 991, 736, "1004_rape/cult/phase6_anal_" + rape.modifier + ".png");
                         if (rape.modifier === 2)
                             levels.anal(4, false, "m", true, "cult");
                         else
@@ -1526,38 +1147,14 @@
             phase2: function () { return { default: true, complete: null }; },
             phase3: function () {
                 if (rape.phases[3].c === 0) {
-                    nav.button({
-                        "type": "img",
-                        "name": "r1004bg",
-                        "left": 681,
-                        "top": 21,
-                        "width": 583,
-                        "height": 1059,
-                        "image": "1004_rape/futa1/phase3_0.png"
-                    }, 1004);
+                    rapeCharImage(681, 21, 583, 1059, "1004_rape/futa1/phase3_0.png");
                     return { complete: false, s: "!futa1", message: "My my my. What do we have here? " };
                 }
                 else if (rape.phases[3].c === 1) {
-                    nav.button({
-                        "type": "img",
-                        "name": "r1004bg",
-                        "left": 681,
-                        "top": 21,
-                        "width": 583,
-                        "height": 1059,
-                        "image": "1004_rape/futa1/phase3_1.png"
-                    }, 1004);
+                    rapeCharImage(681, 21, 583, 1059, "1004_rape/futa1/phase3_1.png");
                     return { complete: false, s: "!futa1", message: "Oh no! You made my cock fall out!" };
                 }
-                nav.button({
-                    "type": "img",
-                    "name": "r1004bg",
-                    "left": 681,
-                    "top": 21,
-                    "width": 583,
-                    "height": 1059,
-                    "image": "1004_rape/futa1/phase3_2.png"
-                }, 1004);
+                rapeCharImage(681, 21, 583, 1059, "1004_rape/futa1/phase3_2.png");
                 return { complete: true, s: "!futa1", message: "I guess you'll have to milk my cock till I cum. " };
             },
             phase4: function () {
@@ -1566,25 +1163,9 @@
             phase5: function () {
                 if (rape.phases[5].c === 0) {
                     if (rape.rapeType === "anal") {
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 619,
-                            "top": 440,
-                            "width": 985,
-                            "height": 594,
-                            "image": "1004_rape/futa1/phase5_anal_b.png"
-                        }, 1004);
+                        rapeCharImage(619, 440, 985, 594, "1004_rape/futa1/phase5_anal_b.png");
                         zcl.assup(650, 500, .7, "");
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 619,
-                            "top": 440,
-                            "width": 985,
-                            "height": 594,
-                            "image": "1004_rape/futa1/phase5_anal_f.png"
-                        }, 1004);
+                        rapeCharImage(619, 440, 985, 594, "1004_rape/futa1/phase5_anal_f.png");
                         nav.button({
                             "type": "img",
                             "name": "r1004bg",
@@ -1597,15 +1178,7 @@
                     }
                     else {
                         zcl.bj(250, 400, .6, "open", true);
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 544,
-                            "top": 0,
-                            "width": 699,
-                            "height": 1080,
-                            "image": "1004_rape/futa1/phase6_oral.png"
-                        }, 1004);
+                        rapeCharImage(544, 0, 699, 1080, "1004_rape/futa1/phase6_oral.png");
                     }
                     return false;
                 }
@@ -1614,39 +1187,15 @@
             phase6: function () {
                 if (rape.phases[6].c === 0) {
                     if (rape.rapeType === "anal") {
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 619,
-                            "top": 440,
-                            "width": 985,
-                            "height": 594,
-                            "image": "1004_rape/futa1/phase5_anal_b.png"
-                        }, 1004);
+                        rapeCharImage(619, 440, 985, 594, "1004_rape/futa1/phase5_anal_b.png");
                         zcl.assup(650, 500, .7, "");
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 619,
-                            "top": 440,
-                            "width": 985,
-                            "height": 594,
-                            "image": "1004_rape/futa1/phase6_anal_f.png"
-                        }, 1004);
+                        rapeCharImage(619, 440, 985, 594, "1004_rape/futa1/phase6_anal_f.png");
                         levels.anal(5, false, "n", true, "!futa1");
                         return { c: false, s: rape.char.name, m: "Oh fuck! I'm cummin'!!!!!" };
                     }
                     else {
                         zcl.bj(0, 200, 1, "w", true);
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 522,
-                            "top": 0,
-                            "width": 1171,
-                            "height": 1080,
-                            "image": "1004_rape/futa1/phase7_oral.png"
-                        }, 1004);
+                        rapeCharImage(522, 0, 1171, 1080, "1004_rape/futa1/phase7_oral.png");
                         levels.oral(4, "n", "!futa1", true);
                         return { c: false, s: rape.char.name, m: "Oh yeah! Feels so good baby!" };
                     }
@@ -1680,26 +1229,10 @@
             phase2: function () { return { default: true, complete: null }; },
             phase3: function () {
                 if (!gender.canUseCock()) {
-                    nav.button({
-                        "type": "img",
-                        "name": "r1004bg",
-                        "left": 0,
-                        "top": 0,
-                        "width": 1920,
-                        "height": 1080,
-                        "image": "1004_rape/girl2/phase3_small.png"
-                    }, 1004);
+                    rapeCharFullscreen("1004_rape/girl2/phase3_small.png");
                     return { complete: true, s: "!girl2", message: "I was going to try to ride that cock, but you don't have one!" };
                 }
-                nav.button({
-                    "type": "img",
-                    "name": "r1004bg",
-                    "left": 744,
-                    "top": 86,
-                    "width": 465,
-                    "height": 994,
-                    "image": "1004_rape/girl2/phase3.png"
-                }, 1004);
+                rapeCharImage(744, 86, 465, 994, "1004_rape/girl2/phase3.png");
                 return { complete: true, s: "!girl2", message: "Wow! I would hate to have a cock like that go to waste! I need your cum inside me now!" };
             },
             phase4: function () {
@@ -1709,37 +1242,13 @@
                 
                 if (rape.phases[5].c === 0) {
                     if (rape.rapeType === "cock") {
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 486,
-                            "top": 86,
-                            "width": 954,
-                            "height": 963,
-                            "image": "1004_rape/girl2/phase5_b.png"
-                        }, 1004);
+                        rapeCharImage(486, 86, 954, 963, "1004_rape/girl2/phase5_b.png");
                         zcl.amazon(350, 500, .6, "", false);
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 486,
-                            "top": 86,
-                            "width": 954,
-                            "height": 963,
-                            "image": "1004_rape/girl2/phase5_f.png"
-                        }, 1004);
+                        rapeCharImage(486, 86, 954, 963, "1004_rape/girl2/phase5_f.png");
                     }
                     else {
                         zcl.bj(200, 200, .8, "open", true);
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 411,
-                            "top": 0,
-                            "width": 1067,
-                            "height": 1080,
-                            "image": "1004_rape/girl2/phase5_oral.png"
-                        }, 1004);
+                        rapeCharImage(411, 0, 1067, 1080, "1004_rape/girl2/phase5_oral.png");
                     }
                     return false;
                 }
@@ -1748,39 +1257,15 @@
             phase6: function () {
                 if (rape.phases[6].c === 0) {
                     if (rape.rapeType === "cock") {
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 486,
-                            "top": 86,
-                            "width": 954,
-                            "height": 963,
-                            "image": "1004_rape/girl2/phase6_b.png"
-                        }, 1004);
+                        rapeCharImage(486, 86, 954, 963, "1004_rape/girl2/phase6_b.png");
                         zcl.amazon(350, 500, .6, "", false);
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 486,
-                            "top": 86,
-                            "width": 954,
-                            "height": 963,
-                            "image": "1004_rape/girl2/phase6_f.png"
-                        }, 1004);
+                        rapeCharImage(486, 86, 954, 963, "1004_rape/girl2/phase6_f.png");
                         levels.fuckpussy("!girl2");
                         return { c: false, s: rape.char.name, m: "YES YES yes yes yes! Oh fuck! I'm cummin'! I love your dick! Fuck that's good!" };
                     }
                     else {
                         zcl.bj(200, 200, .8, "open", true);
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 549,
-                            "top": 0,
-                            "width": 1064,
-                            "height": 1080,
-                            "image": "1004_rape/girl2/phase6_oral.png"
-                        }, 1004);
+                        rapeCharImage(549, 0, 1064, 1080, "1004_rape/girl2/phase6_oral.png");
                         return { c: false, s: rape.char.name, m: "Oh my god! I'm squirting all over your face it was so good!" };
                     }
                 }
@@ -1813,52 +1298,20 @@
             phase2: function () { return { default: true, complete: null }; },
             phase3: function () {
                 if (!gender.canUseCock()) {
-                    nav.button({
-                        "type": "img",
-                        "name": "r1004bg",
-                        "left": 0,
-                        "top": 0,
-                        "width": 1920,
-                        "height": 1080,
-                        "image": "1004_rape/girl3/introhaha.png"
-                    }, 1004);
+                    rapeCharFullscreen("1004_rape/girl3/introhaha.png");
                     return { complete: true, s: "!girl3", message: "Look at the tiny dick " + gender.pronoun("faggot") + "! " };
                 }
-                nav.button({
-                    "type": "img",
-                    "name": "r1004bg",
-                    "left": 430,
-                    "top": 0,
-                    "width": 1148,
-                    "height": 1080,
-                    "image": "1004_rape/girl3/intro.png"
-                }, 1004);
+                rapeCharImage(430, 0, 1148, 1080, "1004_rape/girl3/intro.png");
                 return { complete: true, s: "!girl3", message: "Our pussies are itching for cock!" };
 
             },
             phase4: function () {
                 if (rape.rapeType === "cock") {
-                    nav.button({
-                        "type": "img",
-                        "name": "r1004bg",
-                        "left": 0,
-                        "top": 0,
-                        "width": 920,
-                        "height": 1080,
-                        "image": "1004_rape/girl3/phase4_dick.png"
-                    }, 1004);
+                    rapeCharImage(0, 0, 920, 1080, "1004_rape/girl3/phase4_dick.png");
                 }
                 else {
                     if (rape.phases[4].c === 0) {
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 0,
-                            "top": 0,
-                            "width": 1920,
-                            "height": 1080,
-                            "image": "1004_rape/girl3/phase4_anal.png"
-                        }, 1004);
+                        rapeCharFullscreen("1004_rape/girl3/phase4_anal.png");
                         return { default: false, complete: false };
                     }
                     else
@@ -1894,15 +1347,7 @@
                     }
                     else {
                         zcl.bj(200, 200, .8, "open", true);
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 0,
-                            "top": 0,
-                            "width": 1920,
-                            "height": 1080,
-                            "image": "1004_rape/girl3/phase5_dick.png"
-                        }, 1004);
+                        rapeCharFullscreen("1004_rape/girl3/phase5_dick.png");
                         nav.button({
                             "type": "img",
                             "name": "r1004bg",
@@ -1920,15 +1365,7 @@
             phase6: function () {
                 if (rape.phases[6].c === 0) {
                     if (rape.rapeType === "cock") {
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 0,
-                            "top": 0,
-                            "width": 1920,
-                            "height": 1080,
-                            "image": "1004_rape/girl3/phase6_dick.png"
-                        }, 1004);
+                        rapeCharFullscreen("1004_rape/girl3/phase6_dick.png");
                         levels.fuckpussy("!girl3");
                         levels.fuckpussy("!girl3");
                         levels.fuckass("!girl3", "f");
@@ -1936,15 +1373,7 @@
                         return { c: false, s: rape.char.name, m: "Thanks mister! Never lose that cock, it's the best dick we've ever had!" };
                     }
                     else {
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 0,
-                            "top": 0,
-                            "width": 1920,
-                            "height": 1080,
-                            "image": "1004_rape/girl3/phase6_anal.png"
-                        }, 1004);
+                        rapeCharFullscreen("1004_rape/girl3/phase6_anal.png");
                         zcl.asshole(261, 200, 1.4, "", false);
                         levels.gotfisted("f", "!girl3");
                         return { c: false, s: rape.char.name, m: "We love fisting loser sissy boys like you!" };
@@ -1979,15 +1408,7 @@
             phase2: function () { return { default: true, complete: null }; },
             phase3: function () {
                 if (rape.phases[3].c === 0) {
-                    nav.button({
-                        "type": "img",
-                        "name": "r1004bg",
-                        "left": 523,
-                        "top": 0,
-                        "width": 1003,
-                        "height": 1080,
-                        "image": "1004_rape/rapeman12/phase3.webp"
-                    }, 1004);
+                    rapeCharImage(523, 0, 1003, 1080, "1004_rape/rapeman12/phase3.webp");
                     nav.button({
                         "type": "img",
                         "name": "r1004bg",
@@ -1999,15 +1420,7 @@
                     }, 1004);
                     return { complete: false, message: "My favorite snack, a weak little white boy aching for a big black dick!" };
                 }
-                nav.button({
-                    "type": "img",
-                    "name": "r1004bg",
-                    "left": 0,
-                    "top": 0,
-                    "width": 1920,
-                    "height": 1080,
-                    "image": "1004_rape/rapeman12/phase3a.webp"
-                }, 1004);
+                rapeCharFullscreen("1004_rape/rapeman12/phase3a.webp");
                 nav.button({
                     "type": "img",
                     "name": "r1004bg",
@@ -2026,15 +1439,7 @@
                 if (rape.phases[5].c === 0) {
                     if (rape.rapeType === "anal") {
                         zcl.facedown(350, 300, .7, "", false);
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 0,
-                            "top": 0,
-                            "width": 1920,
-                            "height": 1080,
-                            "image": "1004_rape/rapeman12/phase5.webp"
-                        }, 1004);
+                        rapeCharFullscreen("1004_rape/rapeman12/phase5.webp");
                         nav.button({
                             "type": "img",
                             "name": "r1004bg",
@@ -2064,15 +1469,7 @@
             phase6: function () {
                 if (rape.phases[6].c === 0) {
                     zcl.facedown(350, 300, .7, "", false);
-                    nav.button({
-                        "type": "img",
-                        "name": "r1004bg",
-                        "left": 0,
-                        "top": 0,
-                        "width": 1920,
-                        "height": 1080,
-                        "image": "1004_rape/rapeman12/phase6.webp"
-                    }, 1004);
+                    rapeCharFullscreen("1004_rape/rapeman12/phase6.webp");
                     levels.anal(4, false, "m", true, "!rape12");
                     return { c: false, s: rape.char.name, m: "I love breeding sissy " + gender.pronoun("girl") + "s like you. It's what you are here for. " };
                 }
@@ -2104,15 +1501,7 @@
             phase1: function () { return { default: true, complete: null }; },
             phase2: function () { return { default: true, complete: null }; },
             phase3: function () {
-                nav.button({
-                    "type": "img",
-                    "name": "r1004bg",
-                    "left": 0,
-                    "top": 0,
-                    "width": 1920,
-                    "height": 1080,
-                    "image": "1004_rape/duo13/phase3_" + gender.pronoun("f") + ".webp"
-                }, 1004);
+                rapeCharFullscreen("1004_rape/duo13/phase3_" + gender.pronoun("f") + ".webp");
                 return { complete: true, s: "!duo13a", message: "Looks like we got a bitch that wants to get stuffed with cock. Air tight!" };
             },
             phase4: function () {
@@ -2121,43 +1510,19 @@
             phase5: function () {
                 if (rape.phases[5].c === 0) {
                     zcl.double(0, 800, 1.4, "", false);
-                    nav.button({
-                        "type": "img",
-                        "name": "r1004bg",
-                        "left": 0,
-                        "top": 0,
-                        "width": 1920,
-                        "height": 1080,
-                        "image": "1004_rape/duo13/phase5_0.webp"
-                    }, 1004);
+                    rapeCharFullscreen("1004_rape/duo13/phase5_0.webp");
                     return false;
                 }
                 else if (rape.phases[5].c === 1) {
                     zcl.kill();
-                    nav.button({
-                        "type": "img",
-                        "name": "r1004bg",
-                        "left": 0,
-                        "top": 0,
-                        "width": 1920,
-                        "height": 1080,
-                        "image": "1004_rape/duo13/phase5_1.webp"
-                    }, 1004);
+                    rapeCharFullscreen("1004_rape/duo13/phase5_1.webp");
                     return false;
 
                 }
                 else if (rape.phases[5].c === 2) {
                     zcl.double(400, 550, .5, "open", false);
                     nav.killbutton("r1004bg");
-                    nav.button({
-                        "type": "img",
-                        "name": "r1004bg",
-                        "left": 0,
-                        "top": 0,
-                        "width": 1920,
-                        "height": 1080,
-                        "image": "1004_rape/duo13/phase5_2.webp"
-                    }, 1004);
+                    rapeCharFullscreen("1004_rape/duo13/phase5_2.webp");
                     return false;
                 }
                 if (rape.phases[6].c % 2 === 0)
@@ -2169,41 +1534,17 @@
             phase6: function () {
                 if (rape.phases[6].c === 0) {
                     zcl.double(400, 550, .5, "open", false);
-                    nav.button({
-                        "type": "img",
-                        "name": "r1004bg",
-                        "left": 0,
-                        "top": 0,
-                        "width": 1920,
-                        "height": 1080,
-                        "image": "1004_rape/duo13/phase6_0.webp"
-                    }, 1004);
+                    rapeCharFullscreen("1004_rape/duo13/phase6_0.webp");
                     return { c: false, s: "thinking", m: "WHAT!! No! That dick's been up my ass!" };
                 }
                 else if (rape.phases[6].c === 1) {
                     zcl.kill();
-                    nav.button({
-                        "type": "img",
-                        "name": "r1004bg",
-                        "left": 0,
-                        "top": 0,
-                        "width": 1920,
-                        "height": 1080,
-                        "image": "1004_rape/duo13/phase6_1.webp"
-                    }, 1004);
+                    rapeCharFullscreen("1004_rape/duo13/phase6_1.webp");
                     return { c: false, s: "thinking", m: "Blech! Tastes like sweaty dick, cum, and ass! Why whould they treat me like this?" };
                 }
                 else if (rape.phases[6].c === 2) {
                     zcl.kill();
-                    nav.button({
-                        "type": "img",
-                        "name": "r1004bg",
-                        "left": 0,
-                        "top": 0,
-                        "width": 1920,
-                        "height": 1080,
-                        "image": "1004_rape/duo13/phase6_2.webp"
-                    }, 1004);
+                    rapeCharFullscreen("1004_rape/duo13/phase6_2.webp");
                     return { c: false, s: "thinking", m: "And his loser friend just came down my bussy! I'm just a cum dumpster for strange men. " };
                 }
                
@@ -2218,7 +1559,7 @@
             name: "futa1",
             displayName: "",
             location: ["sewer"],
-            img: "14_futa/icon.png",
+            img: "1004_rape/14_futa/icon.png",
             openingLine: ["You will pay for ", "destroying my home!!"],
             openingImg: null,
             fight: g.rand(8, 15),
@@ -2230,32 +1571,16 @@
             gender: "m",
             t: "futa",
             cocksize: 5,
-            kick: "14_futa/kick.webp",
+            kick: "1004_rape/14_futa/kick.webp",
             phase0: function () { return { default: true, complete: null }; },
             phase1: function () { return { default: true, complete: null }; },
             phase2: function () { return { default: true, complete: null }; },
             phase3: function () {
                 if (rape.phases[3].c === 0) {
-                    nav.button({
-                        "type": "img",
-                        "name": "r1004bg",
-                        "left": 0,
-                        "top": 0,
-                        "width": 1920,
-                        "height": 1080,
-                        "image": "1004_rape/14_futa/phase3_0.webp"
-                    }, 1004);
+                    rapeCharFullscreen("1004_rape/14_futa/phase3_0.webp");
                     return { complete: false, s: "futa1", message: "My panties are like a clown car " };
                 }
-                nav.button({
-                    "type": "img",
-                    "name": "r1004bg",
-                    "left": 0,
-                    "top": 0,
-                    "width": 1920,
-                    "height": 1080,
-                    "image": "1004_rape/14_futa/phase3_1.webp"
-                }, 1004);
+                rapeCharFullscreen("1004_rape/14_futa/phase3_1.webp");
                 return { complete: true, s: "futa1", message: "There's so much more than you expect!" };
             },
             phase4: function () {
@@ -2264,26 +1589,10 @@
             phase5: function () {
                 if (rape.phases[5].c === 0) {
                     if (rape.rapeType === "anal") {
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 0,
-                            "top": 0,
-                            "width": 1920,
-                            "height": 1080,
-                            "image": "1004_rape/14_futa/phase5_anal_" + gender.pronoun("f") + ".webp"
-                        }, 1004);
+                        rapeCharFullscreen("1004_rape/14_futa/phase5_anal_" + gender.pronoun("f") + ".webp");
                     }
                     else {
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 0,
-                            "top": 0,
-                            "width": 1920,
-                            "height": 1080,
-                            "image": "1004_rape/14_futa/phase5_bj_" + gender.pronoun("f") + ".webp"
-                        }, 1004);
+                        rapeCharFullscreen("1004_rape/14_futa/phase5_bj_" + gender.pronoun("f") + ".webp");
                     }
                     return false;
                 }
@@ -2292,38 +1601,14 @@
             phase6: function () {
                 if (rape.phases[6].c === 0) {
                     if (rape.rapeType === "anal") {
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 0,
-                            "top": 0,
-                            "width": 1920,
-                            "height": 1080,
-                            "image": "1004_rape/14_futa/phase6.webp"
-                        }, 1004);
+                        rapeCharFullscreen("1004_rape/14_futa/phase6.webp");
                         zcl.bellydown(300, 500, .6, "", true);
                         levels.anal(4, false, "n", true, "futa1");
                         return { c: false, s: rape.char.name, m: "Love seeing my cum leak out of a slut!" };
                     }
                     else {
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 0,
-                            "top": 0,
-                            "width": 1920,
-                            "height": 1080,
-                            "image": "1004_rape/14_futa/phase5_bj_" + gender.pronoun("f") + ".webp"
-                        }, 1004);
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 0,
-                            "top": 0,
-                            "width": 1920,
-                            "height": 1080,
-                            "image": "1004_rape/14_futa/phase6gulp.webp"
-                        }, 1004);
+                        rapeCharFullscreen("1004_rape/14_futa/phase5_bj_" + gender.pronoun("f") + ".webp");
+                        rapeCharFullscreen("1004_rape/14_futa/phase6gulp.webp");
                         levels.oral(4, "n", "futa1", true);
                         return { c: false, s: rape.char.name, m: "Oh yeah! Feels so good baby!" };
                     }
@@ -2339,7 +1624,7 @@
             name: "futa2",
             displayName: "",
             location: ["sewer"],
-            img: "15_futa/icon.png",
+            img: "1004_rape/15_futa/icon.png",
             openingLine: ["You will pay for ", "destroying my home!!"],
             openingImg: null,
             fight: g.rand(8, 15),
@@ -2351,32 +1636,16 @@
             gender: "m",
             t: "futa",
             cocksize: 5,
-            kick: "15_futa/kick.webp",
+            kick: "1004_rape/15_futa/kick.webp",
             phase0: function () { return { default: true, complete: null }; },
             phase1: function () { return { default: true, complete: null }; },
             phase2: function () { return { default: true, complete: null }; },
             phase3: function () {
                 if (rape.phases[3].c === 0) {
-                    nav.button({
-                        "type": "img",
-                        "name": "r1004bg",
-                        "left": 0,
-                        "top": 0,
-                        "width": 1920,
-                        "height": 1080,
-                        "image": "1004_rape/15_futa/phase3_0.webp"
-                    }, 1004);
+                    rapeCharFullscreen("1004_rape/15_futa/phase3_0.webp");
                     return { complete: false, s: "futa2", message: "I hope your holes are deep" };
                 }
-                nav.button({
-                    "type": "img",
-                    "name": "r1004bg",
-                    "left": 0,
-                    "top": 0,
-                    "width": 1920,
-                    "height": 1080,
-                    "image": "1004_rape/15_futa/phase3_1.webp"
-                }, 1004);
+                rapeCharFullscreen("1004_rape/15_futa/phase3_1.webp");
                 return { complete: true, s: "futa2", message: "Becuase this cock is going all the way down!" };
             },
             phase4: function () {
@@ -2385,26 +1654,10 @@
             phase5: function () {
                 if (rape.phases[5].c === 0) {
                     if (rape.rapeType === "anal") {
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 0,
-                            "top": 0,
-                            "width": 1920,
-                            "height": 1080,
-                            "image": "1004_rape/15_futa/phase5_anal_" + gender.pronoun("f") + ".webp"
-                        }, 1004);
+                        rapeCharFullscreen("1004_rape/15_futa/phase5_anal_" + gender.pronoun("f") + ".webp");
                     }
                     else {
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 0,
-                            "top": 0,
-                            "width": 1920,
-                            "height": 1080,
-                            "image": "1004_rape/15_futa/phase5_bj_" + gender.pronoun("f") + ".webp"
-                        }, 1004);
+                        rapeCharFullscreen("1004_rape/15_futa/phase5_bj_" + gender.pronoun("f") + ".webp");
                     }
                     return false;
                 }
@@ -2413,37 +1666,13 @@
             phase6: function () {
                 if (rape.phases[6].c === 0) {
                     if (rape.rapeType === "anal") {
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 0,
-                            "top": 0,
-                            "width": 1920,
-                            "height": 1080,
-                            "image": "1004_rape/15_futa/phase6_anal.webp"
-                        }, 1004);
+                        rapeCharFullscreen("1004_rape/15_futa/phase6_anal.webp");
                         levels.anal(4, false, "n", true, "futa1");
                         return { c: false, s: rape.char.name, m: "CLOWN CUM IS BEST CUM!!!" };
                     }
                     else {
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 0,
-                            "top": 0,
-                            "width": 1920,
-                            "height": 1080,
-                            "image": "1004_rape/15_futa/phase5_bj_" + gender.pronoun("f") + ".webp"
-                        }, 1004);
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 0,
-                            "top": 0,
-                            "width": 1920,
-                            "height": 1080,
-                            "image": "1004_rape/15_futa/phase6gulp.webp"
-                        }, 1004);
+                        rapeCharFullscreen("1004_rape/15_futa/phase5_bj_" + gender.pronoun("f") + ".webp");
+                        rapeCharFullscreen("1004_rape/15_futa/phase6gulp.webp");
                         levels.oral(4, "n", "futa1", true);
                         return { c: false, s: rape.char.name, m: "Oh yeah! Feels so good baby!" };
                     }
@@ -2475,30 +1704,14 @@
             phase1: function () { return { default: true, complete: true }; },
             phase2: function () { return { default: true, complete: null }; },
             phase3: function () {
-                nav.button({
-                    "type": "img",
-                    "name": "r1004bg",
-                    "left": 0,
-                    "top": 0,
-                    "width": 1920,
-                    "height": 1080,
-                    "image": "1004_rape/16_clown/phase3.webp"
-                }, 1004);
+                rapeCharFullscreen("1004_rape/16_clown/phase3.webp");
                 zcl.embarrass(0, 900, .9, "back", false);
                 return { complete: true, s: "clownqueen", message: "I hope you're hungry 'cuase you're going to eat a big plate of clown pussy!" };
             },
             phase4: function () {
                 if (rape.rapeType === "cunnilugus") {
                     if (rape.phases[4].c === 0) {
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 0,
-                            "top": 0,
-                            "width": 1920,
-                            "height": 1080,
-                            "image": "1004_rape/16_clown/phase4.webp"
-                        }, 1004);
+                        rapeCharFullscreen("1004_rape/16_clown/phase4.webp");
                         return { default: false, complete: false };
                     }
                         
@@ -2509,25 +1722,9 @@
                 if (rape.rapeType === "anal") {
                     if (rape.phases[5].c === 0 || rape.phases[5].c === 2) {
                         nav.killbutton("r1004bg");
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 0,
-                            "top": 0,
-                            "width": 1920,
-                            "height": 1080,
-                            "image": "1004_rape/16_clown/phase5_anal0.webp"
-                        }, 1);
+                        rapeCharFullscreen("1004_rape/16_clown/phase5_anal0.webp", 1);
                         zcl.facedown(670, 700, .35, "", true);
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 0,
-                            "top": 0,
-                            "width": 1920,
-                            "height": 1080,
-                            "image": "1004_rape/16_clown/phase5_anal1.webp"
-                        }, 1004);
+                        rapeCharFullscreen("1004_rape/16_clown/phase5_anal1.webp");
                         if (rape.phases[5].c === 2)
                             return true;
                         return false;
@@ -2535,39 +1732,15 @@
                     else if (rape.phases[5].c === 1) {
                         nav.killbutton("r1004bg");
                         levels.piss(false, true, false, "f", "clownqueen");
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 0,
-                            "top": 0,
-                            "width": 1920,
-                            "height": 1080,
-                            "image": "1004_rape/16_clown/phase5_anal0_p.webp"
-                        }, 1);
+                        rapeCharFullscreen("1004_rape/16_clown/phase5_anal0_p.webp", 1);
                         zcl.facedown(670, 700, .35, "", true);
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 0,
-                            "top": 0,
-                            "width": 1920,
-                            "height": 1080,
-                            "image": "1004_rape/16_clown/phase5_anal1.webp"
-                        }, 1004);
+                        rapeCharFullscreen("1004_rape/16_clown/phase5_anal1.webp");
                         return false;
                     }
                 }
                 else {
                     zcl.bj(100, 190, 1, "open", true);
-                    nav.button({
-                        "type": "img",
-                        "name": "r1004bg",
-                        "left": 0,
-                        "top": 0,
-                        "width": 1920,
-                        "height": 1080,
-                        "image": "1004_rape/16_clown/phase5_oral.webp"
-                    }, 1004);
+                    rapeCharFullscreen("1004_rape/16_clown/phase5_oral.webp");
                     return false;
                 }
                 return true;
@@ -2576,29 +1749,13 @@
                 if (rape.phases[6].c === 0) {
                     if (rape.rapeType === "anal") {
                         zcl.kill();
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 0,
-                            "top": 0,
-                            "width": 1920,
-                            "height": 1080,
-                            "image": "1004_rape/16_clown/phase6_anal.webp"
-                        }, 1004);
+                        rapeCharFullscreen("1004_rape/16_clown/phase6_anal.webp");
                         return { c: false, s: rape.char.name, m: "Don't we just make the sluttiest pair of holes ever! *HONK*" }
 
                     }
                     else {
                         zcl.bj(100, 190, 1, "open", true);
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 0,
-                            "top": 0,
-                            "width": 1920,
-                            "height": 1080,
-                            "image": "1004_rape/16_clown/phase6_oral.webp"
-                        }, 1004);
+                        rapeCharFullscreen("1004_rape/16_clown/phase6_oral.webp");
                         return { c: false, s: rape.char.name, m: "*Honk* You made my clussy squirt! " }
                     }
                 }
@@ -2608,27 +1765,11 @@
                 if (rape.phases[7].c === 0) {
                     if (rape.rapeType === "anal") {
                         zcl.kill();
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 0,
-                            "top": 0,
-                            "width": 1920,
-                            "height": 1080,
-                            "image": "1004_rape/missx/phase6_" + gender.pronoun("f") + ".png"
-                        }, 1004);
+                        rapeCharFullscreen("1004_rape/missx/phase6_" + gender.pronoun("f") + ".png");
                     }
                     else {
                         zcl.kill();
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 456,
-                            "top": 0,
-                            "width": 1084,
-                            "height": 1080,
-                            "image": "1004_rape/phase6_cun_" + gender.pronoun("f") + ".png"
-                        }, 1004);
+                        rapeCharImage(456, 0, 1084, 1080, "1004_rape/phase6_cun_" + gender.pronoun("f") + ".png");
                     }
                     return false;
                 }

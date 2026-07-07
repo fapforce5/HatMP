@@ -643,7 +643,7 @@ room328.btnclick = function (name) {
             }
             else {
                 g.map.temp = 0;
-                room329.btnclick("stall_backDraw");
+                invoker.invoke(329, "btnclick", "stall_backDraw");
                 sc.select("icon_bedturn", "328_farm/icon_turn.webp", -2);
                 sc.select("icon_sleep", "328_farm/icon_sleep.webp", -1);
                 sc.select("icon_expel", "329_barn/icon_cumfill.webp", 0, 329);
@@ -2188,7 +2188,7 @@ room328.chatcatch = function (callback) {
             nav.bg("328_farm/" + callback + ".webp");
             break;
         case "kinsey7":
-            room329.btnclick("stall_backDraw");
+            invoker.invoke(329, "btnclick", "stall_backDraw");
             break;
         case "kinseyComplete":
             sc.completeMissionTask("kinsey", "ranch", 1);
@@ -2203,7 +2203,7 @@ room328.chatcatch = function (callback) {
             quickFight.init(20, sc.n("!rancher"), "fight_win", "fight_lose", "fight_lose", 328);
             break;
         case "fightescape":
-            room329.chatcatch("escape");
+            invoker.invoke(329, "chatcatch", "escape");
             chat(89, 329);
             break;
         case "fight_lose":
@@ -4419,3 +4419,5 @@ room328.chat = function (chatID) {
             return [];
     }
 };
+
+invoker.registerRoom(328, room328);

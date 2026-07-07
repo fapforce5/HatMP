@@ -210,11 +210,11 @@ room5.chatcatch = function (callback) {
             break;
         case "massageFinish0":
             g.internal.level = 0;
-            room5.chatcatch("massageFinish");
+            invoker.invokeCurrent("chatcatch", "massageFinish");
             break;
         case "massageFinishFail":
             sc.completeMission("eva", "massage", false);
-            room5.chatcatch("massageFinish");
+            invoker.invokeCurrent("chatcatch", "massageFinish");
             break;
         case "check50":
             if (gv.get("money") > 49) {
@@ -623,3 +623,5 @@ room5.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(5, room5);

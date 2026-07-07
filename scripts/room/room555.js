@@ -11,7 +11,7 @@ room555.main = function () {
         chat(32, 555);
     }
     else if (cl.isLewd()) {
-        room555.chatcatch("drawIcons");
+        invoker.invokeCurrent("chatcatch", "drawIcons");
     }
     else {
         chat(0, 555);
@@ -30,7 +30,8 @@ room555.btnclick = function (name) {
                 "top": 0,
                 "width": 236,
                 "height": 1080,
-                "image": "555_backgym/rope2l.png"
+                "image": "555_backgym/rope2l.png",
+                "spaceAdvance": true
             }, 555);
             nav.button({
                 "type": "btn",
@@ -39,7 +40,8 @@ room555.btnclick = function (name) {
                 "top": 0,
                 "width": 236,
                 "height": 1066,
-                "image": "555_backgym/rope2r.png"
+                "image": "555_backgym/rope2r.png",
+                "spaceAdvance": true
             }, 555);
             if (g.pass === 5)
                 chat(13, 555);
@@ -55,7 +57,8 @@ room555.btnclick = function (name) {
                 "top": 0,
                 "width": 364,
                 "height": 1080,
-                "image": "555_backgym/rope1l.png"
+                "image": "555_backgym/rope1l.png",
+                "spaceAdvance": true
             }, 555);
             nav.button({
                 "type": "btn",
@@ -64,7 +67,8 @@ room555.btnclick = function (name) {
                 "top": 0,
                 "width": 246,
                 "height": 1066,
-                "image": "555_backgym/rope1r.png"
+                "image": "555_backgym/rope1r.png",
+                "spaceAdvance": true
             }, 555);
             break;
         case "thrust":
@@ -77,7 +81,7 @@ room555.btnclick = function (name) {
                 "top": 0,
                 "width": 1599,
                 "height": 1080,
-                "image": "555_backgym/thrust2.png"
+                "image": "555_backgym/thrust2.jpg"
             }, 555);
             break;
         case "thrust1":
@@ -90,7 +94,7 @@ room555.btnclick = function (name) {
                     "top": 0,
                     "width": 1559,
                     "height": 1080,
-                    "image": "555_backgym/thrust3.png"
+                    "image": "555_backgym/thrust3.jpg"
                 }, 555);
                 chat(25, 555);
             }
@@ -103,7 +107,7 @@ room555.btnclick = function (name) {
                     "top": 0,
                     "width": 1559,
                     "height": 1080,
-                    "image": "555_backgym/thrust1.png"
+                    "image": "555_backgym/thrust1.jpg"
                 }, 555);
             }
             break;
@@ -119,7 +123,7 @@ room555.btnclick = function (name) {
             sc.selectCancel("icon_back", 3);
             break;
         case "icon_back":
-            room555.chatcatch("drawIcons");
+            invoker.invokeCurrent("chatcatch", "drawIcons");
             break;
         case "icon_curls":
             if (gv.get("energy") < 75) {
@@ -399,7 +403,8 @@ room555.chatcatch = function (callback) {
                 "top": 0,
                 "width": 364,
                 "height": 1080,
-                "image": "555_backgym/rope1l.png"
+                "image": "555_backgym/rope1l.png",
+                "spaceAdvance": true
             }, 555);
             nav.button({
                 "type": "btn",
@@ -408,7 +413,8 @@ room555.chatcatch = function (callback) {
                 "top": 0,
                 "width": 246,
                 "height": 1066,
-                "image": "555_backgym/rope1r.png"
+                "image": "555_backgym/rope1r.png",
+                "spaceAdvance": true
             }, 555);
             break;
         case "toetouch":
@@ -448,7 +454,7 @@ room555.chatcatch = function (callback) {
             break;
         case "exitLowercum":
             cl.doCum();
-            room555.chatcatch("exitUpper");
+            invoker.invokeCurrent("chatcatch", "exitUpper");
             break;
         case "exitOral":
             levels.mod("strength", 55);
@@ -526,7 +532,7 @@ room555.chatcatch = function (callback) {
                 "top": 0,
                 "width": 1599,
                 "height": 1080,
-                "image": "555_backgym/thrust1.png"
+                "image": "555_backgym/thrust1.jpg"
             }, 555);
             break;
         case "hip5Click":
@@ -539,7 +545,7 @@ room555.chatcatch = function (callback) {
                 "top": 0,
                 "width": 1599,
                 "height": 1080,
-                "image": "555_backgym/thrust1.png"
+                "image": "555_backgym/thrust1.jpg"
             }, 555);
             break;
         case "hip6":
@@ -551,7 +557,7 @@ room555.chatcatch = function (callback) {
                 "top": 0,
                 "width": 1559,
                 "height": 1080,
-                "image": "555_backgym/thrust2.png"
+                "image": "555_backgym/thrust2.jpg"
             }, 555);
             break;
         case "hip7":
@@ -563,7 +569,7 @@ room555.chatcatch = function (callback) {
                 "top": 0,
                 "width": 1559,
                 "height": 1080,
-                "image": "555_backgym/thrust4.png"
+                "image": "555_backgym/thrust4.jpg"
             }, 555);
             break;
         case "hip8":
@@ -597,7 +603,16 @@ room555.chatcatch = function (callback) {
             break;
         case "thrust1":
             g.internal = 0;
-            nav.drawButton("555_backgym/thrust.png", "g_thrust");
+            nav.button({
+                "type": "zbtn",
+                "name": "g_thrust",
+                "left": 1695,
+                "top": 920,
+                "width": 225,
+                "height": 75,
+                "image": "555_backgym/thrust.png",
+                "spaceAdvance": true
+            }, 555);
             break;
         case "thrustPreg":
             levels.fuckpussy("g", "f");
@@ -608,7 +623,7 @@ room555.chatcatch = function (callback) {
                 chat(42, 555);
             }
             else {
-                room555.chatcatch("exitUpper");
+                invoker.invokeCurrent("chatcatch", "exitUpper");
             }
             break;
         case "yoga1":
@@ -618,7 +633,16 @@ room555.chatcatch = function (callback) {
         case "situp":
             nav.bg("555_backgym/situp1_" + gender.pronoun("f") + ".jpg");
             g.internal = 0;
-            nav.drawButton("555_backgym/down.png", "chad_situp");
+            nav.button({
+                "type": "zbtn",
+                "name": "chad_situp",
+                "left": 1695,
+                "top": 920,
+                "width": 225,
+                "height": 75,
+                "image": "555_backgym/down.png",
+                "spaceAdvance": true
+            }, 555);
             break;
         case "squatDown":
             nav.bg("555_backgym/squat1_" + gender.pronoun("m") + ".jpg");
@@ -626,7 +650,16 @@ room555.chatcatch = function (callback) {
         case "squatGo":
             nav.bg("555_backgym/squat0_" + gender.pronoun("f") + ".jpg");
             g.internal = 1;
-            nav.drawButton("555_backgym/down.png", "chad_squats");
+            nav.button({
+                "type": "zbtn",
+                "name": "chad_squats",
+                "left": 1695,
+                "top": 920,
+                "width": 225,
+                "height": 75,
+                "image": "555_backgym/down.png",
+                "spaceAdvance": true
+            }, 555);
             break;
         case "squatEnd":
             levels.mod("fitness", 50);
@@ -1100,7 +1133,7 @@ room555.chat = function (chatID) {
             text: "Allright " + gender.pronoun("faggot") + " sit up and kiss my supior cock. It's the closest to a " +
                 "real man's cock you'll ever get. ",
             button: [
-                { chatID: 54, text: "[Situp]", callback: "situp" },
+                { chatID: 54, text: "[Situp]", callback: "" },
             ]
         },
         {
@@ -1152,3 +1185,5 @@ room555.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(555, room555);

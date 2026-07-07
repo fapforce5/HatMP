@@ -119,7 +119,7 @@ room25.btnclick = function (name) {
             char.room(11);
             break;
         case "mom":
-            room26.btnclick("chat_landlord");
+            invoker.invoke(26, "btnclick", "chat_landlord");
             break;
         case "lolaAndEva":
             var le = sc.getLevel("lola");
@@ -159,33 +159,33 @@ room25.chatcatch = function (callback) {
         case "passtime1":
             sc.setstep("landlord", 1);
             daily.set("landlord");
-            room25.chatcatch("motherPassTime");
+            invoker.invokeCurrent("chatcatch", "motherPassTime");
             break;
         case "passtime2":
             sc.setstep("landlord", 2);
             daily.set("landlord");
-            room25.chatcatch("motherPassTime");
+            invoker.invokeCurrent("chatcatch", "motherPassTime");
             break;
         case "passtime3":
             sc.setstep("landlord", 3);
             sc.setstep("landlord", -3);
             daily.set("landlord");
-            room25.chatcatch("motherPassTime");
+            invoker.invokeCurrent("chatcatch", "motherPassTime");
             break;
         case "passtime4":
             sc.setstep("landlord", 4);
             daily.set("landlord");
-            room25.chatcatch("motherPassTime");
+            invoker.invokeCurrent("chatcatch", "motherPassTime");
             break;
         case "passtime5":
             sc.setstep("landlord", 5);
             daily.set("landlord");
-            room25.chatcatch("motherPassTime");
+            invoker.invokeCurrent("chatcatch", "motherPassTime");
             break;
         case "passtime6":
             sc.setstep("landlord", 6);
             daily.set("landlord");
-            room25.chatcatch("motherPassTime");
+            invoker.invokeCurrent("chatcatch", "motherPassTime");
             break;
         case "motherPassTime":
             char.addtime(60);
@@ -207,6 +207,8 @@ room25.chatcatch = function (callback) {
             break;
     }
 };
+
+invoker.registerRoom(25, room25);
 
 room25.chat = function (chatID) {
     var cArray = [

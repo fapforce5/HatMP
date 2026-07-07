@@ -347,7 +347,7 @@ room800.btnclick = function (name) {
                 "height": 1008,
                 "image": "800_ralph/ralphmom.png"
             }, 800);
-            room800.chatcatch("choices");
+            invoker.invokeCurrent("chatcatch", "choices");
             break;
         case "sissy":
             nav.killbutton("gift");
@@ -1137,3 +1137,5 @@ room800.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(800, room800);

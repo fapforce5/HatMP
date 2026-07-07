@@ -86,7 +86,7 @@ room975.chatcatch = function (callback) {
                 gv.st[r[i].i].t = r[i].t;
             }
             cl.display();
-            room2.chatcatch("proceed");
+            invoker.invoke(2, "chatcatch", "proceed");
             break;
         default:
             break;
@@ -143,3 +143,5 @@ room975.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(975, room975);

@@ -11,6 +11,9 @@ rape.phase = 0;
 rape.modifier = "";
 rape.charMessage;
 rape.location;
+rape.actionButtonLeft = 1600;
+rape.actionButtonTop = 480;
+rape.actionButtonSpacing = 75;
 rape.phases = [
     { i: 0, n: "Surprise", c: 0 },
     { i: 1, n: "fully clothed only", c: 0 },
@@ -23,6 +26,48 @@ rape.phases = [
     { i: 8, n: "exit", c: 0 },
 ];
 
+rape.appendHudLayer = function (className, attrs, width, top, left, background) {
+    let attrText = "";
+    Object.keys(attrs).forEach(function (key) {
+        attrText += " data-" + key + "=\"" + attrs[key] + "\"";
+    });
+    $("#room-buttons").append(
+        '<div class="room-img room-zindex resize ' + className + '"' + attrText +
+        ' style=" ' + g.makeCss(10, width, top, left) + "  background: " + background + '; border-radius:10px;" ></div>'
+    );
+};
+
+rape.appendHudBar = function (className, top, left, layers) {
+    for (let i = 0; i < layers.length; i++) {
+        rape.appendHudLayer(className, layers[i].attrs, layers[i].width, top, left, layers[i].background);
+    }
+};
+
+rape.drawPanelBackground = function (image = "1004_rape/icon_bg.png") {
+    nav.button({
+        "type": "zimg",
+        "name": "m1004-d",
+        "left": 1600,
+        "top": 150,
+        "width": 300,
+        "height": 318,
+        "image": image
+    }, 1004);
+};
+
+rape.renderActionButtons = function (btnList, top = rape.actionButtonTop) {
+    for (let i = 0; i < btnList.length; i++) {
+        nav.button({
+            "type": "zbtn",
+            "name": "b1004-" + btnList[i].n,
+            "left": rape.actionButtonLeft,
+            "top": top + (i * rape.actionButtonSpacing),
+            "width": 300,
+            "height": 72,
+            "image": "1004_rape/" + btnList[i].i
+        }, 1004);
+    }
+};
 
 rape.init = function (charNum = null, location = "street", roomId = g.roomID, callback = "") {
     nav.killall();
@@ -109,21 +154,26 @@ rape.init = function (charNum = null, location = "street", roomId = g.roomID, ca
     
     
 
-    $('#room-buttons').append('<div class="room-img room-zindex resize enemy-life" data-name="myenergybase" data-room="1004" style=" ' + g.makeCss(10, 280, 1020, 1450) + '  background: #333; border-radius:10px;" ></div>');
-    $('#room-buttons').append('<div class="room-img room-zindex resize enemy-life" data-t="damage" data-room="1004" style=" ' + g.makeCss(10, 100, 1020, 1450) + '  background: #ff3333; border-radius:10px;" ></div>');
-    $('#room-buttons').append('<div class="room-img room-zindex resize enemy-life" data-t="energy" data-room="1004" style=" ' + g.makeCss(10, 100, 1020, 1450) + '  background: #33ff33; border-radius:10px;" ></div>');
-
-    $('#room-buttons').append('<div class="room-img room-zindex resize my-life" data-name="enemy0" data-room="9999" style=" ' + g.makeCss(10, 280, 1020, 200) + '  background: #333; border-radius:10px;" ></div>');
-    $('#room-buttons').append('<div class="room-img room-zindex resize my-life" data-t="damage" data-name="enemy0" data-room="9999" style=" ' + g.makeCss(10, 280, 1020, 200) + '  background: #ff3333; border-radius:10px;" ></div>');
-    $('#room-buttons').append('<div class="room-img room-zindex resize my-life" data-t="energy" data-name="enemy0" data-room="9999" style=" ' + g.makeCss(10, 280, 1020, 200) + '  background: #33ff33; border-radius:10px;" ></div>');
-
-    $('#room-buttons').append('<div class="room-img room-zindex resize enemy-arousal" data-name="enemy0" data-room="9999" style=" ' + g.makeCss(10, 280, 1050, 1450) + '  background: #333; border-radius:10px;" ></div>');
-    $('#room-buttons').append('<div class="room-img room-zindex resize enemy-arousal" data-t="damage" data-name="enemy0" data-room="9999" style=" ' + g.makeCss(10, 280, 1050, 1450) + '  background: #d9b568; border-radius:10px;" ></div>');
-    $('#room-buttons').append('<div class="room-img room-zindex resize enemy-arousal" data-t="energy" data-name="enemy0" data-room="9999" style=" ' + g.makeCss(10, 280, 1050, 1450) + '  background: #fff7e6; border-radius:10px;" ></div>');
-
-    $('#room-buttons').append('<div class="room-img room-zindex resize my-arousal" data-name="enemy0" data-room="9999" style=" ' + g.makeCss(10, 280, 1050, 200) + '  background: #333; border-radius:10px;" ></div>');
-    $('#room-buttons').append('<div class="room-img room-zindex resize my-arousal" data-t="damage" data-name="enemy0" data-room="9999" style=" ' + g.makeCss(10, 280, 1050, 200) + '  background: #d9b568; border-radius:10px;" ></div>');
-    $('#room-buttons').append('<div class="room-img room-zindex resize my-arousal" data-t="energy" data-name="enemy0" data-room="9999" style=" ' + g.makeCss(10, 280, 1050, 200) + '  background: #fff7e6; border-radius:10px;" ></div>');
+    rape.appendHudBar("enemy-life", 1020, 1450, [
+        { attrs: { name: "myenergybase", room: "1004" }, width: 280, background: "#333" },
+        { attrs: { t: "damage", room: "1004" }, width: 100, background: "#ff3333" },
+        { attrs: { t: "energy", room: "1004" }, width: 100, background: "#33ff33" }
+    ]);
+    rape.appendHudBar("my-life", 1020, 200, [
+        { attrs: { name: "enemy0", room: "9999" }, width: 280, background: "#333" },
+        { attrs: { t: "damage", name: "enemy0", room: "9999" }, width: 280, background: "#ff3333" },
+        { attrs: { t: "energy", name: "enemy0", room: "9999" }, width: 280, background: "#33ff33" }
+    ]);
+    rape.appendHudBar("enemy-arousal", 1050, 1450, [
+        { attrs: { name: "enemy0", room: "9999" }, width: 280, background: "#333" },
+        { attrs: { t: "damage", name: "enemy0", room: "9999" }, width: 280, background: "#d9b568" },
+        { attrs: { t: "energy", name: "enemy0", room: "9999" }, width: 280, background: "#fff7e6" }
+    ]);
+    rape.appendHudBar("my-arousal", 1050, 200, [
+        { attrs: { name: "enemy0", room: "9999" }, width: 280, background: "#333" },
+        { attrs: { t: "damage", name: "enemy0", room: "9999" }, width: 280, background: "#d9b568" },
+        { attrs: { t: "energy", name: "enemy0", room: "9999" }, width: 280, background: "#fff7e6" }
+    ]);
 
     
     rape.updateEnergy(null, null, null, null);
@@ -1436,8 +1486,10 @@ rape.kill = function () {
     nav.killall();
     inv.show();
     //char.room(0);
-    window[g.room(rape.roomId)]["btnclick"](rape.callback);
+    invoker.invoke(rape.roomId, "btnclick", rape.callback);
 }
+
+invoker.registerRoom(1004, room1004);
 
 rape.updateEnergy = function (enemyEnergyChange = null, myEnergyChange = null, enemyArousal = null, myarousal = null) {
     let startingEnemyEnergy = rape.char.energy;
@@ -1726,31 +1778,13 @@ rape.displayMenu = function (menu) {
             break;
     }
 
-    for (i = 0; i < btnList.length; i++) {
-        nav.button({
-            "type": "zbtn",
-            "name": "b1004-" + btnList[i].n,
-            "left": 1600,
-            "top": 480 + (i * 75),
-            "width": 300,
-            "height": 72,
-            "image": "1004_rape/" + btnList[i].i
-        }, 1004);
-    }
+    rape.renderActionButtons(btnList);
 };
 
 rape.message = function (message, speaker = null) {
     nav.killbutton("m1004-d");
     if (rape.phase === 0 || speaker === "rapeMessage") {
-        nav.button({
-            "type": "zimg",
-            "name": "m1004-d",
-            "left": 1600,
-            "top": 150,
-            "width": 300,
-            "height": 318,
-            "image": "1004_rape/icon_bg_rape.png"
-        }, 1004);
+        rape.drawPanelBackground("1004_rape/icon_bg_rape.png");
         return;
     }
     if (typeof message === "string") {
@@ -1811,15 +1845,7 @@ rape.rolldice = function (updateEnergy = false) {
     var fightStats = quickFight.getStats(rape.char.fight, rape.char.energy);
     myTotal = enemyTotal = 0;
 
-    nav.button({
-        "type": "zimg",
-        "name": "m1004-d",
-        "left": 1600,
-        "top": 150,
-        "width": 300,
-        "height": 318,
-        "image": "1004_rape/icon_bg.png"
-    }, 1002);
+    rape.drawPanelBackground();
     
     
     for (var i = 0; i < 4; i++) {
@@ -1900,17 +1926,7 @@ rape.rolldice = function (updateEnergy = false) {
         xbtnList.push({ n: "struggleLost", i: "lost" + rape.phase + ".png" });
     }
 
-    for (i = 0; i < xbtnList.length; i++) {
-        nav.button({
-            "type": "zbtn",
-            "name": "b1004-" + xbtnList[i].n,
-            "left": 1600,
-            "top": 480 + (i * 75),
-            "width": 300,
-            "height": 72,
-            "image": "1004_rape/" + xbtnList[i].i
-        }, 1004);
-    }
+    rape.renderActionButtons(xbtnList);
 
     if (updateEnergy) {
         if (myTotalWithFight >= enemyTotalWithFight) {
@@ -1992,15 +2008,7 @@ rape.kick = function () {
             hex: "#ffffff",
             text: "Success!"
         });
-        nav.button({
-            "type": "zbtn",
-            "name": "b1004-flee",
-            "left": 1600,
-            "top": 660,
-            "width": 300,
-            "height": 72,
-            "image": "1004_rape/icon_flee.png"
-        }, 1004);
+        rape.renderActionButtons([{ n: "flee", i: "icon_flee.png" }], 660);
     }
     else {
         nav.t({
@@ -2012,20 +2020,7 @@ rape.kick = function () {
             hex: "#ffffff",
             text: "Kick failed!"
         });
-        let xbtnList = new Array();
-        xbtnList.push({ n: "struggleLost", i: "lost" + rape.phase + ".png" });
-
-        for (i = 0; i < xbtnList.length; i++) {
-            nav.button({
-                "type": "zbtn",
-                "name": "b1004-" + xbtnList[i].n,
-                "left": 1600,
-                "top": 480,
-                "width": 300,
-                "height": 72,
-                "image": "1004_rape/" + xbtnList[i].i
-            }, 1004);
-        }
+        rape.renderActionButtons([{ n: "struggleLost", i: "lost" + rape.phase + ".png" }]);
     }
 };
 

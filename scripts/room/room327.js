@@ -296,7 +296,7 @@ room327.chat = function (chatID) {
         gv.set("milk", 0);
         cl.display();
         if (milk < 500) {
-            room328.btnclick("addtrust");
+            invoker.invoke(328, "btnclick", "addtrust");
             g.map.trust += 2;
             return {
                 chatID: 999,
@@ -307,7 +307,7 @@ room327.chat = function (chatID) {
                 ]
             };
         }
-        room328.btnclick("addtrust");
+        invoker.invoke(328, "btnclick", "addtrust");
         return {
             chatID: 999,
             speaker: "thinking",
@@ -638,3 +638,5 @@ room327.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(327, room327);

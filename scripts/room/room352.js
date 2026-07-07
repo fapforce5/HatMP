@@ -253,7 +253,7 @@ room352.chatcatch = function (callback) {
             g.internal.fail++;
             if (g.internal.events.length !== 0) 
                 g.internal.events.splice(0, 1);
-            room352.chatcatch("waitroom");
+            invoker.invokeCurrent("chatcatch", "waitroom");
             break;
         case "endRotation":
             
@@ -349,12 +349,12 @@ room352.chatcatch = function (callback) {
             break;
         case "jackit2ass":
             nav.killbutton("mybewbs");
-            room352.chatcatch("jackit2");
+            invoker.invokeCurrent("chatcatch", "jackit2");
             break;
         case "jackit3":
             nav.killall();
             nav.bg("352_jackoff/coldStorage.jpg");
-            room352.chatcatch("prepNextSuccess");
+            invoker.invokeCurrent("chatcatch", "prepNextSuccess");
             break;
         case "prepNextSuccess":
             g.internal.success++;
@@ -777,3 +777,5 @@ room352.chat = function (chatID) {
             return [];
     }
 };
+
+invoker.registerRoom(352, room352);

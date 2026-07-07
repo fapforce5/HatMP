@@ -354,7 +354,7 @@ room182.chatcatch = function (callback) {
                 '<div id="room182_energy_line" style="background: #20C000; border-radius: 20px; width:100%; height: 100%;" class="resize-height rl-bar"></div>' +
                 '</div>';
             $('#room-buttons').append(line);
-            room182.chatcatch("t1_setenergy");
+            invoker.invokeCurrent("chatcatch", "t1_setenergy");
             break;
         case "t1_setenergy":
             var thisEnergy = gv.get("energy");
@@ -367,7 +367,7 @@ room182.chatcatch = function (callback) {
         case "t1_29":
             gv.mod("energy", -15);
             nav.bg("182_test/" + callback + ".jpg");
-            room182.chatcatch("t1_setenergy");
+            invoker.invokeCurrent("chatcatch", "t1_setenergy");
             if (gv.get("energy") > 0) {
                 chat(58, 182);
                 nav.bg("182_test/" + callback + ".jpg");
@@ -380,7 +380,7 @@ room182.chatcatch = function (callback) {
             break;
         case "t1_31":
             gv.mod("energy", -20);
-            room182.chatcatch("t1_setenergy");
+            invoker.invokeCurrent("chatcatch", "t1_setenergy");
             if (gv.get("energy") > 0) {
                 chat(60, 182);
                 nav.bg("182_test/" + callback + ".jpg");
@@ -393,7 +393,7 @@ room182.chatcatch = function (callback) {
             break;
         case "t1_33":
             gv.mod("energy", -5);
-            room182.chatcatch("t1_setenergy");
+            invoker.invokeCurrent("chatcatch", "t1_setenergy");
             if (gv.get("energy") > 0) {
                 chat(62, 182);
                 nav.bg("182_test/" + callback + ".jpg");
@@ -406,7 +406,7 @@ room182.chatcatch = function (callback) {
             break;
         case "t1_35":
             gv.mod("energy", -10);
-            room182.chatcatch("t1_setenergy");
+            invoker.invokeCurrent("chatcatch", "t1_setenergy");
             if (gv.get("energy") > 0) {
                 chat(64, 182);
                 nav.bg("182_test/" + callback + ".jpg");
@@ -419,7 +419,7 @@ room182.chatcatch = function (callback) {
             break;
         case "t1_37":
             gv.mod("energy", -17);
-            room182.chatcatch("t1_setenergy");
+            invoker.invokeCurrent("chatcatch", "t1_setenergy");
             if (gv.get("energy") > 0) {
                 chat(66, 182);
                 nav.bg("182_test/" + callback + ".jpg");
@@ -432,7 +432,7 @@ room182.chatcatch = function (callback) {
             break;
         case "t1_38":
             gv.mod("energy", -17 );
-            room182.chatcatch("t1_setenergy");
+            invoker.invokeCurrent("chatcatch", "t1_setenergy");
             if (gv.get("energy") > 0) {
                 chat(67, 182);
                 nav.bg("182_test/" + callback + ".jpg");
@@ -445,7 +445,7 @@ room182.chatcatch = function (callback) {
             break;
         case "t1_39":
             gv.mod("energy", -16);
-            room182.chatcatch("t1_setenergy");
+            invoker.invokeCurrent("chatcatch", "t1_setenergy");
             if (gv.get("energy") > 0) {
                 chat(68, 182);
                 nav.bg("182_test/" + callback + ".jpg");
@@ -537,6 +537,8 @@ room182.chatcatch = function (callback) {
             break;
     }
 };
+
+invoker.registerRoom(182, room182);
 
 room182.chat = function (chatID) {
     if (chatID === 1000) {

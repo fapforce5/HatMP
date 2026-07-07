@@ -119,7 +119,7 @@ room222.btnclick = function (name) {
             chat(30, 222);
             break;
         case "case-2-records":
-            room222.chatcatch("case-2-records");
+            invoker.invokeCurrent("chatcatch", "case-2-records");
             break;
         case "case-3-1":
             nav.killall();
@@ -190,7 +190,7 @@ room222.chatcatch = function (callback) {
             break;
         case "case0-end":
             levels.mod("pi", 20); 
-            room222.chatcatch("lunch");
+            invoker.invokeCurrent("chatcatch", "lunch");
             break;
         case "case0-2-bj":
             if (cl.appearance() < 2)
@@ -710,3 +710,5 @@ room222.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(222, room222);

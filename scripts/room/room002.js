@@ -8,7 +8,7 @@ room2.main = function () {
     $('.room-topper').hide();
     nav.killall();
     $('.room-left').hide();
-    room2.chatcatch('init');
+    invoker.invokeCurrent("chatcatch", "init");
 
 };
 
@@ -188,3 +188,5 @@ room2.chat = function(chatID){
     else
         return [];
 };
+
+invoker.registerRoom(2, room2);

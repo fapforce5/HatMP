@@ -1,6 +1,7 @@
 ﻿//trash
 var room173 = {};
 room173.main = function () {
+    var navList = [203];
     if (missy.get("trashSearchCounter") === 0) {
         nav.bg("173_trash/bg0.jpg");
         chat(0, 173);
@@ -17,6 +18,7 @@ room173.main = function () {
         }, 173);
     }
     missy.mod("trashSearchCounter", 1);
+    nav.buildnav(navList);
 };
 
 room173.btnclick = function (name) {
@@ -52,7 +54,7 @@ room173.btnclick = function (name) {
                         break;
                 }
             }
-            room173.btnclick("next");
+            invoker.invokeCurrent("btnclick", "next");
             break;
         case "next":
             if (g.internal.i === g.internal.a.length) {
@@ -81,14 +83,14 @@ room173.btnclick = function (name) {
             if (thisEntrySave.s)
                 levels.mod("pi", 4);
             g.internal.i++;
-            room173.btnclick("next");
+            invoker.invokeCurrent("btnclick", "next");
             break;
         case "trash":
             var thisEntryTrash = g.internal.a[g.internal.i];
             if (!thisEntryTrash.s)
                 levels.mod("pi", 4);
             g.internal.i++;
-            room173.btnclick("next");
+            invoker.invokeCurrent("btnclick", "next");
             break;
         case "eat":
             if (levels.get("cum").l < 4)
@@ -125,7 +127,7 @@ room173.chatcatch = function (callback) {
         case "next":
             nav.bg("173_trash/bag.jpg");
             g.internal.i++;
-            room173.btnclick("next");
+            invoker.invokeCurrent("btnclick", "next");
             break;
         case "lunch":
             missy.didJob(7, 1, null);
@@ -201,3 +203,5 @@ room173.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(173, room173);

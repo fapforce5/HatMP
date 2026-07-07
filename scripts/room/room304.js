@@ -2,7 +2,7 @@
 var room304 = {};
 room304.main = function () {
     if (g.internal === "202hallway") {
-        room304.btnclick("drawHallway");
+        invoker.invokeCurrent("btnclick", "drawHallway");
     }
     else {
         var btnList = [{
@@ -42,7 +42,7 @@ room304.btnclick = function (name) {
             }
             break;
         case "livingroomdoor":
-            room304.btnclick("drawHallway");
+            invoker.invokeCurrent("btnclick", "drawHallway");
             break;
         case "drawHallway":
             g.internal = null;
@@ -437,3 +437,5 @@ room304.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(304, room304);

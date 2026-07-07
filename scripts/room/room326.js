@@ -357,7 +357,7 @@ room326.chatcatch = function (callback) {
                 nav.next("horse500");
             }
             else {
-                room326.chatcatch("caught1");
+                invoker.invokeCurrent("chatcatch", "caught1");
                 g.map.anger += 80;
                 chat(33, 326);
             }
@@ -369,7 +369,7 @@ room326.chatcatch = function (callback) {
                 chat(35, 326);
             }
             else {
-                room326.chatcatch("caught1");
+                invoker.invokeCurrent("chatcatch", "caught1");
                 g.map.anger += 80;
                 chat(33, 326);
             }
@@ -385,7 +385,7 @@ room326.chatcatch = function (callback) {
                 chat(29, 326);
             }
             else {
-                room326.chatcatch("caught1");
+                invoker.invokeCurrent("chatcatch", "caught1");
                 g.map.anger += 80;
                 chat(33, 326);
             }
@@ -393,7 +393,7 @@ room326.chatcatch = function (callback) {
         case "horse_end":
             levels.anal(6, true, "m", true, "horse", "horse");
             gv.mod("energy", -30);
-            room326.chatcatch("room329");
+            invoker.invokeCurrent("chatcatch", "room329");
             break;
         case "room329":
             g.map.ppgirldistract = false;
@@ -779,3 +779,5 @@ room326.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(326, room326);

@@ -191,7 +191,7 @@ room376.chatcatch = function (callback) {
             nav.next("cellrape");
             break;
         case "uncower":
-            room376.btnclick("icon_sit");
+            invoker.invokeCurrent("btnclick", "icon_sit");
             break;
         case "sleep":
             nav.kill();
@@ -202,6 +202,8 @@ room376.chatcatch = function (callback) {
             break;
     }
 };
+
+invoker.registerRoom(376, room376);
 
 room376.chat = function (chatID) {
     var cArray = [

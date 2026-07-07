@@ -16,6 +16,9 @@ var pic = {};
 //r = room painting
 inv.isFooter = true;
 inv.leftMenu = true;
+inv.prevPanel = "hide";
+inv.hadPanelOpen = false;
+inv.isOpen = false;
 inv.page = 0;
 inv.master = new Array();
 pic.master = new Array();
@@ -154,7 +157,7 @@ inv.init = function () {
         { type: "g", name: "chisel", display: "Chisel", entry: false, count: null, cost: -1, buy: 5, image: "chisel.png", n: false, desc: "Used to break out of prison. " },
         { type: "g", name: "pizza", display: "Frozen Pizza", entry: false, count: 0, cost: 24, buy: 3, image: "pizza.png", n: false, desc: "Frozen pizza for date night. " },
         { type: "g", name: "peanutbutter", display: "Peanut Butter", entry: false, count: 0, cost: 12, buy: 3, image: "peanutbutter.png", n: false, desc: "Jar of Peanut Butter. " },
-        { type: "g", name: "pickles", display: "Pickles", entry: false, count: 0, cost: 12, buy: 3, image: "pickles.png", n: false, desc: "Jar of Peanut Butter. " },
+        { type: "g", name: "pickles", display: "Pickles", entry: false, count: 0, cost: 12, buy: 3, image: "pickles.png", n: false, desc: "Jar of Pickles. " },
         { type: "g", name: "sleepingpills", display: "Sleeping pills", entry: false, count: 0, cost: -1, buy: null, image: "sleepingpills.png", n: false, desc: "Sleeping pills for you know who" },
 
         { type: "n", name: "magman", display: "Men's Magazine", entry: false, count: 0, cost: 20, buy: 2, image: "magman.png", n: false, desc: "For the Fashionable Male" },
@@ -301,16 +304,26 @@ pic.load = function (picList) {
 inv.backpack = "backpack";
 inv.phone = "phoneBasic";
 
+inv.canOpenMain = function () {
+    return ![401, 405].includes(g.roomID);
+};
+
+inv.openMain = function () {
+    if (!inv.canOpenMain()) {
+        g.popUpNotice("Inventory not accessable");
+        return false;
+    }
+
+    phone.clear(true);
+    inv.page = 0;
+    inv.isOpen = false;
+    inv.display();
+    return true;
+};
+
 $(document).ready(function () {
     $('#room-inv').click(function () {
-        let ignoreList = [401, 405];
-        if (ignoreList.includes(g.roomID))
-            g.popUpNotice("Inventory not accessable");
-        else {
-            phone.clear(true);
-            inv.page = 0;
-            inv.display();
-        }
+        inv.openMain();
     });
 });
 
@@ -320,6 +333,20 @@ inv.hide = function () {
 
 inv.show = function () {
     $("#room-inv").show();
+};
+
+inv.hideShellPanels = function () {
+    inv.prevPanel = char.currentMenuPanel();
+    inv.hadPanelOpen = inv.prevPanel !== "hide";
+    char.hideMenuPanels();
+};
+
+inv.restoreShellPanels = function () {
+    var panel = inv.prevPanel !== "hide" ? inv.prevPanel : g.prevview;
+    if (inv.hadPanelOpen && panel && panel !== "hide")
+        setTimeout(function () {
+            char.changeMenu(panel, false, true);
+        }, 0);
 };
 
 inv.getPhoneAsBackground = function () {
@@ -333,6 +360,77 @@ inv.gett = function (t) {
             return inv.t[i].n;
     }
     return "NOT FOUND";
+};
+
+inv.displayName = function (item) {
+    if (item.display !== undefined && item.display !== null && item.display.trim() !== "")
+        return item.display;
+    if (item.type === "3") {
+        var posterMatch = item.name.match(/_(\d+)$/);
+        if (posterMatch !== null)
+            return "Poster " + posterMatch[1];
+    }
+    return inv.gett(item.type);
+};
+
+inv.isSinglePurchase = function (item) {
+    return item.count === null || ["r", "0", "1", "2", "3"].includes(item.type);
+};
+
+inv.configureActionButton = function (selector, itemType, itemName, actionType, label) {
+    $(selector).attr("data-itype", actionType);
+    $(selector).attr("data-type", itemType);
+    $(selector).attr("data-name", itemName);
+    $(selector).html(label);
+    $(selector).show();
+};
+
+inv.setPrimaryAction = function (item, actionType, label) {
+    inv.configureActionButton("#menu_displayAction", item.type, item.name, actionType, label);
+};
+
+inv.setSecondaryAction = function (item, actionType, label) {
+    inv.configureActionButton("#menu_displayAction2", item.type, item.name, actionType, label);
+};
+
+inv.hideActions = function (hideCountLine) {
+    $("#menu_displayAction").hide();
+    if (hideCountLine)
+        $("#menu_displayCountLine").hide();
+};
+
+inv.setDisplayInfo = function (text) {
+    $("#menu_displayInfo").html(text);
+};
+
+inv.markPurchased = function (hideCountLine) {
+    inv.hideActions(hideCountLine);
+    inv.setDisplayInfo("PURCHASED");
+};
+
+inv.markUpdated = function () {
+    inv.hideActions(false);
+    inv.setDisplayInfo("UPDATED");
+};
+
+inv.refreshCurrentPurchaseRoom = function () {
+    if (g.roomID === 401)
+        invoker.invokeCurrent("main");
+};
+
+inv.redrawBedroomIfVisible = function () {
+    if (g.roomID === 10)
+        invoker.invoke(10, "btnclick", "drawRoom");
+};
+
+inv.selectGroupTypes = function (groupKey) {
+    if (groupKey === "q")
+        return null;
+    if (groupKey === "r")
+        return ["r", "1", "2", "3"];
+    if (groupKey === "d")
+        return ["d"];
+    return [groupKey];
 };
 
 inv.get = function (name) {
@@ -371,7 +469,7 @@ inv.add = function (name) {
             inv.master[i].entry = true;
             if (inv.master[i].count !== null)
                 inv.master[i].count = inv.master[i].count + 1;
-            g.popUpNotice(inv.master[i].display + " added to inventory. ");
+            g.popUpNotice(inv.displayName(inv.master[i]) + " added to inventory. ");
             i = 9999999;
         }
     }
@@ -384,10 +482,10 @@ inv.addMulti = function (name, count) {
             inv.master[i].entry = true;
             if (inv.master[i].count !== null) {
                 inv.master[i].count = inv.master[i].count + count;
-                g.popUpNotice("You receved " + count + " " + inv.master[i].display);
+                g.popUpNotice("You receved " + count + " " + inv.displayName(inv.master[i]));
             }
             else
-                g.popUpNotice(inv.master[i].display + " added to inventory. ");
+                g.popUpNotice(inv.displayName(inv.master[i]) + " added to inventory. ");
             i = 9999999;
         }
     }
@@ -461,20 +559,60 @@ inv.phoneIcon = function () {
     }
 };
 
+inv.renderInventoryEntry = function (counter, item) {
+    $('#menu-bg_' + counter).html('<img src="./images/inv/' + item.image + '" class="menu-select" data-inv="' + item.name + '" title="' + item.display + '">');
+    if (item.n)
+        $('#menu-bg_' + counter).append('<img src="./images/inv/new.png" title="New Inventory" class="display-top3 click-thru" title="' + item.display + '">');
+    if (item.count !== null)
+        $('#menu-bg_' + counter).append('<div class="menu-popup-count" data-name="' + item.name + '">' + item.count + '</div>');
+};
+
+inv.filterButtons = function () {
+    return [
+        { value: "q", label: "View All", top: 100 },
+        { value: "e", label: "Energy Snack", top: 200 },
+        { value: "b", label: "Purse", top: 260 },
+        { value: "p", label: "Phone Case", top: 320 },
+        { value: "r", label: "Room Decor", top: 380 },
+        { value: "m", label: "Makeup", top: 440 },
+        { value: "a", label: "Gifts", top: 500 },
+        { value: "d", label: "Dildos", top: 560 },
+        { value: "o", label: "Keys", top: 620 },
+        { value: "n", label: "Magazine", top: 680 }
+    ];
+};
+
+inv.renderFilterButton = function (button) {
+    $('.room-main').append('<button class="menu_inventory_grouping" data-val="' + button.value + '" style="' +
+        g.cssText(12) + '; ' + g.makeCss(50, 260, button.top, 90) + '; position:absolute; z-index:2;">' + button.label + '</button>');
+};
+
+inv.clothingPreviewSlots = function () {
+    return ["shoes", "socks", "pants", "panties", "bra", "shirt", "dress", "swimsuit"];
+};
+
+inv.getClothingPreviewSource = function (entry) {
+    return entry < 0 ? cl.cTemp : cl.saveOutfit[entry];
+};
+
+inv.renderClothingPreviewSlot = function (preview, slot, entry) {
+    var clothingName = preview[slot];
+    if (clothingName !== null)
+        return inv.displayClothesSub(cl.list[cl.where(slot, clothingName)].img, entry);
+
+    return "";
+};
+
 inv.display = function (typeArray = null) {
     inv.createElements(true);
     var counter = 0;
     var totalCounter = 0;
-    var i, prevI;
+    var i;
     if (typeArray === null) {
         for (i = 0; i < inv.master.length; i++) {
             if (inv.master[i].entry) {
                 if (totalCounter >= inv.page && counter < 31) {
-                    $('#menu-bg_' + counter).html('<img src="./images/inv/' + inv.master[i].image + '" class="menu-select" data-inv="' + inv.master[i].name + '" title="' + inv.master[i].display + '">');
-                    if (inv.master[i].n)
-                        $('#menu-bg_' + counter).append('<img src="./images/inv/new.png" title="New Inventory" class="display-top3 click-thru" title="' + inv.master[i].display + '">');
-                    if (inv.master[i].count !== null)
-                        $('#menu-bg_' + counter).append('<div class="menu-popup-count" data-name="' + inv.master[i].name + '">' + inv.master[i].count + '</div>');
+                    inv.renderInventoryEntry(counter, inv.master[i]);
                     counter++;
                 }
                 totalCounter++;
@@ -487,11 +625,7 @@ inv.display = function (typeArray = null) {
         for (i = 0; i < inv.master.length; i++) {
             if (inv.master[i].entry  && typeArray.includes(inv.master[i].type)) {
                 if (counter < 31) {
-                    $('#menu-bg_' + counter).html('<img src="./images/inv/' + inv.master[i].image + '" class="menu-select" data-inv="' + inv.master[i].name + '" title="' + inv.master[i].display + '">');
-                    if (inv.master[i].n)
-                        $('#menu-bg_' + counter).append('<img src="./images/inv/new.png" title="New Inventory" class="display-top3 click-thru" title="' + inv.master[i].display + '">');
-                    if (inv.master[i].count !== null)
-                        $('#menu-bg_' + counter).append('<div class="menu-popup-count" data-name="' + inv.master[i].name + '">' + inv.master[i].count + '</div>');
+                    inv.renderInventoryEntry(counter, inv.master[i]);
                     counter++;
                 }
                 totalCounter++;
@@ -501,8 +635,12 @@ inv.display = function (typeArray = null) {
     }
     counter++;
 
-    inv.isFooter = $('#room_footer').is(":visible");
-    if (inv.isFooter) { $('#room_footer').hide(); }
+    if (!inv.isOpen) {
+        inv.isFooter = $('#room_footer').is(":visible");
+        if (inv.isFooter) { $('#room_footer').hide(); }
+        inv.hideShellPanels();
+        inv.isOpen = true;
+    }
     $('.kill-invNew').remove();
 
     $('.menu-select').click(function () {
@@ -521,88 +659,45 @@ inv.display = function (typeArray = null) {
         $("#menu_displayCount").html("1");
         $("#menu_displayUp").attr("data-price", thisItem.cost);
         $("#menu_displayDown").attr("data-price", thisItem.cost);
+        $("#menu_displayAction2").hide();
 
         switch (thisItem.type) {
             case "b"://backpack
-                $("#menu_displayAction").attr("data-itype", "bag");
-                $("#menu_displayAction").attr("data-type", thisItem.type);
-                $("#menu_displayAction").attr("data-name", thisItem.name);
-                $("#menu_displayAction").html("Change Bag");
-                $("#menu_displayAction").show();
+                inv.setPrimaryAction(thisItem, "bag", "Change Bag");
                 break;
             case "e"://energy snack
-                $("#menu_displayAction").attr("data-itype", "bag");
-                $("#menu_displayAction").attr("data-type", thisItem.type);
-                $("#menu_displayAction").attr("data-name", thisItem.name);
-                $("#menu_displayAction").html("Snack Attack");
+                inv.setPrimaryAction(thisItem, "bag", "Snack Attack");
                 $("#menu_displayDesc").append(" - Max Energy: " + gv.get("maxenergy"));
-                $("#menu_displayAction").show();
                 break;
             case "n"://magazine
-                $("#menu_displayAction").attr("data-itype", "magazine");
-                $("#menu_displayAction").attr("data-type", thisItem.type);
-                $("#menu_displayAction").attr("data-name", thisItem.name);
-                $("#menu_displayAction").html("Read Magazine");
-                $("#menu_displayAction").show();
+                inv.setPrimaryAction(thisItem, "magazine", "Read Magazine");
                 break;
             case "p"://phone case
-                $("#menu_displayAction").attr("data-itype", "bag");
-                $("#menu_displayAction").attr("data-type", thisItem.type);
-                $("#menu_displayAction").attr("data-name", thisItem.name);
-                $("#menu_displayAction").html("Change Phone Case");
-                $("#menu_displayAction").show();
+                inv.setPrimaryAction(thisItem, "bag", "Change Phone Case");
                 break;
             case "r"://room decoration
-                $("#menu_displayAction").attr("data-itype", "bag");
-                $("#menu_displayAction").attr("data-type", thisItem.type);
-                $("#menu_displayAction").attr("data-name", thisItem.name);
-                $("#menu_displayAction").html("Change Apartment Picture");
-                $("#menu_displayAction").show();
+                inv.setPrimaryAction(thisItem, "bag", "Change Apartment Picture");
                 break;
             case "0"://room decoration
             case "1"://room decoration
             case "2"://room decoration
-                $("#menu_displayAction").attr("data-itype", "bag");
-                $("#menu_displayAction").attr("data-type", thisItem.type);
-                $("#menu_displayAction").attr("data-name", thisItem.name);
-                $("#menu_displayAction").html("Change Room Decoration");
-                $("#menu_displayAction").show();
+                inv.setPrimaryAction(thisItem, "bag", "Change Room Decoration");
                 break;
             case "3":
-                $("#menu_displayAction").attr("data-itype", "bag");
-                $("#menu_displayAction2").attr("data-itype", "bag");
-                $("#menu_displayAction").attr("data-type", thisItem.type);
-                $("#menu_displayAction").attr("data-name", thisItem.name);
-                $("#menu_displayAction2").attr("data-type", thisItem.type);
-                $("#menu_displayAction2").attr("data-name", thisItem.name);
-                $("#menu_displayAction").html("Change Left Poster");
-                $("#menu_displayAction2").html("Change Right Poster");
-                $("#menu_displayAction").show();
-                $("#menu_displayAction2").show();
+                inv.setPrimaryAction(thisItem, "bag", "Change Left Poster");
+                inv.setSecondaryAction(thisItem, "bag", "Change Right Poster");
                 break;
             case "h":
                 var xh = gv.get("autohormone");
 
                 if (xh) {
-                    $("#menu_displayAction").attr("data-itype", "bag");
-                    $("#menu_displayAction").attr("data-type", thisItem.type);
-                    $("#menu_displayAction").attr("data-name", thisItem.name);
-                    $("#menu_displayAction").html("Stop Auto Taking Pill");
-                    $("#menu_displayAction").show();
+                    inv.setPrimaryAction(thisItem, "bag", "Stop Auto Taking Pill");
                 }
                 else if (!daily.get("tookHormonePill")) {
-                    $("#menu_displayAction").attr("data-itype", "bag");
-                    $("#menu_displayAction").attr("data-type", thisItem.type);
-                    $("#menu_displayAction").attr("data-name", thisItem.name);
-                    $("#menu_displayAction").html("Take Your Pill");
-                    $("#menu_displayAction").show();
+                    inv.setPrimaryAction(thisItem, "bag", "Take Your Pill");
                 }
                 else {
-                    $("#menu_displayAction").attr("data-itype", "bag");
-                    $("#menu_displayAction").attr("data-type", thisItem.type);
-                    $("#menu_displayAction").attr("data-name", thisItem.name);
-                    $("#menu_displayAction").html("Auto Take Pill<br/>When Hormone < 90");
-                    $("#menu_displayAction").show();
+                    inv.setPrimaryAction(thisItem, "bag", "Auto Take Pill<br/>When Hormone < 90");
                 }
                 break;
             default:
@@ -636,29 +731,12 @@ inv.display = function (typeArray = null) {
 };
 
 inv.displayClothes = function (e) {
-    var t;
     var displayString = "";
-    if (e < 0)
-        t = cl.cTemp;
-    else
-        t = cl.saveOutfit[e];
-    
-    if (t.shoes !== null)
-        displayString += inv.displayClothesSub(cl.list[cl.where("shoes", t.shoes)].img, e);
-    if (t.socks !== null)
-        displayString += inv.displayClothesSub(cl.list[cl.where("socks", t.socks)].img, e);
-    if (t.pants !== null)
-        displayString += inv.displayClothesSub(cl.list[cl.where("pants", t.pants)].img, e);
-    if (t.panties !== null)
-        displayString += inv.displayClothesSub(cl.list[cl.where("panties", t.panties)].img, e);
-    if (t.bra !== null)
-        displayString += inv.displayClothesSub(cl.list[cl.where("bra", t.bra)].img, e);
-    if (t.shirt !== null)
-        displayString += inv.displayClothesSub(cl.list[cl.where("shirt", t.shirt)].img, e);
-    if (t.dress !== null)
-        displayString += inv.displayClothesSub(cl.list[cl.where("dress", t.dress)].img, e);
-    if (t.swimsuit !== null)
-        displayString += inv.displayClothesSub(cl.list[cl.where("swimsuit", t.swimsuit)].img, e);
+    var preview = inv.getClothingPreviewSource(e);
+
+    $.each(inv.clothingPreviewSlots(), function (_, slot) {
+        displayString += inv.renderClothingPreviewSlot(preview, slot, e);
+    });
     //if (t.accessories !== null)
     //    displayString += inv.displayClothesSub(cl.where("swimsuit", t.accessories).img);
 
@@ -669,11 +747,18 @@ inv.displayClothesSub = function (img, e) {
     return '<img src="./images/mainChar/icons/inv/' + img + '" class="inv-clothingChange" data-num="' + e + '"/>';
 };
 
-inv.close = function () {
+inv.close = function (preserveShell) {
     $('#room-menuButtons').html('').hide();
     $(".menu_inventory_grouping").remove();
-    if (inv.isFooter)
-        $('#room_footer').show();
+    if (!preserveShell) {
+        if (inv.isFooter || !$('#room_footer').is(":visible")) {
+            $('#room_footer').show();
+            char.updateRoomActionButtons();
+        }
+        inv.restoreShellPanels();
+        inv.isOpen = false;
+        inv.hadPanelOpen = false;
+    }
 };
 
 inv.createElements = function (showFilter = true) {
@@ -716,17 +801,9 @@ inv.createElements = function (showFilter = true) {
     $('#menu_displayAction2').hide();
 
     if (showFilter) {
-        $('.room-main').append('<button class="menu_inventory_grouping" data-val="q" style="' + g.cssText(12) + '; ' + g.makeCss(50, 260, 100, 90) + '; position:absolute; z-index:2;">View All</button>');
-        $('.room-main').append('<button class="menu_inventory_grouping" data-val="e" style="' + g.cssText(12) + '; ' + g.makeCss(50, 260, 200, 90) + '; position:absolute; z-index:2;">Energy Snack</button>');
-        $('.room-main').append('<button class="menu_inventory_grouping" data-val="b" style="' + g.cssText(12) + '; ' + g.makeCss(50, 260, 260, 90) + '; position:absolute; z-index:2;">Purse</button>');
-        $('.room-main').append('<button class="menu_inventory_grouping" data-val="p" style="' + g.cssText(12) + '; ' + g.makeCss(50, 260, 320, 90) + '; position:absolute; z-index:2;">Phone Case</button>');
-        $('.room-main').append('<button class="menu_inventory_grouping" data-val="r" style="' + g.cssText(12) + '; ' + g.makeCss(50, 260, 380, 90) + '; position:absolute; z-index:2;">Room Decor</button>');
-        $('.room-main').append('<button class="menu_inventory_grouping" data-val="m" style="' + g.cssText(12) + '; ' + g.makeCss(50, 260, 440, 90) + '; position:absolute; z-index:2;">Makeup</button>');
-        $('.room-main').append('<button class="menu_inventory_grouping" data-val="a" style="' + g.cssText(12) + '; ' + g.makeCss(50, 260, 500, 90) + '; position:absolute; z-index:2;">Gifts</button>');
-        $('.room-main').append('<button class="menu_inventory_grouping" data-val="d" style="' + g.cssText(12) + '; ' + g.makeCss(50, 260, 560, 90) + '; position:absolute; z-index:2;">Dildos</button>');
-        $('.room-main').append('<button class="menu_inventory_grouping" data-val="o" style="' + g.cssText(12) + '; ' + g.makeCss(50, 260, 620, 90) + '; position:absolute; z-index:2;">Keys</button>');
-        $('.room-main').append('<button class="menu_inventory_grouping" data-val="n" style="' + g.cssText(12) + '; ' + g.makeCss(50, 260, 680, 90) + '; position:absolute; z-index:2;">Magazine</button>');
-
+        $.each(inv.filterButtons(), function (_, button) {
+            inv.renderFilterButton(button);
+        });
     }
 
 
@@ -751,25 +828,18 @@ inv.createElements = function (showFilter = true) {
     $("#menu_displayAction2").click(function () {
         let thisName2 = $(this).attr("data-name");
         gv.set("mr_poster_r", thisName2);
-        if (g.roomID === 10) {
-            room10.btnclick("drawRoom");
-        }
+        inv.redrawBedroomIfVisible();
     });
 
     $('.menu_inventory_grouping').click(function () {
         let t = $(this).attr("data-val");
+        let typeArray;
         inv.page = 0;
-        if (t === "q") {
+        typeArray = inv.selectGroupTypes(t);
+        if (typeArray === null) {
             inv.display();
             return;
         }
-        let typeArray = [];
-        if (t === "r")
-            typeArray = ["r", "1", "2", "3"];
-        else if (t === "d")
-            typeArray = ["d"];
-        else
-            typeArray = [t];
 
         inv.display(typeArray);
     });
@@ -789,11 +859,12 @@ inv.createElements = function (showFilter = true) {
                     inv.master[ti].n = true;
                     inv.backpackIcon();
                 }
-                if (thisInv.count === null) {
-                    inv.add(thisName);
+                if (inv.isSinglePurchase(thisInv)) {
+                    thisInv.entry = true;
                     gv.mod("money", (-1 * thisInv.cost));
-                    $("#menu_displayAction").hide();
-                    $('#menu_displayInfo').html("PURCHASED");
+                    g.popUpNotice(inv.displayName(thisInv) + " added to inventory. ");
+                    inv.markPurchased(false);
+                    inv.refreshCurrentPurchaseRoom();
                 }
                 else {
                     var thisCount = parseInt($("#menu_displayCount").html());
@@ -806,10 +877,13 @@ inv.createElements = function (showFilter = true) {
                         inv.master[ti].count += thisCount;
                     inv.master[ti].entry = true;
                     gv.mod("money", totalMoney);
-                    $("#menu_displayAction").hide();
-                    $("#menu_displayCountLine").hide();
-                    $('#menu_displayInfo').html("PURCHASED");
-                    $("#menu_displayAdditional").html("In Inventory: " + inv.master[ti].count); 
+                    if (thisCount > 1)
+                        g.popUpNotice("You receved " + thisCount + " " + inv.displayName(thisInv));
+                    else
+                        g.popUpNotice(inv.displayName(thisInv) + " added to inventory. ");
+                    inv.markPurchased(true);
+                    $("#menu_displayAdditional").html("In Inventory: " + inv.master[ti].count);
+                    inv.refreshCurrentPurchaseRoom();
                 }
             }
             else
@@ -820,23 +894,21 @@ inv.createElements = function (showFilter = true) {
             
             if (tic !== null) {
                 if (cl.list[tic].inv) {
-                    $('#menu_displayInfo').html("Already Purchased");
-                    $("#menu_displayAction").hide();
-                    $("#menu_displayCountLine").hide();
+                    inv.setDisplayInfo("Already Purchased");
+                    inv.hideActions(true);
                 }
                 else {
                     var thisMoney = gv.get("money");
                     if (cl.list[tic].price > thisMoney) {
-                        $('#menu_displayInfo').html("Can't Afford");
-                        $("#menu_displayAction").hide();
-                        $("#menu_displayCountLine").hide();
+                        inv.setDisplayInfo("Can't Afford");
+                        inv.hideActions(true);
                     }
                     else {
                         cl.list[tic].inv = true;
                         gv.mod("money", -1 * cl.list[tic].price);
-                        $("#menu_displayAction").hide();
-                        $("#menu_displayCountLine").hide();
-                        $('#menu_displayInfo').html("PURCHASED");
+                        g.popUpNotice(cl.list[tic].display + " added to inventory. ");
+                        inv.markPurchased(true);
+                        inv.refreshCurrentPurchaseRoom();
                         if (cl.list[tic].type === "ear") {
                             cl.c.earring = cl.list[tic].name;
                             cl.display();
@@ -862,8 +934,7 @@ inv.createElements = function (showFilter = true) {
                 case "b"://backpack
                     inv.backpack = thisName;
                     inv.backpackIcon();
-                    $("#menu_displayInfo").html("UPDATED");
-                    $("#menu_displayAction").hide();
+                    inv.markUpdated();
                     inv.close();
                     break;
                 case "e"://energy snack
@@ -945,33 +1016,24 @@ inv.createElements = function (showFilter = true) {
                                 "image": "52_myroom/" + thisName + ".png",
                             }, 52);
                     }
-                    $("#menu_displayInfo").html("UPDATED");
-                    $("#menu_displayAction").hide();
+                    inv.markUpdated();
                     inv.close();
                     break;
                 case "0":
                     gv.set("mr_paint", thisName);
-                    if (g.roomID === 10) {
-                        room10.btnclick("drawRoom");
-                    }
+                    inv.redrawBedroomIfVisible();
                     break;
                 case "1":
                     gv.set("mr_bed", thisName);
-                    if (g.roomID === 10) {
-                        room10.btnclick("drawRoom");
-                    }
+                    inv.redrawBedroomIfVisible();
                     break;
                 case "2":
                     gv.set("mr_rug", thisName);
-                    if (g.roomID === 10) {
-                        room10.btnclick("drawRoom");
-                    }
+                    inv.redrawBedroomIfVisible();
                     break;
                 case "3":
                     gv.set("mr_poster_l", thisName);
-                    if (g.roomID === 10) {
-                        room10.btnclick("drawRoom");
-                    }
+                    inv.redrawBedroomIfVisible();
                     break;
                 case "h":
                     var xh = gv.get("autohormone");
@@ -1068,7 +1130,7 @@ inv.createElements = function (showFilter = true) {
 
 inv.paging = function (pageSize) {
     inv.page += pageSize;
-    inv.close();
+    inv.close(true);
     inv.display();
 }
 

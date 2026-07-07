@@ -14,7 +14,7 @@ room8.main = function () {
             "top": 220,
             "width": 120,
             "height": 40,
-            "title": v.title,
+            "title": "Wear " + v.name,
             "image": "8_wardrobe/save_wear.png"
         }, 8);
         nav.button({
@@ -24,7 +24,7 @@ room8.main = function () {
             "top": 220,
             "width": 120,
             "height": 40,
-            "title": v.title,
+            "title": "Save " + v.name,
             "image": "8_wardrobe/save_save.png"
         }, 8);
 
@@ -46,7 +46,7 @@ room8.main = function () {
         chat(1, 8);
     }
 
-    room8.btnclick("checkSleepEnable");
+    invoker.invokeCurrent("btnclick", "checkSleepEnable");
 
     if (g.pass === 52)
         nav.bg("8_wardrobe/52_wardrobe.jpg");
@@ -125,7 +125,7 @@ room8.btnclick = function (name) {
         type = name.replace("main_", "");
         if (type === "nude") {
             cl.nude();
-            room8.btnclick("checkSleepEnable");
+            invoker.invokeCurrent("btnclick", "checkSleepEnable");
         }
         else {
             j = 0;
@@ -234,14 +234,14 @@ room8.btnclick = function (name) {
             case "accessories": cl.c.accessories = clname; break;
             default: "can't find " + clname; break;
         }
-        room8.btnclick("checkSleepEnable");
-        room8.btnclick("main_" + type);
+        invoker.invokeCurrent("btnclick", "checkSleepEnable");
+        invoker.invokeCurrent("btnclick", "main_" + type);
         cl.display();
     }
     else if (name.startsWith("wear_")) {
         var wearOutfit = parseInt(name.replace("wear_", ""));
         cl.wearSavedOutfit(wearOutfit);
-        room8.btnclick("checkSleepEnable");
+        invoker.invokeCurrent("btnclick", "checkSleepEnable");
     }
     else if (name.startsWith("save_")) {
         var entry = parseInt(name.replace("save_", ""));
@@ -575,3 +575,5 @@ room8.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(8, room8);

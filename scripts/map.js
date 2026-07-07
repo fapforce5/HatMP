@@ -2,6 +2,53 @@
 m.fmap = null;
 m.row = 80;
 m.col = 20;
+m.directionConfig = {
+    north: { title: "North", glyph: "dn", suffix: "_n", webpLeft: 840, webpTop: 200 },
+    south: { title: "South", glyph: "ds", suffix: "_s", webpLeft: 840, webpTop: 880 },
+    west: { title: "West", glyph: "dw", suffix: "_w", webpLeft: 300, webpTop: 460 },
+    east: { title: "East", glyph: "de", suffix: "_e", webpLeft: 1600, webpTop: 460 }
+};
+
+m.pushWebpDirectionButton = function (buttons, direction) {
+    var cfg = m.directionConfig[direction];
+    buttons.push({
+        "type": "btn",
+        "name": direction,
+        "title": cfg.title,
+        "left": cfg.webpLeft,
+        "top": cfg.webpTop,
+        "width": 225,
+        "height": 75,
+        "image": "475_fight/" + cfg.glyph + ".png"
+    });
+};
+
+m.drawBlockedWebpDirection = function (bg, direction) {
+    var cfg = m.directionConfig[direction];
+    nav.button({
+        "type": "img",
+        "name": direction,
+        "title": cfg.title,
+        "left": 0,
+        "top": 0,
+        "width": 1920,
+        "height": 1080,
+        "image": "475_fight/" + bg + cfg.suffix + ".webp"
+    }, 475);
+};
+
+m.drawVisitButton = function () {
+    nav.button({
+        "type": "zbtn",
+        "name": "visit",
+        "title": "Visit",
+        "left": 450,
+        "top": 100,
+        "width": 225,
+        "height": 75,
+        "image": "475_fight/visit.png"
+    }, 475);
+};
 
 //m -> path
 //i -> forest queen
@@ -95,29 +142,11 @@ m.drawBackground = function (row, col) {
         if (row > 0) {
             if (webplogic) {
                 if (m.fmap[row - 1][col].used !== 'x') {
-                    webpbuttons.push({
-                        "type": "btn",
-                        "name": "north",
-                        "title": "North",
-                        "left": 840,
-                        "top": 200,
-                        "width": 225,
-                        "height": 75,
-                        "image": "475_fight/dn.png"
-                    });
+                    m.pushWebpDirectionButton(webpbuttons, "north");
                     pathCounter++;
                 }
                 else {
-                    nav.button({
-                        "type": "img",
-                        "name": "north",
-                        "title": "North",
-                        "left": 0,
-                        "top": 0,
-                        "width": 1920,
-                        "height": 1080,
-                        "image": "475_fight/" + bg + "_n.webp"
-                    }, 475);
+                    m.drawBlockedWebpDirection(bg, "north");
                 }
             }
             else if (m.fmap[row - 1][col].used !== 'x') {
@@ -147,29 +176,11 @@ m.drawBackground = function (row, col) {
         if (row < m.row - 1) {
             if (webplogic) {
                 if (m.fmap[row + 1][col].used !== 'x') {
-                    webpbuttons.push({
-                        "type": "btn",
-                        "name": "south",
-                        "title": "South",
-                        "left": 840,
-                        "top": 880,
-                        "width": 225,
-                        "height": 75,
-                        "image": "475_fight/ds.png"
-                    });
+                    m.pushWebpDirectionButton(webpbuttons, "south");
                     pathCounter++;
                 }
                 else {
-                    nav.button({
-                        "type": "img",
-                        "name": "south",
-                        "title": "South",
-                        "left": 0,
-                        "top": 0,
-                        "width": 1920,
-                        "height": 1080,
-                        "image": "475_fight/" + bg + "_s.webp"
-                    }, 475);
+                    m.drawBlockedWebpDirection(bg, "south");
                 }
             }
             else if (m.fmap[row + 1][col].used !== 'x') {
@@ -199,29 +210,11 @@ m.drawBackground = function (row, col) {
         if (col > 0) {
             if (webplogic) {
                 if (m.fmap[row][col - 1].used !== 'x') {
-                    webpbuttons.push({
-                        "type": "btn",
-                        "name": "west",
-                        "title": "West",
-                        "left": 300,
-                        "top": 460,
-                        "width": 225,
-                        "height": 75,
-                        "image": "475_fight/dw.png"
-                    });
+                    m.pushWebpDirectionButton(webpbuttons, "west");
                     pathCounter++;
                 }
                 else {
-                    nav.button({
-                        "type": "img",
-                        "name": "west",
-                        "title": "West",
-                        "left": 0,
-                        "top": 0,
-                        "width": 1920,
-                        "height": 1080,
-                        "image": "475_fight/" + bg + "_w.webp"
-                    }, 475);
+                    m.drawBlockedWebpDirection(bg, "west");
                 }
             }
             else if (m.fmap[row][col - 1].used !== 'x') {
@@ -252,29 +245,11 @@ m.drawBackground = function (row, col) {
         if (col < m.col - 1) {
             if (webplogic) {
                 if (m.fmap[row][col + 1].used !== 'x') {
-                    webpbuttons.push({
-                        "type": "btn",
-                        "name": "east",
-                        "title": "East",
-                        "left": 1600,
-                        "top": 460,
-                        "width": 225,
-                        "height": 75,
-                        "image": "475_fight/de.png"
-                    });
+                    m.pushWebpDirectionButton(webpbuttons, "east");
                     pathCounter++;
                 }
                 else {
-                    nav.button({
-                        "type": "img",
-                        "name": "east",
-                        "title": "East",
-                        "left": 0,
-                        "top": 0,
-                        "width": 1920,
-                        "height": 1080,
-                        "image": "475_fight/" + bg + "_e.webp"
-                    }, 475);
+                    m.drawBlockedWebpDirection(bg, "east");
                 }
             }
             else if (m.fmap[row][col + 1].used !== 'x') {
@@ -371,16 +346,7 @@ m.drawBackground = function (row, col) {
                 pathCounter++;
             }
         }
-        nav.button({
-            "type": "zbtn",
-            "name": "visit",
-            "title": "Visit",
-            "left": 450,
-            "top": 100,
-            "width": 225,
-            "height": 75,
-            "image": "475_fight/visit.png"
-        }, 475);
+        m.drawVisitButton();
     }
     else {
         nav.bg("475_fight/z" + m.fmap[row][col].used + "1.jpg", "475_fight/z" + m.fmap[row][col].used + "1_n.jpg");
@@ -488,16 +454,7 @@ m.drawBackground = function (row, col) {
                 pathCounter++;
             }
         }
-        nav.button({
-            "type": "zbtn",
-            "name": "visit",
-            "title": "Visit",
-            "left": 450,
-            "top": 100,
-            "width": 225,
-            "height": 75,
-            "image": "475_fight/visit.png"
-        }, 475);
+        m.drawVisitButton();
     }
     for (let i = 0; i < webpbuttons.length; i++) {
         nav.button(webpbuttons[i], 475);

@@ -72,7 +72,7 @@ room318.main = function () {
             chat(24, 318);
         }
         else {
-            room318.chatcatch("datr_start");
+            invoker.invokeCurrent("chatcatch", "datr_start");
         }
 
         return;
@@ -263,7 +263,7 @@ room318.btnclick = function (name) {
             g.internal.gamestep++;
             break;
         case "jabari_dog":
-            room318.btnclick("jabari");
+            invoker.invokeCurrent("btnclick", "jabari");
             nav.killbutton("jabari_strip");
             nav.killbutton("jabari_sub");
             nav.killbutton("jabari_pet");
@@ -357,7 +357,7 @@ room318.btnclick = function (name) {
             break;
         case "jabari_strip":
             cl.nude();
-            room318.btnclick("jabari_dog");
+            invoker.invokeCurrent("btnclick", "jabari_dog");
             break;
         case "jabari_sub":
             nav.killbutton("jabari_sub");
@@ -1189,3 +1189,5 @@ room318.chat = function (chatID) {
             return [];
     }
 };
+
+invoker.registerRoom(318, room318);

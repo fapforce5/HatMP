@@ -8,7 +8,7 @@ room219.main = function () {
         chat(0, 219);
     }
     else {
-        room219.btnclick("home");
+        invoker.invokeCurrent("btnclick", "home");
     }
 };
 
@@ -67,10 +67,10 @@ room219.btnclick = function (name) {
                     "image": missy.st[18].c === 0 ? "file6.png" : "file6Unlock.png"
                 },
             ];
-            room219.btnclick("makeScreen");
+            invoker.invokeCurrent("btnclick", "makeScreen");
             break;
         case "home":
-            room219.chatcatch("start");
+            invoker.invokeCurrent("chatcatch", "start");
             break;
         case "hypno1":
             nav.killall();
@@ -87,7 +87,7 @@ room219.btnclick = function (name) {
             g.roomTimeout = setTimeout(function () {
                 levels.mod("sub", 50);
                 chat(6, 219);
-                room219.btnclick("hypnoComplete");
+                invoker.invokeCurrent("btnclick", "hypnoComplete");
             }, 7000);
             break;
         case "hypno2":
@@ -132,7 +132,7 @@ room219.btnclick = function (name) {
             }
             g.roomTimeout = setTimeout(function () {
                 chat(hchatid, 219);
-                room219.btnclick("hypnoComplete");
+                invoker.invokeCurrent("btnclick", "hypnoComplete");
             }, 3000);
             break;
         case "hypno5":
@@ -155,7 +155,7 @@ room219.btnclick = function (name) {
                 }
                 g.roomTimeout = setTimeout(function () {
                     chat(12, 219);
-                    room219.btnclick("hypnoComplete");
+                    invoker.invokeCurrent("btnclick", "hypnoComplete");
                 }, 3000);
             }
             else {
@@ -172,7 +172,7 @@ room219.btnclick = function (name) {
                 g.popUpNotice("You cock got smaller. ");
                 g.roomTimeout = setTimeout(function () {
                     chat(13, 219);
-                    room219.btnclick("hypnoComplete");
+                    invoker.invokeCurrent("btnclick", "hypnoComplete");
                 }, 6000);
             }
             break;
@@ -218,7 +218,7 @@ room219.chatcatch = function (callback) {
                     "image": "records.png"
                 },
             ];
-            room219.btnclick("makeScreen");
+            invoker.invokeCurrent("btnclick", "makeScreen");
             break;
         case "widescreen":
             if (missy.get("uniform") > 2)
@@ -228,7 +228,7 @@ room219.chatcatch = function (callback) {
             break;
         case "missyHate":
             missy.mod("mood", -10);
-            room219.chatcatch("start");
+            invoker.invokeCurrent("chatcatch", "start");
             break;
         case "snapout":
             nav.killall();
@@ -395,3 +395,5 @@ room219.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(219, room219);

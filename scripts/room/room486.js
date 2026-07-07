@@ -85,7 +85,7 @@ room486.main = function () {
             "height": 604,
             "image": "486_game/r_openholder.webp"
         }, 486);
-        room486.btnclick("drawbtns");
+        invoker.invokeCurrent("btnclick", "drawbtns");
         nav.button({
             "type": "img",
             "name": "room0",
@@ -120,8 +120,8 @@ room486.main = function () {
             "height": 604,
             "image": "486_game/r_openholder.webp"
         }, 486);
-        room486.btnclick("drawbtns");
-        room486.btnclick("initroom");
+        invoker.invokeCurrent("btnclick", "drawbtns");
+        invoker.invokeCurrent("btnclick", "initroom");
         if (g.pass.r > 3 && g.pass.r < 12) {
             if (g.pass.r6 !== null) {
                 nav.button({
@@ -274,53 +274,53 @@ room486.btnclick = function (name) {
                 "height": 604,
                 "image": "486_game/r_openholder.webp"
             }, 486);
-            room486.btnclick("drawbtns");
-            room486.btnclick("initroom");
+            invoker.invokeCurrent("btnclick", "drawbtns");
+            invoker.invokeCurrent("btnclick", "initroom");
             switch (g.pass.r) {
                 case 1:
                     if (g.pass.inst &&  !g.pass.greenbutton) {
                         g.pass.inst = false;
-                        room486.chatcatch("room1");
+                        invoker.invokeCurrent("chatcatch", "room1");
                     }
                     break;
                 case 3:
                     if (g.pass.inst && !g.pass.greenbutton) {
                         g.pass.inst = false;
-                        room486.chatcatch("room3");
+                        invoker.invokeCurrent("chatcatch", "room3");
                     }
                     break;
                 case 4:
                     if (g.pass.inst && !g.pass.greenbutton) {
                         g.pass.inst = false;
-                        room486.chatcatch("room4");
+                        invoker.invokeCurrent("chatcatch", "room4");
                     }
                     break;
                 case 5:
                     if (g.pass.inst && !g.pass.greenbutton) {
                         g.pass.inst = false;
-                        room486.chatcatch("room5");
+                        invoker.invokeCurrent("chatcatch", "room5");
                     }
                     break;
                 case 6:
                     if (g.pass.inst && !g.pass.greenbutton) {
                         g.pass.inst = false;
-                        room486.chatcatch("room6");
+                        invoker.invokeCurrent("chatcatch", "room6");
                     }
                     break;
                 case 7:
                     if (g.pass.inst && !g.pass.greenbutton) {
                         g.pass.inst = false;
-                        room486.chatcatch("room7");
+                        invoker.invokeCurrent("chatcatch", "room7");
                     }
                     break;
                 case 8:
                     if (g.pass.inst && !g.pass.greenbutton) {
-                        room486.chatcatch("room8redraw");
+                        invoker.invokeCurrent("chatcatch", "room8redraw");
                     }
                     break;
                 case 9:
                     if (g.pass.inst && !g.pass.greenbutton) {
-                        room486.chatcatch("room9redraw");
+                        invoker.invokeCurrent("chatcatch", "room9redraw");
                     }
                     break;
             }
@@ -651,7 +651,7 @@ room486.btnclick = function (name) {
                     "height": 809,
                     "image": "486_game/room2_" + gender.pronoun("f") + ".webp"
                 }, 486);
-                room486.chatcatch("greenbuttonON");
+                invoker.invokeCurrent("chatcatch", "greenbuttonON");
                 chat(9, 486);
             }
             break;
@@ -659,14 +659,14 @@ room486.btnclick = function (name) {
             nav.killbutton("room3_0");
             nav.killbutton("room3_1");
             zcl.assup(800, 1200, .3, "", false);
-            room486.chatcatch("greenbuttonON");
+            invoker.invokeCurrent("chatcatch", "greenbuttonON");
             g.pass.temp = 0;
             chat(11, 486);
             break;
         case "room3_1":
             nav.killbutton("room3_0");
             nav.killbutton("room3_1");
-            room486.chatcatch("greenbuttonON");
+            invoker.invokeCurrent("chatcatch", "greenbuttonON");
             nav.button({
                 "type": "img",
                 "name": "me",
@@ -697,11 +697,11 @@ room486.btnclick = function (name) {
             break;
         case "room5_0":
             g.pass.r5 = "anal";
-            room486.btnclick("5_2");
+            invoker.invokeCurrent("btnclick", "5_2");
             break;
         case "room5_1":
             g.pass.r5 = "pain";
-            room486.btnclick("5_2");
+            invoker.invokeCurrent("btnclick", "5_2");
             break;
         case "5_2":
             nav.killbutton("room5_0");
@@ -785,7 +785,7 @@ room486.btnclick = function (name) {
                 "height": 229,
                 "image": "486_game/" + name + ".webp"
             }, 486);
-            room486.chatcatch("greenbuttonON");
+            invoker.invokeCurrent("chatcatch", "greenbuttonON");
             chat(10061, 486);
             break;
         case "room7":
@@ -812,7 +812,7 @@ room486.btnclick = function (name) {
                 g.popUpNotice("You have become weaker");
                 chat(25, 486);
             }
-            room486.chatcatch("greenbuttonON");
+            invoker.invokeCurrent("chatcatch", "greenbuttonON");
             break;
         case "room8_1":
             nav.killbutton("room8_0");
@@ -967,10 +967,10 @@ room486.btnclick = function (name) {
         case "icon_room9anal2":
             fame.moanAnimateStop();
             nav.killbutton("icon_room9anal2");
-            room486.btnclick("window_draw");
+            invoker.invokeCurrent("btnclick", "window_draw");
             g.internal.bucket += gv.getButtCum().total;
             gv.clearButtCum();
-            room486.btnclick("room9bucket_draw");
+            invoker.invokeCurrent("btnclick", "room9bucket_draw");
             nav.button({
                 "type": "img",
                 "name": "room9bg",
@@ -985,9 +985,9 @@ room486.btnclick = function (name) {
         case "icon_room9oral2":
             fame.moanAnimateStop();
             nav.killbutton("icon_room9anal2");
-            room486.btnclick("window_draw");
+            invoker.invokeCurrent("btnclick", "window_draw");
             g.internal.bucket++;
-            room486.btnclick("room9bucket_draw");
+            invoker.invokeCurrent("btnclick", "room9bucket_draw");
             nav.button({
                 "type": "img",
                 "name": "room9bg",
@@ -1003,7 +1003,7 @@ room486.btnclick = function (name) {
             if (g.internal.bucket > 6) {
                 g.pass.greenbutton = true;
             }
-            room486.btnclick("redrawroom"); 
+            invoker.invokeCurrent("btnclick", "redrawroom"); 
             break;
         case "room9bucket_draw":
             if (g.internal.bucket > 7) {
@@ -1020,7 +1020,7 @@ room486.btnclick = function (name) {
             }, 486);
             break;
         case "bg-window":
-            room486.btnclick("window_draw");
+            invoker.invokeCurrent("btnclick", "window_draw");
             nav.back("redrawroom");
             break;
         case "window_draw":
@@ -1278,7 +1278,7 @@ room486.chatcatch = function (callback) {
         case "room0":
             nav.modbutton("room0", "486_game/room0_1.webp", null, null);
             g.setTimeout = setTimeout(function () {
-                room486.chatcatch("greenbuttonON");
+                invoker.invokeCurrent("chatcatch", "greenbuttonON");
                 nav.killbutton("room0");
             }, 1200);
             break;
@@ -1357,8 +1357,8 @@ room486.chatcatch = function (callback) {
             }
             break;
         case "room7_3":
-            room486.chatcatch("greenbuttonON");
-            room486.btnclick("redrawroom"); 
+            invoker.invokeCurrent("chatcatch", "greenbuttonON");
+            invoker.invokeCurrent("btnclick", "redrawroom"); 
             gv.mod("energy", -15);
             levels.anal(5, false, "m", false, "!statue");
             levels.oral(5, "m", "!statue", false, null, true);
@@ -1389,7 +1389,7 @@ room486.chatcatch = function (callback) {
             break;
         case "room9":
             g.pass.inst = true;
-            room486.btnclick("redrawroom"); 
+            invoker.invokeCurrent("btnclick", "redrawroom"); 
             break;
         case "room9redraw":
             var room9CockCounter = 0;
@@ -1447,14 +1447,14 @@ room486.chatcatch = function (callback) {
             cl.display();
             nav.killbutton("room10_kill");
             g.pass.greenbutton = true;
-            room486.btnclick("redrawroom");
+            invoker.invokeCurrent("btnclick", "redrawroom");
             break;
         case "room11":
             g.pass.inst = true;
             break;
         case "room11_end":
             g.pass.greenbutton = true;
-            room486.btnclick("redrawroom");
+            invoker.invokeCurrent("btnclick", "redrawroom");
             phone.build("phone_pic");
             break;
         case "room12_4":
@@ -1485,14 +1485,14 @@ room486.chatcatch = function (callback) {
             break;
         case "greenlightRedraw":
             g.pass.greenbutton = true;
-            room486.btnclick("redrawroom");
+            invoker.invokeCurrent("btnclick", "redrawroom");
             break;
         case "greenbuttonON":
             g.pass.greenbutton = true;
-            room486.btnclick("drawbtns");
+            invoker.invokeCurrent("btnclick", "drawbtns");
             break;
         case "redrawroom":
-            room486.btnclick("redrawroom");
+            invoker.invokeCurrent("btnclick", "redrawroom");
             break;
         case "sleep":
             g.pass = 486;
@@ -1504,7 +1504,7 @@ room486.chatcatch = function (callback) {
             char.room(486);
             break;
         case "leave":
-            room486.btnclick("room12_leave");
+            invoker.invokeCurrent("btnclick", "room12_leave");
             break;
         case "redbuttonquit":
             nav.button({
@@ -2343,3 +2343,5 @@ room486.chat = function (chatID) {
             return [];
     }
 };
+
+invoker.registerRoom(486, room486);

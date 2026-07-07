@@ -132,7 +132,7 @@ room49.chatcatch = function (callback) {
             zcl.displayMain(150, 1100, .11, "clothes", true);
             break;
         case "nextStop":
-            room49.btnclick("nextStop");
+            invoker.invokeCurrent("btnclick", "nextStop");
             break;
         case "rape":
             var chastity49 = cl.c.chastity === null ? "_n" : "_c";
@@ -263,3 +263,5 @@ room49.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(49, room49);

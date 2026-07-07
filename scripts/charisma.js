@@ -21,8 +21,7 @@ charisma.getIntel = function (charismaLevel) {
     return { n: stat, txt: "[Intelligence Roll: " + stat + "%] ", baseRoll: baseRoll, rollNeeded: rollNeeded, myCharisma: myCharisma, appearance: 0 };
 };
 
-charisma.init = function (charismaLevel, btnPressWin, btnPressLost, roomID) {
-    var stat = charisma.getStats(charismaLevel);
+charisma.drawOverlayShell = function () {
     nav.button({
         "type": "img",
         "name": "quickfight",
@@ -50,7 +49,21 @@ charisma.init = function (charismaLevel, btnPressWin, btnPressLost, roomID) {
         "height": 100,
         "image": "1002_quickfight/roll.png"
     }, 1);
+};
 
+charisma.drawStatLine = function (row, text) {
+    nav.t({
+        type: "img",
+        name: "quickfight",
+        left: 1660,
+        top: 280 + (row * 50) + 12,
+        font: 20,
+        hex: "#ffffff",
+        text: text
+    }, 1);
+};
+
+charisma.drawRollSummary = function (title, stat, primaryLabel, secondaryLabel, totalLabel) {
     nav.t({
         type: "zimg",
         name: "quickfight",
@@ -58,62 +71,22 @@ charisma.init = function (charismaLevel, btnPressWin, btnPressLost, roomID) {
         top: 180,
         font: 30,
         hex: "#ffffff",
-        text: "Charisma"
+        text: title
     }, 1);
-    nav.t({
-        type: "img",
-        name: "quickfight",
-        left: 1660,
-        top: 280 + (0 * 50) + 12,
-        font: 20,
-        hex: "#ffffff",
-        text: "Your Charisma: " + stat.myCharisma
-    }, 1);
-    nav.t({
-        type: "img",
-        name: "quickfight",
-        left: 1660,
-        top: 280 + (1 * 50) + 12,
-        font: 20,
-        hex: "#ffffff",
-        text: "Sexy Bonus: " + stat.appearance
-    }, 1);
-    nav.t({
-        type: "img",
-        name: "quickfight",
-        left: 1660,
-        top: 280 + (2 * 50) + 12,
-        font: 20,
-        hex: "#ffffff",
-        text: "Total Charisma: " + (stat.myCharisma + stat.appearance)
-    }, 1);
-    nav.t({
-        type: "img",
-        name: "quickfight",
-        left: 1660,
-        top: 280 + (4 * 50) + 12,
-        font: 20,
-        hex: "#ffffff",
-        text: "Base Roll Needed : " + stat.baseRoll
-    }, 1);
-    nav.t({
-        type: "img",
-        name: "quickfight",
-        left: 1660,
-        top: 280 + (5 * 50) + 12,
-        font: 20,
-        hex: "#ffffff",
-        text: "Adjusted Roll Needed : " + stat.rollNeeded
-    }, 1);
-    nav.t({
-        type: "img",
-        name: "quickfight",
-        left: 1660,
-        top: 280 + (6 * 50) + 12,
-        font: 20,
-        hex: "#ffffff",
-        text: "Chance: " + stat.n + "%"
-    }, 1);
+    charisma.drawStatLine(0, primaryLabel + stat.myCharisma);
+    if (secondaryLabel !== null)
+        charisma.drawStatLine(1, secondaryLabel + stat.appearance);
+    if (totalLabel !== null)
+        charisma.drawStatLine(2, totalLabel + (stat.myCharisma + stat.appearance));
+    charisma.drawStatLine(4, "Base Roll Needed : " + stat.baseRoll);
+    charisma.drawStatLine(5, "Adjusted Roll Needed : " + stat.rollNeeded);
+    charisma.drawStatLine(6, "Chance: " + stat.n + "%");
+};
+
+charisma.init = function (charismaLevel, btnPressWin, btnPressLost, roomID) {
+    var stat = charisma.getStats(charismaLevel);
+    charisma.drawOverlayShell();
+    charisma.drawRollSummary("Charisma", stat, "Your Charisma: ", "Sexy Bonus: ", "Total Charisma: ");
     
 
     g.fight = {
@@ -253,86 +226,13 @@ charisma.complete = function () {
         name = g.fight.btnPressLost;
 
     g.fight = null;
-    window[g.room(roomId)]["btnclick"](name);
+    invoker.invoke(roomId, "btnclick", name);
 };
 
 charisma.itelInit = function (intelLevel, btnPressWin, btnPressLost, roomID) {
     let stat = charisma.getIntel(intelLevel);
-    nav.button({
-        "type": "img",
-        "name": "quickfight",
-        "left": 0,
-        "top": 0,
-        "width": 1920,
-        "height": 1080,
-        "image": "1002_quickfight/black20Alpha.png"
-    }, 1);
-    nav.button({
-        "type": "img",
-        "name": "quickfight",
-        "left": 1597,
-        "top": 147,
-        "width": 306,
-        "height": 712,
-        "image": "227_fight/menu.png"
-    }, 1);
-    nav.button({
-        "type": "btn",
-        "name": "charismaRoll",
-        "left": 760,
-        "top": 300,
-        "width": 400,
-        "height": 100,
-        "image": "1002_quickfight/roll.png"
-    }, 1);
-
-    nav.t({
-        type: "zimg",
-        name: "quickfight",
-        left: 1620,
-        top: 180,
-        font: 30,
-        hex: "#ffffff",
-        text: "Intelligence"
-    }, 1);
-    nav.t({
-        type: "img",
-        name: "quickfight",
-        left: 1660,
-        top: 280 + (0 * 50) + 12,
-        font: 20,
-        hex: "#ffffff",
-        text: "Your Intelligence: " + stat.myCharisma
-    }, 1);
-    
-    
-    nav.t({
-        type: "img",
-        name: "quickfight",
-        left: 1660,
-        top: 280 + (4 * 50) + 12,
-        font: 20,
-        hex: "#ffffff",
-        text: "Base Roll Needed : " + stat.baseRoll
-    }, 1);
-    nav.t({
-        type: "img",
-        name: "quickfight",
-        left: 1660,
-        top: 280 + (5 * 50) + 12,
-        font: 20,
-        hex: "#ffffff",
-        text: "Adjusted Roll Needed : " + stat.rollNeeded
-    }, 1);
-    nav.t({
-        type: "img",
-        name: "quickfight",
-        left: 1660,
-        top: 280 + (6 * 50) + 12,
-        font: 20,
-        hex: "#ffffff",
-        text: "Chance: " + stat.n + "%"
-    }, 1);
+    charisma.drawOverlayShell();
+    charisma.drawRollSummary("Intelligence", stat, "Your Intelligence: ", null, null);
 
 
     g.fight = {

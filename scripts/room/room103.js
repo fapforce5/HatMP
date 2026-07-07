@@ -10,7 +10,7 @@ room103.main = function () {
     }
     else if (jobapplyconst > 4 && jobapplyconst < 100) {
         g.internal = true;
-        room103.chatcatch("sweep");
+        invoker.invokeCurrent("chatcatch", "sweep");
     }
     else if (jobapplyconst === 100) {
         if (sc.getMission("river", "bully").notStarted) {
@@ -19,11 +19,11 @@ room103.main = function () {
         }
         else {
             g.internal = false;
-            room103.chatcatch("sweep");
+            invoker.invokeCurrent("chatcatch", "sweep");
         }
     }
     else {
-        room103.chatcatch("sweep");
+        invoker.invokeCurrent("chatcatch", "sweep");
     }
     
     //var thisRand = Math.floor(Math.random() * 10);
@@ -267,7 +267,7 @@ room103.chatcatch = function (callback) {
         case "work2shirt":
             cl.c.shirt = g.pass;
             cl.display();
-            room103.chatcatch("work2");
+            invoker.invokeCurrent("chatcatch", "work2");
             break;
         case "work2":
             nav.killall();
@@ -428,7 +428,7 @@ room103.chatcatch = function (callback) {
             sc.startMission("tina", "cat");
             sc.completeMissionTask("tina", "cat", 0);
             g.internal = false;
-            room103.chatcatch("sweep");
+            invoker.invokeCurrent("chatcatch", "sweep");
             break;
         case "rapeman0":
             nav.bg("103_constSite/103_sweep.jpg");
@@ -1285,3 +1285,5 @@ room103.chat = function (chatID) {
 
     return cArray[chatID];
 };
+
+invoker.registerRoom(103, room103);

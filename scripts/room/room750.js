@@ -204,7 +204,7 @@ room750.btnclick = function (name) {
             }
             break;
         case "elilay":
-            room750.btnclick("killelibutton");
+            invoker.invokeCurrent("btnclick", "killelibutton");
             char.addtime(20);
             nav.bg("750_homeless/eli2.webp"); 
             sc.select("elitv", "316_livingroom/icon_tv.png", -2);
@@ -214,7 +214,7 @@ room750.btnclick = function (name) {
             nav.modbutton("elitvfg", "750_homeless/elitv" + (g.internal.step % 4) + ".webp", null, null); 
             break;
         case "elisit":
-            room750.btnclick("killelibutton");
+            invoker.invokeCurrent("btnclick", "killelibutton");
             char.addtime(20);
             nav.bg("750_homeless/eli1.webp");
             sc.select("elitv", "316_livingroom/icon_tv.png", -2);
@@ -234,14 +234,14 @@ room750.btnclick = function (name) {
             }
             if (g.internal.horny > 99 && !g.internal.hardonNoticed) {
                 g.internal.hardonNoticed = true;
-                room750.btnclick("elihardon"); 
+                invoker.invokeCurrent("btnclick", "elihardon"); 
                 sc.select("eliRub", "750_homeless/icon_rub.webp", 2);
                 sc.modLevel("elijah", 30, 4);
             }
             else if (g.internal.step > 8) {
-                room750.btnclick("killelibutton");
+                invoker.invokeCurrent("btnclick", "killelibutton");
                 nav.killbutton("elitvfg");
-                room750.btnclick("eliEnd");
+                invoker.invokeCurrent("btnclick", "eliEnd");
             }
             if (g.internal.horny < 0) {
                 g.internal.hardonNoticed = false;
@@ -408,7 +408,7 @@ room750.chatcatch = function (callback) {
                 chat(30, 750);
             }
             else {
-                room750.chatcatch("buy");
+                invoker.invokeCurrent("chatcatch", "buy");
             }
             break;
         case "buy":
@@ -512,6 +512,8 @@ room750.chatcatch = function (callback) {
             break;
     }
 };
+
+invoker.registerRoom(750, room750);
 
 room750.chat = function (chatID) {
     if (chatID === 900) {

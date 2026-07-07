@@ -131,7 +131,7 @@ cl.init = function () {
         { type: "swimsuit", name: "p", display: "Pink Swimsuit", img: "swim_pink.png", sex: "f", inv: false, daring: 4, price: 80 },
 
         { type: "shoes", name: "w", display: "Workboots", img: "shoes_workboots.png", sex: "m", inv: true, daring: 0, price: -1 },
-        { type: "shoes", name: "d", display: "Dress Shoes", img: "shoes_black.png", sex: "m", inv: false, daring: 0, price: 60 },
+        { type: "shoes", name: "d", display: "Black Dress Shoes", img: "shoes_black.png", sex: "m", inv: false, daring: 0, price: 60 },
         { type: "shoes", name: "br", display: "Blue Running", img: "shoes_blueRun.png", sex: "m", inv: true, daring: 0, price: 75 },
         { type: "shoes", name: "nu", display: "Nurse shoes", img: "shoes_nurse.png", sex: "f", inv: false, daring: 1, price: -1 },
         { type: "shoes", name: "v", display: "Naked Beaver Shoes", img: "shoes_beaver.png", sex: "f", inv: false, daring: 1, price: -1 },
@@ -150,7 +150,7 @@ cl.init = function () {
         { type: "shoes", name: "bb", display: "Black Boots", img: "shoes_blackboots.png", sex: "f", inv: false, daring: 4, price: 127 },
 
         { type: "socks", name: "w", display: "Sweat Socks", img: "socks_white.png", sex: "m", inv: true, daring: 0, price: -1 },
-        { type: "socks", name: "b", display: "Dress Socks", img: "socks_black.png", sex: "m", inv: false, daring: 0, price: 15 },
+        { type: "socks", name: "b", display: "Black Dress Socks", img: "socks_black.png", sex: "m", inv: false, daring: 0, price: 15 },
         { type: "socks", name: "p", display: "Pink Stockings", img: "socks_pink.png", sex: "f", inv: false, daring: 1, price: 36 },
         { type: "socks", name: "s", display: "Little White Socks", img: "socks_shortWhite.png", sex: "f", inv: false, daring: 1, price: 24 },
         { type: "socks", name: "ss", display: "Sissy Socks", img: "socks_sissy.png", sex: "f", inv: false, daring: 2, price: -1 },
@@ -207,7 +207,7 @@ cl.init = function () {
         { type: "buttplug", name: "fr", display: "Rose", img: "plug_rose.png", sex: "f", inv: false, daring: 1, price: -1 },
         { type: "buttplug", name: "fd", display: "Daisy", img: "plug_daisy.png", sex: "f", inv: false, daring: 1, price: -1 },
         { type: "buttplug", name: "fp", display: "Pink flower", img: "plug_pinkFlower.png", sex: "f", inv: false, daring: 1, price: -1 },
-        { type: "buttplug", name: "t", display: "Tampon", img: "plug_tampon.png", sex: "f", inv: false, daring: 1, price: -1 },
+        { type: "buttplug", name: "t", display: "Tampon", img: "plug_small.png", sex: "f", inv: false, daring: 1, price: -1 },
         { type: "buttplug", name: "tail", display: "Tail", img: "plug_tail.png", sex: "f", inv: false, daring: 4, price: -1 },
         { type: "buttplug", name: "sh", display: "Shock", img: "plug_shock.png", sex: "f", inv: false, daring: 4, price: -1 },
         { type: "buttplug", name: "i", display: "Inflate", img: "plug_inflate.png", sex: "f", inv: false, daring: 4, price: -1 },
@@ -251,6 +251,28 @@ cl.cTemp = {
     shoes: null, socks: null, pants: null, panties: null, bra: null, shirt: null, dress: null, swimsuit: null, pj: null, buttplug: null
 };
 
+cl.tempClothingSlots = function () {
+    return ["shoes", "socks", "pants", "panties", "bra", "shirt", "dress", "swimsuit", "pj", "buttplug"];
+};
+
+cl.savedOutfitSlots = function () {
+    return ["shoes", "socks", "pants", "panties", "bra", "shirt", "dress", "swimsuit", "accessories", "pj"];
+};
+
+cl.copySlots = function (target, source, slots) {
+    $.each(slots, function (_, slot) {
+        target[slot] = source[slot];
+    });
+};
+
+cl.areSlotsEmpty = function (source, slots) {
+    for (var i = 0; i < slots.length; i++) {
+        if (source[slots[i]] !== null)
+            return false;
+    }
+    return true;
+};
+
 cl.pantiesTxt = function () {
     if (cl.c.panties !== null)
         return cl.list[cl.where("panties", cl.c.panties)].sex === "f" ? "panties" : "underwear";
@@ -267,137 +289,58 @@ cl.add = function (type, name) {
     }
 };
 
+cl.clearOutfitSlot = function (outfit, type, name) {
+    if (!Object.prototype.hasOwnProperty.call(outfit, type))
+        return false;
+
+    if (outfit[type] === name)
+        outfit[type] = null;
+    return true;
+};
+
+cl.clearCurrentSlot = function (type, name) {
+    var currentSlotMap = {
+        shoes: "shoes",
+        socks: "socks",
+        pants: "pants",
+        panties: "panties",
+        bra: "bra",
+        shirt: "shirt",
+        dress: "dress",
+        swimsuit: "swimsuit",
+        pj: "pj",
+        buttplug: "buttplug",
+        nipple: "nipplering",
+        ear: "earring",
+        nose: "nosering",
+        necklace: "necklace",
+        belly: "bellyring"
+    };
+    var slotName = currentSlotMap[type];
+    if (!slotName)
+        return false;
+
+    if (cl.c[slotName] === name)
+        cl.c[slotName] = null;
+    return true;
+};
+
 cl.remove = function (type, name) {
     var i;
     var clindex = cl.where(type, name);
     cl.list[clindex].inv = false;
     for (i = 0; i < 6; i++) {
-        switch (type) {
-            case "shoes":
-                if (cl.saveOutfit[i].shoes === name)
-                    cl.saveOutfit[i].shoes = null;
-                break;
-            case "socks":
-                if (cl.saveOutfit[i].socks === name)
-                    cl.saveOutfit[i].socks = null;
-                break;
-            case "pants":
-                if (cl.saveOutfit[i].pants === name)
-                    cl.saveOutfit[i].pants = null;
-                break;
-            case "panties":
-                if (cl.saveOutfit[i].panties === name)
-                    cl.saveOutfit[i].panties = null;
-                break;
-            case "bra":
-                if (cl.saveOutfit[i].bra === name)
-                    cl.saveOutfit[i].bra = null;
-                break;
-            case "shirt":
-                if (cl.saveOutfit[i].shirt === name)
-                    cl.saveOutfit[i].shirt = null;
-                break;
-            case "dress":
-                if (cl.saveOutfit[i].dress === name)
-                    cl.saveOutfit[i].dress = null;
-                break;
-            case "swimsuit":
-                if (cl.saveOutfit[i].swimsuit === name)
-                    cl.saveOutfit[i].swimsuit = null;
-                break;
-            case "pj":
-                if (cl.saveOutfit[i].pj === name)
-                    cl.saveOutfit[i].pj = null;
-                break;
-            case "accessories":
-                if (cl.saveOutfit[i].accessories === name)
-                    cl.saveOutfit[i].accessories = null;
-                break;
-            default:
-                console.log("missing: " + type + ", " + name);
-                break;
-        }
-    }
-    switch (type) {
-        case "shoes":
-            if (cl.c.shoes === name)
-                cl.c.shoes = null;
-            break;
-        case "socks":
-            if (cl.c.socks === name)
-                cl.c.socks = null;
-            break;
-        case "pants":
-            if (cl.c.pants === name)
-                cl.c.pants = null;
-            break;
-        case "panties":
-            if (cl.c.panties === name)
-                cl.c.panties = null;
-            break;
-        case "bra":
-            if (cl.c.bra === name)
-                cl.c.bra = null;
-            break;
-        case "shirt":
-            if (cl.c.shirt === name)
-                cl.c.shirt = null;
-            break;
-        case "dress":
-            if (cl.c.dress === name)
-                cl.c.dress = null;
-            break;
-        case "swimsuit":
-            if (cl.c.swimsuit === name)
-                cl.c.swimsuit = null;
-            break;
-        case "pj":
-            if (cl.c.pj === name)
-                cl.c.pj = null;
-            break;
-        case "buttplug":
-            if (cl.c.butthole === name)
-                cl.c.buttplug = null;
-            break;
-        case "nipple":
-            if (cl.c.nipplering === name)
-                cl.c.nipplering = null;
-            break;
-        case "ear":
-            if (cl.c.earring === name)
-                cl.c.earring = null;
-            break;
-        case "nose":
-            if (cl.c.nosering === name)
-                cl.c.nosering = null;
-            break;
-        case "necklace":
-            if (cl.c.necklace === name)
-                cl.c.necklace = null;
-            break;
-        case "belly":
-            if (cl.c.bellyring === name)
-                cl.c.bellyring = null;
-            break;
-        default:
+        if (!cl.clearOutfitSlot(cl.saveOutfit[i], type, name))
             console.log("missing: " + type + ", " + name);
-            break;
     }
+    if (!cl.clearCurrentSlot(type, name))
+        console.log("missing: " + type + ", " + name);
     cl.display();
     g.popUpNotice("You lost your " + cl.list[clindex].display + ". ");
 };
 
 cl.showdick = function () {
-    cl.cTemp.shoes = cl.c.shoes;
-    cl.cTemp.socks = cl.c.socks;
-    cl.cTemp.pants = cl.c.pants;
-    cl.cTemp.panties = cl.c.panties;
-    cl.cTemp.bra = cl.c.bra;
-    cl.cTemp.shirt = cl.c.shirt;
-    cl.cTemp.dress = cl.c.dress;
-    cl.cTemp.swimsuit = cl.c.swimsuit;
-    cl.cTemp.pj = cl.c.pj;
-    cl.cTemp.buttplug = cl.c.buttplug;
+    cl.saveTempClothing();
 
     cl.c.pants = null;
     cl.c.panties = null;
@@ -408,16 +351,7 @@ cl.showdick = function () {
 };
 
 cl.nude = function () {
-    cl.cTemp.shoes = cl.c.shoes;
-    cl.cTemp.socks = cl.c.socks;
-    cl.cTemp.pants = cl.c.pants;
-    cl.cTemp.panties = cl.c.panties;
-    cl.cTemp.bra = cl.c.bra;
-    cl.cTemp.shirt = cl.c.shirt;
-    cl.cTemp.dress = cl.c.dress;
-    cl.cTemp.swimsuit = cl.c.swimsuit;
-    cl.cTemp.pj = cl.c.pj;
-    cl.cTemp.buttplug = cl.c.buttplug;
+    cl.saveTempClothing();
 
     cl.c.shoes = null;
     cl.c.socks = null;
@@ -432,45 +366,24 @@ cl.nude = function () {
 };
 
 cl.changeClothingSave = function () {
-    cl.cTemp.shoes = cl.c.shoes;
-    cl.cTemp.socks = cl.c.socks;
-    cl.cTemp.pants = cl.c.pants;
-    cl.cTemp.panties = cl.c.panties;
-    cl.cTemp.bra = cl.c.bra;
-    cl.cTemp.shirt = cl.c.shirt;
-    cl.cTemp.dress = cl.c.dress;
-    cl.cTemp.swimsuit = cl.c.swimsuit;
-    cl.cTemp.pj = cl.c.pj;
-    cl.cTemp.buttplug = cl.c.buttplug;
+    cl.saveTempClothing();
+};
+
+cl.saveTempClothing = function () {
+    cl.copySlots(cl.cTemp, cl.c, cl.tempClothingSlots());
 };
 
 cl.changeClothing = function (p) {
-    cl.c.shoes = cl.cTemp.shoes;
-    cl.c.socks = cl.cTemp.socks;
-    cl.c.pants = cl.cTemp.pants;
-    cl.c.panties = cl.cTemp.panties;
-    cl.c.bra = cl.cTemp.bra;
-    cl.c.shirt = cl.cTemp.shirt;
-    cl.c.dress = cl.cTemp.dress;
-    cl.c.swimsuit = cl.cTemp.swimsuit;
-    cl.c.pj = cl.cTemp.pj;
+    cl.restoreTempClothing();
     cl.display();
 };
 
+cl.restoreTempClothing = function () {
+    cl.copySlots(cl.c, cl.cTemp, cl.tempClothingSlots());
+};
+
 cl.checkTemp = function () {
-    let nude = false;
-    if (
-        cl.cTemp.shoes === null &&
-        cl.cTemp.socks === null &&
-        cl.cTemp.pants === null &&
-        cl.cTemp.panties === null &&
-        cl.cTemp.bra === null &&
-        cl.cTemp.shirt === null &&
-        cl.cTemp.dress === null &&
-        cl.cTemp.swimsuit === null &&
-        cl.cTemp.pj === null)
-        nude = true;
-    return { nude: nude };
+    return { nude: cl.areSlotsEmpty(cl.cTemp, cl.tempClothingSlots().filter(function (slot) { return slot !== "buttplug"; })) };
 };
 
 cl.undo = function(){
@@ -536,16 +449,7 @@ cl.where = function (type, name) {
 };
 
 cl.wearSavedOutfit = function (entry) {
-    cl.c.shoes = cl.saveOutfit[entry].shoes;
-    cl.c.socks = cl.saveOutfit[entry].socks;
-    cl.c.pants = cl.saveOutfit[entry].pants;
-    cl.c.panties = cl.saveOutfit[entry].panties;
-    cl.c.bra = cl.saveOutfit[entry].bra;
-    cl.c.shirt = cl.saveOutfit[entry].shirt;
-    cl.c.dress = cl.saveOutfit[entry].dress;
-    cl.c.swimsuit = cl.saveOutfit[entry].swimsuit;
-    cl.c.accessories = cl.saveOutfit[entry].accessories;
-    cl.c.pj = cl.saveOutfit[entry].pj;
+    cl.copySlots(cl.c, cl.saveOutfit[entry], cl.savedOutfitSlots());
     cl.display();
 };
 
@@ -2965,7 +2869,20 @@ cl.stretchButt = function (invItem, sizeItem) {
     alert("remove this - cl.stretchButt");
 }; 
 
+cl.markAvailableClothing = function (clothes, item) {
+    if (!item.inv)
+        return true;
+
+    if (!Object.prototype.hasOwnProperty.call(clothes, item.type))
+        return false;
+
+    clothes[item.type].has = true;
+    clothes[item.type].gender = item.sex;
+    return true;
+};
+
 cl.checkAllClothing = function () {
+    var i;
     var clothes = {
         necklace: { has: false, gender: null, type: "necklace" },
         panties: { has: false, gender: null, type: "panties" },
@@ -2985,131 +2902,9 @@ cl.checkAllClothing = function () {
         chastity: { has: false, gender: null, type: "chastity" },
         buttplug: { has: false, gender: null, type: "buttplug" }
     };
-    for (i = 0; i < cl.list.length; i++)
-        switch (cl.list[i].type) {
-            case "necklace":
-                if (cl.list[i].inv) {
-                    if (cl.list[i].gender !== "f") {
-                        clothes.necklace.has = true;
-                        clothes.necklace.gender = cl.list[i].sex;
-                    }
-                    else {
-                        clothes.necklace.has = true;
-                        clothes.necklace.gender = cl.list[i].sex;
-                    }
-                }
-                break;
-        case "shoes":
-                if (cl.list[i].inv) {
-                    if (cl.list[i].gender !== "f") {
-                        clothes.shoes.has = true;
-                        clothes.shoes.gender = cl.list[i].sex;
-                    }
-                    else {
-                        clothes.shoes.has = true;
-                        clothes.shoes.gender = cl.list[i].sex;
-                    }
-                }
-            break;
-        case "socks":
-                if (cl.list[i].inv) {
-                    if (cl.list[i].gender !== "f") {
-                        clothes.socks.has = true;
-                        clothes.socks.gender = cl.list[i].sex;
-                    }
-                    else {
-                        clothes.socks.has = true;
-                        clothes.socks.gender = cl.list[i].sex;
-                    }
-                }
-            break;
-        case "pants":
-                if (cl.list[i].inv) {
-                    if (cl.list[i].gender !== "f") {
-                        clothes.pants.has = true;
-                        clothes.pants.gender = cl.list[i].sex;
-                    }
-                    else {
-                        clothes.pants.has = true;
-                        clothes.pants.gender = cl.list[i].sex;
-                    }
-                }
-            break;
-        case "panties":
-                if (cl.list[i].inv) {
-                    if (cl.list[i].gender !== "f") {
-                        clothes.panties.has = true;
-                        clothes.panties.gender = cl.list[i].sex;
-                    }
-                    else {
-                        clothes.panties.has = true;
-                        clothes.panties.gender = cl.list[i].sex;
-                    }
-                }
-            break;
-        case "bra":
-                if (cl.list[i].inv) {
-                    if (cl.list[i].gender !== "f") {
-                        clothes.bra.has = true;
-                        clothes.bra.gender = cl.list[i].sex;
-                    }
-                    else {
-                        clothes.bra.has = true;
-                        clothes.bra.gender = cl.list[i].sex;
-                    }
-                }
-            break;
-        case "shirt":
-                if (cl.list[i].inv) {
-                    if (cl.list[i].gender !== "f") {
-                        clothes.shirt.has = true;
-                        clothes.shirt.gender = cl.list[i].sex;
-                    }
-                    else {
-                        clothes.shirt.has = true;
-                        clothes.shirt.gender = cl.list[i].sex;
-                    }
-                }
-            break;
-        case "dress":
-                if (cl.list[i].inv) {
-                    if (cl.list[i].gender !== "f") {
-                        clothes.dress.has = true;
-                        clothes.dress.gender = cl.list[i].sex;
-                    }
-                    else {
-                        clothes.dress.has = true;
-                        clothes.dress.gender = cl.list[i].sex;
-                    }
-                }
-            break;
-        case "swimsuit":
-                if (cl.list[i].inv) {
-                    if (cl.list[i].gender !== "f") {
-                        clothes.swimsuit.has = true;
-                        clothes.swimsuit.gender = cl.list[i].sex;
-                    }
-                    else {
-                        clothes.swimsuit.has = true;
-                        clothes.swimsuit.gender = cl.list[i].sex;
-                    }
-                }
-            break;
-        case "pj":
-                if (cl.list[i].inv) {
-                    if (cl.list[i].gender !== "f") {
-                        clothes.pj.has = true;
-                        clothes.pj.gender = cl.list[i].sex;
-                    }
-                    else {
-                        clothes.pj.has = true;
-                        clothes.pj.gender = cl.list[i].sex;
-                    }
-                }
-            break;
-        default:
+    for (i = 0; i < cl.list.length; i++) {
+        if (!cl.markAvailableClothing(clothes, cl.list[i]))
             console.log("missing: " + cl.list[i].type);
-            break;
-        }
+    }
     return clothes;
 };

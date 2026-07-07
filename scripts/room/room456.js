@@ -11,7 +11,6 @@ room456.main = function () {
     //}
     //else {
     //    sc.setstep("cop", 2);
-    //    room456.chatcatch("morning");
     //}
 };
 
@@ -29,7 +28,7 @@ room456.btnclick = function (name) {
                 "top": 0,
                 "width": 1186,
                 "height": 1080,
-                "image": "456_bench/head.gif"
+                "image": "450_park/head.gif"
             }, 456);
             break;
         case "cop3":
@@ -80,22 +79,22 @@ room456.chatcatch = function (callback) {
             break;
         case "cop4":
             nav.killbutton("cop3");
-            nav.bg("456_bench/cop4.jpg");
+            nav.bg("450_park/cop4.jpg");
             break;
         case "cop5":
-            nav.bg("456_bench/cop5.jpg");
+            nav.bg("450_park/cop5.jpg");
             break;
         case "cop6":
-            nav.bg("456_bench/cop6.jpg");
+            nav.bg("450_park/cop6.jpg");
             break;
         case "cop7":
-            nav.bg("456_bench/cop7.jpg");
+            nav.bg("450_park/cop7.jpg");
             break;
         case "cop8":
             nav.bg("456_bench/jack.gif");
             break;
         case "cop9":
-            nav.bg("456_bench/cop9.jpg");
+            nav.bg("450_park/cop9.jpg");
             break;
         case "cop10":
             nav.bg("456_bench/cop1.jpg");
@@ -420,3 +419,5 @@ room456.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(456, room456);

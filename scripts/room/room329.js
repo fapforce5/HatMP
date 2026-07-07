@@ -44,7 +44,7 @@ room329.main = function () {
         chat(94, 329);
     }
     else {
-        room329.chatcatch("menu");
+        invoker.invokeCurrent("chatcatch", "menu");
     }
 };
 
@@ -148,7 +148,7 @@ room329.btnclick = function (name) {
             char.room(329);
             break;
         case "icon_stall":
-            room329.btnclick("stall_backDraw");
+            invoker.invokeCurrent("btnclick", "stall_backDraw");
             sc.select("icon_barn", "328_farm/icon_barn.webp", 0);
             sc.select("icon_expel", "329_barn/icon_cumfill.webp", 1);
             sc.select("icon_cumdrink", "329_barn/icon_cumdrink.webp", 2);
@@ -193,18 +193,18 @@ room329.btnclick = function (name) {
             g.popUpNotice("You drank some piss");
             levels.piss(true, false, false, "m");
             if (g.room === 329)
-                room329.btnclick("icon_stall");
+                invoker.invokeCurrent("btnclick", "icon_stall");
             else
-                room328.btnclick("icon_bedturn"); 
+                invoker.invoke(328, "btnclick", "icon_bedturn"); 
             break;
         case "icon_pissjargirl":
             g.map.jars[2].t--;
             g.popUpNotice("You drank girl's piss");
             levels.piss(true, false, false, "f");
             if (g.room === 329)
-                room329.btnclick("icon_stall");
+                invoker.invokeCurrent("btnclick", "icon_stall");
             else
-                room328.btnclick("icon_bedturn"); 
+                invoker.invoke(328, "btnclick", "icon_bedturn"); 
             break;
         case "icon_cumjar":
             g.map.jars[3].t--;
@@ -213,9 +213,9 @@ room329.btnclick = function (name) {
             levels.mod("xdress", 10);
             levels.mod("cum", 25);
             if (g.room === 329)
-                room329.btnclick("icon_stall");
+                invoker.invokeCurrent("btnclick", "icon_stall");
             else
-                room328.btnclick("icon_bedturn"); 
+                invoker.invoke(328, "btnclick", "icon_bedturn"); 
             break;
         case "icon_dogcumjar":
             g.map.jars[4].t--;
@@ -224,9 +224,9 @@ room329.btnclick = function (name) {
             levels.mod("xdress", 10);
             levels.mod("cum", 25);
             if (g.room === 329)
-                room329.btnclick("icon_stall");
+                invoker.invokeCurrent("btnclick", "icon_stall");
             else
-                room328.btnclick("icon_bedturn"); 
+                invoker.invoke(328, "btnclick", "icon_bedturn"); 
             break;
         case "icon_horsecumjar":
             g.map.jars[5].t--;
@@ -235,9 +235,9 @@ room329.btnclick = function (name) {
             levels.mod("xdress", 10);
             levels.mod("cum", 25);
             if (g.room === 329)
-                room329.btnclick("icon_stall");
+                invoker.invokeCurrent("btnclick", "icon_stall");
             else
-                room328.btnclick("icon_bedturn"); 
+                invoker.invoke(328, "btnclick", "icon_bedturn"); 
             break;
         case "icon_pigcumjar":
             g.map.jars[6].t--;
@@ -246,9 +246,9 @@ room329.btnclick = function (name) {
             levels.mod("xdress", 10);
             levels.mod("cum", 25);
             if(g.room === 329)
-                room329.btnclick("icon_stall");
+                invoker.invokeCurrent("btnclick", "icon_stall");
             else
-                room328.btnclick("icon_bedturn"); 
+                invoker.invoke(328, "btnclick", "icon_bedturn"); 
             break;
         case "icon_expel":
             if (gv.getButtCum().total === 0) {
@@ -302,9 +302,9 @@ room329.btnclick = function (name) {
             gv.clearButtCum();
             levels.mod("xdress", 15);
             if (g.roomID === 328)
-                room328.btnclick("icon_bedturn");
+                invoker.invoke(328, "btnclick", "icon_bedturn");
             else
-                room329.btnclick("icon_stall");
+                invoker.invokeCurrent("btnclick", "icon_stall");
             break;
         case "stall_backDraw":
             nav.kill();
@@ -321,7 +321,7 @@ room329.btnclick = function (name) {
                     "height": 109,
                     "image": "328_farm/sleep_mat.webp"
                 }, 329);
-                room328.btnclick("hole_progress");
+                invoker.invoke(328, "btnclick", "hole_progress");
             }
             for (let i = 0; i < g.map.jars.length; i++) {
                 img329 = inv.get(g.map.jars[i].n).image;
@@ -526,19 +526,19 @@ room329.btnclick = function (name) {
             break;
         case "north":
             g.internal.y++;
-            room329.btnclick("maze");
+            invoker.invokeCurrent("btnclick", "maze");
             break;
         case "south":
             g.internal.y--;
-            room329.btnclick("maze");
+            invoker.invokeCurrent("btnclick", "maze");
             break;
         case "east":
             g.internal.x++;
-            room329.btnclick("maze");
+            invoker.invokeCurrent("btnclick", "maze");
             break;
         case "west":
             g.internal.x--;
-            room329.btnclick("maze");
+            invoker.invokeCurrent("btnclick", "maze");
             break;
         case "exitBarn":
             nav.kill();
@@ -619,12 +619,12 @@ room329.chatcatch = function (callback) {
                 chat(74, 329);
             }
             else {
-                room329.chatcatch("menu");
+                invoker.invokeCurrent("chatcatch", "menu");
             }
             break;
         case "menu":
             nav.kill();
-            room328.btnclick("progressbar");
+            invoker.invoke(328, "btnclick", "progressbar");
             nav.bg("329_barn/bg.webp");
             if (!g.map.ppgirldistract) {
                 nav.button({
@@ -650,11 +650,11 @@ room329.chatcatch = function (callback) {
 
             break;
         case "icon_stall":
-            room329.btnclick("icon_stall");
+            invoker.invokeCurrent("btnclick", "icon_stall");
             break;
         case "finishavclean":
             g.map.avclean = true;
-            room328.chatcatch("addtrust");
+            invoker.invoke(328, "chatcatch", "addtrust");
             char.addtime(30);
             char.room(329);
             break;
@@ -808,7 +808,7 @@ room329.chatcatch = function (callback) {
             };
             nav.kill();
             nav.bg("329_barn/maze_bg.webp");
-            room329.btnclick("maze");
+            invoker.invokeCurrent("btnclick", "maze");
             break;
         case "hole5":
             char.settime(18, 7);
@@ -1952,3 +1952,5 @@ room329.chat = function (chatID) {
             return [];
     }
 };
+
+invoker.registerRoom(329, room329);

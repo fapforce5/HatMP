@@ -45,14 +45,14 @@ room22.main = function () {
     $.each(btnList, function (i, v) {
         nav.button(v, 22);
     });
-    room22.btnclick("drawIconsMaster");  
+    invoker.invokeCurrent("btnclick", "drawIconsMaster");
     nav.buildnav(navList);
 };
 
 room22.btnclick = function (name) {
     switch (name) {
         case "drawIconsMaster":
-            room22.btnclick("clearRoom");
+            invoker.invokeCurrent("btnclick", "clearRoom");
             if (gv.get("bladder") > 0) {
                 sc.select("pee", "22_toilet/icon_pee.png", 0);
             }
@@ -68,15 +68,15 @@ room22.btnclick = function (name) {
             sc.selectCancel("leave", 2);
             break;
         case "peex":
-            room22.btnclick("clearRoom");
+            invoker.invokeCurrent("btnclick", "clearRoom");
             chat(0, 22);
             break;
         case "cumx":
-            room22.btnclick("clearRoom");
+            invoker.invokeCurrent("btnclick", "clearRoom");
             chat(1, 22);
             break;
         case "pee":
-            room22.btnclick("clearRoom");
+            invoker.invokeCurrent("btnclick", "clearRoom");
             if (cl.c.chastity !== null) {
                 sc.select("peemanx", "22_toilet/icon_peeMan.png", 0);
                 sc.select("peebitch", "22_toilet/icon_peeBitch.png", 1);
@@ -93,7 +93,7 @@ room22.btnclick = function (name) {
             }
             break;
         case "peemanx":
-            room22.btnclick("clearRoom");
+            invoker.invokeCurrent("btnclick", "clearRoom");
             chat(2, 22);
             break;
         case "peeman":
@@ -406,3 +406,5 @@ room22.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(22, room22);

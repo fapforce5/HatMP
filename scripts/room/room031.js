@@ -98,12 +98,12 @@ room31.btnclick = function (name) {
         case "z":
             if (g.internal.length < 16)
                 g.internal += name;
-            room31.btnclick("drawString");
+            invoker.invokeCurrent("btnclick", "drawString");
             break;
         case "del":
             if (g.internal.length > 0)
                 g.internal = g.internal.slice(0, -1);
-            room31.btnclick("drawString");
+            invoker.invokeCurrent("btnclick", "drawString");
             break;
         case "drawString":
             nav.killbutton("password");
@@ -462,3 +462,5 @@ room31.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(31, room31);

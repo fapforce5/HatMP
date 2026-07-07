@@ -72,3 +72,5 @@ room455.chat = function (chatID) {
         };
     }
 };
+
+invoker.registerRoom(455, room455);

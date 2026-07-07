@@ -280,7 +280,7 @@ room28.main = function () {
                         if (validForcedTransformation) {
                             if (qdress.st[transformationOrder[i]].p <= transformationPoints) {
                                 if ((qdress.st[transformationOrder[i]].h && validTransformationHormone) || !qdress.st[transformationOrder[i]].h) {
-                                    room28.btnclick("qgrow_" + transformationOrder[i]);
+                                    invoker.invokeCurrent("btnclick", "qgrow_" + transformationOrder[i]);
                                     return;
                                 }
                                 else {
@@ -477,6 +477,8 @@ room28.future = function () {
     }
 };
 
+invoker.registerRoom(28, room28);
+
 room28.dreams = function () {
     var getFirstDream = null;
     var hasText = false;
@@ -575,10 +577,10 @@ room28.dreams = function () {
         }
         else if (g.pass === 7) {
             if (sc.getMission("lola", "*wife").startedOrComplete) {
-                nav.bg("10_mainchar/sleep_wife.webp");
+                nav.bg("28_transformation/sleep_wife.webp");
             }
             else if (gv.get("cat") > 0) {
-                nav.bg("10_mainchar/sleep_cat.jpg");
+                nav.bg("28_transformation/sleep_cat.jpg");
             }
         }
     }
@@ -1174,7 +1176,7 @@ room28.chat = function (chatID) {
             {
                 chatID: 29,
                 speaker: "thinking",
-                text: "I need to make sure I feed " + sc.n("cooper") + " tomorrow. ",
+                text: "I need to make sure I feed " + sc.n("dog") + " tomorrow. ",
                 button: [
                     { chatID: -1, text: "...", callback: "endDream" }
                 ]

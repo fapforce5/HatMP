@@ -58,6 +58,8 @@ room203.main = function () {
     }
 };
 
+invoker.registerRoom(203, room203);
+
 room203.btnclick = function (name) {
     
     switch (name) {

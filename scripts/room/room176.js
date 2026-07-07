@@ -35,7 +35,7 @@ room176.btnclick = function (name) {
             chat(34, 176);
             break;
         case "blackmailFail":
-            room176.chatcatch("oral20");
+            invoker.invokeCurrent("chatcatch", "oral20");
             chat(35, 176);
             break;
         case "kiss":
@@ -107,36 +107,36 @@ room176.btnclick = function (name) {
                 g.internal.chatid = 1002;
                 g.internal.love++;
             }
-            room176.btnclick("drawNext");
+            invoker.invokeCurrent("btnclick", "drawNext");
             break;
         case "pphole":
             g.internal.chatid = 1000;
-            room176.btnclick("drawNext");
+            invoker.invokeCurrent("btnclick", "drawNext");
             break;
         case "pussy":
             if (g.internal.love === 1) {
                 g.internal.love++;
             }
             g.internal.chatid = 1003;
-            room176.btnclick("drawNext");
+            invoker.invokeCurrent("btnclick", "drawNext");
             break;
         case "pussylips":
             if (g.internal.love === 1) {
                 g.internal.love++;
             }
             g.internal.chatid = 1003;
-            room176.btnclick("drawNext");
+            invoker.invokeCurrent("btnclick", "drawNext");
             break;
         case "asshole":
             g.internal.chatid = 1001;
-            room176.btnclick("drawNext");
+            invoker.invokeCurrent("btnclick", "drawNext");
             break;
         case "leg":
             if (g.internal.love < 1) {
                 g.internal.love++;
             }
             g.internal.chatid = 1004;
-            room176.btnclick("drawNext");
+            invoker.invokeCurrent("btnclick", "drawNext");
             break;
         case "drawNext":
             nav.killall();
@@ -174,6 +174,8 @@ room176.btnclick = function (name) {
             break;
     }
 };
+
+invoker.registerRoom(176, room176);
 
 room176.chatcatch = function (callback) {
     switch (callback) {

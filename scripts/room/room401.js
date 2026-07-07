@@ -1,12 +1,49 @@
 ﻿//purchase
 var room401 = {};
+room401.currentShop = null;
+room401.restoreExitState = function (targetRoomID) {
+    if (!g.pass || !g.pass.changeClothes || targetRoomID !== g.pass.roomID)
+        return;
+
+    cl.c.shoes = g.pass.shoes;
+    cl.c.socks = g.pass.socks;
+    cl.c.pants = g.pass.pants;
+    cl.c.panties = g.pass.panties;
+    cl.c.bra = g.pass.bra;
+    cl.c.shirt = g.pass.shirt;
+    cl.c.dress = g.pass.dress;
+    cl.c.swimsuit = g.pass.swimsuit;
+    cl.c.pj = g.pass.pj;
+    cl.display();
+
+    if (targetRoomID === 402)
+        g.internal = "purchased";
+};
+room401.clothingTypeLabel = function (item) {
+    switch (item.type) {
+        case "shoes":
+            return "Footwear";
+        case "socks":
+            return "Legwear";
+        case "bra":
+        case "panties":
+            return "Underwear";
+        case "swimsuit":
+            return "Swimwear";
+        case "pj":
+            return "Sleepwear";
+        default:
+            return item.type.charAt(0).toUpperCase() + item.type.slice(1);
+    }
+};
 room401.main = function () {
     $('#room-buttons').html('<div id="wardrobe_body">' +
         '<div class="wardrobe-line"></div>' +
         '<div class="wardrobe-line" id="wardrobe-line-buy"></div></div>');
     $('#wardrobe_body').css({ 'width': (1920 * g.ratio) + 'px', 'top': (100 * g.ratio) + 'px' });
     g.internal = 0;
-    var switchName = g.pass;
+    var switchName = typeof g.pass === "string" ? g.pass : room401.currentShop;
+    room401.currentShop = switchName;
 
     if (switchName === "bra")
         navList = [402];
@@ -31,28 +68,6 @@ room401.main = function () {
         g.pass.dress = cl.c.dress;
         g.pass.swimsuit = cl.c.swimsuit;
         g.pass.pj = cl.c.pj;
-        
-        var changeRoomID = 400;
-        //if (switchName === "bra" && sc.getstep("jada") < 2)
-        //    changeRoomID = 402;
-        $.each(g.rooms, function (j, u) {
-
-            if (u.roomID === changeRoomID) {
-                nav.button({
-                    "type": "zbtn",
-                    "name": "roomChange",
-                    "left": 350,
-                    "top": 980,
-                    "width": 200,
-                    "height": 75,
-                    "image": "navBtn/" + u.btn 
-                }, 401);
-                return false;
-            }
-        });
-        setTimeout(function () {
-            $("#room_footer").hide();
-        }, 200);
     }
 
     switch (switchName) {
@@ -62,7 +77,6 @@ room401.main = function () {
             room401.makeInv(["b"], qdress.st[3].ach, 1);
             break;
         case "saucy":
-            navList = [];
             g.pass.roomID = 400;
             g.pass.changeClothes = true;
             nav.bg("401_purchase/saucy.jpg", "401_purchase/saucy.jpg");
@@ -72,7 +86,6 @@ room401.main = function () {
             room401.makeClothing("swimsuit", "f");
             break;
         case "shoe":
-            navList = [];
             g.pass.roomID = 400;
             g.pass.changeClothes = true;
             cl.c.shoes = null;
@@ -84,7 +97,6 @@ room401.main = function () {
             room401.makeClothing("socks", "f");
             break;
         case "mens":
-            navList = [];
             g.pass.roomID = 400;
             g.pass.changeClothes = true;
             nav.bg("401_purchase/mens.jpg", "401_purchase/mens.jpg");
@@ -193,7 +205,7 @@ room401.main = function () {
         
         $('#menu_displayIcon').html('<img src="./images/inv/' + thisItem.image + '"/>');
         $("#menu_displayCost").html("$" + thisItem.cost);
-        $("#menu_displayName").html(thisItem.display);
+        $("#menu_displayName").html(inv.displayName(thisItem));
         $('#menu_displayType').html(inv.gett(thisItem.type));
         $("#menu_displayDesc").html(thisItem.desc);
         //$("#menu_displayInfo").html("info");
@@ -211,7 +223,7 @@ room401.main = function () {
             $('#menu_displayAction').hide();
             $('#menu_displayInfo').html("Too Girly");
         }
-        else if (thisItem.entry && thisItem.count === null) {
+        else if (thisItem.entry && inv.isSinglePurchase(thisItem)) {
             $('#menu_displayAction').hide();
             $('#menu_displayInfo').html("Already Purchased");
         }
@@ -222,7 +234,7 @@ room401.main = function () {
         else {
             $('#menu_displayAction').show();
             $('#menu_displayInfo').html("");
-            if (thisItem.count === null) {
+            if (inv.isSinglePurchase(thisItem)) {
                 $("#menu_displayCountLine").hide();
             }
             else {
@@ -242,7 +254,7 @@ room401.main = function () {
         $('#menu_displayIcon').html('<img src="./images/room/8_wardrobe/icons/' + cli.img + '"/>');
         $("#menu_displayCost").html("$" + cli.price);
         $("#menu_displayName").html(cli.display);
-        $('#menu_displayType').html(cli.type.charAt(0).toUpperCase() + cli.type.slice(1));
+        $('#menu_displayType').html(room401.clothingTypeLabel(cli));
         $("#menu_displayDesc").html((cli.sex === "m" ? "Boy" : "Girly") + " - " + cl.set[cli.daring + 1].name);
         //$("#menu_displayInfo").html("info");
         $("#menu_displayAction").html("BUY - $" + cli.price);
@@ -397,7 +409,8 @@ room401.makeInv = function (typeArray, canbuy, priceMult = 1) {
     for (j = 0; j < typeArray.length; j++) {
         var type = typeArray[j];
         for (i = 0; i < inv.master.length; i++) {
-            if ((inv.master[i].type === type && !(inv.master[i].entry && inv.master[i].count === null)) && inv.master[i].cost > 0) {
+            if (inv.master[i].type === type && inv.master[i].cost > 0) {
+                var isOwnedSingle = inv.master[i].entry && inv.isSinglePurchase(inv.master[i]);
                 if (inv.master[i].name === "razor") {
                     if (sissy.st[1].ach || gv.get("magman")) {
                         $('#menu-bg_' + g.internal).html('<img src="./images/inv/' + inv.master[i].image + '" data-name="' + inv.master[i].name + '" data-canbuy="' + canbuy + '" class="store-inv" title="' + inv.master[i].display + '"/>');
@@ -425,6 +438,10 @@ room401.makeInv = function (typeArray, canbuy, priceMult = 1) {
                     $('#menu-bg_' + g.internal).append('<img class="click-thru" src="./images/inv/tooGirly.png"/>');
                     $('#menu-bg_' + g.internal).append('<div>$' + Math.floor(inv.master[i].cost * priceMult) + '</div>');
                 }
+                else if (isOwnedSingle) {
+                    $('#menu-bg_' + g.internal).html('<img src="./images/inv/' + inv.master[i].image + '" data-canbuy="' + canbuy + '" data-name="' + inv.master[i].name + '" class="store-inv"  title="' + inv.displayName(inv.master[i]) + '"/>');
+                    $('#menu-bg_' + g.internal).append('<img class="click-thru" src="./images/inv/owned.png"/>');
+                }
                 else {
                     $('#menu-bg_' + g.internal).html('<img src="./images/inv/' + inv.master[i].image + '" data-canbuy="' + canbuy + '" data-name="' + inv.master[i].name + '" class="store-inv"  title="' + inv.master[i].display + '"/>');
                     $('#menu-bg_' + g.internal).append('<div>$' + Math.floor(inv.master[i].cost * priceMult) + '</div>');
@@ -439,19 +456,7 @@ room401.makeInv = function (typeArray, canbuy, priceMult = 1) {
 room401.btnclick = function (name) {
     switch (name) {
         case "roomChange":
-            cl.c.shoes = g.pass.shoes;
-            cl.c.socks = g.pass.socks;
-            cl.c.pants = g.pass.pants;
-            cl.c.panties = g.pass.panties;
-            cl.c.bra = g.pass.bra;
-            cl.c.shirt = g.pass.shirt;
-            cl.c.dress = g.pass.dress;
-            cl.c.swimsuit = g.pass.swimsuit;
-            cl.c.pj = g.pass.pj;
-            cl.display();
-            $("#room_footer").show();
-            if (g.pass.roomID === 402)
-                g.internal = "purchased";
+            room401.restoreExitState(g.pass.roomID);
             char.room(g.pass.roomID);
             break;
         default:
@@ -488,3 +493,5 @@ room401.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(401, room401);

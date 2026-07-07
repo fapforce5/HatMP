@@ -35,18 +35,18 @@ room208.btnclick = function (name) {
                 m = 3;
             nav.modbutton(m + "t", "208_red/t" + m + "_1.png", null, null);
             g.internal.step = m;
-            g.roomTimeout = setTimeout(function () { room208.btnclick("tj") }, g.internal.timex);
+            g.roomTimeout = setTimeout(function () { invoker.invokeCurrent("btnclick", "tj"); }, g.internal.timex);
             break;
         case "tj":
             nav.modbutton(g.internal.step + "t", "208_red/t0.png", null, null);
-            g.roomTimeout = setTimeout(function () { room208.btnclick("tk") }, 200);
+            g.roomTimeout = setTimeout(function () { invoker.invokeCurrent("btnclick", "tk"); }, 200);
             break;
         case "tk":
-            g.roomTimeout = setTimeout(function () { room208.btnclick("th") }, (Math.random() * 900) + 300);
-            room208.btnclick("thit");
+            g.roomTimeout = setTimeout(function () { invoker.invokeCurrent("btnclick", "th"); }, (Math.random() * 900) + 300);
+            invoker.invokeCurrent("btnclick", "thit");
             break;
         case "tpause":
-            g.roomTimeout = setTimeout(function () { room208.btnclick("th") }, (Math.random() * 900) + 300);
+            g.roomTimeout = setTimeout(function () { invoker.invokeCurrent("btnclick", "th"); }, (Math.random() * 900) + 300);
             break;
         case "1t":
         case "2t":
@@ -64,18 +64,18 @@ room208.btnclick = function (name) {
                     g.internal.step = 0;
                     g.internal.bh;
                     clearTimeout(g.roomTimeout);
-                    g.roomTimeout = setTimeout(function () { room208.btnclick("tpause") }, 500);
+                    g.roomTimeout = setTimeout(function () { invoker.invokeCurrent("btnclick", "tpause"); }, 500);
                 }
                 else {
                     clearTimeout(g.roomTimeout);
                     clearTimeout(g.roomTimeout2);
                     g.pass.second = true;
-                    room208.chatcatch("reset");
+                    invoker.invokeCurrent("chatcatch", "reset");
                     chat(21, 208);
                 }
             }
             else if (g.internal.bh) {
-                room208.btnclick("thit");
+                invoker.invokeCurrent("btnclick", "thit");
             }
             break;
         case "thit":
@@ -85,7 +85,7 @@ room208.btnclick = function (name) {
             if (energyx < 2) {
                 clearTimeout(g.roomTimeout);
                 clearTimeout(g.roomTimeout2);
-                room208.chatcatch("reset");
+                invoker.invokeCurrent("chatcatch", "reset");
                 chat(22, 208);
             }
             else {
@@ -94,7 +94,7 @@ room208.btnclick = function (name) {
                 var topx = 1017 - heightx;
                 $(".room-img[data-name='tb']").css({ "top": (topx * g.ratio) + "px", "height": (heightx * g.ratio) + "px" });
                 nav.modbutton("tballs", "208_red/ts1.png", null, null);
-                g.roomTimeout2 = setTimeout(function () { room208.btnclick("tResetbutton") }, 500);
+                g.roomTimeout2 = setTimeout(function () { invoker.invokeCurrent("btnclick", "tResetbutton"); }, 500);
             }
             break;
         case "tResetbutton":
@@ -165,7 +165,7 @@ room208.btnclick = function (name) {
             }
 
             else {
-                g.roomTimeout = setTimeout(function () { room208.btnclick("jerkIncrease"); }, 20);
+                g.roomTimeout = setTimeout(function () { invoker.invokeCurrent("btnclick", "jerkIncrease"); }, 20);
             }
             break;
         case "jerkStart":
@@ -205,7 +205,7 @@ room208.btnclick = function (name) {
                 "height": 1080,
                 "image": "208_red/jerk.gif"
             }, 208);
-            room208.btnclick("jerkIncrease");
+            invoker.invokeCurrent("btnclick", "jerkIncrease");
             break;
         case "jerkStop":
             clearTimeout(g.roomTimeout);
@@ -213,7 +213,7 @@ room208.btnclick = function (name) {
                 g.internal.n++;
                 if (g.internal.n < 3) {
                     chat(27, 208);
-                    room208.btnclick("jerkReset");
+                    invoker.invokeCurrent("btnclick", "jerkReset");
                 }
                 else {
                     g.pass.third = true;
@@ -222,7 +222,7 @@ room208.btnclick = function (name) {
             }
             else {
                 chat(28, 208);
-                room208.btnclick("jerkReset");
+                invoker.invokeCurrent("btnclick", "jerkReset");
             }
 
 
@@ -265,7 +265,7 @@ room208.chatcatch = function (callback) {
         case "feet2a":
             g.pass.h1 = true;
             g.internal = "foot";
-            room208.chatcatch("feet2");
+            invoker.invokeCurrent("chatcatch", "feet2");
             break;
         case "feet2":
             nav.killall();
@@ -403,7 +403,7 @@ room208.chatcatch = function (callback) {
         case "t4a":
             g.pass.h2 = true;
             g.pass.hard2 = true;
-            room208.chatcatch("t4");
+            invoker.invokeCurrent("chatcatch", "t4");
             break;
         case "t4":
             nav.bg("208_red/t4.jpg");
@@ -479,7 +479,7 @@ room208.chatcatch = function (callback) {
                 "image": "208_red/tb.jpg"
             }, 208);
             //$('#room-buttons').append('<img src="./images/room/' + thisImage + '" class="' + classes + '" data-name="' + btn.name + '" data-room="' + roomNum + '" title="' + (("title" in btn) ? btn.title : "") + charAttr + '" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:' + top + 'px; left:' + left + 'px;" />');
-            g.roomTimeout = setTimeout(function () { room208.btnclick("th") }, (Math.random() * 500) + 500);
+            g.roomTimeout = setTimeout(function () { invoker.invokeCurrent("btnclick", "th"); }, (Math.random() * 500) + 500);
             break;
         case "tri1":
             $('.room-left').hide();
@@ -517,12 +517,12 @@ room208.chatcatch = function (callback) {
             break;
         case "jerk0":
             g.internal = { n: 0, i: 0, c: 0, t: 0, h: 0, easy: true };
-            room208.chatcatch("jerk");
+            invoker.invokeCurrent("chatcatch", "jerk");
             break;
         case "jerk1":
             g.internal = { n: 0, i: 0, c: 0, t: 0, h: 0, easy: false };
             g.pass.hard3 = true;
-            room208.chatcatch("jerk");
+            invoker.invokeCurrent("chatcatch", "jerk");
             break;
         case "jerk":
             nav.killall();
@@ -625,6 +625,8 @@ room208.chatcatch = function (callback) {
             break;
     }
 };
+
+invoker.registerRoom(208, room208);
 
 room208.chat = function (chatID) {
     var cArray = [

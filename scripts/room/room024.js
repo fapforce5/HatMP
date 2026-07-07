@@ -14,7 +14,7 @@ room24.main = function () {
         whoTurn: "me",
         totalTurn: 0
     };
-    room24.chatcatch("evaTalk lolaSit");
+    invoker.invokeCurrent("chatcatch", "evaTalk lolaSit");
     inv.use("wine");
     daily.set("lola");
     daily.set("eva");
@@ -34,7 +34,7 @@ room24.btnclick = function (name) {
         case "spin":
             gv.mod("arousal", 3);
             nav.kill();
-            room24.chatcatch("topbg evaTop lolaTop");
+            invoker.invokeCurrent("chatcatch", "topbg evaTop lolaTop");
             if (g.internal.whoTurn === "eva") {
                 //nav.button({
                 //    "type": "img",
@@ -109,7 +109,7 @@ room24.btnclick = function (name) {
                 }
             }
             setTimeout(function () {
-                room24.btnclick("spinStop1");
+                invoker.invokeCurrent("btnclick", "spinStop1");
                 //$('.room-chatBox').show(); window.getSelection().removeAllRanges();
             }, 3000);
             break;
@@ -122,14 +122,14 @@ room24.btnclick = function (name) {
                 }
             }
             else 
-                room24.btnclick("spinStop");
+                invoker.invokeCurrent("btnclick", "spinStop");
             break;
         case "spinStop":
             nav.killbutton("hlkill");
             switch (g.internal.prevWho) {
                 case "lola":
                     if (g.internal.lolaWine < 2 && g.internal.lolaNude === 0 && g.rand(0, 2) !== 0) {
-                        room24.chatcatch("bg evaSit lolaTalk");
+                        invoker.invokeCurrent("chatcatch", "bg evaSit lolaTalk");
                         g.internal.lolaNude = 1;
                         if (g.internal.evaNude === 1)
                             chat(5, 24);
@@ -140,20 +140,20 @@ room24.btnclick = function (name) {
                         if (g.internal.lolaWine > 0) {
                             if (g.internal.whoTurn === "lola") {
                                 g.internal.lolaWine--; 
-                                room24.chatcatch("bg evaSit lolaDrink");
+                                invoker.invokeCurrent("chatcatch", "bg evaSit lolaDrink");
                                 chat(10, 24); //drink wine
                             }
                             else if (g.internal.whoTurn === "eva") {
-                                room24.chatcatch("bg bothKiss");
+                                invoker.invokeCurrent("chatcatch", "bg bothKiss");
                                 chat(11, 24);//kiss eva
                             }
                             else {
-                                room24.chatcatch("bg evaSit lolaKiss");
+                                invoker.invokeCurrent("chatcatch", "bg evaSit lolaKiss");
                                 chat(12, 24);//kiss mc
                             }
                         }
                         else {
-                            room24.chatcatch("bg evaSit lolaTalk");
+                            invoker.invokeCurrent("chatcatch", "bg evaSit lolaTalk");
                             chat(21, 24);
                         }
                     }
@@ -161,7 +161,7 @@ room24.btnclick = function (name) {
                 case "eva":
                     if (g.internal.evaWine < 3 && g.internal.evaNude === 0 && g.rand(0, 4) !== 0) {
                         g.internal.evaNude = 1;
-                        room24.chatcatch("bg lolaSit evaTalk");
+                        invoker.invokeCurrent("chatcatch", "bg lolaSit evaTalk");
                         if (g.internal.lolaNude === 1)
                             chat(13, 24);
                         else
@@ -171,20 +171,20 @@ room24.btnclick = function (name) {
                         if (g.internal.evaWine > 0) {
                             if (g.internal.whoTurn === "eva") {
                                 g.internal.evaWine--;
-                                room24.chatcatch("bg lolaSit evaDrink");
+                                invoker.invokeCurrent("chatcatch", "bg lolaSit evaDrink");
                                 chat(16, 24); //drink wine
                             }
                             else if (g.internal.whoTurn === "lola") {
-                                room24.chatcatch("bg bothKiss");
+                                invoker.invokeCurrent("chatcatch", "bg bothKiss");
                                 chat(17, 24);//kiss eva
                             }
                             else {
-                                room24.chatcatch("bg lolaSit evaKiss");
+                                invoker.invokeCurrent("chatcatch", "bg lolaSit evaKiss");
                                 chat(18, 24);//kiss mc
                             }
                         }
                         else {
-                            room24.chatcatch("bg evaTalk lolaSit");
+                            invoker.invokeCurrent("chatcatch", "bg evaTalk lolaSit");
                             chat(22, 24);
                         }
                     }
@@ -220,14 +220,14 @@ room24.btnclick = function (name) {
             cl.c.shirt = null;
             cl.display();
             if (cl.c.bra === null) {
-                room24.chatcatch("bg evaSit lolaTalk");
+                invoker.invokeCurrent("chatcatch", "bg evaSit lolaTalk");
                 sc.modLevel("lola", 25, 3);
                 chat(25, 24);
             }
             else {
                 sc.modSecret("eva", 65);
                 sc.modSecret("lola", 65);
-                room24.chatcatch("bg evaSit lolaTalk");
+                invoker.invokeCurrent("chatcatch", "bg evaSit lolaTalk");
                 chat(27, 24);
             }
             break;
@@ -237,18 +237,18 @@ room24.btnclick = function (name) {
             nav.killbutton("quit");
             if (g.internal.whoTurn === "lola") {
                 sc.modLevel("lola", 10, 7);
-                room24.chatcatch("bg evaSit lolaKiss");
+                invoker.invokeCurrent("chatcatch", "bg evaSit lolaKiss");
                 chat(19, 24);
             }
             else {
                 sc.modLevel("eva", 10, 7);
-                room24.chatcatch("bg lolaSit evaKiss");
+                invoker.invokeCurrent("chatcatch", "bg lolaSit evaKiss");
                 chat(20, 24);
             }
             break;
         case "drink":
             nav.killall();
-            room24.chatcatch("bg lolaSit evaSit");
+            invoker.invokeCurrent("chatcatch", "bg lolaSit evaSit");
             g.internal.meWine--;
             nav.button({
                 "type": "img",
@@ -287,7 +287,7 @@ room24.btnclick = function (name) {
             break;
         case "lolaPic":
             pic.add("lolaTopless");
-            room24.chatcatch("lolaSit evaTalk");
+            invoker.invokeCurrent("chatcatch", "lolaSit evaTalk");
             chat(9, 24);
             break;
     }
@@ -331,7 +331,7 @@ room24.chatcatch = function (callback) {
                         "height": 1071,
                         "image": "24_spinTheBottle/sit_lola_" + g.internal.lolaNude + "_nt.png"
                     }, 13);
-                    room24.btnclick("lolaWine");
+                    invoker.invokeCurrent("btnclick", "lolaWine");
                     break;
                 case "lolaHeart":
                     nav.killbutton("lola");
@@ -344,7 +344,7 @@ room24.chatcatch = function (callback) {
                         "height": 1071,
                         "image": "24_spinTheBottle/sit_lola_heart.png"
                     }, 13);
-                    room24.btnclick("lolaWine");
+                    invoker.invokeCurrent("btnclick", "lolaWine");
                     sc.select("lolaPic", "icon_pic.png", 8);
                     break;
                 case "evaSit":
@@ -358,7 +358,7 @@ room24.chatcatch = function (callback) {
                         "height": 1036,
                         "image": "24_spinTheBottle/sit_eva_" + g.internal.evaNude + "_nt.png"
                     }, 13);
-                    room24.btnclick("evaWine");
+                    invoker.invokeCurrent("btnclick", "evaWine");
                     break;
                 case "lolaDrink":
                     nav.killbutton("lola");
@@ -397,7 +397,7 @@ room24.chatcatch = function (callback) {
                         "height": 1071,
                         "image": "24_spinTheBottle/sit_lola_" + g.internal.evaNude + "_t.png"
                     }, 13);
-                    room24.btnclick("lolaWine");
+                    invoker.invokeCurrent("btnclick", "lolaWine");
                     break;
                 case "evaTalk":
                     nav.killbutton("eva");
@@ -410,11 +410,11 @@ room24.chatcatch = function (callback) {
                         "height": 1036,
                         "image": "24_spinTheBottle/sit_eva_" + g.internal.evaNude + "_t.png"
                     }, 13);
-                    room24.btnclick("evaWine");
+                    invoker.invokeCurrent("btnclick", "evaWine");
                     break;
                 case "lolaKiss":
                     nav.killbutton("lola");
-                    room24.btnclick("lolaWine");
+                    invoker.invokeCurrent("btnclick", "lolaWine");
                     nav.button({
                         "type": "img",
                         "name": "lola",
@@ -428,7 +428,7 @@ room24.chatcatch = function (callback) {
                     break;
                 case "evaKiss":
                     nav.killbutton("eva");
-                    room24.btnclick("evaWine");
+                    invoker.invokeCurrent("btnclick", "evaWine");
                     nav.button({
                         "type": "img",
                         "name": "eva",
@@ -452,8 +452,8 @@ room24.chatcatch = function (callback) {
                         "height": 1080,
                         "image": "24_spinTheBottle/both_kiss_eva" + g.internal.evaNude + "_lola" + g.internal.lolaNude + ".png"
                     }, 13);
-                    room24.btnclick("evaWine");
-                    room24.btnclick("lolaWine");
+                    invoker.invokeCurrent("btnclick", "evaWine");
+                    invoker.invokeCurrent("btnclick", "lolaWine");
                     //gv.mod("arousal", 60);
                     break;
                 case "lolaTop":
@@ -496,17 +496,17 @@ room24.chatcatch = function (callback) {
                     g.internal.meNextChat = 77;
                     break;
                 case "meEnd":
-                    room24.chatcatch("topbg evaTop lolaTop");
+                    invoker.invokeCurrent("chatcatch", "topbg evaTop lolaTop");
                     chat(g.internal.meNextChat, 24);
                     break;
                 case "meSecret":
                     if (g.internal.meSecret === 0) {
-                        room24.chatcatch("bg evaSit lolaSit");
+                        invoker.invokeCurrent("chatcatch", "bg evaSit lolaSit");
                         g.internal.meSecret = 1;
                         chat(18, 24);
                     }
                     else if (g.internal.meSecret === 1) {
-                        room24.chatcatch("bg evaSit lolaTalk");
+                        invoker.invokeCurrent("chatcatch", "bg evaSit lolaTalk");
                         g.internal.meSecret = 1;
                         chat(38, 24);
                     }
@@ -515,11 +515,11 @@ room24.chatcatch = function (callback) {
                     pic.add("lolaTopless");
                     break;
                 case "meKissLola":
-                    room24.chatcatch("bg evaSit lolaKiss");
+                    invoker.invokeCurrent("chatcatch", "bg evaSit lolaKiss");
                     chat(27, 24);
                     break;
                 case "meKissEva":
-                    room24.chatcatch("bg lolaSit evaKiss");
+                    invoker.invokeCurrent("chatcatch", "bg lolaSit evaKiss");
                     chat(29, 24);
                     break;
                 case "killWine":
@@ -527,13 +527,13 @@ room24.chatcatch = function (callback) {
                     nav.killbutton("evaWine");
                     break;
                 case "evaSpin":
-                    room24.btnclick("spin");
+                    invoker.invokeCurrent("btnclick", "spin");
                     //$('.room-img[data-name="bottle"]').addClass('evaSpin');
                     //$('.room-chatBox').hide();
                     //setTimeout(function () { $('.room-chatBox').show(); window.getSelection().removeAllRanges(); }, 3000);
                     break;
                 case "lolaSpin":
-                    room24.btnclick("spin");
+                    invoker.invokeCurrent("btnclick", "spin");
                     //$('.room-img[data-name="bottle"]').addClass('lolaSpin');
                     //$('.room-chatBox').hide();
                     //setTimeout(function () { $('.room-chatBox').show(); window.getSelection().removeAllRanges(); }, 3000);
@@ -542,7 +542,7 @@ room24.chatcatch = function (callback) {
                     sc.select("spin", "24_spinTheBottle/spin.png", 8);
                     break;
                 case "spinStop":
-                    room24.btnclick("spinStop");
+                    invoker.invokeCurrent("btnclick", "spinStop");
                     break;
                 case "spinEnd":
                     char.settime(22, 37);
@@ -572,12 +572,12 @@ room24.chatcatch = function (callback) {
                 case "picture":
                     if (pic.has("lolaTopless")) {
                         chat(7, 24);
-                        room24.chatcatch("evaTalk");
-                        room24.chatcatch("lolaSit");
+                        invoker.invokeCurrent("chatcatch", "evaTalk");
+                        invoker.invokeCurrent("chatcatch", "lolaSit");
                     }
                     else {
                         sc.modLevel("lola", 10, 7);
-                        room24.btnclick("spin");
+                        invoker.invokeCurrent("btnclick", "spin");
                     }
                     break;
                 case "evaLevel":
@@ -874,3 +874,5 @@ room24.chat = function (chatID) {
     ];
     return cArray[chatID];
 };
+
+invoker.registerRoom(24, room24);

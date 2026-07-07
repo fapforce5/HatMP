@@ -61,7 +61,7 @@ room153.chatcatch = function (callback) {
             }
             break;
         case "clean":
-            room153.btnclick("clean");
+            invoker.invokeCurrent("btnclick", "clean");
             break;
         default:
             break;
@@ -184,3 +184,5 @@ room153.chat = function (chatID) {
     else
         return [];
 };
+
+invoker.registerRoom(153, room153);

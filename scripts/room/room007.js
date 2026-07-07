@@ -501,7 +501,7 @@ room7.chatcatch = function (callback) {
                 "height": 800,
                 "image": "7_mainCharRoomAlt/eva10b3ht.gif"
             }, 7);
-            g.roomTimeout = setTimeout(function () { room7.chatcatch("eva10it"); }, 4000);
+            g.roomTimeout = setTimeout(function () { invoker.invokeCurrent("chatcatch", "eva10it"); }, 4000);
             break;
         case "eva10it":
             nav.killbutton("eva10b3ht");
@@ -587,19 +587,19 @@ room7.chatcatch = function (callback) {
             nav.bg("7_mainCharRoomAlt/bigguy5a.jpg");
             break;
         case "bigguy5b":
-            nav.bg("7_mainCharRoomAlt/bigguy5b.jpg");
+            nav.bg("7_mainCharRoomAlt/New folder/bigguy5b.jpg");
             break;
         case "bigguy5c":
-            nav.bg("7_mainCharRoomAlt/bigguy5c.jpg");
+            nav.bg("7_mainCharRoomAlt/New folder/bigguy5c.jpg");
             break;
         case "bigguy5d":
-            nav.bg("7_mainCharRoomAlt/bigguy5d.jpg");
+            nav.bg("7_mainCharRoomAlt/New folder/bigguy5d.jpg");
             break;
         case "bigguy5e":
-            nav.bg("7_mainCharRoomAlt/bigguy5e.jpg");
+            nav.bg("7_mainCharRoomAlt/New folder/bigguy5e.jpg");
             break;
         case "bigguy5f":
-            nav.bg("7_mainCharRoomAlt/bigguy5f.jpg");
+            nav.bg("7_mainCharRoomAlt/New folder/bigguy5f.jpg");
             break;
         case "bigguy5g":
             nav.bg("7_mainCharRoomAlt/black.jpg");
@@ -607,9 +607,9 @@ room7.chatcatch = function (callback) {
         case "bigguy5h":
             nav.killall();
             if(cl.c.chest < 3)
-                nav.bg("7_mainCharRoomAlt/bigguy5_b.jpg");
+                nav.bg("7_mainCharRoomAlt/New folder/bigguy5_b.jpg");
             else
-                nav.bg("7_mainCharRoomAlt/bigguy5_g.jpg");
+                nav.bg("7_mainCharRoomAlt/New folder/bigguy5_g.jpg");
 
             nav.button({
                 "type": "img",
@@ -618,11 +618,11 @@ room7.chatcatch = function (callback) {
                 "top": 0,
                 "width": 1920,
                 "height": 1080,
-                "image": "7_mainCharRoomAlt/bigguy5h.png"
+                "image": "7_mainCharRoomAlt/New folder/bigguy5h.png"
             }, 7);
             break;
         case "bigguy5i":
-            nav.modbutton("bigguy5h", "7_mainCharRoomAlt/bigguy5i.png", null, null);
+            nav.modbutton("bigguy5h", "7_mainCharRoomAlt/New folder/bigguy5i.png", null, null);
             break;
         case "bigguy5j":
             nav.killbutton("bigguy5h");
@@ -633,7 +633,7 @@ room7.chatcatch = function (callback) {
                 "top": 377,
                 "width": 1808,
                 "height": 280,
-                "image": "7_mainCharRoomAlt/bigguy5j.png"
+                "image": "7_mainCharRoomAlt/New folder/bigguy5j.png"
             }, 7);
             break;
         case "bigguy5k":
@@ -645,7 +645,7 @@ room7.chatcatch = function (callback) {
                 "top": 0,
                 "width": 1920,
                 "height": 1080,
-                "image": "7_mainCharRoomAlt/bigguy5k.png"
+                "image": "7_mainCharRoomAlt/New folder/bigguy5k.png"
             }, 7);
             break;
         case "bigguy5l":
@@ -657,7 +657,7 @@ room7.chatcatch = function (callback) {
                 "top": 288,
                 "width": 1741,
                 "height": 562,
-                "image": "7_mainCharRoomAlt/bigguy5l.png"
+                "image": "7_mainCharRoomAlt/New folder/bigguy5l.png"
             }, 7);
             break;
         case "bigguy5m":
@@ -669,7 +669,7 @@ room7.chatcatch = function (callback) {
                 "top": 317,
                 "width": 1801,
                 "height": 533,
-                "image": "7_mainCharRoomAlt/bigguy5m.png"
+                "image": "7_mainCharRoomAlt/New folder/bigguy5m.png"
             }, 7);
             break;
         case "bigguy5n":
@@ -681,7 +681,7 @@ room7.chatcatch = function (callback) {
                 "top": 317,
                 "width": 1801,
                 "height": 533,
-                "image": "7_mainCharRoomAlt/bigguy5n.png"
+                "image": "7_mainCharRoomAlt/New folder/bigguy5n.png"
             }, 7);
             break;
         case "bigguy5o":
@@ -820,7 +820,7 @@ room7.chatcatch = function (callback) {
             break;
         case "workmonday":
             gv.set("workMonday", true);
-            room7.chatcatch("clearRoom");
+            invoker.invokeCurrent("chatcatch", "clearRoom");
             break;
         case "mondaywork":
             g.pass = 40;
@@ -1520,3 +1520,5 @@ room7.chat = function (chatID) {
             return [];
     }
 };
+
+invoker.registerRoom(7, room7);

@@ -94,7 +94,7 @@ room476.btnclick = function (name) {
             }
             break;
         case "cry":
-            room476.btnclick("killRope");
+            invoker.invokeCurrent("btnclick", "killRope");
             nav.button({
                 "type": "btn",
                 "name": "cross_other",
@@ -111,7 +111,7 @@ room476.btnclick = function (name) {
             chat(17, 476);
             break;
         case "help":
-            room476.btnclick("killRope");
+            invoker.invokeCurrent("btnclick", "killRope");
             nav.button({
                 "type": "btn",
                 "name": "cross_other",
@@ -139,11 +139,11 @@ room476.btnclick = function (name) {
                 chat(18, 476);
             }
             else {
-                room476.chatcatch("cross_inc");
+                invoker.invokeCurrent("chatcatch", "cross_inc");
             }
             break;
         case "free":
-            room476.btnclick("killRope");
+            invoker.invokeCurrent("btnclick", "killRope");
             var points = Math.floor((levels.get("strength").l * (gv.get("energy") / 100)) * 3);
             if (points < 15)
                 points = 15;
@@ -160,17 +160,17 @@ room476.btnclick = function (name) {
             break;
         case "rest1":
             gv.mod("energy", 10);
-            room476.chatcatch("cross_inc");
+            invoker.invokeCurrent("chatcatch", "cross_inc");
             break;
         case "rest3":
             gv.mod("energy", 35);
             char.addtime(120);
-            room476.chatcatch("cross_inc");
+            invoker.invokeCurrent("chatcatch", "cross_inc");
             break;
         case "rest8":
             gv.mod("energy", 120);
             char.addtime(420);
-            room476.chatcatch("cross_inc");
+            invoker.invokeCurrent("chatcatch", "cross_inc");
             break;
         case "killRope":
             nav.killbutton("cry");
@@ -564,7 +564,7 @@ room476.chatcatch = function (callback) {
             char.room(476);
             break;
         case "bg_night_cult_sg":
-            room476.btnclick("sybian");
+            invoker.invokeCurrent("btnclick", "sybian");
             break;
         case "cross":
             gv.mod("cultcabin", 1);
@@ -645,11 +645,11 @@ room476.chatcatch = function (callback) {
             }
             break;
         case "cross_inc":
-            room476.btnclick("killRope");
+            invoker.invokeCurrent("btnclick", "killRope");
             nav.killbutton("cross_other");
             char.addtime(60);
             if (g.isNight()) {
-                room476.chatcatch("nextEvent");
+                invoker.invokeCurrent("chatcatch", "nextEvent");
                 return;
             }
             sc.select("cry", "476_cabin/icon_cry.png", 1);
@@ -804,6 +804,8 @@ room476.chatcatch = function (callback) {
             break;
     }
 };
+
+invoker.registerRoom(476, room476);
 
 room476.chat = function (chatID) {
     if (chatID === 999) {

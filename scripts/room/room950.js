@@ -29,7 +29,7 @@ room950.main = function () {
             return;
         }
         else if (cultRank === "Mother Candidate") {
-            room950.btnclick("drawBG");
+            invoker.invokeCurrent("btnclick", "drawBG");
             nav.button({
                 "type": "img",
                 "name": "eatit",
@@ -66,7 +66,7 @@ room950.main = function () {
         }
         let cultLastCleanNumDays = g.diffDatesByDays(cultLastClean, g.dt);
         if (cultLastCleanNumDays > 3) {
-            room950.btnclick("drawBG");
+            invoker.invokeCurrent("btnclick", "drawBG");
             nav.button({
                 "type": "img",
                 "name": "eatit",
@@ -80,7 +80,7 @@ room950.main = function () {
             return;
         }
         if (cultRank === "Sissy") {
-            room950.btnclick("drawBG");
+            invoker.invokeCurrent("btnclick", "drawBG");
             nav.killbutton("clean"); 
             nav.button({
                 "type": "img",
@@ -107,9 +107,9 @@ room950.main = function () {
         case 4: char.settime(19, g.rand(3, 51)); break;
         default: char.settime(23, g.rand(3, 51)); break;
     }
-    room950.btnclick("drawBG");
+    invoker.invokeCurrent("btnclick", "drawBG");
     
-    room950.btnclick("bars");
+    invoker.invokeCurrent("btnclick", "bars");
     
     if (cl.stinky()) {
         nav.kill();
@@ -168,7 +168,7 @@ room950.main = function () {
         }
         else if (g.dt.getDay() === 0 && crank === "Sissy" && !daily.get("priestSissy")) {
             daily.set("priestSissy");
-            room950.btnclick("bars");
+            invoker.invokeCurrent("btnclick", "bars");
             if (daily.get("celldoor_blonde")) {
                 nav.bg("950_cell/door_bg0.webp");
             }
@@ -193,7 +193,7 @@ room950.main = function () {
                 chat(132, 950);
             }
             else {
-                room950.btnclick("drawBG");
+                invoker.invokeCurrent("btnclick", "drawBG");
                 nav.kill();
                 nav.button({
                     "type": "img",
@@ -218,7 +218,7 @@ room950.main = function () {
             }
             return;
         }
-        room950.btnclick("drawBG"); 
+        invoker.invokeCurrent("btnclick", "drawBG"); 
         nav.button({
             "type": "btn",
             "name": "nap",
@@ -386,7 +386,7 @@ room950.btnclick = function (name) {
                 nav.kill();
                 daily.set("cumwall950", false);
                 gv.set("cultLastClean", g.dt);
-                room950.btnclick("drawBG");
+                invoker.invokeCurrent("btnclick", "drawBG");
                 chat(9, 950);
             }
             break;
@@ -568,7 +568,7 @@ room950.btnclick = function (name) {
                 }
                 gv.mod("cultbrick", brickStrength);
                 gv.mod("energy", -60);
-                room950.btnclick("bars");
+                invoker.invokeCurrent("btnclick", "bars");
 
                 if (gv.get("cultbrick") < 100) {
                     nav.bg("950_cell/chisel.jpg");
@@ -633,7 +633,7 @@ room950.btnclick = function (name) {
             break;
         case "icon_call":
             nav.kill();
-            room950.btnclick("bars");
+            invoker.invokeCurrent("btnclick", "bars");
             if (gv.get("cultCumJob") > 1) {
                 nav.bg("950_cell/ubel2.webp"); 
                 sc.select("icon_cultclean", "950_cell/icon_cultclean.webp", 0);
@@ -702,7 +702,7 @@ room950.btnclick = function (name) {
             break;
         case "icon_door":
             nav.kill();
-            room950.btnclick("bars");
+            invoker.invokeCurrent("btnclick", "bars");
             if (daily.get("celldoor_blonde")) {
                 nav.bg("950_cell/door_bg0.webp");
             }
@@ -851,7 +851,7 @@ room950.btnclick = function (name) {
                 nav.killbutton("door_bj");
                 levels.oral(4, "m", "cult", true);
                 sc.modLevel("cult", 20, 10);
-                room950.btnclick("bars");
+                invoker.invokeCurrent("btnclick", "bars");
                 chat(35, 950);
             }
             g.internal++;
@@ -980,7 +980,7 @@ room950.chatcatch = function (callback) {
             gv.clearButtCum();
             break;
         case "increment":
-            room950.btnclick("increment");
+            invoker.invokeCurrent("btnclick", "increment");
             break;
         case "eat0":
             daily.set("food");
@@ -1169,10 +1169,10 @@ room950.chatcatch = function (callback) {
             break;
         case "serve":
             gv.set("cultCumJob", 2);
-            room950.btnclick("icon_call");
+            invoker.invokeCurrent("btnclick", "icon_call");
             break;
         case "priest1":
-            room950.btnclick("drawBG");
+            invoker.invokeCurrent("btnclick", "drawBG");
             nav.kill();
             nav.button({
                 "type": "img",
@@ -2585,3 +2585,5 @@ room950.chat = function (chatID) {
             return [];
     }
 };
+
+invoker.registerRoom(950, room950);

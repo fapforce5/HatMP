@@ -42,7 +42,7 @@ room252.main = function () {
             g.internal.custList.push(custList[j]);
             custList.splice(j, 1);
         }
-        room252.btnclick("customer");
+        invoker.invokeCurrent("btnclick", "customer");
     }
 };
 
@@ -105,7 +105,7 @@ room252.btnclick = function (name) {
                 }
                 else {
                     lev.sort((a, b) => a.l - b.l);
-                    room252.btnclick(lev[0].n);
+                    invoker.invokeCurrent("btnclick", lev[0].n);
                     return;
                 }
             }
@@ -150,7 +150,7 @@ room252.btnclick = function (name) {
                 sc.select("gift", "252_waitress/icon_gift.png", 11);
             }
             else {
-                room252.btnclick("talk1");
+                invoker.invokeCurrent("btnclick", "talk1");
             }
             break;
         case "dolly":
@@ -162,7 +162,7 @@ room252.btnclick = function (name) {
                 sc.select("gift", "252_waitress/icon_gift.png", 11);
             }
             else {
-                room252.btnclick("talk1");
+                invoker.invokeCurrent("btnclick", "talk1");
             }
             break;
         case "molly":
@@ -174,7 +174,7 @@ room252.btnclick = function (name) {
                 sc.select("gift", "252_waitress/icon_gift.png", 11);
             }
             else {
-                room252.btnclick("talk1");
+                invoker.invokeCurrent("btnclick", "talk1");
             }
             break;
         case "gift":
@@ -331,7 +331,7 @@ room252.btnclick = function (name) {
             else {
                 gv.mod("money", 100);
                 levels.anal(4, false, "m", true, "!missyguardnight");
-                room252.btnclick("chat");
+                invoker.invokeCurrent("btnclick", "chat");
             }
             g.internal.eventpointer++;
             break;
@@ -342,7 +342,7 @@ room252.btnclick = function (name) {
             else {
                 gv.mod("money", 100);
                 levels.oral(3, "m", "!man", true);
-                room252.btnclick("chat");
+                invoker.invokeCurrent("btnclick", "chat");
             }
             if (g.internal !== null)
                 g.internal.eventpointer++;
@@ -395,25 +395,25 @@ room252.chatcatch = function (callback) {
             char.room(252);
             break;
         case "notip":
-            room252.btnclick("chat");
+            invoker.invokeCurrent("btnclick", "chat");
             break;
         case "badtip":
             var badtip = (2 * cl.appearance()) + 3;
             gv.mod("money", g.rand(1, badtip));
-            room252.btnclick("chat");
+            invoker.invokeCurrent("btnclick", "chat");
             break;
         case "goodtip":
             var goodtip = (3 * cl.appearance()) + 12;
             gv.mod("money", g.rand(12, goodtip));
-            room252.btnclick("chat");
+            invoker.invokeCurrent("btnclick", "chat");
             break;
         case "success":
             sc.modLevel(g.internal.girl, 100, 3);
             sc.completeMissionTask(g.internal.girl, "case", g.internal.taskstep);
-            room252.btnclick("customer");
+            invoker.invokeCurrent("btnclick", "customer");
             break;
         case "fail":
-            room252.btnclick("customer");
+            invoker.invokeCurrent("btnclick", "customer");
             break;
         case "jones0":
             nav.killall();
@@ -466,12 +466,14 @@ room252.chatcatch = function (callback) {
             nav.next("wait8");
             break;
         case "customer":
-            room252.btnclick("customer");
+            invoker.invokeCurrent("btnclick", "customer");
             break;
         default:
             break;
     }
 };
+
+invoker.registerRoom(252, room252);
 
 room252.chat = function (chatID) {
     let txt, btn, food;
