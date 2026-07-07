@@ -423,7 +423,7 @@ rape.phase1 = function () {
             "Give me your clothes, bitch!",
             "Knock knock, here comes the cock!"
         ];
-        if (gender.get("f") === "f") {
+        if (gender.isGirl()) {
             stripMsg.push("If you want to be a girl, I'm going to fuck you like one!");
             stripMsg.push("You dress like you need dick!");
             stripMsg.push("You're asking for this.");
@@ -440,7 +440,7 @@ rape.phase1 = function () {
             "Slut don't deserve clothing",
             "Give me your clothes, bitch!",
         ];
-        if (gender.get("f") === "f") {
+        if (gender.isGirl()) {
             stripMsg.push("I'm going to dyke out so hard on that hot body!");
             stripMsg.push("You dress like you eat pussy!");
             stripMsg.push("You're asking for this.");
@@ -588,7 +588,7 @@ rape.phase2 = function () {
             "Give me those panties! ",
             "Your panties are mine now!"
         ];
-        if (gender.get("f") === "f") {
+        if (gender.isGirl()) {
             stripMsg.push("Let me see them titties girl.");
             stripMsg.push("Nice panty bulge. I want to see what's underneath");
             stripMsg.push("You know you want my dick.");
@@ -603,7 +603,7 @@ rape.phase2 = function () {
             "Give me those panties! ",
             "Your panties are mine now!"
         ];
-        if (gender.get("f") === "f") {
+        if (gender.isGirl()) {
             stripMsg.push("Love a girl in cute panties. Love it better when their panties are on the ground");
             stripMsg.push("I'm going to love rubbing my clit all over your face.");
             stripMsg.push("Those are fuck me underwear!");
