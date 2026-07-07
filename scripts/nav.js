@@ -242,7 +242,7 @@ nav.modbutton = function (name, newImage, newName, newType) {
     else
         element.attr("data-name", newName);
 
-    if (newType !== null)
+    if (newType !== null && newType !== "")
         nav.applyModButtonType(element, newType);
 };
 
