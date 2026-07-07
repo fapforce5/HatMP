@@ -1,8 +1,8 @@
 ﻿//purchase
 var room401 = {};
 room401.currentShop = null;
-room401.restoreExitState = function (targetRoomID) {
-    if (!g.pass || !g.pass.changeClothes || targetRoomID !== g.pass.roomID)
+room401.restorePreviewState = function () {
+    if (!g.pass || !g.pass.changeClothes)
         return;
 
     cl.c.shoes = g.pass.shoes;
@@ -15,6 +15,12 @@ room401.restoreExitState = function (targetRoomID) {
     cl.c.swimsuit = g.pass.swimsuit;
     cl.c.pj = g.pass.pj;
     cl.display();
+};
+room401.restoreExitState = function (targetRoomID) {
+    if (!g.pass || !g.pass.changeClothes || targetRoomID !== g.pass.roomID)
+        return;
+
+    room401.restorePreviewState();
 
     if (targetRoomID === 402)
         g.internal = "purchased";
