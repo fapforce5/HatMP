@@ -1748,7 +1748,11 @@ sc.init = function () {
                 {
                     missionName: "forest", mStatus: 0, title: "Forest", desc: "My slut", task:
                         [
-                            { id: 0, txt: "What are you doing here?", show: true, mStatus: 0, roomId: 4775 },
+                            { id: 0, txt: "Worship my pits", show: true, mStatus: 0, roomId: 475 },
+                            { id: 1, txt: "Worship my feet", show: true, mStatus: 0, roomId: 475 },
+                            { id: 2, txt: "Worship my milky mounds", show: true, mStatus: 0, roomId: 475 },
+                            { id: 3, txt: "Worship my balls", show: true, mStatus: 0, roomId: 475 },
+                            { id: 4, txt: "Worship my asshole", show: true, mStatus: 0, roomId: 475 },
                         ]
                 },
                 {

@@ -189,6 +189,47 @@ nav.button = function (btn, roomNum) {
         var thisImage = btn.image;
         if (g.isNight() && (typeof btn.night !== "undefined"))
             thisImage = btn.night;
+
+        if (btn.type === "dark")
+            classes = "room-img img-dark";
+        else if (btn.type === "btn")
+            classes = "room-btn rom-event";
+        else if (btn.type === "btnNoHover")
+            classes = "room-btnNoHover rom-event";
+        else if (btn.type === "kiss")
+            classes = "room-btn-lips rom-event";
+        else if (btn.type === "tongue")
+            classes = "room-btn-tongue rom-event";
+        else if (btn.type === "ztongue")
+            classes = "room-btn-tongue rom-event room-zindex";
+        else if (btn.type === "dick")
+            classes = "room-btn-dick rom-event";
+        else if (btn.type === "brush")
+            classes = "room-btn-brush rom-event";
+        else if (btn.type === "hand")
+            classes = "room-btn-hand rom-event";
+        else if (btn.type === "zhand")
+            classes = "room-btn-hand rom-event room-zindex";
+        else if (btn.type === "grab")
+            classes = "room-btn-grab rom-event";
+        else if (btn.type === "vib")
+            classes = "room-btn-vib rom-event";
+        else if (btn.type === "btnflat")
+            classes = "room-btnflat room-btn rom-event";
+        else if (btn.type === "zimg")
+            classes = "room-img room-zindex";
+        else if (btn.type === "zbtn")
+            classes = "room-btn rom-event room-zindex";
+        else if (btn.type === "btnhover")
+            classes = "room-btn rom-event fight-hover";
+        else if (btn.type === "imghover")
+            classes = "room-img fight-hover-element";
+        else if (btn.type === "clickthrough") {
+            classes = "room-img click-thru";
+        }
+        else if (btn.type === "zclickthrough") {
+            classes = "room-img click-thru room-zindex";
+        }
         if ("char" in btn)
             charAttr = ' data-char="' + btn.char + ' "';
         line = '<img src="./images/room/' + thisImage + '" class="' + classes + '" data-name="' + btn.name + '" data-room="' + roomNum + '"' + spaceAdvanceAttr + ' title="' + (("title" in btn) ? btn.title : "") + charAttr + '" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:' + top + 'px; left:' + left + 'px;" />';

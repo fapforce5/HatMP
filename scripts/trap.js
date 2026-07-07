@@ -94,7 +94,7 @@ trap.init = function (trapType = "rope", location = "forest", roomId = g.roomID,
         return;
     }
     else if (trap.type === "lewd") {
-        trap.lewd(trapNum);
+        trap.lewd();
         return;
     }
 
@@ -712,6 +712,7 @@ trap.tree = function () {
 };
 
 trap.ff = function () {
+    nav.kill();
     nav.bg("475_fight/clearing.jpg", "475_fight/clearingNight.jpg");
     nav.button({
         "type": "img",
@@ -720,7 +721,7 @@ trap.ff = function () {
         "top": 292,
         "width": 327,
         "height": 609,
-        "image": "1005_trap/tree/" + trap.internal.c + ".webp"
+        "image": "1005_trap/ff/ff.webp"
     }, 1005);
     if (sc.getMission("ff", "forest").notStarted) {
         sc.show("ff");
@@ -733,6 +734,27 @@ trap.ff = function () {
             case 1:
                 sc.completeMissionTask("ff", "forest", 1);
                 chat(72, 1005);
+                sc.modLevel("ff", 50, 10);
+                sc.modSecret("ff");
+                break;
+            case 2:
+                sc.completeMissionTask("ff", "forest", 2);
+                chat(74, 1005);
+                sc.modLevel("ff", 50, 10);
+                break;
+            case 3:
+                sc.completeMissionTask("ff", "forest", 3);
+                chat(77, 1005);
+                sc.modLevel("ff", 50, 10);
+                break;
+            case 4:
+                sc.completeMissionTask("ff", "forest", 4);
+                chat(79, 1005);
+                sc.modLevel("ff", 50, 10);
+                break;
+            default:
+                chat(81, 1005);
+                sc.modLevel("ff", 50, 10);
                 break;
         }
     }
@@ -848,6 +870,10 @@ trap.encounter = function () {
         charList = charList.filter(char => char.loc.includes(trap.location));
     }
 
+    if (cl.appearance() > 1) {
+        charList.push({ n: "!boy", p: "boy", z: "hardon", loc: ["forest", "street"], l: 641, t: 21, w: 345, h: 1059, i: "hardon.png" });
+    }
+
     if (charList.length === 0) {
         trap.kill();
         return;
@@ -884,6 +910,9 @@ trap.encounter = function () {
             }, 1005);
             chat(13, 1005);
             break;
+        case "hardon":
+            chat(82, 1005);
+            break;
         case "cat":
             chat(56, 1005);
             break;
@@ -903,9 +932,9 @@ trap.lewd = function () {
     }
     
 
-    if (levels.get("fame").l > 4 && cl.appearance() > 2 && g.rand(0, 3) === 0) {
+    //if (levels.get("fame").l > 4 && cl.appearance() > 2 && g.rand(0, 3) === 0) {
         charList.push({ n: "!m", p: "girl", z: "lickass0", loc: ["forest", "street"], l: 899, t: 33, w: 557, h: 1047, i: "girl6.png" });
-    }
+    //}
     if (charList.length === 0) {
         trap.kill();
         return;
@@ -986,6 +1015,12 @@ room1005.btnclick = function (name) {
                     break;
                 case "tree":
                     trap.tree();
+                    break;
+                case "ff":
+                    trap.ff();
+                    break;
+                case "lewd":
+                    trap.lewd();
                     break;
             }
             break;
@@ -1274,6 +1309,7 @@ room1005.btnclick = function (name) {
                     chat(63, 1005);
                     break;
             }
+            trap.internal++;
             break;
         case "tree_trip":
             nav.kill();
@@ -1333,8 +1369,57 @@ room1005.btnclick = function (name) {
             chat(70, 1005);
             break;
         case "r1004bg_pit1":
-            nav.killbutton("r1004bg_pit0");
+            nav.killbutton("r1004bg_pit1");
             chat(71, 1005);
+            break;
+        case "r1004bg_footright":
+            nav.killbutton("r1004bg_footright");
+            trap.internal--;
+            if (trap.internal === 0)
+                chat(73, 1005);
+            break;
+        case "r1004bg_footleft":
+            nav.killbutton("r1004bg_footleft");
+            trap.internal--;
+            if (trap.internal === 0)
+                chat(73, 1005);
+            break;
+        case "ff_tit1":
+            nav.kill();
+            nav.button({
+                "type": "img",
+                "name": "r1004bg_tits",
+                "left": 372,
+                "top": 0,
+                "width": 1418,
+                "height": 1080,
+                "image": "1005_trap/ff/tits1.webp"
+            }, 1005);
+            chat(76, 1005);
+            break;
+        case "ff_ballleft":
+            nav.killbutton("ff_ballleft");
+            trap.internal--;
+            if (trap.internal === 0) {
+                nav.modbutton("r1004bg_balls", "1005_trap/ff/balls1.webp", null, null);
+                chat(78, 1005);
+            }
+            break;
+        case "ff_ballright":
+            nav.killbutton("ff_ballright");
+            trap.internal--;
+            if (trap.internal === 0) {
+                nav.modbutton("r1004bg_balls", "1005_trap/ff/balls1.webp", null, null);
+                chat(78, 1005);
+            }
+            break;
+        case "ff_anus":
+            nav.modbutton("r1004bg_anus", "1005_trap/ff/anus" + trap.internal + ".webp");
+            if (trap.internal === 5) {
+                levels.oralass("n", "ff");
+                chat(80, 1005);
+            }
+            trap.internal++;
             break;
     }
 };
@@ -1812,7 +1897,7 @@ room1005.chatcatch = function (callback) {
                 "image": "1005_trap/ff/pit0_sweat.webp"
             }, 1005);
             break;
-        case "ff_pit0":
+        case "ff_pit1":
             nav.killbutton("r1004bg");
             nav.killbutton("r1004bg_pit0");
             nav.button({
@@ -1833,6 +1918,190 @@ room1005.chatcatch = function (callback) {
                 "height": 283,
                 "image": "1005_trap/ff/pit0_sweat.webp"
             }, 1005);
+            break;
+        case "ff_foot0":
+            nav.kill();
+            trap.internal = 2;
+            nav.button({
+                "type": "img",
+                "name": "r1004bg",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "1005_trap/ff/foot0.webp"
+            }, 1005);
+            nav.button({
+                "type": "tongue",
+                "name": "r1004bg_footright",
+                "left": 796,
+                "top": 198,
+                "width": 499,
+                "height": 496,
+                "image": "1005_trap/ff/foot_right.webp"
+            }, 1005);
+            nav.button({
+                "type": "tongue",
+                "name": "r1004bg_footleft",
+                "left": 602,
+                "top": 549,
+                "width": 631,
+                "height": 507,
+                "image": "1005_trap/ff/foot_left.webp"
+            }, 1005);
+            break;
+        case "ff_tit0":
+            nav.kill();
+            nav.button({
+                "type": "tongue",
+                "name": "r1004bg_tits",
+                "left": 372,
+                "top": 0,
+                "width": 1418,
+                "height": 1080,
+                "image": "1005_trap/ff/tits0.webp"
+            }, 1005);
+            break;
+        case "ff_tit1":
+            nav.kill();
+            nav.button({
+                "type": "mirror-img",
+                "name": "r1004bg_tits",
+                "left": 372,
+                "top": 0,
+                "width": 1418,
+                "height": 1080,
+                "image": "1005_trap/ff/tits0.webp"
+            }, 1005);
+            nav.next("ff_tit1", 1005);
+            break;
+        case "ff_balls":
+            nav.kill();
+            trap.internal = 2;
+            nav.button({
+                "type": "img",
+                "name": "r1004bg_balls",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "1005_trap/ff/balls0.webp"
+            }, 1005);
+            nav.button({
+                "type": "kiss",
+                "name": "ff_ballleft",
+                "left": 744,
+                "top": 493,
+                "width": 169,
+                "height": 296,
+                "image": "1005_trap/ff/balls_left.webp"
+            }, 1005);
+            nav.button({
+                "type": "kiss",
+                "name": "ff_ballright",
+                "left": 950,
+                "top": 470,
+                "width": 263,
+                "height": 299,
+                "image": "1005_trap/ff/balls_right.webp"
+            }, 1005);
+            break;
+        case "ff_anus":
+            nav.kill();
+            trap.internal = 1;
+            nav.button({
+                "type": "img",
+                "name": "r1004bg_anus",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "1005_trap/ff/anus0.webp"
+            }, 1005);
+            nav.button({
+                "type": "tongue",
+                "name": "ff_anus",
+                "left": 896,
+                "top": 380,
+                "width": 203,
+                "height": 203,
+                "image": "1005_trap/ff/anus_hole.webp"
+            }, 1005);
+            break;
+        case "ff_bj":
+            zcl.bj(0, 600, 1, "open", false);
+            break;
+        case "hardon_0":
+            nav.button({
+                "type": "img",
+                "name": "encounter_hardon",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "1005_trap/encounter/hardon0.png"
+            }, 1005);
+            break;
+        case "hardon_1":
+            nav.modbutton("encounter_hardon", "1005_trap/encounter/hardon1.png", null, null);
+            break;
+        case "hardon_2":
+            nav.killbutton("encounter_hardon");
+            zcl.bj(200, 575, 1.1, "", false);
+            nav.button({
+                "type": "img",
+                "name": "encounter_hardon",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "1005_trap/encounter/hardon2.png"
+            }, 1005);
+            break;
+        case "hardon_3":
+            nav.modbutton("encounter_hardon", "1005_trap/encounter/hardon3.png", null, null);
+            levels.gavehandjob("m", "!boy");
+            break;
+        case "lewd_strip":
+            if (cl.c.dress !== null) {
+                trap.internal = "dress";
+                cl.c.dress = null;
+                cl.display();
+            }
+            else if (cl.c.pj !== null) {
+                trap.internal = "pajamas";
+                cl.c.pj = null;
+                cl.display();
+            }
+            else if (cl.c.swimsuit !== null) {
+                trap.internal = "bikini";
+                cl.c.swimsuit = null;
+                cl.display();
+            }
+            else if (cl.c.shirt !== null) {
+                trap.internal = "top";
+                cl.c.shirt = null;
+                cl.display();
+            }
+            else if (cl.c.pants !== null) {
+                trap.internal = "bottoms";
+                cl.c.pants = null;
+                cl.display();
+            }
+            else if (cl.c.bra !== null) {
+                trap.internal = "bra";
+                cl.c.bra = null;
+                cl.display();
+            }
+            else if (cl.c.panties !== null) {
+                trap.internal = "panites";
+                cl.c.panties = null;
+                cl.display();
+            }
+            else {
+                trap.internal = "foo";
+            }
+            chat(803, 1005);
             break;
         default:
             break;
@@ -1970,6 +2239,26 @@ room1005.chat = function (chatID) {
                 { chatID: -1, text: "*sigh*", callback: "hole1" }
             ]
         };
+    }
+    else if (chatID === 803) {
+        if (trap.internal === "foo")
+            return {
+                chatID: 802,
+                speaker: trap.name,
+                text: "Dirty slut!",
+                button: [
+                    { chatID: -1, text: "huh?", callback: "kill" }
+                ]
+            };
+        else
+            return {
+                chatID: 802,
+                speaker: trap.name,
+                text: "I'm taking your " + trap.internal + "! It's mine now hahaha!",
+                button: [
+                    { chatID: -1, text: "NNOoooo!!!!", callback: "kill" }
+                ]
+            };
     }
     else if (chatID === 802) { //nice
         wearing = cl.wearing();
@@ -2144,7 +2433,7 @@ room1005.chat = function (chatID) {
             speaker: trap.name,
             text: txt[g.rand(0, txt.length)],
             button: [
-                { chatID: -1, text: "!", callback: "" }
+                { chatID: -1, text: "!", callback: "lewd_strip" }
             ]
         };
     }
@@ -2874,7 +3163,128 @@ room1005.chat = function (chatID) {
                 text: "Oh good. My little bitch has returned. Listen. My feet are starting to get smelly " +
                     "and I need them cleaned up. Come here! ",
                 button: [
-                    { chatID: -1, text: "*ugh* My mouth tastes like musky sweat! ", callback: "kill" },
+                    { chatID: -1, text: "...", callback: "ff_foot0" },
+                ]
+            },
+            {
+                chatID: 73,
+                speaker: "ff",
+                text: "You are such a good little bitch! You even cleaned between my toes. For your honest " +
+                    "effort in cleaning my musky sweaty feet you many continue on your journey. ",
+                button: [
+                    { chatID: -1, text: "Thanks?", callback: "kill" },
+                ]
+            },
+            {
+                chatID: 74,
+                speaker: "ff",
+                text: "My little oral bitch has returned to me. I love my tits, but they get so sweaty. " +
+                    "Come here and lick them clean. ",
+                button: [
+                    { chatID: 75, text: "Lick your tits clean?", callback: "ff_tit0" },
+                ]
+            },
+            {
+                chatID: 75,
+                speaker: "ff",
+                text: "Smother yourself in my sweaty, musky milky mounds and worship every inch with your tongue.",
+                button: [
+                    { chatID: -1, text: "[Bury your face in her tits]", callback: "ff_tit1" },
+                ]
+            },
+            {
+                chatID: 76,
+                speaker: "ff",
+                text: "Nice and clean hehe. I shall allow you to continue on your journey. ",
+                button: [
+                    { chatID: -1, text: "ok...", callback: "kill" },
+                ]
+            },
+            {
+                chatID: 77,
+                speaker: "ff",
+                text: "I've been running around this forest for so long my balls are sticking to my legs. " +
+                    "Get over here bitch and lick them clean! ",
+                button: [
+                    { chatID: -1, text: "nom nom nom!", callback: "ff_balls" },
+                ]
+            },
+            {
+                chatID: 78,
+                speaker: "ff",
+                text: "Don't you just love my big beautiful balls bitch? So heavy full of cum. I bet " +
+                    "you could almost taste it through my wrinkly ball sack. You're going to have to wait " +
+                    "to get that treat. No go!",
+                button: [
+                    { chatID: -1, text: "Awww 😢", callback: "kill" },
+                ]
+            },
+            {
+                chatID: 79,
+                speaker: "ff",
+                text: "You just keep coming around don't you! Well you're in luck. I have a treat for you " +
+                    "today! ",
+                button: [
+                    { chatID: -1, text: "Yes?", callback: "ff_anus" },
+                ]
+            },
+            {
+                chatID: 80,
+                speaker: "ff",
+                text: "Oh fuck! You are a nasty bitch! No one has ever given me sphincter spasm before! " +
+                    "You are really special. I'm going to have to recover from this. You may go. ",
+                button: [
+                    { chatID: -1, text: "awww. Thank you!", callback: "kill" },
+                ]
+            },
+            {
+                chatID: 81,
+                speaker: "ff",
+                text: "So you're back! How do you want to worship me now bitch? ",
+                button: [
+                    { chatID: -1, text: "[Get on your knees]", callback: "ff_bj" },
+                    { chatID: -1, text: "[Face down ass up]", callback: "ff_anal" },
+                ]
+            },
+            {
+                chatID: 82,
+                speaker: "thinking",
+                text: "I can see that boy's penis getting hard in his pants and he keeps staring at me. ",
+                button: [
+                    { chatID: 83, text: "[Offer to rub his penis with your hands]", callback: "hardon_0" },
+                    { chatID: -1, text: "His penis, his problem", callback: "kill" },
+                ]
+            },
+            {
+                chatID: 83,
+                speaker: "me",
+                text: "I couldn't help but notice your penis getting hard. ",
+                button: [
+                    { chatID: 84, text: "[Start rubbing it]", callback: "hardon_1" },
+                ]
+            },
+            {
+                chatID: 84,
+                speaker: "!boy",
+                text: "*eeep* ",
+                button: [
+                    { chatID: 85, text: "[Keep rubbing his penis]", callback: "hardon_2" },
+                ]
+            },
+            {
+                chatID: 85,
+                speaker: "!boy",
+                text: "*heavy breathing* ",
+                button: [
+                    { chatID: 86, text: "[Keep rubbing his penis]", callback: "hardon_3" },
+                ]
+            },
+            {
+                chatID: 86,
+                speaker: "!boy",
+                text: "uuuh... thank you...",
+                button: [
+                    { chatID: -1, text: "[Lick your hand clean and leave him there]", callback: "kill" },
                 ]
             },
         ];
