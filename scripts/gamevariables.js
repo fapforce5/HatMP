@@ -84,6 +84,7 @@ gv.init = function () {
         { n: "momClosetLube", t: 3, q: "int" },
         { n: "momClosetMoney", t: 7, q: "int" },
         { n: "pastRent", t: 0, q: "zero" },
+        { n: "rentOwed", t: 0, q: "zero" },
         { n: "rentChores", t: 0, q: "zero" },
         { n: "workMonday", t: false, q: "bool" },
 
@@ -122,6 +123,8 @@ gv.init = function () {
         { n: "chastity", t: null, q: "date" },
         { n: "castitycage", t: null, q: "string" },
         { n: "chastityOverride", t: null, q: "string" },//null = weekly, "never", "forever"
+        { n: "missyPoints", t: 0, q: "int" },
+        { n: "phum", t: 0, q: "int" },
 
         //analfill
         { n: "analCum", t: 0, q: "int" },
@@ -740,6 +743,71 @@ weekly.set = function (t, override = true) {
 
 gv.set=function(t,c){var s,e,i=gv.i(t);s=gv.st[i].t,gv.st[i].t=c,e=c-s,g.checkPop(t,e)};
 
+gv.legacyModHandlers = {
+    creamPied: function (amount) {
+        stats.mod("cum", "creamPied", amount);
+    },
+    fuckPussy: function (amount) {
+        for (let i = 0; i < amount; i++)
+            levels.fuckpussy(null, "f");
+    },
+    giveAnalFemale: function (amount) {
+        for (let i = 0; i < amount; i++)
+            levels.fuckass(null, "f");
+    },
+    giveHandjobMale: function (amount) {
+        for (let i = 0; i < amount; i++)
+            levels.gavehandjob("m", null);
+    },
+    giveOralFemale: function (amount) {
+        for (let i = 0; i < amount; i++)
+            levels.oral(3, "f", null, false, null, false);
+    },
+    giveOralMale: function (amount) {
+        for (let i = 0; i < amount; i++)
+            levels.gavebj(3, "m", null, false, false);
+    },
+    loadSpit: function (amount) {
+        stats.mod("cum", "spit", amount);
+    },
+    loadSwollowed: function (amount) {
+        for (let i = 0; i < amount; i++)
+            levels.swallowCum("m", null);
+    },
+    pissedonFemale: function (amount) {
+        for (let i = 0; i < amount; i++)
+            levels.piss(false, false, true, "f", null);
+    },
+    pissedonMale: function (amount) {
+        for (let i = 0; i < amount; i++)
+            levels.piss(false, false, true, "m", null);
+    },
+    receiveBoobJob: function (amount) {
+        for (let i = 0; i < amount; i++)
+            levels.gottitjob("f", null);
+    },
+    receiveHandjobFemale: function (amount) {
+        for (let i = 0; i < amount; i++)
+            levels.gothandjob("f", null, false, true);
+    },
+    receiveOralMale: function (amount) {
+        for (let i = 0; i < amount; i++)
+            levels.gotbj("m", null);
+    },
+    sissygasm: function (amount) {
+        for (let i = 0; i < amount; i++)
+            levels.sissygasm("m", null);
+    }
+};
+
+gv.tryLegacyMod = function (name, amount) {
+    if (!Object.prototype.hasOwnProperty.call(gv.legacyModHandlers, name))
+        return false;
+
+    gv.legacyModHandlers[name](amount);
+    return true;
+};
+
 gv.mod = function (name, amount) {
     var i, index, type;
     index = gv.i(name);
@@ -835,7 +903,7 @@ gv.mod = function (name, amount) {
                 break;
         }
     }
-    else
+    else if (!gv.tryLegacyMod(name, amount))
         console.log("unknown g.mod: " + name);
 };
 
