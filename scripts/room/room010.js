@@ -403,8 +403,10 @@ room10.btnclick = function (name) {
         case "heels":
             var shoeDaring = cl.getEntry("shoes", cl.c.shoes).daring;
             if (shoeDaring > 1) {
-                nav.kill();
+                nav.killall();
                 daily.set("practiceHeels");
+                invoker.invokeCurrent("btnclick", "drawRoom");
+                $('#room-buttons .rom-event').addClass('click-thru');
                 nav.button({
                     "type": "img",
                     "name": "heels",

@@ -90,7 +90,7 @@ room2.chatcatch = function (callback) {
         $('#room_002sa').val($("<textarea/>").html(sc.n("el")).val());
         $('#room_002gn').val($("<textarea/>").html(gv.get("girlname")).val());
         
-        $('.intro-changeDiff').click(function () {
+        $('.intro-changeDiff').on('click', function () {
             var currentDiff = parseInt($('#intro_diff').data('diff'));
             var changeDiff = parseInt($(this).data('toggle'));
             currentDiff = currentDiff + changeDiff;
@@ -115,7 +115,7 @@ room2.chatcatch = function (callback) {
             }
         });
 
-        $('#room_002SetAllNames').click(function () {
+        $('#room_002SetAllNames').on('click', function () {
             if ($('.intro-hide').first().is(":visible")) {
                 $('.intro-hide').slideUp("fast");
                 $('#room_002SetAllNames').text("View All Names");
@@ -126,7 +126,7 @@ room2.chatcatch = function (callback) {
             }
         });
 
-        $('#room_002ClearAllNames').click(function () {
+        $('#room_002ClearAllNames').on('click', function () {
             $.each(g.char, function (i, v) {
                 $('#char_' + i).val($("<textarea/>").html(v.display).val());
             });
@@ -136,7 +136,7 @@ room2.chatcatch = function (callback) {
             $('#room_002gn').val($("<textarea/>").html("Scarlett").val());
         });
 
-        $("#room_002SetName").click(function () {
+        $("#room_002SetName").on('click', function () {
             $(".rl-change").show();
             $('.room2-getName').each(function () {
                 var entry = $(this).data('name');

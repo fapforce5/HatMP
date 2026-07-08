@@ -203,7 +203,7 @@ room401.main = function () {
     
     nav.buildnav(navList);
 
-    $('.store-inv').click(function () {
+    $('.store-inv').on('click', function () {
         var thisName = $(this).data('name');
         var thisItem = inv.get(thisName);
         var thisID = $(this).closest('.menu-popup').attr('id');
@@ -250,7 +250,7 @@ room401.main = function () {
         }
     });
 
-    $('.store-clothing').click(function () {
+    $('.store-clothing').on('click', function () {
         var thisName = $(this).data('name');
         var thisType = $(this).data("type");
         var ci = cl.where(thisType, thisName);

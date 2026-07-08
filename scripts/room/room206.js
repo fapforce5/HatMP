@@ -145,7 +145,7 @@ room206.chatcatch = function (callback) {
                             '</button> </div>');
                     });
 
-                    $('.q206-btn').click(function () {
+                    $('.q206-btn').on('click', function () {
                         var thisEntry = parseInt($(this).data('a'));
                         g.internal[g.pass.q].b[thisEntry].a = true;
                         g.pass.q++;

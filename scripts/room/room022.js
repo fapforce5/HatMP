@@ -2,7 +2,7 @@
 var room22 = {};
 room22.main = function () {
     char.changeMenu("body", false, true);
-    $('.char-modBtn[data-t="p"]').click();
+    $('.char-modBtn[data-t="p"]').trigger('click');
     switch (g.pass) {
         case 12:
             nav.bg("22_toilet/a_12.jpg");

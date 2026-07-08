@@ -322,7 +322,7 @@ inv.openMain = function () {
 };
 
 $(document).ready(function () {
-    $('#room-inv').click(function () {
+    $('#room-inv').on('click', function () {
         inv.openMain();
     });
 });
@@ -643,7 +643,7 @@ inv.display = function (typeArray = null) {
     }
     $('.kill-invNew').remove();
 
-    $('.menu-select').click(function () {
+    $('.menu-select').on('click', function () {
         var thisName = $(this).attr("data-inv");
         var thisItem = inv.get(thisName);
 
@@ -719,13 +719,13 @@ inv.display = function (typeArray = null) {
     console.log(totalCounter + ":" + inv.page + ":" + counter)
     if (counter === 32 && typeArray === null)
         $('#room-menuButtons').append('<button id="inv_next" class="btn btn-danger pos-abs" style="width: ' + w + 'px; top: ' + t + 'px; left: ' + (l + (w * 2)) + 'px;" >NEXT &gt;&gt; </button>');
-    $('#inv_close').click(function () {
+    $('#inv_close').on('click', function () {
         inv.close();
     });
-    $('#inv_prev').click(function () {
+    $('#inv_prev').on('click', function () {
         inv.paging(-30);
     });
-    $('#inv_next').click(function () {
+    $('#inv_next').on('click', function () {
         inv.paging(30);
     });
 };
@@ -807,7 +807,7 @@ inv.createElements = function (showFilter = true) {
     }
 
 
-    $("#menu_displayUp").click(function () {
+    $("#menu_displayUp").on('click', function () {
         var thisCost = parseInt($('#menu_displayUp').attr("data-price"));
         var thisCount = parseInt($('#menu_displayCount').html()) + 1;
         var thisCash = gv.get("money");
@@ -816,7 +816,7 @@ inv.createElements = function (showFilter = true) {
             $("#menu_displayAction").html("BUY - $" + thisCount * thisCost);
         }
     });
-    $("#menu_displayDown").click(function () {
+    $("#menu_displayDown").on('click', function () {
         var thisCost = parseInt($(this).attr("data-price"));
         var thisCount = parseInt($('#menu_displayCount').html()) - 1;
         if (thisCount > 0) {
@@ -825,13 +825,13 @@ inv.createElements = function (showFilter = true) {
         }
     });
 
-    $("#menu_displayAction2").click(function () {
+    $("#menu_displayAction2").on('click', function () {
         let thisName2 = $(this).attr("data-name");
         gv.set("mr_poster_r", thisName2);
         inv.redrawBedroomIfVisible();
     });
 
-    $('.menu_inventory_grouping').click(function () {
+    $('.menu_inventory_grouping').on('click', function () {
         let t = $(this).attr("data-val");
         let typeArray;
         inv.page = 0;
@@ -844,7 +844,7 @@ inv.createElements = function (showFilter = true) {
         inv.display(typeArray);
     });
 
-    $("#menu_displayAction").click(function () {
+    $("#menu_displayAction").on('click', function () {
         var thisIType = $(this).attr("data-itype");
         var thisType = $(this).attr("data-type");
         var thisName = $(this).attr("data-name");
