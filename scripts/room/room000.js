@@ -169,7 +169,7 @@ room0.btnclick = function (name) {
         char.addtime(20);
         $('#room_footer').show();
         nav.killall();
-        nav.bg("map/" + roomnum + "_close" + (g.isNight() ? "night" : "") + ".jpg");
+        nav.bgRoom(roomnum);
         g.nextRoomId = roomnum;
         if (!fame.event(0, "moveChar")) {
             if (g.rand(0, 20) === 0 && !daily.get("foundmoney")) {

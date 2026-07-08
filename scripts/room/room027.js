@@ -508,7 +508,7 @@ room27.chatcatch = function (callback) {
             break;
         case "nextLesson":
             gv.mod("makeup", 1);
-            var mk = gv.get("makeup");
+            var mk = levels.get("makeup").l;
             if (mk < 2)
                 chat(23, 27);
             else if (mk < 4)

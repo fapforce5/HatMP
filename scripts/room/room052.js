@@ -80,7 +80,7 @@ room52.main = function () {
             });
         }
 
-        if (gv.get("cheerlevel") > 0) {
+        if (levels.get("cheer").l > 0) {
             nav.button({
                 "type": "btn",
                 "name": "cheerleader",

@@ -30,7 +30,7 @@ room455.chat = function (chatID) {
     gv.mod("energy", -30);
     char.addtime(60);
     gv.mod("fitness", 10);
-    var tempFit = gv.get("fitness");
+    var tempFit = levels.get("fitness").l;
     if (tempFit < 25) {
         return {
             chatID: 0,

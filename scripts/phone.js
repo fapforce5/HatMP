@@ -1635,7 +1635,7 @@ phone.cheat = function () {
                 "top": 300 + ((i + 1) * 155),
                 "width": 250,
                 "height": 50,
-                "image": "999_phone/cheat_level.png",
+                "image": "999_phone/cheat_stats.png",
             }, 9999);
         }
     }

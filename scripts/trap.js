@@ -26,11 +26,37 @@ trap.drawPanelBackground = function (image = "1005_trap/trap_message.png", name 
     }, 1005);
 };
 
+trap.getActionTitle = function (actionName) {
+    switch (actionName) {
+        case "roll": return "Roll";
+        case "fail": return "Fail";
+        case "kill": return "Leave";
+        case "next": return "Continue";
+        case "nextPhase10": return "Continue";
+        case "wait": return "Wait";
+        case "pplookaway": return "Look away";
+        case "ppwatch": return "Watch";
+        case "ppdrink": return "Drink";
+        case "ppjar": return "Fill jar";
+        case "holeclimb": return "Climb out";
+        case "holestay": return "Stay";
+        case "close": return "Close";
+        case "sign": return "Read sign";
+        case "fight": return "Fight";
+        case "charisma": return "Talk";
+        case "flee": return "Flee";
+        case "freerope": return "Free yourself";
+        case "waitrope": return "Wait for help";
+        default: return actionName;
+    }
+};
+
 trap.renderActionButtons = function (btnList, top = trap.actionButtonTop) {
     for (let i = 0; i < btnList.length; i++) {
         nav.button({
             "type": "zbtn",
             "name": "b1004-" + btnList[i].n,
+            "title": trap.getActionTitle(btnList[i].n),
             "left": trap.actionButtonLeft,
             "top": top + (i * trap.actionButtonSpacing),
             "width": 300,

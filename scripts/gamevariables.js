@@ -81,6 +81,7 @@ gv.init = function () {
         { n: "jobapplybeaver", t: 0, q: "int" },
 
         //landlord
+        { n: "rent", t: 200, q: "int" },
         { n: "momClosetLube", t: 3, q: "int" },
         { n: "momClosetMoney", t: 7, q: "int" },
         { n: "pastRent", t: 0, q: "zero" },
@@ -118,6 +119,7 @@ gv.init = function () {
         { n: "sissyGrades", t: "", q: "string" },
 
         { n: "pill", t: null, q: "string" },
+        { n: "oncase", t: null, q: "string" },
 
         //missy
         { n: "chastity", t: null, q: "date" },
