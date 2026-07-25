@@ -22,6 +22,24 @@ char.toggleMainInventoryHotkey = function () {
     return inv.openMain();
 };
 
+char.roomButtonShortcutRooms = {
+    475: true,
+    1004: true,
+    1005: true
+};
+
+char.roomButtonShortcutOrder = {
+    475: {
+        north: 1,
+        south: 2,
+        west: 3,
+        east: 4,
+        visit: 5,
+        hornyGoatWeed: 6,
+        lewd: 7
+    }
+};
+
 char.getVisibleAdvanceRoomButtons = function (selector) {
     var buttons = $('#room-buttons .rom-event:visible').filter(function () {
         var name = $(this).data('name');
@@ -32,6 +50,29 @@ char.getVisibleAdvanceRoomButtons = function (selector) {
         buttons = buttons.filter(selector);
 
     return buttons;
+};
+
+char.getShortcutIndexFromEvent = function (e) {
+    if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey)
+        return null;
+
+    if (e.which >= 49 && e.which <= 57)
+        return e.which - 49;
+
+    if (e.which >= 97 && e.which <= 105)
+        return e.which - 97;
+
+    if (e.code && e.code.startsWith("Digit")) {
+        var digitIndex = parseInt(e.code.replace("Digit", ""), 10) - 1;
+        return digitIndex >= 0 && digitIndex < 9 ? digitIndex : null;
+    }
+
+    if (e.code && e.code.startsWith("Numpad")) {
+        var numpadIndex = parseInt(e.code.replace("Numpad", ""), 10) - 1;
+        return numpadIndex >= 0 && numpadIndex < 9 ? numpadIndex : null;
+    }
+
+    return null;
 };
 
 char.getSingleSharedActionButton = function (buttons) {
@@ -93,6 +134,100 @@ char.triggerSpaceAdvanceHotkey = function () {
 
     button.click();
     return true;
+};
+
+char.getVisibleRoomShortcutButtons = function () {
+    var buttons = $('#room-buttons .rom-event:visible').filter(function () {
+        var $button = $(this);
+        var roomID = parseInt($button.data('room'), 10);
+        return char.roomButtonShortcutRooms[roomID] &&
+            $button.data('name') !== "zzzNOOPzzzIgnore";
+    });
+    if (buttons.length === 0)
+        return $();
+
+    var uniqueButtons = [];
+    var seen = {};
+
+    buttons.each(function () {
+        var $button = $(this);
+        var key = $button.data('room') + "::" + $button.data('name');
+        if (seen[key])
+            return;
+
+        seen[key] = true;
+        uniqueButtons.push(this);
+    });
+
+    uniqueButtons.sort(function (a, b) {
+        var aButton = $(a);
+        var bButton = $(b);
+        var aRoom = parseInt(aButton.data('room'), 10);
+        var bRoom = parseInt(bButton.data('room'), 10);
+        if (aRoom !== bRoom)
+            return 0;
+
+        var roomOrder = char.roomButtonShortcutOrder[aRoom];
+        if (!roomOrder)
+            return 0;
+
+        var aName = aButton.data('name');
+        var bName = bButton.data('name');
+        var aPriority = Object.prototype.hasOwnProperty.call(roomOrder, aName) ? roomOrder[aName] : Number.MAX_SAFE_INTEGER;
+        var bPriority = Object.prototype.hasOwnProperty.call(roomOrder, bName) ? roomOrder[bName] : Number.MAX_SAFE_INTEGER;
+
+        if (aPriority !== bPriority)
+            return aPriority - bPriority;
+
+        return 0;
+    });
+
+    return $(uniqueButtons);
+};
+
+char.triggerRoomButtonShortcut = function (index) {
+    var buttons = char.getVisibleRoomShortcutButtons();
+    if (index < 0 || index >= buttons.length)
+        return false;
+
+    buttons.eq(index).click();
+    return true;
+};
+
+char.syncVisibleRoomShortcutTitles = function () {
+    var buttons = $('#room-buttons .rom-event:visible').filter(function () {
+        var roomID = parseInt($(this).data('room'), 10);
+        return char.roomButtonShortcutRooms[roomID] &&
+            $(this).data('name') !== "zzzNOOPzzzIgnore";
+    });
+    if (buttons.length === 0)
+        return;
+
+    buttons.each(function () {
+        var $button = $(this);
+        if (typeof $button.attr("data-base-title") === "undefined")
+            $button.attr("data-base-title", $button.attr("title") || "");
+    });
+
+    var shortcutMap = {};
+    char.getVisibleRoomShortcutButtons().each(function (index) {
+        var $button = $(this);
+        shortcutMap[$button.data('room') + "::" + $button.data('name')] = index + 1;
+    });
+
+    buttons.each(function () {
+        var $button = $(this);
+        var key = $button.data('room') + "::" + $button.data('name');
+        var baseTitle = $button.attr("data-base-title") || "";
+        var shortcut = shortcutMap[key];
+        if (!shortcut) {
+            $button.attr("title", baseTitle);
+            return;
+        }
+
+        var shortcutTitle = "Shortcut: " + shortcut;
+        $button.attr("title", baseTitle ? (baseTitle + " [" + shortcutTitle + "]") : shortcutTitle);
+    });
 };
 
 char.roomWithoutHistory = function (roomID) {
@@ -242,6 +377,23 @@ $(document).ready(function () {
             return;
 
         if (char.triggerSpaceAdvanceHotkey())
+            e.preventDefault();
+    });
+
+    $(document).bind('keyup', function (e) {
+        var shortcutIndex = char.getShortcutIndexFromEvent(e);
+        if (shortcutIndex === null)
+            return;
+        if (char.isTypingTarget(e.target))
+            return;
+        if ($('#room_export').is(":visible"))
+            return;
+        if ($('#room_chatOverlay').is(":visible"))
+            return;
+        if ($('#room-menuButtons').is(":visible"))
+            return;
+
+        if (char.triggerRoomButtonShortcut(shortcutIndex))
             e.preventDefault();
     });
 
@@ -839,6 +991,25 @@ char.addDays = function (days) {
     nav.buildclock();
 };
 
+menu.buildSaveState = function () {
+    g.saveState = {
+        savename: "",
+        saveDt: new Date(),
+        version: g.version,
+        pass: g.pass,
+        internal: g.internal,
+        prevRoom: g.prevRoom,
+        g: g.save(),
+        inv: inv.save(),
+        cl: cl.save(),
+        sc: sc.save(),
+        //scc: scc.save(),
+        pic: pic.save(),
+        gv: gv.save(),
+        missy: missy.save()
+    };
+};
+
 menu.makeSaves = function () {
     var tempRoomMap = new Array();
     var tempClothes = new Array();
@@ -857,22 +1028,7 @@ menu.makeSaves = function () {
             inv: v.inv
         });
     });
-    g.saveState = {
-        savename: "",
-        saveDt: new Date(),
-        version: g.version,
-        pass: g.pass,
-        internal: g.internal,
-        prevRoom: g.prevRoom,
-        g: g.save(),
-        inv: inv.save(),
-        cl: cl.save(),
-        sc: sc.save(),
-        //scc: scc.save(),
-        pic: pic.save(),
-        gv: gv.save(),
-        missy: missy.save()
-    };
+    menu.buildSaveState();
     g.pastSaves.push({ name: g.getRooms(g.roomID).name, data: menu.save(" ", false) });
     if (g.pastSaves.length > 20)
         g.pastSaves.splice(0, 1);
@@ -892,6 +1048,7 @@ menu.saveBtn = function(btn) {
 };
 
 menu.save = function (cookieName, saveToCookie) {
+    menu.buildSaveState();
 
     if (g.saveState !== null) {
         var timeDiff = Math.abs(g.dt.getTime() - g.startDate.getTime());
@@ -917,7 +1074,7 @@ menu.save = function (cookieName, saveToCookie) {
                 if (!g.saveAlert) {
                     g.saveAlert = true;
                     alert("Unable to save. Your browser may be blocking the save or you're in incognito mode that doesn't allow saving."); 
-                    console.error("Save failed:", e);
+                    console.error("Save failed:", err);
                 }
                 return false;
             }

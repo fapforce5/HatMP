@@ -288,7 +288,7 @@ room450.chatcatch = function(callback){
             }, 450);
             break;
         case "cop10":
-            nav.bg("map/450_closenight.jpg");
+            nav.bgRoom(450);
             zcl.displayMirror();
             break;
         case "sitHour":

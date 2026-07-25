@@ -521,7 +521,6 @@ room28.dreams = function () {
     }
     else {
         if (g.pass === 502) {
-            nav.bg("502_bedroom/sleepZoey.jpg");
             if (cl.c.chest > 2)
                 nav.bg("502_bedroom/sleep_f.jpg");
             else

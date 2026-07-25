@@ -153,6 +153,8 @@ room203.chatcatch = function (callback) {
             nav.bg("203_entrance/inspect.jpg");
             zcl.displayMain(180, 800, .09, "clothes", false);
             var myUniform = missy.get("uniform");
+            if (myUniform === null || myUniform < 0)
+                myUniform = 0;
             if (myUniform === 0) { //suit
                 if (cl.hasoutfit("suit") === null) {
                     if (cl.pantiesTxt() === "panties") {
@@ -217,7 +219,7 @@ room203.chatcatch = function (callback) {
                     chat(24, 203);
                 }
             }
-            else if (myUniform === 3) {
+            else if (myUniform >= 3) {
                 g.internal = cl.hasoutfit("officegirl");
                 if (g.internal === null) {
                     levels.mod("xdress", 5);
@@ -232,6 +234,13 @@ room203.chatcatch = function (callback) {
                     chat(600, 203);
                 }
             }
+            else {
+                levels.mod("pi", -10);
+                chat(9, 203);
+            }
+            break;
+        case "resetDesk":
+            char.room(203);
             break;
         case "notDressed0":
             nav.killall();
@@ -429,7 +438,7 @@ room203.chat = function (chatID) {
                 text: "I like your clothes, but I can't let you in unless you're wearing suit pants, dress shirt, tie, black shoes, black socks, and " +
                     "some kind of underwear. Sorry " + sc.n("me") + ", but you can change in the bathroom if you have the clothes with you.",
                 button: [
-                    { chatID: -1, text: "Oh yeah. I'm such an airhead I forgot.", callback: "" }
+                    { chatID: -1, text: "Oh yeah. I'm such an airhead I forgot.", callback: "resetDesk" }
                 ]
             },
             {
@@ -564,7 +573,7 @@ room203.chat = function (chatID) {
                 text: "I like your clothes, but I can't let you in unless you're wearing suit pants, dress shirt, tie, black shoes, black socks, " +
                     "and pretty panties. Sorry " + sc.n("me") + ", but you can change in the bathroom if you have the clothes with you.",
                 button: [
-                    { chatID: -1, text: "Oh yeah. I'm such an airhead I forgot.", callback: "" }
+                    { chatID: -1, text: "Oh yeah. I'm such an airhead I forgot.", callback: "resetDesk" }
                 ]
             },
             {
@@ -573,7 +582,7 @@ room203.chat = function (chatID) {
                 text: "Getting a bit hairy. You need to go home and shave. Talk to " + sc.n("spanky") + ". He's a bit weird, but " +
                     "he does know how to fuck a face. ",
                 button: [
-                    { chatID: -1, text: "Oh... oh! ok. ", callback: "" }
+                    { chatID: -1, text: "Oh... oh! ok. ", callback: "resetDesk" }
                 ]
             },
             {

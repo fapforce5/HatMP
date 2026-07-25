@@ -265,6 +265,7 @@ room451.btnclick = function (name) {
             nav.button({
                 "type": "btn",
                 "name": "bj5",
+                "spaceAdvance": true,
                 "left": 975,
                 "top": 840,
                 "width": 405,
@@ -277,6 +278,7 @@ room451.btnclick = function (name) {
             nav.button({
                 "type": "btn",
                 "name": "bj6",
+                "spaceAdvance": true,
                 "left": 975,
                 "top": 770,
                 "width": 405,
@@ -289,6 +291,7 @@ room451.btnclick = function (name) {
             nav.button({
                 "type": "btn",
                 "name": "bj7",
+                "spaceAdvance": true,
                 "left": 975,
                 "top": 680,
                 "width": 405,
@@ -351,7 +354,7 @@ room451.btnclick = function (name) {
             break;
         case "ceciliaStall":
             if (gv.get("oncase") === "gloryholeanal") {
-                gv.set("oncase") === null;
+                gv.set("oncase", null);
                 g.sissy[17].ach = true;
             }
             else if (g.sissy[17].ach) {
@@ -534,6 +537,7 @@ room451.chatcatch = function (callback) {
                 nav.button({
                     "type": "btn",
                     "name": "bj4",
+                    "spaceAdvance": true,
                     "left": 725,
                     "top": 103,
                     "width": 890,

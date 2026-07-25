@@ -156,7 +156,7 @@ room725.chatcatch = function (callback) {
             break;
         case "chloe2":
             nav.killall();
-            nav.bg("map/300_closenight.jpg");
+            nav.bgRoom(300);
             setTimeout(function () {
                 nav.bg("725_club/chloe2.jpg");
                 chat(18, 725);

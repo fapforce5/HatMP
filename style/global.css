@@ -357,9 +357,12 @@ input[type=text]:disabled{
 }
 .char-alert {
     position: fixed;
-    width: 60%;
-    left: 15%;
-    top: 20vh;
+    width: auto;
+    max-width: 70%;
+    min-width: 220px;
+    left: 50%;
+    top: 7vh;
+    transform: translateX(-50%);
     background: #e75480;
     color: #fff;
     text-align: center;
@@ -368,8 +371,8 @@ input[type=text]:disabled{
     padding: 10px;
     display: none;
     border-radius: 5px;
-    margin-left: 10px;
     z-index:999;
+    pointer-events: none;
 }
 
     .char-alert hr {
@@ -379,8 +382,10 @@ input[type=text]:disabled{
 
 .char-alert-bottom {
     position: fixed;
-    width: 40%;
-    right: 0;
+    width: auto;
+    max-width: 40%;
+    min-width: 220px;
+    right: 16px;
     top: 90vh;
     background: #e75480;
     color: #fff;
@@ -391,6 +396,7 @@ input[type=text]:disabled{
     display: none;
     border-radius: 5px;
     z-index: 999;
+    pointer-events: none;
 }
 
 .room-close{

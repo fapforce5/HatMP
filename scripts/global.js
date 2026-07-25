@@ -149,8 +149,8 @@ g.popUpNotice = function (notice) {
     g.showNotice({
         selector: '#char_alert',
         notice: notice,
-        fadeIn: 1000,
-        fadeOut: 3000,
+        fadeIn: 600,
+        fadeOut: 1800,
         delay: 0
     });
 };
@@ -164,8 +164,8 @@ g.popUpNoticeBottom = function (notice) {
         selector: selector,
         notice: notice,
         fadeIn: 200,
-        fadeOut: 1000,
-        delay: 2000
+        fadeOut: 700,
+        delay: 1200
     });
 };
 

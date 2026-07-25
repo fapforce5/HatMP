@@ -55,11 +55,49 @@ rape.drawPanelBackground = function (image = "1004_rape/icon_bg.png") {
     }, 1004);
 };
 
+rape.getActionTitle = function (actionName) {
+    switch (actionName) {
+        case "struggle": return "Struggle";
+        case "kick": return "Kick";
+        case "submit": return "Submit";
+        case "next": return "Go limp";
+        case "limp": return "Go limp";
+        case "choiceCock": return "Choose cock";
+        case "choiceOral": return "Choose oral";
+        case "choiceAnal": return "Choose anal";
+        case "phase4Struggle": return "Struggle";
+        case "phase4Sub": return "Submit";
+        case "phase4Limp": return "Go limp";
+        case "flee": return "Flee";
+        case "goodflee": return "Flee";
+        case "rerun": return "Try again";
+        case "complete": return "Get up";
+        case "getdressed": return "Get dressed";
+        case "phase3cover": return "Cover yourself";
+        case "phase3sub": return "Submit";
+        case "struggleLost": return "Continue";
+        case "icon_pocketsand": return "Throw pocket sand";
+        case "icon_horn": return "Blow the horn";
+        case "dom1": return "Kick";
+        case "dom2": return "Choose cock";
+        case "dom3": return "Resist";
+        case "dom3oral": return "Resist";
+        case "dom3scream": return "Resist";
+        case "sub3": return "Submit";
+        case "sub4": return "Submit";
+        case "sub5": return "Submit";
+        case "sub6": return "Submit";
+        case "sub6anal": return "Submit";
+        default: return actionName;
+    }
+};
+
 rape.renderActionButtons = function (btnList, top = rape.actionButtonTop) {
     for (let i = 0; i < btnList.length; i++) {
         nav.button({
             "type": "zbtn",
             "name": "b1004-" + btnList[i].n,
+            "title": rape.getActionTitle(btnList[i].n),
             "left": rape.actionButtonLeft,
             "top": top + (i * rape.actionButtonSpacing),
             "width": 300,
@@ -423,7 +461,7 @@ rape.phase1 = function () {
             "Give me your clothes, bitch!",
             "Knock knock, here comes the cock!"
         ];
-        if (gender.get("f") === "f") {
+        if (gender.isGirl()) {
             stripMsg.push("If you want to be a girl, I'm going to fuck you like one!");
             stripMsg.push("You dress like you need dick!");
             stripMsg.push("You're asking for this.");
@@ -440,7 +478,7 @@ rape.phase1 = function () {
             "Slut don't deserve clothing",
             "Give me your clothes, bitch!",
         ];
-        if (gender.get("f") === "f") {
+        if (gender.isGirl()) {
             stripMsg.push("I'm going to dyke out so hard on that hot body!");
             stripMsg.push("You dress like you eat pussy!");
             stripMsg.push("You're asking for this.");
@@ -588,7 +626,7 @@ rape.phase2 = function () {
             "Give me those panties! ",
             "Your panties are mine now!"
         ];
-        if (gender.get("f") === "f") {
+        if (gender.isGirl()) {
             stripMsg.push("Let me see them titties girl.");
             stripMsg.push("Nice panty bulge. I want to see what's underneath");
             stripMsg.push("You know you want my dick.");
@@ -603,7 +641,7 @@ rape.phase2 = function () {
             "Give me those panties! ",
             "Your panties are mine now!"
         ];
-        if (gender.get("f") === "f") {
+        if (gender.isGirl()) {
             stripMsg.push("Love a girl in cute panties. Love it better when their panties are on the ground");
             stripMsg.push("I'm going to love rubbing my clit all over your face.");
             stripMsg.push("Those are fuck me underwear!");

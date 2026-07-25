@@ -307,7 +307,7 @@ room502.chatcatch = function (callback) {
 
 
         case "zoeyBed":
-            nav.bg("502_bedroom/sleepZoey.jpg");
+            nav.bg("502_bedroom/bedroomnightZoey.jpg");
             break;
         case "firstNewDay":
             sc.setstep("zoey", -1);

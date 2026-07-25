@@ -812,7 +812,7 @@ room501.chatcatch = function (callback) {
             nav.bg("502_bedroom/zoeyCry.jpg");
             break;
         case "zoeySleep":
-            nav.bg("502_bedroom/sleepZoey.jpg");
+            nav.bg("502_bedroom/bedroomnightZoey.jpg");
             scc.modLevel("zoey", 40, 10);
             //scc.love("zoey", 40, 60);
             //sc.setstep("zoey", 6);

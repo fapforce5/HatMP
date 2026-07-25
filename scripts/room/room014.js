@@ -1,5 +1,11 @@
 ﻿//motherRoom
 var room14 = {};
+room14.prefetchImages = function (images) {
+    for (let i = 0; i < images.length; i++) {
+        let img = new Image();
+        img.src = "./images/room/" + images[i];
+    }
+};
 
 room14.main = function () {
     var btnList = new Array();
@@ -1221,6 +1227,11 @@ room14.chatcatch = function (callback) {
             break;
         case "butt2":
             nav.killall();
+            room14.prefetchImages([
+                "14_motherRoom/butt3bg.jpg",
+                "14_motherRoom/butt3.png",
+                "14_motherRoom/butt4.jpg"
+            ]);
             nav.bg("14_motherRoom/butt" + g.internal + ".jpg");
             g.roomTimeout = setTimeout(function () { chat(127, 14); }, 2000);
             break;

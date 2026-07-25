@@ -113,6 +113,27 @@ nav.resolveMapCloseFallback = function (image, night) {
     };
 };
 
+nav.getRoomBackground = function (roomId) {
+    var roomMeta = g.getRooms(roomId);
+    if (roomMeta === null)
+        return null;
+
+    return {
+        image: roomMeta.image,
+        night: roomMeta.nightImage === undefined ? roomMeta.image : roomMeta.nightImage
+    };
+};
+
+nav.bgRoom = function (roomId) {
+    var roomBackground = nav.getRoomBackground(roomId);
+    if (roomBackground === null) {
+        g.error("nav.bgRoom", "roomID: " + roomId);
+        return;
+    }
+
+    nav.bg(roomBackground.image, roomBackground.night);
+};
+
 nav.buildBgTag = function (src, gameWidth, gameHeight, fallbackSrc) {
     var onError = fallbackSrc === undefined || fallbackSrc === null
         ? ""
@@ -172,6 +193,8 @@ nav.button = function (btn, roomNum) {
             charAttr = ' data-char="' + btn.char + ' "';
         line = '<img src="./images/room/' + thisImage + '" class="' + classes + '" data-name="' + btn.name + '" data-room="' + roomNum + '"' + spaceAdvanceAttr + ' title="' + (("title" in btn) ? btn.title : "") + charAttr + '" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:' + top + 'px; left:' + left + 'px;" />';
         $('#room-buttons').append(line);
+        if (typeof char !== "undefined" && typeof char.syncVisibleRoomShortcutTitles === "function")
+            char.syncVisibleRoomShortcutTitles();
     }
     $('img').on('dragstart', function (event) { event.preventDefault(); });
 };
@@ -242,7 +265,7 @@ nav.modbutton = function (name, newImage, newName, newType) {
     else
         element.attr("data-name", newName);
 
-    if (newType !== null)
+    if (newType !== null && newType !== "")
         nav.applyModButtonType(element, newType);
 };
 
@@ -534,7 +557,16 @@ nav.back = function (btnClickName, sroomid = null) {
 };
 
 nav.takeit = function (btnClickName, sroomid = null) {
-    nav.drawButton("1001_rand/takeit.png", btnClickName, sroomid);
+    nav.button({
+        "type": "zbtn",
+        "name": btnClickName,
+        "left": 1695,
+        "top": 920,
+        "width": 225,
+        "height": 75,
+        "image": "1001_rand/takeit.png",
+        "spaceAdvance": true
+    }, sroomid === null ? g.roomID : sroomid);
 };
 
 nav.cum = function (btnClickName, sroomid = null) {

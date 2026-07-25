@@ -908,6 +908,8 @@ inv.createElements = function (showFilter = true) {
                         gv.mod("money", -1 * cl.list[tic].price);
                         g.popUpNotice(cl.list[tic].display + " added to inventory. ");
                         inv.markPurchased(true);
+                        if (g.roomID === 401 && typeof room401 !== "undefined")
+                            room401.restorePreviewState();
                         inv.refreshCurrentPurchaseRoom();
                         if (cl.list[tic].type === "ear") {
                             cl.c.earring = cl.list[tic].name;
