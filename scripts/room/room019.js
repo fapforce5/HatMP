@@ -36,6 +36,7 @@ room19.main = function () {
 room19.btnclick = function (name) {
     switch (name) {
         case "toyBegin":
+            nav.killbutton("pump");
             if (daily.get("buttholePlay")) {
                 nav.killbutton("toyBegin");
                 chat(7, 19);
@@ -53,6 +54,7 @@ room19.btnclick = function (name) {
             }
             break;
         case "bjBegin":
+            nav.killbutton("pump");
             if (daily.get("dildoSuckPlay")) {
                 nav.killbutton("bjBegin");
                 chat(13, 19);
