@@ -99,15 +99,13 @@ room210.btnclick = function (name) {
             }
         }
         if (id === 21) {//final
-            let finalcounter = 0;
+            let incompleteClasses = [];
             for (i = 0; i < sissy.st.length; i++) {
-                if (sissy.st[i].y === 5 && sissy.st[i].active && sissy.st[i].ach)
-                    finalcounter++;
+                if (i !== 21 && sissy.st[i].y >= 4 && sissy.st[i].active && !sissy.st[i].ach)
+                    incompleteClasses.push(sissy.st[i].name);
             }
-            if (finalcounter === 1)
-                prevToUnlock = "You need to take one more 400 level class.";
-            else if (finalcounter === 0)
-                prevToUnlock = "You need to take 2 400 level classes.";
+            if (incompleteClasses.length > 0)
+                prevToUnlock = "You need to complete: " + incompleteClasses.join(", ") + ".";
         }
         else {
             for (i = 0; i < sissy.st[id].pID.length; i++) {
