@@ -132,10 +132,9 @@ char.triggerSpaceAdvanceHotkey = function () {
     if (button === null)
         return false;
 
-    button.click();
+    button.trigger('click');
     return true;
 };
-
 char.getVisibleRoomShortcutButtons = function () {
     var buttons = $('#room-buttons .rom-event:visible').filter(function () {
         var $button = $(this);
@@ -190,7 +189,7 @@ char.triggerRoomButtonShortcut = function (index) {
     if (index < 0 || index >= buttons.length)
         return false;
 
-    buttons.eq(index).click();
+    buttons.eq(index).trigger('click');
     return true;
 };
 
@@ -258,11 +257,11 @@ $(document).ready(function () {
         invoker.invoke(roomID, "btnclick", name);
     });
 
-    $('#room_closeVideo').click(function () {
+    $('#room_closeVideo').on('click', function () {
         nav.killvideo();
     });
 
-    $('.help-history').click(function () {
+    $('.help-history').on('click', function () {
         if (g.roomID === 955)
             g.pastSaves.splice(g.pastSaves.length - 2, 2);
         else
@@ -321,7 +320,7 @@ $(document).ready(function () {
         menu.mClick($(this).data('type'));
     });
 
-    $('#room-menu').click(function () {
+    $('#room-menu').on('click', function () {
         phone.build();
     }).on('auxclick',function (e) {
         if (e?.which === 2) { // mouse-middle-click
@@ -329,23 +328,23 @@ $(document).ready(function () {
         }
     });
 
-    $("#room_export_load").click(function () {
+    $("#room_export_load").on('click', function () {
         char.import(null);
     });
 
-    $("#room_export_load_file").click(function () {
+    $("#room_export_load_file").on('click', function () {
         char.file_import();
     });
 
-    $("#room_export_file").click(function () {
+    $("#room_export_file").on('click', function () {
         char.file_export($("#room_export_file").data('saveID'));
     });
 
-    $("#room_export_hide").click(function () {
+    $("#room_export_hide").on('click', function () {
         char.hideExportDialog();
     });
 
-    $(document).bind('keyup', function (e) {
+    $(document).on('keyup', function (e) {
         if (e.which !== 73 || e.altKey || e.ctrlKey || e.metaKey)
             return;
         if (char.isTypingTarget(e.target))
@@ -359,7 +358,7 @@ $(document).ready(function () {
             e.preventDefault();
     });
 
-    $(document).bind('keyup', function (e) {
+    $(document).on('keyup', function (e) {
         if (e.which !== 32 || e.altKey || e.ctrlKey || e.metaKey)
             return;
         if (char.isTypingTarget(e.target))
@@ -380,7 +379,7 @@ $(document).ready(function () {
             e.preventDefault();
     });
 
-    $(document).bind('keyup', function (e) {
+    $(document).on('keyup', function (e) {
         var shortcutIndex = char.getShortcutIndexFromEvent(e);
         if (shortcutIndex === null)
             return;
@@ -397,7 +396,7 @@ $(document).ready(function () {
             e.preventDefault();
     });
 
-    $('.char-modBtn').click(function () {
+    $('.char-modBtn').on('click', function () {
         var td = $(this).data('t');
         if (td === "a") {
             if (g.cockDisplay === "a")
@@ -422,20 +421,20 @@ $(document).ready(function () {
         hideLeftMenu: true,
         walkSubHeight: 1000
     });
-    $(".rl-change").click(function () {
+    $(".rl-change").on('click', function () {
         char.changeMenu($(this).data("type"), true, false);
     });
-    $("#room-change").click(function () {
+    $("#room-change").on('click', function () {
         g.pass = g.roomID;
         char.room(8);
     });
-    $("#room-time").click(function () {
+    $("#room-time").on('click', function () {
         phone.build("time");
         //$("#room-menu").click();
         //menu.mClick("time");
 
     });
-    $("#rl_pageSelect").children("button").click(function () {
+    $("#rl_pageSelect").children("button").on('click', function () {
         g.statpage = $(this).data("number");
         $(".rl-selectButton-active").removeClass("rl-selectButton-active");
         $(this).addClass("rl-selectButton-active");
@@ -1267,7 +1266,7 @@ char.finishLoadedState = function (saveVersion, options) {
     if (g.roomID === 328)
         $("#room-inv").hide();
 
-    $('.menu-button[data-type="close"]').click();
+    $('.menu-button[data-type="close"]').trigger('click');
     char.showGameShell();
     char.updateRoomActionButtons();
     $(".rl-change").show();

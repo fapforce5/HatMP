@@ -292,7 +292,8 @@ nav.inputbox = function (btn, roomNum) {
     if (g.isNight() && (typeof btn.night !== "undefined"))
         thisImage = btn.night;
 
-    line = '<input type="text" class="resize-font ' + classes + '" data-name="' + btn.name + '" data-room="' + roomNum + '" value="' + (("title" in btn) ? btn.title : "") + charAttr + '" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:' + top + 'px; left:' + left + 'px;" />';
+    let inputId = 'room_input_' + roomNum + '_' + btn.name.replace(/[^a-zA-Z0-9_-]/g, '_');
+    line = '<input type="text" id="' + inputId + '" name="' + inputId + '" class="resize-font ' + classes + '" data-name="' + btn.name + '" data-room="' + roomNum + '" value="' + (("title" in btn) ? btn.title : "") + charAttr + '" style="width:' + btnWidth + 'px; height:' + btnHeight + 'px; top:' + top + 'px; left:' + left + 'px;" />';
 
     $('#room-buttons').append(line);
 };

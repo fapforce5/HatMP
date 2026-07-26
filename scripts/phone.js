@@ -1854,7 +1854,7 @@ room9999.btnclick = function (name) {
 
 invoker.registerRoom(9999, room9999);
 
-$(document).bind('keyup', function (e) {
+$(document).on('keyup', function (e) {
     if (e.which !== 27 || e.altKey || e.ctrlKey || e.metaKey)
         return;
     if (char.isTypingTarget(e.target))

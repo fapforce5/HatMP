@@ -115,7 +115,7 @@ room8.main = function () {
 
     var navList = [g.pass];
     nav.buildnav(navList);
-    $('.room-btn[data-name="main_panties"]').click();
+    $('.room-btn[data-name="main_panties"]').trigger('click');
 };
 
 room8.btnclick = function (name) {

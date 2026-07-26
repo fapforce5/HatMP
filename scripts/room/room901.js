@@ -237,7 +237,8 @@ room901.btnclick = function (name) {
                     "top": 826,
                     "width": 486,
                     "height": 200,
-                    "image": "901_pool/stroke1.png"
+                    "image": "901_pool/stroke1.png",
+                    "spaceAdvance": true
                 }, 901);
             }
             break;
@@ -380,7 +381,8 @@ room901.chatcatch = function (callback) {
                 "top": 826,
                 "width": 486,
                 "height": 200,
-                "image": "901_pool/stroke1.png"
+                "image": "901_pool/stroke1.png",
+                "spaceAdvance": true
             }, 901);
             break;
         case "swimLose":

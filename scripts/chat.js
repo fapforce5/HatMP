@@ -48,7 +48,7 @@ privateChat.selectButtonByIndex = function (index) {
     if (index < 0 || index >= buttons.length)
         return false;
 
-    buttons.eq(index).click();
+    buttons.eq(index).trigger('click');
     return true;
 };
 
@@ -190,7 +190,7 @@ privateChat.speakerInfo = function (charName) {
 privateChat.skipChat = function () {
     var buttons = privateChat.visibleButtons();
     if (buttons.length === 1) {
-        buttons.eq(0).click();
+        buttons.eq(0).trigger('click');
     }
     else if (buttons.length > 1) {
         g.skipChat = false;
@@ -198,7 +198,7 @@ privateChat.skipChat = function () {
 };
 
 $(document).ready(function () {
-    $(document).bind('keydown', function (e) {
+    $(document).on('keydown', function (e) {
         if (e.which === 32) {//space bar
             if (!privateChat.canHandleSpace(e.target))
                 return;
@@ -220,7 +220,7 @@ $(document).ready(function () {
             e.preventDefault();
     });
 
-    $(document).bind('keyup', function (e) {
+    $(document).on('keyup', function (e) {
         if (e.which === 32) {//space bar
             if (!privateChat.canHandleSpace(e.target))
                 return;
@@ -245,12 +245,12 @@ $(document).ready(function () {
         }
     });
 
-    $("#room_chatskip").click(function () {
+    $("#room_chatskip").on('click', function () {
         g.skipChat = true;
         privateChat.skipChat();
     });
 
-    $('.room-chatBtnClick').click(function () {
+    $('.room-chatBtnClick').on('click', function () {
         var roomID = $(this).data('roomid');
         var chatID = $(this).data('chatid');
         var callback = $(this).data('callback');

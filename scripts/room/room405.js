@@ -72,7 +72,7 @@ room405.chatcatch = function (callback) {
                     $('#menu-bg_' + (i + 1)).html('<img src="./images/room/405_reds/trim' + i + '.png" data-name="' + i +'" data-type="trim" class="hair-change"/>');
             }
             $('#menu-bg_' + (i + 1)).html('<img src="./images/room/405_reds/cancel.png" data-name="cancel" data-type="cancel" class="hair-change"/>');
-            $('.hair-change').click(function () {
+            $('.hair-change').on('click', function () {
                 g.internal = $(this).data('name');
                 if ($(this).data('type') === "cancel")
                     char.room(405);
@@ -103,7 +103,7 @@ room405.chatcatch = function (callback) {
                 }
                 $('#menu-bg_6').html('<img src="./images/room/405_reds/cancel.png" data-name="cancel" data-type="cancel" class="hair-change"/>');
             }
-            $('.hair-change').click(function () {
+            $('.hair-change').on('click', function () {
                 g.internal = $(this).data('name');
                 if ($(this).data('type') === "cancel")
                     char.room(405);
@@ -139,7 +139,7 @@ room405.chatcatch = function (callback) {
                 $('#menu-bg_5').html('<img src="./images/room/405_reds/style_' + styleTemp + '.png" data-name="' + styleTemp + '" data-type="style" class="hair-change"/>');
                 $('#menu-bg_6').html('<img src="./images/room/405_reds/cancel.png" data-name="cancel" data-type="cancel" class="hair-change"/>');
             }
-            $('.hair-change').click(function () {
+            $('.hair-change').on('click', function () {
                 g.internal = $(this).data('name');
                 if ($(this).data('type') === "cancel")
                     char.room(405);
