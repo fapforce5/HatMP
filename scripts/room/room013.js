@@ -2840,7 +2840,7 @@ room13.chat = function (chatID) {
                 chatID: 78,
                 speaker: "landlord",
                 text: "Yes you were! I'm so happy. I was so afraid that " + sc.n("lola") + " would turn " +
-                    "into one of those weird lonly cat ladies and die a virgin. I'm so happy you have " +
+                    "into one of those weird lonely cat ladies and die a virgin. I'm so happy you have " +
                     "a sex drive. ",
                 button: [
                     { chatID: 79, text: "?", callback: "" },
@@ -3793,7 +3793,7 @@ room13.chat = function (chatID) {
             {
                 chatID: 184,
                 speaker: "lola",
-                text: "Hahaha no! Girl doggies don't have weiners! ",
+                text: "Hahaha no! Girl doggies don't have wieners! ",
                 button: [
                     { chatID: 185, text: "...", callback: "sissyEva3_10" },
                 ]
@@ -4021,7 +4021,7 @@ room13.chat = function (chatID) {
                 chatID: 210,
                 speaker: "thinking",
                 text: "I can't let " + sc.n("chad") + " date my " + g.makeSingular(sc.n("el")) + "! She's such a nice girl " +
-                    "she'll totally fall for his games. That asshole! I must think of something to make sure he doens't " +
+                    "she'll totally fall for his games. That asshole! I must think of something to make sure he doesn't " +
                     "use her and dump her. ",
                 button: [
                     { chatID: -1, text: "...", callback: "leave" },
@@ -4216,7 +4216,7 @@ room13.chat = function (chatID) {
                 chatID: 232,
                 speaker: "eva",
                 text: "*sigh* I should be mad, but he is so sexy. And amazing. And strong. " +
-                    "I just hope he doens't hurt her too bad. ",
+                    "I just hope he doesn't hurt her too bad. ",
                 button: [
                     { chatID: -1, text: "Yeah. He is sexy, er an ass", callback: "" },
                 ]

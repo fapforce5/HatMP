@@ -590,7 +590,7 @@ room318.chat = function (chatID) {
                     speaker: "chad",
                     text: "Hahahahaha! You come to see what a real man's cock looks like? " +
                         "What's the matter, you couldn't please your girlfriend with your " +
-                        "tiny shimp dick? Hahahahaha",
+                        "tiny shrimp dick? Hahahahaha",
                     button: [
                         { chatID: 28, text: "...", callback: "datr_brad_1" }
                     ]

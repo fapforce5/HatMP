@@ -930,7 +930,7 @@ room451.chat = function (chatID) {
         let txt = [
             "Yummy! ",
             "He must eat a lot of pineapple, cause that was so sweet! ",
-            "He must of come stright from the gym, 'cuase that cock tasted like sweat socks. ",
+            "He must of come straight from the gym, 'cause that cock tasted like sweat socks. ",
             "I am such a cock sucking slut! ",
             "I love cum soooo much! ",
             "I'm a dirty dirty slut. ",

@@ -287,7 +287,7 @@ room181.chat = function (chatID) {
         {
             chatID: 9,
             speaker: "black",
-            text: "Oh " + sc.n("cecilia") + " how I do love to hear your wimpers. I'll be watching the camera at home. Please " +
+            text: "Oh " + sc.n("cecilia") + " how I do love to hear your whimpers. I'll be watching the camera at home. Please " +
                 "moan and whine all night. It really is the best porn. Night you two. ",
             button: [
                 { chatID: 10, text: "...", callback: "bondage101_4" }
@@ -330,7 +330,7 @@ room181.chat = function (chatID) {
         {
             chatID: 14,
             speaker: "me",
-            text: "OOooo... That's different.... Mmmmmm... oh... wait, don't stick... oh. never mind, keep sticking your tounge there.. " +
+            text: "OOooo... That's different.... Mmmmmm... oh... wait, don't stick... oh. never mind, keep sticking your tongue there.. " +
                 "mmMMmm yeah",
             button: [
                 { chatID: 15, text: "[Gobble that cock]", callback: "bondage101_8" }
@@ -434,7 +434,7 @@ room181.chat = function (chatID) {
         {
             chatID: 26,
             speaker: "cecilia",
-            text: "I'm getting sleepy. It does take it out of you haning here. ",
+            text: "I'm getting sleepy. It does take it out of you hanging here. ",
             button: [
                 { chatID: -1, text: "Oh yeah. Me too. night night. ", callback: "bondage101_12" },
             ]
@@ -521,7 +521,7 @@ room181.chat = function (chatID) {
             chatID: 35,
             speaker: "!martin",
             text: "Yeah. The other day I was just walking down the street and 3 different guys " +
-                "shouted at me on how hot I am. One even slapped my butt! It toally hurt, but " +
+                "shouted at me on how hot I am. One even slapped my butt! It totally hurt, but " +
                 "it did make me feel so hot. ",
             button: [
                 { chatID: 36, text: "...", callback: "" },
@@ -612,7 +612,7 @@ room181.chat = function (chatID) {
             chatID: 44,
             speaker: "!missx",
             text: "I know! I just want to take a bath while my slave Dorei here " +
-                "services me. What we do for our weathly benefactors. Some days " +
+                "services me. What we do for our wealthy benefactors. Some days " +
                 "I feel like a bigger whore than our sissies. ",
             button: [
                 { chatID: 45, text: "...", callback: "" },
@@ -621,7 +621,7 @@ room181.chat = function (chatID) {
         {
             chatID: 45,
             speaker: "missy",
-            text: "Some days I think the only thing that seperates us from them is " +
+            text: "Some days I think the only thing that separates us from them is " +
                 "the miles of cocks that go in their sissy pussies. ",
             button: [
                 { chatID: 46, text: "...", callback: "b203_6" },
@@ -758,7 +758,7 @@ room181.chat = function (chatID) {
             speaker: "missy",
             text: "Hahaha. Yes. Attach. The pear of anguish goes inside your bussy and " +
                 "I'll expand it enough that it doesn't slide out, but not so big that " +
-                "you can't run, then I'll attach your harness so I can stear. It'll be " +
+                "you can't run, then I'll attach your harness so I can steer. It'll be " +
                 "fun. Just don't don't lose this race! ",
             button: [
                 { chatID: 60, text: "*gulp*", callback: "b203_15" },

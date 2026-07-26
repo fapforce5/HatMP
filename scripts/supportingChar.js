@@ -559,7 +559,7 @@ sc.init = function () {
                     missionName: "spar", mStatus: 0, title: "Spar", desc: "Learn how to fight. ", task:
                         [
                             { id: 0, txt: "Introduction", show: true, mStatus: 0, roomId: 556 },
-                            { id: 1, txt: "Begginer Spar. Beat Maggie ", show: true, mStatus: 0, roomId: 556 },
+                            { id: 1, txt: "Beginner Spar. Beat Maggie ", show: true, mStatus: 0, roomId: 556 },
                             { id: 2, txt: "Advanced Spar. ", show: true, mStatus: 0, roomId: 556 },
 
                         ]
@@ -891,7 +891,7 @@ sc.init = function () {
                     missionName: "bitch", mStatus: 0, title: "Her Honor", desc: "Will you save her honor? ", task:
                         [
                             { id: 0, txt: "Meet", show: true, mStatus: 0, roomId: 350 },
-                            { id: 1, txt: "Titty grabing perv", show: true, mStatus: 0, roomId: 350 },
+                            { id: 1, txt: "Titty grabbing perv", show: true, mStatus: 0, roomId: 350 },
                             { id: 2, txt: "Eat a bag of dicks", show: true, mStatus: 0, roomId: 350 },
                             { id: 3, txt: "Stop touching her!", show: true, mStatus: 0, roomId: 350 },
                         ]
@@ -1006,7 +1006,7 @@ sc.init = function () {
                 {
                     missionName: "pink", mStatus: 0, title: "The Pink Room", desc: "A proper place for a sissy.", task:
                         [
-                            { id: 0, txt: "Introducation", show: true, mStatus: 0, roomId: 213 },
+                            { id: 0, txt: "Introduction", show: true, mStatus: 0, roomId: 213 },
                             { id: 1, txt: "First blowjob", show: true, mStatus: 0, roomId: 213 },
                             { id: 2, txt: "Waitress first time", show: true, mStatus: 0, roomId: 213 },
                             { id: 3, txt: "Gloryhole first time", show: true, mStatus: 0, roomId: 213 },
@@ -2933,7 +2933,7 @@ sc.phone = function (char) {
                 else if (step === 6) {
                     clist = [
                         { s: "me", t: "So what are you up to? You want to do the thing with your feet again?" },
-                        { s: "eva", t: "I knew if I played with your weiner you'd get tottally weird" },
+                        { s: "eva", t: "I knew if I played with your wiener you'd get tottally weird" },
                         { s: "me", t: "Oh no I didn't mean to be weird" },
                         { s: "eva", t: "whatever. " + sc.n("lola") + " and me want to play truth or dare, come by tonight." }
                     ];

@@ -2698,7 +2698,7 @@ room14.chat = function (chatID) {
             {
                 chatID: 156,
                 speaker: "bigguy",
-                text: "She keeps comming back. I think she really wants my dick.  ",
+                text: "She keeps coming back. I think she really wants my dick.  ",
                 button: [
                     { chatID: 157, text: "*drool*", callback: "" },
                 ]

@@ -471,7 +471,7 @@ room478.chat = function (chatID) {
             speaker: "!sissy_trio",
             text: "All five kidnappers took turns raping us over the 10 hour drive to their compound. Poor Nala was a virgin " +
                 "before we were kidnapped. Some creep named River was really brutal with her. If I ever see him " +
-                "I'm going to cut his weiner right the fuck off! ",
+                "I'm going to cut his wiener right the fuck off! ",
             button: [
                 { chatID: 10, text: "I know River! He's such an asshole! I hate him too! ", callback: "trio4" },
             ]

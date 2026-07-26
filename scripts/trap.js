@@ -2316,7 +2316,7 @@ room1005.chat = function (chatID) {
         if (wearing.outerwear) {
             if (wearing.crossdressing) {
                 txt.push("You look like a fucking whore. I bet you blow any man you see. ");
-                txt.push("Pretty face, ugly clothes. You should just stip it off and show everyone what a slut you are. ");
+                txt.push("Pretty face, ugly clothes. You should just strip it off and show everyone what a slut you are. ");
                 txt.push("Hey slut! I bet you want to fuck. I just don't fuck sissies. Too easy. ");
                 txt.push("You dress like you want to get raped in the asshole. ");
                 txt.push("You dress like some kind of gutter slut. Trash like you should be left in the dumpster. ");
@@ -3089,7 +3089,7 @@ room1005.chat = function (chatID) {
             {
                 chatID: 64,
                 speaker: "me",
-                text: "*squeel* Oh wow that's painful... but it kind hit's my sissy spot just right... Mmmmm. " +
+                text: "*squeal* Oh wow that's painful... but it kind hit's my sissy spot just right... Mmmmm. " +
                     "No one's around to see me fuck this tree...",
                 button: [
                     { chatID: -1, text: "Ride the branch? ", callback: "tree_trip1" },

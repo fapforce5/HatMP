@@ -1482,7 +1482,7 @@ room950.chat = function (chatID) {
                 chatID: 28,
                 speaker: "ralph",
                 text: "They really are! I will say my breasts are really coming in. I do hope they get huge. " +
-                    "Mostly becuase I want my boobs to be bigger than my belly lol. But really I can't wait to get " +
+                    "Mostly because I want my boobs to be bigger than my belly lol. But really I can't wait to get " +
                     "out of here. No videos, no figures, no magazines, no nothing! I'm getting behind on my shows! " +
                     "Also my parents are probably worried. ",
                 button: [
@@ -1764,7 +1764,7 @@ room950.chat = function (chatID) {
             {
                 chatID: 59,
                 speaker: "ubel",
-                text: "Hahaha! I knew you wern't a Cum Supplier! We all knew it. Castellan! Put this Sissy " +
+                text: "Hahaha! I knew you weren't a Cum Supplier! We all knew it. Castellan! Put this Sissy " +
                     "in the box, and when your done raping her, put " + gender.pronoun("her") + " back in " +
                     gender.pronoun("her") + " cell. ",
                 button: [
@@ -1902,7 +1902,7 @@ room950.chat = function (chatID) {
             {
                 chatID: 75,
                 speaker: "daria",
-                text: "You again. If you wern't locked in a cell I would assume you're a stalker. ",
+                text: "You again. If you weren't locked in a cell I would assume you're a stalker. ",
                 button: [
                     { chatID: 76, text: "Oh hahaha. Hi. So what are you doing out here? ", callback: "" }
                 ]
@@ -2128,7 +2128,7 @@ room950.chat = function (chatID) {
             {
                 chatID: 101,
                 speaker: "bodhi",
-                text: "Totally awesome! Am I right? I get a blow-y every day and they gime me a bed and free grub! Best time " +
+                text: "Totally awesome! Am I right? I get a blow-y every day and they give me a bed and free grub! Best time " +
                     "ever!",
                 button: [
                     { chatID: 102, text: "But aren't you trapped in there?", callback: "" }
@@ -2226,7 +2226,7 @@ room950.chat = function (chatID) {
             {
                 chatID: 113,
                 speaker: "thinking",
-                text: "He doens't know I can see him. His butt is right there. Should I call out, or maybe I can surprise him..",
+                text: "He doesn't know I can see him. His butt is right there. Should I call out, or maybe I can surprise him..",
                 button: [
                     { chatID: -1, text: "Surprise him", callback: "bb0" },
                     { chatID: 118, text: "Call out", callback: "b2" }
@@ -2539,7 +2539,7 @@ room950.chat = function (chatID) {
                 chatID: 149,
                 speaker: "!milkmaid",
                 text: "Oh he's been handing over you sissies for years. I actually feel bad. You're supposed to be " +
-                    "able to trust a priest, but this one is evil. A few of the girls here are also becuase of him. " +
+                    "able to trust a priest, but this one is evil. A few of the girls here are also because of him. " +
                     "They confided in him that sex with multiple partners only to find themselves kidnapped and brain washed " +
                     "by the cult. Myself included. He really is an asshole. I wish I could take him down, but I'm stuck here. ",
                 button: [

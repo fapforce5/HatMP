@@ -599,7 +599,7 @@ room53.chat = function (chatID) {
             chatID: 23,
             speaker: "candy",
             text: "Oh that. Hehehe. Yes, only girls can come up here. Girls and studs like " + sc.n("chad") + ". " +
-                sc.n("treyvon") + " doens't let wimpy boys in. It's ok, we told him you're a sissy, not a wimpy boy " +
+                sc.n("treyvon") + " doesn't let wimpy boys in. It's ok, we told him you're a sissy, not a wimpy boy " +
                 "so that's how we got you in. You know he's taken a liking to you. I think he wants to fuck you. ",
             button: [
                 { chatID: 24, text: "What, no, why....", callback: "" }
@@ -668,7 +668,7 @@ room53.chat = function (chatID) {
             chatID: 31,
             speaker: "candy",
             text: "I've never had a sissy best friend before, but I was trying to think of ways to thank you for cleaning " +
-                "me out and watching us. It was so hot. Did you masturbate to it later? It doens't matter. I masturbated " +
+                "me out and watching us. It was so hot. Did you masturbate to it later? It doesn't matter. I masturbated " +
                 "to it. I love being watched. I love having a sissy. So anyways, do you want to be a cheerleader with me? ",
             button: [
                 { chatID: 32, text: "What? ", callback: "" }

@@ -777,7 +777,7 @@ room10.chat = function (chatID) {
         let lolatalk = [
             "I can't wait until we get married. It will be so amazing!",
             "You and I will be together forever. ",
-            "I wonder if it's a little boy or girl. I told them we want to be suprised. ",
+            "I wonder if it's a little boy or girl. I told them we want to be surprised. ",
             "If it's a girl I'm going to name her Delilah after our great grandma. If it's a boy you can name him. Hehe",
             "ooof! My feet hurt, like all the time now. You have no idea. ",
             "So excited for our first. I think I want to have three kids. Maybe more. I don't know. Hmmm. Maybe four.",

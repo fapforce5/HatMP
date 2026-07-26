@@ -1127,7 +1127,7 @@ room750.chat = function (chatID) {
             {
                 chatID: 64,
                 speaker: "elijah",
-                text: "I'm sorry. I can't date you. You're an absolutly wonderful person, but my future " +
+                text: "I'm sorry. I can't date you. You're an absolutely wonderful person, but my future " +
                     "plans are for a woman, with a uterus to bear my children. I know you'll find the " +
                     "right boy for you someday, but you're not the right girl for me. I'm sorry, but we " +
                     "have to break up. ",

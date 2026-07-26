@@ -356,7 +356,7 @@ room178.chat = function (chatID) {
         {
             chatID: 27,
             speaker: "cecilia",
-            text: "Hehehe! I love having an audiance! Too bad you didn't see me get " +
+            text: "Hehehe! I love having an audience! Too bad you didn't see me get " +
                 "filled up! It was so hot!",
             button: [
                 { chatID: 28, text: "whoa! There's so much cum!", callback: "cum201_2" },

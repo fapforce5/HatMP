@@ -928,7 +928,7 @@ room16.chat = function (chatID) {
         {
             chatID: 48,
             speaker: "lola",
-            text: "I'm so sorry! I just didn't know what to do when I found out! I was just so afriad you " +
+            text: "I'm so sorry! I just didn't know what to do when I found out! I was just so afraid you " +
                 "would never speak to me again once you found out. And now this. You're the only person " +
                 "I've ever slept with. Please don't be mad at me!",
             button: [

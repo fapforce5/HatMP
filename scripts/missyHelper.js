@@ -131,7 +131,7 @@ missy.activecase = function () {
         //priapus (chloe notepad)
         var cases = [
             { caseId: 0, name: "start", txt: "Get a job. Check your computer in your room and apply. ", m: [16], isComplete: activeCaseComplete },
-            { caseId: 1, name: "construction", txt: "Go work at the contruction site. ", m: [100], isComplete: activeCaseComplete },
+            { caseId: 1, name: "construction", txt: "Go work at the construction site. ", m: [100], isComplete: activeCaseComplete },
             { caseId: 2, name: "apply", txt: "Go to city hall and purchase a P.I. license. Then go to Missy's. ", m: [910, 203] },
             { caseId: 3, name: "work", txt: "Purchase dress shirt, pants, socks, and black shoes from the mall. Then go to your first day of work. ", m: [203, 400], isComplete: activeCaseComplete },
             { caseId: 4, name: "case_usb", txt: "Get the USB drive from the back of the toilet at the park. ", m: [450], isComplete: activeCaseComplete },
@@ -147,7 +147,7 @@ missy.activecase = function () {
             { caseId: 14, name: "case_beaver", txt: "Work at the Naked Beaver diner to find who has stolen the money. ", m: [250], isComplete: activeCaseComplete },
             { caseId: 15, name: "case_elijah_origin", txt: "Find the mad pooper", m: [725], isComplete: activeCaseComplete },
             { caseId: 16, name: "case_damselle", txt: "Rescue the girl in the woods", m: [435], isComplete: activeCaseComplete },
-            { caseId: 17, name: "case_sissyfinal", txt: "Sissy Final! 1. Saturday fashion show at the pink room. 2. Pick up someone at the mall food court. 3. Friday stip club. 4. Get fucked  ", m: [200], isComplete: activeCaseComplete },
+            { caseId: 17, name: "case_sissyfinal", txt: "Sissy Final! 1. Saturday fashion show at the pink room. 2. Pick up someone at the mall food court. 3. Friday strip club. 4. Get fucked  ", m: [200], isComplete: activeCaseComplete },
             { caseId: 18, name: "case_carnival", txt: "You need to find those missing girls from the carnival!", m: [625], isComplete: activeCaseComplete },
             { caseId: 19, name: "case_farm", txt: "Investigate Rachel's Farm.", m: [325], isComplete: activeCaseComplete },
             { caseId: 20, name: "case_sewer", txt: "Talk to Dale in the homeless camp to get the crowbar then make you way to the back of the sewer next to the dance club till you find the robe.", m: [225], isComplete: activeCaseComplete },
@@ -223,21 +223,21 @@ missy.getcases = function () {
                 switch (missy.cases[i].name) {
                     case "case_booth":
                         canDoCase = piLevel > 0;
-                        caseList.push(missy.buildCaseEntry(i, canDoCase, "Need to increase improve your Invistation expertise (Level 1).", missy.cases[i].name));
+                        caseList.push(missy.buildCaseEntry(i, canDoCase, "Need to increase improve your Investigation expertise (Level 1).", missy.cases[i].name));
                         break;
                     case "case_lostgirl":
                         canDoCase = piLevel > 1;
-                        caseList.push(missy.buildCaseEntry(i, canDoCase, "Need to increase improve your Invistation expertise (Level 2).", missy.cases[i].name));
+                        caseList.push(missy.buildCaseEntry(i, canDoCase, "Need to increase improve your Investigation expertise (Level 2).", missy.cases[i].name));
                         break;
                     case "case_trash":
                         if (completeCounter > 1) {
                             canDoCase = piLevel > 2;
-                            caseList.push(missy.buildCaseEntry(i, canDoCase, "Need to increase improve your Invistation expertise (Level 3).", missy.cases[i].name));
+                            caseList.push(missy.buildCaseEntry(i, canDoCase, "Need to increase improve your Investigation expertise (Level 3).", missy.cases[i].name));
                         }
                         break;
                     case "case_goth":
                         canDoCase = piLevel > 1;
-                        caseList.push(missy.buildCaseEntry(i, canDoCase, "Need to increase improve your Invistation expertise (Level 2).", missy.cases[i].name));
+                        caseList.push(missy.buildCaseEntry(i, canDoCase, "Need to increase improve your Investigation expertise (Level 2).", missy.cases[i].name));
                         break;
                     case "case_shopping":
                         if (qdress.st[1].ach) {

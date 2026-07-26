@@ -787,7 +787,7 @@ room175.chat = function (chatID) {
             text: "Can I just say how proud I am for each and every one of you! " +
                 "Each one of you sluts are going to be world class cum dumps! " +
                 "The future really is open for each of you. You can be whores, " +
-                "stippers, even porn stars if you want! After graduation each of you " +
+                "strippers, even porn stars if you want! After graduation each of you " +
                 "are welcome to work in the Pink Room next door. If you don't know " +
                 "where you want to go in life, it's a great place to earn a bit of " +
                 "cash while you think about your futures. ",
@@ -809,7 +809,7 @@ room175.chat = function (chatID) {
         {
             chatID: 65,
             speaker: "p",
-            text: "Ok sluts, Stip off those clothes and show your holes 'cause we're all going to get FUCKED! ",
+            text: "Ok sluts, Strip off those clothes and show your holes 'cause we're all going to get FUCKED! ",
             button: [
                 { chatID: 66, text: "...", callback: "anal421_2" },
             ]

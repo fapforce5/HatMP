@@ -933,7 +933,7 @@ room958.chat = function (chatID) {
         {
             chatID: 23,
             speaker: "!milkmaid",
-            text: "I just got fucked by some guy with the smallest weiner and I'm still so horny! Can you " +
+            text: "I just got fucked by some guy with the smallest wiener and I'm still so horny! Can you " +
                 "lick my clit till I cum? I hope you don't it's a little creamy. What that boy lacked in " +
                 "penis he made up for in balls! ",
             button: [
@@ -1236,7 +1236,7 @@ room958.chat = function (chatID) {
         {
             chatID: 57,
             speaker: "g",
-            text: "Oh. I forgot how tiny your manhood is. Just hurry up and finish. This is embarrasing " +
+            text: "Oh. I forgot how tiny your manhood is. Just hurry up and finish. This is embarrassing " +
                 "for the both of us. ",
             button: [
                 { chatID: 58, text: "[Fuck her with everything you have!]", callback: "event_h6" },

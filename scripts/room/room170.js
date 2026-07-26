@@ -1732,7 +1732,7 @@ room170.chat = function (chatID) {
             {
                 chatID: 65,
                 speaker: "me",
-                text: "For my talent can I get a volunteer from the audiance please? ",
+                text: "For my talent can I get a volunteer from the audience please? ",
                 button: [
                     { chatID: 66, text: "...", callback: "fashion_whore0" },
                 ]

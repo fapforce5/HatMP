@@ -236,7 +236,7 @@ room876.chatcatch = function (callback) {
                 finish: 2,
                 alone: false,
                 t: [
-                    { t: "Fetvill Stars, Fetville Stars", p: "hips" },
+                    { t: "Fetville Stars, Fetville Stars", p: "hips" },
                     { t: "Don't be shy, stand up and give your battle cry", p: "hips" },
                     { t: "V-I-C-T-O-R-Y", p: "v" },
                     { t: "We'll smash you like a fucking flea", p: "hips" },
@@ -679,7 +679,7 @@ room876.chat = function (chatID) {
             {
                 chatID: 27,
                 speaker: "stacy",
-                text: "And you're too stupid to follow simple directions! A pig is smarter than you. You're tiny little weiner " +
+                text: "And you're too stupid to follow simple directions! A pig is smarter than you. You're tiny little wiener " +
                     "looks like a little hot dog. Are you a hot dog? ",
                 button: [
                     { chatID: 28, text: "..a hot dog? ", callback: "meet9" }
@@ -1579,7 +1579,7 @@ room876.chat = function (chatID) {
             {
                 chatID: 132,
                 speaker: "candy",
-                text: "Allright. Let's get to practice so we're ready for the game. ",
+                text: "Alright. Let's get to practice so we're ready for the game. ",
                 button: [
                     { chatID: 133, text: "...", callback: "cheer6_1" }
                 ]

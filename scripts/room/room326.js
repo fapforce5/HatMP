@@ -527,7 +527,7 @@ room326.chat = function (chatID) {
             text: "Hey " + sc.n("horse") + ". Can I fit you in my mouth?",
             button: [
                 { chatID: 15, text: "Lick it", callback: "lick0" },
-                { chatID: 9, text: "Rub his weiner", callback: "horse5" },
+                { chatID: 9, text: "Rub his wiener", callback: "horse5" },
                 { chatID: -1, text: "Just brush it", callback: "horse" },
             ]
         },
@@ -644,7 +644,7 @@ room326.chat = function (chatID) {
             speaker: "me",
             text: "Hey " + sc.n("horse") + ". Can I fit you in my mouth?",
             button: [
-                { chatID: -1, text: "Rub his weiner", callback: "horse500" },
+                { chatID: -1, text: "Rub his wiener", callback: "horse500" },
                 { chatID: -1, text: "Lick it", callback: "lick000" },
                 { chatID: -1, text: "Rub your bussy on it", callback: "horse100" },
                 { chatID: -1, text: "Just brush it", callback: "horse" },

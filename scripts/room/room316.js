@@ -2371,7 +2371,7 @@ room316.chat = function (chatID) {
             {
                 chatID: 101,
                 speaker: "me",
-                text: "Oh man. That was the most embarrasing thing ever to happen to me. Do " +
+                text: "Oh man. That was the most embarrassing thing ever to happen to me. Do " +
                     "you think they posted that online. I would hate for anyone I know to see it. " +
                     "And " + sc.n("cecilia") + " seeing me and not helping. And you, " + sc.n("dog") +
                     " have to stop doing that in public! *sigh* I know you won't since I'm your bitch, " +
@@ -2856,7 +2856,7 @@ room316.chat = function (chatID) {
             {
                 chatID: 150,
                 speaker: "janice",
-                text: "What you chose to do was just absolutly disgusting! Maybe you want " +
+                text: "What you chose to do was just absolutely disgusting! Maybe you want " +
                     "to date " + sc.n("dog") + "? Is that it? That's it isn't it. ",
                 button: [
                     { chatID: 151, text: "...", callback: "" },

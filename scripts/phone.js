@@ -1344,7 +1344,7 @@ phone.characterSelect = function (name) {
                 if (gv.get("sissySchoolClass") === "finalx") {
                     var m1txtss = "Sissy School Final! <br/>" +
                         "Days left: " + future.get("sissyfinal") + "<br/>" +
-                        "1. Friday Night: Strip at the stip club<br/>" +
+                        "1. Friday Night: Strip at the strip club<br/>" +
                         "2. Saturday Night: Visit the Pink Room at Missy's<br/> &nbsp;&nbsp;&nbsp;&nbsp; before " + nav.convertTime(18, 0) + "<br/>" +
                         "3. At the fast food restaurant get a boy's phone number. <br/>" +
                         "4. Get as many creampies as you can!";

@@ -108,17 +108,17 @@ room751.chat = function (chatID) {
                 "curiosity. I see a surprise awaits you there. ";
         }
         else if (missy.get("totalDaysWorked") === 0) {
-            storyLine = "Awww. I see your curiosity has placed with in a surprising oppurtunity. " +
+            storyLine = "Awww. I see your curiosity has placed with in a surprising opportunity. " +
                 "You see your proper path only comes after you try the wrong path. It's an exciting path " +
                 "and suited for you. Continue working for Missy, she'll lead you right.";
         }
         else if (missy.get("totalDaysWorked") === 0) {
-            storyLine = "Awww. I see your curiosity has placed with in a surprising oppurtunity. " +
+            storyLine = "Awww. I see your curiosity has placed with in a surprising opportunity. " +
                 "You see your proper path only comes after you try the wrong path. It's an exciting path " +
                 "and suited for you. Continue working for Missy, she'll lead you right.";
         }
         else if (missy.get("totalDaysWorked") === 0) {
-            storyLine = "Awww. I see your curiosity has placed with in a surprising oppurtunity. " +
+            storyLine = "Awww. I see your curiosity has placed with in a surprising opportunity. " +
                 "You see your proper path only comes after you try the wrong path. It's an exciting path " +
                 "and suited for you. Continue working for Missy, she'll lead you right.";
         }

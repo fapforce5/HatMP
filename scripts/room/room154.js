@@ -216,7 +216,7 @@ room154.chat = function (chatID) {
         {
             chatID: 5,
             speaker: "bitch",
-            text: "I shall fetch the servents to bring more lube and wine for everyone so that you may all " +
+            text: "I shall fetch the servants to bring more lube and wine for everyone so that you may all " +
                 "enjoy our new maid. ",
             button: [
                 { chatID: 6, text: "...", callback: "c14" }

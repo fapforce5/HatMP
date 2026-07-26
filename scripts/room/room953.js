@@ -209,8 +209,8 @@ room953.chat = function (chatID) {
             chatID: 2,
             speaker: "ubel",
             text: "... We shall bathe the chosen one in the semen of people and she will birth the demon from within her womb formed " +
-                "by the spirit of our beleif and power! But only if all of you truly believe. This is why all those that have lost " +
-                "their faith must be found and seperated by blood from our numbers...",
+                "by the spirit of our belief and power! But only if all of you truly believe. This is why all those that have lost " +
+                "their faith must be found and separated by blood from our numbers...",
             button: [
                 { chatID: 3, text: "...", callback: "" }
             ]
@@ -523,7 +523,7 @@ room953.chat = function (chatID) {
         {
             chatID: 38,
             speaker: "ubel",
-            text: "I know the nonbeliever among us! He pretends to follow the instuctions Azreal, but his actions are a lie! He " +
+            text: "I know the nonbeliever among us! He pretends to follow the instructions of Azreal, but his actions are a lie! He " +
                 "deceives us all in his treachery!",
             button: [
                 { chatID: 39, text: "GULP!", callback: "" }

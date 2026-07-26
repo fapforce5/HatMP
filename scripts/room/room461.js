@@ -745,7 +745,7 @@ room461.chat = function (chatID) {
         {
             chatID: 36,
             speaker: "thinking",
-            text: "Did I really just let a girl piss all over me in the forest? My sexual itnerests are really getting weird. " +
+            text: "Did I really just let a girl piss all over me in the forest? My sexual interests are really getting weird. " +
                 "It's a good thing I'm running, it's hard to tell the difference between the piss and sweat. I probably should " +
                 "take a shower though. It'd be weird to sleep with her piss soaked into my body. ",
             button: [

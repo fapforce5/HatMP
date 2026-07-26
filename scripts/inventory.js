@@ -482,7 +482,7 @@ inv.addMulti = function (name, count) {
             inv.master[i].entry = true;
             if (inv.master[i].count !== null) {
                 inv.master[i].count = inv.master[i].count + count;
-                g.popUpNotice("You receved " + count + " " + inv.displayName(inv.master[i]));
+                g.popUpNotice("You received " + count + " " + inv.displayName(inv.master[i]));
             }
             else
                 g.popUpNotice(inv.displayName(inv.master[i]) + " added to inventory. ");
@@ -878,7 +878,7 @@ inv.createElements = function (showFilter = true) {
                     inv.master[ti].entry = true;
                     gv.mod("money", totalMoney);
                     if (thisCount > 1)
-                        g.popUpNotice("You receved " + thisCount + " " + inv.displayName(thisInv));
+                        g.popUpNotice("You received " + thisCount + " " + inv.displayName(thisInv));
                     else
                         g.popUpNotice(inv.displayName(thisInv) + " added to inventory. ");
                     inv.markPurchased(true);

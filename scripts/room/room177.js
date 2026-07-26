@@ -471,7 +471,7 @@ room177.chat = function (chatID) {
         {
             chatID: 30,
             speaker: "missy",
-            text: "Oh. I guess I'm a bit dissapointed. But I guess it's your choice. " +
+            text: "Oh. I guess I'm a bit disappointed. But I guess it's your choice. " +
                 "Class is dismissed. ",
             button: [
                 { chatID: -1, text: "Ok. ", callback: "chastity101end" }

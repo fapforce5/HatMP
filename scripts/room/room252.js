@@ -1216,7 +1216,7 @@ room252.chat = function (chatID) {
                     "heads all the time if we tried to date. I think he's looking for some kinda " +
                     "slave. Not my scene at all. So how's the tips coming? ",
                 button: [
-                    { chatID: 30, text: "I have great tips 'cuase I'm not a dirty dirty whore like you", callback: "mollymad" },
+                    { chatID: 30, text: "I have great tips 'cause I'm not a dirty dirty whore like you", callback: "mollymad" },
                     { chatID: 37, text: "Bad. So how do you make extra money around here?", callback: "" }
                 ]
             },

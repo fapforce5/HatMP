@@ -603,7 +603,7 @@ room213.chat = function (chatID) {
         {
             chatID: 13,
             speaker: "!thomas",
-            text: "I've swollow so much cum I don't even eat lunch anymore. Oh! I see my " +
+            text: "I've swallowed so much cum I don't even eat lunch anymore. Oh! I see my " +
                 "favorite customer. Let me grab a glass of wine for him. When he's drunk he lasts " +
                 "so much longer, and his dick hits me in just the right place! I'll catch you later " +
                 "baby. ",

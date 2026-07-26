@@ -853,9 +853,9 @@ room176.chat = function (chatID) {
             {
                 chatID: 40,
                 speaker: "thinking",
-                text: "Fuck! I just got a text from " + sc.n("eva") + " he really told them! They put together everthing! They " +
+                text: "Fuck! I just got a text from " + sc.n("eva") + " he really told them! They put together everything! They " +
                     "know I'm a sissy. I don't know if I can show my face at home ever again. Crap. Just because I didn't suck " +
-                    "his dick he goes and ruines my life. Fuck! ",
+                    "his dick he goes and ruins my life. Fuck! ",
                 button: [
                     { chatID: -1, text: "...", callback: "oralEnd" },
                 ]
@@ -916,7 +916,7 @@ room176.chat = function (chatID) {
             {
                 chatID: 47,
                 speaker: "p",
-                text: "Allright lesbos. You're going to learn how to eat a pussy right! I can't tell you how " +
+                text: "Alright lesbos. You're going to learn how to eat a pussy right! I can't tell you how " +
                     "many times some pathetic loser tried sticking their tongue in my vagina hole or licked my " +
                     "piss hole and thought they were doing a good job! ",
                 button: [
@@ -1052,7 +1052,7 @@ room176.chat = function (chatID) {
                 text: "Thank you Martha for giving me the chance to give the final assignment. " +
                     "It does give an old man glee so see so many wonderful sissies! When I " +
                     "started this school those many years ago we had such a hard time filling " +
-                    "the seats we wern't sure if we should even continue the school. But look at " +
+                    "the seats we weren't sure if we should even continue the school. But look at " +
                     "it now. So many beautiful smiling faces and perky breasts. ",
                 button: [
                     { chatID: 62, text: "...", callback: "" },

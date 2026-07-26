@@ -2505,7 +2505,7 @@ room200.chat = function (chatID) {
                 chatID: 171,
                 speaker: "missy",
                 text: "Exactly! It's your cult robe. You're going to need it for the next case. We're " +
-                    "going to take down the CULT for good! When you're ready let me know becuase you're " +
+                    "going to take down the CULT for good! When you're ready let me know because you're " +
                     "going under cover for your biggest mission yet! Hold on to that until then. ",
                 button: [
                     { chatID: -1, text: "Yes ma'am", callback: "case_sewer_end" }

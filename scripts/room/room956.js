@@ -157,7 +157,7 @@ room956.chat = function (chatID) {
             chatID: 3,
             speaker: "dr",
             text: "Haha no. You are both a boy and a girl. You see you give, what we'll call an aura, that makes " +
-                "people think you may be a sissy. It's becuase somewhere in them they can't really tell if " +
+                "people think you may be a sissy. It's because somewhere in them they can't really tell if " +
                 "you're a boy or a girl. There's many reasons why, but what I've found in my studies is that " +
                 "many of you sissies are really both. ",
             button: [
@@ -177,11 +177,11 @@ room956.chat = function (chatID) {
         {
             chatID: 5,
             speaker: "dr",
-            text: "Again, maybe. You see, when a 'Sissy' is born, becuase all anyone can see is the penis " +
+            text: "Again, maybe. You see, when a 'Sissy' is born, because all anyone can see is the penis " +
                 "they all believe that the child is a boy. But they aren't! They are both a boy and a girl. " +
                 "Around 68% of all sissies have both the penis and uterus. " +
                 "As you age your uterus and vagina shrink with time. The eggs fall into the body and are " +
-                "absorbed and the sissy has no idea. They just know that they feel a bit differnt. Feminine.",
+                "absorbed and the sissy has no idea. They just know that they feel a bit different. Feminine.",
             button: [
                 { chatID: 6, text: "I have eggs? ", callback: "" }
             ]

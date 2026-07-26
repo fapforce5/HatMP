@@ -394,7 +394,7 @@ room330.chat = function (chatID) {
             speaker: "me",
             text: "Hey " + sc.n("horse") + ". Can I fit you in my mouth?",
             button: [
-                { chatID: 9, text: "Rub his weiner", callback: "horseJackRepeat" },
+                { chatID: 9, text: "Rub his wiener", callback: "horseJackRepeat" },
                 { chatID: 18, text: "Lick it", callback: "lick000" },
                 { chatID: 20, text: "Rub your bussy on it", callback: "horse100" },
                 { chatID: -1, text: "Just brush it", callback: "horse" },

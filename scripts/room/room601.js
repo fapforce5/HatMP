@@ -1049,7 +1049,7 @@ room601.chat = function (chatID) {
                 return {
                     chatID: 900,
                     speaker: "!girl",
-                    text: "hickup! You are so sexy! Maybe it's the beer, but I didn't see your " +
+                    text: "hiccup! You are so sexy! Maybe it's the beer, but I didn't see your " +
                         "balls hanging from your panties I would totally think you're a chick! ",
                     button: [
                         { chatID: -1, text: "Oh. Thanks?", callback: "mingleInc" },
@@ -1364,7 +1364,7 @@ room601.chat = function (chatID) {
             speaker: "me",
             text: "You're thinking too hard. Just talk to him and slowly rub your body " +
                 "oh his. Don't get too desperate, just tease him a little. Casually rub " +
-                "his inner thigh. Then rub your butt on his weiner. If he's hard then he's " +
+                "his inner thigh. Then rub your butt on his wiener. If he's hard then he's " +
                 "totally into you. Just leave him wanting more. ",
             button: [
                 { chatID: 29, text: "...", callback: "" },

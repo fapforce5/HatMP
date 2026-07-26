@@ -1785,7 +1785,7 @@ room174.chat = function (chatID) {
             {
                 chatID: 107,
                 speaker: "eva",
-                text: "MMmmm tickle my insides with your wet slimy tounge. I want to fart your saliva. ",
+                text: "MMmmm tickle my insides with your wet slimy tongue. I want to fart your saliva. ",
                 button: [
                     { chatID: 108, text: "[Eat that asshole]", callback: "el_asshole2" },
                 ]

@@ -283,7 +283,7 @@ room482.chat = function (chatID) {
         {
             chatID: 18,
             speaker: "!sissy_toilet",
-            text: "I guess becuase I'm here. I just kinda kneeled down and told people. Before long I became " +
+            text: "I guess because I'm here. I just kinda kneeled down and told people. Before long I became " +
                 "the offical toilet. I wasn't always a toilet. Before the cult took me in I've never tasted " +
                 "anyone pee. They were brutal, but they let me volunteer to be the toilet in there. ",
             button: [
@@ -353,7 +353,7 @@ room482.chat = function (chatID) {
         {
             chatID: 26,
             speaker: "me",
-            text: "Hehe. You tounge tickels my naughty bits! ",
+            text: "Hehe. You tongue tickels my naughty bits! ",
             button: [
                 { chatID: 27, text: "...", callback: "toilet0" },
             ]

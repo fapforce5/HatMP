@@ -68,7 +68,7 @@ room102.chatcatch = function (callback) {
 room102.chat = function (chatID) {
     var dirtyJoke = [
         "What did the leper say to the prostitute? Keep the tip.",
-        "Whats the difference between jelly and jam? You can't jelly your dick in her ass.",
+        "What's the difference between jelly and jam? You can't jelly your dick in her ass.",
         "What's the difference between a garbanzo bean and a chickpea. I've never paid 300 bucks to have a garbanzo bean on my face.",
         "How is parsley like pubic hair? You brush both off to the side before you start eating.",
         "A dick has a sad life. His hair is a mess; his family is nuts; his next-door neighbor is an asshole; his best friend is a pussy, and his owner beats him habitually.",

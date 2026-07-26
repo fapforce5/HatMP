@@ -425,7 +425,7 @@ room955.chat = function (chatID) {
             chatID: 4,
             speaker: "!milkmaid",
             text: "So the milking ritual happens each day. Well, except for Friday as you know. The boys can " +
-                "choose any girl they want. Ubel does that becuase he thinks some girls will get too attached " +
+                "choose any girl they want. Ubel does that because he thinks some girls will get too attached " +
                 "to just one boy and pick him every time. ",
             button: [
                 { chatID: 5, text: "...", callback: "" }

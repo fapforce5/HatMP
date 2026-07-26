@@ -73,7 +73,7 @@ room949.chat = function (chatID) {
             text: "You have reached the end of this release. Next release will have the cult and the " +
                 "choice. Until then you are stuck here. ",
             button: [
-                { chatID: 0, text: "Repeat message (Becuase I didn't read it)", callback: "" },
+                { chatID: 0, text: "Repeat message (Because I didn't read it)", callback: "" },
                 { chatID: -1, text: "Close so I can save", callback: "" },
             ]
         },

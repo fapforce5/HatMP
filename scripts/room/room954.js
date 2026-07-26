@@ -483,7 +483,7 @@ room954.chat = function (chatID) {
         {
             chatID: 19,
             speaker: "ubel",
-            text: "I must comend you two. No one has lasted as long as either of you have. I expected that from " + sc.n("me") + 
+            text: "I must commend you two. No one has lasted as long as either of you have. I expected that from " + sc.n("me") + 
                 ", for I know she has a higher purpose. But I was surprised by your performance, " + sc.n("daria") + ". It " +
                 "seems like " + sc.n("bodhi") + " is holding you back from your true potential. ", 
             button: [
@@ -865,7 +865,7 @@ room954.chat = function (chatID) {
             speaker: "cop2",
             text: "I don't think you really understand how the real world works. Maybe you've played too many video games. You come " +
                 "into my station, naked, and demand we storm the compound saying " + sc.n("missy") + " is trapped in there. Now I've " +
-                "dealt with her a few times with her crazy consiracies with the cult. Just because they worship some strange shit " +
+                "dealt with her a few times with her crazy conspiracies with the cult. Just because they worship some strange shit " +
                 "don't make illegal. We don't just go storming places of worship based on crazy stories made up by naked people " +
                 "that show up here. ",
             button: [
@@ -942,7 +942,7 @@ room954.chat = function (chatID) {
             text: "Now your lives are on your own. You have strayed from the path of Azreal and only " +
                 "those on the path can remain. I will give you the choice. Choice one is to remain " +
                 "here and go though my personal intensive training. It will be filled with pain and " +
-                "suffering like you've never experainced. You will lose your very definition of self " +
+                "suffering like you've never experienced. You will lose your very definition of self " +
                 "as you are tortured and used by all who live here. ",
             button: [
                 { chatID: 71, text: "What's choice two?", callback: "" }

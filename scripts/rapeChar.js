@@ -1646,7 +1646,7 @@
                     return { complete: false, s: "futa2", message: "I hope your holes are deep" };
                 }
                 rapeCharFullscreen("1004_rape/15_futa/phase3_1.webp");
-                return { complete: true, s: "futa2", message: "Becuase this cock is going all the way down!" };
+                return { complete: true, s: "futa2", message: "Because this cock is going all the way down!" };
             },
             phase4: function () {
                 return { default: true, complete: null };
@@ -1706,7 +1706,7 @@
             phase3: function () {
                 rapeCharFullscreen("1004_rape/16_clown/phase3.webp");
                 zcl.embarrass(0, 900, .9, "back", false);
-                return { complete: true, s: "clownqueen", message: "I hope you're hungry 'cuase you're going to eat a big plate of clown pussy!" };
+                return { complete: true, s: "clownqueen", message: "I hope you're hungry 'cause you're going to eat a big plate of clown pussy!" };
             },
             phase4: function () {
                 if (rape.rapeType === "cunnilugus") {

@@ -1495,7 +1495,7 @@ room803.chat = function (chatID) {
             text: "I love sissies so much! You asshole is so tight it just is begging to milk my dick. I " +
                 "love anal so much!",
             button: [
-                { chatID: 79, text: "*grunt* *squeel* yes harder daddy, I can feel my sissygasm! *huff*", callback: "anal3a" },
+                { chatID: 79, text: "*grunt* *squeal* yes harder daddy, I can feel my sissygasm! *huff*", callback: "anal3a" },
             ]
         },
         {
@@ -1503,7 +1503,7 @@ room803.chat = function (chatID) {
             speaker: "ralphsdad",
             text: "Oh god I'm cumming up your ass! So hot! ",
             button: [
-                { chatID: 80, text: "*sissy squeel* So good! I'm cumming so hard!", callback: "anal4" },
+                { chatID: 80, text: "*sissy squeal* So good! I'm cumming so hard!", callback: "anal4" },
             ]
         },
         {

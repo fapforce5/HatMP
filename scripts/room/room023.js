@@ -1916,7 +1916,7 @@ room23.chat = function (chatID) {
             {
                 chatID: 48,
                 speaker: "lola",
-                text: "Oh hahaha. You look so silly with your face burried in my chest.   ",
+                text: "Oh hahaha. You look so silly with your face buried in my chest.   ",
                 button: [
                     { chatID: -1, text: "blub blub blub blub", callback: "nextTurn" },
                 ]
@@ -2751,7 +2751,7 @@ room23.buildInternal = function () {
         {
             q: "What is your 'I'm getting laid tonight' outfit?",
             l: "Hmm. I borrowed " + sc.n("eva") + "'s thong once when I went on a date. I don't know why, I totally wasn't going to sleep with him. ",
-            e: "A skrit with no panties. I love bending over and catching them peeking. Hehehe",
+            e: "A skirt with no panties. I love bending over and catching them peeking. Hehehe",
             i: "q_3_7"
         },
         {
@@ -3041,7 +3041,7 @@ room23.buildInternal = function () {
         },
         {
             e: null,
-            l: "Play air guitare to your favorite song",
+            l: "Play air guitar to your favorite song",
             b: [{ chatID: -1, text: "Get ready to be amazed by my awesome skills baby!", callback: "meairguitare" }]
         },
         {
@@ -3050,7 +3050,7 @@ room23.buildInternal = function () {
             b: [{ chatID: -1, text: "Awww yea! ", callback: "meNipplelick" }]
         },
         {
-            e: "I want you to suck my big toe like it's a thick tiny weiner! Suck " +
+            e: "I want you to suck my big toe like it's a thick tiny wiener! Suck " +
                 "it pervert. ",
             l: null,
             b: [{ chatID: -1, text: "Ugh! Ok. ", callback: "meSuckToes" }]
@@ -3262,7 +3262,7 @@ room23.buildInternal = function () {
             txt: "Twerk for us. ",
             e: "I didn't think you were an ass boy. I thought you were more into feet. ",
             l: "I feel so silly shaking my butt, but ok. ",
-            u: "I want to see your danicng moves. Twerk for us. ",
+            u: "I want to see your dancing moves. Twerk for us. ",
             dCallback: "dareTwerk",
             i: "d_3_1"
         },
@@ -3349,10 +3349,10 @@ room23.buildInternal = function () {
             i: "d_4_2"
         },
         {
-            txt: "Lick my weiner. ",
+            txt: "Lick my wiener. ",
             e: "Oh crap. I knew this was coming. You better not cum when I touch it. ",
             l: "Oh YES! I mean. Sure. That's cool. ",
-            u: "I dare you to lick his weiner! ",
+            u: "I dare you to lick his wiener! ",
             dCallback: "dareLickCock",
             i: "d_4_3"
         },
@@ -3522,7 +3522,7 @@ room23.getTheirQuestion = function () {
                 a: "I hate " + sc.n("chad") + " so much. He tried to grab my ass, several times. " + sc.n("me") + " is not a butthead, he would never do that. "
             },
             {
-                q: "Do you know what a weiner looks like? ",
+                q: "Do you know what a wiener looks like? ",
                 a: "Hrumph. You watched that porn with me. I hope real penises aren't that big. It was so huge! "
             },
             {

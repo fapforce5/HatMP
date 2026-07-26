@@ -163,7 +163,7 @@ room153.chat = function (chatID) {
         {
             chatID: 10,
             speaker: "bimbo",
-            text: "It's the loser that didn't fuck us becuase " + gender.pronoun("her") + " mommy " +
+            text: "It's the loser that didn't fuck us because " + gender.pronoun("her") + " mommy " +
                 "wouldn't let " + gender.pronoun("her") + "! Go clean the toilet loser! ",
             button: [
                 { chatID: 2, text: "*groan*", callback: "d2" },

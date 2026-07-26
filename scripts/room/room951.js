@@ -173,7 +173,7 @@ room951.chat = function (chatID) {
         {
             chatID: 1,
             speaker: "cult",
-            text: "No one leaves the box until we're all satified. ",
+            text: "No one leaves the box until we're all satisfied. ",
             button: [
                 { chatID: 2, text: "what?", callback: "boxm0" }
             ]

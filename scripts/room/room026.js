@@ -1434,7 +1434,7 @@ room26.chat = function (chatID) {
             {
                 chatID: 55,
                 speaker: "landlord",
-                text: "Oh. I guess you wern't. That's a chastity cage isn't it? I know " +
+                text: "Oh. I guess you weren't. That's a chastity cage isn't it? I know " +
                     "the type of 'men' that wear those, and they aren't men. Girls, " +
                     "go to bed. We'll talk about this in the morning. I have to process " +
                     "the fact that my little boy is secretly a girl. ",
@@ -1445,7 +1445,7 @@ room26.chat = function (chatID) {
             {
                 chatID: 56,
                 speaker: "landlord",
-                text: "Oh. I guess you wern't. You're wearing women's panties. I know " +
+                text: "Oh. I guess you weren't. You're wearing women's panties. I know " +
                     "the type of 'men' that wear those, and they aren't men. Girls, " +
                     "go to bed. We'll talk about this in the morning. I have to process " +
                     "the fact that my little boy is secretly a girl. ",

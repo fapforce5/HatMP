@@ -1893,7 +1893,7 @@ room486.chat = function (chatID) {
                 text: "What ever you do don't press the Red Button! The Red Button ends the game " +
                     "and you will be punished. Given to the CUM cult so they may use you as their " +
                     "toy! It is much better to pass all 12 doors! Don't forget to smile for the " +
-                    "audiance! They do enjoy a competitor!",
+                    "audience! They do enjoy a competitor!",
                 button: [
                     { chatID: 4, text: "Please just let me out ", callback: "" }
                 ]
@@ -2154,7 +2154,7 @@ room486.chat = function (chatID) {
             {
                 chatID: 33,
                 speaker: "thinking",
-                text: "Allright. Now I'll just take this butt plug I pulled out of her ass and shove it " +
+                text: "Alright. Now I'll just take this butt plug I pulled out of her ass and shove it " +
                     "up my own ass. Easy Peasy!",
                 button: [
                     { chatID: -1, text: "...", callback: "room10_redraw" },

@@ -828,7 +828,7 @@ room957.chat = function (chatID) {
             speaker: "cult",
             text: "Oh fuck! Swallow my cum slut! ",
             button: [
-                { chatID: 8, text: "GURGLE, Slurp, swollow", callback: "sweepHallway6" }
+                { chatID: 8, text: "GURGLE, Slurp, swallow", callback: "sweepHallway6" }
             ]
         },
         {
@@ -893,7 +893,7 @@ room957.chat = function (chatID) {
         {
             chatID: 15,
             speaker: "chloe",
-            text: "Hehe! You're cute when your tongues burried in my pussy. I'll have to tell " + sc.n("zoey") +
+            text: "Hehe! You're cute when your tongues buried in my pussy. I'll have to tell " + sc.n("zoey") +
                 " you're here. Maybe I can get her to join too! Later! ",
             button: [
                 { chatID: -1, text: "'bye", callback: "kissingReset" },
@@ -1229,7 +1229,7 @@ room957.chat = function (chatID) {
             text: "Oh fuck! Swallow my cum slut! ",
             button: [
                 { chatID: -1, text: "[Attempt to steal his keys]", callback: "sweepHallway6steal" },
-                { chatID: 8, text: "GURGLE, Slurp, swollow", callback: "sweepHallway6" }
+                { chatID: 8, text: "GURGLE, Slurp, swallow", callback: "sweepHallway6" }
             ]
         },
         {
@@ -1246,7 +1246,7 @@ room957.chat = function (chatID) {
             speaker: "thinking",
             text: "I'll just grab these keys really quick while he's got his eyes closed and shove them deep up my ass. ",
             button: [
-                { chatID: 58, text: "GURGLE, Slurp, swollow", callback: "sweepHallway6x" }
+                { chatID: 58, text: "GURGLE, Slurp, swallow", callback: "sweepHallway6x" }
             ]
         },
         {
