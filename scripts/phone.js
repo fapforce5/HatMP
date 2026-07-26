@@ -1597,7 +1597,7 @@ phone.cheat = function () {
     if (gv.get("cheatMode")) {
         phone.showPanel("999_phone/cheat_bg.jpg");
 
-        var levelToMod = ["fitness", "charisma"];
+        var levelToMod = ["fitness", "charisma", "strength"];
 
         nav.t({
             type: "zimg",
