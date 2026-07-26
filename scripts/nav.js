@@ -638,6 +638,7 @@ nav.wait = function (btnClickName) {
     nav.button({
         "type": "zbtn",
         "name": btnClickName,
+        "spaceAdvance": true,
         "left": 1695,
         "top": 920,
         "width": 225,

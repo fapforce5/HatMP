@@ -549,6 +549,9 @@ phone.build = function (selection = null) {
 phone.captureMenuOverlay = function () {
     var overlay = $('#room-menuButtons');
 
+    if (phone.preservedMenuOverlay !== null)
+        return;
+
     if (inv.isOpen || !overlay.is(":visible") || overlay.children().length === 0) {
         phone.preservedMenuOverlay = null;
         return;

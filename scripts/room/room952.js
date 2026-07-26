@@ -614,7 +614,7 @@ room952.chatcatch = function (callback) {
             char.room(955);
             break;
         case "turnaround":
-            nav.back("turnaround");
+            char.room(952);
             break;
         case "leave":
             gv.mod("cultDayCounter", 1);

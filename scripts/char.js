@@ -23,12 +23,24 @@ char.toggleMainInventoryHotkey = function () {
 };
 
 char.roomButtonShortcutRooms = {
+    328: true,
     475: true,
     1004: true,
     1005: true
 };
 
 char.roomButtonShortcutOrder = {
+    328: {
+        pig_left: 1,
+        pig_center: 2,
+        pig_right: 3,
+        pig_struggle: 4,
+        pig_fuck0: 5,
+        pig_fuck1: 6,
+        pig_fuck2: 7,
+        pig_fuck3: 8,
+        pig_fuck4: 9
+    },
     475: {
         north: 1,
         south: 2,
