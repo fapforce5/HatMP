@@ -1,5 +1,23 @@
 ﻿//bedroom
 var room10 = {};
+room10.showWhenLoaded = function () {
+    var roomLayers = $('#room-background, #room-buttons');
+    var images = roomLayers.find('img');
+    var remaining = images.filter(function () {
+        return !this.complete;
+    }).length;
+
+    if (remaining === 0) {
+        roomLayers.show();
+        return;
+    }
+
+    images.one('load.room10 error.room10', function () {
+        remaining--;
+        if (remaining <= 0)
+            roomLayers.show();
+    });
+};
 room10.main = function () {
     if (inv.has("tifgift")) {
         chat(36, 10);
@@ -12,6 +30,7 @@ room10.main = function () {
     }
     else {
         $('.room-topper').show();
+        $('#room-background, #room-buttons').hide();
         invoker.invokeCurrent("btnclick", "drawRoom");
         var navList = [];
         var missingClothing = cl.hasoutfit("public");
@@ -44,6 +63,7 @@ room10.main = function () {
         }
 
         nav.buildnav(navList);
+        room10.showWhenLoaded();
     }
 };
 
