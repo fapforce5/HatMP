@@ -517,7 +517,7 @@ room197.chat = function (chatID) {
             chatID: 19,
             speaker: "thinking",
             text: "Oh my. I wonder what she has on her mind this time. Hopefully she lets me " +
-                "eat her pussy. I haven't seen her with any guys. She's got to crave dick at somepoint. " +
+                "eat her pussy. I haven't seen her with any guys. She's got to crave dick at some point. " +
                 "I mean, I'll bet she's seen and touched my dick more than anyone since I've started here. " +
                 "She must like my dick. Maybe she'll finally let me fuck her. ",
             button: [
@@ -537,7 +537,7 @@ room197.chat = function (chatID) {
         {
             chatID: 21,
             speaker: "missy",
-            text: "I have a treat for you my little sissy.I bet you like whipped cream, don't you. " +
+            text: "I have a treat for you my little sissy. I bet you like whipped cream, don't you. " +
                 " I like my little sissies full of cream.",
             button: [
                 { chatID: -1, text: "umm hmmm..", callback: "bj4" },

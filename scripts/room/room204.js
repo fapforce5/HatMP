@@ -411,7 +411,7 @@ room204.chat = function (chatID) {
                 text: "OK good job. If you pick the wrong card it will appear with a red " +
                     "border and be darker.",
                 button: [
-                    { chatID: 11, text: "[See incorrect selection]", callback: "step3" }
+                    { chatID: 12, text: "[See incorrect selection]", callback: "step3" }
                 ]
             },
             {

@@ -618,7 +618,7 @@ room450.chat = function(chatID){
         {
             chatID: 8,
             speaker: "cult",
-            text: "Yes my friend, what can we do for your?",
+            text: "Yes my friend, what can we do for you?",
             button: [
                 { chatID: 9, text: "Who are you?", callback: "" }
             ]
@@ -651,7 +651,7 @@ room450.chat = function(chatID){
         {
             chatID: 12,
             speaker: "cult",
-            text: "The time draws near for us to share out love in the forest, be well new friend. ",
+            text: "The time draws near for us to share our love in the forest, be well new friend. ",
             button: [
                 { chatID: -1, text: "Be well?", callback: "cultLeave1" }
             ]
@@ -1016,7 +1016,7 @@ room450.chat = function(chatID){
         {
             chatID: 54,
             speaker: "thinking",
-            text: "He really quiet. I wonder what he's thinking. I hope he doesn't bash me or arrest me. I feel like " +
+            text: "He's really quiet. I wonder what he's thinking. I hope he doesn't bash me or arrest me. I feel like " +
                 "such a ho with my bare ass sticking up. This is getting uncomfortable. ",
             button: [
                 { chatID: 55, text: "...", callback: "c1" },
@@ -1115,7 +1115,7 @@ room450.chat = function(chatID){
         {
             chatID: 65,
             speaker: "cop",
-            text: "I'm just going to have to force it it. ",
+            text: "I'm just going to have to force it in. ",
             button: [
                 { chatID: 66, text: "uuuugh", callback: "cop6" }
             ]
@@ -1287,7 +1287,7 @@ room450.chat = function(chatID){
         {
             chatID: 85,
             speaker: "tiffany",
-            text: "Wake up sleep head. I don't know what happened last night, but you " +
+            text: "Wake up sleepy head. I don't know what happened last night, but you " +
                 "need a better bed than this bench. ",
             button: [
                 { chatID: -1, text: "heh, yeah", callback: "reset" }

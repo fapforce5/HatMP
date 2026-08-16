@@ -671,7 +671,7 @@ room727.chat = function (chatID) {
             {
                 chatID: 41,
                 speaker: "tina",
-                text: "Bwhahahah. I'm laughig too hard!! We can't do this. I won't even " +
+                text: "Bwhahahah. I'm laughing too hard!! We can't do this. I won't even " +
                     "feel it! Just go! Hahahha. it's ok. Just go. ",
                 button: [
                     { chatID: -1, text: "Crap. ok", callback: "tinabad" },

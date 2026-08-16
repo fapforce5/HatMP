@@ -49,8 +49,9 @@ cl.init = function () {
         //{ type: "panties", name: "inv", display: "Invisible Panties", img: "panties_cheetah.png", sex: "f", inv: false, daring: 2, price: -1 },
         { type: "panties", name: "cl", display: "Spankies", img: "panties_cheer.png", sex: "f", inv: false, daring: 2, price: -1 },
         { type: "panties", name: "bi", display: "Bimbo's Panties", img: "panties_bimbo.png", sex: "f", inv: false, daring: 3, price: -1 },
-        //{ type: "panties", name: "holly", display: "Molly's Panties", img: "panties_holly.png", sex: "f", inv: false, daring: 2, price: -1 },
-        //{ type: "panties", name: "dolly", display: "Dolly's Panties", img: "panties_dolly.png", sex: "f", inv: false, daring: 2, price: -1 },
+        { type: "panties", name: "holly", display: "Dolly's Panties", img: "panties_dolly.png", sex: "f", inv: false, daring: 2, price: -1 },
+        { type: "panties", name: "dolly", display: "Holly's Panties", img: "panties_holly.png", sex: "f", inv: false, daring: 2, price: -1 },
+        { type: "panties", name: "molly", display: "Molly's Panties", img: "panties_molly.png", sex: "f", inv: false, daring: 2, price: -1 },
         { type: "panties", name: "b", display: "Black Lowrise Panties", img: "panties_blackLowrise.png", sex: "f", inv: false, daring: 3, price: 50 },
         { type: "panties", name: "p", display: "Pink Thong", img: "panties_pinkThong.png", sex: "f", inv: false, daring: 3, price: 95 },
         { type: "panties", name: "l", display: "Low Rise Panties", img: "panties_low.png", sex: "f", inv: false, daring: 3, price: 60 },
@@ -63,7 +64,7 @@ cl.init = function () {
         { type: "bra", name: "j", display: "Janice's Bra", img: "bra_janice.png", sex: "f", inv: false, daring: 2, price: -1 },
         { type: "bra", name: "l", display: "Frilly Bra", img: "bra_frilly.png", sex: "f", inv: false, daring: 2, price: -1 },
         { type: "bra", name: "molly", display: "Molly's Bra", img: "bra_molly.png", sex: "f", inv: false, daring: 2, price: -1 },
-        { type: "bra", name: "dolly", display: "Dolly's Bra", img: "bra_dolly.png", sex: "f", inv: false, daring: 2, price: -1 },
+        { type: "bra", name: "holly", display: "Holly's Bra", img: "bra_holly.png", sex: "f", inv: false, daring: 2, price: -1 },
         { type: "bra", name: "f", display: "Purple Bra", img: "bra_fancy.png", sex: "f", inv: false, daring: 3, price: 65 },
         { type: "bra", name: "r", display: "Red Bra", img: "bra_red.png", sex: "f", inv: false, daring: 3, price: 80 },
         { type: "bra", name: "cr", display: "Transparent Bra", img: "bra_cr.png", sex: "f", inv: false, daring: 4, price: -1 },
@@ -207,7 +208,7 @@ cl.init = function () {
         { type: "buttplug", name: "fr", display: "Rose", img: "plug_rose.png", sex: "f", inv: false, daring: 1, price: -1 },
         { type: "buttplug", name: "fd", display: "Daisy", img: "plug_daisy.png", sex: "f", inv: false, daring: 1, price: -1 },
         { type: "buttplug", name: "fp", display: "Pink flower", img: "plug_pinkFlower.png", sex: "f", inv: false, daring: 1, price: -1 },
-        { type: "buttplug", name: "t", display: "Tampon", img: "plug_small.png", sex: "f", inv: false, daring: 1, price: -1 },
+        { type: "buttplug", name: "t", display: "Tampon", img: "plug_tampon.png", sex: "f", inv: false, daring: 1, price: -1 },
         { type: "buttplug", name: "tail", display: "Tail", img: "plug_tail.png", sex: "f", inv: false, daring: 4, price: -1 },
         { type: "buttplug", name: "sh", display: "Shock", img: "plug_shock.png", sex: "f", inv: false, daring: 4, price: -1 },
         { type: "buttplug", name: "i", display: "Inflate", img: "plug_inflate.png", sex: "f", inv: false, daring: 4, price: -1 },
@@ -1154,7 +1155,23 @@ cl.bra = [
     { name: "cr", chest: 3, image: "bra_cr_3.png", back: "bra_cr_2_back.png" },
     { name: "cr", chest: 2, image: "bra_cr_2.png", back: "bra_cr_2_back.png" },
     { name: "cr", chest: 1, image: "bra_cr_0.png", back: "bra_cr_0_back.png" },
-    { name: "cr", chest: 0, image: "bra_cr_0.png", back: "bra_cr_0_back.png" }
+    { name: "cr", chest: 0, image: "bra_cr_0.png", back: "bra_cr_0_back.png" },
+
+    { name: "molly", chest: 6, image: "bra_molly_6.png", back: "bra_molly_6_back.png" },
+    { name: "molly", chest: 5, image: "bra_molly_5.png", back: "bra_molly_5_back.png" },
+    { name: "molly", chest: 4, image: "bra_molly_4.png", back: "bra_molly_4_back.png" },
+    { name: "molly", chest: 3, image: "bra_molly_3.png", back: "bra_molly_3_back.png" },
+    { name: "molly", chest: 2, image: "bra_molly_2.png", back: "bra_molly_2_back.png" },
+    { name: "molly", chest: 1, image: "bra_molly_0.png", back: "bra_molly_0_back.png" },
+    { name: "molly", chest: 0, image: "bra_molly_0.png", back: "bra_molly_0_back.png" },
+
+    { name: "holly", chest: 6, image: "bra_holly_6.png", back: "bra_holly_2_back.png" },
+    { name: "holly", chest: 5, image: "bra_holly_5.png", back: "bra_holly_2_back.png" },
+    { name: "holly", chest: 4, image: "bra_holly_4.png", back: "bra_holly_2_back.png" },
+    { name: "holly", chest: 3, image: "bra_holly_3.png", back: "bra_holly_2_back.png" },
+    { name: "holly", chest: 2, image: "bra_holly_2.png", back: "bra_holly_2_back.png" },
+    { name: "holly", chest: 1, image: "bra_holly_0.png", back: "bra_holly_0_back.png" },
+    { name: "holly", chest: 0, image: "bra_holly_0.png", back: "bra_holly_0_back.png" }
 ];
 
 cl.necklace = [
@@ -1779,6 +1796,26 @@ cl.panties = [
     { name: "cr", leg: 1, pussy: "dress_cr_1.png", cock: "dress_cr_1.png", back: "panty_cr_0_back.png" },
     { name: "cr", leg: 0, pussy: "dress_cr_0.png", cock: "dress_cr_0.png", back: "panty_cr_0_back.png" },
 
+    { name: "dolly", leg: 5, pussy: "panty_dolly_v_5.png", cock: "panty_dolly_c_5.png", back: "panty_dolly_4_back.png" },
+    { name: "dolly", leg: 4, pussy: "panty_dolly_v_4.png", cock: "panty_dolly_c_4.png", back: "panty_dolly_4_back.png" },
+    { name: "dolly", leg: 3, pussy: "panty_dolly_v_3.png", cock: "panty_dolly_c_3.png", back: "panty_dolly_3_back.png" },
+    { name: "dolly", leg: 2, pussy: "panty_dolly_v_0.png", cock: "panty_dolly_c_0.png", back: "panty_dolly_2_back.png" },
+    { name: "dolly", leg: 1, pussy: "panty_dolly_v_0.png", cock: "panty_dolly_c_0.png", back: "panty_dolly_0_back.png" },
+    { name: "dolly", leg: 0, pussy: "panty_dolly_v_0.png", cock: "panty_dolly_c_0.png", back: "panty_dolly_0_back.png" },
+
+    { name: "molly", leg: 5, pussy: "panty_molly_v_5.png", cock: "panty_molly_c_5.png", back: "panty_molly_5_back.png" },
+    { name: "molly", leg: 4, pussy: "panty_molly_v_4.png", cock: "panty_molly_c_4.png", back: "panty_molly_4_back.png" },
+    { name: "molly", leg: 3, pussy: "panty_molly_v_3.png", cock: "panty_molly_c_3.png", back: "panty_molly_3_back.png" },
+    { name: "molly", leg: 2, pussy: "panty_molly_v_1.png", cock: "panty_molly_c_1.png", back: "panty_molly_2_back.png" },
+    { name: "molly", leg: 1, pussy: "panty_molly_v_1.png", cock: "panty_molly_c_1.png", back: "panty_molly_0_back.png" },
+    { name: "molly", leg: 0, pussy: "panty_molly_v_0.png", cock: "panty_molly_c_0.png", back: "panty_molly_0_back.png" },
+
+    { name: "holly", leg: 5, pussy: "panty_holly_v_5.png", cock: "panty_holly_c_5.png", back: "panty_holly_5_back.png" },
+    { name: "holly", leg: 4, pussy: "panty_holly_v_4.png", cock: "panty_holly_c_4.png", back: "panty_holly_4_back.png" },
+    { name: "holly", leg: 3, pussy: "panty_holly_v_3.png", cock: "panty_holly_c_3.png", back: "panty_holly_3_back.png" },
+    { name: "holly", leg: 2, pussy: "panty_holly_v_1.png", cock: "panty_holly_c_1.png", back: "panty_holly_2_back.png" },
+    { name: "holly", leg: 1, pussy: "panty_holly_v_1.png", cock: "panty_holly_c_1.png", back: "panty_holly_0_back.png" },
+    { name: "holly", leg: 0, pussy: "panty_holly_v_0.png", cock: "panty_holly_c_0.png", back: "panty_holly_0_back.png" },
 ];
 
 cl.pjTop = [
@@ -2480,13 +2517,17 @@ cl.cockDisplay = function () {
 
     if (g.cockDisplay === "c") {
         let carousal = (Math.floor(gv.get("arousal") / 16.7));
-        $("#char_cockDisplay").html('<img src="./images/mainChar/cock/erec_body_ball.png" />');
-        var cumHeight = 35 * cl.getCum();
-        $("#char_cockDisplay").append('<div style="' + g.makeCss(cumHeight, 25, 60 + (35 - cumHeight), 165) + ' background:rgba(255, 255, 255, 1); position:absolute; border-radius:' + 8 * g.ratio + 'px;"></div>');
-
-        $("#char_cockDisplay").append('<img src="./images/mainChar/cock/erec_body.png" />');
-
-        if (cl.c.chastity !== null) {
+        $("#char_cockDisplay").html("");
+        if (cl.c.cock < 5) {
+            $("#char_cockDisplay").html('<img src="./images/mainChar/cock/erec_body_ball.png" />');
+            var cumHeight = 35 * cl.getCum();
+            $("#char_cockDisplay").append('<div style="' + g.makeCss(cumHeight, 25, 60 + (35 - cumHeight), 165) + ' background:rgba(255, 255, 255, 1); position:absolute; border-radius:' + 8 * g.ratio + 'px;"></div>');
+            $("#char_cockDisplay").append('<img src="./images/mainChar/cock/erec_body.png" />');
+        }
+        else {
+            $("#char_cockDisplay").append('<img src="./images/mainChar/cock/erec_body_v.png" />');
+        }
+        if (cl.c.chastity !== null && cl.c.cock !== 5) {
             $("#char_cockDisplay").append('<img src="./images/mainChar/cock/' + cl.getEntry("chastity", cl.c.chastity).img + '" />');
             if (carousal < 5)
                 $("#char_cockDisplay").append('<img src="./images/mainChar/cock/throb' + carousal + '.png" />');
@@ -2498,7 +2539,10 @@ cl.cockDisplay = function () {
         }
 
         if (cl.c.buttplug !== null) {
-            $("#char_cockDisplay").append('<img src="./images/mainChar/cock/' + cl.getEntry("buttplug", cl.c.buttplug).img + '" />');
+            if (gv.getButtCum().total > 0)
+                $("#char_cockDisplay").append('<img src="./images/mainChar/cock/' + cl.getEntry("buttplug", cl.c.buttplug).img.replace(/\.([^.]+)$/, '_cum.$1') + '" />');
+            else
+                $("#char_cockDisplay").append('<img src="./images/mainChar/cock/' + cl.getEntry("buttplug", cl.c.buttplug).img + '" />');
         }
 
         $("#char_cockDisplay").css({
@@ -2511,13 +2555,49 @@ cl.cockDisplay = function () {
         });
     }
     else if (g.cockDisplay === "a") {
-        var analLevel = levels.get("anal").l;
-        var bhole = Math.floor(analLevel / 2);
-        if (bhole < 0)
-            bhole = 0;
-        else if (bhole > 6)
-            bhole = 6;
-        $("#char_cockDisplay").html('<img src="./images/mainChar/asshole/a' + bhole + '.png" />');
+        let f = "asshole";
+        let img = "a6";
+        switch (levels.get("anal").l) {
+            case 0:
+            case 1:
+                img = "a0";
+                break;
+            case 2:
+            case 3:
+                img = "a1";
+                break;
+            case 4:
+            case 5:
+                img = "a2";
+                break;
+            case 6:
+            case 7:
+                img = "a3";
+                break;
+            case 8:
+                img = "a4";
+                break;
+            case 9:
+                img = "a5";
+                break;
+            default:
+                img = "a6";
+                break;
+        }
+        if (cl.c.cock === 5) {
+            $("#char_cockDisplay").html('<img src="./images/mainChar/asshole/a_v.webp" />');
+            if (gv.get("pussyCum") > 0)
+                $("#char_cockDisplay").append('<img src="./images/mainChar/asshole/v_creampie.webp" />');
+        }
+        else if (cl.c.chastity === null)
+            $("#char_cockDisplay").html('<img src="./images/mainChar/asshole/a_b.webp" />');
+        else
+            $("#char_cockDisplay").html('<img src="./images/mainChar/asshole/a_c.webp" />');
+
+        $("#char_cockDisplay").append('<img src="./images/mainChar/asshole/' + img + '.webp"" />');
+
+        if (gv.getButtCum().total > 0)
+            $("#char_cockDisplay").append('<img src="./images/mainChar/asshole/' + img + '_cum.webp"" />');
     }
 };
 

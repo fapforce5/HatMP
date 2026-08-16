@@ -708,7 +708,7 @@ room193.chat = function (chatID) {
             {
                 chatID: 18,
                 speaker: "missy",
-                text: "Let see how you did. Let me see your pictures. ",
+                text: "Let's see how you did. Let me see your pictures. ",
                 button: [
                     { chatID: 900, text: "...", callback: "" }
                 ]

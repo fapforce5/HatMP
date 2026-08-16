@@ -118,7 +118,7 @@ room700.chat = function (chatID) {
             chatID: 1,
             speaker: "bimbo",
             text: "You have a great body, really manly, but... I feel like you could use a bigger cock. Come to the back room with me " +
-                "and we'll make that cock of your big and meaty!",
+                "and we'll make that cock of yours big and meaty!",
             button: [
                 { chatID: -1, text: "In development", callback: "" }
             ]

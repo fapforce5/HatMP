@@ -957,7 +957,7 @@ room16.chat = function (chatID) {
         {
             chatID: 51,
             speaker: "landlord",
-            text: "Now I know you had a terrible ordeal, but but we're just going to have to keep going in life. " +
+            text: "Now I know you had a terrible ordeal, but we're just going to have to keep going in life. " +
                 "Now I'm sure you two want some alone time in your new room. It's so good having you back.  ",
             button: [
                 { chatID: -1, text: "...", callback: "reset" }
@@ -1074,7 +1074,7 @@ room16.chat = function (chatID) {
             speaker: "thinking",
             text: "What the hell! Where's my " + sc.n("landlord") + "? She would kill any of us if she " +
                 "caught us fucking on her couch! And " + sc.n("lola") + " just taking cock without any " +
-                "embarrasement. Also who the hell is that? ",
+                "embarrassment. Also who the hell is that? ",
             button: [
                 { chatID: 65, text: "...", callback: "cumdump3" }
             ]
@@ -1137,7 +1137,7 @@ room16.chat = function (chatID) {
             speaker: "landlord",
             text: "*sigh* Yes. Again. It's a long story, but " + sc.n("bigguy") + " said a girl's purpose is to be bred. If a girl " +
                 "can't be bred she has no purpose. He then took all our birth control pills and flushed them down " +
-                "the toilet and invited all his friends at at CUM over. Made me put everything in his name. It was a rough losing my Sperm " +
+                "the toilet and invited all his friends at CUM over. Made me put everything in his name. It was a rough losing my Sperm " +
                 "Bank, but we are better now that we are cum receptacles. Gives life a new meaning. No " +
                 "need to worry about silly things like school or work. We're better as mothers. ",
             button: [
@@ -1162,7 +1162,7 @@ room16.chat = function (chatID) {
                 "You're going to look so cute with a baby in you! It really does make the skin glow. I'm sure " +
                 "the boys will be so excited to see who can impregnate you first. When " + sc.n("bigguy") +
                 " let the boys come over the first time, poor " + sc.n("lola") + " had so many penises ejaculate " +
-                "in her vagina she kept slipping on the all the cum leaking out of her. ",
+                "in her vagina she kept slipping on all the cum leaking out of her. ",
             button: [
                 { chatID: 75, text: "...", callback: "" },
             ]

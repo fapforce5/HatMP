@@ -560,13 +560,11 @@ zcl.kneelRedux = function (top, left, ratio, mod, reverse) {
 };
 
 zcl.asshole = function (top, left, ratio, mod, reverse) {
-    let w = 1200;
-    let h = 585;
+    let w = 1400;
+    let h = 975;
     let f = "asshole";
     let img = "a6";
     zcl.kill();
-    if (mod !== "cum")
-        mod = "";
 
     switch (levels.get("anal").l) {
         case 0:
@@ -595,7 +593,20 @@ zcl.asshole = function (top, left, ratio, mod, reverse) {
             img = "a6";
             break;
     }
-    zcl.subDisplay(img + mod + ".png", top, left, ratio, reverse, w, h, f);
+    if (cl.c.cock === 5) {
+        zcl.subDisplay("a_v.webp", top, left, ratio, reverse, w, h, f);
+        if (gv.get("pussyCum") > 0)
+            zcl.subDisplay("v_creampie.webp", top, left, ratio, reverse, w, h, f);
+    }
+    else if (cl.c.chastity === null)
+        zcl.subDisplay("a_b.webp", top, left, ratio, reverse, w, h, f);
+    else
+        zcl.subDisplay("a_c.webp", top, left, ratio, reverse, w, h, f);
+
+
+    zcl.subDisplay(img + ".webp", top, left, ratio, reverse, w, h, f);
+    if (gv.getButtCum().total > 0)
+        zcl.subDisplay(img + "_cum.webp", top, left, ratio, reverse, w, h, f);
 };
 
 zcl.bj = function (top, left, ratio, mod, reverse) {
@@ -730,6 +741,26 @@ zcl.bjpov = function (top, left, ratio, mod, reverse) {
             zcl.subDisplay("bj_" + pg + "_back_" + bjpovdick + ".webp", top, left, ratio, reverse, w, h, f);
         else
             zcl.subDisplay("bj_" + pg + "_open_" + bjpovdick + ".webp", top, left, ratio, reverse, w, h, f);
+    }
+};
+
+zcl.front = function (top, left, ratio, mod, reverse) {
+    let w = 2048;
+    let h = 2048;
+    let f = "front";
+    zcl.kill();
+    let gen = gender.pronoun("f");
+    if (mod === "0")
+        zcl.subDisplay("body0_" + gen + ".webp", top, left, ratio, reverse, w, h, f);
+    else
+        zcl.subDisplay("body_" + gen + ".webp", top, left, ratio, reverse, w, h, f);
+
+
+    if (cl.c.chastity !== null) {
+        zcl.subDisplay("chastity_" + gen + ".webp", top, left, ratio, reverse, w, h, f);
+    }
+    else if(cl.c.cock < 5) {
+        zcl.subDisplay("penis_" + gen + ".webp", top, left, ratio, reverse, w, h, f);
     }
 };
 
@@ -976,6 +1007,25 @@ zcl.face = function (top, left, ratio, mod, color, reverse) {
     }
 };
 
+zcl.sissygasm = function (top, left, ratio, mod, reverse) {
+    zcl.kill();
+    let w = 2048;
+    let h = 2048;
+    let f = "sissygasm";
+    let g = "l";
+    if (cl.c.chastity !== null)
+        g = "c";
+    else if (cl.c.cock === 5)
+        g = "v";
+    else if (!gender.canUseCock())
+        g = "t";
+
+    if (mod === "p" && cl.c.cock === 5)
+        zcl.subDisplay("view0_p.webp", top, left, ratio, reverse, w, h, f);
+    else
+        zcl.subDisplay("view0_" + g + ".webp", top, left, ratio, reverse, w, h, f);
+};
+
 zcl.backOfHead = function (top, left, ratio, mod, reverse) {
     zcl.kill();
     let dback = true;
@@ -1020,7 +1070,9 @@ zcl.allfours = function (top, left, ratio, mod, reverse) {
         zcl.subDisplay(match + ".webp", top, left, ratio, reverse, w, h, f);
     }
 
-    if (gender.canUseCock())
+    if (cl.c.cock === 5)
+        zcl.subDisplay("vagina.webp", top, left, ratio, reverse, w, h, f);
+    else if (gender.canUseCock())
         zcl.subDisplay("penis_big.webp", top, left, ratio, reverse, w, h, f);
     else
         zcl.subDisplay("penis_small.webp", top, left, ratio, reverse, w, h, f);
@@ -1148,7 +1200,8 @@ zcl.bent = function (top, left, ratio, mod, reverse = false) {
     else
         zcl.subDisplay("body_girl.png", top, left, ratio, reverse, w, h, f);
 
-    if (cl.c.panties !== null)
+
+    if (cl.c.panties !== null && mod !== "pissass")
         zcl.subDisplay("panties.png", top, left, ratio, reverse, w, h, f);
     else if (cl.c.chastity !== null) 
         zcl.subDisplay("dick_chastity.png", top, left, ratio, reverse, w, h, f);
@@ -1157,7 +1210,9 @@ zcl.bent = function (top, left, ratio, mod, reverse = false) {
     else
         zcl.subDisplay("dick_big.png", top, left, ratio, reverse, w, h, f);
 
-    if (mod === "cum")
+    if (mod === "pissass")
+        zcl.subDisplay("pissass.png", top, left, ratio, reverse, w, h, f);
+    else if (mod === "cum")
         zcl.subDisplay("cum.png", top, left, ratio, reverse, w, h, f);
 };
 

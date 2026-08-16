@@ -257,7 +257,7 @@ room327.chat = function (chatID) {
             "FUCK! My nips are sore",
             "I wonder who put the bomp in the bomp-de-bomp?",
             "I hope my boobs don't turn into pancakes if I get milked too much",
-            "OOoooooo why does it have to pull to hard to get the milk out?",
+            "OOoooooo why does it have to pull too hard to get the milk out?",
             "If I ate nothing but chocolate would I make chocolate milk?",
             "Is a lady bug a lady in other languages?",
             "I wonder if I would be happy just living in a cow pasture getting milked? Would I have to get fucked by a bull?",

@@ -304,7 +304,7 @@ room155.chat = function (chatID) {
             speaker: "bitch",
             text: "I know you wanted to do a roast for tonight's gathering, but I think it's better " +
                 "we do the sushi spread. This bitch here wants to poke around my room. We'll see how " +
-                gender.pronoun("she") + " like being poked by rude old men instead! ",
+                gender.pronoun("she") + " likes being poked by rude old men instead! ",
             button: [
                 { chatID: 15, text: "huh? ", callback: "" },
             ]

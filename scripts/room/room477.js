@@ -1,7 +1,12 @@
 ﻿//Room name
 var room477 = {};
 room477.main = function () {
-    if (g.isNight()) {
+    if (g.pass === "endCave477") {
+        g.pass = null;
+        nav.bg("477_cottage/c5.jpg");
+        chat(28, 477);
+    }
+    else if (g.isNight()) {
         if (sc.getMissionTask("p", "*missy", 1).inProgress) {
             chat(23, 477);
         }
@@ -292,7 +297,8 @@ room477.chatcatch = function (callback) {
         case "c9":
             inv.add("envelope");
             char.addtime(120);
-            gv.set("oncase", null);
+            sc.completeMissionTask("p", "*missy", 1);
+            sc.startMissionTask("p", "*missy", 2);
             char.room(460);
             break;
         case "cave0":
@@ -564,118 +570,87 @@ room477.chat = function (chatID) {
                 { chatID: -1, text: "...", callback: "resetsearch" },
             ]
         },
-        //{
-        //    chatID: 13,
-        //    speaker: "queen",
-        //    text: "That's why I was hoping for. I'm going to help you. The cult has been nothing but blight on this town for " +
-        //        "too long. They ruined my life. Let untie you and give you what you need. Promise to behave yourself?",
-        //    button: [
-        //        { chatID: 14, text: "Really? Yes. I won't do anything! ", callback: "c5" },
-        //    ]
-        //},
-        //{
-        //    chatID: 14,
-        //    speaker: "queen",
-        //    text: "I hope you don't mind nudity. I never wear clothing unless I have to. Now let me grab my list to help you. ",
-        //    button: [
-        //        { chatID: 15, text: "I don't mind at all!", callback: "c6" },
-        //    ]
-        //},
-        //{
-        //    chatID: 15,
-        //    speaker: "queen",
-        //    text: "I put it over here somewhere... Oh there it is under all these scrolls. ",
-        //    button: [
-        //        { chatID: 16, text: "...", callback: "c7" },
-        //    ]
-        //},
-        //{
-        //    chatID: 16,
-        //    speaker: "queen",
-        //    text: "Here is a list of all everyone in the town that works for the cult. I'm sure you'll find it most " +
-        //        "enlightening. ",
-        //    button: [
-        //        { chatID: 17, text: "So why are you helping me? ", callback: "c8" },
-        //    ]
-        //},
-        //{
-        //    chatID: 17,
-        //    speaker: "queen",
-        //    text: "I'll share my store with you since it may help you on your journey. " + 
-        //        "Once apon a time I was a young lad trying to find my place in this world when I met a beautiful young girl. " +
-        //        "It was love at first sight. It wasn't long before she brought me under false pretenses to the cult. Like you. " +
-        //        "I was chained to the walls and forced to make offerings. ",
-        //    button: [
-        //        { chatID: 18, text: "I do remember that. ", callback: "" },
-        //    ]
-        //},
-        //{
-        //    chatID: 18,
-        //    speaker: "queen",
-        //    text: "After some time I was selected to be bathed in the cum and undergo the transformation. " +
-        //        "As it turns out I was able to tranform into this beautiful body you see before you. I " +
-        //        "thought my transformation alone was going to bring about Azrael, but I learned that was just the first " +
-        //        "ritual with each ritual more horrible than the last. No one should go through that. I'm in a constant state " +
-        //        "of fear. ",
-        //    button: [
-        //        { chatID: 19, text: "That's terrible.", callback: "" },
-        //    ]
-        //},
-        //{
-        //    chatID: 19,
-        //    speaker: "queen",
-        //    text: "As a cherry on top Ubel made me his personal servent, if you know what I mean. I was made to serve hime for two years. " +
-        //        "But as the cult continued to grow and entwine with the town and as Ubel took on more personal servents I saw my " +
-        //        "oppurtunity to take on a new role and be the liason between the cult and the people of this town. ",
-        //    button: [
-        //        { chatID: 20, text: "How many people do you work with? ", callback: "c5" },
-        //    ]
-        //},
-        //{
-        //    chatID: 20,
-        //    speaker: "queen",
-        //    text: "Oh my dear sweet child. Nearly everyone is part of the cult or is helping in some way. Some are happy with the money " +
-        //        "we provide, and some, like the police, prefer the sexual favors we provide. Those that tried to fight us end up in " +
-        //        "in the cells within the compound. ",
-        //    button: [
-        //        { chatID: 21, text: "So why don't you take them down? ", callback: "" },
-        //    ]
-        //},
-        //{
-        //    chatID: 21,
-        //    speaker: "queen",
-        //    text: "The cult has many eyes fixated on me. That's why I live out here, free from all. Now You've stayed too long; you " +
-        //        "must be on your way. Keep this note safe and tell no one I gave it to you. From what I've heard you are the best " +
-        //        "chance for ending this terrible nightmare of the town. Go now and keep my secret from all. ",
-        //    button: [
-        //        { chatID: -1, text: "Thanks! ", callback: "c9" },
-        //    ]
-        //},
-        //{
-        //    chatID: 22,
-        //    speaker: "thinking",
-        //    text: "He looks pissed at me... ",
-        //    button: [
-        //        { chatID: -1, text: "...", callback: "resetsearch" },
-        //    ]
-        //},
-        //{
-        //    chatID: 23,
-        //    speaker: "thinking",
-        //    text: "Oh gross! Where did she get so many severed penises and balls? ",
-        //    button: [
-        //        { chatID: -1, text: "...", callback: "resetsearch" },
-        //    ]
-        //},
-        //{
-        //    chatID: 24,
-        //    speaker: "thinking",
-        //    text: "That's a lot of food for just one person. ",
-        //    button: [
-        //        { chatID: -1, text: "...", callback: "resetsearch" },
-        //    ]
-        //},
-        
+        {
+            chatID: 28,
+            speaker: "queen",
+            text: "I hope you don't mind the nude female body. I never wear clothing unless I have to. " +
+                "Now let me grab my list to help you. ",
+            button: [
+                { chatID: 29, text: "I don't mind at all!", callback: "c6" },
+            ]
+        },
+        {
+            chatID: 29,
+            speaker: "queen",
+            text: "I put it over here somewhere... Oh there it is under all these scrolls. ",
+            button: [
+                { chatID: 30, text: "...", callback: "c7" },
+            ]
+        },
+        {
+            chatID: 30,
+            speaker: "queen",
+            text: "Here is a list of all everyone in the town that works for the cult. I'm sure you'll find it most " +
+                "enlightening. Someone on this list will have the information you need sneak into " +
+                "the castle and free Missy so she may help rid us all of this horrible cult! ",
+            button: [
+                { chatID: 31, text: "So why are you helping me? ", callback: "c8" },
+            ]
+        },
+        {
+            chatID: 31,
+            speaker: "queen",
+            text: "I'll share my story with you since it may help you on your journey. " + 
+                "Once upon a time I was a young lad trying to find my place in this world when I met a beautiful young girl. " +
+                "It was love at first sight. It wasn't long before she brought me under false pretenses to the cult. Like you. " +
+                "I was chained to the walls and forced to make offerings. ",
+            button: [
+                { chatID: 32, text: "I do remember that. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 32,
+            speaker: "queen",
+            text: "After some time I was selected to be bathed in the cum and undergo the transformation. " +
+                "As it turns out I was able to transform into this beautiful body you see before you. I " +
+                "thought my transformation alone was going to bring about Azrael, but I learned that was just the first " +
+                "ritual with each ritual more horrible than the last. No one should go through that. I'm in a constant state " +
+                "of fear. ",
+            button: [
+                { chatID: 33, text: "That's terrible.", callback: "" },
+            ]
+        },
+        {
+            chatID: 33,
+            speaker: "queen",
+            text: "As a cherry on top Ubel made me his personal servant, if you know what I mean. I was made to serve him for years. " +
+                "But as the cult continued to grow and entwine with the town and as Ubel took on more personal servants I saw my " +
+                "opportunity to take on a new role and be the liaison between the cult and the people of this town. ",
+            button: [
+                { chatID: 34, text: "How many people do you work with? ", callback: "c5" },
+            ]
+        },
+        {
+            chatID: 34,
+            speaker: "queen",
+            text: "Oh my dear sweet child. Nearly everyone is part of the cult or is helping in some way. Some are happy with the money " +
+                "we provide, and some, like the police, prefer the sexual favors we provide. Those that tried to fight us end up " +
+                "in the cells within the compound. ",
+            button: [
+                { chatID: 35, text: "So why don't you take them down? ", callback: "" },
+            ]
+        },
+        {
+            chatID: 35,
+            speaker: "queen",
+            text: "The cult has many eyes fixated on me. That's why I live out here, free from all. Now you've stayed too long; you " +
+                "must be on your way. Keep this note safe and only tell those from Missy's agency. No one else. " +
+                "From what I've heard you are the best " +
+                "chance for ending this terrible nightmare of the town. Go now and keep my secret from all. ",
+            button: [
+                { chatID: -1, text: "Thanks! ", callback: "c9" },
+            ]
+        },
     ];
     if (cArray.length > chatID && chatID > -1)
         return cArray[chatID];

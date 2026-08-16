@@ -383,7 +383,7 @@ room175.chat = function (chatID) {
         {
             chatID: 19,
             speaker: "p",
-            text: "To pass this course, you have to be able to take a cock. Lucky your you I have a cock toy to test you. Ready slut?",
+            text: "To pass this course, you have to be able to take a cock. Lucky for you I have a cock toy to test you. Ready slut?",
             button: [
                 { chatID: 20, text: "...ready...", callback: "anal103" }
             ]
@@ -638,7 +638,7 @@ room175.chat = function (chatID) {
         {
             chatID: 47,
             speaker: "p",
-            text: "Now class be quit. " + sc.n("me") + " needs to focus on her bussy and tell us what I inserted. " +
+            text: "Now class be quiet. " + sc.n("me") + " needs to focus on her bussy and tell us what I inserted. " +
                 "Are you ready for your first object? ",
             button: [
                 { chatID: 48, text: "Oh yes! So ready!", callback: "anal212_2" },
@@ -712,7 +712,7 @@ room175.chat = function (chatID) {
         {
             chatID: 55,
             speaker: "p",
-            text: "Nope. It's a barbie. I almost thought you would get thine one right. Ready for " +
+            text: "Nope. It's a barbie. I almost thought you would get this one right. Ready for " +
                 "your final object?",
             button: [
                 { chatID: 57, text: "I am", callback: "anal212_8" },
@@ -825,7 +825,7 @@ room175.chat = function (chatID) {
         {
             chatID: 67,
             speaker: "!bbc",
-            text: "Fuck yeah. You know what I like best about sissies? No matter how " +
+            text: "Fuck yeah. You know what I like best about sissies? No matter " +
                 "how bad my day is, at least I'm not taking dick like a sissy! hehehehe",
             button: [
                 { chatID: 68, text: "*moaning from that big cock fucking your bussy*", callback: "anal421_4" },

@@ -310,7 +310,7 @@ room752.chat = function (chatID) {
         {
             chatID: 11,
             speaker: "me",
-            text: "To be honest that locket is my dear departed grandmother's It was taken from me by this terrible dirty " +  
+            text: "To be honest that locket is my dear departed grandmother's. It was taken from me by this terrible dirty " +
                 "old man. When I went to get it back he punched me in my face and told me it was here. I want nothing else " +
                 "than to get it back to keep her memory. ",
             button: [

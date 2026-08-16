@@ -494,18 +494,18 @@ sc.init = function () {
                             { id: 0, txt: "Always trust your friends. ", show: true, mStatus: 0, roomId: 501 },
                         ]
                 },
-                //{
-                //    missionName: "*wife", mStatus: -1, title: "Wives?", desc: "Our forever", task:
-                //        [
-                //            { id: 0, txt: "My new vagina", show: true, mStatus: 0, roomId: 525 },
-                //        ]
-                //},
-                //{
-                //    missionName: "*bff", mStatus: -1, title: "Best Friends Forever", desc: "Never be more than friends", task:
-                //        [
-                //            { id: 0, txt: "New petite amie.", show: true, mStatus: 0, roomId: 525 },
-                //        ]
-                //},
+                {
+                    missionName: "*wife", mStatus: -1, title: "Wives?", desc: "Our forever", task:
+                        [
+                            { id: 0, txt: "My new vagina", show: true, mStatus: 0, roomId: 525 },
+                        ]
+                },
+                {
+                    missionName: "*bff", mStatus: -1, title: "Best Friends Forever", desc: "Never be more than friends", task:
+                        [
+                            { id: 0, txt: "New petite amie.", show: true, mStatus: 0, roomId: 525 },
+                        ]
+                },
             ]
         },
         {
@@ -578,6 +578,7 @@ sc.init = function () {
                         [
                             { id: 0, txt: "Cum in her tight muscle mommy pussy.", show: true, mStatus: 0, roomId: 555 },
                             { id: 1, txt: "Wait. ", show: true, mStatus: 0, roomId: 555 },
+                            { id: 2, txt: "My baby's mama. ", show: true, mStatus: 0, roomId: 555 },
                         ]
                 },
             ]
@@ -1018,6 +1019,9 @@ sc.init = function () {
                         [
                             { id: 0, txt: "Met at Missy's", show: true, mStatus: 0, roomId: 203 },
                             { id: 1, txt: "Get More information from the Forest Queen", show: true, mStatus: 0, roomId: 477 },
+                            { id: 2, txt: "Bring the letter from the Forest Queen", show: true, mStatus: 0, roomId: 203 },
+                            { id: 3, txt: "Ask each person on the list if they have the code", show: true, mStatus: 0, roomId: 0 },
+                            { id: 4, txt: "Report back to Missy's Dective Agency", show: true, mStatus: 0, roomId: 203 },
                         ]
                 },
             ]
@@ -1128,6 +1132,13 @@ sc.init = function () {
                             { id: 0, txt: "Have you brought me the panties?", show: true, mStatus: 0, roomId: 950 },
                         ]
                 },
+                {
+                    missionName: "*panties", mStatus: 0, title: "Panties", desc: "Bring me their panties!", task:
+                        [
+                            { id: 0, txt: "Break into his office at night", show: true, mStatus: 0, roomId: 250 },
+                            { id: 1, txt: "Steal the panties", show: true, mStatus: 0, roomId: 303 },
+                        ]
+                },
             ]
         },
         {
@@ -1171,6 +1182,12 @@ sc.init = function () {
                             { id: 0, txt: "Saved your ass", show: true, mStatus: 0, roomId: 100 },
                             { id: 1, txt: "You caught me. Hehehe", show: true, mStatus: 0, roomId: 727 },
                             { id: 2, txt: "Put a litter of kitties inside me", show: true, mStatus: 0, roomId: 727 },
+                        ]
+                },
+                {
+                    missionName: "*leave", mStatus: 0, title: "Betrayed", desc: "I'm going home", task:
+                        [
+                            { id: 0, txt: "I'm never seeing you again!", show: true, mStatus: 0, roomId: 101 },
                         ]
                 },
             ]
@@ -1732,6 +1749,7 @@ sc.init = function () {
                             { id: 6, txt: "Old friends in the shower", show: true, mStatus: 0, roomId: 482 },
                             { id: 7, txt: "My toilet has a name", show: true, mStatus: 0, roomId: 482 },
                             { id: 8, txt: "BJ girl", show: true, mStatus: 0, roomId: 479 },
+                            { id: 9, txt: "Cock Gobbler's story", show: true, mStatus: 0, roomId: 480 },
                         ]
                 },
                 {
@@ -2206,7 +2224,7 @@ sc.taskGetStep = function (name, missionName) {
     var ml = sc.getMission(name, missionName);
     if (ml.notStarted)
         return -1;
-    else if (ml.fail)
+    else if (ml.fail || ml.mStatus === 102)
         return -2;
     for (var k = 0; k < sc.charMission[ml.i].mission[ml.j].task.length; k++) {
         if (sc.charMission[ml.i].mission[ml.j].task[k].mStatus < 100)
@@ -2408,14 +2426,12 @@ sc.load = function (ra) {
     }
 
     for (i = 0; i < ra.charMission.length; i++) {
-
         for (j = 0; j < ra.charMission[i].mission.length; j++) {
 
             var ml = sc.getMission(ra.charMission[i].name, ra.charMission[i].mission[j].missionName);
             if (ml !== null) {
                 sc.charMission[ml.i].mission[ml.j].mStatus = ra.charMission[i].mission[j].mStatus; //set overall mission status
                 for (k = 0; k < ra.charMission[i].mission[j].task.length; k++) {
-
                     var mlk = sc.getMissionTaskId(ml.i, ml.j, ra.charMission[i].mission[j].task[k].id);
                     if (mlk > -1)
                         sc.charMission[ml.i].mission[ml.j].task[mlk].mStatus = ra.charMission[i].mission[j].task[k].mStatus;

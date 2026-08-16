@@ -30,6 +30,9 @@ room404.btnclick = function (name) {
         case "spanky":
             if (sc.getMission("spanky", "shop").notStarted)
                 chat(0, 404);
+            else if (missy.getenvelope("spanky").active) {
+                chat(10, 404);
+            }
             else {
                 g.pass = "general";
                 char.room(401);
@@ -55,6 +58,30 @@ room404.chatcatch = function (callback) {
             sc.completeMissionTask("spanky", "hypno", 2);
             char.addtime(60);
             char.room(0);
+            break;
+        case "env0":
+            if (missy.getenvelope("spanky").hasKey) {
+                if (sc.getMission("envy", "gf").startedOrComplete) {
+
+                }
+                else {
+                    chat(13, 404);
+                    missy.setenvelope("spanky");
+                }
+            }
+            else {
+                chat(11, 404);
+                missy.setenvelope("spanky");
+            }
+            break;
+        case "money500":
+            if (gv.get("money") > 499) {
+                gv.mod("money", -500);
+                missy.setenvelope("spanky");
+                chat(17, 404);
+            }
+            else
+                chat(18, 404);
             break;
         default:
             break;
@@ -157,6 +184,104 @@ room404.chat = function (chatID) {
                 "Get out of my store! ",
             button: [
                 { chatID: -1, text: "Oh crap", callback: "envy100" }
+            ]
+        },
+        {
+            chatID: 10,
+            speaker: "me",
+            text: "Hey " + sc.n("spanky") + " my ol' buddy. You wouldn't know how to get in the back " +
+                "door of the C.U.M. compound would you? ",
+            button: [
+                { chatID: -1, text: "...", callback: "env0" }
+            ]
+        },
+        {
+            chatID: 11,
+            speaker: "spanky",
+            text: "Naw man, I don't. But speaking of back doors, one time I was fuckin’ this dude straight up in his back door and holy shit it was unreal, like he was just so fuckin’ happy to take it I couldn’t believe it. The second I slid in he started pushin’ back on me hard, moanin’ and carryin’ on like a total bitch in heat, tellin’ me over and over how good it felt gettin’ stretched out by my dick. I was just rammin’ him deep as I could go, no mercy, and he never once told me to slow down or ease up, just kept beggin’ for more, harder, deeper, like this was the best ass-fuckin’ he ever got in his life.",
+            button: [
+                { chatID: 12, text: "Really", callback: "" }
+            ]
+        },
+        {
+            chatID: 12,
+            speaker: "spanky",
+            text: "Yeah man. He’d grab the sheets and shove himself back onto me every time I pulled out, like he couldn’t stand even a second without me buried in him, and the whole time he’s moanin’ about how full he felt and how he wanted me to just wreck that hole. I musta been goin’ at him for a good twenty minutes straight and he was still happy as hell about it, never once acted like it was too much, just pure fuckin’ enthusiasm the whole way through.",
+            button: [
+                { chatID: -1, text: "Cool. Thanks for the info. ", callback: "" }
+            ]
+        },
+        {
+            chatID: 13,
+            speaker: "spanky",
+            text: "Anything for a bro. The code's 1-2-3-4-5. But speaking of back doors, one time I was fuckin’ this dude straight up in his back door and holy shit it was unreal, like he was just so fuckin’ happy to take it I couldn’t believe it. The second I slid in he started pushin’ back on me hard, moanin’ and carryin’ on like a total bitch in heat, tellin’ me over and over how good it felt gettin’ stretched out by my dick. I was just rammin’ him deep as I could go, no mercy, and he never once told me to slow down or ease up, just kept beggin’ for more, harder, deeper, like this was the best ass-fuckin’ he ever got in his life.",
+            button: [
+                { chatID: 12, text: "Really", callback: "" }
+            ]
+        },
+        {
+            chatID: 14,
+            speaker: "spanky",
+            text: "You know what. I do have it and I'm not giving it to you! You ruined my chances with " +
+                sc.n("envy") + " when you told her about the hypno. No way am I gunna give you the code! ",
+            button: [
+                { chatID: 15, text: "How about a wet sloppy blow job? ", callback: "" },
+                { chatID: 16, text: "How about I let you pick a hole and fuck it? ", callback: "" },
+                { chatID: -1, text: "How about $500", callback: "money500" },
+                { chatID: -1, text: "Damn. I'll be back later to get that code. ", callback: "" }
+
+            ]
+        },
+        {
+            chatID: 15,
+            speaker: "spanky",
+            text: "No way! If you didn't ruin it I would be getting wet sloppy blowjobs everyday from " +
+                sc.n("envy") + "! So no, not going to work!",
+            button: [
+                { chatID: 15, text: "How about I let you pick a hole and fuck it? ", callback: "" },
+                { chatID: -1, text: "How about $500", callback: "money500" },
+                { chatID: -1, text: "Damn. I'll be back later to get that code. ", callback: "" }
+
+            ]
+        },
+        {
+            chatID: 16,
+            speaker: "spanky",
+            text: "No way! If you didn't ruin it I would be nuts deep inside " +
+                sc.n("envy") + " every night! So no, not going to work!",
+            button: [
+                { chatID: 15, text: "How about a wet sloppy blow job? ", callback: "" },
+                { chatID: -1, text: "How about $500", callback: "money500" },
+                { chatID: -1, text: "Damn. I'll be back later to get that code. ", callback: "" }
+
+            ]
+        },
+        {
+            chatID: 17,
+            speaker: "spanky",
+            text: "Yeah. I can always use money. Sure I'll take $500. The code's 1-2-3-4-5. If you weren't a " +
+                "dick I would have just given it to you. ",
+            button: [
+                { chatID: -1, text: "Thanks. ", callback: "" }
+
+            ]
+        },
+        {
+            chatID: 18,
+            speaker: "spanky",
+            text: "Yeah. I can always use money. Sure I'll take $500. ",
+            button: [
+                { chatID: 19, text: "I don't have the money yet", callback: "" }
+
+            ]
+        },
+        {
+            chatID: 19,
+            speaker: "spanky",
+            text: "When you get the money I'll give you the code. ",
+            button: [
+                { chatID: -1, text: "I'll come back with the $500 to get the code. ", callback: "" }
+
             ]
         },
     ];

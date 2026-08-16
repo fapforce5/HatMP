@@ -558,7 +558,7 @@ room221.chat = function (chatID) {
             {
                 chatID: 11,
                 speaker: "bitch",
-                text: "Ugh! You aren't Ceclia. You look like some idiot that Missy dragged off the street as one of her projects. " +
+                text: "Ugh! You aren't Cecilia. You look like some idiot that Missy dragged off the street as one of her projects. " +
                     "Tell me, idiot, are you house broken? ",
                 button: [
                     { chatID: 12, text: "House broken? ", callback: "" },
@@ -584,7 +584,7 @@ room221.chat = function (chatID) {
             {
                 chatID: 14,
                 speaker: "bitch",
-                text: "I see Missy's little project is now as stupid as she looks. Great work advertising you only have 2 brain. " +
+                text: "I see Missy's little project is now as stupid as she looks. Great work advertising you only have 2 brain " +
                     "cells. Now let me in. ",
                 button: [
                     { chatID: -1, text: "Sure. Head on in. ", callback: "appIn" },
@@ -640,9 +640,9 @@ room221.chat = function (chatID) {
                 chatID: 20,
                 speaker: "jeffery",
                 text: "Ooooo! I can smell your panties! Dirty dirty panties! Give me your panties! I need them. I'll tell you " +
-                    "what. I'll give you $50 for your panties if you give them to me know. I love a fresh pair of panties! ",
+                    "what. I'll give you $50 for your panties if you give them to me now. I love a fresh pair of panties! ",
                 button: [
-                    { chatID: 21, text: "Sure, Let me to go the bathroom and take them off. ", callback: "" },
+                    { chatID: 21, text: "Sure, Let me go to the bathroom and take them off. ", callback: "" },
                     { chatID: 28, text: "No. I'm not giving you my panties. ", callback: "" },
                 ]
             },

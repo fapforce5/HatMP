@@ -159,7 +159,7 @@ room910.chat = function (chatID) {
         {
             chatID: 9,
             speaker: "govlady",
-            text: "That should do it. How you do like your new name?",
+            text: "That should do it. How do you like your new name?",
             button: [
                 { chatID: 10, text: "...", callback: "" }
             ]

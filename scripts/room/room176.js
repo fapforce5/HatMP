@@ -717,7 +717,7 @@ room176.chat = function (chatID) {
             {
                 chatID: 25,
                 speaker: "p",
-                text: "Are chewing my labia? Who told you... What... ",
+                text: "Are you chewing my labia? Who told you... What... ",
                 button: [
                     { chatID: 26, text: "....", callback: "oral13" },
                 ]
@@ -813,7 +813,7 @@ room176.chat = function (chatID) {
                 chatID: 36,
                 speaker: "!philbert",
                 text: "It would really suck if they knew you liked to suck dildos and stuff your face in other " +
-                    "boy's asses. I talk to them sometimes, It would be a shame if I let it slip what a sissy you are. " +
+                    "boy's asses. I talk to them sometimes, it would be a shame if I let it slip what a sissy you are. " +
                     "I bet they would be sooooo disappointed in you. You know I could " +
                     "keep your secret, but you would have to do stuff for me. ",
                 button: [
@@ -978,7 +978,7 @@ room176.chat = function (chatID) {
             {
                 chatID: 53,
                 speaker: "!chris",
-                text: "I heard that vagina's smell bad. Is that true? ",
+                text: "I heard that vaginas smell bad. Is that true? ",
                 button: [
                     { chatID: 54, text: "...", callback: "" },
                 ]
@@ -986,7 +986,7 @@ room176.chat = function (chatID) {
             {
                 chatID: 54,
                 speaker: "p",
-                text: "Oh sweet, simple " + sc.n("!chris") + ". Vagina's taste and smell wonderful, unless she " +
+                text: "Oh sweet, simple " + sc.n("!chris") + ". Vaginas taste and smell wonderful, unless she " +
                     "has a problem. It's rare and I wouldn't worry too much about the smell. Just put your tongue in " +
                     "there and get to work. A sissy like you will love the smell and taste. ",
                 button: [
@@ -1016,7 +1016,7 @@ room176.chat = function (chatID) {
                 chatID: 57,
                 speaker: "p",
                 text: "You'll never please a woman. It's a good thing you were made to take cock. Go " +
-                    "rape your face with a dildo in the corner until everyone is done. You are a dissapointment. ",
+                    "rape your face with a dildo in the corner until everyone is done. You are a disappointment. ",
                 button: [
                     { chatID: 58, text: "Yes ma'am", callback: "oral203_bad" },
                 ]
@@ -1041,7 +1041,7 @@ room176.chat = function (chatID) {
             {
                 chatID: 60,
                 speaker: "martha",
-                text: "Now to give your your assigned tasks, everyone welcome Mr. Tudor, our founder. ",
+                text: "Now to give your assigned tasks, everyone welcome Mr. Tudor, our founder. ",
                 button: [
                     { chatID: 61, text: "...", callback: "final_a" },
                 ]
@@ -1075,7 +1075,7 @@ room176.chat = function (chatID) {
             {
                 chatID: 63,
                 speaker: "tudor",
-                text: "I was lucky in business and made a sizeable amout of money. More money " +
+                text: "I was lucky in business and made a sizeable amount of money. More money " +
                     "than any one man can spend in his lifetime and was looking to invest it in " +
                     "businesses that I found of interest. That's when I came across a young spitfire " +
                     "Missy. She was working on building her PI business from her living room and I tell " +
@@ -1101,14 +1101,14 @@ room176.chat = function (chatID) {
                 chatID: 65,
                 speaker: "tudor",
                 text: "First, a sissy should be pretty. This Saturday we will have the biannual " +
-                    "fashon show. This is your chance to wear your prettiest clothes for a large private " +
-                    "audiance. <br/>" +
+                    "fashion show. This is your chance to wear your prettiest clothes for a large private " +
+                    "audience. <br/>" +
                     "Second, a sissy should be charismatic. You will get a phone number from " +
                     "a boy at the fast food restaurant. <br/>" +
                     "Third, a sissy should be sexy. This Friday night will be femboy Friday " +
                     "at the Fat Tony's Gentlemen's Club. It will be a chance to show you know how " +
                     "to use your body for seduction. <br/>" +
-                    "Forth, and finally, a sissy fucks! You must get fucked up your tight little " +
+                    "Fourth, and finally, a sissy fucks! You must get fucked up your tight little " +
                     "bussies. We'll use your Purity apps on your phones to track it. ",
                 button: [
                     { chatID: 66, text: "...", callback: "" },
@@ -1181,7 +1181,7 @@ room176.chat = function (chatID) {
                 speaker: "black",
                 text: "Like " + sc.n("martha") + " was saying. The school will remain unlocked between " +
                     "classes. For those of you that know you're still disgusting little piggies that " +
-                    "need to be punished you can take the elevator to the black room and recieve your " +
+                    "need to be punished you can take the elevator to the black room and receive your " +
                     "much needed punishments. ",
                 button: [
                     { chatID: 74, text: "...", callback: "" },
@@ -1209,7 +1209,7 @@ room176.chat = function (chatID) {
                     "But enough about your futures, now it's time for the graduation. We have a " +
                     "little ceremony, as we call each of you up to receive your diploma you will " +
                     "kiss the head of each of our dicks and thank us for the pleasure of serving " +
-                    "us then receive you diploma. ",
+                    "us then receive your diploma. ",
                 button: [
                     { chatID: 76, text: "[Wait for your turn]", callback: "final3" },
                 ]

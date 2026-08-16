@@ -139,6 +139,7 @@ gv.init = function () {
 
         { n: "jobConstructionPay", t: 0, q: "zero" },
         { n: "forbotenLove", t: 0, q: "zero" },
+        { n: "constkareem", t: false, q: "bool" },
 
         { n: "janiceDatr", t: null, q: "string" },
 

@@ -646,7 +646,7 @@ room211.chat = function (chatID) {
             {
                 chatID: 6,
                 speaker: "!thomas",
-                text: "I quite looking forward to this. I've always felt a bit feminine, maybe " +
+                text: "I'm quite looking forward to this. I've always felt a bit feminine, maybe " +
                     "this is the thing that pushes me to the real me. ",
                 button: [
                     { chatID: -1, text: "Me too", callback: "" },
@@ -799,7 +799,7 @@ room211.chat = function (chatID) {
             {
                 chatID: 23,
                 speaker: "philbert",
-                text: "You can lie all you want. Everyone knows what an sissy slut you are! ",
+                text: "You can lie all you want. Everyone knows what a sissy slut you are! ",
                 button: [
                     { chatID: 24, text: "Put me down! You're going to rip my panties! ", callback: "" },
                 ]
@@ -807,7 +807,7 @@ room211.chat = function (chatID) {
             {
                 chatID: 24,
                 speaker: "philbert",
-                text: "Ok slut! You need to get changed into you sissy outfit anyway. ",
+                text: "Ok slut! You need to get changed into your sissy outfit anyway. ",
                 button: [
                     { chatID: -1, text: "hrumph", callback: "initviewtrainee" },
                 ]
@@ -915,7 +915,7 @@ room211.chat = function (chatID) {
             {
                 chatID: 37,
                 speaker: "missy",
-                text: "I'm going to give you the afteroon off so you can focus on " +
+                text: "I'm going to give you the afternoon off so you can focus on " +
                     "your sissy final. ",
                 button: [
                     { chatID: -1, text: "Thanks ma'am!", callback: "room203" },

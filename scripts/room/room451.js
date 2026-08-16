@@ -939,7 +939,7 @@ room451.chat = function (chatID) {
             "Why does sucking cock turn me on so much? ",
             "Nom nom nom!",
             "Sissies love cock more than other girls, that's why gloryholes always have a sissy on the inside. ",
-            "Hi ho, hi ho, it's off to suck I go, with puffy lips, and sugar tits, hi ho, hi ho, i'a a ho",
+            "Hi ho, hi ho, it's off to suck I go, with puffy lips, and sugar tits, hi ho, hi ho, I'm a ho",
             "I am the greatest cock sucker in the world! "
         ];
         return {
@@ -953,8 +953,8 @@ room451.chat = function (chatID) {
     }
     else if (chatID === 996) {
         let txt1 = [
-            "Everytime I fart I feel a bit more cum leak down my leg. ",
-            "I think I can feel their cum trying to swimming deeper into me.",
+            "Every time I fart I feel a bit more cum leak down my leg. ",
+            "I think I can feel their cum trying to swim deeper into me.",
             "I love cum soooo much! ",
             "I'm a dirty dirty slut. ",
             "I do love shoving cocks up my bussy!",
@@ -1082,7 +1082,7 @@ room451.chat = function (chatID) {
             {
                 chatID: 13,
                 speaker: "cecilia",
-                text: "I love you cum! Thank you sexy!",
+                text: "I love your cum! Thank you sexy!",
                 button: [
                     { chatID: -1, text: "[Finish up]", callback: "bj11" }
                 ]

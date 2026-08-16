@@ -45,7 +45,7 @@ room488.chatcatch = function (callback) {
             }
             else {
                 nav.bg("488_cabin/inside.webp");
-                chat(8, 488);
+                chat(9, 488);
             }
             break;
         case "room460":
@@ -136,9 +136,8 @@ room488.chat = function (chatID) {
         {
             chatID: 8,
             speaker: "thinking",
-            text: "There's no one here. Should I look around, or just go? ",
+            text: "noop ",
             button: [
-                { chatID: -1, text: "Look around", callback: "insidey" },
                 { chatID: -1, text: "Leave", callback: "leave" },
             ]
         },

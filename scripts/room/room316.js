@@ -1387,7 +1387,7 @@ room316.chat = function (chatID) {
         return {
             chatID: 997,
             speaker: "me",
-            text: "Oh. I only have $" + g.internal + ". It's all yours to help pay you bills. ",
+            text: "Oh. I only have $" + g.internal + ". It's all yours to help pay your bills. ",
             button: [
                 { chatID: -1, text: "...", callback: "buildMenu" }
             ]
@@ -1455,7 +1455,7 @@ room316.chat = function (chatID) {
                 foundhim = true;
                 break;
             case "jabari":
-                dtxt = "Oh wow! Great choice. I looks like the kind of man that knows " +
+                dtxt = "Oh wow! Great choice. It looks like the kind of man that knows " +
                     "how to put me in my place! ";
                 future.add("j-jabari", 1);
                 foundhim = true;
@@ -1467,7 +1467,7 @@ room316.chat = function (chatID) {
                 chatID: 700,
                 speaker: "janice",
                 text: dtxt + " I'll text him tonight and see if we can make a connection. " +
-                    "so excited to see your face when we make love. ",
+                    "I'm so excited to see your face when we make love. ",
                 button: [
                     { chatID: -1, text: "Sweet!", callback: "buildMenu" }
                 ]
@@ -1612,7 +1612,7 @@ room316.chat = function (chatID) {
             {
                 chatID: 14,
                 speaker: "janice",
-                text: "You're the sweetest boy ever. Give me a kiss!.  ",
+                text: "You're the sweetest boy ever. Give me a kiss!  ",
                 button: [
                     { chatID: 11, text: "[Kiss the girl]", callback: "kiss" }
                 ]
@@ -1766,7 +1766,7 @@ room316.chat = function (chatID) {
             {
                 chatID: 32,
                 speaker: "!waiter",
-                text: "You really are a simple boy. There aren't menu's at Dorcia. I could go " +
+                text: "You really are a simple boy. There aren't menus at Dorcia. I could go " +
                     "to the back and see if we have crayons and chicken tenders for you. ",
                 button: [
                     { chatID: 33, text: "Wha! ", callback: "date2_7" }
@@ -2016,7 +2016,7 @@ room316.chat = function (chatID) {
                 speaker: "janice",
                 text: "What? The waiter? No. I wasn't cheating.",
                 button: [
-                    { chatID: 62, text: "Then why was he leaving you house just now?", callback: "task4_3" },
+                    { chatID: 62, text: "Then why was he leaving your house just now?", callback: "task4_3" },
                 ]
             },
             {
@@ -2201,7 +2201,7 @@ room316.chat = function (chatID) {
             {
                 chatID: 82,
                 speaker: "janice",
-                text: "I'm not going to lose virginity like this, but I guess I can show you my tits!  ",
+                text: "I'm not going to lose my virginity like this, but I guess I can show you my tits!  ",
                 button: [
                     { chatID: -1, text: "Oh yeah! ", callback: "buildMenu" },
                 ]
@@ -2300,7 +2300,7 @@ room316.chat = function (chatID) {
             {
                 chatID: 93,
                 speaker: "me",
-                text: "Aaaak! What! Why are you knocking me over! I should be the dominate one here! " +
+                text: "Aaaak! What! Why are you knocking me over! I should be the dominant one here! " +
                     "I'm the human! ",
                 button: [
                     { chatID: -1, text: "...", callback: "reset" },
@@ -2318,7 +2318,7 @@ room316.chat = function (chatID) {
             {
                 chatID: 95,
                 speaker: "thinking",
-                text: "Talking him for a walk is a great idea. ",
+                text: "Taking him for a walk is a great idea. ",
                 button: [
                     { chatID: -1, text: "I'm the alpha. I should lead. ", callback: "walk_lead" },
                     { chatID: -1, text: "He's the alpha. I'll let him lead.", callback: "walk_follow" },
@@ -2354,7 +2354,7 @@ room316.chat = function (chatID) {
             {
                 chatID: 99,
                 speaker: "thinking",
-                text: "I am such a pathetic bitch, but it feel so good to get dominated by a dog! ",
+                text: "I am such a pathetic bitch, but it feels so good to get dominated by a dog! ",
                 button: [
                     { chatID: 100, text: "...", callback: "dsex4" },
                 ]
@@ -2593,7 +2593,7 @@ room316.chat = function (chatID) {
                 text: "You know you really do have pretty eyes when done up right. " + 
                     "So when we do the stream today, you just do what I tell you. " +
                     "I watch a few of the other streamers, and I think I can do what " +
-                    "they do. Some things are kind of icky, but I can so some of the " +
+                    "they do. Some things are kind of icky, but I can do some of the " +
                     "other things.",
                 button: [
                     { chatID: 125, text: "...", callback: "mu_4" },
@@ -2707,7 +2707,7 @@ room316.chat = function (chatID) {
                     "to be with someone I love with my heart as well as my body. This isn't " +
                     "going to work. You should go. ",
                 button: [
-                    { chatID: 136, text: "What if there was another way. I love you too and our time together. Is it just sex that is seperating us?? ", callback: "" },
+                    { chatID: 136, text: "What if there was another way. I love you too and our time together. Is it just sex that is separating us?? ", callback: "" },
                     { chatID: -1, text: "You're right. I deserve someone who loves me, for me [Breakup]", callback: "breakupCuck" },
                 ]
             },
@@ -2904,7 +2904,7 @@ room316.chat = function (chatID) {
                 chatID: 155,
                 speaker: "thinking",
                 text: "Crap! There's no way I'm breaking out of this. I'm totally trapped! I really " +
-                    "screwed up again. I can't I got caught like that. How embarrassing! ",
+                    "screwed up again. I can't believe I got caught like that. How embarrassing! ",
                 button: [
                     { chatID: 156, text: "...", callback: "dog3" },
                 ]

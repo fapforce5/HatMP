@@ -1,6 +1,11 @@
 ﻿//Room name
 var room479 = {};
 room479.main = function () {
+    if (g.pass === "endSleepyTime") {
+        nav.bg("28_transformation/479.webp");
+        chat(68, 479);
+        return;
+    }
     let l479 = 0;
     let loop0479 = future.get("loop0479") > -1;
     let loop0479a = future.get("loop0479a") > -1;
@@ -125,6 +130,56 @@ room479.main = function () {
 };
 
 room479.btnclick = function (name) {
+    if (name.startsWith("ledged_")) {
+        switch (g.internal.r) {
+            case 2:
+                nav.kill();
+                nav.bg("479_hall/ledge_pow.webp");
+                chat(57, 479);
+                return;
+            case 4:
+                nav.kill();
+                nav.bg("479_hall/ledge_pow0.webp");
+                chat(58, 479);
+                return;
+            case 7:
+                nav.kill();
+                nav.bg("479_hall/ledge_pow.webp");
+                chat(59, 479);
+                return;
+        }
+        let i479 = parseInt(name.slice(7));
+        switch (i479) {
+            case 0: zcl.squat(250, 420, .4, "forward", true); fame.moanAnimate("center"); break;
+            case 1: zcl.squat(230, 1420, .4, "forward", true); fame.moanAnimate("right"); break;
+            case 2: zcl.squat(230, 410, .4, "forward", false); fame.moanAnimate("center"); break;
+            case 3: zcl.squat(230, 120, .4, "forward", false); fame.moanAnimate("left"); break;
+            case 4: zcl.squat(200, 1170, .4, "forward", true); fame.moanAnimate("right"); break;
+            case 5: zcl.squat(150, 720, .4, "forward", true); fame.moanAnimate("center"); break;
+            case 6: zcl.squat(190, -100, .4, "forward", false); fame.moanAnimate("left"); break;
+            case 7: zcl.squat(190, 970, .4, "forward", true); fame.moanAnimate("right"); break;
+        }
+        nav.button({
+            "type": "btn",
+            "name": "ledgeq_fullscreen",
+            "left": 0,
+            "top": 0,
+            "width": 1920,
+            "height": 1080,
+            "image": "1001_rand/transparent_fullscreen.webp",
+        }, 479);
+        nav.next("ledgee_" + i479);
+        return;
+    }
+    if (name.startsWith("ledgee_")) {
+        let j479 = parseInt(name.slice(7));
+        g.internal.d[j479].d = true;
+        fame.moanAnimateStop();
+        nav.kill();
+        room479.btnclick("ledgedicks");
+        g.internal.r++;
+        return;
+    }
     switch (name) {
         case "left":
             char.room(478);
@@ -193,11 +248,26 @@ room479.btnclick = function (name) {
                     sc.startMission("a", "secret");
                 chat(26, 479);
             }
-            else if (sc.getMissionTask("a", "secret", 0).complete) {
+            else {
                 if (g.isNight())
                     chat(46, 479);
                 else
                     chat(32, 479);
+            }
+            break;
+        case "ledgedicks":
+            nav.kill();
+            nav.bg("479_hall/ledge5.webp");
+            for (let i = 0; i < g.internal.d.length; i++) {
+                nav.button({
+                    "type": g.internal.d[i].d ? "img" : "kiss",
+                    "name": "ledged_" + i,
+                    "left": g.internal.d[i].x,
+                    "top": g.internal.d[i].y,
+                    "width": g.internal.d[i].w,
+                    "height": g.internal.d[i].h,
+                    "image": "479_hall/l" + i + "_" + (g.internal.d[i].d ? "hard" : "soft") + ".webp",
+                }, 479);
             }
             break;
         case "dance":
@@ -306,12 +376,125 @@ room479.chatcatch = function (callback) {
             }, 479);
             break;
         case "ledge5":
-            nav.kill();
+            nav.killall();
             nav.bg("479_hall/ledge5.webp");
-            zcl.squat(100, 700, .5, "forward", false)
+            g.internal = {
+                d: [
+                    { x: 742, y: 391, w: 144, h: 112, d: false },
+                    { x: 1722, y: 286, w: 136, h: 213, d: false },
+                    { x: 616, y: 280, w: 91, h: 249, d: false },
+                    { x: 337, y: 334, w: 187, h: 246, d: false },
+                    { x: 1490, y: 326, w: 135, h: 149, d: false },
+                    { x: 984, y: 277, w: 195, h: 218, d: false },
+                    { x: 106, y: 307, w: 92, h: 170, d: false },
+                    { x: 1286, y: 300, w: 117, h: 192, d: false }
+                ],
+                r: 0
+            };
+            room479.btnclick("ledgedicks");
+            zcl.squat(100, 700, .5, "forward", false);
             break;
         case "ledge6":
-            zcl.bellydown(450, 600, .5, "back", false);
+            zcl.kill();
+            break;
+        case "ledge8":
+            nav.kill();
+            nav.bg("479_hall/ledge8_" + (cl.c.cock === 5 ? "v" : "c") + ".webp");
+            break;
+        case "ledge9":
+            nav.bg("479_hall/ledge9.webp");
+            zcl.bjpov(-350, 400, .8, "closed", false);
+            break;
+        case "ledge10":
+            nav.bg("479_hall/ledge10.webp");
+            zcl.hanging(-100, 0, 1.4, "", false);
+            break;
+        case "ledge11":
+            nav.kill();
+            if (cl.c.cock === 5) {
+                levels.fuckedinpussy(true, "m", true, "!bbc");
+                levels.fuckedinpussy(true, "m", true, "!bwc");
+                levels.fuckedinpussy(true, "m", true, "!bwc");
+                levels.fuckedinpussy(true, "m", true, "!bwc");
+                levels.fuckedinpussy(true, "n", true, "ff");
+                levels.anal(4, false, "n", true, "ff");
+                levels.anal(3, false, "m", true, "!bwc");
+                levels.anal(4, false, "m", true, "!bbc");
+                levels.oral(3, "m", "!bwc", true);
+                levels.oral(4, "m", "!bbc", false);
+                levels.oral(3, "m", "!bwc", true);
+                levels.oral(3, "m", "!bwc", true);
+                levels.oral(4, "m", "!bbc", true);
+                levels.gavehandjob("m", "!bwc");
+                levels.gavehandjob("m", "!bbc");
+                levels.gavehandjob("m", "!bwc");
+            }
+            else {
+                levels.anal(3, false, "m", true, "!bwc");
+                levels.anal(3, false, "m", true, "!bwc");
+                levels.anal(3, false, "m", true, "!bwc");
+                levels.anal(4, false, "m", true, "!bbc");
+                levels.anal(4, false, "n", true, "ff");
+                levels.anal(3, false, "m", true, "!bwc");
+                levels.anal(4, false, "m", true, "!bbc");
+                levels.anal(4, false, "m", true, "!bbc");
+                levels.oral(3, "m", "!bwc", true);
+                levels.oral(4, "m", "!bbc", false);
+                levels.oral(3, "m", "!bwc", true);
+                levels.oral(3, "m", "!bwc", true);
+                levels.oral(3, "m", "!bwc", true);
+                levels.oral(3, "m", "!bwc", true);
+                levels.oral(4, "m", "!bbc", true);
+                levels.gavehandjob("m", "!bwc");
+                levels.gavehandjob("m", "!bbc");
+                levels.gavehandjob("m", "!bwc");
+            }
+            nav.bg("479_hall/ledge11_" + (cl.c.cock === 5 ? "v" : "c") + ".webp");
+            break;
+        case "ledge12":
+            nav.bg("479_hall/ledge12.webp");
+            zcl.facedown(700, 850, .14, "", false);
+            break;
+        case "reset_0":
+            sc.completeMissionTask("a", "secret", 0);
+            room479.chatcatch("reset");
+            break;
+        case "ledge_strike":
+            gv.mod("energy", -30);
+            for (let i = 0; i < g.internal.d.length; i++) {
+                if (!g.internal.d[i].d) {
+                    room479.btnclick("ledgedicks");
+                    g.internal.r++;
+                    room479.btnclick("ledged_" + i);
+                    return;
+                }
+            }
+            break;
+        case "ledge_strike0":
+            nav.bg("479_hall/ledge_pow0.webp");
+            break;
+        case "ledge_strike1":
+            nav.bg("479_hall/ledge_pow.webp");
+            break;
+        case "ledge7":
+            room479.btnclick("ledgedicks");
+            zcl.assup(600, 400, .8, "", false);
+            break;
+        case "ledge13":
+            g.pass = 479;
+            char.room(28);
+            break;
+        case "ledge14":
+            char.addtime(37);
+            nav.kill();
+            nav.bg("479_hall/ledge14.webp");
+            break;
+        case "ledge_end":
+            g.pass = "endCave477";
+            char.room(477);
+            break;
+        case "addtime":
+            char.addtime(240);
             break;
         default:
             break;
@@ -349,7 +532,7 @@ room479.chat = function (chatID) {
         {
             chatID: 3,
             speaker: "random",
-            text: "Feel her tongue flicking right at the base of you dick? Really soft and playful. Hard to hold " +
+            text: "Feel her tongue flicking right at the base of your dick? Really soft and playful. Hard to hold " +
                 "back and orgasm with your dick head sliding in and out of her throat. ",
             button: [
                 { chatID: 4, text: "OOooohhhh fffffff", callback: "bj4" },
@@ -391,7 +574,7 @@ room479.chat = function (chatID) {
             text: "She grew terribly ill in there, nearly caught her death. They allowed her to recover only so they " +
                 "could use her body for their twisted purpose. After nearly two years of beatings and torture they put " +
                 "her though the transformation ritual and impregnation. She was one of the few that was able to carry " +
-                "the embryo of Azrael. Fearing what she would bring into this world she gave self induced her own " +
+                "the embryo of Azrael. Fearing what she would bring into this world she induced her own " +
                 "abortion. ",
             button: [
                 { chatID: 8, text: "...", callback: "" },
@@ -400,7 +583,7 @@ room479.chat = function (chatID) {
         {
             chatID: 8,
             speaker: "random",
-            text: "When they found her with her aborted fetus they tied her to a tree in the swamps to die of exposure or " +
+            text: "When they found her with her aborted fetus they tied her to a tree in the swamps to die of exposure " +
                 "or dehydration while the mosquitoes fed on her. Luckily the " + sc.n("queen") + " found her and saved her " +
                 "from death. Unable to talk and tired from the years of abuse she was on the edge of ending her own life. " +
                 "That's when I found her brought her some soup. ",
@@ -530,7 +713,7 @@ room479.chat = function (chatID) {
             text: "It's funny, before the cult crushed my legs no one would just come up to me and talk to me. " +
                 "Now that my legs are all fucked up that's all everyone wants to talk about. Did you know I was " +
                 "a wilderness guide and survival expert? I've trained hundreds of people who to get out of " +
-                "difficult situations in the forest with nothing buy a knife. ",
+                "difficult situations in the forest with nothing but a knife. ",
             button: [
                 { chatID: 24, text: "I didn't know that. ", callback: "" },
             ]
@@ -613,7 +796,7 @@ room479.chat = function (chatID) {
             speaker: "!ledja",
             text: "Good! Meet me here at night, but before midnight. ",
             button: [
-                { chatID: -1, text: "I'll be there! ", callback: "reset" },
+                { chatID: -1, text: "I'll be there! ", callback: "reset_0" },
             ]
         },
         {
@@ -776,7 +959,7 @@ room479.chat = function (chatID) {
         {
             chatID: 51,
             speaker: "!ledja",
-            text: "Thank you ma'am! Thank you, thank you, thank you! Not one word from be mistress. Not " +
+            text: "Thank you ma'am! Thank you, thank you, thank you! Not one word from me mistress. Not " +
                 "a single word! You'll never hear or see me again. Thank you, thank you! ",
             button: [
                 { chatID: 52, text: "W-W-what's going on?", callback: "ledge3" }
@@ -819,7 +1002,159 @@ room479.chat = function (chatID) {
             speaker: "ff",
             text: "Get ready for the best night of our lives! Hahaha! ",
             button: [
-                { chatID: -1, text: "eeep!", callback: "ledge5" } //has pussy?
+                { chatID: 56, text: "eeep!", callback: "ledge5" } 
+            ]
+        },
+        {
+            chatID: 56,
+            speaker: "ff",
+            text: "Before we pump your tiny tight holes full of cum you have to get us all hard my " +
+                "little fluffer. You better suck us each right or it's going to be pain, bitch! ",
+            button: [
+                { chatID: -1, text: "*ooof*", callback: "ledge6" } 
+            ]
+        },
+        {
+            chatID: 57,
+            speaker: "!man",
+            text: "Hey bitch! Suck my dick next! Tired of waitin'",
+            button: [
+                { chatID: -1, text: "*oooww* yeah yeah yeah", callback: "ledge_strike" } 
+            ]
+        },
+        {
+            chatID: 58,
+            speaker: "!man",
+            text: "Hey whore! Suck this dick!!",
+            button: [
+                { chatID: -1, text: "*oooww* yeah yeah yeah", callback: "ledge_strike" } 
+            ]
+        },
+        {
+            chatID: 59,
+            speaker: "!man",
+            text: "What the fuck! No way you're sucking my dick last! ",
+            button: [
+                { chatID: 60, text: "*oooww*", callback: "ledge_strike0" } 
+            ]
+        },
+        {
+            chatID: 60,
+            speaker: "!bwc",
+            text: "My dick's gone soft waiting for you! You suck fluffer!  ",
+            button: [
+                { chatID: 61, text: "*ooof*", callback: "ledge_strike1" } 
+            ]
+        },
+        {
+            chatID: 61,
+            speaker: "!bbc",
+            text: "I'm tired of waiting on you bitches to get your dicks up. Imma fuck this ho",
+            button: [
+                { chatID: 62, text: "*groan*", callback: "ledge7" } 
+            ]
+        },
+        {
+            chatID: 62,
+            speaker: "!bwc",
+            text: "I'm tired of waitin' too! Imma fuck this bitch's throat! ",
+            button: [
+                { chatID: 63, text: "*heavy breathing*", callback: "ledge8" } 
+            ]
+        },
+        {
+            chatID: 63,
+            speaker: "!bbc",
+            text: "This bitch stays tight! Fuck I love a white bitch! ",
+            button: [
+                { chatID: 64, text: "*heavy breathing*", callback: "ledge9" } 
+            ]
+        },
+        {
+            chatID: 64,
+            speaker: "!bwc",
+            text: "I love face fucking bitches like you. Throat is always the tightest hole! ",
+            button: [
+                { chatID: 65, text: "*glack* *glug*", callback: "ledge10" } 
+            ]
+        },
+        {
+            chatID: 65,
+            speaker: "!bbc",
+            text: "Oh fuck! 'Bout to fill this bitch up! I love fucking cum dumpsters! ",
+            button: [
+                { chatID: 66, text: "*moan* *glak* *moan*", callback: "ledge11" }
+            ]
+        },
+        {
+            chatID: 66,
+            speaker: "ff",
+            text: "You did good for your first day. We took it easy on you. Really easy. I'll be back " +
+                "tomorrow night with more friends. Be sure to be here. You know the last girl, " +
+                sc.n("!ledja") + ", served our cocks for over a year before she gave you up. How many " +
+                "years are you going to be our little cock slave? ",
+            button: [
+                { chatID: 67, text: "ugh....", callback: "ledge12" }
+            ]
+        },
+        {
+            chatID: 67,
+            speaker: "thinking",
+            text: "My entire body hurts so much. I don't think I can crawl back to the bedroom. I'm " +
+                "in so much pain... So full of cum and spit... so tired....",
+            button: [
+                { chatID: -1, text: "ugh....", callback: "ledge13" }
+            ]
+        },
+        {
+            chatID: 68,
+            speaker: "thinking",
+            text: "Last night was brutal. I don't even know if I can walk out of here. Maybe I'll just lay " +
+                "in this bed all day and rest up till they get back and use me again. I guess this is my " +
+                "life now. Just lay in bed and get beat and fucked. Hopefully they bring food. I don't know " +
+                "if I can survive on cum alone. ",
+            button: [
+                { chatID: 69, text: "[Lay here for a bit and gather your strength]", callback: "addtime" }
+            ]
+        },
+        {
+            chatID: 69,
+            speaker: "!jenna",
+            text: "Oh my. I didn't even know there was a room here. Are you ok? ",
+            button: [
+                { chatID: 71, text: "[Tell her what happened]", callback: "" },
+                { chatID: 70, text: "[Lie to her and just say you're resting]", callback: "" },
+            ]
+        },
+        {
+            chatID: 70,
+            speaker: "!jenna",
+            text: "No. There's cum all over the place. Way too much cum for a cave full of sissies. " +
+                "Someone else was here. A lot of someones. I may look like a cock obsessed bimbo, but I'm not an " +
+                "idiot. What really happened? ",
+            button: [
+                { chatID: 71, text: "*ugh* Fine! [Tell her what really happened]", callback: "" },
+            ]
+        },
+        {
+            chatID: 71,
+            speaker: "!jenna",
+            text: "Oh no. Stay here, I'll be right back. ",
+            button: [
+                { chatID: 72, text: "[Lay in a puddle of dried crunchy cum and wait]", callback: "ledge14" },
+            ]
+        },
+        {
+            chatID: 72,
+            speaker: "queen",
+            text: sc.n("!jenna") + " told me everything on the way down here. This is most troubling. " +
+                "You really can't stay here. I don't trust them not to try something drastic that you " +
+                "won't be able to handle. " + sc.n("me") + " follow me back upstairs. " + sc.n("!jenna") +
+                " you'll have to take " + gender.pronoun("her") + " place. Stay strong, you'll only be " +
+                "stuck here until we can take care of this problem. Just remember to lube up before they come, " +
+                "an unlubed hole can be quite painful. ",
+            button: [
+                { chatID: -1, text: "[Follow the " + sc.n("queen") + " upstairs]", callback: "ledge_end" },
             ]
         },
     ];

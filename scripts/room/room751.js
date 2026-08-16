@@ -104,21 +104,21 @@ room751.chat = function (chatID) {
                 "the construction site. I see a surprise awaits you there. ";
         }
         else if (gv.get("jobapplyconst") < 100) {
-            storyLine = "You must continue working. The catalist for change will come from your own " +
+            storyLine = "You must continue working. The catalyst for change will come from your own " +
                 "curiosity. I see a surprise awaits you there. ";
         }
         else if (missy.get("totalDaysWorked") === 0) {
-            storyLine = "Awww. I see your curiosity has placed with in a surprising opportunity. " +
+            storyLine = "Awww. I see your curiosity has placed you within a surprising opportunity. " +
                 "You see your proper path only comes after you try the wrong path. It's an exciting path " +
                 "and suited for you. Continue working for Missy, she'll lead you right.";
         }
         else if (missy.get("totalDaysWorked") === 0) {
-            storyLine = "Awww. I see your curiosity has placed with in a surprising opportunity. " +
+            storyLine = "Awww. I see your curiosity has placed you within a surprising opportunity. " +
                 "You see your proper path only comes after you try the wrong path. It's an exciting path " +
                 "and suited for you. Continue working for Missy, she'll lead you right.";
         }
         else if (missy.get("totalDaysWorked") === 0) {
-            storyLine = "Awww. I see your curiosity has placed with in a surprising opportunity. " +
+            storyLine = "Awww. I see your curiosity has placed you within a surprising opportunity. " +
                 "You see your proper path only comes after you try the wrong path. It's an exciting path " +
                 "and suited for you. Continue working for Missy, she'll lead you right.";
         }
@@ -181,7 +181,7 @@ room751.chat = function (chatID) {
             speaker: "crystal",
             text: "A special plant that grows in the forest. I do desperately need some. " +
                 "When you find your way into the forest, and you will. Get me some and I'll reward " +
-                "you with something you desperatly need. ",
+                "you with something you desperately need. ",
             button: [
                 { chatID: -1, text: "oh. ok.", callback: "reset" }
             ]

@@ -846,7 +846,7 @@ room800.chat = function (chatID) {
         {
             chatID: 27,
             speaker: "me",
-            text: "Hi " + sc.n("ralph") + "'a parent. I found him like this. I think he fell and knocked " +
+            text: "Hi " + sc.n("ralph") + "'s parent. I found him like this. I think he fell and knocked " +
                 "himself out. ",
             button: [
                 { chatID: 28, text: "...", callback: "" }
@@ -873,7 +873,7 @@ room800.chat = function (chatID) {
         {
             chatID: 30,
             speaker: "ralphsmom",
-            text: "oh! oh my. Did you just swat my apple?. I'm sure you didn't mean to. " +
+            text: "oh! oh my. Did you just swat my apple? I'm sure you didn't mean to. " +
                 sc.n("ralph") + "'s upstairs in his room again. ",
             button: [
                 { chatID: -1, text: "ok", callback: "choices" }
@@ -999,7 +999,7 @@ room800.chat = function (chatID) {
             chatID: 44,
             speaker: "ralphsmom",
             text: "It's a good thing my husband is away on business. He would be so " +
-                "angry with me if he caught me giving my little boy's friend ticke time in " +
+                "angry with me if he caught me giving my little boy's friend tickle time in " +
                 "the garden. hehehe",
             button: [
                 { chatID: 45, text: "...totally, keep going ", callback: "cockgrab10" }
@@ -1009,7 +1009,7 @@ room800.chat = function (chatID) {
             chatID: 45,
             speaker: "ralphsmom",
             text: "You like it when I rub your fun stick like this? My husband hates that. " +
-                "He says it's the honey pot or nothing. I do love your silk missle in my " +
+                "He says it's the honey pot or nothing. I do love your silk missile in my " +
                 "hand. And I'm great at hand jobs too!",
             button: [
                 { chatID: 46, text: "...*ugh* so good... ", callback: "cockgrab11" }
@@ -1079,7 +1079,7 @@ room800.chat = function (chatID) {
         {
             chatID: 53,
             speaker: "ralphsmom",
-            text: "Yes. We do have different needs. I need more foreplay  and oral. He needs to put it in a butt. So if " +
+            text: "Yes. We do have different needs. I need more foreplay and oral. He needs to put it in a butt. So if " +
                 "you're interested we would love to use you to fulfill both our desires. You've already shown " +
                 "to be amazing at what you do with each of us, we would like to share you together. But we do " +
                 "need you to keep a secret from our little one and our neighbors. We would like to keep our " +

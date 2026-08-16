@@ -454,7 +454,7 @@ room215.chat = function (chatID) {
             text: "Why hello. We're so happy you're working today! You want to go and " +
                 "have a little fun?",
             button: [
-                { chatID: -1, text: "That's my kind fun! ", callback: "beaver0" },
+                { chatID: -1, text: "That's my kind of fun! ", callback: "beaver0" },
                 { chatID: -1, text: "I'll pass", callback: "resetwhore" }
             ]
         },

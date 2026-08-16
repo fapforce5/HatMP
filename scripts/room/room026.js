@@ -1092,8 +1092,8 @@ room26.chat = function (chatID) {
                 speaker: "landlord",
                 text: "I'm a terrible person to ask. They are my main buyer, but I hate them. Really I use them as a " +
                     "means to an end. The sperm bank was owned by a man named " + sc.n("charlie") + ". Now he used to " +
-                    "own almost half the town, till his gamling and whoring caught up with him and forced him to sell off " +
-                    "most of his properites. For cheap. Cheap enough for me to buy it, with a little help from the bank. ",
+                    "own almost half the town, till his gambling and whoring caught up with him and forced him to sell off " +
+                    "most of his properties. For cheap. Cheap enough for me to buy it, with a little help from the bank. ",
                 button: [
                     { chatID: 16, text: "uh huh", callback: "" },
                 ]
@@ -1468,7 +1468,7 @@ room26.chat = function (chatID) {
                 speaker: "landlord",
                 text: "That dick is amazing! Now girls, go wash your face, you don't want " +
                     "to go to bed stinking of cum. And you, " + sc.n("me") + " be sure to " +
-                    "wash you dick since I just cleaned your sheets and I'm not doing it again " +
+                    "wash your dick since I just cleaned your sheets and I'm not doing it again " +
                     "for a week. Night everyone. ",
                 button: [
                     { chatID: -1, text: "'night", callback: "reset" },
@@ -1768,7 +1768,7 @@ room26.chat = function (chatID) {
             {
                 chatID: 90,
                 speaker: "landlord",
-                text: "Anymore questions?",
+                text: "Any more questions?",
                 button: [
                     { chatID: 91, text: "What's the best way to get rid of all this body hair!", callback: "" },
                     { chatID: 92, text: "How do I measure my bra size?", callback: "" },
@@ -2061,7 +2061,7 @@ room26.chat = function (chatID) {
                 chatID: 122,
                 speaker: "landlord",
                 text: "I said I was sorry! You're taking this too far again! You always take it " +
-                    "too far! Now untie us and we can forget this ever happend! Untie me now! ",
+                    "too far! Now untie us and we can forget this ever happened! Untie me now! ",
                 button: [
                     { chatID: 123, text: "...", callback: "pills7" },
                 ]
@@ -2071,7 +2071,7 @@ room26.chat = function (chatID) {
                 speaker: "lola",
                 text: "I'm not untying anyone till *grunt* " + sc.n("bigguy") + " finished! " +
                     "I had no idea penises could get so big. There's no way I can go further *ugh* than " +
-                    "this! It's totally hitting my right in my cervix!!",
+                    "this! It's totally hitting me right in my cervix!!",
                 button: [
                     { chatID: 124, text: "...", callback: "pills8" },
                 ]
@@ -2114,9 +2114,9 @@ room26.chat = function (chatID) {
             {
                 chatID: 128,
                 speaker: "chad",
-                text: "That's so hot! Fuck I'm getting so hard right now! I tottally need to " +
+                text: "That's so hot! Fuck I'm getting so hard right now! I totally need to " +
                     "put my dick in something. You can be something, " + sc.n("eva") +
-                    ". Bend over I'm make sure you cum too! like right now! ",
+                    ". Bend over I'll make sure you cum too! like right now! ",
                 button: [
                     { chatID: 129, text: "...", callback: "pills10" },
                 ]
@@ -2245,7 +2245,7 @@ room26.chat = function (chatID) {
                     "the bigger the better. Now it's a full head of pretty hair that really turns the " +
                     "boy's heads. ",
                 button: [
-                    { chatID: -1, text: "Thank's " + sc.n("landlord") + ". You're the best. ", callback: "girl_brush0" },
+                    { chatID: -1, text: "Thanks " + sc.n("landlord") + ". You're the best. ", callback: "girl_brush0" },
                 ]
             },
             {
@@ -2253,9 +2253,9 @@ room26.chat = function (chatID) {
                 speaker: "landlord",
                 text: "Oh my. I guess my little girl, is becoming a big girl now. You see when a girl " +
                     "gets older, there's changes that happen to her body. One of those changes, besides " +
-                    "growing breasts, is your body will want to have babies. So you body will drop and egg " +
-                    "into your uterine lining where it will wait for a man's sperm to find it's way to that " +
-                    "egg and fertalize it and make that baby. Now, usually, if that egg hasn't been fertalized " +
+                    "growing breasts, is your body will want to have babies. So your body will drop an egg " +
+                    "into your uterine lining where it will wait for a man's sperm to find its way to that " +
+                    "egg and fertilize it and make that baby. Now, usually, if that egg hasn't been fertilized " +
                     "within the month you body will flush the egg and uterine lining which makes the red discharge " +
                     "that may appear in your panties. It really is a normal part of being a girl. Now lay back " +
                     "and I'll show about tampons. ",

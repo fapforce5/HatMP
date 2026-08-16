@@ -434,7 +434,7 @@ room726.chat = function (chatID) {
         {
             chatID: 3,
             speaker: "random",
-            text: "Hey girl! You're almost cute enough to to make me want to invite you to a threesome!",
+            text: "Hey girl! You're almost cute enough to make me want to invite you to a threesome!",
             button: [
                 { chatID: -1, text: "Hey keep that invite open!", callback: "reset" }
             ]
@@ -507,7 +507,7 @@ room726.chat = function (chatID) {
         {
             chatID: 12,
             speaker: "cindy",
-            text: "I love this song! It's my absolut favorite! ",
+            text: "I love this song! It's my absolute favorite! ",
             button: [
                 { chatID: 13, text: "You know you're a really good dancer!", callback: "cindy3" }
             ]
@@ -515,7 +515,7 @@ room726.chat = function (chatID) {
         {
             chatID: 13,
             speaker: "cindy",
-            text: "Thank! I have to go powder my nose. I'll see you back out here.",
+            text: "Thanks! I have to go powder my nose. I'll see you back out here.",
             button: [
                 { chatID: 14, text: "Maybe I'll see you here. [That girl wants my cock bad!]", callback: "killcindy" },
                 { chatID: -1, text: "Yeah, I'll see you when you get back", callback: "killcindy" }
@@ -567,7 +567,7 @@ room726.chat = function (chatID) {
             chatID: 19,
             speaker: "tim",
             text: "I do that to all the girls. Since you're so sexy I'll let you take me to the bathroom and suck my dick. " +
-                "I don't do this with all the girls, it's just 'casue you're so sexy.",
+                "I don't do this with all the girls, it's just 'cause you're so sexy.",
             button: [
                 { chatID: -1, text: "I would love to!", callback: "timeBathroom" },
                 { chatID: -1, text: "Nah, I've already had a snack", callback: "reset" }
@@ -611,7 +611,7 @@ room726.chat = function (chatID) {
         {
             chatID: 24,
             speaker: "tim",
-            text: "How about we skit the song and dance and I just fuck you in the bathroom?",
+            text: "How about we skip the song and dance and I just fuck you in the bathroom?",
             button: [
                 { chatID: 25, text: "Oh Please!", callback: "tim3_1" },
                 { chatID: -1, text: "Nah, I'm busy.", callback: "reset" }
@@ -899,7 +899,7 @@ room726.chat = function (chatID) {
         {
             chatID: 59,
             speaker: "!sanaria",
-            text: "What the you two doing here? I'm old enough that I can do what I want. I don't need you watching after me " +
+            text: "What are you two doing here? I'm old enough that I can do what I want. I don't need you watching after me " +
                 "all the time! ",
             button: [
                 { chatID: 60, text: "...", callback: "" },

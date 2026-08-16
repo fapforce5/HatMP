@@ -164,7 +164,7 @@ room626.chat = function (chatID) {
             {
                 chatID: 3,
                 speaker: "lola",
-                text: "Oh my... That's feels so good. What if someone sees us?",
+                text: "Oh my... That feels so good. What if someone sees us?",
                 button: [
                     { chatID: -1, text: "No one can see us. It's just you, me, and this view. ", callback: "lola_4" },
                 ]

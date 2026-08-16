@@ -254,7 +254,7 @@ room951.chat = function (chatID) {
         {
             chatID: 11,
             speaker: "cult",
-            text: "New your cunt is loose enough for what about to cum, slut. ",
+            text: "Now your cunt is loose enough for what's about to cum, slut. ",
             button: [
                 { chatID: 18, text: "Uh oh", callback: "reset" }
             ]

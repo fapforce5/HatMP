@@ -435,7 +435,7 @@ room875.chat = function (chatID) {
             {
                 chatID: 12,
                 speaker: "stacy",
-                text: "Gotta do a pre-game spakies check. Strip off your skirt. ",
+                text: "Gotta do a pre-game spankies check. Strip off your skirt. ",
                 button: [
                     { chatID: 13, text: "I'm wearing my spakies. What's going on? ", callback: "" },
                 ]
@@ -443,7 +443,7 @@ room875.chat = function (chatID) {
             {
                 chatID: 13,
                 speaker: "candy",
-                text: "Oh yes. We all had to do the pre-game spakies check for our first game. ",
+                text: "Oh yes. We all had to do the pre-game spankies check for our first game. ",
                 button: [
                     { chatID: 14, text: "of course there's a check. ", callback: "cheer1_1" },
                 ]
@@ -452,7 +452,7 @@ room875.chat = function (chatID) {
                 chatID: 14,
                 speaker: "stacy",
                 text: "It's a good thing I checked. Why are you wearing your spankies to your first game! It's such " +
-                    "bad luck. Ever cheerleader that isn't an idiot knows not to wear spankies to their first game! Take " +
+                    "bad luck. Every cheerleader that isn't an idiot knows not to wear spankies to their first game! Take " +
                     "those off. Hurry up, we gotta get out there. ",
                 button: [
                     { chatID: 50, text: "Oh. I didn't know that. Ok.", callback: "cheer1_2xx" },
@@ -479,7 +479,7 @@ room875.chat = function (chatID) {
             {
                 chatID: 17,
                 speaker: "thinking",
-                text: "Crap! Did I just flash my penis to everyone? Why would wearing spankies be back luck? Cheering " +
+                text: "Crap! Did I just flash my penis to everyone? Why would wearing spankies be bad luck? Cheering " +
                     "can be so dumb sometimes. ",
                 button: [
                     { chatID: 18, text: "...", callback: "cheer1_4" },
@@ -640,7 +640,7 @@ room875.chat = function (chatID) {
             {
                 chatID: 36,
                 speaker: "football",
-                text: "Fuck them titties, I was to see that ass I 'bout to destory. Tell that slut to strip it off and show " +
+                text: "Fuck them titties, I want to see that ass I 'bout to destroy. Tell that slut to strip it off and show " +
                     "us all that fine booty. ",
                 button: [
                     { chatID: 37, text: "...", callback: "" },
@@ -657,7 +657,7 @@ room875.chat = function (chatID) {
             {
                 chatID: 38,
                 speaker: "football",
-                text: "Somebody better call an ambulance, 'casuse I'm gunna break a ho! ",
+                text: "Somebody better call an ambulance, 'cause I'm gunna break a ho! ",
                 button: [
                     { chatID: 39, text: "...", callback: "cheer9_6" },
                 ]
@@ -724,9 +724,7 @@ room875.chat = function (chatID) {
             {
                 chatID: 46,
                 speaker: "thinking",
-                text: "That was awesome! I've never been filled and fucked like that before! My bussy is so " +
-                    "sensitive I can still feel the aftershocks of my sissygasms. I've got so much cum in me " +
-                    "I hope no one notices it leaking down my legs on my way home. ",
+                text: "noop ",
                 button: [
                     { chatID: -1, text: "...", callback: "cheer9_11" },
                 ]

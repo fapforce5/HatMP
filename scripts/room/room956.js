@@ -343,7 +343,7 @@ room956.chat = function (chatID) {
         {
             chatID: 24,
             speaker: "dr",
-            text: "This newest specimin is the finest of the hidden uterus I've ever had! I mean really, " +
+            text: "This newest specimen is the finest of the hidden uterus I've ever had! I mean really, " +
                 "it's amazing her penis even existed. Mother nature made a mistake with this one, but I " +
                 sc.n("dr") + " have fixed her mistake! ",
             button: [
@@ -457,7 +457,7 @@ room956.chat = function (chatID) {
         {
             chatID: 36,
             speaker: "missy",
-            text: "We need to hurry. I haven't had a chance to properly scout these passagess. ",
+            text: "We need to hurry. I haven't had a chance to properly scout these passages. ",
             button: [
                 { chatID: 37, text: "...", callback: "f15" }
             ]
@@ -490,7 +490,7 @@ room956.chat = function (chatID) {
         {
             chatID: 40,
             speaker: "thinking",
-            text: "That beem is broken. If I can just hit that post hard enough it just may collapse ",
+            text: "That beam is broken. If I can just hit that post hard enough it just may collapse ",
             button: [
                 { chatID: 41, text: "[Hit it with all your might]", callback: "f19" }
             ]

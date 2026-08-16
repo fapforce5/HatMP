@@ -604,7 +604,7 @@ room526.chat = function (chatID) {
             speaker: "!timothy",
             text: "Hey slut! I'm really loving this bar.  ",
             button: [
-                { chatID: 16, text: "My too. It's my friend's bar. ", callback: "" },
+                { chatID: 16, text: "Me too. It's my friend's bar. ", callback: "" },
             ]
         },
         {
@@ -709,7 +709,7 @@ room526.chat = function (chatID) {
         {
             chatID: 27,
             speaker: "keaton",
-            text: "Baby.I'm looking to get fucked, not tickled. You need to put that tiny " +
+            text: "Baby. I'm looking to get fucked, not tickled. You need to put that tiny " +
                 "dick away and never show it to another human again. ",
             button: [
                 { chatID: -1, text: "Awwww", callback: "reset" },
@@ -953,7 +953,7 @@ room526.chat = function (chatID) {
         {
             chatID: 55,
             speaker: "zoey",
-            text: "Oh oui! Oui, oui, oui! Arrêter, I can not take anymore. Oh là là that was good.",
+            text: "Oh oui! Oui, oui, oui! Arrête, I can not take anymore. Oh là là that was good.",
             button: [
                 { chatID: 56, text: "...", callback: "z13_4" }
             ]
@@ -969,7 +969,7 @@ room526.chat = function (chatID) {
         {
             chatID: 57,
             speaker: "zoey",
-            text: "So did I, but I remembered when I began my attraction to women. When I was younger je suis tombé amoureux with " +
+            text: "So did I, but I remembered when I began my attraction to women. When I was younger je suis tombée amoureuse with " +
                 "this boy. I would follow him around our park hoping he would notice me, but he never did. " +
                 "One day I was following bêtement him and one of his friends m'a fait remarquer and stared se moquant de moi. Then his " +
                 "other friends laughed at me too. ",
@@ -1127,7 +1127,7 @@ room526.chat = function (chatID) {
         {
             chatID: 74,
             speaker: "zoey",
-            text: "Huh? Are they any good? I hired help once and they just spent the entire shift blowing up" +
+            text: "Huh? Are they any good? I hired help once and they just spent the entire shift blowing up " +
                 "all the penis they can. Cette fainéante n'a même pas lavé une seule tasse",
             button: [
                 { chatID: 75, text: "...", callback: "" }

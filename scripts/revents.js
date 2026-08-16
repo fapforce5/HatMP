@@ -69,6 +69,9 @@ room1010.btnclick = function (name) {
     if (name === "magazineCloseInventory") {
         nav.killbutton("magazineCloseInventory");
     }
+    else if (name === "inv_listofbadpeople") {
+        nav.killbutton("inv_listofbadpeople");
+    }
     if (name.startsWith("1010js_booknext") || name.startsWith("1010js_bookprev")) {
         let currentpage = revents.bookPageNumber(name);
         nav.modbutton("1010js_book0", "1010_rand/book" + currentpage + ".webp");

@@ -10,6 +10,26 @@ room101.main = function () {
         sc.modSecret("tina", 100);
     }
 
+    if (daily.get("tinamad")) {
+        nav.bg("101_constFrontOffice/b8.webp");
+        chat(46, 101);
+        nav.buildnav([100, 0]);
+        return;
+    }
+    if (sc.getMission("tina", "*leave").complete) {
+        nav.bg("101_constFrontOffice/kareem.webp");
+        nav.button({
+            "type": "btn",
+            "name": "kareem",
+            "left": 937,
+            "top": 275,
+            "width": 343,
+            "height": 659,
+            "image": "101_constFrontOffice/k.webp"
+        }, 101);
+        nav.buildnav([100, 0]);
+        return;
+    }
     if (cl.isLewd()) {
         nav.button({
             "type": "btn",
@@ -92,10 +112,29 @@ room101.btnclick = function (name) {
                 daily.set("constructionPay");
                 chat(5, 101);
             }
+            else if (missy.getenvelope("construction").active) {
+                chat(23, 101);
+            }
             else if (g.hourBetween(6, 9))
                 chat(9, 101);
             else {
                 chat(8, 101);
+            }
+            break;
+        case "kareem":
+            if (!gv.get("constkareem")) {
+                gv.set("constkareem", true);
+                if (sissy.st[0].ach)
+                    chat(47, 101);
+                else
+                    chat(51, 101);
+            }
+            else if (daily.get("construction") && !daily.get("constructionPay")) {
+                daily.set("constructionPay");
+                chat(53, 101);
+            }
+            else {
+                chat(55, 101);
             }
             break;
         case "jackit":
@@ -120,6 +159,14 @@ room101.chatcatch = function (callback) {
     switch (callback) {
         case "leave":
             char.room(100);
+            break;
+        case "b1":
+        case "b3":
+        case "b4":
+        case "b5":
+        case "b6":
+        case "b8":
+            nav.bg("101_constFrontOffice/" + callback + ".webp");
             break;
         case "angry":
             sc.setstep("tina", -1);
@@ -201,6 +248,34 @@ room101.chatcatch = function (callback) {
             char.settime(18, 15);
             char.room(0);
             break;
+        case "b0":
+            nav.kill();
+            nav.bg("102_constBoss/102_boss.jpg");
+            break;
+        case "b2":
+            if (sc.getLevel("tina") > 4)
+                chat(34, 101);
+            else
+                chat(33, 101);
+            break;
+        case "b7":
+            nav.bg("101_constFrontOffice/b7.webp");
+            if (missy.getenvelope("construction").hasKey) {
+                chat(42, 101);
+            }
+            else {
+                chat(41, 101);
+            }
+            missy.setenvelope("construction");
+            break;
+        case "b9":
+            char.addtime(60);
+            daily.set("tinamad");
+            sc.completeMissionTopLevelOnly("tina", "cat");
+            sc.completeMissionTask("tina", "*leave", 0);
+            sc.completeMission("tina", "*leave");
+            char.room(100);
+            break;
         default:
             break;
     }
@@ -243,7 +318,7 @@ room101.chat = function (chatID) {
             "What has 36 teeth and holds back the Incredible Hulk? My zipper.",
             "If I were a dog would you help me bury my bone?",
             "I am participating in the Sexual Olympics multiple orgasm relay race my partner just died of exhaustion. Would you like to help me out?",
-            "Excuse me, I’ve seem to have lost my virginity, can I have yours?",
+            "Excuse me, I seem to have lost my virginity, can I have yours?",
             "Nice hair, wanna mess it up?",
             "Excuse me, I just shit in my pants. Can I get in yours?",
             "Congratulations! You’ve been voted “Most Beautiful Girl In This Room” and the grand prize is a night with me!",
@@ -272,7 +347,7 @@ room101.chat = function (chatID) {
             { s: "Would you lick my asshole?", r: "Hmmmm OK, but you'll have to shower first", p: "dirtyPickup" },
             { s: "So how many drinks would it take to get into your panties?", r: "hahah you don't have to get me drunk, just give me that cock", p: "" },
             { s: "So how do you take your cock?", r: "rough, with a side of dirty talk.", p: "dirtyPickup" },
-            { s: "Do you want to ditch this place and go to your place", r: "YES!, but i need the money.", p: "dirtyPickup" },
+            { s: "Do you want to ditch this place and go to your place", r: "YES!, but I need the money.", p: "dirtyPickup" },
             { s: "So... are you into fisting?", r: "Oh god! I haven't tried it. maybe...", p: "dirtyPickup" },
             { s: "You look sick, mind if I take your temperature rectally?", r: "Only if you use your cock!", p: "dirtyPickup" },
             { s: "My erection has lasted for more than 4 hours, why don't we play doctor at your place. ", r: "I'll be your naughty nurse.", p: "" },
@@ -491,7 +566,302 @@ room101.chat = function (chatID) {
                 speaker: "tina",
                 text: "Oh my God. Get out now!",
                 button: [{ chatID: -1, text: "Of course", callback: "leave" }]
-            }
+            },
+            {
+                chatID: 23,
+                speaker: "tina",
+                text: "Hey cutie! What's up? ",
+                button: [
+                    { chatID: 24, text: "Came to talk to " + sc.n("construction"), callback: "" },
+                    { chatID: -1, text: "Nothin' Just wandering around I guess. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 24,
+                speaker: "tina",
+                text: "Of course. Head on in!",
+                button: [
+                    { chatID: 25, text: "Thanks!", callback: "b0" },
+                ]
+            },
+            {
+                chatID: 25,
+                speaker: "construction",
+                text: "Hey, bitch tits! What brings you in!",
+                button: [
+                    { chatID: 27, text: "I need to get into the back door of the C.U.M. compound", callback: "" },
+                    { chatID: 26, text: "Not much, just seeing how you're doing. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 26,
+                speaker: "construction",
+                text: "I'm not your fuckin' friend! Get the fuck out!",
+                button: [
+                    { chatID: -1, text: "eep! ", callback: "leave" },
+                ]
+            },
+            {
+                chatID: 27,
+                speaker: "construction",
+                text: "I love the back door! Hey " + sc.n("tina") + "! Get in here! ",
+                button: [
+                    { chatID: 28, text: "I uhh..", callback: "b1" },
+                ]
+            },
+            {
+                chatID: 28,
+                speaker: "tina",
+                text: "Yes sir?",
+                button: [
+                    { chatID: 29, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 29,
+                speaker: "construction",
+                text: sc.n("me") + " wants to see some back door action! Bend over my desk so I can show " +
+                    gender.pronoun("him") + "!",
+                button: [
+                    { chatID: 30, text: "...well", callback: "" },
+                ]
+            },
+            {
+                chatID: 30,
+                speaker: "tina",
+                text: "I don't know if I can do that. I only have sex with boys I really really like. No " +
+                    "offense sir, but I don't really really like you. I've only let 2 boys ever have sex " +
+                    "with me. ",
+                button: [
+                    { chatID: 31, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 31,
+                speaker: "construction",
+                text: "Well it looks like you'll just have to convince her to bend over this desk. I " +
+                    "only hired her to be balls deep in that, ya know! ",
+                button: [
+                    { chatID: 32, text: "[Try to convince her]", callback: "" },
+                    { chatID: -1, text: "Naw. " + sc.n("tina") + " you're too good for that. ", callback: "leave" },
+                ]
+            },
+            {
+                chatID: 32,
+                speaker: "me",
+                text: sc.n("tina") + " We've known each other for a while now...[Go into a long story about " +
+                    "how badly you need her to do this for you as her long time friend.]",
+                button: [
+                    { chatID: -1, text: "[Wait for her answer. ]", callback: "b2" },
+                ]
+            },
+            {
+                chatID: 33,
+                speaker: "tina",
+                text: "Not a chance! We aren't close enough for me to whore myself out for you! *hiss*",
+                button: [
+                    { chatID: -1, text: "awww. ok. [Need to be level 5 with " + sc.n("tina") + "]", callback: "leave" },
+                ]
+            },
+            {
+                chatID: 34,
+                speaker: "tina",
+                text: "Awwww. *sigh* I really don't want to, but I don't know if I can say no to that " +
+                    "face. If you really really want me to, I'll do it. But only if you really really " +
+                    "need it. *prrrrr* ",
+                button: [
+                    { chatID: 35, text: "I know you don't want to, but it's the only way. ", callback: "b3" },
+                    { chatID: -1, text: "I can't exploit you. No. I'll find another way. ", callback: "leave" },
+                ]
+            },
+            {
+                chatID: 35,
+                speaker: "tina",
+                text: "*sigh* ok, but don't touch my tail mister! And pull out! I don't want your kittens!  ",
+                button: [
+                    { chatID: 36, text: "[Watch your friend get fucked for you]", callback: "b4" },
+                ]
+            },
+            {
+                chatID: 36,
+                speaker: "tina",
+                text: "*OW* ouchie. Not so deep! Ouch! That's my uterus you're trying to enter! " + sc.n("me") +
+                    " please, please tell him to be gentle! ",
+                button: [
+                    { chatID: 37, text: sc.n("construction") + " can you take it easy on her please? Just don't be so rough. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 37,
+                speaker: "construction",
+                text: "Nobody *plap* tells me *plap* what to do *smack* in my *plap* office! ",
+                button: [
+                    { chatID: 38, text: "...", callback: "b5" },
+                ]
+            },
+            {
+                chatID: 38,
+                speaker: "tina",
+                text: "AAAaaa NO! I feel you cumming inside me! I'm not on birth control! ",
+                button: [
+                    { chatID: 39, text: "oh no", callback: "b6" },
+                ]
+            },
+            {
+                chatID: 39,
+                speaker: "construction",
+                text: "Fuck yeah. You one good fuck! Damn! Now get. And don't go dripping any of that cum on your way " +
+                    "out on my floor. ",
+                button: [
+                    { chatID: 40, text: "...", callback: "b7" },
+                ]
+            },
+            {
+                chatID: 40,
+                speaker: "construction",
+                text: "Fuck yeah. You one good fuck! Damn! Now get. And don't go dripping any of that cum on your way " +
+                    "out on my floor. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "b7" },
+                ]
+            },
+            {
+                chatID: 41,
+                speaker: "construction",
+                text: "So what were we talking about... oh yeah. You wanted to go in the back door of the " +
+                    "compound? I don't think there is one. Just a front door. At least that's all I know. " +
+                    "Maybe ask the guard at the front if there's a back door. I don't know. ",
+                button: [
+                    { chatID: 43, text: "Gee, thanks I guess. Let me go check on " + sc.n("tina") + ".", callback: "b8" },
+                ]
+            },
+            {
+                chatID: 42,
+                speaker: "construction",
+                text: "So what were we talking about... oh yeah. You wanted to go in the back door of the " +
+                    "compound? They don't like us handing out the code, but I guess I owe you for talking " +
+                    sc.n("tina") + " into letting me fuck her. I've been trying to get up in there for months! " +
+                    "Anyway, the code is 1-2-3-4-5. ",
+                button: [
+                    { chatID: 43, text: "Ok, thanks. Let me go check on " + sc.n("tina") + ".", callback: "b8" },
+                ]
+            },
+            {
+                chatID: 43,
+                speaker: "me",
+                text: "Are you alright?",
+                button: [
+                    { chatID: 44, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 44,
+                speaker: "tina",
+                text: "No, I'm very much not alright. I knew I shouldn't have done that. I knew he would " +
+                    "cum inside me. I know everyday I come in he's going to try and have sex with me even " +
+                    "more. And I'm pretty sure I might have just gotten pregnant! So no I'm not alright! And " +
+                    "it's all your fault for talking me into it!",
+                button: [
+                    { chatID: 45, text: "I'm so sorry. Can I help with anything?", callback: "" },
+                ]
+            },
+            {
+                chatID: 45,
+                speaker: "tina",
+                text: "There is nothing you can do to help me! I'm going back home. I hate my home, but at least " +
+                    "it's better than being here with you two! If you really want to help, you can help by leaving! " +
+                    "Let me get dressed in peace, pack up my things in peace, and leave in peace! ",
+                button: [
+                    { chatID: -1, text: "Awww. Ok. [leave]", callback: "b9" },
+                ]
+            },
+            {
+                chatID: 46,
+                speaker: "tina",
+                text: "I said get out and let me leave in peace! ",
+                button: [
+                    { chatID: -1, text: "Awww. Ok. [leave]", callback: "leave" },
+                ]
+            },
+            {
+                chatID: 47,
+                speaker: "me",
+                text: sc.n("!kareem") + "! What are you doing here? Where's " + sc.n("tina") + "?",
+                button: [
+                    { chatID: 48, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 48,
+                speaker: "!kareem",
+                text: "I don't know any " + sc.n("tina") + " but I was just hired here! Couldn't pass " +
+                    "it up! I've been looking for a secretary job and with so many big men around " +
+                    "I knew it was my dream job! You know I've been hit on like 30 times this morning " +
+                    "you wouldn't believe it! ",
+                button: [
+                    { chatID: 49, text: "So the girl that was working here...", callback: "" },
+                ]
+            },
+            {
+                chatID: 49,
+                speaker: "!kareem",
+                text: "Oh. I guess the girl that was working here quit. " + sc.n("construction") + 
+                    " mentioned that she had a break down and took her to some compound to get help " +
+                    "or something. I dunno. I just know that I got the job of my dreams! ",
+                button: [
+                    { chatID: 50, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 50,
+                speaker: "thinking",
+                text: "Aww fuck. He probably took her to the C.U.M. compound and it's all my fault! " +
+                    "I've got to rescue Missy so we can get her out of there!",
+                button: [
+                    { chatID: -1, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 51,
+                speaker: "me",
+                text: "Who are you? ",
+                button: [
+                    { chatID: 52, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 52,
+                speaker: "!kareem",
+                text: "Hey sexy, I'm the new girl, " + sc.n("!kareem") + ". Think of cream, but a little " +
+                    "extra r-r-r-r. ",
+                button: [
+                    { chatID: 48, text: "What happened to the girl that was here before? ", callback: "" },
+                ]
+            },
+            {
+                chatID: 53,
+                speaker: "!kareem",
+                text: "Hey honey, here for your money?",
+                button: [
+                    { chatID: 54, text: "yep", callback: "payTheMan" }
+                ]
+            },
+            {
+                chatID: 54,
+                speaker: "!kareem",
+                text: "Here you go cutie.",
+                button: [
+                    { chatID: -1, text: "Thanks babe", callback: "endday" },
+                ]
+            },
+            {
+                chatID: 55,
+                speaker: "!kareem",
+                text: "I love this job so much!",
+                button: [
+                    { chatID: -1, text: "...", callback: "" },
+                ]
+            },
         ];
         return cArray[chatID];
     }

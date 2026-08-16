@@ -1265,8 +1265,8 @@ room876.chat = function (chatID) {
                 chatID: 96,
                 speaker: "stacy",
                 text: "You've been doing so well we feel like it's time you earned your pom-poms. Half of our trainees " +
-                    "quit or get cut before they have a chance to earn this cheertasitc milestone. To earn them you must first " +
-                    "clear I like to call the konga line. You're luck Courtney was " +
+                    "quit or get cut before they have a chance to earn this cheertastic milestone. To earn them you must first " +
+                    "clear I like to call the konga line. You're lucky Courtney was " +
                     "nice enough to put them in order, smallest to largest. It'll give you a good stretch. ",
                 button: [
                     { chatID: 97, text: "I'm not going to do that.", callback: "" }
@@ -1369,7 +1369,7 @@ room876.chat = function (chatID) {
             {
                 chatID: 108,
                 speaker: "courtney",
-                text: "You better. If you embarass us out there we're going to use your face as toilet paper.  ",
+                text: "You better. If you embarrass us out there we're going to use your face as toilet paper.  ",
                 button: [
                     { chatID: 109, text: "That's graphic ", callback: "cheer6_4" }
                 ]
@@ -1401,7 +1401,7 @@ room876.chat = function (chatID) {
             {
                 chatID: 112,
                 speaker: "candy",
-                text: "Why do you have to fuck me in the ass everytime Jarome? ",
+                text: "Why do you have to fuck me in the ass every time Jarome? ",
                 button: [
                     { chatID: 113, text: "...", callback: "cheer6_5_4" }
                 ]
@@ -1426,7 +1426,7 @@ room876.chat = function (chatID) {
                 chatID: 115,
                 speaker: "utah",
                 text: "Yeah. We got a big game tomorrow against the Eagles, had to get a release in. I can't get a good nights " +
-                    "sleep when we're all horned up. Needed to detroy those pussies of yours. Just like we're going to destroy the " +
+                    "sleep when we're all horned up. Needed to destroy those pussies of yours. Just like we're going to destroy the " +
                     "the Eagles tomorrow. Remember when I threw " +
                     "that 40 yard touchdown. Best pass of the season. Almost as good as that time I saved us from a safety " +
                     "by throwing it off balance to Darqwan. As long as these guys keep blocking like they do I can keep " +
@@ -1604,8 +1604,8 @@ room876.chat = function (chatID) {
             {
                 chatID: 135,
                 speaker: "stacy",
-                text: "That's so sweet, but she's no longer a trainee, she's a full blown cheerleader! " + sc.n("me") + 
-                    " you're going to love Alonzo, he's a really knows how to treat a girl, if you know what I mean. *wink* ",
+                text: "That's so sweet, but she's no longer a trainee, she's a full blown cheerleader! " + sc.n("me") +
+                    " you're going to love Alonzo, he really knows how to treat a girl, if you know what I mean. *wink* ",
                 button: [
                     { chatID: 136, text: "Oh. Thanks. He looks like he knows what he's doing. ", callback: "cheer8_3" },
                     { chatID: -1, text: "Squeal and run away! ", callback: "cheer8_9bad" }
@@ -1667,15 +1667,13 @@ room876.chat = function (chatID) {
                     "He kept hitting me right in the cervix. When I told him to slow down he just gripped me tight and destroyed me. " +
                     "I just sat on the toilet for an hour crying, it hurt so much. ",
                 button: [
-                    { chatID: 143, text: "I'll bet. Alonzo really straightened my colon out. ", callback: "" },
+                    { chatID: 144, text: "I'll bet. Alonzo really straightened my colon out. So are you and " + sc.n("utah") + " dating?", callback: "" },
                 ]
             },
             {
                 chatID: 143,
                 speaker: "me",
-                text: "God, I just love how " + sc.n("utah") + " fucks. I tried to take Alonzo's cock when I first got on the team. " +
-                    "He kept hitting me right in the cervix. When I told him to slow down he just gripped me tight and destroyed me. " +
-                    "I just sat on the toilet for an hour crying, it hurt so much. ",
+                text: "noop",
                 button: [
                     { chatID: 144, text: "I'll bet. Alonzo really straightened my colon out. So are you and " + sc.n("utah") + " dating?", callback: "" },
                 ]

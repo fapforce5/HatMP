@@ -1268,7 +1268,7 @@ room170.chat = function (chatID) {
             {
                 chatID: 18,
                 speaker: "black",
-                text: "I need crack several testicles of some naughty pigs today. " +
+                text: "I need to crack several testicles of some naughty pigs today. " +
                     "Just head to the stage in the Pink Room. I've already let the " +
                     "guard know you'll be coming through. Be on your best behavior or " +
                     "I'll be cracking your testicles today too. ",
@@ -1403,7 +1403,7 @@ room170.chat = function (chatID) {
                     "loves how you've modeled his creations. You are invited to his " +
                     "mansion in the North East corner of the residential section of the city " +
                     "if you would like to work for him. But I recommend you do not " +
-                    "show your face there or I will make you life a living hell!",
+                    "show your face there or I will make your life a living hell!",
                 button: [
                     { chatID: 31, text: "If you don't want me there, why did you tell me? ", callback: "" },
                 ]
@@ -1628,7 +1628,7 @@ room170.chat = function (chatID) {
             {
                 chatID: 53,
                 speaker: "martha",
-                text: "Ok ladies, get ready for the swimsuit compition. Once you've " +
+                text: "Ok ladies, get ready for the swimsuit competition. Once you've " +
                     "adorned the proper attire meet me in the hallway. ",
                 button: [
                     { chatID: -1, text: "...", callback: "fashion_event2" },
@@ -1863,7 +1863,7 @@ room170.chat = function (chatID) {
             {
                 chatID: 79,
                 speaker: "!judge",
-                text: "Don't lie. We all know you're a cock hungy sissy. Earlier today " +
+                text: "Don't lie. We all know you're a cock hungry sissy. Earlier today " +
                     "you came up to me to suck my penis without any prompting from me. " +
                     "I'm disappointed in your lie to us and yourself.",
                 button: [
@@ -1990,7 +1990,7 @@ room170.chat = function (chatID) {
                     "Hahahaha! Has a girl even seen it? I'll bet any girl that sees it just " +
                     "laughs and leaves you with your pants down!!!",
                 button: [
-                    { chatID: 93, text: "No girls has seen my tiny clitty", callback: "j5-1" },
+                    { chatID: 93, text: "No girls have seen my tiny clitty", callback: "j5-1" },
                     { chatID: 93, text: "They all just laugh at my tiny clitty", callback: "j5-1" },
                     { chatID: 93, text: "One girl tried, but gave up because it's too small", callback: "j5-1" },
                     { chatID: 93, text: "Boys laugh at it before bending me over and fucking me.", callback: "j5-1" },

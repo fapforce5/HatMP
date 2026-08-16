@@ -889,7 +889,7 @@ room958.chat = function (chatID) {
         {
             chatID: 18,
             speaker: "!milkmaid",
-            text: "Oh! Oh... You're just a sissy. I thought I got caught by one of those bastads! I hate this " +
+            text: "Oh! Oh... You're just a sissy. I thought I got caught by one of those bastards! I hate this " +
                 "place so fucking much! I just piss on the floor to show them how much I hate it! ",
             button: [
                 { chatID: 19, text: "Oh. Hahaha! That's awesome! ", callback: "" },
@@ -1078,7 +1078,7 @@ room958.chat = function (chatID) {
         {
             chatID: 39,
             speaker: "!boxes",
-            text: "Haha! Awesome! Since your naked anyways, what do you say to a having a little fun? ",
+            text: "Haha! Awesome! Since you're naked anyways, what do you say to a having a little fun? ",
             button: [
                 { chatID: 40, text: "I sure do!", callback: "event_f1" },
                 { chatID: -1, text: "Some other time.", callback: "displayDirection" },
@@ -1172,7 +1172,7 @@ room958.chat = function (chatID) {
         },
         {
             chatID: 50,
-            speaker: "!Milkmaid",
+            speaker: "!milkmaid",
             text: "Haha. You caught us. Just takin' my furry boyfriend for a little romp in the forest. " +
                 "We like to play the big bad bear! Hehe. Can't wait to see you bring about the coming " +
                 "of Azrael! So excited! ",
@@ -1193,7 +1193,7 @@ room958.chat = function (chatID) {
         {
             chatID: 52,
             speaker: "g",
-            text: "*arg* I lost! I knew you would compition! Well, I guess you get to fuck " +
+            text: "*arg* I lost! I knew you would win! Well, I guess you get to fuck " +
                 "me right up my pussy! I deserve it! ",
             button: [
                 { chatID: 53, text: "Oh yeah! [Slide your penis inside her vagina]", callback: "event_h2" },
@@ -1227,7 +1227,7 @@ room958.chat = function (chatID) {
             chatID: 56,
             speaker: "g",
             text: "You know, you're the only man I let cum inside me. There's just something about you that " +
-                "I find appealing. I just jack off the regular cultist. Their sperm isn't worth isn't worthy of " +
+                "I find appealing. I just jack off the regular cultist. Their sperm isn't worthy of " +
                 "my uterus.  ",
             button: [
                 { chatID: -1, text: "Oh. Thanks!", callback: "displayDirection" },
@@ -1255,7 +1255,7 @@ room958.chat = function (chatID) {
             speaker: "g",
             text: "You know, you're the only man I let cum inside me. Your power is amazing, but we're going " +
                 "to have to do something about that lack of penis. Maybe a penis sleeve... " +
-                "You know I just jack off the regular cultist. Their sperm isn't worth isn't worthy of " +
+                "You know I just jack off the regular cultist. Their sperm isn't worthy of " +
                 "my uterus. ",
             button: [
                 { chatID: -1, text: "Oh. Thanks?", callback: "displayDirection" },
@@ -1289,7 +1289,7 @@ room958.chat = function (chatID) {
         {
             chatID: 63,
             speaker: "g",
-            text: "The secret to working out the anal sphincter is repition, speed, and force. You may " +
+            text: "The secret to working out the anal sphincter is repetition, speed, and force. You may " +
                 "think you just go low and slow, but I found it's more beneficial to just jam it up there. " +
                 "Fast, hard, and brutal! ",
             button: [

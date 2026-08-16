@@ -49,7 +49,19 @@ room551.main = function () {
         }
     ];
     if (!daily.get("g")) {
-        if (Math.floor(Math.random() * 2) === 0) {
+        if (sc.getMissionTask("g", "mom", 2).startedOrComplete) {
+            nav.bg("551_gymInside/g0.webp");
+            btnList.push({
+                "type": "btn",
+                "name": "squat1",
+                "left": 858,
+                "top": 193,
+                "width": 277,
+                "height": 801,
+                "image": "551_gymInside/g0_x.webp"
+            });
+        }
+        else if (Math.floor(Math.random() * 2) === 0) {
             btnList.push({
                 "type": "btn",
                 "name": "squat",
@@ -73,7 +85,7 @@ room551.main = function () {
         }
     }
     var navList = [0, 552, 553];
-    if (sc.getMission("g", "secret").inProgress && !daily.get("g"))
+    if (sc.getMission("g", "secret").startedOrComplete && !daily.get("g"))
         navList.push(555);
     $.each(btnList, function (i, v) {
         nav.button(v, 551);
@@ -127,6 +139,20 @@ room551.btnclick = function (name) {
         case "girl":
             char.room(553);
             break;
+        case "squat1":
+            if (sc.getMissionTask("g", "mom", 2).inProgress) {
+                sc.completeMissionTask("g", "mom", 2);
+                chat(52, 551);
+            }
+            else {
+                if (missy.getenvelope("g").active) {
+                    chat(56, 551);
+                }
+                else {
+                    chat(55, 551);
+                }
+            }
+            break;
         case "squat":
             nav.killbutton("squat");
             nav.button({
@@ -138,6 +164,11 @@ room551.btnclick = function (name) {
                 "height": 1080,
                 "image": "551_gymInside/551_squat2.png"
             }, 551);
+            if (missy.getenvelope("g").active && !daily.get("genv")) {
+                daily.set("genv");
+                chat(50, 551);
+                return;
+            }
             var missionWorkout = sc.getMission("g", "workout");
             var secretRoom = sc.getMission("g", "secret");
             var spar = sc.getMission("g", "spar");
@@ -191,7 +222,7 @@ room551.btnclick = function (name) {
             char.room(551);
             break;
         case "emp":
-            if (sc.getMission("g", "secret").inProgress) {
+            if (sc.getMission("g", "secret").startedOrComplete) {
                 if (daily.get("g")) {
                     nav.button({
                         "type": "btn",
@@ -464,6 +495,15 @@ room551.chatcatch = function (callback) {
             char.addtime(47);
             char.room(551);
             break;
+        case "genv":
+            if (missy.getenvelope("g").hasKey) {
+                chat(59, 551);
+            }
+            else {
+                chat(60, 551);
+            }
+            missy.setenvelope("g");
+            break;
         default:
             break;
     }
@@ -488,7 +528,7 @@ room551.chat = function (chatID) {
         {
             chatID: 2,
             speaker: "g",
-            text: "So your as stupid as you are wimpy?",
+            text: "So you're as stupid as you are wimpy?",
             button: [
                 { chatID: 3, text: "Oh uh.. what?", callback: "squat3" }
             ]
@@ -884,6 +924,103 @@ room551.chat = function (chatID) {
             text: "I so much hate running on a treadmill",
             button: [
                 { chatID: -1, text: "Complete Run ", callback: "completeRun" },
+            ]
+        },
+        {
+            chatID: 50,
+            speaker: "me",
+            text: "Hey, I have a question about the C.U.M. cult.",
+            button: [
+                { chatID: 51, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 51,
+            speaker: "g",
+            text: "We only talk about that in the back gym. ",
+            button: [
+                { chatID: -1, text: "oh ok.", callback: "reset" },
+            ]
+        },
+        {
+            chatID: 52,
+            speaker: "g",
+            text: "Well if it isn't my baby's " + gender.pronoun("daddy") + "! You know you're the first person I've ever let cum " +
+                "inside me and now look at me. I've got a little baby bump. ",
+            button: [
+                { chatID: 53, text: "I uhhh", callback: "" },
+            ]
+        },
+        {
+            chatID: 53,
+            speaker: "g",
+            text: "Oh don't worry, I don't expect you to raise our child. My wife " + sc.n("!madison") +
+                " and I have wanted a little baby for a while. She works down at the Sperm Bank. " +
+                "I asked her to grab some sperm to give to me, but she said it's better to get it " +
+                "from a person, not a bottle. ",
+            button: [
+                { chatID: 54, text: "oh. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 54,
+            speaker: "g",
+            text: "She really is special. Most wives wouldn't allow it, but we trust each other. " +
+                "She handles so many dicks in a day I have to trust her. She is a great little wife. " +
+                "But now I'm pregnant I just do light workouts. Don't want to risk anything. If you " +
+                "want to visit the back guy it'll just be " + sc.n("chad") + ". ",
+            button: [
+                { chatID: -1, text: "Alright. Well good luck with the baby. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 55,
+            speaker: "g",
+            text: "So happy about our baby bump! Have fun with " + sc.n("chad") + " in the back gym. ",
+            button: [
+                { chatID: -1, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 56,
+            speaker: "me",
+            text: "So how's my baby's momma? ",
+            button: [
+                { chatID: 57, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 57,
+            speaker: "g",
+            text: "Good. What's up?",
+            button: [
+                { chatID: 58, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 58,
+            speaker: "me",
+            text: "So, my baby's momma. I need to visit a friend at the C.U.M. compound, but they won't " +
+                "let me use the back door. Anyway you would know the combo to the back door so I can " +
+                "just pop in really quick and say hi? Please.",
+            button: [
+                { chatID: -1, text: "...", callback: "genv" },
+            ]
+        },
+        {
+            chatID: 59,
+            speaker: "g",
+            text: "Anything for my baby's daddy. It's 1-2-3-4-5. ",
+            button: [
+                { chatID: -1, text: "Thanks!", callback: "reset" },
+            ]
+        },
+        {
+            chatID: 60,
+            speaker: "g",
+            text: "I don't know it. I just use the front gate.  ",
+            button: [
+                { chatID: -1, text: "oh. ok. Thanks anyways", callback: "reset" },
             ]
         },
     ];

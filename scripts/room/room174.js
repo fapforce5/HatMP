@@ -918,7 +918,7 @@ room174.chat = function (chatID) {
             {
                 chatID: 9,
                 speaker: "!bill",
-                text: "That whore dancing is the best! I needed that. I clears my head. Let's head over " +
+                text: "That whore dancing is the best! I needed that. It clears my head. Let's head over " +
                     "to your place. ",
                 button: [
                     { chatID: 10, text: "...", callback: "" },
@@ -1028,7 +1028,7 @@ room174.chat = function (chatID) {
             {
                 chatID: 22,
                 speaker: "!bill",
-                text: "These are really comphy and soft. So are you ready for round two?  ",
+                text: "These are really comfy and soft. So are you ready for round two?  ",
                 button: [
                     { chatID: 23, text: "Round two?", callback: "" },
                 ]
@@ -1197,7 +1197,7 @@ room174.chat = function (chatID) {
             {
                 chatID: 41,
                 speaker: "martha",
-                text: "Ah, Sporty, this simply darling ensemble will perfectly capture your inherent femininity.It allows for the utmost comfort and mobility, ensuring you can continue your active pursuits without a moment's worry.  Imagine, gracefully gliding through your day, a vision of both elegance and practicality. Now, wouldn't that be simply splendid?",
+                text: "Ah, Sporty, this simply darling ensemble will perfectly capture your inherent femininity. It allows for the utmost comfort and mobility, ensuring you can continue your active pursuits without a moment's worry.  Imagine, gracefully gliding through your day, a vision of both elegance and practicality. Now, wouldn't that be simply splendid?",
                 button: [
                     { chatID: 42, text: "...", callback: "xdress7" },
                 ]
@@ -1278,7 +1278,7 @@ room174.chat = function (chatID) {
                 chatID: 50,
                 speaker: "!rex",
                 text: "I had that dumb waitress, tits, put this table here that you can hide under. " +
-                    "Don't fuck this up. I fucking sick of ordering the busboy to clean up shit off " +
+                    "Don't fuck this up. I'm fucking sick of ordering the busboy to clean up shit off " +
                     "my floor. Plus it's bad for business. It needs to stop tonight. ok?",
                 button: [
                     { chatID: 51, text: "I'll catch him tonight! ", callback: "" },
@@ -1295,7 +1295,7 @@ room174.chat = function (chatID) {
             {
                 chatID: 52,
                 speaker: "thinking",
-                text: "It's so cramped in here. Hopefully he comes quickly so I don't have to spen " +
+                text: "It's so cramped in here. Hopefully he comes quickly so I don't have to spend " +
                     "the entire night squatting under this table. Oh it's the waitress. She's so hot! " +
                     "hopefully it's her so I can get done with this case. ",
                 button: [
@@ -1305,7 +1305,7 @@ room174.chat = function (chatID) {
             {
                 chatID: 53,
                 speaker: "thinking",
-                text: "Not that is a tight pussy! I can smell her musky scent. So hot! I want to " +
+                text: "Now that is a tight pussy! I can smell her musky scent. So hot! I want to " +
                     "bury my face in that pussy. I wonder what she would do if I reached out and " +
                     "touched it. That's stupid. She'll totally get pissed. But she didn't seem to get " +
                     "mad when Mr. Rex called her tits. Maybe she's down. I shouldn't though. But she " +
@@ -1496,7 +1496,7 @@ room174.chat = function (chatID) {
             {
                 chatID: 74,
                 speaker: "lola",
-                text: "MMmmm the pefect amout of tongue. You're really a great kisser you know.",
+                text: "MMmmm the perfect amount of tongue. You're really a great kisser you know.",
                 button: [
                     { chatID: -1, text: "MMmmmMMmm", callback: "evalolateachme" },
                 ]
@@ -1539,7 +1539,7 @@ room174.chat = function (chatID) {
             {
                 chatID: 79,
                 speaker: "lola",
-                text: "I couldn't let her be the only one not dressed up. It's might be a little much, " +
+                text: "I couldn't let her be the only one not dressed up. It might be a little much, " +
                     "but I think she'll like it. The pink really fits her. ",
                 button: [
                     { chatID: 80, text: "GOT ME WHAT?!?!?!", callback: "el_sex0" },
@@ -1911,7 +1911,7 @@ room174.chat = function (chatID) {
                 speaker: "chad",
                 text: "Hey lady. Relax. There's plenty of dick to go around. I'm " + sc.n("chad") +
                     ". Good to meet 'cha. I can see you're sexually frustrated, but don't you worry " +
-                    "your pretty little head, I can help. Now you may think, how can one guy possbily " +
+                    "your pretty little head, I can help. Now you may think, how can one guy possibly " +
                     "please four girls in the same night. But that's 'cause you haven't experienced my " +
                     "dick yet. I'm going to give you the type " +
                     "of orgasm you'll think about when you masturbate. ",
@@ -1978,7 +1978,7 @@ room174.chat = function (chatID) {
             {
                 chatID: 129,
                 speaker: "eva",
-                text: "*whispering* see I told ya! Come here. Listen to the door. I bet you can her " +
+                text: "*whispering* see I told ya! Come here. Listen to the door. I bet you can hear " +
                     "their thighs slapping. ",
                 button: [
                     { chatID: 130, text: "...", callback: "sissy7" },

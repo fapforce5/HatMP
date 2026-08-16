@@ -130,7 +130,12 @@ room650.btnclick = function (name) {
             }
             break;
         case "charlie":
-            chat(7, 650);
+            if (missy.getenvelope("charlie").active) {
+                chat(47, 650);
+            }
+            else {
+                chat(7, 650);
+            }
             break;
         default:
             break;
@@ -247,18 +252,21 @@ room650.chatcatch = function (callback) {
         case "c12":
         case "c13":
         case "c14":
+            nav.kill();
             nav.bg("650_toyStore/" + callback + ".jpg");
             break;
         
         case "cx":
-            //if (q3.isItMe("charlie"))
-            //    chat(64, 650);
-            //else
+            if (missy.getenvelope("charlie").haskey) {
+                chat(64, 650);
+            }
+            else
                 chat(62, 650);
+            missy.setenvelope("charlie");
             break;
         case "cend":
-            gv.mod("receiveAnalMale", 1);
-            gv.mod("creamPied", 1);
+            missy.setenvelope("charlie");
+            levels.anal(4, true, "m", true, "charlie");
             nav.killall();
             nav.bg("650_toyStore/650_front.jpg");
             nav.button({
@@ -367,6 +375,9 @@ room650.chatcatch = function (callback) {
             inv.add("vib");
             sc.completeMissionTask("envy", "gf", 3);
             char.addtime(60);
+            char.room(650);
+            break;
+        case "reset":
             char.room(650);
             break;
         default:
@@ -764,7 +775,7 @@ room650.chat = function (chatID) {
             speaker: "candy",
             text: "I didn't want you to be a simp. I wanted you to push me down and force your cock in me. " +
                 "Why do you think I took you to a secluded spot in the woods and walked around with my bare ass pussy. So you " +
-                "could rape me easier. I want an agressive man, not you.",
+                "could rape me easier. I want an aggressive man, not you.",
             button: [
                 { chatID: -1, text: "Oh. ok then.", callback: "candy52_end" },
                 { chatID: 45, text: "I can be aggressive, I'll rape you right here!", callback: "" },
@@ -791,7 +802,7 @@ room650.chat = function (chatID) {
             speaker: "charlie",
             text: "You're a great whore! I really need my balls drained. So what can I get you? ",
             button: [
-                { chatID: -1, text: "Just here for cum baby!", callback: "c5" },
+                { chatID: -1, text: "Yes, what toys do yo have", callback: "toys" },
                 { chatID: 48, text: "You can tell me how to get into the C.U.M. compound. ", callback: "" },
                 { chatID: 50, text: "You can tell me how to get more of that cum baby. ", callback: "" },
             ]
@@ -859,9 +870,9 @@ room650.chat = function (chatID) {
         {
             chatID: 55,
             speaker: "charlie",
-            text: " Call me daddy, sugar tits. I love a slutty ass cum whore! My cock has never fucked harder! ",
+            text: "Call me daddy, sugar tits. I love a slutty ass cum whore! My cock has never fucked harder! ",
             button: [
-                { chatID: 56, text: "You do fuck hard dady. So hard on my tight sissy pussy.", callback: "c10" },
+                { chatID: 56, text: "You do fuck hard daddy. So hard on my tight sissy pussy.", callback: "c10" },
             ]
         },
         {
@@ -954,14 +965,14 @@ room650.chat = function (chatID) {
             text: "FUCK!!! Ok. There's a door to get in. The code to the door is 1-2-3-4-5! Fuck you're good. I don't know " +
                 "how to get there. I always got a ride. But if you do get there just enter the code for the door. ",
             button: [
-                { chatID: -1, text: "Awww thanks! You cummy is yummy daddy. See ya! ", callback: "cendx" },
+                { chatID: -1, text: "Awww thanks! You cummy is yummy daddy. See ya! ", callback: "reset" },
             ]
         },
         {
             chatID: 67,
             speaker: "me",
             text: "I have a huge problem. I have to help a girl orgasm without having anyone know. " +
-                "Do you have anykind of thing that lets a girl orgasm anywhere, even in public. Like " +
+                "Do you have any kind of thing that lets a girl orgasm anywhere, even in public. Like " +
                 "a pill or something? ",
             button: [
                 { chatID: 68, text: "...", callback: "" },
@@ -981,9 +992,9 @@ room650.chat = function (chatID) {
             chatID: 69,
             speaker: "tiffany",
             text: "Awwww. Just buy her some flowers and some handcuffs. I'm sure she'll love a " +
-                "man that takes charge. I do carry both if you want to show her your a real man. ",
+                "man that takes charge. I do carry both if you want to show her you're a real man. ",
             button: [
-                { chatID: 70, text: "She's really mad at me. I need anything that make her cum. Please help me!", callback: "" },
+                { chatID: 70, text: "She's really mad at me. I need anything that makes her cum. Please help me!", callback: "" },
             ]
         },
         {

@@ -303,7 +303,7 @@ room456.chat = function (chatID) {
         {
             chatID: 20,
             speaker: "cop",
-            text: "I'm just going to have to force it it. ",
+            text: "I'm just going to have to force it in. ",
             button: [
                 { chatID: 21, text: "ooooo", callback: "cop5" }
             ]

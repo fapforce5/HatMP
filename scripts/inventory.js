@@ -29,6 +29,7 @@ inv.t = [
     { t: "c", n: "Restraints" },
     { t: "d", n: "Dildo" },
     { t: "e", n: "Energy Snack" },
+    { t: "f", n: "Suspect List" },
     { t: "g", n: "General Item" },
     { t: "h", n: "Female Hormone" },
     { t: "i", n: "Dale's Fighting" },
@@ -55,7 +56,8 @@ inv.t = [
 inv.init = function () {
 
     inv.master = [
-        { type: "g", name: "envelope", display: "Forest Queen's List", entry: false, count: null, cost: -1, buy: null, image: "envelope.png", n: false, desc: "Take this to Princess at the Detective Agency" },
+        { type: "f", name: "envelope", display: "Forest Queen's List", entry: false, count: null, cost: -1, buy: null, image: "envelope.png", n: false, desc: "Take this to Princess at the Detective Agency" },
+        { type: "f", name: "envelope1", display: "Forest Queen's List", entry: false, count: null, cost: -1, buy: null, image: "envelope.png", n: false, desc: "List of C.U.M. Cultist that may know the secret code." },
         { type: "g", name: "usb", display: "USB Cult List", entry: false, count: null, cost: -1, buy: null, image: "usb.png", n: false, desc: "Use this in your home computer" },
         { type: "g", name: "missyusb", display: "USB for Missy`", entry: false, count: null, cost: -1, buy: null, image: "usb.png", n: false, desc: "Give this to Missy, or take a peek in your home PC" },
         { type: "g", name: "locket", display: "Locket for Missy's Case", entry: false, count: null, cost: -1, buy: null, image: "locket.png", n: false, desc: "Give this to Missy. " },
@@ -70,7 +72,6 @@ inv.init = function () {
         { type: "e", name: "acia", display: "Acia Berries", entry: false, count: 0, cost: 10, buy: 3, image: "acia.png", n: false, desc: "Gain 15 energy" },
         { type: "e", name: "soda", display: "Super Awesome Soda", entry: false, count: 0, cost: 30, buy: 10, image: "energyCola.png", n: false, desc: "Gain 50 energy" },
         { type: "e", name: "hornyGoatWeed", display: "Horny Goat Weed", entry: false, count: 0, cost: -1, buy: 3, image: "hornyGoatWeed.png", n: false, desc: "Gain 10 energy and become fully aroused." },
-
 
         { type: "e", name: "pissjarboy", display: "A Jar full of piss", entry: false, count: 0, cost: -1, buy: 4, image: "pissjarboy.png", n: false, desc: "Gain 40 energy" },
         { type: "e", name: "pissjargirl", display: "A Jar full of piss", entry: false, count: 0, cost: -1, buy: 6, image: "pissjargirl.png", n: false, desc: "Gain 60 energy" },
@@ -176,9 +177,6 @@ inv.init = function () {
         { type: "a", name: "elephant", display: "Elephant", entry: false, count: 0, cost: 12, buy: 4, image: "elephant.png", n: false, desc: "Elephant plush toy" },
         { type: "a", name: "mug", display: "Travel Mug", entry: false, count: 0, cost: 36, buy: 12, image: "mug.png", n: false, desc: "Pink travel mug" },
         { type: "a", name: "whoopee", display: "Whoopee cushion", entry: false, count: 0, cost: 3, buy: 1, image: "whoopee.png", n: false, desc: "Whoopee cushion go fart! Hahaha" },
-
-        //{ type: "0", name: "mr_pink", display: "Pink Paint", entry: false, count: null, cost: 75, buy: null, image: "mr_pink.png", n: false, desc: "Paint for your bedroom walls." },
-        //{ type: "0", name: "mr_blue", display: "Blue Paint", entry: false, count: null, cost: 75, buy: null, image: "mr_blue.png", n: false, desc: "Paint for your bedroom walls." },
 
         { type: "1", name: "mr_blueblanket", display: "Blue Blanket", entry: true, count: 1, cost: 80, buy: 20, image: "mr_blueblanket.png", n: false, desc: "Blankets for your bed." },
         { type: "1", name: "mr_pinkblanket", display: "Pink Blanket", entry: false, count: null, cost: 80, buy: 20, image: "mr_pinkblanket.png", n: false, desc: "Blankets for your bed." },
@@ -492,7 +490,6 @@ inv.addMulti = function (name, count) {
 };
 
 inv.update = function (name, entry, count) {
-
     for (var i = 0; i < inv.master.length; i++) {
         if (inv.master[i].name === name) {
             if (entry === true && inv.master[i].entry === false) {
@@ -668,6 +665,9 @@ inv.display = function (typeArray = null) {
             case "e"://energy snack
                 inv.setPrimaryAction(thisItem, "bag", "Snack Attack");
                 $("#menu_displayDesc").append(" - Max Energy: " + gv.get("maxenergy"));
+                break;
+            case "f"://energy snack
+                inv.setPrimaryAction(thisItem, "bag", "View List");
                 break;
             case "n"://magazine
                 inv.setPrimaryAction(thisItem, "magazine", "Read Magazine");
@@ -995,6 +995,39 @@ inv.createElements = function (showFilter = true) {
                             inv.master[eindex].count = 0;
                             inv.master[eindex].entry = false;
                         }
+                    }
+                    break;
+                case "f":
+                    inv.close();
+                    nav.button({
+                        "type": "zbtn",
+                        "name": "inv_listofbadpeople",
+                        "left": 0,
+                        "top": 0,
+                        "width": 1920,
+                        "height": 1080,
+                        "image": "1001_rand/sheet.webp"
+                    }, 1010);
+                    for (let i = 0; i < missy.envelope.length; i++) {
+                        let charInfo = privateChat.speakerInfo(missy.envelope[i].n)
+                        nav.t({
+                            type: "zimg",
+                            name: "inv_listofbadpeople",
+                            left: 800,
+                            top: i * 38 + (150),
+                            font: 26,
+                            hex: missy.envelope[i].ach ? "#999999" : "#000000",
+                            text: (missy.envelope[i].ach ? "☑" : "☐") + ": " + charInfo.name + " @" + g.getRooms(missy.envelope[i].roomID).name
+                        }, 9999);
+                        nav.button({
+                            "type": "zimg",
+                            "name": "inv_listofbadpeople",
+                            "left": 760,
+                            "top": i * 38 + (150),
+                            "width": 36,
+                            "height": 36,
+                            "image": charInfo.img.replace("./images", ".."),
+                        }, 1010);
                     }
                     break;
                 case "p"://phone case

@@ -344,7 +344,7 @@ room902.chat = function (chatID) {
             chatID: 18,
             speaker: "lola",
             text: "Oh thank god! " + sc.n("eva") + " hid my clothes after I went swimming again. Can you save me and look " +
-                "around the the locker room at the pool for my clothes. Pretty please. Please. Please. You're dressed like " +
+                "around the locker room at the pool for my clothes. Pretty please. Please. Please. You're dressed like " +
                 "a girl so it shouldn't be a big deal. ",
             button: [
                 { chatID: 24, text: "[Sneak a quick peek at her naked body] ", callback: "r0" },

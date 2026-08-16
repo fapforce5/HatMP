@@ -183,7 +183,7 @@ room154.chat = function (chatID) {
         {
             chatID: 1,
             speaker: "bitch",
-            text: "Gentlmen, your main course. Just give us 5 minutes to place " + gender.pronoun("her") + 
+            text: "Gentlemen, your main course. Just give us 5 minutes to place " + gender.pronoun("her") +
                 ". " + sc.n("me") + ", lay down on the table. ",
             button: [
                 { chatID: 2, text: "Yes ma'am", callback: "c1" }
@@ -226,7 +226,7 @@ room154.chat = function (chatID) {
             chatID: 6,
             speaker: "jones",
             text: "Hold it right there. You will join in too. You're starting to think you're in charge around " +
-                "here and need to be reminded of you place in this house. Take off your clothing. " +
+                "here and need to be reminded of your place in this house. Take off your clothing. " +
                 "You're going to offer up your body to whatever whims these gentlemen desire. ",
             button: [
                 { chatID: 7, text: "...", callback: "" }
@@ -244,7 +244,7 @@ room154.chat = function (chatID) {
             chatID: 8,
             speaker: "thinking",
             text: "Wait. Is " + sc.n("bitch") + " transgender? Holy crap I didn't even know! Why " +
-                "has she been so mean to me then! Also whoever this guy is really knows how to finger a " +
+                "has she been so mean to me then! Also whoever this guy is really knows how to finger " +
                 "a hole. I do wish he used a little lube or spit before shoving his finger up my ass. ",
             button: [
                 { chatID: 9, text: "...", callback: "c16" }

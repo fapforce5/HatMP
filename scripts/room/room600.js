@@ -42,6 +42,7 @@ room600.chatcatch = function (callback) {
     switch (callback) {
         case "office":
         case "office1":
+            nav.kill();
             nav.bg("600_body/" + callback + ".jpg");
             break;
         case "office2":
@@ -60,6 +61,12 @@ room600.chatcatch = function (callback) {
                 "height": 1080,
                 "image": "600_body/office3.png"
             }, 600);
+            break;
+        case "officea":
+            zcl.embarrass(0, 800, .9, "back", false);
+            break;
+        case "officeb":
+            zcl.embarrass(0, 800, .9, "", false);
             break;
         case "office4":
             nav.killbutton("office3");

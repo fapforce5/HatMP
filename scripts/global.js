@@ -149,8 +149,8 @@ g.popUpNotice = function (notice) {
     g.showNotice({
         selector: '#char_alert',
         notice: notice,
-        fadeIn: 600,
-        fadeOut: 1800,
+        fadeIn: 200,
+        fadeOut: 2200,
         delay: 0
     });
 };
@@ -333,6 +333,7 @@ g.rooms = [
     { roomID: 320, name: "GF's Bathroom", image: "320_bathroom/bg.jpg", nightImage: "320_bathroom/bgnight.jpg", houseID: 300, btn: "roomBtn_320.png" },
     { roomID: 321, name: "GF's Webcam", image: "321_whorechat/bg.jpg", nightImage: "321_whorechat/bg.jpg", houseID: 300, btn: "roomBtn_316.png" },
     { roomID: 322, name: "GF's Living Room", image: "316_livingroom/bg.jpg", nightImage: "316_livingroom/bg.jpg", houseID: 300, btn: "roomBtn_316.png" },
+    { roomID: 323, name: "GF's Living Room", image: "316_livingroom/bg.jpg", nightImage: "316_livingroom/bg.jpg", houseID: 300, btn: "roomBtn_316.png" },
 
     { roomID: 325, name: "Farm", image: "325_farm/bg.jpg", nightImage: "325_farm/bg_night.jpg", houseID: 325, btn: "roomBtn_325.png" },
     { roomID: 326, name: "Stable", image: "326_stable/bg1.jpg", nightImage: "326_stable/bg1.jpg", houseID: 325, btn: "roomBtn_326.png" },

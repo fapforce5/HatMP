@@ -293,7 +293,7 @@ room52.chat = function (chatID) {
         {
             chatID: 2,
             speaker: "tiffany",
-            text: sc.n("me") + "! I thought we told you no more boys clothes!. ",
+            text: sc.n("me") + "! I thought we told you no more boys clothes! ",
             button: [
                 { chatID: 3, text: "wha", callback: "" }
             ]
@@ -357,7 +357,7 @@ room52.chat = function (chatID) {
         {
             chatID: 10,
             speaker: "candy",
-            text: "See and now your hands say my girl pussy is ready for the cum. You make such a pertty cum slut.",
+            text: "See and now your hands say my girl pussy is ready for the cum. You make such a pretty cum slut.",
             button: [
                 { chatID: 11, text: "...", callback: "p5" }
             ]

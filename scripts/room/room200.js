@@ -1069,7 +1069,7 @@ room200.chat = function (chatID) {
             {
                 chatID: 22,
                 speaker: "missy",
-                text: "That's a good sissy. That panty buldge is so cute on you. Now on to work. ",
+                text: "That's a good sissy. That panty bulge is so cute on you. Now on to work. ",
                 button: [
                     { chatID: -1, text: "...", callback: "selectJob" }
                 ]
@@ -1113,18 +1113,18 @@ room200.chat = function (chatID) {
             {
                 chatID: 27,
                 speaker: "missy",
-                text: "I'm going to walk you step by step so your tiny mind can absorbe what you need to do. That way you don't " +
+                text: "I'm going to walk you step by step so your tiny mind can absorb what you need to do. That way you don't " +
                     "fuck it up. First you need to go to the park. ",
                 button: [
                     { chatID: 28, text: "yes ma'am", callback: "case_usb1" },
                 ]
             },
             {
-                chatID: 29,
+                chatID: 28,
                 speaker: "missy",
                 text: "Walk into the men's bathroom. Not the woman's. You can't go in there since you don't have tits. ",
                 button: [
-                    { chatID: 30, text: "...", callback: "case_usb2" },
+                    { chatID: 29, text: "...", callback: "case_usb2" },
                 ]
             },
             {
@@ -1385,7 +1385,7 @@ room200.chat = function (chatID) {
             {
                 chatID: 56,
                 speaker: "missy",
-                text: "Since we're short staffed, and you have proven a compentent cock sucker you " +
+                text: "Since we're short staffed, and you have proven a competent cock sucker you " +
                     "can now suck cocks in place of working in my office. The booths are oral only. No stupid shit ok?",
                 button: [
                     { chatID: -1, text: "Yes ma'am", callback: "missyBtnClick" },
@@ -1608,8 +1608,8 @@ room200.chat = function (chatID) {
                 text: "I guess a partial picture of the mad pooper is better than nothing. " +
                     "I have some contacts that I'll send around to see if I can get a better " +
                     "idea of who this is. There's not that many men in this town with green hair, " +
-                    "and that parital necklace is unique. There may be enough to get him, I'll " +
-                    "have to see. But since you only got a partial image you'll only get a parital " +
+                    "and that partial necklace is unique. There may be enough to get him, I'll " +
+                    "have to see. But since you only got a partial image you'll only get a partial " +
                     "payment. $100 will do. ",
                 button: [
                     { chatID: -1, text: "Thank you ma'am", callback: "case_elijah_origin_goodBad" },
@@ -1927,7 +1927,7 @@ room200.chat = function (chatID) {
                     "her and free her before Friday night. The cabin may be hard to find, but it's not too " +
                     "deep in the forest. If you walk all the way to the mountains then you've gone way too far. ",
                 button: [
-                    { chatID: 114, text: "What happens on Firday night ma'am?", callback: "" }
+                    { chatID: 114, text: "What happens on Friday night ma'am?", callback: "" }
                 ]
             },
             {
@@ -1994,7 +1994,7 @@ room200.chat = function (chatID) {
             {
                 chatID: 119,
                 speaker: "missy",
-                text: "You won't find anything going during the day, I need to you to sneak in after they close " +
+                text: "You won't find anything going during the day, I need you to sneak in after they close " +
                     "after " + char.friendlyTime(22) + " and look around. Maybe poke around the tents to see " +
                     "if there's anything that can help us confirm they were there. If you find anything worth " +
                     "looking into give me a call. Don't be a hero, just call me. Ok. ",
@@ -2079,8 +2079,8 @@ room200.chat = function (chatID) {
                 chatID: 127,
                 speaker: "missy",
                 text: "Oh wow! This is troubling. The cult is getting bolder. Probably ramping for another " +
-                    "big ritual. It's too bad you couldn't stop them, but I'm sure " + sc.n("ralph") + 
-                    " is safe... for now. Let me devise a plan to resuce him. It will be hard. Really " +
+                    "big ritual. It's too bad you couldn't stop them, but I'm sure " + sc.n("ralph") +
+                    " is safe... for now. Let me devise a plan to rescue him. It will be hard. Really " +
                     "hard. Until then, you keep your head down. I don't want to lose any more sissies. ",
                 button: [
                     { chatID: -1, text: "Yes ma'am", callback: "case_saveralph_badend" }
@@ -2188,7 +2188,7 @@ room200.chat = function (chatID) {
             {
                 chatID: 138,
                 speaker: "missy",
-                text: "You idiot! You can't just ask someone if they're commiting a crime, you have to actually " +
+                text: "You idiot! You can't just ask someone if they're committing a crime, you have to actually " +
                     "investigate it!! Now come with me so we can look into it or I'm going to call " + sc.n("wyatt") +
                     " to let him know you're not doing your job! ",
                 button: [
@@ -2265,7 +2265,7 @@ room200.chat = function (chatID) {
             {
                 chatID: 146,
                 speaker: "rachel",
-                text: "Eight minutes are up. We'll look at the stable, but after that I'm done. I've got real " +
+                text: "Times up. We'll look at the stable, but after that I'm done. I've got real " +
                     "work to do. Unlike you that runs around terrorizing poor farmers. Let's go! ",
                 button: [
                     { chatID: 147, text: "*hrumph*", callback: "case_ranch3" }
@@ -2276,7 +2276,7 @@ room200.chat = function (chatID) {
                 speaker: "rachel",
                 text: "Keep that pervert away from my award winning horses. Last time " + gender.pronoun("f") +
                     " was here " + gender.pronoun("she") + " tried to molest poor " + sc.n("horse") + "'s " +
-                    "penis. A real pervet she is. ",
+                    "penis. A real pervert she is. ",
                 button: [
                     { chatID: 148, text: "You're lying. The girls are here, you're just hiding them! ", callback: "" }
                 ]
@@ -2322,7 +2322,7 @@ room200.chat = function (chatID) {
                 chatID: 152,
                 speaker: "ppgirl",
                 text: "Daddy!!! Oh my god!! They kidnapped me and had me tied up all this time! Please get " +
-                    "me out of here daddy! I don't want to me here any longer!!! Please let me go!!",
+                    "me out of here daddy! I don't want to be here any longer!!! Please let me go!!",
                 button: [
                     { chatID: 153, text: "ohh...", callback: "" }
                 ]
@@ -2443,7 +2443,7 @@ room200.chat = function (chatID) {
                 speaker: "missy",
                 text: "I have good news. I've found out more about our little mad pooper. Seems like he's " +
                     "been seen hiding out with the local tattoo artist, " + sc.n("stormy") + ". I need you to " +
-                    "go visit her trailer and my information is correct and let me know. ",
+                    "go visit her trailer and let me know. ",
                 button: [
                     { chatID: 165, text: "Do I need to take him in ma'am?", callback: "" }
                 ]
@@ -2514,7 +2514,7 @@ room200.chat = function (chatID) {
             {
                 chatID: 172,
                 speaker: "!info",
-                text: "This is the next chapter. You won't be able to to continue many of the story lines " +
+                text: "This is the next chapter. You won't be able to continue many of the story lines " +
                     "once you start this case. Are you sure you want to begin? ",
                 button: [
                     { chatID: 173, text: "Let's do this!", callback: "case_cult0" },
@@ -2546,8 +2546,8 @@ room200.chat = function (chatID) {
             {
                 chatID: 175,
                 speaker: "missy",
-                text: "Bringing about the the demon Azrael. Like any typical dooms day cult they have stupid " +
-                    "rituals and beliefs, but they are dangrous. I believe they've kidnapped no less than 20 " +
+                text: "Bringing about the demon Azrael. Like any typical dooms day cult they have stupid " +
+                    "rituals and beliefs, but they are dangerous. I believe they've kidnapped no less than 20 " +
                     "people and are holding them against their will to try and bring this Azreal into this world. ", 
                 button: [
                     { chatID: 176, text: "...", callback: "case_cult3" },

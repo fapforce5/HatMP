@@ -16,6 +16,15 @@ room203.main = function () {
             chat(32, 203);
             return;
         }
+        else if (sc.getMissionTask("p", "*missy", 2).inProgress) {
+            nav.bg("203_entrance/p3.webp");
+            sc.completeMissionTask("p", "*missy", 2);
+            sc.startMissionTask("p", "*missy", 3);
+            inv.use("envelope");
+            inv.add("envelope1");
+            chat(39, 203);
+            return;
+        }
     }
     var outfit = cl.hasoutfit("public");
     var navList = new Array();
@@ -129,6 +138,7 @@ room203.chatcatch = function (callback) {
     switch (callback) {
         case "p1":
         case "p2":
+        case "p4":
             nav.bg("203_entrance/" + callback + ".webp");
             break;
         case "enter":
@@ -297,6 +307,9 @@ room203.chatcatch = function (callback) {
             break;
         case "endRalph":
             char.room(g.roomID);
+            break;
+        case "reset":
+            char.room(203);
             break;
     }
 };
@@ -679,9 +692,9 @@ room203.chat = function (chatID) {
             {
                 chatID: 36,
                 speaker: "p",
-                text: "Good girl, slup up all the pussy juice. Now you. You need to sneak into her " +
+                text: "Good girl, slurp up all the pussy juice. Now you. You need to sneak into her " +
                     "house and steal it. It's the only way. I recommend you try breaking in " +
-                    "in at night. Put those detecive skills to work. Do not get caught or she'll destroy everything " +
+                    "at night. Put those detective skills to work. Do not get caught or she'll destroy everything " +
                     "she has. Got it. ",
                 button: [
                     { chatID: 37, text: "Yes. Sneak into the Forest Queen's house at night. Get the plans for the compound. ", callback: "p2" }
@@ -704,6 +717,53 @@ room203.chat = function (chatID) {
                     "and find the information then bring it back to us so we can come up with a plan. ",
                 button: [
                     { chatID: -1, text: "Ok. Thanks!", callback: "reset" }
+                ]
+            },
+            {
+                chatID: 39,
+                speaker: "ceclia",
+                text: "Oh fuck, yeah. So good!!!",
+                button: [
+                    { chatID: 40, text: "huh?", callback: "" }
+                ]
+            },
+            {
+                chatID: 40,
+                speaker: "p",
+                text: "oh. Hi " + sc.n("me") + ". Any good news?",
+                button: [
+                    { chatID: 41, text: "Yes [Explain what happened and hand over the Forest Queen's message]", callback: "p4" }
+                ]
+            },
+            {
+                chatID: 41,
+                speaker: "p",
+                text: sc.n("cecilia") + " hold that hole open. I'm not done with it yet. " + sc.n("me") + 
+                    " This is what we need! I'm working on trying to figure out where Missy is being held, " +
+                    "but you'll need to find the code to get in the compound. ",
+                button: [
+                    { chatID: 42, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 42,
+                speaker: "p",
+                text: "Most members of the cult are only allowed in the main door where they have guards and " +
+                    "check everyone. However, some have the code to the back gate. I know there's a numerical " +
+                    "code to get in, but I don't know that code. You need to go down this entire list and try " +
+                    "to get that code. I don't care what you have to do, but you have to find the person on " +
+                    "this list and get that code! ",
+                button: [
+                    { chatID: 43, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 43,
+                speaker: "p",
+                text: "You hold onto this envelope in your inventory. Just check it off after you try and see if " +
+                    "they have the code. We're all counting on you to talk to each person in this list. ",
+                button: [
+                    { chatID: -1, text: "Ok. I'll talk to every person on the list and come back when I get the code! ", callback: "reset" }
                 ]
             },
         ];

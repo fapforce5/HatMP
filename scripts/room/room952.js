@@ -684,7 +684,7 @@ room952.chat = function (chatID) {
             speaker: "ralph",
             text: "Yeah. It's pretty boring here, but you now I like that. I get to just hang out, they feed " +
                 "me, and every once in a while someone comes over for sex. I do wish more girls would come " +
-                "over, but *sigh* just guys. All guys. So many pensises, I've lost count. But anytime you " +
+                "over, but *sigh* just guys. All guys. So many penises, I've lost count. But anytime you " +
                 "just want to hang out, I'm here. ",
             button: [
                 { chatID: -1, text: "Ok ", callback: "reset_c1" }
@@ -736,7 +736,7 @@ room952.chat = function (chatID) {
         {
             chatID: 10,
             speaker: "security",
-            text: "Yes. There's been a lot lately. I think Ubels tired of waiting. I'm trying to play " +
+            text: "Yes. There's been a lot lately. I think Ubel's tired of waiting. I'm trying to play " +
                 "it safe. Be good enough to get fucked, but not so good they try to impregnate me. Just " +
                 "need to buy some time to get out of here. Maybe steal a bunch of those suppositories before " +
                 "I get out of here. It's just really hard to escape. ",
@@ -793,7 +793,7 @@ room952.chat = function (chatID) {
         {
             chatID: 16,
             speaker: "!timothy",
-            text: "Those pills really do make us hot. And that penis shirnking cream is the best! So glad " +
+            text: "Those pills really do make us hot. And that penis shrinking cream is the best! So glad " +
                 sc.n("!chris") + " was able to talk the doctor into letting us use it. ",
             button: [
                 { chatID: 17, text: "Penis shrinking cream?", callback: "" }
@@ -803,7 +803,7 @@ room952.chat = function (chatID) {
             chatID: 17,
             speaker: "!chris",
             text: "Oh yes. I told the doctor I wanted a vagina now, my penis is way too big. He said it's " +
-                "too soon, but he game me this cream and told me to use it every day. My clit is so small and " +
+                "too soon, but he gave me this cream and told me to use it every day. My clit is so small and " +
                 "limp I have to sit down to pee or I pee all over my balls. ",
             button: [
                 { chatID: -1, text: "Really?", callback: "double1" }
@@ -923,7 +923,7 @@ room952.chat = function (chatID) {
         {
             chatID: 30,
             speaker: "daria",
-            text: "We need to talk. With the failed ritual they sacrificed the chosen one to appease Azreal. ",
+            text: "We need to talk. With the failed ritual they sacrificed the chosen one to appease Azrael. ",
             button: [
                 { chatID: 31, text: "The chosen one?", callback: "" },
             ]
@@ -941,7 +941,7 @@ room952.chat = function (chatID) {
             chatID: 32,
             speaker: "daria",
             text: "Oh that. It's funny how word gets around and it's always wrong. The cum bath ritual that brings about the coming " +
-                "of Azreal is done with girl that was born a boy. They have a lot of dumb rituals, but this one is for real. " +
+                "of Azrael is done with girl that was born a boy. They have a lot of dumb rituals, but this one is for real. " +
                 sc.n("ubel") + " has figured out how to turn a guy into a full on chick, pussy and everything. ",
             button: [
                 { chatID: 33, text: "Really, how do they do that?", callback: "" }
@@ -1024,8 +1024,8 @@ room952.chat = function (chatID) {
             speaker: "daria",
             text: "Having a pussy is great, but you don't want to be their chosen one. " +
                 "You'll be locked away in a special cell with no way to escape. You be made to bathe in the cum and one of two things will " +
-                "happen. One. The cult is real and Azreal will burst from your womb and split you open killing you. Or two, the cult is " +
-                "bullshit and they'll sacrifice you to appease Azreal. Either way you end up dead. It would take a full on FBI raid " +
+                "happen. One. The cult is real and Azrael will burst from your womb and split you open killing you. Or two, the cult is " +
+                "bullshit and they'll sacrifice you to appease Azrael. Either way you end up dead. It would take a full on FBI raid " +
                 "with a ton of bloodshed for you to ever see the light of day again. ",
             button: [
                 { chatID: 41, text: "Oh.", callback: "" }
@@ -1190,8 +1190,8 @@ room952.chat = function (chatID) {
         {
             chatID: 59,
             speaker: "bodhi",
-            text: "That cultist Tom is my favorite! I've never seen you orgasm so hard that when he was fucking you while I licked your clit. " +
-                "He really filled us both so much! Nacy is fun too! Her fist is the perfect size for both of us! ",
+            text: "That cultist Tom is my favorite! I've never seen you orgasm as hard as when he was fucking you while I licked your clit. " +
+                "He really filled us both so much! Nancy is fun too! Her fist is the perfect size for both of us! ",
             button: [
                 { chatID: 60, text: "I want to play!", callback: "" }
             ]

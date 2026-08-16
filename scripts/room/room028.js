@@ -582,6 +582,9 @@ room28.dreams = function () {
                 nav.bg("28_transformation/sleep_cat.jpg");
             }
         }
+        else if (g.pass === 479) {
+            nav.bg("28_transformation/479.webp");
+        }
     }
     
     //console.log(hasText);

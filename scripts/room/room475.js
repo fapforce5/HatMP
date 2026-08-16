@@ -328,7 +328,7 @@ room475.chat = function (chatID) {
             {
                 chatID: 4,
                 speaker: "me",
-                text: "The forest is not place for a cat! Shoooo ",
+                text: "The forest is not a place for a cat! Shoooo ",
                 button: [
                     { chatID: -1, text: "...", callback: "reset" }
                 ]

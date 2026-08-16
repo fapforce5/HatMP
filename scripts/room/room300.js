@@ -12,11 +12,21 @@ room300.main = function () {
         nav.button({
             "type": "btn",
             "name": "doorevec",
-            "left": 930,
-            "top": 501,
-            "width": 231,
-            "height": 267,
+            "left": 921,
+            "top": 494,
+            "width": 132,
+            "height": 236,
             "image": "300_apartment/door16.png"
+        }, 300);
+        nav.button({
+            "type": "btn",
+            "name": "stairs",
+            "left": 1350,
+            "top": 396,
+            "width": 78,
+            "height": 407,
+            "title": "Go to the second floor. ",
+            "image": "300_apartment/stairs1.png"
         }, 300);
     }
     else if (hypnoStep === 9 || hypnoStep === 10 || hypnoStep === 11) {
@@ -380,8 +390,8 @@ room300.chat = function (chatID) {
                 chatID: 6,
                 speaker: "kei",
                 text: "I'm always here because you tease me and lead me on. You say you're waiting for marriage, but then tell " +
-                    "me how horny you are. I'm horny too. My balls are going to explode if I don't cum soon. Let go inside " +
-                    "and can finally fuck. ",
+                    "me how horny you are. I'm horny too. My balls are going to explode if I don't cum soon. Let's go inside " +
+                    "and we can finally fuck. ",
                 button: [
                     { chatID: 7, text: "...", callback: "" }
                 ]

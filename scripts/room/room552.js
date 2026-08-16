@@ -14,24 +14,24 @@ room552.main = function () {
                 "image": "552_boy/shower.jpg"
             }
         ];
-        if (Math.floor(Math.random() * 2) === 1) {
+        if (Math.floor(Math.random() * 2) === 1 && !daily.get("room552handjob")) {
             btnList.push({
                 "type": "img",
                 "name": "treyvon",
-                "left": 1011,
-                "top": 119,
-                "width": 724,
-                "height": 961,
-                "image": "552_boy/treyvon.png"
+                "left": 1020,
+                "top": 27,
+                "width": 601,
+                "height": 1053,
+                "image": "552_boy/man.webp"
             });
             btnList.push({
-                "type": "btn",
+                "type": "grab",
                 "name": "treyvonTowel",
-                "left": 1163,
-                "top": 717,
-                "width": 431,
-                "height": 345,
-                "image": "552_boy/treyvonTowel.png"
+                "left": 1151,
+                "top": 662,
+                "width": 382,
+                "height": 299,
+                "image": "552_boy/towel.webp"
             });
         }
         var navList = [551, 554, 0];
@@ -41,7 +41,7 @@ room552.main = function () {
         nav.buildnav(navList);
     }
     else
-        chat(8, 552);
+        chat(0, 552);
 };
 
 room552.btnclick = function (name) {
@@ -49,22 +49,13 @@ room552.btnclick = function (name) {
         case "shower":
             char.room(554);
             break;
-        case "bigguyTowel":
-            nav.killbutton("bigguyTowel");
-            if (sc.getEvent("me", -9)){
-                chat(3, 552);
-            }
-            else {
-                chat(0, 552);
-            }
-            break;
         case "treyvonTowel":
             nav.killbutton("treyvonTowel");
-            if (sc.getEvent("me", -9)) {
+            if (qdress.st[24].ach) {
                 chat(4, 552);
             }
             else {
-                chat(4, 552);
+                chat(1, 552);
             }
             break;
         default:
@@ -76,7 +67,26 @@ room552.chatcatch = function (callback) {
     switch (callback) {
         case "Complete":
             char.room(551);
-            
+            break;
+        case "stroke0":
+            nav.kill();
+            zcl.handjob(0, 300, .8, "", false, "b");
+            break;
+        case "stroke1":
+            zcl.handjob(0, 300, .8, "stroke", false, "b");
+            break;
+        case "stroke2":
+            daily.set("room552handjob");
+            levels.gavehandjob("m", "!bbc");
+            cl.c.cumface = true;
+            cl.display();
+            zcl.handjob(0, 300, .8, "cum", false, "b");
+            break;
+        case "stroke3":
+            daily.set("room552handjob");
+            levels.gavehandjob("m", "!bbc");
+            cl.c.cumface = true;
+            cl.display();
             break;
         default:
             break;
@@ -87,78 +97,70 @@ room552.chat = function (chatID) {
     var cArray = [
         {
             chatID: 0,
-            speaker: "bigguy",
-            text: "Hey shrimp, you like how my cock looks?",
+            speaker: "me",
+            text: "I can't go out like this.",
             button: [
-                { chatID: 1, text: "I do", callback: "" },
-                { chatID: 2, text: "I don't know why I did that", callback: "" }
+                { chatID: -1, text: "...", callback: "" }
             ]
         },
         {
             chatID: 1,
-            speaker: "bigguy",
-            text: "I know, You keep pulling my towel and I'll shove this uncut cock straight into your boy ass.",
+            speaker: "!bbc",
+            text: "Hey shrimp, you like how my cock looks?",
             button: [
-                { chatID: -1, text: "I know", callback: "" }
+                { chatID: 2, text: "I do", callback: "" },
+                { chatID: 3, text: "I don't know why I did that", callback: "" }
             ]
         },
         {
             chatID: 2,
-            speaker: "bigguy",
+            speaker: "!bbc",
+            text: "I know, you keep pulling my towel and I'll shove this cock straight up your ass.",
+            button: [
+                { chatID: -1, text: "I know [Need to unlock Secude Men]", callback: "" }
+            ]
+        },
+        {
+            chatID: 3,
+            speaker: "!bbc",
             text: "Don't lie, you wanted to check out what a real man looks like cock slut.",
             button: [
                 { chatID: -1, text: "...", callback: "" }
             ]
         },
         {
-            chatID: 3,
-            speaker: "bigguy",
-            text: "Suck cock",
-            button: [
-                { chatID: -1, text: "...", callback: "" }
-            ]
-        },
-        {
             chatID: 4,
-            speaker: "treyvon",
-            text: "I see you're a horny cock slut, you like looking at a big juicy cock?",
+            speaker: "!bbc",
+            text: "I see you're a horny cock slut. Quick, stroke my dick before someone comes in. ",
             button: [
-                { chatID: 5, text: "I do", callback: "" },
-                { chatID: 6, text: "I don't know why I did that", callback: "" }
+                { chatID: 5, text: "Oh yeah!", callback: "stroke0" },
+                { chatID: 3, text: "I don't know why I did that", callback: "" }
             ]
         },
         {
             chatID: 5,
-            speaker: "treyvon",
-            text: "Well I just filled a couple sluts full of cum before I came here, but I'll save you some.",
+            speaker: "!bbc",
+            text: "Don't just stare at it. Rub it.",
             button: [
-                { chatID: -1, text: "I know", callback: "" }
+                { chatID: 6, text: "Rub his penis. ", callback: "stroke1" }
             ]
         },
         {
             chatID: 6,
-            speaker: "treyvon",
-            text: "Don't lie, everyone loves my big meaty cock.",
+            speaker: "!bbc",
+            text: "Oh yeah, that's it. Keep rubbin ma dick. ",
             button: [
-                { chatID: -1, text: "...", callback: "" }
+                { chatID: 7, text: "...", callback: "stroke2" }
             ]
         },
         {
             chatID: 7,
-            speaker: "treyvon",
-            text: "Suck cock",
+            speaker: "!bbc",
+            text: "Hehehe. That's what you get for rubing a man's penis. Cum on yo face! Thanks " + gender.pronoun("boy") + ". ",
             button: [
-                { chatID: -1, text: "...", callback: "" }
+                { chatID: -1, text: "hehe. Yeah", callback: "reset" }
             ]
         },
-        {
-            chatID: 8,
-            speaker: "me",
-            text: "I can't go out like this.",
-            button: [
-                { chatID: -1, text: "...", callback: "" }
-            ]
-        }
     ];
     if (cArray.length > chatID && chatID > -1)
         return cArray[chatID];

@@ -1550,7 +1550,7 @@ room14.chat = function (chatID) {
                 speaker: "landlord",
                 text: "Oh good. I wanted to talk about that kiss. You're a wonderful boy, and if I was a " +
                     "bit younger and not your " + sc.n("landlord") + " I would be flattered, but this just " +
-                    "isn't right.You caught me at a moment of weakness. It's sick and disgusting. ",
+                    "isn't right. You caught me at a moment of weakness. It's sick and disgusting. ",
                 button: [
                     { chatID: 39, text: "[Kiss her] [Continue this path]", callback: "task2_1" },
                     { chatID: 38, text: "Stay silent. [Stop this path]", callback: "" },
@@ -1680,7 +1680,7 @@ room14.chat = function (chatID) {
             {
                 chatID: 42,
                 speaker: "landlord",
-                text: "This is so wrong. You shouldn't rub my pussy like like. I don't like it. ",
+                text: "This is so wrong. You shouldn't rub my pussy like that. I don't like it. ",
                 button: [
                     { chatID: 43, text: "Then why are you so wet?", callback: "task_2_5" },
                 ]
@@ -1939,7 +1939,7 @@ room14.chat = function (chatID) {
                 speaker: "landlord",
                 text: "I'm so glad you have a job! Such a big boy now!  ",
                 button: [
-                    { chatID: 71, text: "I am a big boy. Do you want to how big I am? ", callback: "" },
+                    { chatID: 71, text: "I am a big boy. Do you want to know how big I am? ", callback: "" },
                     { chatID: -1, text: "Thanks", callback: "" },
                 ]
             },
@@ -2356,7 +2356,7 @@ room14.chat = function (chatID) {
             {
                 chatID: 117,
                 speaker: "landlord",
-                text: "*glug* *glug* *GULP* Good boy. " + sc.n("landlord") + " love swallowing " +
+                text: "*glug* *glug* *GULP* Good boy. " + sc.n("landlord") + " loves swallowing " +
                     "your yummy cummies. ",
                 button: [
                     { chatID: 118, text: "whew.. I needed that. ", callback: "task_9_b_2" },
@@ -2365,7 +2365,7 @@ room14.chat = function (chatID) {
             {
                 chatID: 118,
                 speaker: "landlord",
-                text: "You're cummies are really yummy. Now give me a kiss before you leave. ",
+                text: "Your cummies are really yummy. Now give me a kiss before you leave. ",
                 button: [
                     { chatID: -1, text: "[Kiss her on her lips]", callback: "" },
                     { chatID: 119, text: "No thanks. There's some cum on your lips", callback: "dom" },
@@ -2813,7 +2813,7 @@ room14.chat = function (chatID) {
                 speaker: "bigguy",
                 text: "It wasn't my fault. I just went up to get rent and she was all " +
                     "over me. I told her no, but you know how she is. It was everything " +
-                    "I could to to keep her hands off my dick. ",
+                    "I could do to keep her hands off my dick. ",
                 button: [
                     { chatID: 169, text: "...", callback: "" },
                 ]
@@ -2870,7 +2870,7 @@ room14.chat = function (chatID) {
                 chatID: 174,
                 speaker: "bigguy",
                 text: "Oh I get to tell you what to do, 'cause we ain't done. It seems to " +
-                    "me you and you little girl need to learn some manners when it comes to " +
+                    "me you and your little girl need to learn some manners when it comes to " +
                     "the man of the house and I'm going to teach you two some manners. ",
                 button: [
                     { chatID: 175, text: "?", callback: "" },
@@ -3013,7 +3013,7 @@ room14.chat = function (chatID) {
             {
                 chatID: 190,
                 speaker: "thinking",
-                text: "The should let her sleep better. She's so tired she doesn't even have the energy to " +
+                text: "This should let her sleep better. She's so tired she doesn't even have the energy to " +
                     "clean the cum from her pussy. Sleep well " + sc.n("landlord") + ". ",
                 button: [
                     { chatID: -1, text: "...", callback: "reset" },

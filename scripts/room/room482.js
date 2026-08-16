@@ -150,8 +150,8 @@ room482.chat = function (chatID) {
         {
             chatID: 3,
             speaker: "!timothy",
-            text: "...but we're so bored here. OMG! Everyone want's to get fucked! We need men! Big strong " +
-                "aggresive men! Fuck! We feel like we're wasting our best years in here! We need to get out! ",
+            text: "...but we're so bored here. OMG! Everyone wants to get fucked! We need men! Big strong " +
+                "aggressive men! Fuck! We feel like we're wasting our best years in here! We need to get out! ",
             button: [
                 { chatID: 4, text: "...", callback: "" }
             ]
@@ -169,7 +169,7 @@ room482.chat = function (chatID) {
             chatID: 5,
             speaker: "!timothy",
             text: "Yeah. We're going to leave once we get a chance. Go to the big city and get an apartment " +
-                "together. Maybe be sexy secretaires or slutty waitresses. ",
+                "together. Maybe be sexy secretaries or slutty waitresses. ",
             button: [
                 { chatID: 6, text: "...", callback: "" }
             ]
@@ -178,7 +178,7 @@ room482.chat = function (chatID) {
             chatID: 6,
             speaker: "!chris",
             text: "OOoo. I'm so excited! I hope our boss likes fucking sissies! Maybe the whole office " +
-                "will gang bang us at the end of each day! Who doesn't love empting their balls into " +
+                "will gang bang us at the end of each day! Who doesn't love emptying their balls into " +
                 "a pair of sexy young sluts! ",
             button: [
                 { chatID: 7, text: "...", callback: "" }
@@ -265,7 +265,7 @@ room482.chat = function (chatID) {
         {
             chatID: 16,
             speaker: "!sissy_toilet",
-            text: "Oh. Hehe. I'm Toilet. Anytime you need to relive youself of cum or piss, just put " +
+            text: "Oh. Hehe. I'm Toilet. Anytime you need to relieve yourself of cum or piss, just put " +
                 "it in me! Yum yum yum!",
             button: [
                 { chatID: 17, text: "How did you end up as the toilet? ", callback: "" },
@@ -284,8 +284,8 @@ room482.chat = function (chatID) {
             chatID: 18,
             speaker: "!sissy_toilet",
             text: "I guess because I'm here. I just kinda kneeled down and told people. Before long I became " +
-                "the offical toilet. I wasn't always a toilet. Before the cult took me in I've never tasted " +
-                "anyone pee. They were brutal, but they let me volunteer to be the toilet in there. ",
+                "the official toilet. I wasn't always a toilet. Before the cult took me in I've never tasted " +
+                "anyone's pee. They were brutal, but they let me volunteer to be the toilet in there. ",
             button: [
                 { chatID: 19, text: "...", callback: "" },
             ]
@@ -305,7 +305,7 @@ room482.chat = function (chatID) {
         {
             chatID: 20,
             speaker: "!sissy_toilet",
-            text: "Yay! I wonder who's cum I get to yum down today! ",
+            text: "Yay! I wonder whose cum I get to yum down today! ",
             button: [
                 { chatID: 21, text: "[Press your hole over her mouth]", callback: "toilet_cum" },
             ]
@@ -353,7 +353,7 @@ room482.chat = function (chatID) {
         {
             chatID: 26,
             speaker: "me",
-            text: "Hehe. You tongue tickels my naughty bits! ",
+            text: "Hehe. Your tongue tickles my naughty bits! ",
             button: [
                 { chatID: 27, text: "...", callback: "toilet0" },
             ]

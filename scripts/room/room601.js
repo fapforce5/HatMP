@@ -1093,7 +1093,7 @@ room601.chat = function (chatID) {
                     text: "This is so crazy right? I would never dream about going into " +
                         "a place like this, and here I am in my underwear just chatting with " +
                         "random guys! I hope I look ok. Everyone's so nice to me, but I can't " +
-                        "tell if think think I'm cute. ",
+                        "tell if they think I'm cute. ",
                     button: [
                         { chatID: 26, text: "You're crazy! You're hot as hell!", callback: "" }
                     ]
@@ -1439,7 +1439,7 @@ room601.chat = function (chatID) {
             chatID: 36,
             speaker: "missy",
             text: "I said I would deliver sissies! I never promised you or your clients " +
-                "sex with my sissies! What in that pea-brain mellon-sized head thought that I " +
+                "sex with my sissies! What in that pea-brain melon-sized head thought that I " +
                 "had guaranteed sex! ",
             button: [
                 { chatID: 37, text: "...", callback: "" },
@@ -1475,7 +1475,7 @@ room601.chat = function (chatID) {
         {
             chatID: 40,
             speaker: "tony",
-            text: "Yeah. It's on. Go down and annouce it to everyone.",
+            text: "Yeah. It's on. Go down and announce it to everyone.",
             button: [
                 { chatID: 41, text: "...", callback: "" },
             ]

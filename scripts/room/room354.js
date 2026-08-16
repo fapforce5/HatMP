@@ -266,7 +266,7 @@ room354.chat = function (chatID) {
                 speaker: "raven",
                 text: "Listen kid. I can tell you love your " + sc.n("landlord") + ", but I should tell you that " +
                     "there's something going on here and I'm just trying to get to the bottom of it and keep her " +
-                    "out of trouble. If you want to stay out of trouble you'll you'll stay out of my way. ",
+                    "out of trouble. If you want to stay out of trouble you'll stay out of my way. ",
                 button: [
                     { chatID: 11, text: "Eat a bag of dicks asshole.  ", callback: "" }
                 ]

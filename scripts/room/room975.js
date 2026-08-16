@@ -107,10 +107,10 @@ room975.chat = function (chatID) {
         {
             chatID: 1,
             speaker: "!nar",
-            text: "After your betrayal of Missy you were taken to the surmon and bathed in the cum of the " +
-                "followers leading to your virgin pregancy. To ensure you remain a virgin til birth your arms " +
+            text: "After your betrayal of Missy you were taken to the sermon and bathed in the cum of the " +
+                "followers leading to your virgin pregnancy. To ensure you remain a virgin til birth your arms " +
                 "were bound and several cult members guarded you day and night. For nine months it was a lavish, " +
-                "yet empty experiance, never getting the chance to be touched on your new vagina. Missy, " +
+                "yet empty experience, never getting the chance to be touched on your new vagina. Missy, " +
                 "the dog, was placed at your side to drain any cocks that seemed headed your way. ",
             button: [
                 { chatID: 2, text: "...", callback: "" }
@@ -119,7 +119,7 @@ room975.chat = function (chatID) {
         {
             chatID: 2,
             speaker: "!nar",
-            text: "After nine month you had a virgin birth to a healthy baby boy who was immediately taken " +
+            text: "After nine months you had a virgin birth to a healthy baby boy who was immediately taken " +
                 "from you never to be seen again by your own eyes. Never knowing what became of him. With the virgin birth complete Ubel " +
                 "lifted all protections from you and you were now free for the cult to use. ",
             button: [

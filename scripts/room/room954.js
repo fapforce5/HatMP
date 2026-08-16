@@ -201,6 +201,16 @@ room954.chatcatch = function (callback) {
                 //maybe do nothing.
             }
 
+            if (sc.getMission("g", "mom").startedOrComplete) {
+                sc.completeMissionTask("g", "mom", 1);
+                sc.startMissionTask("g", "mom", 2);
+                sc.completeMissionTopLevelOnly("chad", "membership");
+                sc.completeMissionTopLevelOnly("g", "workout");
+                sc.completeMissionTopLevelOnly("g", "spar");
+                sc.completeMissionTopLevelOnly("g", "secret");
+                sc.completeMissionTask("g", "secret", 0, true);
+            }
+
             sc.completeMissionTopLevelOnly("lola", "talk");
             sc.completeMissionTopLevelOnly("lola", "massage");
             sc.completeMissionTopLevelOnly("lola", "games");
@@ -224,10 +234,7 @@ room954.chatcatch = function (callback) {
             sc.completeMissionTopLevelOnly("zoey", "cheating");
             sc.completeMissionTopLevelOnly("zoey", "sex");
             sc.completeMissionTopLevelOnly("stormy", "property");
-            sc.completeMissionTopLevelOnly("chad", "membership");
-            sc.completeMissionTopLevelOnly("g", "workout");
-            sc.completeMissionTopLevelOnly("g", "spar");
-            sc.completeMissionTopLevelOnly("g", "secret");
+            
             sc.completeMissionTopLevelOnly("janice", "date");
             sc.completeMissionTopLevelOnly("janice", "femdom");
             sc.completeMissionTopLevelOnly("janice", "webcam");
@@ -321,8 +328,8 @@ room954.chat = function (chatID) {
         {
             chatID: 0,
             speaker: "ubel",
-            text: "I would like to welcome you to my favorite room one the entire compound. This is where those that have lost " +
-                "the path rejoin us either on earth or with Azreal. Where shall we start... What is your favorite torture?",
+            text: "I would like to welcome you to my favorite room in the entire compound. This is where those that have lost " +
+                "the path rejoin us either on earth or with Azrael. Where shall we start... What is your favorite torture?",
             button: [
                 { chatID: 1, text: "No torture?", callback: "" },
                 { chatID: 2, text: "The Pillory", callback: "" },
@@ -516,7 +523,7 @@ room954.chat = function (chatID) {
             chatID: 22,
             speaker: "ubel",
             text: "A fine choice. I will enjoy your suffering almost as much as my brothers will enjoy using and abusing all of " +
-                "your gaping cum filled holes. With the power of Azreal I will make you SUFFER! I WILL MAKE YOUR BLEED! I " +
+                "your gaping cum filled holes. With the power of Azrael I will make you SUFFER! I WILL MAKE YOU BLEED! I " +
                 "WILL MAKE YOU WISH FOR DEATH!! I WILL ...",
             button: [
                 { chatID: 23, text: "...", callback: "t16" }
@@ -714,7 +721,7 @@ room954.chat = function (chatID) {
             chatID: 45,
             speaker: "me",
             text: "We've got to get " + sc.n("missy") + " out of there. We'll get dressed, get some weapons and get her out of there. " +
-                "We have to! She came back to save us and we're not going to leave her there!. " + sc.n("daria") +
+                "We have to! She came back to save us and we're not going to leave her there! " + sc.n("daria") +
                 " do you know the way to get into the compound? ",
             button: [
                 { chatID: 46, text: "...", callback: "" }
@@ -939,7 +946,7 @@ room954.chat = function (chatID) {
         {
             chatID: 70,
             speaker: "ubel",
-            text: "Now your lives are on your own. You have strayed from the path of Azreal and only " +
+            text: "Now your lives are on your own. You have strayed from the path of Azrael and only " +
                 "those on the path can remain. I will give you the choice. Choice one is to remain " +
                 "here and go though my personal intensive training. It will be filled with pain and " +
                 "suffering like you've never experienced. You will lose your very definition of self " +
@@ -951,7 +958,7 @@ room954.chat = function (chatID) {
         {
             chatID: 71,
             speaker: "ubel",
-            text: "Hahaha. Choice two is death. No one betrays Azreal on these grounds. ",
+            text: "Hahaha. Choice two is death. No one betrays Azrael on these grounds. ",
             button: [
                 { chatID: 72, text: "*gulp*", callback: "" }
             ]

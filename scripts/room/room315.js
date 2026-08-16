@@ -485,7 +485,7 @@ room315.chat = function (chatID) {
             speaker: "janice",
             text: "Hey " + sc.n("me") + "! What are you doing here? ",
             button: [
-                { chatID: 30, text: "Just thought I would come by. See you wanted to hang out?", callback: "" },
+                { chatID: 30, text: "Just thought I would come by. Saw you wanted to hang out?", callback: "" },
             ]
         },
         {

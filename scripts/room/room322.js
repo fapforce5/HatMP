@@ -1285,7 +1285,7 @@ room322.chat = function (chatID) {
         {
             chatID: 27,
             speaker: "janice",
-            text: "Cocolate cake! OOoo you can come in! And, no, I don't have a boyfriend anymore. ",
+            text: "Chocolate cake! OOoo you can come in! And, no, I don't have a boyfriend anymore. ",
             button: [
                 { chatID: 28, text: "*whimper*", callback: "waiter2" },
             ]
@@ -1319,7 +1319,7 @@ room322.chat = function (chatID) {
         {
             chatID: 31,
             speaker: "!waiter",
-            text: "Hahaha!! You're doggy is so bad at catching! She's got chocolate cake all over " +
+            text: "Hahaha!! Your doggy is so bad at catching! She's got chocolate cake all over " +
                 "her face!",
             button: [
                 { chatID: 32, text: "...", callback: "waiter5" },
@@ -1562,7 +1562,7 @@ room322.chat = function (chatID) {
         {
             chatID: 60,
             speaker: "!plumber",
-            text: "Now those are some properly fucked bitches! Good job " + sc.n("dog") + ". Love " +
+            text: "Now those are some properly fucked bitches! Good job " + sc.n("dog") + ". Love to " +
                 "leave a couple properly fucked holes dripping. ",
             button: [
                 { chatID: -1, text: "*hard breathing*", callback: "evening" },
@@ -1749,7 +1749,7 @@ room322.chat = function (chatID) {
             speaker: "janice",
             text: "You're such a good girl! You can have a doggy biscuit! ",
             button: [
-                { chatID: 82, text: "[Eat the buscuit]", callback: "" },
+                { chatID: 82, text: "[Eat the biscuit]", callback: "" },
                 { chatID: 83, text: "[Don't move]", callback: "" },
             ]
         },
@@ -1916,7 +1916,7 @@ room322.chat = function (chatID) {
         {
             chatID: 101,
             speaker: "janice",
-            text: "Oh my. I do love a gruff men. Let me see what you're all working with in my bedroom. ",
+            text: "Oh my. I do love a gruff man. Let me see what you're all working with in my bedroom. ",
             button: [
                 { chatID: 102, text: "...", callback: "f2" },
             ]
@@ -2042,7 +2042,7 @@ room322.chat = function (chatID) {
             chatID: 116,
             speaker: "thinking",
             text: "oh ho ho ho!!!! That's so cold on my bare balls and back!!!! Brrrrr. So " +
-                "I've going to freeze to death! So cold!!!",
+                "I'm going to freeze to death! So cold!!!",
             button: [
                 { chatID: -1, text: "...", callback: "bathEnd" },
             ]

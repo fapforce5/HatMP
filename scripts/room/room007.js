@@ -1116,7 +1116,7 @@ room7.chat = function (chatID) {
             {
                 chatID: 25,
                 speaker: "landlord",
-                text: "Now I have to go wash your nastyness off them. Get up and get going!  ",
+                text: "Now I have to go wash your nastiness off them. Get up and get going!  ",
                 button: [
                     { chatID: -1, text: "ok", callback: "lastWord" },
                 ]
@@ -1496,7 +1496,7 @@ room7.chat = function (chatID) {
             {
                 chatID: 67,
                 speaker: "landlord",
-                text: "It totally blew up! Like boom. It's gone now. I don't think anyone died. Luckily it happend " +
+                text: "It totally blew up! Like boom. It's gone now. I don't think anyone died. Luckily it happened " +
                     "at night when it was closed. ",
                 button: [
                     { chatID: 68, text: "oh good", callback: "" },

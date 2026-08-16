@@ -208,7 +208,7 @@ room804.chat = function (chatID) {
     var cArray = [
         {
             chatID: 0,
-            speaker: "ralphpsmom",
+            speaker: "ralphsmom",
             text: "Just finishing up these cookies dear. ",
             button: [
                 { chatID: -1, text: "...", callback: "" }
@@ -216,7 +216,7 @@ room804.chat = function (chatID) {
         },
         {
             chatID: 1,
-            speaker: "ralphpsmom",
+            speaker: "ralphsmom",
             text: "I just pulled these out! There's nothing better than warm ooey gooey " +
                 "cookies. Do you want to munch on my cookie?",
             button: [
@@ -226,7 +226,7 @@ room804.chat = function (chatID) {
         },
         {
             chatID: 2,
-            speaker: "ralphpsmom",
+            speaker: "ralphsmom",
             text: "Now go play. I don't want you to spoil your appetite for dinner. ",
             button: [
                 { chatID: -1, text: "...", callback: "" }
@@ -343,7 +343,7 @@ room804.chat = function (chatID) {
         {
             chatID: 15,
             speaker: "ralphsmom",
-            text: "Oh you! I though you were my husband. " + gender.pronoun("boy") +
+            text: "Oh you! I thought you were my husband. " + gender.pronoun("boy") +
                 "s. *sigh* ",
             button: [
                 { chatID: -1, text: "Totally got you", callback: "mom" },

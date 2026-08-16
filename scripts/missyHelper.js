@@ -2,6 +2,7 @@
 
 missy.st = new Array();
 missy.cases = new Array();
+missy.envelope = new Array();
 
 missy.init = function () {
 
@@ -37,7 +38,7 @@ missy.init = function () {
         { id: 28, n: "sissySchoolDays", c: 0 },
         { id: 29, n: "cage", c: 0 }, //0 cage, 1 pink, 2 pinkx2
         { id: 30, n: "missyEventTracker", c: 0 }, //0 cage, 1 pink, 2 pinkx2
-        { id: 31, n: "gloryHoleCounter", c: 0 }, 
+        { id: 31, n: "gloryHoleCounter", c: 0 },
         { id: 32, n: "cumMaidCounter", c: 0 },
         { id: 33, n: "trashSearchCounter", c: 0 },
         { id: 34, n: "subCounter197", c: 0 },
@@ -73,7 +74,31 @@ missy.init = function () {
         { caseId: 21, name: "case_elijah_boyfriend", show: true, complete: false, success: false },
         { caseId: 22, name: "case_cult", show: true, complete: false, success: false },
     ];
-}
+
+    missy.envelope = [
+        { n: "charlie", roomID: 650, key: false, ach: false }, //d
+        { n: "treyvon", roomID: 50, key: false, ach: false }, //d
+        { n: "utah", roomID: 875, key: false, ach: false },
+        { n: "jimmy", roomID: 125, key: false, ach: false },
+        { n: "spanky", roomID: 404, key: false, ach: false },//d
+        { n: "construction", roomID: 101, key: false, ach: false },//d
+        { n: "river", roomID: 103, key: false, ach: false },
+        { n: "chad", roomID: 551, key: false, ach: false },//d
+        { n: "g", roomID: 551, key: false, ach: false },//d
+        { n: "jeffery", roomID: 250, key: false, ach: false },//d
+        { n: "chef", roomID: 150, key: false, ach: false },
+        { n: "cindy", roomID: 901, key: false, ach: false },
+        { n: "cop2", roomID: 450, key: false, ach: false },
+        { n: "doc", roomID: 750, key: false, ach: false },//d
+        { n: "whore", roomID: 752, key: false, ach: false },
+        { n: "priest", roomID: 776, key: false, ach: false },
+        { n: "dollmaker", roomID: 300, key: false, ach: false },
+        { n: "tony", roomID: 600, key: false, ach: false },
+        { n: "!jail0", roomID: 376, key: false, ach: false },//d
+        { n: "!seller", roomID: 485, key: false, ach: false },//d
+        { n: "!barker", roomID: 486, key: false, ach: false },//d
+    ];
+};
 
 missy.init();
 
@@ -192,6 +217,48 @@ missy.buildCaseEntry = function (caseId, active, notReadyTxt, callback) {
         notReadyTxt: notReadyTxt,
         callback: callback
     };
+};
+
+missy.getenvelope = function (name) {
+    let mcomplete = sc.getMissionTask("p", "*missy", 3).inProgress;
+    if (mcomplete) {
+        for (let i = 0; i < missy.envelope.length; i++) {
+            if (missy.envelope[i].n === name) {
+                return {
+                    active: !missy.envelope[i].ach,
+                    hasKey: missy.envelope[i].key,
+                    cando: "yes"
+                };
+            }
+        }
+    }
+    if (mcomplete)
+        return {
+            active: false,
+            hasKey: false,
+            cando: "not found"
+        };
+    return {
+        active: false,
+        hasKey: false,
+        cando: "can't do event"
+    };
+};
+
+missy.setenvelope = function (name) {
+    if (sc.getMissionTask("p", "*missy", 3).inProgress) {
+        for (let i = 0; i < missy.envelope.length; i++) {
+            if (missy.envelope[i].n === name) {
+                missy.envelope[i].ach = true;
+                if (missy.envelope[i].key) {
+                    sc.completeMissionTask("p", "info", 3);
+                    sc.startMissionTask("p", "info", 4);
+                    g.popUpNotice("YOU HAVE THE CODE!!");
+                    g.popUpNotice("Return to " + sc.n("p") + " at Missy's Detective Agency!");
+                }
+            }
+        }
+    }
 };
 
 missy.getcases = function () {
@@ -331,7 +398,8 @@ missy.save = function () {
     var i;
     var saveRet = {
         st: new Array(),
-        cases: new Array()
+        cases: new Array(),
+        envelope: new Array()
     }
 
     for (i = 0; i < missy.st.length; i++) {
@@ -339,6 +407,9 @@ missy.save = function () {
     }
     for (i = 0; i < missy.cases.length; i++) {
         saveRet.cases.push({ complete: missy.cases[i].complete, success: missy.cases[i].success });
+    }
+    for (let i = 0; i < missy.envelope.length; i++) {
+        saveRet.envelope.push({ k: missy.envelope[i].key, a: missy.envelope[i].ach });
     }
     return saveRet;
 };
@@ -351,6 +422,12 @@ missy.load = function (saveData) {
     for (i = 0; i < saveData.cases.length && i < missy.cases.length; i++) {
         missy.cases[i].complete = saveData.cases[i].complete;
         missy.cases[i].success = saveData.cases[i].success;
+    }
+    if (typeof saveData.envelope !== 'undefined') {
+        for (let i = 0; i < saveData.envelope.length; i++) {
+            missy.envelope[i].key = saveData.envelope[i].k;
+            missy.envelope[i].ach = saveData.envelope[i].a;
+        }
     }
 };
 

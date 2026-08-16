@@ -403,7 +403,7 @@ room775.chat = function (chatID) {
             {
                 chatID: 6,
                 speaker: "priest",
-                text: "It's a sin to take part in something sexually gratifing, even if it's gross.",
+                text: "It's a sin to take part in something sexually gratifying, even if it's gross.",
                 button: [
                     { chatID: 500, text: "I totally am. ", callback: "" }
                 ]
@@ -524,8 +524,8 @@ room775.chat = function (chatID) {
             {
                 chatID: 19,
                 speaker: "priest",
-                text: "While this seems innocent, pleasures of the flesh can lead to futher sin. You must learn to control " +
-                    "youself while dating, and only after marriage should you partake in such activities. ",
+                text: "While this seems innocent, pleasures of the flesh can lead to further sin. You must learn to control " +
+                    "yourself while dating, and only after marriage should you partake in such activities. ",
                 button: [
                     { chatID: 49, text: "ok. ", callback: "" }
                 ]
@@ -565,7 +565,7 @@ room775.chat = function (chatID) {
             {
                 chatID: 23,
                 speaker: "priest",
-                text: "Oh my, this is quite toubling. To lay with a woman as a wife takes commitment, and since I know you " +
+                text: "Oh my, this is quite troubling. To lay with a woman as a wife takes commitment, and since I know you " +
                     "I haven't married you, I know you aren't ready for this. While you have sinned, it is not too late to turn " +
                     "from this sinful path. When you lie with a girl who is not your wife you are forcing her from the path " +
                     "of holiness and purity. Consent is important and girls are weak in the ways of men. For both of your " +
@@ -589,7 +589,7 @@ room775.chat = function (chatID) {
                 chatID: 25,
                 speaker: "priest",
                 text: "I know you must get so horny you can't control yourself, and you think that getting a friendly blow job " +
-                    "is not a big deal, but IT IS! You must never place you penis in another man's mouth. You need to find a nice " +
+                    "is not a big deal, but IT IS! You must never place your penis in another man's mouth. You need to find a nice " +
                     "proper young lady to show you the way of a proper relationship. Refrain from your sexual deviance and find " +
                     "a nice wholesome girl to show you how to live a proper life. There are many in this church and the community, " +
                     "you need to better yourself and find her. ",
@@ -769,7 +769,7 @@ room775.chat = function (chatID) {
                 chatID: 44,
                 speaker: "priest",
                 text: "My child, you mustn't treat your anus like a vagina. A man shall not lie with another man and " +
-                    "inserting a toy into yourself is a dangrous step in the path to damnation. You must stop abusing yourself " +
+                    "inserting a toy into yourself is a dangerous step in the path to damnation. You must stop abusing yourself " +
                     "if you wish to get into the kingdom of heaven. ",
                 button: [
                     { chatID: 49, text: "Yes Father. ", callback: "" },
@@ -990,7 +990,7 @@ room775.chat = function (chatID) {
                 speaker: "priest",
                 text: "That is a relief. Pressured into sin does not absolve you from commiting the sin. The role of " +
                     "a man is sacred. A man shall not take the role of a woman, for it is an affront to God. " +
-                    "even under pressure, you find find your strength and save yourself from this horrid school.",
+                    "Even under pressure, you find your strength and save yourself from this horrid school.",
                 button: [
                     { chatID: 49, text: "Yes father", callback: "" },
                 ]
@@ -1000,7 +1000,7 @@ room775.chat = function (chatID) {
                 speaker: "priest",
                 text: "Oh my. You must save yourself before you're so deep in sin that's it's too late. The role of " +
                     "a man is sacred. A man shall not take the role of a woman, for it is an affront to God. " +
-                    "even under pressure, you find find your strength and save yourself from this horrid school.",
+                    "Even under pressure, you find your strength and save yourself from this horrid school.",
                 button: [
                     { chatID: 49, text: "Yes father", callback: "" },
                 ]

@@ -552,7 +552,7 @@ room252.chat = function (chatID) {
                 btn = [{ chatID: 998, text: "Sure! You're looking hot too! Love the purple on you! ", callback: "" }];
                 break;
             case 12:
-                txt = "Oh hello. Sorry, couldn't stop staring into my lovly wife's eyes. We would both like the hamburger and fries meal. You know we had " +
+                txt = "Oh hello. Sorry, couldn't stop staring into my lovely wife's eyes. We would both like the hamburger and fries meal. You know we had " +
                     "our first date here back when this was just a simple greasy spoon. Been together for 40 years and " +
                     "loved every minute of it. ";
                 btn = [{ chatID: 998, text: "Will do ", callback: "" }];
@@ -1277,7 +1277,7 @@ room252.chat = function (chatID) {
                     "this big titty dude comes in and just flashes me to show how awesome his titties are, just bare ass chest in my face. " +
                     "I don't care, 'cause titties, so I just start sucking them expecting that at any minute he's going to slap me, but get this; " +
                     "he just lets me suck on them titties and shit, just letting me go to town, so I think what the hell and I slide my hand into " +
-                    "into his pants and this bitch has no panties, so guess what",
+                    "his pants and this bitch has no panties, so guess what",
                 button: [
                     { chatID: 43, text: "what?", callback: "" }
                 ]
@@ -1352,7 +1352,7 @@ room252.chat = function (chatID) {
             {
                 chatID: 50,
                 speaker: "dolly",
-                text: "You'll never guessed what happened to me!",
+                text: "You'll never guess what happened to me!",
                 button: [
                     { chatID: 51, text: "Huh?", callback: "" }
                 ]
@@ -1511,11 +1511,11 @@ room252.chat = function (chatID) {
             {
                 chatID: 69,
                 speaker: "p",
-                text: "You two really do make a great sissies! You two should team up " +
+                text: "You two really do make great sissies! You two should team up " +
                     "more. As my clients say, the only thing better than a bussy, is " +
                     "two bussies! If I only had a dick I would fuck you both right now! ",
                 button: [
-                    { chatID: 70, text: "As shucks! ", callback: "" }
+                    { chatID: 70, text: "Aw shucks! ", callback: "" }
                 ]
             },
             {

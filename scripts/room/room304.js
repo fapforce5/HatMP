@@ -128,15 +128,7 @@ room304.btnclick = function (name) {
                 "title": "Dolly's Nightstand Drawer",
                 "image": "304_room202/dollySuitcase.png"
             }, 304);
-            nav.button({
-                "type": "btn",
-                "name": "drawHallway",
-                "left": 1700,
-                "top": 800,
-                "width": 160,
-                "height": 160,
-                "image": "6_computer/back.png"
-            }, 304);
+            nav.back("drawHallway");
             break;
         case "drawHollyroom":
             g.internal = "202hallway";
@@ -152,15 +144,7 @@ room304.btnclick = function (name) {
                 "title": "Holly's Laundry Basket",
                 "image": "304_room202/hollyLaundry.png"
             }, 304);
-            nav.button({
-                "type": "btn",
-                "name": "drawHallway",
-                "left": 1700,
-                "top": 800,
-                "width": 160,
-                "height": 160,
-                "image": "6_computer/back.png"
-            }, 304);
+            nav.back("drawHallway");
             break;
         case "dollylaundry":
             nav.kill();
@@ -177,15 +161,7 @@ room304.btnclick = function (name) {
                     "image": "304_room202/dollypanties.png"
                 }, 304);
             }
-            nav.button({
-                "type": "btn",
-                "name": "drawDollyroom",
-                "left": 1700,
-                "top": 800,
-                "width": 160,
-                "height": 160,
-                "image": "6_computer/back.png"
-            }, 304);
+            nav.back("drawDollyroom");
             break;
         case "dollypanties":
             nav.killbutton("dollypanties");
@@ -197,41 +173,17 @@ room304.btnclick = function (name) {
         case "dollysuitcase":
             nav.kill();
             nav.bg("304_room202/dollysuitcase.jpg");
-            nav.button({
-                "type": "btn",
-                "name": "drawDollyroom",
-                "left": 1700,
-                "top": 800,
-                "width": 160,
-                "height": 160,
-                "image": "6_computer/back.png"
-            }, 304);
+            nav.back("drawDollyroom");
             break;
         case "dollydrawer":
             nav.kill();
             nav.bg("304_room202/dollydrawer.jpg");
-            nav.button({
-                "type": "btn",
-                "name": "drawDollyroom",
-                "left": 1700,
-                "top": 800,
-                "width": 160,
-                "height": 160,
-                "image": "6_computer/back.png"
-            }, 304);
+            nav.back("drawDollyroom");
             break;
         case "hollylaundry":
             nav.kill();
             nav.bg("304_room202/hollylaundry.jpg");
-            nav.button({
-                "type": "btn",
-                "name": "drawHollyroom",
-                "left": 1700,
-                "top": 800,
-                "width": 160,
-                "height": 160,
-                "image": "6_computer/back.png"
-            }, 304);
+            nav.back("drawHollyroom");
             if (!cl.hasClothing("panties", "holly")) {
                 nav.button({
                     "type": "btn",
@@ -275,15 +227,7 @@ room304.btnclick = function (name) {
                 "title": "Look in her closet",
                 "image": "304_room202/mollycloset.png"
             }, 304);
-            nav.button({
-                "type": "btn",
-                "name": "drawHallway",
-                "left": 1700,
-                "top": 800,
-                "width": 160,
-                "height": 160,
-                "image": "6_computer/back.png"
-            }, 304);
+            nav.back("drawHallway");
             break;
         case "mollycloset":
             nav.kill();
@@ -299,15 +243,7 @@ room304.btnclick = function (name) {
                     "title": "Pig butt plug",
                     "image": "304_room202/pigplug.png"
                 }, 304);
-                nav.button({
-                    "type": "btn",
-                    "name": "drawMollyroom",
-                    "left": 1700,
-                    "top": 800,
-                    "width": 160,
-                    "height": 160,
-                    "image": "6_computer/back.png"
-                }, 304);
+                nav.back("drawMollyroom");
             }
             break;
         case "mollybed":
@@ -325,15 +261,7 @@ room304.btnclick = function (name) {
                     "image": "304_room202/mollypanties.png"
                 }, 304);
             }
-            nav.button({
-                "type": "btn",
-                "name": "drawMollyroom",
-                "left": 1700,
-                "top": 800,
-                "width": 160,
-                "height": 160,
-                "image": "6_computer/back.png"
-            }, 304);
+            nav.back("drawMollyroom");
             break;
         case "mollypanties":
             nav.killbutton("mollypanties");

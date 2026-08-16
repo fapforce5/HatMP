@@ -7,7 +7,12 @@ room485.main = function () {
         count: 0,
         i: 0
     };
-    chat(0, 485);
+    if (missy.getenvelope("!seller").active) {
+        chat(5, 485);
+    }
+    else {
+        chat(0, 485);
+    }
 };
 
 room485.btnclick = function (name) {
@@ -327,6 +332,15 @@ room485.chatcatch = function (callback) {
                 "image": "1001_rand/cancel.png"
             }, 485);
             break;
+        case "code":
+            if (missy.getenvelope("!seller").hasKey) {
+                chat(6, 485);
+            }
+            else {
+                chat(7, 485);
+            }
+            missy.setenvelope("!seller");
+            break;
         default:
             break;
     }
@@ -386,6 +400,32 @@ room485.chat = function (chatID) {
                 "He really was great when we were younger, but I think he's taken it too far. ",
             button: [
                 { chatID: 1, text: "ok", callback: "" },
+            ]
+        },
+        {
+            chatID: 5,
+            speaker: "me",
+            text: "Hey. I need to meet up with a friend at the C.U.M. compound. You wouldn't know the " +
+                "code to the back door would you?",
+            button: [
+                { chatID: -1, text: "...", callback: "code" },
+            ]
+        },
+        {
+            chatID: 6,
+            speaker: "!seller",
+            text: "Oh ummmm. oh yeah. It's 1-2-3-4-5. Easier to go in the front door, but that will get " +
+                "you in the back. ",
+            button: [
+                { chatID: 0, text: "You're the best around!", callback: "" },
+            ]
+        },
+        {
+            chatID: 7,
+            speaker: "!seller",
+            text: "Oh ummmm. oh no, I don't think I do. I always go in the front door.  ",
+            button: [
+                { chatID: 0, text: "oh. Ok. Thanks. ", callback: "" },
             ]
         },
     ];

@@ -144,7 +144,7 @@ room217.chat = function (chatID) {
             chatID: 1,
             speaker: "missy",
             text: "Strip off your clothing and stand before me nude. I will then " +
-                "tie you up to his cross where you will be on display for anyone and everyone that comes in so they " +
+                "tie you up to my cross where you will be on display for anyone and everyone that comes in so they " +
                 "can see your shame. Now strip. ",
             button: [
                 { chatID: 4, text: "Yes ma'am", callback: "disrobeVoluntary" },
@@ -240,7 +240,7 @@ room217.chat = function (chatID) {
         {
             chatID: 12,
             speaker: "missy",
-            text: "I don't decide if you go up there, you behavior does. Make sure you correct yourself. Now " +
+            text: "I don't decide if you go up there, your behavior does. Make sure you correct yourself. Now " +
                 "get out of my office. Your sweat is getting in my carpet and making my office stink. ",
             button: [
                 { chatID: -1, text: "Groan", callback: "punishmentEndDress" },

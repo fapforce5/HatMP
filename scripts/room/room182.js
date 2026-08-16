@@ -566,7 +566,7 @@ room182.chat = function (chatID) {
             grade-= 10;
         }
         else {
-            hairtxt = "You hair is much too short. It's unsightly. "
+            hairtxt = "Your hair is much too short. It's unsightly. "
             grade -= 20;
         }
 
@@ -852,8 +852,8 @@ room182.chat = function (chatID) {
             {
                 chatID: 22,
                 speaker: "martha",
-                text: "Chris and Martin, your conduct has been exemplary. You've both clearly display " +
-                    "the qualities of true ladies, and you deserves the highest commendation. ",
+                text: "Chris and Martin, your conduct has been exemplary. You've both clearly displayed " +
+                    "the qualities of true ladies, and you deserve the highest commendation. ",
                 button: [
                     { chatID: 23, text: "...", callback: "t1_11" },
                 ]
@@ -1093,7 +1093,7 @@ room182.chat = function (chatID) {
             {
                 chatID: 48,
                 speaker: "ralph",
-                text: "Really. Now push you ass back into you hole and let's finish this test! ",
+                text: "Really. Now push your ass back into your hole and let's finish this test! ",
                 button: [
                     { chatID: 49, text: "Thanks. Do you mind sitting back, I can feel you dick on in my crack. ", callback: "t1_24" },
                 ]
@@ -1113,7 +1113,7 @@ room182.chat = function (chatID) {
                 chatID: 50,
                 speaker: "ralph",
                 text: sc.n("me") + " I'm scared of " + sc.n("black") + ". Last time I went down " +
-                    "there she tortured me until I cried. It hurt so back I couldn't sit down. I had " +
+                    "there she tortured me until I cried. It hurt so bad I couldn't sit down. I had " +
                     "to sleep on my stomach for two nights. ",
                 button: [
                     { chatID: 51, text: "Oh yeah. I don't like her at all. She's just mean. ", callback: "" },
@@ -1123,7 +1123,7 @@ room182.chat = function (chatID) {
                 chatID: 51,
                 speaker: "ralph",
                 text: "I know right. Look at poor Martin over there who just got back. He's just " +
-                    "laying in his a puddle of tears. Do you think I can just quit once I get in there? ",
+                    "laying in a puddle of tears. Do you think I can just quit once I get in there? ",
                 button: [
                     { chatID: 52, text: "I don't really know. You never know what " + sc.n("black") + "'s going to do. Maybe. ", callback: "" },
                 ]
@@ -1343,8 +1343,8 @@ room182.chat = function (chatID) {
             {
                 chatID: 75,
                 speaker: "missy",
-                text: "Before we begin, one of you did not take the class very , and failed " +
-                    "all their their tests. This person is a failure and will be leaving the class for " +
+                text: "Before we begin, one of you did not take the class very seriously, and failed " +
+                    "all their tests. This person is a failure and will be leaving the class for " +
                     "good today. ",
                 button: [
                     { chatID: 76, text: "...", callback: "t1_47" },

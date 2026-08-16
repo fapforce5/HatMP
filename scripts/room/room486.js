@@ -1249,10 +1249,19 @@ room486.btnclick = function (name) {
                 chat(42, 486);
             }
             else {
-                g.pass = null;
-                future.add("486_nextevent", 7);
-                char.room(475);
+                if (missy.getenvelope("!barker").active) {
+                    chat(52, 486);
+                }
+                else {
+                    g.pass = null;
+                    future.add("486_nextevent", 7);
+                    char.room(475);
+                }
             }
+            break;
+        case "missy1":
+            nav.killbutton("missy1");
+            chat(54, 486);
             break;
         case "leave":
             char.room(475);
@@ -1274,6 +1283,14 @@ room486.chatcatch = function (callback) {
             break;
         case "room7_2":
             nav.bg("486_game/" + callback + "_" + gender.pronoun("f") + ".webp");
+            break;
+        case "missy0":
+            nav.kill();
+            nav.bg("486_game/" + callback + ".webp");
+            break;
+        case "missy1":
+            nav.bg("486_game/" + callback + ".webp");
+            nav.next("missy1");
             break;
         case "room0":
             nav.modbutton("room0", "486_game/room0_1.webp", null, null);
@@ -1504,7 +1521,12 @@ room486.chatcatch = function (callback) {
             char.room(486);
             break;
         case "leave":
-            invoker.invokeCurrent("btnclick", "room12_leave");
+            room486.btnclick("leave");
+            break;
+        case "leaveend":
+            g.pass = null;
+            future.add("486_nextevent", 7);
+            char.room(475);
             break;
         case "redbuttonquit":
             nav.button({
@@ -1543,7 +1565,25 @@ room486.chatcatch = function (callback) {
                 g.pass = "room476_cross";
                 char.room(476);
             }
-
+            break;
+        case "missy3":
+            if (missy.getenvelope("!barker").hasKey) {
+                chat(57, 486);
+            }
+            else {
+                missy.setenvelope("!barker");
+                chat(58, 486);
+            }
+            break;
+        case "missy4":
+            if (gv.get("money") > 2279) {
+                gv.mod("money", -2280);
+                missy.setenvelope("!barker");
+                chat(59, 486);
+            }
+            else {
+                chat(60, 486);
+            }
             break;
         default:
             break;
@@ -1643,9 +1683,9 @@ room486.chat = function (chatID) {
         let c10041 = [
             "ONE! OOooo. That butt's going to be red!",
             "TWO!!",
-            "THREE... ooo that one looked like it really hurt1",
+            "THREE... ooo that one looked like it really hurt!",
             "FOUR, " + gender.pronoun("she") + "'s screaming for more!",
-            "FIVE, we're half way there. " + gender.pronoun("she") + "'s living on a prayer1!",
+            "FIVE, we're half way there. " + gender.pronoun("she") + "'s living on a prayer!",
             "SIX!!",
             "SEVEN!! We're in the stretch! ",
             "EIGHT!!! Two more!",
@@ -1976,7 +2016,7 @@ room486.chat = function (chatID) {
             {
                 chatID: 13,
                 speaker: "thinking",
-                text: "Do I just gend down on my knees with my butt up?",
+                text: "Do I just bend down on my knees with my butt up?",
                 button: [
                     { chatID: 15, text: "[Get on the ground with your butt up]", callback: "room4_0" },
                     { chatID: -1, text: "[Change your mind]", callback: "room4" },
@@ -2005,7 +2045,7 @@ room486.chat = function (chatID) {
                 chatID: 16,
                 speaker: "!barker",
                 text: "Onto the stage is " + sc.n("!seller") + "!!! The destroyer of asses, the breaker of souls, " +
-                    "the crusher of dream!! With him, his trusty paddle! I feel sorry for our poor contestant! " +
+                    "the crusher of dreams!! With him, his trusty paddle! I feel sorry for our poor contestant! " +
                     gender.pronoun("she") + " is about to get the paddling of " + gender.pronoun("her") + " life!!",
                 button: [
                     { chatID: 17, text: "*groan*", callback: "room4_0_3" },
@@ -2032,7 +2072,7 @@ room486.chat = function (chatID) {
             {
                 chatID: 19,
                 speaker: "thinking",
-                text: "Ouch! That's suprisingly painful! I hope I get to take them off soon!",
+                text: "Ouch! That's surprisingly painful! I hope I get to take them off soon!",
                 button: [
                     { chatID: -1, text: "...", callback: "greenlightRedraw" },
                 ]
@@ -2182,7 +2222,7 @@ room486.chat = function (chatID) {
                 chatID: 36,
                 speaker: "!barker",
                 text: "Congratulations on making it to the 12th door! You'll be surprised on how few actually " +
-                    "make it here! Only the slutties, natiest sluts make it here, and you are one of them. To " +
+                    "make it here! Only the sluttiest, nastiest sluts make it here, and you are one of them. To " +
                     "achieve such a feat deserves a reward. ",
                 button: [
                     { chatID: 37, text: "A reward? ", callback: "room12_1" },
@@ -2192,8 +2232,8 @@ room486.chat = function (chatID) {
                 chatID: 37,
                 speaker: "!barker",
                 text: "Oh, not for you. For us. You see, my friends and I are always searching for the " +
-                    "the next hole to cum in, and you are that hole. We do appreciate the magnificant show " +
-                    "you put on for us. I mean, wow! We kept giving you nasiter and nastier tasks, and " +
+                    "the next hole to cum in, and you are that hole. We do appreciate the magnificent show " +
+                    "you put on for us. I mean, wow! We kept giving you nastier and nastier tasks, and " +
                     "you didn't even pause or try to leave. you just kept shoving cocks into all your " +
                     "holes. ",
                 button: [
@@ -2334,6 +2374,88 @@ room486.chat = function (chatID) {
                     "Press the Green Button for the next room",
                 button: [
                     { chatID: -1, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 52,
+                speaker: "thinking",
+                text: "That " + sc.n("!barker") + " is on my list. I should try to find him and see if " +
+                    "he knows the code. ",
+                button: [
+                    { chatID: 53, text: "[Look for the " + sc.n("!barker") + "]", callback: "missy0" },
+                    { chatID: -1, text: "Naw. I just want to leave.  ", callback: "leaveend" },
+                ]
+            },
+            {
+                chatID: 53,
+                speaker: "thinking",
+                text: "He's got to be behind that door.",
+                button: [
+                    { chatID: -1, text: "[Open the door]", callback: "missy1" },
+                ]
+            },
+            {
+                chatID: 54,
+                speaker: "!barker",
+                text: "Hey kid, the game's over. You need to collect your money and exit. Now if you don't " +
+                    "mind, I've got some work to do. Now scram kid. ",
+                button: [
+                    { chatID: 55, text: "I uh.. how?", callback: "" },
+                ]
+            },
+            {
+                chatID: 55,
+                speaker: "!barker",
+                text: "Listen. I'm going to give you a piece of advice. Putting on a show pays much better " +
+                    "than staring in that show. If you want to spend your life surrounded by hot girls just " +
+                    "put on a show that excites the people. Now, again, if you don't mind I have business to attend. ",
+                button: [
+                    { chatID: -1, text: "Oh. No. I have a question. [Give him the story of needing to get in the back door of the C.U.M. compound]", callback: "missy3" },
+                ]
+            },
+            {
+                chatID: 56,
+                speaker: "!barker",
+                text: "noop",
+                button: [
+                    { chatID: -1, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 57,
+                speaker: "!barker",
+                text: "I'll tell you what kid, another lesson. Everything is for sale. If you give me your " +
+                    "winnings, $2280, I will give you the code. Otherwise you're wasting both our time here. ",
+                button: [
+                    { chatID: -1, text: "Give him $2280", callback: "missy4" },
+                    { chatID: -1, text: "No way that's my money [Leave]", callback: "leaveend" },
+                ]
+            },
+            {
+                chatID: 58,
+                speaker: "!barker",
+                text: "Who do you think I am kid. I don't mess around with that place, just the patron's money. " +
+                    "Now if that's what you came for it's time to leave. ",
+                button: [
+                    { chatID: -1, text: "Oh damn! [Leave]", callback: "leaveend" },
+                ]
+            },
+            {
+                chatID: 59,
+                speaker: "!barker",
+                text: "Pleasure doing business with you kid. Lucky for you the patrons have loose lips and I've " +
+                    "picked up the code. It's 1-2-3-4-5. Now. Pretty please. With sugar on top. Get out! ",
+                button: [
+                    { chatID: -1, text: "Thank you so much! Yeah. I'm going. ", callback: "leaveend" },
+                ]
+            },
+            {
+                chatID: 60,
+                speaker: "!barker",
+                text: "Oh, you didn't pick up your winnings? Another piece of advice. Never leave a dollar " +
+                    "on the ground. Now if you don't mind I have business to attend to. ",
+                button: [
+                    { chatID: -1, text: "Damn. I should have picked up my money! ", callback: "leaveend" },
                 ]
             },
         ];

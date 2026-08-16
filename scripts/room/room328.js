@@ -2733,7 +2733,7 @@ room328.chat = function (chatID) {
                 text: "What ever you do don't make them mad. Just do what they say, no matter how terrible. " +
                     "I came in as a virgin and my pussy hole doesn't close up anymore. It's just permanently " +
                     "gaped open with all the terrible things they've stuffed in me. I tried to resist, but " +
-                    "it's just much easier to to moo, eat, and get milked. Since you hooked me up, " +
+                    "it's just much easier to moo, eat, and get milked. Since you hooked me up, " +
                     "I'll try to repay the favor. I just don't know how. ",
                 button: [
                     { chatID: 15, text: "Don't worry about it. ", callback: "" }
@@ -2857,7 +2857,7 @@ room328.chat = function (chatID) {
             {
                 chatID: 28,
                 speaker: "!rancher1",
-                text: "I think it would be a damn shame if she didn't get bread. ",
+                text: "I think it would be a damn shame if she didn't get bred. ",
                 button: [
                     { chatID: 29, text: "...", callback: "moo2" }
                 ]
@@ -2922,7 +2922,7 @@ room328.chat = function (chatID) {
             {
                 chatID: 36,
                 speaker: "!rancher",
-                text: "Shut your hocow ass!",
+                text: "Shut your hucow ass!",
                 button: [
                     { chatID: -1, text: "...", callback: "reset" }
                 ]
@@ -3623,7 +3623,7 @@ room328.chat = function (chatID) {
             {
                 chatID: 116,
                 speaker: "kinsey",
-                text: "Fuck. I hate the pig run. I would rather get tased up my ass 100 time than do the " +
+                text: "Fuck. I hate the pig run. I would rather get tased up my ass 100 times than do the " +
                     "pig run again. The thing about pigs is they're strong, but they're lazy. If we can run " +
                     "through the entire pen and get to the other side we're safe. I've made it across a couple " +
                     "times. ",
@@ -3690,7 +3690,7 @@ room328.chat = function (chatID) {
                 chatID: 123,
                 speaker: "kinsey",
                 text: "*ugh* My bed smell like pig semen and my pussy still hurts from those long pokey dicks. " +
-                    "Oh, I'm I'm trapped here giving milk making my nipples sore all the time. But other than " +
+                    "Oh, I'm trapped here giving milk making my nipples sore all the time. But other than " +
                     "that I'm great! Now I'm going to go and fart out some more pig semen if you'll excuse me. ",
                 button: [
                     { chatID: -1, text: "...", callback: "reset" },
@@ -3875,7 +3875,7 @@ room328.chat = function (chatID) {
             {
                 chatID: 143,
                 speaker: "thinking",
-                text: "Gross! I'm going going to let that piggy put his piggy penis up my bussy! What's " +
+                text: "Gross! I'm going to let that piggy put his piggy penis up my bussy! What's " +
                     "got into my head? ",
                 button: [
                     { chatID: -1, text: "[Crawl back to the meadow]", callback: "reset" },
@@ -3942,7 +3942,7 @@ room328.chat = function (chatID) {
                     "for a week and those fuckers found it. I've got a way to speed up the digging, but you " +
                     "need a way to hide the hole. Do you have anything that will hide it? ",
                 button: [
-                    { chatID: 151, text: "Just they hay of my bed. ", callback: "" },
+                    { chatID: 151, text: "Just the hay of my bed. ", callback: "" },
                 ]
             },
             {
@@ -4337,7 +4337,7 @@ room328.chat = function (chatID) {
             {
                 chatID: 194,
                 speaker: "lead",
-                text: "You know you two have got the be the dumbest bimbos on the farm! ",
+                text: "You know you two have got to be the dumbest bimbos on the farm! ",
                 button: [
                     { chatID: 195, text: "Oh wow. That's pretty mean. ", callback: "kinsey_spit3" },
                 ]
@@ -4345,8 +4345,8 @@ room328.chat = function (chatID) {
             {
                 chatID: 195,
                 speaker: "lead",
-                text: "*cruch* Just the other day I was tellin' *chew* " + sc.n("!rancher") + 
-                    " that he 'oughta just lock you two up in the barn. *cruch* so we never " +
+                text: "*crunch* Just the other day I was tellin' *chew* " + sc.n("!rancher") +
+                    " that he 'oughta just lock you two up in the barn. *crunch* so we never " +
                     "have to deal with you *gulp* idiots again.",
                 button: [
                     { chatID: 196, text: "...", callback: "kinsey_spit4" },
@@ -4399,7 +4399,7 @@ room328.chat = function (chatID) {
             {
                 chatID: 201,
                 speaker: "kinsey",
-                text: "Oh! That's it! Fuck that feels amazing! I an orgasm! ",
+                text: "Oh! That's it! Fuck that feels amazing! I'm having an orgasm! ",
                 button: [
                     { chatID: -1, text: "*nom* *nom* *nom*", callback: "reset" },
                 ]

@@ -473,7 +473,7 @@ room180.chat = function (chatID) {
         {
             chatID: 30,
             speaker: "martha",
-            text: "Good afternoon, gentlemen.Today, we shall discuss the proper use of a toilet. I know that you may all " +
+            text: "Good afternoon, gentlemen. Today, we shall discuss the proper use of a toilet. I know that you may all " +
                 "think that you know how to use a toilet, but I assure you that there is much more to it than meets the eye. " +
                 "Femininity begins in the mind, and the actions that we repeat over time shape our minds. By learning to " +
                 "use the toilet properly, we can train our minds to be more feminine.",
@@ -545,7 +545,7 @@ room180.chat = function (chatID) {
         {
             chatID: 38,
             speaker: "thinking",
-            text: "Crap now I really have to pee. How long does she need to keep us standing here? Surly we can just go pee. " +
+            text: "Crap now I really have to pee. How long does she need to keep us standing here? Surely we can just go pee. " +
                 "I don't see what the big deal is. ",
             button: [
                 { chatID: 39, text: "[Wait more]", callback: "" },
@@ -725,7 +725,7 @@ room180.chat = function (chatID) {
         {
             chatID: 58,
             speaker: "ralph",
-            text: "But she's so hot! She can lube me anyday. I'm more afraid of " + sc.n("black") + 
+            text: "But she's so hot! She can lube me any day. I'm more afraid of " + sc.n("black") +
                 "! I hope she takes it easy on us. I don't even want to take her class. Who likes " +
                 "all that rough stuff? I want a girl to be nice and gentle with me. ",
             button: [
@@ -833,7 +833,7 @@ room180.chat = function (chatID) {
         {
             chatID: 69,
             speaker: "martha",
-            text: "Oh my, these little treasures I have here can be quite the boon for a lady's allure! They work their magic in six delightful ways. First, they'll naturally encourage your lovely locks to grow thicker and faster, while keeping those pesky body hairs at bay for a delightfully smooth you.And wouldn't you know it, your skin will be positively radiant, your lips will have a touch more pout, and your figure will become even more divinely proportioned – fuller thighs and a more ample bosom, simply delightful! Now, for the gentlemen who appreciate a bit of... discretion, these might even have a delightfully shrinking effect down there, perfect for a smaller chastity device, if you know what I mean *wink*.",
+            text: "Oh my, these little treasures I have here can be quite the boon for a lady's allure! They work their magic in six delightful ways. First, they'll naturally encourage your lovely locks to grow thicker and faster, while keeping those pesky body hairs at bay for a delightfully smooth you. And wouldn't you know it, your skin will be positively radiant, your lips will have a touch more pout, and your figure will become even more divinely proportioned – fuller thighs and a more ample bosom, simply delightful! Now, for the gentlemen who appreciate a bit of... discretion, these might even have a delightfully shrinking effect down there, perfect for a smaller chastity device, if you know what I mean *wink*.",
             button: [
                 { chatID: 70, text: "...", callback: "" }
             ]
@@ -841,7 +841,7 @@ room180.chat = function (chatID) {
         {
             chatID: 70,
             speaker: "martha",
-            text: "Commencing with our next gathering, I shall be personally administering your prescribed pharmaceuticals. These are, as I've mentioned, quite potent, and therefore, a regimen of no more than three doses per week is strictly advised. Exceeding this limit would, regrettably, result in an overabundance of... activity, leading to a most unpleasant state of indisposition. Consequently, the regulation of your dosage remains firmly within my purview.This, I understand, represents a significant milestone for many of you, and I am, indeed, quite thrilled to guide you through this crucial phase of your journey into sissyhood.",
+            text: "Commencing with our next gathering, I shall be personally administering your prescribed pharmaceuticals. These are, as I've mentioned, quite potent, and therefore, a regimen of no more than three doses per week is strictly advised. Exceeding this limit would, regrettably, result in an overabundance of... activity, leading to a most unpleasant state of indisposition. Consequently, the regulation of your dosage remains firmly within my purview. This, I understand, represents a significant milestone for many of you, and I am, indeed, quite thrilled to guide you through this crucial phase of your journey into sissyhood.",
             button: [
                 { chatID: -1, text: "[I wonder what exactly are these pharmaceuticals. I guess I'll have to wait.]", callback: "fem201_end" }
             ]
@@ -850,7 +850,7 @@ room180.chat = function (chatID) {
             chatID: 71,
             speaker: "martha",
             text: "I'm so excited for this lesson. You are looking the part of true femininity, a vision " +
-                "that wouldn't fail to turn heads. But once you have seduced a gentleman, your must feel " +
+                "that wouldn't fail to turn heads. But once you have seduced a gentleman, you must feel " +
                 "good when you envelop his penis into your Princess Hole. ",
             button: [
                 { chatID: 72, text: "...", callback: "" }
@@ -863,7 +863,7 @@ room180.chat = function (chatID) {
                 "mixture will smooth out your skin and make your holes smooth and moist to the touch. " +
                 " Now I need each " +
                 "of you to strip down and place your knees and hands on the floor so I may administer it. After " +
-                "you've received your enema hold it in as long as you can to acheive maximum effectiveness. ",
+                "you've received your enema hold it in as long as you can to achieve maximum effectiveness. ",
             button: [
                 { chatID: 73, text: "[Get ready for your enema]", callback: "enema205_2" }
             ]
@@ -976,7 +976,7 @@ room180.chat = function (chatID) {
         {
             chatID: 85,
             speaker: "martha",
-            text: "A lady of refinement knows that true elegance lies in subtlety. To flaunt one's virtues is to diminish them. Let others notice our poise, our grace, our quiet strength. It is in these unseen qualities that we truly shine." +
+            text: "A lady of refinement knows that true elegance lies in subtlety. To flaunt one's virtues is to diminish them. Let others notice our poise, our grace, our quiet strength. It is in these unseen qualities that we truly shine. " +
                 "Please rise from your seats. May this day be filled with growth and refined discourse. ",
             button: [
                 { chatID: 86, text: "...", callback: "fem121_5" }

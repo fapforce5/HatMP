@@ -144,7 +144,7 @@ room207.chat = function (chatID) {
         {
             chatID: 0,
             speaker: "random",
-            text: "Welcome to the Pink Level of Pleasure. To enter you you must be your most beautiful self. [In progress]",
+            text: "Welcome to the Pink Level of Pleasure. To enter you must be your most beautiful self. [In progress]",
             button: [
                 { chatID: -1, text: "...", callback: "" }
             ]

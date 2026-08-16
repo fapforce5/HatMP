@@ -359,7 +359,7 @@ room177.chat = function (chatID) {
         {
             chatID: 18,
             speaker: "missy",
-            text: "I'm glad you know your worth. I have a special chastity cage that will help shink your cock into a clitty. " +
+            text: "I'm glad you know your worth. I have a special chastity cage that will help shrink your cock into a clitty. " +
                 "You just need to wear it, and over time we'll shrink that cock down. ",
             button: [
                 { chatID: 19, text: "Thank you ma'am!", callback: "chastity6" }
@@ -481,7 +481,7 @@ room177.chat = function (chatID) {
             chatID: 31,
             speaker: "missy",
             text: "When I first saved your ass, I knew I had a true sissy. Let's " +
-                "change you cage so you can 'shrink' to the girl you were always " +
+                "change your cage so you can 'shrink' to the girl you were always " +
                 "meant to be. ",
             button: [
                 { chatID: 32, text: "Yes! ", callback: "c201_2" }
@@ -490,7 +490,7 @@ room177.chat = function (chatID) {
         {
             chatID: 32,
             speaker: "missy",
-            text: "So cute. You're almost a girl now! That peasky penis will be gone " +
+            text: "So cute. You're almost a girl now! That pesky penis will be gone " +
                 "before you know it! I'm so proud of you my little sissy!",
             button: [
                 { chatID: -1, text: "Yes ma'am! ", callback: "chastity101end" }
@@ -504,7 +504,7 @@ room177.chat = function (chatID) {
                 "girl now, and it's time you grow up and start making your own choices. " +
                 "So I'm going to let you choose. You can remove your chastity device " +
                 "for all time, we can keep doing what we're doing where you can free " +
-                "youself on the weekends, or you can truly devote yourself to the sissy " +
+                "yourself on the weekends, or you can truly devote yourself to the sissy " +
                 "lifestyle and wear it all the time. No weekends, no penis, only holes. ",
             button: [
                 { chatID: -1, text: "OOooooo", callback: "chastity442choice" }

@@ -169,7 +169,7 @@ room602.chat = function (chatID) {
                 "fun dancing all over those hard cocks out there! I can't believe everyone " +
                 "came! ",
             button: [
-                { chatID: 6, text: "Speaking of everyoone where's " + sc.n("!philbert") + "?", callback: "" }
+                { chatID: 6, text: "Speaking of everyone where's " + sc.n("!philbert") + "?", callback: "" }
             ]
         },
         {

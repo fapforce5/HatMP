@@ -382,7 +382,7 @@ room57.chat = function (chatID) {
             chatID: 20,
             speaker: "candy",
             text: "Oh we do a cam show every day after work. " +
-            "want to play! ",
+            "Want to play? ",
             button: [
                 { chatID: 21, text: "...", callback: "" },
             ]

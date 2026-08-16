@@ -315,7 +315,7 @@ room183.chat = function (chatID) {
         {
             chatID: 5,
             speaker: "river",
-            text: "That's why I'm talking about! I used to kick your ass, now I'm going to fuck your ass! ",
+            text: "That's what I'm talking about! I used to kick your ass, now I'm going to fuck your ass! ",
             button: [
                 { chatID: 6, text: "...", callback: "" }
             ]

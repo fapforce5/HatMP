@@ -981,7 +981,7 @@ room10.chat = function (chatID) {
             {
                 chatID: 21,
                 speaker: "lola",
-                text: "Really " + sc.n("me") + "? That's weird. I can't wait to tell me friend Molly about this. ",
+                text: "Really " + sc.n("me") + "? That's weird. I can't wait to tell my friend Molly about this. ",
                 button: [
                     { chatID: 22, text: "OOoohhhh wait. Please, you can't tell anyone!", callback: "evaYell" }
                 ]
@@ -991,7 +991,7 @@ room10.chat = function (chatID) {
                 speaker: "eva",
                 text: "Yes we can. What are you going to do, steal more panties? ",
                 button: [
-                    { chatID: 23, text: "I promise not to steal any more panties! I'll do what ever you want if your don't tell anyone.", callback: "lolaYell" }
+                    { chatID: 23, text: "I promise not to steal any more panties! I'll do what ever you want if you don't tell anyone.", callback: "lolaYell" }
                 ]
             },
             {
@@ -1066,7 +1066,7 @@ room10.chat = function (chatID) {
                 speaker: "lola",
                 text: "Haha! I hope this teaches you a lesson never to steal my panties again! ",
                 button: [
-                    { chatID: 32, text: "It does, I promise neve to steal your panties again. ", callback: "shirtTakeOff1" }
+                    { chatID: 32, text: "It does, I promise never to steal your panties again. ", callback: "shirtTakeOff1" }
                 ]
             },
             {
@@ -1211,7 +1211,7 @@ room10.chat = function (chatID) {
                 speaker: "lola",
                 text: "I'm so glad you're back! I've been thinking about you every day since you've been gone! ",
                 button: [
-                    { chatID: 49, text: "I've only been thinking about you everyday I was locked up", callback: "" },
+                    { chatID: 49, text: "I've only been thinking about you every day I was locked up", callback: "" },
                 ]
             },
             {
@@ -1237,7 +1237,7 @@ room10.chat = function (chatID) {
                 chatID: 51,
                 speaker: "lola",
                 text: "Huh? ... I mean... Wait. You had a penis. I know it was there or I wouldn't be pregnant. " +
-                    "You the only boy I've ever been with. That is a vagina right? Is the penis there... I... uhhh...",
+                    "You're the only boy I've ever been with. That is a vagina right? Is the penis there... I... uhhh...",
                 button: [
                     { chatID: 52, text: "...", callback: "" },
                 ]
@@ -1245,7 +1245,7 @@ room10.chat = function (chatID) {
             {
                 chatID: 52,
                 speaker: "me",
-                text: "Oh... Well when I was kidnapped A lot of bad things happened. [Tell her most of the things " +
+                text: "Oh... Well when I was kidnapped a lot of bad things happened. [Tell her most of the things " +
                     "that happened, except the parts she wouldn't want to hear. ]",
                 button: [
                     { chatID: 53, text: "...", callback: "lola2" },
@@ -1338,7 +1338,7 @@ room10.chat = function (chatID) {
                 chatID: 62,
                 speaker: "lola",
                 text: "This is the real pleasure button! Hehe. You're so wet, I can see it dripping out. Now let " +
-                    "me show your the ultimate. Fingers and tongue. ",
+                    "me show you the ultimate. Fingers and tongue. ",
                 button: [
                     { chatID: 63, text: "eeep!", callback: "lola_lick9" },
                 ]
@@ -1363,7 +1363,7 @@ room10.chat = function (chatID) {
                 chatID: 65,
                 speaker: "lola",
                 text: "Oh wow I miss that penis. I hope it's ok if we skip the foreplay and jump right to " +
-                    "it! I just need to have sex with your right now! ",
+                    "it! I just need to have sex with you right now! ",
                 button: [
                     { chatID: 66, text: "Oh yeah!", callback: "lola_fuck" },
                 ]
@@ -1379,7 +1379,7 @@ room10.chat = function (chatID) {
             {
                 chatID: 67,
                 speaker: "lola",
-                text: "Hehe. Happy pussy! I look forward to many days and nights make our fun places happy! ",
+                text: "Hehe. Happy pussy! I look forward to many days and nights making our fun places happy! ",
                 button: [
                     { chatID: -1, text: "Oh yeah!", callback: "reset" },
                 ]

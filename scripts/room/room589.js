@@ -1,7 +1,7 @@
 ﻿//Liam
 var room589 = {};
 room589.main = function () {
-    let roomEvents = room585.getRoomsNow(false);
+    //let roomEvents = room585.getRoomsNow(false);
     switch (Math.floor(g.gethourdecimal())) {
         case 20:
         case 21:
@@ -9,18 +9,18 @@ room589.main = function () {
             
             break;
         case 22:
-            if (roomEvents.r9 === "stacy") {
-                nav.button({
-                    "type": "img",
-                    "name": "courtney",
-                    "left": 852,
-                    "top": 31,
-                    "width": 710,
-                    "height": 1049,
-                    "image": "589_liam/stacy_0.png"
-                }, 586);
-                chat(0, 589);
-            }
+            //if (roomEvents.r9 === "stacy") {
+            //    nav.button({
+            //        "type": "img",
+            //        "name": "courtney",
+            //        "left": 852,
+            //        "top": 31,
+            //        "width": 710,
+            //        "height": 1049,
+            //        "image": "589_liam/stacy_0.png"
+            //    }, 586);
+            //    chat(0, 589);
+            //}
             break;
         case 23:
             break;

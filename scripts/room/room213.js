@@ -547,7 +547,7 @@ room213.chat = function (chatID) {
             speaker: "p",
             text: "Oh great! I do need a sexy girl like you to mingle and entertain our arriving " +
                 "guests. Each person should get a friendly greeting once they walk in the door and " +
-                "a invitation to come back when they leave. If someone looks nervous, or lost " +
+                "an invitation to come back when they leave. If someone looks nervous, or lost " +
                 "I need you to help them feel welcome and guide them to the room they want. ",
             button: [
                 { chatID: 8, text: "I can do that!", callback: "" }
@@ -567,7 +567,7 @@ room213.chat = function (chatID) {
             speaker: "!g",
             text: "Ugh. Another idiot sissy. I don't know why " + sc.n("p") + " keeps you idiots " +
                 "around. I swear every one of you has two brain cells fighting for second place. " +
-                "*snort* You best fit will be a wind holder. I have just the setup to hold the wine " +
+                "*snort* You best fit will be a wine holder. I have just the setup to hold the wine " +
                 "and ensure you don't pester our customers with the drivel that pours out of your " +
                 "mouth. ",
             button: [
@@ -869,7 +869,7 @@ room213.chat = function (chatID) {
                 "in my face. I don't care, 'cause titties, so I just start sucking them " +
                 "expecting that at any minute he's going to slap me, but get this he just " +
                 "lets me suck on them titties and shit, just letting me go to town, so I " +
-                "think what the hell and I slide my hand into into his pants and this bitch " +
+                "think what the hell and I slide my hand into his pants and this bitch " +
                 "has no panties, so guess what",
             button: [
                 { chatID: 41, text: "mmmmhmm", callback: "" }

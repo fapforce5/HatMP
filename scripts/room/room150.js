@@ -333,7 +333,7 @@ room150.chat = function (chatID) {
             "Please tell me your bare ass isn't making marks on my floor. ",
             "There are other ways to live a life than kneeling naked in the entrance. Like you could be a garbage man, or scuba diver. But if you come after my job I'll put a boot up your ass! ",
             "If I slip on anything that leaks that come from your genitals, expect a boot up your ass. ",
-            "You know " + sc.n("bitch") + " is really a pussy cat... 'cause she's afraid of loud noises! Just yell at her and she'll run away. .",
+            "You know " + sc.n("bitch") + " is really a pussy cat... 'cause she's afraid of loud noises! Just yell at her and she'll run away. ",
             "Woof! Who farted in here... Oh. It was me wasn't it. Enjoy. ",
             "If I had your youth, I would be running in a field, or paying dirty dirty prostitute for sex. I can pay them now, but my penis stopped working years ago. ",
             "Once upon a time " + sc.n("bitch") + " was at the very place you are now. Some times she forgets this. "

@@ -365,7 +365,7 @@ room172.chat = function (chatID) {
         {
             chatID: 15,
             speaker: "black",
-            text: "So does my poor naive think they deserve a treat?",
+            text: "So does my poor naive slave think they deserve a treat?",
             button: [
                 { chatID: 16, text: "uh huh!", callback: "sit0" }
             ]
@@ -557,7 +557,7 @@ room172.chat = function (chatID) {
             chatID: 38,
             speaker: "black",
             text: "Well.... ummm.... This hasn't happened to me before. Your butthole is too tight for my toy to even " +
-                "begin. It's magic happens only once I get the first part in. You have the asshole of an " +
+                "begin. Its magic happens only once I get the first part in. You have the asshole of an " +
                 "emotionally unstable nun. Go work on stretching it out, I'm not your maid. Don't come back to play until " +
                 "it's a bit more stretchy.",
             button: [

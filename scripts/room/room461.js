@@ -835,7 +835,7 @@ room461.chat = function (chatID) {
             chatID: 46,
             speaker: "thinking",
             text: "Oh gross. Did I really think of asking for a jar of her piss? I'm going to run. Running is better than getting " +
-                "getting a jar of piss!",
+                "a jar of piss!",
             button: [
                 { chatID: -1, text: "[Need Pee Level 2]", callback: "completeRun" },
             ]

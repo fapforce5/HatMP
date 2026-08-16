@@ -292,7 +292,7 @@ room225.chat = function (chatID) {
             speaker: "random",
             text: "Este es un buen lugar. Quiero follarte por mi puta de recogida",
             button: [
-                { chatID: 9, text: "I don't know what you said, but let me hop out and and you guide me.", callback: "p02" }
+                { chatID: 9, text: "I don't know what you said, but let me hop out and you guide me.", callback: "p02" }
             ]
         },
         {

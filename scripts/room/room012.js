@@ -254,13 +254,17 @@ room12.btnclick = function (name) {
             cl.nude();
             zcl.displayMain(0, 400, .22, "shower", false);
             nav.bg("12_bathroom/shower.jpg", "12_bathroom/shower.jpg");
-            if (cl.c.bodyhair < -999)
+            if (sc.getMissionTask("bigguy", "sissy", 4).startedOrComplete && g.rand(0, 3) === 0 && !daily.get("bigguyshowerfuck")) {
+                daily.set("bigguyshowerfuck");
+                chat(52, 12);
+            }
+            else if (cl.c.bodyhair < -999)
                 chat(11, 12);
             else if (inv.get("razor").count > 0)
                 chat(15, 12);
             else
                 chat(11, 12);
-            
+
             break;
         case "mirror":
             g.pass = 12;
@@ -570,6 +574,46 @@ room12.chatcatch = function (callback) {
             cl.c.cumface = false;
             cl.undo();
             char.room(12);
+            break;
+        case "bigguy0":
+            nav.button({
+                "type": "img",
+                "name": "bigguy",
+                "left": 888,
+                "top": 0,
+                "width": 1032,
+                "height": 1080,
+                "image": "12_bathroom/bigguy0.webp"
+            }, 12);
+            break;
+        case "bigguy1":
+            nav.kill();
+            nav.bg("12_bathroom/bigguy1_" + gender.pronoun("f") + ".webp");
+            break;
+        case "bigguy2":
+            nav.bg("12_bathroom/bigguy2.webp");
+            zcl.front(-100, 400, .6, "0", true);
+            nav.button({
+                "type": "img",
+                "name": "bigguy",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "12_bathroom/bigguy2f.webp"
+            }, 12);
+            break;
+        case "bigguy3":
+            nav.kill();
+            nav.bg("12_bathroom/bigguy3.webp");
+            zcl.sissygasm(0, 400, .6, "", false);
+            break;
+        case "bigguy4":
+            levels.anal(5, true, "m", true, "bigguy");
+            zcl.asshole(100, 400, 1, "", false);
+            break;
+        case "showerReset":
+            room12.btnclick("shower");
             break;
         case "reset":
             char.room(12);
@@ -1010,6 +1054,56 @@ room12.chat = function(chatID){
             text: "Girls can have multiple orgasms in a row, idiot. You should just be happy I came on you. Now I'm going to school so I don't have to waste more time talking to a big dummy like you!",
             button: [
                 { chatID: -1, text: "Well ok", callback: "sisterStripEnd" },
+            ]
+        },
+        {
+            chatID: 52,
+            speaker: "thinking",
+            text: "Huh? Who's at the door?",
+            button: [
+                { chatID: 53, text: "...", callback: "bigguy0" },
+            ]
+        },
+        {
+            chatID: 53,
+            speaker: "bigguy",
+            text: "Hehehe! Surprise! I do love a wet slippery bitch! ",
+            button: [
+                { chatID: 54, text: "*gulp*", callback: "bigguy1" },
+            ]
+        },
+        {
+            chatID: 54,
+            speaker: "bigguy",
+            text: "I need to fuck an asshole and your bitch of a " + sc.n("landlord") +
+                " won't let me shove this up her her's. Guess where this is going. hehehe. ",
+            button: [
+                { chatID: 55, text: "W-w-where?", callback: "bigguy2" },
+            ]
+        },
+        {
+            chatID: 55,
+            speaker: "me",
+            text: "Oh my god. That's so far up my ass I can taste it! Oh god. So thick. Don't stop! I'm " +
+                "about to cum my brains out!",
+            button: [
+                { chatID: 56, text: "*slutty moaning*", callback: "bigguy3" },
+            ]
+        },
+        {
+            chatID: 56,
+            speaker: "me",
+            text: "Oh fuck I'm cumming again! Oh so good! Fill my asshole with your cum!!!",
+            button: [
+                { chatID: 57, text: "*squirt* *squirt*", callback: "bigguy4" },
+            ]
+        },
+        {
+            chatID: 57,
+            speaker: "bigguy",
+            text: "Dirty bitch. ",
+            button: [
+                { chatID: -1, text: "*sissy moans*", callback: "showerReset" },
             ]
         },
     ];

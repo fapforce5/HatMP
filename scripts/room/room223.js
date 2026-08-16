@@ -328,7 +328,7 @@ room223.chat = function (chatID) {
             chatID: 20,
             speaker: "missy",
             text: "I'm just kidding. Listen. I know who you are. You don't know who you are, but I do. I've " +
-                "never been more sure of anything in my life. Take you pants off. ",
+                "never been more sure of anything in my life. Take your pants off. ",
             button: [
                 { chatID: 21, text: "My pants?", callback: "" }
             ]
@@ -336,7 +336,7 @@ room223.chat = function (chatID) {
         {
             chatID: 21,
             speaker: "missy",
-            text: "Yes. I said take your pants off. Not ask stuipid questions. Now take them off.  ",
+            text: "Yes. I said take your pants off. Not ask stupid questions. Now take them off.  ",
             button: [
                 { chatID: 22, text: "Yes ma'am", callback: "panties_update0" }
             ]
@@ -345,7 +345,7 @@ room223.chat = function (chatID) {
             chatID: 22,
             speaker: "missy",
             text: "*ugh* Boy's underwear. Why is it always so ugly. You know you're not an ugly boy, " +
-                "why do you wear ugly underware. That ends today. I'm going to make you pretty, starting " +
+                "why do you wear ugly underwear. That ends today. I'm going to make you pretty, starting " +
                 "from the inside where true beauty starts. Take those horrible things off. ",
             button: [
                 { chatID: 23, text: "My underwear? ", callback: "" }
@@ -354,7 +354,7 @@ room223.chat = function (chatID) {
         {
             chatID: 23,
             speaker: "missy",
-            text: "My god are you dumb. Yes your underware. I never want to see those terrible things again. " +
+            text: "My god are you dumb. Yes your underwear. I never want to see those terrible things again. " +
                 "Take them off. ",
             button: [
                 { chatID: 24, text: "Yes ma'am", callback: "panties_update1" }
@@ -364,8 +364,8 @@ room223.chat = function (chatID) {
             chatID: 24,
             speaker: "missy",
             text: "Now look at my panties. Does getting a peek make your penis start to get hard? I bet you " +
-                "wish you wish you weren't locked in that chastity cage right now. Panties are just the " +
-                "best best way to show our femininity. ",
+                "wish you weren't locked in that chastity cage right now. Panties are just the " +
+                "best way to show our femininity. ",
             button: [
                 { chatID: 25, text: "...", callback: "panties_update2" }
             ]
@@ -373,8 +373,8 @@ room223.chat = function (chatID) {
         {
             chatID: 25,
             speaker: "missy",
-            text: "Image how ugly this would look if I was sliding down ugly boy underwear right now. " +
-                "*ugh* No one wants to see ugly boy underware. All ratty and drab. A tiny tight set " + 
+            text: "Imagine how ugly this would look if I was sliding down ugly boy underwear right now. " +
+                "*ugh* No one wants to see ugly boy underwear. All ratty and drab. A tiny tight set " +
                 "of panties is what people love to see. Everyone loves to look at panties. ",
             button: [
                 { chatID: 26, text: "...", callback: "panties_update3" }
@@ -395,8 +395,8 @@ room223.chat = function (chatID) {
         {
             chatID: 27,
             speaker: "missy",
-            text: "MMmmmm. A girl loves to hear how wonder her vagina smells. I have good news for " +
-                "you. You take take that smell home with you and smell at your leisure. ",
+            text: "MMmmmm. A girl loves to hear how wonderful her vagina smells. I have good news for " +
+                "you. You can take that smell home with you and smell at your leisure. ",
             button: [
                 { chatID: 29, text: "ma'am?", callback: "" }
             ]

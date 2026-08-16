@@ -254,8 +254,8 @@ room484.chat = function (chatID) {
         {
             chatID: 3,
             speaker: "!wolfgirl",
-            text: "Oh. Poeple called me " + sc.n("!wolfgirl") + " before I came here, so it just kinda stuck, " +
-                "ya know. It was too hard to get dressed, so I just gave up. And since I have a really sensative " +
+            text: "Oh. People called me " + sc.n("!wolfgirl") + " before I came here, so it just kinda stuck, " +
+                "ya know. It was too hard to get dressed, so I just gave up. And since I have a really sensitive " +
                 "vagina I'm always dripping a bit, so you know, it's like a snail trail where ever I go. ",
             button: [
                 { chatID: 2, text: "Ask more questions. ", callback: "" },
@@ -377,7 +377,7 @@ room484.chat = function (chatID) {
             chatID: 17,
             speaker: "thinking",
             text: "Sweet. He gave me a horn. I guess I can use this to call for help if I get attacked " +
-                "in the forest to call for help!",
+                "in the forest!",
             button: [
                 { chatID: -1, text: "arf", callback: "reset" },
             ]

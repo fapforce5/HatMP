@@ -1503,7 +1503,7 @@ room23.chat = function (chatID) {
         }
         else if (g.internal.nextTurn === "eva") {
             switch (g.internal.gamephase) {
-                case 0: dareChat = "Dare me pussy."; break;
+                case 0: dareChat = "Dare me, pussy."; break;
                 case 1: dareChat = "Dare. "; break;
                 case 2: dareChat = "Let's see what you've got pervert. Dare me."; break;
                 case 3: dareChat = "Nothing gross, but I'll take a dare. "; break;
@@ -1858,7 +1858,7 @@ room23.chat = function (chatID) {
             {
                 chatID: 41,
                 speaker: "eva",
-                text: "That's how she get's all the guys. With her weird random humor. ",
+                text: "That's how she gets all the guys. With her weird random humor. ",
                 button: [
                     { chatID: 43, text: "...", callback: "" },
                 ]
@@ -1874,7 +1874,7 @@ room23.chat = function (chatID) {
             {
                 chatID: 43,
                 speaker: "lola",
-                text: "Oh " + sc.n("eva") + ". You're just jealous of my flexability. ",
+                text: "Oh " + sc.n("eva") + ". You're just jealous of my flexibility. ",
                 button: [
                     { chatID: -1, text: "...", callback: "nextTurn" },
                 ]
@@ -1924,7 +1924,7 @@ room23.chat = function (chatID) {
             {
                 chatID: 49,
                 speaker: "eva",
-                text: "Ok, ok. That's enough. My nipples are sensative. ",
+                text: "Ok, ok. That's enough. My nipples are sensitive. ",
                 button: [
                     { chatID: -1, text: "Bwa hahaha", callback: "nextTurn" },
                 ]
@@ -2025,7 +2025,7 @@ room23.chat = function (chatID) {
                 chatID: 61,
                 speaker: "eva",
                 text: "This is the greatest day of your perverted life. Seeing a hot girl playing " +
-                    "with her pussy. I wouldn't be surprise if you started jacking off right now. ",
+                    "with her pussy. I wouldn't be surprised if you started jacking off right now. ",
                 button: [
                     { chatID: -1, text: "...", callback: "nextTurn" },
                 ]
@@ -2270,7 +2270,7 @@ room23.chat = function (chatID) {
             {
                 chatID: 91,
                 speaker: "lola",
-                text: "Oh my. You're so strong! If you were a fireman you could totally rescure me. ",
+                text: "Oh my. You're so strong! If you were a fireman you could totally rescue me. ",
                 button: [
                     { chatID: -1, text: "I would carry you in my arms. ", callback: "nextTurn" },
                 ]
@@ -2335,7 +2335,7 @@ room23.chat = function (chatID) {
             {
                 chatID: 99,
                 speaker: "me",
-                text: "*sigh* I'm such your bitch " + sc.n("eva") + ". There are you happy. ",
+                text: "*sigh* I'm such your bitch " + sc.n("eva") + ". There. Are you happy? ",
                 button: [
                     { chatID: 100, text: "...", callback: "" },
                 ]

@@ -111,7 +111,7 @@ room186.chat = function (chatID) {
             chatID: 0,
             speaker: "black",
             text: "Hey! It's so good to see you outside of class. You know " + sc.n("martha") +
-                "keeps me so busy disciplining " + sc.n("!sanaria") + ". She is a wild one, " +
+                " keeps me so busy disciplining " + sc.n("!sanaria") + ". She is a wild one, " +
                 "but her screams are fulfilling. So what have you been up to? ",
             button: [
                 { chatID: 1, text: "Oh, you know, mostly butt stuff. ", callback: "" }
@@ -121,7 +121,7 @@ room186.chat = function (chatID) {
             chatID: 1,
             speaker: "black",
             text: "That's my girl! You know, speaking of butt stuff, " + sc.n("cecilia") +
-                "and I do the talent show on the weekends. We would love to have a third for " +
+                " and I do the talent show on the weekends. We would love to have a third for " +
                 "our act and you would be perfect. ",
             button: [
                 { chatID: 2, text: "Oh? What talent? ", callback: "" }
@@ -232,7 +232,7 @@ room186.chat = function (chatID) {
             chatID: 13,
             speaker: "black",
             text: "They could do this all night! Aren't they just slutty little whores! " +
-                "Bend over and show everyone you loose little pussies girls! ",
+                "Bend over and show everyone your loose little pussies girls! ",
             button: [
                 { chatID: 14, text: "...", callback: "show7" }
             ]

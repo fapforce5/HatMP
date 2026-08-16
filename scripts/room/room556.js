@@ -201,7 +201,7 @@ room556.chat = function (chatID) {
         {
             chatID: 5,
             speaker: "g",
-            text: "So You rolled a 17 plus your strength of 1. I rolled a 20 plus my strength of 16. " +
+            text: "So you rolled a 17 plus your strength of 1. I rolled a 20 plus my strength of 16. " +
                 "So my 36 beats your 18. By a lot. ",
             button: [
                 { chatID: 6, text: "[Next]", callback: "bg1" }

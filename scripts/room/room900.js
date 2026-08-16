@@ -157,7 +157,7 @@ room900.chat = function(chatID){
             speaker: "librarian",
             text: "Only students can enter the school library. You need to have a student ID. ",
             button: [
-                { chatID: -1, text: "Drat!", callback: "resest" }
+                { chatID: -1, text: "Drat!", callback: "" }
                 ]
         },
 

@@ -930,7 +930,7 @@ room501.chat = function (chatID) {
             "I will lick the floor with you! ",
             "Tu es pire que ma mère",
             "Va te faire enculer! ",
-            "Va niquer ta mere",
+            "Va niquer ta mère",
             "Je t'emmerde",
             "J'en ai ras de cul.",
             "Ça me fait chier!",
@@ -1027,7 +1027,7 @@ room501.chat = function (chatID) {
                 speaker: "zoey",
                 text: "Thanks " + sc.n("me") + ", you're the best friend any girl could want. ",
                 button: [
-                    { chatID: -1, text: "Thanks bestie!.", callback: "resetEndTalk" }
+                    { chatID: -1, text: "Thanks bestie!", callback: "resetEndTalk" }
                 ]
             },
             {
@@ -1127,7 +1127,7 @@ room501.chat = function (chatID) {
                 speaker: "zoey",
                 text: "Hey Chloé is here, she's sleeping in the other room. I hope you don't mind.",
                 button: [
-                    { chatID: 18, text: "Only if she doesn't mind that I steal you away form some games.", callback: "zForward" }
+                    { chatID: 18, text: "Only if she doesn't mind that I steal you away from some games.", callback: "zForward" }
                 ]
             },
             {
@@ -1136,7 +1136,7 @@ room501.chat = function (chatID) {
                 text: "She doesn't mind, she likes how happy I am when after I kick you in the ass.",
                 button: [
                     {
-                        chatID: 19, text: "Dammit it " + sc.n("zoey") + ", its 'kick your ass.' Kick you in the ass " +
+                        chatID: 19, text: "Dammit " + sc.n("zoey") + ", it's 'kick your ass.' Kick you in the ass " +
                             "sounds like you're putting your foot in my butt-hole. ", callback: "zShock"
                     }
                 ]
@@ -1315,7 +1315,7 @@ room501.chat = function (chatID) {
                 speaker: "zoey",
                 text: "Hey Tête de noeud, you back for some more kicks in the ass?",
                 button: [
-                    { chatID: 41, text: "Oh my god " + sc.n("zoey") + "! I'm going to destroy you so you can never try to talk shit again. ", callback: "zforward" }
+                    { chatID: 41, text: "Oh my god " + sc.n("zoey") + "! I'm going to destroy you so you can never try to talk shit again. ", callback: "zForward" }
                 ]
             },
             {
@@ -1447,7 +1447,7 @@ room501.chat = function (chatID) {
             {
                 chatID: 56,
                 speaker: "chloe",
-                text: "Clam down " + sc.n("me") + ", its funny. Take a chill pill. ",
+                text: "Calm down " + sc.n("me") + ", its funny. Take a chill pill. ",
                 button: [
                     { chatID: 57, text: "But...", callback: "" }
                 ]
@@ -1519,7 +1519,7 @@ room501.chat = function (chatID) {
             {
                 chatID: 65,
                 speaker: "zoey",
-                text: "OH NO!!I would never! I'm too shy. I don't know what to do. ",
+                text: "OH NO!! I would never! I'm too shy. I don't know what to do. ",
                 button: [
                     { chatID: 66, text: "Maybe you could just break up with her?", callback: "zSuprise" }
                 ]
@@ -1552,7 +1552,7 @@ room501.chat = function (chatID) {
             {
                 chatID: 69,
                 speaker: "zoey",
-                text: "Je sais que je suis fou, but I just have to know! Will you do it?",
+                text: "Je sais que je suis folle, but I just have to know! Will you do it?",
                 button: [
                     { chatID: 71, text: "You're my best friend, of course I'll do it. ", callback: "cheat2" },
                     { chatID: 70, text: "No, you just need to talk with her. Relationships are about communication ", callback: "" }
@@ -1570,7 +1570,7 @@ room501.chat = function (chatID) {
             {
                 chatID: 71,
                 speaker: "zoey",
-                text: "Tu es mon meilleur ami!!! I know you you'll catch her cheating! Maybe the mall or the " +
+                text: "Tu es mon meilleur ami!!! I know you'll catch her cheating! Maybe the mall or the " +
                     "dance club. She knows I do not like crowded places, so she'll go somewhere I will not.",
                 button: [
                     { chatID: 72, text: "I just have one condition. I get to pick the video game.", callback: "" }
@@ -1760,7 +1760,7 @@ room501.chat = function (chatID) {
                 chatID: 91,
                 speaker: "zoey",
                 text: "Tu mens, espèce de connard... You are not lying are you? " +
-                    "Je suis tellement énervé en ce moment ! Je ne peux pas croire que vous " +
+                    "Je suis tellement énervée en ce moment ! Je ne peux pas croire que vous " +
                     "baiseriez tous les deux dans mon dos! Putain! Ma vie est ruinée!",
                 button: [
                     { chatID: 92, text: "huh? ", callback: "" },
@@ -1772,7 +1772,7 @@ room501.chat = function (chatID) {
                 text: "I am so angry at " + sc.n("chloe") + ", but I knew it! I knew she was always " +
                     "a cheater! And you! You didn't have to sex her to find out! You could have just " +
                     "told me they were at the club. I should be mad at you, but you did what I asked. " +
-                    "I am not heureux with you, but I am not mad. Right now I am just tired. So very " +
+                    "I am not heureuse with you, but I am not mad. Right now I am just tired. So very " +
                     "weak and tired. I feel like liquid on the floor. ",
                 button: [
                     { chatID: 93, text: "I'm sorry. I didn't mean to hurt you. ", callback: "cheating0" },
@@ -1790,7 +1790,7 @@ room501.chat = function (chatID) {
             {
                 chatID: 94,
                 speaker: "zoey",
-                text: "Quoi? What does that mean? What is this gorey hole? ",
+                text: "Quoi? What does that mean? What is this glory hole? ",
                 button: [
                     { chatID: 95, text: "...", callback: "zLook" },
                 ]
@@ -1954,7 +1954,7 @@ room501.chat = function (chatID) {
             {
                 chatID: 112,
                 speaker: "zoey",
-                text: "It that a...",
+                text: "Is that a...",
                 button: [
                     { chatID: 113, text: "yep!", callback: "pussy1" }
                 ]

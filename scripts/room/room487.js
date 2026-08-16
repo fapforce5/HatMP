@@ -55,7 +55,7 @@ room487.chat = function (chatID) {
         {
             chatID: 1,
             speaker: "thinking",
-            text: "Oh wow. They's a bunch of them. I should come back later when I have a better " +
+            text: "Oh wow. There's a bunch of them. I should come back later when I have a better " +
                 "idea of what's going on. ",
             button: [
                 { chatID: -1, text: "Be smart. Leave. ", callback: "leave" },
@@ -67,7 +67,7 @@ room487.chat = function (chatID) {
             speaker: "daria",
             text: "Hey. I see you're trying to sneak around. I pretty much know everyone here, and " +
                 "you aren't someone that belongs here. Now I'm not going to stop you from doing whatever " +
-                "you're doing, but I've know what happens in there and it isn't pretty. You should really " +
+                "you're doing, but I've known what happens in there and it isn't pretty. You should really " +
                 "go. ",
             button: [
                 { chatID: 3, text: "ok. thanks", callback: "closer" },
@@ -94,7 +94,7 @@ room487.chat = function (chatID) {
         {
             chatID: 5,
             speaker: "thinking",
-            text: "I think I hear somone coming. I'll just stay very still...",
+            text: "I think I hear someone coming. I'll just stay very still...",
             button: [
                 { chatID: 6, text: "...", callback: "bush4" },
             ]

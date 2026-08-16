@@ -600,7 +600,7 @@ room408.chat = function (chatID) {
         {
             chatID: 16,
             speaker: "stormy",
-            text: "When I was 16 I got my first tattoo of the dragon on my leg. I really hurt, ya know, but I loved it " +
+            text: "When I was 16 I got my first tattoo of the dragon on my leg. It really hurt, ya know, but I loved it " +
                 "so much. It was a tribute to my dead dad who was born in the year of the dragon. My mom was christian " +
                 "so when she took me to church one of those old bitches tried to tell me I was going to hell if I keep " +
                 "marking up my body like that. It was that day that I knew those churches weren't for me. I stopped " +
@@ -629,7 +629,7 @@ room408.chat = function (chatID) {
             speaker: "stormy",
             text: "Yeah. I was bent over this dumpster when I felt a hand slide up my pussy from behind. I turned around " +
                 "and slapped that dude so hard he fell to his butt. Well he offered me some money if I let him jack off " +
-                "on my feet. What can I say, a girl's gott eat. So " + sc.n("charlie") + "...",
+                "on my feet. What can I say, a girl's gotta eat. So " + sc.n("charlie") + "...",
             button: [
                 { chatID: 19, text: "..." + sc.n("charlie") + "! From Toy 'n Us? ", callback: "zoeycheck" },
             ]
@@ -1066,7 +1066,7 @@ room408.chat = function (chatID) {
             chatID: 66,
             speaker: "elijah",
             text: "Wow. What a bitch! She's probably just jealous of your beauty. You don't have to " +
-                "defend yourself to her. I know a girl like you doesn't sleep around. You're way to pretty " +
+                "defend yourself to her. I know a girl like you doesn't sleep around. You're way too pretty " +
                 "for that. Fuck her. Let's eat. It'll just piss her off more hehe. ",
             button: [
                 { chatID: 70, text: "Yeah Let's eat ", callback: "elijah8" },
@@ -1103,7 +1103,7 @@ room408.chat = function (chatID) {
             speaker: "elijah",
             text: "You know, you're my first real girlfriend. I'm usually too busy to date, but ever " +
                 "since we met at Sausage I knew you were the one. That might be pretty forward, but " +
-                "no one has ever caused this much... excitment in my life. When I see you I just think " +
+                "no one has ever caused this much... excitement in my life. When I see you I just think " +
                 "dating, marriage, and 3 little kids running around. ",
             button: [
                 { chatID: 71, text: "...well I", callback: "" },
@@ -1113,7 +1113,7 @@ room408.chat = function (chatID) {
             chatID: 71,
             speaker: "elijah",
             text: "You don't have to say anything. I know it's way too soon to go out and buy houses yet. " +
-                "I just want you to know you're not just some fling with me. You're my eveything and I want " +
+                "I just want you to know you're not just some fling with me. You're my everything and I want " +
                 "to see how this goes. ",
             button: [
                 { chatID: 72, text: "You're really sweet. ", callback: "" },

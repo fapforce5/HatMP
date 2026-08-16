@@ -153,7 +153,7 @@ room209.chat = function (chatID) {
             {
                 chatID: 3,
                 speaker: "!kareem",
-                text: "Yo, this flyer.I'm sayin' we all got hit up by " + sc.n("martha") + " and got this flyer, right?",
+                text: "Yo, this flyer. I'm sayin' we all got hit up by " + sc.n("martha") + " and got this flyer, right?",
                 button: [
                     { chatID: 4, text: "...", callback: "" }
                 ]
@@ -190,7 +190,7 @@ room209.chat = function (chatID) {
             {
                 chatID: 7,
                 speaker: "missy",
-                text: "Alright boys! Everyone take you seats. Your first class is beginning! ",
+                text: "Alright boys! Everyone take your seats. Your first class is beginning! ",
                 button: [
                     { chatID: 8, text: "!", callback: "sitting0" }
                 ]
@@ -273,7 +273,7 @@ room209.chat = function (chatID) {
             {
                 chatID: 16,
                 speaker: "p",
-                text: "Now every take a good look at this future sissy. He looks like a normal guy right? But he hides his true " +
+                text: "Now everyone take a good look at this future sissy. He looks like a normal guy right? But he hides his true " +
                     "sissyness under this layer of clothing. We're going to see what hides behind this clothing. What's your name? ",
                 button: [
                     { chatID: 17, text: "...", callback: "" }

@@ -563,7 +563,7 @@ room585.chat = function (chatID) {
             speaker: "!doofus",
             text: "Totally. You're totally hot now! Your friend is totally hot too! " +
                 "It's like you left high school and got hot and hot friends. Totally " +
-                "crazy. So you you two ever do each other since you're both so hot? ",
+                "crazy. So you two ever do each other since you're both so hot? ",
             button: [
                 { chatID: 17, text: "Oh hahaha", callback: "" },
             ]
@@ -704,8 +704,8 @@ room585.chat = function (chatID) {
         {
             chatID: 32,
             speaker: "eva",
-            text: "*hrumph* Slave doggies don't get to say no. I think we need we need to shut your " +
-                "yapper. Hehehehe. We should stuff her mouth with with Latika's plug. Hahaha",
+            text: "*hrumph* Slave doggies don't get to say no. I think we need to shut your " +
+                "yapper. Hehehehe. We should stuff her mouth with Latika's plug. Hahaha",
             button: [
                 { chatID: 33, text: "...", callback: "eva5" },
             ]
@@ -870,7 +870,7 @@ room585.chat = function (chatID) {
         },
         {
             chatID: 51,
-            speaker: "Liam",
+            speaker: "liam",
             text: "Well? Did you talk to her? What did you find out? ",
             button: [
                 { chatID: 52, text: "...", callback: "" },
@@ -917,15 +917,15 @@ room585.chat = function (chatID) {
         },
         {
             chatID: 56,
-            speaker: "Liam",
-            text: "Look likes Belle Left. I'll try talking to her next time. ",
+            speaker: "liam",
+            text: "Looks like Belle left. I'll try talking to her next time. ",
             button: [
                 { chatID: -1, text: "Yeah.", callback: "" }
             ]
         },
         {
             chatID: 57,
-            speaker: "Liam",
+            speaker: "liam",
             text: "This is the chick that totally gave me the confidence to talk to you! ",
             button: [
                 { chatID: 58, text: "...", callback: "" }

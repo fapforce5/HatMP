@@ -1047,7 +1047,7 @@ room321.sidechat = function (metalk) {
                 break;
             case "doggy1":
                 g.internal.chat.push({ user: "HighTower894", txt: "Who's the gimp???", hex: "#1a1701" });
-                g.internal.chat.push({ user: "Jim", txt: "Peatnut butter time!", hex: "#0d915a" });
+                g.internal.chat.push({ user: "Jim", txt: "Peanut butter time!", hex: "#0d915a" });
                 break;
             case "doggy2":
                 g.internal.chat.push({ user: "XXyoungbloodXX", txt: "I want to lick that peanutbutter girl", hex: "#475b73" });

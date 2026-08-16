@@ -103,7 +103,7 @@ room152.chat = function (chatID) {
         {
             chatID: 3,
             speaker: "bitch",
-            text: "This is how your fuck your own face!",
+            text: "This is how you fuck your own face!",
             button: [
                 { chatID: 4, text: "hmmm gluk mmMmmm gluk", callback: "e6" }
             ]

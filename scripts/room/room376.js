@@ -26,6 +26,16 @@ room376.main = function () {
 room376.btnclick = function (name) {
     switch (name) {
         case "icon_sleep":
+            if (g.pass === "jail376_askMissy") {
+                if (missy.getenvelope("!jail0").hasKey) {
+                    nav.kill();
+                    g.pass = null;
+                    nav.bg("28_transformation/376.jpg");
+                    chat(25, 376);
+                    return;
+                }
+                missy.setenvelope("!jail0");
+            }
             g.pass = 376;
             char.room(28);
             break;
@@ -85,6 +95,11 @@ room376.btnclick = function (name) {
                 levels.anal(4, false, "m", true, "!jail0");
             g.internal++;
             break;
+        case "icon_code":
+            nav.kill();
+            g.pass = "jail376_askMissy";
+            chat(23, 376);
+            break;
         default:
             break;
     }
@@ -126,6 +141,9 @@ room376.chatcatch = function (callback) {
         case "choices":
             sc.select("icon_sleep_false", "376_jail/icon_sleep.webp", 0);
             sc.select("icon_sit", "376_jail/icon_sit.webp", 1);
+            if (missy.getenvelope("!jail0").active) {
+                sc.select("icon_code", "555_backgym/icon_code.webp", 2);
+            }
             break;
         case "leave":
             char.room(0);
@@ -197,6 +215,11 @@ room376.chatcatch = function (callback) {
             nav.kill();
             nav.bg("376_jail/lightsout_" + gender.pronoun("f") + ".webp");
             sc.select("icon_sleep", "376_jail/icon_sleep.webp", 0);
+            break;
+        case "resleep":
+            missy.setenvelope("!jail0");
+            g.pass = 376;
+            char.room(28);
             break;
         default:
             break;
@@ -385,7 +408,7 @@ room376.chat = function (chatID) {
             speaker: "!jail0",
             text: "Hey man, you know the best thing about cumming in a sissy is? The " +
                 "clean up. Bitches don't suck your dick after your shoved it up their " +
-                "ass. Sure sum may suck it a little, but guarantee, a sissy will be throat " +
+                "ass. Sure some may suck it a little, but guarantee, a sissy will be throat " +
                 "deep after you cum in them! ",
             button: [
                 { chatID: 20, text: "*dick sucking noises*", callback: "" }
@@ -413,19 +436,45 @@ room376.chat = function (chatID) {
         {
             chatID: 22,
             speaker: "!jail0",
-            text: "Well, well, well, if isn't our favorite cum dump. You come back to " +
-                "to worship our cocks baby girl?",
+            text: "Well, well, well, if it isn't our favorite cum dump. You come back to " +
+                "worship our cocks baby girl?",
             button: [
                 { chatID: 15, text: "What can I say, I love the cock", callback: "kissdick" }
             ]
         },
         {
-            chatID: 22,
-            speaker: "!jail0",
-            text: "Well, well, well, if isn't our favorite cum dump. You come back to " +
-                "to worship our cocks baby girl? You know what to do.",
+            chatID: 23,
+            speaker: "me",
+            text: "I don't suppose either of you two fine gentlemen know the code to the back " +
+                "gate of the C.U.M. compound? ",
             button: [
-                { chatID: -1, text: "What can I say, I love the cock", callback: "kissdick" }
+                { chatID: 24, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 24,
+            speaker: "!jail0",
+            text: "Fuck no. What kinda stupid ass question is that hahaha! ",
+            button: [
+                { chatID: -1, text: "oh. ", callback: "choices" }
+            ]
+        },
+        {
+            chatID: 25,
+            speaker: "!man",
+            text: "Pssst! Hey kid.",
+            button: [
+                { chatID: 26, text: "What? Who's there? Is that coming from the next cell? ", callback: "" }
+            ]
+        },
+        {
+            chatID: 26,
+            speaker: "!man",
+            text: "Don't worry about who I am kid. I heard you askin' about gettin' in the C.U.M. compound. " +
+                "The code is 1-2-3-4-5. I hate those fuckers. Go in there and do your worst. Burn it down " +
+                "if you can. ",
+            button: [
+                { chatID: -1, text: "Oh thanks mister! I will! ", callback: "resleep" }
             ]
         },
     ];

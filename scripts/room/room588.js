@@ -168,7 +168,7 @@ room588.chat = function (chatID) {
         },
         {
             chatID: 4,
-            speaker: "!sporty",
+            speaker: "sporty",
             text: "That was amazing! I love, and I mean LOVE having my clitty licked while I take " +
                 "it up my bussy hole! I'm so glad I went to the sissy school so I could meet " +
                 "my best friend ever! Love you!",

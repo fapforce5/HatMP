@@ -162,7 +162,7 @@ room553.chat = function (chatID) {
         {
             chatID: 3,
             speaker: "g",
-            text: "Dammit " + sc.n("candy") + "! I said there's no fucking in the locker room. and you... You better get out or I'm going " +
+            text: "Dammit " + sc.n("candy") + "! I said there's no fucking in the locker room. And you... You better get out or I'm going " +
             "to twist your cock into a pretzel! Now get out of this gym!",
             button: [
                 { chatID: -1, text: "[Squeal like a girl and run]", callback: "runaway" }

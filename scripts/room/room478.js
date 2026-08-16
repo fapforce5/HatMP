@@ -387,7 +387,7 @@ room478.chat = function (chatID) {
             speaker: "!sissy_tiedup",
             text: "Oh no I'm all tied up and can't do anything. Please don't molest me. ",
             button: [
-                { chatID: 1, text: "Oh. Do you want to untie you? Is that ok? ", callback: "" },
+                { chatID: 1, text: "Oh. Do you want me to untie you? Is that ok? ", callback: "" },
                 { chatID: -1, text: "I guess since you're tied up you have no choice. ", callback: "tiedup1" },
                 { chatID: -1, text: "oh. I'm going to move along.", callback: "reset" },
             ]
@@ -490,7 +490,7 @@ room478.chat = function (chatID) {
             chatID: 11,
             speaker: "!sissy_trio",
             text: "Totally. We were the best of friends while they fed us hormones and beat the shit out of us. " +
-                "I so glad I had these two with me at that fucked up place. They're really the best pets a girl " +
+                "I'm so glad I had these two with me at that fucked up place. They're really the best pets a girl " +
                 "can have. I just wish we could have helped Princess Fluffykins before she lost her eyes. ",
             button: [
                 { chatID: 12, text: "oh my, what happened?", callback: "trio0" },
@@ -568,7 +568,7 @@ room478.chat = function (chatID) {
             chatID: 19,
             speaker: "!sissy_duo1",
             text: "Ugh! " + sc.n("a") + " always sends the clueless new girls around like they're on some " +
-                "kinda mission to save themselves. Like you, we all had a terrible stories of our time with " +
+                "kinda mission to save themselves. Like you, we all had terrible stories of our time with " +
                 "the cult, but they are better than the stories of those that did not survive their time " +
                 "there. Only a few girls have chosen to leave and those girls are gone. Disappeared.  " +
                 "Vanished. Poof. ",
@@ -600,7 +600,7 @@ room478.chat = function (chatID) {
         {
             chatID: 22,
             speaker: "!sissy_duo1",
-            text: "Yeah, I was trying to say it without saying it. They cult kills them. Very terrible. Don't " +
+            text: "Yeah, I was trying to say it without saying it. The cult kills them. Very terrible. Don't " +
                 "leave here or you will die too. Like the rest. That's why you need to stay, so you can live. ",
             button: [
                 { chatID: 23, text: "oh.", callback: "" },
@@ -642,7 +642,7 @@ room478.chat = function (chatID) {
             chatID: 27,
             speaker: "!sissy_smoke",
             text: "Ragazza stupida. Why you wanna leave? There's so much pussy and ass here. I don't even try and " +
-                "and some troia is rubbing on me. This is heaven. More figa than my cock can please. ",
+                "some troia is rubbing on me. This is heaven. More figa than my cock can please. ",
             button: [
                 { chatID: 28, text: "But don't you want your freedom? ", callback: "" },
             ]
@@ -660,7 +660,7 @@ room478.chat = function (chatID) {
             chatID: 29,
             speaker: "!sissy_smoke",
             text: "Got caught like the rest, but I was saved before I even got to the cults hideout. I tell you " +
-                "the first night I was here I had the sex with like five sexy poca things. I was came so much " +
+                "the first night I was here I had the sex with like five sexy poca things. I came so much " +
                 "it was just dust coming out. My balls hurt from all the fucking. This is heaven. You don't want " +
                 "to leave, unless you don't like fucking. ",
             button: [
@@ -750,7 +750,7 @@ room478.chat = function (chatID) {
             chatID: 39,
             speaker: "!sissy_ass",
             text: "Me, well they took my penis. I told them I still wanted it, but they didn't care. So now " +
-                "she has her penis and no hand and I have my hand an no penis. After they realized I can't " +
+                "she has her penis and no hand and I have my hand and no penis. After they realized I can't " +
                 "get pregnant I was tossed in the swamp too. Finding her here was the greatest day of my life. " +
                 "those bastards at the cult... I hope they all die. Now if you don't mind I'm going to let " +
                 "the love of my life get back to eating my ass. ",

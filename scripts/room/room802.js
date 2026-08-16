@@ -363,7 +363,7 @@ room802.chat = function (chatID) {
             {
                 chatID: 12,
                 speaker: "ralph",
-                text: "Oh man! I go in so much trouble! I even said you took it, but they " +
+                text: "Oh man! I got in so much trouble! I even said you took it, but they " +
                     "didn't believe me! So do you have it?",
                 button: [
                     { chatID: 13, text: "Yeah. Why?", callback: "" },
@@ -392,7 +392,7 @@ room802.chat = function (chatID) {
             {
                 chatID: 15,
                 speaker: "ralph",
-                text: "I think i saw one kind of at the beach. This one girl was sunbathing " +
+                text: "I think I saw one kind of at the beach. This one girl was sunbathing " +
                     "and she rolled over and I'm pretty sure part of her pussy slipped out and " +
                     "I saw half of it. It was pretty cool. Almost as good as that time I was at " +
                     "the beach and this girl's bikini top slipped down in a wave and I saw her boobs. " +
@@ -520,7 +520,7 @@ room802.chat = function (chatID) {
             {
                 chatID: 28,
                 speaker: "me",
-                text: "Listen. You are a girl. Other people may not know it, but I know it, and you know it. Also every " +
+                text: "Listen. You are a girl. Other people may not know it, but I know it, and you know it. Also everyone " +
                     "in class knows it. Even Missy. Girls come in all shapes and sizes. Just because you're not a tiny " +
                     "girl makes you no less a girl. Besides. Some people like bigger girls. Don't ever try to " +
                     "pretend to be a boy around me. I know you. And I know that you're a girl. You just have to " +

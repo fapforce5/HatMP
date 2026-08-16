@@ -371,7 +371,7 @@ room350.chat = function (chatID) {
         {
             chatID: 12,
             speaker: "landlord",
-            text: "You can't make two donatations in a day silly. ",
+            text: "You can't make two donations in a day silly. ",
             button: [
                 { chatID: -1, text: "oh yeah! ", callback: "" },
             ]
@@ -382,7 +382,7 @@ room350.chat = function (chatID) {
             text: "You are my little savior! It's so hard to attract people to come here. Advertising for a sperm " +
                 "bank is just the hardest! I need a little mascot to lure people in. But you have to be careful. " +
                 "Only advertise to men. I put one of my nurses in this costume and she just told everyone to come in! " +
-                "I had so many irate women feigning outrage. One if fine, I can handle one, just don't send in a " +
+                "I had so many irate women feigning outrage. One is fine, I can handle one, just don't send in a " +
                 "bunch or I'll have to dock your pay. ",
             button: [
                 { chatID: 14, text: "ok.", callback: "" },
@@ -393,7 +393,7 @@ room350.chat = function (chatID) {
             speaker: "landlord",
             text: "Also if you send in 3 or more I'll give you a nice little bonus. I'm sure you could use the money. " +
                 "dating is just so expensive these days. You'll be able to take that nice girl out on a date. " +
-                "I'll grab the suit and meet you outside across the street in front of the park. That where most " +
+                "I'll grab the suit and meet you outside across the street in front of the park. That's where most " +
                 "of my foot traffic comes from. ",
             button: [
                 { chatID: -1, text: "See you there.", callback: "advertise" },
@@ -677,8 +677,8 @@ room350.chat = function (chatID) {
             text: "Yes, I mean you'll have to jack off their cocks. Now I know how much you love cum, but you can only use your hands. " +
                 "Anything else will ruin the sample. ",
             button: [
-                { chatID: 46, text: "I will be the best sperm collecter you've seen!", callback: "" },
-                { chatID: 45, text: "I don't know if I can jack off stange men", callback: "" }
+                { chatID: 46, text: "I will be the best sperm collector you've seen!", callback: "" },
+                { chatID: 45, text: "I don't know if I can jack off strange men", callback: "" }
             ]
         },
         {
@@ -722,7 +722,7 @@ room350.chat = function (chatID) {
         {
             chatID: 49,
             speaker: "landlord",
-            text: "You look really pretty.The guys will love you. Now I've got to " +
+            text: "You look really pretty. The guys will love you. Now I've got to " +
                 "move the new shipment of empty jars to the back.",
             button: [
                 { chatID: 50, text: "[Follow her]", callback: "boxes" }
@@ -941,7 +941,7 @@ room350.chat = function (chatID) {
         {
             chatID: 73,
             speaker: "landlord",
-            text: "Do you know who's fault it is when someone get's raped? ",
+            text: "Do you know who's fault it is when someone gets raped? ",
             button: [
                 { chatID: 74, text: "who?", callback: "" },
             ]
@@ -1003,7 +1003,7 @@ room350.chat = function (chatID) {
         {
             chatID: 80,
             speaker: "landlord",
-            text: "You can come back home. But I'm going to inspect your chastity cage everytime " +
+            text: "You can come back home. But I'm going to inspect your chastity cage every time " +
                 "you come in to make sure you're wearing it. If you're not wearing your cage I " +
                 "won't let you in. Got it! ",
             button: [

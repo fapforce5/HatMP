@@ -269,7 +269,7 @@ room661.chat = function (chatID) {
         {
             chatID: 9,
             speaker: "tiffany",
-            text: "Well it's looks like that's it for today. Feel free to come back tomorrow. ",
+            text: "Well it looks like that's it for today. Feel free to come back tomorrow. ",
             button: [
                 { chatID: -1, text: "[Leave]", callback: "end" }
             ]
@@ -403,7 +403,7 @@ room661.chat = function (chatID) {
             ]
         },
         {
-            chatID: 25,
+            chatID: 26,
             speaker: "tiffany",
             text: "I'll let " + sc.n("missy") + " know what a big help you were! Those cultists are always trouble! You're the best! ",
             button: [

@@ -28,7 +28,13 @@ room251.main = function () {
 room251.btnclick = function (name) {
     switch (name) {
         case "jeff":
-            if (g.pass === "startWork") {
+            if (missy.getenvelope("jeffery").active) {
+                if (sc.getMission("jeffery", "*panties").notStarted)
+                    chat(34, 251);
+                else 
+                    chat(48, 251);
+            }
+            else if (g.pass === "startWork") {
                 if (missy.activecase().caseId === 14) {
                     if (missy.get("activeCaseComplete") === 0) {
                         if (g.pass === "FinishLoop") {
@@ -70,49 +76,19 @@ room251.btnclick = function (name) {
                 }
             }
             break;
-            //var thisJeff = sc.getstep("jeffery");
-            //if (g.pass === "firstmeet") {
-            //    chat(0, 251);
-            //}
-            //else if (g.pass === "initcock") {
-            //    chat(20, 251);
-            //}
-            //else if (g.pass === "initcockx") {
-            //    chat(39, 251);
-            //}
-            //else if (g.pass === "work") {
-            //    chat(22, 251);
-            //}
-            //else if (g.pass === "FinishLoop") {
-            //    if (thisJeff === 8) {
-            //        if (q3.activeSearch("jeffery"))
-            //            chat(40, 251);
-            //        else if (sc.getEvent("dolly", -1))
-            //            chat(35, 251);
-            //        else
-            //            chat(34, 251);
-            //    }
-            //    else if (thisJeff === 9) {
-            //        //add in panties question here
-            //        if (sc.getEvent("dolly", -1))
-            //            chat(35, 251);
-            //        else
-            //            chat(34, 251);
-            //    }
-            //    else if (thisJeff === 10) {
-            //        chat(72, 251);
-            //    }
-            //    else if (thisJeff === 6)
-            //        chat(29, 251);
-            //    else
-            //        chat(28, 251);
-            //}
-        //    break;
-        //case "j11":
-        //    nav.killall();
-        //    nav.bg("251_office/j12.jpg");
-        //    chat(71, 251);
-        //    break;
+        case "j11":
+            nav.kill();
+            nav.bg("251_office/j12.jpg");
+            chat(47, 251);
+            break;
+        case "jmoney500win":
+            gv.mod("money", 500);
+            chat(57, 251);
+            break;
+        case "jmoney500lose":
+            gv.mod("money", 50);
+            chat(59, 251);
+            break;
         default:
             break;
     }
@@ -121,6 +97,7 @@ room251.btnclick = function (name) {
 room251.chatcatch = function (callback) {
     switch (callback) {
         case "ws0":
+        case "s10_1":
             nav.killall();
             nav.bg("251_office/" + callback + ".jpg");
             break;
@@ -196,6 +173,76 @@ room251.chatcatch = function (callback) {
             char.addtime(30);
             char.room(250);
             break;
+        case "storycheck":
+            if (sc.getMissionTask("holly", "mad").success) {
+                chat(37, 251);
+            }
+            else {
+                chat(39, 251);
+            }
+            break;
+        case "thinking":
+            nav.kill();
+            nav.bg("251_office/thinking.webp")
+            break;
+        case "thinking1":
+            nav.bg("251_office/jeff.jpg")
+            break;
+        case "thinking2":
+            nav.bg("251_office/j11.jpg");
+            nav.button({
+                "type": "btn",
+                "name": "j11",
+                "left": 1799,
+                "top": 227,
+                "width": 59,
+                "height": 99,
+                "image": "251_office/j11.png"
+            }, 251);
+            break;
+        case "thinking3":
+            sc.startMission("jeffery", "*panties");
+            sc.startMissionTask("jeffery", "*panties", 0);
+            char.addtime(30);
+            char.room(0);
+            break;
+        case "thinkingcheckpanties":
+            if (cl.hasClothing("panties", "holly") &&
+                cl.hasClothing("panties", "dolly") &&
+                cl.hasClothing("panties", "molly")) {
+                if (cl.c.panties !== null) {
+                    chat(50, 251);
+                }
+                else {
+                    chat(51, 251);
+                }
+            }
+            else {
+                nav.kill();
+                nav.bg("251_office/s10_0.jpg");
+                cl.remove("panties", "holly");
+                cl.remove("panties", "dolly");
+                cl.remove("panties", "molly");
+                cl.c.panties = null;
+                cl.display();
+                chat(52, 251);
+            }
+            break;
+        case "thinkingcode":
+            if (missy.getenvelope("jeffery").hasKey) {
+                chat(58, 251);
+            }
+            else {
+                chat(54, 251);
+            }
+            missy.setenvelope("jeffery");
+            break;
+        case "jmoney100":
+            gv.mod("money", 100);
+            break;
+        case "jmoney500":
+            charisma.init(10, "jmoney500win", "jmoney500lose", 251);
+            break;
         default:
             break;
     }
@@ -215,8 +262,8 @@ room251.chat = function (chatID) {
             chatID: 1,
             speaker: "jeffery",
             text: "I have 3 waitresses that work the day shift, " + sc.n("holly") + ", " + sc.n("molly") + ", and " + sc.n("dolly") +
-            ". One of them has been STEALING FROM THE REGISTER and I just don't know which one. I've tried everything to catch " +
-            "the culprit, but she's just too dog gone smart. I want you to pose as a waitress <span class='hl-red'>and catch her!</span>",
+                ". One of them has been STEALING FROM THE REGISTER and I just don't know which one. I've tried everything to catch " +
+                "the culprit, but she's just too dog gone smart. I want you to pose as a waitress <span class='hl-red'>and catch her!</span>",
             button: [
                 { chatID: 2, text: "I can do that. Do you want me to watch the security camera at the register?", callback: "" }
             ]
@@ -225,8 +272,8 @@ room251.chat = function (chatID) {
             chatID: 2,
             speaker: "jeffery",
             text: "No, I tried viewing the security footage, but she's just too good, I've even moved the camera, but she knew! I need " +
-            "you to work as a waitress along side them, get to know them, be their friend, then catch them in the act and bring them " +
-            "to me! I'm going to <span class='hl-red'>make her suffer!!!</span>",
+                "you to work as a waitress along side them, get to know them, be their friend, then catch them in the act and bring them " +
+                "to me! I'm going to <span class='hl-red'>make her suffer!!!</span>",
             button: [
                 { chatID: 3, text: "Do you have any points on how I can get their friendship?", callback: "" }
             ]
@@ -235,8 +282,8 @@ room251.chat = function (chatID) {
             chatID: 3,
             speaker: "jeffery",
             text: "You're going to work with all 3 of them as a waitress. I've been watching them closely for a while now and they " +
-            "share everything with their co-workers, doesn't matter who it is; it's like a clique, once you're a waitress " +
-            "you're on the inside. I need to find the one stealing before they steal more money. Are you ready to start now?",
+                "share everything with their co-workers, doesn't matter who it is; it's like a clique, once you're a waitress " +
+                "you're on the inside. I need to find the one stealing before they steal more money. Are you ready to start now?",
             button: [
                 { chatID: 4, text: "Yes I can", callback: "ws0" }
             ]
@@ -253,7 +300,7 @@ room251.chat = function (chatID) {
             chatID: 5,
             speaker: "jeffery",
             text: "N-n-n-n-no this is called the Naked Beaver, not the Naked Cock. This uniform should fit you, that's why " +
-            sc.n("missy") + " had me inspect you before we started. Now please get dressed.",
+                sc.n("missy") + " had me inspect you before we started. Now please get dressed.",
             button: [
                 { chatID: 14, text: "This is absolute crap!", callback: "" }
             ]
@@ -262,7 +309,7 @@ room251.chat = function (chatID) {
             chatID: 6,
             speaker: "jeffery",
             text: "We don't have one, you'll have to change in here, and since I don't trust you I'm not going to leave you in " +
-            "my office by yourself. ",
+                "my office by yourself. ",
             button: [
                 { chatID: 7, text: "I'm not doing that!", callback: "" },
                 { chatID: 10, text: "That's kinda weird, but ok", callback: "" }
@@ -280,7 +327,7 @@ room251.chat = function (chatID) {
             chatID: 8,
             speaker: "jeffery",
             text: "Think of it like changing in the gym locker. Y-y-y-you just finished gym class and I'm the coach " +
-            "making sure you boys stay out of trouble.",
+                "making sure you boys stay out of trouble.",
             button: [
                 { chatID: 9, text: "Promise not to do any weird shit?", callback: "" },
             ]
@@ -330,7 +377,7 @@ room251.chat = function (chatID) {
             chatID: 14,
             speaker: "jeffery",
             text: "W-w-w-we had an understanding at " + sc.n("missy") + "'s you were going to be a waitress, now are you going to " +
-            "do your job or do I have to get someone else!",
+                "do your job or do I have to get someone else!",
             button: [
                 { chatID: 6, text: "Fine I'll wear the stupid uniform", callback: "" }
             ]
@@ -371,7 +418,7 @@ room251.chat = function (chatID) {
             chatID: 19,
             speaker: "jeffery",
             text: "Ok, now go out there and start taking some orders. Don't forget to make friends with " + sc.n("holly") +
-            ", " + sc.n("molly") + ", and " + sc.n("dolly") + "!",
+                ", " + sc.n("molly") + ", and " + sc.n("dolly") + "!",
             button: [
                 { chatID: -1, text: "Ok boss [Get to work]", callback: "startWork" }
             ]
@@ -435,7 +482,7 @@ room251.chat = function (chatID) {
         {
             chatID: 27,
             speaker: "jeffery",
-            text: "You may be a terrible detective, but your panties smell so good. I sniffed them today, I l-l-l-love you scent.",
+            text: "You may be a terrible detective, but your panties smell so good. I sniffed them today, I l-l-l-love your scent.",
             button: [
                 { chatID: -1, text: "Oh, thanks?", callback: "undoAndLeave" }
             ]
@@ -487,9 +534,240 @@ room251.chat = function (chatID) {
             chatID: 33,
             speaker: "jeffery",
             text: "That's rather brilliant! I'm going to get that fixed and fix them! I'll meet you at " + sc.n("missy") + "'s to " +
-            "let her know what a fine detective you are! Also here's an extra $500 for your great work!",
+                "let her know what a fine detective you are! Also here's an extra $500 for your great work!",
             button: [
                 { chatID: -1, text: "Thank you so much! I'll see you at " + sc.n("missy") + "'s", callback: "undoAndLeaveSuccess" }
+            ]
+        },
+
+
+        {
+            chatID: 34,
+            speaker: "jeffery",
+            text: "You're a cute little waitress! ",
+            button: [
+                { chatID: 21, text: "Thank you so much!", callback: "" },
+                { chatID: 35, text: "Ask about C.U.M.", callback: "" },
+            ]
+        },
+        {
+            chatID: 35,
+            speaker: "jeffery",
+            text: "You know, ever since I stopped by C.U.M. I've wanted to go back. Just take a peek " +
+                "and visit a friend of mine. I know you're an important person there. ",
+            button: [
+                { chatID: 36, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 36,
+            speaker: "jeffery",
+            text: "Oh. Y-Y-Y-Yeah. I'm not just a member, I've obtained the rank of Castellan. It's really high up in " +
+                "C.U.M. I'm really an important person there. ",
+            button: [
+                { chatID: -1, text: "I know. A very important man. Do you think you can get me in?", callback: "storycheck" }
+            ]
+        },
+        {
+            chatID: 37,
+            speaker: "jeffery",
+            text: "Well, you're a good kid and you helped me out with the stealing. I can bring you up next time I go up " +
+                "there. I'm sure the boys will enjoy you. ",
+            button: [
+                { chatID: 38, text: "I was hoping to see her without everyone around. Just me taking a little stop by. ", callback: "" }
+            ]
+        },
+        {
+            chatID: 38,
+            speaker: "jeffery",
+            text: "*sigh* Maybe we can help each other out. You can get me my favorite thing. ",
+            button: [
+                { chatID: 40, text: "I think I know the answer, but what do you want? ", callback: "" }
+            ]
+        },
+        {
+            chatID: 39,
+            speaker: "jeffery",
+            text: "Why would I bring you up there? You didn't help me out at all at finding out who took the money. Now even more " +
+                "money's gone missing. You're lucky I still let you work here. Why would I help you? ",
+            button: [
+                { chatID: 40, text: "I did give you my favorite pair of panties. I know you've sniffed them a few times. ", callback: "" }
+            ]
+        },
+        {
+            chatID: 40,
+            speaker: "jeffery",
+            text: "P-p-panties! Tell you what. Get me Holly, Dolly, and Molly's panties and we can " +
+                "discuss this. I've wanted all three of them forever! O-o-o-oh yes! Get me their panties! " +
+                "Such cute and dainty panties. I need their smell, their feel, my release! I need them. " +
+                "GET ME THEIR PANTIES! And uhhh, give me your panties too. Then we'll talk. ",
+            button: [
+                { chatID: 41, text: "oh. Ok. I guess I can do that. ", callback: "" }
+            ]
+        },
+        {
+            chatID: 41,
+            speaker: "jeffery",
+            text: "Now get out and don't come back until you have all 3 panties and you're wearing panties too! ",
+            button: [
+                { chatID: 42, text: "Got it!", callback: "thinking" }
+            ]
+        },
+        {
+            chatID: 42,
+            speaker: "thinking",
+            text: "How do I get their panties? I can't just ask them. Maybe I'll get one, but not all three. " +
+                "They're not dumb, they would know it's for " + sc.n("jeffery") + ". I have to find out where " +
+                "they live and steal their panties. I can't ask them since I'm going to break in. I should " +
+                "go back and ask " + sc.n("jeffery") + ". He'll know. ",
+            button: [
+                { chatID: 43, text: "[Go back in and ask for their address]", callback: "thinking1" }
+            ]
+        },
+        {
+            chatID: 43,
+            speaker: "me",
+            text: "Hey could I get the.... ",
+            button: [
+                { chatID: 44, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 44,
+            speaker: "jeffery",
+            text: "N-n-n-no! No more requests! Go g-g-get me my panties! Don't come back without them! " +
+                "And yours! ",
+            button: [
+                { chatID: 45, text: "...", callback: "thinking" }
+            ]
+        },
+        {
+            chatID: 45,
+            speaker: "thinking",
+            text: "What a butt! Fuck. I need those addresses. He's got to have them in his desk. I'll " +
+                "have to come back at night and break into his office to get it. Hmmm... I know that bathroom " +
+                "has a window. Let me go see if I can unlock it. The girls never go in there to check. ",
+            button: [
+                { chatID: 46, text: "[Check the bathroom]", callback: "thinking2" }
+            ]
+        },
+        {
+            chatID: 46,
+            speaker: "thinking",
+            text: "That window is only held on by that latch... Let me just break it really quick so " +
+                "no one locks it..",
+            button: [
+                { chatID: -1, text: "[Break the latch]", callback: "" }
+            ]
+        },
+        {
+            chatID: 47,
+            speaker: "thinking",
+            text: "That should do it. Now I'll just come back here at night and check their files to see where they live. ",
+            button: [
+                { chatID: -1, text: "...", callback: "thinking3" }
+            ]
+        },
+        {
+            chatID: 48,
+            speaker: "jeffery",
+            text: "D-d-do you have the panties? All the panties and your own? ",
+            button: [
+                { chatID: -1, text: "Yes", callback: "thinkingcheckpanties" },
+                { chatID: 49, text: "Not yet", callback: "" },
+            ]
+        },
+        {
+            chatID: 49,
+            speaker: "jeffery",
+            text: "Don't come back without all their panties! And yours!",
+            button: [
+                { chatID: -1, text: "Not yet", callback: "leave" },
+            ]
+        },
+        {
+            chatID: 50,
+            speaker: "jeffery",
+            text: "Hand them over! gimmie gimmie gimmie!",
+            button: [
+                { chatID: 49, text: "Oh wait, My mistake. I don't have them yet. [Come back here after dark to get their address.]", callback: "" },
+            ]
+        },
+        {
+            chatID: 51,
+            speaker: "jeffery",
+            text: "Hand them over! gimmie gimmie gimmie!",
+            button: [
+                { chatID: 49, text: "Oh wait, I forgot to wear panties. [Come back with panties on]", callback: "" },
+            ]
+        },
+        {
+            chatID: 52,
+            speaker: "jeffery",
+            text: "Oh yes! yes yes yes!! The smell is so intoxicating!!! My head is swimming in pleasure!!",
+            button: [
+                { chatID: 53, text: "...", callback: "s10_1" },
+            ]
+        },
+        {
+            chatID: 53,
+            speaker: "jeffery",
+            text: "oh my intoxicating musky panties. Make me hard. Make daddy hard so I can rub myself " +
+                "to your delicious scent. Oooo",
+            button: [
+                { chatID: -1, text: "*ahem* The code? ", callback: "thinkingcode" },
+            ]
+        },
+        {
+            chatID: 54,
+            speaker: "jeffery",
+            text: "I lied. They gave me the code years ago, but I don't remember it so I just go " +
+                "there during normal times. ",
+            button: [
+                { chatID: 56, text: "What! Why did you say you would give it to me? ", callback: "" },
+            ]
+        },
+        {
+            chatID: 55,
+            speaker: "jeffery",
+            text: "noop",
+            button: [
+                { chatID: 57, text: "Fine ", callback: "jmoney100" }
+            ]
+        },
+        {
+            chatID: 56,
+            speaker: "jeffery",
+            text: "I've wanted these panties for years! Years! And this was the only way I could get them. " +
+                "Since I'm a business man I'll pay you, $150... no, $100 dollars!",
+            button: [
+                { chatID: 57, text: "Fine ", callback: "jmoney100" },
+                { chatID: 57, text: "No. You lied to me. I want $500 ", callback: "jmoney500" },
+            ]
+        },
+        {
+            chatID: 57,
+            speaker: "jeffery",
+            text: "Fine. Take my money and leave me to my panties!!!! ",
+            button: [
+                { chatID: -1, text: "Freak ", callback: "leave" },
+            ]
+        },
+        {
+            chatID: 58,
+            speaker: "jeffery",
+            text: "The code is 1-2-3-4-5. Just don't tell anyone I gave it to you. Now leave me to my " +
+                "panties!!!",
+            button: [
+                { chatID: -1, text: "Freak ", callback: "leave" },
+            ]
+        },
+        {
+            chatID: 59,
+            speaker: "jeffery",
+            text: "No. I think you only deserve $50. Who else is going to buy used panties in this town. ",
+            button: [
+                { chatID: -1, text: "Freak ", callback: "leave" },
             ]
         },
     ];

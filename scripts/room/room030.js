@@ -122,7 +122,7 @@ room30.chat = function (chatID) {
         {
             chatID: 6,
             speaker: "eva",
-            text: "What the FUCK. Get out your pervert!",
+            text: "What the FUCK. Get out you pervert!",
             button: [
                 { chatID: -1, text: "Oh.. hahaha ... ok", callback: "angryout" }
             ]

@@ -2,6 +2,7 @@
 var room480 = {};
 room480.main = function () {
     if (sc.getMission("a", "hole").notStarted) {
+        nav.bg("480_throne/meeting.jpg");
         nav.button({
             "type": "btn",
             "name": "cock2",
@@ -20,19 +21,25 @@ room480.main = function () {
             "height": 740,
             "image": "480_throne/a.png"
         }, 480);
-
         return;
     }
-    g.internal = { arrive: g.dt, talkList: new Array(), amputee: 0, secretPath: 0, tod: 1, single: null };
 
-    invoker.invokeCurrent("chatcatch", "settod");
-    if (sc.getstep("a") === 0) {
-        char.addDays(1);
-        char.settime(11, 27);
-        nav.bg("480_throne/meeting.jpg");
+
+    if (g.isNight()) {
         nav.button({
             "type": "btn",
-            "name": "cock",
+            "name": "gaurds",
+            "left": 636,
+            "top": 205,
+            "width": 696,
+            "height": 526,
+            "image": "480_throne/guards.png"
+        }, 480);
+    }
+    else {
+        nav.button({
+            "type": "btn",
+            "name": "cock2",
             "left": 1439,
             "top": 268,
             "width": 248,
@@ -41,49 +48,15 @@ room480.main = function () {
         }, 480);
         nav.button({
             "type": "btn",
-            "name": "a",
+            "name": "a2",
             "left": 853,
             "top": 40,
             "width": 360,
             "height": 740,
             "image": "480_throne/a.png"
         }, 480);
-        zcl.displayMain(350, 380, .15, "clothes", true);
     }
-    else {
-        if (g.isNight()) {
-            nav.button({
-                "type": "btn",
-                "name": "gaurds",
-                "left": 636,
-                "top": 205,
-                "width": 696,
-                "height": 526,
-                "image": "480_throne/guards.png"
-            }, 480);
-        }
-        else {
-            nav.button({
-                "type": "btn",
-                "name": "cock2",
-                "left": 1439,
-                "top": 268,
-                "width": 248,
-                "height": 752,
-                "image": "480_throne/s.png"
-            }, 480);
-            nav.button({
-                "type": "btn",
-                "name": "a2",
-                "left": 853,
-                "top": 40,
-                "width": 360,
-                "height": 740,
-                "image": "480_throne/a.png"
-            }, 480);
-        }
-        nav.buildnav([480, 478, 479, 481, 482]);
-    }
+    nav.buildnav([480, 478, 479, 481, 482]);
 };
 
 room480.btnclick = function (name) {
@@ -106,6 +79,9 @@ room480.btnclick = function (name) {
             if (sc.getMission("a", "hole").notStarted) {
                 chat(21, 480);
             }
+            else if (sc.getMissionTask("a", "info", 9).complete) {
+                chat(18, 480);
+            }
             else {
                 chat(8, 480);
             }
@@ -117,42 +93,9 @@ room480.btnclick = function (name) {
             break;
     }
 };
-room480.displaychar = function (chararry) {
-    $.each(chararry, function (i, v) {
-        if (v.tod.includes(g.internal.tod))
-            nav.button(v, g.roomID);
-    });
-};
 
 room480.chatcatch = function (callback) {
     switch (callback) {
-        case "incrementtod":
-            var hour1 = g.gethourdecimal();
-            if (hour1 < 7)
-                char.settime(7, 0);
-            else if (hour1 < 12)
-                char.settime(13, Math.floor(Math.random() * 59));
-            else if (hour1 < 17)
-                char.settime(18, Math.floor(Math.random() * 59));
-            else if (hour1 < 22)
-                char.settime(23, Math.floor(Math.random() * 59));
-            else 
-                char.settime(7, 0);
-            invoker.invokeCurrent("chatcatch", "settod");
-            break;
-        case "settod":
-            var hour = g.gethourdecimal();
-            if (hour < 7)
-                g.internal.tod = 0;
-            else if (hour < 12)
-                g.internal.tod = 1;
-            else if (hour < 17)
-                g.internal.tod = 2;
-            else if (hour < 22)
-                g.internal.tod = 3;
-            else
-                g.internal.tod = 4;
-            break;
         case "quest0":
             sc.startMission("a", "hole");
             sc.completeMissionTask("a", "hole", 0);
@@ -161,23 +104,20 @@ room480.chatcatch = function (callback) {
             char.room(480);
             break;
         case "cg1":
-            if (g.internal.talkList.includes("vag")) {
-                chat(18, 480);
-            }
-            else {
-                nav.killall();
-                nav.bg("480_throne/cg1.jpg");
-            }
+            nav.killall();
+            nav.bg("480_throne/cg1.jpg");
             break;
         case "cg2":
             nav.killall();
             nav.bg("480_throne/cg2.jpg");
             break;
         case "cg3":
-            if (!g.internal.talkList.includes("vag"))
-                g.internal.talkList.push("vag");
-            invoker.invokeCurrent("chatcatch", "incrementtod");
+            sc.completeMissionTask("a", "info", 9);
             char.room(480);
+            break;
+        case "endCave":
+            g.pass = "endCave477";
+            char.room(477);
             break;
         case "reset":
             char.room(480);
@@ -190,11 +130,31 @@ room480.chatcatch = function (callback) {
 invoker.registerRoom(480, room480);
 
 room480.chat = function (chatID) {
+    
     if (chatID === 999) {
+        let r480 = sc.getMissionEntry("a", "info");
+        let r480complete = 0;
+        for (let i = 0; i < sc.charMission[r480.i].mission[r480.j].task.length; i++) {
+            if (sc.charMission[r480.i].mission[r480.j].task[i].mStatus > 99)
+                r480complete++;
+        }
+        if (r480complete > 2) {
+            return {
+                chatID: 999,
+                speaker: "a",
+                text: "You have spoken with enough people. If you wish to leave you are free to, or you can " +
+                    "stay until the end of your days. ",
+                button: [
+                    { chatID: 22, text: "I would like to leave", callback: "" },
+                    { chatID: -1, text: "I'll stay a bit longer. ", callback: "" },
+                ]
+            };
+        }
+        
         return {
             chatID: 999,
             speaker: "a",
-            text: "You have spoken to " + g.internal.talkList.length + ". You need to speak with others if " +
+            text: "You have spoken to " + r480complete + " people. You need to speak with others if " +
                 "if you wish to discuss leaving. ",
             button: [
                 { chatID: -1, text: "ok. I'll talk to more. ", callback: "" }
@@ -224,7 +184,7 @@ room480.chat = function (chatID) {
             {
                 chatID: 2,
                 speaker: "a",
-                text: "Yes. We were all victims of the cult. Smuggled, or nearly so, taken from out homes across " +
+                text: "Yes. We were all victims of the cult. Smuggled, or nearly so, taken from our homes across " +
                     "the land to birth that disastrous Azrael against our wishes. The " + sc.n("queen") + " came " +
                     "to our rescue and freed us from the Cult of C.U.M. so that we may continue to live. ",
                 button: [
@@ -253,8 +213,8 @@ room480.chat = function (chatID) {
                 chatID: 5,
                 speaker: "a",
                 text: "That would be a mistake. You say you escaped. You wouldn't be the first. Stacy escaped and " +
-                    "made her way back home thinking she was free. One a month was her freedom before the Cult found " +
-                    "her and punished her. They nearly took her life with the beaten she received. ",
+                    "made her way back home thinking she was free. Only a month was her freedom before the Cult found " +
+                    "her and punished her. They nearly took her life with the beating she received. ",
                 button: [
                     { chatID: 6, text: "So I'm not free to leave. ", callback: "" }
                 ]
@@ -274,7 +234,7 @@ room480.chat = function (chatID) {
                 chatID: 7,
                 speaker: "a",
                 text: "I do implore you to stay for your own safety, but freedom is choice. " +
-                    "The cave is yours to explore and any bed is free to use. Enjoy you stay here young one. ",
+                    "The cave is yours to explore and any bed is free to use. Enjoy your stay here young one. ",
                 button: [
                     { chatID: -1, text: "Thanks! ", callback: "quest0" }
                 ]
@@ -296,7 +256,7 @@ room480.chat = function (chatID) {
                     "this girl, Zuri,  I was so in love with. Flawless dark skin, cute tight braids and butt any girl would " +
                     "be envious of. I was such a clueless boy back then that I just stared at her and never spoke " +
                     "a word. I was too afraid she would just laugh at me. Well one day me and my buddy were fooling " +
-                    "around in the back kitchen when with the mop when I accidently tripped her! ",
+                    "around in the back kitchen with the mop when I accidentally tripped her! ",
                 button: [
                     { chatID: 10, text: "oh no", callback: "" }
                 ]
@@ -306,7 +266,7 @@ room480.chat = function (chatID) {
                 speaker: "vag",
                 text: "Oh yes. She fell hard on the floor, ended up bruising her butt. Well she looked up at me " +
                     "with the most furious eyes I have ever seen. She stood up, grabbed me by my hair and gave me " +
-                    "the biggest wedgie ever! Then made fun on my tighty whities. She said I had to wear panties the " +
+                    "the biggest wedgie ever! Then made fun of my tighty whities. She said I had to wear panties the " +
                     "next time we had a shift together or she would tell our boss and get me fired. It was my first " +
                     "job and I was so scared! ",
                 button: [
@@ -416,6 +376,15 @@ room480.chat = function (chatID) {
                 text: "All new arrivals must first speak with " + sc.n("a") + ". ",
                 button: [
                     { chatID: -1, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 22,
+                speaker: "a",
+                text: "I'm always sad to see one of our own leave, but that is your choice. Proceed up the " +
+                    "stairs. ",
+                button: [
+                    { chatID: -1, text: "[Leave the cave of Lost Sissies]", callback: "endCave" },
                 ]
             },
         ];

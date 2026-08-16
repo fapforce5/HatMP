@@ -179,7 +179,7 @@ room550.chat = function (chatID) {
         {
             chatID: 3,
             speaker: "chad",
-            text: "Look bro, since we're buddies I'm going you a favor by letting you know that " +
+            text: "Look bro, since we're buddies I'm doing you a favor by letting you know that " +
                 "you don't belong here.",
             button: [
                 { chatID: 4, text: "That's not fair!", callback: "" }
@@ -234,7 +234,7 @@ room550.chat = function (chatID) {
         {
             chatID: 9,
             speaker: "chad",
-            text: "Bro, I know I failed math, but I can count to 500. Fuck off before beat your " + 
+            text: "Bro, I know I failed math, but I can count to 500. Fuck off before I beat your " +
                 "wimpy ass.",
             button: [
                 { chatID: -1, text: "...", callback: "" }
@@ -260,7 +260,7 @@ room550.chat = function (chatID) {
         {
             chatID: 12,
             speaker: "chad",
-            text: "HAHAHAHahahaaaa. You're dick's too tiny to work out here!",
+            text: "HAHAHAHahahaaaa. Your dick's too tiny to work out here!",
             button: [
                 { chatID: 2, text: "It's not small, it's a good size!", callback: "two" }
             ]
@@ -308,7 +308,7 @@ room550.chat = function (chatID) {
         {
             chatID: 18,
             speaker: "chad",
-            text: "Oh  fuck you're a dirty slut! Flip over and squirt it out for us! ",
+            text: "Oh fuck you're a dirty slut! Flip over and squirt it out for us! ",
             button: [
                 { chatID: 19, text: "Ok!", callback: "g6" }
             ]

@@ -1057,7 +1057,7 @@ room329.chat = function (chatID) {
                 chatID: 1,
                 speaker: "philbert",
                 text: "HAHAHAHAHA!!!! Oh my god! Don't tell me you're one of those hucows they keep in the field? " +
-                    "You know I knew i would see one of you around here, but I always thought it would be " +
+                    "You know I knew I would see one of you around here, but I always thought it would be " +
                     sc.n("sporty") + ". She always did have a thing for big dicks. But you! I guess I'm not surprised. " +
                     "You were always a little more weird than the rest of them. ",
                 button: [
@@ -1099,7 +1099,7 @@ room329.chat = function (chatID) {
                 speaker: "philbert",
                 text: "I'm never telling anyone you're here. You deserve to be here. You know why. You're just " +
                     "a stupid ass sissy. Go on. Eat my asshole sissy. You know all you're good for is for men " +
-                    "like me to use however I want. And I want you to eat my asshole. Get licking sisssy.",
+                    "like me to use however I want. And I want you to eat my asshole. Get licking sissy.",
                 button: [
                     { chatID: -1, text: "...", callback: "ph2" }
                 ]
@@ -1108,7 +1108,7 @@ room329.chat = function (chatID) {
                 chatID: 6,
                 speaker: "philbert",
                 text: "You don't care about getting out of here. You only care about getting fucked and degrading " +
-                    "youself. Keep licking my asshole. I may let you help me out in here. ",
+                    "yourself. Keep licking my asshole. I may let you help me out in here. ",
                 button: [
                     { chatID: -1, text: "[Keep licking his asshole]", callback: "" }
                 ]
@@ -1457,7 +1457,7 @@ room329.chat = function (chatID) {
             {
                 chatID: 46,
                 speaker: "me",
-                text: "I brought you some food! It's all I can get. There the food pellets they feed us. ",
+                text: "I brought you some food! It's all I can get. There's the food pellets they feed us. ",
                 button: [
                     { chatID: 47, text: "...", callback: "" },
                 ]
@@ -1465,7 +1465,7 @@ room329.chat = function (chatID) {
             {
                 chatID: 47,
                 speaker: "ppgirl",
-                text: "That awesome! I'm so so hungry! Where are they? ",
+                text: "That's awesome! I'm so so hungry! Where are they? ",
                 button: [
                     { chatID: 48, text: "...", callback: "" },
                 ]
@@ -1518,7 +1518,7 @@ room329.chat = function (chatID) {
             {
                 chatID: 53,
                 speaker: "ppgirl",
-                text: "I can't pee right now. I'm way to thirsty! Can you get me something to drink? ",
+                text: "I can't pee right now. I'm way too thirsty! Can you get me something to drink? ",
                 button: [
                     { chatID: 40, text: "oh yeah. Sure. ", callback: "ppreset" },
                 ]
@@ -1795,7 +1795,7 @@ room329.chat = function (chatID) {
             {
                 chatID: 85,
                 speaker: "!rancher",
-                text: "Well well well. Looks like one of our piggies is trying to escape. com 'ere. In the barn " +
+                text: "Well well well. Looks like one of our piggies is trying to escape. come 'ere. In the barn " +
                     "piggy! ",
                 button: [
                     { chatID: 86, text: "*sigh*", callback: "hole3" },
@@ -1880,7 +1880,7 @@ room329.chat = function (chatID) {
             {
                 chatID: 95,
                 speaker: "philbert",
-                text: "I love how you just bend you ass over whenever I ask! Now here comes my cock bitch!",
+                text: "I love how you just bend your ass over whenever I ask! Now here comes my cock bitch!",
                 button: [
                     { chatID: 800, text: "...", callback: "" },
                 ]

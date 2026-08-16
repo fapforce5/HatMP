@@ -793,7 +793,7 @@ room206.chat = function (chatID) {
             speaker: "missy",
             text: "So. You say you won't submit. I don't think you know how difficult it is for me to take on " +
                 "a new employee. Even more so someone who is lazy, fat, stupid, and overall boring. I'm going to " +
-                "to have a lot of fun breaking you in. When I'm done with you, you'll be a drooling little " +
+                "have a lot of fun breaking you in. When I'm done with you, you'll be a drooling little " +
                 "slave who's only joy is licking the bottom of my dirty high heels soles. Now enough of what " +
                 "you think you're going to do, and on to what you're actually going to do. ",
             button: [

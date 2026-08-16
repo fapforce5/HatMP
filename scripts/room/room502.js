@@ -596,7 +596,7 @@ room502.chat = function (chatID) {
             {
                 chatID: 8,
                 speaker: "zoey",
-                text: "Oh putain! I never knew what you had a pénis géant! How have you been hiding that item? ",
+                text: "Oh putain! I never knew that you had a pénis géant! How have you been hiding that item? ",
                 button: [
                     { chatID: 9, text: "Do you want to touch it?", callback: "" }
                 ]
@@ -672,7 +672,7 @@ room502.chat = function (chatID) {
                 chatID: 17,
                 speaker: "zoey",
                 text: "I am such a mess of wet and smells, but I am too tired to shower. Please " +
-                    "helping me to bed? Can you cuddle me till we sleep? Je sens comme la petite mort. ",
+                    "help me to bed? Can you cuddle me till we sleep? Je me sens comme la petite mort. ",
                 button: [
                     { chatID: -1, text: "Sure. Let's get some sleep. ", callback: "zoeySex8" }
                 ]
@@ -894,7 +894,7 @@ room502.chat = function (chatID) {
             {
                 chatID: 39,
                 speaker: "zoey",
-                text: "Oh ouiiii. Je vais aussi. ",
+                text: "Oh ouiiii. Je viens aussi. ",
                 button: [
                     { chatID: 40, text: "...", callback: "s12" }
                 ]

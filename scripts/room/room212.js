@@ -284,7 +284,7 @@ room212.chat = function (chatID) {
             "He was so rough with my little throat! ",
             "I didn't gag once on that one! ",
             "I do love sucking a fat juicy cock!",
-            "I love the taste of cum so much! Thanks you!",
+            "I love the taste of cum so much! Thank you!",
             "Thanks! I needed cum in my belly. "
         ];
         return {

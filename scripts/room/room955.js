@@ -315,8 +315,8 @@ room955.chat = function (chatID) {
                                 chatID: 900,
                                 speaker: "bigguy",
                                 text: sc.n("chad") + " and I are taking good care of your " + sc.n("el") +
-                                    " and " + sc.n("landlord") + ". We started playing a game called whose " +
-                                    "the dadday. ",
+                                    " and " + sc.n("landlord") + ". We started playing a game called who's " +
+                                    "the daddy. ",
                                 button: [
                                     { chatID: 10, text: "What's that?", callback: "" }
                                 ]
@@ -434,7 +434,7 @@ room955.chat = function (chatID) {
         {
             chatID: 5,
             speaker: "!milkmaid",
-            text: "But the girl gets to pick how to make him cum, but you have to be able to fill you chalice  " +
+            text: "But the girl gets to pick how to make him cum, but you have to be able to fill your chalice  " +
                 "with his cum. The girls get to pick how to make them cum. Too many boys with huge penises were " +
                 "picking the smallest girls and ramming it up their dirty dry butthole. So Ubel agreed that the girls get " +
                 "to pick it how they receive the cum. ",
@@ -445,7 +445,7 @@ room955.chat = function (chatID) {
         {
             chatID: 6,
             speaker: "!milkmaid",
-            text: "Oh no! He threatened to lock us all up like you sissies. We really had to work on him. A lot." +
+            text: "Oh no! He threatened to lock us all up like you sissies. We really had to work on him. A lot. " +
                 "That's why Room One is special. They can do what ever they like to the girls, but we " +
                 "only send our best... and those that like the rough play. ",
             button: [
@@ -536,7 +536,7 @@ room955.chat = function (chatID) {
         {
             chatID: 16,
             speaker: "cult",
-            text: "Yes. We all must do our part to bring the coming of Azreal, and you must do your part. Now come. ",
+            text: "Yes. We all must do our part to bring the coming of Azrael, and you must do your part. Now come. ",
             button: [
                 { chatID: 17, text: "[Follow her]", callback: "milk1" }
             ]
@@ -552,7 +552,7 @@ room955.chat = function (chatID) {
         {
             chatID: 18,
             speaker: "cult",
-            text: "All must give to Azreal, now up on the chains you before you also give the gift of pain. ",
+            text: "All must give to Azrael, now up on the chains to give the gift of pain. ",
             button: [
                 { chatID: 19, text: "...", callback: "milk3" }
             ]
@@ -664,7 +664,7 @@ room955.chat = function (chatID) {
         {
             chatID: 32,
             speaker: "cult",
-            text: "Welcome to room six. Slaves are assinged to take all the cum chalices and fill the bucket. Then " +
+            text: "Welcome to room six. Slaves are assigned to take all the cum chalices and fill the bucket. Then " +
                 "scrape the cum off the floor and walls and put that in the bucket too! Once the cum bucket is " +
                 "full clean this room from top to bottom so it's prepared for the next donation event. ",
             button: [
@@ -691,7 +691,7 @@ room955.chat = function (chatID) {
         {
             chatID: 35,
             speaker: "cult",
-            text: "Took you long enough you stupid slave. Back your your cell. Go!",
+            text: "Took you long enough you stupid slave. Back to your cell. Go!",
             button: [
                 { chatID: -1, text: "*grrr*", callback: "leave" }
             ]

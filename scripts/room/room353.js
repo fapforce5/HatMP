@@ -242,7 +242,7 @@ room353.chat = function (chatID) {
             return {
                 chatID: 997,
                 speaker: "landlord",
-                text: "I had too many complaints today. Do you event look at who you're talking to? We had someone " +
+                text: "I had too many complaints today. Do you even look at who you're talking to? We had someone " +
                     "come in and slap Nurse Madison. I had to give her a few days off as an apology for you bad " +
                     "behavior. Now take that suit off, you're not getting paid today. ",
                 button: [
@@ -401,9 +401,9 @@ room353.chat = function (chatID) {
             {
                 chatID: 8,
                 speaker: "landlord",
-                text: "One last thing. Going to attach you to this pole. I know lazy you are and I wouldn't want you " +
+                text: "One last thing. Going to attach you to this pole. I know how lazy you are and I wouldn't want you " +
                     "to drop the suit and hang out with your friends, like that lazy lesbian. This way I know you're " +
-                    "one the job and I don't have to stand here and watch you all morning. ",
+                    "on the job and I don't have to stand here and watch you all morning. ",
                 button: [
                     { chatID: 9, text: "What! You can't do that. What if there's a fire?", callback: "start3" }
                 ]
@@ -440,7 +440,7 @@ room353.chat = function (chatID) {
             {
                 chatID: 12,
                 speaker: "landlord",
-                text: "I'll just lock in you place... And don't give me too many complaints. ",
+                text: "I'll just lock you in place... And don't give me too many complaints. ",
                 button: [
                     { chatID: -1, text: "ok", callback: "newperson" }
                 ]

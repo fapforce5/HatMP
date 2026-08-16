@@ -1,7 +1,11 @@
 ﻿//Room name
 var room125 = {};
 room125.main = function () {
-    if (daily.get("cardgame")) {
+    if (missy.getenvelope("jimmy")) {
+        nav.bg("125_poker/missy0.webp");
+        chat(100, 125);
+    }
+    else if (daily.get("cardgame")) {
         chat(62, 125);
         nav.buildnav([0]);
     }
@@ -1998,6 +2002,33 @@ room125.chat = function (chatID) {
                 text: "Poker games have been cancelled on account of " + sc.n("ralph") + " being missing. Wouldn't feel right to have fun while he's lost out there, ya know. We're really sorry we can't help find him.",
                 button: [
                     { chatID: -1, text: "Yeah. totally.", callback: "leave" },
+                ]
+            },
+            {
+                chatID: 100,
+                speaker: "me",
+                text: sc.n("jimmy") + " can you do me a solid. I need to save some people from the cult. " +
+                    "Do you know the code to the back gate? ",
+                button: [
+                    { chatID: -1, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 101,
+                speaker: "jimmy",
+                text: "Totally. It's 1-2-3-4-5. Just be careful. They're looking for you. If I were you " +
+                    "I would just leave town. If they get you I don't know what they'll do, but it ain't good. ",
+                button: [
+                    { chatID: -1, text: "Thanks " + sc.n("jimmy") + ". ", callback: "" },
+                ]
+            },
+            {
+                chatID: 100,
+                speaker: "me",
+                text: sc.n("jimmy") + " can you do me a solid. I need to save some people from the cult. " +
+                    "Do you know the code to the back gate? ",
+                button: [
+                    { chatID: -1, text: "...", callback: "" },
                 ]
             },
         ];

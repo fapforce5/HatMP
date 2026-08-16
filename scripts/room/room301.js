@@ -1002,7 +1002,7 @@ room301.chat = function (chatID) {
             "Oooo. I can't wait so see her in a dress. I could lift it up and just slide right in!",
             "I hope blondes are sluts! I'm so going to bang her and cum in her! Fuck I need to fuck her. ",
             "Yes! She'll be so into fucking! When I come back I'm totally going to fuck her! That slut.",
-            "Surly now she's going to give up that pussy! Fuck I want to fuck her so bad. ",
+            "Surely now she's going to give up that pussy! Fuck I want to fuck her so bad. ",
             "Oh fuck! I'll bet she becomes my sex slave! She'll let me do what ever I want to her whenever I want. ",
         ];
         return {
@@ -1010,7 +1010,7 @@ room301.chat = function (chatID) {
             speaker: "thinking",
             text: replayx[d],
             button: [
-                { chatID: -1, text: "Bye " + sc.n("envy") + ". Fell better. ", callback: "hypnoLoopEnd" }
+                { chatID: -1, text: "Bye " + sc.n("envy") + ". Feel better. ", callback: "hypnoLoopEnd" }
             ]
         };
     }
@@ -1054,7 +1054,7 @@ room301.chat = function (chatID) {
                 speaker: "envy",
                 text: "It's the only good thing about this building. I wanted to live in the apartments up north, but " +
                     "the rent was just so much. I'm just a poor college student trying to live and it's been hard since my " +
-                    "roomate left and moved in with her boyfriend. ",
+                    "roommate left and moved in with her boyfriend. ",
                 button: [
                     { chatID: 5, text: "That bitch!", callback: "" }
                 ]
@@ -1240,7 +1240,7 @@ room301.chat = function (chatID) {
             {
                 chatID: 25,
                 speaker: "spanky",
-                text: "So she gave you the 'Just friends' speach too? So one day I was tired of being her friend and " +
+                text: "So she gave you the 'Just friends' speech too? So one day I was tired of being her friend and " +
                     "just wanted to fuck. Had the worst case of blue balls, ya know. So I think, fuck it, I'm either " +
                     "going to fuck this chick or she'll never talk to me again. Guess what I did. ",
                 button: [
@@ -1260,9 +1260,9 @@ room301.chat = function (chatID) {
             {
                 chatID: 27,
                 speaker: "spanky",
-                text: "But no. She just screams at tme to put my clothes back on a to get out of her apartment. Fuckin' " +
+                text: "But no. She just screams at me to put my clothes back on and get out of her apartment. Fuckin' " +
                     "bitch, ya know. So I make a plan. I'm gunna get that pussy. I know a guy that makes these hypno " +
-                    "vidoes. Really good ones too. Each hypno is tailored to the person you want to hypno. It took " +
+                    "videos. Really good ones too. Each hypno is tailored to the person you want to hypno. It took " +
                     "me months getting all the information the dude needed to make the videos. ",
                 button: [
                     { chatID: 28, text: "right", callback: "" }
@@ -1851,7 +1851,7 @@ room301.chat = function (chatID) {
                 chatID: 95,
                 speaker: "spanky",
                 text: "What's up? I was just about to add to this bitch's cum collection. There's nothing better than " +
-                    "shoving your cock in to a pre-lubed cum hole, ha know, and this bitch has the best cum holes in town. " +
+                    "shoving your cock in to a pre-lubed cum hole, ya know, and this bitch has the best cum holes in town. " +
                     "Just last night I was fucking her all missionary and stuff and she coughed a big ol' cum blob right into " +
                     "my face! ",
                 button: [
@@ -2004,7 +2004,7 @@ room301.chat = function (chatID) {
                 chatID: 112,
                 speaker: "thinking",
                 text: "Spanky's probably full of shit. I'll have to get the movie just to see how full of shit he " +
-                    "is. I'll even watch it with her so I can tell him he's full of shit myslef!",
+                    "is. I'll even watch it with her so I can tell him he's full of shit myself!",
                 button: [
                     { chatID: 33, text: "Oh. I forgot to get a movie. I'll have to bring one next time. ", callback: "boardgameset" }
                 ]
@@ -2137,7 +2137,7 @@ room301.chat = function (chatID) {
             {
                 chatID: 127,
                 speaker: "envy",
-                text: "So you have have the tape to fix me?  ",
+                text: "So you have the tape to fix me?  ",
                 button: [
                     { chatID: 128, text: "I did talk to " + sc.n("spanky") + " and he said there isn't a fix. You're just going to be horny. ", callback: "gf_1" },
                 ]
@@ -2230,7 +2230,7 @@ room301.chat = function (chatID) {
             {
                 chatID: 137,
                 speaker: "envy",
-                text: "No.I can figure it out.Just give it to me. If you can figure it out, I " +
+                text: "No. I can figure it out. Just give it to me. If you can figure it out, I " +
                     "can too. Give me that and I'll let you know tomorrow if you're an idiot. ",
                 button: [
                     { chatID: -1, text: "Ok. See you later. ", callback: "gf_4_end" },

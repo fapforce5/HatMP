@@ -130,7 +130,7 @@ room627.chat = function (chatID) {
             {
                 chatID: 0,
                 speaker: "clownqueen",
-                text: "Step right up! Test your strength win a prize. Only $5 dollars per stroke! ",
+                text: "Step right up! Test your strength and win a prize. Only $5 dollars per stroke! ",
                 button: [
                     { chatID: -1, text: "Try to win a prize", callback: "play" },
                     { chatID: -1, text: "Nah. I'm good", callback: "" },

@@ -75,6 +75,10 @@ room750.btnclick = function (name) {
                     "height": 994,
                     "image": "750_homeless/doc1.png"
                 }, 750);
+                if (missy.getenvelope("doc").active) {
+                    chat(73, 750);
+                    return;
+                }
                 switch (sc.taskGetStep("doc", "doc")) {
                     case -1:
                     case 0:
@@ -508,6 +512,26 @@ room750.chatcatch = function (callback) {
             sc.modLevel("elijah", 50, 10);
             chat(71, 750);
             break;
+        case "missy0":
+            if (missy.getenvelope("doc").hasKey) {
+                chat(75, 750);
+            }
+            else {
+                missy.setenvelope("doc");
+                chat(74, 750);
+            }
+            break;
+        case "missy1":
+            if (inv.get("wine").count > 4 && inv.get("pizza").count > 0) {
+                inv.use("wine", 5);
+                inv.use("pizza");
+                missy.setenvelope("doc");
+                chat(76, 750);
+            }
+            else {
+                chat(77, 750);
+            }
+            break;
         default:
             break;
     }
@@ -518,7 +542,7 @@ invoker.registerRoom(750, room750);
 room750.chat = function (chatID) {
     if (chatID === 900) {
         let daleChat = [
-            "You ever wonder why There's so many sissies in this town? It's 'cause the cult has hired someone to make them to make sure they have enough 'girls' for their weird rituals man. ",
+            "You ever wonder why there's so many sissies in this town? It's 'cause the cult has hired someone to make them to make sure they have enough 'girls' for their weird rituals man. ",
             "Those 'eco friendly' reusable bags aren't meant to save the planet. They are woven with a microscopic metallic thread that creates a unique magnetic signature for every household. The waste management department uses sensors on their trucks to monitor exactly how much 'unauthorized' junk mail you’re throwing away.",
             "Modern dental fillings are no longer made of simple composites, but are actually sophisticated subdermal receivers for low frequency radio waves. Whenever you have a 'random' craving for a specific brand of soda, it’s actually a localized broadcast vibrating directly through your jawbone.",
             "The scent of a new car is a specialized pheromone cocktail designed to make the human brain more suggestible to high interest financing and long term debt. It’s a chemical sedative that suppresses the 'logic center' of the frontal lobe for exactly the duration of a standard test drive.",
@@ -527,7 +551,7 @@ room750.chat = function (chatID) {
             "Every grocery store intentionally maintains a fleet of carts with one wobbly wheel to subtly influence your walking path toward high margin end cap displays. ",
             "The word around is that " + sc.n("ubel") + " is the leader of the CUM cult. But he's not. There's another rich powerful man above him pulling the strings in this town.",
             "That plastic 'private investigator' card isn't just ID; it’s a high-frequency RFID beacon that broadcasts your location to the local zoning board. They want to make sure you're not investigating the cult and their crimes in this town.",
-            "The coffee served at the diner contains transgender cum that raises your female hormone levels and make you more susceptible into transforming into a real girl. ",
+            "The coffee served at the diner contains transgender cum that raises your female hormone levels and makes you more susceptible to transforming into a real girl. ",
             "The 'mystery' is a psychological smokescreen designed to keep the most inquisitive minds occupied with 'clues' while the real architectural overhaul of reality happens right under our noses. There is no solution because the investigation itself is the prison, intended to loop your logic centers until the transition to the new world order is finalized."
         ];
         return {
@@ -704,7 +728,7 @@ room750.chat = function (chatID) {
             {
                 chatID: 19,
                 speaker: "dale",
-                text: "Ok. good. You know the only power cops have is other people. If you get a bunch of people then you can be the " +
+                text: "Ok. good. You know the only power cops have is other people. If you get a bunch of people then you can be " +
                     "the cops. But then you would be a cop and who wants that. ",
                 button: [
                     { chatID: 20, text: "Yeah... ", callback: "" },
@@ -1198,10 +1222,55 @@ room750.chat = function (chatID) {
             {
                 chatID: 72,
                 speaker: "elijah",
-                text: "So glad we can just spend time together without worring about sex. I really do love " +
+                text: "So glad we can just spend time together without worrying about sex. I really do love " +
                     "you. ",
                 button: [
                     { chatID: -1, text: "And I you. ", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 73,
+                speaker: "doc",
+                text: "hic! Hey kid. Word around town is hic. You're looking for a hic. Lookin for.. hic..." +
+                    "Word around town is hic... word hic...",
+                button: [
+                    { chatID: -1, text: "...I'm looking for the code to back door of C.U.M.", callback: "missy0" },
+                ]
+            },
+            {
+                chatID: 74,
+                speaker: "doc",
+                text: "Code? What? No. I heard you want a whore. Give me a bottle of wine and I'll tell you there's " +
+                    "a whore in that tent over there. ",
+                button: [
+                    { chatID: -1, text: "Sure " + sc.n("doc") + ". Sure. ", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 75,
+                speaker: "doc",
+                text: "yeah. Give me a bottle of wine, no five bottles of wine and a pizza and I'll tell you " +
+                    "the code. hic.",
+                button: [
+                    { chatID: -1, text: "Sure sure. ", callback: "missy1" },
+                    { chatID: -1, text: "I'm not giving you nothing!", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 76,
+                speaker: "doc",
+                text: "hic. The code is 1-2-3-4-5, buuurrrpp!! Tonight's gunna be great! hic!",
+                button: [
+                    { chatID: -1, text: "Sweet! Thanks!", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 77,
+                speaker: "doc",
+                text: "Hey! I hic said five bottles of wine and a pizza. Get me that and I'll give you the " +
+                    "code hic! ",
+                button: [
+                    { chatID: -1, text: "*sigh* Fine I'll be back, but you better have that code!", callback: "reset" },
                 ]
             },
         ];

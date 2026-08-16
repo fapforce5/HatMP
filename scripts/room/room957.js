@@ -731,10 +731,10 @@ room957.chat = function (chatID) {
         let txt800 = [
             "What an honor. I get to piss in this sissy's asshole! hehehe!",
             "Disgusting",
-            "A sissies should know they are only toilets to be pissed in. ",
+            "A sissy should know they are only toilets to be pissed in. ",
             "*ugh* I've been holding that in all day. ",
             "Close your eyes. I can't pee when you stare at me. ",
-            "What kind of person let's people piss in their asshole? ",
+            "What kind of person lets people piss in their asshole? ",
             "Slut!"
         ];
         return {
@@ -751,7 +751,7 @@ room957.chat = function (chatID) {
             "Fuck that ass, I'm going piss in that face. ",
             "You look prettier with my piss in your face. ",
             "There you go. Now hold my piss in your mouth. Get a good taste. ",
-            "That's probably going to taste rank. I've been eating aspragus all day. ",
+            "That's probably going to taste rank. I've been eating asparagus all day. ",
             "Huh? There's a sissy in the toilet. ",
             "Nasty bitch. "
         ];
@@ -858,7 +858,7 @@ room957.chat = function (chatID) {
         {
             chatID: 11,
             speaker: "!milkmaid",
-            text: "*mmwwwaaa* You're the cutest sissy here! All the girls are jelous of you. ",
+            text: "*mmwwwaaa* You're the cutest sissy here! All the girls are jealous of you. ",
             button: [
                 { chatID: -1, text: "Awwww", callback: "kissingReset" }
             ]
@@ -1110,7 +1110,7 @@ room957.chat = function (chatID) {
         {
             chatID: 41,
             speaker: "cult",
-            text: "That ass look's hungry for my piss. ",
+            text: "That ass looks hungry for my piss. ",
             button: [
                 { chatID: 42, text: "...", callback: "toilet_9_1" },
             ]
@@ -1126,7 +1126,7 @@ room957.chat = function (chatID) {
         {
             chatID: 43,
             speaker: "cult",
-            text: "It that hole beggin' for piss or cock?",
+            text: "Is that hole beggin' for piss or cock?",
             button: [
                 { chatID: 44, text: "Piss sir", callback: "toilet_8_2" },
                 { chatID: 44, text: "Cock sir", callback: "toilet_8_2" },

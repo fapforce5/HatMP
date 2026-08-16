@@ -201,7 +201,7 @@ room103.chatcatch = function (callback) {
                     chat(99, 103);
                     break;
                 default:
-                    if (cl.appearance() > 1) {
+                    if (cl.appearance() > 1 || sc.getMission("tina", "*leave").startedOrComplete) {
                         switch (g.rand(0, 10)) {
                             case 0:
                                 nav.kill();

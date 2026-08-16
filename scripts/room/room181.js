@@ -262,7 +262,7 @@ room181.chat = function (chatID) {
         {
             chatID: 6,
             speaker: "black",
-            text: "All done! I hope you you're comfortable enough. You're going to be like this for a while. ",
+            text: "All done! I hope you're comfortable enough. You're going to be like this for a while. ",
             button: [
                 { chatID: 7, text: "What do you mean?", callback: "" }
             ]
@@ -689,7 +689,7 @@ room181.chat = function (chatID) {
         {
             chatID: 52,
             speaker: "!boy",
-            text: "Oh that does look nice. Matha, dear, do you mind if I unload into this " +
+            text: "Oh that does look nice. Martha, dear, do you mind if I unload into this " +
                 "sissy? I do have a clearer head for betting when I unload. ",
             button: [
                 { chatID: 53, text: "...", callback: "" },
@@ -759,7 +759,7 @@ room181.chat = function (chatID) {
             text: "Hahaha. Yes. Attach. The pear of anguish goes inside your bussy and " +
                 "I'll expand it enough that it doesn't slide out, but not so big that " +
                 "you can't run, then I'll attach your harness so I can steer. It'll be " +
-                "fun. Just don't don't lose this race! ",
+                "fun. Just don't lose this race! ",
             button: [
                 { chatID: 60, text: "*gulp*", callback: "b203_15" },
             ]
@@ -842,7 +842,7 @@ room181.chat = function (chatID) {
             chatID: 68,
             speaker: "!chris",
             text: "It's so rude. We did all the work and they're out there celebrating. " +
-                "It like we're really ponies. All the work and non of the reward. They could " +
+                "It's like we're really ponies. All the work and none of the reward. They could " +
                 "at least have said good girl, or maybe some cake. I don't know. ",
             button: [
                 { chatID: 69, text: "...", callback: "b203_21" },
@@ -882,7 +882,7 @@ room181.chat = function (chatID) {
         {
             chatID: 72,
             speaker: "black",
-            text: "Ok girls. I'm going to take you back. You all stink of body odor and " +
+            text: "Ok girls. I'm going to take you back. You all stink of body odor " +
                 "and ass. You girls did good. They liked the sissy race so much they're going " +
                 "to do it every Tuesday and Thursday if you want to come back. Just do me a favor " +
                 "and don't tell " + sc.n("ralph") + ". ",
@@ -897,7 +897,7 @@ room181.chat = function (chatID) {
                 "those feeling to you mind, body, and soul. With all noise of the " +
                 "outside world telling you how to dress, who to be, what you should " +
                 "do, you'll focus on who you want to be, and who you are. " +
-                "My sensory deprovation device will allow you to focus on yourself " +
+                "My sensory deprivation device will allow you to focus on yourself " +
                 "and explore your thoughts.",
             button: [
                 { chatID: 74, text: "...", callback: "" },
@@ -1049,7 +1049,7 @@ room181.chat = function (chatID) {
             chatID: 87,
             speaker: "thinking",
             text: "I can feel my body shaking and sweating. That dick is so amazing! I love " +
-                "it! I so love it! My bussy is getting really sensative in a way I've never " +
+                "it! I so love it! My bussy is getting really sensitive in a way I've never " +
                 "felt before! Fuck me fuck me fuck me fuck me fuck me fuck me!!!!!!",
             button: [
                 { chatID: 88, text: "*muffled moaning*", callback: "b303_12" },
@@ -1245,7 +1245,7 @@ room181.chat = function (chatID) {
         {
             chatID: 106,
             speaker: "black",
-            text: sc.n("!timothy") + ", you're the sluttist girl here, we'll start with you " +
+            text: sc.n("!timothy") + ", you're the sluttiest girl here, we'll start with you " +
                 "so you can show the other girls good poses. ",
             button: [
                 { chatID: 107, text: "...", callback: "ez215_1" },

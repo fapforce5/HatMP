@@ -1332,7 +1332,7 @@ room950.chat = function (chatID) {
                 chatID: 10,
                 speaker: "cult",
                 text: "It's a damn mess in here. Disgusting. There's dirt on the ground, a puddle of I " +
-                    "don't even know, and foot crumbs. Do you want ants? Becuse this is how you get ants. " +
+                    "don't even know, and foot crumbs. Do you want ants? Because this is how you get ants. " +
                     "Come here! Eat my pussy!",
                 button: [
                     { chatID: 11, text: "wha?", callback: "eatit1" }
@@ -1714,7 +1714,7 @@ room950.chat = function (chatID) {
             {
                 chatID: 54,
                 speaker: "ubel",
-                text: "Awww. You can't do anything, and that's why you're here. I was dissappointed " +
+                text: "Awww. You can't do anything, and that's why you're here. I was disappointed " +
                     "when I found out we can't use you to bring about Azrael, but you do have another use...",
                 button: [
                     { chatID: 55, text: "...", callback: "" }
@@ -1723,8 +1723,8 @@ room950.chat = function (chatID) {
             {
                 chatID: 55,
                 speaker: "ubel",
-                text: "You will be used to prove " + sc.n("me") + "'s commitment our church. You see I command " +
-                    "him to whip him to your death. That is the only way we will know his true alegence. I was " +
+                text: "You will be used to prove " + sc.n("me") + "'s commitment to our church. You see I command " +
+                    "him to whip him to your death. That is the only way we will know his true allegiance. I was " +
                     "going to just throw you away, but now. Now you can continue to have purpose! ",
                 button: [
                     { chatID: 56, text: "...no", callback: "s2" }
@@ -1779,7 +1779,7 @@ room950.chat = function (chatID) {
                     "You don't have to do this. You're better than this. Please, just let me go home. ",
                 button: [
                     { chatID: 59, text: "You're right. [Lay down the whip]", callback: "" },
-                    { chatID: -1, text: "I have not choice. I must whip you to death. ", callback: "s5" },
+                    { chatID: -1, text: "I have no choice. I must whip you to death. ", callback: "s5" },
                 ]
             },
             {
@@ -2036,8 +2036,8 @@ room950.chat = function (chatID) {
             {
                 chatID: 90,
                 speaker: "cult",
-                text: "So the little sissy want's to serve us huh?" +
-                    "The Castellan said said you can start serving us outside your cell from now on. " +
+                text: "So the little sissy wants to serve us huh? " +
+                    "The Castellan said you can start serving us outside your cell from now on. " +
                     "Ya know, that's what I love about you " +
                     "sissies, always want to serve and obey. ",
                 button: [
@@ -2096,7 +2096,7 @@ room950.chat = function (chatID) {
             {
                 chatID: 97,
                 speaker: "cult",
-                text: "Come. The time of your destiy has arrived. ",
+                text: "Come. The time of your destiny has arrived. ",
                 button: [
                     { chatID: -1, text: "[Follow her]", callback: "room956" }
                 ]
@@ -2353,7 +2353,7 @@ room950.chat = function (chatID) {
                 chatID: 128,
                 speaker: "ubel",
                 text: "Now that you're a sissy, you must be able to survive the hell of carrying Azrael. " +
-                    "Only through pain will you harden to the to the hardship of carrying to coming of " +
+                    "Only through pain will you harden to the hardship of carrying the coming of " +
                     "our savior. Put her in position",
                 button: [
                     { chatID: 129, text: "*whimper*", callback: "whip1" }
@@ -2406,7 +2406,7 @@ room950.chat = function (chatID) {
                 chatID: 134,
                 speaker: "priest",
                 text: "Yes. It also helps me rid my flock of these immoral heathens. Better they're locked " +
-                    "away down here than infecting others with their unbridled lust and suple eager butts. " +
+                    "away down here than infecting others with their unbridled lust and supple eager butts. " +
                     "One can hardly control themselves when presented with such a creature of pure lust. ",
                 button: [
                     { chatID: 135, text: "*gasp*", callback: "" }
@@ -2468,7 +2468,7 @@ room950.chat = function (chatID) {
             {
                 chatID: 141,
                 speaker: "priest",
-                text: "Oh yeah. Can you feel my penis growin hard in your mouth? I spent so many years " +
+                text: "Oh yeah. Can you feel my penis growing hard in your mouth? I spent so many years " +
                     "denying my own humanity. The need for sexual gratification until I figured out the " +
                     "answer. Admittedly " + sc.n("ubel") + " assisted in my epiphany. Turn around " +
                     "show me your anus. I do love seeing a bare anus winking at me. ",
@@ -2528,7 +2528,7 @@ room950.chat = function (chatID) {
             {
                 chatID: 148,
                 speaker: "!milkmaid",
-                text: "PNC. Post Nut Clarity. He does this everytime. Damns you sissies to hell, cums, " +
+                text: "PNC. Post Nut Clarity. He does this every time. Damns you sissies to hell, cums, " +
                     "then blesses you and runs off. It's sad really. Well, it would be sad if he wasn't so " +
                     "evil. I mean everyone is evil, just you wouldn't expect him to be evil too. Since.. you know. ",
                 button: [
@@ -2540,7 +2540,7 @@ room950.chat = function (chatID) {
                 speaker: "!milkmaid",
                 text: "Oh he's been handing over you sissies for years. I actually feel bad. You're supposed to be " +
                     "able to trust a priest, but this one is evil. A few of the girls here are also because of him. " +
-                    "They confided in him that sex with multiple partners only to find themselves kidnapped and brain washed " +
+                    "They confided in him only to find themselves kidnapped and brain washed " +
                     "by the cult. Myself included. He really is an asshole. I wish I could take him down, but I'm stuck here. ",
                 button: [
                     { chatID: 150, text: "Yeah. Me too. ", callback: "" }

@@ -224,7 +224,7 @@ room801.chat = function (chatID) {
             speaker: "ralphsdad",
             text: "You're looking really firm. I love it when you come by.",
             button: [
-                { chatID: 3, text: "[Linger a bit]", callback: "assgrab" },
+                { chatID: 3, text: "[Linger a bit]", callback: "" },
                 { chatID: -1, text: "Thanks! Just came by to see " + sc.n("ralph") + "!", callback: "ralphRoom" },
             ]
         },
@@ -425,7 +425,7 @@ room801.chat = function (chatID) {
         {
             chatID: 24,
             speaker: "ralphsdad",
-            text: "Oh shit. Feels so good. You're such a great side piece. Love I can just get a bj when ever " +
+            text: "Oh shit. Feels so good. You're such a great side piece. Love that I can just get a bj when ever " +
                 "I need. Fuck that's good. You'll make a bad man really happy some day. ",
             button: [
                 { chatID: -1, text: "*slurp* mmhhhmmm *gulp*", callback: "reset" },

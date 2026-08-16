@@ -854,7 +854,7 @@ room803.chat = function (chatID) {
         {
             chatID: 7,
             speaker: "thinking",
-            text: "That's " + sc.n("ralphsmom") + "! I know that butt anywhere! She me dem titties " +
+            text: "That's " + sc.n("ralphsmom") + "! I know that butt anywhere! Shake me dem titties " +
                 "girl! Take them out and shake 'em!",
             button: [
                 { chatID: 8, text: "...", callback: "peek2" },
@@ -1071,8 +1071,8 @@ room803.chat = function (chatID) {
             chatID: 31,
             speaker: "ralphsdad",
             text: "Call me daddy. I've always wanted to have sex with a butthole! Can " +
-                "you believe my wife has never, never let fuck has ass? No matter how much " +
-                "I ask and beg, I never get fuck her ass. Spread it. I want to see that hole. ",
+                "you believe my wife has never, never let me fuck her ass? No matter how much " +
+                "I ask and beg, I never get to fuck her ass. Spread it. I want to see that hole. ",
             button: [
                 { chatID: 32, text: "MMmmmm oh yeah daddy", callback: "anal1" },
             ]
@@ -1168,7 +1168,7 @@ room803.chat = function (chatID) {
         {
             chatID: 42,
             speaker: "ralphsmom",
-            text: "Oh you. Well, I just started it, but it's abou the tragic love of one of " +
+            text: "Oh you. Well, I just started it, but it's about the tragic love of one of " +
                 "King Arthur's knights and his wife, the Queen. The love was barely there between " +
                 "Guinevere and Arthur, and when she saw the passion in Lancelot she could " +
                 "hardly contain herself and stay loyal to Arthur. ",
@@ -1255,15 +1255,15 @@ room803.chat = function (chatID) {
             speaker: "ralphsmom",
             text: "Come to inquire about what I'm reading again? ",
             button: [
-                { chatID: 52, text: "Yes, unless you want to let me try your warm honey biscuit.", callback: "read1" },
+                { chatID: -1, text: "Yes, unless you want to let me try your warm honey biscuit.", callback: "read1" },
             ]
         },
         {
             chatID: 52,
             speaker: "ralphsmom",
-            text: " ",
+            text: "noop",
             button: [
-                { chatID: -1, text: "Yes, unless you want to let me try your warm honey biscuit.", callback: "read1" },
+                { chatID: -1, text: "...", callback: "" },
             ]
         },
         {
@@ -1424,7 +1424,7 @@ room803.chat = function (chatID) {
         {
             chatID: 71,
             speaker: "ralphsmom",
-            text: "I thought I head sex in my bathroom! I didn't expect to find My husband with his penis " +
+            text: "I thought I heard sex in my bathroom! I didn't expect to find my husband with his penis " +
                 "in our son's friend's butt! ",
             button: [
                 { chatID: 72, text: "*gasp*", callback: "anal11" },

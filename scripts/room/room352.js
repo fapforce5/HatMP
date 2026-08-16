@@ -757,7 +757,7 @@ room352.chat = function (chatID) {
             {
                 chatID: 36,
                 speaker: "landlord",
-                text: "Ok honey. You're room is just the way you left it. Feel free to come by anytime sweety.",
+                text: "Ok honey. Your room is just the way you left it. Feel free to come by anytime sweety.",
                 button: [
                     { chatID: -1, text: "Thank you " + sc.n("landlord") + ". See you at home!", callback: "backin" },
                 ]

@@ -683,7 +683,7 @@ room325.chat = function (chatID) {
             chatID: 39,
             speaker: "thinking",
             text: "Hmmm...... Who do I know with giant fucking tits and willing to be milked everyday? Hmmm....." +
-                "Oh! I know! " + sc.n("envy") + "!!!! She's so deep under I bet I could just tell her to to get milked. " +
+                "Oh! I know! " + sc.n("envy") + "!!!! She's so deep under I bet I could just tell her to get milked. " +
                 "Plus I know she was thinking of it before she became a fuck doll for the entire town. I'll visit her to see " +
                 "if she'll do it. ",
             button: [
@@ -775,7 +775,7 @@ room325.chat = function (chatID) {
         {
             chatID: 49,
             speaker: "rachel",
-            text: "You know there's some powerful people that want you dead. But I'm need of some new livestock " +
+            text: "You know there's some powerful people that want you dead. But I'm in need of some new livestock " +
                 "and you may be able to earn your place as one of my hucows someday. So I'm going to keep you " +
                 "around. You're going to go into my pen for bad little piggies. If you do the right thing it'll " +
                 "be easy on you. But if you misbehave, well... You're going to find out what happens to bad little " +
@@ -825,7 +825,7 @@ room325.chat = function (chatID) {
             chatID: 54,
             speaker: "kinsey",
             text: "So I made a break for it when they pulled us all into the forest. Hid under a log for 2 days " +
-                "before I even tried to make my escape. Well you could imagine my suprise when I was spying on the " +
+                "before I even tried to make my escape. Well you could imagine my surprise when I was spying on the " +
                 "farm and saw that NO ONE was there! Like empty. Well, I saw a cop come up when I ran to him to " +
                 "tell him everything going on here. ",
             button: [
@@ -857,7 +857,7 @@ room325.chat = function (chatID) {
             speaker: "kinsey",
             text: "That was the hard part. A lot of the girls are so used to being hucows that they didn't know " +
                 "what to do with their freedom. So I let them stay if they want. Everyone is free to come or go " +
-                "when ever they want. I also started some profit sharing with everyone. It's not alot now, " +
+                "when ever they want. I also started some profit sharing with everyone. It's not a lot now, " +
                 "since I now have a big loan, but I'll keep working it so everyone gets their fair share. ",
             button: [
                 { chatID: 58, text: "That's amazing!", callback: "" }
@@ -878,7 +878,7 @@ room325.chat = function (chatID) {
             chatID: 59,
             speaker: "kinsey",
             text: "If you ever want to visit or wander around, you can do what ever you want, since we " +
-                "all owe our freedom to you. Think of this as me casa is your farm too. Just ask! ",
+                "all owe our freedom to you. Think of this as mi casa is your farm too. Just ask! ",
             button: [
                 { chatID: -1, text: "Sweet. Thanks!", callback: "" }
             ]

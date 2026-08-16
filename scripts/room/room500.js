@@ -243,7 +243,7 @@ room500.chat = function (chatID) {
             chatID: 13,
             speaker: "zoey",
             text: "You can stay here, I will give you a key to my apartment so you can come and go when you please. " +
-                "I sleep in late so do not wake me up before you go go.",
+                "I sleep in late so do not wake me up before you go.",
             button: [
                 { chatID: 14, text: "You're the best!", callback: "" }
             ]

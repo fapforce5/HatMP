@@ -487,7 +487,7 @@ room575.chat = function (chatID) {
         {
             chatID: 25,
             speaker: "me",
-            text: "I'm " + sc.n("me") + ". What's you name? ",
+            text: "I'm " + sc.n("me") + ". What's your name? ",
             button: [
                 { chatID: 999, text: "...", callback: "" },
             ]
@@ -564,9 +564,7 @@ room575.chat = function (chatID) {
         {
             chatID: 34,
             speaker: "brayden",
-            text: "Listen. I do have to run back to work. There's nothing I would like more than " +
-                "to spend more time with you, but I'll get fired if I'm late. If I give you my phone " +
-                "number will you call me? ",
+            text: "noop ",
             button: [
                 { chatID: 35, text: "...", callback: "" },
             ]

@@ -931,7 +931,10 @@ trap.lewd = function () {
         charList.push({ n: "!boy", p: "boy", z: "steal", s: g.rand(6, 12), loc: ["forest"], l: 815, t: 61, w: 508, h: 1019, i: "man1.png" });
     }
     
-
+    charList.push({ n: "!m", p: "girl", z: "lickass0", loc: ["forest", "street"], l: 899, t: 33, w: 557, h: 1047, i: "girl6.png" });
+    if (levels.get("piss").l > 2 && cl.appearance() > 1) {
+        charList.push({ n: "!man", p: "boy", z: "pissass", loc: ["forest", "street"], l: 649, t: 78, w: 623, h: 1002, i: "piss0.webp" });
+    }
     //if (levels.get("fame").l > 4 && cl.appearance() > 2 && g.rand(0, 3) === 0) {
         charList.push({ n: "!m", p: "girl", z: "lickass0", loc: ["forest", "street"], l: 899, t: 33, w: 557, h: 1047, i: "girl6.png" });
     //}
@@ -979,6 +982,9 @@ trap.lewd = function () {
             break;
         case "lickass0":
             chat(61, 1005);
+            break;
+        case "pissass":
+            chat(101, 1005);
             break;
     }
 };
@@ -2029,7 +2035,129 @@ room1005.chatcatch = function (callback) {
             }, 1005);
             break;
         case "ff_bj":
-            zcl.bj(0, 600, 1, "open", false);
+            nav.kill();
+            nav.button({
+                "type": "img",
+                "name": "ff_bj",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "1005_trap/ff/bj0.webp"
+            }, 1005);
+            zcl.bj(0, 800, 1, "closed", false);
+            break;
+        case "ff_bj1":
+            nav.kill();
+            zcl.bj(0, 800, 1, "open", false);
+            nav.button({
+                "type": "img",
+                "name": "ff_bj",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "1005_trap/ff/bj1.webp"
+            }, 1005);
+            break;
+        case "ff_bj2":
+            nav.kill();
+            zcl.bj(0, 800, 1, "bj", false);
+            nav.button({
+                "type": "img",
+                "name": "ff_bj",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "1005_trap/ff/bj2.webp"
+            }, 1005);
+            break;
+        case "ff_bj3":
+            nav.kill();
+            zcl.bj(0, 800, 1, "bj", false);
+            nav.button({
+                "type": "img",
+                "name": "ff_bj",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "1005_trap/ff/bj3.webp"
+            }, 1005);
+            break;
+        case "ff_bj4":
+            nav.kill();
+            zcl.bj(0, 800, 1, "open", false);
+            nav.button({
+                "type": "img",
+                "name": "ff_bj",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "1005_trap/ff/bj4.webp"
+            }, 1005);
+            break;
+        case "ff_bj5sw":
+            levels.oral(3, "n", "ff", true);
+            trap.kill(null);
+            break;
+        case "ff_bj5sp":
+            levels.oral(3, "n", "ff", false);
+            trap.kill(null);
+            break;
+        case "ff_anal":
+            nav.kill();
+            nav.button({
+                "type": "img",
+                "name": "r1004bg",
+                "left": 817,
+                "top": 292,
+                "width": 327,
+                "height": 609,
+                "image": "1005_trap/ff/ff_nude.webp"
+            }, 1005);
+            zcl.facedown(800, 700, .2, "", false);
+            break;
+        case "ff_anal0":
+            nav.kill();
+            nav.button({
+                "type": "img",
+                "name": "r1004bg",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "1005_trap/ff/anal0_" + (cl.c.cock === 5 ? "f" : "m") + ".webp"
+            }, 1005);
+            if (cl.c.cock === 5)
+                chat(94, 1005);
+            else
+                chat(95, 1005);
+            break;
+        case "ff_anal1":
+            nav.kill();
+            nav.button({
+                "type": "img",
+                "name": "r1004bg",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "1005_trap/ff/anal1_" + gender.pronoun("f") + ".webp"
+            }, 1005);
+            break;
+        case "ff_anal2":
+            nav.modbutton("r1004bg", "1005_trap/ff/anal2_" + gender.pronoun("f") + ".webp", null, null);
+            break;
+        case "ff_anal3":
+            nav.modbutton("r1004bg", "1005_trap/ff/anal3.webp", null, null);
+            if (cl.c.cock === 5)
+                levels.fuckedinpussy(true, "n", true, "ff");
+            else
+                levels.anal(3, false, "n", true, "ff");
+            zcl.asshole(400, 800, .7, "", false);
             break;
         case "hardon_0":
             nav.button({
@@ -2102,6 +2230,30 @@ room1005.chatcatch = function (callback) {
                 trap.internal = "foo";
             }
             chat(803, 1005);
+            break;
+        case "piss1":
+            nav.kill();
+            nav.button({
+                "type": "img",
+                "name": "piss_hole",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "1005_trap/encounter/piss1.webp"
+            }, 1005);
+            break;
+        case "piss2":
+            nav.modbutton("piss_hole", "1005_trap/encounter/piss2.webp", null, null);
+            break;
+        case "piss3":
+            nav.modbutton("piss_hole", "1005_trap/encounter/piss3.webp", null, null);
+            break;
+        case "piss4":
+            nav.kill();
+            gv.clearButtCum();
+            levels.piss(false, true, false, "m", "!man");
+            zcl.bent(200, 500, .6, "pissass", false);
             break;
         default:
             break;
@@ -3242,8 +3394,8 @@ room1005.chat = function (chatID) {
                 speaker: "ff",
                 text: "So you're back! How do you want to worship me now bitch? ",
                 button: [
-                    { chatID: -1, text: "[Get on your knees]", callback: "ff_bj" },
-                    { chatID: -1, text: "[Face down ass up]", callback: "ff_anal" },
+                    { chatID: 87, text: "[Get on your knees]", callback: "ff_bj" },
+                    { chatID: 92, text: "[Face down ass up]", callback: "ff_anal" },
                 ]
             },
             {
@@ -3285,6 +3437,165 @@ room1005.chat = function (chatID) {
                 text: "uuuh... thank you...",
                 button: [
                     { chatID: -1, text: "[Lick your hand clean and leave him there]", callback: "kill" },
+                ]
+            },
+            {
+                chatID: 87,
+                speaker: "ff",
+                text: "Go ahead. Lick my lollypop. ",
+                button: [
+                    { chatID: 88, text: "mmmMmm", callback: "ff_bj1" },
+                ]
+            },
+            {
+                chatID: 88,
+                speaker: "ff",
+                text: "Your face is so hot I'm leaking a bit of precum. Isn't it yummy. Like an appetizer " +
+                    "before the main meal. ",
+                button: [
+                    { chatID: 89, text: "*slurp*", callback: "ff_bj2" },
+                ]
+            },
+            {
+                chatID: 89,
+                speaker: "ff",
+                text: "The main meal of my girly cock!!",
+                button: [
+                    { chatID: 90, text: "*gag*", callback: "ff_bj3" },
+                ]
+            },
+            {
+                chatID: 90,
+                speaker: "ff",
+                text: "Oh fuck you're good at take a girl cock in your throat! Fuck, Imma cum soon!",
+                button: [
+                    { chatID: 91, text: "*gluck* *gluck* *gluck*", callback: "ff_bj4" },
+                ]
+            },
+            {
+                chatID: 91,
+                speaker: "ff",
+                text: "That's a good bitch. You know your place when you're arround a superior girl dick. ",
+                button: [
+                    { chatID: -1, text: "[Swallow her cum]", callback: "ff_bj5sw" },
+                    { chatID: -1, text: "[Spit out her cum]", callback: "ff_bj5sp" },
+                ]
+            },
+            {
+                chatID: 92,
+                speaker: "ff",
+                text: "I do love a pathetic little bitch. So ready to put your bare ass up in the air for " +
+                    "my big hot girly cock! Tell me how much you want my balls to slap against your ass. ",
+                button: [
+                    { chatID: 94, text: "Please, please fuck me! I need your girl dick inside me!", callback: "ff_anal0" },
+                    { chatID: 93, text: "*groan*", callback: "" },
+                ]
+            },
+            {
+                chatID: 93,
+                speaker: "ff",
+                text: "*sigh* You didn't convince me. You don't deserve my fat girl dick!  ",
+                button: [
+                    { chatID: -1, text: "awww!", callback: "kill" },
+                ]
+            },
+            {
+                chatID: 94,
+                speaker: "ff",
+                text: "I love the smell of pussy. You can always tell when a bitch is beggin' to be bred by " +
+                    "the smell of her pussy!",
+                button: [
+                    { chatID: 96, text: "*moan*", callback: "ff_anal1" },
+                ]
+            },
+            {
+                chatID: 95,
+                speaker: "ff",
+                text: "I do love a tight ass! You're about to be a mommy 'cause I'm gunna breed that hole " +
+                    "of yours! ",
+                button: [
+                    { chatID: 97, text: "*moan*", callback: "ff_anal1" },
+                ]
+            },
+            {
+                chatID: 96,
+                speaker: "ff",
+                text: "Your cunt is so wet and sloppy I just jammed it up in there! Taking cocks is what " +
+                    "your pussy is for! ",
+                button: [
+                    { chatID: 98, text: "*aaa* So good!", callback: "ff_anal2" },
+                ]
+            },
+            {
+                chatID: 97,
+                speaker: "ff",
+                text: "Oh fuck I love that asshole! My girly cock slid right in your dirty dirty whore! ",
+                button: [
+                    { chatID: 99, text: "*moan*", callback: "ff_anal2" },
+                ]
+            },
+            {
+                chatID: 98,
+                speaker: "ff",
+                text: "That pussy is so good I can't hold back! I'm going to make you a mommy! ",
+                button: [
+                    { chatID: 100, text: "Fuck! Cum in me, cum in me, cum in me!", callback: "ff_anal3" },
+                ]
+            },
+            {
+                chatID: 99,
+                speaker: "ff",
+                text: "That asshole is so good I can't hold back! I'm going to breed you and make you a mommy! ",
+                button: [
+                    { chatID: 100, text: "Fuck! Cum in me, cum in me, cum in me!", callback: "ff_anal3" },
+                ]
+            },
+            {
+                chatID: 100,
+                speaker: "ff",
+                text: "That is one well fucked hole! You're going to smell like my cum for a week! ",
+                button: [
+                    { chatID: -1, text: "aaahhhh So good", callback: "kill" },
+                ]
+            },
+            {
+                chatID: 101,
+                speaker: "!man",
+                text: "Listen, I gotta piss like none other, come 'ere! ",
+                button: [
+                    { chatID: 102, text: "huh?", callback: "piss1" },
+                ]
+            },
+            {
+                chatID: 102,
+                speaker: "!man",
+                text: "Of fuck yeah. That's a good piss urinal. Just hold still... ",
+                button: [
+                    { chatID: 103, text: "eeep!", callback: "piss2" },
+                ]
+            },
+            {
+                chatID: 103,
+                speaker: "!man",
+                text: "There. I feel so much better. Thanks toilet. ",
+                button: [
+                    { chatID: 104, text: "*uuuhhgg*", callback: "piss3" },
+                ]
+            },
+            {
+                chatID: 104,
+                speaker: "thinking",
+                text: "Oh god. I'm so full of piss... Cramping hard! So painful... Need to get it out.",
+                button: [
+                    { chatID: 105, text: "....", callback: "piss4" },
+                ]
+            },
+            {
+                chatID: 105,
+                speaker: "thinking",
+                text: "*pffft* aahhh. Such a relief. ",
+                button: [
+                    { chatID: -1, text: "....", callback: "kill" },
                 ]
             },
         ];

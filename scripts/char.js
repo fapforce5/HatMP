@@ -274,6 +274,7 @@ $(document).ready(function () {
     });
 
     $('.help-history').on('click', function () {
+        let tempHolder = g.prevview;
         if (g.roomID === 955)
             g.pastSaves.splice(g.pastSaves.length - 2, 2);
         else
@@ -283,6 +284,9 @@ $(document).ready(function () {
         char.import(g.pastSaves[g.pastSaves.length - 1].data);
         g.pastSaves.splice(g.pastSaves.length - 1, 1);
         char.makeWalk();
+        if (tempHolder === "walk") {
+            char.changeMenu("walk", true, true);
+        }
     });
 
     $(window).on('resize', function () {

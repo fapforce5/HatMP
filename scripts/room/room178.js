@@ -194,7 +194,7 @@ room178.chat = function (chatID) {
             chatID: 9,
             speaker: "missy",
             text: "Men masturbate with their hands. Stroking their cock up and down. Sissy girls like you cum with vibrators on " +
-                "their little clitties. The clitty is too small to stoke it, but the vibrations on it feel oh, so good. Does you " +
+                "their little clitties. The clitty is too small to stoke it, but the vibrations on it feel oh, so good. Does your " +
                 "clitty like the vibrations while in the cage? It does feel good doesn't it? Tell me when you're about to cum. ",
             button: [
                 { chatID: 10, text: "....I'm going to cum....", callback: "cum7" }

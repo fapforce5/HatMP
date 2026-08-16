@@ -17,6 +17,9 @@ room375.main = function () {
         nav.button(v, 375);
     });
     nav.buildnav(navList);
+    if (cl.isLewd()) {
+        chat(1, 375);
+    }
 };
 
 room375.btnclick = function (name) {
@@ -31,7 +34,8 @@ room375.btnclick = function (name) {
 
 room375.chatcatch = function (callback) {
     switch (callback) {
-        case "nap_1hour":
+        case "jail":
+            char.room(376);
             break;
         default:
             break;
@@ -46,6 +50,14 @@ room375.chat = function (chatID) {
             text: "Yeah?",
             button: [
                 { chatID: -1, text: "I've got nothing.", callback: "" }
+            ]
+        },
+        {
+            chatID: 1,
+            speaker: "cop2",
+            text: "What kind of idiot walks into a police station naked? Time for jail weird-o. ",
+            button: [
+                { chatID: -1, text: "Oh. I'm an idiot. ", callback: "jail" }
             ]
         }
     ];

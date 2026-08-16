@@ -279,7 +279,7 @@ room224.chat = function (chatID) {
         c = [
             "Don't worry baby. Once I get a job you'll never have to work again. Just stay home all day raising our babies. ",
             "Hate that you work and I don't. Once we're married and I get a baby in you, you'll have to leave this job. ",
-            "Every day is more beautiful with you in in. ",
+            "Every day is more beautiful with you in it. ",
         ]
         return {
             chatID: 0,

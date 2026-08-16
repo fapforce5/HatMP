@@ -267,7 +267,7 @@ room40.chat = function (chatID) {
                 chatID: 10,
                 speaker: "tom",
                 text: "Tough, but fair, ya know. He taught me a lot. His 'Don't be a " +
-                    "pussy' speaches get a little long, but I know how to fix these " +
+                    "pussy' speeches get a little long, but I know how to fix these " +
                     "cars backwards and forwards. Ya know, if'n he lets you, maybe " +
                     "I can show you a thing or two. ",
                 button: [
@@ -325,7 +325,7 @@ room40.chat = function (chatID) {
                 text: "Hmmmm. He's really nice, and I don't think he would even have sex with " + sc.n("eva") + " since " +
                     "she's way too wild for him. He might make a good boyfriend for " + sc.n("lola") + ". " +
                     "Way better than " + sc.n("chad") + ". But maybe " + sc.n("lola") + " needs a bad boy to " +
-                    "snap her into reality. Hmmm. I wonder if I should try to set he up or let " + sc.n("lola") +
+                    "snap her into reality. Hmmm. I wonder if I should try to set him up or let " + sc.n("lola") +
                     " date " + sc.n("chad") + ".",
                 button: [
                     { chatID: 17, text: "Try to set up " + sc.n("tom") + " with " + sc.n("lola") + ". ", callback: "" },

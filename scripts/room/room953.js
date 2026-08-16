@@ -190,7 +190,7 @@ room953.chat = function (chatID) {
             chatID: 0,
             speaker: "thinking",
             text: "It looks like this thing is about to start. " +
-                "I can't believe how may there are. There must be at least a hundred in here. It looks like " +
+                "I can't believe how many there are. There must be at least a hundred in here. It looks like " +
                 "this thing is about to begin. I'm going to try and get a better view.",
             button: [
                 { chatID: 1, text: "...", callback: "" }
@@ -275,7 +275,7 @@ room953.chat = function (chatID) {
         {
             chatID: 10,
             speaker: "!man",
-            text: "Man! Totaly Cum Supplier! I ain't to bitch! ",
+            text: "Man! Totally Cum Supplier! I ain't no bitch! ",
             button: [
                 { chatID: 11, text: "...", callback: "e15" }
             ]
@@ -523,7 +523,7 @@ room953.chat = function (chatID) {
         {
             chatID: 38,
             speaker: "ubel",
-            text: "I know the nonbeliever among us! He pretends to follow the instructions of Azreal, but his actions are a lie! He " +
+            text: "I know the nonbeliever among us! He pretends to follow the instructions of Azrael, but his actions are a lie! He " +
                 "deceives us all in his treachery!",
             button: [
                 { chatID: 39, text: "GULP!", callback: "" }
@@ -556,7 +556,7 @@ room953.chat = function (chatID) {
         {
             chatID: 42,
             speaker: "cult",
-            text: "It's not me! I have full faith in the union and Azreal! ",
+            text: "It's not me! I have full faith in the union and Azrael! ",
             button: [
                 { chatID: 43, text: "...", callback: "e10" }
             ]
@@ -655,7 +655,7 @@ room953.chat = function (chatID) {
         {
             chatID: 54,
             speaker: "ubel",
-            text: "...We will cleanse this world of the filth with the power of Azreal! Together we will rise up and rule over all...",
+            text: "...We will cleanse this world of the filth with the power of Azrael! Together we will rise up and rule over all...",
             button: [
                 { chatID: 55, text: "...", callback: "" }
             ]
@@ -663,7 +663,7 @@ room953.chat = function (chatID) {
         {
             chatID: 55,
             speaker: "ubel",
-            text: "...The blood of the nonbelievers shall flow like rivers thorugh our cities... May Azrael be in us all. ",
+            text: "...The blood of the nonbelievers shall flow like rivers through our cities... May Azrael be in us all. ",
             button: [
                 { chatID: 56, text: "...", callback: "" }
             ]
@@ -688,7 +688,7 @@ room953.chat = function (chatID) {
             chatID: 58,
             speaker: "ubel",
             text: "CUM GIVERS!!! We have had many failures to bring about the coming of Azrael! You see " +
-                "these sissies are weak! They're broken, inside and out! They're unworth of Azrael. " +
+                "these sissies are weak! They're broken, inside and out! They're unworthy of Azrael. " +
                 "They were FAILURES!!! ",
             button: [
                 { chatID: 59, text: "...", callback: "e7" }
@@ -708,10 +708,10 @@ room953.chat = function (chatID) {
         {
             chatID: 60,
             speaker: "ubel",
-            text: "But the chosen one was killed by the fanatics to stop the coming of Azrael! She were six " +
+            text: "But the chosen one was killed by the fanatics to stop the coming of Azrael! She was six " +
                 "months into her pregnancy. The furthest any sissy has come to bringing the birth of Azrael. " +
                 "Some say the failures of every sissy since then was due to Azrael's anger in us not protecting " +
-                "the chosen one. But now. Now we will be in Azraels graces again. " + sc.n("me") + " step " +
+                "the chosen one. But now. Now we will be in Azrael's graces again. " + sc.n("me") + " step " +
                 "forward! Come into the light of the new world! ",
             button: [
                 { chatID: 61, text: "...", callback: "change1" }

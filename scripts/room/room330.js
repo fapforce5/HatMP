@@ -336,7 +336,7 @@ room330.chat = function (chatID) {
         {
             chatID: 7,
             speaker: "horse",
-            text: "*Whinny* *Neight* *Sigh*",
+            text: "*Whinny* *Neigh* *Sigh*",
             button: [
                 { chatID: 8, text: "AAAAAaaahhhhh!", callback: "horse7" }
             ]

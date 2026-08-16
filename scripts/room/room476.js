@@ -901,7 +901,7 @@ room476.chat = function (chatID) {
             {
                 chatID: 8,
                 speaker: "cult",
-                text: "Oh hay! What's up? They awake! Fuck yeah, I gotta get a piece of that " +
+                text: "Oh hey! What's up? They awake! Fuck yeah, I gotta get a piece of that " +
                     "ass. ",
                 button: [
                     { chatID: 9, text: "*whimper*", callback: "bg_night_cult6" }
@@ -927,7 +927,7 @@ room476.chat = function (chatID) {
                 chatID: 11,
                 speaker: "cult",
                 text: "I always do like the look on a sluts face when they're on the sybian. " +
-                    "It's starts as pure joy, but as time goes on it turns to horror as they " +
+                    "It starts as pure joy, but as time goes on it turns to horror as they " +
                     "can't possibly cum any more, but can't get away. ",
                 button: [
                     { chatID: 12, text: "uh-uh-uhhhhhh", callback: "" }
@@ -1061,7 +1061,7 @@ room476.chat = function (chatID) {
             {
                 chatID: 25,
                 speaker: "river",
-                text: "I don't know. That mouth of yours says not, but that ass is saying yes. " +
+                text: "I don't know. That mouth of yours says no, but that ass is saying yes. " +
                     "Should I just shove it in dry and rip you open? ",
                 button: [
                     { chatID: 26, text: "What no! Don't shove it in at all!", callback: "pillory3" },

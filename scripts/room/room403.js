@@ -342,7 +342,7 @@ room403.chat = function (chatID) {
         {
             chatID: 7,
             speaker: "tiffany",
-            text: "Awww, don't worry about that. You're so cute no one will think you're a boy.!",
+            text: "Awww, don't worry about that. You're so cute no one will think you're a boy!",
             button: [
                 { chatID: 8, text: "No, I'm manly...", callback: "tif6" }
             ]
@@ -649,7 +649,7 @@ room403.chat = function (chatID) {
         {
             chatID: 44,
             speaker: "tiffany",
-            text: "Relax " + sc.n("me") + ". She works here, she's a professional. We need to get her option on your new panties. Try them on for us and " +
+            text: "Relax " + sc.n("me") + ". She works here, she's a professional. We need to get her opinion on your new panties. Try them on for us and " +
             "give us a fashion show!",
             button: [
                 { chatID: 45, text: "Oh um... sure", callback: "changeRoom6c" },
@@ -725,7 +725,7 @@ room403.chat = function (chatID) {
         {
             chatID: 53,
             speaker: "tiffany",
-            text: "What are you waiting for? Stretch my tight pussy with big cock of yours!",
+            text: "What are you waiting for? Stretch my tight pussy with the big cock of yours!",
             button: [
                 { chatID: 56, text: "Oh yea", callback: "changeRoom10" }
             ]
@@ -864,7 +864,7 @@ room403.chat = function (chatID) {
         {
             chatID: 70,
             speaker: "tiffany",
-            text: "Oh party pooper. Ok lets get you dressed.",
+            text: "Oh party pooper. Ok let's get you dressed.",
             button: [
                 { chatID: 65, text: "...", callback: "changeRoom11" }
             ]
