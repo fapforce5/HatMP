@@ -555,6 +555,8 @@ room28.dreams = function () {
         }
         else if (g.pass === 486)
             nav.bg("28_transformation/486.jpg");
+        else if (g.pass === 725)
+            nav.bg("752_whore/whore_sleep.webp");
         else if (g.pass === 950)
             nav.bg("950_cell/nap.webp");
         else if (g.pass === 952) {

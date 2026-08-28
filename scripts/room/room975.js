@@ -3,6 +3,9 @@ var room975 = {};
 room975.main = function () {
     let overlay = "";
     switch (g.pass) {
+        case "776kidnapped":
+            //bad fight with priest - taken back by river
+            break;
         case "azrael956":
             trophy.add(33);
             nav.bg("975_ending/azrael1_" + gender.pronoun("m") + ".webp");

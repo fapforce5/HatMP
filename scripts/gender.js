@@ -72,6 +72,14 @@ gender.pronoun = function (ptype) {
             return gender.isGirl() ? "sissy" : "faggot";
         case "asshole":
             return gender.isGirl() ? "bussy" : "asshole";
+        case "cunt":
+            return gender.isGirl() ? "cunt" : "ass cunt";
+            break;
+        case "pussy":
+            return gender.isGirl() ? "pussy" : "bussy";
+        case "bitches":
+            return gender.isGirl() ? "bitches" : "sissies";
+            break;
         case "sissy":
             return sissy.st[0].ach ? "sissy" : "boy";
         case "handome":
@@ -80,6 +88,12 @@ gender.pronoun = function (ptype) {
         case "mommy":
         case "daddy":
             return gender.isGirl() ? "mommy" : "daddy";
+        case "ami":
+            return gender.isGirl() ? "amie" : "ami";
+            break;
+        case "sir":
+            return gender.isGirl() ? "ma'am" : "sir";
+            break;
         default:
             console.log("gender.pronoun - not found: " + ptype);
     }

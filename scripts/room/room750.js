@@ -1,6 +1,7 @@
 ﻿//Room name
 var room750 = {};
 room750.main = function () {
+    g.pass = null;
     if (g.isNight()) {
         nav.button({
             "type": "btn",

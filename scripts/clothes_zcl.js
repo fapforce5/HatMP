@@ -489,6 +489,7 @@ zcl.amazon = function (top, left, ratio, mod, reverse) {
         if (mod !== "nodick") {
             if (cl.c.chastity !== null)
                 zcl.subDisplay("dick_chastity.png", top, left, ratio, reverse, w, h, f);
+            else if (cl.c.cock === 5) { }
             else if (cl.c.cock > 3)
                 zcl.subDisplay("dick_1.png", top, left, ratio, reverse, w, h, f);
             else if (cl.c.cock > 1)
@@ -800,27 +801,30 @@ zcl.legsup = function (top, left, ratio, mod, reverse, color = "w") {
     else if (mod.includes("compare")) {
         anus = "compare_" + color;
         zcl.subDisplay("body_" + gender.pronoun("f") + "_" + face + ".webp", top, left, ratio, reverse, w, h, f);
-        if (mod.includes("sg1"))
+
+        if (mod.includes("sg1") && cl.c.cock < 5)
             zcl.subDisplay("sg1.webp", top, left, ratio, reverse, w, h, f);
+
         zcl.subDisplay(anus + ".webp", top, left, ratio, reverse, w, h, f);
         zcl.subDisplay(dick + ".webp", top, left, ratio, reverse, w, h, f);
         return;
     }
-    else if (mod.includes("pussy")) {
+    else if (mod.includes("pussy") && cl.c.cock === 5) {
         if (mod.includes("creampie"))
             dick = "pussy_" + color + "_" + "creampie";
         else
             dick = "pussy_" + color;
     }
-    else if (mod.includes("fuck"))
-        anus = "fuck_" + color;
     else if (mod.includes("creampie"))
         anus = "creampie_" + color;
+    else if (mod.includes("fuck") || mod.includes("pussy"))
+        anus = "fuck_" + color;
+    
 
     
 
     zcl.subDisplay("body_" + gender.pronoun("f") + "_" + face + ".webp", top, left, ratio, reverse, w, h, f);
-    if (mod.includes("sg1"))
+    if (mod.includes("sg1") && cl.c.cock < 5)
         zcl.subDisplay("sg1.webp", top, left, ratio, reverse, w, h, f);
     if (cl.c.cock === 5) {
         zcl.subDisplay(anus + ".webp", top, left, ratio, reverse, w, h, f);
@@ -1203,6 +1207,7 @@ zcl.bent = function (top, left, ratio, mod, reverse = false) {
 
     if (cl.c.panties !== null && mod !== "pissass")
         zcl.subDisplay("panties.png", top, left, ratio, reverse, w, h, f);
+    else if (cl.c.cock === 5) { }
     else if (cl.c.chastity !== null) 
         zcl.subDisplay("dick_chastity.png", top, left, ratio, reverse, w, h, f);
     else if (gender.isCockTooSmallForSex())
@@ -1212,7 +1217,7 @@ zcl.bent = function (top, left, ratio, mod, reverse = false) {
 
     if (mod === "pissass")
         zcl.subDisplay("pissass.png", top, left, ratio, reverse, w, h, f);
-    else if (mod === "cum")
+    else if (mod === "cum" || gv.getButtCum().total > 0)
         zcl.subDisplay("cum.png", top, left, ratio, reverse, w, h, f);
 };
 

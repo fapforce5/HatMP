@@ -96,7 +96,12 @@ room526.btnclick = function (name) {
         case "zoey":
             nav.killall();
             nav.bg("526_bar/zoey.jpg");
-            if (sc.taskGetStep("zoey", "sex") === 2) {
+            if (missy.isenveloplive() && sc.getMission("zoey", "*help").notStarted) {
+                sc.startMission("zoey", "*help");
+                sc.completeMissionTask("zoey", "*help", 0);
+                chat(94, 526);
+            }
+            else if (sc.taskGetStep("zoey", "sex") === 2) {
                 if (inv.has("handcuff") && cl.c.chastity !== null) {
                     chat(40, 526);
                 }
@@ -1319,6 +1324,31 @@ room526.chat = function (chatID) {
                 "to fuck as much as I can until then. It really opened my eyes, ya know. ",
             button: [
                 { chatID: -1, text: "Totally. ", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 94,
+            speaker: "zoey",
+            text: "You look deep in thought. What you working on?",
+            button: [
+                { chatID: 95, text: "Just this long ass list I have to go through", callback: "" }
+            ]
+        },
+        {
+            chatID: 95,
+            speaker: "zoey",
+            text: "Quoi? What is the list of? ",
+            button: [
+                { chatID: 96, text: "People in town that may know stuff. ", callback: "" }
+            ]
+        },
+        {
+            chatID: 95,
+            speaker: "zoey",
+            text: "Youpi! I love lists and I know people. If you want help ask me at home.  " +
+                "J'adore percer les secrets coquins.",
+            button: [
+                { chatID: -1, text: "Oh. Totally. I will!", callback: "reset" }
             ]
         },
     ];

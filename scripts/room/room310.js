@@ -44,7 +44,10 @@ room310.btnclick = function (name) {
                 "height": 610,
                 "image": "310_secondfloor/dollmaker.png"
             }, 310)
-            if (g.isNight())
+            if (missy.getenvelope("dollmaker").active) {
+                chat(2, 310);
+            }
+            else if (g.isNight())
                 chat(0, 310);
             else
                 chat(1, 310);
@@ -80,6 +83,22 @@ room310.chat = function (chatID) {
             text: "I don't know you. Go away and let me play with my dolls.",
             button: [
                 { chatID: -1, text: "oh. sorry", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 2,
+            speaker: "dollmaker",
+            text: "I don't know you. Go away and let me play with my dolls.",
+            button: [
+                { chatID: 3, text: "I actually have a question about the C.U.M. cult. ", callback: "" }
+            ]
+        },
+        {
+            chatID: 3,
+            speaker: "dollmaker",
+            text: "Oh! We don't talk about them. Good bye sir! ",
+            button: [
+                { chatID: 4, text: "I uhhh. ", callback: "" }
             ]
         },
     ];

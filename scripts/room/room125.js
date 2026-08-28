@@ -1123,6 +1123,15 @@ room125.chatcatch = function (callback) {
             cl.undo();
             char.room(0);
             break;
+        case "missy0":
+            if (missy.getenvelope("jimmy").hasKey) {
+                chat(101, 125);
+            }
+            else {
+                chat(102, 125);
+            }
+            missy.setenvelope("jimmy");
+            break;
         default:
             break;
     }
@@ -2010,7 +2019,7 @@ room125.chat = function (chatID) {
                 text: sc.n("jimmy") + " can you do me a solid. I need to save some people from the cult. " +
                     "Do you know the code to the back gate? ",
                 button: [
-                    { chatID: -1, text: "...", callback: "" },
+                    { chatID: -1, text: "...", callback: "missy0" },
                 ]
             },
             {
@@ -2019,16 +2028,17 @@ room125.chat = function (chatID) {
                 text: "Totally. It's 1-2-3-4-5. Just be careful. They're looking for you. If I were you " +
                     "I would just leave town. If they get you I don't know what they'll do, but it ain't good. ",
                 button: [
-                    { chatID: -1, text: "Thanks " + sc.n("jimmy") + ". ", callback: "" },
+                    { chatID: -1, text: "Thanks " + sc.n("jimmy") + ". ", callback: "leave" },
                 ]
             },
             {
-                chatID: 100,
+                chatID: 102,
                 speaker: "me",
-                text: sc.n("jimmy") + " can you do me a solid. I need to save some people from the cult. " +
-                    "Do you know the code to the back gate? ",
+                text: "If I knew it I would totally tell you, but I have no idea. " +
+                    "You know they're looking for you. If I were you " +
+                    "I would just leave town. If they get you I don't know what they'll do, but it ain't good. ",
                 button: [
-                    { chatID: -1, text: "...", callback: "" },
+                    { chatID: -1, text: "Thanks " + sc.n("jimmy") + ". ", callback: "leave" },
                 ]
             },
         ];

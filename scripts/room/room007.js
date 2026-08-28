@@ -25,7 +25,7 @@ room7.main = function () {
         nav.bg("7_mainCharRoomAlt/e0.jpg");
         chat(27, 7);
     }
-    else if (g.dt.getDay() === 0) { //sunday
+    else if (g.dt.getDay() === 0 && sc.getMission("priest", "*closed").notStarted) { //sunday
         nav.bg("7_mainCharRoomAlt/wake_landlord_angry.jpg");
         chat(7, 7);
     }

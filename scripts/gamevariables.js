@@ -689,6 +689,12 @@ gv.init = function () {
         { id: 31, o: 6, title: "Exit before entry", display: "Lost anal virginity before penis", img: "analfirst.webp", ach: false, group: "anal", m: 0, s: 75, d: 0 },
         { id: 32, o: 6, title: "#ralph#", display: "Slurped cum from his asshole", img: "ralph.webp", ach: false, group: "event", m: 0, s: 75, d: 0 },
         { id: 33, o: 500, title: "Bad End", display: "The virgin birth", img: "end_azrael.webp", ach: false, group: "end", m: 100, s: 100, d: 0 },
+        { id: 34, o: 500, title: "Saved the Nun", display: "You fucked her, but saved her too", img: "nunpreg.webp", ach: false, group: "event", m: 0, s: 0, d: 50 },
+        { id: 35, o: 500, title: "Fucked the Nun", display: "Planted your seed in her pussy", img: "nun.webp", ach: false, group: "fuck", m: 0, s: 0, d: 50 },
+
+
+
+        
     ];
     
     future.st = new Array();

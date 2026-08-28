@@ -76,27 +76,27 @@ missy.init = function () {
     ];
 
     missy.envelope = [
-        { n: "charlie", roomID: 650, key: false, ach: false }, //d
-        { n: "treyvon", roomID: 50, key: false, ach: false }, //d
-        { n: "utah", roomID: 875, key: false, ach: false },
-        { n: "jimmy", roomID: 125, key: false, ach: false },
-        { n: "spanky", roomID: 404, key: false, ach: false },//d
-        { n: "construction", roomID: 101, key: false, ach: false },//d
-        { n: "river", roomID: 103, key: false, ach: false },
-        { n: "chad", roomID: 551, key: false, ach: false },//d
-        { n: "g", roomID: 551, key: false, ach: false },//d
-        { n: "jeffery", roomID: 250, key: false, ach: false },//d
-        { n: "chef", roomID: 150, key: false, ach: false },
-        { n: "cindy", roomID: 901, key: false, ach: false },
-        { n: "cop2", roomID: 450, key: false, ach: false },
-        { n: "doc", roomID: 750, key: false, ach: false },//d
-        { n: "whore", roomID: 752, key: false, ach: false },
-        { n: "priest", roomID: 776, key: false, ach: false },
-        { n: "dollmaker", roomID: 300, key: false, ach: false },
-        { n: "tony", roomID: 600, key: false, ach: false },
-        { n: "!jail0", roomID: 376, key: false, ach: false },//d
-        { n: "!seller", roomID: 485, key: false, ach: false },//d
-        { n: "!barker", roomID: 486, key: false, ach: false },//d
+        { n: "charlie", roomID: 650, key: false, ach: false, canBe: true }, //d
+        { n: "treyvon", roomID: 50, key: false, ach: false, canBe: true }, //d
+        { n: "utah", roomID: 875, key: false, ach: false, canBe: true },
+        { n: "jimmy", roomID: 125, key: false, ach: false, canBe: true },//d
+        { n: "spanky", roomID: 404, key: false, ach: false, canBe: true },//d
+        { n: "construction", roomID: 101, key: false, ach: false, canBe: true },//d
+        { n: "river", roomID: 103, key: false, ach: false, canBe: true },
+        { n: "chad", roomID: 551, key: false, ach: false, canBe: true },//d
+        { n: "g", roomID: 551, key: false, ach: false, canBe: true },//d
+        { n: "jeffery", roomID: 250, key: false, ach: false, canBe: true },//d
+        { n: "chef", roomID: 150, key: false, ach: false, canBe: true },
+        { n: "cindy", roomID: 901, key: false, ach: false, canBe: true },//d
+        { n: "cop", roomID: 450, key: false, ach: false, canBe: false },//d
+        { n: "doc", roomID: 750, key: false, ach: false, canBe: true },//d
+        { n: "whore", roomID: 752, key: false, ach: false, canBe: true },//d
+        { n: "priest", roomID: 776, key: false, ach: false, canBe: false },
+        { n: "dollmaker", roomID: 300, key: false, ach: false, canBe: true },
+        { n: "tony", roomID: 600, key: false, ach: false, canBe: true },
+        { n: "!jail0", roomID: 376, key: false, ach: false, canBe: true },//d
+        { n: "!seller", roomID: 485, key: false, ach: false, canBe: true },//d
+        { n: "!barker", roomID: 486, key: false, ach: false, canBe: true },//d
     ];
 };
 
@@ -219,8 +219,12 @@ missy.buildCaseEntry = function (caseId, active, notReadyTxt, callback) {
     };
 };
 
+missy.isenveloplive = function () {
+    return sc.getMissionTask("p", "*missy", 3).inProgress;
+};
+
 missy.getenvelope = function (name) {
-    let mcomplete = sc.getMissionTask("p", "*missy", 3).inProgress;
+    let mcomplete = missy.isenveloplive();
     if (mcomplete) {
         for (let i = 0; i < missy.envelope.length; i++) {
             if (missy.envelope[i].n === name) {
@@ -246,15 +250,18 @@ missy.getenvelope = function (name) {
 };
 
 missy.setenvelope = function (name) {
-    if (sc.getMissionTask("p", "*missy", 3).inProgress) {
+    if (missy.isenveloplive()) {
         for (let i = 0; i < missy.envelope.length; i++) {
             if (missy.envelope[i].n === name) {
                 missy.envelope[i].ach = true;
                 if (missy.envelope[i].key) {
-                    sc.completeMissionTask("p", "info", 3);
-                    sc.startMissionTask("p", "info", 4);
+                    sc.completeMissionTask("p", "*missy", 3);
+                    sc.startMissionTask("p", "*missy", 4);
                     g.popUpNotice("YOU HAVE THE CODE!!");
                     g.popUpNotice("Return to " + sc.n("p") + " at Missy's Detective Agency!");
+                }
+                else {
+                    g.popUpNotice(sc.n(name) + " crossed off this list. ");
                 }
             }
         }

@@ -1618,6 +1618,8 @@ rape.displayMenu = function (menu) {
             if (inv.has("horn") && rape.location === "forest" && !wovlesId.includes(rape.char.num)) {
                 btnList.push({ n: "icon_horn", i: "icon_horn.png" });
             }
+
+            btnList.push({ n: "icon_tittymilk", i: "icon_tittymilk.png" });
             break;
         case "choice":
             var subLevelChoice = levels.get("sub").l;

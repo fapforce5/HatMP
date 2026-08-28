@@ -95,7 +95,7 @@ sc.init = function () {
         { name: "doc", display: "Dr. Strangelove", image: "doctor.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, hex: "#734B30" },
         { name: "whore", display: "Dirty Whore", image: "whore.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, hex: "#734B30" },
 
-        { name: "priest", display: "Father O'Mally", image: "priest.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: 0, p: true, hex: "#EAE9E7" },
+        { name: "priest", display: "Father O’Mally", image: "priest.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: 0, p: true, hex: "#EAE9E7" },
         { name: "nun", display: "Sister Jane", image: "nun.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: 0, p: true, hex: "#EAE9E7" },
 
         { name: "bimbo", display: "Bimbo", image: "bimbo.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: true, phone: -1, p: true, hex: "#F7F5C9" },
@@ -111,7 +111,6 @@ sc.init = function () {
         { name: "govlady", display: "Ms. Pixie", image: "govlady.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: true, hex: "" },
 
         { name: "daddy", display: "Daddy", image: "daddy.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, hex: "" },
-
 
         { name: "cult", display: "Cult", image: "cult.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, hex: "" },
         { name: "priapus", display: "Priapus", image: "Priapus.png", step: 0, secret: 0, c: 0, l: 0, show: false, setName: false, phone: -1, p: false, hex: "" },
@@ -506,6 +505,13 @@ sc.init = function () {
                             { id: 0, txt: "New petite amie.", show: true, mStatus: 0, roomId: 525 },
                         ]
                 },
+                {
+                    missionName: "*help", mStatus: -1, title: "Help with the list", desc: "I hear stuff, let me help", task:
+                        [
+                            { id: 0, txt: "Spoke at the bar. ", show: true, mStatus: 0, roomId: 525 },
+                            { id: 1, txt: "Spoke at the home. ", show: true, mStatus: 0, roomId: 500 },
+                        ]
+                },
             ]
         },
         {
@@ -821,6 +827,12 @@ sc.init = function () {
                             { id: 1, txt: "Final Warning", show: true, mStatus: 0, roomId: 450 },
                             { id: 2, txt: "Face rape", show: true, mStatus: 0, roomId: 450 },
                             { id: 3, txt: "You know why you keep coming back.", show: true, mStatus: 0, roomId: 450 },
+                        ]
+                },
+                {
+                    missionName: "*escape", mStatus: 0, title: "Escaped", desc: "Escaped back to the compound", task:
+                        [
+                            { id: 0, txt: "Escaped back to the compound", show: true, mStatus: 0, roomId: 450 },
                         ]
                 },
             ]
@@ -1421,7 +1433,7 @@ sc.init = function () {
                     missionName: "chef", mStatus: 0, title: "Sex", desc: "I love fucking sluts", task:
                         [
                             { id: 0, txt: "Meet", show: true, mStatus: 0, roomId: 155 },
-                            { id: 1, txt: "Take his fat greasy hog up your ass", show: true, mStatus: 0, roomId: 155 },
+                            { id: 1, txt: "Take his fat greasy hog in your mouth", show: true, mStatus: 0, roomId: 155 },
                         ]
                 }
             ]
@@ -1525,7 +1537,14 @@ sc.init = function () {
                     missionName: "cult", mStatus: 0, title: "Connections", desc: "Meet as a sissy", task:
                         [
                             { id: 0, txt: "Reintroduce", show: true, mStatus: 0, roomId: 950 },
-                            { id: 1, txt: "Next release", show: true, mStatus: 0, roomId: 775 },
+                            //{ id: 1, txt: "Next release", show: true, mStatus: 0, roomId: 775 },
+                        ]
+                },
+                {
+                    missionName: "*closed", mStatus: 0, title: "Church is closed", desc: "No longer can go to the church", task:
+                        [
+                            { id: 0, txt: "Sold the Nun's soul", show: true, mStatus: 0, roomId: 950 },
+                            { id: 1, txt: "Busted!", show: true, mStatus: 0, roomId: 775 },
                         ]
                 },
             ]
@@ -1538,6 +1557,12 @@ sc.init = function () {
                             { id: 0, txt: "Grab tits", show: true, mStatus: 0, roomId: 775 },
                             { id: 1, txt: "Took virginity", show: true, mStatus: 0, roomId: 775 },
                             { id: 2, txt: "Cycle of sin", show: true, mStatus: 0, roomId: 775 },
+                        ]
+                },
+                {
+                    missionName: "*sin", mStatus: 0, title: "Free her", desc: "Her only sin was falling in love.", task:
+                        [
+                            { id: 0, txt: "Get the list and talk to the priest", show: true, mStatus: 0, roomId: 775 },
                         ]
                 },
             ]
@@ -1779,6 +1804,26 @@ sc.init = function () {
                             { id: 0, txt: "Accepted the invite", show: true, mStatus: 0, roomId: 479 },
                         ]
                 },
+            ]
+        },
+        {
+            name: "whore", mission: [
+                {
+                    missionName: "*assistant", mStatus: 0, title: "Assistant", desc: "My personal ass-isstant", task:
+                        [
+                            { id: 0, txt: "Come back anytime", show: true, mStatus: 0, roomId: 752 },
+                        ]
+                }
+            ]
+        },
+        {
+            name: "dollmaker", mission: [
+                {
+                    missionName: "*dolls", mStatus: 0, title: "Dolls", desc: "Living dolls", task:
+                        [
+                            { id: 0, txt: "Come back anytime", show: true, mStatus: 0, roomId: 752 },
+                        ]
+                }
             ]
         },
     ];

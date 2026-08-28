@@ -102,6 +102,20 @@ room901.btnclick = function (name) {
     var i;
     switch (name) {
         case "girl":
+            if (missy.getenvelope("cindy").active) {
+                if (cl.appearance() === 0) {
+                    if (sc.getMissionTask("cindy", "fuck", 0).complete) {
+                        chat(44, 901);
+                    }
+                    else {
+                        chat(48, 901);
+                    }
+                }
+                else {
+                    chat(52, 901);
+                }
+                return;
+            }
             var cindy = sc.taskGetStep("cindy", "fuck");
             nav.killbutton("girl");
             nav.button({
@@ -435,6 +449,33 @@ room901.chatcatch = function (callback) {
             sc.completeMissionTask("tim", "fuck", 0);
             invoker.invokeCurrent("chatcatch", "reset");
             break;
+        case "missy45":
+            if (missy.getenvelope("cindy").hasKey) {
+                chat(46, 901);
+            }
+            else {
+                chat(47, 901);
+            }
+            missy.setenvelope("cindy");
+            break;
+        case "missy49":
+            if (missy.getenvelope("cindy").hasKey) {
+                chat(51, 901);
+            }
+            else {
+                chat(50, 901);
+                missy.setenvelope("cindy");
+            }
+            break;
+        case "missy58":
+            if (missy.getenvelope("cindy").hasKey) {
+                chat(59, 901);
+            }
+            else {
+                chat(60, 901);
+            }
+            missy.setenvelope("cindy");
+            break;
         case "leave":
             char.room(0);
             break;
@@ -714,7 +755,7 @@ room901.chat = function(chatID){
         {
             chatID: 32,
             speaker: "cindy",
-            text: "Ewwww gross! what happened to you! I only like manly men, you look like a chick! Don't talk to me.",
+            text: "Ewwww gross! What happened to you! I only like manly men, you look like a chick! Don't talk to me.",
             button: [
                 { chatID: -1, text: "Oh.. ouch", callback: "reset" }
             ]
@@ -809,6 +850,153 @@ room901.chat = function(chatID){
             text: "Looks like the pool's closed for the night. Better get going.",
             button: [
                 { chatID: -1, text: "[Leave]", callback: "leave" },
+            ]
+        },
+        {
+            chatID: 44,
+            speaker: "cindy",
+            text: "Hey sexy! ",
+            button: [
+                { chatID: 45, text: "Hey beautiful. Got a question for you. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 45,
+            speaker: "cindy",
+            text: "Anything for the best swimmer in town!",
+            button: [
+                { chatID: -1, text: "Do you know the code for the back door into C.U.M.?", callback: "missy45" },
+            ]
+        },
+        {
+            chatID: 46,
+            speaker: "cindy",
+            text: "Yeah. It's 1-2-3-4-5. That's also the password to my pussy. You should hit me up on " +
+                "the dance floor sexy! ",
+            button: [
+                { chatID: -1, text: "I surely will!", callback: "reset" },
+            ]
+        },
+        {
+            chatID: 47,
+            speaker: "cindy",
+            text: "Awww. Sorry, I'm just a little Milk Maid. They don't give us information like that. " +
+                "I hope you're not too mad at me. ",
+            button: [
+                { chatID: -1, text: "All good. Thanks", callback: "reset" },
+            ]
+        },
+        {
+            chatID: 48,
+            speaker: "cindy",
+            text: "What's up? ",
+            button: [
+                { chatID: 49, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 49,
+            speaker: "me",
+            text: "I don't suppose you can help me. I have to meet a friend at the C.U.M. compound but " +
+                "I want to suprise her. Any chance you know the password to the back door so I can " +
+                "sneak in? ",
+            button: [
+                { chatID: -1, text: "...", callback: "missy49" },
+            ]
+        },
+        {
+            chatID: 50,
+            speaker: "cindy",
+            text: "Sorry. I don't know it, but good luck to you.  ",
+            button: [
+                { chatID: -1, text: "Oh. Thanks. ", callback: "reset" },
+            ]
+        },
+        {
+            chatID: 51,
+            speaker: "cindy",
+            text: "I do know it, but I'll only tell if you beat me in a swim race. ",
+            button: [
+                { chatID: -1, text: "Oh it's on! (Race her)", callback: "swimfan" },
+                { chatID: -1, text: "Some other time. ", callback: "reset" },
+            ]
+        },
+        {
+            chatID: 52,
+            speaker: "cindy",
+            text: "*ugh* Gross. What do you want bitch? ",
+            button: [
+                { chatID: 53, text: "I want in your panties, bitch! ", callback: "" },
+                { chatID: 54, text: "Just seeing if we can be friends? ", callback: "" },
+                { chatID: 56, text: "Just came to say hi to a fellow Milk Maid", callback: "" },
+                { chatID: 55, text: "Can I lick your butthole? ", callback: "" },
+            ]
+        },
+        {
+            chatID: 53,
+            speaker: "cindy",
+            text: "You can't have my panties, bitch! I've got work to do! ",
+            button: [
+                { chatID: -1, text: "Drat! that didn't work", callback: "reset" },
+            ]
+        },
+        {
+            chatID: 54,
+            speaker: "cindy",
+            text: "*gag* I think I just threw up in my mouth a little bit.  ",
+            button: [
+                { chatID: -1, text: "Drat! that didn't work", callback: "reset" },
+            ]
+        },
+        {
+            chatID: 55,
+            speaker: "cindy",
+            text: "What? No you can not lick my butthole! Do I look like one of those dirty sluts? Barf! ",
+            button: [
+                { chatID: -1, text: "Drat! that didn't work", callback: "reset" },
+            ]
+        },
+        {
+            chatID: 56,
+            speaker: "cindy",
+            text: "Really! I haven't seen you around! That's so awesome. Love a fellow Milk Maid. Really " +
+                "it's the hardest job there is. ",
+            button: [
+                { chatID: 57, text: "I know! Those boys always complain, but they don't know how much work it is to get them off!", callback: "" },
+            ]
+        },
+        {
+            chatID: 57,
+            speaker: "cindy",
+            text: "For real! I was sucking this one guys dick and he was purposely holding back. I had to " +
+                "suck his dick for like 20 minutes. Like, dude, if I'm sucking your dick just cum! You don't " +
+                "get bonus points for taking forever. ",
+            button: [
+                { chatID: 58, text: "I have to ask. I forgot my purse at the compound and I need to run back and get it. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 58,
+            speaker: "cindy",
+            text: "Just go in and grab it. They don't care as long as you're a follower. ",
+            button: [
+                { chatID: -1, text: "I'm trying to avoid this one guy. He keeps trying to shove his fist up my butt. Is there any other way?", callback: "missy58" },
+            ]
+        },
+        {
+            chatID: 59,
+            speaker: "cindy",
+            text: "Those perverts are the worst! Yeah, sneak in the back door. The code's 1-2-3-4-5. ",
+            button: [
+                { chatID: -1, text: "Thanks! You're the best!", callback: "reset" },
+            ]
+        },
+        {
+            chatID: 59,
+            speaker: "cindy",
+            text: "There's a back door, but I totally don't know the code. Sorry. ",
+            button: [
+                { chatID: -1, text: "No worries! You're the best!", callback: "reset" },
             ]
         },
     ];

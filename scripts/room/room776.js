@@ -2,6 +2,25 @@
 
 var room776 = {};
 room776.main = function () {
+    if (sc.getMission("priest", "*closed").startedOrComplete) {
+        if (sc.getMissionTask("priest", "*closed", 0).success) {
+            nav.button({
+                "type": "img",
+                "name": "fatnun",
+                "left": 1131,
+                "top": 64,
+                "width": 502,
+                "height": 1016,
+                "image": "776_church/fatnun.webp"
+            }, 776);
+            chat(65, 776);
+        }
+        else {
+            nav.bg("map/776_close.jpg", "map/776_closenight.jpg");
+            chat(66, 776);
+        }
+        return;
+    }
     if (!g.isNight()) {
         if (sc.getMissionTask("priest", "confession", 13).complete) {
             nav.button({
@@ -13,7 +32,7 @@ room776.main = function () {
                 "height": 1016,
                 "image": "776_church/fatnun.webp"
             }, 776);
-            
+
         }
         else {
             if (!daily.get("nun")) {
@@ -44,6 +63,12 @@ room776.main = function () {
                 }
             }
         }
+        if (missy.getenvelope("priest").active) {
+            chat(33, 776);
+        }
+    }
+    else if (missy.getenvelope("priest").active) {
+        sc.select("icon_sneak", "776_church/icon_sneak.webp", 1);
     }
     sc.select("pray", "776_church/pray.webp", 0);
     nav.buildnav([0]);
@@ -97,6 +122,72 @@ room776.btnclick = function (name) {
                     break;
             }
             break;
+        case "icon_sneak":
+            nav.kill();
+            nav.bg("776_church/hall.webp");
+            sc.select("icon_office", "776_church/icon_office.webp", 0);
+            sc.select("icon_basement", "776_church/icon_basement.webp", 1);
+            sc.select("icon_leave", "316_livingroom/icon_leave.png", 2);
+            break;
+        case "icon_leave":
+            char.room(0);
+            break;
+        case "icon_basement":
+            nav.kill();
+            nav.bg("776_church/hall_lock.webp");
+            chat(34, 776);
+            break;
+        case "icon_office":
+            nav.killall();
+            nav.bg("776_church/office.webp");
+            nav.button({
+                "type": "grab",
+                "name": "lockbox",
+                "left": 888,
+                "top": 692,
+                "width": 140,
+                "height": 65,
+                "image": "776_church/box.webp"
+            }, 776);
+            nav.button({
+                "type": "grab",
+                "name": "book",
+                "left": 794,
+                "top": 756,
+                "width": 135,
+                "height": 45,
+                "image": "776_church/book.webp"
+            }, 776);
+            nav.back("icon_sneak");
+            break;
+        case "book":
+            nav.kill();
+            revents.cultbook(776, "icon_office");
+            break;
+        case "lockbox":
+            chat(64, 776);
+            break;
+        case "picklocklose":
+            chat(35, 776);
+            break;
+        case "picklockwin":
+            chat(36, 776);
+            break;
+        case "fightwin":
+            nav.kill();
+            nav.bg("776_church/basement5.webp");
+            chat(48, 776);
+            break;
+        case "fightlose":
+            nav.kill();
+            nav.bg("999_phone/black.jpg");
+            chat(54, 776);
+            break;
+        case "fightrun":
+            nav.kill();
+            nav.bg("map/776_close.jpg", "map/776_closenight.jpg");
+            chat(57, 776);
+            break;
         default:
             break;
     }
@@ -110,11 +201,28 @@ room776.chatcatch = function (callback) {
         case "nun_3":
         case "nun_4":
         case "nun_5":
+        case "basement0":
+        case "basement2":
+        case "basement6":
+        case "basement7":
+        case "basement8":
             nav.killall();
             nav.bg("776_church/" + callback + ".webp");
             break;
+        case "basement3":
+            if (missy.getenvelope("priest").hasKey) {
+                nav.bg("776_church/basement3.webp");
+                chat(45, 776);
+            }
+            else {
+                nav.bg("776_church/basement4.webp");
+                chat(47, 776);
+            }
+            missy.setenvelope("priest");
+            break;
         case "confess-1":
             nav.bg("776_church/confess.webp");
+            trophy.add(35);
             sc.completeMissionTask("nun", "sin", 1);
             sc.startMissionTask("priest", "confession", 13);
             levels.fuckpussy("nun");
@@ -180,6 +288,57 @@ room776.chatcatch = function (callback) {
             break;
         case "killnun":
             nav.killbutton("nun");
+            break;
+        case "icon_sneak":
+            room776.btnclick("icon_sneak");
+            break;
+        case "picklock":
+            lockpick.init(4, "picklockwin", "picklocklose", 60, 776);
+            break;
+        case "basement1":
+            if (sc.getMission("nun", "*sin").startedOrComplete) {
+                nav.bg("776_church/basement1.webp");
+                chat(38, 776);
+            }
+            else {
+                nav.bg("776_church/basement9.webp");
+                chat(58, 776);
+            }
+            break;
+        case "fight":
+            quickFight.init(8, sc.n("priest"), "fightwin", "fightlose", "fightrun", 776);
+            break;
+        case "savethenun":
+            trophy.add(34);
+            missy.setenvelope("priest");
+            sc.startMission("priest", "*closed");
+            sc.completeMissionTask("priest", "*closed", 1);
+            char.addtime(180);
+            char.room(0);
+            break;
+        case "orgycode":
+            if (missy.getenvelope("priest").hasKey) {
+                chat(61, 776);
+            }
+            else {
+                chat(63, 776);
+            }
+            missy.setenvelope("priest");
+            break;
+        case "badend":
+            g.pass = "776kidnapped";
+            char.room(975);
+            break;
+        case "nolongerwelcom":
+            missy.setenvelope("priest");
+            sc.startMission("priest", "*closed");
+            sc.completeMissionTask("priest", "*closed", 0);
+            char.addtime(180);
+            char.room(0);
+            break;
+        case "leave":
+            char.addtime(15);
+            char.room(0);
             break;
         default:
             break;
@@ -480,6 +639,306 @@ room776.chat = function (chatID) {
             text: "You stink, just like your sinful actions. ",
             button: [
                 { chatID: -1, text: "rude much?", callback: "" },
+            ]
+        },
+        {
+            chatID: 33,
+            speaker: "thinking",
+            text: "He's not going to just give me the code. I should come in at night and see if I can " +
+                "find anything. I know this priest is dirty, I just need to prove it. ",
+            button: [
+                { chatID: -1, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 34,
+            speaker: "thinking",
+            text: "Drat! It's locked. Really well. ",
+            button: [
+                { chatID: -1, text: "[Pick the lock]", callback: "picklock" },
+                { chatID: -1, text: "[Try something else]", callback: "icon_sneak" },
+            ]
+        },
+        {
+            chatID: 35,
+            speaker: "thinking",
+            text: "Damn. That lock is hard! ",
+            button: [
+                { chatID: -1, text: "[Try again]", callback: "picklock" },
+                { chatID: -1, text: "[Try something else]", callback: "icon_sneak" },
+            ]
+        },
+        {
+            chatID: 36,
+            speaker: "thinking",
+            text: "Let's see what's down here. Nothing crazy I hope...",
+            button: [
+                { chatID: 37, text: "[Enter the basement]", callback: "basement0" },
+            ]
+        },
+        {
+            chatID: 37,
+            speaker: "thinking",
+            text: "Another locked door? Someone's trying to keep a secret. ",
+            button: [
+                { chatID: -1, text: "[Pick the lock and enter the room]", callback: "basement1" },
+            ]
+        },
+        {
+            chatID: 38,
+            speaker: "priest",
+            text: "Oh! What are you doing here?  ",
+            button: [
+                { chatID: 39, text: "What am I doing here? What are you doing!", callback: "" },
+            ]
+        },
+        {
+            chatID: 39,
+            speaker: "priest",
+            text: "This is my church and my flock. I am simply leading my people by the word of God. " +
+                "You are no longer welcome under my roof. I know what you've done and God is displeased. " +
+                "No amount of confession will absolve you of your wicked sins! ",
+            button: [
+                { chatID: 40, text: "My sins? You have a pregnant woman tied up! ", callback: "" },
+            ]
+        },
+        {
+            chatID: 40,
+            speaker: "priest",
+            text: "She is just another example of your sins. This was the nun you turned to satan and " +
+                "impregnated. Another one of my sheep that suffers for your sins. So if you don't " +
+                "mind I'm going to return to punishing her. I don't care where you go, but you are no " +
+                "longer welcome as part of my flock. ",
+            button: [
+                { chatID: 41, text: "You let her go! ", callback: "" },
+            ]
+        },
+        {
+            chatID: 41,
+            speaker: "priest",
+            text: "She's here of her own volition. " + sc.n("nun") + ", tell this sinner that you wish to stay " +
+                "tell him you are where you belong. ",
+            button: [
+                { chatID: 42, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 42,
+            speaker: "nun",
+            text: "I have sinned. I deserve to be where I am...",
+            button: [
+                { chatID: 43, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 43,
+            speaker: "priest",
+            text: "You have no business here. Now begone before I involve that simpleton, " + sc.n("ubel") +
+                ", and his squad of goons to take care of you! ",
+            button: [
+                { chatID: 44, text: "I will leave, but only if you tell me the code to the back door of C.U.M.", callback: "" },
+                { chatID: -1, text: "I'm not leaving her here with you! [Fight chance: " + quickFight.getStats(8, 100).winProb + "]", callback: "fight" },
+            ]
+        },
+        {
+            chatID: 44,
+            speaker: "priest",
+            text: "Fine. Follow me up to my office. ",
+            button: [
+                { chatID: -1, text: "[Follow him]", callback: "basement3" },
+            ]
+        },
+        {
+            chatID: 45,
+            speaker: "priest",
+            text: "I knew you would see reason. Even a soul wrapped in the coils of Satan can find God's light. " +
+                "The code for the back door is 1-2-3-4-5. Now, if you'll excuse me, I have actual souls to save.",
+            button: [
+                { chatID: -1, text: "Thanks. You get back to punishing that nun. [Leave]", callback: "nolongerwelcom" },
+            ]
+        },
+        {
+            chatID: 46,
+            speaker: "priest",
+            text: "noop",
+            button: [
+                { chatID: -1, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 47,
+            speaker: "priest",
+            text: "A fool to the last. Gentlemen, take the garbage out. " + gender.pronoun("he") + 
+                " is no longer welcome in this place of worship. ",
+            button: [
+                { chatID: -1, text: "Grrr! Someday you'll pay for all this!", callback: "nolongerwelcom" },
+            ]
+        },
+        {
+            chatID: 48,
+            speaker: "nun",
+            text: "Did.. Did you just punch out " + sc.n("priest") + "? ",
+            button: [
+                { chatID: 49, text: "Yes. I suppose I did.", callback: "" },
+            ]
+        },
+        {
+            chatID: 49,
+            speaker: "nun",
+            text: "Are you going to rape me again? If you do, please don't touch my butt. It hurts so much. ",
+            button: [
+                { chatID: 50, text: "What? No. Not a chance. I'm going to free you! I never raped you.", callback: "basement6" },
+            ]
+        },
+        {
+            chatID: 50,
+            speaker: "nun",
+            text: sc.n("priest") + " said you did. You used the power of satan to trick and seduce me against " +
+                "my will. That's why I had to be punished. I have the power of satan over me and punishment " +
+                "is the only way to save my child. ",
+            button: [
+                { chatID: 52, text: "Oh wow. Ok. How about this. Let me call the police. Hopefully they can help. [Call the police]", callback: "basement7" },
+            ]
+        },
+        {
+            chatID: 51,
+            speaker: "nun",
+            text: "noop",
+            button: [
+                { chatID: 52, text: "", callback: "basement7" },
+            ]
+        },
+        {
+            chatID: 52,
+            speaker: "wyatt",
+            text: "Thank you for the call. That poor nun is going to take years of therapy to get over " +
+                "the ghastly events that happened to her. Turns out " + sc.n("priest") + " was also helping C.U.M. out with " +
+                "some app. ",
+            button: [
+                { chatID: 53, text: "Some app?", callback: "" },
+            ]
+        },
+        {
+            chatID: 53,
+            speaker: "wyatt",
+            text: "Yes, the church was providing the names to C.U.M. with " +
+                "this Purity app in return for sex and money. As an avid member of the church this bust " +
+                "really hurts. I'm just glad you notified us before more young men ended up being taken " +
+                "away by that cult. Anyway I've got to get back to the scene. ",
+            button: [
+                { chatID: -1, text: "Bye ", callback: "savethenun" },
+            ]
+        },
+        {
+            chatID: 54,
+            speaker: "thinking",
+            text: "Ohhh, my head! I can't believe I lost a fight with that wimp... ",
+            button: [
+                { chatID: 55, text: "[Open your eyes]", callback: "basement8" },
+            ]
+        },
+        {
+            chatID: 55,
+            speaker: "river",
+            text: "Well well well. Look who finally woke up. ",
+            button: [
+                { chatID: 56, text: sc.n("river") + "!", callback: "" },
+            ]
+        },
+        {
+            chatID: 56,
+            speaker: "river",
+            text: "We were going to leave you alone until the heat died off, but not now. Can't have you " +
+                "messing with our friend " + sc.n("priest") + ". Let's take you back to your new home so " +
+                "we can all take turns on you then throw you in the swamps. " +
+                "I'm going to enjoy this more than you know. Hehehe",
+            button: [
+                { chatID: -1, text: "...fuck", callback: "badend" },
+            ]
+        },
+        {
+            chatID: 57,
+            speaker: "thinking",
+            text: "Crap! That was scary. I need to avoid this place from now on. " + sc.n("priest") +
+                " now knows that I know all his secrets. ",
+            button: [
+                { chatID: -1, text: "[Leave]", callback: "nolongerwelcom" },
+            ]
+        },
+        {
+            chatID: 58,
+            speaker: "priest",
+            text: "*ugh* What are you doing here? ",
+            button: [
+                { chatID: 59, text: "What are you doing here? ", callback: "" },
+            ]
+        },
+        {
+            chatID: 59,
+            speaker: "!butler",
+            text: "*sigh* Can you two wrap this up. My boner pills won't last forever. ",
+            button: [
+                { chatID: 60, text: "Oh. " + sc.n("priest") + " do you have the code for the back door to C.U.M.?", callback: "" },
+            ]
+        },
+        {
+            chatID: 60,
+            speaker: "!rex",
+            text: "You came here for some stupid code. " + sc.n("priest") + " just give 'em the code so " +
+                "we can have our fun!",
+            button: [
+                { chatID: -1, text: "...", callback: "orgycode" },
+            ]
+        },
+        {
+            chatID: 61,
+            speaker: "priest",
+            text: "*ugh* It's 1-2-3-4-5. Now get so we may enjoy ourselves. ",
+            button: [
+                { chatID: -1, text: "Ok. Thanks!", callback: "leave" },
+                { chatID: 62, text: "So, uh. Can I join you?", callback: "" },
+            ]
+        },
+        {
+            chatID: 62,
+            speaker: "!butler",
+            text: "Gross, no. You have your answer, now go before I lose my boner. ",
+            button: [
+                { chatID: -1, text: "ok ok. I'm going", callback: "leave" },
+            ]
+        },
+        {
+            chatID: 63,
+            speaker: "priest",
+            text: "How would I know? I'm not a member of C.U.M. Now if you don't mind. ",
+            button: [
+                { chatID: -1, text: "Ok. Thanks, bye!", callback: "leave" },
+                { chatID: 62, text: "So, uh. Can I join you?", callback: "" },
+            ]
+        },
+        {
+            chatID: 64,
+            speaker: "thinking",
+            text: "Locked, and my lock pick won't fit a lock of this size. ",
+            button: [
+                { chatID: -1, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 65,
+            speaker: "!fatnun",
+            text: "I was told that our doors are closed to you. I give you blessing on your journey outside " +
+                "the church. ",
+            button: [
+                { chatID: -1, text: "Drat!", callback: "leave" },
+            ]
+        },
+        {
+            chatID: 66,
+            speaker: "thinking",
+            text: "The church is locked up tight and closed. ",
+            button: [
+                { chatID: -1, text: "...", callback: "leave" },
             ]
         },
     ];

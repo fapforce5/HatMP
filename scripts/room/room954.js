@@ -211,6 +211,11 @@ room954.chatcatch = function (callback) {
                 sc.completeMissionTask("g", "secret", 0, true);
             }
 
+            if (sc.getMissionTask("nun", "sin", 1).startedOrComplete) {
+                sc.completeMissionTopLevelOnly("nun", "sin");
+                sc.startMission("nun", "*sin");
+            }
+
             sc.completeMissionTopLevelOnly("lola", "talk");
             sc.completeMissionTopLevelOnly("lola", "massage");
             sc.completeMissionTopLevelOnly("lola", "games");

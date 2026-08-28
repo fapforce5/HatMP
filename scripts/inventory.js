@@ -105,6 +105,7 @@ inv.init = function () {
         { type: "o", name: "reddoor", display: "Red Door Key", entry: false, count: null, cost: 0, buy: null, image: "redroom.png", n: false, desc: "Red Door Key" },
         { type: "o", name: "key202", display: "Apartment 202 Key", entry: false, count: null, cost: 0, buy: null, image: "key202.png", n: false, desc: "Key for Holly, Dolly, and Molly's Apartment" },
         { type: "o", name: "cavekey", display: "Cave Key", entry: false, count: null, cost: 0, buy: null, image: "cavekey.png", n: false, desc: "Key to get into the forest cave." },
+        
         { type: "o", name: "lolalocker", display: "Locker combo", entry: false, count: null, cost: 0, buy: null, image: "lolalocker.png", n: false, desc: "Lola's Swim Locker Combo" },
         { type: "o", name: "evaphoto", display: "Boobie Pictures", entry: false, count: 0, cost: 0, buy: null, image: "eva_pic.png", n: false, desc: "Eva's Boobie Pictures" },
 

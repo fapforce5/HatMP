@@ -21,68 +21,85 @@ room450.main = function () {
         var btnList = new Array();
 
         if (g.isNight()) {
-            var copstep = sc.taskGetStep("cop", "bitch");
-            if (daily.get("cop")) {
-                nav.bg("450_park/peek.jpg");
-                chat(72, 450);
-            }
-            else if (copstep < 0) {
-                btnList.push({
+            if (missy.getenvelope("cop").active) {
+                nav.button({
                     "type": "img",
-                    "name": "cop",
+                    "name": "copmissy",
                     "left": 666,
                     "top": 0,
                     "width": 1000,
                     "height": 1080,
                     "image": "450_park/cop1.png"
-                });
-                sc.show("cop");
-                sc.startMission("cop", "bitch");
-                sc.completeMissionTask("cop", "bitch", 0);
-                daily.set("cop");
-                chat(2, 450);
+                }, 450);
+                chat(50, 450);
+                return;
             }
-            else if (copstep === 1) {
-                btnList.push({
-                    "type": "img",
-                    "name": "cop",
-                    "left": 666,
-                    "top": 0,
-                    "width": 1000,
-                    "height": 1080,
-                    "image": "450_park/cop3.png"
-                });
-                sc.completeMissionTask("cop", "bitch", 1);
-                daily.set("cop");
-                chat(59, 450);
-            }
-            else if (copstep === 2) {
-                sc.completeMissionTask("cop", "bitch", 2);
-                btnList.push({
-                    "type": "img",
-                    "name": "cop",
-                    "left": 666,
-                    "top": 0,
-                    "width": 1000,
-                    "height": 1080,
-                    "image": "450_park/cop2.png"
-                });
-                daily.set("cop");
-                chat(60, 450);
-            }
-            else {
-                if (daily.get("parkNight")) {
-                    invoker.invokeCurrent("chatcatch", "enterPark");
+            if (sc.getMission("cop", "*escape").notStarted) {
+                var copstep = sc.taskGetStep("cop", "bitch");
+                if (daily.get("cop")) {
+                    nav.bg("450_park/peek.jpg");
+                    chat(72, 450);
+                }
+                else if (copstep < 0) {
+                    btnList.push({
+                        "type": "img",
+                        "name": "cop",
+                        "left": 666,
+                        "top": 0,
+                        "width": 1000,
+                        "height": 1080,
+                        "image": "450_park/cop1.png"
+                    });
+                    sc.show("cop");
+                    sc.startMission("cop", "bitch");
+                    sc.completeMissionTask("cop", "bitch", 0);
+                    daily.set("cop");
+                    chat(2, 450);
+                }
+                else if (copstep === 1) {
+                    btnList.push({
+                        "type": "img",
+                        "name": "cop",
+                        "left": 666,
+                        "top": 0,
+                        "width": 1000,
+                        "height": 1080,
+                        "image": "450_park/cop3.png"
+                    });
+                    sc.completeMissionTask("cop", "bitch", 1);
+                    daily.set("cop");
+                    chat(59, 450);
+                }
+                else if (copstep === 2) {
+                    sc.completeMissionTask("cop", "bitch", 2);
+                    btnList.push({
+                        "type": "img",
+                        "name": "cop",
+                        "left": 666,
+                        "top": 0,
+                        "width": 1000,
+                        "height": 1080,
+                        "image": "450_park/cop2.png"
+                    });
+                    daily.set("cop");
+                    chat(60, 450);
                 }
                 else {
-                    daily.set("parkNight");
-                    nav.bg("450_park/peek.jpg");
-                    chat(74, 450);
+                    if (daily.get("parkNight")) {
+                        invoker.invokeCurrent("chatcatch", "enterPark");
+                    }
+                    else {
+                        daily.set("parkNight");
+                        nav.bg("450_park/peek.jpg");
+                        chat(74, 450);
+                    }
                 }
+            }
+            else {
+                invoker.invokeCurrent("chatcatch", "enterPark");
             }
         }
         else {
-
             btnList.push({
                 "type": "btn",
                 "name": "gbroom",
@@ -248,7 +265,10 @@ room450.btnclick = function (name) {
             nav.bg("450_park/lola11kiss.jpg");
             chat(79, 450);
             break;
-       
+        case "c0":
+            nav.killbutton("c0");
+            chat(54, 450);
+            break;
         default:
             break;
     }
@@ -263,6 +283,22 @@ room450.chatcatch = function(callback){
         case "cop7":
             nav.killall();
             nav.bg("450_park/" + callback + ".jpg");
+            break;
+        case "c9":
+        case "c10":
+        case "c11":
+            nav.kill();
+            nav.bg("450_park/" + callback + ".webp");
+            break;
+        case "c2":
+        case "c3":
+            nav.killall();
+            if (cl.c.cock === 5) {
+                nav.bg("450_park/" + callback + "_v.jpg");
+            }
+            else {
+                nav.bg("450_park/" + callback + ".jpg");
+            }
             break;
         case "cop9":
             nav.killall();
@@ -475,6 +511,7 @@ room450.chatcatch = function(callback){
             nav.killall();
             cl.nude();
             nav.bg("450_park/c0.jpg");
+            nav.next("c0");
             break;
         case "killsmokey":
             nav.killbutton("smokey");
@@ -536,6 +573,35 @@ room450.chatcatch = function(callback){
                 "night": "450_park/450_further_night.png"
             }, 450);
             nav.buildnav([460, 452, 451, 0]);
+            break;
+        case "c4":
+            nav.bg("450_park/c4.webp");
+            zcl.bjpov(-180, 500, .7, "black", false, "b");
+            break;
+        case "c5":
+            zcl.legsup(-390, 500, .7, "compare", false, "b")
+            break;
+        case "c6":
+            zcl.legsup(-390, 500, .7, "pussy open", false, "b");
+            break;
+        case "c7":
+            zcl.legsup(-390, 500, .7, "pussy eyes sg0", false, "b")
+            break;
+        case "c8":
+            if (cl.c.cock === 5)
+                levels.fuckedinpussy(true, "m", true, "cop");
+            else
+                levels.anal(4, true, "m", true, "cop");
+            zcl.legsup(-390, 500, .7, "pussy open creampie sg1", false, "b");
+            break;
+        case "c12":
+            nav.kill();
+            nav.bg("450_park/c12.webp");
+            zcl.bellydown(750, 1000, .15, "back", false);
+            sc.completeMission("cop", "bitch");
+            sc.completeMission("cop", "*escape");
+            sc.completeMissionTask("cop", "*escape", 0);
+            missy.setenvelope("cop");
             break;
         case "sleep":
             g.pass = 456;
@@ -1010,7 +1076,7 @@ room450.chat = function(chatID){
             text: "This isn't working. I'm going to have to do something to get his attention. I know he likes fucking. Maybe " +
                 "I need to show him I need to be used like a filthy slut....",
             button: [
-                { chatID: -1, text: "[Bend over and show him your bussy]", callback: "c0" },
+                { chatID: -1, text: "[Bend over and show him your " + gender.pronoun("pussy") + "]", callback: "c0" },
             ]
         },
         {
@@ -1043,7 +1109,8 @@ room450.chat = function(chatID){
         {
             chatID: 57,
             speaker: "cop",
-            text: "Loose ass pussy. All you white sissy boys try to fetishise this big black cock. But I don't mind. " +
+            text: "Loose ass " + gender.pronoun("pussy") + ". All you white " + gender.pronoun("bitches") +
+                " try to fetishise this big black cock. But I don't mind. " +
                 "You know why I don't mind? ",
             button: [
                 { chatID: 58, text: "why?", callback: "c3" },
@@ -1052,10 +1119,10 @@ room450.chat = function(chatID){
         {
             chatID: 58,
             speaker: "cop",
-            text: "'Cause I do love fuckin'. Don't care if it's a pussy, mouth, asshole. As long as I get my nut. And I'm " +
-                "going to get my nut out of you sissy boy. ",
+            text: "'Cause I do love fuckin'. Don't care if it's a pussy, face, or asshole. As long as I get my nut. And I'm " +
+                "going to get my nut out of you " + gender.pronoun("boy") + ". ",
             button: [
-                { chatID: 58, text: "why?", callback: "c4" },
+                { chatID: 86, text: "*gulp*", callback: "c4" },
             ]
         },
         {
@@ -1291,6 +1358,115 @@ room450.chat = function(chatID){
                 "need a better bed than this bench. ",
             button: [
                 { chatID: -1, text: "heh, yeah", callback: "reset" }
+            ]
+        },
+        {
+            chatID: 86,
+            speaker: "cop",
+            text: "Suck it. Make me hard so I can shove it up your " + gender.pronoun("cunt") + ". ",
+            button: [
+                { chatID: 87, text: "*sssllluuurrrppp", callback: "c5" }
+            ]
+        },
+        {
+            chatID: 87,
+            speaker: "cop",
+            text: "I'm gunna be so deep in you I'll make your heart beat with every thrust hehehe.  ",
+            button: [
+                { chatID: 88, text: "*moan*", callback: "c6" }
+            ]
+        },
+        {
+            chatID: 88,
+            speaker: "cop",
+            text: "oh shit, you tighter than a mother fucker ",
+            button: [
+                { chatID: 89, text: "*pant* *grunt* *pant*", callback: "c7" }
+            ]
+        },
+        {
+            chatID: 89,
+            speaker: "cop",
+            text: "Fuck. I can feel the squeeze of that orgasm baby.  ",
+            button: [
+                { chatID: 90, text: "oh god! So good! I love your cock!!!", callback: "c8" }
+            ]
+        },
+        {
+            chatID: 90,
+            speaker: "cop",
+            text: "oh fuck. so tight I can't hold it! Fuck! I'm pumping my babies in yo hole! ",
+            button: [
+                { chatID: 91, text: "*pant* *gasp* *moan*", callback: "c9" }
+            ]
+        },
+        {
+            chatID: 91,
+            speaker: "cop",
+            text: "Damn bitch! That " + gender.pronoun("pussy") + "'s just " +
+                "too good. Imma make you my personal cum dump slave. " + sc.n("ubel") +
+                " said to leave you alone until " +
+                "the heat dies down, but fuck it. Imma smash your head in and take you in myself. I'll " +
+                "just tell that " + sc.n("wyatt") + " twerp you skipped town. ",
+            button: [
+                { chatID: 92, text: "oh please no!", callback: "c10" }
+            ]
+        },
+        {
+            chatID: 92,
+            speaker: "wyatt",
+            text: "A twerp? I assumed you had better disparaging insults to describe me. In case you're " +
+                "ill-informed, you won't be taking that " + gender.pronoun("boy") + " to your compound, but " +
+                "you'll be going into a compound of a different sort. ",
+            button: [
+                { chatID: 93, text: "*gasp*", callback: "" }
+            ]
+        },
+        {
+            chatID: 93,
+            speaker: "cop2",
+            text: "Aw man, Al. I can't believe you're working with them. Damn shame I have to bring you in. ",
+            button: [
+                { chatID: 94, text: "...", callback: "c11" }
+            ]
+        },
+        {
+            chatID: 94,
+            speaker: "cop",
+            text: "You idiots'll never take me alive!!!!",
+            button: [
+                { chatID: 95, text: "...", callback: "c12" }
+            ]
+        },
+        {
+            chatID: 95,
+            speaker: "wyatt",
+            text: "Drat! He got away! At least you're safe. Absolutly terrible what he did to you. I wish we " +
+                "had checked this area sooner I'm so sorry " + gender.pronoun("sir") + ". I'll call you and " +
+                "ambulance and we'll get you a licensed professional counselor. I can't imagine the the trauma " +
+                "you must be experiancing right now. ",
+            button: [
+                { chatID: 96, text: "oh no. no. That's ok. I'll be ok. ", callback: "" }
+            ]
+        },
+        {
+            chatID: 96,
+            speaker: "cop2",
+            text: "I knew Al was part of the the cult, but I didn't think he was out here doing that. " +
+                "I sent him here because of all the raping happening at this park after dark. To " +
+                "think he was the one doing it. *sheesh*",
+            button: [
+                { chatID: 97, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 97,
+            speaker: "wyatt",
+            text: "I'll need to get a report from you so I can lock that menace up for good, but it can " +
+                "wait. I know you must want to get home and put this whole terrible event behind you. " +
+                "We'll leave you, but if you need anything you'll let us know ok? ",
+            button: [
+                { chatID: -1, text: "Yes, I'll let you know. Thanks. ", callback: "reset" }
             ]
         },
     ];
