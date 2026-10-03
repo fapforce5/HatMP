@@ -609,7 +609,6 @@ room10.chatcatch = function (callback) {
             cl.remove("panties", "u");
             cl.remove("panties", "n");
             pic.add("pantyThief");
-            sc.setstep("lola", -1);
             char.addtime(60);
             g.internal = "";
             g.pass = "";

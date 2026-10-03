@@ -46,22 +46,22 @@ room53.main = function () {
 room53.btnclick = function (name) {
     name = name.toString();
     switch (name) {
-        case "candy":
-            //if (cl.hasoutfit("nude") === null) {
-            var candyStep = sc.getstep("candy");
-            if (daily.get("candy")) {
-                chat(17, 53);
-            }
-            else {
-                if (candyStep === 100)
-                    chat(6, 53);
-                else if (candyStep === 102)
-                    chat(31, 53);
-                else if (candyStep === 2)
-                    chat(19, 53);
-                else
-                    chat(17, 53);
-            }
+        //case "candy":
+        //    //if (cl.hasoutfit("nude") === null) {
+        //    var candyStep = sc.getstep("candy");
+        //    if (daily.get("candy")) {
+        //        chat(17, 53);
+        //    }
+        //    else {
+        //        if (candyStep === 100)
+        //            chat(6, 53);
+        //        else if (candyStep === 102)
+        //            chat(31, 53);
+        //        else if (candyStep === 2)
+        //            chat(19, 53);
+        //        else
+        //            chat(17, 53);
+        //    }
             //}
             //else {
             //    nav.killbutton("candy");
@@ -76,7 +76,7 @@ room53.btnclick = function (name) {
             //    }, 53);
             //    chat(4, 53);
             //}
-            break;
+            //break;
         case "101bj":
             chat(18, 53);
             break;
@@ -229,7 +229,7 @@ room53.chatcatch = function (callback) {
             gv.mod("loadSwollowed", 1);
             g.internal = 0;
             nav.killall();
-            sc.setstep("candy", 2);
+            //sc.setstep("candy", 2);
             nav.bg("53_candy/bj7.jpg");
             nav.button({
                 "type": "tongue",
@@ -303,7 +303,7 @@ room53.chatcatch = function (callback) {
             break;
         case "bc6":
             gv.mod("loadSwollowed", 1);
-            sc.setstep("candy", 3);
+            //sc.setstep("candy", 3);
             char.addtime(60);
             gv.mod("arousal", 100);
             char.room(53);
@@ -323,7 +323,7 @@ room53.chatcatch = function (callback) {
             break;
         case "100_badend":
             char.addtime(60);
-            sc.setstep("candy", 101);
+            //sc.setstep("candy", 101);
             daily.set("candy");
             char.room(53);
             break;
@@ -343,7 +343,7 @@ room53.chatcatch = function (callback) {
             break;
         case "100_goodend":
             pic.add("candy");
-            sc.setstep("candy", 101);
+            //sc.setstep("candy", 101);
             daily.set("candy");
             char.room(52);
             break;
@@ -387,13 +387,13 @@ room53.chatcatch = function (callback) {
             }, 53);
             break;
         case "101_end":
-            sc.setstep("candy", 102);
+            //sc.setstep("candy", 102);
             daily.set("candy");
             char.addtime(120);
             char.room(52);
             break;
         case "102_end":
-            sc.setstep("candy", 103);
+            //sc.setstep("candy", 103);
             daily.set("candy");
             char.addtime(120);
             char.room(53);

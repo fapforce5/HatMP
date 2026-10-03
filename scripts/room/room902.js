@@ -186,7 +186,7 @@ room902.chatcatch = function (callback) {
             break;
         case "r2":
             nav.bg("902_girl/r2.jpg");
-            if (sc.getstep("lola") < 7)
+            if (sc.getMissionTask("lola", "date", 5).success)
                 chat(30, 902);
             else
                 chat(31, 902);

@@ -1,8 +1,6 @@
 ﻿//Bar bathroom
 var room527 = {};
 room527.main = function () {
-
-
     nav.button({
         "type": "btn",
         "name": "toilet",
@@ -115,6 +113,7 @@ room527.chatcatch = function (callback) {
             chat(1, 527);
             break;
         case "zoey4":
+            trophy.add(44);
             levels.piss(true, false, false, "f", "zoey");
             char.addtime(30);
             char.room(527);
@@ -132,6 +131,7 @@ room527.chatcatch = function (callback) {
             nav.next("zoey11");
             break;
         case "zoey12":
+            trophy.add(44);
             levels.piss(true, false, false, "f", "zoey");
             sc.modLevel("zoey", 20, 7);
             char.addtime(30);

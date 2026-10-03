@@ -12,16 +12,16 @@ room102.main = function () {
 
 room102.btnclick = function (name) {
     switch (name) {
-        case "phil":
-            if (sc.getstep("construction") === 0)
-                chat(6, 102);
-            else if (sc.getstep("construction") === 1)
-                chat(0, 102);
-            else if (!gv.get("jobConstGetRaise") && gv.get("jobConstructionPay") < 75)
-                chat(7, 102);
-            else 
-                chat(9, 102);
-            break;
+        //case "phil":
+        //    if (sc.getstep("construction") === 0)
+        //        chat(6, 102);
+        //    else if (sc.getstep("construction") === 1)
+        //        chat(0, 102);
+        //    else if (!gv.get("jobConstGetRaise") && gv.get("jobConstructionPay") < 75)
+        //        chat(7, 102);
+        //    else 
+        //        chat(9, 102);
+        //    break;
         default:
             break;
     }

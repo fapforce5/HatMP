@@ -313,6 +313,8 @@ room776.chatcatch = function (callback) {
             missy.setenvelope("priest");
             sc.startMission("priest", "*closed");
             sc.completeMissionTask("priest", "*closed", 1);
+            sc.completeMission("nun", "*sin");
+            sc.completeMissionTask("nun", "*sin", 1);
             char.addtime(180);
             char.room(0);
             break;
@@ -333,6 +335,10 @@ room776.chatcatch = function (callback) {
             missy.setenvelope("priest");
             sc.startMission("priest", "*closed");
             sc.completeMissionTask("priest", "*closed", 0);
+            if (!sc.getMission("nun", "*sin").success) {
+                sc.completeMission("nun", "*sin", false);
+                sc.completeMissionTask("nun", "*sin", 1, false);
+            }
             char.addtime(180);
             char.room(0);
             break;

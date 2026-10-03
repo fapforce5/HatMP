@@ -2,10 +2,11 @@
 var room351 = {};
 room351.main = function () {
     nav.bg("351_spermJackoff/sperm0.jpg");
-    if (sc.getEvent("landlord", 2))
+    if (sc.getMissionTask("landlord", "spermbank", 0).complete) {
         chat(0, 351);
+    }
     else {
-        sc.setEvent("landlord", 2);
+        sc.completeMissionTask("landlord", "spermbank", 0);
         chat(1, 351);
     }
 };

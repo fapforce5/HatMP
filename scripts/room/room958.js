@@ -721,6 +721,7 @@ room958.chatcatch = function (callback) {
             invoker.invokeCurrent("btnclick", "displayDirection");
             break;
         case "escape":
+            sc.completeMission("bodhi", "escape");
             g.pass = "escape";
             char.room(954); 
             break;

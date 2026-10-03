@@ -248,7 +248,7 @@ room6.btnclick = function (name) {
                 txt.o = "Waitress";
                 txt.p = "Milk Maid";
                 txt.s = "";
-                txt.h = sc.getEvent("holly", -1) ? "I've got to find some way to get on her good side. " :
+                txt.h = sc.getMission("holly", "mad").startedOrSuccess ? "I've got to find some way to get on her good side. " :
                     "Oh good! We're best buds! Maybe I'll just ask. ";
                 break;
             case "river":

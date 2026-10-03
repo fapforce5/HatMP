@@ -86,35 +86,37 @@ room16.main = function () {
             "image": "16_livingRoom/allthree.png"
         }, 16);
     }
-    //else if (cl.isLewd()) {
-    //    if (llst < 200) {
-    //        nav.button({
-    //            "type": "img",
-    //            "name": "lewd1",
-    //            "left": 703,
-    //            "top": 0,
-    //            "width": 769,
-    //            "height": 1080,
-    //            "image": "16_livingRoom/l1.png"
-    //        }, 16);
-    //        chat(21, 16);
-    //    }
-    //    else {
-    //        nav.button({
-    //            "type": "img",
-    //            "name": "lewd1",
-    //            "left": 703,
-    //            "top": 0,
-    //            "width": 769,
-    //            "height": 1080,
-    //            "image": "16_livingRoom/l1.png"
-    //        }, 16);
-    //        if (!sc.getEvent("landlord", -9))
-    //            chat(22, 16);
-    //        else
-    //            chat(33, 16);
-    //    }
-    //}
+    else if (cl.isLewd()) {
+        if (sc.getMission("landlord", "sissy").notStarted) {
+            nav.button({
+                "type": "img",
+                "name": "lewd1",
+                "left": 703,
+                "top": 0,
+                "width": 769,
+                "height": 1080,
+                "image": "16_livingRoom/l1.png"
+            }, 16);
+            chat(21, 16);
+        }
+        else {
+            nav.button({
+                "type": "img",
+                "name": "lewd1",
+                "left": 703,
+                "top": 0,
+                "width": 769,
+                "height": 1080,
+                "image": "16_livingRoom/l1.png"
+            }, 16);
+            if (sc.getMissionTask("landlord", "misc", 7).notStarted) {
+                sc.completeMissionTask("landlord", "misc", 7);
+                chat(22, 16);
+            }
+            else
+                chat(33, 16);
+        }
+    }
     else {
         if (thisSisterRoomID.roomID === 25 && thisMomRoomID.roomID === 25) {
             btnList.push({
@@ -421,15 +423,7 @@ room16.chatcatch = function (callback) {
         case "s6":
             nav.bg("16_livingRoom/s6.jpg");
             g.internal = 7;
-            nav.button({
-                "type": "btn",
-                "name": "s6",
-                "left": 1687,
-                "top": 615,
-                "width": 233,
-                "height": 150,
-                "image": "526_bar/arrowRight.png"
-            }, 16);
+            nav.takeit("s6");
             break;
         case "s9":
             nav.killall();
@@ -457,19 +451,14 @@ room16.chatcatch = function (callback) {
             }, 26);
             break;
         case "s16":
-            gv.mod("receiveAnalFemale", 1);
-            gv.mod("sissygasm", 1);
-            gv.mod("loadSwollowed", 1);
-            sc.setstep("landlord", -9);
+            levels.anal(5, true, "f", false, "landlord");
+            levels.swallowCum("m", "me");
             char.room(10);
-            cl.stretchButt(null, 6);
             break;
         case "s16x":
-            gv.mod("receiveAnalFemale", 1);
-            gv.mod("sissygasm", 1);
-            gv.mod("loadSwollowed", 1);
+            levels.anal(5, true, "f", false, "landlord");
+            levels.swallowCum("m", "me");
             char.room(10);
-            cl.stretchButt(null, 6);
             break;
         case "myRoom":
             char.room(10);

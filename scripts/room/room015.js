@@ -89,7 +89,7 @@ room15.btnclick = function (name) {
             char.room(20);
             break;
         case "landlord":
-            if (sc.getstep("landlord") > 6) 
+            if (sc.getMissionTask("landlord", "man", 5).complete) 
                 chat(6, 15);
             else 
                 chat(0, 15);
@@ -187,33 +187,6 @@ room15.btnclick = function (name) {
 
 room15.chatcatch = function (callback) {
     switch (callback) {
-        case "passtime1":
-            char.settime(9, 0);
-            nav.killbutton("ll");
-            sc.setstep("landlord", 1);
-            break;
-        case "passtime2":
-            char.settime(9, 0);
-            nav.killbutton("ll");
-            sc.setstep("landlord", 2);
-            break;
-        case "passtime3":
-            char.settime(9, 0);
-            nav.killbutton("ll");
-            sc.setstep("landlord", 3);
-            break;
-        case "passtime4":
-            char.settime(9, 0);
-            nav.killbutton("ll");
-            sc.setstep("landlord", 4);
-            break;
-        case "passtime5":
-            char.settime(9, 0);
-            nav.killbutton("ll");
-            break;
-        case "takekey":
-            inv.update("landlordKey", true, null);
-            break;
         case "drinkDown":
             nav.killbutton("drink");
             break;

@@ -310,10 +310,7 @@ room12.chatcatch = function (callback) {
         case "sister3":
             nav.killbutton("sister2");
             nav.button(room12.showerScene("sister3", 12));
-            if (sc.getEvent("lola", 5))
-                chat(19, 12);
-            else
-                chat(10, 12);
+            chat(19, 12);
             break;
         case "sister4":
             nav.killbutton("sister3");
@@ -400,7 +397,6 @@ room12.chatcatch = function (callback) {
             break;
         case "sisterRetreat":
             char.addtime(20);
-            sc.setstep("eva", -1);
             nav.room(10);
             break;
         case "mom2":

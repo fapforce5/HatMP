@@ -68,7 +68,6 @@ trap.renderActionButtons = function (btnList, top = trap.actionButtonTop) {
 
 //hole, treasure, treasureAzrael, encounter, rope
 trap.init = function (trapType = "rope", location = "forest", roomId = g.roomID, callbackWin = "", trapNum = null) {
-    console.log(trapType);
     trap.phase = 0;
     trap.roomId = roomId;
     trap.callbackWin = callbackWin;

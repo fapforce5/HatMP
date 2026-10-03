@@ -76,16 +76,6 @@ room953.chatcatch = function (callback) {
             g.internal.interval++;
             char.room(950);
             break;
-        case "breakout0":
-            if (sc.getEvent("daria", -2)) {
-                nav.killall();
-                nav.bg("953_chaple/breakout0.jpg");
-                g.internal.chaple = 2;
-                chat(35, 953);
-            }
-            else
-                chat(32, 953);
-            break;
         case "breakout1":
             nav.bg("953_chaple/breakout1.jpg");
             break;

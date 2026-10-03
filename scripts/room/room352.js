@@ -420,11 +420,6 @@ room352.chatcatch = function (callback) {
             break;
         case "backin":
             g.roomMapAccess(16, true, true);
-            sc.setstep("landlord", 16);
-            sc.setstep("lola", 9);
-            sc.setstep("eva", 8);
-            sc.setstep("me", -13);
-            g.dt = new Date(g.dt.getFullYear(), g.dt.getMonth(), g.dt.getDate(), 17, 0, 0, 0);
             char.room(0);
             break;
         default:

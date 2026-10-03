@@ -126,7 +126,6 @@ room452.chatcatch = function(callback){
         case "bimboLeave":
             nav.killbutton("bimbo");
             g.roomMapAccess(75, true, true);
-            sc.setstep("bimbo", 1);
             nav.buildnav([450]);
             break;
         case "tojail":

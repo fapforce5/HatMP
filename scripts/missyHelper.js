@@ -78,22 +78,22 @@ missy.init = function () {
     missy.envelope = [
         { n: "charlie", roomID: 650, key: false, ach: false, canBe: true }, //d
         { n: "treyvon", roomID: 50, key: false, ach: false, canBe: true }, //d
-        { n: "utah", roomID: 875, key: false, ach: false, canBe: true },
+        { n: "utah", roomID: 875, key: false, ach: false, canBe: false },   ////////////////// add this
         { n: "jimmy", roomID: 125, key: false, ach: false, canBe: true },//d
         { n: "spanky", roomID: 404, key: false, ach: false, canBe: true },//d
         { n: "construction", roomID: 101, key: false, ach: false, canBe: true },//d
-        { n: "river", roomID: 103, key: false, ach: false, canBe: true },
+        { n: "river", roomID: 103, key: false, ach: false, canBe: true },//d
         { n: "chad", roomID: 551, key: false, ach: false, canBe: true },//d
         { n: "g", roomID: 551, key: false, ach: false, canBe: true },//d
         { n: "jeffery", roomID: 250, key: false, ach: false, canBe: true },//d
-        { n: "chef", roomID: 150, key: false, ach: false, canBe: true },
+        { n: "chef", roomID: 150, key: false, ach: false, canBe: false },  ////////////////// add this
         { n: "cindy", roomID: 901, key: false, ach: false, canBe: true },//d
         { n: "cop", roomID: 450, key: false, ach: false, canBe: false },//d
         { n: "doc", roomID: 750, key: false, ach: false, canBe: true },//d
         { n: "whore", roomID: 752, key: false, ach: false, canBe: true },//d
-        { n: "priest", roomID: 776, key: false, ach: false, canBe: false },
+        { n: "priest", roomID: 776, key: false, ach: false, canBe: false },//d
         { n: "dollmaker", roomID: 300, key: false, ach: false, canBe: true },
-        { n: "tony", roomID: 600, key: false, ach: false, canBe: true },
+        { n: "tony", roomID: 600, key: false, ach: false, canBe: false },  ////////////////// add this
         { n: "!jail0", roomID: 376, key: false, ach: false, canBe: true },//d
         { n: "!seller", roomID: 485, key: false, ach: false, canBe: true },//d
         { n: "!barker", roomID: 486, key: false, ach: false, canBe: true },//d
@@ -252,7 +252,7 @@ missy.getenvelope = function (name) {
 missy.setenvelope = function (name) {
     if (missy.isenveloplive()) {
         for (let i = 0; i < missy.envelope.length; i++) {
-            if (missy.envelope[i].n === name) {
+            if (missy.envelope[i].n === name && !missy.envelope[i].ach) {
                 missy.envelope[i].ach = true;
                 if (missy.envelope[i].key) {
                     sc.completeMissionTask("p", "*missy", 3);
@@ -261,10 +261,26 @@ missy.setenvelope = function (name) {
                     g.popUpNotice("Return to " + sc.n("p") + " at Missy's Detective Agency!");
                 }
                 else {
-                    g.popUpNotice(sc.n(name) + " crossed off this list. ");
+                    let eligible = missy.envelope.filter(function (e) { return e.canBe === true; });
+                    let allDone = eligible.every(function (e) { return e.ach === true; });
+                    let hasKey = eligible.some(function (e) { return e.key === true; });
+
+                    if (allDone && !hasKey) {
+                        missy.envelope[i].key = true;
+                        sc.completeMissionTask("p", "*missy", 3);
+                        sc.startMissionTask("p", "*missy", 4);
+                        g.popUpNotice("YOU HAVE THE CODE!!");
+                        g.popUpNotice("Return to " + sc.n("p") + " at Missy's Detective Agency!");
+                    }
+                    else {
+                        g.popUpNotice(sc.n(name) + " crossed off this list. ");
+                    }
                 }
             }
         }
+    }
+    else {
+        g.popUpNotice("Return to " + sc.n("p") + " at Missy's Detective Agency!");
     }
 };
 

@@ -1001,7 +1001,7 @@ inv.createElements = function (showFilter = true) {
                 case "f":
                     inv.close();
                     nav.button({
-                        "type": "zbtn",
+                        "type": "zimg",
                         "name": "inv_listofbadpeople",
                         "left": 0,
                         "top": 0,
@@ -1030,6 +1030,7 @@ inv.createElements = function (showFilter = true) {
                             "image": charInfo.img.replace("./images", ".."),
                         }, 1010);
                     }
+                    nav.close("inv_listofbadpeople", 1010);
                     break;
                 case "p"://phone case
                     inv.phone = thisName;

@@ -102,10 +102,7 @@ room208.btnclick = function (name) {
             g.internal.bh = true;
             break;
         case "missy":
-            if (sc.getEvent("missy", -1))
-                chat(0, 208);
-            else
-                chat(1, 208);
+            chat(1, 208);
             break;
         case "1":
         case "2":
@@ -573,15 +570,7 @@ room208.chatcatch = function (callback) {
             g.internal = null;
             if (g.pass.hard1 && g.pass.hard2 && g.pass.hard3) {
                 g.pass.hard1 = g.pass.hard2 = g.pass.hard3 = false;
-                if (sc.getEvent("missy", -2)) {
-                    sc.setstep("missy", -2);
-                    gv.mod("missyPoints", 100);
-                    chat(34, 208);
-                }
-                else {
-                    gv.mod("missyPoints", 30);
-                    chat(35, 208);
-                }
+                chat(35, 208);
             }
             else {
                 if (g.pass.first && g.pass.second && g.pass.third) {

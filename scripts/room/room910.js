@@ -60,8 +60,8 @@ room910.chatcatch = function (callback) {
         case "changename":
             if (gv.get("money") < 100)
                 chat(7, 910);
-            else if (sc.getstep("govlady") > 0)
-                chat(6, 910);
+            //else if (sc.getstep("govlady") > 0)
+            //    chat(6, 910);
             else if (cl.appearance() > 1)
                 chat(8, 910);
             else
@@ -71,7 +71,7 @@ room910.chatcatch = function (callback) {
             var temp = sc.n("me");
             sc.setcharname("me", gv.get("girlname"));
             gv.set("girlname", temp);
-            sc.setstep("govlady", 1);
+            //sc.setstep("govlady", 1);
             char.addtime(30);
             break;
         case "jail":

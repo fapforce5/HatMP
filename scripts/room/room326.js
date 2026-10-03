@@ -273,13 +273,6 @@ room326.chatcatch = function (callback) {
                     topLevel = 60;
                     break;
             }
-            var horseLove = sc.getstep("horse");
-            if (horseLove < topLevel) {
-                horseLove += 8;
-                if (horseLove > topLevel)
-                    horseLove = topLevel;
-                sc.setstep("horse", horseLove);
-            }
             break;
         case "lick0":
             nav.killall();

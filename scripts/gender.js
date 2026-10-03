@@ -91,8 +91,26 @@ gender.pronoun = function (ptype) {
         case "ami":
             return gender.isGirl() ? "amie" : "ami";
             break;
+        case "boyfriend":
+            return gender.isGirl() ? "girlfriend" : "boyfriend";
+            break;
         case "sir":
             return gender.isGirl() ? "ma'am" : "sir";
+            break;
+        case "mister":
+            return gender.isGirl() ? "lady" : "mister";
+            break;
+        case "balls":
+            return cl.c.cock === 5 ? "pussy" : "balls";
+            break;
+        case "bitch":
+            return cl.c.cock === 5 ? "bitch" : "sissy";
+            break;
+        case "mr":
+            return cl.c.cock === 5 ? "Mr." : "Ms.";
+            break;
+        case "whore":
+            return gender.isGirl() ? "whore" : "sissy whore";
             break;
         default:
             console.log("gender.pronoun - not found: " + ptype);

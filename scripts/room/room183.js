@@ -151,12 +151,6 @@ room183.chatcatch = function (callback) {
             levels.anal(4, false, "m", true, "river");
             levels.oral(4, "m", "river", false, null, true);
             break;
-
-
-
-
-
-
         case "c0":
             nav.killall();
             nav.bg("183_pinkroom/c0.jpg");
@@ -186,7 +180,6 @@ room183.chatcatch = function (callback) {
             nav.buildnav([183]);
             gv.mod("fuckPussy", 1);
             gv.mod("loadSwollowed", 1);
-            sc.setstep("chloe", -1);
             setTimeout(function () {
                 menu.mClick("contact");
                 sc.phone("zoey1");
@@ -195,7 +188,7 @@ room183.chatcatch = function (callback) {
         case "trio0":
             nav.killall();
             nav.bg("183_pinkroom/trio0.jpg");
-            if (sc.getEvent("holly", -1))
+            if (!sc.getMission("holly", "mad").startedOrSuccess)
                 chat(18, 183);
             else
                 chat(21, 183);

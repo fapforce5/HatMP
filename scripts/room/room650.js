@@ -115,18 +115,18 @@ room650.btnclick = function (name) {
                 chat(6, 650);
             }
             else {
-                var candyStep = sc.getstep("candy");
-                if (candyStep === 0) {
-                    chat(20, 650);
-                }
-                else if (candyStep === 50) {
-                    chat(30, 650);
-                }
-                else if (candyStep === 51) {
-                    chat(41, 650);
-                }
-                else
-                    chat(6, 650);
+                //var candyStep = sc.getstep("candy");
+                //if (candyStep === 0) {
+                //    chat(20, 650);
+                //}
+                //else if (candyStep === 50) {
+                //    chat(30, 650);
+                //}
+                //else if (candyStep === 51) {
+                //    chat(41, 650);
+                //}
+                //else
+                chat(6, 650);
             }
             break;
         case "charlie":
@@ -304,7 +304,7 @@ room650.chatcatch = function (callback) {
             nav.bg("650_toyStore/candy50_5.jpg");
             break;
         case "candy50_6":
-            sc.setstep("candy", 50);
+            //sc.setstep("candy", 50);
             char.addtime(120);
             char.room(0);
             break;
@@ -350,11 +350,11 @@ room650.chatcatch = function (callback) {
             char.addtime(60);
             cl.c.panties = g.internal.u;
             cl.c.pants = g.internal.p;
-            sc.setstep("candy", 51);
+            //sc.setstep("candy", 51);
             char.room(450);
             break;
         case "candy52_end":
-            sc.setstep("candy", 52);
+            //sc.setstep("candy", 52);
             break;
         case "envy_0":
             nav.killbutton("tiffany")

@@ -48,7 +48,6 @@ gv.init = function () {
         { n: "cum", t: g.startDate, q: "date" },
         { n: "chastityCounter", t: 0, q: "zero" },
         { n: "missyWeekly", t: "", q: "string" },
-        { n: "jackoff", t: 0, q: "int" },
         { n: "dildoanal", t: 0, q: "int" },
         { n: "fingeranal", t: 0, q: "int" },
         { n: "dildooral", t: 0, q: "int" },
@@ -73,7 +72,6 @@ gv.init = function () {
         { n: "pronouns", t: "a", q: "string" },
         { n: "breastSelect", t: 0, q: "int" },
         { n: "assSelect", t: 0, q: "int" },
-        { n: "multiPlayThrough", t: false, q: "bool" },
 
         //jobs
         { n: "jobapplynurse", t: 0, q: "int" },
@@ -82,8 +80,6 @@ gv.init = function () {
 
         //landlord
         { n: "rent", t: 200, q: "int" },
-        { n: "momClosetLube", t: 3, q: "int" },
-        { n: "momClosetMoney", t: 7, q: "int" },
         { n: "pastRent", t: 0, q: "zero" },
         { n: "rentOwed", t: 0, q: "zero" },
         { n: "rentChores", t: 0, q: "zero" },
@@ -108,8 +104,6 @@ gv.init = function () {
         //firstTime
         { n: "firstTimeInWardrobe", t: false, q: "bool" },
         { n: "pamphletConstSite", t: false, q: "bool" },
-        { n: "lolaPanties", t: false, q: "bool" },
-        { n: "momsPanties", t: false, q: "bool" },
         { n: "panties", t: false, q: "bool" },
         { n: "constructionMessage", t: false, q: "bool" },
 
@@ -118,14 +112,12 @@ gv.init = function () {
         { n: "sissySchoolClassDays", t: 0, q: "int" },
         { n: "sissyGrades", t: "", q: "string" },
 
-        { n: "pill", t: null, q: "string" },
         { n: "oncase", t: null, q: "string" },
 
         //missy
         { n: "chastity", t: null, q: "date" },
         { n: "castitycage", t: null, q: "string" },
         { n: "chastityOverride", t: null, q: "string" },//null = weekly, "never", "forever"
-        { n: "missyPoints", t: 0, q: "int" },
         { n: "phum", t: 0, q: "int" },
 
         //analfill
@@ -158,7 +150,6 @@ gv.init = function () {
         { n: "sissyfinal_brayden", t: false, q: "bool" },
         { n: "sissyfinal_stripper", t: false, q: "bool" },
         { n: "sissyfinal_pageant", t: null, q: "bool" },
-        { n: "sissyfinal_cumcounter", t: 0, q: "int" },
 
         //jail
         { n: "jail", t: 0, q: "int" },
@@ -173,9 +164,6 @@ gv.init = function () {
 
         { n: "lolaEvaShowerPeek", t: false, q: "bool" },
 
-        { n: "dddfirsttime", t: true, q: "bool" },
-        { n: "dddfail", t: 0, q: "int" },
-        { n: "dddsuccess", t: 0, q: "int" },
         { n: "caveDoorEnter", t: false, q: "bool" },
 
         { n: "janiceWalk", t: 0, q: "int" },
@@ -201,10 +189,8 @@ gv.init = function () {
         { n: "forestFastravel2", t: false, q: "bool" },
 
         { n: "cultRank", t: "Slave", q: "string" }, //Slave, Sissy?, Sissy, Cum Supplier, Mother of Azreal, Mother Candidate
-        { n: "cultDays", t: 0, q: "int" },
         { n: "cultDayCounter", t: 0, q: "int" },
         { n: "cultbrick", t: 0, q: "int" },
-        { n: "cultwork", t: 1, q: "int" },
         { n: "cultLastClean", t: null, q: "date" },
         { n: "cultMilkCounter", t: 0, q: "int" },
         { n: "cultMilkMaidChat", t: 0, q: "int" },
@@ -213,6 +199,8 @@ gv.init = function () {
         { n: "cultdog", t: 0, q: "int" },
         { n: "cultdouble", t: 0, q: "int" },
         { n: "cultwhip", t: 0, q: "int" },
+
+        { n: "cultpartner", t: "zoey", q: "string" },
 
         //magazine
         { n: "magman", t: false, q: "bool" },
@@ -230,8 +218,6 @@ gv.init = function () {
         { n: "slimeMonsters", t: true, q: "bool" },
 
         { n: "waitressSteal", t: false, q: "bool" },
-
-        { n: "spankyprices", t: false, q: "bool" },
 
         { n: "girlname", t: "Scarlett", q: "string" },
 
@@ -655,46 +641,59 @@ gv.init = function () {
     ];
 
     trophy.st = [
-        { id: 0, o: 1, title: "Panties", display: "Wear panties for the first time. ", img: "panties.webp", ach: false, group: "panties", m: 0, s: 30, d: 0 },
-        { id: 1, o: 2, title: "#lola#'s Panties", display: "Steal #lola#'s panties. ", img: "pantieslola.webp", ach: false, group: "panties", m: 0, s: 30, d: 0 },
-        { id: 2, o: 3, title: "#landlord#'s Panties", display: "Steal #landlord#'s panties. ", img: "pantieslandlord.webp", ach: false, group: "panties", m: 0, s: 30, d: 0 },
-        { id: 3, o: 5, title: "#bimbo#'s Panties", display: "Steal #bimbo#'s panties. ", img: "pantiesbimbo.webp", ach: false, group: "panties", m: 0, s: 30, d: 0 },
-        { id: 4, o: 1, title: "Chastity", display: "Locked the cock. ", img: "chastity.png", ach: false, group: "sissy", m: 0, s: 30, d: 0 },
-        { id: 5, o: 1, title: "Bra", display: "Wear a bra for the first time ", img: "bra.webp", ach: false, group: "bra", m: 0, s: 30, d: 0 },
-        { id: 6, o: 2, title: "Fucked your #landlord#", display: "Balls deep in your #landlord#", img: "fucklandlord.webp", ach: false, group: "fuck", m: 0, s: 0, d: 50 },
-        { id: 7, o: 1, title: "Fucked #lola#", display: "Took #lola#'s virginity", img: "fucklola.webp", ach: false, group: "fuck", m: 0, s: 0, d: 100 },
-        { id: 8, o: 3, title: "Fucked #eva#", display: "Put your penis insde #eva#", img: "fuckeva.webp", ach: false, group: "fuck", m: 0, s: 0, d: 50 },
-        { id: 9, o: 4, title: "Fucked #janice#", display: "Creampied #janice#", img: "fuckjanice.webp", ach: false, group: "fuck", m: 0, s: 0, d: 50 },
-        { id: 10, o: 1, title: "Jail", display: "Lack of respect", img: "eventjail.webp", ach: false, group: "event", m: 0, s: 30, d: 0 },
-        { id: 11, o: 5, title: "Fucked #stormy#", display: "Cum Giver to #stormy#", img: "fuckstormy.webp", ach: false, group: "fuck", m: 0, s: 0, d: 50 },
-        { id: 12, o: 6, title: "Fucked #envy#", display: "Fucked #envy#", img: "fuckenvy.webp", ach: false, group: "fuck", m: 0, s: 0, d: 50 },
-        { id: 13, o: 4, title: "#ralphsmom#'s Panties", display: "Steal #ralphsmom#'s panties", img: "pantiesralphsmom.webp", ach: false, group: "panties", m: 0, s: 30, d: 0 },
-        { id: 14, o: 8, title: "Fucked #tina#", display: "Fucked #tina#", img: "fucktina.webp", ach: false, group: "fuck", m: 0, s: 0, d: 50 },
-        { id: 15, o: 1, title: "Anal", display: "Fucked up the ass", img: "anal1.webp", ach: false, group: "anal", m: 0, s: 30, d: 0 },
-        { id: 16, o: 2, title: "Anal", display: "Fucked up the ass 10 times", img: "anal10.webp", ach: false, group: "anal", m: 0, s: 50, d: 0 },
-        { id: 17, o: 3, title: "Anal", display: "Fucked up the ass 50 times", img: "anal50.webp", ach: false, group: "anal", m: 0, s: 100, d: 0 },
-        { id: 18, o: 4, title: "Anal", display: "Fucked up the ass 100 times", img: "anal100.webp", ach: false, group: "anal", m: 100, s: 100, d: 0 },
-        { id: 19, o: 5, title: "Anal", display: "Fucked up the ass 500 times", img: "anal500.webp", ach: false, group: "anal", m: 500, s: 100, d: 0 },
-        { id: 20, o: 1, title: "Oral", display: "Sucked a dick", img: "oral1.webp", ach: false, group: "oral", m: 0, s: 30, d: 0 },
-        { id: 21, o: 2, title: "Oral", display: "Sucked 10 dicks", img: "oral10.webp", ach: false, group: "oral", m: 0, s: 50, d: 0 },
-        { id: 22, o: 3, title: "Oral", display: "Sucked 50 dicks", img: "oral50.webp", ach: false, group: "oral", m: 0, s: 100, d: 0 },
-        { id: 23, o: 4, title: "Oral", display: "Sucked 100 dicks", img: "oral100.webp", ach: false, group: "oral", m: 100, s: 100, d: 0 },
-        { id: 24, o: 5, title: "Oral", display: "Sucked 500 dicks", img: "oral500.webp", ach: false, group: "oral", m: 500, s: 100, d: 0 },
-        { id: 25, o: 6, title: "Anal", display: "Took Monster Size Dick", img: "analmonster.webp", ach: false, group: "anal", m: 0, s: 50, d: 0 },
-        { id: 26, o: 1, title: "Sissy School", display: "Top Mid-term score", img: "schoolmidterm.webp", ach: false, group: "school", m: 50, s: 100, d: 0 },
-        { id: 27, o: 1, title: "Glory Hole", display: "Took 15 dicks in one session", img: "gloryhole15.webp", ach: false, group: "pinkroom", m: 100, s: 100, d: 0 },
-        { id: 28, o: 1, title: "Ranch", display: "Took down the ranch", img: "eventrachel.webp", ach: false, group: "event", m: 0, s: 100, d: 0 },
-        { id: 29, o: 6, title: "Missy's Panties", display: "Steal Missy's panties", img: "pantiesmissy.webp", ach: false, group: "panties", m: 0, s: 30, d: 0 },
-        { id: 30, o: 6, title: "Sociopath", display: "Escape as a Cum Giver", img: "cultempathy.webp", ach: false, group: "event", m: 0, s: 0, d: 100 },
-        { id: 31, o: 6, title: "Exit before entry", display: "Lost anal virginity before penis", img: "analfirst.webp", ach: false, group: "anal", m: 0, s: 75, d: 0 },
-        { id: 32, o: 6, title: "#ralph#", display: "Slurped cum from his asshole", img: "ralph.webp", ach: false, group: "event", m: 0, s: 75, d: 0 },
-        { id: 33, o: 500, title: "Bad End", display: "The virgin birth", img: "end_azrael.webp", ach: false, group: "end", m: 100, s: 100, d: 0 },
-        { id: 34, o: 500, title: "Saved the Nun", display: "You fucked her, but saved her too", img: "nunpreg.webp", ach: false, group: "event", m: 0, s: 0, d: 50 },
-        { id: 35, o: 500, title: "Fucked the Nun", display: "Planted your seed in her pussy", img: "nun.webp", ach: false, group: "fuck", m: 0, s: 0, d: 50 },
+        { id: 0, o: 1, title: "Panties", display: "Wear panties for the first time. ", img: "panties.webp", ach: false, group: "panties", money: 0, sissy: 30, dom: 0, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 0, fitness: 0, strength: 0 },
+        { id: 1, o: 2, title: "#lola#'s Panties", display: "Steal #lola#'s panties. ", img: "pantieslola.webp", ach: false, group: "panties", money: 0, sissy: 30, dom: 0, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 0, fitness: 0, strength: 0 },
+        { id: 2, o: 3, title: "#landlord#'s Panties", display: "Steal #landlord#'s panties. ", img: "pantieslandlord.webp", ach: false, group: "panties", money: 0, sissy: 30, dom: 0, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 0, fitness: 0, strength: 0 },
+        { id: 3, o: 5, title: "#bimbo#'s Panties", display: "Steal #bimbo#'s panties. ", img: "pantiesbimbo.webp", ach: false, group: "panties", money: 0, sissy: 30, dom: 0, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 0, fitness: 0, strength: 0 },
+        { id: 4, o: 1, title: "Chastity", display: "Locked the cock. ", img: "chastity.png", ach: false, group: "sissy", money: 0, sissy: 30, dom: 0, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 0, fitness: 0, strength: 0 },
+        { id: 5, o: 1, title: "Bra", display: "Wear a bra for the first time ", img: "bra.webp", ach: false, group: "bra", money: 0, sissy: 30, dom: 0, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 0, fitness: 0, strength: 0 },
+        { id: 6, o: 2, title: "Fucked your #landlord#", display: "Balls deep in your #landlord#", img: "fucklandlord.webp", ach: false, group: "fuck", money: 0, sissy: 0, dom: 50, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 0, fitness: 0, strength: 0 },
+        { id: 7, o: 1, title: "Fucked #lola#", display: "Took #lola#'s virginity", img: "fucklola.webp", ach: false, group: "fuck", money: 0, sissy: 0, dom: 100, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 0, fitness: 0, strength: 0 },
+        { id: 8, o: 3, title: "Fucked #eva#", display: "Put your penis insde #eva#", img: "fuckeva.webp", ach: false, group: "fuck", money: 0, sissy: 0, dom: 50, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 0, fitness: 0, strength: 0 },
+        { id: 9, o: 4, title: "Fucked #janice#", display: "Creampied #janice#", img: "fuckjanice.webp", ach: false, group: "fuck", money: 0, sissy: 0, dom: 50, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 0, fitness: 0, strength: 0 },
+        { id: 10, o: 1, title: "Jail", display: "Lack of respect", img: "eventjail.webp", ach: false, group: "event", money: 0, sissy: 30, dom: 0, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 0, fitness: 0, strength: 0 },
+        { id: 11, o: 5, title: "Fucked #stormy#", display: "Cum Giver to #stormy#", img: "fuckstormy.webp", ach: false, group: "fuck", money: 0, sissy: 0, dom: 50, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 0, fitness: 0, strength: 0 },
+        { id: 12, o: 6, title: "Fucked #envy#", display: "Fucked #envy#", img: "fuckenvy.webp", ach: false, group: "fuck", money: 0, sissy: 0, dom: 50, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 0, fitness: 0, strength: 0 },
+        { id: 13, o: 4, title: "#ralphsmom#'s Panties", display: "Steal #ralphsmom#'s panties", img: "pantiesralphsmom.webp", ach: false, group: "panties", money: 0, sissy: 30, dom: 0, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 0, fitness: 0, strength: 0 },
+        { id: 14, o: 8, title: "Fucked #tina#", display: "Fucked #tina#", img: "fucktina.webp", ach: false, group: "fuck", money: 0, sissy: 0, dom: 50, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 0, fitness: 0, strength: 0 },
+        { id: 15, o: 1, title: "Anal", display: "Fucked up the ass", img: "anal1.webp", ach: false, group: "anal", money: 0, sissy: 30, dom: 0, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 0, fitness: 0, strength: 0 },
+        { id: 16, o: 2, title: "Anal", display: "Fucked up the ass 10 times", img: "anal10.webp", ach: false, group: "anal", money: 0, sissy: 50, dom: 0, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 0, fitness: 0, strength: 0 },
+        { id: 17, o: 3, title: "Anal", display: "Fucked up the ass 50 times", img: "anal50.webp", ach: false, group: "anal", money: 0, sissy: 100, dom: 0, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 0, fitness: 0, strength: 0 },
+        { id: 18, o: 4, title: "Anal", display: "Fucked up the ass 100 times", img: "anal100.webp", ach: false, group: "anal", money: 100, sissy: 100, dom: 0, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 0, fitness: 0, strength: 0 },
+        { id: 19, o: 5, title: "Anal", display: "Fucked up the ass 500 times", img: "anal500.webp", ach: false, group: "anal", money: 500, sissy: 100, dom: 0, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 0, fitness: 0, strength: 0 },
+        { id: 20, o: 1, title: "Oral", display: "Sucked a dick", img: "oral1.webp", ach: false, group: "oral", money: 0, sissy: 30, dom: 0, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 0, fitness: 0, strength: 0 },
+        { id: 21, o: 2, title: "Oral", display: "Sucked 10 dicks", img: "oral10.webp", ach: false, group: "oral", money: 0, sissy: 50, dom: 0, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 0, fitness: 0, strength: 0 },
+        { id: 22, o: 3, title: "Oral", display: "Sucked 50 dicks", img: "oral50.webp", ach: false, group: "oral", money: 0, sissy: 100, dom: 0, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 0, fitness: 0, strength: 0 },
+        { id: 23, o: 4, title: "Oral", display: "Sucked 100 dicks", img: "oral100.webp", ach: false, group: "oral", money: 100, sissy: 100, dom: 0, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 0, fitness: 0, strength: 0 },
+        { id: 24, o: 5, title: "Oral", display: "Sucked 500 dicks", img: "oral500.webp", ach: false, group: "oral", money: 500, sissy: 100, dom: 0, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 0, fitness: 0, strength: 0 },
+        { id: 25, o: 6, title: "Anal", display: "Took Monster Size Dick", img: "analmonster.webp", ach: false, group: "anal", money: 0, sissy: 50, dom: 0, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 0, fitness: 0, strength: 0 },
+        { id: 26, o: 1, title: "Sissy School", display: "Top Mid-term score", img: "schoolmidterm.webp", ach: false, group: "school", money: 50, sissy: 100, dom: 0, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 0, fitness: 0, strength: 0 },
+        { id: 27, o: 1, title: "Glory Hole", display: "Took 15 dicks in one session", img: "gloryhole15.webp", ach: false, group: "pinkroom", money: 100, sissy: 100, dom: 0, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 0, fitness: 0, strength: 0 },
+        { id: 28, o: 1, title: "Ranch", display: "Took down the ranch", img: "eventrachel.webp", ach: false, group: "event", money: 0, sissy: 100, dom: 0, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 100, fitness: 0, strength: 0 },
+        { id: 29, o: 6, title: "Missy's Panties", display: "Steal Missy's panties", img: "pantiesmissy.webp", ach: false, group: "panties", money: 0, sissy: 30, dom: 0, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 0, fitness: 0, strength: 0 },
+        { id: 30, o: 6, title: "Sociopath", display: "Escape as a Cum Giver", img: "cultempathy.webp", ach: false, group: "event", money: 0, sissy: 0, dom: 100, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 0, fitness: 0, strength: 0 },
+        { id: 31, o: 6, title: "Exit before entry", display: "Lost anal virginity before penis", img: "analfirst.webp", ach: false, group: "anal", money: 0, sissy: 75, dom: 0, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 0, fitness: 0, strength: 0 },
+        { id: 32, o: 6, title: "#ralph#", display: "Slurped cum from his asshole", img: "ralph.webp", ach: false, group: "event", money: 0, sissy: 75, dom: 0, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 0, fitness: 0, strength: 0 },
+        { id: 33, o: 500, title: "Bad End", display: "The virgin birth", img: "end_azrael.webp", ach: false, group: "end", money: 100, sissy: 100, dom: 0, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 0, fitness: 0, strength: 0 },
+        { id: 34, o: 500, title: "Saved the Nun", display: "You fucked her, but saved her too", img: "nunpreg.webp", ach: false, group: "event", money: 0, sissy: 0, dom: 50, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 0, fitness: 0, strength: 0 },
+        { id: 35, o: 500, title: "Fucked the Nun", display: "Planted your seed in her pussy", img: "nun.webp", ach: false, group: "fuck", money: 0, sissy: 0, dom: 50, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 0, fitness: 0, strength: 0 },
+        { id: 36, o: 500, title: "Lockpick", display: "Picked your first lock", img: "lockpick.webp", ach: false, group: "event", money: 50, sissy: 0, dom: 0, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 200, fitness: 0, strength: 0 },
+        { id: 37, o: 500, title: "Beast", display: "Sucked a horse cock", img: "horseoral.webp", ach: false, group: "event", money: 50, sissy: 10, dom: 0, makeup: 0, pee: 0, beast: 50, charisma: 0, pi: 0, fitness: 0, strength: 0 },
+        { id: 38, o: 500, title: "Beast", display: "Sucked a pig cock", img: "pigoral.webp", ach: false, group: "event", money: 50, sissy: 10, dom: 0, makeup: 0, pee: 0, beast: 50, charisma: 0, pi: 0, fitness: 0, strength: 0 },
+        { id: 39, o: 500, title: "Beast", display: "Sucked a doggie cock", img: "dogoral.webp", ach: false, group: "event", money: 50, sissy: 10, dom: 0, makeup: 0, pee: 0, beast: 50, charisma: 0, pi: 0, fitness: 0, strength: 0 },
+        { id: 40, o: 500, title: "Beast", display: "Fucked by a doggie", img: "doganal.webp", ach: false, group: "event", money: 50, sissy: 10, dom: 0, makeup: 0, pee: 0, beast: 150, charisma: 0, pi: 0, fitness: 0, strength: 0 },
+        { id: 41, o: 500, title: "Beast", display: "Fucked by a pig", img: "piganal.webp", ach: false, group: "event", money: 50, sissy: 10, dom: 0, makeup: 0, pee: 0, beast: 150, charisma: 0, pi: 0, fitness: 0, strength: 0 },
+        { id: 42, o: 500, title: "Beast", display: "Fucked by a horse", img: "horseanal.webp", ach: false, group: "event", money: 50, sissy: 10, dom: 0, makeup: 0, pee: 0, beast: 150, charisma: 0, pi: 0, fitness: 0, strength: 0 },
+        { id: 43, o: 500, title: "Gym", display: "Allowed into the Back Gym", img: "backgym.webp", ach: false, group: "event", money: 0, sissy: 0, dom: 0, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 0, fitness: 100, strength: 200 },
+        { id: 44, o: 500, title: "Pee Pee", display: "Let #zoey# pee on you", img: "zoeypee.webp", ach: false, group: "event", money: 0, sissy: 0, dom: 0, makeup: 0, pee: 75, beast: 0, charisma: 50, pi: 0, fitness: 0, strength: 0 },
+        { id: 45, o: 500, title: "Pee Pee", display: "Drink #ppgirl#'s pee", img: "pppee.webp", ach: false, group: "event", money: 0, sissy: 0, dom: 0, makeup: 0, pee: 150, beast: 0, charisma: 50, pi: 0, fitness: 0, strength: 0 },
+        { id: 46, o: 500, title: "Makeup", display: "Wore makeup for the first time", img: "makeup.webp", ach: false, group: "event", money: 0, sissy: 0, dom: 0, makeup: 150, pee: 0, beast: 0, charisma: 25, pi: 0, fitness: 0, strength: 0 },
+        { id: 47, o: 500, title: "Makeup", display: "Wore lipstick for the first time", img: "makeuplipstick.webp", ach: false, group: "event", money: 0, sissy: 0, dom: 0, makeup: 75, pee: 0, beast: 0, charisma: 25, pi: 0, fitness: 0, strength: 0 },
+        { id: 48, o: 500, title: "Makeup", display: "Wore eyeshadow for the first time", img: "makeupeyeshadow.webp", ach: false, group: "event", money: 0, sissy: 0, dom: 0, makeup: 75, pee: 0, beast: 0, charisma: 25, pi: 0, fitness: 0, strength: 0 },
+        { id: 49, o: 500, title: "Charisma", display: "Tried to talk your way out", img: "charisma.webp", ach: false, group: "event", money: 0, sissy: 0, dom: 0, makeup: 0, pee: 0, beast: 0, charisma: 100, pi: 0, fitness: 0, strength: 0 },
+        { id: 50, o: 500, title: "Charisma", display: "Successfully talked your way out", img: "charisma.webp", ach: false, group: "event", money: 0, sissy: 0, dom: 0, makeup: 0, pee: 0, beast: 0, charisma: 200, pi: 0, fitness: 0, strength: 0 },
+        { id: 51, o: 500, title: "End", display: "Completed the game.", img: "end.webp", ach: false, group: "event", money: 1000, sissy: 100, dom: 100, makeup: 100, pee: 100, beast: 100, charisma: 100, pi: 100, fitness: 100, strength: 100 },
 
-
-
-        
     ];
     
     future.st = new Array();
@@ -1989,6 +1988,8 @@ levels.piss = function (drankpiss, analpiss, pissedon, gender, who = null) {
                 pissEnergy += 20;
             gv.mod("energy", pissEnergy);
         }
+        if (who === "ppgirl")
+            trophy.add(45);
     }
     else {
         levels.mod("xdress", 5);
@@ -2077,9 +2078,26 @@ levels.beast = function (beast, gender = "m", who = null, type = "anal") {
     if (beast !== null) {
         sex.mod(beast, gender, who);
         switch (type) {
-            case "hand": levels.mod("beast", 25); break;
-            case "oral": levels.mod("beast", 45); break;
-            case "anal": levels.mod("beast"), 60; break;
+            case "hand":
+                levels.mod("beast", 25);
+                
+                break;
+            case "oral":
+                levels.mod("beast", 45);
+                switch (beast) {
+                    case "horse": trophy(37);
+                    case "pig": trophy(38);
+                    case "dog": trophy(39);
+                }
+                break;
+            case "anal":
+                levels.mod("beast"), 60;
+                switch (beast) {
+                    case "horse": trophy(42);
+                    case "pig": trophy(41);
+                    case "dog": trophy(40);
+                }
+                break;
         }
     }
 };
@@ -2358,12 +2376,26 @@ qdress.all = function () {
 trophy.add = function (id) {
     if (!trophy.st[id].ach) {
         trophy.st[id].ach = true;
-        if (trophy.st[id].s > 0)
-            levels.mod("xdress", trophy.st[id].s);
-        if (trophy.st[id].d > 0)
-            levels.mod("dom", trophy.st[id].d);
-        if (trophy.st[id].m > 0)
-            gv.mod("money", trophy.st[id].m); 
+        if (trophy.st[id].sissy > 0)
+            levels.mod("xdress", trophy.st[id].sissy);
+        if (trophy.st[id].dom > 0)
+            levels.mod("dom", trophy.st[id].dom);
+        if (trophy.st[id].makeup > 0)
+            levels.mod("makeup", trophy.st[id].makeup);
+        if (trophy.st[id].pee > 0)
+            levels.mod("piss", trophy.st[id].pee);
+        if (trophy.st[id].beast > 0)
+            levels.mod("beast", trophy.st[id].beast);
+        if (trophy.st[id].charisma > 0)
+            levels.mod("charisma", trophy.st[id].charisma);
+        if (trophy.st[id].pi > 0)
+            levels.mod("pi", trophy.st[id].pi);
+        if (trophy.st[id].fitness > 0)
+            levels.mod("fitness", trophy.st[id].fitness);
+        if (trophy.st[id].strength > 0)
+            levels.mod("strength", trophy.st[id].strength);
+        if (trophy.st[id].money > 0)
+            gv.mod("money", trophy.st[id].money);
         g.popUpNotice("You got an Achievement!!!<br/> " + sc.replace(trophy.st[id].title) + ": " + sc.replace(trophy.st[id].display));
     }
 };

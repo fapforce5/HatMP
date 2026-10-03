@@ -1077,8 +1077,8 @@ menu.save = function (cookieName, saveToCookie) {
             }
         });
 
-        saveName = "Day: " + diffDays + ", " + thisRoom + " [Created:" + new Date().toISOString().split('T')[0] + "]";
-
+        //saveName = "Day: " + diffDays + ", " + thisRoom + " [Created:" + new Date().toISOString().split('T')[0] + "]";
+        saveName = "v 1.0 WIP IS BROKEN! " + thisRoom + " [" + new Date().toISOString().split('T')[0] + "]";
         g.saveState.savename = saveName;
         if (saveToCookie) {
             try {

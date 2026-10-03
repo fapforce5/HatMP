@@ -5,10 +5,10 @@ room553.main = function () {
     var btnList = new Array();
     if (cl.hasoutfit("public") === null) {
         if (cl.appearance() < 2) {
-
             g.pass = "girl";
             navList = [551, 0];
-            if (!sc.getEvent("candy", -1)) {
+            if (!daily.get("candy553")) {
+                daily.set("candy553");
                 btnList.push({
                     "type": "img",
                     "name": "candy",
@@ -120,7 +120,7 @@ room553.chatcatch = function (callback) {
             }, 553);
             break;
         case "runaway":
-            sc.setstep("candy", -1);
+            //sc.setstep("candy", -1);
             char.room(0);
             break;
         case "runawayx":

@@ -111,6 +111,7 @@ cl.init = function () {
 
         { type: "dress", name: "robe", display: "Cult Robe", img: "dress_robe.png", sex: "m", inv: false, daring: 0, price: -1 },
         { type: "dress", name: "a", display: "Alice Dress", img: "dress_alice.png", sex: "f", inv: false, daring: 1, price: 90 },
+        { type: "dress", name: "ap", display: "Dolly Dress", img: "dress_alicep.png", sex: "f", inv: false, daring: 2, price: -1 },
         { type: "dress", name: "u", display: "Ugly Dress", img: "dress_ugly.png", sex: "f", inv: false, daring: 1, price: 30 },
         { type: "dress", name: "s", display: "Summer Dress", img: "dress_summer.png", sex: "f", inv: false, daring: 2, price: 90 },
         { type: "dress", name: "nu", display: "Nurse Uniform", img: "dress_nurse.png", sex: "f", inv: false, daring: 2, price: -1 },
@@ -121,6 +122,8 @@ cl.init = function () {
         { type: "dress", name: "rt", display: "Red Ruffle", img: "dress_RedRuffle.png", sex: "f", inv: false, daring: 3, price: 150 },
         { type: "dress", name: "maid", display: "Maid Outfit", img: "dress_maid.png", sex: "f", inv: false, daring: 3, price: -1 },
         { type: "dress", name: "j", display: "Janice's Dress", img: "dress_janice.png", sex: "f", inv: false, daring: 3, price: 180 },
+        { type: "dress", name: "pleo", display: "Pink Leotard", img: "dress_pleo.png", sex: "f", inv: false, daring: 4, price: 85 },
+        { type: "dress", name: "pls", display: "Pink Leotard", img: "dress_pls.png", sex: "f", inv: false, daring: 4, price: 120 },
         { type: "dress", name: "ps", display: "Pink Slutty Dress", img: "dress_pinkslut.png", sex: "f", inv: false, daring: 4, price: 175 },
         { type: "dress", name: "m", display: "Mesh Dress", img: "dress_mesh.png", sex: "f", inv: false, daring: 4, price: 210 },
         { type: "dress", name: "bitchsuit", display: "Bitchsuit", img: "dress_mesh.png", sex: "f", inv: false, daring: 4, price: -1 },
@@ -902,8 +905,12 @@ cl.getmakeup = function () {
             makeup = "natural";
     }
     for (let i = 0; i < cl.makeup.length; i++) {
-        if (cl.makeup[i].name === makeup)
+        if (cl.makeup[i].name === makeup) {
+            if (cl.c.makeup !== "natural") {
+                trophy.add(46);
+            }
             return { name: cl.makeup[i].name, image: cl.makeup[i].image };
+        }
     }
 };
 
@@ -1373,6 +1380,14 @@ cl.dressTop = [
     { name: "a", chest: 1, image: "dress_a_t_1.png", back: "dress_a_t_0_back.png" },
     { name: "a", chest: 0, image: "dress_a_t_0.png", back: "dress_a_t_0_back.png" },
 
+    { name: "ap", chest: 6, image: "dress_ap_t_6.png", back: "dress_ap_t_6_back.png" },
+    { name: "ap", chest: 5, image: "dress_ap_t_5.png", back: "dress_ap_t_5_back.png" },
+    { name: "ap", chest: 4, image: "dress_ap_t_4.png", back: "dress_ap_t_2_back.png" },
+    { name: "ap", chest: 3, image: "dress_ap_t_3.png", back: "dress_ap_t_2_back.png" },
+    { name: "ap", chest: 2, image: "dress_ap_t_2.png", back: "dress_ap_t_2_back.png" },
+    { name: "ap", chest: 1, image: "dress_ap_t_1.png", back: "dress_ap_t_0_back.png" },
+    { name: "ap", chest: 0, image: "dress_ap_t_0.png", back: "dress_ap_t_0_back.png" },
+
     { name: "u", chest: 6, image: "dress_u_t_6.png", back: "dress_u_t_6_back.png" },
     { name: "u", chest: 5, image: "dress_u_t_5.png", back: "dress_u_t_5_back.png" },
     { name: "u", chest: 4, image: "dress_u_t_4.png", back: "dress_u_t_4_back.png" },
@@ -1461,6 +1476,23 @@ cl.dressTop = [
     { name: "j", chest: 1, image: "dress_j_0.png", back: "dress_j_0_back.png" },
     { name: "j", chest: 0, image: "dress_j_0.png", back: "dress_j_0_back.png" },
 
+    { name: "pleo", chest: 6, image: "dress_pleo_6.png", back: "dress_pleo_6_back.png" },
+    { name: "pleo", chest: 5, image: "dress_pleo_5.png", back: "dress_pleo_5_back.png" },
+    { name: "pleo", chest: 4, image: "dress_pleo_4.png", back: "dress_pleo_4_back.png" },
+    { name: "pleo", chest: 3, image: "dress_pleo_3.png", back: "dress_pleo_3_back.png" },
+    { name: "pleo", chest: 2, image: "dress_pleo_2.png", back: "dress_pleo_2_back.png" },
+    { name: "pleo", chest: 1, image: "dress_pleo_0.png", back: "dress_pleo_0_back.png" },
+    { name: "pleo", chest: 0, image: "dress_pleo_0.png", back: "dress_pleo_0_back.png" },
+
+
+    { name: "pls", chest: 6, image: "dress_pleo_6.png", back: "dress_pleo_6_back.png" },
+    { name: "pls", chest: 5, image: "dress_pleo_5.png", back: "dress_pleo_5_back.png" },
+    { name: "pls", chest: 4, image: "dress_pleo_4.png", back: "dress_pleo_4_back.png" },
+    { name: "pls", chest: 3, image: "dress_pleo_3.png", back: "dress_pleo_3_back.png" },
+    { name: "pls", chest: 2, image: "dress_pleo_2.png", back: "dress_pleo_2_back.png" },
+    { name: "pls", chest: 1, image: "dress_pleo_0.png", back: "dress_pleo_0_back.png" },
+    { name: "pls", chest: 0, image: "dress_pleo_0.png", back: "dress_pleo_0_back.png" },
+    
 ];
 
 cl.dressBottom = [
@@ -1484,6 +1516,13 @@ cl.dressBottom = [
     { name: "a", leg: 2, image: "dress_a_b_0.png", back: "dress_a_b_0_back.png" },
     { name: "a", leg: 1, image: "dress_a_b_0.png", back: "dress_a_b_0_back.png" },
     { name: "a", leg: 0, image: "dress_a_b_0.png", back: "dress_a_b_0_back.png" },
+
+    { name: "ap", leg: 5, image: "dress_ap_b_0.png", back: "dress_ap_b_0_back.png" },
+    { name: "ap", leg: 4, image: "dress_ap_b_0.png", back: "dress_ap_b_0_back.png" },
+    { name: "ap", leg: 3, image: "dress_ap_b_0.png", back: "dress_ap_b_0_back.png" },
+    { name: "ap", leg: 2, image: "dress_ap_b_0.png", back: "dress_ap_b_0_back.png" },
+    { name: "ap", leg: 1, image: "dress_ap_b_0.png", back: "dress_ap_b_0_back.png" },
+    { name: "ap", leg: 0, image: "dress_ap_b_0.png", back: "dress_ap_b_0_back.png" },
 
     { name: "u", leg: 5, image: "dress_u_b_0.png", back: "dress_u_b_4_back.png" },
     { name: "u", leg: 4, image: "dress_u_b_0.png", back: "dress_u_b_4_back.png" },
@@ -1555,6 +1594,19 @@ cl.dressBottom = [
     { name: "robe", leg: 1, image: null, back: null },
     { name: "robe", leg: 0, image: null, back: null },
 
+    { name: "pleo", leg: 5, image: null, back: "dress_pleo_b_5_back.png" },
+    { name: "pleo", leg: 4, image: null, back: "dress_pleo_b_4_back.png" },
+    { name: "pleo", leg: 3, image: null, back: "dress_pleo_b_3_back.png" },
+    { name: "pleo", leg: 2, image: null, back: "dress_pleo_b_2_back.png" },
+    { name: "pleo", leg: 1, image: null, back: "dress_pleo_b_0_back.png" },
+    { name: "pleo", leg: 0, image: null, back: "dress_pleo_b_0_back.png" },
+
+    { name: "pls", leg: 5, image: "dress_pls_b_5.png", back: "dress_pls_b_5_back.png" },
+    { name: "pls", leg: 4, image: "dress_pls_b_4.png", back: "dress_pls_b_4_back.png" },
+    { name: "pls", leg: 3, image: "dress_pls_b_3.png", back: "dress_pls_b_3_back.png" },
+    { name: "pls", leg: 2, image: "dress_pls_b_1.png", back: "dress_pls_b_2_back.png" },
+    { name: "pls", leg: 1, image: "dress_pls_b_1.png", back: "dress_pls_b_0_back.png" },
+    { name: "pls", leg: 0, image: "dress_pls_b_0.png", back: "dress_pls_b_0_back.png" },
 ];
 
 cl.swimsuitTop = [
@@ -2034,6 +2086,9 @@ cl.shave = function () {
 };
 
 cl.noDickPants = function () {
+    let noDickDressx = ["pleo", "pls"]
+    if (noDickDressx.includes(cl.c.dress))
+        return true;
     if (cl.c.pants === null)
         return false;
     let noDickPantsx = ["s", "j", "b", "r", "dd", "p", "ps", "pl", "pl1", "y"];
@@ -2160,13 +2215,20 @@ cl.display = function () {
         //set Chest
         cl.subDisplay("char-chest", "top_" + cl.c.chest + (cback ? "_back" : "") + ".png");
         //set mouth
+        if (cl.c.lipstick !== null) {
+            trophy.add(47);
+        }
         cl.subDisplay("char-lips", cback ? null : "lips_" + cl.c.lips + "_" + (cl.c.lipstick === null ? "nude" : cl.c.lipstick) + ".png");
         //set eyes
+        if (cl.c.lipstick !== null) {
+            trophy.add(47);
+        }
         if (cl.c.pissface === null) {
             cl.subDisplay("char-eyeliner", null);
             cl.subDisplay("char-eyes", cback ? null : "eyes_" + cl.c.eyes + ".png");
         }
         else {
+            trophy.add(48);
             cl.subDisplay("char-eyeliner", cback ? null : "eyeliner_" + cl.c.pissface + ".png");
             cl.subDisplay("char-eyes", cback ? null : "eyes_" + cl.c.eyes + "_f.png");
         }
@@ -2354,11 +2416,24 @@ cl.display = function () {
             cl.c.shirt = null;
             cl.c.pants = null;
             cl.c.swimsuit = null;
+            let nodickdress = ["pleo", "pls"];
             cl.subDisplay("char-shirt", null);
             cl.subDisplay("char-pants", null);
+            
             $.each(cl.dressTop, function (i, v) {
                 if (v.name === cl.c.dress && v.chest === cl.c.chest) {
-                    cl.subDisplay("char-shirt", cback ? v.back : v.image);
+                    if (nodickdress.includes(cl.c.dress)) {
+                        let dressimg = v.image;
+                        if (cl.c.cock !== 5) {
+                            let dressdot = dressimg.lastIndexOf(".");
+                            dressimg = dressimg.substring(0, dressdot) + "_c" + dressimg.substring(dressdot);
+                        }
+                        cl.subDisplay("char-cock", null);
+                        cl.subDisplay("char-shirt", cback ? v.back : dressimg);
+                    }
+                    else {
+                        cl.subDisplay("char-shirt", cback ? v.back : v.image);
+                    }
                     return false;
                 }
             });

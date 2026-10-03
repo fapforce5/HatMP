@@ -5,8 +5,8 @@ room1.main = function () {
         {
             "type": "btn",
             "name": "start",
-            "left": 802,
-            "top": 454,
+            "left": 322,
+            "top": 375,
             "width": 316,
             "height": 45,
             "image": "1_startScreen/start.png"
@@ -14,8 +14,8 @@ room1.main = function () {
         {
             "type": "btn",
             "name": "load",
-            "left": 800,
-            "top": 605,
+            "left": 1280,
+            "top": 375,
             "width": 321,
             "height": 46,
             "image": "1_startScreen/load.png"
@@ -23,8 +23,8 @@ room1.main = function () {
         {
             "type": "btn",
             "name": "patron",
-            "left": 860,
-            "top": 725,
+            "left": 852,
+            "top": 375,
             "width": 217,
             "height": 51,
             "image": "1_startScreen/become_a_patron_button.png"
@@ -43,12 +43,12 @@ room1.main = function () {
     nav.t({
         type: "zimg",
         name: "version",
-        left: 1350,
-        top: 950,
-        font: 40,
+        left: 1450,
+        top: 80,
+        font: 20,
         hex: "#ffffff",
         stroke: "black",
-        text: g.versionText + "<br/>The cult; Your journey is nearly complete"
+        text: g.versionText + "<br/>The last release before the next release"
     }, 1);
 
 };

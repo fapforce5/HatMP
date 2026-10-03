@@ -169,7 +169,6 @@ room101.chatcatch = function (callback) {
             nav.bg("101_constFrontOffice/" + callback + ".webp");
             break;
         case "angry":
-            sc.setstep("tina", -1);
             break;
         case "createDoor":
             char.room(102);

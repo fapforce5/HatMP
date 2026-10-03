@@ -372,6 +372,7 @@ sc.init = function () {
                             { id: 4, txt: "Kicked out", show: true, mStatus: 0, roomId: 13 },
                             { id: 5, txt: "Chastity Check", show: true, mStatus: 0, roomId: 16 },
                             { id: 6, txt: "Cranival", show: true, mStatus: 0, roomId: 7 },
+                            { id: 7, txt: "Coming home nude", show: true, mStatus: 0, roomId: 16 },
                         ]
                 },
                 {
@@ -661,6 +662,7 @@ sc.init = function () {
                     missionName: "random", mStatus: 0, title: "Misc Events", desc: "", task:
                         [
                             { id: 0, txt: "Dog park", show: true, mStatus: 0, roomId: 322 },
+                            { id: 1, txt: "Dog park1", show: true, mStatus: 0, roomId: 322 },
                         ]
                 },
                 {
@@ -1027,13 +1029,14 @@ sc.init = function () {
                         ]
                 },
                 {
-                    missionName: "*missy", mStatus: 0, title: "Free Missy", desc: "What you need to do ", task:
+                    missionName: "*missy", mStatus: 0, title: "Save Missy", desc: "What you need to do ", task:
                         [
                             { id: 0, txt: "Met at Missy's", show: true, mStatus: 0, roomId: 203 },
                             { id: 1, txt: "Get More information from the Forest Queen", show: true, mStatus: 0, roomId: 477 },
                             { id: 2, txt: "Bring the letter from the Forest Queen", show: true, mStatus: 0, roomId: 203 },
                             { id: 3, txt: "Ask each person on the list if they have the code", show: true, mStatus: 0, roomId: 0 },
                             { id: 4, txt: "Report back to Missy's Dective Agency", show: true, mStatus: 0, roomId: 203 },
+                            { id: 5, txt: "Go deep past the caves and sneak into the C.U.M. compound", show: true, mStatus: 0, roomId: 445 },
                         ]
                 },
             ]
@@ -1182,6 +1185,12 @@ sc.init = function () {
                     missionName: "bully", mStatus: 0, title: "Bully", desc: "You're going to regret life", task:
                         [
                             { id: 0, txt: "Welcome back wedgie", show: true, mStatus: 0, roomId: 100 },
+                        ]
+                },
+                {
+                    missionName: "*gf", mStatus: 0, title: "Girlfriend", desc: "I think I'm in love", task:
+                        [
+                            { id: 0, txt: "Confesses his love your you", show: true, mStatus: 0, roomId: 100 },
                         ]
                 },
             ]
@@ -1563,6 +1572,7 @@ sc.init = function () {
                     missionName: "*sin", mStatus: 0, title: "Free her", desc: "Her only sin was falling in love.", task:
                         [
                             { id: 0, txt: "Get the list and talk to the priest", show: true, mStatus: 0, roomId: 775 },
+                            { id: 1, txt: "Freed the nun!", show: true, mStatus: 0, roomId: 775 },
                         ]
                 },
             ]
@@ -1822,6 +1832,16 @@ sc.init = function () {
                     missionName: "*dolls", mStatus: 0, title: "Dolls", desc: "Living dolls", task:
                         [
                             { id: 0, txt: "Come back anytime", show: true, mStatus: 0, roomId: 752 },
+                        ]
+                }
+            ]
+        },
+        {
+            name: "jada", mission: [
+                {
+                    missionName: "panties", mStatus: 0, title: "Panties", desc: "Living dolls", task:
+                        [
+                            { id: 0, txt: "First time panties", show: true, mStatus: 0, roomId: 402 },
                         ]
                 }
             ]
@@ -3308,8 +3328,10 @@ sc.trivialLookup = {
     "!ledja": { display: "Ledja", image: "ledja.png" },
     "!nar": { display: "Narrator ", image: "nar.png" },
     "!wolfgirl": { display: "Snail Trail", image: "wolfgirl.png" },
-    "!tree": { display: "Tree branch", image: "tree.png" }
+    "!tree": { display: "Tree branch", image: "tree.png" },
+    "!dolly0": { display: "Dolly", image: "dolly0.png" }
 };
+
 
 sc.trivial = function (charname) {
     var name, image;

@@ -1,7 +1,7 @@
 ﻿//Room name
 var room125 = {};
 room125.main = function () {
-    if (missy.getenvelope("jimmy")) {
+    if (missy.getenvelope("jimmy").active) {
         nav.bg("125_poker/missy0.webp");
         chat(100, 125);
     }
@@ -564,11 +564,6 @@ room125.chatcatch = function (callback) {
     var i, j, k, temp, willplay;
 
     switch (callback) {
-        case "keiInc":
-            if (sc.getstep("kei") < 3)
-                sc.incstep("kei", 1);
-            invoker.invokeCurrent("chatcatch", "deal");
-            break;
         case "deal":
             $('#room_footer').hide();
             g.pass.gameCount++;
@@ -907,8 +902,8 @@ room125.chatcatch = function (callback) {
             }, 125);
             break;
         case "jada4":
-            sc.setstep("jada", 1);
-            sc.setstep("kei", 5);
+            //sc.setstep("jada", 1);
+            //sc.setstep("kei", 5);
             nav.killbutton("jada");
             nav.button({
                 "type": "btn",
@@ -996,7 +991,6 @@ room125.chatcatch = function (callback) {
             levels.oral(3, "m", "kei", true);
             levels.oral(3, "m", "ralph", false);
             levels.oral(3, "m", "jimmy", false);
-            sc.setstep("kei", -2);
             char.room(0);
             break;
         case "tx3":

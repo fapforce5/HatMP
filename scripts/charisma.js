@@ -84,6 +84,7 @@ charisma.drawRollSummary = function (title, stat, primaryLabel, secondaryLabel, 
 };
 
 charisma.init = function (charismaLevel, btnPressWin, btnPressLost, roomID) {
+    trophy.add(49);
     var stat = charisma.getStats(charismaLevel);
     charisma.drawOverlayShell();
     charisma.drawRollSummary("Charisma", stat, "Your Charisma: ", "Sexy Bonus: ", "Total Charisma: ");
@@ -167,6 +168,7 @@ charisma.drawRoll = function () {
     }, 1);
 
     if (myTotal > g.fight.rollNeeded) {
+        trophy.add(50);
         g.fight.aftermath = "win";
         gv.mod("energy", -5);
         nav.t({

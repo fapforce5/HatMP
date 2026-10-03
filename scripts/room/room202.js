@@ -200,7 +200,7 @@ room202.chatcatch = function (callback) {
             break;
         case "leave":
             char.addtime(10);
-            sc.setstep("missy", 4);
+            //sc.setstep("missy", 4);
             char.room(0);
             break;
         case "kissNormalFlow":
@@ -337,7 +337,7 @@ room202.chatcatch = function (callback) {
             char.addtime(360);
             g.sissy[28].ach = true;
             gv.set("oncase", null);
-            sc.setstep("jeffery", 8);
+            //sc.setstep("jeffery", 8);
             g.roomMapAccess(250, true, true);
             char.room(0);
             break;

@@ -44,7 +44,7 @@ room21.btnclick = function (name) {
                 chat(0, 21);
                 alert("no know reason for being here. ");
             }
-            sc.setstep("landlord", -1);
+            //sc.setstep("landlord", -1);
             break;
         default:
             break;

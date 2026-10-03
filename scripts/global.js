@@ -9,8 +9,8 @@ g.map = null;
 g.roomAdd = new Array();
 g.saveState = null;
 g.startDate = new Date(2012, 0, 1, 0, 0, 0, 0);
-g.version = 27.1;
-g.versionText = "0.27.1 - MAY 2026";
+g.version = 28.2;
+g.versionText = "0.28.2 - OCT 2026";
 g.newLoad = true;
 g.back = false;
 g.altview = false;
@@ -187,7 +187,7 @@ g.gethourdecimal = function () {
 g.rooms = [
     
     { roomID: 0, name: "Map", image: "map/map1.jpg", nightImage: "map/map1_night.jpg", houseID: 0, btn: "roomBtn_000.png" },
-    { roomID: 1, name: "Start", image: "1_startScreen/1_startscreen.png", nightImage: "1_startScreen/1_startscreen.png", houseID: -1, btn: "roomBtn_-1.png" },
+    { roomID: 1, name: "Start", image: "1_startScreen/1_startscreen.webp", nightImage: "1_startScreen/1_startscreen.webp", houseID: -1, btn: "roomBtn_-1.png" },
     { roomID: 2, name: "Help", image: "2_info/2_infoScreen.png", nightImage: "2_info/2_infoScreen.png", houseID: -1, btn: "roomBtn_-1.png" },
     { roomID: 3, name: "Check", image: "2_info/2_infoScreen.png", nightImage: "2_info/2_infoScreen.png", houseID: -1, btn: "roomBtn_-1.png" },
 
@@ -396,8 +396,6 @@ g.rooms = [
     { roomID: 526, name: "Caravaggio", image: "526_bar/bg.jpg", nightImage: "526_bar/bg.jpg", houseID: 525, btn: "roomBtn_526.png" },
     { roomID: 527, name: "Caravaggio Toilet", image: "527_bathroom/bg.jpg", nightImage: "527_bathroom/bg.jpg", houseID: 525, btn: "roomBtn_527.png" },
 
-    { roomID: 535, name: "Keaton", image: "535_keaton/bg.jpg", nightImage: "535_keaton/bg.jpg", houseID: 525, btn: "535_keaton.png" },
-
     { roomID: 550, name: "Gym Front Desm", image: "550_gymFront/entrance.jpg", nightImage: "550_gymFront/entrance.jpg", houseID: 550, btn: "roomBtn_550.png" },
     { roomID: 551, name: "Gym", image: "551_gymInside/551_gym.jpg", nightImage: "551_gymInside/551_gym.jpg", houseID: 550, btn: "roomBtn_551.png" },
     { roomID: 552, name: "Boys Locker", image: "552_boy/lockeroom.jpg", nightImage: "552_boy/lockeroom.jpg", houseID: 550, btn: "roomBtn_552.png" },
@@ -435,6 +433,7 @@ g.rooms = [
     { roomID: 725, name: "Bar", image: "725_club/club.jpg", nightImage: "725_club/club.jpg", houseID: 725, btn: "roomBtn_725.png" },
     { roomID: 726, name: "Dance Floor", image: "726_dance/dance.jpg", nightImage: "726_dance/dance.jpg", houseID: 725, btn: "roomBtn_726.png" },
     { roomID: 727, name: "Club Bathroom", image: "727_bathroom/bg.jpg", nightImage: "727_bathroom/bg.jpg", houseID: 725, btn: "roomBtn_726.png" },
+    { roomID: 728, name: "River's Apartment", image: "725_club/river0.webp", nightImage: "725_club/river0.webp", houseID: 725, btn: "roomBtn_726.png" },
 
     { roomID: 750, name: "Homeless Camp", image: "750_homeless/bg.jpg", nightImage: "750_homeless/bgNight.jpg", houseID: 750, btn: "roomBtn_750.png" },
     { roomID: 751, name: "Fortune Teller", image: "751_crystal/bg.jpg", nightImage: "751_crystal/bg.jpg", houseID: 750, btn: "roomBtn_751.png" },
@@ -522,7 +521,6 @@ g.roomMapInit = function () {
         { roomID: 489, display: "Cave", access: false, darkAccess: false, left: 1270, top: 446, width: 74, height: 62, img: "map/489.png", night: "map/489_night.png", map: 0 },
         { roomID: 500, display: "Zoey's", access: true, darkAccess: true, left: 781, top: 51, width: 197, height: 142, img: "map/500.png", night: "map/500_night.png", map: 1 },
         { roomID: 525, display: "Zoey's Bar", access: false, darkAccess: true, left: 587, top: 389, width: 152, height: 276, img: "map/525.png", night: "map/525_night.png", map: 3 },
-        { roomID: 535, display: "Keaton's Home", access: true, darkAccess: false, left: 1338, top: 151, width: 102, height: 90, img: "map/535.png", night: "map/535_night.png", map: 1 },
         { roomID: 550, display: "Gym", access: true, darkAccess: false, left: 1072, top: 370, width: 238, height: 179, img: "map/550.png", night: "map/550_night.png", map: 2 },
         { roomID: 575, display: "Sausage", access: true, darkAccess: true, left: 1160, top: 669, width: 155, height: 301, img: "map/575.png", night: "map/575_night.png", map: 2 },
         { roomID: 600, display: "Strip Club", access: false, darkAccess: true, left: 869, top: 394, width: 235, height: 222, img: "map/600.png", night: "map/600_night.png", map: 3 },

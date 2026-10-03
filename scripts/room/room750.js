@@ -342,7 +342,7 @@ room750.chatcatch = function (callback) {
                     "height": 994,
                     "image": "750_homeless/doc1d.png"
                 }, 750);
-                sc.setstep("doc", 2);
+                //sc.setstep("doc", 2);
                 chat(8, 750);
             }
             else
@@ -390,8 +390,8 @@ room750.chatcatch = function (callback) {
             nav.bg("661_peephole/661_black.jpg");
             break;
         case "doc2c":
-            sc.setstep("landlord", -5);
-            sc.setstep("doc", 3);
+            //sc.setstep("landlord", -5);
+            //sc.setstep("doc", 3);
             char.settime(23, 15);
             nav.bg("750_homeless/bg.jpg", "750_homeless/bgnight.jpg");
             break;

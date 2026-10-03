@@ -88,14 +88,14 @@ room408.btnclick = function (name) {
             zcl.displayMain(50, 1200, .14, "nude", false);
 
             if (cl.c.tattoo.find(x => x.startsWith("womb_")) !== undefined)
-                sc.select("has_tattoo", "408_tattoo/icon_tattoo_womb_no.png", 0);
+                sc.select("has_tattoo", "408_tattoo/icon_tattoo_womb_no.png", -2);
             else
-                sc.select("tattoo_womb", "408_tattoo/icon_tattoo_womb.png", 0);
+                sc.select("tattoo_womb", "408_tattoo/icon_tattoo_womb.png", -2);
 
             if (cl.c.tattoo.find(x => x.startsWith("back_")) !== undefined)
-                sc.select("has_tattoo", "408_tattoo/icon_tattoo_back_no.png", 1);
+                sc.select("has_tattoo", "408_tattoo/icon_tattoo_back_no.png", 0);
             else
-                sc.select("tattoo_back", "408_tattoo/icon_tattoo_back.png", 1);
+                sc.select("tattoo_back", "408_tattoo/icon_tattoo_back.png", 0);
 
             if (cl.c.tattoo.find(x => x.startsWith("ut_")) !== undefined)
                 sc.select("has_tattoo", "408_tattoo/icon_tattoo_upperthigh_no.png", 2);
@@ -103,9 +103,9 @@ room408.btnclick = function (name) {
                 sc.select("tattoo_ut", "408_tattoo/icon_tattoo_upperthigh.png", 2);
 
             if (cl.c.tattoo.find(x => x.startsWith("tramp_")) !== undefined)
-                sc.select("has_tattoo", "408_tattoo/icon_tattoo_trampstamp_no.png", 3);
+                sc.select("has_tattoo", "408_tattoo/icon_tattoo_trampstamp_no.png", 4);
             else
-                sc.select("tattoo_tramp", "408_tattoo/icon_tattoo_trampstamp.png", 3);
+                sc.select("tattoo_tramp", "408_tattoo/icon_tattoo_trampstamp.png", 4);
 
             //if (cl.c.tattoo.find(x => x.startsWith("thigh_")) !== undefined)
             //    sc.select("has_tattoo", "408_tattoo/icon_tattoo_thigh_no.png", 4);
@@ -113,11 +113,22 @@ room408.btnclick = function (name) {
             //    sc.select("tattoo_thigh", "408_tattoo/icon_tattoo_thigh.png", 4);
 
             if (cl.c.tattoo.find(x => x.startsWith("butt_")) !== undefined)
-                sc.select("has_tattoo", "408_tattoo/icon_tattoo_butt_no.png", 5);
+                sc.select("has_tattoo", "408_tattoo/icon_tattoo_butt_no.png", 6);
             else
-                sc.select("tattoo_butt", "408_tattoo/icon_tattoo_butt.png", 5);
+                sc.select("tattoo_butt", "408_tattoo/icon_tattoo_butt.png", 6);
 
-            sc.selectCancel("tattoo_cancel1", 6);
+            sc.selectCancel("tattoo_cancel1", 8);
+            nav.drawButton("1001_rand/turnaround.png", "tattoo_turnaround");
+            break;
+        case "tattoo_turnaround":
+            zcl.displayMain(50, 1200, .14, "nude", true);
+            nav.killbutton("tattoo_turnaround");
+            nav.drawButton("1001_rand/turnaround.png", "tattoo_turnaround1");
+            break;
+        case "tattoo_turnaround1":
+            zcl.displayMain(50, 1200, .14, "nude", false);
+            nav.killbutton("tattoo_turnaround1");
+            nav.drawButton("1001_rand/turnaround.png", "tattoo_turnaround");
             break;
         case "tattoo_cancel1":
             nav.kill();
@@ -337,7 +348,7 @@ room408.chatcatch = function (callback) {
             nav.bg("408_tattoo/scratch.jpg");
             break;
         case "zoeycheck":
-            if (sc.getstep("zoey") > 10)
+            if (sc.getMission("zoey", "cheating").complete)
                 chat(21, 408);
             else
                 chat(20, 408);
@@ -352,7 +363,7 @@ room408.chatcatch = function (callback) {
             break;
         case "moneycheck":
             if (gv.get("money") < 500) {
-                sc.setstep("stormy", -1);
+                //sc.setstep("stormy", -1);
                 chat(33, 408);
             }
             else {

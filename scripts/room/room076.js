@@ -190,7 +190,6 @@ room76.chatcatch = function (callback) {
             gv.mod("arousal", 100);
             break;
         case "leave1":
-            sc.setstep("bimbo", 2);
             char.room(0);
             break;
         case "titfuck":
@@ -235,10 +234,8 @@ room76.chatcatch = function (callback) {
                 "height": 1005,
                 "image": "76_bimboRoom/bimboCumface.png"
             }, 76);
-            gv.mod("receiveBoobJob", 1);
-            cl.doCum(false);
+            levels.gottitjob("f", "bimbo");
             chat(8, 76);
-            sc.setstep("bimbo", 2);
             break;
         case "leave":
             nav.room(0);

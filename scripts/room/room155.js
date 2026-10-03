@@ -66,6 +66,8 @@ room155.btnclick = function (name) {
                         case 0:
                         case 1:
                             sc.show("chef");
+                            sc.startMission("chef", "chef");
+                            sc.completeMissionTask("chef", "chef", 0);
                             nav.bg("155_wander/kitchen1.webp");
                             chat(2, 155);
                             break;
@@ -152,6 +154,7 @@ room155.chatcatch = function (callback) {
             break;
         case "chefbj2":
             levels.oral(3, "m", "chef", true);
+            sc.completeMissionTask("chef", "chef", 1);
             char.addtime(15);
             zcl.bjpov(0, 600, .6, "cumswallow", false);
             break;

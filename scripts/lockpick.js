@@ -50,8 +50,10 @@ lockpick.showResult = function (name, image) {
 
 lockpick.finish = function (buttonName, giveReward) {
     lockpick.clearTimer();
-    if (giveReward)
+    if (giveReward) {
         levels.mod("pi", 25);
+        trophy.add(36);
+    }
     nav.killbuttonStartsWith("lockpickq_");
     $('#room_footer').show();
     invoker.invoke(g.fight.roomID, "btnclick", buttonName);

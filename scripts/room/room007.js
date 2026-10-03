@@ -357,12 +357,6 @@ room7.chatcatch = function (callback) {
         case "o5":
             char.room(10);
             break;
-        case "shave":
-            nav.killbutton("eva");
-            sc.setstep("eva", 2);
-            sc.setstep("me", -1);
-            scc.love("eva", 5, null);
-            break;
         case "eva1":
             nav.modbutton("eva", "7_mainCharRoomAlt/eva1.png", null, null);
             break;
@@ -391,12 +385,10 @@ room7.chatcatch = function (callback) {
         case "eva7":
             nav.bg("7_mainCharRoomAlt/7_mainCharRoomAlt.jpg");
             daily.set("eva");
-            sc.setstep("eva", 10);
             char.addtime(30);
             break;
         case "lola1":
             nav.bg("7_mainCharRoomAlt/7_mainCharRoomAlt.jpg");
-            sc.setstep("lola", 11);
             char.addtime(30);
             break;
         case "eva30":
@@ -482,7 +474,6 @@ room7.chatcatch = function (callback) {
             nav.bg("7_mainCharRoomAlt/eva10b3g.jpg");
             break;
         case "eva10b3h":
-            sc.setstep("eva", 11);
             cl.doCum(true);
             gv.mod("giveOralFemale", 1);
             gv.mod("fuckPussy", 1);
@@ -512,7 +503,6 @@ room7.chatcatch = function (callback) {
             nav.bg("7_mainCharRoomAlt/eva10jt.jpg");
             break;
         case "eva10kt":
-            sc.setstep("eva", 11);
             cl.doCum(true);
             daily.set("eva");
             char.addtime(60);
@@ -575,7 +565,6 @@ room7.chatcatch = function (callback) {
             break;
         case "eva11m":
             scc.love("eva", 200, 100);
-            sc.setstep("eva", 12);
             char.addtime(60);
             gv.mod("fuckPussy", 1);
             char.room(10);
@@ -684,14 +673,6 @@ room7.chatcatch = function (callback) {
                 "image": "7_mainCharRoomAlt/New folder/bigguy5n.png"
             }, 7);
             break;
-        case "bigguy5o":
-            sc.setstep("bigguy", 6);
-            gv.mod("receiveOralMale", 1);
-            gv.mod("receiveAnalMale", 1);
-            gv.mod("creamPied", 1);
-            char.addtime(68);
-            char.room(10);
-            break;
         case "b3":
             char.changeMenu("hide", false, false);
             g.internal = { l: false, e: false };
@@ -714,48 +695,6 @@ room7.chatcatch = function (callback) {
         case "bigguy6b":
             nav.bg("7_mainCharRoomAlt/" + callback + ".jpg");
             break;
-        //case "bigguy6c":
-        //    nav.bg("7_mainCharRoomAlt/" + callback + ".jpg");
-        //    gv.mod("receiveAnalMale", 1);
-        //    gv.mod("creamPied", 1);
-        //    char.room(10);
-        //    break;
-        //case "b5e1":
-        //    nav.bg("7_mainCharRoomAlt/" + callback + ".jpg");
-        //    g.internal.e = true;
-        //    break;
-        //case "b5l1":
-        //    nav.bg("7_mainCharRoomAlt/" + callback + ".jpg");
-        //    g.internal.l = true;
-        //    break;
-        //case "b6":
-        //    if (!g.internal.l) {
-        //        nav.bg("7_mainCharRoomAlt/b5l1.jpg");
-        //        chat(98, 7);
-        //        g.internal.l = true;
-        //    }
-        //    else if (!g.internal.e) {
-        //        nav.bg("7_mainCharRoomAlt/b5e1.jpg");
-        //        chat(103, 7);
-        //        g.internal.e = true;
-        //    }
-        //    else {
-        //        nav.bg("7_mainCharRoomAlt/b6.jpg");
-        //        chat(108, 7);
-        //    }
-        //    break;
-        //case "b7":
-        //    //scc.love("eva", 200, 100);
-        //    //scc.love("lola", 200, 100);
-        //    //sc.setstep("eva", 13);
-        //    //sc.setstep("lola", 14);
-        //    //gv.mod("fuckPussy", 2);
-        //    //gv.mod("giveAnalFemale", 1);
-        //    daily.set("lola");
-        //    daily.set("eva");
-        //    char.addtime(120);
-        //    char.room(10);
-        //    break;
         case "reset":
             char.room(10);
             break;

@@ -916,7 +916,12 @@ room322.chatcatch = function (callback) {
                         nav.bg("322_dog/park1_0.webp");
                         chat(19, 322);
                     }
-                    else {
+                    else if (sc.getMissionTask("janice", "random", 1).notStarted) {
+                        sc.completeMissionTask("janice", "random", 1);
+                        nav.bg("322_dog/park2_0.webp");
+                        chat(118, 322);
+                    }
+                    else if (sc.getMissionTask("janice", "random", 2).notStarted) {
                         nav.bg("322_dog/park1_0.webp");
                         chat(89, 322);
                     }
@@ -2053,6 +2058,100 @@ room322.chat = function (chatID) {
             text: "Wake up sleepy head! Time to get up lazy bones!!!",
             button: [
                 { chatID: -1, text: "...", callback: "livingroom" },
+            ]
+        },
+        {
+            chatID: 118,
+            speaker: "!girl",
+            text: "You two bitches!!!",
+            button: [
+                { chatID: 119, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 119,
+            speaker: "janice",
+            text: "What did you call me!",
+            button: [
+                { chatID: 120, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 120,
+            speaker: "!girl",
+            text: "I call you both bitches! Your bitch let herself get mounted and bred by my little doggy last time you " +
+                "were here! His smashed his poor testicles against your doggy and now refuses to mate at my breeding farm! " +
+                "The vet said I have to rub his balls to get him to relax, but there's no way I'm doing that! ",
+            button: [
+                { chatID: 121, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 121,
+            speaker: "janice",
+            text: "Don't you ever call me a bitch again! But yes, my bitch is a bad " + gender.pronoun("girl") + "! Bad bad " +
+                gender.pronoun("girl") + "! What can we do to make this right? ",
+            button: [
+                { chatID: 122, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 122,
+            speaker: "!girl",
+            text: "I make $300 a session, so you can start by paying me that! ",
+            button: [
+                { chatID: 123, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 123,
+            speaker: "janice",
+            text: "*scoff* I'm not paying you that much money. I don't even have that much ",
+            button: [
+                { chatID: 124, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 124,
+            speaker: "!girl",
+            text: "If you're not going to pay me then you can rub my doggies balls! At least that way I can get " +
+                "him to mate again! ",
+            button: [
+                { chatID: 125, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 125,
+            speaker: "janice",
+            text: "I'm not rubbing your dog's balls. But... hmmmm... I can have my bitch do it. " + gender.pronoun("he") +
+                "'s the reason for this mess. ",
+            button: [
+                { chatID: 126, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 126,
+            speaker: "!girl",
+            text: "How is " + gender.pronoun("she") + " going to do that? " + gender.pronoun("her") + " hands are bound. ",
+            button: [
+                { chatID: 127, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 127,
+            speaker: "janice",
+            text: gender.pronoun("she") + " won't be using her hands. I've got a little jar of peanut butter we can rub on his balls. We'll " +
+                "let the bitch lick it off. Even better than rubbing. ",
+            button: [
+                { chatID: 128, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 128,
+            speaker: "!girl",
+            text: "hmmmmm.... ok. But tell your bitch to be gentle! ",
+            button: [
+                { chatID: 128, text: "...", callback: "" },
             ]
         },
     ];

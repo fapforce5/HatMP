@@ -2726,7 +2726,7 @@ room23.buildInternal = function () {
         },
         {
             q: "Are you a virgin?",
-            l: sc.getEvent("lola", 1) ? "Ummmm, you know I can't say. Why would you ask that? " : "OMG YES!",
+            l: sc.getMissionTask("lola", "date", 5).success ? "Ummmm, you know I can't say. Why would you ask that? " : "OMG YES!",
             e: "Nope! There isn't a hole on me that is!",
             i: "q_3_3"
         },

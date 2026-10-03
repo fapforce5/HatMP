@@ -98,17 +98,10 @@ room725.btnclick = function (name) {
             }
             break;
         case "chloe":
-            if (sc.getstep("chloe") === 0) {
-                if (sc.getstep("zoey") < 3)
-                    chat(0, 725);
-                else
-                    chat(3, 725);
-            }
-            else
                 chat(3, 725);
             break;
         case "river":
-            if (missy.get("river").active) {
+            if (missy.getenvelope("river").active) {
                 chat(29, 725);
             }
             else {
@@ -156,7 +149,6 @@ room725.chatcatch = function (callback) {
         case "chloe3x":
         case "chloe4x":
         case "chloe8":
-        case "river0":
             nav.killall();
             nav.bg("725_club/" + callback + ".jpg");
             break;
@@ -251,6 +243,9 @@ room725.chatcatch = function (callback) {
             break;
         case "reset":
             char.room(725);
+            break;
+        case "toRiver728":
+            char.room(728);
             break;
         default:
             break;
@@ -562,7 +557,7 @@ room725.chat = function (chatID) {
                 chatID: 30,
                 speaker: "river",
                 text: "Too bad. If you want to have a go at her, just head on up to the compound. Or " +
-                    "you can wait till the heat blows off; then we'll take you up there ourselves. Up to " +
+                    "you can wait till the heat blows off. We'll take you up there ourselves. Up to " +
                     "you. ",
                 button: [
                     { chatID: 31, text: "You bastard! ", callback: "" },
@@ -586,60 +581,8 @@ room725.chat = function (chatID) {
                     "to talk somehow. It's a risk that he just kidnaps me and takes me back to the compound. " +
                     "Should I take that risk with this asshole? ",
                 button: [
-                    { chatID: 33, text: "[Take him up on his offer and go to his home]", callback: "" },
+                    { chatID: -1, text: "[Take him up on his offer and go to his home]", callback: "toRiver728" },
                     { chatID: -1, text: "Fuck you " + sc.n("river") + "! I'm not going anywhere with you!", callback: "reset" },
-                ]
-            },
-            {
-                chatID: 33,
-                speaker: "river",
-                text: "Really? I mean, I knew you were a dumb bimbo, but I didn't know you were a stupid " +
-                    "slut too. I'm a fuck you real good, come with me. ",
-                button: [
-                    { chatID: 34, text: "[Follow him to his place]", callback: "river0" },
-                ]
-            },
-            {
-                chatID: 34,
-                speaker: "river",
-                text: "Welcome to my adobe. This is my living room, but I know you don't care about " +
-                    "that. You just came to see my bedroom. This way slut. ",
-                button: [
-                    { chatID: 35, text: "[Follow him to his bedroom]", callback: "river1" },
-                ]
-            },
-            {
-                chatID: 35,
-                speaker: "river",
-                text: "This is my bedroom. Now down on your knees. Worship this dick!",
-                button: [
-                    { chatID: 36, text: "...", callback: "" },
-                ]
-            },
-            {
-                chatID: 36,
-                speaker: "thinking",
-                text: "I got to buy some time, think of a plan. If I play my hand wrong I'm sure he's " +
-                    "going to take me back to the C.U.M. compound, but if I play it right I may just have " +
-                    "a chance of seeing if he has that code. I'll ask him for a drink to get me some time. ",
-                button: [
-                    { chatID: 37, text: "Can I get a drink first. I'm really thirsty baby", callback: "" },
-                ]
-            },
-            {
-                chatID: 37,
-                speaker: "river",
-                text: "Yeah. I could use a drink too. One second.  ",
-                button: [
-                    { chatID: 38, text: "...", callback: "river2" },
-                ]
-            },
-            {
-                chatID: 38,
-                speaker: "thinking",
-                text: "I've got to grab something to get the upper hand! ",
-                button: [
-                    { chatID: 38, text: "...", callback: "" },
                 ]
             },
         ];

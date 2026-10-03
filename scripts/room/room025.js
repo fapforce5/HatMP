@@ -157,33 +157,33 @@ room25.btnclick = function (name) {
 room25.chatcatch = function (callback) {
     switch (callback) {
         case "passtime1":
-            sc.setstep("landlord", 1);
+            //sc.setstep("landlord", 1);
             daily.set("landlord");
             invoker.invokeCurrent("chatcatch", "motherPassTime");
             break;
         case "passtime2":
-            sc.setstep("landlord", 2);
+            //sc.setstep("landlord", 2);
             daily.set("landlord");
             invoker.invokeCurrent("chatcatch", "motherPassTime");
             break;
         case "passtime3":
-            sc.setstep("landlord", 3);
-            sc.setstep("landlord", -3);
+            //sc.setstep("landlord", 3);
+            //sc.setstep("landlord", -3);
             daily.set("landlord");
             invoker.invokeCurrent("chatcatch", "motherPassTime");
             break;
         case "passtime4":
-            sc.setstep("landlord", 4);
+            //sc.setstep("landlord", 4);
             daily.set("landlord");
             invoker.invokeCurrent("chatcatch", "motherPassTime");
             break;
         case "passtime5":
-            sc.setstep("landlord", 5);
+            //sc.setstep("landlord", 5);
             daily.set("landlord");
             invoker.invokeCurrent("chatcatch", "motherPassTime");
             break;
         case "passtime6":
-            sc.setstep("landlord", 6);
+            //sc.setstep("landlord", 6);
             daily.set("landlord");
             invoker.invokeCurrent("chatcatch", "motherPassTime");
             break;

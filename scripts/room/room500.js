@@ -116,7 +116,6 @@ room500.chatcatch = function (callback) {
             //scc.love("zoey", 5, 100);
             break;
         case "zoeyBed":
-            sc.setstep("zoey", -2);
             g.pass = 502;
             char.room(28);
             break;

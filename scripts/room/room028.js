@@ -482,6 +482,7 @@ invoker.registerRoom(28, room28);
 room28.dreams = function () {
     var getFirstDream = null;
     var hasText = false;
+    
     if (dreams.st.length > 0) {
         getFirstDream = dreams.st[0];
         dreams.st.splice(0, 1);
@@ -520,75 +521,100 @@ room28.dreams = function () {
         chat(29, 28);
     }
     else {
-        if (g.pass === 502) {
-            if (cl.c.chest > 2)
-                nav.bg("502_bedroom/sleep_f.jpg");
-            else
-                nav.bg("502_bedroom/sleep_m.jpg");
-        }
-        else if (g.pass === 13)
-            nav.bg("28_transformation/twin.jpg");
-        else if (g.pass === 301)
-            nav.bg("301_living/envy_159.jpg");
-        else if (g.pass === 701)
-            nav.bg("701_hospitalroom/sleep.jpg");
-        else if (g.pass === 181)
-            nav.bg("181_black/bondage101_12.jpg");
-        else if (g.pass === 318)
-            nav.bg("28_transformation/318.jpg");
-        else if (g.pass === 225)
-            nav.bg("28_transformation/225.jpg");
-        else if (g.pass === 376)
-            nav.bg("28_transformation/376.jpg");
-        else if (g.pass === 456)
-            nav.bg("456_bench/456_benchNightBG.png");
-        else if (g.pass === 321) {
-            g.pass = 322;
-            nav.bg("322_dog/sleep2.webp");
-        }
-        else if (g.pass === 322)
-            nav.bg("322_dog/sleep1.webp");
-        else if (g.pass === 325)
-            nav.bg("999_phone/black.jpg");
-        else if (g.pass === 328) {
-            nav.bg("328_farm/sleep_" + gender.pronoun("f") + ".webp");
-        }
-        else if (g.pass === 486)
-            nav.bg("28_transformation/486.jpg");
-        else if (g.pass === 725)
-            nav.bg("752_whore/whore_sleep.webp");
-        else if (g.pass === 950)
-            nav.bg("950_cell/nap.webp");
-        else if (g.pass === 952) {
-            g.pass = 950;
-            nav.bg("950_cell/whip_sleep.webp");
-            zcl.allfours(290, 600, .5, "whip5", false);
-            nav.button({
-                "type": "img",
-                "name": "kill",
-                "left": 0,
-                "top": 0,
-                "width": 1920,
-                "height": 1080,
-                "image": "950_cell/whip_sleep_" + gender.pronoun("f") + ".webp",
-            }, 28);
-        }
-        else if (g.pass === -7) {
-            nav.bg("10_mainchar/lola_sleep6_" + (cl.c.cock === 5 ? "f" : "m") + ".webp");
-        }
-        else if (g.pass === 7) {
-            if (sc.getMission("lola", "*wife").startedOrComplete) {
-                nav.bg("28_transformation/sleep_wife.webp");
-            }
-            else if (gv.get("cat") > 0) {
-                nav.bg("28_transformation/sleep_cat.jpg");
-            }
-        }
-        else if (g.pass === 479) {
-            nav.bg("28_transformation/479.webp");
+        switch (g.pass) {
+            case -7:
+                nav.bg("10_mainchar/lola_sleep6_" + (cl.c.cock === 5 ? "f" : "m") + ".webp");
+                break;
+            case 7:
+                if (sc.getMission("lola", "*wife").startedOrComplete) {
+                    nav.bg("28_transformation/sleep_wife.webp");
+                }
+                else if (gv.get("cat") > 0) {
+                    nav.bg("28_transformation/sleep_cat.jpg");
+                }
+                break;
+            case 13:
+                nav.bg("28_transformation/twin.jpg");
+                break;
+            case 181:
+                nav.bg("181_black/bondage101_12.jpg");
+                break;
+            case 225:
+                nav.bg("28_transformation/225.jpg");
+                break;
+            case 301:
+                nav.bg("301_living/envy_159.jpg");
+                break;
+            case 318:
+                nav.bg("28_transformation/318.jpg");
+                break;
+            case 321:
+                nav.bg("322_dog/sleep2.webp");
+                break;
+            case 322:
+                nav.bg("322_dog/sleep1.webp");
+                break;
+            case 325:
+                nav.bg("999_phone/black.jpg");
+                break;
+            case 328:
+                nav.bg("328_farm/sleep_" + gender.pronoun("f") + ".webp");
+                break;
+            case 376:
+                nav.bg("28_transformation/376.jpg");
+                break;
+            case 456:
+                nav.bg("456_bench/456_benchNightBG.png");
+                break;
+            case 479:
+                nav.bg("28_transformation/479.webp");
+                break;
+            case 486:
+                nav.bg("28_transformation/486.jpg");
+                break;
+            case 502:
+                if (cl.c.chest > 2)
+                    nav.bg("502_bedroom/sleep_f.jpg");
+                else
+                    nav.bg("502_bedroom/sleep_m.jpg");
+                break;
+            case 701:
+                nav.bg("701_hospitalroom/sleep.jpg");
+                break;
+            case 725:
+                nav.bg("752_whore/whore_sleep.webp");
+                break;
+            case 728:
+                if (cl.c.cock === 5)
+                    nav.bg("725_club/riverfuck.webp");
+                else
+                    nav.bg("725_club/riverfuck_m.webp");
+                break;
+            case 950:
+                nav.bg("950_cell/nap.webp");
+                break;
+            case 952:
+                nav.bg("950_cell/whip_sleep.webp");
+                zcl.allfours(290, 600, .5, "whip5", false);
+                nav.button({
+                    "type": "img",
+                    "name": "kill",
+                    "left": 0,
+                    "top": 0,
+                    "width": 1920,
+                    "height": 1080,
+                    "image": "950_cell/whip_sleep_" + gender.pronoun("f") + ".webp",
+                }, 28);
+                break;
         }
     }
-    
+    let redirectRooms = [321, 952];
+    if (redirectRooms.includes(g.pass)) {
+        switch (g.pass) {
+            case 321: g.pass = 322; break;
+            case 952: g.pass = 950; break;
+        }
+    }
     //console.log(hasText);
     return hasText;
 };

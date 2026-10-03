@@ -224,7 +224,7 @@ room501.btnclick = function (name) {
             char.room(28);
             break;
         case "door":
-            if (sc.getstep("zoey") === 11)
+            if (sc.getMissionTask("zoey", "sex", 3).complete)
                 g.pass = "zoeyLickPussy";
             char.room(502);
             break;
@@ -702,12 +702,7 @@ room501.chatcatch = function (callback) {
             break;
         case "chloeLeave":
             daily.set("zoey");
-            sc.setstep("zoey", 3);
-            if (sc.getEvent("zoey", 7)) {
-                nav.killbutton("ddduo");
-            }
-            else
-                char.room(0);
+            char.room(0);
             break;
         case "lookForward":
             nav.killbutton("zoey");
@@ -785,7 +780,6 @@ room501.chatcatch = function (callback) {
             sc.modLevel("zoey", 40, 5);
             break;
         case "5endbad":
-            sc.setstep("zoey", 300);
             char.addtime(120);
             daily.set("zoey");
             char.room(0);
@@ -812,8 +806,8 @@ room501.chatcatch = function (callback) {
             chat(79, 501);
             break;
         case "fuckingcheater":
-            if (sc.getstep("chloe") > 0)
-                chat(98, 501)//fucking chater
+            if (sc.getMissionTask("zoey", "cheating", 1).success)
+                chat(98, 501);//fucking chater
             else
                 chat(92, 501);
             break;
@@ -858,7 +852,6 @@ room501.chatcatch = function (callback) {
             if (g.dt.getHours() < 24)
                 char.addDays(1);
             char.settime(2, 0);
-            sc.setstep("zoey", 12);
             char.room(502);
             break;
         case "win":

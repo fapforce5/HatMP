@@ -494,6 +494,7 @@ room479.chatcatch = function (callback) {
             char.room(477);
             break;
         case "addtime":
+            nav.bg("479_hall/ledge13.webp");
             char.addtime(240);
             break;
         default:
@@ -1011,7 +1012,7 @@ room479.chat = function (chatID) {
             text: "Before we pump your tiny tight holes full of cum you have to get us all hard my " +
                 "little fluffer. You better suck us each right or it's going to be pain, bitch! ",
             button: [
-                { chatID: -1, text: "*ooof*", callback: "ledge6" } 
+                { chatID: -1, text: "*ooof* [I need to pick which cock I need to suck]", callback: "ledge6" } 
             ]
         },
         {

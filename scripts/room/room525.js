@@ -53,14 +53,23 @@ room525.btnclick = function (name) {
                 chat(1, 525);
             break;
         case "chef":
-            if (cl.c.cock > 3 || cl.c.chastity !== null) {
-                chat(4, 525);
+            if (missy.getenvelope("chef").active || sc.getLevel("chef") > 7) {
+                chat(5, 525);
+            }
+            else if (cl.isLewd())
+                chat(3, 525);
+            else if (cl.c.cock === 5)
+                chat(6, 525);
+            else
+                chat(2, 525);
+
+            break;
+        case "chef0":
+            if (missy.getenvelope("chef").active) {
+
             }
             else {
-                if (cl.isLewd())
-                    chat(3, 525);
-                else
-                    chat(2, 525);
+
             }
             break;
         default:
@@ -72,6 +81,19 @@ room525.chatcatch = function (callback) {
     switch (callback) {
         case "enter":
             char.room(526);
+            break;
+        case "chef0":
+            nav.kill();
+            nav.bg("525_entrance/chef0.webp");
+            nav.button({
+                "type": "btn",
+                "name": "chef0",
+                "left": 1145,
+                "top": 96,
+                "width": 411,
+                "height": 889,
+                "image": "525_entrance/check0_d.webp"
+            }, 525);
             break;
         default:
             break;
@@ -99,7 +121,7 @@ room525.chat = function (chatID) {
         {
             chatID: 2,
             speaker: "chef",
-            text: "*sigh* No. I can see your dick print. Gross. ",
+            text: "Haha. I can see your dick print. ",
             button: [
                 { chatID: -1, text: "oh ok", callback: "" }
             ]
@@ -107,9 +129,9 @@ room525.chat = function (chatID) {
         {
             chatID: 3,
             speaker: "chef",
-            text: "*sigh* No. Just no. ",
+            text: "Now that's a slut! ",
             button: [
-                { chatID: -1, text: "oh ok", callback: "" }
+                { chatID: -1, text: "Thanks? ", callback: "" }
             ]
         },
         {
@@ -125,17 +147,16 @@ room525.chat = function (chatID) {
             speaker: "chef",
             text: "I have something in the alley I want to show you. Follow me. ",
             button: [
-                { chatID: 6, text: "I'm sure it's fine [Follow him]", callback: "" },
+                { chatID: 7, text: "I'm sure it's fine [Follow him]", callback: "chef0" },
                 { chatID: -1, text: "Sorry, busy", callback: "" },
             ]
         },
         {
-            chatID: 5,
+            chatID: 6,
             speaker: "chef",
-            text: " ",
+            text: "Smells like sushi... or is that your nasty cunt! Haha",
             button: [
-                { chatID: 6, text: "I'm sure it's fine [Follow him]", callback: "" },
-                { chatID: -1, text: "Sorry, busy", callback: "" },
+                { chatID: -1, text: "*sigh*", callback: "" },
             ]
         },
     ];

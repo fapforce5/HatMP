@@ -50,11 +50,10 @@ room456.chatcatch = function (callback) {
             nav.bg("456_bench/456_tif.jpg", "456_bench/456_tif.jpg");
             break;
         case "leave6":
-            sc.setstep("tiffany", -6);
+            //sc.setstep("tiffany", -6);
             char.room(450);
             break;
         case "leave7":
-            sc.setstep("me", 7);
             g.pass = 0;
             cl.c.accessories = null;
             cl.c.cumface = false;
@@ -101,7 +100,6 @@ room456.chatcatch = function (callback) {
             break;
         case "cop11":
             gv.mod("giveOralMale", 1);
-            sc.setstep("me", -9);
             cl.c.cumface = true;
             nav.bg("456_bench/sleepdark.jpg", "456_bench/sleepdark.jpg");
             break;
@@ -111,17 +109,7 @@ room456.chatcatch = function (callback) {
             chat(32, 456);
             break;
         case "newday":
-            if (sc.getstep("tiffany") === 13) {
-                if (sc.getEvent("tiffany", -6)) {
-                    nav.bg("456_bench/456_tif.jpg", "456_bench/456_tif.jpg");
-                    chat(13, 456);
-                }
-                else
-                    chat(5, 456);
-            }
-            else {
-                nav.room(450);
-            }
+            chat(5, 456);
             break;
         case "leave":
             char.room(450);
@@ -196,16 +184,15 @@ room456.chat = function (chatID) {
             text: "Yes, I usually do a morning jog before the park opens up. I usually try to avoid perverts, but you " +
                 "look so cute laying there. So what are you doing sleeping in the park?",
             button: [
-                { chatID: 8, text: "[Tell " + sc.n("tiffany") + " the story on how you became homeless]", callback: "" }
+                { chatID: 8, text: "Just sleeping", callback: "" }
             ]
         },
         {
             chatID: 8,
             speaker: "tiffany",
-            text: "Awwww, you poor thing. I always felt bad about getting you in trouble with Missy. I'll tell you what " + sc.n("me") + " " +
-                "me and my roomie Candy have an extra bedroom would you want to stay at our place for a while?",
+            text: "Awwww, you poor thing. Well you better get up before someone sees you. ",
             button: [
-                { chatID: 9, text: "Of course. Thank you, thank you, thank you.", callback: "" }
+                { chatID: -1, text: "Yeah. Thanks", callback: "leave" }
             ]
         },
         {

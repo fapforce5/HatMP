@@ -38,12 +38,12 @@ room353.main = function () {
 
     //g.internal = { s: 0, y: 0, talk: "", good: 0, bad: 0, indif: 0, islewd: false };
     char.changeMenu("hide", false);
-    if (sc.getEvent("landlord", 3)) {
+    if (sc.getMissionTask("landlord", "spermbank", 1).complete) {
         nav.bg("353_mascot/b0.jpg");
         chat(12, 353);
     }
     else {
-        sc.setEvent("landlord", 3);
+        sc.completeMissionTask("landlord", "spermbank", 1);
         zcl.displayMain(350, 850, .11, "clothes", true);
         nav.bg("353_mascot/start0.jpg");
         chat(0, 353);

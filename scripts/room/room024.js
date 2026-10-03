@@ -546,8 +546,6 @@ room24.chatcatch = function (callback) {
                     break;
                 case "spinEnd":
                     char.settime(22, 37);
-                    sc.setstep("eva", 4);
-                    sc.setstep("lola", 5);
                     inv.use("wine");
                     char.room(11);
                     break;

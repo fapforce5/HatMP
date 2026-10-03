@@ -200,7 +200,6 @@ room461.btnclick = function (name) {
                 levels.mod("piss", 25);
                 nav.killall();
                 nav.bg("461_run/pee3.jpg");
-                sc.setEvent("ppgirl", 2);
                 chat(30, 461);
             }
             else {

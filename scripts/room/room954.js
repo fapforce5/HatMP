@@ -136,10 +136,6 @@ room954.chatcatch = function (callback) {
             break;
         case "t30":
             nav.bg("954_torture/t30.jpg");
-            g.roomTimeout = setTimeout(function () {
-                nav.bg("954_torture/t30.jpg");
-                chat(58, 954);
-            }, 1500);
             break;
         case "restart":
             if (sc.getMissionTask("lola", "sissy", 6).success) {
@@ -315,6 +311,17 @@ room954.chatcatch = function (callback) {
             missy.set("activeCase", -1);
             missy.set("activeCaseComplete", 0);
             missy.set("reusableCaseCounter", 0);
+            let diff = gv.get("difficulty");
+            let dcount = 0;
+            if (diff === 0) dcount = 4;
+            else if (diff === 1) dcount = 2;
+            else if (diff === 2) dcount = 1;
+
+            let eligible = missy.envelope.filter(function (e) { return e.canBe === true; });
+            g.shuffleArray(eligible);
+            for (let i = 0; i < dcount && i < eligible.length; i++) {
+                eligible[i].key = true;
+            }
 
             $('#room-menu').show();
             $("#room-inv").show();
@@ -835,7 +842,7 @@ room954.chat = function (chatID) {
             speaker: "cop2",
             text: "Agent " + sc.n("wyatt") + " why don't we step aside really quick. Just a second kid. Wait here. ",
             button: [
-                { chatID: -1, text: "What! ", callback: "t30" }
+                { chatID: 58, text: "What! ", callback: "t30" }
             ]
         },
         {
@@ -917,7 +924,7 @@ room954.chat = function (chatID) {
             speaker: "cop2",
             text: "Now that's a smart thing to do. Don't worry, if she's there we'll get her out. ",
             button: [
-                { chatID: 82, text: "Humph. ok [STOPS HERE - ]", callback: "t34" },
+                { chatID: -1, text: "Humph. ok ", callback: "restart" },
             ]
         },
         {

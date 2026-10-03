@@ -25,6 +25,11 @@ room203.main = function () {
             chat(39, 203);
             return;
         }
+        else if (sc.getMissionTask("p", "*missy", 4).inProgress) {
+            nav.bg("203_entrance/p5.webp");
+            chat(44, 203);
+            return;
+        }
     }
     var outfit = cl.hasoutfit("public");
     var navList = new Array();
@@ -70,7 +75,6 @@ room203.main = function () {
 invoker.registerRoom(203, room203);
 
 room203.btnclick = function (name) {
-    
     switch (name) {
         case "recep":
             nav.kill("recep");
@@ -129,6 +133,80 @@ room203.btnclick = function (name) {
         case "icon_fashion":
             char.room(207);
             break;
+        case "pchoice_0":
+            if (sc.getMission("lola", "*tom2").inProgress) {
+                gv.set("cultpartner", "lola");
+                chat(800, 203);
+            }
+            else {
+                nav.killbutton("pchoice_0");
+                chat(55, 203);
+            }
+            break;
+        case "pchoice_1":
+            if (sc.getMission("eva", "*cumdump").inProgress) {
+                nav.killbutton("pchoice_1");
+                chat(55, 203);
+            }
+            else {
+                gv.set("cultpartner", "eva");
+                chat(800, 203);
+            }
+            break;
+        case "pchoice_2":
+            if (sc.getLevel("zoey") < 9) {
+                nav.killbutton("pchoice_2");
+                chat(56, 203);
+            }
+            else {
+                gv.set("cultpartner", "zoey");
+                chat(800, 203);
+            }
+            break;
+        case "pchoice_3":
+            if (sc.getLevel("elijah") < 9) {
+                nav.killbutton("pchoice_3");
+                chat(56, 203);
+            }
+            else {
+                gv.set("cultpartner", "elijah");
+                chat(800, 203);
+            }
+            break;
+        case "pchoice_4":
+            if (sc.getLevel("dog") < 9) {
+                nav.killbutton("pchoice_4");
+                chat(56, 203);
+            }
+            else {
+                gv.set("cultpartner", "dog");
+                chat(800, 203);
+            }
+            break;
+        case "pchoice_5":
+            if (!sissy.st[10].ach) {
+                nav.killbutton("pchoice_5");
+                chat(57, 203);
+            }
+            else {
+                gv.set("cultpartner", "sporty");
+                chat(800, 203);
+            }
+            break;
+        case "pchoice_6":
+            if (sc.getLevel("bitch") < 9) {
+                nav.killbutton("pchoice_6");
+                chat(56, 203);
+            }
+            else {
+                gv.set("cultpartner", "bitch");
+                chat(800, 203);
+            }
+            break;
+        case "pchoice_7":
+            gv.set("cultpartner", "self");
+            chat(801, 203);
+            break;
         default:
             break;
     }
@@ -139,6 +217,14 @@ room203.chatcatch = function (callback) {
         case "p1":
         case "p2":
         case "p4":
+        case "p5":
+        case "p6":
+        case "p7":
+        case "p8":
+        case "p10":
+        case "p11":
+        case "p12":
+        case "p13":
             nav.bg("203_entrance/" + callback + ".webp");
             break;
         case "enter":
@@ -158,6 +244,18 @@ room203.chatcatch = function (callback) {
                 else
                     chat(2, 203);
             }
+            break;
+        case "p15":
+            nav.kill();
+            nav.bg("203_entrance/" + callback + ".webp");
+            break;
+        case "p16":
+            sc.completeMissionTask("p", "*missy", 4);
+            sc.startMissionTask("p", "*missy", 5);
+            char.addtime(120);
+            inv.addMulti("soda", 10);
+            inv.addMulti("hornyGoatWeed", 20);
+            char.room(0);
             break;
         case "displaySelf":
             nav.bg("203_entrance/inspect.jpg");
@@ -308,6 +406,33 @@ room203.chatcatch = function (callback) {
         case "endRalph":
             char.room(g.roomID);
             break;
+        case "p9":
+            nav.bg("203_entrance/p9.webp");
+            if (inv.has("cavekey")) {
+                chat(49, 203);
+            }
+            else {
+                chat(50, 203);
+            }
+            break;
+        case "p14":
+            nav.kill();
+            let c = 0;
+            for (let i = 0; i < 2; i++) {
+                for (let j = 0; j < 4; j++) {
+                    nav.button({
+                        "type": "btn",
+                        "name": "pchoice_" + c,
+                        "left": 600 + (j * 250),
+                        "top": 100 + (i * 410),
+                        "width": 200,
+                        "height": 400,
+                        "image": "203_entrance/p_" + c + ".webp"
+                    }, 203);
+                    c++;
+                }
+            }
+            break;
         case "reset":
             char.room(203);
             break;
@@ -360,6 +485,43 @@ room203.chat = function (chatID) {
                 { chatID: -1, text: "I'm not sure why I'm here. ", callback: "leave" },
             ]
         };
+    }
+    else if (chatID === 800) {
+        return {
+            chatID: 800,
+            speaker: "p",
+            text: sc.n(gv.get("cultpartner")) + " it is. I'll let them know when the time is right. Don't " +
+                "worry about them getting there I have a way. Also don't tell them, I don't want to tip off the cult.",
+            button: [
+                { chatID: 58, text: "Ok. I'm ready", callback: "p15" },
+                { chatID: -1, text: "Let me rethink my choice.", callback: "" },
+            ]
+        };
+    }
+    else if (chatID === 801) {
+        if (levels.get("strength").l < 12) {
+            return {
+                chatID: 801,
+                speaker: "p",
+                text: "You know I love you, but you're not strong enough to take them both. Are you sure " +
+                    "you don't want someone to help? ",
+                button: [
+                    { chatID: -1, text: "You're right. Let me rethink that.", callback: "" },
+                    { chatID: 58, text: "I'm sure! I'm going alone!", callback: "p15" },
+                ]
+            };
+        }
+        else {
+            return {
+                chatID: 801,
+                speaker: "p",
+                text: "You may be able to take them, but they could get lucky. Are you sure? ",
+                button: [
+                    { chatID: -1, text: "You're right. Let me rethink that.", callback: "" },
+                    { chatID: 58, text: "I'm sure! I'm going alone!", callback: "p15" },
+                ]
+            };
+        }
     }
     else if (chatID === 600) {
         return {
@@ -764,6 +926,142 @@ room203.chat = function (chatID) {
                     "they have the code. We're all counting on you to talk to each person in this list. ",
                 button: [
                     { chatID: -1, text: "Ok. I'll talk to every person on the list and come back when I get the code! ", callback: "reset" }
+                ]
+            },
+            {
+                chatID: 44,
+                speaker: "cecilia",
+                text: "Oh hi " + sc.n("me") + "! We were... uh...",
+                button: [
+                    { chatID: 45, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 45,
+                speaker: "p",
+                text: sc.n("cecilia") + " gets a bit crabby if she hasn't been fucked in too long. Let's go " +
+                    "into Missy's office so I can show you what I've been working on. You have the code to " +
+                    "the back door right? Ready to complete your quest and save Missy?",
+                button: [
+                    { chatID: 46, text: "I do", callback: "p6" },
+                    { chatID: -1, text: "I have a couple things I want to do first. ", callback: "leave" },
+                ]
+            },
+            {
+                chatID: 46,
+                speaker: "p",
+                text: "As we all know Missy is being held in the C.U.M. compound. ",
+                button: [
+                    { chatID: 47, text: "...", callback: "p7" }
+                ]
+            },
+            {
+                chatID: 47,
+                speaker: "p",
+                text: "To get there you'll have to take the path up through the park to get to the forest. ",
+                button: [
+                    { chatID: 48, text: "...", callback: "p8" }
+                ]
+            },
+            {
+                chatID: 48,
+                speaker: "p",
+                text: "The forest is dangrous with lots of traps and dangers. Tred carefully. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "p9" }
+                ]
+            },
+            {
+                chatID: 49,
+                speaker: "p",
+                text: "At the end of the forest you'll find the cave entrance. Go through the door " +
+                    "and continue under the mountain. ",
+                button: [
+                    { chatID: 52, text: "...", callback: "p11" }
+                ]
+            },
+            {
+                chatID: 50,
+                speaker: "p",
+                text: "At the end of the forest you'll find the cave entrance. Use the cave key to go " +
+                    "through the door and continue under the mountain. ",
+                button: [
+                    { chatID: 51, text: "Cave key? ", callback: "p10" }
+                ]
+            },
+            {
+                chatID: 51,
+                speaker: "p",
+                text: "*sigh* " + sc.n("cecilia") + " give " + gender.pronoun("him") + " some horney " +
+                    "goat weed that I know you keep in your stash when we're done. Give that to the " +
+                    "psychic next door. She'll give you the cave key. ",
+                button: [
+                    { chatID: 52, text: "Ok. ", callback: "p11" }
+                ]
+            },
+            {
+                chatID: 52,
+                speaker: "p",
+                text: "The cave is dangrous. Travel all the way through it til you see the exit and go " +
+                    "into the other side. ",
+                button: [
+                    { chatID: 53, text: "...", callback: "p12" }
+                ]
+            },
+            {
+                chatID: 53,
+                speaker: "p",
+                text: "In the forest beyond the cave is where you'll find the compound. When you get there " +
+                    "don't try to go through the front entrance. You'll have to sneak around to the back entrance. " +
+                    "It's a steel door.",
+                button: [
+                    { chatID: 54, text: "...", callback: "p13" }
+                ]
+            },
+            {
+                chatID: 54,
+                speaker: "p",
+                text: "Now the back entrance is guarded. I was able to get a contact on the inside that is " +
+                    "willing to smuggle one person to help you distract the guards, or you can try to fight them. " +
+                    "I really really recommend you pick someone to help becuase the guards are tough and you'll " +
+                    "probably lose that fight, but it's up to you. Now who do you want us to smuggle over to help you? ",
+                button: [
+                    { chatID: -1, text: "[Think about who to pick to help you distract the guards]", callback: "p14" }
+                ]
+            },
+            {
+                chatID: 55,
+                speaker: "thinking",
+                text: "She is way too pregnant to be going out on a mission like this. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "" }
+                ]
+            },
+            {
+                chatID: 56,
+                speaker: "thinking",
+                text: "They would never go for something like this for me. ",
+                button: [
+                    { chatID: -1, text: "[Need to have at least relationship level 9]", callback: "" }
+                ]
+            },
+            {
+                chatID: 57,
+                speaker: "thinking",
+                text: "I don't know her well enough. ",
+                button: [
+                    { chatID: -1, text: "[Need to have finished the sissy midterm]", callback: "" }
+                ]
+            },
+            {
+                chatID: 58,
+                speaker: "p",
+                text: "Missy's ass is counting on all of us. " + sc.n("cecilia") + " and I are going to put " +
+                    "in motion our part of the plan with the help of the other mistresses. You just need to find " +
+                    "a way to get there. To help you on your journey I'm going to give you some gift. Use them " +
+                    "wisely! We'll see you once you get Missy free! ",
+                button: [
+                    { chatID: -1, text: "Ok! I'm going to the C.U.M. compound and save Missy!", callback: "p16" }
                 ]
             },
         ];

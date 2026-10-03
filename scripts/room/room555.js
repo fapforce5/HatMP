@@ -1,6 +1,7 @@
 ﻿//Room name
 var room555 = {};
 room555.main = function () {
+    trophy.add(43);
     let gpreg = sc.getMissionTask("g", "mom", 2).startedOrComplete;
     if (gpreg) {
         nav.bg("555_backgym/nog.webp");
@@ -425,12 +426,11 @@ room555.chatcatch = function (callback) {
             sc.selectCancel("icon_exit", 5);
             break;
         case "rows":
-            if (!sc.getEvent("g", -2)) {
-                sc.setstep("g", -2);
+            if (sc.getMissionTask("g", "secret", 1).notStarted) {
+                sc.completeMissionTask("g", "secret", 1);
                 chat(10, 555);
             }
             else {
-
                 chat(12, 555);
             }
             break;
@@ -507,12 +507,13 @@ room555.chatcatch = function (callback) {
             char.room(555);
             break;
         case "hips":
-            if (sc.getEvent("g", -3)) {
+            if (sc.getMissionTask("g", "secret", 2).notStarted) {
+                sc.completeMissionTask("g", "secret", 2);
                 chat(16, 555);
             }
             else {
                 chat(16, 555);
-                sc.setstep("g", -3);
+                //sc.setstep("g", -3);
             }
             break;
         case "hip1":

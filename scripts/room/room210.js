@@ -74,6 +74,11 @@ room210.btnclick = function (name) {
             char.room(sissy.get(gv.get("sissySchoolClass")).room);
         }
     }
+    else if (name.startsWith("classskip_")) {
+        let selectedSkipId = parseInt(name.replace("classskip_", ""));
+        sissy.st[selectedSkipId].ach = true;
+        char.room(210);
+    }
     else {
         var id, pid;
         var prevToUnlock = "";
@@ -132,6 +137,11 @@ room210.btnclick = function (name) {
         }
         else if (prevToUnlock === "") {
             tText += '<img src="./images/room/210_classSelection/enroll.png" class="room-btn rom-event" data-name="classselect_' + id + '" data-room="210" style="width:' + (271 * g.ratio) + 'px; height:' + (72 * g.ratio) + 'px; position:relative; margin-top:' + (20 * g.ratio) + 'px;" />';
+            if (trophy.st[51].ach) {
+                let noskip = [3, 17, 10, 21];
+                if (!noskip.includes(id))
+                    tText += '<img src="./images/room/210_classSelection/skip.webp" class="room-btn rom-event" data-name="classskip_' + id + '" data-room="210" style="width:' + (271 * g.ratio) + 'px; height:' + (72 * g.ratio) + 'px; position:relative; margin-top:' + (20 * g.ratio) + 'px;" />';
+            }
         }
         else
             tText += '<div style="color:#fedeff; font-size: ' + 25 * g.ratio + 'px; margin-top:' + (20 * g.ratio) + 'px;">Need to<br/>Unlock<br/>' + prevToUnlock + '</div>';

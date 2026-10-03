@@ -469,9 +469,6 @@ room27.chatcatch = function (callback) {
             nav.killbutton("reddoor");
             break;
         case "incTif":
-            sc.setstep("tiffany", 19);
-            sc.setstep("me", -5);
-            sc.setstep("me", -12);
             daily.set("tif");
             break;
         case "killtif":

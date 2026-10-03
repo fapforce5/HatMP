@@ -4,7 +4,9 @@ room402.main = function () {
     if (g.internal === "purchased") {
         g.internal = "";
         nav.bg("402_mens/jada1.jpg");
-        if (sc.getstep("jada") < 2) {
+        if (sc.getMission("jada", "panties").notStarted) {
+            sc.startMission("jada", "panties");
+            sc.completeMissionTask("jada", "panties", 0);
             chat(3, 402);
         }
         else {
@@ -152,7 +154,7 @@ room402.chatcatch = function (callback) {
             break;
         case "plug":
             cl.add("buttplug", "s");
-            sc.setstep("jada", 2);
+            //sc.setstep("jada", 2);
             char.room(400);
             break;
         default:

@@ -232,7 +232,13 @@ zcl.displayMain = function (top, left, ratio, spec, dback) {
             });
             $.each(cl.dressTop, function (i, v) {
                 if (v.name === cl.c.dress && v.chest === cl.c.chest) {
-                    zcl.displayMainSub((dback ? v.back : v.image), top, left, ratio);
+                    let dressimg = v.image;
+                    if (cl.c.cock !== 5) {
+                        let dressdot = dressimg.lastIndexOf(".");
+                        dressimg = dressimg.substring(0, dressdot) + "_c" + dressimg.substring(dressdot);
+                    }
+
+                    zcl.displayMainSub((dback ? v.back : dressimg), top, left, ratio);
                     return false;
                 }
             });
@@ -1080,6 +1086,10 @@ zcl.allfours = function (top, left, ratio, mod, reverse) {
         zcl.subDisplay("penis_big.webp", top, left, ratio, reverse, w, h, f);
     else
         zcl.subDisplay("penis_small.webp", top, left, ratio, reverse, w, h, f);
+
+    if (gv.getButtCum().total > 0) {
+        zcl.subDisplay("creampie.webp", top, left, ratio, reverse, w, h, f);
+    }
 };
 
 zcl.poseExpose = function (top, left, ratio, mod, reverse) {
