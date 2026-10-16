@@ -70,8 +70,9 @@ gv.init = function () {
         { n: "cheatMode", t: false, q: "bool" },
         { n: "transformation", t: "voluntary", q: "string" }, //voluntary, voluntaryoff, forced
         { n: "pronouns", t: "a", q: "string" },
-        { n: "breastSelect", t: 0, q: "int" },
-        { n: "assSelect", t: 0, q: "int" },
+        { n: "breastSelect", t: 2, q: "int" },
+        { n: "assSelect", t: 1, q: "int" },
+        { n: "lipSelect", t: 0, q: "int" },
 
         //jobs
         { n: "jobapplynurse", t: 0, q: "int" },
@@ -88,6 +89,7 @@ gv.init = function () {
         //lola / eva
         { n: "lockdrawer", t: false, q: "bool" },
         { n: "lolapostcult", t: null, q: "string" },
+        { n: "lolaSlutCounter", t: 0, q: "int" },
 
         //ralph
         { n: "ralphcycle", t: -1, q: "int" },
@@ -555,20 +557,20 @@ gv.init = function () {
         { id: 9, pId: 8, icon: "qxdress3", p: 3, h: false, x: 1132, y: 359, ach: false, name: "Commando", desc: "You feel comfortable going out without bra and panties. " },
         { id: 10, pId: 9, icon: "qxdress4", p: 4, h: false, x: 1283, y: 359, ach: false, name: "Nudist", desc: "You are comfortable enough with your body that you can wear anthing or nothing." },
 
-        { id: 11, pId: 3, icon: "qc2", p: 1, h: true, x: 830, y: 774, ach: false, name: "A Cup", desc: "Feminine Body" },
-        { id: 12, pId: 11, icon: "qc3", p: 1, h: true, x: 981, y: 774, ach: false, name: "B Cup", desc: "We must increase our bust!" },
-        { id: 13, pId: 12, icon: "qc4", p: 2, h: true, x: 1132, y: 774, ach: false, name: "C Cup", desc: "A good size" },
-        { id: 14, pId: 13, icon: "qc5", p: 3, h: true, x: 1283, y: 774, ach: false, name: "DDD Cup", desc: "A bit big" },
-        { id: 15, pId: 14, icon: "qc6", p: 4, h: true, x: 1434, y: 774, ach: false, name: "Ludicrous Cup", desc: "My back hurts!" },
+        { id: 11, track: "breast", lvl: 2, pId: 3, icon: "qc2", p: 1, h: true, x: 830, y: 774, ach: false, name: "A Cup", desc: "Feminine Body" },
+        { id: 12, track: "breast", lvl: 3, pId: 11, icon: "qc3", p: 1, h: true, x: 981, y: 774, ach: false, name: "B Cup", desc: "We must increase our bust!" },
+        { id: 13, track: "breast", lvl: 4, pId: 12, icon: "qc4", p: 2, h: true, x: 1132, y: 774, ach: false, name: "C Cup", desc: "A good size" },
+        { id: 14, track: "breast", lvl: 5, pId: 13, icon: "qc5", p: 3, h: true, x: 1283, y: 774, ach: false, name: "DDD Cup", desc: "A bit big" },
+        { id: 15, track: "breast", lvl: 6, pId: 14, icon: "qc6", p: 4, h: true, x: 1434, y: 774, ach: false, name: "Ludicrous Cup", desc: "My back hurts!" },
 
-        { id: 16, pId: 3, icon: "ql1", p: 1, h: true, x: 830, y: 922, ach: false, name: "Butt", desc: "Sexy little butt" },
-        { id: 17, pId: 16, icon: "ql2", p: 1, h: true, x: 981, y: 922, ach: false, name: "Ass", desc: "Sexy Butt" },
-        { id: 18, pId: 17, icon: "ql3", p: 2, h: true, x: 1132, y: 922, ach: false, name: "Ass of a Goddess", desc: "She must work out" },
-        { id: 19, pId: 18, icon: "ql4", p: 3, h: true, x: 1283, y: 922, ach: false, name: "Dat ass", desc: "Thicker than a bowl of oatmeal" },
-        { id: 20, pId: 19, icon: "ql5", p: 4, h: true, x: 1434, y: 922, ach: false, name: "Ba donk a donk", desc: "Oh My God. Look at that butt!" },
+        { id: 16, track: "ass", lvl: 1, pId: 3, icon: "ql1", p: 1, h: true, x: 830, y: 922, ach: false, name: "Butt", desc: "Sexy little butt" },
+        { id: 17, track: "ass", lvl: 2, pId: 16, icon: "ql2", p: 1, h: true, x: 981, y: 922, ach: false, name: "Ass", desc: "Sexy Butt" },
+        { id: 18, track: "ass", lvl: 3, pId: 17, icon: "ql3", p: 2, h: true, x: 1132, y: 922, ach: false, name: "Ass of a Goddess", desc: "She must work out" },
+        { id: 19, track: "ass", lvl: 4, pId: 18, icon: "ql4", p: 3, h: true, x: 1283, y: 922, ach: false, name: "Dat ass", desc: "Thicker than a bowl of oatmeal" },
+        { id: 20, track: "ass", lvl: 5, pId: 19, icon: "ql5", p: 4, h: true, x: 1434, y: 922, ach: false, name: "Ba donk a donk", desc: "Oh My God. Look at that butt!" },
 
-        { id: 21, pId: 3, icon: "qlip1", p: 1, h: true, x: 830, y: 628, ach: false, name: "Lips", desc: "Dick Sucking Lips" },
-        { id: 22, pId: 21, icon: "qlip2", p: 2, h: true, x: 981, y: 628, ach: false, name: "Bimbo Lips", desc: "Lips so fat you can't close your mouth" },
+        { id: 21, track: "lip", lvl: 1, pId: 3, icon: "qlip1", p: 1, h: true, x: 830, y: 628, ach: false, name: "Lips", desc: "Dick Sucking Lips" },
+        { id: 22, track: "lip", lvl: 2, pId: 21, icon: "qlip2", p: 2, h: true, x: 981, y: 628, ach: false, name: "Bimbo Lips", desc: "Lips so fat you can't close your mouth" },
 
         { id: 23, pId: 25, icon: "qwhore", p: 4, h: false, x: 1132, y: 64, ach: false, name: "Whore", desc: "Gotta make that money, honey." },
         { id: 24, pId: 3, icon: "qs", p: 1, h: false, x: 830, y: 64, ach: false, name: "Confidence", desc: "You can seduce men." },
@@ -1482,8 +1484,7 @@ levels.anal = function (size, sissygasm = false, gender = null, creampie = false
     }
 
     if (beast !== null) {
-        sex.mod(beast, "m", who);
-        levels.mod("beast", 50);
+        levels.beast(beast, gender, who, "anal");
         switch (beast) {
             case "dog": gv.mod("analCumDog", 1); break;
             case "horse": gv.mod("analCumHorse", 1); break;
@@ -2085,17 +2086,17 @@ levels.beast = function (beast, gender = "m", who = null, type = "anal") {
             case "oral":
                 levels.mod("beast", 45);
                 switch (beast) {
-                    case "horse": trophy(37);
-                    case "pig": trophy(38);
-                    case "dog": trophy(39);
+                    case "horse": trophy.add(37);
+                    case "pig": trophy.add(38);
+                    case "dog": trophy.add(39);
                 }
                 break;
             case "anal":
                 levels.mod("beast"), 60;
                 switch (beast) {
-                    case "horse": trophy(42);
-                    case "pig": trophy(41);
-                    case "dog": trophy(40);
+                    case "horse": trophy.add(42);
+                    case "pig": trophy.add(41);
+                    case "dog": trophy.add(40);
                 }
                 break;
         }
@@ -2149,6 +2150,12 @@ gv.timeTxt = function (hour, minute) {
         return (hour % 12) + ":" + (minute < 10 ? ("0" + minute.toString()) : minute) + " " + hour < 12 ? "AM" : "PM";
     else
         return hour + ":" + (minute < 10 ? ("0" + minute.toString()) : minute)
+};
+
+// Growth entries (track + lvl) are allowed up to the level stored in gv "<track>Select"; entries without a track are always allowed.
+qdress.allowed = function (id) {
+    const q = qdress.st[id];
+    return q.track === undefined || q.lvl <= gv.get(q.track + "Select");
 };
 
 qdress.stx = new Array();

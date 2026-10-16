@@ -37,7 +37,19 @@ room26.main = function () {
 
     if (sc.getTimeline("landlord").thisRoom) {
         if (sc.getTimeline("bigguy").thisRoom) {
-            if (sc.taskGetStep("lola", "sissy") === 12) {
+            if (sc.getMission("landlord", "*cumdump").inProgress) {
+                nav.bg("26_livingRoom/day.jpg", "26_livingRoom/night.jpg");
+                btnList.push({
+                    "type": "btn",
+                    "name": "fuckdick",
+                    "left": 893,
+                    "top": 0,
+                    "width": 704,
+                    "height": 1080,
+                    "image": "26_livingRoom/fuckdick0.webp"
+                });
+            }
+            else if (sc.taskGetStep("lola", "sissy") === 12) {
                 nav.bg("26_livingRoom/bg_1.jpg");
                 chat(110, 26);
             }
@@ -456,7 +468,7 @@ room26.btnclick = function (name) {
             break;
         case "bussyeat":
             nav.killall();
-            var bchastity = cl.c.chastity === null ? "" : "_c";
+            var bchastity = cl.c.chastity === null ? "" : "_c";0
             nav.bg("26_livingRoom/bussy3_" + gender.pronoun("m") + bchastity + ".jpg");
             levels.oral(3, "f", "landlord");
             char.settime(20, 2);
@@ -471,6 +483,13 @@ room26.btnclick = function (name) {
         case "icon_paint":
             room26.closeLandlordOverlay();
             chat(149, 26);
+            break;
+        case "fuckdick":
+            nav.modbutton("fuckdick", "26_livingRoom/fuckdick1.webp", null, null);
+            if (daily.get("bigguy26"))
+                chat(158, 26);
+            else
+                chat(152, 26);
             break;
         default:
             break;
@@ -902,6 +921,24 @@ room26.chatcatch = function (callback) {
                 break;
             case "room10":
                 char.room(10);
+                break;
+            case "fuckdick2":
+                nav.kill();
+                daily.set("bigguy26");
+                nav.bg("26_livingRoom/fuckdick2.webp");
+                zcl.hanging(450, 700, .55, "open", true);
+                break;
+            case "fuckdick3":
+                nav.kill();
+                nav.bg("26_livingRoom/fuckdick3_" + gender.pronoun("f") + ".webp");
+                if (cl.c.cock === 5) {
+                    levels.fuckedinpussy(true, "m", true, "bigguy");
+                    chat(155, 26);
+                }
+                else {
+                    levels.anal(5, true, "m", true, "bigguy");
+                    chat(156, 26);
+                }
                 break;
             default:
                 console.log("unknown callback: " + v)
@@ -2357,6 +2394,64 @@ room26.chat = function (chatID) {
                     "up! I'm so glad you let me change it up! Now I've got to clean this paint off. ",
                 button: [
                     { chatID: -1, text: "Thank you so much " + sc.n("landlord") + "!", callback: "room10" }
+                ]
+            },
+            {
+                chatID: 152,
+                speaker: "landlord",
+                text: "Yes honey? ",
+                button: [
+                    { chatID: -1, text: "oh nothing.", callback: "reset" },
+                    { chatID: 153, text: "May I have a turn taking " + sc.n("bigguy") + "'s dick please? ", callback: "" },
+                ]
+            },
+            {
+                chatID: 153,
+                speaker: "landlord",
+                text: "Oh god yes! Let me catch up on my shows.",
+                button: [
+                    { chatID: 154, text: "...", callback: "fuckdick2" },
+                ]
+            },
+            {
+                chatID: 154,
+                speaker: "biggguy",
+                text: "Shhhh. I want to hear this part. ",
+                button: [
+                    { chatID: -1, text: "...", callback: "fuckdick3" },
+                ]
+            },
+            {
+                chatID: 155,
+                speaker: "me",
+                text: "Oh I think my pussy is broken... ",
+                button: [
+                    { chatID: 157, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 156,
+                speaker: "me",
+                text: "Oh I think my asshole is broken... ",
+                button: [
+                    { chatID: 157, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 157,
+                speaker: "landlord",
+                text: "Yeah. " + sc.n("bigguy") + " has such a huge hard dick. Great orgasms though. Best I've " +
+                    "ever head. ",
+                button: [
+                    { chatID: -1, text: "... yeah. I just came again and again. ", callback: "room16" },
+                ]
+            },
+            {
+                chatID: 158,
+                speaker: "landlord",
+                text: "You did good earilier. Let me finish taking the rest of his cum. ",
+                button: [
+                    { chatID: -1, text: "ok. You look so hot right now! ", callback: "reset" },
                 ]
             },
         ];

@@ -289,7 +289,7 @@ missy.getcases = function () {
     var caseList = new Array();
     var canDoCase;
     var piLevel = levels.get("pi").l;
-    if (sissy.st[17].ach)
+    if (sissy.st[17].ach || inv.has("lockpick"))
         piLevel = 999;
     var completeCounter = 0;
 
@@ -336,13 +336,13 @@ missy.getcases = function () {
                         }
                         break;
                     case "case_bimbopanties":
-                        if (levels.get("pi").l > 2) {
+                        if (piLevel > 2) {
                             canDoCase = inv.has("lockpick");
                             caseList.push(missy.buildCaseEntry(i, canDoCase, "Work everyday till Missy decides you're worthy of the lock picking class Intelligence Level 4. ", missy.cases[i].name));
                         }
                         break;
                     case "case_elijah_origin": 
-                        if (levels.get("pi").l > 2) {
+                        if (piLevel > 2) {
                             canDoCase = piLevel > 3;
                             caseList.push(missy.buildCaseEntry(i, canDoCase, "Raise your PI Level. ", missy.cases[i].name));
                         }

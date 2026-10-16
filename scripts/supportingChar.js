@@ -5,6 +5,8 @@ sc.charMission = new Array();
 //g.char MUST BE LOWERCASE!!!!!!!!!!
 sc.init = function () {
     sc.char = [
+        { name: "mainstory", display: "Main Story", image: "main.png", step: 0, secret: 0, c: 0, l: 0, show: true, setName: false, phone: -1, p: false, hex: "#D3CBBE" },
+
         { name: "me", display: "Alex", image: "me.png", step: 0, secret: 0, c: 0, l: 0, show: true, setName: false, phone: -1, p: false, hex: "#D3CBBE" },
 
         { name: "landlord", display: "Landlady", image: "mom.png", step: 0, secret: 0, c: 0, l: 0, show: true, setName: true, phone: 0, p: true, hex: "#D3CBBE" },
@@ -242,7 +244,10 @@ sc.init = function () {
                 {
                     missionName: "*cumdump", mStatus: 0, title: "Cum Dump", desc: "Whore for all", task:
                         [
-                            { id: 0, txt: "Reunion", show: true, mStatus: 0, roomId: 902 },
+                            { id: 0, txt: "Reunion", show: true, mStatus: 0, roomId: 26 },
+                            { id: 1, txt: "Catch up", show: true, mStatus: 0, roomId: 13 },
+                            { id: 2, txt: "Baby talk", show: true, mStatus: 0, roomId: 13 },
+                            { id: 3, txt: "Final Loop", show: true, mStatus: 0, roomId: 13 },
                         ]
                 },
             ],
@@ -311,15 +316,24 @@ sc.init = function () {
                         ]
                 },
                 {
-                    missionName: "*student", mStatus: 0, title: "Student", desc: "Keep on keeping on", task:
+                    missionName: "*wife", mStatus: 0, title: "Roomy", desc: "We're stuck in the same room together", task:
                         [
-                            { id: 0, txt: "Reunion", show: true, mStatus: 0, roomId: 902 },
+                            { id: 0, txt: "Reunion", show: true, mStatus: 0, roomId: 14 },
+                        ]
+                },
+                {
+                    missionName: "*tom2", mStatus: 0, title: "Student", desc: "Keep on keeping on", task:
+                        [
+                            { id: 0, txt: "I'm telling", show: true, mStatus: 0, roomId: 10 },
+                            { id: 1, txt: "You have to do what I say!", show: true, mStatus: 0, roomId: 10 },
                         ]
                 },
                 {
                     missionName: "*cumdump", mStatus: 0, title: "Cum Dump", desc: "Whore for all", task:
                         [
-                            { id: 0, txt: "Reunion", show: true, mStatus: 0, roomId: 902 },
+                            { id: 0, txt: "Reunion", show: true, mStatus: 0, roomId: 26 },
+                            { id: 1, txt: "Catch up", show: true, mStatus: 0, roomId: 13 },
+                            { id: 2, txt: "Baby talk", show: true, mStatus: 0, roomId: 13 },
                         ]
                 },
             ],
@@ -391,7 +405,7 @@ sc.init = function () {
                 {
                     missionName: "*cumdump", mStatus: 0, title: "Cum Dump", desc: "Whore for all", task:
                         [
-                            { id: 0, txt: "Reunion", show: true, mStatus: 0, roomId: 902 },
+                            { id: 0, txt: "Reunion", show: true, mStatus: 0, roomId: 26 },
                         ]
                 },
             ]
@@ -3376,3 +3390,71 @@ sc.trivial = function (charname) {
     }
     return { display: name, image: image };
 }
+
+//Main story milestones: what the player should do next (phone "Main Story" page and the save screen)
+sc.mainStory = {};
+
+sc.mainStory.steps = function () {
+    const caseDone = function (id) { return missy.cases[id].complete; };
+    const pTask = function (id) { return sc.getMissionTask("p", "*missy", id).complete; };
+    let ac = missy.get("activeCase");
+    if (ac === null || ac === undefined)
+        ac = 0;
+    const worked = missy.get("totalDaysWorked") > 0 || caseDone(4) || ac >= 4;
+    const licensed = worked || inv.has("pi_lic");
+
+    return [
+        { txt: "Get a job. Use the computer in your room to apply", short: "Get a job", done: ac >= 1 || licensed },
+        { txt: "Work at the construction site", short: "Construction", done: ac >= 2 || licensed },
+        { txt: "Buy a P.I. license at city hall and show it to Missy", short: "P.I. license", done: ac >= 3 || licensed },
+        { txt: "Buy dress clothes at the mall, then go to work at Missy's", short: "First day", done: worked },
+        { txt: "Work 5 days and work out, then do the first case (the park)", short: "First case", done: caseDone(4) },
+        { txt: "Do cases at Missy's until you're caged and in panties", short: "Cage + panties", done: sissy.st[17].ach },
+        { txt: "Go to the sissy school at Missy's (Monday to Thursday)", short: "Sissy school", done: sissy.st[0].ach },
+        { txt: "Raise your Intelligence to level 4 to get the lockpick", short: "Lockpick", done: inv.has("lockpick") },
+        { txt: "Pass the sissy mid-term", short: "Mid-term", done: sissy.st[10].ach },
+        { txt: "Pass the sissy final", short: "Final", done: sissy.st[21].ach },
+        { txt: "Do the Carnival case", short: "Carnival", done: caseDone(18) },
+        { txt: "Do the Farm and Sewer cases", short: "Farm + Sewer", done: caseDone(19) && caseDone(20) },
+        { txt: "Do the Cult case (cabin in the woods, wear the cult robe)", short: "Cult case", done: caseDone(22) },
+        { txt: "Escape the cult", short: "Escape cult", done: gv.get("cultEscape") !== null },
+        { txt: "Meet " + sc.n("p") + " at Missy's Detective Agency", short: "Meet agency", done: pTask(0) },
+        { txt: "Go to the Forest Queen's and bring back evidence to " + sc.n("p"), short: "Forest Queen", done: pTask(1) && pTask(2) },
+        { txt: "Investigate each person on the list and report back to " + sc.n("p"), short: "The list", done: pTask(3) && pTask(4) },
+        { txt: "Go deep into the woods, past the cave, to the very end to save Missy", short: "Save Missy", done: pTask(5) },
+    ];
+};
+
+sc.mainStory.status = function () {
+    const steps = sc.mainStory.steps();
+    for (let i = steps.length - 2; i >= 0; i--) {
+        if (steps[i + 1].done)
+            steps[i].done = true;
+    }
+    let caseTxt = "";
+    if (gv.get("cultEscape") === null && missy.get("activeCase") >= 4)
+        caseTxt = missy.activecase().txt.trim();
+    return { steps: steps, current: steps.findIndex(function (s) { return !s.done; }), caseTxt: caseTxt };
+};
+
+sc.mainStory.nextText = function () {
+    const s = sc.mainStory.status();
+    if (s.caseTxt !== "")
+        return "Current case: " + s.caseTxt;
+    if (s.current < 0)
+        return "";
+    return "Next: " + s.steps[s.current].txt;
+};
+
+sc.mainStory.shortText = function () {
+    const s = sc.mainStory.status();
+    if (s.current < 0)
+        return "";
+    return s.steps[s.current].short;
+};
+
+sc.mainStory.percent = function () {
+    const steps = sc.mainStory.status().steps;
+    const done = steps.filter(function (s) { return s.done; }).length;
+    return Math.round((done / steps.length) * 20) * 5;
+};

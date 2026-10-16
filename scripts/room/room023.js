@@ -9,6 +9,7 @@ room23.main = function () {
     if (sc.getMissionTask("eva", "games", 2).notStarted) {
         sc.completeMissionTask("eva", "games", 2);
         sc.completeMissionTask("lola", "games", 2);
+        chat(0, 23);
     }
     else {
         chat(38, 23);
@@ -45,11 +46,13 @@ room23.nextTurn = function () {
             room23.drawLola("talk");
             room23.drawEva("sit");
             chat(127, 23);
+            return;
         }
         else {
             room23.drawLola("sit");
             room23.drawEva("talk");
             chat(126, 23);
+            return;
         }
     }
 
@@ -70,7 +73,7 @@ room23.nextTurn = function () {
             chat(3, 23);
         }
     } //keep MC in same phase
-    else if (g.internal.myphase !== g.internal.lolaphase) {
+    else if (g.internal.myphase < g.internal.lolaphase) {
         
         g.internal.whoTurn = g.internal.nextTurn;
         g.internal.nextTurn = "me";
@@ -119,7 +122,7 @@ room23.nextTurn = function () {
         else {
             room23.drawLola("sit");
             room23.drawEva("sit");
-            sc.selectCancel("quitGame", .5);
+            sc.selectCancel("quitGame", -.5);
         }
     }
 };
@@ -297,7 +300,7 @@ room23.drawEva = function (position) {
         case "twerk":
             nav.button({
                 "type": "img",
-                "name": "lola",
+                "name": "eva",
                 "left": 462,
                 "top": 0,
                 "width": 650,
@@ -396,7 +399,7 @@ room23.btnclick = function (name) {
         case "t_11":
         case "t_12":
         case "t_13":
-            for (i = 0; i < 14; i++)
+            for (let i = 0; i < 14; i++)
                 nav.killbutton("t_" + i);
             nav.killbutton("tordbg");
             g.internal.gamepointer = parseInt(name.replace("t_", ""));
@@ -414,7 +417,7 @@ room23.btnclick = function (name) {
         case "d_9":
         case "d_10":
         case "d_11":
-            for (i = 0; i < 12; i++)
+            for (let i = 0; i < 12; i++)
                 nav.killbutton("d_" + i);
             nav.killbutton("tordbg");
             g.internal.gamepointer = parseInt(name.replace("d_", ""));
@@ -464,6 +467,11 @@ room23.btnclick = function (name) {
 };
 
 room23.chatcatch = function (callback) {
+    var callbackParts = callback.split(" ");
+    if (callbackParts.length > 1) {
+        callbackParts.forEach(function (part) { room23.chatcatch(part); });
+        return;
+    }
     switch (callback) {
         case "resetbg":
             nav.bg("24_spinTheBottle/013_spinBG.jpg");
@@ -486,6 +494,9 @@ room23.chatcatch = function (callback) {
                     invoker.invokeCurrent("chatcatch", "evatalk lolasit");
                 chat(702, 23);
             }
+            break;
+        case "myTruth":
+            chat(800, 23);
             break;
         case "killme":
             zcl.kill();
@@ -570,6 +581,12 @@ room23.chatcatch = function (callback) {
             }
             break;
         case "truth":
+            if (g.internal.whoTurn === "me" && g.internal.truths[g.internal.gamephase].length < 1) {
+                room23.drawLola("sit");
+                room23.drawEva("talk");
+                chat(122, 23);
+                break;
+            }
             if (g.internal.whoTurn === "me") {
                 nav.button({
                     "type": "img",
@@ -580,7 +597,7 @@ room23.chatcatch = function (callback) {
                     "height": 1080,
                     "image": "1001_rand/black_25.png"
                 }, g.roomID);
-                for (i = 0; i < g.internal.truths[g.internal.gamephase].length; i++) {
+                for (let i = 0; i < g.internal.truths[g.internal.gamephase].length; i++) {
                     sc.select("t_" + i, "24_spinTheBottle/" + g.internal.truths[g.internal.gamephase][i].i + ".png", i);
                 }
             }
@@ -589,6 +606,12 @@ room23.chatcatch = function (callback) {
             }
             break;
         case "dare":
+            if (g.internal.whoTurn === "me" && g.internal.dares[g.internal.gamephase].length < 1) {
+                room23.drawLola("sit");
+                room23.drawEva("talk");
+                chat(122, 23);
+                break;
+            }
             if (g.internal.whoTurn !== "me") {
                 if (g.internal.lolaphase !== g.internal.evaphase) {
                     if (g.internal.whoTurn === "eva") {
@@ -596,6 +619,7 @@ room23.chatcatch = function (callback) {
                             case 1: chat(37, 23); break;
                             case 2: chat(57, 23); break;
                             case 3: chat(71, 23); break;
+                            default: chat(851, 23); break;
                         }
                     }
                     else {
@@ -603,11 +627,12 @@ room23.chatcatch = function (callback) {
                             case 1: chat(34, 23); break;
                             case 2: chat(56, 23); break;
                             case 3: chat(66, 23); break;
+                            default: chat(802, 23); break;
                         }
                     }
                 }
                 else {
-                    chat(851, 23);
+                    chat(g.internal.whoTurn === "lola" ? 802 : 851, 23);
                 }
             }
             else {
@@ -620,7 +645,7 @@ room23.chatcatch = function (callback) {
                     "height": 1080,
                     "image": "1001_rand/black_25.png"
                 }, g.roomID);
-                for (i = 0; i < g.internal.dares[g.internal.gamephase].length; i++) {
+                for (let i = 0; i < g.internal.dares[g.internal.gamephase].length; i++) {
                     sc.select("d_" + i, "24_spinTheBottle/" + g.internal.dares[g.internal.gamephase][i].i + ".png", i);
                 }
             }
@@ -663,7 +688,7 @@ room23.chatcatch = function (callback) {
                 "height": 1056,
                 "image": "24_spinTheBottle/kiss_" + g.internal.gamephase + ".png"
             }, g.roomID);
-            //g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
+            g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
             chat(26, 23);
             break;
         case "dareKissMe":
@@ -678,7 +703,7 @@ room23.chatcatch = function (callback) {
                 "height": 1080,
                 "image": "24_spinTheBottle/dareKissMe_" + kissMeLevel + "_" + g.internal.nextTurn + ".png"
             }, 23);
-            //g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
+            g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
             chat(26, 23);
             break;
         case "bjface":
@@ -692,13 +717,13 @@ room23.chatcatch = function (callback) {
                 nav.bg("24_spinTheBottle/darebjface_eva.jpg");
                 chat(53, 23);
             }
-            //g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
+            g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
 
             break;
         case "dareSpin1":
             nav.killall();
             nav.bg("24_spinTheBottle/dareSpin_" + g.internal.nextTurn + ".jpg");
-            //g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
+            g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
             chat(28, 23);
             break;
         case "dareSmellArmpits":
@@ -726,7 +751,7 @@ room23.chatcatch = function (callback) {
                     "image": "24_spinTheBottle/pitsniff_lola.png"
                 }, 23);
             }
-            //g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
+            g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
             chat(39, 23);
             break;
         case "dareDrinkWine":
@@ -742,7 +767,6 @@ room23.chatcatch = function (callback) {
                     "height": 1071,
                     "image": "24_spinTheBottle/sit_lola_" + g.internal.gamephase + "_drink.png"
                 }, 13);
-                //g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
                 nav.killbutton("lolaWine");
             }
             else {
@@ -759,7 +783,7 @@ room23.chatcatch = function (callback) {
                 }, 13);
                 nav.killbutton("evaWine");
             }
-            //g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
+            g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
             chat(40, 23);
             break;
         case "dareSpin2":
@@ -768,13 +792,12 @@ room23.chatcatch = function (callback) {
         case "dareKissHand":
             nav.killall();
             nav.bg("24_spinTheBottle/dareKissHand_" + g.internal.nextTurn + ".jpg");
-            //g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
+            g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
             chat(27, 23);
             break;
         case "dareTalent":
             if (g.internal.nextTurn === "lola") {
-                nav.killbutton("eva");
-                nav.killbutton("lola");
+                room23.drawLola("lolaWine");
                 nav.button({
                     "type": "img",
                     "name": "lola",
@@ -784,12 +807,11 @@ room23.chatcatch = function (callback) {
                     "height": 732,
                     "image": "24_spinTheBottle/talent_lola.png"
                 }, 13);
-                invoker.invokeCurrent("chatcatch", "lolaWine");
-                invoker.invokeCurrent("chatcatch", "evatalk");
-                chat(42, 23);
+                room23.drawEva("evatalk");
+                chat(41, 23);
             }
             else {
-                nav.killbutton("eva");
+                room23.drawEva("evaWine");
                 nav.button({
                     "type": "img",
                     "name": "eva",
@@ -799,10 +821,9 @@ room23.chatcatch = function (callback) {
                     "height": 732,
                     "image": "24_spinTheBottle/talent_eva.png"
                 }, 13);
-                invoker.invokeCurrent("chatcatch", "evaWin");
                 chat(42, 23);
             }
-            //g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
+            g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
             break;
         case "dareTopless":
             if (sc.getLevel(g.internal.nextTurn) >= 3) {
@@ -881,9 +902,10 @@ room23.chatcatch = function (callback) {
                 else
                     chat(61, 23);
             }
-            //g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
+            g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
             break;
         case "dareButthole":
+            g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
             nav.kill();
             nav.bg("24_spinTheBottle/" + g.internal.nextTurn + "_butthole.jpg");
             if (g.internal.nextTurn === "eva")
@@ -892,6 +914,7 @@ room23.chatcatch = function (callback) {
                 chat(78, 23);
             break;
         case "dareSitOnFace":
+            g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
             nav.killbutton("eva");
             nav.killbutton("lola");
 
@@ -910,6 +933,7 @@ room23.chatcatch = function (callback) {
                 chat(76, 23);
             break;
         case "dareButtholeFinger":
+            g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
             nav.killbutton("eva");
             nav.killbutton("lola");
             nav.button({
@@ -928,6 +952,7 @@ room23.chatcatch = function (callback) {
             break;
 
         case "dareLickCock":
+            g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
             if (g.internal.nextTurn === "lola") {
                 invoker.invokeCurrent("chatcatch", "evagiggle lolahappy");
                 chat(79, 23);
@@ -947,6 +972,7 @@ room23.chatcatch = function (callback) {
             }, 23);
             break;
         case "dareWedgie":
+            g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
             nav.killall();
             nav.bg("24_spinTheBottle/dareWedge_" + g.internal.nextTurn + "0.jpg");
             chat(62, 23);
@@ -1001,7 +1027,7 @@ room23.chatcatch = function (callback) {
             else {
                 chat(49, 23);
             }
-            //g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
+            g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
             break;
         case "dareLickNipple":
             nav.killall();
@@ -1013,7 +1039,7 @@ room23.chatcatch = function (callback) {
                 nav.bg("24_spinTheBottle/darelick_eva.jpg");
                 chat(47, 23);
             }
-            //g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
+            g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
             break;
         case "dareClothesPin":
             nav.killall();
@@ -1025,7 +1051,7 @@ room23.chatcatch = function (callback) {
                 nav.bg("24_spinTheBottle/darepin_eva.jpg");
                 chat(51, 23);
             }
-            //g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
+            g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
             break;
         case "askMe":
             chat(25, 23);
@@ -1198,6 +1224,7 @@ room23.chatcatch = function (callback) {
             char.room(28);
             break;
         case "dareTwerk":
+            g.internal.dares[g.internal.gamephase].splice(g.internal.gamepointer, 1);
             if (g.internal.nextTurn === "eva") {
                 room23.drawEva("twerk");
                 chat(125, 23);
@@ -1273,7 +1300,7 @@ room23.chat = function (chatID) {
     }
     else if (chatID === 802) { //eva dares lola
         g.internal.gamepointer = -1;
-        for (i = 0; i < g.internal.dares[g.internal.gamephase].length; i++) {
+        for (let i = 0; i < g.internal.dares[g.internal.gamephase].length; i++) {
             if (g.internal.dares[g.internal.gamephase][i].u !== null) {
                 g.internal.gamepointer = i;
                 break;
@@ -1302,7 +1329,7 @@ room23.chat = function (chatID) {
     }
     else if (chatID === 851) { //eva dares lola
         g.internal.gamepointer = -1;
-        for (i = 0; i < g.internal.dares[g.internal.gamephase].length; i++) {
+        for (let i = 0; i < g.internal.dares[g.internal.gamephase].length; i++) {
             if (g.internal.dares[g.internal.gamephase][i].u !== null) {
                 g.internal.gamepointer = i;
                 break;
@@ -1330,6 +1357,9 @@ room23.chat = function (chatID) {
         }
     }
     else if (chatID === 701) {//strip dare
+        if (g.internal.myphase < 0 || g.internal.myphase > 2) {
+            return room23.chat(702);
+        }
         var stripDare = [
             {
                 e: "Take your shirt off. Show us your man nipples. ",
@@ -1360,7 +1390,7 @@ room23.chat = function (chatID) {
     }
     else if (chatID === 702) {
         var darepointer = null;
-        var mp = g.internal.myphase;
+        var mp = Math.min(g.internal.myphase, g.internal.lolaphase);
         for (var gdare = 0; gdare < g.internal.myDare[mp].length; gdare++) {
             if (g.internal.whoTurn === "eva") {
                 if (g.internal.myDare[mp][gdare].e !== null) {
@@ -1542,13 +1572,13 @@ room23.chat = function (chatID) {
                 speaker: "eva",
                 text: "Hahah you better creep-o!",
                 button: [
-                    { chatID: -1, text: "So I'll start this game!", callback: "evasit lolaSit" }
+                    { chatID: -1, text: "So I'll start this game!", callback: "evasit lolasit" }
                 ]
             },
             {
                 chatID: 3,
                 speaker: g.internal.whoTurn,
-                text: sc.n(g.internal.nextTurn) + " truth or dare? ",
+                text: sc.n(g.internal.nextTurn ?? "lola") + " truth or dare? ",
                 button: [
                     { chatID: -1, text: "...", callback: "tord" }
                 ]
@@ -1562,76 +1592,61 @@ room23.chat = function (chatID) {
                     { chatID: 800, text: "Truth", callback: "" }
                 ]
             },
+            //chats 5-12, 35 and 36 are unused; the stubs keep array positions valid
             {
                 chatID: 5,
-                speaker: "eva",
-                text: "Truth!",
-                button: [
-                    { chatID: -1, text: "...", callback: "evasit evaTruth" }
-                ]
+                speaker: "!nar",
+                text: "",
+                button: []
             },
             {
                 chatID: 6,
-                speaker: "eva",
-                text: "Dare me, pussy!",
-                button: [
-                    { chatID: -1, text: "...", callback: "evasit evaDare" }
-                ]
+                speaker: "!nar",
+                text: "",
+                button: []
             },
             {
                 chatID: 7,
-                speaker: "lola",
-                text: "Ask me anything you want. ",
-                button: [
-                    { chatID: -1, text: "...", callback: "lolasit lolaTruth" }
-                ]
+                speaker: "!nar",
+                text: "",
+                button: []
             },
             {
                 chatID: 8,
-                speaker: "lola",
-                text: "I guess I'll take a dare.  ",
-                button: [
-                    { chatID: -1, text: "...", callback: "lolasit lolaDare" }
-                ]
+                speaker: "!nar",
+                text: "",
+                button: []
             },
             {
                 chatID: 9,
-                speaker: "eva",
-                text: sc.n("lola") + " truth or dare? ",
-                button: [
-                    { chatID: -1, text: "...", callback: "tord" }
-                ]
+                speaker: "!nar",
+                text: "",
+                button: []
             },
             {
                 chatID: 10,
-                speaker: "lola",
-                text: "Truth! ",
-                button: [
-                    { chatID: 800, text: "...", callback: "lolasit evatalk" }
-                ]
+                speaker: "!nar",
+                text: "",
+                button: []
             },
             {
                 chatID: 11,
-                speaker: "lola",
-                text: sc.n("eva") + " truth or dare? ",
-                button: [
-                    { chatID: 12, text: "...", callback: "tord" }
-                ]
+                speaker: "!nar",
+                text: "",
+                button: []
             },
             {
                 chatID: 12,
-                speaker: "eva",
-                text: "Truth! ",
-                button: [
-                    { chatID: 800, text: "...", callback: "lolatalk evasit" }
-                ]
+                speaker: "!nar",
+                text: "",
+                button: []
             },
             {
                 chatID: 13,
                 speaker: "lola",
                 text: "Awwww. You're the sweetest ever! ",
                 button: [
-                    { chatID: -1, text: "...", callback: "lolasit" }
+                    { chatID: -1, text: "...", callback: "lolasit nextTurn" }
                 ]
             },
             {
@@ -1639,7 +1654,7 @@ room23.chat = function (chatID) {
                 speaker: "eva",
                 text: "Blech! Gross. Not in a million years! ",
                 button: [
-                    { chatID: -1, text: "...", callback: "evasit" }
+                    { chatID: -1, text: "...", callback: "evasit nextTurn" }
                 ]
             },
             {
@@ -1655,7 +1670,7 @@ room23.chat = function (chatID) {
                 speaker: "lola",
                 text: "Oh hahaha. *blush* ",
                 button: [
-                    { chatID: -1, text: "...", callback: "lolasit" }
+                    { chatID: -1, text: "...", callback: "lolasit nextTurn" }
                 ]
             },
             {
@@ -1663,7 +1678,7 @@ room23.chat = function (chatID) {
                 speaker: "eva",
                 text: "I always knew you were one of those weird feet guys. Blech! ",
                 button: [
-                    { chatID: -1, text: "...", callback: "" }
+                    { chatID: -1, text: "...", callback: "nextTurn" }
                 ]
             },
             {
@@ -1671,7 +1686,7 @@ room23.chat = function (chatID) {
                 speaker: "eva",
                 text: "Gross. You know we discharge in them, right! Some days it's a total snot canoe in there. ",
                 button: [
-                    { chatID: -1, text: "...", callback: "evasit" }
+                    { chatID: -1, text: "...", callback: "evasit nextTurn" }
                 ]
             },
             {
@@ -1679,7 +1694,7 @@ room23.chat = function (chatID) {
                 speaker: "lola",
                 text: "I know someone... Errr. oh. I mean gross. ",
                 button: [
-                    { chatID: -1, text: "...", callback: "lolatalk" }
+                    { chatID: -1, text: "...", callback: "lolatalk nextTurn" }
                 ]
             },
             {
@@ -1687,7 +1702,7 @@ room23.chat = function (chatID) {
                 speaker: "lola",
                 text: "That's not true! I've never peed in a pool. So gross. That water goes in my mouth. ",
                 button: [
-                    { chatID: -1, text: "...", callback: "lolasit" }
+                    { chatID: -1, text: "...", callback: "lolasit nextTurn" }
                 ]
             },
             {
@@ -1703,7 +1718,7 @@ room23.chat = function (chatID) {
                 speaker: "lola",
                 text: "Shut up! You always gotta try to be funny and take it too far. ",
                 button: [
-                    { chatID: -1, text: "...", callback: "lolasit" }
+                    { chatID: -1, text: "...", callback: "lolasit nextTurn" }
                 ]
             },
             {
@@ -1712,7 +1727,7 @@ room23.chat = function (chatID) {
                 text: "Wait. For real? Do you wear girl's panties? Like all the time? ",
                 button: [
                     { chatID: 24, text: "Yeah. They're so so soft and smooth ", callback: "secret10 lolahate lolatalk" },
-                    { chatID: -1, text: "Oh no, that was a joke. ", callback: "evasit" },
+                    { chatID: -1, text: "Oh no, that was a joke. ", callback: "evasit nextTurn" },
                 ]
             },
             {
@@ -1720,7 +1735,7 @@ room23.chat = function (chatID) {
                 speaker: "lola",
                 text: "Wouldn't you rather wear boy's underwear? Boxers would look super cute on you. ",
                 button: [
-                    { chatID: -1, text: "I love what I love ", callback: "lolasit" },
+                    { chatID: -1, text: "I love what I love ", callback: "lolasit nextTurn" },
                 ]
             },
             {
@@ -1804,24 +1819,20 @@ room23.chat = function (chatID) {
                 speaker: "lola",
                 text: "I dare you to be topless too! I can't be the only one showing boobs around here! ",
                 button: [
-                    { chatID: 25, text: "...", callback: "setPhaseNextTurn" },
+                    { chatID: -1, text: "...", callback: "setPhaseNextTurn" },
                 ]
             },
             {
                 chatID: 35,
-                speaker: "eva",
-                text: sc.n("lola") + " truth or dare? ",
-                button: [
-                    { chatID: 36, text: "...", callback: "" },
-                ]
+                speaker: "!nar",
+                text: "",
+                button: []
             },
             {
                 chatID: 36,
-                speaker: "lola",
-                text: "Dare me!",
-                button: [
-                    { chatID: (g.internal.gamephase === 1 ? 37 : 57) , text: "...", callback: "" },
-                ]
+                speaker: "!nar",
+                text: "",
+                button: []
             },
             {
                 chatID: 37,
@@ -2043,7 +2054,7 @@ room23.chat = function (chatID) {
                 speaker: g.internal.nextTurn,
                 text: "OOOoooofffff! I can taste my panties. That really gets into the folds! ",
                 button: [
-                    { chatID: 63, text: "...", callback: "nextTurn" },
+                    { chatID: -1, text: "...", callback: "nextTurn" },
                 ]
             },
             {
@@ -2127,7 +2138,7 @@ room23.chat = function (chatID) {
                 speaker: "eva",
                 text: "Hey stop clenching your butthole. This is weird enough as is!",
                 button: [
-                    { chatID: 72, text: "...", callback: "nextTurn" },
+                    { chatID: -1, text: "...", callback: "nextTurn" },
                 ]
             },
             {
@@ -2143,7 +2154,7 @@ room23.chat = function (chatID) {
                 speaker: "lola",
                 text: "Oh, oh oh. I've got to get off or I'm going to cum all over your face. ",
                 button: [
-                    { chatID: 72, text: "...", callback: "nextTurn" },
+                    { chatID: -1, text: "...", callback: "nextTurn" },
                 ]
             },
             {
@@ -2159,7 +2170,7 @@ room23.chat = function (chatID) {
                 speaker: "eva",
                 text: "No weird stuff! ... ok that's enough of looking up my asshole perv! ",
                 button: [
-                    { chatID: 72, text: "...", callback: "nextTurn" },
+                    { chatID: -1, text: "...", callback: "nextTurn" },
                 ]
             },
             {
@@ -2361,7 +2372,7 @@ room23.chat = function (chatID) {
                 speaker: "lola",
                 text: "OOooo. Shake that money maker.. I mean. Good dancing. ",
                 button: [
-                    { chatID: 103, text: "Oh yeah", callback: "evalike" },
+                    { chatID: -1, text: "Oh yeah", callback: "evalike nextTurn" },
                 ]
             },
             {
@@ -2534,7 +2545,7 @@ room23.chat = function (chatID) {
                 text: "This game is taking too long! I'm done. Let's go to bed " + 
                     sc.n("lola") + ". ",
                 button: [
-                    { chatID: -1, text: "awww ", callback: "endGame" },
+                    { chatID: 123, text: "awww ", callback: "" },
                 ]
             },
             {
@@ -2571,7 +2582,7 @@ room23.chat = function (chatID) {
             },
             {
                 chatID: 127,
-                speaker: "eva",
+                speaker: "lola",
                 text: "That wine really got to me. I'm feeling a bit dizzy. I've got to " +
                     "go lay down. ",
                 button: [
@@ -3270,7 +3281,7 @@ room23.buildInternal = function () {
             txt: "Play with your vagina over your panties. ",
             e: "You're just trying to get me all horny so you can have sex with me. ",
             l: "I guess I can show you how I masturbate. It is my hand touching myself. ",
-            u: true,
+            u: null,
             dCallback: "dareMast",
             i: "d_3_2"
         },
@@ -3367,8 +3378,10 @@ room23.buildInternal = function () {
     ]);
     //truth = g.shuffleArray(truth);
     myTruth = g.shuffleArray(myTruth);
-    for (i = 0; i < myDare.length; i++) {
+    for (let i = 0; i < myDare.length; i++) {
         myDare[i] = g.shuffleArray(myDare[i]);
+        myDare[i] = myDare[i].filter(d => d.b[0].callback !== "meDrink")
+            .concat(myDare[i].filter(d => d.b[0].callback === "meDrink"));
     }
     g.internal = {
         eva: 0,
@@ -3553,11 +3566,14 @@ room23.getTheirQuestion = function () {
         selectedQustion = qlist[g.rand(0, qlist.length)];
     }
     else {
+        if (g.internal.myTruth.length < 1) {
+            return room23.chat(122);
+        }
         var askMeTruth = {
             chatID: 400,
             speaker: g.internal.whoTurn,
             text: g.internal.myTruth[0].q,
-            button: g.internal.myTruth[0].b
+            button: g.internal.myTruth[0].b.map(function (b) { return b.chatID === -1 ? { chatID: -1, text: b.text, callback: (b.callback + " nextTurn").trim() } : b; })
         };
         g.internal.myTruth.shift();
         return askMeTruth;

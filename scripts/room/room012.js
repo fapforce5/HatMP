@@ -8,8 +8,15 @@ room12.main = function () {
     if (canGoOut === null && g.pass === "lolapee") {
         g.pass = "";
         weekly.set("lolapee");
-        nav.bg("12_bathroom/lolapee.jpg");
-        chat(43, 12);
+        
+        if (sc.getMission("lola", "*cumdump").inProgress) {
+            nav.bg("12_bathroom/lolapee0.jpg");
+            chat(58, 12);
+        }
+        else {
+            nav.bg("12_bathroom/lolapee.jpg");
+            chat(43, 12);
+        }
     }
     else if (canGoOut === null) {
         btnList = [
@@ -1100,6 +1107,15 @@ room12.chat = function(chatID){
             text: "Dirty bitch. ",
             button: [
                 { chatID: -1, text: "*sissy moans*", callback: "showerReset" },
+            ]
+        },
+        {
+            chatID: 58,
+            speaker: "lola",
+            text: "Oh. I was just about to pee.",
+            button: [
+                { chatID: -1, text: "I'll leave you to it. Wouldn't want to be rude. ", callback: "leave" },
+                { chatID: -1, text: "Can I fuck you while you pee?", callback: "" },
             ]
         },
     ];

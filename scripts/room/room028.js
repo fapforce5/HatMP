@@ -9,7 +9,7 @@ room28.main = function () {
 
     let transformationOrder = [0, 1, 2, 3, 4, 24, 7, 11, 16, 5, 8, 12, 17, 25, 13, 18, 21, 6, 9, 23, 14, 19, 10, 15, 20, 22];
     let sissySchoolDream = false;
-    var pjRoom = [7, 10]
+    var pjRoom = [7, 10, 26, 52];
     if (pjRoom.includes(g.pass)) {
         cl.wearSavedOutfit(5);
     }
@@ -19,7 +19,7 @@ room28.main = function () {
 
     cl.c.cumface = false;
 
-    menu.save("HatMP_9", true);
+    saves.autoSave();
     if (g.dt.getHours() > 6)
         g.dt.setDate(g.dt.getDate() + 1);
     g.dt = new Date(g.dt.getFullYear(), g.dt.getMonth(), g.dt.getDate(), 7, 0, 0, 0);
@@ -28,9 +28,6 @@ room28.main = function () {
     var txtDisplay = room28.dreams();
     var chastityTransformation = false;
     let trasnformationSetting = null;
-    let breastSelect, assSelect;
-    breastSelect = [11, 12, 13, 14, 15];
-    assSelect = [16, 17, 18, 19, 20];
     cl.hairgrowth();
     var maxE = gv.get("maxenergy");
     var thisautohormone, hix, tix;
@@ -54,12 +51,6 @@ room28.main = function () {
                 hormoneLevel = gv.st[i].t;
                 if (gv.st[i].t > 15)
                     gv.st[i].t -= 2;
-                break;
-            case "breastSelect":
-                breastSelect.splice(gv.st[i].t);
-                break;
-            case "assSelect":
-                assSelect.splice(gv.st[i].t);
                 break;
             case "autohormone":
                 thisautohormone = gv.st[i].t;
@@ -261,47 +252,31 @@ room28.main = function () {
         let transformationPoints = levels.get("xdress").l;
         let validTransformationHormone = hormoneLevel > 75;
         if (transformationPoints > 0 && cl.c.chest > 0) {
-            let validForcedTransformation = false;
-
             if (trasnformationSetting === "forced") {
+                let hormoneNotice = false;
                 for (let i = 0; i < transformationOrder.length; i++) {
-                    if (!qdress.st[transformationOrder[i]].ach) {
-                        if (transformationOrder[i] > 10 && transformationOrder[i] < 16) {
-                            if (breastSelect.includes(transformationOrder[i]))
-                                validForcedTransformation = true;
+                    const id = transformationOrder[i];
+                    const entry = qdress.st[id];
+                    if (entry.ach || !qdress.allowed(id))
+                        continue;
+                    if (entry.h && !validTransformationHormone) {
+                        if (!hormoneNotice) {
+                            g.popUpNotice("Need to increase your Sissy Hormones.");
+                            hormoneNotice = true;
                         }
-                        else if (transformationOrder[i] > 15 && transformationOrder[i] < 21) {
-                            if (assSelect.includes(transformationOrder[i]))
-                                validForcedTransformation = true;
-                        }
-                        else
-                            validForcedTransformation = true;
-
-                        if (validForcedTransformation) {
-                            if (qdress.st[transformationOrder[i]].p <= transformationPoints) {
-                                if ((qdress.st[transformationOrder[i]].h && validTransformationHormone) || !qdress.st[transformationOrder[i]].h) {
-                                    invoker.invokeCurrent("btnclick", "qgrow_" + transformationOrder[i]);
-                                    return;
-                                }
-                                else {
-                                    g.popUpNotice("Need to increase your Sissy Hormones.");
-                                }
-                            }
-                            i = 999;
-                            break;
-                        }
+                        continue;
                     }
+                    if (entry.p <= transformationPoints) {
+                        invoker.invokeCurrent("btnclick", "qgrow_" + id);
+                        return;
+                    }
+                    break;
                 }
                 room28.endSleepyTime(true);
             }
             else if (trasnformationSetting === "voluntary") {
                 qdress.stx = new Array();
                 qdress.getPoints(0, transformationPoints, validTransformationHormone);
-                for (let i = qdress.stx.length - 1; i > 0; i--) {
-                    if (breastSelect.includes(qdress.stx[i]) || assSelect.includes(qdress.stx[i])) {
-                        qdress.stx.splice(i, 1);
-                    }
-                }
                 if (qdress.stx.length > 0) {
                     nav.button({
                         "type": "img",
@@ -535,6 +510,9 @@ room28.dreams = function () {
                 break;
             case 13:
                 nav.bg("28_transformation/twin.jpg");
+                break;
+            case 26:
+                nav.bg("28_transformation/26.webp");
                 break;
             case 181:
                 nav.bg("181_black/bondage101_12.jpg");

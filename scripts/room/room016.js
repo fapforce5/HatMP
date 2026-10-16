@@ -86,7 +86,7 @@ room16.main = function () {
             "image": "16_livingRoom/allthree.png"
         }, 16);
     }
-    else if (cl.isLewd()) {
+    else if (cl.isLewd() && !sc.getMission("lola", "*cumdump").inProgress) {
         if (sc.getMission("landlord", "sissy").notStarted) {
             nav.button({
                 "type": "img",
@@ -211,15 +211,29 @@ room16.main = function () {
             });
         }
         else if (thisMomRoomID.roomID === 26 && thisBigguyId.roomID === 26) {
-            btnList.push({
-                "type": "btn",
-                "name": "living",
-                "left": 1189,
-                "top": 347,
-                "width": 212,
-                "height": 227,
-                "image": "16_livingRoom/bigguy.png",
-            });
+            if (sc.getMission("landlord", "*cumdump").inProgress) {
+                btnList.push({
+                    "type": "btn",
+                    "name": "living",
+                    "left": 1059,
+                    "top": 200,
+                    "width": 351,
+                    "height": 385,
+                    "image": "16_livingRoom/living_preg_dick.png",
+                    "night": "16_livingRoom/living_preg_dick_night.png"
+                });
+            }
+            else {
+                btnList.push({
+                    "type": "btn",
+                    "name": "living",
+                    "left": 1189,
+                    "top": 347,
+                    "width": 212,
+                    "height": 227,
+                    "image": "16_livingRoom/bigguy.png",
+                });
+            }
         }
         else if (thisMomRoomID.roomID === 26) {
             if (sc.getMission("lola", "*cumdump").inProgress) {

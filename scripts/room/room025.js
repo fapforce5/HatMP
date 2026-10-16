@@ -17,28 +17,56 @@ room25.main = function () {
     var thisDick = sc.getTimeline("bigguy");
 
     if (thisDick.roomID === 26) {
-        btnList.push({
-            "type": "btn",
-            "name": "livingroom",
-            "left": 275,
-            "top": 12,
-            "width": 455,
-            "height": 375,
-            "image": "25_dining/livingroombigguy.png",
-            "night": "25_dining/livingroombigguy_night.png",
-        });
+        if (sc.getMission("landlord", "*cumdump").inProgress) {
+            btnList.push({
+                "type": "btn",
+                "name": "livingroom",
+                "left": 275,
+                "top": 12,
+                "width": 455,
+                "height": 375,
+                "image": "25_dining/livingroombigguy_preg.png",
+                "night": "25_dining/livingroombigguy_preg_night.png",
+            });
+        }
+        else {
+            btnList.push({
+                "type": "btn",
+                "name": "livingroom",
+                "left": 275,
+                "top": 12,
+                "width": 455,
+                "height": 375,
+                "image": "25_dining/livingroombigguy.png",
+                "night": "25_dining/livingroombigguy_night.png",
+            });
+        }
     }
     else if (thisMother.roomID === 26) {
-        btnList.push({
-            "type": "btn",
-            "name": "livingroom",
-            "left": 275,
-            "top": 12,
-            "width": 455,
-            "height": 375,
-            "image": "25_dining/livingroomM.png",
-            "night": "25_dining/livingroomMN.png",
-        });
+        if (sc.getMission("landlord", "*cumdump").inProgress) {
+            btnList.push({
+                "type": "btn",
+                "name": "livingroom",
+                "left": 275,
+                "top": 12,
+                "width": 455,
+                "height": 375,
+                "image": "25_dining/livingroom_preg_.png",
+                "night": "25_dining/livingroom_preg_N.png",
+            });
+        }
+        else {
+            btnList.push({
+                "type": "btn",
+                "name": "livingroom",
+                "left": 275,
+                "top": 12,
+                "width": 455,
+                "height": 375,
+                "image": "25_dining/livingroomM.png",
+                "night": "25_dining/livingroomMN.png",
+            });
+        }
     }
     else if (thisSister.roomID === 26) {
         btnList.push({

@@ -28,7 +28,7 @@ gender.isGirl = function () {
 }
 
 gender.cock = function () {
-    if (cl.c.chastity)
+    if (cl.c.chastity !== null)
         return "c"; //chastity
     if (cl.c.cock === 5)
         return "v"; //vagina

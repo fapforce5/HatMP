@@ -28,6 +28,11 @@ room10.main = function () {
         chat(47, 10);
         return;
     }
+    else if (sc.getMission("lola", "*cumdump").inProgress && !daily.get("cumdumphouse") && g.rand(0, 4) === 0) {
+        daily.set("cumdumphouse");
+        rape.init(null, "home", 10, "reset");
+        return;
+    }
     else {
         $('.room-topper').show();
         $('#room-background, #room-buttons').hide();
@@ -189,6 +194,23 @@ room10.btnclick = function (name) {
                         "height": 920,
                         "image": "10_mainchar/lola.webp",
                     }, 10);
+                }
+            }
+            if (sc.getTimeline("eva").thisRoom) {
+                if (g.hourBetween(22, 25) || g.hourBetween(0, 7)) {
+                    nav.modbutton("Bed", "10_mainchar/10_bedNight_eva.webp", "evabed", null);
+                }
+                else {
+                    nav.button({
+                        "type": "btn",
+                        "name": "eva",
+                        "left": 280,
+                        "top": 160,
+                        "width": 309,
+                        "height": 920,
+                        "image": "10_mainchar/eva.webp",
+                    }, 10);
+
                 }
             }
             else {
@@ -477,6 +499,220 @@ room10.btnclick = function (name) {
                 g.internal++;
             }
             break;
+        case "eva":
+            switch (sc.taskGetStep("eva", "*tom2")) {
+                case 0:
+                    sc.completeMissionTask("eva", "*tom2", 0);
+                    chat(83, 10);
+                    break;
+                case 1:
+                    daily.set("eva");
+                    sc.completeMissionTask("eva", "*tom2", 1);
+                    chat(90, 10);
+                    break;
+            }
+            break;
+        case "evabed":
+            g.internal = "pants"; 
+            nav.kill();
+            nav.bg("10_mainchar/eva_bed0.webp");
+            nav.button({
+                "type": "btn",
+                "name": "evabed0",
+                "left": 0,
+                "top": 530,
+                "width": 1920,
+                "height": 550,
+                "image": "10_mainchar/eva_bed0_cover.webp",
+            }, 10);
+            sc.select("sleep", "328_farm/icon_sleep.webp", 1.2);
+            sc.selectCancel("reset", 3.2);
+            break;
+        case "evabed0":
+            nav.kill();
+            nav.bg("10_mainchar/eva_bed1.webp");
+            nav.button({
+                "type": "btn",
+                "name": "evabed1",
+                "left": 656,
+                "top": 879,
+                "width": 490,
+                "height": 201,
+                "image": "10_mainchar/eva_bed1_pants.webp",
+            }, 10);
+            nav.button({
+                "type": "btn",
+                "name": "evabed_tongue",
+                "left": 675,
+                "top": 583,
+                "width": 104,
+                "height": 78,
+                "image": "10_mainchar/eva_bed_tongue.webp",
+            }, 10);
+            sc.select("sleep", "328_farm/icon_sleep.webp", 1.2);
+            sc.selectCancel("reset", 3.2);
+            break;
+        case "evabed1":
+            nav.kill();
+            g.internal = "nopants";
+            nav.bg("10_mainchar/eva_bed1.webp");
+            nav.button({
+                "type": "btn",
+                "name": "evabed_hand",
+                "left": 827,
+                "top": 810,
+                "width": 182,
+                "height": 266,
+                "image": "10_mainchar/eva_bed_hand.webp",
+            }, 10);
+            nav.button({
+                "type": "btn",
+                "name": "evabed_tongue",
+                "left": 675,
+                "top": 583,
+                "width": 104,
+                "height": 78,
+                "image": "10_mainchar/eva_bed_tongue.webp",
+            }, 10);
+            sc.select("sleep", "328_farm/icon_sleep.webp", 1.2);
+            sc.selectCancel("reset", 3.2);
+            break;
+        case "evabed_tongue":
+            nav.kill();
+            nav.bg("10_mainchar/eva_bed2_" + gender.pronoun("f") + ".webp");
+            nav.next(g.internal === "pants" ? "evabed0" : "evabed1");
+            break;
+        case "evabed_hand":
+            nav.kill();
+            nav.bg("10_mainchar/eva_bed3.webp");
+            if (gender.cock() !== "v")
+                nav.button({
+                    "type": "img",
+                    "name": "evabed_maDick",
+                    "left": 0,
+                    "top": 0,
+                    "width": 1920,
+                    "height": 1080,
+                    "image": "10_mainchar/eva_bed3_" + gender.cock() + ".webp",
+                }, 10);
+            sc.select("evabed_fingerpussy", "10_mainchar/icon_fingerpussy.webp", 6);
+            sc.select("evabed_fingerass", "10_mainchar/icon_fingerass.webp", 10);
+            break;
+        case "evabed_fingerpussy":
+            g.internal = {
+                hole: "twat",
+                step: 0
+            };
+            nav.killbutton("evabed_fingerpussy");
+            nav.killbutton("evabed_fingerass");
+            nav.button({
+                "type": "img",
+                "name": "evabed_maDick",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "10_mainchar/eva_bed4_pussy.webp",
+            }, 10);
+            nav.next("eva_bed5");
+            break;
+        case "evabed_fingerass":
+            g.internal = {
+                hole: "anus",
+                step: 0
+            };
+            nav.killbutton("evabed_fingerpussy");
+            nav.killbutton("evabed_fingerass");
+            nav.button({
+                "type": "img",
+                "name": "evabed_maDick",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "10_mainchar/eva_bed4_butthole.webp",
+            }, 10);
+            nav.next("eva_bed5");
+            break;
+        case "eva_bed5":
+            switch (g.internal.step) {
+                case 0:
+                    nav.kill();
+                    nav.bg("10_mainchar/eva_bed5.webp");
+                    nav.next("eva_bed5");
+                    break;
+                case 1:
+                    nav.bg("10_mainchar/eva_bed6.webp");
+                    break;
+                case 2:
+                    nav.bg("10_mainchar/eva_bed7_ropen.webp");
+                    nav.button({
+                        "type": "img",
+                        "name": "evabed_lay",
+                        "left": 0,
+                        "top": 0,
+                        "width": 1920,
+                        "height": 1080,
+                        "image": "10_mainchar/eva_bed7_" + (cl.c.cock === 5 ? "p" : "c" ) +".webp"
+                    }, 10);
+                    nav.button({
+                        "type": "img",
+                        "name": "evabed_face",
+                        "left": 0,
+                        "top": 0,
+                        "width": 1920,
+                        "height": 1080,
+                        "image": "10_mainchar/eva_bed7_1.webp"
+                    }, 10);
+                    break;
+                case 3:
+                    nav.modbutton("evabed_face", "10_mainchar/eva_bed7_2.webp", null, null);
+                    break;
+                case 4:
+                    nav.bg("10_mainchar/eva_bed7_rclose.webp");
+                    nav.modbutton("evabed_face", "10_mainchar/eva_bed7_3.webp", null, null);
+                    break;
+                case 5:
+                    nav.bg("10_mainchar/eva_bed7_rup.webp");
+                    nav.modbutton("evabed_face", "10_mainchar/eva_bed7_4.webp", null, null);
+                    break;
+                case 6:
+                    nav.kill();
+                    nav.bg("10_mainchar/eva_bed3.webp");
+                    if (gender.cock() !== "v") {
+                        nav.button({
+                            "type": "img",
+                            "name": "evabed_maDick",
+                            "left": 0,
+                            "top": 0,
+                            "width": 1920,
+                            "height": 1080,
+                            "image": "10_mainchar/eva_bed3_" + gender.cock() + ".webp",
+                        }, 10);
+                    }
+                    nav.button({
+                        "type": "img",
+                        "name": "evabed_6",
+                        "left": 0,
+                        "top": 0,
+                        "width": 1920,
+                        "height": 1080,
+                        "image": "10_mainchar/eva_bed7_5_" + g.internal.hole + ".webp",
+                    }, 10);
+                    nav.next("eva_bed5");
+                    break;
+                case 7:
+                    levels.anal(1, true, "f", false, "eva");
+                    nav.modbutton("evabed_6", "10_mainchar/eva_bed7_6_" + gender.cock() + ".webp", null, null);
+                    break;
+                case 8:
+                    nav.killbutton("eva_bed5");
+                    nav.modbutton("evabed_6", "10_mainchar/eva_bed7_7_" + gender.cock() + ".webp", null, null);
+                    chat(82, 10);
+                    break;
+            }
+            g.internal.step++;           
+            break;
         case "reset":
             char.room(10);
             break;
@@ -493,6 +729,14 @@ room10.chatcatch = function (callback) {
         case "pussy3":
         case "pussy4":
         case "pussy5":
+        case "eva_1":
+        case "eva_1a":
+        case "eva_2_3":
+            nav.kill();
+            nav.bg("10_mainchar/" + callback + ".webp");
+            break;
+        case "eva_2_1":
+            sc.completeMissionTask("eva", "*tom2", 1);
             nav.kill();
             nav.bg("10_mainchar/" + callback + ".webp");
             break;
@@ -751,6 +995,10 @@ room10.chatcatch = function (callback) {
             levels.fuckpussy("lola", "f");
             nav.bg("10_mainchar/lola_sleep5_" + (cl.c.cock === 5 ? "f" : "m") + ".webp");
             break;
+        case "eva_sleep":
+            g.pass = 26;
+            char.room(28);
+            break;
         case "lola_sleep_end":
             g.pass = -7;
             char.room(28);
@@ -768,6 +1016,11 @@ room10.chatcatch = function (callback) {
                 "image": "10_mainchar/pussy_m.webp",
             }, 10);
             gv.mod("masturbate_pussy", 1);
+            break;
+        case "eva_2_2":
+            nav.bg("10_mainchar/eva_2_2.webp");
+            levels.oral(3, "f", "eva", false);
+            zcl.backOfHead(400, 130, .47, "", false);
             break;
         default:
             break;
@@ -836,7 +1089,7 @@ room10.chat = function (chatID) {
             {
                 chatID: 3,
                 speaker: "me",
-                text: "How Long do you want to sleep?",
+                text: "How long do you want to sleep?",
                 button: [
                     { chatID: 1, text: "Nap for 1 hour.", callback: "nap_1hour" },
                     { chatID: -1, text: "Sleep till morning", callback: "nap_sleep" },
@@ -891,7 +1144,7 @@ room10.chat = function (chatID) {
             {
                 chatID: 11,
                 speaker: "me",
-                text: "How long to Nap?",
+                text: "How long to nap?",
                 button: [
                     { chatID: 1, text: "1 Hour", callback: "nap_1hour" },
                     { chatID: 2, text: "3 Hours", callback: "nap_3hour" },
@@ -961,7 +1214,7 @@ room10.chat = function (chatID) {
             {
                 chatID: 19,
                 speaker: "eva",
-                text: "Don't do that you panty thief! You probably took them to masturbate on you disgusting pervert! ",
+                text: "Don't do that you panty thief! You probably took them to masturbate on, you disgusting pervert! ",
                 button: [
                     { chatID: 20, text: "No, nonono. " + sc.n("missy") + "'s making me wear panties to work.", callback: "" }
                 ]
@@ -969,11 +1222,11 @@ room10.chat = function (chatID) {
             {
                 chatID: 20,
                 speaker: "eva",
-                text: "What? why would she do that? ",
+                text: "What? Why would she do that? ",
                 button: [
                     {
                         chatID: 21, text: "I got in trouble on my last job, got caught peeking at a girl so " + sc.n("missy") +
-                            "'s making me wear girls panties to work.", callback: "lolaYell"
+                            "'s making me wear girls' panties to work.", callback: "lolaYell"
                     }
                 ]
             },
@@ -990,7 +1243,7 @@ room10.chat = function (chatID) {
                 speaker: "eva",
                 text: "Yes we can. What are you going to do, steal more panties? ",
                 button: [
-                    { chatID: 23, text: "I promise not to steal any more panties! I'll do what ever you want if you don't tell anyone.", callback: "lolaYell" }
+                    { chatID: 23, text: "I promise not to steal any more panties! I'll do whatever you want if you don't tell anyone.", callback: "lolaYell" }
                 ]
             },
             {
@@ -1191,7 +1444,7 @@ room10.chat = function (chatID) {
             {
                 chatID: 46,
                 speaker: "me",
-                text: "I'm such a bimbo brain! I'm not wearing heels",
+                text: "I'm such a bimbo brain! I'm not wearing heels.",
                 button: [
                     { chatID: -1, text: "...", callback: "" }
                 ]
@@ -1254,7 +1507,7 @@ room10.chat = function (chatID) {
                 chatID: 53,
                 speaker: "lola",
                 text: "That's terrible what they did! But you know what. I have a vagina too! I guess our " +
-                    "kids going to have two loving moms. Too bad I don't have a penis or I would make you pregnant " +
+                    "kids are going to have two loving moms. Too bad I don't have a penis or I would make you pregnant " +
                     "next hehe. Look. I love you. All of you. I don't care if you have a penis or not. We're going " +
                     "to be together forever! ",
                 button: [
@@ -1275,7 +1528,7 @@ room10.chat = function (chatID) {
             {
                 chatID: 55,
                 speaker: "lola",
-                text: "I hope you don't mind my ass in your face. It's too uncomfortable to lay on " +
+                text: "I hope you don't mind my ass in your face. It's too uncomfortable to lie on " +
                     "my back. Now get in there and make me moan! ",
                 button: [
                     { chatID: -1, text: "[Lick her vagina]", callback: "" },
@@ -1301,7 +1554,7 @@ room10.chat = function (chatID) {
             {
                 chatID: 58,
                 speaker: "lola",
-                text: "Oh my. She's right you know. I do need to show you how to use that thing! Lay " +
+                text: "Oh my. She's right, you know. I do need to show you how to use that thing! Lie " +
                     "back! Let me make you feel good too! ",
                 button: [
                     { chatID: 59, text: "oh yeah!", callback: "lola_lick5" },
@@ -1310,8 +1563,8 @@ room10.chat = function (chatID) {
             {
                 chatID: 59,
                 speaker: "lola",
-                text: "So this that I'm fingering is your outer lips. I do love it when " + sc.n("eva") +
-                    " runs her finger nails over it. A light tease that starts me up so good. ",
+                text: "So I'm fingering is your outer lips. I do love it when " + sc.n("eva") +
+                    " runs her fingernails over it. A light tease that starts me up so good. ",
                 button: [
                     { chatID: 60, text: "mmMmmmm", callback: "lola_lick6" },
                 ]
@@ -1319,7 +1572,7 @@ room10.chat = function (chatID) {
             {
                 chatID: 60,
                 speaker: "lola",
-                text: "Now these are your inner lips. Do you like how I rub my fingers between them.  ",
+                text: "Now these are your inner lips. Do you like how I rub my fingers between them?  ",
                 button: [
                     { chatID: 61, text: "Hehe. Oh yeah. Feels so good. ", callback: "lola_lick7" },
                 ]
@@ -1327,7 +1580,7 @@ room10.chat = function (chatID) {
             {
                 chatID: 61,
                 speaker: "lola",
-                text: "Most boys think that we get all our pleasure our vaginal hole. It does feel so good, but " +
+                text: "Most boys think that we get all our pleasure from our vaginal hole. It does feel so good, but " +
                     "this...",
                 button: [
                     { chatID: 62, text: "oh yeah. It does feel good. ", callback: "lola_lick8" },
@@ -1464,8 +1717,8 @@ room10.chat = function (chatID) {
             {
                 chatID: 77,
                 speaker: "thinking",
-                text: "Oh. It's so moist. hehe. Oooo that feels good. MMmmmm. I wonder what inside the hole " +
-                    "feels...",
+                text: "Oh. It's so moist. hehe. Oooo that feels good. MMmmmm. I wonder what the inside of the hole " +
+                    "feels like...",
                 button: [
                     { chatID: 78, text: "[Slide your fingers inside your pussy]", callback: "pussy3" },
                 ]
@@ -1502,6 +1755,156 @@ room10.chat = function (chatID) {
                     "masturbating, just try to keep it down a bit. ",
                 button: [
                     { chatID: -1, text: "Yes " + sc.n("landlord") + ". ", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 82,
+                speaker: "eva",
+                text: "Can you now please take your asshole off my nose so we can get some sleep! Pervert. ",
+                button: [
+                    { chatID: -1, text: "oh yeah. Of course [Sleep]", callback: "nap_sleep" },
+                ]
+            },
+            {
+                chatID: 83,
+                speaker: "eva",
+                text: "Ok! Listen here pervert!! That stupid " + sc.n("tom") + " moved into MY room so we are forced " +
+                    "to share this room! I said " + sc.n("lola") + " should move into your room, but " + sc.n("landlord") +
+                    " said no! I swear she likes " + sc.n("lola") + " more than me sometimes. ",
+                button: [
+                    { chatID: 84, text: "We have to share my room? ", callback: "" },
+                ]
+            },
+            {
+                chatID: 84,
+                speaker: "eva",
+                text: "YOU have to share MY new room! Mine! If you want to sleep in here you'll do what I say! Got it, " +
+                    "pervert! ",
+                button: [
+                    { chatID: 85, text: "What? This is my room! ", callback: "" },
+                ]
+            },
+            {
+                chatID: 85,
+                speaker: "eva",
+                text: sc.n("landlord") + "!!!!",
+                button: [
+                    { chatID: 86, text: "huh? ", callback: "eva_1" },
+                ]
+            },
+            {
+                chatID: 86,
+                speaker: "eva",
+                text: sc.n("me") + " said I wasn't allowed in *his* room. And if I stayed here he would make my " +
+                    "life hell. He wants me to be homeless! ",
+                button: [
+                    { chatID: 87, text: "No I didn't... ", callback: "" },
+                ]
+            },
+            {
+                chatID: 87,
+                speaker: "landlord",
+                text: "Listen here " + sc.n("me") + "! You'll share this room and be nice to your " +
+                    g.makeSingular(sc.n("el")) + "! If you two can't get along I'll turn this room into my " +
+                    "new craft room and you two will live on the streets! Now be good! ",
+                button: [
+                    { chatID: 88, text: "*hrumph*", callback: "" },
+                ]
+            },
+            {
+                chatID: 88,
+                speaker: "eva",
+                text: "I'll be a good girl " + sc.n("landlord") + ". I don't know about " + sc.n("me") + " though. You " +
+                    "know how " + gender.pronoun("she") + " can be. ",
+                button: [
+                    { chatID: 89, text: "What I...", callback: "" },
+                ]
+            },
+            {
+                chatID: 89,
+                speaker: "landlord",
+                text: "*sigh* " + sc.n("me") + ", don't harass your " + g.makeSingular(sc.n("el")) + ". If I have to " +
+                    "come up here again, you're out of here. DON'T interrupt " +
+                    "my shows again! ",
+                button: [
+                    { chatID: -1, text: "Yes " + sc.n("landlord") + ". ", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 90,
+                speaker: "eva",
+                text: "Haha! You heard " + sc.n("landlord") + "! You have to do whatever I say or she's going to kick " +
+                    "you out! ",
+                button: [
+                    { chatID: 91, text: "That's not what she said ", callback: "" },
+                ]
+            },
+            {
+                chatID: 91,
+                speaker: "eva",
+                text: "That's what she meant. Get down on your knees and tell me that's what she said or I'm telling " +
+                    "her you tried to molest my boobies. Knees now! ",
+                button: [
+                    { chatID: 95, text: "*sigh* [Get on your knees]", callback: "eva_2_1" },
+                    { chatID: 92, text: "I'm not doing that!", callback: "" },
+                ]
+            },
+            {
+                chatID: 92,
+                speaker: "eva",
+                text: sc.n("landlord") + "!!!! " + sc.n("me") + " is trying to molest me!!!",
+                button: [
+                    { chatID: 93, text: "*grrrr*", callback: "eva_1" },
+                ]
+            },
+            {
+                chatID: 93,
+                speaker: "landlord",
+                text: "What did I tell you! " + sc.n("me") + ", come with me! ",
+                button: [
+                    { chatID: 94, text: "...but I...", callback: "eva_1a" },
+                ]
+            },
+            {
+                chatID: 94,
+                speaker: "landlord",
+                text: "You're sleeping on the couch! I don't care if you're tired or not! Now go to bed! ",
+                button: [
+                    { chatID: -1, text: "awwww " + sc.n("landlord") + ".", callback: "eva_sleep" },
+                ]
+            },
+            {
+                chatID: 95,
+                speaker: "me",
+                text: "huh? Why are you naked? ",
+                button: [
+                    { chatID: 96, text: "...", callback: "" },
+                ]
+            },
+            {
+                chatID: 96,
+                speaker: "eva",
+                text: "'cause you're my new bitch. Now that I don't have " + sc.n("lola") + " to eat me out whenever " +
+                    "I'm horny you'll have to do it! Now tell my clit you're my bitch and lick my pussy! ",
+                button: [
+                    { chatID: 97, text: "I'm your bitch [Lick her pussy]", callback: "eva_2_2" },
+                ]
+            },
+            {
+                chatID: 97,
+                speaker: "eva",
+                text: "Oh yeah! That's it. You're much more enthusastic then " + sc.n("lola") + "! Oh yeah! " +
+                    "I'm about to cum all over your pretty face! ",
+                button: [
+                    { chatID: 98, text: "*slurp* *lick*", callback: "eva_2_3" },
+                ]
+            },
+            {
+                chatID: 98,
+                speaker: "eva",
+                text: "Oh look at me. I'm a grooly mess! Hehe. Thanks babe. ",
+                button: [
+                    { chatID: -1, text: "...yes", callback: "reset" },
                 ]
             },
         ];

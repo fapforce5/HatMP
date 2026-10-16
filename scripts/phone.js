@@ -66,84 +66,20 @@ phone.handleSaveMenuAction = function (name) {
 
     if (name.startsWith("phone_save_replace_verify_")) {
         slotId = name.replace("phone_save_replace_verify_", "");
-        menu.saveDel('HatMP_' + slotId);
-        menu.save('HatMP_' + slotId, true);
-        phone.saveMenu();
-        return true;
-    }
-
-    if (name.startsWith("phone_save_replace_")) {
-        slotId = name.replace("phone_save_replace_", "");
-        phone.showSaveConfirmDialog({
-            overlayName: "phone_replace_verify",
-            promptLeft: 650,
-            promptText: "Are you sure you wish to overwrite save: ",
-            slotId: slotId,
-            confirmName: "phone_save_replace_verify_" + slotId,
-            confirmImage: "999_phone/save.png",
-            cancelImage: "999_phone/cancel_grey.png"
-        });
+        saves.write(slotId).then(phone.saveMenu);
         return true;
     }
 
     if (name.startsWith("phone_save_load_verify_")) {
         slotId = name.replace("phone_save_load_verify_", "");
         chat(-1, 0);
-        menu.load('HatMP_' + slotId);
-        return true;
-    }
-
-    if (name.startsWith("phone_save_load_")) {
-        slotId = name.replace("phone_save_load_", "");
-        if (g.newLoad) {
-            chat(-1, 0);
-            menu.load('HatMP_' + slotId);
-        }
-        else {
-            phone.showSaveConfirmDialog({
-                overlayName: "phone_load_verify",
-                promptLeft: 750,
-                promptText: "Are you sure you wish to load: ",
-                slotId: slotId,
-                confirmName: "phone_save_load_verify_" + slotId,
-                confirmImage: "999_phone/load.png",
-                cancelImage: "999_phone/cancel.png"
-            });
-        }
+        saves.load(slotId);
         return true;
     }
 
     if (name.startsWith("phone_save_delete_verify_")) {
         slotId = name.replace("phone_save_delete_verify_", "");
-        menu.saveDel('HatMP_' + slotId);
-        phone.saveMenu();
-        return true;
-    }
-
-    if (name.startsWith("phone_save_delete_")) {
-        slotId = name.replace("phone_save_delete_", "");
-        phone.showSaveConfirmDialog({
-            overlayName: "phone_load_verify",
-            promptLeft: 750,
-            promptText: "Are you sure you wish to delete: ",
-            slotId: slotId,
-            confirmName: "phone_save_delete_verify_" + slotId,
-            confirmImage: "999_phone/delete.png",
-            cancelImage: "999_phone/cancel_grey.png"
-        });
-        return true;
-    }
-
-    if (name.startsWith("phone_save_export_")) {
-        slotId = name.replace("phone_save_export_", "");
-        char.export(slotId);
-        return true;
-    }
-
-    if (name.startsWith("phone_save_save_")) {
-        slotId = name.replace("phone_save_save_", "");
-        menu.save('HatMP_' + slotId, true);
-        phone.saveMenu();
+        saves.remove(slotId).then(phone.saveMenu);
         return true;
     }
 
@@ -627,7 +563,7 @@ phone.showSaveConfirmDialog = function (config) {
         top: 450,
         font: 30,
         hex: "#ffffff",
-        text: $("[data-name='phone_save_load_name_" + config.slotId + "']").text()
+        text: config.labelText !== undefined ? config.labelText : $("[data-name='phone_save_load_name_" + config.slotId + "']").text()
     }, 1);
     nav.button({
         "type": "zbtn",
@@ -894,142 +830,9 @@ phone.addAchievementCard = function (achievement, index) {
 };
 
 phone.saveMenu = function () {
-    let minVersion = 21;
-    let mostRecent = new Date(1999, 1, 1);
-    let mostRecentRow = null;
-    let saveByOrder = new Array();
     phone.clear(false);
     phone.showPanel("999_phone/save_bg.jpg");
-    let newestSave = new Date(1900, 0, 0);
-    let newestSaveId = -1;
-    let savedt;
-    for (var i = 0; i < 10; i++) {
-        var cookieName = 'HatMP_' + i;
-        const top = 180 + (i * 60);
-        if (localStorage.getItem(cookieName) !== null) {
-            
-            var initTemp = JSON.parse(localStorage[cookieName]);
-            if (initTemp.saveDt !== undefined && i < 10) {
-                savedt = new Date(initTemp.saveDt);
-                saveByOrder.push({ id: i, dt: savedt, order: 0 });
-                if (savedt > newestSave) {
-                    newestSave = savedt;
-                    newestSaveId = i;
-                }
-            }
-            if (initTemp.version < minVersion) {
-                nav.t({
-                    type: "zimg",
-                    name: "phone_save_load_name_" + i,
-                    left: 520,
-                    top: top + 20,
-                    font: 25,
-                    hex: "#ffffff",
-                    text: initTemp.savename.substring(0, 10) + "... Incompatible save. Please Begin a new game. "
-                }, 1);
-            }
-            else {
-                nav.button({
-                    "type": "zbtn",
-                    "name": "phone_save_load_" + i,
-                    "left": 520,
-                    "top": top,
-                    "width": 125,
-                    "height": 50,
-                    "title": "Load",
-                    "image": "999_phone/load.png",
-                }, 9999);
-
-                nav.t({
-                    type: "zimg",
-                    name: "phone_save_load_name_" + i,
-                    left: 650,
-                    top: top + 10,
-                    font: 30,
-                    hex: "#ffffff",
-                    text: initTemp.savename
-                }, 1);
-            }
-
-            if (i !== 9) {
-                if (!g.newLoad) {
-                    nav.button({
-                        "type": "zbtn",
-                        "name": "phone_save_replace_" + i,
-                        "left": 460,
-                        "top": top,
-                        "width": 50,
-                        "height": 50,
-                        "title": "Overwrite Save",
-                        "image": "999_phone/overwrite.png",
-                    }, 9999);
-                }
-
-                nav.button({
-                    "type": "zbtn",
-                    "name": "phone_save_delete_" + i,
-                    "left": 1370,
-                    "top": top,
-                    "width": 125,
-                    "height": 50,
-                    "title": "Delete Save",
-                    "image": "999_phone/delete.png",
-                }, 9999);
-            }
-            else {
-                nav.t({
-                    type: "zimg",
-                    name: "phone_",
-                    left: 1360,
-                    top: top + 10,
-                    font: 30,
-                    hex: "#ffffff",
-                    text: "[Auto Save]"
-                }, 1);
-            }
-            nav.button({
-                "type": "zbtn",
-                "name": "phone_save_export_" + i,
-                "left": 1530,
-                "top": top,
-                "width": 50,
-                "height": 50,
-                "title": "Export Save",
-                "image": "999_phone/export.png",
-            }, 9999);
-        }
-        else if (!g.newLoad && i !== 9) {
-            nav.button({
-                "type": "zbtn",
-                "name": "phone_save_save_" + i,
-                "left": 520,
-                "top": top,
-                "width": 125,
-                "height": 50,
-                "title": "Import Save",
-                "image": "999_phone/save.png",
-            }, 9999);
-        }
-    }
-
-    saveByOrder.sort((a, b) => b.dt.getTime() - a.dt.getTime());
-    for (i = 0; i < saveByOrder.length; i++) {
-        $("div[data-name='phone_save_load_name_" + saveByOrder[i].id + "']")
-            .prepend('<span style="font-size:' + (15 * g.ratio) + 'px;">' + (i + 1) + '. </span>');
-    }
-    if (newestSaveId > -1) {
-        $("div[data-name='phone_save_load_name_" + newestSaveId + "']").css({ "color": "#ffc7f6" });
-    }
-
-    nav.button({
-        "type": "zbtn",
-        "name": "phone_save_import",
-        "left": 520,
-        "top": 180 + (10 * 60),
-        "width": 125,
-        "height": 50,
-        "image": "999_phone/import.png",
-    }, 9999);
+    saves.renderScreen();
 };
 
 phone.settings = function () {
@@ -1135,6 +938,30 @@ phone.characters = function () {
     }, 9999);
 };
 
+phone.drawMainStory = function () {
+    const s = sc.mainStory.status();
+    const header = s.current < 0 ? "All steps complete" : "Next: " + s.steps[s.current].txt;
+    nav.t({ type: "zimg", name: "phone_charsel_", left: 850, top: 180, font: 30, hex: "#FF76FF", text: g.linebreak(header, 50) }, 1);
+    let top = 330;
+    if (s.caseTxt !== "") {
+        nav.t({ type: "zimg", name: "phone_charsel_", left: 850, top: 280, font: 20, hex: "#ffffff", text: g.linebreak("Current case: " + s.caseTxt, 70) }, 1);
+        top = 350;
+    }
+    for (let i = 0; i < s.steps.length; i++) {
+        let marker = "";
+        let color = "#999999";
+        if (i === s.current) {
+            marker = "▶";
+            color = "#FF76FF";
+        }
+        else if (s.steps[i].done) {
+            marker = "☑";
+            color = "#33cc33";
+        }
+        nav.t({ type: "zimg", name: "phone_charsel_", left: 850, top: top + (i * 30), font: 22, hex: color, text: marker }, 1);
+        nav.t({ type: "zimg", name: "phone_charsel_", left: 890, top: top + (i * 30), font: 22, hex: color, text: (i + 1) + ". " + s.steps[i].txt }, 1);
+    }
+};
 phone.characterSelect = function (name) {
     phone.clear(false);
     phone.backbutton("phone_rel");
@@ -1184,6 +1011,11 @@ phone.characterSelect = function (name) {
         }, 9999);
     }
     
+    if (name === "mainstory") {
+        phone.drawMainStory();
+        return;
+    }
+
     nav.t({
         type: "zimg",
         name: "phone_",
@@ -1226,7 +1058,6 @@ phone.characterSelect = function (name) {
         }, 1);
     }
     if (name === "me") {
-        if (sissy.st[0].ach) {
             var locked = '<span style="color:#cc3333">Locked</span>';
             var unlocked = '<span style="color:#33cc33">Unlocked</span>';
             var metxt =
@@ -1251,13 +1082,12 @@ phone.characterSelect = function (name) {
                 type: "zimg",
                 name: "phone_charselx",
                 "left": 850,
-                "top": 180,
+                "top": 240,
                 font: 30,
                 hex: "#ffffff",
                 text: metxt
             }, 9999);
-        }
-        else if (qdress.st[0].ach) {
+        if (!sissy.st[0].ach) {
             nav.t({
                 type: "zimg",
                 name: "phone_charselx",
@@ -1265,9 +1095,7 @@ phone.characterSelect = function (name) {
                 "top": 180,
                 font: 30,
                 hex: "#ffffff",
-                text: "I really like wearing panties. <br />" +
-                    "It's like my own private secret that no one knows. <br/>" +
-                    "I really need to just wear panties all the time. <br/><br/>"
+                text: "To unlock and grow you must prove to Missy you deserve it. Keep working. "
             }, 9999);
         }
         else {
@@ -1278,9 +1106,7 @@ phone.characterSelect = function (name) {
                 "top": 180,
                 font: 30,
                 hex: "#ffffff",
-                text: "I don't know why I'm obsessed with women's panties. <br/>" +
-                    "I just like the smell and fell of them. <br/>" +
-                    "I should steal some panties."
+                text: "Gain Sissy Points to unlock and grow. "
             }, 9999);
         }
     }
@@ -1504,7 +1330,7 @@ phone.thankyou = function () {
         "John R. (AngryJ)", "Krueschen", "Kylie V.", "Merchanto", "Orrin",
         "Rachel",
         "reverseclipse",
-        "SirGuren (Contributor)", "WendyJ", "Wild86willie"
+        "SirGuren (Contributor)", "SOLISTS", "WendyJ", "Wild86willie"
     ];
     $.each(l, function (i, v) {
         nav.t({

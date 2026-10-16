@@ -108,6 +108,7 @@ room7.main = function () {
         }
     }
     else {
+        //add in event for after the cult
         if (sc.getMission("bigguy", "ex").notStarted) {
             switch (sc.taskGetStep("bigguy", "rent")) {
                 case -1:
@@ -133,7 +134,8 @@ room7.main = function () {
                     chat(57, 7);
                     break;
                 default:
-
+                    //need to add in event for wakeup after the cult
+                    chat(9, 7);
                     break;
             }
         }

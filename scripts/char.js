@@ -281,6 +281,7 @@ $(document).ready(function () {
             g.pastSaves.splice(g.pastSaves.length - 1, 1);
         privateChat.kill();
         nav.clearRoomTimeouts();
+        fame.moanAnimateStop();
         char.import(g.pastSaves[g.pastSaves.length - 1].data);
         g.pastSaves.splice(g.pastSaves.length - 1, 1);
         char.makeWalk();
@@ -300,6 +301,7 @@ $(document).ready(function () {
         var gameHeight = 1080 * g.ratio;
         cl.display();
         $('#room-background').find('img').css({ "width": gameWidth + "px", "height": gameHeight + "px" });
+        $('.sv-screen').css('--r', g.ratio);
         char.rescaleRoomImages($('#room-buttons').find('img'), ogRatio);
         char.rescalePositionedElements($(".resize"), ogRatio);
         char.rescaleFontElements($(".resize-font"), ogRatio);
@@ -1050,15 +1052,14 @@ menu.makeSaves = function () {
 };
 
 menu.saveBtn = function(btn) {
-    var saveID = btn.data('save');
+    var saveID = String(btn.data('save'));
     var bType = btn.attr('data-type');
-    var cookieName = 'HatMP_' + saveID;
     if (bType === 'save') {
-        menu.save(cookieName, true);
+        saves.write(saveID);
     }
     else { //load game
         chat(-1, 0);
-        menu.load(cookieName, btn, saveID);
+        saves.load(saveID);
     }
 };
 
@@ -1081,18 +1082,8 @@ menu.save = function (cookieName, saveToCookie) {
         saveName = "v 1.0 WIP IS BROKEN! " + thisRoom + " [" + new Date().toISOString().split('T')[0] + "]";
         g.saveState.savename = saveName;
         if (saveToCookie) {
-            try {
-                localStorage[cookieName] = JSON.stringify(g.saveState);
-                return true;
-            }
-            catch (err) {
-                if (!g.saveAlert) {
-                    g.saveAlert = true;
-                    alert("Unable to save. Your browser may be blocking the save or you're in incognito mode that doesn't allow saving."); 
-                    console.error("Save failed:", err);
-                }
-                return false;
-            }
+            // Slot saves go through saves.js (IndexedDB + optional saves folder); returns a Promise.
+            return saves.write(String(cookieName).replace(saves.legacyPrefix, ""));
         }
         else {
             return JSON.stringify(g.saveState);
@@ -1101,25 +1092,11 @@ menu.save = function (cookieName, saveToCookie) {
 };
 
 menu.load = function (cookieName, btn, saveID) {
-    fame.moanAnimateStop();
-    if (g.newLoad) {
-        char.showGameShell();
-    }
-    g.newLoad = false;
-
-    var tp = JSON.parse(localStorage[cookieName]);
-    let saveVersion = char.applyLoadedState(tp);
-    char.finishLoadedState(saveVersion, {
-        updateMap: true,
-        hideExportDialog: false,
-        resetPastSaves: true
-    });
+    return saves.load(String(cookieName).replace(saves.legacyPrefix, ""));
 };
 
 menu.saveDel = function (cookieName) {
-    if (localStorage.getItem(cookieName) !== null) 
-        localStorage.removeItem(cookieName);
-    return true;
+    return saves.remove(String(cookieName).replace(saves.legacyPrefix, ""));
 };
 
 char.init = function() {
@@ -1228,17 +1205,7 @@ char.menu = function () {
 
 
 char.export = function (saveID) {
-    var cookieName = 'HatMP_' + saveID;
-    var tp = localStorage[cookieName];
-    char.showExportDialog({
-        data: tp,
-        saveID: saveID,
-        showLoad: false,
-        showLoadFile: false,
-        showSaveFile: true,
-        showExportText: true,
-        showImportText: false
-    });
+    return saves.exportSlot(String(saveID));
 };
 
 char.applyLoadedState = function (tp) {
@@ -1316,8 +1283,8 @@ char.file_export = function (saveID) {
       return num < 10 ? ('0' + num) : num;
     }
     // Create a file url using the save content
-    const cookieName = 'HatMP_' + saveID;
-    const tp = localStorage[cookieName];
+    // The export dialog already holds the save data for this slot
+    const tp = $("#room_export_data").val();
     const blob = new Blob([tp], {type: 'text/plain'});
     const url = window.URL.createObjectURL(blob);
     // Add a link to the file url and click on it for user to download it

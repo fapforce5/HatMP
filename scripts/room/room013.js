@@ -39,7 +39,6 @@ room13.main = function () {
         }
         if (evaDrunk) {
             drunkImg = "evaSleep3.png";
-
             btnList.push({
                 "type": "img",
                 "name": "bed",
@@ -4914,7 +4913,7 @@ room13.chat = function (chatID) {
                 button: [
                     { chatID: -1, text: "YEAH!!!", callback: "sissy_13" },
                 ]
-            },
+            }
         ];
         return cArray[chatID];
     }

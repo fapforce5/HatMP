@@ -104,6 +104,14 @@ room206.main = function () {
             ]
         },
         {
+            t: "Which pair of lips are perfect for sucking cock?",
+            b: [
+                { t: "q13_0.png", a: false },
+                { t: "q13_1.png", a: false },
+                { t: "q13_2.png", a: false },
+            ]
+        },
+        {
             t: "Are you the type of person that likes to make your own decisions, or do you prefer to have those decisions made for you? ",
             b: [
                 { t: "q11_0.png", a: false },
@@ -458,16 +466,16 @@ room206.chatcatch = function (callback) {
                     "image": "206_questions/" + img
                 }, 206);
                 break;
-            case "q11":
+            case "q12":
                 nav.bg("206_questions/desk.jpg");
-                if (g.internal[11].b[0].a) {
+                if (g.internal[12].b[0].a) {
                     gv.set("transformation", "forced");
-                    img = g.internal[11].b[0].t;
+                    img = g.internal[12].b[0].t;
                     chat(43, 206);
                 }
                 else {
                     gv.set("transformation", "voluntary");
-                    img = g.internal[11].b[1].t;
+                    img = g.internal[12].b[1].t;
                     chat(44, 206);
                 }
                 nav.killbutton("question");
@@ -481,20 +489,47 @@ room206.chatcatch = function (callback) {
                     "image": "206_questions/" + img
                 }, 206);
                 break;
-            case "q12":
-                if (g.internal[12].b[0].a) {
+            case "q13":
+                if (g.internal[13].b[0].a) {
                     nav.bg("206_questions/desk.jpg");
                     chat(27, 206);
                     levels.mod("sub", 15);
-                    img = g.internal[12].b[0].t;
+                    img = g.internal[13].b[0].t;
                 }
                 else {
                     nav.bg("206_questions/angry.jpg");
                     chat(28, 206);
                     levels.mod("dom", 15);
-                    img = g.internal[12].b[1].t;
+                    img = g.internal[13].b[1].t;
                 }
 
+                nav.killbutton("question");
+                nav.button({
+                    "type": "btn",
+                    "name": "question",
+                    "left": 300,
+                    "top": 100,
+                    "width": 800,
+                    "height": 100,
+                    "image": "206_questions/" + img
+                }, 206);
+                break;
+            case "q11":
+                if (g.internal[11].b[0].a) {
+                    gv.set("lipSelect", 0);
+                    img = g.internal[11].b[0].t;
+                    chat(52, 206);
+                }
+                else if (g.internal[11].b[1].a) {
+                    gv.set("lipSelect", 1);
+                    img = g.internal[11].b[1].t;
+                    chat(53, 206);
+                }
+                else if (g.internal[11].b[2].a) {
+                    gv.set("lipSelect", 2);
+                    img = g.internal[11].b[2].t;
+                    chat(54, 206);
+                }
                 nav.killbutton("question");
                 nav.button({
                     "type": "btn",
@@ -948,7 +983,7 @@ room206.chat = function (chatID) {
             speaker: "missy",
             text: "So you don't like to be in control. Noted. I'll make sure I control your tender little body.  ",
             button: [
-                { chatID: -1, text: "*GULP*", callback: "q12" },
+                { chatID: -1, text: "*GULP*", callback: "q13" },
             ]
         },
         {
@@ -956,7 +991,7 @@ room206.chat = function (chatID) {
             speaker: "missy",
             text: "So you like choices. Very well, just be careful about what choices you do have to make.",
             button: [
-                { chatID: -1, text: "*GULP*", callback: "q12" },
+                { chatID: -1, text: "*GULP*", callback: "q13" },
             ]
         },
         {
@@ -1016,6 +1051,30 @@ room206.chat = function (chatID) {
                 "breed it. Fill it with their cum. I'm sure you do love a gooey cum filled center. ",
             button: [
                 { chatID: -1, text: "Mmmm", callback: "q11" },
+            ]
+        },
+        {
+            chatID: 52,
+            speaker: "missy",
+            text: "Hmmm. You'll need to wear lipstick to accutate those thin lips of yours.  ",
+            button: [
+                { chatID: -1, text: "...", callback: "q12" },
+            ]
+        },
+        {
+            chatID: 53,
+            speaker: "missy",
+            text: "Plump lips around a fat cock is the perfect combination. ",
+            button: [
+                { chatID: -1, text: "...", callback: "q12" },
+            ]
+        },
+        {
+            chatID: 54,
+            speaker: "missy",
+            text: "I love a hungry little cock sucker. You'll be perfect for this job. ",
+            button: [
+                { chatID: -1, text: "Mmmm", callback: "q12" },
             ]
         },
     ];

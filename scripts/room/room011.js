@@ -28,6 +28,11 @@ room11.main = function () {
         chat(7, 11);
         return;
     }
+    else if (sc.getMission("lola", "*cumdump").inProgress && !daily.get("cumdumphouse") && g.rand(0, 4) === 0) {
+        daily.set("cumdumphouse");
+        rape.init(null, "home", 11, "reset");
+        return;
+    }
     g.pass = null;
     if (g.hasAccess(16).access) {
         var motherLocation = sc.getTimeline("landlord").roomID;
@@ -84,7 +89,7 @@ room11.main = function () {
         }
 
         //EL room
-        if (sisterLocation === 13 && openDoor) {
+        if ((sisterLocation === 13 && openDoor) || sc.getMission("lola", "*cumdump").inProgress) {
             btnList.push({
                 "type": "btn",
                 "name": "sisterOpen",
@@ -187,6 +192,9 @@ room11.btnclick = function (name) {
             break;
         case "downStairs":
             char.room(16);
+            break;
+        case "reset":
+            char.room(11);
             break;
         default:
             break;

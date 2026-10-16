@@ -765,6 +765,16 @@ room322.btnclick = function (name) {
                 "image": "1001_rand/back_1.png"
             }, 322);
             break;
+        case "park2_6":
+            nav.killbutton("park2_6");
+            nav.bg("322_dog/park2_6.webp");
+            nav.custom("park2_7", "swallow");
+            break;
+        case "park2_7":
+            levels.oral(3, "m", "!dog", true, "dog");
+            nav.killbutton("park2_7");
+            nav.bg("322_dog/park2_7.webp");
+            chat(133, 322);
         default:
             break;
     }
@@ -819,6 +829,11 @@ room322.chatcatch = function (callback) {
         case "pp1":
         case "pp2":
         case "bath":
+        case "park2_1":
+        case "park2_2":
+        case "park2_3":
+        case "park2_4":
+        case "park2_7":
             nav.bg("322_dog/" + callback + ".webp");
             break;
         case "pl1":
@@ -1048,6 +1063,11 @@ room322.chatcatch = function (callback) {
         case "phoneReply":
             daily.set("janicePhoneGangbang");
             nav.bg("322_dog/phone_t_6a.webp");
+            break;
+        case "park2_5":
+            nav.kill();
+            nav.bg("322_dog/park2_5.webp");
+            nav.suck("park2_6");
             break;
         default:
             break;
@@ -2079,8 +2099,9 @@ room322.chat = function (chatID) {
         {
             chatID: 120,
             speaker: "!girl",
-            text: "I call you both bitches! Your bitch let herself get mounted and bred by my little doggy last time you " +
-                "were here! His smashed his poor testicles against your doggy and now refuses to mate at my breeding farm! " +
+            text: "I called you both bitches! Your bitch let herself get mounted and bred by my little doggy last time you " +
+                "were here! His smashed his poor testicles against your doggy and now he can't get hard! " +
+                "I can't use him at the breeding farm if he can't get a boner! " +
                 "The vet said I have to rub his balls to get him to relax, but there's no way I'm doing that! ",
             button: [
                 { chatID: 121, text: "...", callback: "" },
@@ -2098,7 +2119,7 @@ room322.chat = function (chatID) {
         {
             chatID: 122,
             speaker: "!girl",
-            text: "I make $300 a session, so you can start by paying me that! ",
+            text: "I make $50 a session, so you can start by paying me that! ",
             button: [
                 { chatID: 123, text: "...", callback: "" },
             ]
@@ -2151,7 +2172,52 @@ room322.chat = function (chatID) {
             speaker: "!girl",
             text: "hmmmmm.... ok. But tell your bitch to be gentle! ",
             button: [
-                { chatID: 128, text: "...", callback: "" },
+                { chatID: 129, text: "...", callback: "park2_1" },
+            ]
+        },
+        {
+            chatID: 129,
+            speaker: "janice",
+            text: "Let me put that peanut butter on nice and thick. I know how much you doggies can't resist licking " +
+                "up all the peanut butter.  ",
+            button: [
+                { chatID: 130, text: "...", callback: "park2_2" },
+            ]
+        },
+        {
+            chatID: 130,
+            speaker: "janice",
+            text: "Almost forgot to remove your doggy ball gag. Look how drooly you are! You doggies sure do love " +
+                "your peanut butter! Hehe! Now be a good " + gender.pronoun("girl") + " and get in there and lick it up. ",
+            button: [
+                { chatID: 131, text: "[Lick up all the peanut butter]", callback: "park2_3" },
+            ]
+        },
+        {
+            chatID: 131,
+            speaker: "!girl",
+            text: "Wow. " + String.prototype.capitalize(gender.pronoun("she")) + " really licks up that peanut " +
+                "butter better than my doggy. You're a lucky girl. ",
+            button: [
+                { chatID: 132, text: "*lick* *slurp*", callback: "park2_4" },
+            ]
+        },
+        {
+            chatID: 132,
+            speaker: "janice",
+            text: "Oh! Look! You're doggy is getting boner! My bitch really knows how to lick some balls! ",
+            button: [
+                { chatID: 133, text: "[Finish up]", callback: "park2_7" },
+                { chatID: -1, text: "[Move around and take the doggy penis in your mouth]", callback: "park2_5" },
+            ]
+        },
+        {
+            chatID: 133,
+            speaker: "janice",
+            text: "Who's a good " + gender.pronoun("girl") + "? You're a good " + gender.pronoun("girl") + "! Like I " +
+                "said, all doggies will lick anything covered in peanut butter! Let's go home. ",
+            button: [
+                { chatID: -1, text: "[Go home]", callback: "livingroom" },
             ]
         },
     ];

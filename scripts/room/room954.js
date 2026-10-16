@@ -143,8 +143,10 @@ room954.chatcatch = function (callback) {
                 sc.completeMission("lola", "*tom2", false, true);
                 sc.startMission("lola", "*cumdump");
 
-                sc.completeMission("eva", "*student", false, true);
+                sc.completeMission("eva", "*wife", false, true);
+                sc.completeMission("eva", "*tom2", false, true);
                 sc.startMission("eva", "*cumdump");
+
                 sc.completeMission("landlord", "*mother", false, true);
                 sc.startMission("landlord", "*cumdump");
                 gv.set("lolapostcult", "cumdump");
@@ -154,16 +156,20 @@ room954.chatcatch = function (callback) {
                     sc.startMission("lola", "*wife");
                     sc.completeMission("lola", "*tom2", false, true);
                     sc.completeMission("lola", "*cumdump", false, true);
+                    sc.startMission("eva", "*wife");
+                    sc.completeMission("eva", "*tom2", false, true);
+                    sc.completeMission("eva", "*cumdump", false, true);
                     gv.set("lolapostcult", "wife");
                 }
                 else {
                     sc.completeMission("lola", "*wife", false, true);
                     sc.startMission("lola", "*tom2");
                     sc.completeMission("lola", "*cumdump", false, true);
+                    sc.completeMission("eva", "*wife", false, true);
+                    sc.startMission("eva", "*tom2");
+                    sc.completeMission("eva", "*cumdump", false, true);
                     gv.set("lolapostcult", "tom");
                 }
-                sc.startMission("eva", "*student");
-                sc.completeMission("eva", "*cumdump", false, true);
                 sc.startMission("landlord", "*mother");
                 sc.completeMission("landlord", "*cumdump", false, true);
             }
