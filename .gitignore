@@ -2,6 +2,7 @@
 .idea/
 .vs/
 .vscode/
+Web.config
 
 # Backup files
 *~
@@ -25,5 +26,4 @@ build/
 .DS_Store
 Thumbs.db
 desktop.ini
-/.gitignore
-/.gitignore
+/.vs/slnx.sqlite
