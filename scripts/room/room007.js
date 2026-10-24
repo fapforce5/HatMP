@@ -52,7 +52,25 @@ room7.main = function () {
     else if (g.dt.getDay() !== 6) {
         nav.bg("7_mainCharRoomAlt/wake_landlord_nightgown.jpg");
         gv.mod("arousal", 30);
-        if (cl.c.pj === null && cl.c.panties === null) {
+        if (gv.get("bladder") > .8) {
+            gv.mod("bladder", -10);
+            let mr_bed07 = gv.get("mr_bed");
+            if (mr_bed07 === null)
+                mr_bed07 = "mr_blueblanket";
+            nav.bg("7_mainCharRoomAlt/bed_pee.webp");
+            zcl.displayMain(-1100, 150, .35, "clothes", false);
+            nav.button({
+                "type": "img",
+                "name": "eva10b3ht",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "7_mainCharRoomAlt/bed_pee_" + mr_bed07 + ".webp"
+            }, 7);
+            chat(69, 7);
+        }
+        else if (cl.c.pj === null && cl.c.panties === null) {
             if (cl.c.chastity === null) {
                 if (gv.get("arousal") > 80 && sc.getLevel("landlord") > 6) {
                     chat(13, 7);
@@ -82,7 +100,6 @@ room7.main = function () {
             if (cl.c.panties === "c") { //ll panties
                 nav.bg("7_mainCharRoomAlt/wake_landlord_nightgown_angry.jpg")
                 sc.modSecret("landlord", 25);
-                sc.modLevel("landlord", -100, 999);
                 gender.setChanges("landlord", "panties");
                 chat(24, 7);
             }
@@ -293,6 +310,7 @@ room7.chatcatch = function (callback) {
             char.room(775);
             break;
         case "clearRoom":
+            nav.kill();
             nav.bg("7_mainCharRoomAlt/7_mainCharRoomAlt.jpg");
             
             break;
@@ -301,6 +319,7 @@ room7.chatcatch = function (callback) {
                 chat(26, 7);
             }
             else {
+                nav.kill();
                 nav.bg("7_mainCharRoomAlt/7_mainCharRoomAlt.jpg");
                 chat(9, 7);
             }
@@ -771,6 +790,31 @@ room7.chatcatch = function (callback) {
             nav.bg("7_mainCharRoomAlt/bigguy3.jpg");
             g.internal = 4;
             nav.next("rent4_0");
+            break;
+        case "cleanBed":
+            if (!sc.getSecret("landlord").secretOut && (cl.c.chastity !== null || cl.pantiesTxt() === "panties" || cl.getEntry("pj", cl.c.pj).sex === "f")) {
+                if (cl.getEntry("pj", cl.c.pj).sex === "f") {
+                    sc.modSecret("landlord", 20);
+                    chat(71, 7);
+                }
+                else if (cl.pantiesTxt() === "panties") {
+                    sc.modSecret("landlord", 25);
+                    gender.setChanges("landlord", "panties");
+                    chat(21, 7);
+                }
+                else {
+                    gender.setChanges("landlord", "chastity");
+                    sc.modSecret("landlord", 15);
+                    chat(19, 7);
+                }
+            }
+            else {
+                nav.kill();
+                char.addtime(90);
+                nav.bg("10_mainchar/10_bedroom.png", "10_mainchar/10_bedroomNight.png");
+                cl.c.pj = cl.c.panties = cl.c.pants = null;
+                zcl.displayMain(400, 800, .09, "clothes", true);
+            }
             break;
         case "room0":
             char.room(0);
@@ -1451,6 +1495,35 @@ room7.chat = function (chatID) {
                     "get up and start your day. ",
                 button: [
                     { chatID: 9, text: "Yes " + sc.n("landlord"), callback: "clearRoom" },
+                ]
+            },
+            {
+                chatID: 69,
+                speaker: "landlord",
+                text: "Did you just pee your bed!! What are you? A baby! Gross! Clean up your pissy bed and clothes! Now!",
+                button: [
+                    { chatID: 70, text: "Yes " + sc.n("landlord"), callback: "cleanBed" },
+                ]
+            },
+            {
+                chatID: 70,
+                speaker: "thinking",
+                text: "Damn. I guess I should pee before bed since I can't seem to hold it. I'm such an idiot. ",
+                button: [
+                    { chatID: -1, text: '<img src="./images/general/shirt.png" /> ' + cl.saveOutfit[0].name, callback: "o0" },
+                    { chatID: -1, text: '<img src="./images/general/shirt.png" /> ' + cl.saveOutfit[1].name, callback: "o1" },
+                    { chatID: -1, text: '<img src="./images/general/shirt.png" /> ' + cl.saveOutfit[2].name, callback: "o2" },
+                    { chatID: -1, text: '<img src="./images/general/shirt.png" /> ' + cl.saveOutfit[3].name, callback: "o3" },
+                    { chatID: -1, text: '<img src="./images/general/shirt.png" /> ' + cl.saveOutfit[4].name, callback: "o4" },
+                    { chatID: -1, text: "Get Up", callback: "o5" }
+                ]
+            },
+            {
+                chatID: 71,
+                speaker: "landlord",
+                text: "Are you wearing a girl's nightie! Why are you wearing nightie? Why are you wearing a nightie? ",
+                button: [
+                    { chatID: 22, text: "I... uh... was a dare. ", callback: "" },
                 ]
             },
         ];

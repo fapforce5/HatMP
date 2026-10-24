@@ -906,7 +906,7 @@ cl.getmakeup = function () {
     }
     for (let i = 0; i < cl.makeup.length; i++) {
         if (cl.makeup[i].name === makeup) {
-            if (cl.c.makeup !== "natural") {
+            if (makeup !== "n" && makeup !== "natural") {
                 trophy.add(46);
             }
             return { name: cl.makeup[i].name, image: cl.makeup[i].image };

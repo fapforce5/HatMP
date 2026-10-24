@@ -28,9 +28,18 @@ room10.main = function () {
         chat(47, 10);
         return;
     }
-    else if (sc.getMission("lola", "*cumdump").inProgress && !daily.get("cumdumphouse") && g.rand(0, 4) === 0) {
-        daily.set("cumdumphouse");
-        rape.init(null, "home", 10, "reset");
+    else if (sc.getMission("lola", "*cumdump").inProgress && !daily.get("bjroom10") && g.rand(0, 4) === 0) {
+        daily.set("bjroom10");
+        nav.button({
+            "type": "img",
+            "name": "bj0",
+            "left": 489,
+            "top": 473,
+            "width": 334,
+            "height": 483,
+            "image": "10_mainchar/bj0.webp"
+        }, 10);
+        chat(99, 10);
         return;
     }
     else {
@@ -1022,6 +1031,33 @@ room10.chatcatch = function (callback) {
             levels.oral(3, "f", "eva", false);
             zcl.backOfHead(400, 130, .47, "", false);
             break;
+        case "bj1":
+            nav.kill();
+            nav.button({
+                "type": "img",
+                "name": "bj1",
+                "left": 432,
+                "top": 473,
+                "width": 391,
+                "height": 519,
+                "image": "10_mainchar/bj1_" + gender.pronoun("f") + ".webp"
+            }, 10);
+            break;
+        case "bj2":
+            nav.kill();
+            levels.oral(3, "m", "!man", false);
+            nav.bg("10_mainchar/bj2.webp");
+            zcl.face(100, 400, .91, "cumface", "w", true);
+            nav.button({
+                "type": "img",
+                "name": "bj1",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "10_mainchar/bj2_fg.webp"
+            }, 10);
+            break;
         default:
             break;
     }
@@ -1905,6 +1941,39 @@ room10.chat = function (chatID) {
                 text: "Oh look at me. I'm a grooly mess! Hehe. Thanks babe. ",
                 button: [
                     { chatID: -1, text: "...yes", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 99,
+                speaker: "!man",
+                text: "Oh hi. I was hoping you would come back. Everyone says you give the best blow jobs in town. Suppose you could blow me? ",
+                button: [
+                    { chatID: 101, text: "Your naked butthole is on my bed, but sure. I'll suck your dick. ", callback: "bj1" },
+                    { chatID: 100, text: "Maybe some other time. ", callback: "" },
+                ]
+            },
+            {
+                chatID: 100,
+                speaker: "!man",
+                text: "Oh. No worries. I'm going to fuck your " + g.makeSingular(sc.n("el")) + " up the ass then. Take care. ",
+                button: [
+                    { chatID: -1, text: "Yeah. You too?", callback: "reset" },
+                ]
+            },
+            {
+                chatID: 101,
+                speaker: "!man",
+                text: "Oh sweet! They said you were a whore, but this is just too good! Sit back, I'm gunna paint your face with my cum!",
+                button: [
+                    { chatID: 102, text: "[lean back]", callback: "bj2" },
+                ]
+            },
+            {
+                chatID: 102,
+                speaker: "!man",
+                text: "Haha! Now walk around. Let everyone know I came all over your face! ",
+                button: [
+                    { chatID: -1, text: "yes sir. ", callback: "reset" },
                 ]
             },
         ];

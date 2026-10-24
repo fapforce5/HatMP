@@ -118,7 +118,17 @@ privateChat.makeChat = function (entry, chatID, roomID) {
         var counter = 0;
         privateChat.resetButtons();
         $('#room_footerSpeach').html(entry.text);
-        $('#room_chatSpeaker').html('<img src="' + thisSpeaker.img + '" /><br/>' + (thisSpeaker.name === "Random" ? "" : thisSpeaker.name));
+        var speakerImg;
+        if (thisSpeaker.layers) {
+            speakerImg = '<div class="room-chatSpeaker-layers">';
+            $.each(thisSpeaker.layers, function (i, v) {
+                speakerImg += '<img src="./images/mainChar/speaker/' + v + '" />';
+            });
+            speakerImg += '</div>';
+        }
+        else
+            speakerImg = '<img src="' + thisSpeaker.img + '" /><br/>';
+        $('#room_chatSpeaker').html(speakerImg + (thisSpeaker.name === "Random" ? "" : thisSpeaker.name));
         if (entry.button.length === 0) {
             privateChat.setButton(0, 'Close', -1, roomID, '');
             counter = 1;
@@ -170,12 +180,14 @@ privateChat.speakerInfo = function (charName) {
                 if (charName === "me" && g.roomID > 175 && g.roomID < 250 && sissy.st[9].ach) {
                     return {
                         img: "./images/speaker/" + sc.char[i].image,
+                        layers: privateChat.meLayers(),
                         name: "Sissy Trainee"
                     };
                 }
                 else {
                     return {
                         img: "./images/speaker/" + sc.char[i].image,
+                        layers: charName === "me" ? privateChat.meLayers() : null,
                         name: sc.char[i].display
                     };
                 }
@@ -185,6 +197,67 @@ privateChat.speakerInfo = function (charName) {
             img: "./images/speaker/rand.png", name: ""
         };
     }
+};
+
+//Main character speaker portrait built from the cropped layers in images/mainChar/speaker.
+//Layer order matches the #char-* order in index.html (bottom to top).
+privateChat.meLayers = function () {
+    if (cl.c === null)
+        return null;
+
+    let findImage = function (list, name) {
+        if (name === null)
+            return null;
+        for (let i = 0; i < list.length; i++) {
+            if (list[i].name === name)
+                return list[i].image;
+        }
+        return null;
+    };
+
+    let layers = [];
+    layers.push("top_" + cl.c.chest + ".png");
+    layers.push(cl.getmakeup().image);
+    layers.push(findImage(cl.earring, cl.c.earring));
+    layers.push(findImage(cl.nosering, cl.c.nosering));
+    if (cl.c.cumface)
+        layers.push("cum_face.png");
+    layers.push(findImage(cl.necklace, cl.c.necklace));
+    layers.push("lips_" + cl.c.lips + "_" + (cl.c.lipstick === null ? "nude" : cl.c.lipstick) + ".png");
+    if (cl.c.pissface === null) {
+        layers.push("eyes_" + cl.c.eyes + ".png");
+    }
+    else {
+        layers.push("eyeliner_" + cl.c.pissface + ".png");
+        layers.push("eyes_" + cl.c.eyes + "_f.png");
+    }
+
+    if (cl.c.wig !== null)
+        layers.push(findImage(cl.wig, cl.c.wig));
+    else if (cl.c.hairLength === null)
+        layers.push(null);
+    else if (cl.c.hairLength < 2)
+        layers.push("hair_" + cl.c.hairLength + "_" + cl.c.hairColor + ".png");
+    else if (cl.c.hairStyle === "leia" || cl.c.hairStyle === "bun")
+        layers.push("hair_2_" + cl.c.hairColor + "_" + cl.c.hairStyle + ".png");
+    else
+        layers.push("hair_" + cl.c.hairLength + "_" + cl.c.hairColor + "_" + cl.c.hairStyle + ".png");
+
+    layers.push(findImage(cl.accessories, cl.c.accessories));
+
+    return layers.filter(x => x !== null);
+};
+
+//nav.button for a speaker portrait. "me" is drawn as stacked layers, everyone else uses btn.image.
+privateChat.speakerButton = function (btn, name, roomNum) {
+    let layers = name === "me" ? privateChat.meLayers() : null;
+    if (layers === null) {
+        nav.button(btn, roomNum);
+        return;
+    }
+    $.each(layers, function (i, v) {
+        nav.button($.extend({}, btn, { image: "../mainChar/speaker/" + v }), roomNum);
+    });
 };
 
 privateChat.skipChat = function () {

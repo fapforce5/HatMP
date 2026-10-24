@@ -384,7 +384,8 @@ room28.main = function () {
             }, 28);
         }
     }
-    room28.endSleepyTime(true);
+    if (!txtDisplay)
+        room28.endSleepyTime(true);
 };
 
 room28.future = function () {

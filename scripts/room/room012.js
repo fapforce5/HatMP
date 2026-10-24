@@ -8,10 +8,13 @@ room12.main = function () {
     if (canGoOut === null && g.pass === "lolapee") {
         g.pass = "";
         weekly.set("lolapee");
-        
+
         if (sc.getMission("lola", "*cumdump").inProgress) {
-            nav.bg("12_bathroom/lolapee0.jpg");
-            chat(58, 12);
+            nav.bg("12_bathroom/lolapee0.webp");
+            if (cl.c.cock === 5)
+                chat(59, 12);
+            else
+                chat(58, 12);
         }
         else {
             nav.bg("12_bathroom/lolapee.jpg");
@@ -296,6 +299,10 @@ room12.btnclick = function (name) {
 
 room12.chatcatch = function (callback) {
     switch (callback) {
+        case "lolapeesup":
+        case "lolapeesupcum":
+            nav.bg("12_bathroom/" + callback + ".webp");
+            break;
         case "stopPeek":
             char.addtime(20);
             char.room(11);
@@ -420,17 +427,46 @@ room12.chatcatch = function (callback) {
             daily.set("homeShowerPeek");
             break;
         case "mom3":
-            nav.killbutton("mom2");
-            nav.bg("12_bathroom/12_bathroom.png");
-            nav.button({
-                "type": "img",
-                "name": "mom3",
-                "left": 817,
-                "top": 38,
-                "width": 453,
-                "height": 1042,
-                "image": "12_bathroom/12_mother3.png"
-            }, 12);
+            if (cl.c.cock === 5) {
+                nav.button({
+                    "type": "tongue",
+                    "name": "mom_lick_ass",
+                    "left": 1193,
+                    "top": 310,
+                    "width": 139,
+                    "height": 139,
+                    "image": "12_bathroom/lick0.webp"
+                }, 12);
+                nav.button({
+                    "type": "tongue",
+                    "name": "mom_lick_pussy",
+                    "left": 1193,
+                    "top": 450,
+                    "width": 139,
+                    "height": 139,
+                    "image": "12_bathroom/lick0.webp"
+                }, 12);
+                chat(68, 12);
+            }
+            else {
+                nav.killbutton("mom2");
+                nav.bg("12_bathroom/12_bathroom.png");
+                nav.button({
+                    "type": "img",
+                    "name": "mom3",
+                    "left": 817,
+                    "top": 38,
+                    "width": 453,
+                    "height": 1042,
+                    "image": "12_bathroom/12_mother3.png"
+                }, 12);
+            }
+            break;
+        case "mom_lick_ass":
+            levels.oralass("f", "landlord");
+            break;
+        case "mom_lick_pussy":
+            levels.oral(3, "f", "landlord");
             break;
         case "mom4":
             cl.nude();
@@ -628,6 +664,31 @@ room12.chatcatch = function (callback) {
             sc.modLevel("lola", 15, 7);
             char.room(11);
             break;
+        case "peecheck":
+            if (cl.c.chastity === null) {
+                nav.kill();
+                nav.bg("12_bathroom/lolapee1.webp");
+                chat(67, 12);
+            }
+            else {
+                chat(60, 12);
+            }
+            break;
+        case "drinkpee":
+            nav.kill();
+            nav.bg("12_bathroom/lolapeedrink0_" + gender.pronoun("m") + ".webp");
+            break;
+        case "drinkpee1":
+            levels.piss(true, false, false, "f", "lola");
+            nav.bg("12_bathroom/lolapeedrink1_" + gender.pronoun("m") + ".webp");
+            break;
+        case "lolapee2":
+            nav.bg("12_bathroom/lolapee2_" + (gender.cock() === "d" ? "big" : "small") + ".webp");
+            break;
+        case "lolapee3":
+            levels.fuckpussy("lola", "f");
+            nav.bg("12_bathroom/lolapee3_" + (gender.cock() === "d" ? "big" : "small") + ".webp");
+            break;
         default:
             break;
     }
@@ -689,7 +750,7 @@ room12.chat = function(chatID){
         {
             chatID: 6,
             speaker: "landlord",
-            text: "Don't 'Hey babe' me! Take your clothes off right now, mister.",
+            text: "Don't 'Hey babe' me! Take your clothes off right now, " + gender.pronoun("mister") + ".",
             button: [
                 { chatID: 7, text: "Alright! [Get naked]", callback: "mom4" }
             ]
@@ -1115,7 +1176,92 @@ room12.chat = function(chatID){
             text: "Oh. I was just about to pee.",
             button: [
                 { chatID: -1, text: "I'll leave you to it. Wouldn't want to be rude. ", callback: "leave" },
-                { chatID: -1, text: "Can I fuck you while you pee?", callback: "" },
+                { chatID: -1, text: "[Step closer to her]", callback: "peecheck" },
+            ]
+        },
+        {
+            chatID: 59,
+            speaker: "lola",
+            text: "What are you doing? I have to pee. I can't hold it. ",
+            button: [
+                { chatID: -1, text: "I'll leave you to it. Wouldn't want to be rude. ", callback: "leave" },
+                { chatID: 61, text: "[Wrap your lips around her piss hole]", callback: "drinkpee" },
+
+            ]
+        },
+        {
+            chatID: 60,
+            speaker: "thinking",
+            text: "Too bad I'm wearing this chastity cage or I could totally fuck her. Maybe there's something else I could do. ",
+            button: [
+                { chatID: -1, text: "I'll leave you to it. Wouldn't want to be rude. ", callback: "leave" },
+                { chatID: 61, text: "[Wrap your lips around her piss hole]", callback: "drinkpee" },
+            ]
+        },
+        {
+            chatID: 61,
+            speaker: "lola",
+            text: "Hey, what are you doing? I can't hold it, you need to move your face or I'll pee all over it!",
+            button: [
+                { chatID: 62, text: "[Stick out your tongue]", callback: "drinkpee1" },
+                { chatID: -1, text: "[Run away apologizing]", callback: "leave" },
+            ]
+        },
+        {
+            chatID: 62,
+            speaker: "lola",
+            text: "Oh no. I can't stop peeing once I start! I'm not trying to pee into your face!",
+            button: [
+                { chatID: 63, text: "[Drink up her pee pee piss " + gender.pronoun("boy") + "]", callback: "lolapeesup" },
+            ]
+        },
+        {
+            chatID: 63,
+            speaker: "lola",
+            text: "I'm so sorry! I didn't mean to pee in your face! Sorry sorry sorry",
+            button: [
+                { chatID: -1, text: "*swollowing down warm yummy piss* It's ok. You're piss is the best! ", callback: "leave" },
+            ]
+        },
+        {
+            chatID: 64,
+            speaker: "thinking",
+            text: "Wow! " + sc.n("lola") + " has really turned into a big ol' slut! There's no way she would ever let me fuck her on the toilet! ",
+            button: [
+                { chatID: 65, text: "[Fill her uterus with your hot sticky cum]", callback: "lolapee3" },
+            ]
+        },
+        {
+            chatID: 65,
+            speaker: "me",
+            text: "Love the new you! I really needed my balls drained! ",
+            button: [
+                { chatID: 66, text: "...", callback: "lolapeesupcum" },
+            ]
+        },
+        {
+            chatID: 66,
+            speaker: "lola",
+            text: "Well, what can I say. I guess I'm a cum toilet now. At least it gives the boys pleasure. Makeing them happy makes me happy.",
+            button: [
+                { chatID: -1, text: "Well you just made me happy. ", callback: "leave" },
+            ]
+        },
+        {
+            chatID: 67,
+            speaker: "lola",
+            text: "Oh. I was just about to pee.",
+            button: [
+                { chatID: 64, text: "[Slide your cock into her pussy hole]", callback: "lolapee2" },
+                { chatID: 61, text: "[Wrap your lips around her piss hole]", callback: "drinkpee" },
+            ]
+        },
+        {
+            chatID: 68,
+            speaker: "landlord",
+            text: "Like what you see... Well don't just stare at it, eat it. ",
+            button: [
+                { chatID: -1, text: "mmmm", callback: "" },
             ]
         },
     ];

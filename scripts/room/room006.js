@@ -115,7 +115,7 @@ room6.btnclick = function (name) {
         else
             g.internal.current.image = "../speaker/" + g.internal.current.image;
         g.internal.level = 2;
-        nav.button({
+        privateChat.speakerButton({
             "type": "img",
             "name": "char",
             "left": 300,
@@ -123,7 +123,7 @@ room6.btnclick = function (name) {
             "width": 200,
             "height": 200,
             "image": g.internal.current.image
-        }, 6);
+        }, name, 6);
         nav.t({
             type: "img",
             name: "title",
@@ -480,7 +480,7 @@ room6.chatcatch = function (callback) {
 
             for (i = 0; i < g.internal.active.length; i++) {
                 thisx = sc.get(g.internal.active[i].n);
-                nav.button({
+                privateChat.speakerButton({
                     "type": "btn",
                     "name": thisx.name,
                     "left": 300 + (col * 220),
@@ -488,7 +488,7 @@ room6.chatcatch = function (callback) {
                     "width": 140,
                     "height": 140,
                     "image": "../speaker/" + thisx.image
-                }, 6);
+                }, thisx.name, 6);
                 col++;
                 if (col > 6) {
                     col = 0;

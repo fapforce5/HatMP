@@ -2275,6 +2275,10 @@ room328.chatcatch = function (callback) {
             nav.bg("328_farm/kinsey_spit5.webp");
             zcl.pucker(580, 1000, .23, "", false);
             break;
+        case "frolicr3":
+            nav.kill();
+            nav.bg("328_farm/frolic_r3_" + gender.pronoun("m") + ".webp");
+            break;
         default:
             break;
     }
@@ -3905,7 +3909,7 @@ room328.chat = function (chatID) {
                 speaker: "!cowboy",
                 text: "Hey little hucow, what are you doing away from the pack? Wanna ride on my horse? ",
                 button: [
-                    { chatID: 147, text: "I do!", callback: "" },
+                    { chatID: 147, text: "I do!", callback: "frolicr3" },
                     { chatID: -1, text: "No thanks. ", callback: "" },
                 ]
             },

@@ -39,6 +39,7 @@ room16.main = function () {
             chat(62, 16);
             return;
         }
+        return;
     }
     else if (sc.getMissionTask("landlord", "misc", 4).inProgress) {
         nav.button({
@@ -117,6 +118,19 @@ room16.main = function () {
                 chat(33, 16);
         }
     }
+    else if (sc.getMission("lola", "*cumdump").inProgress && !cl.isLewd()) {
+        nav.bg("16_livingRoom/notlude.webp", "16_livingRoom/notlude_night.webp");
+        nav.button({
+            "type": "img",
+            "name": "lewd1",
+            "left": 0,
+            "top": 0,
+            "width": 1920,
+            "height": 1080,
+            "image": "16_livingRoom/notlewd_0.webp"
+        }, 16);
+        chat(76, 16);
+    }
     else {
         if (thisSisterRoomID.roomID === 25 && thisMomRoomID.roomID === 25) {
             btnList.push({
@@ -141,15 +155,28 @@ room16.main = function () {
             });
         }
         else if (thisBigguyId.roomID === 25) {
-            btnList.push({
-                "type": "btn",
-                "name": "dining",
-                "left": 1113,
-                "top": 416,
-                "width": 807,
-                "height": 664,
-                "image": "16_livingRoom/diningRoomDick.png"
-            });
+            if (sc.getMission("landlord", "*cumdump").inProgress) {
+                btnList.push({
+                    "type": "btn",
+                    "name": "dining",
+                    "left": 1113,
+                    "top": 416,
+                    "width": 807,
+                    "height": 664,
+                    "image": "16_livingRoom/diningRoomDick_cumdump.webp"
+                });
+            }
+            else {
+                btnList.push({
+                    "type": "btn",
+                    "name": "dining",
+                    "left": 1113,
+                    "top": 416,
+                    "width": 807,
+                    "height": 664,
+                    "image": "16_livingRoom/diningRoomDick.png"
+                });
+            }
         }
         else if (thisMomRoomID.roomID === 25) {
             btnList.push({
@@ -532,6 +559,38 @@ room16.chatcatch = function (callback) {
                 chat(73, 16);
             else
                 chat(74, 16);
+            break;
+        case "notlewd_1":
+            cl.nude();
+            nav.kill();
+            nav.button({
+                "type": "img",
+                "name": "notlewd_1",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "16_livingRoom/notlewd_1.webp"
+            }, 16);
+            zcl.assup(550, 600, .68, "", false);
+            nav.button({
+                "type": "img",
+                "name": "notlewd_1fg",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "16_livingRoom/notlewd_1fg.webp"
+            }, 16);
+            break;
+        case "notlewd_2":
+            nav.modbutton("notlewd_1fg", "16_livingRoom/notlewd_2fg.webp", null, null);
+            break;
+        case "notlewd_3":
+            levels.anal(4, true, "m", true, "!bbc");
+            levels.piss(false, false, true, "m", "!bbc");
+            nav.modbutton("notlewd_1", "16_livingRoom/notlewd_3.webp", null, null);
+            nav.modbutton("notlewd_1fg", "16_livingRoom/notlewd_3fg.webp", null, null);
             break;
         case "leave":
             char.room(0);
@@ -1188,6 +1247,57 @@ room16.chat = function (chatID) {
                 "you three run along and play. I'm going to catch up on my shows while I have a chance. ",
             button: [
                 { chatID: -1, text: "Yes " + sc.n("landlord") + ". ", callback: "reset" },
+            ]
+        },
+        {
+            chatID: 76,
+            speaker: "landlord",
+            text: "What did I say about wearing clothes in this house!",
+            button: [
+                { chatID: 77, text: "...uhhh don't ", callback: "" },
+            ]
+        },
+        {
+            chatID: 77,
+            speaker: "landlord",
+            text: "That's right! Hakeem! Come teach my " + gender.pronoun("son") + " a lesson! ",
+            button: [
+                { chatID: 78, text: "oh no...", callback: "notlewd_1" },
+            ]
+        },
+        {
+            chatID: 78,
+            speaker: "landlord",
+            text: "That's right. Fuck " + gender.pronoun("her") + " hard! " + gender.pronoun("she") + " needs to learn that " + gender.pronoun("she") +
+                "'s not better than anyone here! ",
+            button: [
+                { chatID: 79, text: "*grunt*", callback: "notlewd_2" },
+            ]
+        },
+        {
+            chatID: 79,
+            speaker: "!bbc",
+            text: "Hey " + sc.n("me") + "'s " + sc.n("landlord") + ". Mind if I piss on " + gender.pronoun("her") + "? Really let " +
+                gender.pronoun("her") + " know her place? ",
+            button: [
+                { chatID: 80, text: "*moan*", callback: "" },
+            ]
+        },
+        {
+            chatID: 80,
+            speaker: "landlord",
+            text: "Yeah. Piss all over " + gender.pronoun("her") + " stupid slutty face. Hehehe",
+            button: [
+                { chatID: 81, text: "*grunt*", callback: "notlewd_3" },
+            ]
+        },
+        {
+            chatID: 81,
+            speaker: "landlord",
+            text: gender.pronoun("she").capitalize() + " gets of on being mistreated. Look " + gender.pronoun("she") + "'s cummin all over the " +
+                "floor. My dirty little " + gender.pronoun("girl") + ". ",
+            button: [
+                { chatID: -1, text: "*orgasmic moaning*", callback: "reset" },
             ]
         },
     ];

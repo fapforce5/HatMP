@@ -11,21 +11,30 @@ gender.isCockTooSmallForSex = function(){
     return cl.c.cock > 3;
 };
 
+gender.isGirlCache = null;
+gender.isGirlCacheTime = 0;
+
 gender.isGirl = function () {
+    let now = Date.now();
+    if (gender.isGirlCache !== null && now - gender.isGirlCacheTime < 1000)
+        return gender.isGirlCache;
+
+    let result;
     let tpronoun = gv.get("pronouns");
     if (tpronoun === "a") {
-        var appearance = cl.appearance();
-        if (appearance === 5) {
-            if (cl.c.chest > 2)
-                return true;
-            else if (cl.c.chest === 2 && cl.c.hairLength > 1)
-                return true;
-            return false;
-        }
-        return cl.appearance() > 1;
+        let appearance = cl.appearance();
+        if (appearance === 5)
+            result = cl.c.chest > 2 || (cl.c.chest === 2 && cl.c.hairLength > 1);
+        else
+            result = appearance > 1;
     }
-    else return tpronoun === "f";
-}
+    else
+        result = tpronoun === "f";
+
+    gender.isGirlCache = result;
+    gender.isGirlCacheTime = now;
+    return result;
+};
 
 gender.cock = function () {
     if (cl.c.chastity !== null)
@@ -107,7 +116,7 @@ gender.pronoun = function (ptype) {
             return cl.c.cock === 5 ? "bitch" : "sissy";
             break;
         case "mr":
-            return cl.c.cock === 5 ? "Mr." : "Ms.";
+            return cl.c.cock === 5 ? "Ms." : "Mr.";
             break;
         case "whore":
             return gender.isGirl() ? "whore" : "sissy whore";

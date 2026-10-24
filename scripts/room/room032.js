@@ -30,7 +30,16 @@ room32.main = function () {
     else {
         if (lolaInRoom || evaInRoom) {
             if (g.hourBetween(22, 25) || g.hourBetween(0, 6)) {
-
+                nav.bg("13_sisterRoom/roomSleep.jpg", "13_sisterRoom/roomSleep.jpg");
+                nav.button({
+                    "type": "btn",
+                    "name": "bed_cumdump",
+                    "left": 1039,
+                    "top": 527,
+                    "width": 543,
+                    "height": 288,
+                    "image": "13_sisterRoom/13_bedFar_cumdump.webp"
+                }, 32);
             }
             else {
                 switch (gv.get("lolaSlutCounter") % 3) {
@@ -93,6 +102,16 @@ room32.main = function () {
                         }, 32);
                         break;
                     case 1:
+                        nav.button({
+                            "type": "grab",
+                            "name": "eva_twat",
+                            "left": 1030,
+                            "top": 44,
+                            "width": 668,
+                            "height": 1036,
+                            "image": "32_bedroom/lola_anal0.webp"
+                        }, 32);
+                        chat(27, 32);
                         break;
                     case 2:
                         nav.button({
@@ -229,6 +248,51 @@ room32.btnclick = function (name) {
             gv.mod("lolaSlutCounter", -1);
             char.room(32);
             break;
+        case "bed_cumdump":
+            chat(26, 32);
+            break;
+        case "fuck1":
+            switch (g.internal) {
+                case 0:
+                    nav.bg("32_bedroom/fuck1_bg.webp");
+                    zcl.bj(100, 1000, .8, "cummouth", false);
+                    nav.button({
+                        "type": "img",
+                        "name": "fuck",
+                        "left": 0,
+                        "top": 0,
+                        "width": 1920,
+                        "height": 1080,
+                        "image": "32_bedroom/fuck1_fg.webp"
+                    }, 13);
+                    break;
+                case 1:
+                    nav.kill();
+                    nav.bg("32_bedroom/fuck2_" + gender.pronoun("m") + ".webp");
+                    nav.next("fuck1");
+                    break;
+                case 2:
+                    nav.kill();
+                    nav.bg("32_bedroom/fuck3.webp");
+                    zcl.amazon(90, 750, .51, "", false);
+                    nav.button({
+                        "type": "img",
+                        "name": "fuck",
+                        "left": 0,
+                        "top": 0,
+                        "width": 1920,
+                        "height": 1080,
+                        "image": "32_bedroom/fuck3_fg.webp"
+                    }, 13);
+                    nav.next("fuck1");
+                    break;
+                case 3:
+                    nav.killbutton("fuck1");
+                    chat(32, 32);
+                    break;
+            }
+            g.internal++;
+            break;
         default:
             break;
     }
@@ -236,6 +300,13 @@ room32.btnclick = function (name) {
 
 room32.chatcatch = function (callback) {
     switch (callback) {
+        case "lola_anal1":
+            nav.kill();
+            nav.bg("32_bedroom/" + callback + "_" + gender.pronoun("f") + ".webp");
+            break;
+        case "lola_anal2":
+            nav.bg("32_bedroom/" + callback + ".webp");
+            break;
         case "wife0":
             nav.kill();
             nav.button({
@@ -247,6 +318,12 @@ room32.chatcatch = function (callback) {
                 "height": 1080,
                 "image": "32_bedroom/wife0.webp"
             }, 32);
+            break;
+        case "fuck0":
+            nav.kill();
+            nav.bg("32_bedroom/" + callback + "_" + gender.pronoun("f") + ".webp");
+            g.internal = 0;
+            nav.next("fuck1");
             break;
         case "reset":
             gv.mod("lolaSlutCounter", -1);
@@ -281,7 +358,7 @@ room32.chat = function (chatID) {
         {
             chatID: 2,
             speaker: "jeffery",
-            text: "Oh yummy yummy! " + sc.n("lola") + " your panties are the best! So fragrent! So dirty! So " +
+            text: "Oh yummy yummy! " + sc.n("lola") + ", your panties are the best! So fragrant! So dirty! So " +
                 "crusty! MMmmmMm ",
             button: [
                 { chatID: 3, text: sc.n("jeffery") + "!!", callback: "" },
@@ -301,7 +378,7 @@ room32.chat = function (chatID) {
             speaker: "eva",
             text: "Hey slut! We found bigger perverts than you! You want to take a dick or 4 for us? ",
             button: [
-                { chatID: -1, text: "Hell yeah! Let's get fucked!", callback: "slut1" },
+                { chatID: -1, text: "Hell yeah! Let's get fucked!", callback: "fuck0" },
                 { chatID: -1, text: "Nope, just watching. ", callback: "" },
             ]
         },
@@ -309,7 +386,7 @@ room32.chat = function (chatID) {
             chatID: 5,
             speaker: "lola",
             text: "Ouch! You made me squirt sperm out of my vagina! Just because I let anyone have sex with me " +
-                "does't mean you get to just pinch my nipples!",
+                "doesn't mean you get to just pinch my nipples!",
             button: [
                 { chatID: -1, text: "oops. Sorry. hehe", callback: "" },
             ]
@@ -317,7 +394,7 @@ room32.chat = function (chatID) {
         {
             chatID: 6,
             speaker: "eva",
-            text: "Hey!!! That hurts! DON'T sqeeze my nipples pervert!",
+            text: "Hey!!! That hurts! DON'T squeeze my nipples, pervert!",
             button: [
                 { chatID: -1, text: "oops. Sorry. hehe", callback: "" },
             ]
@@ -325,7 +402,7 @@ room32.chat = function (chatID) {
         {
             chatID: 7,
             speaker: "eva",
-            text: "Don't think you get a freebie pervert! You can fuck " + sc.n("lola") + " if you need to dump your " +
+            text: "Don't think you get a freebie, pervert! You can fuck " + sc.n("lola") + " if you need to dump your " +
                 "cum somewhere. ",
             button: [
                 { chatID: -1, text: "*sigh*", callback: "" },
@@ -334,7 +411,7 @@ room32.chat = function (chatID) {
         {
             chatID: 8,
             speaker: "eva",
-            text: "Hey butt brain. " + sc.n("lola") + " has taken almost as many cocks as you have! ",
+            text: "Hey, butt brain. " + sc.n("lola") + " has taken almost as many cocks as you have! ",
             button: [
                 { chatID: 9, text: "...", callback: "" },
             ]
@@ -345,14 +422,14 @@ room32.chat = function (chatID) {
             text: "Hey now. I might have had a lot of sex, but there's no way I'm even close to " + sc.n("me") +
                 ". I mean, no offense, but we've heard the rumors. Not that there's anything wrong with that. ",
             button: [
-                { chatID: 10, text: "Thanks " + sc.n("lola") + ". ", callback: "" },
+                { chatID: 10, text: "Thanks, " + sc.n("lola") + ". ", callback: "" },
             ]
         },
         {
             chatID: 10,
             speaker: "eva",
             text: "You know, I don't mind getting fucked in the pussy all the time, but why, why does every boy " +
-                "want their dick sucked first. It's so much work. And even worse is then I suck their dick and they " +
+                "want their dick sucked first? It's so much work. And even worse is then I suck their dick and they " +
                 "just shove it up my ass! Like, how do I get pleasure? My g-spot isn't up my ass, it's in my pussy! ",
             button: [
                 { chatID: 11, text: "...", callback: "" },
@@ -362,9 +439,9 @@ room32.chat = function (chatID) {
             chatID: 11,
             speaker: "lola",
             text: "I don't mind the anal sex, I just wish they would stop trying to put their penis in my mouth after. " +
-                "I mean really. That was just in my butt, why do you think I would now want it in my mouth. I tell them " +
+                "I mean really. That was just in my butt, why do you think I would now want it in my mouth? I tell them " +
                 "they need to wash it really good if they want to do that and they usually stop trying to make me suck on " +
-                "their penis. It's like they don't see me as a person, just three holes to to put their penis in. ",
+                "their penis. It's like they don't see me as a person, just three holes to put their penis in. ",
             button: [
                 { chatID: 12, text: "Well....", callback: "" },
             ]
@@ -373,8 +450,8 @@ room32.chat = function (chatID) {
             chatID: 12,
             speaker: "eva",
             text: "I had a guy who took it out of our " + sc.n("landlord") + "'s ass and just shoved it in my mouth! I mean, " +
-                "it was clean, but he didn't know. Really how rude can you be. I will say, all this talk about taking " +
-                "it up the ass is starting to make more horny. ",
+                "it was clean, but he didn't know. Really, how rude can you be? I will say, all this talk about taking " +
+                "it up the ass is starting to make me more horny. ",
             button: [
                 { chatID: -1, text: "Hehe. Me too", callback: "reset" },
             ]
@@ -420,7 +497,7 @@ room32.chat = function (chatID) {
             text: "Well, it helped me. I didn't have to drink it. *shudder* gross. I know having all these boys " +
                 "in and out of the house is a lot. I just hide in the bathroom when I need a break. It's the only " +
                 "safe room in the entire house. The first couple days I hid under your bed, but " + sc.n("chad") +
-                " found out and told everyone. Boy did they get me, I tell you. ",
+                " found out and told everyone. Boy, did they get me, I tell you. ",
             button: [
                 { chatID: 18, text: "...", callback: "" },
             ]
@@ -440,7 +517,7 @@ room32.chat = function (chatID) {
             text: "*ugh* My feet are killing me today! I can't wait to give birth and finally get to meet my little " +
                 "baby! I think it's " + sc.n("chad") + "'s or " + sc.n("bigguy") + "'s, but I don't know. Maybe " +
                 sc.n("treyvon") + ". He's a really good lover. I kinda hope it's him. He's so big. I really hope " +
-                "it's not " + sc.n("kei") + "'s baby. I even told him to pull out, but he said it felt better comming " +
+                "it's not " + sc.n("kei") + "'s baby. I even told him to pull out, but he said it felt better coming " +
                 "inside me. ",
             button: [
                 { chatID: 20, text: "...", callback: "" }
@@ -449,7 +526,7 @@ room32.chat = function (chatID) {
         {
             chatID: 20,
             speaker: "eva",
-            text: "I'll tell you what " + sc.n("lola") + ". If you babysit my baby I'll handle the dicks. But you have to " +
+            text: "I'll tell you what, " + sc.n("lola") + ". If you babysit my baby, I'll handle the dicks. But you have to " +
                 "change them too. I don't change diapers. Maybe " + sc.n("landlord") + " will do it. ewww. ",
             button: [
                 { chatID: 21, text: "...", callback: "" },
@@ -458,7 +535,7 @@ room32.chat = function (chatID) {
         {
             chatID: 21,
             speaker: "lola",
-            text: "I know you're joking, but I would love to take care of your baby too. I would be such a better " +
+            text: "I know you're joking, but I would love to take care of your baby too. I would be a much better " +
                 "mother. I'll teach them all kinds of things, you'll just teach the babies how to say naughty words. " +
                 "We even have " + sc.n("me") + " here now to help. ",
             button: [
@@ -468,7 +545,7 @@ room32.chat = function (chatID) {
         {
             chatID: 22,
             speaker: "eva",
-            text: "You know the other day I had a drop of milk come out of my nipple. So weird. I bet you want to " +
+            text: "You know, the other day I had a drop of milk come out of my nipple. So weird. I bet you want to " +
                 "drink it you weirdo! ",
             button: [
                 { chatID: 23, text: "I so would!", callback: "" },
@@ -478,7 +555,7 @@ room32.chat = function (chatID) {
         {
             chatID: 23,
             speaker: "eva",
-            text: "HA! I knew you were a weird-o! You're not a baby! You can't drink my milk! ",
+            text: "HA! I knew you were a weirdo! You're not a baby! You can't drink my milk! ",
             button: [
                 { chatID: -1, text: "Awww shucks!", callback: "reset" },
             ]
@@ -497,6 +574,78 @@ room32.chat = function (chatID) {
             text: "Ewww? I bet if cum leaked from my nipples you'd suck it! ",
             button: [
                 { chatID: -1, text: "wha?", callback: "reset" },
+            ]
+        },
+        {
+            chatID: 26,
+            speaker: "thinking",
+            text: "I'mma let them sleep. They've had a big day of taking all the dicks in town.",
+            button: [
+                { chatID: -1, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 27,
+            speaker: "eva",
+            text: "Oh thank god you're here. ",
+            button: [
+                { chatID: 28, text: "huh?", callback: "" },
+            ]
+        },
+        {
+            chatID: 28,
+            speaker: "chad",
+            text: "Oh, don't think you're getting out of cleaning your " + g.makeSingular(sc.n("el")) + "'s ass off my cock. " + sc.n("me") +
+                ", you can join her though. Two tongues are better than none! Get down here, I'm just about to blow a load up " + sc.n("lola") +
+                "'s tight little asshole! ",
+            button: [
+                { chatID: 29, text: "Yes sir! ", callback: "lola_anal1" },
+            ]
+        },
+        {
+            chatID: 29,
+            speaker: "chad",
+            text: "That's my good little cock cleaners. You all like the taste of " + sc.n("lola") + "'s ass and my cum, don't you? You sluts " +
+                "will lick anything I tell you, won't you? Dumb ass dirty whores. I got shit to do, but I'll be back once I'm horny enough. ",
+            button: [
+                { chatID: 30, text: "*slurp*", callback: "lola_anal2" },
+            ]
+        },
+        {
+            chatID: 30,
+            speaker: "lola",
+            text: "You know, if it isn't cum falling out of my vagina, then it's cum leaking out of my ass. I love the attention, but sometimes it " +
+                "would be nice if you took a cock up the ass, " + sc.n("eva") + ". ",
+            button: [
+                { chatID: 31, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 31,
+            speaker: "eva",
+            text: "This bitch is crazy. She's taken one cock up her ass today. I've already had four! And seven in my pussy. I've taken so much cock " +
+                "I don't even fart anymore. The air just flows out. But " + sc.n("me") + ", we all know, is the queen of anal! " + gender.pronoun("she").capitalize() +
+                " could fit two hands up her ass! Anyway, I'm going to relax for a bit. My legs are cramped from kneeling so much. ",
+            button: [
+                { chatID: -1, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 32,
+            speaker: "lola",
+            text: "Everytime I think my vagina can't hold any more someone puts more cum inside me. If I would bottle this up I could sell it " +
+                "for the sperm bank. ",
+            button: [
+                { chatID: 33, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 33,
+            speaker: "eva",
+            text: "We could just be a sperm lottery. Sometimes you win great sperm, sometimes it's old hairy fat man sperm. hehe. Thanks " +
+                sc.n("me") + " for taking some of those cocks. It's nice having you back even if you are a pervert. ",
+            button: [
+                { chatID: -1, text: "No problem. ", callback: "" },
             ]
         },
     ];

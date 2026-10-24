@@ -56,6 +56,7 @@ room949.chatcatch = function (callback) {
             gv.set("cultLastClean", g.dt);
             cl.c.chastity = null;
             cl.c.buttplug = null;
+            cl.c.shirt = cl.c.pants = cl.c.dress = cl.c.panties = cl.c.bra = cl.c.swimsuit = cl.c.pjs = cl.c.socks = cl.c.shoes = null;
             gv.set("shower", new Date(new Date(g.dt).setDate(new Date(g.dt).getDate() - 10)));
             gv.set("cultRank", "Slave");
             char.room(950);

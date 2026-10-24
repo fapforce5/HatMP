@@ -3242,7 +3242,7 @@ room13.chat = function (chatID) {
                 text: "We're in the mood for some ice cream. Come with us! It'll be great! ",
                 button: [
                     { chatID: 123, text: "Sure!", callback: "sissy0_0" },
-                    { chatID: 123, text: "Some other time. ", callback: "reset" },
+                    { chatID: -1, text: "Some other time. ", callback: "reset" },
                 ]
             },
             {
