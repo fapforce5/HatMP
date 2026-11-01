@@ -1168,7 +1168,7 @@ room125.chat = function (chatID) {
             "It's your turn, idiot!",
             "Please fold, please fold, please fold",
             "Have you been working out? You're looking good, bro.",
-            "You play like this this chick I know fucks. Slow and sloppy.",
+            "You play like this chick I know fucks. Slow and sloppy.",
         ];
 
         for (let i = 0; i < g.internal.length; i++) {

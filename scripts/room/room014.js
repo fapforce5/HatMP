@@ -1974,7 +1974,7 @@ room14.chat = function (chatID) {
                 chatID: 74,
                 speaker: "landlord",
                 text: "That guy is always texting me. Has a bit of a jealous streak in him. I " +
-                    "guess that happens when you catch your wife in bed with another man. Anyway. " +
+                    "guess that happens when you catch your partner in bed with another man. Anyway. " +
                     "what were we talking about. ",
                 button: [
                     { chatID: -1, text: "Oh nothing. Good night.", callback: "ll_man_1" },

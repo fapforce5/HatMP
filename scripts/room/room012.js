@@ -291,6 +291,16 @@ room12.btnclick = function (name) {
             }
             g.internal++;
             break;
+        case "mom_lick_ass":
+            nav.kill();
+            nav.bg("12_bathroom/lick1_ass_" + gender.pronoun("f") + ".webp");
+            chat(69, 12);
+            break;
+        case "mom_lick_pussy":
+            nav.kill();
+            nav.bg("12_bathroom/lick1_vag_" + gender.pronoun("f") + ".webp");
+            chat(71, 12);
+            break;
         default:
             break;
     }
@@ -461,12 +471,6 @@ room12.chatcatch = function (callback) {
                     "image": "12_bathroom/12_mother3.png"
                 }, 12);
             }
-            break;
-        case "mom_lick_ass":
-            levels.oralass("f", "landlord");
-            break;
-        case "mom_lick_pussy":
-            levels.oral(3, "f", "landlord");
             break;
         case "mom4":
             cl.nude();
@@ -688,6 +692,26 @@ room12.chatcatch = function (callback) {
         case "lolapee3":
             levels.fuckpussy("lola", "f");
             nav.bg("12_bathroom/lolapee3_" + (gender.cock() === "d" ? "big" : "small") + ".webp");
+            break;
+        case "lick2_ass":
+            nav.bg("12_bathroom/lick2_ass_" + gender.pronoun("f") + ".webp");
+            levels.oralass("f", "landlord");
+            break;
+        case "lick2_vag":
+            nav.bg("12_bathroom/lick2_vag_" + gender.pronoun("f") + ".webp");
+            levels.oral(3, "f", "landlord");
+            break;
+        case "lickEnd":
+            nav.bg("12_bathroom/12_bathroom.png");
+            nav.button({
+                "type": "img",
+                "name": "mom3",
+                "left": 817,
+                "top": 38,
+                "width": 453,
+                "height": 1042,
+                "image": "12_bathroom/12_mother3.png"
+            }, 12);
             break;
         default:
             break;
@@ -1261,7 +1285,47 @@ room12.chat = function(chatID){
             speaker: "landlord",
             text: "Like what you see... Well don't just stare at it, eat it. ",
             button: [
-                { chatID: -1, text: "mmmm", callback: "" },
+                { chatID: -1, text: "[Pick a hole to stick your tongue into]", callback: "" },
+            ]
+        },
+        {
+            chatID: 69,
+            speaker: "landlord",
+            text: "Oh. So you want to eat my ass baby? Get in there. Lick my stinky ring.",
+            button: [
+                { chatID: 70, text: "mmmm", callback: "lick2_ass" },
+            ]
+        },
+        {
+            chatID: 70,
+            speaker: "landlord",
+            text: "Ooooo. You are an eager one. So good baby. ",
+            button: [
+                { chatID: 73, text: "*sllluuurrrpppp*", callback: "lickEnd" },
+            ]
+        },
+        {
+            chatID: 71,
+            speaker: "landlord",
+            text: "That's my good baby. Make your " + sc.n("landlord") + " happy. ",
+            button: [
+                { chatID: 72, text: "mmm", callback: "lick2_vag" },
+            ]
+        },
+        {
+            chatID: 72,
+            speaker: "landlord",
+            text: "Oh yeah. Feels so good. Love an orgasm in the morning. ",
+            button: [
+                { chatID: 73, text: "*sllluuurrrpppp*", callback: "lickEnd" },
+            ]
+        },
+        {
+            chatID: 73,
+            speaker: "landlord",
+            text: "That's my good little baby. Now run along. I gotta get cleaned up. ",
+            button: [
+                { chatID: -1, text: "Yes " + sc.n("landlord") + ". ", callback: "leave" },
             ]
         },
     ];

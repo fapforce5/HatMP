@@ -3284,6 +3284,7 @@ sc.trivialLookup = {
     "!boxes": { display: "Mike", image: "boxes.png" },
     "!bwc": { display: "BWC", image: "bwc.png" },
     "!bbc": { display: "BBC", image: "bbc.png" },
+    "!bbc2": { display: "Other BBC", image: "bbc.png" },
     "!deb": { display: "Deb", image: "deb.png" },
     "!latika": { display: "Latika", image: "latika.png" },
     "!doofus": { display: "Doofus", image: "doofus.png" },

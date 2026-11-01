@@ -25,7 +25,35 @@ room32.main = function () {
         }, 32);
     }
     else if (sc.getMission("lola", "*tom2").inProgress) {
+        if (lolaInRoom) {
+            if (daily.get("lolatomfuck")) {
+                daily.set("lolatomfuck", false);
 
+                nav.button({
+                    "type": "btn",
+                    "name": "lola",
+                    "left": 1118,
+                    "top": 107,
+                    "width": 370,
+                    "height": 973,
+                    "image": "32_bedroom/lola_tom.webp"
+                }, 32);
+                chat(35, 32);
+            }
+            else {
+                daily.set("lolatomfuck");
+                nav.button({
+                    "type": "btn",
+                    "name": "lola",
+                    "left": 1239,
+                    "top": 479,
+                    "width": 172,
+                    "height": 171,
+                    "image": "32_bedroom/lolatom0.webp"
+                }, 32);
+                chat(34, 32);
+            }
+        }
     }
     else {
         if (lolaInRoom || evaInRoom) {
@@ -646,6 +674,38 @@ room32.chat = function (chatID) {
                 sc.n("me") + " for taking some of those cocks. It's nice having you back even if you are a pervert. ",
             button: [
                 { chatID: -1, text: "No problem. ", callback: "" },
+            ]
+        },
+        {
+            chatID: 34,
+            speaker: "thinking",
+            text: "They are really going at it... Should've been me, but " + sc.n("tom") + " is the guy for her.",
+            button: [
+                { chatID: -1, text: "[Leave]", callback: "leave" },
+            ]
+        },
+        {
+            chatID: 35,
+            speaker: "tom",
+            text: "Hey buddy. Hope you don't mind but we're a bit busy in here. Busy having sex! ",
+            button: [
+                { chatID: 36, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 36,
+            speaker: "lola",
+            text: sc.n("tom") + "!!!!",
+            button: [
+                { chatID: 37, text: "...", callback: "" },
+            ]
+        },
+        {
+            chatID: 37,
+            speaker: "tom",
+            text: "Oh, yeah. How about we hang out later. ",
+            button: [
+                { chatID: -1, text: "Yeah. Later. ", callback: "leave" },
             ]
         },
     ];

@@ -636,7 +636,7 @@ room601.btnclick = function (name) {
             break;
         case "pivate_cumpants":
             nav.killbutton("pivate_cumpants");
-            g.internal.excitement = 3;
+            g.internal.excitement += 3;
             invoker.invokeCurrent("btnclick", "privateExcitement");
             chat(15, 601);
             break;

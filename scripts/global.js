@@ -413,7 +413,7 @@ g.rooms = [
     { roomID: 589, name: "Liam's Room", image: "589_liam/bg.jpg", nightImage: "589_liam/bg.jpg", houseID: 575, btn: "roomBtn_589.png" },
 
     { roomID: 600, name: "Strip Club", image: "600_body/bg.jpg", nightImage: "600_body/bg.jpg", houseID: 600, btn: "roomBtn_600.png" },
-    { roomID: 601, name: "Strip Club", image: "601_dance/bg.jpg", nightImage: "601_dance/bg.jpg", houseID: 600, btn: "roomBtn_600.png" },
+    { roomID: 601, name: "Dance Stage", image: "601_dance/bg.jpg", nightImage: "601_dance/bg.jpg", houseID: 600, btn: "roomBtn_601.png" },
     { roomID: 602, name: "Strip Club", image: "602_backroom/bg.jpg", nightImage: "602_backroom/bg.jpg", houseID: 600, btn: "roomBtn_600.png" },
 
     { roomID: 625, name: "Carnival", image: "625_fair/bg.jpg", nightImage: "625_fair/bg_n.jpg", houseID: 600, btn: "roomBtn_625.png" },

@@ -226,16 +226,30 @@ room16.main = function () {
             });
         }
         if (thisMomRoomID.roomID === 26 && thisSisterRoomID.roomID === 26) {
-            btnList.push({
-                "type": "btn",
-                "name": "living",
-                "left": 1059,
-                "top": 200,
-                "width": 351,
-                "height": 385,
-                "image": "16_livingRoom/livingT.png",
-                "night": "16_livingRoom/livingTN.png"
-            });
+            if (sc.getMission("lola", "*cumdump")) {
+                btnList.push({
+                    "type": "btn",
+                    "name": "living",
+                    "left": 1059,
+                    "top": 200,
+                    "width": 351,
+                    "height": 385,
+                    "image": "16_livingRoom/living_preg_cumdump.webp",
+                    "night": "16_livingRoom/living_preg_cumdump_night.webp"
+                });
+            }
+            else {
+                btnList.push({
+                    "type": "btn",
+                    "name": "living",
+                    "left": 1059,
+                    "top": 200,
+                    "width": 351,
+                    "height": 385,
+                    "image": "16_livingRoom/livingT.png",
+                    "night": "16_livingRoom/livingTN.png"
+                });
+            }
         }
         else if (thisMomRoomID.roomID === 26 && thisBigguyId.roomID === 26) {
             if (sc.getMission("landlord", "*cumdump").inProgress) {
