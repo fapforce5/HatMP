@@ -188,7 +188,7 @@ sc.init = function () {
                             { id: 0, txt: "You should go on a practice date. ", show: true, mStatus: 0, roomId: 13 },
                             { id: 1, txt: "Give me a day to get ready. ", show: true, mStatus: 0, roomId: 13 },
                             { id: 2, txt: "Come by before dark for our first practice date. ", show: true, mStatus: 0, roomId: 13 },
-                            { id: 3, txt: "Won a teddy bear ", show: false, mStatus: 0, roomId: 13 },
+                            { id: 3, txt: "Won a teddy bear (Hidden Task)", show: false, showWhenDone: true, mStatus: 0, roomId: 13 },
                             { id: 4, txt: "Meet her in her room. Go on dates. ", show: true, mStatus: 0, roomId: 13 },
                             { id: 5, txt: "Creampie is the best pie. ", show: true, mStatus: 0, roomId: 13 },
                             { id: 6, txt: "Threesome is best cum.", show: true, mStatus: 0, roomId: 13 },
@@ -357,8 +357,8 @@ sc.init = function () {
                         [
                             { id: 0, txt: "Donated sperm first time. ", show: true, mStatus: 0, roomId: 350 },
                             { id: 1, txt: "Advertised first time. ", show: true, mStatus: 0, roomId: 350 },
-                            { id: 2, txt: "Assistant Nurse first day. ", show: false, mStatus: 0, roomId: 350 },
-                            { id: 3, txt: "Assistant Nurse loop. ", show: false, mStatus: 0, roomId: 350 },
+                            { id: 2, txt: "Assistant Nurse first day. (Hidden Task)", show: false, showWhenDone: true, mStatus: 0, roomId: 350 },
+                            { id: 3, txt: "Assistant Nurse loop. (Hidden Task)", show: false, showWhenDone: true, mStatus: 0, roomId: 350 },
                         ]
                 },
                 {
@@ -487,7 +487,7 @@ sc.init = function () {
                         [
                             { id: 0, txt: "Spy on her.", show: true, mStatus: 0, roomId: 725 },
                             { id: 1, txt: "Catch her at the club?", show: true, mStatus: 0, roomId: 725 },
-                            { id: 2, txt: "Catch her at the strip club?", show: false, mStatus: 0, roomId: 400 },
+                            { id: 2, txt: "Catch her at the strip club? (Hidden Task)", show: false, showWhenDone: true, mStatus: 0, roomId: 400 },
                             { id: 3, txt: "Glory hole?", show: true, mStatus: 0, roomId: 216 },
                         ]
                 },
@@ -918,7 +918,7 @@ sc.init = function () {
                             { id: 0, txt: "Meet", show: true, mStatus: 0, roomId: 350 },
                             { id: 1, txt: "Titty grabbing perv", show: true, mStatus: 0, roomId: 350 },
                             { id: 2, txt: "Eat a bag of dicks", show: true, mStatus: 0, roomId: 350 },
-                            { id: 3, txt: "Stop touching her!", show: true, mStatus: 0, roomId: 350 },
+                            { id: 3, txt: "Stop touching her! (Repeatable)", show: true, mStatus: 0, roomId: 350 },
                         ]
                 },
             ]
@@ -1184,7 +1184,7 @@ sc.init = function () {
                         [
                             { id: 0, txt: "Meet", show: true, mStatus: 0, roomId: 526 },
                             { id: 1, txt: "Pink room", show: true, mStatus: 0, roomId: 213 },
-                            { id: 2, txt: "I was there!", show: false, mStatus: 0, roomId: 526 },
+                            { id: 2, txt: "I was there! (Hidden Task)", show: false, showWhenDone: true, mStatus: 0, roomId: 526 },
                         ]
                 }
             ]
@@ -1331,11 +1331,11 @@ sc.init = function () {
                     missionName: "cult", mStatus: 0, title: "Cult", desc: "Taken by the cult", task:
                         [
                             { id: 0, txt: "Taken by the cult", show: true, mStatus: 0, roomId: 800 },
-                            { id: 1, txt: "Lost son", show: false, mStatus: 0, roomId: 800 },
-                            { id: 2, txt: "Welcome", show: false, mStatus: 0, roomId: 952 },
-                            { id: 3, txt: "Can I go home?", show: false, mStatus: 0, roomId: 952 },
-                            { id: 4, txt: "I need some lotion", show: false, mStatus: 0, roomId: 952 },
-                            { id: 5, txt: "I'm ready to be broken again", show: false, mStatus: 0, roomId: 952 },
+                            { id: 1, txt: "Lost son (Hidden Task)", show: false, showWhenDone: true, mStatus: 0, roomId: 800 },
+                            { id: 2, txt: "Welcome (Hidden Task)", show: false, showWhenDone: true, mStatus: 0, roomId: 952 },
+                            { id: 3, txt: "Can I go home? (Hidden Task)", show: false, showWhenDone: true, mStatus: 0, roomId: 952 },
+                            { id: 4, txt: "I need some lotion (Hidden Task)", show: false, showWhenDone: true, mStatus: 0, roomId: 952 },
+                            { id: 5, txt: "I'm ready to be broken again (Hidden Task)", show: false, showWhenDone: true, mStatus: 0, roomId: 952 },
                         ]
                 },
             ]
@@ -1358,7 +1358,7 @@ sc.init = function () {
                         [
                             { id: 0, txt: "Tell me about your book. ", show: true, mStatus: 0, roomId: 803 },
                             { id: 1, txt: "Honey Biscuits", show: true, mStatus: 0, roomId: 803 },
-                            { id: 2, txt: "Tell me even more", show: true, mStatus: 0, roomId: 803 },
+                            { id: 2, txt: "Tell me even more (Repeatable)", show: true, mStatus: 0, roomId: 803 },
                             { id: 3, txt: "One great fuck!", show: true, mStatus: 0, roomId: 803 },
                             { id: 4, txt: "A dissapointing tiny dick", show: true, mStatus: 0, roomId: 803 },
                         ]
@@ -2161,8 +2161,10 @@ sc.setLevel = function (name, level, points) {
 //Mission ----------------------------------------------------------------------
 
 sc.startMission = function (name, missionName, mStatus = 1) {
-    if (sc.getMission(name, missionName).notStarted)
+    if (sc.getMission(name, missionName).notStarted) {
         sc.setMission(name, missionName, mStatus);
+        sc.closeMissionIfAllTasksDone(name, missionName); //tasks may have been finished before the mission started
+    }
 };
 
 sc.getMissionEntry = function (name, missionName) {
@@ -2280,6 +2282,80 @@ sc.getActiveMissions = function (name) {
     return retArray;
 };
 
+//---------------------------------------------------------------------------
+//Auto-complete: when every task of a mission is finished, the mission itself is
+//marked finished too, instead of staying "In Progress" forever.
+//
+//sc.autoCloseSkip: missions the game still needs "In Progress" after their tasks
+//are done (ending missions, and missions checked with .inProgress/.complete/
+//.success/.fail, or that a later scene can still fail). These are never touched.
+//
+//sc.autoCloseStepLookup: missions read through sc.taskGetStep. Those are only
+//auto-closed when every task succeeded, because a Failed/Closed mission makes
+//taskGetStep return -2 and would change which scene plays.
+//---------------------------------------------------------------------------
+sc.autoCloseSkip = [
+    "bigguy/ex", "bigguy/sissy", "bitch/bitch", "bodhi/escape", "cecilia/gloryhole", "chuck/fuck",
+    "cop/*escape", "dog/vacation", "dollmaker/*dolls", "dolly/happy", "dolly/mad", "elijah/elijah",
+    "envy/breakup", "envy/gf", "envy/hypno", "envy/meet", "eva/*cumdump", "eva/*tom2",
+    "eva/*wife", "eva/massage", "eva/talk", "g/spar", "holly/case",
+    "holly/happy", "holly/mad", "janice/*boyfriend", "janice/*cuck", "janice/*doggy", "janice/breakup",
+    "janice/cuck", "janice/date", "janice/dog-x", "janice/femdom", "janice/webcam", "jeffery/*panties",
+    "jones/invite", "kinsey/*post", "kinsey/milk", "landlord/*cumdump", "landlord/*mother", "landlord/sissy",
+    "landlord/spermbank", "liam/date", "lola/*cumdump", "lola/*tom2", "lola/*wife",
+    "lola/massage", "lola/sissy", "lola/talk", "lola/tom", "nun/*sin", "nun/sin",
+    "p/*missy", "ppgirl/pp", "priest/*closed", "rachel/ranch", "ralph/cult", "river/*gf",
+    "security/ranch", "spanky/hypno", "tina/*leave", "treyvon/doorman", "whore/*assistant", "zoey/*bff",
+    "zoey/*help", "zoey/*wife", "zoey/cheating", "zoey/friends"
+];
+
+sc.autoCloseStepLookup = [
+    "amputee/chat", "bigguy/cult", "bigguy/rent", "bigguy/sissy", "bigguy/straight", "bitch/bitch",
+    "bodhi/cult", "cecilia/gloryhole", "chad/membership", "chuck/fuck", "cindy/fuck", "cop/bitch",
+    "crystal/t", "daria/cult", "doc/doc", "dolly/case", "elijah/elijah", "envy/gf",
+    "envy/hucow", "envy/hypno", "envy/meet", "eva/*cumdump", "eva/*tom2", "eva/fuck",
+    "eva/massage", "eva/sissy", "eva/talk", "ff/forest", "g/workout", "holly/case",
+    "janice/bitch", "janice/cuck", "janice/date", "janice/dog", "janice/femdom", "janice/webcam",
+    "jones/invite", "kinsey/milk", "landlord/man", "landlord/sissy", "landlord/talk", "lead/ranch",
+    "liam/date", "lola/*cumdump", "lola/*wife", "lola/date", "lola/massage", "lola/sissy",
+    "lola/talk", "lola/tom", "molly/case", "nun/sin", "philbert/bully", "ppgirl/pp",
+    "ralph/cult", "raven/bitch", "security/cult", "security/ranch", "stormy/property", "tiffany/friend",
+    "tim/fuck", "tom/chat", "wolf/pack", "zoey/friends", "zoey/sex"
+];
+
+sc.closeMissionIfAllTasksDone = function (name, missionName) {
+    let key = name + "/" + missionName;
+    if (sc.autoCloseSkip.indexOf(key) > -1)
+        return;
+    let m = sc.getMission(name, missionName);
+    if (m === null || !m.inProgress)
+        return;
+    let tasks = sc.charMission[m.i].mission[m.j].task;
+    if (tasks.length === 0)
+        return;
+    let success = 0, fail = 0;
+    for (let i = 0; i < tasks.length; i++) {
+        if (tasks[i].mStatus < 100)
+            return; //still something left to do
+        if (tasks[i].mStatus === 100) success++;
+        else if (tasks[i].mStatus === 101) fail++;
+    }
+    if (success === tasks.length)
+        sc.setMission(name, missionName, 100); //Completed
+    else if (sc.autoCloseStepLookup.indexOf(key) > -1)
+        return; //some tasks failed and scenes depend on this mission's step - leave it alone
+    else if (fail === tasks.length)
+        sc.setMission(name, missionName, 101); //Failed
+    else
+        sc.setMission(name, missionName, 102); //Closed
+};
+
+sc.closeAllFinishedMissions = function () {
+    for (let i = 0; i < sc.charMission.length; i++)
+        for (let j = 0; j < sc.charMission[i].mission.length; j++)
+            sc.closeMissionIfAllTasksDone(sc.charMission[i].name, sc.charMission[i].mission[j].missionName);
+};
+
 sc.completeMissionTask = function (name, missionName, taskId, success = true) {
     sc.setMissionTask(name, missionName, taskId, success ? 100 : 101);
 };
@@ -2300,7 +2376,7 @@ sc.completeAllUnstartedMissionAndTasks = function (name, missionName, success) {
 
 sc.completeMissionTopLevelOnly = function (name, missionName) {
     let ind = sc.getMission(name, missionName);
-    if (sc.charMission[ind.i].mission[ind.j] > 99)
+    if (sc.charMission[ind.i].mission[ind.j].mStatus > 99)
         return;
     let total = 0;
     let completedSuccess = 0;
@@ -2329,6 +2405,7 @@ sc.completeMissionTaskAll = function (name, missionName, taskId, success = true)
         if (sc.charMission[ind.i].mission[ind.j].task[i].id <= taskId)
             sc.charMission[ind.i].mission[ind.j].task[i].mStatus = success ? 100 : 101;
     }
+    sc.closeMissionIfAllTasksDone(name, missionName);
 };
 
 sc.rollbackMission = function (name, missionName) {
@@ -2347,8 +2424,10 @@ sc.startMissionTask = function (name, missionName, taskId) {
 
 sc.modMissionTask = function (name, missionName, taskId, modNum) {
     var taskEntry = sc.getMissionTaskEntry(name, missionName, taskId);
-    if (taskEntry !== null)
+    if (taskEntry !== null) {
         taskEntry.task.mStatus += modNum;
+        sc.closeMissionIfAllTasksDone(name, missionName);
+    }
 };
 
 sc.completeMission = function (name, missionName, success = true, closed = false) {
@@ -2384,8 +2463,11 @@ sc.setMission = function (name, missionName, mStatus) {
 
 sc.setMissionTask = function (name, missionName, taskId, mStatus) {
     var taskEntry = sc.getMissionTaskEntry(name, missionName, taskId);
-    if (taskEntry !== null)
+    if (taskEntry !== null) {
         taskEntry.task.mStatus = mStatus;
+        if (mStatus > 99)
+            sc.closeMissionIfAllTasksDone(name, missionName);
+    }
 }
 
 sc.modSecret = function (name, amount) {
@@ -2602,6 +2684,13 @@ sc.load = function (ra) {
         sc.completeMissionTask("lola", "sissy", 5, false);
         sc.completeMission("lola", "tom", false); 
     }
+
+    //fix: River's Bully was started without ticking "Welcome back wedgie" - repair older saves
+    if (sc.getMission("river", "bully").inProgress && sc.getMissionTask("river", "bully", 0).notStarted)
+        sc.completeMissionTask("river", "bully", 0);
+
+    //fix missions left In Progress after all their tasks were completed
+    sc.closeAllFinishedMissions();
 
     sc.show("me");
 };

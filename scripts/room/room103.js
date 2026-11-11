@@ -425,6 +425,7 @@ room103.chatcatch = function (callback) {
             sc.show("river");
             sc.show("tina");
             sc.startMission("river", "bully");
+            sc.completeMissionTask("river", "bully", 0); //fix: "Welcome back wedgie" was never ticked
             sc.startMission("tina", "cat");
             sc.completeMissionTask("tina", "cat", 0);
             g.internal = false;

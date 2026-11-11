@@ -61,7 +61,8 @@ room40.btnclick = function (name) {
                         chat(8, 40);
                         break;
                     case 1:
-                        sc.completeMissionTask("tom", "chat", 0);
+                    case 2: //fix: tick "Perfect girl" and keep the chat repeatable afterwards
+                        sc.completeMissionTask("tom", "chat", 1);
                         chat(13, 40);
                         break;
                 }

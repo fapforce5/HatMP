@@ -211,7 +211,8 @@ phone.handlePrefixAction = function (name) {
         }, 9999);
         let taskcounter = 0;
         for (i = 0; i < sc.charMission[ch.i].mission[ch.j].task.length; i++) {
-            if (sc.charMission[ch.i].mission[ch.j].task[i].show) {
+            var thisTask = sc.charMission[ch.i].mission[ch.j].task[i];
+            if (thisTask.show || (thisTask.showWhenDone && thisTask.mStatus > 99) || gv.get("showHiddenTasks")) { //showWhenDone: hidden until completed; cheat toggle shows all
                 roomList = " @: " + (g.getRooms(sc.charMission[ch.i].mission[ch.j].task[i].roomId).name ?? "");
                 var tcolor = "#ffffff";
                 var mstatus;
@@ -244,6 +245,10 @@ phone.handlePrefixAction = function (name) {
         }
         else if (name === "phone_cheatmod_on") {
             gv.set("cheatMode", true);
+            phone.cheat();
+        }
+        else if (name === "phone_cheatmod_hidden_on" || name === "phone_cheatmod_hidden_off") {
+            gv.set("showHiddenTasks", name === "phone_cheatmod_hidden_on");
             phone.cheat();
         }
         else {
@@ -1424,12 +1429,17 @@ phone.cheat = function () {
         phone.showPanel("999_phone/cheat_bg.jpg");
 
         var levelToMod = ["fitness", "charisma", "strength"];
+        var rowTop = 300;   //first row - lines up with the icons in cheat_bg.jpg
+        var rowStep = 155;  //space between rows - lines up with the icons in cheat_bg.jpg
+        var iconLeft = 1200; //all icons share this left edge
+        var iconWidth = 250; //all icons share this width
+        var textHeight = 45; //height of a 40px text line - icons are centred on it
 
         nav.t({
             type: "zimg",
             name: "phone_cheatmod",
             left: 700,
-            top: 300,
+            top: rowTop,
             font: 40,
             hex: "#ffffff",
             text: "Money: $" + gv.get("money")
@@ -1438,9 +1448,9 @@ phone.cheat = function () {
         nav.button({
             "type": "zbtn",
             "name": "phone_cheatmod_money",
-            "left": 1200,
-            "top": 300,
-            "width": 250,
+            "left": iconLeft,
+            "top": rowTop + (textHeight - 50) / 2,
+            "width": iconWidth,
             "height": 50,
             "image": "999_phone/cheat_money.png",
         }, 9999);
@@ -1451,7 +1461,7 @@ phone.cheat = function () {
                 type: "zimg",
                 name: "phone_cheatmod",
                 left: 700,
-                top: 300 + ((i + 1) * 155),
+                top: rowTop + ((i + 1) * rowStep),
                 font: 40,
                 hex: "#ffffff",
                 text: l.d + " Level: " + l.l
@@ -1460,13 +1470,61 @@ phone.cheat = function () {
             nav.button({
                 "type": "zbtn",
                 "name": "phone_cheatmod_level_" + levelToMod[i],
-                "left": 1200,
-                "top": 300 + ((i + 1) * 155),
-                "width": 250,
+                "left": iconLeft,
+                "top": rowTop + ((i + 1) * rowStep) + (textHeight - 50) / 2,
+                "width": iconWidth,
                 "height": 50,
                 "image": "999_phone/cheat_stats.png",
             }, 9999);
         }
+
+        //Show Hidden Tasks - same On/Off buttons as the Settings menu
+        var hiddenTop = 185; //top of the panel, above Money (no icon slot left in cheat_bg.jpg)
+        var showHidden = gv.get("showHiddenTasks");
+        var toggleWidth = iconWidth / 2;      //On + Off together fill the icon column
+        var toggleHeight = toggleWidth / 4;   //keep the Settings buttons' 4:1 shape
+        var toggleTop = hiddenTop + (textHeight - toggleHeight) / 2;
+        nav.t({
+            type: "zimg",
+            name: "phone_cheatmod",
+            left: 700,
+            top: hiddenTop,
+            font: 40,
+            hex: "#ffffff",
+            text: "Show Hidden Tasks"
+        }, 1);
+        nav.button({
+            "type": "zbtn",
+            "name": "phone_cheatmod_hidden_on",
+            "left": iconLeft,
+            "top": toggleTop,
+            "width": toggleWidth,
+            "height": toggleHeight,
+            "image": "999_phone/d_on_" + (showHidden ? "active" : "inactive") + ".png",
+        }, 9999);
+        nav.button({
+            "type": "zbtn",
+            "name": "phone_cheatmod_hidden_off",
+            "left": iconLeft + toggleWidth,
+            "top": toggleTop,
+            "width": toggleWidth,
+            "height": toggleHeight,
+            "image": "999_phone/d_off_" + (showHidden ? "inactive" : "active") + ".png",
+        }, 9999);
+        //d_off is the middle button in Settings, so its graphic has no right edge.
+        //Round its right corners and draw a white rounded edge that matches the left side of d_on
+        //(measured: corner radius ~5.6, side border ~1.7, top/bottom line ~1.1 game px)
+        var edgeRadius = 5.6 * g.ratio;
+        $('[data-name="phone_cheatmod_hidden_off"]').css({
+            "border-top-right-radius": edgeRadius + "px",
+            "border-bottom-right-radius": edgeRadius + "px"
+        });
+        $('#room-buttons').append('<div data-name="phone_cheatmod_hidden_off_edge" style="position:absolute; pointer-events:none; z-index:3; box-sizing:border-box; ' +
+            'left:' + ((iconLeft + toggleWidth) * g.ratio) + 'px; top:' + (toggleTop * g.ratio) + 'px; ' +
+            'width:' + (toggleWidth * g.ratio) + 'px; height:' + (toggleHeight * g.ratio) + 'px; ' +
+            'border-style:solid; border-color:#ffffff; ' +
+            'border-width:' + (1.1 * g.ratio) + 'px ' + (1.7 * g.ratio) + 'px ' + (1.1 * g.ratio) + 'px 0; ' +
+            'border-top-right-radius:' + edgeRadius + 'px; border-bottom-right-radius:' + edgeRadius + 'px;"></div>');
     }
     else {
         phone.showPanel("999_phone/cheat_bg1.jpg");

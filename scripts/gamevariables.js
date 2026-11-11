@@ -68,6 +68,7 @@ gv.init = function () {
         { n: "difficulty", t: 1, q: "int" }, //0: easy, 1: normal, 2: hard
         { n: "clock24", t: "12", q: "string" },
         { n: "cheatMode", t: false, q: "bool" },
+        { n: "showHiddenTasks", t: false, q: "bool" }, //cheat menu: show hidden mission steps
         { n: "transformation", t: "voluntary", q: "string" }, //voluntary, voluntaryoff, forced
         { n: "pronouns", t: "a", q: "string" },
         { n: "breastSelect", t: 2, q: "int" },

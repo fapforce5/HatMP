@@ -333,7 +333,7 @@ room13.btnclick = function (name) {
                     sc.select("spin", "13_sisterRoom/icon_spinthebottle.png", 2);
                 if (sc.getMissionTask("lola", "games", 1).complete)
                     sc.select("tord", "13_sisterRoom/icon_truthordare.png", 3);
-                if (sc.getMission("lola", "date").inProgress && !g.isNight()) {
+                if ((sc.getMission("lola", "date").inProgress || sc.getMission("lola", "date").success) && !g.isNight()) { //fix: keep dates after Practice dates is Completed
                     sc.select("practiceDate", "13_sisterRoom/icon_practice.png", 4);
                 }
                 sc.select("dick", "13_sisterRoom/icon_dick.png", 5);

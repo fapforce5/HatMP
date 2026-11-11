@@ -50,6 +50,7 @@ room354.main = function () {
                 chat(6, 354);
                 break;
             case 3:
+            case 4: //fix: after "Stop touching her!" is ticked, keep replaying this scene
                 switch (g.rand(0, 3)) {
                     case 0: nav.bg("354_raven/grabBoobs.jpg"); break;
                     case 1: nav.bg("354_raven/grabAss.jpg"); break;
@@ -57,7 +58,7 @@ room354.main = function () {
                 }
                 chat(13, 354);
                 break;
-            case 4:
+            case 104: //unused leftover scene ("notused"), moved out of the way of the fix above
                 nav.bg("354_raven/e2.jpg");
                 chat(7, 354);
                 break;
@@ -111,6 +112,7 @@ room354.chatcatch = function (callback) {
             char.room(0);
             break;
         case "event_3_end":
+            sc.completeMissionTask("raven", "bitch", 3); //fix: "Stop touching her!" was never ticked
             sc.modLevel("landlord", 15, 5);
             char.addtime(10);
             char.room(0);
