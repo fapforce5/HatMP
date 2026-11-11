@@ -642,26 +642,27 @@ char.applyScaledShellStyles = function (options) {
     const resizeHeight = options.resizeHeight;
     const graphBarHeight = options.graphBarHeight === undefined ? null : options.graphBarHeight;
 
+    const ox = 0; //left menu buttons stay on the left edge of the screen
     $(".rl-change[data-type='body']").css({
-        left: "0px",
+        left: ox + "px",
         top: "0px",
         width: 75 * g.ratio + "px",
         height: 50 * g.ratio + "px"
     });
     $(".rl-change[data-type='map']").css({
-        left: 75 * g.ratio + "px",
+        left: ox + 75 * g.ratio + "px",
         top: "0px",
         width: 75 * g.ratio + "px",
         height: 50 * g.ratio + "px"
     });
     $(".rl-change[data-type='graph']").css({
-        left: 150 * g.ratio + "px",
+        left: ox + 150 * g.ratio + "px",
         top: "0px",
         width: 75 * g.ratio + "px",
         height: 50 * g.ratio + "px"
     });
     $(".rl-change[data-type='walk']").css({
-        left: 225 * g.ratio + "px",
+        left: ox + 225 * g.ratio + "px",
         top: "0px",
         width: 75 * g.ratio + "px",
         height: 50 * g.ratio + "px"

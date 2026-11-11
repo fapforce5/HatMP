@@ -589,6 +589,14 @@ g.setRatio = function () {
     var width = $(window).width();
     var height = $(window).height();
     g.ratio = width / height > 16 / 9 ? height / 1080 : width / 1920;
+    //Right-align: if the window is wider than the scaled 1920x1080 game, push the game to the right edge
+    g.offsetX = Math.max(0, Math.floor(width - 1920 * g.ratio));
+    $('.room-full').css({
+        'transform': g.offsetX > 0 ? 'translateX(' + g.offsetX + 'px)' : '',
+        'width': g.offsetX > 0 ? Math.ceil(1920 * g.ratio) + 'px' : ''
+    });
+    //Left menu stays on the left edge of the screen (undo the shift for it only)
+    $('.room-left').css('left', g.offsetX > 0 ? -g.offsetX + 'px' : '');
     var btnWidth = 300 * g.ratio;
     var btnHeight = 620 * g.ratio;
     $('.char-container').css({ "width": btnWidth, "height": btnHeight });
