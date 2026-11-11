@@ -540,6 +540,7 @@ room13.btnclick = function (name) {
                     case 0: chat(10, 13); break;
                     case 1: chat(14, 13); break;
                     case 2: if (massageStep > 0) chat(17, 13); else chat(14, 13); break;
+					default: chat(24, 13); break; //fix: Lola talk mission done (step 3) had no case, so clicking her did nothing - play her stock line
                 }
             }
             break;
@@ -552,7 +553,8 @@ room13.btnclick = function (name) {
                 daily.set("evatalk");
                 switch (sc.taskGetStep("eva", "talk")) {
                     case 0: chat(26, 13); break;
-                    case 1: chat(33, 13);
+                    case 1: chat(33, 13); break; //fix: missing break
+					default: chat(46, 13); break; //fix: Eva talk mission done had no case, so clicking her did nothing - play her stock line
                 }
             }
             break;
@@ -1614,7 +1616,8 @@ room13.chatcatch = function (callback) {
             case "evatalk1":
                 char.addtime(20);
                 daily.set("evatalk");
-                sc.completeMissionTask("eva", "talk", 0, true);
+                sc.completeMissionTask("eva", "talk", 1, true); //fix: was task 0 a second time, so task 1 could never complete
+				sc.completeMission("eva", "talk", true); //fix: complete Eva's "Get to know her better" mission with its last task
                 sc.startMission("eva", "massage");
                 sc.modLevel("eva", 27, 1);
                 char.room(13);
@@ -1632,6 +1635,11 @@ room13.chatcatch = function (callback) {
                 sc.modLevel("lola", 27, 4);
                 char.room(13);
                 break;
+			case "talkLola2": //fix: new - end of chat 18 ticks Lola's "Massages" talk task and completes her talk mission
+				sc.completeMissionTask("lola", "talk", 2, true);
+				sc.completeMission("lola", "talk", true);
+				char.room(13);
+				break;
             case "rollChrisma2":
                 charisma.init(g.internal.charisma, "massage2chanceWin", "massage2chanceLose", g.roomID);
                 break;
@@ -2309,7 +2317,7 @@ room13.chat = function (chatID) {
                 text: "Hrumph. He couldn't save himself from a burning candle. We all know you get moist watching " +
                     "that firefighter show. ",
                 button: [
-                    { chatID: -1, text: "Hey", callback: "" },
+                    { chatID: -1, text: "Hey", callback: "talkLola2" }, //fix: was no callback, so the "Massages" task never completed
                 ]
             },
             {
