@@ -2204,7 +2204,7 @@ gv.save = function () {
     
     for (i = 0; i < weekly.st.length; i++) {
         if (weekly.st[i].t)
-            retArray.daily.push(weekly.st[i].n);
+            retArray.weekly.push(weekly.st[i].n); //fix: was saved into the daily list, so load lost it
     }
     //save by index
     for (i = 0; i < levels.st.length; i++) {
@@ -2271,6 +2271,15 @@ gv.load = function (rma, saveVersion) {
     //        { n: "chloe", t: false },
 
     daily.st = rma.daily.slice();
+
+    //fix: older saves stored weekly flags in the daily list - move them back to weekly
+    for (let dIdx = daily.st.length - 1; dIdx >= 0; dIdx--) {
+        let wIdx = weekly.i(daily.st[dIdx]);
+        if (wIdx > -1) {
+            weekly.st[wIdx].t = true;
+            daily.st.splice(dIdx, 1);
+        }
+    }
 
     if (typeof rma.weekly !== 'undefined') {
         for (i = 0; i < rma.weekly.length; i++) {
