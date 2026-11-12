@@ -69,6 +69,8 @@ gv.init = function () {
         { n: "clock24", t: "12", q: "string" },
         { n: "cheatMode", t: false, q: "bool" },
         { n: "showHiddenTasks", t: false, q: "bool" }, //cheat menu: show hidden mission steps
+        { n: "showAbilityPoints", t: false, q: "bool" }, //settings page 2: points line under Abilities on the stats screen
+        { n: "showBarPercent", t: false, q: "bool" }, //settings page 2: % inside the Abilities progress bars
         { n: "transformation", t: "voluntary", q: "string" }, //voluntary, voluntaryoff, forced
         { n: "pronouns", t: "a", q: "string" },
         { n: "breastSelect", t: 2, q: "int" },

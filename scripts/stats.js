@@ -36,7 +36,15 @@ sstat.updateLevelBar = function (stat) {
     var header = $(".rl-levelheader[data-name='" + stat.n + "']");
     header.text(stat.d + " " + stat.l);
     // Abilities get a middle line with their points toward the next level, e.g. "491 / 606 Points"
-    if (sstat.pointStats.indexOf(stat.n) > -1) {
+    var showPoints = sstat.pointStats.indexOf(stat.n) > -1 && gv.get("showAbilityPoints") === true;
+    if (sstat.pointStats.indexOf(stat.n) > -1 && !showPoints) {
+        // Settings page 2 > Points is Off: back to the original two-line layout
+        header.next(".rl-points").remove();
+        header.css("line-height", "");
+        $(".rl-level[data-name='" + stat.n + "']").css({ "font-size": 20 * g.ratio + "px", "line-height": "" });
+        header.parent().css("margin-top", "7%");
+    }
+    if (showPoints) {
         var pointsLine = header.next(".rl-points");
         if (!pointsLine.length)
             pointsLine = $("<div class='rl-points light-grey'>")
@@ -53,8 +61,12 @@ sstat.updateLevelBar = function (stat) {
             : Math.floor(stat.c || 0) + " / " + levels.getPointsCapForLevel(stat) + " Points");
     }
     $(".rl-bar[data-name='" + stat.n + "']").css({ width: barWidth + "%" });
-    if (sstat.pointStats.indexOf(stat.n) > -1)
-        sstat.updateBarPercent(stat, barWidth);
+    if (sstat.pointStats.indexOf(stat.n) > -1) {
+        if (gv.get("showBarPercent") === true)
+            sstat.updateBarPercent(stat, barWidth);
+        else // Settings page 2 > Percentage is Off
+            $(".rl-bar[data-name='" + stat.n + "']").parent().children(".rl-pct").remove();
+    }
     $(".rl-level[data-name='" + stat.n + "']").text(levelDesc.txt);
 };
 

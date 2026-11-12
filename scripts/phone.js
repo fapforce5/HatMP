@@ -125,6 +125,31 @@ phone.handleSettingsAction = function (name) {
         return true;
     }
 
+    //Settings page 2 (Points / Percentage toggles) - Next Page / Previous Page buttons switch pages
+    if (name === "phone_setting_next") {
+        phone.settings2();
+        return true;
+    }
+
+    if (name === "phone_setting_prev") {
+        phone.settings();
+        return true;
+    }
+
+    if (name === "phone_setting_percent_on" || name === "phone_setting_percent_off") {
+        gv.set("showBarPercent", name === "phone_setting_percent_on");
+        sstat.makeGraph();
+        phone.settings2();
+        return true;
+    }
+
+    if (name === "phone_setting_points_on" || name === "phone_setting_points_off") {
+        gv.set("showAbilityPoints", name === "phone_setting_points_on");
+        sstat.makeGraph();
+        phone.settings2();
+        return true;
+    }
+
     if (name === "phone_setting_m" || name === "phone_setting_f" || name === "phone_setting_a") {
         gv.set("pronouns", name.replace("phone_setting_", ""));
         phone.settings();
@@ -881,7 +906,76 @@ phone.settings = function () {
             "image": "999_phone/" + v.i + "_" + (v.active ? "active" : "inactive") + ".png",
         }, 9999);
     });
-}
+    phone.settingsPageButton("phone_setting_next", "999_phone/settings_next.png");
+};
+
+//Settings page buttons sit right-justified on the "Settings" line at the bottom of settingbg.jpg
+phone.settingsPageButton = function (name, image) {
+    nav.button({
+        "type": "zbtn",
+        "name": name,
+        "left": 1401,   //right edge 1601 = 35px in from the panel's right side
+        "top": 875,     //centred on the "Settings" text line
+        "width": 200,
+        "height": 50,
+        "image": image,
+    }, 9999);
+};
+
+//Settings page 2 - same layout as page 1: rows start at 220, buttons start at 925 and are 200 x 50
+phone.settings2 = function () {
+    phone.clear(false);
+    phone.showPanel("999_phone/settingbg2.png");
+
+    //Line one: Points - shows "current / needed Points" under Abilities on the stats screen
+    phone.settingsToggle(0, "points", gv.get("showAbilityPoints"));
+    //Line two: Percentage - shows the % inside the Abilities progress bars
+    phone.settingsToggle(1, "percent", gv.get("showBarPercent"));
+
+    phone.settingsPageButton("phone_setting_prev", "999_phone/settings_prev.png");
+};
+
+//On/Off toggle on a settings row - same size and spacing as page 1 (rows 125 apart from 220, buttons 200 x 50 from 925)
+phone.settingsToggle = function (row, key, isOn) {
+    var top = 220 + (row * 125);
+    nav.button({
+        "type": "zbtn",
+        "name": "phone_setting_" + key + "_on",
+        "left": 925,
+        "top": top,
+        "width": 200,
+        "height": 50,
+        "image": "999_phone/d_on_" + (isOn ? "active" : "inactive") + ".png",
+    }, 9999);
+    nav.button({
+        "type": "zbtn",
+        "name": "phone_setting_" + key + "_off",
+        "left": 1125,
+        "top": top,
+        "width": 200,
+        "height": 50,
+        "image": "999_phone/d_off_" + (isOn ? "inactive" : "active") + ".png",
+    }, 9999);
+    phone.addToggleOffEdge("phone_setting_" + key + "_off", 1125, top, 200, 50);
+};
+
+//d_off is the middle button in Settings, so its graphic has no right edge.
+//Round its right corners and draw a white rounded edge that matches the left side of d_on.
+//Measured on a 31.25px-high button: corner radius ~5.6, side border ~1.7, top/bottom line ~1.1 game px.
+phone.addToggleOffEdge = function (name, left, top, width, height) {
+    var k = height / 31.25;
+    var edgeRadius = 5.6 * k * g.ratio;
+    $('[data-name="' + name + '"]').css({
+        "border-top-right-radius": edgeRadius + "px",
+        "border-bottom-right-radius": edgeRadius + "px"
+    });
+    $('#room-buttons').append('<div data-name="' + name + '_edge" style="position:absolute; pointer-events:none; z-index:3; box-sizing:border-box; ' +
+        'left:' + (left * g.ratio) + 'px; top:' + (top * g.ratio) + 'px; ' +
+        'width:' + (width * g.ratio) + 'px; height:' + (height * g.ratio) + 'px; ' +
+        'border-style:solid; border-color:#ffffff; ' +
+        'border-width:' + (1.1 * k * g.ratio) + 'px ' + (1.7 * k * g.ratio) + 'px ' + (1.1 * k * g.ratio) + 'px 0; ' +
+        'border-top-right-radius:' + edgeRadius + 'px; border-bottom-right-radius:' + edgeRadius + 'px;"></div>');
+};
 
 phone.pictures = function () {
     phone.clear(false);
