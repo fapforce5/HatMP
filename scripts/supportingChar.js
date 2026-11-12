@@ -486,9 +486,9 @@ sc.init = function () {
                     missionName: "cheating", mStatus: -1, title: "Chloé", desc: "Find out if Chloé is cheating", task:
                         [
                             { id: 0, txt: "Spy on her.", show: true, mStatus: 0, roomId: 725 },
-                            { id: 1, txt: "Catch her at the club?", show: true, mStatus: 0, roomId: 725 },
+                            { id: 1, txt: "Catch her at the club?", show: true, mStatus: 0, roomId: 725, orTask: 3 }, //orTask: struck out on the phone once the other choice is done
                             { id: 2, txt: "Catch her at the strip club? (Hidden Task)", show: false, showWhenDone: true, mStatus: 0, roomId: 400 },
-                            { id: 3, txt: "Glory hole?", show: true, mStatus: 0, roomId: 216 },
+                            { id: 3, txt: "Glory hole?", show: true, mStatus: 0, roomId: 216, orTask: 1 },
                         ]
                 },
                 {
@@ -558,8 +558,8 @@ sc.init = function () {
                     missionName: "membership", mStatus: 0, title: "Membership Dues", desc: "Get into the gym. ", task:
                         [
                             { id: 0, txt: "Meet for the first time. ", show: true, mStatus: 0, roomId: 550 },
-                            { id: 1, txt: "Pay the $500", show: true, mStatus: 0, roomId: 550 },
-                            { id: 2, txt: "Get topless picture. ", show: true, mStatus: 0, roomId: 550 },
+                            { id: 1, txt: "Pay the $500", show: true, mStatus: 0, roomId: 550, orTask: 2 }, //pay OR picture - either one completes the mission
+                            { id: 2, txt: "Get topless picture. ", show: true, mStatus: 0, roomId: 550, orTask: 1 },
 
                         ]
                 },
@@ -2190,6 +2190,23 @@ sc.getMissionEntry = function (name, missionName) {
     return null;
 };
 
+//true when the character has missions and every one of them is complete (Completed, Failed or Closed)
+sc.allMissionsComplete = function (name) {
+    for (let i = 0; i < sc.charMission.length; i++) {
+        if (sc.charMission[i].name === name) {
+            let missions = sc.charMission[i].mission;
+            if (!missions || missions.length === 0)
+                return false;
+            for (let j = 0; j < missions.length; j++) {
+                if (!(missions[j].mStatus > 99))
+                    return false;
+            }
+            return true;
+        }
+    }
+    return false;
+};
+
 sc.getMission = function (name, missionName) {
     var missionEntry = sc.getMissionEntry(name, missionName);
     if (missionEntry === null)
@@ -2426,6 +2443,7 @@ sc.modMissionTask = function (name, missionName, taskId, modNum) {
     var taskEntry = sc.getMissionTaskEntry(name, missionName, taskId);
     if (taskEntry !== null) {
         taskEntry.task.mStatus += modNum;
+        sc.autoStartMission(name, missionName);
         sc.closeMissionIfAllTasksDone(name, missionName);
     }
 };
@@ -2461,10 +2479,36 @@ sc.setMission = function (name, missionName, mStatus) {
     sc.charMission[ml.i].mission[ml.j].mStatus = mStatus;
 };
 
+//Event-tracker missions the game never starts itself. They switch to In Progress
+//as soon as any of their steps is started or completed.
+sc.autoStartMissions = [
+    "landlord/misc",    //Landlady/Mother "Random"
+    "lola/random",      //Lola "Misc"
+    "eva/random",       //Eva "Random"
+    "janice/random",    //Janice "Misc Events"
+    "ralphsdad/random"  //Ralph's Dad "Random"
+];
+
+sc.autoStartMission = function (name, missionName) {
+    if (sc.autoStartMissions.indexOf(name + "/" + missionName) < 0)
+        return;
+    let m = sc.getMission(name, missionName);
+    if (m === null || !m.notStarted)
+        return;
+    let tasks = sc.charMission[m.i].mission[m.j].task;
+    for (let i = 0; i < tasks.length; i++) {
+        if (tasks[i].mStatus > 0) {
+            sc.setMission(name, missionName, 1);
+            return;
+        }
+    }
+};
+
 sc.setMissionTask = function (name, missionName, taskId, mStatus) {
     var taskEntry = sc.getMissionTaskEntry(name, missionName, taskId);
     if (taskEntry !== null) {
         taskEntry.task.mStatus = mStatus;
+        sc.autoStartMission(name, missionName);
         if (mStatus > 99)
             sc.closeMissionIfAllTasksDone(name, missionName);
     }
@@ -2685,9 +2729,16 @@ sc.load = function (ra) {
         sc.completeMission("lola", "tom", false); 
     }
 
+    //Zoey's "Chloé": "Spy on her." is ticked when the mission starts - repair older saves
+    if (sc.getMission("zoey", "cheating").inProgress && sc.getMissionTask("zoey", "cheating", 0).notStarted)
+        sc.completeMissionTask("zoey", "cheating", 0);
     //fix: River's Bully was started without ticking "Welcome back wedgie" - repair older saves
     if (sc.getMission("river", "bully").inProgress && sc.getMissionTask("river", "bully", 0).notStarted)
         sc.completeMissionTask("river", "bully", 0);
+
+    //fix: start event-tracker missions that already have steps done (older saves)
+    for (i = 0; i < sc.autoStartMissions.length; i++)
+        sc.autoStartMission(sc.autoStartMissions[i].split("/")[0], sc.autoStartMissions[i].split("/")[1]);
 
     //fix missions left In Progress after all their tasks were completed
     sc.closeAllFinishedMissions();

@@ -165,11 +165,10 @@ room501.btnclick = function (name) {
                 }
             }
             else if (sc.getMission("zoey", "cheating").inProgress) {
-                if (!sc.getMissionTask("zoey", "cheating", 0).complete) {
-                    nav.killall();
-                    invoker.invokeCurrent("chatcatch", "zLook");
-                    chat(800, 501);
-                }
+                //"Did you catch her cheating yet?" - no longer depends on step 0, which is now ticked at mission start
+                nav.killall();
+                invoker.invokeCurrent("chatcatch", "zLook");
+                chat(800, 501);
             }
             else if (sc.getMission("zoey", "cheating").success) {
                 var zsex = sc.taskGetStep("zoey", "sex");
@@ -685,6 +684,7 @@ room501.chatcatch = function (callback) {
             sc.modLevel("zoey", 100, 5);
             sc.completeMission("zoey", "friends");
             sc.startMission("zoey", "cheating");
+            sc.completeMissionTask("zoey", "cheating", 0); //Spy on her.
             daily.set("zoey");
             invoker.invokeCurrent("chatcatch", "zLook");
             break;
@@ -692,6 +692,7 @@ room501.chatcatch = function (callback) {
             sc.modLevel("zoey", 20, 5);
             sc.completeMission("zoey", "friends");
             sc.startMission("zoey", "cheating");
+            sc.completeMissionTask("zoey", "cheating", 0); //Spy on her.
             daily.set("zoey");
             invoker.invokeCurrent("chatcatch", "zSuprise");
             break;

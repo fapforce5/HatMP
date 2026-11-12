@@ -247,6 +247,15 @@ phone.handlePrefixAction = function (name) {
                     case "Not Started": tcolor = "#999999"; mstatus = " ☐ "; break;
                     default: tcolor = "#ffffff"; mstatus = " ";
                 }
+                var taskText = mstatus + thisTask.txt + roomList;
+                //orTask: this step and another are alternatives - once the other one is done, strike this one out
+                if (thisTask.orTask !== undefined && thisTask.mStatus < 100) {
+                    var otherTask = sc.charMission[ch.i].mission[ch.j].task[thisTask.orTask];
+                    if (otherTask && otherTask.mStatus === 100) {
+                        tcolor = "#999999";
+                        taskText = '<span style="text-decoration: line-through;">' + taskText + '</span>';
+                    }
+                }
                 nav.t({
                     type: "zimg",
                     name: "phone_charsel_",
@@ -254,7 +263,7 @@ phone.handlePrefixAction = function (name) {
                     "top": 350 + (taskcounter * 40),
                     font: 24,
                     hex: tcolor,
-                    text: mstatus + sc.charMission[ch.i].mission[ch.j].task[i].txt + roomList
+                    text: taskText
                 }, 1);
                 taskcounter++;
             }
@@ -652,7 +661,7 @@ phone.addCharacterCard = function (character, row, column) {
         "left": left,
         "top": top + 150,
         font: character.display.length < 20 ? 20 : 12,
-        hex: "#ffffff",
+        hex: sc.allMissionsComplete(character.name) ? "#33cc33" : "#ffffff", //green (same as Completed) when all their missions are done
         text: character.display,
     }, 1);
 
