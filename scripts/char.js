@@ -581,6 +581,9 @@ char.setMenuPanel = function (panel, override) {
         $(selector).show();
     else if (!wasVisible)
         $(selector).toggle();
+    // refresh the stats panel when it opens so ability point text fits its box
+    if (panel === "graph" && $(selector).is(":visible") && typeof sstat !== "undefined")
+        sstat.makeGraph();
     return true;
 };
 
