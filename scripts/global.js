@@ -397,7 +397,7 @@ g.rooms = [
     { roomID: 526, name: "Caravaggio", image: "526_bar/bg.jpg", nightImage: "526_bar/bg.jpg", houseID: 525, btn: "roomBtn_526.png" },
     { roomID: 527, name: "Caravaggio Toilet", image: "527_bathroom/bg.jpg", nightImage: "527_bathroom/bg.jpg", houseID: 525, btn: "roomBtn_527.png" },
 
-    { roomID: 550, name: "Gym Front Desm", image: "550_gymFront/entrance.jpg", nightImage: "550_gymFront/entrance.jpg", houseID: 550, btn: "roomBtn_550.png" },
+    { roomID: 550, name: "Gym Front Desk", image: "550_gymFront/entrance.jpg", nightImage: "550_gymFront/entrance.jpg", houseID: 550, btn: "roomBtn_550.png" },
     { roomID: 551, name: "Gym", image: "551_gymInside/551_gym.jpg", nightImage: "551_gymInside/551_gym.jpg", houseID: 550, btn: "roomBtn_551.png" },
     { roomID: 552, name: "Boys Locker", image: "552_boy/lockeroom.jpg", nightImage: "552_boy/lockeroom.jpg", houseID: 550, btn: "roomBtn_552.png" },
     { roomID: 553, name: "Girls Locker", image: "553_girl/553_girl.jpg", nightImage: "553_girl/553_girl.jpg", houseID: 550, btn: "roomBtn_553.png" },
