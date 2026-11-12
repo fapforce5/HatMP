@@ -1177,11 +1177,12 @@ phone.characterSelect = function (name) {
                 "Panties and bra are optional: " + (qdress.st[9].ach ? unlocked : locked) + "<br/>" +
                 "Work as a whore: " + (qdress.st[23].ach ? unlocked : locked) + "<br/>" +
                 "Lewd in public: " + (qdress.st[10].ach ? unlocked : locked) + "<br/>";
+            //the Missy message below is two lines when locked, so the list starts one line lower
             nav.t({
                 type: "zimg",
                 name: "phone_charselx",
                 "left": 850,
-                "top": 240,
+                "top": sissy.st[0].ach ? 240 : 275,
                 font: 30,
                 hex: "#ffffff",
                 text: metxt
@@ -1194,7 +1195,7 @@ phone.characterSelect = function (name) {
                 "top": 180,
                 font: 30,
                 hex: "#ffffff",
-                text: "To unlock and grow you must prove to Missy you deserve it. Keep working. "
+                text: "To unlock and grow you must prove to Missy<br/>you deserve it. Keep working." //2 lines so it stays inside the phone screen
             }, 9999);
         }
         else {
@@ -1416,6 +1417,8 @@ phone.characterSelect = function (name) {
             }
         }
     }
+    //keep long text inside the phone screen: wrap it at the screen's right edge (panel ends at 451 + 1185)
+    $('[data-name="phone_charselx"]').css({ "max-width": ((451 + 1185 - 850 - 25) * g.ratio) + "px", "white-space": "normal" });
 }
 
 phone.thankyou = function () {
