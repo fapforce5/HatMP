@@ -229,7 +229,7 @@ room181.chat = function (chatID) {
         {
             chatID: 2,
             speaker: "black",
-            text: "Yes, later is fine.... but wait. You there " + sc.n("me") + ". You will wait. The rest can go. Now leave. ",
+            text: "Yes, later is fine.... but wait. You there ##me##. You will wait. The rest can go. Now leave. ",
             button: [
                 { chatID: 3, text: "*GULP*", callback: "bondage101_1" }
             ]
@@ -237,8 +237,8 @@ room181.chat = function (chatID) {
         {
             chatID: 3,
             speaker: "black",
-            text: "Yes. You'll do perfect. I know " + sc.n("cecilia") + " and yourself work together. It's always so much more fun " +
-                "to torture people who know each other. " + sc.n("cecilia") + " pop up and say hi. ",
+            text: "Yes. You'll do perfect. I know ##cecilia## and yourself work together. It's always so much more fun " +
+                "to torture people who know each other. ##cecilia## pop up and say hi. ",
             button: [
                 { chatID: 4, text: "huh", callback: "bondage101_2" }
             ]
@@ -287,7 +287,7 @@ room181.chat = function (chatID) {
         {
             chatID: 9,
             speaker: "black",
-            text: "Oh " + sc.n("cecilia") + " how I do love to hear your whimpers. I'll be watching the camera at home. Please " +
+            text: "Oh ##cecilia## how I do love to hear your whimpers. I'll be watching the camera at home. Please " +
                 "moan and whine all night. It really is the best porn. Night you two. ",
             button: [
                 { chatID: 10, text: "...", callback: "bondage101_4" }
@@ -501,7 +501,7 @@ room181.chat = function (chatID) {
         {
             chatID: 33,
             speaker: "!martin",
-            text: "Oh wow, " + sc.n("!chris") + " your tits are really coming in! ",
+            text: "Oh wow, ##!chris## your tits are really coming in! ",
             button: [
                 { chatID: 34, text: "...", callback: "" },
             ]
@@ -551,7 +551,7 @@ room181.chat = function (chatID) {
         {
             chatID: 38,
             speaker: "!sporty",
-            text: "That's hot, but why " + sc.n("black") + " take us here. I got in " +
+            text: "That's hot, but why ##black## take us here. I got in " +
                 "trouble last week and whipped and fisted me till I was crying real " +
                 "tears. It can't be any good if she's here... Oh look Missy's coming. ",
             button: [
@@ -562,11 +562,11 @@ room181.chat = function (chatID) {
             chatID: 39,
             speaker: "missy",
             text: "I see you ladies are really coming along. I'm going to steal " +
-                sc.n("me") + " for the pony girl display. Each of you will have " +
+                "##me## for the pony girl display. Each of you will have " +
                 "a mistress come and grab you to be their pony girl. " +
                 "Now scatter, can't have all the sissies conglomerating around " +
                 "me when I'm showing off my pony. Let's meet some high rollers " +
-                sc.n("me") + ". ",
+                "##me##. ",
             button: [
                 { chatID: 40, text: "...", callback: "b203_4" },
             ]
@@ -601,7 +601,7 @@ room181.chat = function (chatID) {
         {
             chatID: 43,
             speaker: "missy",
-            text: sc.n("!missx") + ", Oh thank god. Did I ever tell you how much I " +
+            text: "##!missx##, Oh thank god. Did I ever tell you how much I " +
                 "hate these things. These people are so uptight you wouldn't be able " +
                 "to fit that giant road cone you call a strap on up any of their asses. ",
             button: [
@@ -642,7 +642,7 @@ room181.chat = function (chatID) {
         {
             chatID: 47,
             speaker: "!girl",
-            text: "Why hello Missy. I see you left " + sc.n("cecilia") + " at the office " +
+            text: "Why hello Missy. I see you left ##cecilia## at the office " +
                 "today. I do love seeing her. Such a spunky girl. ",
             button: [
                 { chatID: 48, text: "...", callback: "" },
@@ -651,7 +651,7 @@ room181.chat = function (chatID) {
         {
             chatID: 48,
             speaker: "missy",
-            text: "Yes, she really is full of spunk. " + sc.n("me") + " is my newest sissy. " +
+            text: "Yes, she really is full of spunk. ##me## is my newest sissy. " +
                 "I found her in the forest. The poor thing was about to be used by the cult.  ",
             button: [
                 { chatID: 49, text: "...", callback: "" },
@@ -669,7 +669,7 @@ room181.chat = function (chatID) {
         {
             chatID: 50,
             speaker: "missy",
-            text: "Of course. " + sc.n("me") + " bend over and spread your cheeks. Show him " +
+            text: "Of course. ##me## bend over and spread your cheeks. Show him " +
                 "what a pretty hole you have. ",
             button: [
                 { chatID: 52, text: "With pleasure ma'am. ", callback: "b203_8" },
@@ -680,7 +680,7 @@ room181.chat = function (chatID) {
             chatID: 51,
             speaker: "missy",
             text: "Hahaha. As you can see, sissies can be so hard to train sometimes. " +
-                sc.n("me") + ", that wasn't a request. Bend over now and show him your " +
+                "##me##, that wasn't a request. Bend over now and show him your " +
                 "pussy or I'll throw you back to the cult. ",
             button: [
                 { chatID: 52, text: "Yes ma'am", callback: "b203_8" },
@@ -788,7 +788,7 @@ room181.chat = function (chatID) {
         {
             chatID: 62,
             speaker: "missy",
-            text: "You better pick it up! " + sc.n("sporty") + " is beating you! Go " +
+            text: "You better pick it up! ##sporty## is beating you! Go " +
                 "faster you slow ass sissy lump of goo! ",
             button: [
                 { chatID: 63, text: "hhrrruuummmmm!", callback: "" },
@@ -885,7 +885,7 @@ room181.chat = function (chatID) {
             text: "Ok girls. I'm going to take you back. You all stink of body odor " +
                 "and ass. You girls did good. They liked the sissy race so much they're going " +
                 "to do it every Tuesday and Thursday if you want to come back. Just do me a favor " +
-                "and don't tell " + sc.n("ralph") + ". ",
+                "and don't tell ##ralph##. ",
             button: [
                 { chatID: -1, text: "[Return home - also future pony races in development]", callback: "b203_23" },
             ]
@@ -922,7 +922,7 @@ room181.chat = function (chatID) {
             text: "Oh wow I really can't see or hear anything. I can feel some senses " +
                 "from the floor. I wonder if it's the other girls. Or maybe other " +
                 "people are coming in. I don't know. I wouldn't put anything past " +
-                sc.n("black") + ".",
+                "##black##.",
             button: [
                 { chatID: 76, text: "...", callback: "b303_1" },
             ]
@@ -955,7 +955,7 @@ room181.chat = function (chatID) {
             text: "I'm getting bent over something. Hard and cool. I think it's metal. " +
                 "It doesn't feel soft like wood or plastic. Has to be metal. " +
                 "And now we're being tied up. Of course we're being tied up. " +
-                "Damn it's tight. I can't move my hands or legs. " + sc.n("black") + 
+                "Damn it's tight. I can't move my hands or legs. ##black##" + 
                 " must have done the ties. Feels like her work. ",
             button: [
                 { chatID: 79, text: "...", callback: "b303_4" },
@@ -989,8 +989,8 @@ room181.chat = function (chatID) {
             chatID: 81,
             speaker: "thinking",
             text: "Something just poked me... Was it a finger. It felt soft like a finger. " +
-                "Why would they poke me? Is " + sc.n("black") + " checking if I'm still alive? " +
-                "Is it someone else? Maybe " + sc.n("black") + " left us out here and it's up " +
+                "Why would they poke me? Is ##black## checking if I'm still alive? " +
+                "Is it someone else? Maybe ##black## left us out here and it's up " +
                 "to use to free ourselves. I should try to ask for help. ",
             button: [
                 { chatID: 82, text: "*muffled noises*", callback: "b303_6" },
@@ -1107,7 +1107,7 @@ room181.chat = function (chatID) {
             speaker: "black",
             text: "I hope you've found who you really are " +
                 "on this little outing. I do know the crowd enjoyed the show. " + 
-                sc.n("!timothy") + " you performed wonderfully as always. I admit " +
+                "##!timothy## you performed wonderfully as always. I admit " +
                 "I've never witnessed anyone take as much as you did. I had to convince " +
                 "some of the men to go visit you other girls. This concludes our class. ",
             button: [
@@ -1245,7 +1245,7 @@ room181.chat = function (chatID) {
         {
             chatID: 106,
             speaker: "black",
-            text: sc.n("!timothy") + ", you're the sluttiest girl here, we'll start with you " +
+            text: "##!timothy##, you're the sluttiest girl here, we'll start with you " +
                 "so you can show the other girls good poses. ",
             button: [
                 { chatID: 107, text: "...", callback: "ez215_1" },
@@ -1254,7 +1254,7 @@ room181.chat = function (chatID) {
         {
             chatID: 107,
             speaker: "black",
-            text: "Now girls, look at " + sc.n("!timothy") + "'s pose. It shows her confidence " +
+            text: "Now girls, look at ##!timothy##'s pose. It shows her confidence " +
                 "in who she is, with just a subtle display of her little chastity cage to " +
                 "show the viewer her tiny clitty is off limits. Simply sexy. Such a bratty sissy " +
                 "I'm looking forward to breaking.",
@@ -1265,8 +1265,8 @@ room181.chat = function (chatID) {
         {
             chatID: 108,
             speaker: "black",
-            text: sc.n("!thomas") + " is on her knees. This is because she wants everyone " +
-                "to know that she's a submissive cock sucker. Isn't that right " + sc.n("!thomas") +
+            text: "##!thomas## is on her knees. This is because she wants everyone " +
+                "to know that she's a submissive cock sucker. Isn't that right ##!thomas##" +
                 "?",
             button: [
                 { chatID: 109, text: "...", callback: "" },
@@ -1284,9 +1284,9 @@ room181.chat = function (chatID) {
         {
             chatID: 110,
             speaker: "black",
-            text: sc.n("!chris") + " here has turned her back to the camera. This shows " +
+            text: "##!chris## here has turned her back to the camera. This shows " +
                 "she's still very afraid of showing her face, but does love to show off " +
-                "her tight little butt. " + sc.n("!chris") + " still needs a lot of work " +
+                "her tight little butt. ##!chris## still needs a lot of work " +
                 "in finding her confidence, hopefully the comments in this post will help " +
                 "her.",
             button: [

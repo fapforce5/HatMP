@@ -315,7 +315,7 @@ room725.chat = function (chatID) {
             {
                 chatID: 3,
                 speaker: "thinking",
-                text: "Oh crap. There's " + sc.n("chloe") + "! Is that Emily? Damn she got hot since " +
+                text: "Oh crap. There's ##chloe##! Is that Emily? Damn she got hot since " +
                     "high school. I don't think they see me yet. ",
                 button: [
                     { chatID: 24, text: "Hang back and watch from afar. ", callback: "chloe1x" },
@@ -326,7 +326,7 @@ room725.chat = function (chatID) {
             {
                 chatID: 4,
                 speaker: "me",
-                text: "Hey " + sc.n("chloe") + ", Emily. Didn't expect to see you two out tonight. ",
+                text: "Hey ##chloe##, Emily. Didn't expect to see you two out tonight. ",
                 button: [
                     { chatID: 5, text: "...", callback: "" }
                 ]
@@ -334,7 +334,7 @@ room725.chat = function (chatID) {
             {
                 chatID: 5,
                 speaker: "chloe",
-                text: "Oh. Hi, " + sc.n("zoey") + "'s friend, right? I was just chatting with " +
+                text: "Oh. Hi, ##zoey##'s friend, right? I was just chatting with " +
                     "my new friend, Emily, here. Girl's night out. We were hoping to just hang " +
                     "out together. Hope you don't mind, but can we have some privacy? ",
                 button: [
@@ -346,7 +346,7 @@ room725.chat = function (chatID) {
                 chatID: 6,
                 speaker: "chloe",
                 text: "Sorry hon. Just hanging out with my friend. It is getting late. I'm probably  " +
-                    "just going to go home now. Bye Em, Bye " + sc.n("zoey") + "'s friend. ",
+                    "just going to go home now. Bye Em, Bye ##zoey##'s friend. ",
                 button: [
                     { chatID: -1, text: "Oh, sorry. Sure.", callback: "chloefail" },
                 ]
@@ -362,7 +362,7 @@ room725.chat = function (chatID) {
             {
                 chatID: 8,
                 speaker: "!emily",
-                text: "Awww, don't be like that. Hi " + sc.n("me") + ". It's been a while, hehehe.",
+                text: "Awww, don't be like that. Hi ##me##. It's been a while, hehehe.",
                 button: [
                     { chatID: 9, text: "Totally. You're way hotter than high school!", callback: "" },
                 ]
@@ -371,7 +371,7 @@ room725.chat = function (chatID) {
                 chatID: 9,
                 speaker: "!emily",
                 text: "Pilates, it totally changed my life. You're still as cute as you ever were. " +
-                    "You were so funny hehehe. Remember that time in gym when " + sc.n("river") +
+                    "You were so funny hehehe. Remember that time in gym when ##river##" +
                     " pantsed you. I never laughed harder. You still wearing tighty whities? ",
                 button: [
                     { chatID: 11, text: "There's only one way to find out for sure. ", callback: "" },
@@ -389,7 +389,7 @@ room725.chat = function (chatID) {
             {
                 chatID: 11,
                 speaker: "!emily",
-                text: "Hehehe. I guess I'll have to find out. What do you say " + sc.n("chloe") +
+                text: "Hehehe. I guess I'll have to find out. What do you say ##chloe##" +
                     "? Want to find out what underwear he's wearing? ",
                 button: [
                     { chatID: 12, text: "...", callback: "" },
@@ -432,7 +432,7 @@ room725.chat = function (chatID) {
             {
                 chatID: 16,
                 speaker: "chloe",
-                text: "Sure. This could be a lot of fun. " + sc.n("me") + ", this is just between " +
+                text: "Sure. This could be a lot of fun. ##me##, this is just between " +
                     "us. No telling anyone, ok? ",
                 button: [
                     { chatID: 17, text: "Ok!", callback: "" },
@@ -582,7 +582,7 @@ room725.chat = function (chatID) {
                     "Should I take that risk with this asshole? ",
                 button: [
                     { chatID: -1, text: "[Take him up on his offer and go to his home]", callback: "toRiver728" },
-                    { chatID: -1, text: "Fuck you " + sc.n("river") + "! I'm not going anywhere with you!", callback: "reset" },
+                    { chatID: -1, text: "Fuck you ##river##! I'm not going anywhere with you!", callback: "reset" },
                 ]
             },
         ];

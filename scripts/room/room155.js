@@ -296,7 +296,7 @@ room155.chat = function (chatID) {
         {
             chatID: 13,
             speaker: "bitch",
-            text: "I told you to never come in here! " + sc.n("chef") + "!! " + sc.n("chef") + "!! Get " +
+            text: "I told you to never come in here! ##chef##!! ##chef##!! Get " +
                 "in here! I need your help!! ",
             button: [
                 { chatID: 14, text: "What? ", callback: "servent1" },
@@ -367,7 +367,7 @@ room155.chat = function (chatID) {
             speaker: "bitch",
             text: "It's time. When we get up there I'm going to put you in place. The most important thing " +
                 "is once you're set don't move a muscle. No matter what happens, you just stay still unless " +
-                sc.n("jones") + " tells you otherwise. Got it? ",
+                "##jones## tells you otherwise. Got it? ",
             button: [
                 { chatID: 20, text: "*meekly* Got it. ", callback: "servent7" },
             ]

@@ -636,7 +636,7 @@ room318.chat = function (chatID) {
             {
                 chatID: 0,
                 speaker: "thinking",
-                text: "Uh oh. Looks like " + sc.n("dog") + " doesn't want me in here. I better back " +
+                text: "Uh oh. Looks like ##dog## doesn't want me in here. I better back " +
                     "out before he attacks me. ",
                 button: [
                     { chatID: -1, text: "...", callback: "" }
@@ -654,7 +654,7 @@ room318.chat = function (chatID) {
             {
                 chatID: 2,
                 speaker: "thinking",
-                text: "Shit! I forgot to let " + sc.n("dog") + " back in! I better go get him! ",
+                text: "Shit! I forgot to let ##dog## back in! I better go get him! ",
                 button: [
                     { chatID: -1, text: "Let him in.", callback: "letInDog" }
                 ]
@@ -662,7 +662,7 @@ room318.chat = function (chatID) {
             {
                 chatID: 3,
                 speaker: "thinking",
-                text: sc.n("janice") + "'s clean crisp panties and bras. So fresh, so pink. She has " +
+                text: "##janice##'s clean crisp panties and bras. So fresh, so pink. She has " +
                     "so many I'm sure she won't miss one pair missing.",
                 button: [
                     { chatID: -1, text: "[Steal her panties and bra]", callback: "steal" },
@@ -681,7 +681,7 @@ room318.chat = function (chatID) {
             {
                 chatID: 5,
                 speaker: "thinking",
-                text: sc.n("janice") + "'s clean crisp panties. She looks so hot in them!",
+                text: "##janice##'s clean crisp panties. She looks so hot in them!",
                 button: [
                     { chatID: -1, text: "[Put them back]", callback: "reset" }
                 ]
@@ -689,7 +689,7 @@ room318.chat = function (chatID) {
             {
                 chatID: 6,
                 speaker: "thinking",
-                text: sc.n("janice") + "'s red dress. She was so hot in it. ",
+                text: "##janice##'s red dress. She was so hot in it. ",
                 button: [
                     { chatID: -1, text: "[Put them back] [Sissy level too low]", callback: "reset" }
                 ]
@@ -697,7 +697,7 @@ room318.chat = function (chatID) {
             {
                 chatID: 7,
                 speaker: "thinking",
-                text: sc.n("janice") + "'s red dress. She was so hot in it. I bet I would look sexy " +
+                text: "##janice##'s red dress. She was so hot in it. I bet I would look sexy " +
                     "in that dress.... ",
                 button: [
                     { chatID: -1, text: "[Steal her dress]", callback: "stealDress" },
@@ -864,7 +864,7 @@ room318.chat = function (chatID) {
                 chatID: 23,
                 speaker: "janice",
                 text: "Shhhh. Don't say anything. " + gender.pronoun("boy") + "'s don't " +
-                    "think straight after an orgasm. Now I have to take " + sc.n("dog") +
+                    "think straight after an orgasm. Now I have to take ##dog##" +
                     " for his walk. Can't wait to see you again. I think I'm totally falling " +
                     "for you.",
                 button: [
@@ -919,7 +919,7 @@ room318.chat = function (chatID) {
                 text: "Sit back and watch a real man work. I'm going to have her screaming " +
                     "for my dick in ways you've never heard.",
                 button: [
-                    { chatID: -1, text: "[Watch " + sc.n("chad") + " fuck your girlfriend]", callback: "brad1" },
+                    { chatID: -1, text: "[Watch ##chad## fuck your girlfriend]", callback: "brad1" },
                 ]
             },
             {
@@ -948,7 +948,7 @@ room318.chat = function (chatID) {
                 text: "I've got to run to baseball practice. I'll let you two bitches " +
                     "finish up. Call me if you need a real dick!",
                 button: [
-                    { chatID: 32, text: "ok. Bye " + sc.n("chad"), callback: "datr_brad_7" },
+                    { chatID: 32, text: "ok. Bye ##chad##", callback: "datr_brad_7" },
                 ]
             },
             {
@@ -990,7 +990,7 @@ room318.chat = function (chatID) {
             {
                 chatID: 36,
                 speaker: "janice",
-                text: "Awwww! I was looking forward to this. " + sc.n("me") + ", can you " +
+                text: "Awwww! I was looking forward to this. ##me##, can you " +
                     "just wait in the living room? You can still hear us. ",
                 button: [
                     { chatID: 37, text: "...but", callback: "" },
@@ -1033,7 +1033,7 @@ room318.chat = function (chatID) {
             {
                 chatID: 41,
                 speaker: "janice",
-                text: "Let me introduce my fem-boyfriend " + sc.n("me") + "; " + gender.pronoun("he") +
+                text: "Let me introduce my fem-boyfriend ##me##; " + gender.pronoun("he") +
                     " likes to watch me have sex since " + gender.pronoun("he") + "'s not " +
                     "manly enough to do it " + gender.pronoun("him") + "self. ",
                 button: [
@@ -1085,7 +1085,7 @@ room318.chat = function (chatID) {
                 speaker: "thinking",
                 text: "He's been fucking her hard for like 20 minutes! How does he last " +
                     "that long? He must work out to have that kind of stamina. " +
-                    "I haven't heard " + sc.n("janice") + " scream like that ever! I so wish " +
+                    "I haven't heard ##janice## scream like that ever! I so wish " +
                     "I could orgasm like that for a solid 20 minutes. It's like waves, one " +
                     "orgasm after another. I wish he'd fuck me like that... ",
                 button: [

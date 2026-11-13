@@ -1157,7 +1157,7 @@ room555.chat = function (chatID) {
             {
                 chatID: 32,
                 speaker: "g",
-                text: "Welcome to the secret back gym. " + sc.n("chad") + " and I built this because " +
+                text: "Welcome to the secret back gym. ##chad## and I built this because " +
                     "we needed a place for just the handsome and beautiful people can work out and not " +
                     "be around the gross ugly people. I've decided you're no longer a disgusting blob of human " +
                     "so you're now invited to work out with the most beautiful people of Fetville. ",
@@ -1400,7 +1400,7 @@ room555.chat = function (chatID) {
             {
                 chatID: 60,
                 speaker: "me",
-                text: "So, uhh, " + sc.n("chad") + ". I uhh... wanted to visit a friend at that compound, but " +
+                text: "So, uhh, ##chad##. I uhh... wanted to visit a friend at that compound, but " +
                     "you know, they don't let me in the front door. So I was wondering, if uh, you would mind " +
                     "helping me with the code so I can go in the back door and visit her really quick? ",
                 button: [
@@ -1420,7 +1420,7 @@ room555.chat = function (chatID) {
             {
                 chatID: 62,
                 speaker: "chad",
-                text: "heh. HEY EVERYBODY! Gather around, " + sc.n("me") + " is going to show everyone what a " +
+                text: "heh. HEY EVERYBODY! Gather around, ##me## is going to show everyone what a " +
                     "giant loser " + gender.pronoun("she") + " is. ",
                 button: [
                     { chatID: 63, text: "huh?", callback: "c0" },
@@ -1518,7 +1518,7 @@ room555.chat = function (chatID) {
             {
                 chatID: 73,
                 speaker: "!girl",
-                text: "This fucking tease can't lick an asshole to save " + gender.pronoun("her") + " life! I'm going back to my work out. " + sc.n("chad") +
+                text: "This fucking tease can't lick an asshole to save " + gender.pronoun("her") + " life! I'm going back to my work out. ##chad##" +
                     " you can keep your loser. ",
                 button: [
                     { chatID: -1, text: "*heavy panting* I can't help it. So big. ", callback: "c9" },

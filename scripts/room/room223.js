@@ -188,14 +188,14 @@ room223.chat = function (chatID) {
             text: "You know I'm an investigator that has interrogated countless people. I can tell when you lie. Now stop " +
                 "lying and tell me the truth.",
             button: [
-                { chatID: 6, text: "I took them from my " + sc.n("el") + ".", callback: "" },
+                { chatID: 6, text: "I took them from my ##el##.", callback: "" },
             ]
         },
         {
             chatID: 6,
             speaker: "missy",
             text: "You dirty little panty thief. Not only are you stealing panties, but you're stealing them from your " +
-                sc.n("el") + ". You disgusting little sissy. ",
+                "##el##. You disgusting little sissy. ",
             button: [
                 { chatID: 7, text: "...", callback: "" },
             ]
@@ -275,7 +275,7 @@ room223.chat = function (chatID) {
         {
             chatID: 15,
             speaker: "missy",
-            text: "I spoke with my friend " + sc.n("tiffany") + " at Toys 'n Us to pick you out " +
+            text: "I spoke with my friend ##tiffany## at Toys 'n Us to pick you out " +
                 "something suitable for working here, but also expresses your new sissy mentality. " +
                 "I'm sure it will be just perfect. Go visit her and pick up your new uniform. " +
                 "From now on this will be your attire to work here. If you're too embarrassed " +
@@ -289,8 +289,8 @@ room223.chat = function (chatID) {
             speaker: "missy",
             text: "Hmm, cheetah panties. A young girl isn't going to wear those. They're a bit " +
                 "big for your narrow butt. Definitely owned by an older female with a big butt. " +
-                "They're your " + sc.n("landlord") + "'s aren't they. I would be disgusted, but " +
-                "stealing your " + sc.n("landlord") + "'s panties is pretty typical for someone " +
+                "They're your ##landlord##'s aren't they. I would be disgusted, but " +
+                "stealing your ##landlord##'s panties is pretty typical for someone " +
                 "like you. ",
             button: [
                 { chatID: 7, text: "Yes ma'am. I stole them.  ", callback: "" },

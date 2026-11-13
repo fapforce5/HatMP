@@ -1020,7 +1020,7 @@ room501.chat = function (chatID) {
                 return {
                     chatID: 700,
                     speaker: "zoey",
-                    text: sc.n("charlie") + " is such a weird little pervert. He totally puts on the " +
+                    text: "##charlie## is such a weird little pervert. He totally puts on the " +
                         "frumpiest dress to get into my club and try to hit on the girls. I overheard " +
                         "one of the girls saying he is not trusted by anyone at C.U.M. He does not " +
                         "have the code. ",
@@ -1033,7 +1033,7 @@ room501.chat = function (chatID) {
                 return {
                     chatID: 700,
                     speaker: "zoey",
-                    text: "Haha, I know " + sc.n("spanky") + ". Every time I stop by his store he is shaking " +
+                    text: "Haha, I know ##spanky##. Every time I stop by his store he is shaking " +
                         "his dick at me telling me he is going to convert me. Anyway I heard the girls talking " +
                         "about him. No one trusts him at C.U.M. They say he talks way too much and no one would " +
                         "ever let him hold onto a secret like the back door code. ",
@@ -1046,7 +1046,7 @@ room501.chat = function (chatID) {
                 return {
                     chatID: 700,
                     speaker: "zoey",
-                    text: sc.n("chef") + " is always hanging around my front door. He has a thing for girls " +
+                    text: "##chef## is always hanging around my front door. He has a thing for girls " +
                         "with small penises. Personnellement, je pense qu'il aime exercer un " +
                         "pouvoir sur eux pour compenser ses propres échecs. He is too new in the cult to " +
                         "know the code. ",
@@ -1059,12 +1059,12 @@ room501.chat = function (chatID) {
                 return {
                     chatID: 700,
                     speaker: "zoey",
-                    text: "You know that " + sc.n("tony") + " guy actually tried to get me to work for him " +
+                    text: "You know that ##tony## guy actually tried to get me to work for him " +
                         "as some kind of stripper!  He even said I did not have to do the blow job to get the job. " +
                         "I worked my bottom off at my bar and he wants me to throw " +
                         "it away for him. " +
-                        " Putain de connard. Talking with the girls it seems like that " + sc.n("ubel") +
-                        " man hates " + sc.n("tony") + ". Something about power, I do not know. He is hated and would not " +
+                        " Putain de connard. Talking with the girls it seems like that ##ubel##" +
+                        " man hates ##tony##. Something about power, I do not know. He is hated and would not " +
                         "know the code.",
                     button: [
                         { chatID: 700, text: "ok", callback: "zLook" }
@@ -1075,7 +1075,7 @@ room501.chat = function (chatID) {
                 return {
                     chatID: 700,
                     speaker: "zoey",
-                    text: "I know this " + sc.n("cindy") + ". She came in to my bar really drunk " +
+                    text: "I know this ##cindy##. She came in to my bar really drunk " +
                         "complaining about having to give the blow job to hairy ugly man! Hahaha I do not " +
                         "complain about her complaint. No one wants to do the blow job to them! " +
                         "But she is a simple girl who does not know anything. ",
@@ -1108,7 +1108,7 @@ room501.chat = function (chatID) {
                 speaker: "zoey",
                 text: "Hahah, you know I am just joking! ",
                 button: [
-                    { chatID: 3, text: "So how's your girlfriend, " + sc.n("chloe") + ", doing?", callback: "zSuprise" }
+                    { chatID: 3, text: "So how's your girlfriend, ##chloe##, doing?", callback: "zSuprise" }
                 ]
             },
             {
@@ -1124,13 +1124,13 @@ room501.chat = function (chatID) {
                 speaker: "zoey",
                 text: "HAHAHA yeah she does, I am so jealous. I am so totally in love!",
                 button: [
-                    { chatID: 5, text: "Aww. I'm happy for you " + sc.n("zoey") + ". ", callback: "zLook" }
+                    { chatID: 5, text: "Aww. I'm happy for you ##zoey##. ", callback: "zLook" }
                 ]
             },
             {
                 chatID: 5,
                 speaker: "zoey",
-                text: "Thanks " + sc.n("me") + ", you are the best friend any girl could want. ",
+                text: "Thanks ##me##, you are the best friend any girl could want. ",
                 button: [
                     { chatID: -1, text: "Thanks bestie!", callback: "resetEndTalk" }
                 ]
@@ -1140,7 +1140,7 @@ room501.chat = function (chatID) {
                 speaker: "zoey",
                 text: "Back for your can of beat ass? I have got an entire case!",
                 button: [
-                    { chatID: 7, text: "Damn it " + sc.n("zoey") + " it's a can of whoop ass!", callback: "zForward" }
+                    { chatID: 7, text: "Damn it ##zoey## it's a can of whoop ass!", callback: "zForward" }
                 ]
             },
             {
@@ -1164,7 +1164,7 @@ room501.chat = function (chatID) {
                 speaker: "zoey",
                 text: "It is only because I feel comfortable around you.",
                 button: [
-                    { chatID: 10, text: "So " + sc.n("zoey") + " why don't we ever date?", callback: "zSuprise" }
+                    { chatID: 10, text: "So ##zoey## why don't we ever date?", callback: "zSuprise" }
                 ]
             },
             {
@@ -1241,7 +1241,7 @@ room501.chat = function (chatID) {
                 text: "She does not mind, she likes how happy I am when after I kick you in the ass.",
                 button: [
                     {
-                        chatID: 19, text: "Dammit " + sc.n("zoey") + ", it's 'kick your ass.' Kick you in the ass " +
+                        chatID: 19, text: "Dammit ##zoey##, it's 'kick your ass.' Kick you in the ass " +
                             "sounds like you're putting your foot in my butt-hole. ", callback: "zShock"
                     }
                 ]
@@ -1289,9 +1289,9 @@ room501.chat = function (chatID) {
             {
                 chatID: 24,
                 speaker: "zoey",
-                text: sc.n("me") + " I did not know she was going to do this",
+                text: "##me## I did not know she was going to do this",
                 button: [
-                    { chatID: 27, text: "It's ok " + sc.n('zoey') + ". Chloé has a great pussy, she should show that thing off.", callback: "zSuprise" },
+                    { chatID: 27, text: "It's ok ##zoey##. Chloé has a great pussy, she should show that thing off.", callback: "zSuprise" },
                     { chatID: 25, text: "Hey Chloé, that's not cool, you need to put on some pants", callback: "" }
                 ]
             },
@@ -1314,7 +1314,7 @@ room501.chat = function (chatID) {
             {
                 chatID: 27,
                 speaker: "zoey",
-                text: "Really " + sc.n("me") + "? You do not mind that Chloé is naked in my living room?",
+                text: "Really ##me##? You do not mind that Chloé is naked in my living room?",
                 button: [
                     { chatID: 28, text: "Don't mind? That's the hottest thing I've seen all day", callback: "zForward" }
                 ]
@@ -1354,7 +1354,7 @@ room501.chat = function (chatID) {
             {
                 chatID: 32,
                 speaker: "chloe",
-                text: "Lick my clit " + sc.n("zoey") + ", make me cum all over your goth face.",
+                text: "Lick my clit ##zoey##, make me cum all over your goth face.",
                 button: [
                     { chatID: 34, text: "....", callback: "munchTheTwat2" }
                 ]
@@ -1396,7 +1396,7 @@ room501.chat = function (chatID) {
                 speaker: "zoey",
                 text: "You are the best " + gender.pronoun("ami") + " a girl could have. I am going to clean up. I will catch you later. ",
                 button: [
-                    { chatID: -1, text: "Later " + sc.n("zoey"), callback: "leave" }
+                    { chatID: -1, text: "Later ##zoey##", callback: "leave" }
                 ]
             },
             {
@@ -1420,7 +1420,7 @@ room501.chat = function (chatID) {
                 speaker: "zoey",
                 text: "Hey Tête de noeud, you back for some more kicks in the ass?",
                 button: [
-                    { chatID: 41, text: "Oh my god " + sc.n("zoey") + "! I'm going to destroy you so you can never try to talk shit again. ", callback: "zForward" }
+                    { chatID: 41, text: "Oh my god ##zoey##! I'm going to destroy you so you can never try to talk shit again. ", callback: "zForward" }
                 ]
             },
             {
@@ -1526,7 +1526,7 @@ room501.chat = function (chatID) {
             {
                 chatID: 53,
                 speaker: "zoey",
-                text: "Bonjour " + sc.n("me") + "! Meet my girlfriend Chloé. I forgot we were supposed to go out today.",
+                text: "Bonjour ##me##! Meet my girlfriend Chloé. I forgot we were supposed to go out today.",
                 button: [
                     { chatID: 54, text: "...", callback: "" }
                 ]
@@ -1534,7 +1534,7 @@ room501.chat = function (chatID) {
             {
                 chatID: 54,
                 speaker: "chloe",
-                text: "Hey " + sc.n("me") + " " + sc.n("zoey") + "'s told me so much about you. How's your penis?",
+                text: "Hey ##me## ##zoey##'s told me so much about you. How's your penis?",
                 button: [
                     { chatID: 55, text: "Wha....?", callback: "" }
                 ]
@@ -1542,17 +1542,17 @@ room501.chat = function (chatID) {
             {
                 chatID: 55,
                 speaker: "zoey",
-                text: "Oh Chloé, I told you that in secret! Sorry " + sc.n("me") + ", I told her about that time in 11th grade when " +
+                text: "Oh Chloé, I told you that in secret! Sorry ##me##, I told her about that time in 11th grade when " +
                     "you made fun of Stacy in the lunch room and she kicked you in the balls so hard it looked like she broke them!",
                 button: [
                     { chatID: 59, text: "ohhh, hahaha yeah. They're better now, but feel free to check them.", callback: "" },
-                    { chatID: 56, text: sc.n('zoey') + "!! I can't believe your told her that! So rude.", callback: "zhate" }
+                    { chatID: 56, text: "##zoey##!! I can't believe your told her that! So rude.", callback: "zhate" }
                 ]
             },
             {
                 chatID: 56,
                 speaker: "chloe",
-                text: "Calm down " + sc.n("me") + ", it's funny. Take a chill pill. ",
+                text: "Calm down ##me##, it's funny. Take a chill pill. ",
                 button: [
                     { chatID: 57, text: "But...", callback: "" }
                 ]
@@ -1568,7 +1568,7 @@ room501.chat = function (chatID) {
             {
                 chatID: 58,
                 speaker: "zoey",
-                text: "Pardonne-moi " + sc.n("me") + ", I did not think you would get so upset. I promise never to tell anyone ever again.",
+                text: "Pardonne-moi ##me##, I did not think you would get so upset. I promise never to tell anyone ever again.",
                 button: [
                     { chatID: 62, text: "I shouldn't have blown up at you. You're good ", callback: "" }
                 ]
@@ -1576,7 +1576,7 @@ room501.chat = function (chatID) {
             {
                 chatID: 59,
                 speaker: "chloe",
-                text: "You know " + sc.n("zoey") + " and I just may do that. We'd want to make sure nothing's broken.",
+                text: "You know ##zoey## and I just may do that. We'd want to make sure nothing's broken.",
                 button: [
                     { chatID: 60, text: "Oh yeah...", callback: "" }
                 ]
@@ -1584,7 +1584,7 @@ room501.chat = function (chatID) {
             {
                 chatID: 60,
                 speaker: "zoey",
-                text: "Chloé!!! I am not checking out " + sc.n("me") + "'s coucougnettes!",
+                text: "Chloé!!! I am not checking out ##me##'s coucougnettes!",
                 button: [
                     { chatID: 61, text: "...", callback: "" }
                 ]
@@ -1592,7 +1592,7 @@ room501.chat = function (chatID) {
             {
                 chatID: 61,
                 speaker: "chloe",
-                text: "Hahaha " + sc.n("zoey") + ". I'm just kidding you know my pussy only aches for you.",
+                text: "Hahaha ##zoey##. I'm just kidding you know my pussy only aches for you.",
                 button: [
                     { chatID: 62, text: "...", callback: "zlove" }
                 ]
@@ -1608,7 +1608,7 @@ room501.chat = function (chatID) {
             {
                 chatID: 63,
                 speaker: "zoey",
-                text: "LA PROCHAINE FOIS JE TE BOTTE LE CUL!!! Sorry " + sc.n("me") + " I have a butt to kick!",
+                text: "LA PROCHAINE FOIS JE TE BOTTE LE CUL!!! Sorry ##me## I have a butt to kick!",
                 button: [
                     { chatID: -1, text: "Ok, have fun.", callback: "lookForward" }
                 ]
@@ -1616,7 +1616,7 @@ room501.chat = function (chatID) {
             {
                 chatID: 64,
                 speaker: "zoey",
-                text: "I saw Emily and " + sc.n("chloe") + " hanging out at the mall. They were a little too coquines. ",
+                text: "I saw Emily and ##chloe## hanging out at the mall. They were a little too coquines. ",
                 button: [
                     { chatID: 65, text: "Did you talk to them?", callback: "zShock" }
                 ]
@@ -1640,7 +1640,7 @@ room501.chat = function (chatID) {
             {
                 chatID: 67,
                 speaker: "zoey",
-                text: "I need you to spy on her! Catch " + sc.n("chloe") + " flirter avec Emily. ",
+                text: "I need you to spy on her! Catch ##chloe## flirter avec Emily. ",
                 button: [
                     { chatID: 68, text: "That's crazy! ", callback: "zLook" }
                 ]
@@ -1648,8 +1648,8 @@ room501.chat = function (chatID) {
             {
                 chatID: 68,
                 speaker: "thinking",
-                text: "Oh man! " + sc.n("zoey") + "'s gone crazy over this girl. I haven't seen her this stressed before. I want to " +
-                    "help her, but is it right to spy on " + sc.n("chloe") + "? This could backfire REALLY BIG!",
+                text: "Oh man! ##zoey##'s gone crazy over this girl. I haven't seen her this stressed before. I want to " +
+                    "help her, but is it right to spy on ##chloe##? This could backfire REALLY BIG!",
                 button: [
                     { chatID: 69, text: "...", callback: "" }
                 ]
@@ -1692,7 +1692,7 @@ room501.chat = function (chatID) {
             {
                 chatID: 73,
                 speaker: "zoey",
-                text: "I just found out " + sc.n("chloe") + " has been cheating on me. I confronted her about it and she admitted everything. ",
+                text: "I just found out ##chloe## has been cheating on me. I confronted her about it and she admitted everything. ",
                 button: [
                     { chatID: 74, text: "oh", callback: "" }
                 ]
@@ -1737,7 +1737,7 @@ room501.chat = function (chatID) {
                 speaker: "me",
                 text: "Emily. I saw them at the club and I followed them back to her apartment. " +
                     "They were definitely together. I saw them making out and touching each other. " +
-                    "Sorry " + sc.n("zoey") + ", " + sc.n("chloe") + " is cheating on you. ",
+                    "Sorry ##zoey##, ##chloe## is cheating on you. ",
                 button: [
                     { chatID: 79  , text: "...", callback: "" },
                 ]
@@ -1771,7 +1771,7 @@ room501.chat = function (chatID) {
             {
                 chatID: 82,
                 speaker: "chloe",
-                text: sc.n("zoey") + ", " + sc.n("me") + "? I didn't know you two were fucking. " +
+                text: "##zoey##, ##me##? I didn't know you two were fucking. " +
                     "You should have told me! I was thinking the three of us should fuck since he " +
                     "saw my bare ass pussy. This is going to be awesome!  ",
                 button: [
@@ -1784,8 +1784,8 @@ room501.chat = function (chatID) {
                 text: "We are not fucking! " + gender.pronoun("he") + " is my best friend! " +
                     "Nous n'aurons jamais de relations sexuelles! You are a pute infidèle! I " +
                     "am so so so angry right now, I can not even think in english! I am going to " +
-                    "foot butt you so hard! " + sc.n("me") + " wait in my living room. This " +
-                    "will not take long. " + sc.n("chloe") + ", je vais te faire savoir!",
+                    "foot butt you so hard! ##me## wait in my living room. This " +
+                    "will not take long. ##chloe##, je vais te faire savoir!",
                 button: [
                     { chatID: 84, text: "oh sure [Go wait in the living room]", callback: "cheating6" },
                 ]
@@ -1794,8 +1794,8 @@ room501.chat = function (chatID) {
                 chatID: 84,
                 speaker: "thinking",
                 text: "Oh wow. I don't think I've ever seen her so mad! She's really going " +
-                    "to give it to " + sc.n("chloe") + "! I hope she doesn't kill her. No, " + 
-                    "she wouldn't kill her. She's too nice.. oh look " + sc.n("chloe") + " left " +
+                    "to give it to ##chloe##! I hope she doesn't kill her. No, " + 
+                    "she wouldn't kill her. She's too nice.. oh look ##chloe## left " +
                     "her bag on the table... ",
                 button: [
                     { chatID: -1, text: "Do I snoop on her purse, or just interrupt their fight? ", callback: "" },
@@ -1804,7 +1804,7 @@ room501.chat = function (chatID) {
             {
                 chatID: 85,
                 speaker: "thinking",
-                text: "That's her pocketbook. If I get caught it will look like I'm trying to steal from " + sc.n("chloe") + ".",
+                text: "That's her pocketbook. If I get caught it will look like I'm trying to steal from ##chloe##.",
                 button: [
                     { chatID: -1, text: "...", callback: "cheating6" }
                 ]
@@ -1821,7 +1821,7 @@ room501.chat = function (chatID) {
                 chatID: 87,
                 speaker: "zoey",
                 text: "Mon dieu. I forgot you were out there. Elle s'excuse auprès de ma chatte. " +
-                    "But, we are fini. Au revoir " + sc.n("chloe") + ". You were fun, but I can not " +
+                    "But, we are fini. Au revoir ##chloe##. You were fun, but I can not " +
                     "date a cheater. You knew that. ",
                 button: [
                     { chatID: 88, text: "[Continue to stare at their pussies...]", callback: "" },
@@ -1854,8 +1854,8 @@ room501.chat = function (chatID) {
                 text: "So, you know how you asked me to see if she was cheating. Well, I caught " +
                     "her in the club with Emily, but I did not know if they were just chatting " +
                     "or if they were having sex. Well, Emily invited me to her place and " +
-                    sc.n("chloe") + " came along too. I was going to hook up with just Emily " +
-                    "but one thing led to another and " + sc.n("chloe") + " ended up having " +
+                    "##chloe## came along too. I was going to hook up with just Emily " +
+                    "but one thing led to another and ##chloe## ended up having " +
                     "sex with both Emily and I. ",
                 button: [
                     { chatID: 91, text: "...", callback: "" },
@@ -1874,7 +1874,7 @@ room501.chat = function (chatID) {
             {
                 chatID: 92,
                 speaker: "zoey",
-                text: "I am so angry at " + sc.n("chloe") + ", but I knew it! I knew she was always " +
+                text: "I am so angry at ##chloe##, but I knew it! I knew she was always " +
                     "a cheater! And you! You did not have to sex her to find out! You could have just " +
                     "told me they were at the club. I should be mad at you, but you did what I asked. " +
                     "I am not heureuse with you, but I am not mad. Right now I am just tired. So very " +
@@ -1886,7 +1886,7 @@ room501.chat = function (chatID) {
             {
                 chatID: 93,
                 speaker: "zoey",
-                text: "You did not. " + sc.n("chloe") + " did. Right now I just need to lay down. " +
+                text: "You did not. ##chloe## did. Right now I just need to lay down. " +
                     "Please I can not be alone right now. Just lay with me and let me be sad. ",
                 button: [
                     { chatID: 81, text: "Anything for my best friend. ", callback: "cheating1x" },
@@ -1905,7 +1905,7 @@ room501.chat = function (chatID) {
                 speaker: "me",
                 text: "So at my work there's this place where girls crawl into a hole with their " +
                     "naked ass exposed and random men come and have sex with those girls. " + 
-                    sc.n("chloe") + " was one of those girls in the hole and many different men " +
+                    "##chloe## was one of those girls in the hole and many different men " +
                     "came by and had sex with her naked pussy and asshole. ",
                 button: [
                     { chatID: 96, text: "...", callback: "zCry" },
@@ -1927,7 +1927,7 @@ room501.chat = function (chatID) {
                     "The place near my work has it, and I heard she was there so I checked and " +
                     "saw her in the hole with a guy having sex. Also, no, I would never have sex " +
                     "with the women in the hole. I'm sorry I had to be the one to tell you, but " +
-                    sc.n("chloe") + " is very much cheating on you. Are you going to be ok? Do " +
+                    "##chloe## is very much cheating on you. Are you going to be ok? Do " +
                     "you need a hug? ",
                 button: [
                     { chatID: 80, text: "...", callback: "cheating0" },
@@ -1944,7 +1944,7 @@ room501.chat = function (chatID) {
             {
                 chatID: 99,
                 speaker: "zoey",
-                text: "Is not " + sc.n("stormy") + " une zouz? Love how fun she is, but she " +
+                text: "Is not ##stormy## une zouz? Love how fun she is, but she " +
                     "can be so mean... I think I like that about her. Oh, feel free to sleep " +
                     "over when ever you want. Ma maison est ta maison. No touching ma foufoune. ",
                 button: [
@@ -1954,7 +1954,7 @@ room501.chat = function (chatID) {
             {
                 chatID: 100,
                 speaker: "zoey",
-                text: sc.n("stormy") + " asked if you want to watch us have dirty sex. C'est à toi. " +
+                text: "##stormy## asked if you want to watch us have dirty sex. C'est à toi. " +
                     "Meet me at the bar if you want to watch us. Bring some handcuffs and wear " +
                     "a dispositif de chasteté... uh chastity... uh thing. ",
                 button: [

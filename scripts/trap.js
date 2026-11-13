@@ -3250,7 +3250,7 @@ room1005.chat = function (chatID) {
             {
                 chatID: 65,
                 speaker: "me",
-                text: "If only my " + sc.n("landlord") + " could see me now, fucking myself on a tree branch. ",
+                text: "If only my ##landlord## could see me now, fucking myself on a tree branch. ",
                 button: [
                     { chatID: -1, text: "Pull the branch out of your filthy hole. ", callback: "kill" },
                 ]

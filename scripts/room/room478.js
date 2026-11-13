@@ -503,7 +503,7 @@ room478.chat = function (chatID) {
                 "during the impregnation ritual the evil spirits decided she wasn't worthy and ripped her eyes " +
                 "out. She didn't even want to do it, they made her! And that evil fucking spirit ripped out her eyes " +
                 "anyway. Fucking horrible. Then they threw her in the swamps to die. Luckily the " +
-                sc.n("queen") + " was able to find her and save us from fucking dying. ",
+                "##queen## was able to find her and save us from fucking dying. ",
             button: [
                 { chatID: 13, text: "Holy crap! What's the evil spirit? ", callback: "" },
             ]
@@ -567,7 +567,7 @@ room478.chat = function (chatID) {
         {
             chatID: 19,
             speaker: "!sissy_duo1",
-            text: "Ugh! " + sc.n("a") + " always sends the clueless new girls around like they're on some " +
+            text: "Ugh! ##a## always sends the clueless new girls around like they're on some " +
                 "kinda mission to save themselves. Like you, we all had terrible stories of our time with " +
                 "the cult, but they are better than the stories of those that did not survive their time " +
                 "there. Only a few girls have chosen to leave and those girls are gone. Disappeared.  " +

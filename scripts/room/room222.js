@@ -359,7 +359,7 @@ room222.chat = function (chatID) {
             chatID: 0,
             speaker: "missy",
             text: "I need you to pick up some files from the police station. Ask for the police report " +
-                "for a Ms. " + sc.n("sammi") + ". If that idiot cop asks what it's for tell him it's for " +
+                "for a Ms. ##sammi##. If that idiot cop asks what it's for tell him it's for " +
                 "a missing persons case. Here's $50 to cover the filing fee.",
             button: [
                 { chatID: -1, text: "Got it. Thanks", callback: "case0-1" }
@@ -368,7 +368,7 @@ room222.chat = function (chatID) {
         {
             chatID: 1,
             speaker: "me",
-            text: "Hi I need the police report for " + sc.n("sammi") + " please. ",
+            text: "Hi I need the police report for ##sammi## please. ",
             button: [
                 { chatID: 2, text: "...", callback: "" }
             ]

@@ -722,7 +722,7 @@ room776.chat = function (chatID) {
         {
             chatID: 41,
             speaker: "priest",
-            text: "She's here of her own volition. " + sc.n("nun") + ", tell this sinner that you wish to stay " +
+            text: "She's here of her own volition. ##nun##, tell this sinner that you wish to stay " +
                 "tell him you are where you belong. ",
             button: [
                 { chatID: 42, text: "...", callback: "" },
@@ -739,7 +739,7 @@ room776.chat = function (chatID) {
         {
             chatID: 43,
             speaker: "priest",
-            text: "You have no business here. Now begone before I involve that simpleton, " + sc.n("ubel") +
+            text: "You have no business here. Now begone before I involve that simpleton, ##ubel##" +
                 ", and his squad of goons to take care of you! ",
             button: [
                 { chatID: 44, text: "I will leave, but only if you tell me the code to the back door of C.U.M.", callback: "" },
@@ -783,7 +783,7 @@ room776.chat = function (chatID) {
         {
             chatID: 48,
             speaker: "nun",
-            text: "Did.. Did you just punch out " + sc.n("priest") + "? ",
+            text: "Did.. Did you just punch out ##priest##? ",
             button: [
                 { chatID: 49, text: "Yes. I suppose I did.", callback: "" },
             ]
@@ -799,7 +799,7 @@ room776.chat = function (chatID) {
         {
             chatID: 50,
             speaker: "nun",
-            text: sc.n("priest") + " said you did. You used the power of satan to trick and seduce me against " +
+            text: "##priest## said you did. You used the power of satan to trick and seduce me against " +
                 "my will. That's why I had to be punished. I have the power of satan over me and punishment " +
                 "is the only way to save my child. ",
             button: [
@@ -818,7 +818,7 @@ room776.chat = function (chatID) {
             chatID: 52,
             speaker: "wyatt",
             text: "Thank you for the call. That poor nun is going to take years of therapy to get over " +
-                "the ghastly events that happened to her. Turns out " + sc.n("priest") + " was also helping C.U.M. out with " +
+                "the ghastly events that happened to her. Turns out ##priest## was also helping C.U.M. out with " +
                 "some app. ",
             button: [
                 { chatID: 53, text: "Some app?", callback: "" },
@@ -848,14 +848,14 @@ room776.chat = function (chatID) {
             speaker: "river",
             text: "Well well well. Look who finally woke up. ",
             button: [
-                { chatID: 56, text: sc.n("river") + "!", callback: "" },
+                { chatID: 56, text: "##river##!", callback: "" },
             ]
         },
         {
             chatID: 56,
             speaker: "river",
             text: "We were going to leave you alone until the heat died off, but not now. Can't have you " +
-                "messing with our friend " + sc.n("priest") + ". Let's take you back to your new home so " +
+                "messing with our friend ##priest##. Let's take you back to your new home so " +
                 "we can all take turns on you then throw you in the swamps. " +
                 "I'm going to enjoy this more than you know. Hehehe",
             button: [
@@ -865,7 +865,7 @@ room776.chat = function (chatID) {
         {
             chatID: 57,
             speaker: "thinking",
-            text: "Crap! That was scary. I need to avoid this place from now on. " + sc.n("priest") +
+            text: "Crap! That was scary. I need to avoid this place from now on. ##priest##" +
                 " now knows that I know all his secrets. ",
             button: [
                 { chatID: -1, text: "[Leave]", callback: "nolongerwelcom" },
@@ -884,13 +884,13 @@ room776.chat = function (chatID) {
             speaker: "!butler",
             text: "*sigh* Can you two wrap this up. My boner pills won't last forever. ",
             button: [
-                { chatID: 60, text: "Oh. " + sc.n("priest") + " do you have the code for the back door to C.U.M.?", callback: "" },
+                { chatID: 60, text: "Oh. ##priest## do you have the code for the back door to C.U.M.?", callback: "" },
             ]
         },
         {
             chatID: 60,
             speaker: "!rex",
-            text: "You came here for some stupid code. " + sc.n("priest") + " just give 'em the code so " +
+            text: "You came here for some stupid code. ##priest## just give 'em the code so " +
                 "we can have our fun!",
             button: [
                 { chatID: -1, text: "...", callback: "orgycode" },

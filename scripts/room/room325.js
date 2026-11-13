@@ -377,7 +377,7 @@ room325.chat = function (chatID) {
         {
             chatID: 5,
             speaker: "rachel",
-            text: "This here's the horse stable. I just need you to brush ol' " + sc.n("horse") + " here. Jimmy say hi to the new farm hand.",
+            text: "This here's the horse stable. I just need you to brush ol' ##horse## here. Jimmy say hi to the new farm hand.",
             button: [
                 { chatID: 6, text: "...", callback: "" }
             ]
@@ -515,7 +515,7 @@ room325.chat = function (chatID) {
         {
             chatID: 21,
             speaker: "rachel",
-            text: "Here to brush the horse? I think " + sc.n("horse") + " is starting to like you.",
+            text: "Here to brush the horse? I think ##horse## is starting to like you.",
             button: [
                 { chatID: -1, text: "I sure am!", callback: "stable" },
                 { chatID: -1, text: "No.", callback: "" },
@@ -525,7 +525,7 @@ room325.chat = function (chatID) {
             chatID: 22,
             speaker: "rachel",
             text: "I can tell your milk's a little low. Take some hormones and get some sleep. In the meantime " +
-                "are you here to brush the horse? I think " + sc.n("horse") + " is starting to like you.",
+                "are you here to brush the horse? I think ##horse## is starting to like you.",
             button: [
                 { chatID: -1, text: "I sure am!", callback: "stable" },
                 { chatID: -1, text: "No.", callback: "" },
@@ -534,7 +534,7 @@ room325.chat = function (chatID) {
         {
             chatID: 23,
             speaker: "rachel",
-            text: "You look ready to milk. I think " + sc.n("horse") + " is starting to like you.",
+            text: "You look ready to milk. I think ##horse## is starting to like you.",
             button: [
                 { chatID: 24, text: "I'm looking for my first milking.", callback: "" },
                 { chatID: -1, text: "I want to brush the horse", callback: "stable" },
@@ -587,7 +587,7 @@ room325.chat = function (chatID) {
             text: "This here is Kinsey, our li'l Irish lassy. Kinsey here was caught trying to pour cow's milk into her milking tubes. " +
                 "Ruined an entire batch. Now she's pinned here until she replaces all that milk plus interest. It was a rather large " +
                 "batch so she's going to be here a while. Don't worry too much, we feed and water her like I did with our cows. " +
-                "Kinsey, moo for " + sc.n("me") + " so this girl here can see you know your place here.",
+                "Kinsey, moo for ##me## so this girl here can see you know your place here.",
             button: [
                 { chatID: 29, text: "...", callback: "" },
             ]
@@ -654,7 +654,7 @@ room325.chat = function (chatID) {
         {
             chatID: 36,
             speaker: "rachel",
-            text: "You look ready to milk. I think " + sc.n("horse") + " is starting to like you.",
+            text: "You look ready to milk. I think ##horse## is starting to like you.",
             button: [
                 { chatID: -1, text: "Milk me", callback: "milkme" },
                 { chatID: -1, text: "I want to brush the horse", callback: "stable" },
@@ -683,11 +683,11 @@ room325.chat = function (chatID) {
             chatID: 39,
             speaker: "thinking",
             text: "Hmmm...... Who do I know with giant fucking tits and willing to be milked everyday? Hmmm....." +
-                "Oh! I know! " + sc.n("envy") + "!!!! She's so deep under I bet I could just tell her to get milked. " +
+                "Oh! I know! ##envy##!!!! She's so deep under I bet I could just tell her to get milked. " +
                 "Plus I know she was thinking of it before she became a fuck doll for the entire town. I'll visit her to see " +
                 "if she'll do it. ",
             button: [
-                { chatID: -1, text: "I'll go talk to " + sc.n("envy") + "!!!", callback: "" }
+                { chatID: -1, text: "I'll go talk to ##envy##!!!", callback: "" }
             ]
         },
         {
@@ -806,7 +806,7 @@ room325.chat = function (chatID) {
         {
             chatID: 52,
             speaker: "thinking",
-            text: "Damn shame what happened here. It's so quiet since the police arrested " + sc.n("rachel") +
+            text: "Damn shame what happened here. It's so quiet since the police arrested ##rachel##" +
                 " and all the farm hands then set those poor girls free. I guess there's nothing left here until " +
                 "someone buys up this place. ",
             button: [
@@ -816,7 +816,7 @@ room325.chat = function (chatID) {
         {
             chatID: 53,
             speaker: "kinsey",
-            text: "Well stuff my butt with an energy soda! " + sc.n("me") + "! Welcome to my farm.",
+            text: "Well stuff my butt with an energy soda! ##me##! Welcome to my farm.",
             button: [
                 { chatID: 54, text: "Your farm? How is it your farm?", callback: "" }
             ]

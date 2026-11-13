@@ -265,16 +265,16 @@ room183.chat = function (chatID) {
                 "whore! I take that back, I do believe it. Bending over for this man that you don't even know to " +
                 "show your sissy pussy and get violated by his cock. I don't even know what to say! ",
             button: [
-                { chatID: 1, text: sc.n("landlord") + "?", callback: "ll2" }
+                { chatID: 1, text: "##landlord##?", callback: "ll2" }
             ]
         },
         {
             chatID: 1,
             speaker: "river",
-            text: "You got yelled at by your " + sc.n("landlord") + "! I always knew you were a loser, ever since I hung " +
+            text: "You got yelled at by your ##landlord##! I always knew you were a loser, ever since I hung " +
                 "you up by your underwear in the hallway and got the entire school to call you skid mark. ",
             button: [
-                { chatID: 2, text: "Shut up " + sc.n("river") + ". ", callback: "ll3" }
+                { chatID: 2, text: "Shut up ##river##. ", callback: "ll3" }
             ]
         },
         {
@@ -369,7 +369,7 @@ room183.chat = function (chatID) {
         {
             chatID: 12,
             speaker: "landlord",
-            text: "That's a good girl. Take it all the way. Be a good little cum dump for " + sc.n("landlord") + ". ",
+            text: "That's a good girl. Take it all the way. Be a good little cum dump for ##landlord##. ",
             button: [
                 { chatID: 13, text: "Gaaaaa  mmMMmmmmm", callback: "" }
             ]
@@ -385,7 +385,7 @@ room183.chat = function (chatID) {
         {
             chatID: 14,
             speaker: "landlord",
-            text: "See. Doesn't that feel right. When " + sc.n("bigguy") + " makes love to me there is no better feeling than " +
+            text: "See. Doesn't that feel right. When ##bigguy## makes love to me there is no better feeling than " +
                 "letting his cum drip out before I run to my toilet and squeeze it out. I see this is what you are now, " +
                 "a cum dump whore. Wear it with pride. Cum is what built our home and put food on our table...",
             button: [

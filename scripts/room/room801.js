@@ -204,7 +204,7 @@ room801.chat = function (chatID) {
             chatID: 0,
             speaker: "ralphsdad",
             text: "Hey champ! Just watching the big game. I guess you came over to see my boy " +
-                sc.n("ralph") + "! You'll find him upstairs playing in his room. You know you " +
+                "##ralph##! You'll find him upstairs playing in his room. You know you " +
                 "boys should go outside and play a bit. A little kick ball is good for ya. ",
             button: [
                 { chatID: -1, text: "Sure Ralph's dad. Maybe we will. ", callback: "" }
@@ -213,7 +213,7 @@ room801.chat = function (chatID) {
         {
             chatID: 1,
             speaker: "ralphsdad",
-            text: sc.n("ralph") + "'s room is just around the corner. I'm sure he's been waiting " +
+            text: "##ralph##'s room is just around the corner. I'm sure he's been waiting " +
                 "for you. ",
             button: [
                 { chatID: -1, text: "Thanks. ", callback: "" }
@@ -225,7 +225,7 @@ room801.chat = function (chatID) {
             text: "You're looking really firm. I love it when you come by.",
             button: [
                 { chatID: 3, text: "[Linger a bit]", callback: "" },
-                { chatID: -1, text: "Thanks! Just came by to see " + sc.n("ralph") + "!", callback: "ralphRoom" },
+                { chatID: -1, text: "Thanks! Just came by to see ##ralph##!", callback: "ralphRoom" },
             ]
         },
         {
@@ -233,7 +233,7 @@ room801.chat = function (chatID) {
             speaker: "ralphsdad",
             text: "I love watching you grow into the woman you are. ",
             button: [
-                { chatID: -1, text: "You're sweet " + sc.n("ralphsdad") + ".", callback: "reset" },
+                { chatID: -1, text: "You're sweet ##ralphsdad##.", callback: "reset" },
             ]
         },
         {
@@ -275,7 +275,7 @@ room801.chat = function (chatID) {
             speaker: "ralphsdad",
             text: "It is. You should see it hard. Hehehe. ",
             button: [
-                { chatID: -1, text: "Oh " + sc.n("ralphsdad") + "!", callback: "reset" },
+                { chatID: -1, text: "Oh ##ralphsdad##!", callback: "reset" },
             ]
         },
         {
@@ -314,11 +314,11 @@ room801.chat = function (chatID) {
         {
             chatID: 12,
             speaker: "ralphsdad",
-            text: sc.n("ralph") + "'s room is just around the corner. I'm sure he's been waiting " +
+            text: "##ralph##'s room is just around the corner. I'm sure he's been waiting " +
                 "for you. Unless you came to see me, then my room is right over there. " +
                 "hahaha, just kidding. ",
             button: [
-                { chatID: -1, text: "*blush* Thanks, I'll go see " + sc.n("ralph"), callback: "" },
+                { chatID: -1, text: "*blush* Thanks, I'll go see ##ralph##", callback: "" },
             ]
         },
         {
@@ -335,7 +335,7 @@ room801.chat = function (chatID) {
             speaker: "ralphsdad",
             text: "Pssst. It's just a friendly hug. She wouldn't mind. ",
             button: [
-                { chatID: -1, text: "I'll be heading to " + sc.n("ralph") + "'s room. ", callback: "" },
+                { chatID: -1, text: "I'll be heading to ##ralph##'s room. ", callback: "" },
             ]
         },
         {
@@ -360,9 +360,9 @@ room801.chat = function (chatID) {
             chatID: 17,
             speaker: "ralphsdad",
             text: "You're so soft in all the right places. I could squeeze you forever, " +
-                "but you should go see " + sc.n("ralph") + ". ",
+                "but you should go see ##ralph##. ",
             button: [
-                { chatID: -1, text: "uuuh, yeah. I'll go see " + sc.n("ralph") + ".", callback: "reset" },
+                { chatID: -1, text: "uuuh, yeah. I'll go see ##ralph##.", callback: "reset" },
             ]
         },
         {
@@ -377,7 +377,7 @@ room801.chat = function (chatID) {
             chatID: 19,
             speaker: "thinking",
             text: "hmmm! Is he kissing me? And fondling my chest. He's squeezing me so " +
-                "tight I can't pull away. What if " + sc.n("ralphsmom") + " walked in. " +
+                "tight I can't pull away. What if ##ralphsmom## walked in. " +
                 "She would totally kill me! I should pull away.. He's too strong, I can't.",
             button: [
                 { chatID: 20, text: "...", callback: "kiss2" },
@@ -411,7 +411,7 @@ room801.chat = function (chatID) {
             button: [
                 { chatID: 23, text: "[Get down on your knees and suck his dick]", callback: "bj0" },
                 { chatID: -1, text: "That's hot, could we do a threesome instead? ", callback: "3some" },
-                { chatID: -1, text: "Just came to visit " + sc.n("ralph"), callback: "ralphRoom" },
+                { chatID: -1, text: "Just came to visit ##ralph##", callback: "ralphRoom" },
             ]
         },
         {

@@ -524,7 +524,7 @@ room726.chat = function (chatID) {
         {
             chatID: 14,
             speaker: "thinking",
-            text: sc.n("cindy") + " totally wants my cock now! I should sneak into the coed bathroom and surprise her in the stall.",
+            text: "##cindy## totally wants my cock now! I should sneak into the coed bathroom and surprise her in the stall.",
             button: [
                 { chatID: -1, text: "Yeah, that's what I'll do. She wants surprise sex!", callback: "supriseSex" }
             ]
@@ -1031,7 +1031,7 @@ room726.chat = function (chatID) {
         {
             chatID: 74,
             speaker: "missy",
-            text: "Don't you worry " + sc.n("martha") + ", I'll take care of this young man in the morning. ",
+            text: "Don't you worry ##martha##, I'll take care of this young man in the morning. ",
             button: [
                 { chatID: 75, text: "...", callback: "" },
             ]

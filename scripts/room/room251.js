@@ -253,7 +253,7 @@ room251.chat = function (chatID) {
         {
             chatID: 0,
             speaker: "jeffery",
-            text: "Oh hello, " + sc.n("me") + ", I-I-I-I'm glad you could make it. Let me go over the details with you.",
+            text: "Oh hello, ##me##, I-I-I-I'm glad you could make it. Let me go over the details with you.",
             button: [
                 { chatID: 1, text: "ok", callback: "" }
             ]
@@ -261,7 +261,7 @@ room251.chat = function (chatID) {
         {
             chatID: 1,
             speaker: "jeffery",
-            text: "I have 3 waitresses that work the day shift, " + sc.n("holly") + ", " + sc.n("molly") + ", and " + sc.n("dolly") +
+            text: "I have 3 waitresses that work the day shift, ##holly##, ##molly##, and ##dolly##" +
                 ". One of them has been STEALING FROM THE REGISTER and I just don't know which one. I've tried everything to catch " +
                 "the culprit, but she's just too dog gone smart. I want you to pose as a waitress <span class='hl-red'>and catch her!</span>",
             button: [
@@ -300,7 +300,7 @@ room251.chat = function (chatID) {
             chatID: 5,
             speaker: "jeffery",
             text: "N-n-n-n-no this is called the Naked Beaver, not the Naked Cock. This uniform should fit you, that's why " +
-                sc.n("missy") + " had me inspect you before we started. Now please get dressed.",
+                "##missy## had me inspect you before we started. Now please get dressed.",
             button: [
                 { chatID: 14, text: "This is absolute crap!", callback: "" }
             ]
@@ -318,7 +318,7 @@ room251.chat = function (chatID) {
         {
             chatID: 7,
             speaker: "jeffery",
-            text: "Oh well I guess I'll have to tell " + sc.n("missy") + " you refused to work.",
+            text: "Oh well I guess I'll have to tell ##missy## you refused to work.",
             button: [
                 { chatID: 8, text: "That's not fair. She'd kill me", callback: "" }
             ]
@@ -376,7 +376,7 @@ room251.chat = function (chatID) {
         {
             chatID: 14,
             speaker: "jeffery",
-            text: "W-w-w-we had an understanding at " + sc.n("missy") + "'s you were going to be a waitress, now are you going to " +
+            text: "W-w-w-we had an understanding at ##missy##'s you were going to be a waitress, now are you going to " +
                 "do your job or do I have to get someone else!",
             button: [
                 { chatID: 6, text: "Fine I'll wear the stupid uniform", callback: "" }
@@ -417,8 +417,8 @@ room251.chat = function (chatID) {
         {
             chatID: 19,
             speaker: "jeffery",
-            text: "Ok, now go out there and start taking some orders. Don't forget to make friends with " + sc.n("holly") +
-                ", " + sc.n("molly") + ", and " + sc.n("dolly") + "!",
+            text: "Ok, now go out there and start taking some orders. Don't forget to make friends with ##holly##" +
+                ", ##molly##, and ##dolly##!",
             button: [
                 { chatID: -1, text: "Ok boss [Get to work]", callback: "startWork" }
             ]
@@ -508,7 +508,7 @@ room251.chat = function (chatID) {
             chatID: 30,
             speaker: "jeffery",
             text: "Well I'm tired of waiting! I think you're just out there goofing off! " +
-                "I'm going to ask " + sc.n("missy") + " for a new detective! ",
+                "I'm going to ask ##missy## for a new detective! ",
             button: [
                 { chatID: 32, text: "Don't do that, I solved the case!", callback: "" },
                 { chatID: 31, text: "I'm sorry, I don't think they're stealing from you", callback: "" }
@@ -533,10 +533,10 @@ room251.chat = function (chatID) {
         {
             chatID: 33,
             speaker: "jeffery",
-            text: "That's rather brilliant! I'm going to get that fixed and fix them! I'll meet you at " + sc.n("missy") + "'s to " +
+            text: "That's rather brilliant! I'm going to get that fixed and fix them! I'll meet you at ##missy##'s to " +
                 "let her know what a fine detective you are! Also here's an extra $500 for your great work!",
             button: [
-                { chatID: -1, text: "Thank you so much! I'll see you at " + sc.n("missy") + "'s", callback: "undoAndLeaveSuccess" }
+                { chatID: -1, text: "Thank you so much! I'll see you at ##missy##'s", callback: "undoAndLeaveSuccess" }
             ]
         },
 
@@ -617,9 +617,9 @@ room251.chat = function (chatID) {
             chatID: 42,
             speaker: "thinking",
             text: "How do I get their panties? I can't just ask them. Maybe I'll get one, but not all three. " +
-                "They're not dumb, they would know it's for " + sc.n("jeffery") + ". I have to find out where " +
+                "They're not dumb, they would know it's for ##jeffery##. I have to find out where " +
                 "they live and steal their panties. I can't ask them since I'm going to break in. I should " +
-                "go back and ask " + sc.n("jeffery") + ". He'll know. ",
+                "go back and ask ##jeffery##. He'll know. ",
             button: [
                 { chatID: 43, text: "[Go back in and ask for their address]", callback: "thinking1" }
             ]

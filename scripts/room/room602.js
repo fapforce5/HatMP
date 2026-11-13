@@ -117,7 +117,7 @@ room602.chat = function (chatID) {
             speaker: "!timothy",
             text: "Hey you! Funny seeing you outside of class! I'm so happy you're here! ",
             button: [
-                { chatID: 1, text: "Oh wow! Hi " + sc.n("!timothy") + "! How long have you been working here? ", callback: "" }
+                { chatID: 1, text: "Oh wow! Hi ##!timothy##! How long have you been working here? ", callback: "" }
             ]
         },
         {
@@ -169,7 +169,7 @@ room602.chat = function (chatID) {
                 "fun dancing all over those hard cocks out there! I can't believe everyone " +
                 "came! ",
             button: [
-                { chatID: 6, text: "Speaking of everyone where's " + sc.n("!philbert") + "?", callback: "" }
+                { chatID: 6, text: "Speaking of everyone where's ##!philbert##?", callback: "" }
             ]
         },
         {
@@ -187,7 +187,7 @@ room602.chat = function (chatID) {
             chatID: 7,
             speaker: "!kareem",
             text: "Hahah! Fo' real. He's made it all the way through the Sissy School, but " +
-                "he thinks he's some kinda dom! Remember " + sc.n("!jeremy") + "? He knew this wasn't " +
+                "he thinks he's some kinda dom! Remember ##!jeremy##? He knew this wasn't " +
                 "for him. ",
             button: [
                 { chatID: 8, text: "...", callback: "" }
@@ -206,7 +206,7 @@ room602.chat = function (chatID) {
         {
             chatID: 9,
             speaker: "!martin",
-            text: "Oh fuckkkkk " + sc.n("!thomas") + "! Deeper! I'm almost there!!!",
+            text: "Oh fuckkkkk ##!thomas##! Deeper! I'm almost there!!!",
             button: [
                 { chatID: 10, text: "?", callback: "sissy2" }
             ]
@@ -222,8 +222,8 @@ room602.chat = function (chatID) {
         {
             chatID: 11,
             speaker: "!chris",
-            text: "You go ahead and get ready. I'm going to make sure " + sc.n("!thomas") +
-                " licks up all of " + sc.n("!martin") + "'s cummies. We'll see you out there " +
+            text: "You go ahead and get ready. I'm going to make sure ##!thomas##" +
+                " licks up all of ##!martin##'s cummies. We'll see you out there " +
                 "honey. ",
             button: [
                 { chatID: -1, text: "Ok.", callback: "sissy4" }

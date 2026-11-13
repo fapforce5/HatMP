@@ -264,7 +264,7 @@ room198.chat = function (chatID) {
             {
                 chatID: 5,
                 speaker: "missy",
-                text: sc.n("cecilia") + " come in here. ",
+                text: "##cecilia## come in here. ",
                 button: [
                     { chatID: 6, text: "...", callback: "c0" },
                 ]
@@ -280,7 +280,7 @@ room198.chat = function (chatID) {
             {
                 chatID: 7,
                 speaker: "missy",
-                text: sc.n("cecilia") + " is going to be your distraction. While you're on these cases you'll " +
+                text: "##cecilia## is going to be your distraction. While you're on these cases you'll " +
                     "have a lot of distractions that you have to ignore. Ready to begin?",
                 button: [
                     { chatID: -1, text: "Yes ma'am", callback: "s0" },

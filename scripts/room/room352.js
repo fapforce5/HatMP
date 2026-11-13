@@ -474,7 +474,7 @@ room352.chat = function (chatID) {
                 text: "Just know I only pay you for the samples you collect. So if you need to call me in I'm not going to pay you for " +
                     "work I do. ",
                 button: [
-                    { chatID: 3, text: "Yes " + sc.n("landlord"), callback: "" }
+                    { chatID: 3, text: "Yes ##landlord##", callback: "" }
                 ]
             },
             {
@@ -482,7 +482,7 @@ room352.chat = function (chatID) {
                 speaker: "landlord",
                 text: "Ok, now go sit in the back room till I call you.",
                 button: [
-                    { chatID: -1, text: "Yes " + sc.n("landlord"), callback: "waitroom" }
+                    { chatID: -1, text: "Yes ##landlord##", callback: "waitroom" }
                 ]
             },
             {
@@ -700,7 +700,7 @@ room352.chat = function (chatID) {
             {
                 chatID: 30,
                 speaker: "landlord",
-                text: "You know " + sc.n("me") + " you have really surprised me! I thought you were going to do your typical bullshit " +
+                text: "You know ##me## you have really surprised me! I thought you were going to do your typical bullshit " +
                 "of working a little bit only to give up after it started to get a little bit hard. ",
                 button: [
                     { chatID: 32, text: "...", callback: "" },
@@ -717,7 +717,7 @@ room352.chat = function (chatID) {
             {
                 chatID: 32,
                 speaker: "landlord",
-                text: "I'm not just going to let you back into my house. How I caught you with " + sc.n("lola") + " and " + sc.n("eva") +
+                text: "I'm not just going to let you back into my house. How I caught you with ##lola## and ##eva##" +
                 " was not acceptable. ",
                 button: [
                     { chatID: 33, text: "oh what?", callback: "" },
@@ -736,7 +736,7 @@ room352.chat = function (chatID) {
                 chatID: 34,
                 speaker: "landlord",
                 text: "I don't believe you. I'm going to be watching you like a hawk when you're in my home. You WILL NOT lay " +
-                "your dirty fingers, or penis, on " + sc.n("lola") + " or " + sc.n("eva") + ". Can I trust you in my house again?",
+                "your dirty fingers, or penis, on ##lola## or ##eva##. Can I trust you in my house again?",
                 button: [
                     { chatID: 35, text: "Oh yeah. I'll keep my penis.. err fingers off of them.", callback: "" },
                 ]
@@ -746,7 +746,7 @@ room352.chat = function (chatID) {
                 speaker: "landlord",
                 text: "Don't screw this up or I'll never ever let you back into my house, understand?",
                 button: [
-                    { chatID: 36, text: "Yes " + sc.n("landlord"), callback: "" },
+                    { chatID: 36, text: "Yes ##landlord##", callback: "" },
                 ]
             },
             {
@@ -754,7 +754,7 @@ room352.chat = function (chatID) {
                 speaker: "landlord",
                 text: "Ok honey. Your room is just the way you left it. Feel free to come by anytime sweety.",
                 button: [
-                    { chatID: -1, text: "Thank you " + sc.n("landlord") + ". See you at home!", callback: "backin" },
+                    { chatID: -1, text: "Thank you ##landlord##. See you at home!", callback: "backin" },
                 ]
             },
             {

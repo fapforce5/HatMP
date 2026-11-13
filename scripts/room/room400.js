@@ -209,7 +209,7 @@ room400.chat = function (chatID) {
             speaker: "tiffany",
             text: "Ok! First thing is getting the dress, then we know which panties and shoes to get! Let's go to saucy!!",
             button: [
-                { chatID: -1, text: "[Follow " + sc.n("tiffany") + " to Saucy]", callback: "tSaucy" }
+                { chatID: -1, text: "[Follow ##tiffany## to Saucy]", callback: "tSaucy" }
             ]
         },
         {

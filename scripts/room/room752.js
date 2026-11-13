@@ -785,20 +785,20 @@ room752.chat = function (chatID) {
             "Why is it guys always want to fuck a whore in her asshole? A hole's a hole, right! ",
             "If I only had to eat one food for the rest of my life it would be light crispy pastries. I do love a pastry. ",
             "I do like having another " + gender.pronoun("girl") + " around. Makes me feel safer. ",
-            "You know " + sc.n("ubel") + "'s crazy. I was giving him a hand job and he just pisses in my face and kicks my cunt. Stay away from that bastard! ",
-            "I heard " + sc.n("bigguy") + "'s fucking your " + sc.n("landlord") + ". I don't know what she sees in him. She could do so much better. ",
-            "That " + sc.n("priest") + " is really a pervy guy. I'm surprised so many people visit his church. You know he licked my asshole for an hour straight and said he would never fuck a whore. Strange man, but pays well. ",
-            "You know " + sc.n("river") + "'s really obsessed with you. He paid me extra for anal and called me " + sc.n("me") + " the entire time. You two would make a great couple, hehe.",
-            "My favorite customer is, by far, " + sc.n("jeffery") + ". He pays so much for my dirty panties and doesn't even want sex. I wish all men were like him. ",
-            "That ranch hand, " + sc.n("!rancher1") + " is such a cheater. His wife must hate him since he comes by so much. ",
-            "I think " + sc.n("!rex") + ", the owner of the club, is secretly gay. He just asked me to finger his butt while he jacked off. Kinda gross, but easy money. ",
-            "I met the cutest guy the other day, " + sc.n("!doofus") + ". So sweet. If I was younger I would totally date him. ",
+            "You know ##ubel##'s crazy. I was giving him a hand job and he just pisses in my face and kicks my cunt. Stay away from that bastard! ",
+            "I heard ##bigguy##'s fucking your ##landlord##. I don't know what she sees in him. She could do so much better. ",
+            "That ##priest## is really a pervy guy. I'm surprised so many people visit his church. You know he licked my asshole for an hour straight and said he would never fuck a whore. Strange man, but pays well. ",
+            "You know ##river##'s really obsessed with you. He paid me extra for anal and called me ##me## the entire time. You two would make a great couple, hehe.",
+            "My favorite customer is, by far, ##jeffery##. He pays so much for my dirty panties and doesn't even want sex. I wish all men were like him. ",
+            "That ranch hand, ##!rancher1## is such a cheater. His wife must hate him since he comes by so much. ",
+            "I think ##!rex##, the owner of the club, is secretly gay. He just asked me to finger his butt while he jacked off. Kinda gross, but easy money. ",
+            "I met the cutest guy the other day, ##!doofus##. So sweet. If I was younger I would totally date him. ",
             "I told one guy I don’t do kissing and he looked personally offended. Like, sir, this is a transaction, not a date.",
             "I swear if one more guy asks me to call him ‘daddy’ while I’m on all fours, I’m raising my rates.",
             "My back is killing me. These guys act like I’m made of rubber sometimes.",
             "You ever notice how the ones who tip the least always want the most freaky shit? Like, pick a struggle.",
             "Why do they always want to talk about their problems after they finish? I’m not a therapist, I’m a whore.",
-            "That " + sc.n("kei") + " keeps coming back every Tuesday. Same routine, same weird little noises. At least he’s consistent.",
+            "That ##kei## keeps coming back every Tuesday. Same routine, same weird little noises. At least he’s consistent.",
             "I don’t mind the anal as much as I used to, but the ones who try to skip the lube? Absolute psychopaths.",
             "Some nights I wonder if I should’ve just stayed a waitress. Then I remember the tips and shut up.",
             "I had a guy last night who wanted me to roleplay being his ex. He cried the whole time. Still paid full price though.",
@@ -1034,7 +1034,7 @@ room752.chat = function (chatID) {
         {
             chatID: 24,
             speaker: "thinking",
-            text: "Fuck! I lost " + sc.n("lola") + "'s panties! Even worse some guy is going to be sniffing them and jacking off " +
+            text: "Fuck! I lost ##lola##'s panties! Even worse some guy is going to be sniffing them and jacking off " +
                 "into her panties. I better get home and put on some new underwear. I know it's wrong, but maybe I could steal " +
                 "another pair of her panties. But this time I won't give them away. ",
             button: [
@@ -1055,7 +1055,7 @@ room752.chat = function (chatID) {
             chatID: 26,
             speaker: "thinking",
             text: "Fuck! I lost Missy's panties! Even worse some guy is going to be sniffing them and jacking off " +
-                "into her panties. Maybe I can replace them by stealing a pair of panties from " + sc.n("lola") + ". " +
+                "into her panties. Maybe I can replace them by stealing a pair of panties from ##lola##. " +
                 "I think I'll check her dirty laundry. I better get home and put on some new underwear. ",
             button: [
                 { chatID: -1, text: "...", callback: "home" },
@@ -1308,7 +1308,7 @@ room752.chat = function (chatID) {
         {
             chatID: 55,
             speaker: "me",
-            text: sc.n("philbert") + "! ",
+            text: "##philbert##! ",
             button: [
                 { chatID: 56, text: "...", callback: "" },
             ]
@@ -1333,7 +1333,7 @@ room752.chat = function (chatID) {
         {
             chatID: 58,
             speaker: "whore",
-            text: "This is my tent and you'll bend over for " + sc.n("philbert") + " and spread your hole " +
+            text: "This is my tent and you'll bend over for ##philbert## and spread your hole " +
                 "or you can just leave. ",
             button: [
                 { chatID: 60, text: "*ugh* Fine!", callback: "philbert0" },
@@ -1367,7 +1367,7 @@ room752.chat = function (chatID) {
         {
             chatID: 62,
             speaker: "philbert",
-            text: "I need to fuck that pissy asshole! Please " + sc.n("whore") + ", let me fuck that " +
+            text: "I need to fuck that pissy asshole! Please ##whore##, let me fuck that " +
                 "pissy asshole! ",
             button: [
                 { chatID: 63, text: "wha?", callback: "" },
@@ -1384,7 +1384,7 @@ room752.chat = function (chatID) {
         {
             chatID: 64,
             speaker: "philbert",
-            text: "Oh god, so good! Hey " + sc.n("whore") + ". Put a finger in my butt. Maybe two. I love " +
+            text: "Oh god, so good! Hey ##whore##. Put a finger in my butt. Maybe two. I love " +
                 "a finger in my butt when I'm fucking a slut! ",
             button: [
                 { chatID: 66, text: "*moan* *pant* *moan*", callback: "philbert3" },
@@ -1394,7 +1394,7 @@ room752.chat = function (chatID) {
             chatID: 65,
             speaker: "philbert",
             text: "I heard you got a new pussy! I need to fuck it! I want to feel my piss slosh " +
-                "in your ass while I fuck your cunt! Please " + sc.n("whore") + ", let me fuck that " +
+                "in your ass while I fuck your cunt! Please ##whore##, let me fuck that " +
                 "slut's pussy! ",
             button: [
                 { chatID: 63, text: "wha?", callback: "" },
@@ -1478,7 +1478,7 @@ room752.chat = function (chatID) {
         {
             chatID: 75,
             speaker: "whore",
-            text: sc.n("me") + ", you suck that dick or the both of you are out of here! ",
+            text: "##me##, you suck that dick or the both of you are out of here! ",
             button: [
                 { chatID: 76, text: "Fine! Give me that dick. ", callback: "whore_oral0" },
                 { chatID: -1, text: "No way! I have more respect for my body than to suck that dirty dick! ", callback: "leave" },
@@ -1520,7 +1520,7 @@ room752.chat = function (chatID) {
         {
             chatID: 80,
             speaker: "whore",
-            text: "Well, I suppose I've tortured you enough. Lucky for you I've overheard " + sc.n("ubel") +
+            text: "Well, I suppose I've tortured you enough. Lucky for you I've overheard ##ubel##" +
                 " talking to one of his Castellans the code. It's 1-2-3-4-5. Be careful. It's crazy in there. ",
             button: [
                 { chatID: 82, text: "Sweet! ", callback: "" },

@@ -380,7 +380,7 @@ room4.chat = function (chatID) {
         {
             chatID: 4,
             speaker: "thinking",
-            text: "I need to improve my relationship with " + sc.n("lola") + ". Maybe I can speed things up by talking her into it. ",
+            text: "I need to improve my relationship with ##lola##. Maybe I can speed things up by talking her into it. ",
             button: [
                 { chatID: -1, text: "It's worth a try. " + charisma.getStats(g.internal.level + 7).txt, callback: "charRoll" },
             ]
@@ -436,7 +436,7 @@ room4.chat = function (chatID) {
         {
             chatID: 11,
             speaker: "lola",
-            text: "I guess that's ok. You won't try any funny business with your " + sc.n("el") + ". ",
+            text: "I guess that's ok. You won't try any funny business with your ##el##. ",
             button: [
                 { chatID: -1, text: "Nope. No funny business here. ", callback: "massage1" }
             ]
@@ -452,7 +452,7 @@ room4.chat = function (chatID) {
         {
             chatID: 13,
             speaker: "lola",
-            text: "Well... I guess that's ok if you see me in my panties. I'm your " + sc.n("el") + " after all. ",
+            text: "Well... I guess that's ok if you see me in my panties. I'm your ##el## after all. ",
             button: [
                 { chatID: -1, text: "Ok.", callback: "massage2" }
             ]

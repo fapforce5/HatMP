@@ -460,7 +460,7 @@ room502.chat = function (chatID) {
                 speaker: "me",
                 text: "Time to check what's in the bag.",
                 button: [
-                    { chatID: 3, text: "[Open Bag From " + sc.n("tiffany") + "]", callback: "newClothing" }
+                    { chatID: 3, text: "[Open Bag From ##tiffany##]", callback: "newClothing" }
                 ]
             },
             {
@@ -533,7 +533,7 @@ room502.chat = function (chatID) {
                 speaker: "zoey",
                 text: "It is ok. I will leave you to get dressed. Imagine such a large penis under that tiny skirt! You are too cute.",
                 button: [
-                    { chatID: -1, text: "See ya " + sc.n("zoey"), callback: "zoeyLeave" }
+                    { chatID: -1, text: "See ya ##zoey##", callback: "zoeyLeave" }
                 ]
             },
             {
@@ -541,7 +541,7 @@ room502.chat = function (chatID) {
                 speaker: "zoey",
                 text: "It is ok. I know you are shy, but you will look sexy in those clothes",
                 button: [
-                    { chatID: -1, text: "See ya " + sc.n("zoey"), callback: "zoeyLeave" }
+                    { chatID: -1, text: "See ya ##zoey##", callback: "zoeyLeave" }
                 ]
             },
             {
@@ -556,7 +556,7 @@ room502.chat = function (chatID) {
                 chatID: 14,
                 speaker: "me",
                 text: "That came from the living room.... I guess I should check it out. Probably " +
-                    "just " + sc.n("zoey") + " throwing her controller at the TV again. ",
+                    "just ##zoey## throwing her controller at the TV again. ",
                 button: [
                     { chatID: -1, text: "[Check out noise]", callback: "zoeySex2" }
                 ]
@@ -573,7 +573,7 @@ room502.chat = function (chatID) {
                 chatID: 16,
                 speaker: "stormy",
                 text: "Fuck that was hot. I've never cum to an audience before. I'll have to " +
-                    "get you to watch us again. " + sc.n("zoey") + " you can get your cuddles " +
+                    "get you to watch us again. ##zoey## you can get your cuddles " +
                     "from dish washer. " + gender.pronoun("he") + " looks cuddly. Laters! ",
                 button: [
                     { chatID: 17, text: "Bye. ", callback: "zoeySex7" }
@@ -634,7 +634,7 @@ room502.chat = function (chatID) {
             {
                 chatID: 18,
                 speaker: "zoey",
-                text: "Oh.." + sc.n("me") + " sorry we were so loud, we get carried away sometimes... This is my friend " + sc.n("stormy") + ".",
+                text: "Oh..##me## sorry we were so loud, we get carried away sometimes... This is my friend ##stormy##.",
                 button: [
                     { chatID: 19, text: "That's ok, Please continue..", callback: "single6" }
                 ]
@@ -642,7 +642,7 @@ room502.chat = function (chatID) {
             {
                 chatID: 19,
                 speaker: "stormy",
-                text: "The pervy roommate I've heard so much about. " + sc.n("zoey") + " says you like to watch. So what do you think?",
+                text: "The pervy roommate I've heard so much about. ##zoey## says you like to watch. So what do you think?",
                 button: [
                     { chatID: 20, text: "I uhhh. what?", callback: "" }
                 ]
@@ -650,7 +650,7 @@ room502.chat = function (chatID) {
             {
                 chatID: 20,
                 speaker: "zoey",
-                text: "Oh " + sc.n("stormy") + "! Tu as promis. You would not say anything if he caught us!",
+                text: "Oh ##stormy##! Tu as promis. You would not say anything if he caught us!",
                 button: [
                     { chatID: 21, text: "Wait, what did you tell her? You are the one that's always naked!", callback: "" }
                 ]
@@ -658,7 +658,7 @@ room502.chat = function (chatID) {
             {
                 chatID: 21,
                 speaker: "zoey",
-                text: "Haha I know. Well, I think that's the end of our fun for the night. Au revoir " + sc.n("stormy") + ". Next time we'll " +
+                text: "Haha I know. Well, I think that's the end of our fun for the night. Au revoir ##stormy##. Next time we'll " +
                     "go to your house!",
                 button: [
                     { chatID: 22, text: "You don't have to leave.", callback: "single7" }
@@ -667,10 +667,10 @@ room502.chat = function (chatID) {
             {
                 chatID: 22,
                 speaker: "stormy",
-                text: "You are a perv! I love it! But I'm going to get going. I'm sure I'll see you again. " + sc.n("me") + ". " + sc.n("zoey") +
+                text: "You are a perv! I love it! But I'm going to get going. I'm sure I'll see you again. ##me##. ##zoey##" +
                     " I'll see you again soon!",
                 button: [
-                    { chatID: -1, text: "Bye " + sc.n("stormy") + " good night " + sc.n("zoey") + ".", callback: "singleReset" }
+                    { chatID: -1, text: "Bye ##stormy## good night ##zoey##.", callback: "singleReset" }
                 ]
             },
             {
@@ -822,7 +822,7 @@ room502.chat = function (chatID) {
             {
                 chatID: 41,
                 speaker: "zoey",
-                text: "He has had enough. I'm going to free him. " + sc.n("me") + ", merci de nous faire plaisir. ",
+                text: "He has had enough. I'm going to free him. ##me##, merci de nous faire plaisir. ",
                 button: [
                     { chatID: 42, text: "Oh yeah, sure. ", callback: "" }
                 ]

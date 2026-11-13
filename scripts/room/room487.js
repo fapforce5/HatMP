@@ -152,6 +152,9 @@ room487.chatcatch = function (callback) {
                 chat(14, 487);
             }
             break;
+        case "missy0_1":
+            nav.bg("487_castle/missy0.webp");
+            break;
         case "closer":
             nav.bg("487_castle/bush.webp", "487_castle/bush_n.webp"); 
             zcl.displayMain(300, 800, .3, "clothes", true);
@@ -276,7 +279,7 @@ room487.chat = function (chatID) {
                     chatID: 900,
                     speaker: "lola",
                     text: "I know you're in a tough spot and I love you more than you will ever know. That's " +
-                        "why I agreed to come with that odd girl, " + sc.n("cecilia") + " to help you. I'm the " +
+                        "why I agreed to come with that odd girl, ##cecilia## to help you. I'm the " +
                         "fastest girl I know. I'll get them to chase me then I'm going to outrun them! They'll " +
                         "never have a chance of catching me! ",
                     button: [
@@ -332,7 +335,7 @@ room487.chat = function (chatID) {
                     text: "I'm so glad you picked me! I get to help free Missy and get double teamed by those " +
                         "two gruff men! I'll take those dicks like no sissy has taken a dick before just for you! ",
                     button: [
-                        { chatID: 1, text: "That's why I picked you! ", callback: "missy6_sporty0" },
+                        { chatID: 27, text: "That's why I picked you! ", callback: "missy6_sporty0" },
                     ]
                 }
             case "elijah":
@@ -434,7 +437,7 @@ room487.chat = function (chatID) {
         {
             chatID: 9,
             speaker: "thinking",
-            text: "There's the two guards " + sc.n("p") + " said would be there. I really wish I had some " +
+            text: "There's the two guards ##p## said would be there. I really wish I had some " +
                 "help, but I guess I'll just need to fight them myself! ",
             button: [
                 { chatID: 10, text: "[Come out of the bushes and try to fight them]", callback: "missy1" },
@@ -461,7 +464,7 @@ room487.chat = function (chatID) {
             chatID: 12,
             speaker: "cult",
             text: "Dumb ass " + gender.pronoun("whore") + ". Let's take " + gender.pronoun("her") + " back " +
-                "to " + sc.n("ubel") + " and see what he wants to do with " + gender.pronoun("her") + ". ",
+                "to ##ubel## and see what he wants to do with " + gender.pronoun("her") + ". ",
             button: [
                 { chatID: -1, text: "ooo my head", callback: "lost" },
             ]
@@ -470,7 +473,7 @@ room487.chat = function (chatID) {
             chatID: 13,
             speaker: "cult",
             text: "Dumb ass " + gender.pronoun("whore") + ". You ain't runnin' away from us! Let's take " + gender.pronoun("her") + " back " +
-                "to " + sc.n("ubel") + " and see what he wants to do with " + gender.pronoun("her") + ". ",
+                "to ##ubel## and see what he wants to do with " + gender.pronoun("her") + ". ",
             button: [
                 { chatID: -1, text: "ooo my head", callback: "lost" },
             ]
@@ -494,7 +497,7 @@ room487.chat = function (chatID) {
         {
             chatID: 16,
             speaker: "cecilia",
-            text: "No time to explain. I have to get back to " + sc.n("p") + " at the front gate. We're " +
+            text: "No time to explain. I have to get back to ##p## at the front gate. We're " +
                 "going to distract and pull as many guards as we can over there so inside the compound is " +
                 "cleared out a bit for you. I already told " + sc.n(gv.get("cultpartner")) + " that there " +
                 "are needed as a distraction. Go save Missy. She's counting on you two. ",
@@ -548,7 +551,7 @@ room487.chat = function (chatID) {
         {
             chatID: 22,
             speaker: "thinking",
-            text: "Wow! " + sc.n("dog") + " really scared them away! I'm sure glad I let him knot my ass!",
+            text: "Wow! ##dog## really scared them away! I'm sure glad I let him knot my ass!",
             button: [
                 { chatID: 61, text: "...", callback: "missy7" },
             ]
@@ -581,7 +584,7 @@ room487.chat = function (chatID) {
             chatID: 26,
             speaker: "thinking",
             text: "I do love her spunk! I hope she got away. They dont' deserve to fuck a fine woman like " +
-                sc.n("bitch") + ". ",
+                "##bitch##. ",
             button: [
                 { chatID: 61, text: "...", callback: "missy7" },
             ]
@@ -608,7 +611,7 @@ room487.chat = function (chatID) {
             speaker: "thinking",
             text: "Come on you idiots. Take the bait!",
             button: [
-                { chatID: 30, text: "...", callback: "missy0" },
+                { chatID: 30, text: "...", callback: "missy0_1" },
             ]
         },
         {
@@ -622,7 +625,7 @@ room487.chat = function (chatID) {
         {
             chatID: 31,
             speaker: "thinking",
-            text: "That's what I love about " + sc.n("sporty") + "! More than happy to take any and all dicks! " +
+            text: "That's what I love about ##sporty##! More than happy to take any and all dicks! " +
                 "I don't think she can go a day without getting filled from both ends with sperm. ",
             button: [
                 { chatID: 61, text: "...", callback: "missy7" },
@@ -693,7 +696,7 @@ room487.chat = function (chatID) {
             speaker: "zoey",
             text: "OOoggggyyy booogggyyy booooo! Je suis le monstre maléfique!! Poursuis moi! ",
             button: [
-                { chatID: 40, text: "...", callback: "missy0" },
+                { chatID: 40, text: "...", callback: "missy0_1" },
             ]
         },
         {
@@ -764,13 +767,13 @@ room487.chat = function (chatID) {
                 "rescue her we can all end up taken by the cult.",
             button: [
                 { chatID: 48, text: "[Stay hidden and wait for an opening to save Missy]", callback: "missy6_lola5" },
-                { chatID: -1, text: "[Risk everything to try and save " + sc.n("lola") + "]", callback: "missy6_lola11" }
+                { chatID: -1, text: "[Risk everything to try and save ##lola##]", callback: "missy6_lola11" }
             ]
         },
         {
             chatID: 48,
             speaker: "thinking",
-            text: "I'm sorry " + sc.n("lola") + ", but this is too important. I have to save Missy or " +
+            text: "I'm sorry ##lola##, but this is too important. I have to save Missy or " +
                 "she'll surly die or worse. ",
             button: [
                 { chatID: 49, text: "[Keep watching and wait for an opening to save Missy]", callback: "missy6_lola6" },
@@ -831,7 +834,7 @@ room487.chat = function (chatID) {
         {
             chatID: 55,
             speaker: "thinking",
-            text: "That was brutal to watch. I really shouldn't have brought " + sc.n("lola") + " on a mission " +
+            text: "That was brutal to watch. I really shouldn't have brought ##lola## on a mission " +
                 "like this. What was I thinking. ",
             button: [
                 { chatID: 61, text: "...", callback: "missy7" },
@@ -841,7 +844,7 @@ room487.chat = function (chatID) {
             chatID: 56,
             speaker: "cult",
             text: "Dumb ass " + gender.pronoun("whore") + ". Let's take them both back " +
-                "to " + sc.n("ubel") + " and see what he wants to do with these idiots. ",
+                "to ##ubel## and see what he wants to do with these idiots. ",
             button: [
                 { chatID: -1, text: "ooo my head", callback: "lost" },
             ]
@@ -850,7 +853,7 @@ room487.chat = function (chatID) {
             chatID: 57,
             speaker: "cult",
             text: "Dumb ass " + gender.pronoun("whore") + ". You ain't runnin' away from us! Let's take them both back " +
-                "to " + sc.n("ubel") + " and see what he wants to do with these idiots. ",
+                "to ##ubel## and see what he wants to do with these idiots. ",
             button: [
                 { chatID: -1, text: "ooo my head", callback: "lost" },
             ]
@@ -875,7 +878,7 @@ room487.chat = function (chatID) {
         {
             chatID: 60,
             speaker: "thinking",
-            text: "Yeah, that was dumb picking " + sc.n("lola") + ", but at least I saved her from something " +
+            text: "Yeah, that was dumb picking ##lola##, but at least I saved her from something " +
                 "way worse. I should get bonus points for that right? ",
             button: [
                 { chatID: 61, text: "...", callback: "missy7" },
@@ -909,7 +912,7 @@ room487.chat = function (chatID) {
         {
             chatID: 64,
             speaker: "security",
-            text: sc.n("me") + "! I thought you escaped! What are you doing back here?",
+            text: "##me##! I thought you escaped! What are you doing back here?",
             button: [
                 { chatID: 65, text: "Just coming to see an old friend. What are you doing? Do you want me to undo your handcuffs? ", callback: "" },
             ]
@@ -917,7 +920,7 @@ room487.chat = function (chatID) {
         {
             chatID: 65,
             speaker: "security",
-            text: "That's ok. I asked to be here. Do you know " + sc.n("dr") + " said I have a vagina! Me! " +
+            text: "That's ok. I asked to be here. Do you know ##dr## said I have a vagina! Me! " +
                 "Next week they're going to turn me into a girl. A real girl. I'm so excited! It's going to be " +
                 "the best day of my life! ",
             button: [
@@ -985,7 +988,7 @@ room487.chat = function (chatID) {
         {
             chatID: 72,
             speaker: "me",
-            text: "You three idiots don't know the will of Azrael! I'm on a mission from " + sc.n("ubel") +
+            text: "You three idiots don't know the will of Azrael! I'm on a mission from ##ubel##" +
                 " himself. Now step aside so I can continue with my task. ",
             button: [
                 { chatID: 73, text: "...", callback: "" },
@@ -1124,11 +1127,11 @@ room487.chat = function (chatID) {
         {
             chatID: 88,
             speaker: "tudor",
-            text: "I'm afraid there will be no rescuing today " + gender.pronoun("mr") + " " + sc.n("me") +
+            text: "I'm afraid there will be no rescuing today " + gender.pronoun("mr") + " ##me##" +
                 ". I couldn't let you take my new favorite new toy, Missy, from me. Besides it would be " +
                 "quite troublesome if she were to leave my protection. ",
             button: [
-                { chatID: 89, text: sc.n("tudor") + "! I thought she was your friend. ", callback: "" },
+                { chatID: 89, text: "##tudor##! I thought she was your friend. ", callback: "" },
             ]
         },
         {
@@ -1156,7 +1159,7 @@ room487.chat = function (chatID) {
             text: "And that, my dear Missy, is what makes the chase so much fun. The challenge. It was a fun " +
                 "game until you decided to come here and get caught. Now I'm going to have to find a new way " +
                 "to create more sissies for my congregation. You have no idea how important sissies are to my " +
-                "operation. You, " + sc.n("me") + ", were going to be my greatest sissy until Missy had to " +
+                "operation. You, ##me##, were going to be my greatest sissy until Missy had to " +
                 "ruin it. I did have so much hope for you. ",
             button: [
                 { chatID: 92, text: "Me?", callback: "" },
@@ -1176,7 +1179,7 @@ room487.chat = function (chatID) {
         {
             chatID: 93,
             speaker: "tudor",
-            text: "Hehe. Money. You have no idea how much money this place makes me. When I found " + sc.n("ubel") +
+            text: "Hehe. Money. You have no idea how much money this place makes me. When I found ##ubel##" +
                 " he was activly looking for followers. I helped refine and focus him. It grew quickly but I could " +
                 "tell people were starting to lose faith. Your father was the first of your kind. I do admire her. " +
                 "In those days it was harder to be a sissy. There were no hormones or networks of support. Just " +
@@ -1222,7 +1225,7 @@ room487.chat = function (chatID) {
             text: "heh. No one will believe you. Besides I'm going to remove both your tongues, teeth, " +
                 "eyes, and appendeges. You'll serve out your lives as our glory holes, slithering around on " +
                 "the floor not knowing when and how the abuse will come. You'll keep your hearing so the words " +
-                "from your assailants will keep you going. " + sc.n("ubel") + " call the boys and take them away. ",
+                "from your assailants will keep you going. ##ubel## call the boys and take them away. ",
             button: [
                 { chatID: 98, text: "...", callback: "missy22" },
             ]
@@ -1240,7 +1243,7 @@ room487.chat = function (chatID) {
             chatID: 99,
             speaker: "wyatt",
             text: "I don't think you will. Nobody move. I have agents all over this place. " +
-                "Don't even try to run " + sc.n("tudor") + ", your days are over.  ",
+                "Don't even try to run ##tudor##, your days are over.  ",
             button: [
                 { chatID: 100, text: "What the hell!", callback: "missy24" },
             ]
@@ -1260,9 +1263,9 @@ room487.chat = function (chatID) {
                 "none of it took us entirely by surprise, if I'm honest. We knew the moment you found out " +
                 "where she was that you'd go back in whether we sanctioned it or not. You'd made that " +
                 "abundantly clear, and really, what were we to do, lock you in a cupboard? So we did the " +
-                "only sensible thing. We kept " + sc.n("wyatt") + "'s people close, near enough to hear you " +
+                "only sensible thing. We kept ##wyatt##'s people close, near enough to hear you " +
                 "breathe, and let you be the door none of us could ever have opened ourselves. As for that " +
-                "dreadful man " + sc.n("tudor") + ", no, my dear, we hadn't the faintest idea he was " +
+                "dreadful man ##tudor##, no, my dear, we hadn't the faintest idea he was " +
                 "involved, not until you did. Honestly, we hadn't the slightest notion what you'd find in " +
                 "there. We only knew you would find something, and heavens, that was rather more than we'd " +
                 "managed in years of trying. ",
@@ -1274,7 +1277,7 @@ room487.chat = function (chatID) {
             chatID: 102,
             speaker: "black",
             text: "Heck yeah! That was my idea. I knew you could take whatever they dished out! " +
-                sc.n("martha") + " here thought it was stupid, but when I got " + sc.n("p") +
+                "##martha## here thought it was stupid, but when I got ##p##" +
                 " to agree to it she was outvoted! You did well kid. ",
             button: [
                 { chatID: 103, text: "...", callback: " " },
@@ -1283,8 +1286,8 @@ room487.chat = function (chatID) {
         {
             chatID: 103,
             speaker: "p",
-            text: "Yeah, " + sc.n("black") + " just didn't mention in the plan until we were halfway here that " +
-                sc.n("cecilia") + " and I had to draw the guards to the front door so you could get here " +
+            text: "Yeah, ##black## just didn't mention in the plan until we were halfway here that " +
+                "##cecilia## and I had to draw the guards to the front door so you could get here " +
                 "without too many cultist around. It's a good thing I'm on the pill or I would now be " +
                 "pregnant with octuplets. So Missy, what you say we hose you off and get you back? ",
             button: [
@@ -1295,7 +1298,7 @@ room487.chat = function (chatID) {
             chatID: 104,
             speaker: "missy",
             text: "*ugh* You're going to have to stick that hose up my ass to wash out all the " +
-                "cum. " + sc.n("black") + " do you think you can carry me out. I've been tied up so long " +
+                "cum. ##black## do you think you can carry me out. I've been tied up so long " +
                 "I can't use my legs. ",
             button: [
                 { chatID: 105, text: "...", callback: "missy25" },

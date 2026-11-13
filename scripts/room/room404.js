@@ -127,7 +127,7 @@ room404.chat = function (chatID) {
         {
             chatID: 4,
             speaker: "me",
-            text: "Hey man, you've really got to help me out! I'm in a total bind! I told " + sc.n("envy") + " about " +
+            text: "Hey man, you've really got to help me out! I'm in a total bind! I told ##envy## about " +
                 "those tapes of yours and she's complaining she can't stop masturbating. How do I undo it? She's totally " +
                 "pissed. ",
             button: [
@@ -189,7 +189,7 @@ room404.chat = function (chatID) {
         {
             chatID: 10,
             speaker: "me",
-            text: "Hey " + sc.n("spanky") + " my ol' buddy. You wouldn't know how to get in the back " +
+            text: "Hey ##spanky## my ol' buddy. You wouldn't know how to get in the back " +
                 "door of the C.U.M. compound would you? ",
             button: [
                 { chatID: -1, text: "...", callback: "env0" }
@@ -223,7 +223,7 @@ room404.chat = function (chatID) {
             chatID: 14,
             speaker: "spanky",
             text: "You know what. I do have it and I'm not giving it to you! You ruined my chances with " +
-                sc.n("envy") + " when you told her about the hypno. No way am I gunna give you the code! ",
+                "##envy## when you told her about the hypno. No way am I gunna give you the code! ",
             button: [
                 { chatID: 15, text: "How about a wet sloppy blow job? ", callback: "" },
                 { chatID: 16, text: "How about I let you pick a hole and fuck it? ", callback: "" },
@@ -236,7 +236,7 @@ room404.chat = function (chatID) {
             chatID: 15,
             speaker: "spanky",
             text: "No way! If you didn't ruin it I would be getting wet sloppy blowjobs everyday from " +
-                sc.n("envy") + "! So no, not going to work!",
+                "##envy##! So no, not going to work!",
             button: [
                 { chatID: 15, text: "How about I let you pick a hole and fuck it? ", callback: "" },
                 { chatID: -1, text: "How about $500", callback: "money500" },
@@ -248,7 +248,7 @@ room404.chat = function (chatID) {
             chatID: 16,
             speaker: "spanky",
             text: "No way! If you didn't ruin it I would be nuts deep inside " +
-                sc.n("envy") + " every night! So no, not going to work!",
+                "##envy## every night! So no, not going to work!",
             button: [
                 { chatID: 15, text: "How about a wet sloppy blow job? ", callback: "" },
                 { chatID: -1, text: "How about $500", callback: "money500" },

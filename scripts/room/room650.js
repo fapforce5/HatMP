@@ -393,7 +393,7 @@ room650.chat = function (chatID) {
             text: "Hey cutie, can I help you?",
             button: [
                 
-                { chatID: 1, text: "Yes, I'm " + sc.n("me") + " with Missy's Detective. ", callback: "" },
+                { chatID: 1, text: "Yes, I'm ##me## with Missy's Detective. ", callback: "" },
                 { chatID: -1, text: "No, just looking around", callback: "" }
             ]
         },
@@ -433,11 +433,11 @@ room650.chat = function (chatID) {
         {
             chatID: 5,
             speaker: "tiffany",
-            text: "We totally did silly! It's totally too much money for " + sc.n("candy") + " and me! They totally wanted " +
-                "$10,000 to set up the place! Besides, " + sc.n("missy") + " totally owes me a favor. " +
+            text: "We totally did silly! It's totally too much money for ##candy## and me! They totally wanted " +
+                "$10,000 to set up the place! Besides, ##missy## totally owes me a favor. " +
                 "Follow me, I'll show you what he's been up to.",
             button: [
-                { chatID: -1, text: "Follow " + sc.n("tiffany"), callback: "follow" },
+                { chatID: -1, text: "Follow ##tiffany##", callback: "follow" },
             ]
         },
         {
@@ -504,7 +504,7 @@ room650.chat = function (chatID) {
         {
             chatID: 13,
             speaker: "tiffany",
-            text: "Hey cutie! " + sc.n("missy") + " asked me to take you out on a shopping trip! I'm so excited to take that cute " +
+            text: "Hey cutie! ##missy## asked me to take you out on a shopping trip! I'm so excited to take that cute " +
                 "little butt of yours out in public!",
             button: [
                 { chatID: 14, text: "Shopping trip?", callback: "" }
@@ -515,7 +515,7 @@ room650.chat = function (chatID) {
             speaker: "tiffany",
             text: "Yeah you cute little slut! Let's go shopping! Follow me!",
             button: [
-                { chatID: -1, text: "[Follow " + sc.n("tiffany") + "]", callback: "h_29" }
+                { chatID: -1, text: "[Follow ##tiffany##]", callback: "h_29" }
             ]
         },
         {
@@ -532,7 +532,7 @@ room650.chat = function (chatID) {
             text: "Why hello whore. I was just thinking I needed to get laid. So what do you say, wanna suck it?",
             button: [
                 { chatID: 17, text: "I sure do! ", callback: "c1" },
-                { chatID: -1, text: "Not today " + sc.n("charlie") , callback: "" }
+                { chatID: -1, text: "Not today ##charlie##" , callback: "" }
             ]
         },
         {
@@ -613,8 +613,8 @@ room650.chat = function (chatID) {
         {
             chatID: 26,
             speaker: "candy",
-            text: "Yeah. Me and " + sc.n("tiffany") + " bought the store a year ago. We were working at Popular Girl " +
-                "and hated our shifts, so we said 'fuck it, lets buy our own store.' So we talked to " + sc.n("charlie") +
+            text: "Yeah. Me and ##tiffany## bought the store a year ago. We were working at Popular Girl " +
+                "and hated our shifts, so we said 'fuck it, lets buy our own store.' So we talked to ##charlie##" +
                 " and he agreed to sell it to us, and even agreed to work nights a weekends. He says he hates doing the " +
                 "books and there's more pussy during the nights and weekends. So we got it for cheap. So awesome!",
             button: [
@@ -644,7 +644,7 @@ room650.chat = function (chatID) {
         {
             chatID: 29,
             speaker: "candy",
-            text: "Awww that's so cute! You really are a great guy. Well I got to get back and help " + sc.n("tiffany") + " out. " +
+            text: "Awww that's so cute! You really are a great guy. Well I got to get back and help ##tiffany## out. " +
                 "We should do this again. I really like dates. ",
             button: [
                 { chatID: -1, text: "I really liked it too. Thanks. ", callback: "candy50_6" }
@@ -851,7 +851,7 @@ room650.chat = function (chatID) {
         {
             chatID: 53,
             speaker: "thinking",
-            text: "I hope " + sc.n("missy") + " appreciates what I have to do to free her. " + sc.n("charlie") + " is such " +
+            text: "I hope ##missy## appreciates what I have to do to free her. ##charlie## is such " +
                 "a creep and he smells bad. Oh well, here I go being a whore again. I'll try to convince him I would make " +
                 "the perfect Milk Maiden so he'll tell me how to get in the compound. ",
             button: [
@@ -1025,7 +1025,7 @@ room650.chat = function (chatID) {
         {
             chatID: 73,
             speaker: "tiffany",
-            text: "So I'm going to use " + sc.n("candy") + " to show you how to use this vibrator. ",
+            text: "So I'm going to use ##candy## to show you how to use this vibrator. ",
             button: [
                 { chatID: 74, text: "Oh yeah! ", callback: "envy2" },
             ]

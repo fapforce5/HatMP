@@ -268,7 +268,7 @@ room180.chat = function (chatID) {
         {
             chatID: 7,
             speaker: "!chris",
-            text: "I agree with " + sc.n("me") + ". We should do it one at a time. ",
+            text: "I agree with ##me##. We should do it one at a time. ",
             button: [
                 { chatID: 8, text: "...", callback: "shave1point5" },
             ]
@@ -438,7 +438,7 @@ room180.chat = function (chatID) {
         {
             chatID: 27,
             speaker: "martha",
-            text: "Ladies, I shall now explain how a lady sits in a chair. " + sc.n("me") + ", would you please assist me? " +
+            text: "Ladies, I shall now explain how a lady sits in a chair. ##me##, would you please assist me? " +
                 "Please cross your legs so that your penis is not on display. Place your hands away from your knees. " +
                 "Sit up straight and tall, with your shoulders back and your head held high. Relax your facial muscles and " +
                 "smile pleasantly. A lady's smile is one of her most attractive features. It is a sign of warmth, kindness, " +
@@ -717,7 +717,7 @@ room180.chat = function (chatID) {
             text: "I know right! I love how soft and breezy it is. I feel like I've lost the " +
                 "weight of my normal clothing and now I'm just floating. It's nice to be around " +
                 "others going through the same thing at the same time. I'm really glad I came here, " +
-                "even if " + sc.n("p") + " seems like she's going to be a bit crazy. ",
+                "even if ##p## seems like she's going to be a bit crazy. ",
             button: [
                 { chatID: 58, text: "...", callback: "" },
             ]
@@ -725,7 +725,7 @@ room180.chat = function (chatID) {
         {
             chatID: 58,
             speaker: "ralph",
-            text: "But she's so hot! She can lube me any day. I'm more afraid of " + sc.n("black") +
+            text: "But she's so hot! She can lube me any day. I'm more afraid of ##black##" +
                 "! I hope she takes it easy on us. I don't even want to take her class. Who likes " +
                 "all that rough stuff? I want a girl to be nice and gentle with me. ",
             button: [
@@ -786,7 +786,7 @@ room180.chat = function (chatID) {
         {
             chatID: 64,
             speaker: "ralph",
-            text: "Hey! " + sc.n("me") + ". Are you daydreaming? ",
+            text: "Hey! ##me##. Are you daydreaming? ",
             button: [
                 { chatID: 56, text: "Huh? ", callback: "fem103_1" },
             ]

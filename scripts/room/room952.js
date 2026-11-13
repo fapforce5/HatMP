@@ -608,7 +608,7 @@ room952.chat = function (chatID) {
         {
             chatID: 1,
             speaker: "ralph",
-            text: "Oh wow, am I glad you're here! " + sc.n("!chris") + " and " + sc.n("!timothy") + 
+            text: "Oh wow, am I glad you're here! ##!chris## and ##!timothy##" + 
                 " are great and all, but they really just want to hang out together. I always feel like " +
                 "the odd one out. Finally my buddy is here! So did they tell you? Are you a girl too? ",
             button: [
@@ -662,7 +662,7 @@ room952.chat = function (chatID) {
         {
             chatID: 6,
             speaker: "security",
-            text: "Oh crap! Hello! I'm so happy to see you! I thought you'd be trapped at " + sc.n("rachel") +
+            text: "Oh crap! Hello! I'm so happy to see you! I thought you'd be trapped at ##rachel##" +
                 "'s forever when I left! I was so happy when I heard you made it here! You are, after all, " +
                 "the reason my life has meaning now. ",
             button: [
@@ -672,7 +672,7 @@ room952.chat = function (chatID) {
         {
             chatID: 7,
             speaker: "security",
-            text: sc.n("security") + "! I was your guard at " + sc.n("rachel") + "'s. At least I was the guard " +
+            text: "##security##! I was your guard at ##rachel##'s. At least I was the guard " +
                 "before you showed me who I really am. You gave me my first sissygasm! So good. Now I'm here. I tell you " +
                 "those hormones the doctor hands are are really potent! I can't wait for my giant soft titties! ",
             button: [
@@ -733,7 +733,7 @@ room952.chat = function (chatID) {
         {
             chatID: 13,
             speaker: "!chris",
-            text: "I was just tellin' " + sc.n("!timothy") + " it would be so fun when you finally get out! " +
+            text: "I was just tellin' ##!timothy## it would be so fun when you finally get out! " +
                 "You are one of the fun ones. ",
             button: [
                 { chatID: 14, text: "Thanks", callback: "" }
@@ -763,7 +763,7 @@ room952.chat = function (chatID) {
             chatID: 16,
             speaker: "!timothy",
             text: "Those pills really do make us hot. And that penis shrinking cream is the best! So glad " +
-                sc.n("!chris") + " was able to talk the doctor into letting us use it. ",
+                "##!chris## was able to talk the doctor into letting us use it. ",
             button: [
                 { chatID: 17, text: "Penis shrinking cream?", callback: "" }
             ]
@@ -911,7 +911,7 @@ room952.chat = function (chatID) {
             speaker: "daria",
             text: "Oh that. It's funny how word gets around and it's always wrong. The cum bath ritual that brings about the coming " +
                 "of Azrael is done with girl that was born a boy. They have a lot of dumb rituals, but this one is for real. " +
-                sc.n("ubel") + " has figured out how to turn a guy into a full on chick, pussy and everything. ",
+                "##ubel## has figured out how to turn a guy into a full on chick, pussy and everything. ",
             button: [
                 { chatID: 33, text: "Really, how do they do that?", callback: "" }
             ]
@@ -953,7 +953,7 @@ room952.chat = function (chatID) {
             chatID: 36,
             speaker: "daria",
             text: "After the way is cleared you'll need to follow me. I know a side trail in the swamp that will take us to the city, but once we reach " +
-                "the city " + sc.n("bodhi") + " and I are going to disappear so you'll be on your own. Now the door to the side entrance is locked and I'll " +
+                "the city ##bodhi## and I are going to disappear so you'll be on your own. Now the door to the side entrance is locked and I'll " +
                 "need your help unlocking it. ",
             button: [
                 { chatID: 37, text: "What do you need from me?", callback: "" }
@@ -1113,7 +1113,7 @@ room952.chat = function (chatID) {
         {
             chatID: 54,
             speaker: "daria",
-            text: "That's a long story. I've kind of always been here, but " + sc.n("bodhi") + " was a " +
+            text: "That's a long story. I've kind of always been here, but ##bodhi## was a " +
                 "searcher. He found his way here looking to live and fuck and eat. Really a simple boy. ",
             button: [
                 { chatID: 55, text: "Really?", callback: "" }
@@ -1122,7 +1122,7 @@ room952.chat = function (chatID) {
         {
             chatID: 55,
             speaker: "daria",
-            text: "Yes, " + sc.n("bodhi") + " had just lost his job selling surf boards. He " +
+            text: "Yes, ##bodhi## had just lost his job selling surf boards. He " +
                 "hated working these doldrum jobs so much that when we heard about this place we gave up everything and came here. ",
             button: [
                 { chatID: 56, text: "That's crazy", callback: "" }
@@ -1142,7 +1142,7 @@ room952.chat = function (chatID) {
             chatID: 57,
             speaker: "bodhi",
             text: "I haven't had a normal manly orgasm in almost 2 years! Once you get in touch with your sissy pussy it's the only way! " +
-                "My orgasms are so intense they usually last for 5 minutes. " + sc.n("daria") + " really is the best! ",
+                "My orgasms are so intense they usually last for 5 minutes. ##daria## really is the best! ",
             button: [
                 { chatID: 58, text: "Wow", callback: "" }
             ]
@@ -1271,7 +1271,7 @@ room952.chat = function (chatID) {
         {
             chatID: 72,
             speaker: "daria",
-            text: "I love your lips " + sc.n("bodhi") + ". And you " + sc.n("me") + " you're not bad. You really know how to serve a " +
+            text: "I love your lips ##bodhi##. And you ##me## you're not bad. You really know how to serve a " +
                 "woman. Come back anytime to eat my pussy. ",
             button: [
                 { chatID: -1, text: "...", callback: "leave" },
@@ -1333,7 +1333,7 @@ room952.chat = function (chatID) {
             speaker: "!chris",
             text: "They took her. She's gone",
             button: [
-                { chatID: 80, text: sc.n("!timothy") + "? Where did she go? ", callback: "" },
+                { chatID: 80, text: "##!timothy##? Where did she go? ", callback: "" },
             ]
         },
         {

@@ -288,7 +288,7 @@ room403.chat = function (chatID) {
             speaker: "tiffany",
             text: "This is so exciting!!! You know the dress you choose says a lot about you. Let's see what we have....",
             button: [
-                { chatID: 1, text: "[Follow " + sc.n("tiffany") + " around the store]", callback: "tif2" }
+                { chatID: 1, text: "[Follow ##tiffany## around the store]", callback: "tif2" }
             ]
         },
         {
@@ -318,7 +318,7 @@ room403.chat = function (chatID) {
         {
             chatID: 4,
             speaker: "tiffany",
-            text: "Oh... I guess I'm used to shopping with " + sc.n("candy") + ".  Just a sec...",
+            text: "Oh... I guess I'm used to shopping with ##candy##.  Just a sec...",
             button: [
                 { chatID: 5, text: "Oh...", callback: "tif3" }
             ]
@@ -464,9 +464,9 @@ room403.chat = function (chatID) {
         {
             chatID: 22,
             speaker: "jada",
-            text: sc.n("me") + "! What the fuck are you doing here.... Are you getting panties?",
+            text: "##me##! What the fuck are you doing here.... Are you getting panties?",
             button: [
-                { chatID: 23, text: sc.n("jada") + ".... I was... didn't.... what.....", callback: "tifPanty3" }
+                { chatID: 23, text: "##jada##.... I was... didn't.... what.....", callback: "tifPanty3" }
             ]
         },
         {
@@ -474,7 +474,7 @@ room403.chat = function (chatID) {
             speaker: "tiffany",
             text: "Yes, we're getting him a pair of panties to go with his new dress. Do you two know each other?",
             button: [
-                { chatID: 24, text: sc.n("jada") + "'s dating my buddy since high school.", callback: "" }
+                { chatID: 24, text: "##jada##'s dating my buddy since high school.", callback: "" }
             ]
         },
         {
@@ -482,13 +482,13 @@ room403.chat = function (chatID) {
             speaker: "jada",
             text: "I had no fucking idea you were a cross dresser. Did you wear dresses back in high school?",
             button: [
-                { chatID: 25, text: "NO! This is just a costume for " + sc.n("tiffany") + ". ", callback: "" }
+                { chatID: 25, text: "NO! This is just a costume for ##tiffany##. ", callback: "" }
             ]
         },
         {
             chatID: 25,
             speaker: "jada",
-            text: "You don't have to fucking lie to me " + sc.n("me") + ". I guess I should've known you liked wearing dresses. " +
+            text: "You don't have to fucking lie to me ##me##. I guess I should've known you liked wearing dresses. " +
                 "You were always really girly in school",
             button: [
                 { chatID: 26, text: "I wasn't into cross dressing. ", callback: "" }
@@ -505,7 +505,7 @@ room403.chat = function (chatID) {
         {
             chatID: 27,
             speaker: "jada",
-            text: "Anything for " + sc.n("me") + ". I have a few that would look really cute with that little butt of his! " +
+            text: "Anything for ##me##. I have a few that would look really cute with that little butt of his! " +
                 "Let's go back to the changing room so he can try them on. Everyone is going to get a kick out of this when they " +
             "find out!",
             button: [
@@ -515,7 +515,7 @@ room403.chat = function (chatID) {
         {
             chatID: 28,
             speaker: "tiffany",
-            text: "Thanks " + sc.n("jada") + " for picking out some pretty panties for " + sc.n("me") + "! He's going to look so cute in one of these!",
+            text: "Thanks ##jada## for picking out some pretty panties for ##me##! He's going to look so cute in one of these!",
             button: [
                 { chatID: 29, text: "....", callback: "" }
             ]
@@ -525,7 +525,7 @@ room403.chat = function (chatID) {
             speaker: "jada",
             text: "Oh yeah. He really is a cutie! I bet you'll look sexy in panties! I've got to help some other customers, I'll come back and check on you.",
             button: [
-                { chatID: 30, text: "ok, later " + sc.n("jada"), callback: "changeRoom3b" }
+                { chatID: 30, text: "ok, later ##jada##", callback: "changeRoom3b" }
             ]
         },
         {
@@ -539,7 +539,7 @@ room403.chat = function (chatID) {
         {
             chatID: 31,
             speaker: "tiffany",
-            text: "Awww is that the chastity device " + sc.n("candy") + " sold you? It's so cute you still wear that. I'm going to take it off so I can " +
+            text: "Awww is that the chastity device ##candy## sold you? It's so cute you still wear that. I'm going to take it off so I can " +
             "see your cock outline in your new panties. I love a good cock outline, it's so sexy. ",
             button: [
                 { chatID: 32, text: "Oh, but I....", callback: "changeRoom3t" }
@@ -549,7 +549,7 @@ room403.chat = function (chatID) {
             chatID: 32,
             speaker: "tiffany",
             text: "I have lots of chastity keys. One of the perks of owning my own dirty sex store. "
-                + sc.n("missy") + " will need to lock you back up!",
+                + "##missy## will need to lock you back up!",
             button: [
                 { chatID: 34, text: "Well....", callback: "changeRoom3b" }
             ]
@@ -565,7 +565,7 @@ room403.chat = function (chatID) {
         {
             chatID: 34,
             speaker: "jada",
-            text: "So let's get to those panties mister! I wonder what " + sc.n("jada") + " brought us...",
+            text: "So let's get to those panties mister! I wonder what ##jada## brought us...",
             button: [
                 { chatID: 35, text: "...", callback: "changeRoom4" }
             ]
@@ -573,7 +573,7 @@ room403.chat = function (chatID) {
         {
             chatID: 35,
             speaker: "tiffany",
-            text: "It's panty time!!! This first pair " + sc.n("jada") + " got for us is the classic black thong. It says " +
+            text: "It's panty time!!! This first pair ##jada## got for us is the classic black thong. It says " +
                 "I'm a classy girl so put a condom on before you fuck me.",
             button: [
                 { chatID: 36, text: "...", callback: "changeRoom5" }
@@ -633,7 +633,7 @@ room403.chat = function (chatID) {
         {
             chatID: 42,
             speaker: "tiffany",
-            text: "Oh hey " + sc.n("jada") + " c'mon in. I need your opinion on these new panties. ",
+            text: "Oh hey ##jada## c'mon in. I need your opinion on these new panties. ",
             button: [
                 { chatID: 43, text: "Wha... no, no we don't", callback: "changeRoom6b" }
             ]
@@ -649,7 +649,7 @@ room403.chat = function (chatID) {
         {
             chatID: 44,
             speaker: "tiffany",
-            text: "Relax " + sc.n("me") + ". She works here, she's a professional. We need to get her opinion on your new panties. Try them on for us and " +
+            text: "Relax ##me##. She works here, she's a professional. We need to get her opinion on your new panties. Try them on for us and " +
             "give us a fashion show!",
             button: [
                 { chatID: 45, text: "Oh um... sure", callback: "changeRoom6c" },
@@ -667,7 +667,7 @@ room403.chat = function (chatID) {
         {
             chatID: 46,
             speaker: "tiffany",
-            text: "Oh stop it. Of course you can take a picture " + sc.n("jada") + ". You're such a pretty girl, you need to share that!",
+            text: "Oh stop it. Of course you can take a picture ##jada##. You're such a pretty girl, you need to share that!",
             button: [
                 { chatID: -1, text: "Why does no one listen to me?", callback: "selfie" }
             ]
@@ -676,7 +676,7 @@ room403.chat = function (chatID) {
             chatID: 47,
             speaker: "jada",
             text: "I'm going to send you a pic! Check your phone sometime. I've got to help other customers before my boss gets pissed off. " +
-            sc.n("tiffany") + " you fuckin' rock, later " + sc.n("me") + ". ",
+            "##tiffany## you fuckin' rock, later ##me##. ",
             button: [
                 { chatID: 48, text: "Oh, don't share that photo!!!", callback: "changeRoom6a" }
             ]
@@ -687,7 +687,7 @@ room403.chat = function (chatID) {
             text: "You know playing dress up makes me soooo horny! I could really use some cock right now!",
             button: [
                 { chatID: 50, text: "Oh god yes! I can't believe this is happening!!", callback: "changeRoom7" },
-                { chatID: 49, text: sc.n("tiffany") + " we can't do that in here, we'll get caught!", callback: "changeRoom6a" }
+                { chatID: 49, text: "##tiffany## we can't do that in here, we'll get caught!", callback: "changeRoom6a" }
             ]
         },
         {
@@ -733,9 +733,9 @@ room403.chat = function (chatID) {
         {
             chatID: 54,
             speaker: "jada",
-            text: "Oh, ok, Well I got to get back to work, later " + sc.n("me"),
+            text: "Oh, ok, Well I got to get back to work, later ##me##",
             button: [
-                { chatID: 55, text: "bye " + sc.n("jada"), callback: "changeRoom3b" }
+                { chatID: 55, text: "bye ##jada##", callback: "changeRoom3b" }
             ]
         },
         {
@@ -767,7 +767,7 @@ room403.chat = function (chatID) {
             speaker: "tiffany",
             text: "Don't you dare cum in me!! I don't want you dripping out of me all day!!",
             button: [
-                { chatID: -1, text: "Cum inside " + sc.n("tiffany"), callback: "changeRoomPussyCum" },
+                { chatID: -1, text: "Cum inside ##tiffany##", callback: "changeRoomPussyCum" },
                 { chatID: 63, text: "Be a gentleman and spray your cum on her back", callback: "changeRoomCumBack" }//changeRoomX
             ]
         },
@@ -850,7 +850,7 @@ room403.chat = function (chatID) {
             speaker: "tiffany",
             text: "You're my pretty girl! Let's take you home, we should be able to sneak you past the door guard.",
             button: [
-                { chatID: -1, text: "[Follow " + sc.n("tiffany") + " home]", callback: "tifMap" }
+                { chatID: -1, text: "[Follow ##tiffany## home]", callback: "tifMap" }
             ]
         },
         {

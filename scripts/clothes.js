@@ -2187,7 +2187,7 @@ cl.display = function () {
         $('#char-accHead').html("");
         $('#char-hair').html("");
         $('#char-buttplug').html("");
-        cl.subDisplay("char-legs", (g.tview === "b" ? "z_bitchsuit_back.png" : "z_bitchsuit_front.png"));
+        cl.subDisplay("char-legs", (g.tview === "b" ? (cl.c.cock === 5 ? "z_bitchsuit_back_f.png" : "z_bitchsuit_back.png") : "z_bitchsuit_front.png"));
     }
     else {
         var cback = g.tview === "b";

@@ -217,7 +217,7 @@ room575.chat = function (chatID) {
         return {
             chatID: 999,
             speaker: "brayden",
-            text: sc.n("brayden") + ". So what's a pretty girl like you doing today?",
+            text: "##brayden##. So what's a pretty girl like you doing today?",
             button: buttonList
         };
     }
@@ -487,7 +487,7 @@ room575.chat = function (chatID) {
         {
             chatID: 25,
             speaker: "me",
-            text: "I'm " + sc.n("me") + ". What's your name? ",
+            text: "I'm ##me##. What's your name? ",
             button: [
                 { chatID: 999, text: "...", callback: "" },
             ]

@@ -342,7 +342,7 @@ room956.chat = function (chatID) {
             speaker: "dr",
             text: "This newest specimen is the finest of the hidden uterus I've ever had! I mean really, " +
                 "it's amazing her penis even existed. Mother nature made a mistake with this one, but I " +
-                sc.n("dr") + " have fixed her mistake! ",
+                "##dr## have fixed her mistake! ",
             button: [
                 { chatID: 25, text: "...", callback: "f6" }
             ]
@@ -377,7 +377,7 @@ room956.chat = function (chatID) {
         {
             chatID: 29,
             speaker: "missy",
-            text: "Ooooo. Wow. As much as I hate " + sc.n("dr") + " and his forced penectomies, he really did " +
+            text: "Ooooo. Wow. As much as I hate ##dr## and his forced penectomies, he really did " +
                 "some amazing work! I mean wow! Your vagina is so much prettier than mine! I want so much to " +
                 "play with it! Wow! ",
             button: [

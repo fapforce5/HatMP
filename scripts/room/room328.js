@@ -1182,6 +1182,7 @@ room328.btnclick = function (name) {
                         "image": "328_farm/pig_kinsey_bump.webp"
                     }, 328);
                     nav.next("pig_bump");
+                    break;
                 }
             }
             if (g.map.pig[1] === null) {
@@ -1220,6 +1221,7 @@ room328.btnclick = function (name) {
                     "image": "328_farm/pig_kinsey_bump.webp"
                 }, 328);
                 nav.next("pig_bump");
+                break;
             }
             if (g.map.pig[0] === null) {
                 g.roomTimeout = setTimeout(function () {
@@ -1280,6 +1282,7 @@ room328.btnclick = function (name) {
                         "image": "328_farm/pig_kinsey_bump.webp"
                     }, 328);
                     nav.next("pig_bump");
+                    break;
                 }
                 else {
                     nav.button({
@@ -2340,7 +2343,7 @@ room328.chat = function (chatID) {
                 break;
             case 4:
                 sc.completeMissionTask("lead", "ranch", 4);
-                leadtxt = "What do you think of " + sc.n("!rancher") + "? He's just the most handsome man ever. " +
+                leadtxt = "What do you think of ##!rancher##? He's just the most handsome man ever. " +
                     "Don't let me catch you making eyes at him! ";
                 break;
             case 5:
@@ -2356,12 +2359,12 @@ room328.chat = function (chatID) {
                 break;
             case 7:
                 sc.completeMissionTask("lead", "ranch", 7);
-                leadtxt = "I told " + sc.n("!rancher") + " that you pee your bed at night. He said that's " +
+                leadtxt = "I told ##!rancher## that you pee your bed at night. He said that's " +
                     "gross. He'll never marry a hucow that pees the bed like you. ";
                 break;
             default:
                 sc.completeMissionTask("lead", "ranch", 8);
-                leadtxt = "Everyone hates you. You'll never be a real hucow like me. Even " + sc.n("!rancher") +
+                leadtxt = "Everyone hates you. You'll never be a real hucow like me. Even ##!rancher##" +
                     " thinks so. You should just wander into the forest and die! ";
                 break;
         }
@@ -2893,7 +2896,7 @@ room328.chat = function (chatID) {
             {
                 chatID: 32,
                 speaker: "!rancher1",
-                text: "Shut up " + sc.n("kinsey") + " or you'll be cleaning cock. ",
+                text: "Shut up ##kinsey## or you'll be cleaning cock. ",
                 button: [
                     { chatID: 33, text: "*sissy moan* ", callback: "moo5" }
                 ]
@@ -3061,7 +3064,7 @@ room328.chat = function (chatID) {
                 chatID: 52,
                 speaker: "rachel",
                 text: "If there's one thing I can't stand for, it's a hucow that want's to act up! Now I " +
-                    "think " + sc.n("kinsey") + " here can help you control yourself, which is why every " +
+                    "think ##kinsey## here can help you control yourself, which is why every " +
                     "time you act up, she'll get her a punishment to help remind her to help you. Boys, " +
                     "make sure these two learn how to control themselves. ",
                 button: [
@@ -3071,7 +3074,7 @@ room328.chat = function (chatID) {
             {
                 chatID: 53,
                 speaker: "!rancher",
-                text: "I'm going to enjoy this. " + sc.n("kinsey") + " you ready for your learnin'?",
+                text: "I'm going to enjoy this. ##kinsey## you ready for your learnin'?",
                 button: [
                     { chatID: 54, text: "...", callback: "" }
                 ]
@@ -3123,7 +3126,7 @@ room328.chat = function (chatID) {
             {
                 chatID: 59,
                 speaker: "!rancher",
-                text: "Hey " + sc.n("!rancher1") + "! You wanna take a few of these? I'd hate to leave you out. ",
+                text: "Hey ##!rancher1##! You wanna take a few of these? I'd hate to leave you out. ",
                 button: [
                     { chatID: 60, text: "...", callback: "" },
                 ]
@@ -3317,14 +3320,14 @@ room328.chat = function (chatID) {
                 chatID: 82,
                 speaker: "security",
                 text: "You are so amazing. I want so much to go in there, but I got in trouble with that " +
-                    "bitch, " + sc.n("rachel") + ". She doesn't understand that hucows aren't real people " +
+                    "bitch, ##rachel##. She doesn't understand that hucows aren't real people " +
                     "and are made to be bred and used. The C.U.M. Cult teaches us that a man's role is to " +
                     "cum into inferior bodies like yours. " +
                     "Each day I look forward to seeing your hot naked body. You are " +
                     "the sexiest hucow here. There's nothing more I want than to mount you like a bull and " +
                     "breed you. ",
                 button: [
-                    { chatID: 83, text: "What's stopping you? " + sc.n("rachel") + " doesn't need to know. ", callback: "" },
+                    { chatID: 83, text: "What's stopping you? ##rachel## doesn't need to know. ", callback: "" },
                 ]
             },
             {
@@ -3381,7 +3384,7 @@ room328.chat = function (chatID) {
             {
                 chatID: 89,
                 speaker: "security",
-                text: "I'm telling " + sc.n("rachel") + "! Keep it down",
+                text: "I'm telling ##rachel##! Keep it down",
                 button: [
                     { chatID: -1, text: "ok", callback: "icon_bedturn" },
                 ]
@@ -3857,7 +3860,7 @@ room328.chat = function (chatID) {
             {
                 chatID: 141,
                 speaker: "thinking",
-                text: "How am I going to smuggle this food for " + sc.n("ppgirl") + "? I could keep it in my " +
+                text: "How am I going to smuggle this food for ##ppgirl##? I could keep it in my " +
                     "hand, but they might catch me and I wouldn't be able to get her more food. Maybe my mouth? " +
                     "No that won't work. It dissolves too quickly with all my saliva. I really wish I had pockets! " +
                     "Oh wait. My bussy is kind of like a pocket! I'll just store some food pellets in there! I guess " +
@@ -3869,9 +3872,9 @@ room328.chat = function (chatID) {
             {
                 chatID: 142,
                 speaker: "thinking",
-                text: "One food pellet for " + sc.n("ppgirl") + " and 1 food pellet for me. " +
-                    "One food pellet for " + sc.n("ppgirl") + " and 1 food pellet for me. " + 
-                    "One food pellet for " + sc.n("ppgirl") + " and 1 food pellet for me. ",
+                text: "One food pellet for ##ppgirl## and 1 food pellet for me. " +
+                    "One food pellet for ##ppgirl## and 1 food pellet for me. " + 
+                    "One food pellet for ##ppgirl## and 1 food pellet for me. ",
                 button: [
                     { chatID: -1, text: "...", callback: "finisheating" },
                 ]
@@ -4215,9 +4218,9 @@ room328.chat = function (chatID) {
             {
                 chatID: 180,
                 speaker: "rachel",
-                text: sc.n("lead") + " get on up here! Not only do produce the most milk, but your " +
+                text: "##lead## get on up here! Not only do produce the most milk, but your " +
                     "milk is so damn good! Almost as delicious as mine. You also help keep all these " +
-                    "boys in line. Really heifers, you all can learn from " + sc.n("lead") + "! Now " +
+                    "boys in line. Really heifers, you all can learn from ##lead##! Now " +
                     "get up here for your reward! ",
                 button: [
                     { chatID: 181, text: "...", callback: "rachel2" },
@@ -4235,7 +4238,7 @@ room328.chat = function (chatID) {
             {
                 chatID: 182,
                 speaker: "rachel",
-                text: sc.n("me") + " get on up here! I see you've been taking notes from " + sc.n("lead") +
+                text: "##me## get on up here! I see you've been taking notes from ##lead##" +
                     ". You're such a big help lately and always doin' what you're told. You deserve " +
                     "this reward! ",
                 button: [
@@ -4315,7 +4318,7 @@ room328.chat = function (chatID) {
             {
                 chatID: 191,
                 speaker: "kinsey",
-                text: "I hate that bitch, " + sc.n("lead") + ". Tonight when we eat distract her so I " +
+                text: "I hate that bitch, ##lead##. Tonight when we eat distract her so I " +
                     "can spit on her pellets! Hehe! Well get together at feeding time, 'k?",
                 button: [
                     { chatID: -1, text: "totally", callback: "reset" },
@@ -4349,7 +4352,7 @@ room328.chat = function (chatID) {
             {
                 chatID: 195,
                 speaker: "lead",
-                text: "*crunch* Just the other day I was tellin' *chew* " + sc.n("!rancher") +
+                text: "*crunch* Just the other day I was tellin' *chew* ##!rancher##" +
                     " that he 'oughta just lock you two up in the barn. *crunch* so we never " +
                     "have to deal with you *gulp* idiots again.",
                 button: [
@@ -4369,7 +4372,7 @@ room328.chat = function (chatID) {
             {
                 chatID: 197,
                 speaker: "kinsey",
-                text: "Haha. Eat my spit bitch! " + sc.n("me") + ", let's get out of here before the ranchers come over!",
+                text: "Haha. Eat my spit bitch! ##me##, let's get out of here before the ranchers come over!",
                 button: [
                     { chatID: -1, text: "Scurry out of there!", callback: "finisheating" },
                 ]

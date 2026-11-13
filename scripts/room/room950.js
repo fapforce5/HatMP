@@ -1723,7 +1723,7 @@ room950.chat = function (chatID) {
             {
                 chatID: 55,
                 speaker: "ubel",
-                text: "You will be used to prove " + sc.n("me") + "'s commitment to our church. You see I command " +
+                text: "You will be used to prove ##me##'s commitment to our church. You see I command " +
                     "him to whip him to your death. That is the only way we will know his true allegiance. I was " +
                     "going to just throw you away, but now. Now you can continue to have purpose! ",
                 button: [
@@ -1742,8 +1742,8 @@ room950.chat = function (chatID) {
             {
                 chatID: 57,
                 speaker: "ubel",
-                text: "Oh, I know you'll do what ever I want. And now I want " + sc.n("me") + " to prove " +
-                    "their worth and kill you. Here, " + sc.n("me") + ", take my whip. Whip this trash until " +
+                text: "Oh, I know you'll do what ever I want. And now I want ##me## to prove " +
+                    "their worth and kill you. Here, ##me##, take my whip. Whip this trash until " +
                     "he bleeds out and prove you are the man you claim to be! ",
                 button: [
                     { chatID: -1, text: "[Take the whip]", callback: "s4" },
@@ -1753,7 +1753,7 @@ room950.chat = function (chatID) {
             {
                 chatID: 58,
                 speaker: "!martin",
-                text: sc.n("me") + ". Please. I know you. I know you're just as scared as I am. You and I " +
+                text: "##me##. Please. I know you. I know you're just as scared as I am. You and I " +
                     "aren't like them. We want to make people happy, not kill them. Please put down the whip. " +
                     "You don't have to do this. You're better than this. Please, just let me go home. ",
                 button: [
@@ -1774,7 +1774,7 @@ room950.chat = function (chatID) {
             {
                 chatID: 60,
                 speaker: "!martin",
-                text: sc.n("me") + ". Please. I don't know you, but I know you're just as scared as I am. I can tell you're " +
+                text: "##me##. Please. I don't know you, but I know you're just as scared as I am. I can tell you're " +
                     "not like them. Please put down the whip. " +
                     "You don't have to do this. You're better than this. Please, just let me go home. ",
                 button: [
@@ -1821,7 +1821,7 @@ room950.chat = function (chatID) {
                 chatID: 65,
                 speaker: "missy",
                 text: "We don't have a lot of time, I had to rush my plan so your dumb ass didn't kill " +
-                    "poor " + sc.n("!martin") + " here. Just follow me and don't stop running!",
+                    "poor ##!martin## here. Just follow me and don't stop running!",
                 button: [
                     { chatID: -1, text: "Yeah!", callback: "room954" },
                 ]
@@ -1919,7 +1919,7 @@ room950.chat = function (chatID) {
                 chatID: 77,
                 speaker: "daria",
                 text: "Oh hahaha. You almost got me. I almost totally let you out. Almost. So I was asking around about you. Are you " +
-                    sc.n("me") + "?",
+                    "##me##?",
                 button: [
                     { chatID: 78, text: "Yes, that's me. ", callback: "" }
                 ]
@@ -1927,7 +1927,7 @@ room950.chat = function (chatID) {
             {
                 chatID: 78,
                 speaker: "daria",
-                text: "I know your " + sc.n("el") + ", " + sc.n("eva") + "! ",
+                text: "I know your ##el##, ##eva##! ",
                 button: [
                     { chatID: 79, text: "Really?", callback: "" }
                 ]
@@ -1935,7 +1935,7 @@ room950.chat = function (chatID) {
             {
                 chatID: 79,
                 speaker: "daria",
-                text: "Yes, I'm " + sc.n("daria") + ". I knew her in school, back when I still went to school. " +
+                text: "Yes, I'm ##daria##. I knew her in school, back when I still went to school. " +
                     "You've really put yourself into a mess you know. ",
                 button: [
                     { chatID: 80, text: "Oh, I do", callback: "" }
@@ -2161,7 +2161,7 @@ room950.chat = function (chatID) {
             {
                 chatID: 105,
                 speaker: "me",
-                text: "*whisper* Hey " + sc.n("bodhi") + ". Over here.",
+                text: "*whisper* Hey ##bodhi##. Over here.",
                 button: [
                     { chatID: 106, text: "...", callback: "b4" }
                 ]
@@ -2292,7 +2292,7 @@ room950.chat = function (chatID) {
             {
                 chatID: 121,
                 speaker: "bodhi",
-                text: "Oh totally. I love to share our experience with others. Can " + sc.n("me") + " come over and play? " +
+                text: "Oh totally. I love to share our experience with others. Can ##me## come over and play? " +
                     "I told him to be a good. ",
                 button: [
                     { chatID: 122, text: "...", callback: "" }
@@ -2390,7 +2390,7 @@ room950.chat = function (chatID) {
                     "one for far too long. Those supple lips, soft skin, and " + cl.c.eyes + " eyes. " +
                     gender.pronoun("she") + " really is an instrument of the devil's intoxication. ", 
                 button: [
-                    { chatID: 133, text: sc.n("priest") + "?", callback: "" }
+                    { chatID: 133, text: "##priest##?", callback: "" }
                 ]
             },
             {
@@ -2470,7 +2470,7 @@ room950.chat = function (chatID) {
                 speaker: "priest",
                 text: "Oh yeah. Can you feel my penis growing hard in your mouth? I spent so many years " +
                     "denying my own humanity. The need for sexual gratification until I figured out the " +
-                    "answer. Admittedly " + sc.n("ubel") + " assisted in my epiphany. Turn around " +
+                    "answer. Admittedly ##ubel## assisted in my epiphany. Turn around " +
                     "show me your anus. I do love seeing a bare anus winking at me. ",
                 button: [
                     { chatID: 142, text: "*suck* *slurp*", callback: "priest5" }

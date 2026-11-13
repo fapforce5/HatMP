@@ -960,7 +960,7 @@ room451.chat = function (chatID) {
             "I do love shoving cocks up my bussy!",
             "I wonder if I knew that man...",
             "Why does anal feel so much better than regular sex? ",
-            "If only " + sc.n("cecilia") + " was here to eat my drippy hole. ",
+            "If only ##cecilia## was here to eat my drippy hole. ",
             "I wonder if it's possible to overdose on creampies? ",
             "Everyone should try anal, at least 500 times.",
             "Why am I so anally obsessed!",
@@ -1033,7 +1033,7 @@ room451.chat = function (chatID) {
             {
                 chatID: 7,
                 speaker: "cecilia",
-                text: "Oh " + sc.n("me") + ", I'm so happy you're here. Want to shove you cock down my throat?",
+                text: "Oh ##me##, I'm so happy you're here. Want to shove you cock down my throat?",
                 button: [
                     { chatID: 8, text: "Hmmmm", callback: "bj2" }
                 ]
@@ -1090,7 +1090,7 @@ room451.chat = function (chatID) {
             {
                 chatID: 14,
                 speaker: "cecilia",
-                text: sc.n("me") + "! Get in here you slut!",
+                text: "##me##! Get in here you slut!",
                 button: [
                     { chatID: -1, text: "Enter the stall", callback: "enterstall" }
                 ]
@@ -1117,7 +1117,7 @@ room451.chat = function (chatID) {
                 chatID: 17,
                 speaker: "thinking",
                 text: "I feel like such a confused dirty girl. What am I doing? Why am I about to suck some stranger's cock? I've really lost my mind. I'm so glad " +
-                    sc.n("cecilia") + "'s here to support me, but really maybe I should go...",
+                    "##cecilia##'s here to support me, but really maybe I should go...",
                 button: [
                     { chatID: 18, text: "...", callback: "c3" }
                 ]
@@ -1136,7 +1136,7 @@ room451.chat = function (chatID) {
                 speaker: "thinking",
                 text: "MMMmmm that does taste plump and yummy. Wait what am I thinking. " +
                     "Forget it! I'm going to suck this strange cock! I can't let " +
-                    sc.n("cecilia") + " down. ",
+                    "##cecilia## down. ",
                 button: [
                     { chatID: 20, text: "...", callback: "" }
                 ]

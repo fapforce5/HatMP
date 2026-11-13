@@ -130,7 +130,7 @@ room30.chat = function (chatID) {
         {
             chatID: 7,
             speaker: "lola",
-            text: sc.n("me") + "!",
+            text: "##me##!",
             button: [
                 { chatID: 8, text: "...hi", callback: "" }
             ]

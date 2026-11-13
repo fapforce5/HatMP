@@ -172,7 +172,7 @@ room50.chat = function (chatID) {
         {
             chatID: 2,
             speaker: "treyvon",
-            text: "Hey " + sc.n("tiffany") + ", welcome home. Who's this cutie you have with you?",
+            text: "Hey ##tiffany##, welcome home. Who's this cutie you have with you?",
             button: [
                 { chatID: 3, text: "...", callback: "" }
             ]
@@ -220,7 +220,7 @@ room50.chat = function (chatID) {
         {
             chatID: 8,
             speaker: "treyvon",
-            text: gv.get("girlname") + ". That's a really pretty name for a really pretty girl. I'm " + sc.n("treyvon") + ". " +
+            text: gv.get("girlname") + ". That's a really pretty name for a really pretty girl. I'm ##treyvon##. " +
             "I'll get you anything you need — just scream my name. *wink*",
             button: [
                 { chatID: 9, text: "...", callback: "" }
@@ -229,10 +229,10 @@ room50.chat = function (chatID) {
         {
             chatID: 9,
             speaker: "tiffany",
-            text: "You two are really hitting it off. I guess I could give you two some alone time... Oh yeah, I forgot " + sc.n("candy") + " wanted " +
-                "to see you. Sorry " + sc.n("treyvon") + ", but I have to get " + gv.get("girlname") + " home.",
+            text: "You two are really hitting it off. I guess I could give you two some alone time... Oh yeah, I forgot ##candy## wanted " +
+                "to see you. Sorry ##treyvon##, but I have to get " + gv.get("girlname") + " home.",
             button: [
-                { chatID: -1, text: "[Follow " + sc.n("tiffany") + " home]", callback: "followtif" }
+                { chatID: -1, text: "[Follow ##tiffany## home]", callback: "followtif" }
             ]
         },
         {
@@ -376,7 +376,7 @@ room50.chat = function (chatID) {
         {
             chatID: 26,
             speaker: "treyvon",
-            text: sc.n("treyvon") + " only fucks a bitch once. Need to spread my seed far and wide, ya know. " +
+            text: "##treyvon## only fucks a bitch once. Need to spread my seed far and wide, ya know. " +
                 "Start fucking the same bitch too many times and you get hooked. Why do you think I work here. " +
                 "New opportunities keep flowing to this dick. ",
             button: [

@@ -439,7 +439,7 @@ room775.chat = function (chatID) {
                     "You're a man, so you don't know how scary it is here. Speaking of girls,  " +
                     "there's lots of single girls at the church. Maybe you can find yourself a nice young lady. ",
                 button: [
-                    { chatID: 11, text: sc.n("landlord") + "... ", callback: "" }
+                    { chatID: 11, text: "##landlord##... ", callback: "" }
                 ]
             },
             {
@@ -464,7 +464,7 @@ room775.chat = function (chatID) {
             {
                 chatID: 13,
                 speaker: "priest",
-                text: "Welcome all, I see many familiar faces, and some new faces. For those that are new here I'm " + sc.n("priest") +
+                text: "Welcome all, I see many familiar faces, and some new faces. For those that are new here I'm ##priest##" +
                     " and I'm really excited to tell you about our lord and savior! Lend me your ears. ",
                 button: [
                     { chatID: 14, text: "...", callback: "closeup" }
@@ -485,7 +485,7 @@ room775.chat = function (chatID) {
             {
                 chatID: 15,
                 speaker: "thinking",
-                text: "Bla bla bla bla bla... I'm so bored. I can't wait for this to end. I don't know why I allow " + sc.n("landlord") +
+                text: "Bla bla bla bla bla... I'm so bored. I can't wait for this to end. I don't know why I allow ##landlord##" +
                     " to keep dragging me to this place. At least it's only once a week. ",
                 button: [
                     { chatID: 16, text: "...", callback: "" }
@@ -504,8 +504,8 @@ room775.chat = function (chatID) {
             {
                 chatID: 17,
                 speaker: "priest",
-                text: "If it isn't little " + sc.n("me") + ". It's nice to see you back in the church. It's been so long since I've " +
-                    "seen you in my booth. Still teasing your " + sc.n("el") + "? I remember you when you were just a small baby when " +
+                text: "If it isn't little ##me##. It's nice to see you back in the church. It's been so long since I've " +
+                    "seen you in my booth. Still teasing your ##el##? I remember you when you were just a small baby when " +
                     "I first started preaching here. Right after church I asked to hold you and you threw up all over my robes. You " +
                     "were such a cute kid that grew into a handsome man. I'll bet you can't keep the young ladies away. ",
                 button: [
@@ -829,7 +829,7 @@ room775.chat = function (chatID) {
             {
                 chatID: 51,
                 speaker: "me",
-                text: "I peeked on my " + sc.n("el") + " while they were taking a shower. ",
+                text: "I peeked on my ##el## while they were taking a shower. ",
                 button: [
                     { chatID: 52, text: "...", callback: "" }
                 ]
@@ -837,7 +837,7 @@ room775.chat = function (chatID) {
             {
                 chatID: 52,
                 speaker: "priest",
-                text: "That is quite troubling. Lusting after a nude girl is a sin, but lusting after your own " + sc.n("el") +
+                text: "That is quite troubling. Lusting after a nude girl is a sin, but lusting after your own ##el##" +
                     " is truly sickening. Why did you do this? ",
                 button: [
                     { chatID: 53, text: "I was curious about their bodies. ", callback: "" },
@@ -1008,7 +1008,7 @@ room775.chat = function (chatID) {
             {
                 chatID: 71,
                 speaker: "me",
-                text: "I must confess. I've been corrupted by " + sc.n("nun") + ". It started innocent enough, but you could " +
+                text: "I must confess. I've been corrupted by ##nun##. It started innocent enough, but you could " +
                     "say I've met her in the biblical way. ",
                 button: [
                     { chatID: 72, text: "...", callback: "" },
@@ -1027,7 +1027,7 @@ room775.chat = function (chatID) {
             {
                 chatID: 73,
                 speaker: "priest",
-                text: "If it isn't little " + sc.n("me") + ". It's nice to see you back in the church. " +
+                text: "If it isn't little ##me##. It's nice to see you back in the church. " +
                     "It's been so long since I've " +
                     "seen you. Welcome back. I must say I'm a bit surprised. I don't " +
                     "remember you coming to confess in the past. ",
@@ -1038,7 +1038,7 @@ room775.chat = function (chatID) {
             {
                 chatID: 74,
                 speaker: "me",
-                text: "Yeah, my " + sc.n("landlord") + " made me. Aren't you supposed to be on " +
+                text: "Yeah, my ##landlord## made me. Aren't you supposed to be on " +
                     "the other side of the screen?",
                 button: [
                     { chatID: 75, text: "...", callback: "" },
@@ -1065,7 +1065,7 @@ room775.chat = function (chatID) {
             {
                 chatID: 77,
                 speaker: "priest",
-                text: "Oh my. Still teasing your " + sc.n("el") + "? I remember you when you were just a small baby when " +
+                text: "Oh my. Still teasing your ##el##? I remember you when you were just a small baby when " +
                     "I first started preaching here. Right after church I asked to hold you and you threw up all over my robes. You " +
                     "were such a cute kid that grew into a handsome man. I'll bet you can't keep the young ladies away. ",
                 button: [
@@ -1115,7 +1115,7 @@ room775.chat = function (chatID) {
             {
                 chatID: 82,
                 speaker: "thinking",
-                text: "Oh my. I think my story is starting to give " + sc.n("priest") + " a stiffy. I " + 
+                text: "Oh my. I think my story is starting to give ##priest## a stiffy. I " + 
                     "can feel it growing against my bottom. I wonder if it will get harder if I " +
                     "wiggle my butt? ",
                 button: [

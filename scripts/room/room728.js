@@ -329,7 +329,7 @@ room728.chat = function (chatID) {
         return {
             chatID: 900,
             speaker: "random",
-            text: "Should I use this " + g.internal.text + " to try to take out " + sc.n("river") + "? ",
+            text: "Should I use this " + g.internal.text + " to try to take out ##river##? ",
             button: [
                 { chatID: -1, text: "Yes. ", callback: "river3" },
                 { chatID: -1, text: "Pick something else. ", callback: "" },
@@ -522,7 +522,7 @@ room728.chat = function (chatID) {
             {
                 chatID: 18,
                 speaker: "me",
-                text: "Take this " + sc.n("river") + "!!!",
+                text: "Take this ##river##!!!",
                 button: [
                     { chatID: 19, text: "...", callback: "river_out" },
                 ]
@@ -538,7 +538,7 @@ room728.chat = function (chatID) {
             {
                 chatID: 20,
                 speaker: "thinking",
-                text: "Fuckin' sweet! Got the code. It's 1-2-3-4-5! Now to get back to " + sc.n("p") +
+                text: "Fuckin' sweet! Got the code. It's 1-2-3-4-5! Now to get back to ##p##" +
                     " and let her know! ",
                 button: [
                     { chatID: -1, text: "[Get out of there]", callback: "leave" },
@@ -736,7 +736,7 @@ room728.chat = function (chatID) {
                 speaker: "river",
                 text: "Oh shit there totally is! I don't know the code though. Fuck. Maybe I'll just find you around. " +
                     "You know it's only a matter of time until you're brought back once the heat dies down. I'll talk " +
-                    "to " + sc.n("ubel") + ". Maybe he'll let me keep you. He does do special favors sometimes, but you " +
+                    "to ##ubel##. Maybe he'll let me keep you. He does do special favors sometimes, but you " +
                     "usually have to do some fucked up shit for him when he does. I'll find a way for us to be together. ",
                 button: [
                     { chatID: 44, text: "I know you will", callback: "" },

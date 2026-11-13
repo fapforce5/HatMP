@@ -360,7 +360,7 @@ room215.chat = function (chatID) {
             speaker: "river",
             text: "Hey slut! You want my dick up your butt? ",
             button: [
-                { chatID: 6, text: "Fuck off " + sc.n("river") + "! I'm never fucking you! ", callback: "" },
+                { chatID: 6, text: "Fuck off ##river##! I'm never fucking you! ", callback: "" },
             ]
         },
         {
@@ -385,15 +385,15 @@ room215.chat = function (chatID) {
             text: "Hey skidmark. figures a loser like you would be in here. I'm going to show you what a real man's cock " +
                 "looks like.",
             button: [
-                { chatID: 9, text: "Fuck off " + sc.n("river") + "! I'm never fucking you! ", callback: "river1" },
+                { chatID: 9, text: "Fuck off ##river##! I'm never fucking you! ", callback: "river1" },
             ]
         },
         {
             chatID: 9,
             speaker: "landlord",
-            text: sc.n("me") + "! What the hell! Both of you, get in that room this instant!",
+            text: "##me##! What the hell! Both of you, get in that room this instant!",
             button: [
-                { chatID: -1, text: sc.n("landlord") + "! What are you doing here?", callback: "riverstart0" }
+                { chatID: -1, text: "##landlord##! What are you doing here?", callback: "riverstart0" }
             ]
         },
         {

@@ -1036,7 +1036,7 @@ room476.chat = function (chatID) {
                     "rip your sissy ass open! Hope you love the taste of your own ass " +
                     "'cause our cocks are going straight from your ass to your mouth! ",
                 button: [
-                    { chatID: 23, text: "Fuck you " + sc.n("river") + "!", callback: "" },
+                    { chatID: 23, text: "Fuck you ##river##!", callback: "" },
                 ]
             },
             {
@@ -1115,7 +1115,7 @@ room476.chat = function (chatID) {
             {
                 chatID: 31,
                 speaker: "cult",
-                text: "Don't worry " + sc.n("river") + " I'll tear that ass up! When " +
+                text: "Don't worry ##river## I'll tear that ass up! When " +
                     "I get done with this little sissy " + gender.pronoun("she") + 
                     " won't be able to walk for a week! Hope you like it deep little " +
                     "girl. ",
@@ -1268,7 +1268,7 @@ room476.chat = function (chatID) {
                 speaker: "!damselle",
                 text: "You're a little short for a Cum Cultist ",
                 button: [
-                    { chatID: 49, text: "What? No. I'm " + sc.n("me") + ". I'm here to rescue you.", callback: "" }
+                    { chatID: 49, text: "What? No. I'm ##me##. I'm here to rescue you.", callback: "" }
                 ]
             },
             {
@@ -1334,11 +1334,11 @@ room476.chat = function (chatID) {
             {
                 chatID: 56,
                 speaker: "river",
-                text: "Well holy fucking shit! If it isn't " + sc.n("me") + "!! You won't be meeting your " +
+                text: "Well holy fucking shit! If it isn't ##me##!! You won't be meeting your " +
                     "traitor of a friend. He spilled everything about his little meet up after only three " +
                     "hours of torture. He's such a pussy like you. ",
                 button: [
-                    { chatID: 57, text: sc.n("river") + "!!", callback: "" },
+                    { chatID: 57, text: "##river##!!", callback: "" },
                 ]
             },
             {

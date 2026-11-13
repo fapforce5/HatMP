@@ -604,7 +604,7 @@ room202.chat = function (chatID) {
             text: "[Continues to work]",
             button: [
                 { chatID: 28, text: "[Pee yourself without saying a word]", callback: "peeSelf0" },
-                { chatID: 22, text: sc.n("missy") + " I really have to pee!", callback: "" }
+                { chatID: 22, text: "##missy## I really have to pee!", callback: "" }
             ]
         },
         {
@@ -612,7 +612,7 @@ room202.chat = function (chatID) {
             speaker: "missy",
             text: "[Continues to work]",
             button: [
-                { chatID: 23, text: sc.n("missy") + " please... I really have to pee now!", callback: "" }
+                { chatID: 23, text: "##missy## please... I really have to pee now!", callback: "" }
             ]
         },
         {

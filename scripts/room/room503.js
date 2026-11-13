@@ -182,7 +182,7 @@ room503.chat = function (chatID) {
         {
             chatID: 7,
             speaker: "thinking",
-            text: "It's " + sc.n("zoey") + "'s black lipstick. Should I steal it from her?",
+            text: "It's ##zoey##'s black lipstick. Should I steal it from her?",
             button: [
                 { chatID: -1, text: "Steal her lipstick", callback: "steal" },
                 { chatID: -1, text: "Leave it there. ", callback: "" },

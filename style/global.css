@@ -258,6 +258,47 @@ input[type=text]:disabled{
     width:100%;
 }
 
+/* ##name## in chat text (sc.replaceChat); color is set inline from sc.char hex */
+.chat-name {
+    font-weight: bold;
+    cursor: help;
+}
+
+.room-chatBtn .chat-name {
+    cursor: inherit;
+}
+
+.chat-nameCard {
+    display: none;
+    position: fixed;
+    z-index: 200;
+    padding: 6px 8px;
+    background: rgba(20, 16, 24, .92);
+    border: 1px solid rgba(255, 255, 255, .25);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .6);
+    text-align: center;
+    pointer-events: none;
+}
+
+.chat-nameCard img {
+    display: block;
+    width: calc(70px + 5vh);
+}
+
+.chat-nameCard .room-chatSpeaker-layers img + img {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.chat-nameCard-name {
+    margin-top: 4px;
+    font-weight: bold;
+    font-size: calc(.8em + .6vh);
+    text-shadow: 1px 1px 3px #000;
+}
+
 .room-chatSpeaker-layers {
     position: relative;
 }

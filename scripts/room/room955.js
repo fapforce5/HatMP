@@ -314,8 +314,8 @@ room955.chat = function (chatID) {
                             return {
                                 chatID: 900,
                                 speaker: "bigguy",
-                                text: sc.n("chad") + " and I are taking good care of your " + sc.n("el") +
-                                    " and " + sc.n("landlord") + ". We started playing a game called who's " +
+                                text: "##chad## and I are taking good care of your ##el##" +
+                                    " and ##landlord##. We started playing a game called who's " +
                                     "the daddy. ",
                                 button: [
                                     { chatID: 10, text: "What's that?", callback: "" }
@@ -326,7 +326,7 @@ room955.chat = function (chatID) {
                             return {
                                 chatID: 900,
                                 speaker: "bigguy",
-                                text: "Got your " + sc.n("el") + " to drop out of college. They haven't been in " +
+                                text: "Got your ##el## to drop out of college. They haven't been in " +
                                     "quite some time. Too busy making money on their backs, hehehe. It's amazing " +
                                     "how easily you can turn young women into whores. ",
                                 button: [
@@ -334,7 +334,7 @@ room955.chat = function (chatID) {
                                 ]
                             };
                         default:
-                            txt955 = "Don't worry little " + gender.pronoun("girl") + " your " + sc.n("el") +
+                            txt955 = "Don't worry little " + gender.pronoun("girl") + " your ##el##" +
                                 " is taking good care of this dick while you're in here. Hehehe"
                             break;
                     }
@@ -366,7 +366,7 @@ room955.chat = function (chatID) {
                 txt955 = "Hehehe. So where you want this dick? "
                 break;
             case "raven":
-                txt955 = "I'm going to fuck you then fuck your " + sc.n("landlord") + " over and take her property " +
+                txt955 = "I'm going to fuck you then fuck your ##landlord## over and take her property " +
                     "and there isn't a damn thing you can do about it sissy."
                 break;
         }
@@ -501,7 +501,7 @@ room955.chat = function (chatID) {
         {
             chatID: 12,
             speaker: "bigguy",
-            text: "That's right kid. I'm your " + sc.n("landlord") + "'s fucker! Hahaha! Even got her to " +
+            text: "That's right kid. I'm your ##landlord##'s fucker! Hahaha! Even got her to " +
                 "take it up the ass. Love how she just lets me do whatever I want to her. I don't even " +
                 "have to get up from the couch when I have to piss. She just gulps it down. Love that " +
                 "fat slut. Too bad you'll never get home to see them again, hahaha. Now take my cum, whore. ",

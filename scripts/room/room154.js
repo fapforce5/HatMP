@@ -184,7 +184,7 @@ room154.chat = function (chatID) {
             chatID: 1,
             speaker: "bitch",
             text: "Gentlemen, your main course. Just give us 5 minutes to place " + gender.pronoun("her") +
-                ". " + sc.n("me") + ", lay down on the table. ",
+                ". ##me##, lay down on the table. ",
             button: [
                 { chatID: 2, text: "Yes ma'am", callback: "c1" }
             ]
@@ -200,7 +200,7 @@ room154.chat = function (chatID) {
         {
             chatID: 3,
             speaker: "jones",
-            text: sc.n("bitch") + "! Bring the new maid to the sitting room. We're going to enjoy her.",
+            text: "##bitch##! Bring the new maid to the sitting room. We're going to enjoy her.",
             button: [
                 { chatID: 4, text: "...", callback: "" }
             ]
@@ -243,7 +243,7 @@ room154.chat = function (chatID) {
         {
             chatID: 8,
             speaker: "thinking",
-            text: "Wait. Is " + sc.n("bitch") + " transgender? Holy crap I didn't even know! Why " +
+            text: "Wait. Is ##bitch## transgender? Holy crap I didn't even know! Why " +
                 "has she been so mean to me then! Also whoever this guy is really knows how to finger " +
                 "a hole. I do wish he used a little lube or spit before shoving his finger up my ass. ",
             button: [
@@ -280,7 +280,7 @@ room154.chat = function (chatID) {
         {
             chatID: 12,
             speaker: "jones",
-            text: "You did well " + sc.n("bitch") + ". Once you finish taking that cock, clean yourself " +
+            text: "You did well ##bitch##. Once you finish taking that cock, clean yourself " +
                 "up. You can sleep on the floor at the foot of my bed tonight. ",
             button: [
                 { chatID: 13, text: "...", callback: "c23" },
@@ -298,7 +298,7 @@ room154.chat = function (chatID) {
             chatID: 14,
             speaker: "bitch",
             text: "Did you hear that? He's going to let me sleep in his room! I've got to clean " +
-                "all this cum out of my butt. Don't want to drip on his floor. " + sc.n("jones") + " gets so " +
+                "all this cum out of my butt. Don't want to drip on his floor. ##jones## gets so " +
                 "mad if this place is dirty! Oh I'm so excited!!!",
             button: [
                 { chatID: 15, text: "...", callback: "c25" },
@@ -307,7 +307,7 @@ room154.chat = function (chatID) {
         {
             chatID: 15,
             speaker: "!butler",
-            text: "I've been in the service of " + sc.n("jones") + " since he's been rich enough to afford " +
+            text: "I've been in the service of ##jones## since he's been rich enough to afford " +
                 "a butler and this is the first time he's allowed anyone in his room while he sleeps. I do " +
                 "hope they can find love. They really are the best for each other. ",
             button: [

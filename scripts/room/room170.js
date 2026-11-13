@@ -1114,7 +1114,7 @@ room170.chat = function (chatID) {
                 chatID: 2,
                 speaker: "bitch",
                 text: "These must be the *ugh* sissies that are going to model for Mr. Jones. " +
-                    "You can go " + sc.n("black") + ". I'll take them from here. ",
+                    "You can go ##black##. I'll take them from here. ",
                 button: [
                     { chatID: 3, text: "...", callback: "ex317_2" }
                 ]
@@ -1246,7 +1246,7 @@ room170.chat = function (chatID) {
             {
                 chatID: 16,
                 speaker: "jones",
-                text: "I was just talking with " + sc.n("black") + " here about you. Love " +
+                text: "I was just talking with ##black## here about you. Love " +
                     "your look and energy! I'm going to do a private show and I " +
                     "must have you model at it. It lines up with your next class date, so " +
                     "it's perfect! You must come! I'll even give you the dress and corset your modeled " +
@@ -1330,7 +1330,7 @@ room170.chat = function (chatID) {
                 text: "No? No one ever tells me no! Get out of here! I'm going to ruin " +
                     "your career! You'll never model for another soul again! I should " +
                     "have known you were just another air head, idiot bimbo! Get out " +
-                    "of my hallway and back to the trash you are! " + sc.n("black") +
+                    "of my hallway and back to the trash you are! ##black##" +
                     " is going to get an ear full from me, loaning me her undesirables! " +
                     "You ruined my fucking show! ",
                 button: [
@@ -1341,7 +1341,7 @@ room170.chat = function (chatID) {
                 chatID: 24,
                 speaker: "missy",
                 text: "What the hell? Why are you streaking across my foyer? Is " +
-                    "this one of " + sc.n("black") + "'s tasks?",
+                    "this one of ##black##'s tasks?",
                 button: [
                     { chatID: 26, text: "[Tell Missy what happened]", callback: "" },
                 ]
@@ -1350,7 +1350,7 @@ room170.chat = function (chatID) {
                 chatID: 25,
                 speaker: "missy",
                 text: "What the hell? Why are you streaking across my foyer? Is " +
-                    "this one of " + sc.n("black") + "'s tasks?",
+                    "this one of ##black##'s tasks?",
                 button: [
                     { chatID: 26, text: "[Tell Missy what happened]", callback: "" },
                 ]
@@ -1358,7 +1358,7 @@ room170.chat = function (chatID) {
             {
                 chatID: 26,
                 speaker: "missy",
-                text: sc.n("jones") + " is an idiot that surrounds himself with sycophants. " +
+                text: "##jones## is an idiot that surrounds himself with sycophants. " +
                     "No one really cares about his options they just hold on to his kite " +
                     "string for their own financial gain. Don't worry about anything he " +
                     "says, it won't affect your life one little bit. And don't worry about " +
@@ -1399,7 +1399,7 @@ room170.chat = function (chatID) {
             {
                 chatID: 30,
                 speaker: "bitch",
-                text: "*ugh* " + sc.n("jones") + " ordered me to tell you that he " +
+                text: "*ugh* ##jones## ordered me to tell you that he " +
                     "loves how you've modeled his creations. You are invited to his " +
                     "mansion in the North East corner of the residential section of the city " +
                     "if you would like to work for him. But I recommend you do not " +
@@ -1411,7 +1411,7 @@ room170.chat = function (chatID) {
             {
                 chatID: 31,
                 speaker: "bitch",
-                text: "We always do what " + sc.n("jones") + " tells us to do. No questions asked, " +
+                text: "We always do what ##jones## tells us to do. No questions asked, " +
                     "no matter what. He told me to tell you to come, but he didn't say I couldn't " +
                     "make your life miserable if you do show. Now, I've got to go, you just take " +
                     "your bimbo brain home and never come by. *grrrr*",
@@ -1451,7 +1451,7 @@ room170.chat = function (chatID) {
                 chatID: 35,
                 speaker: "me",
                 text: "Aaaaah. The curious mind. I do love a lady who is always looking for a little " +
-                    "more. I'm " + sc.n("!judge") + ", one of the judges for the show. Tell me are you one of the " +
+                    "more. I'm ##!judge##, one of the judges for the show. Tell me are you one of the " +
                     "contestants?",
                 button: [
                     { chatID: 37, text: "[Walk closer to the mysterious man]", callback: "fashion1" },
@@ -1576,7 +1576,7 @@ room170.chat = function (chatID) {
             {
                 chatID: 48,
                 speaker: "p",
-                text: "Our first judge is " + sc.n("!judge") + ", the world famous " +
+                text: "Our first judge is ##!judge##, the world famous " +
                     "pathfinder. He doesn't just visit places, he immerses himself in " +
                     "them. With a well-worn passport and an open heart, he seeks out " +
                     "authentic experiences and untold stories, bringing the world's " +
@@ -1588,7 +1588,7 @@ room170.chat = function (chatID) {
             {
                 chatID: 49,
                 speaker: "p",
-                text: "Our next judge is " + sc.n("!airwrecka") + ", " + (new Date().getFullYear() - 3) +
+                text: "Our next judge is ##!airwrecka##, " + (new Date().getFullYear() - 3) +
                     "'s Miss Fetville. She went on to win State and has been a member of our community " +
                     "helping future young ladies in their own pageant journey.",
                 button: [
@@ -1598,7 +1598,7 @@ room170.chat = function (chatID) {
             {
                 chatID: 50,
                 speaker: "p",
-                text: sc.n("tudor") + " our wonderful financier and a huge supporter " +
+                text: "##tudor## our wonderful financier and a huge supporter " +
                     "of the arts in Fetville. He's not only built multinational businesses, " +
                     "but he's also built a community of love and understanding. ",
                 button: [
@@ -1608,7 +1608,7 @@ room170.chat = function (chatID) {
             {
                 chatID: 51,
                 speaker: "p",
-                text: "Next is the legend " + sc.n("jones") + ". A man who not just knows " +
+                text: "Next is the legend ##jones##. A man who not just knows " +
                     "fashion, but has molded and shaped it. ",
                 button: [
                     { chatID: 52, text: "...", callback: "fashion26" },
@@ -1617,7 +1617,7 @@ room170.chat = function (chatID) {
             {
                 chatID: 52,
                 speaker: "p",
-                text: "Finally, our own lovely " + sc.n("orchid") + ". Last year's winner " +
+                text: "Finally, our own lovely ##orchid##. Last year's winner " +
                     "of this competition and a rapidly growing flower of our town. She's going " +
                     "to come up here and speak on the importance of finding yourself while our " +
                     "ladies get ready for the swimsuit competition.",
@@ -1807,7 +1807,7 @@ room170.chat = function (chatID) {
             {
                 chatID: 73,
                 speaker: "p",
-                text: "Isn't she beautiful? When " + sc.n("me") + " first came to our " +
+                text: "Isn't she beautiful? When ##me## first came to our " +
                     "school, she, or I should say, he, was just another ugly boy. Now look " +
                     "at here, the envy of women and the desire of men. Let's see what the " +
                     "judges think.",
@@ -2054,7 +2054,7 @@ room170.chat = function (chatID) {
             {
                 chatID: 98,
                 speaker: "p",
-                text: "Our Sissy Runner up is.... " + sc.n("!kareem") + "! She has " +
+                text: "Our Sissy Runner up is.... ##!kareem##! She has " +
                     "shown real growth and poise on her transformation from just another " +
                     "lame boy to this radiant girl you see before you. I remember the first " +
                     "penis she put in her mouth! She was so scared. But look at her now. Men " +
@@ -2066,7 +2066,7 @@ room170.chat = function (chatID) {
             {
                 chatID: 99,
                 speaker: "p",
-                text: "And the winner is.... " + sc.n("!timothy") + "!!! Sissies " +
+                text: "And the winner is.... ##!timothy##!!! Sissies " +
                     "everywhere want to be her; men want to breed her. Her brain is " +
                     "empty, her tits are perky, her clitty is a nub, and her bussy is both " +
                     "bottomless and tight! Everyone meet this year's Sissy School Pageant winner! ",
@@ -2088,7 +2088,7 @@ room170.chat = function (chatID) {
             {
                 chatID: 101,
                 speaker: "p",
-                text: "And the winner is.... " + sc.n("me") + "!!! Sissies " +
+                text: "And the winner is.... ##me##!!! Sissies " +
                     "everywhere want to be her; men want to breed her. She has come " +
                     "such a long way on this journey and has proven she is the sissiest of " +
                     "all sissies! Everyone meet your Sissy School Pageant Winner!!!!",

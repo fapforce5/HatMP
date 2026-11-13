@@ -5,6 +5,7 @@ privateChat.resetButtons = function () {
 };
 
 privateChat.hideOverlay = function () {
+    privateChat.hideNameCard();
     $('#room_chatOverlay').hide();
     $('#room_footerSpeach').html("");
     $('#room_chatSpeaker').html('');
@@ -117,7 +118,8 @@ privateChat.makeChat = function (entry, chatID, roomID) {
         }
         var counter = 0;
         privateChat.resetButtons();
-        $('#room_footerSpeach').html(entry.text);
+        privateChat.hideNameCard();
+        $('#room_footerSpeach').html(sc.replaceChat(entry.text));
         var speakerImg;
         if (thisSpeaker.layers) {
             speakerImg = '<div class="room-chatSpeaker-layers">';
@@ -135,7 +137,7 @@ privateChat.makeChat = function (entry, chatID, roomID) {
         }
         else {
             $.each(entry.button, function (i, v) {
-                privateChat.setButton(i, v.text, v.chatID, roomID, v.callback);
+                privateChat.setButton(i, sc.replaceChat(v.text), v.chatID, roomID, v.callback);
                 counter++;
             });
         }
@@ -260,6 +262,38 @@ privateChat.speakerButton = function (btn, name, roomNum) {
     });
 };
 
+//Hover (desktop) / tap (mobile) card for ##name## spans in the speech text: face + name.
+privateChat.showNameCard = function (el) {
+    var info = privateChat.speakerInfo(String($(el).data("char")));
+    var face;
+    if (info.layers) {
+        face = '<div class="room-chatSpeaker-layers">';
+        $.each(info.layers, function (i, v) {
+            face += '<img src="./images/mainChar/speaker/' + v + '" />';
+        });
+        face += '</div>';
+    }
+    else
+        face = '<img src="' + info.img + '" />';
+
+    var card = $('#chat_nameCard');
+    if (card.length === 0)
+        card = $('<div id="chat_nameCard" class="chat-nameCard"></div>').appendTo('body');
+    card.html(face + '<div class="chat-nameCard-name" style="color:' + $(el).css('color') + '">' + $(el).text() + '</div>').show();
+
+    var rect = el.getBoundingClientRect();
+    var left = rect.left + rect.width / 2 - card.outerWidth() / 2;
+    left = Math.max(4, Math.min(left, window.innerWidth - card.outerWidth() - 4));
+    var top = rect.top - card.outerHeight() - 8;
+    if (top < 4)
+        top = rect.bottom + 8;
+    card.css({ left: left + "px", top: top + "px" });
+};
+
+privateChat.hideNameCard = function () {
+    $('#chat_nameCard').hide();
+};
+
 privateChat.skipChat = function () {
     var buttons = privateChat.visibleButtons();
     if (buttons.length === 1) {
@@ -316,6 +350,21 @@ $(document).ready(function () {
                 }
             }
         }
+    });
+
+    $(document).on('mouseenter', '#room_footerSpeach .chat-name', function () {
+        privateChat.showNameCard(this);
+    });
+    $(document).on('mouseleave', '#room_footerSpeach .chat-name', function () {
+        privateChat.hideNameCard();
+    });
+    $(document).on('click', '#room_footerSpeach .chat-name', function (e) {
+        e.stopPropagation();
+        privateChat.showNameCard(this);
+    });
+    $(document).on('click', function (e) {
+        if ($(e.target).closest('.chat-name').length === 0)
+            privateChat.hideNameCard();
     });
 
     $("#room_chatskip").on('click', function () {

@@ -341,7 +341,7 @@ room101.chat = function (chatID) {
         var dirtyArray = [
             { s: "Can you tell me how my cum tastes?", r: "I bet it tastes delicious", p: "dirtyPickup" },
             { s: "I want to tie to you up and force feed you my cock.", r: "I love bondage, and rough sex", p: "dirtyPickup" },
-            { s: "That's a beautiful pussy, can I get a taste?", r: "hehehe " + sc.n("me") + ", you're too much!", p: "dirtyPickup" },
+            { s: "That's a beautiful pussy, can I get a taste?", r: "hehehe ##me##, you're too much!", p: "dirtyPickup" },
             { s: "Do you do anal?", r: "I love a fat cock up my ass! ", p: "dirtyPickup" },
             { s: "Would you lick my asshole?", r: "Hmmmm OK, but you'll have to shower first", p: "dirtyPickup" },
             { s: "So how many drinks would it take to get into your panties?", r: "hahah you don't have to get me drunk, just give me that cock", p: "" },
@@ -363,7 +363,7 @@ room101.chat = function (chatID) {
         return {
             chatID: 900,
             speaker: "me",
-            text: sc.n("tina") + " ...",
+            text: "##tina## ...",
             button: [
                 { chatID: 15, text: nicePickupLine[g.rand(0, nicePickupLine.length)], callback: "nicePickupLine" },
                 { chatID: 14, text: pickUpLine[g.rand(0, pickUpLine.length)], callback: "hitOnTinaFunny" },
@@ -437,7 +437,7 @@ room101.chat = function (chatID) {
                 speaker: "tina",
                 text: "Here you go.",
                 button: [
-                    { chatID: 900, text: "Flirt with " + sc.n("tina"), callback: "" },
+                    { chatID: 900, text: "Flirt with ##tina##", callback: "" },
                     { chatID: -1, text: "Thanks babe", callback: "endday" },
                 ]
             },
@@ -452,7 +452,7 @@ room101.chat = function (chatID) {
             {
                 chatID: 8,
                 speaker: "tina",
-                text: "Hey " + sc.n("me") + ", what do you want to talk about?",
+                text: "Hey ##me##, what do you want to talk about?",
                 button: [
                     { chatID: 12, text: "How much do I get paid each day?", callback: "payQuestion" },
                     { chatID: -1, text: "Nothing", callback: "" }
@@ -461,7 +461,7 @@ room101.chat = function (chatID) {
             {
                 chatID: 9,
                 speaker: "tina",
-                text: "Hey " + sc.n("me") + "! The workday has started, you need to get out there and start working.",
+                text: "Hey ##me##! The workday has started, you need to get out there and start working.",
                 button: [
                     { chatID: -1, text: "OK, see you later, babe", callback: "" }
                 ]
@@ -469,7 +469,7 @@ room101.chat = function (chatID) {
             {
                 chatID: 10,
                 speaker: "tina",
-                text: "Sorry " + sc.n("me") + ". The workday starts before 10 AM. Please come back first thing in the morning.",
+                text: "Sorry ##me##. The workday starts before 10 AM. Please come back first thing in the morning.",
                 button: [
                     { chatID: -1, text: "OK, see you later, babe", callback: "" }
                 ]
@@ -479,7 +479,7 @@ room101.chat = function (chatID) {
                 speaker: "tina",
                 text: "Oh my God! I can't believe you caught me getting busy with myself. I just can't help it being around so many sexy guys all day.",
                 button: [
-                    { chatID: 12, text: "Don't worry " + sc.n("tina") + ", I was enjoying the show.", callback: "postShow" }
+                    { chatID: 12, text: "Don't worry ##tina##, I was enjoying the show.", callback: "postShow" }
                 ]
             },
             {
@@ -487,7 +487,7 @@ room101.chat = function (chatID) {
                 speaker: "tina",
                 text: "You get $" + gv.get("jobConstructionPay") + " each day you work. ",
                 button: [
-                    { chatID: -1, text: "Thanks " + sc.n("tina"), callback: "" }
+                    { chatID: -1, text: "Thanks ##tina##", callback: "" }
                 ]
             },
             {
@@ -499,7 +499,7 @@ room101.chat = function (chatID) {
             {
                 chatID: 14,
                 speaker: "tina",
-                text: "HAhahah " + sc.n("me") + " you're so funny!",
+                text: "HAhahah ##me## you're so funny!",
                 button: [
                     { chatID: -1, text: "...", callback: "endday" }
                 ]
@@ -507,7 +507,7 @@ room101.chat = function (chatID) {
             {
                 chatID: 15,
                 speaker: "tina",
-                text: "That's nice, thanks " + sc.n("me") + ".",
+                text: "That's nice, thanks ##me##.",
                 button: [
                     { chatID: -1, text: "...", callback: "endday" }
                 ]
@@ -515,7 +515,7 @@ room101.chat = function (chatID) {
             {
                 chatID: 16,
                 speaker: "tina",
-                text: "Awwww " + sc.n("me") + ", you're the sweetest, but I don't like sweets; I like rough, dominating cock.",
+                text: "Awwww ##me##, you're the sweetest, but I don't like sweets; I like rough, dominating cock.",
                 button: [
                     { chatID: -1, text: "...", callback: "endday" }
                 ]
@@ -523,7 +523,7 @@ room101.chat = function (chatID) {
             {
                 chatID: 17,
                 speaker: "tina",
-                text: sc.n("me") + "!!!",
+                text: "##me##!!!",
                 button: [
                     { chatID: -1, text: "...", callback: "endday" }
                 ]
@@ -571,7 +571,7 @@ room101.chat = function (chatID) {
                 speaker: "tina",
                 text: "Hey cutie! What's up? ",
                 button: [
-                    { chatID: 24, text: "Came to talk to " + sc.n("construction"), callback: "" },
+                    { chatID: 24, text: "Came to talk to ##construction##", callback: "" },
                     { chatID: -1, text: "Nothin' Just wandering around I guess. ", callback: "" },
                 ]
             },
@@ -603,7 +603,7 @@ room101.chat = function (chatID) {
             {
                 chatID: 27,
                 speaker: "construction",
-                text: "I love the back door! Hey " + sc.n("tina") + "! Get in here! ",
+                text: "I love the back door! Hey ##tina##! Get in here! ",
                 button: [
                     { chatID: 28, text: "I uhh..", callback: "b1" },
                 ]
@@ -619,7 +619,7 @@ room101.chat = function (chatID) {
             {
                 chatID: 29,
                 speaker: "construction",
-                text: sc.n("me") + " wants to see some back door action! Bend over my desk so I can show " +
+                text: "##me## wants to see some back door action! Bend over my desk so I can show " +
                     gender.pronoun("him") + "!",
                 button: [
                     { chatID: 30, text: "...well", callback: "" },
@@ -642,13 +642,13 @@ room101.chat = function (chatID) {
                     "only hired her to be balls deep in that, ya know! ",
                 button: [
                     { chatID: 32, text: "[Try to convince her]", callback: "" },
-                    { chatID: -1, text: "Naw. " + sc.n("tina") + " you're too good for that. ", callback: "leave" },
+                    { chatID: -1, text: "Naw. ##tina## you're too good for that. ", callback: "leave" },
                 ]
             },
             {
                 chatID: 32,
                 speaker: "me",
-                text: sc.n("tina") + " We've known each other for a while now...[Go into a long story about " +
+                text: "##tina## We've known each other for a while now...[Go into a long story about " +
                     "how badly you need her to do this for you as her long time friend.]",
                 button: [
                     { chatID: -1, text: "[Wait for her answer. ]", callback: "b2" },
@@ -659,7 +659,7 @@ room101.chat = function (chatID) {
                 speaker: "tina",
                 text: "Not a chance! We aren't close enough for me to whore myself out for you! *hiss*",
                 button: [
-                    { chatID: -1, text: "awww. ok. [Need to be level 5 with " + sc.n("tina") + "]", callback: "leave" },
+                    { chatID: -1, text: "awww. ok. [Need to be level 5 with ##tina##]", callback: "leave" },
                 ]
             },
             {
@@ -684,10 +684,10 @@ room101.chat = function (chatID) {
             {
                 chatID: 36,
                 speaker: "tina",
-                text: "*OW* ouchie. Not so deep! Ouch! That's my uterus you're trying to enter! " + sc.n("me") +
+                text: "*OW* ouchie. Not so deep! Ouch! That's my uterus you're trying to enter! ##me##" +
                     " please, please tell him to be gentle! ",
                 button: [
-                    { chatID: 37, text: sc.n("construction") + " can you take it easy on her please? Just don't be so rough. ", callback: "" },
+                    { chatID: 37, text: "##construction## can you take it easy on her please? Just don't be so rough. ", callback: "" },
                 ]
             },
             {
@@ -731,7 +731,7 @@ room101.chat = function (chatID) {
                     "compound? I don't think there is one. Just a front door. At least that's all I know. " +
                     "Maybe ask the guard at the front if there's a back door. I don't know. ",
                 button: [
-                    { chatID: 43, text: "Gee, thanks I guess. Let me go check on " + sc.n("tina") + ".", callback: "b8" },
+                    { chatID: 43, text: "Gee, thanks I guess. Let me go check on ##tina##.", callback: "b8" },
                 ]
             },
             {
@@ -739,10 +739,10 @@ room101.chat = function (chatID) {
                 speaker: "construction",
                 text: "So what were we talking about... oh yeah. You wanted to go in the back door of the " +
                     "compound? They don't like us handing out the code, but I guess I owe you for talking " +
-                    sc.n("tina") + " into letting me fuck her. I've been trying to get up in there for months! " +
+                    "##tina## into letting me fuck her. I've been trying to get up in there for months! " +
                     "Anyway, the code is 1-2-3-4-5. ",
                 button: [
-                    { chatID: 43, text: "Ok, thanks. Let me go check on " + sc.n("tina") + ".", callback: "b8" },
+                    { chatID: 43, text: "Ok, thanks. Let me go check on ##tina##.", callback: "b8" },
                 ]
             },
             {
@@ -785,7 +785,7 @@ room101.chat = function (chatID) {
             {
                 chatID: 47,
                 speaker: "me",
-                text: sc.n("!kareem") + "! What are you doing here? Where's " + sc.n("tina") + "?",
+                text: "##!kareem##! What are you doing here? Where's ##tina##?",
                 button: [
                     { chatID: 48, text: "...", callback: "" },
                 ]
@@ -793,7 +793,7 @@ room101.chat = function (chatID) {
             {
                 chatID: 48,
                 speaker: "!kareem",
-                text: "I don't know any " + sc.n("tina") + " but I was just hired here! Couldn't pass " +
+                text: "I don't know any ##tina## but I was just hired here! Couldn't pass " +
                     "it up! I've been looking for a secretary job and with so many big men around " +
                     "I knew it was my dream job! You know I've been hit on like 30 times this morning " +
                     "you wouldn't believe it! ",
@@ -804,7 +804,7 @@ room101.chat = function (chatID) {
             {
                 chatID: 49,
                 speaker: "!kareem",
-                text: "Oh. I guess the girl that was working here quit. " + sc.n("construction") + 
+                text: "Oh. I guess the girl that was working here quit. ##construction##" + 
                     " mentioned that she had a break down and took her to some compound to get help " +
                     "or something. I dunno. I just know that I got the job of my dreams! ",
                 button: [
@@ -831,7 +831,7 @@ room101.chat = function (chatID) {
             {
                 chatID: 52,
                 speaker: "!kareem",
-                text: "Hey sexy, I'm the new girl, " + sc.n("!kareem") + ". Think of cream, but a little " +
+                text: "Hey sexy, I'm the new girl, ##!kareem##. Think of cream, but a little " +
                     "extra r-r-r-r. ",
                 button: [
                     { chatID: 48, text: "What happened to the girl that was here before? ", callback: "" },

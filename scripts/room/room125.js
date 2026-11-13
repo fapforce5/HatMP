@@ -1199,7 +1199,7 @@ room125.chat = function (chatID) {
             {
                 chatID: 1,
                 speaker: "jimmy",
-                text: "Oh man, if I lose too much money " + sc.n("jada") + " will be so mad at me!",
+                text: "Oh man, if I lose too much money ##jada## will be so mad at me!",
                 button: [
                     { chatID: -1, text: "...", callback: "" }
                 ]
@@ -1233,7 +1233,7 @@ room125.chat = function (chatID) {
             {
                 chatID: 5,
                 speaker: "jimmy",
-                text: sc.n("jada") + "'s not going to like it if I lose all my money.",
+                text: "##jada##'s not going to like it if I lose all my money.",
                 button: [
                     { chatID: -1, text: "...", callback: "jimmyfold" }
                 ]
@@ -1331,7 +1331,7 @@ room125.chat = function (chatID) {
             {
                 chatID: 16,
                 speaker: "jada",
-                text: "You know you smell terrible, " + sc.n("kei") + ". You could use a shower.",
+                text: "You know you smell terrible, ##kei##. You could use a shower.",
                 button: [
                     { chatID: 17, text: "Huh? I thought girls weren't allowed.", callback: "" }
                 ]
@@ -1347,7 +1347,7 @@ room125.chat = function (chatID) {
             {
                 chatID: 18,
                 speaker: "kei",
-                text: "Yeah. I forgot to tell you that rule. Girls can come, but they have to stay under the poker table and service us. " + sc.n("jada") + " here is the only one allowed to serve only " + sc.n("jimmy") + ". It was an original rule, but ALL new girls have to service everyone.",
+                text: "Yeah. I forgot to tell you that rule. Girls can come, but they have to stay under the poker table and service us. ##jada## here is the only one allowed to serve only ##jimmy##. It was an original rule, but ALL new girls have to service everyone.",
                 button: [
                     { chatID: 19, text: "Oh", callback: "" }
                 ]
@@ -1355,7 +1355,7 @@ room125.chat = function (chatID) {
             {
                 chatID: 19,
                 speaker: "jada",
-                text: "And that rule stays. My mouth is only for my " + sc.n("jimmy") + ".",
+                text: "And that rule stays. My mouth is only for my ##jimmy##.",
                 button: [
                     { chatID: 20, text: "...", callback: "" }
                 ]
@@ -1371,7 +1371,7 @@ room125.chat = function (chatID) {
             {
                 chatID: 21,
                 speaker: "jada",
-                text: "Oh, you foolish boy, you should know you're terrible at hiding stuff from me. You're also a terrible liar. Why hello, " + sc.n("me") + ", I don't see you around here often. You're looking cute today, but not cuter than my " + sc.n("jimmy") + ". *wink*",
+                text: "Oh, you foolish boy, you should know you're terrible at hiding stuff from me. You're also a terrible liar. Why hello, ##me##, I don't see you around here often. You're looking cute today, but not cuter than my ##jimmy##. *wink*",
                 button: [
                     { chatID: 22, text: "Oh hahaha", callback: "" }
                 ]
@@ -1379,7 +1379,7 @@ room125.chat = function (chatID) {
             {
                 chatID: 22,
                 speaker: "jada",
-                text: sc.n("jimmy") + ", don't forget to be home on time tonight. You promised to give me a bubbly bath and wash my dirty body!",
+                text: "##jimmy##, don't forget to be home on time tonight. You promised to give me a bubbly bath and wash my dirty body!",
                 button: [
                     { chatID: 23, text: "...", callback: "" }
                 ]
@@ -1387,7 +1387,7 @@ room125.chat = function (chatID) {
             {
                 chatID: 23,
                 speaker: "ralph",
-                text: "We get it, you have sex! Let us get back to our game already, " + sc.n("jada") + ".",
+                text: "We get it, you have sex! Let us get back to our game already, ##jada##.",
                 button: [
                     { chatID: 24, text: "...", callback: "" }
                 ]
@@ -1395,7 +1395,7 @@ room125.chat = function (chatID) {
             {
                 chatID: 24,
                 speaker: "kei",
-                text: "Yeah " + sc.n("jada") + ". This is a man's game, no girlfriends.",
+                text: "Yeah ##jada##. This is a man's game, no girlfriends.",
                 button: [
                     { chatID: 25, text: "...", callback: "" }
                 ]
@@ -1403,7 +1403,7 @@ room125.chat = function (chatID) {
             {
                 chatID: 25,
                 speaker: "jada",
-                text: "Ok, I'll let you boys get back to playing with yourselves. See you tonight, " + sc.n("jimmy") + ".",
+                text: "Ok, I'll let you boys get back to playing with yourselves. See you tonight, ##jimmy##.",
                 button: [
                     { chatID: 26, text: "...", callback: "" }
                 ]
@@ -1435,7 +1435,7 @@ room125.chat = function (chatID) {
             {
                 chatID: 29,
                 speaker: "kei",
-                text: "He knows that, " + sc.n("ralph") + ", everyone knows that. Now stop interrupting. In this case I'm showing the Ace and you're showing only the 5, so I'm showing the best card. You can fold, in which case you'll only lose $1, or call and bet $5 to see if you win.",
+                text: "He knows that, ##ralph##, everyone knows that. Now stop interrupting. In this case I'm showing the Ace and you're showing only the 5, so I'm showing the best card. You can fold, in which case you'll only lose $1, or call and bet $5 to see if you win.",
                 button: [
                     { chatID: 30, text: "...", callback: "howto2" }
                 ]
@@ -1451,7 +1451,7 @@ room125.chat = function (chatID) {
             {
                 chatID: 31,
                 speaker: "kei",
-                text: "So " + sc.n("ralph") + " has 16, I have 23, " + sc.n("jimmy") + " has 19, and you have 26, so you win. You would take all the money.",
+                text: "So ##ralph## has 16, I have 23, ##jimmy## has 19, and you have 26, so you win. You would take all the money.",
                 button: [
                     { chatID: -1, text: "ok", callback: "reload" }
                 ]
@@ -1532,7 +1532,7 @@ room125.chat = function (chatID) {
             {
                 chatID: 41,
                 speaker: "jimmy",
-                text: "You're so hot! Just don't tell " + sc.n("jada") + ".",
+                text: "You're so hot! Just don't tell ##jada##.",
                 button: [
                     { chatID: 42, text: "...", callback: "" }
                 ]
@@ -1604,7 +1604,7 @@ room125.chat = function (chatID) {
             {
                 chatID: 50,
                 speaker: "jimmy",
-                text: "Yeah buddy. Just don't tell " + sc.n("jada") + " about this.",
+                text: "Yeah buddy. Just don't tell ##jada## about this.",
                 button: [
                     { chatID: 51, text: "...", callback: "" }
                 ]
@@ -1721,7 +1721,7 @@ room125.chat = function (chatID) {
             {
                 chatID: 64,
                 speaker: "ralph",
-                text: "Huh? I like it. I'm now " + sc.n("ralph") + "! I'm so happy! Let's tell the guys!",
+                text: "Huh? I like it. I'm now ##ralph##! I'm so happy! Let's tell the guys!",
                 button: [
                     { chatID: 65, text: "...", callback: "r1" }
                 ]
@@ -1729,7 +1729,7 @@ room125.chat = function (chatID) {
             {
                 chatID: 65,
                 speaker: "ralph",
-                text: "So this is the real me, guys. I'm a girl now. I know the rule is no girls allowed, but for us, you need to let us play. It's a stupid sexist rule, and needs to go away so we can keep playing! Also my name is now " + sc.n("ralph") + ". That's how much of a girl I now am.",
+                text: "So this is the real me, guys. I'm a girl now. I know the rule is no girls allowed, but for us, you need to let us play. It's a stupid sexist rule, and needs to go away so we can keep playing! Also my name is now ##ralph##. That's how much of a girl I now am.",
                 button: [
                     { chatID: 66, text: "...", callback: "r1" }
                 ]
@@ -1841,7 +1841,7 @@ room125.chat = function (chatID) {
             {
                 chatID: 79,
                 speaker: "me",
-                text: "I wanted to think you guys were joking. " + sc.n("ralph") + " and I are out, just like that. And you replace us with these two?",
+                text: "I wanted to think you guys were joking. ##ralph## and I are out, just like that. And you replace us with these two?",
                 button: [
                     { chatID: 80, text: "...", callback: "" }
                 ]
@@ -1873,9 +1873,9 @@ room125.chat = function (chatID) {
             {
                 chatID: 83,
                 speaker: "ralph",
-                text: "I don't suppose you mind if I get " + sc.n("spanky") + " while you do the rest do you? You're way better at this than I am, and well... I've known him for a long time, so I would feel more comfortable just doing him.",
+                text: "I don't suppose you mind if I get ##spanky## while you do the rest do you? You're way better at this than I am, and well... I've known him for a long time, so I would feel more comfortable just doing him.",
                 button: [
-                    { chatID: 84, text: "Yeah. I get it. You can have " + sc.n("spanky") + " and I'll get the rest.", callback: "" }
+                    { chatID: 84, text: "Yeah. I get it. You can have ##spanky## and I'll get the rest.", callback: "" }
                 ]
             },
             {
@@ -1930,7 +1930,7 @@ room125.chat = function (chatID) {
             {
                 chatID: 90,
                 speaker: "ralph",
-                text: "Back for more! I get " + sc.n("spanky") + "!",
+                text: "Back for more! I get ##spanky##!",
                 button: [
                     { chatID: -1, text: "Ok.", callback: "bjbitch" },
                 ]
@@ -1946,7 +1946,7 @@ room125.chat = function (chatID) {
             {
                 chatID: 92,
                 speaker: "ralph",
-                text: "Oh. I made a bet with Spanky the other day and totally lost. If I won I got $1000, but if I lost I had to come to the game naked every time. I have no idea why " + sc.n("me") + " is naked.",
+                text: "Oh. I made a bet with Spanky the other day and totally lost. If I won I got $1000, but if I lost I had to come to the game naked every time. I have no idea why ##me## is naked.",
                 button: [
                     { chatID: 93, text: "What? I saw you were naked, so I got naked. I didn't want you to feel weird.", callback: "" },
                 ]
@@ -2002,7 +2002,7 @@ room125.chat = function (chatID) {
             {
                 chatID: 99,
                 speaker: "jimmy",
-                text: "Poker games have been cancelled on account of " + sc.n("ralph") + " being missing. Wouldn't feel right to have fun while he's lost out there, ya know. We're really sorry we can't help find him.",
+                text: "Poker games have been cancelled on account of ##ralph## being missing. Wouldn't feel right to have fun while he's lost out there, ya know. We're really sorry we can't help find him.",
                 button: [
                     { chatID: -1, text: "Yeah. totally.", callback: "leave" },
                 ]
@@ -2010,7 +2010,7 @@ room125.chat = function (chatID) {
             {
                 chatID: 100,
                 speaker: "me",
-                text: sc.n("jimmy") + " can you do me a solid. I need to save some people from the cult. " +
+                text: "##jimmy## can you do me a solid. I need to save some people from the cult. " +
                     "Do you know the code to the back gate? ",
                 button: [
                     { chatID: -1, text: "...", callback: "missy0" },
@@ -2022,7 +2022,7 @@ room125.chat = function (chatID) {
                 text: "Totally. It's 1-2-3-4-5. Just be careful. They're looking for you. If I were you " +
                     "I would just leave town. If they get you I don't know what they'll do, but it ain't good. ",
                 button: [
-                    { chatID: -1, text: "Thanks " + sc.n("jimmy") + ". ", callback: "leave" },
+                    { chatID: -1, text: "Thanks ##jimmy##. ", callback: "leave" },
                 ]
             },
             {
@@ -2032,7 +2032,7 @@ room125.chat = function (chatID) {
                     "You know they're looking for you. If I were you " +
                     "I would just leave town. If they get you I don't know what they'll do, but it ain't good. ",
                 button: [
-                    { chatID: -1, text: "Thanks " + sc.n("jimmy") + ". ", callback: "leave" },
+                    { chatID: -1, text: "Thanks ##jimmy##. ", callback: "leave" },
                 ]
             },
         ];

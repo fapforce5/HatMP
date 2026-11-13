@@ -154,7 +154,7 @@ room550.chat = function (chatID) {
             speaker: "chad",
             text: "Hey dweeb! What's a runt like you doing here. Came to look at dudes I bet!!",
             button: [
-                { chatID: 1, text: 'Hi ' + sc.n('chad') + ' I thought you left to play minor league baseball', callback: "" }
+                { chatID: 1, text: 'Hi ##chad## I thought you left to play minor league baseball', callback: "" }
             ]
         },
         {
@@ -163,7 +163,7 @@ room550.chat = function (chatID) {
             text: "Haha fuck that team. They're a bunch of pussies! This job as a personal trainer is way cooler " +
                 "no one telling me what to do. So what are you doing here, you're too puny to work out!",
             button: [
-                { chatID: 12, text: 'Just trying to get in shape ' + sc.n('chad'), callback: "one" }
+                { chatID: 12, text: 'Just trying to get in shape ##chad##', callback: "one" }
             ]
         },
         
@@ -197,7 +197,7 @@ room550.chat = function (chatID) {
         {
             chatID: 5,
             speaker: "chad",
-            text: "Just get me a picture of " + sc.n('lola') + "'s naked tits and the gym pass is yours, " +
+            text: "Just get me a picture of ##lola##'s naked tits and the gym pass is yours, " +
                 "or pay me $500, the choice is yours.",
             button: [
                 { chatID: -1, text: "...", callback: "chadInit" }
@@ -206,7 +206,7 @@ room550.chat = function (chatID) {
         {
             chatID: 6,
             speaker: "chad",
-            text: "Sup bro. You got that titty picture of " + sc.n('lola') + '?',
+            text: "Sup bro. You got that titty picture of ##lola##" + '?',
             button: [
                 { chatID: 8, text: "Yes, here you go", callback: "tittyPic" },
                 { chatID: -1, text: "No, I'm just going to pay your $500", callback: "pay500" },
@@ -216,7 +216,7 @@ room550.chat = function (chatID) {
         {
             chatID: 7,
             speaker: "chad",
-            text: "Sup bro. You got that titty picture of " + sc.n('lola') + '?',
+            text: "Sup bro. You got that titty picture of ##lola##" + '?',
             button: [
                 { chatID: -1, text: "No, I'm just going to pay your $500", callback: "pay500" },
                 { chatID: -1, text: "No", callback: "" }

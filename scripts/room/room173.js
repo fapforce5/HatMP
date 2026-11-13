@@ -145,7 +145,7 @@ room173.chat = function (chatID) {
             speaker: "missy",
             text: "So this is my backlog. All these trash bags are from cases I'm working on, " +
                 "and some are from closed cases. As you can see, my filing is admittedly a bit " +
-                "lacking. This is what happens when you put " + sc.n("cecilia") + " in charge " +
+                "lacking. This is what happens when you put ##cecilia## in charge " +
                 "of something.",
             button: [
                 { chatID: 1, text: "It stinks back here, ma'am.", callback: "" }

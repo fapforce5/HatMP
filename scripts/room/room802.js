@@ -327,7 +327,7 @@ room802.chat = function (chatID) {
             {
                 chatID: 8,
                 speaker: "me",
-                text: sc.n("ralph") + "!",
+                text: "##ralph##!",
                 button: [
                     { chatID: 9, text: "...", callback: "rand1_0" },
                 ]
@@ -501,11 +501,11 @@ room802.chat = function (chatID) {
             {
                 chatID: 26,
                 speaker: "ralph",
-                text: "That mid-term was BRUTAL!!! Do you know " + sc.n("black") + " tried to put a thingy in my pee hole! " +
+                text: "That mid-term was BRUTAL!!! Do you know ##black## tried to put a thingy in my pee hole! " +
                     "I mean I get the dildo in the butt, but my pee hole! I tapped out right then and there! " +
                     "No way that was going in. ",
                 button: [
-                    { chatID: 27, text: "She's totally crazy! So why didn't you pick " + sc.n("cecilia") + "'s side?", callback: "" },
+                    { chatID: 27, text: "She's totally crazy! So why didn't you pick ##cecilia##'s side?", callback: "" },
                 ]
             },
             {
@@ -552,7 +552,7 @@ room802.chat = function (chatID) {
                 text: "My dad's still pissed at me. He says I need to get a job. Do you know anywhere I can " +
                     "get one? ",
                 button: [
-                    { chatID: -1, text: "Can't think of any. [Need to complete " + sc.n("zoey") + "'s quest: fuck me please - Mon cœur souffre pour toi", callback: "reset" },
+                    { chatID: -1, text: "Can't think of any. [Need to complete ##zoey##'s quest: fuck me please - Mon cœur souffre pour toi", callback: "reset" },
                 ]
             },
             {
@@ -561,7 +561,7 @@ room802.chat = function (chatID) {
                 text: "My dad's still pissed at me. He says I need to get a job. Do you know anywhere I can " +
                     "get one? ",
                 button: [
-                    { chatID: 33, text: "Hmmm. I know my girlfriend, " + sc.n("zoey") + " could use some help. ", callback: "" },
+                    { chatID: 33, text: "Hmmm. I know my girlfriend, ##zoey## could use some help. ", callback: "" },
                 ]
             },
             {
@@ -586,13 +586,13 @@ room802.chat = function (chatID) {
                 speaker: "ralph",
                 text: "Sweet dude. You're the best!",
                 button: [
-                    { chatID: -1, text: "[I just need to go to " + sc.n("zoey") + " at her bar and ask now. ]", callback: "reset" },
+                    { chatID: -1, text: "[I just need to go to ##zoey## at her bar and ask now. ]", callback: "reset" },
                 ]
             },
             {
                 chatID: 36,
                 speaker: "me",
-                text: "Oh hey! I talked to " + sc.n("zoey") + " and she said you can have the job. It's a barback, " +
+                text: "Oh hey! I talked to ##zoey## and she said you can have the job. It's a barback, " +
                     "so you'll only be cleaning. ",
                 button: [
                     { chatID: 37, text: "...", callback: "" },

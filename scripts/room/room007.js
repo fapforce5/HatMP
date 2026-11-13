@@ -837,7 +837,7 @@ room7.chat = function (chatID) {
             return {
                 chatID: 999,
                 speaker: "bigguy",
-                text: "You worked off all your rent. You're lucky your " + sc.n("landlord") +
+                text: "You worked off all your rent. You're lucky your ##landlord##" +
                     "is so generous.",
                 button: [
                     { chatID: 9, text: "Sweet! [Wakeup]", callback: "clearRoom" }
@@ -887,7 +887,7 @@ room7.chat = function (chatID) {
             {
                 chatID: 0,
                 speaker: "landlord",
-                text: "Wake up " + sc.n("me") + "! I can't believe I allow you to live here, you lazy lay loafer! " +
+                text: "Wake up ##me##! I can't believe I allow you to live here, you lazy lay loafer! " +
                     "First you failed out of college, then you get fired from The Burger Joint, and now you just lay around doing nothing! " +
                     " .... NOTHING!",
                 button: [{ chatID: 1, text: "but ....", callback: "" }]
@@ -897,18 +897,18 @@ room7.chat = function (chatID) {
                 speaker: "landlord",
                 text: "Don't 'but...' me. It's time you start growing up. There's no more free rides for your lazy ass. " +
                     "If you think I've been hard on you " +
-                    "up till now, you're going to see how it can be. " + sc.n("lola") + " and " + sc.n("eva") + ", your " + sc.n('el') +
+                    "up till now, you're going to see how it can be. ##lola## and ##eva##, your ##el##" +
                     ", just started college and you've been a terrible role model for them.",
                 button: [{ chatID: 2, text: "....", callback: "" }]
             },
             {
                 chatID: 2,
                 speaker: "landlord",
-                text: "Here's the deal " + sc.n("me") + ", you act like a lazy child, so I'm going to treat you like a lazy child! " +
+                text: "Here's the deal ##me##, you act like a lazy child, so I'm going to treat you like a lazy child! " +
                     "Expect me to be up your ass everyday to make you into the man you were meant to be. You lack the motivation to " +
                     "be a real man, so I'm going to show you how to be an adult. You're going to get a new job so you don't " +
                     "find yourself out on the streets!  ",
-                button: [{ chatID: 3, text: "Yes " + sc.n('landlord'), callback: "payYouMom" }]
+                button: [{ chatID: 3, text: "Yes ##landlord##", callback: "payYouMom" }]
             },
             {
                 chatID: 3,
@@ -928,8 +928,8 @@ room7.chat = function (chatID) {
             {
                 chatID: 5,
                 speaker: "me",
-                text: "Oh wow, that was intense! " + sc.n("landlord") + "'s been so brutal. She's been on the warpath since " +
-                    "she started dating " + sc.n("bigguy") + " , but since I've been fired she's really turned it up. " +
+                text: "Oh wow, that was intense! ##landlord##'s been so brutal. She's been on the warpath since " +
+                    "she started dating ##bigguy## , but since I've been fired she's really turned it up. " +
                     "I better get out of bed, get ready for church, then start applying for jobs. Hopefully there is " +
                     "something for a college drop-out.",
                 button: [{ chatID: 6, text: "...", callback: "" }]
@@ -937,8 +937,8 @@ room7.chat = function (chatID) {
             {
                 chatID: 6,
                 speaker: "me",
-                text: "I did promise " + sc.n("zoey") + " I would stop by and play video games. " +
-                    sc.n("janice") + " also really wanted me to take her on a date. Better get going!",
+                text: "I did promise ##zoey## I would stop by and play video games. " +
+                    "##janice## also really wanted me to take her on a date. Better get going!",
                 button: [{ chatID: -1, text: "Get out of bed and get ready for church. ", callback: "goToChurch" }]
             },
             {
@@ -988,10 +988,10 @@ room7.chat = function (chatID) {
             {
                 chatID: 12,
                 speaker: "landlord",
-                text: "So " + sc.n("bigguy") + " and I were talking, and we decided that now you're an adult " +
+                text: "So ##bigguy## and I were talking, and we decided that now you're an adult " +
                     "you need to do adult things like help with rent. ",
                 button: [
-                    { chatID: 40, text: "What? Do my " + sc.n("el") + " have to pay too? ", callback: "" }
+                    { chatID: 40, text: "What? Do my ##el## have to pay too? ", callback: "" }
                 ]
             },
             {
@@ -1006,7 +1006,7 @@ room7.chat = function (chatID) {
             {
                 chatID: 14,
                 speaker: "landlord",
-                text: "Don't you worry, let " + sc.n("landlord") + " take care of it for you. ",
+                text: "Don't you worry, let ##landlord## take care of it for you. ",
                 button: [
                     { chatID: 15, text: "oooooOOooooo", callback: "jack1" },
                 ]
@@ -1164,7 +1164,7 @@ room7.chat = function (chatID) {
                 chatID: 32,
                 speaker: "eva",
                 text: "Put it in my butt. We went off birth control months ago 'cause " +
-                    "it killed our sex drive. " + sc.n("landlord") + " would kill us if " +
+                    "it killed our sex drive. ##landlord## would kill us if " +
                     "she knew, so don't say anything. ",
                 button: [
                     { chatID: 33, text: "Oh yeah! [Put your dick in her butthole]", callback: "e6" },
@@ -1226,7 +1226,7 @@ room7.chat = function (chatID) {
                 speaker: "thinking",
                 text: "What was that! I might have thrown myself at him, but he " +
                     "didn't need to be so rough! Didn't care about me at all! Worst " +
-                    "of all I made him cheat on my " + sc.n("landlord") + "! I don't know if I " +
+                    "of all I made him cheat on my ##landlord##! I don't know if I " +
                     "should tell her. Maybe I should just keep it a secret. I don't want her to " +
                     "hate me forever. ",
                 button: [
@@ -1237,10 +1237,10 @@ room7.chat = function (chatID) {
                 chatID: 40,
                 speaker: "landlord",
                 text: "Wake up honey. We have to talk about you growing up and being an adult. It's time you start " +
-                    "paying rent. " + sc.n("bigguy") + " is going to start coming by each Saturday to collect your " +
+                    "paying rent. ##bigguy## is going to start coming by each Saturday to collect your " +
                     "share of our mortgage. ",
                 button: [
-                    { chatID: 41, text: "Why? Are my " + sc.n("el") + " going to pay too? ", callback: "" },
+                    { chatID: 41, text: "Why? Are my ##el## going to pay too? ", callback: "" },
                 ]
             },
             {
@@ -1255,7 +1255,7 @@ room7.chat = function (chatID) {
             {
                 chatID: 42,
                 speaker: "landlord",
-                text: sc.n("bigguy") + "!",
+                text: "##bigguy##!",
                 button: [
                     { chatID: 43, text: "...", callback: "" },
                 ]
@@ -1276,7 +1276,7 @@ room7.chat = function (chatID) {
                 speaker: "landlord",
                 text: "We talked about it, and I think it's best. You can do some chores around the house and I'll pay " +
                     "part of your debt. You can start with the dishes. We should just be really thankful for " +
-                    sc.n("bigguy") + " for helping us put a roof over our head for as long as he has. Now we'll " +
+                    "##bigguy## for helping us put a roof over our head for as long as he has. Now we'll " +
                     "let you get dressed. ",
                 button: [
                     { chatID: 9, text: "*sigh* ok", callback: "clearRoom" }
@@ -1346,7 +1346,7 @@ room7.chat = function (chatID) {
                 chatID: 52,
                 speaker: "bigguy",
                 text: "Are you wearing panties? Men don't wear panties. I'm going to " +
-                    "talk to your " + sc.n("landlord") + " about you wearing real underwear. " +
+                    "talk to your ##landlord## about you wearing real underwear. " +
                     "boxers are fine, but briefs hold it all together.  " +
                     "Put on some real clothes and let's get to work.",
                 button: [
@@ -1364,7 +1364,7 @@ room7.chat = function (chatID) {
             {
                 chatID: 54,
                 speaker: "bigguy",
-                text: "I've got to tell your " + sc.n("landlord") + " the weird shit " +
+                text: "I've got to tell your ##landlord## the weird shit " +
                     "you wear to bed. A man should sleep either in the nude, or in a " +
                     "pair of briefs. That's sick what you're doing. ",
                 button: [
@@ -1374,7 +1374,7 @@ room7.chat = function (chatID) {
             {
                 chatID: 55,
                 speaker: "bigguy",
-                text: "I know what you're trying to do and your " + sc.n("landlord") +
+                text: "I know what you're trying to do and your ##landlord##" +
                     " would be very pissed at the both of us if she found out. ",
                 button: [
                     { chatID: 56, text: "[Pull his dick out]", callback: "bigguy01" },
@@ -1417,7 +1417,7 @@ room7.chat = function (chatID) {
             {
                 chatID: 60,
                 speaker: "landlord",
-                text: "I know you fucked " + sc.n("lola") + " in her sleep and came inside her! " +
+                text: "I know you fucked ##lola## in her sleep and came inside her! " +
                     "She came crying in my room early this morning with cum dripping out of her vagina, and " +
                     "only one of us can cum inside her! ",
                 button: [
@@ -1427,7 +1427,7 @@ room7.chat = function (chatID) {
             {
                 chatID: 61,
                 speaker: "landlord",
-                text: "I know you fucked " + sc.n("eva") + " in her sleep and came inside her! " +
+                text: "I know you fucked ##eva## in her sleep and came inside her! " +
                     "She came crying in my room with cum dripping out of her vagina, and " +
                     "only one of us can cum inside her! ",
                 button: [
@@ -1464,7 +1464,7 @@ room7.chat = function (chatID) {
                 chatID: 65,
                 speaker: "me",
                 text: "Aww crap! I really fucked up this time! I have no idea where I can sleep. " +
-                    "maybe " + sc.n("zoey") + " will let me sleep over, or I could go to sleep " +
+                    "maybe ##zoey## will let me sleep over, or I could go to sleep " +
                     "in the park. That will be rough. Damn damn damn!",
                 button: [
                     { chatID: -1, text: "...", callback: "" },
@@ -1494,7 +1494,7 @@ room7.chat = function (chatID) {
                     "carnies. Don't you ever work for a carnival. Terrible things happen to people that work there. Now " + 
                     "get up and start your day. ",
                 button: [
-                    { chatID: 9, text: "Yes " + sc.n("landlord"), callback: "clearRoom" },
+                    { chatID: 9, text: "Yes ##landlord##", callback: "clearRoom" },
                 ]
             },
             {
@@ -1502,7 +1502,7 @@ room7.chat = function (chatID) {
                 speaker: "landlord",
                 text: "Did you just pee your bed!! What are you? A baby! Gross! Clean up your pissy bed and clothes! Now!",
                 button: [
-                    { chatID: 70, text: "Yes " + sc.n("landlord"), callback: "cleanBed" },
+                    { chatID: 70, text: "Yes ##landlord##", callback: "cleanBed" },
                 ]
             },
             {

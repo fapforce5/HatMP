@@ -2044,7 +2044,7 @@ room486.chat = function (chatID) {
             {
                 chatID: 16,
                 speaker: "!barker",
-                text: "Onto the stage is " + sc.n("!seller") + "!!! The destroyer of asses, the breaker of souls, " +
+                text: "Onto the stage is ##!seller##!!! The destroyer of asses, the breaker of souls, " +
                     "the crusher of dreams!! With him, his trusty paddle! I feel sorry for our poor contestant! " +
                     gender.pronoun("she") + " is about to get the paddling of " + gender.pronoun("her") + " life!!",
                 button: [
@@ -2055,7 +2055,7 @@ room486.chat = function (chatID) {
                 chatID: 17,
                 speaker: "!barker",
                 text: "Look at that ass ladies and gentlemen! It's a shame what's about to happen to it! " +
-                    sc.n("!seller") + " give " + gender.pronoun("her") + " the 10 hard spankings that she wants!!!!",
+                    "##!seller## give " + gender.pronoun("her") + " the 10 hard spankings that she wants!!!!",
                 button: [
                     { chatID: 10041, text: "*gulp*", callback: "room4_0_4" },
                 ]
@@ -2063,7 +2063,7 @@ room486.chat = function (chatID) {
             {
                 chatID: 18,
                 speaker: "!barker",
-                text: sc.n("!seller") + " you may unlock " + gender.pronoun("her") + "! Let's see her crawl to " +
+                text: "##!seller## you may unlock " + gender.pronoun("her") + "! Let's see her crawl to " +
                     "our next game!!!",
                 button: [
                     { chatID: -1, text: "...", callback: "greenlightRedraw" },
@@ -2379,10 +2379,10 @@ room486.chat = function (chatID) {
             {
                 chatID: 52,
                 speaker: "thinking",
-                text: "That " + sc.n("!barker") + " is on my list. I should try to find him and see if " +
+                text: "That ##!barker## is on my list. I should try to find him and see if " +
                     "he knows the code. ",
                 button: [
-                    { chatID: 53, text: "[Look for the " + sc.n("!barker") + "]", callback: "missy0" },
+                    { chatID: 53, text: "[Look for the ##!barker##]", callback: "missy0" },
                     { chatID: -1, text: "Naw. I just want to leave.  ", callback: "leaveend" },
                 ]
             },

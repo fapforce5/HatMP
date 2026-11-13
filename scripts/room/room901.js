@@ -497,9 +497,9 @@ room901.chat = function(chatID){
         {
             chatID: 1,
             speaker: "cindy",
-            text: "Ugh, like I haven't heard that a million times. Wait don't you know " + sc.n("lola") + " and " + sc.n("eva") + "?",
+            text: "Ugh, like I haven't heard that a million times. Wait don't you know ##lola## and ##eva##?",
             button: [
-                { chatID: 3, text: "Oh yea they're my " + sc.n("el"), callback: "" },
+                { chatID: 3, text: "Oh yea they're my ##el##", callback: "" },
             ]
         },
         {
@@ -513,7 +513,7 @@ room901.chat = function(chatID){
         {
             chatID: 3,
             speaker: "cindy",
-            text: sc.n("lola") + " really is the best. She helped me improve my breast stroke. Took 5 seconds off my time. ",
+            text: "##lola## really is the best. She helped me improve my breast stroke. Took 5 seconds off my time. ",
             button: [
                 { chatID: 4, text: "I know, she swims all the time!", callback: "" },
             ]
@@ -563,7 +563,7 @@ room901.chat = function(chatID){
         {
             chatID: 9,
             speaker: "lola",
-            text: "Hey " + sc.n("me") + "! Getting some laps in?",
+            text: "Hey ##me##! Getting some laps in?",
             button: [
                 { chatID: 10, text: "Oh yeah!", callback: "" },
                 { chatID: 11, text: "Nope, just here to check you out in a swimsuit", callback: "" },
@@ -580,7 +580,7 @@ room901.chat = function(chatID){
         {
             chatID: 11,
             speaker: "lola",
-            text: "Oh " + sc.n("me") + "! You're too much. I'll see you at home *wink",
+            text: "Oh ##me##! You're too much. I'll see you at home *wink",
             button: [
                 { chatID: -1, text: "Ok see you", callback: "" },
             ]
@@ -588,7 +588,7 @@ room901.chat = function(chatID){
         {
             chatID: 12,
             speaker: "lola",
-            text: "Oh my god " + sc.n("me") + "! I'm sooooo sorry you got kicked out! " + sc.n("eva") + " and I have just been " +
+            text: "Oh my god ##me##! I'm sooooo sorry you got kicked out! ##eva## and I have just been " +
                 "the saddest ever. It's so terrible you're not here. I just want to smuggle you and take you in!",
             button: [
                 { chatID: 13, text: "I know I miss you two too", callback: "" },
@@ -599,16 +599,16 @@ room901.chat = function(chatID){
             speaker: "lola",
             text: "I just want to tackle you and squeeze you, but that lifeguard is a real butthead. Where did you go after? ",
             button: [
-                { chatID: 14, text: sc.n("zoey") + " was nice enough to take me in. [Tell " + sc.n("lola") + " your story]", callback: "" },
+                { chatID: 14, text: "##zoey## was nice enough to take me in. [Tell ##lola## your story]", callback: "" },
             ]
         },
         {
             chatID: 14,
             speaker: "lola",
-            text: "Oh I'm so happy " + sc.n("zoey") + " was able to take you in. She's such a great friend. " +
-                sc.n("eva") + " and I will keep working on " + sc.n("landlord") + " to get you back in. We really miss " +
-                "you. Also ever since you left " + sc.n("bigguy") + " has been acting really creepy. He's been staring at us, and I " +
-                "swear he was licking his lips. We told " + sc.n("landlord") + ", but she just said we were being weird. ",
+            text: "Oh I'm so happy ##zoey## was able to take you in. She's such a great friend. " +
+                "##eva## and I will keep working on ##landlord## to get you back in. We really miss " +
+                "you. Also ever since you left ##bigguy## has been acting really creepy. He's been staring at us, and I " +
+                "swear he was licking his lips. We told ##landlord##, but she just said we were being weird. ",
             button: [
                 { chatID: 15, text: "That's horrible. I'll try to find a way to get back in and look out for you two.", callback: "" },
             ]
@@ -616,7 +616,7 @@ room901.chat = function(chatID){
         {
             chatID: 15,
             speaker: "lola",
-            text: "I hope so. You know " + sc.n("landlord") + ". She'll get mad, but give her some time and she'll get over it. " +
+            text: "I hope so. You know ##landlord##. She'll get mad, but give her some time and she'll get over it. " +
                 "I'm going to get my laps in, it's good seeing you. Love you!",
             button: [
                 { chatID: -1, text: "You too I'm going to get some laps too", callback: "lola-2" }
@@ -625,10 +625,10 @@ room901.chat = function(chatID){
         {
             chatID: 16,
             speaker: "lola",
-            text: "Hey " + sc.n("me") + "! I'm so happy every time I see you. We're still working on " + sc.n("landlord") + ". " +
+            text: "Hey ##me##! I'm so happy every time I see you. We're still working on ##landlord##. " +
                 "She said maybe, you'll have to earn her trust. Just keep working on her. I know you'll get back in. ",
             button: [
-                { chatID: -1, text: "I will. Thanks " + sc.n("lola") + ".", callback: "" }
+                { chatID: -1, text: "I will. Thanks ##lola##.", callback: "" }
             ]
         },
         {

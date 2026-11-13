@@ -553,7 +553,7 @@ room203.chat = function (chatID) {
             {
                 chatID: 2,
                 speaker: "cecilia",
-                text: "You must be " + sc.n("me") + ". Do you have a Private Investigator's License?",
+                text: "You must be ##me##. Do you have a Private Investigator's License?",
                 button: [
                     { chatID: 3, text: "No, do I need one?", callback: "" }
                 ]
@@ -569,7 +569,7 @@ room203.chat = function (chatID) {
             {
                 chatID: 4,
                 speaker: "cecilia",
-                text: "You must be " + sc.n("me") + ". Do you have a Private Investigator's License?",
+                text: "You must be ##me##. Do you have a Private Investigator's License?",
                 button: [
                     { chatID: 10, text: "Yes I do.", callback: "" }
                 ]
@@ -577,7 +577,7 @@ room203.chat = function (chatID) {
             {
                 chatID: 5,
                 speaker: "cecilia",
-                text: "Thank you for filling that out. " + sc.n("missy") + " is ready for you. Good luck in there " + sc.n("missy") +
+                text: "Thank you for filling that out. ##missy## is ready for you. Good luck in there ##missy##" +
                     " is a slave driver, but she'll give your life purpose that you've never had.",
                 button: [
                     { chatID: -1, text: "Thank you. [Enter]", callback: "enter" }
@@ -586,9 +586,9 @@ room203.chat = function (chatID) {
             {
                 chatID: 6,
                 speaker: "cecilia",
-                text: "I'm so sorry " + sc.n("me") + ", but the workday has already started. Please come in before 10 next time.",
+                text: "I'm so sorry ##me##, but the workday has already started. Please come in before 10 next time.",
                 button: [
-                    { chatID: -1, text: "My mistake " + sc.n("cecilia") + ".", callback: "late0" }
+                    { chatID: -1, text: "My mistake ##cecilia##.", callback: "late0" }
                 ]
             },
             {
@@ -596,7 +596,7 @@ room203.chat = function (chatID) {
                 speaker: "missy",
                 text: "Are you late! Why the hell! Get in here! ",
                 button: [
-                    { chatID: -1, text: "My mistake " + sc.n("cecilia") + ".", callback: "late0" }
+                    { chatID: -1, text: "My mistake ##cecilia##.", callback: "late0" }
                 ]
             },
             {
@@ -604,14 +604,14 @@ room203.chat = function (chatID) {
                 speaker: "cecilia",
                 text: "Oh yeah, you look yummy. You may enter.",
                 button: [
-                    { chatID: -1, text: "[Enter " + sc.n("missy") + "'s office]", callback: "enter" }
+                    { chatID: -1, text: "[Enter ##missy##'s office]", callback: "enter" }
                 ]
             },
             {
                 chatID: 9,
                 speaker: "cecilia",
                 text: "I like your clothes, but I can't let you in unless you're wearing suit pants, dress shirt, tie, black shoes, black socks, and " +
-                    "some kind of underwear. Sorry " + sc.n("me") + ", but you can change in the bathroom if you have the clothes with you.",
+                    "some kind of underwear. Sorry ##me##, but you can change in the bathroom if you have the clothes with you.",
                 button: [
                     { chatID: -1, text: "Oh yeah. I'm such an airhead I forgot.", callback: "resetDesk" }
                 ]
@@ -629,15 +629,15 @@ room203.chat = function (chatID) {
             {
                 chatID: 11,
                 speaker: "cecilia",
-                text: "Welcome back " + sc.n("me") + "! I'm so excited you got the job! ",
+                text: "Welcome back ##me##! I'm so excited you got the job! ",
                 button: [
-                    { chatID: 12, text: "Thank you " + sc.n("cecilia") + ". I'm excited to work with you too!", callback: "" }
+                    { chatID: 12, text: "Thank you ##cecilia##. I'm excited to work with you too!", callback: "" }
                 ]
             },
             {
                 chatID: 12,
                 speaker: "cecilia",
-                text: "So " + sc.n("missy") + " asked me to inspect your attire each day before you report in. To make it easier on both of us can you stand in " +
+                text: "So ##missy## asked me to inspect your attire each day before you report in. To make it easier on both of us can you stand in " +
                     "front of my desk and model that big sexy body of yours! I need to check you out from your head to " +
                     "your shoes! ",
                 button: [
@@ -665,7 +665,7 @@ room203.chat = function (chatID) {
                 chatID: 15,
                 speaker: "missy",
                 text: "What the fuck do you mean you showed up to work on your first fucking day and can't even get " +
-                    "dressed properly! " + sc.n("cecilia") + " take some petty cash and go buy him his suit! " +
+                    "dressed properly! ##cecilia## take some petty cash and go buy him his suit! " +
                     "It will be in your wardrobe. Make sure you wear it next time you come in. I can't trust " +
                     "you to use the money I gave you to purchase proper attire and you screwed that up! Well you're " +
                     "going to pay for your idiocy! Follow me!",
@@ -676,7 +676,7 @@ room203.chat = function (chatID) {
             {
                 chatID: 16,
                 speaker: "cecilia",
-                text: "You must be " + sc.n("me") + ". Do you have a Private Investigator's License?",
+                text: "You must be ##me##. Do you have a Private Investigator's License?",
                 button: [
                     { chatID: 17, text: "I don't have one.", callback: "mad" }
                 ]
@@ -685,7 +685,7 @@ room203.chat = function (chatID) {
                 chatID: 17,
                 speaker: "missy",
                 text: "What do you mean you don't have one? Let me guess, you blew your money on stupid crap and " +
-                    "not on a license? Is this how you want to start here, as a dumbass? " + sc.n("cecilia") + " go " +
+                    "not on a license? Is this how you want to start here, as a dumbass? ##cecilia## go " +
                     "buy him a license since he can't do it himself! You, idiot, come with me. Apparently you have to " +
                     "receive some training before you even start. Come now!",
                 button: [
@@ -746,7 +746,7 @@ room203.chat = function (chatID) {
                 chatID: 24,
                 speaker: "cecilia",
                 text: "I like your clothes, but I can't let you in unless you're wearing suit pants, dress shirt, tie, black shoes, black socks, " +
-                    "and pretty panties. Sorry " + sc.n("me") + ", but you can change in the bathroom if you have the clothes with you.",
+                    "and pretty panties. Sorry ##me##, but you can change in the bathroom if you have the clothes with you.",
                 button: [
                     { chatID: -1, text: "Oh yeah. I'm such an airhead I forgot.", callback: "resetDesk" }
                 ]
@@ -754,7 +754,7 @@ room203.chat = function (chatID) {
             {
                 chatID: 25,
                 speaker: "cecilia",
-                text: "Getting a bit hairy. You need to go home and shave. Talk to " + sc.n("spanky") + ". He's a bit weird, but " +
+                text: "Getting a bit hairy. You need to go home and shave. Talk to ##spanky##. He's a bit weird, but " +
                     "he does know how to fuck a face. ",
                 button: [
                     { chatID: -1, text: "Oh... oh! ok. ", callback: "resetDesk" }
@@ -789,7 +789,7 @@ room203.chat = function (chatID) {
             {
                 chatID: 29,
                 speaker: "ralphsmom",
-                text: "I was hoping to find you here! Little " + sc.n("ralph") + " was kidnapped last night! " +
+                text: "I was hoping to find you here! Little ##ralph## was kidnapped last night! " +
                     "I don't know who took him, but my husband said he saw them wearing robes. We've already " +
                     "told the police, but if you see or hear anything can you let us know?",
                 button: [
@@ -808,7 +808,7 @@ room203.chat = function (chatID) {
             {
                 chatID: 31,
                 speaker: "thinking",
-                text: "CRAP!!! I forgot to check on " + sc.n("ralph") + " yesterday and now it looks like " +
+                text: "CRAP!!! I forgot to check on ##ralph## yesterday and now it looks like " +
                     "he's been kidnapped by the cult!!! You forget a friend and now he's gone. I need to " +
                     "find a way to get him back!!! Damn. I need to tell Missy and see if she can help! ",
                 button: [
@@ -846,7 +846,7 @@ room203.chat = function (chatID) {
             {
                 chatID: 35,
                 speaker: "p",
-                text: "Oh fuck, oh fuck. Don't stop " + sc.n("cecilia") + "! OOOoooo",
+                text: "Oh fuck, oh fuck. Don't stop ##cecilia##! OOOoooo",
                 button: [
                     { chatID: 36, text: "ummm", callback: "p1" }
                 ]
@@ -865,7 +865,7 @@ room203.chat = function (chatID) {
             {
                 chatID: 37,
                 speaker: "p",
-                text: "Oh fuck! I feel another coming! Fuck fuck fuck! Go. Go save Missy! " + sc.n("cecilia") +
+                text: "Oh fuck! I feel another coming! Fuck fuck fuck! Go. Go save Missy! ##cecilia##" +
                     " keep licking! Fuck! ",
                 button: [
                     { chatID: -1, text: "...ok. I'm going to go see the Forest Queen... bye ?", callback: "leave" }
@@ -892,7 +892,7 @@ room203.chat = function (chatID) {
             {
                 chatID: 40,
                 speaker: "p",
-                text: "oh. Hi " + sc.n("me") + ". Any good news?",
+                text: "oh. Hi ##me##. Any good news?",
                 button: [
                     { chatID: 41, text: "Yes [Explain what happened and hand over the Forest Queen's message]", callback: "p4" }
                 ]
@@ -900,7 +900,7 @@ room203.chat = function (chatID) {
             {
                 chatID: 41,
                 speaker: "p",
-                text: sc.n("cecilia") + " hold that hole open. I'm not done with it yet. " + sc.n("me") + 
+                text: "##cecilia## hold that hole open. I'm not done with it yet. ##me##" + 
                     " This is what we need! I'm working on trying to figure out where Missy is being held, " +
                     "but you'll need to find the code to get in the compound. ",
                 button: [
@@ -931,7 +931,7 @@ room203.chat = function (chatID) {
             {
                 chatID: 44,
                 speaker: "cecilia",
-                text: "Oh hi " + sc.n("me") + "! We were... uh...",
+                text: "Oh hi ##me##! We were... uh...",
                 button: [
                     { chatID: 45, text: "...", callback: "" }
                 ]
@@ -939,7 +939,7 @@ room203.chat = function (chatID) {
             {
                 chatID: 45,
                 speaker: "p",
-                text: sc.n("cecilia") + " gets a bit crabby if she hasn't been fucked in too long. Let's go " +
+                text: "##cecilia## gets a bit crabby if she hasn't been fucked in too long. Let's go " +
                     "into Missy's office so I can show you what I've been working on. You have the code to " +
                     "the back door right? Ready to complete your quest and save Missy?",
                 button: [
@@ -992,7 +992,7 @@ room203.chat = function (chatID) {
             {
                 chatID: 51,
                 speaker: "p",
-                text: "*sigh* " + sc.n("cecilia") + " give " + gender.pronoun("him") + " some horney " +
+                text: "*sigh* ##cecilia## give " + gender.pronoun("him") + " some horney " +
                     "goat weed that I know you keep in your stash when we're done. Give that to the " +
                     "psychic next door. She'll give you the cave key. ",
                 button: [
@@ -1056,7 +1056,7 @@ room203.chat = function (chatID) {
             {
                 chatID: 58,
                 speaker: "p",
-                text: "Missy's ass is counting on all of us. " + sc.n("cecilia") + " and I are going to put " +
+                text: "Missy's ass is counting on all of us. ##cecilia## and I are going to put " +
                     "in motion our part of the plan with the help of the other mistresses. You just need to find " +
                     "a way to get there. To help you on your journey I'm going to give you some gift. Use them " +
                     "wisely! We'll see you once you get Missy free! ",

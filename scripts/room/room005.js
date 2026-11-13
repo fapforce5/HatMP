@@ -262,7 +262,7 @@ room5.chat = function (chatID) {
         {
             chatID: 3,
             speaker: "eva",
-            text: "I knew it! I told " + sc.n("lola") + " that you were a foot guy! She said you were obviously a breast guy! So which is it? Do you prefer feet or boobs?",
+            text: "I knew it! I told ##lola## that you were a foot guy! She said you were obviously a breast guy! So which is it? Do you prefer feet or boobs?",
             button: [
                 { chatID: 4, text: "...foot?", callback: "feet" },
                 { chatID: 5, text: "...breast?", callback: "boobs" },
@@ -393,7 +393,7 @@ room5.chat = function (chatID) {
         {
             chatID: 19,
             speaker: "eva",
-            text: "I want to see it. " + sc.n("lola") + " wants to see it too. She just won't admit it. C'mon, show it to us.",
+            text: "I want to see it. ##lola## wants to see it too. She just won't admit it. C'mon, show it to us.",
             button: [
                 { chatID: 20, text: "Show me your vagina", callback: "" },
             ]
@@ -579,7 +579,7 @@ room5.chat = function (chatID) {
         {
             chatID: 42,
             speaker: "eva",
-            text: sc.n("lola") + ", can you get us some tissues so we can clean up this mess?",
+            text: "##lola##, can you get us some tissues so we can clean up this mess?",
             button: [
                 { chatID: -1, text: "Yeah", callback: "massageFinish" },
             ]

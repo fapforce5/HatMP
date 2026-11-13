@@ -451,7 +451,7 @@ room31.chat = function (chatID) {
         {
             chatID: 0,
             speaker: "thinking",
-            text: "Oh wow! I had no idea " + sc.n("lola") + " had such dirty pictures. " + sc.n("eva") + " must have taken them since I know " + sc.n("lola") + " has never dated a guy or even had sex with one. I should take a copy of this for my phone.",
+            text: "Oh wow! I had no idea ##lola## had such dirty pictures. ##eva## must have taken them since I know ##lola## has never dated a guy or even had sex with one. I should take a copy of this for my phone.",
             button: [
                 { chatID: -1, text: "...", callback: "" }
             ]

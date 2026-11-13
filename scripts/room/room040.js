@@ -249,7 +249,7 @@ room40.chat = function (chatID) {
             {
                 chatID: 8,
                 speaker: "me",
-                text: "So, you work for " + sc.n("bigguy") + "?",
+                text: "So, you work for ##bigguy##?",
                 button: [
                     { chatID: 9, text: "...", callback: "" }
                 ]
@@ -294,8 +294,8 @@ room40.chat = function (chatID) {
             {
                 chatID: 13,
                 speaker: "tom",
-                text: "So I got to talking with " + sc.n("bigguy") + ". He's dating " +
-                    "your " + sc.n("landlord") + "? ",
+                text: "So I got to talking with ##bigguy##. He's dating " +
+                    "your ##landlord##? ",
                 button: [
                     { chatID: 14, text: "yeah", callback: "" }
                 ]
@@ -304,7 +304,7 @@ room40.chat = function (chatID) {
                 chatID: 14,
                 speaker: "tom",
                 text: "Wow, small world. So your " + g.makeSingular(sc.n("el")) + " is " +
-                    sc.n("lola") + "? She was in my biology class last year. Haven't " +
+                    "##lola##? She was in my biology class last year. Haven't " +
                     "seen her since. It's a big campus.",
                 button: [
                     { chatID: 15, text: "Oh yeah. She's my " + g.makeSingular(sc.n("el")) + ". ", callback: "" }
@@ -322,20 +322,20 @@ room40.chat = function (chatID) {
             {
                 chatID: 16,
                 speaker: "thinking",
-                text: "Hmmmm. He's really nice, and I don't think he would even have sex with " + sc.n("eva") + " since " +
-                    "she's way too wild for him. He might make a good boyfriend for " + sc.n("lola") + ". " +
-                    "Way better than " + sc.n("chad") + ". But maybe " + sc.n("lola") + " needs a bad boy to " +
-                    "snap her into reality. Hmmm. I wonder if I should try to set him up or let " + sc.n("lola") +
-                    " date " + sc.n("chad") + ".",
+                text: "Hmmmm. He's really nice, and I don't think he would even have sex with ##eva## since " +
+                    "she's way too wild for him. He might make a good boyfriend for ##lola##. " +
+                    "Way better than ##chad##. But maybe ##lola## needs a bad boy to " +
+                    "snap her into reality. Hmmm. I wonder if I should try to set him up or let ##lola##" +
+                    " date ##chad##.",
                 button: [
-                    { chatID: 17, text: "Try to set up " + sc.n("tom") + " with " + sc.n("lola") + ". ", callback: "" },
-                    { chatID: 23, text: "Let " + sc.n("lola") + " date " + sc.n("chad") + ". ", callback: "" }
+                    { chatID: 17, text: "Try to set up ##tom## with ##lola##. ", callback: "" },
+                    { chatID: 23, text: "Let ##lola## date ##chad##. ", callback: "" }
                 ]
             },
             {
                 chatID: 17,
                 speaker: "me",
-                text: "Hey " + sc.n("tom") + " what do you think of " + sc.n("lola") + "? ",
+                text: "Hey ##tom## what do you think of ##lola##? ",
                 button: [
                     { chatID: 18, text: "...", callback: "" }
                 ]
@@ -369,8 +369,8 @@ room40.chat = function (chatID) {
             {
                 chatID: 21,
                 speaker: "me",
-                text: "Hahah. Ok. I'll text " + sc.n("eva") + " now and have her set it up. Be " +
-                    "good to her or " + sc.n("eva") + " will get one of her boyfriends to beat " +
+                text: "Hahah. Ok. I'll text ##eva## now and have her set it up. Be " +
+                    "good to her or ##eva## will get one of her boyfriends to beat " +
                     "you up! ",
                 button: [
                     { chatID: 22, text: "...", callback: "" }
@@ -388,7 +388,7 @@ room40.chat = function (chatID) {
             {
                 chatID: 23,
                 speaker: "thinking",
-                text: "Hehehe! I'm going to see how far " + sc.n("lola") + " goes with " + sc.n("chad") + ". " +
+                text: "Hehehe! I'm going to see how far ##lola## goes with ##chad##. " +
                     "Way more entertaining than boring, lame Tom.",
                 button: [
                     { chatID: -1, text: "...", callback: "endlolaboyChad" }

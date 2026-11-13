@@ -121,6 +121,9 @@ gender.pronoun = function (ptype) {
         case "whore":
             return gender.isGirl() ? "whore" : "sissy whore";
             break;
+        case "pussyhole":
+            return cl.c.cock === 5 ? "pussy hole" : "ass hole";
+            break;
         default:
             console.log("gender.pronoun - not found: " + ptype);
     }

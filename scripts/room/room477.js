@@ -406,7 +406,7 @@ room477.chat = function (chatID) {
         {
             chatID: 9,
             speaker: "queen",
-            text: "I told you to lay down before you fell down. Why does no one ever listen to me. " + sc.n("me") +
+            text: "I told you to lay down before you fell down. Why does no one ever listen to me. ##me##" +
             ", I had a feeling I may be seeing you. You're more famous than you know. ",
             button: [
                 { chatID: 10, text: "Really. What do you know?", callback: "" },
@@ -415,7 +415,7 @@ room477.chat = function (chatID) {
         {
             chatID: 10,
             speaker: "queen",
-            text: "I won't bore you with a retelling of your life's story. But I do know that you work for " + sc.n("missy") + ". " +
+            text: "I won't bore you with a retelling of your life's story. But I do know that you work for ##missy##. " +
                 "The girl that was taken by Ubel. That ordeal was really quite something. They may not have taken you back " +
                 "yet, but they will, in time. In a way I'm glad you've found your way here. ",
             button: [
@@ -435,7 +435,7 @@ room477.chat = function (chatID) {
         {
             chatID: 12,
             speaker: "queen",
-            text: "You don't know what you want. Go speak with " + sc.n("a") + ". She'll set you right for your own " +
+            text: "You don't know what you want. Go speak with ##a##. She'll set you right for your own " +
                 "protection. Go now. Go deep into the cave and meet with her. She'll provide you all you need. ",
             button: [
                 { chatID: 13, text: "Let me out! Let me out now!  ", callback: "" },
@@ -515,7 +515,7 @@ room477.chat = function (chatID) {
         {
             chatID: 21,
             speaker: "!jenna",
-            text: "You shouldn't be here after dark. The " + sc.n("queen") + " will be " +
+            text: "You shouldn't be here after dark. The ##queen## will be " +
                 "angry. You need to go. ",
             button: [
                 { chatID: -1, text: "Oh. ok", callback: "leave" },
@@ -532,7 +532,7 @@ room477.chat = function (chatID) {
         {
             chatID: 23,
             speaker: "thinking",
-            text: sc.n("p") + " said I need to break in and try to find information. The front door " +
+            text: "##p## said I need to break in and try to find information. The front door " +
                 "is too obvious, let me see if there's another way in. ",
             button: [
                 { chatID: -1, text: "[Look around for an open window]", callback: "window" },

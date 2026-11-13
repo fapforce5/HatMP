@@ -25,7 +25,7 @@ room250.main = function () {
                 chat(12, 250);
             }
         }
-        else if (sc.getMission("dolly", "mad").complete()) {
+        else if (sc.getMission("dolly", "mad").success) {
             nav.bg("250_beaver/hollymad.jpg");
             chat(19, 250);
         }
@@ -43,7 +43,17 @@ room250.main = function () {
         }
     }
     else if (missy.getenvelope("jeffery").active) {
-
+        nav.button({
+            "type": "btn",
+            "name": "hollyStand",
+            "left": 1094,
+            "top": 77,
+            "width": 540,
+            "height": 1003,
+            "image": "250_beaver/holly_stand_mad.png"
+        }, 250);
+        chat(26, 250);
+        nav.buildnav([0]);
     }
     else {
         if (sc.getMission("holly", "mad").fail) {
@@ -91,7 +101,7 @@ room250.btnclick = function (name) {
                 chat(5, 250);
             }
             else {
-                if (missy.envelope("jeffery")) {
+                if (missy.getenvelope("jeffery").active) {
                     chat(26, 250);
                 }
                 else {
@@ -407,7 +417,7 @@ room250.chat = function (chatID) {
         {
             chatID: 9,
             speaker: "holly",
-            text: "No you're not, or you would know " + sc.n("jeffery") + " only interviews in the morning before 10 in the morning.",
+            text: "No you're not, or you would know ##jeffery## only interviews in the morning before 10 in the morning.",
             button: [
                 { chatID: -1, text: "Oh I guess I'll come back tomorrow.", callback: "" }
             ]
@@ -425,7 +435,7 @@ room250.chat = function (chatID) {
         {
             chatID: 11,
             speaker: "holly",
-            text: "Oh, I thought you would have a beaver... oh well " + sc.n("jeffery") + "'s in the back office",
+            text: "Oh, I thought you would have a beaver... oh well ##jeffery##'s in the back office",
             button: [
                 { chatID: -1, text: "Thank you [Go to the back office]", callback: "backOffice" }
             ]
@@ -518,7 +528,7 @@ room250.chat = function (chatID) {
         {
             chatID: 22,
             speaker: "holly",
-            text: "hi " + sc.n("me") + ", Here to eat or work?",
+            text: "hi ##me##, Here to eat or work?",
             button: [
                 { chatID: -1, text: "Here to work a shift. ", callback: "backOffice" },
                 { chatID: 1, text: "I came to get something to eat.", callback: "" },
@@ -556,7 +566,7 @@ room250.chat = function (chatID) {
             button: [
                 { chatID: 1, text: "Yes", callback: "sit" },
                 { chatID: -1, text: "No, Just wandering around I guess", callback: "" },
-                { chatID: -1, text: "Here to see " + sc.n("jeffery") + ". ", callback: "backOffice" },
+                { chatID: -1, text: "Here to see ##jeffery##. ", callback: "backOffice" },
             ]
         },
         {
@@ -573,7 +583,7 @@ room250.chat = function (chatID) {
             speaker: "thinking",
             text: "Ok. I'm in. Now to go into his office and look around. ",
             button: [
-                { chatID: -1, text: "[Sneak into " + sc.n("jeffery") + "'s office]", callback: "k1" },
+                { chatID: -1, text: "[Sneak into ##jeffery##'s office]", callback: "k1" },
             ]
         },
         {

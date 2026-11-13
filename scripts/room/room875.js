@@ -417,7 +417,7 @@ room875.chat = function (chatID) {
             {
                 chatID: 10,
                 speaker: "candy",
-                text: "You should go practice some more or " + sc.n("stacy") + " will be pissed. I'll just tell her you're " +
+                text: "You should go practice some more or ##stacy## will be pissed. I'll just tell her you're " +
                     "sick. ",
                 button: [
                     { chatID: -1, text: "[Leave]", callback: "leave" },
@@ -765,10 +765,10 @@ room875.chat = function (chatID) {
             {
                 chatID: 51,
                 speaker: "candy",
-                text: sc.n("stacy") + " can be such a bitch sometimes. She needs to " +
+                text: "##stacy## can be such a bitch sometimes. She needs to " +
                     "be put in her place! I would embarrass her at the game, but I " +
                     "hate ruining the game for everyone. If I wasn't  dating " + 
-                    sc.n("tiffany") + " I would just try to fuck her boyfriend. " +
+                    "##tiffany## I would just try to fuck her boyfriend. " +
                     "That would really piss her off! ",
                 button: [
                     { chatID: 52, text: "Yeah, to bad.", callback: "" }
@@ -778,7 +778,7 @@ room875.chat = function (chatID) {
                 chatID: 52,
                 speaker: "candy",
                 text: "Wait! You're not dating anyone. Maybe you should try to fuck " +
-                    sc.n("chuck") + "! That would really piss her off. She's been using " +
+                    "##chuck##! That would really piss her off. She's been using " +
                     "him for years now! I don't know why he follows her around everywhere. ",
                 button: [
                     { chatID: 53, text: "Hmmmmm. Maybe", callback: "" }

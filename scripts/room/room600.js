@@ -273,7 +273,7 @@ room600.chat = function(chatID){
             speaker: "p",
             text: "Welcome everyone to the first ever FEMBOY FRIDAY at Fat Tony's!!!!" + 
                 "Now the rules are that whoever makes the most money tonight gets an A+ " +
-                "for the sexy part of their final! Wooooo! " + sc.n("!freddy") + " here will " +
+                "for the sexy part of their final! Wooooo! ##!freddy## here will " +
                 "explain the rules, but you girls have fun!",
             button: [
                 { chatID: 20, text: "...", callback: "" },

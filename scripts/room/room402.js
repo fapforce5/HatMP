@@ -191,7 +191,7 @@ room402.chat = function (chatID) {
         {
             chatID: 3,
             speaker: "jada",
-            text: "Oh My God! You're buying panties on your own! You know " + sc.n("jimmy") + " always said you were a bit girly...",
+            text: "Oh My God! You're buying panties on your own! You know ##jimmy## always said you were a bit girly...",
             button: [
                 { chatID: 4, text: "Shhhhh! You don't have to be so loud!", callback: "" }
             ]
@@ -224,7 +224,7 @@ room402.chat = function (chatID) {
         {
             chatID: 7,
             speaker: "jada",
-            text: "Anal is sooooo much fun! I love it when " + sc.n("jimmy") + " throws me over his bed, spits on my asshole and just uses me till " +
+            text: "Anal is sooooo much fun! I love it when ##jimmy## throws me over his bed, spits on my asshole and just uses me till " +
             "he fills me up! I just slide my panties back on and let it drip out all day! I love the feeling of being filled.",
             button: [
                 { chatID: 8, text: "I didn't want to know that", callback: "" }
@@ -254,7 +254,7 @@ room402.chat = function (chatID) {
             speaker: "jada",
             text: "That's ok, I know you'll learn to love cum! That plug is all yours now! When you wear it think of me! I've got to get back to work.",
             button: [
-                { chatID: -1, text: "Oh thanks! See you later " + sc.n("jada") + ".", callback: "plug" },
+                { chatID: -1, text: "Oh thanks! See you later ##jada##.", callback: "plug" },
             ]
         },
         {
@@ -262,7 +262,7 @@ room402.chat = function (chatID) {
             speaker: "jada",
             text: "All done back there?",
             button: [
-                { chatID: 12, text: "Oh yeah. I can still taste your ass and " + sc.n("jimmy") + "'s cum on my tongue!", callback: "jada3" },
+                { chatID: 12, text: "Oh yeah. I can still taste your ass and ##jimmy##'s cum on my tongue!", callback: "jada3" },
             ]
         },
         {

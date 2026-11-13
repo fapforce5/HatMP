@@ -886,14 +886,14 @@ room957.chat = function (chatID) {
             speaker: "chloe",
             text: "Oh! Are you looking for a kiss? How about a kiss between my lips. For ol' times sake? ",
             button: [
-                { chatID: -1, text: "[Lick " + sc.n("chloe") + "'s wet, dripping pussy]", callback: "kissing_ev2" },
+                { chatID: -1, text: "[Lick ##chloe##'s wet, dripping pussy]", callback: "kissing_ev2" },
                 { chatID: -1, text: "No way!", callback: "kissingReset" },
             ]
         },
         {
             chatID: 15,
             speaker: "chloe",
-            text: "Hehe! You're cute when your tongues buried in my pussy. I'll have to tell " + sc.n("zoey") +
+            text: "Hehe! You're cute when your tongues buried in my pussy. I'll have to tell ##zoey##" +
                 " you're here. Maybe I can get her to join too! Later! ",
             button: [
                 { chatID: -1, text: "'bye", callback: "kissingReset" },
@@ -1252,7 +1252,7 @@ room957.chat = function (chatID) {
         {
             chatID: 58,
             speaker: "thinking",
-            text: "Oh wow. They are so cold! Now to sneak these keys back to my cell and get it to " + sc.n("daria") + ". ",
+            text: "Oh wow. They are so cold! Now to sneak these keys back to my cell and get it to ##daria##. ",
             button: [
                 { chatID: 59, text: "...", callback: "sweepHallway7" }
             ]

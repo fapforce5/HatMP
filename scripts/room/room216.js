@@ -271,8 +271,8 @@ room216.chat = function (chatID) {
         {
             chatID: 9,
             speaker: "thinking",
-            text: "Holy crap! That's " + sc.n("chloe") + "! Why is she working here? I bet " + 
-                sc.n("zoey") + "'s going to be kinda mad her girlfriend is getting fucked by " +
+            text: "Holy crap! That's ##chloe##! Why is she working here? I bet " + 
+                "##zoey##'s going to be kinda mad her girlfriend is getting fucked by " +
                 "all these guys! She has more cum dripping out of her than a porn star in a " +
                 "gangbang scene. ",
             button: [
@@ -282,7 +282,7 @@ room216.chat = function (chatID) {
         {
             chatID: 10,
             speaker: "thinking",
-            text: "Holy crap! That's " + sc.n("chloe") + "! Why is she working here? " +
+            text: "Holy crap! That's ##chloe##! Why is she working here? " +
                 "She has more cum dripping out of her than a porn star in a " +
                 "gangbang scene. ",
             button: [

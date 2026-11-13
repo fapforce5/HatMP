@@ -545,7 +545,7 @@ room727.chat = function (chatID) {
             {
                 chatID: 24,
                 speaker: "tina",
-                text: "No. " + sc.n("construction") + " let's me sleep in the office, but those outhouses " +
+                text: "No. ##construction## let's me sleep in the office, but those outhouses " +
                     "are so gross I can't stand to go in them. So I come here. Anyway. It's pretty late. I " +
                     "should get home. ",
                 button: [
@@ -616,7 +616,7 @@ room727.chat = function (chatID) {
                 chatID: 33,
                 speaker: "tina",
                 text: "Before we start, there's a little thing I like to do first. I know there's not " +
-                    "much room in here, but I need you to wait in " + sc.n("construction") + "'s " +
+                    "much room in here, but I need you to wait in ##construction##'s " +
                     " office 'k?",
                 button: [{ chatID: 34, text: "sure.  ", callback: "tina3" }]
             },
@@ -662,7 +662,7 @@ room727.chat = function (chatID) {
             {
                 chatID: 40,
                 speaker: "tina",
-                text: "OMG! Is that your penis!!! It's so tiny!! No wonder " + sc.n("river") +
+                text: "OMG! Is that your penis!!! It's so tiny!! No wonder ##river##" +
                     " is always picking on you! Tiny dick, tiny dick! Hahahahahha",
                 button: [
                     { chatID: 41, text: "I uhhhh", callback: "" },

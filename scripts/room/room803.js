@@ -793,7 +793,7 @@ room803.chat = function (chatID) {
         {
             chatID: 0,
             speaker: "ralphsdad",
-            text: "Hey champ, I think you're a bit lost. " + sc.n("ralph") + "'s room is the other " +
+            text: "Hey champ, I think you're a bit lost. ##ralph##'s room is the other " +
                 "way. ",
             button: [
                 { chatID: -1, text: "oh whoops. Ok.", callback: "" }
@@ -811,7 +811,7 @@ room803.chat = function (chatID) {
         {
             chatID: 2,
             speaker: "thinking",
-            text: "It's getting pretty late. I better leave before " + sc.n("ralphsmom") + 
+            text: "It's getting pretty late. I better leave before ##ralphsmom##" + 
                 " gets back. She doesn't like us playing after dark. ",
             button: [
                 { chatID: -1, text: "...", callback: "closet" },
@@ -844,9 +844,9 @@ room803.chat = function (chatID) {
         {
             chatID: 6,
             speaker: "thinking",
-            text: "Damn " + sc.n("ralphsmom") + "! What a dirty girl you are! I wonder if your " +
+            text: "Damn ##ralphsmom##! What a dirty girl you are! I wonder if your " +
                 "husband knows you have such a big fake cock. Well, not anymore. Hopefully " +
-                sc.n("ralph") + " doesn't get blamed for me taking this. ",
+                "##ralph## doesn't get blamed for me taking this. ",
             button: [
                 { chatID: -1, text: "[BBC dildo added to inventory]", callback: "closet" },
             ]
@@ -854,7 +854,7 @@ room803.chat = function (chatID) {
         {
             chatID: 7,
             speaker: "thinking",
-            text: "That's " + sc.n("ralphsmom") + "! I know that butt anywhere! Shake me dem titties " +
+            text: "That's ##ralphsmom##! I know that butt anywhere! Shake me dem titties " +
                 "girl! Take them out and shake 'em!",
             button: [
                 { chatID: 8, text: "...", callback: "peek2" },
@@ -882,8 +882,8 @@ room803.chat = function (chatID) {
         {
             chatID: 10,
             speaker: "thinking",
-            text: "You dirty girl, " + sc.n("ralphsmom") + "! Crotchless panties and see through bra. " +
-                "I'll bet you wore this for " + sc.n("ralphsdad") + " a few times to seduce him. " +
+            text: "You dirty girl, ##ralphsmom##! Crotchless panties and see through bra. " +
+                "I'll bet you wore this for ##ralphsdad## a few times to seduce him. " +
                 "I'm so going to dress up in my closet and check my slutty self out later when I put " +
                 "these on! ",
             button: [
@@ -919,7 +919,7 @@ room803.chat = function (chatID) {
             chatID: 14,
             speaker: "ralphsdad",
             text: "You came in here hoping I'd follow you, didn't you? You wanted me to " +
-                "follow you, didn't you " + sc.n("me") + "? But why would you want me to " +
+                "follow you, didn't you ##me##? But why would you want me to " +
                 "follow you into my bedroom? ",
             button: [
                 { chatID: 15, text: "well", callback: "suck1" },
@@ -1035,7 +1035,7 @@ room803.chat = function (chatID) {
             speaker: "ralphsdad",
             text: "Oh wow! That was so close! She didn't see you did she? Of course she " +
                 "didn't or she would be in here screaming at me. You should probably just " +
-                "go upstairs and play with " + sc.n("ralph") + ". My heart's beating too hard " +
+                "go upstairs and play with ##ralph##. My heart's beating too hard " +
                 "to get a BJ right now. ",
             button: [
                 { chatID: -1, text: "Sure. I'll go play with my little friend. ", callback: "bjAlmostleave" },
@@ -1132,7 +1132,7 @@ room803.chat = function (chatID) {
         {
             chatID: 38,
             speaker: "me",
-            text: "Hi " + sc.n("ralphsmom") + " what are you up to? ",
+            text: "Hi ##ralphsmom## what are you up to? ",
             button: [
                 { chatID: 39, text: "...", callback: "" },
             ]
@@ -1159,7 +1159,7 @@ room803.chat = function (chatID) {
             chatID: 41,
             speaker: "ralphsmom",
             text: "Oh. I've never had anyone ask me about what I'm reading. It seems like " +
-                "my husband only cares about football, and my little " + sc.n("ralph") + 
+                "my husband only cares about football, and my little ##ralph##" + 
                 " only cares about his little dolls. ",
             button: [
                 { chatID: 42, text: "Well, I'm interested in you. ", callback: "" },
@@ -1247,7 +1247,7 @@ room803.chat = function (chatID) {
                 "woman in a stale marriage in a secret romance with a much younger man. " +
                 "Really saucy. ",
             button: [
-                { chatID: -1, text: "So hot! [Need " + sc.n("ralphsmom") + " level 6 to progress]", callback: "resettalk" },
+                { chatID: -1, text: "So hot! [Need ##ralphsmom## level 6 to progress]", callback: "resettalk" },
             ]
         },
         {
@@ -1467,7 +1467,7 @@ room803.chat = function (chatID) {
             chatID: 75,
             speaker: "ralphsdad",
             text: "I knew you wanted to get fucked! Let's go to the bathroom so we don't make too much noise. " +
-                "Wouldn't want " + sc.n("ralph") + " to walk in on us. ",
+                "Wouldn't want ##ralph## to walk in on us. ",
             button: [
                 { chatID: 76, text: "Yes daddy!", callback: "anal0" },
             ]
@@ -1571,7 +1571,7 @@ room803.chat = function (chatID) {
         {
             chatID: 87,
             speaker: "ralphsmom",
-            text: "I'm spent. I'm not a spring chicken anymore. Why don't you go play with my little " + sc.n("ralph") + ". ",
+            text: "I'm spent. I'm not a spring chicken anymore. Why don't you go play with my little ##ralph##. ",
             button: [
                 { chatID: -1, text: "Sure ", callback: "ralphroom" },
             ]
@@ -1583,7 +1583,7 @@ room803.chat = function (chatID) {
                 "body all over mine I need to feel some pleasure. Now I know you'll find a nice someone that " +
                 "is happy with your size, but I'm going to need something bigger. Surely you're aware how " +
                 "small and limp your fun stick is. It's nice, just not for me. Why don't you go play with " +
-                "my little " + sc.n("ralph") + ", I'm going to work on this book. ",
+                "my little ##ralph##, I'm going to work on this book. ",
             button: [
                 { chatID: -1, text: "oh ok ", callback: "ralphroom" },
             ]

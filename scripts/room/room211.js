@@ -831,7 +831,7 @@ room211.chat = function (chatID) {
             {
                 chatID: 27,
                 speaker: "!timothy",
-                text: "I just love how " + sc.n("!sporty") + " sucks that cock. She's so " +
+                text: "I just love how ##!sporty## sucks that cock. She's so " +
                     "enthusiastic!",
                 button: [
                     { chatID: -1, text: "She sure is", callback: "" },

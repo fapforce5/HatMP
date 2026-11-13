@@ -1081,7 +1081,7 @@ room174.chat = function (chatID) {
             {
                 chatID: 28,
                 speaker: "me",
-                text: "Sorry about that. I didn't know my " + sc.n("landlord") + " would be here. ",
+                text: "Sorry about that. I didn't know my ##landlord## would be here. ",
                 button: [
                     { chatID: 29, text: "...", callback: "" },
                 ]
@@ -1221,7 +1221,7 @@ room174.chat = function (chatID) {
             {
                 chatID: 44,
                 speaker: "martha",
-                text: "Finally our favorite pupil, " + sc.n("me") + ". Missy has personally chosen this outfit " +
+                text: "Finally our favorite pupil, ##me##. Missy has personally chosen this outfit " +
                     "to accentuate what she calls 'Her slutty desires to be impaled by every cock in the room.' " +
                     "Her exposed midriff displays her toned figure, low cut top displays her femininity, " +
                     "and short skirt signals that she is ready for breeding. Now everyone return to the waiting room. " +
@@ -1233,7 +1233,7 @@ room174.chat = function (chatID) {
             {
                 chatID: 45,
                 speaker: "martha",
-                text: "Here's " + sc.n("ralph") + ". *sigh* ",
+                text: "Here's ##ralph##. *sigh* ",
                 button: [
                     { chatID: 41, text: "...", callback: "xdress6" },
                 ]
@@ -1414,7 +1414,7 @@ room174.chat = function (chatID) {
                 chatID: 65,
                 speaker: "eva",
                 text: "Oh hahahaha! I know what she wants! You want to dyke out with us don't you? " +
-                    "What do you think " + sc.n("lola") + ", does she want to learn how to be a girl " +
+                    "What do you think ##lola##, does she want to learn how to be a girl " +
                     "or get a taste of our girl dicks? ",
                 button: [
                     { chatID: 66, text: "oh. uhhh. yeah", callback: "" },
@@ -1450,7 +1450,7 @@ room174.chat = function (chatID) {
             {
                 chatID: 69,
                 speaker: "lola",
-                text: "I can't look like a clown, maybe should practice on " + sc.n("eva") + ". " +
+                text: "I can't look like a clown, maybe should practice on ##eva##. " +
                     "Besides she owes me one for helping her pass Introduction to Nutrition 101. ",
                 button: [
                     { chatID: 70, text: "I'm offended", callback: "" },
@@ -1478,7 +1478,7 @@ room174.chat = function (chatID) {
             {
                 chatID: 72,
                 speaker: "eva",
-                text: "I taught " + sc.n("lola") + " everything she knows about kissing! ",
+                text: "I taught ##lola## everything she knows about kissing! ",
                 button: [
                     { chatID: 73, text: "...", callback: "" },
                 ]
@@ -1489,8 +1489,8 @@ room174.chat = function (chatID) {
                 text: "She did. I do love the french kissing, but only when I'm all worked up, " +
                     "otherwise it's kind gross. So who do you want to practice kissing with? ",
                 button: [
-                    { chatID: -1, text: sc.n("lola"), callback: "teachLolaKiss" },
-                    { chatID: -1, text: sc.n("eva"), callback: "teachEvaKiss" },
+                    { chatID: -1, text: "##lola##", callback: "teachLolaKiss" },
+                    { chatID: -1, text: "##eva##", callback: "teachEvaKiss" },
                 ]
             },
             {
@@ -1506,7 +1506,7 @@ room174.chat = function (chatID) {
                 speaker: "eva",
                 text: "Sometimes I think you're just this pervert that is trying to sneak into the " +
                     "girls locker room, but sometimes I think you're a girl, like the way you kiss. " +
-                    "It's so feminine, like " + sc.n("lola") + ". ",
+                    "It's so feminine, like ##lola##. ",
                 button: [
                     { chatID: -1, text: "MMmmMMmm", callback: "evalolateachme" },
                 ]
@@ -1548,7 +1548,7 @@ room174.chat = function (chatID) {
             {
                 chatID: 80,
                 speaker: "eva",
-                text: "Our practice sex clothes dummy! Now put on the clothes " + sc.n("lola") +
+                text: "Our practice sex clothes dummy! Now put on the clothes ##lola##" +
                     " got for you! ",
                 button: [
                     { chatID: 81, text: "!", callback: "el_sex1" },
@@ -1581,7 +1581,7 @@ room174.chat = function (chatID) {
             {
                 chatID: 84,
                 speaker: "eva",
-                text: "Also it's sex practice, not try and fuck us you pervert! " + sc.n("lola") +
+                text: "Also it's sex practice, not try and fuck us you pervert! ##lola##" +
                     " and I started doing this when I lost my virginity. I was so scared and bad " +
                     "at sex we promised each other we would help get better at sex and make it not " +
                     "so scary. ",
@@ -1601,7 +1601,7 @@ room174.chat = function (chatID) {
             {
                 chatID: 86,
                 speaker: "eva",
-                text: "Sweet! We usually take turns. I'll blow " + sc.n("lola") + " first! ",
+                text: "Sweet! We usually take turns. I'll blow ##lola## first! ",
                 button: [
                     { chatID: 87, text: "ok!", callback: "el_bj0" },
                 ]
@@ -1610,7 +1610,7 @@ room174.chat = function (chatID) {
                 chatID: 87,
                 speaker: "eva",
                 text: "She's so gentle with her dick. I wish guys were this nice when they put their " +
-                    "dicks in my mouth. Now " + sc.n("lola") + " it's your turn to blow " + sc.n("me") +
+                    "dicks in my mouth. Now ##lola## it's your turn to blow ##me##" +
                     ". You'll love her blow jobs. She's so caring when she sucks a dick. ",
                 button: [
                     { chatID: 88, text: "sweet!", callback: "el_bj1" },
@@ -1652,8 +1652,8 @@ room174.chat = function (chatID) {
             {
                 chatID: 92,
                 speaker: "eva",
-                text: "You like my penis? I wanted a bigger one, but " + sc.n("lola") + " said " +
-                    "no way in hell! Go on, show " + sc.n("lola") + " how to properly suck a cock! ",
+                text: "You like my penis? I wanted a bigger one, but ##lola## said " +
+                    "no way in hell! Go on, show ##lola## how to properly suck a cock! ",
                 button: [
                     { chatID: 93, text: "MMmm yes!", callback: "el_bj5" },
                 ]
@@ -1661,7 +1661,7 @@ room174.chat = function (chatID) {
             {
                 chatID: 93,
                 speaker: "eva",
-                text: "Take notes " + sc.n("lola") + "! That's a real cock sucker! See how she " +
+                text: "Take notes ##lola##! That's a real cock sucker! See how she " +
                     "makes love to my strap on with her mouth! Wow! You're going to make some " +
                     "boy really happy someday. Hehehehe!",
                 button: [
@@ -1687,7 +1687,7 @@ room174.chat = function (chatID) {
             {
                 chatID: 96,
                 speaker: "lola",
-                text: "Yeah. When it's just " + sc.n("eva") + " and I she always takes bottom " +
+                text: "Yeah. When it's just ##eva## and I she always takes bottom " +
                     "'cause she's so lazy!",
                 button: [
                     { chatID: 97, text: "...", callback: "" },
@@ -1714,7 +1714,7 @@ room174.chat = function (chatID) {
             {
                 chatID: 99,
                 speaker: "eva",
-                text: "I get next! " + sc.n("me") + ", you have to eat my pussy! ",
+                text: "I get next! ##me##, you have to eat my pussy! ",
                 button: [
                     { chatID: 100, text: "oh. Sweet!", callback: "el_twat0" },
                 ]
@@ -1722,7 +1722,7 @@ room174.chat = function (chatID) {
             {
                 chatID: 100,
                 speaker: "thinking",
-                text: "I love how her ass is just out waiting to let me eat it. My " + sc.n("el") +
+                text: "I love how her ass is just out waiting to let me eat it. My ##el##" +
                     "are the best! ",
                 button: [
                     { chatID: -1, text: "Eat that pussy!", callback: "el_twat1" },
@@ -1758,7 +1758,7 @@ room174.chat = function (chatID) {
             {
                 chatID: 104,
                 speaker: "eva",
-                text: "I'm not eating your ass! " + sc.n("lola") + " can do that. She's the one that " +
+                text: "I'm not eating your ass! ##lola## can do that. She's the one that " +
                     "loves licking buttholes! You can eat my ass! ",
                 button: [
                     { chatID: 105, text: "...", callback: "" },
@@ -1768,7 +1768,7 @@ room174.chat = function (chatID) {
                 chatID: 105,
                 speaker: "lola",
                 text: "I wouldn't say I love it, but I it is nice to see if I can make you cum just " +
-                    "from licking your butthole. Makes me happy. But I don't mind eating " + sc.n("me") +
+                    "from licking your butthole. Makes me happy. But I don't mind eating ##me##" +
                     "'s butthole. I'm pretty good at it! ",
                 button: [
                     { chatID: 106, text: "...", callback: "el_asshole0" },
@@ -1803,7 +1803,7 @@ room174.chat = function (chatID) {
                 speaker: "lola",
                 text: "Ok. My turn! Spread those cheeks so I can bury my face in your butthole!!",
                 button: [
-                    { chatID: 110, text: "[Give " + sc.n("lola") + " a turn eating your ass]", callback: "el_asshole3" },
+                    { chatID: 110, text: "[Give ##lola## a turn eating your ass]", callback: "el_asshole3" },
                 ]
             },
             {
@@ -1882,7 +1882,7 @@ room174.chat = function (chatID) {
             {
                 chatID: 119,
                 speaker: "chad",
-                text: "Fuck yeah! My best girl friend and her two " + sc.n("el") + "! All of you, " +
+                text: "Fuck yeah! My best girl friend and her two ##el##! All of you, " +
                     "up on the bed. Face down ass up. I want to see what I'm working with! ",
                 button: [
                     { chatID: 120, text: "*blush*", callback: "sissy1" },
@@ -1909,7 +1909,7 @@ room174.chat = function (chatID) {
             {
                 chatID: 122,
                 speaker: "chad",
-                text: "Hey lady. Relax. There's plenty of dick to go around. I'm " + sc.n("chad") +
+                text: "Hey lady. Relax. There's plenty of dick to go around. I'm ##chad##" +
                     ". Good to meet 'cha. I can see you're sexually frustrated, but don't you worry " +
                     "your pretty little head, I can help. Now you may think, how can one guy possibly " +
                     "please four girls in the same night. But that's 'cause you haven't experienced my " +
@@ -1967,7 +1967,7 @@ room174.chat = function (chatID) {
             {
                 chatID: 128,
                 speaker: "eva",
-                text: "You are both idiots. I can prove it. I've heard her moans when " + sc.n("bigguy") +
+                text: "You are both idiots. I can prove it. I've heard her moans when ##bigguy##" +
                     " is here. She can't control it. I bet if we listen to the door we'll hear her moans. " +
                     "If there aren't any moans then you can both call me the idiot. C'mon let's go. I'll " +
                     "prove it to you! ",
@@ -1996,7 +1996,7 @@ room174.chat = function (chatID) {
             {
                 chatID: 131,
                 speaker: "lola",
-                text: "That's my boyfriend! He can't cum inside my " + sc.n("landlord") + " without me! " +
+                text: "That's my boyfriend! He can't cum inside my ##landlord## without me! " +
                     "GRRRR!!!!!",
                 button: [
                     { chatID: 132, text: "Shhh!!! Wait!", callback: "sissy9" },
@@ -2041,7 +2041,7 @@ room174.chat = function (chatID) {
             {
                 chatID: 136,
                 speaker: "thinking",
-                text: "Wow! I didn't think she would do something like that! I hope " + sc.n("lola") +
+                text: "Wow! I didn't think she would do something like that! I hope ##lola##" +
                     " doesn't do anything crazy. Poor girl. ",
                 button: [
                     { chatID: -1, text: "...", callback: "" },
@@ -2050,8 +2050,8 @@ room174.chat = function (chatID) {
             {
                 chatID: 137,
                 speaker: "landlord",
-                text: "I had a feeling you girls were on your way down. I'll call " + sc.n("bigguy") +
-                    " " + sc.n("lola") + " you give " + sc.n("chad") + " a call.",
+                text: "I had a feeling you girls were on your way down. I'll call ##bigguy##" +
+                    " ##lola## you give ##chad## a call.",
                 button: [
                     { chatID: 138, text: "YES!", callback: "6some_0" },
                 ]
@@ -2086,7 +2086,7 @@ room174.chat = function (chatID) {
                 chatID: 141,
                 speaker: "chad",
                 text: "Isn't that beautiful! Four cream filled cum dumpsters! I guess it's true what " +
-                    "they say about that girls do follow after their " + sc.n("landlord") + ". ",
+                    "they say about that girls do follow after their ##landlord##. ",
                 button: [
                     { chatID: 142, text: "...", callback: "" },
                 ]

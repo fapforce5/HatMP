@@ -173,9 +173,9 @@ room456.chat = function (chatID) {
         {
             chatID: 6,
             speaker: "tiffany",
-            text: "Wakey Wakey sleepy head.. What are you doing on a bench " + sc.n("me") + "?",
+            text: "Wakey Wakey sleepy head.. What are you doing on a bench ##me##?",
             button: [
-                { chatID: 7, text: "wha... " + sc.n("tiffany") + "?", callback: "" }
+                { chatID: 7, text: "wha... ##tiffany##?", callback: "" }
             ]
         },
         {
@@ -209,7 +209,7 @@ room456.chat = function (chatID) {
             text: "I wouldn't want you to get caught. We'll have to dress you up like a girl to sneak you in. Are you in? ",
             button: [
                 { chatID: 12, text: "I guess I have no other choice, I'm in!", callback: "" },
-                { chatID: 11, text: "Thanks " + sc.n('tiffany') + ", but there's no way I'm going to wear girls' clothes", callback: "" }
+                { chatID: 11, text: "Thanks ##tiffany##, but there's no way I'm going to wear girls' clothes", callback: "" }
             ]
         },
         {
@@ -225,7 +225,7 @@ room456.chat = function (chatID) {
             speaker: "tiffany",
             text: "Oh awesome!!! We get to play dress up, I'm so excited! Get up sleepy head Let's go to the mall! ",
             button: [
-                { chatID: -1, text: "[Follow " + sc.n('tiffany') + ", to the mall]", callback: "leave7" }
+                { chatID: -1, text: "[Follow ##tiffany##, to the mall]", callback: "leave7" }
             ]
         },
         {
@@ -234,7 +234,7 @@ room456.chat = function (chatID) {
             text: "You ready to go shopping with me, or are you still ok being homeless?",
             button: [
                 { chatID: 12, text: "I guess I have no other choice, I'm in!", callback: "" },
-                { chatID: -1, text: "Thanks " + sc.n('tiffany') + ", but there's no way I'm going to wear girls' clothes", callback: "leave6" }
+                { chatID: -1, text: "Thanks ##tiffany##, but there's no way I'm going to wear girls' clothes", callback: "leave6" }
             ]
         },
         {

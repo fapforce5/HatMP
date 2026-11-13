@@ -158,7 +158,7 @@ room900.chat = function(chatID){
         {
             chatID: 4,
             speaker: "thinking",
-            text: "I need to call " + sc.n("eva") + ".",
+            text: "I need to call ##eva##.",
             button: [
                 { chatID: 5, text: "Send her a text", callback: "" }
             ]

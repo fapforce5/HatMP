@@ -731,7 +731,7 @@ room27.chat = function (chatID) {
         {
             chatID: 9,
             speaker: "tiffany",
-            text: "Don't be such a prude! " + sc.n("candy") + " and I use it to make some extra money, and thousands of perverted men " +
+            text: "Don't be such a prude! ##candy## and I use it to make some extra money, and thousands of perverted men " +
             "jack off to us. They absolutely love watching us fuck each other. ",
             button: [
                 { chatID: 10, text: "...", callback: "" }
@@ -757,7 +757,7 @@ room27.chat = function (chatID) {
         {
             chatID: 12,
             speaker: "me",
-            text: "Oh nice, I have all of " + sc.n("tiffany") + "'s and " + sc.n("candy") + "'s makeup.",
+            text: "Oh nice, I have all of ##tiffany##'s and ##candy##'s makeup.",
             button: [
                 { chatID: -1, text: "Apply Makeup", callback: "makeup" },
                 { chatID: 21, text: "Apply Lipstick", callback: "" },
@@ -767,7 +767,7 @@ room27.chat = function (chatID) {
         {
             chatID: 13,
             speaker: "me",
-            text: "I need to meet with " + sc.n("tiffany") + " and learn how to improve my makeup skills.",
+            text: "I need to meet with ##tiffany## and learn how to improve my makeup skills.",
             button: [
                 { chatID: 16, text: "Apply Light Makeup", callback: "" }
             ]
@@ -775,7 +775,7 @@ room27.chat = function (chatID) {
         {
             chatID: 14,
             speaker: "me",
-            text: "I need to meet with " + sc.n("tiffany") + " some more and learn more tips!",
+            text: "I need to meet with ##tiffany## some more and learn more tips!",
             button: [
                 { chatID: 16, text: "Apply Light Makeup", callback: "" },
                 { chatID: 17, text: "Apply Normal Makeup", callback: "" }
@@ -863,7 +863,7 @@ room27.chat = function (chatID) {
             speaker: "tiffany",
             text: "You really are a pretty girl. ",
             button: [
-                { chatID: -1, text: "Thank you " + sc.n("tiffany") + ".", callback: "killtif" }
+                { chatID: -1, text: "Thank you ##tiffany##.", callback: "killtif" }
             ]
         },
         {

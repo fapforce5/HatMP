@@ -166,7 +166,7 @@ room480.chat = function (chatID) {
             {
                 chatID: 0,
                 speaker: "cock",
-                text: "You need to speak with the Lady of the Cave, " + sc.n("a") + ". ",
+                text: "You need to speak with the Lady of the Cave, ##a##. ",
                 button: [
                     { chatID: -1, text: "...", callback: "" }
                 ]
@@ -174,7 +174,7 @@ room480.chat = function (chatID) {
             {
                 chatID: 1,
                 speaker: "a",
-                text: "Greeting and welcome to sanctuary. I am the Lady of the Cave, " + sc.n("a") + ". " +
+                text: "Greeting and welcome to sanctuary. I am the Lady of the Cave, ##a##. " +
                     "You may wonder why you're here and if you're safe. Have no fears new one, this is a " +
                     "place of security and acceptance. We were all like you at one time. ",
                 button: [
@@ -185,7 +185,7 @@ room480.chat = function (chatID) {
                 chatID: 2,
                 speaker: "a",
                 text: "Yes. We were all victims of the cult. Smuggled, or nearly so, taken from our homes across " +
-                    "the land to birth that disastrous Azrael against our wishes. The " + sc.n("queen") + " came " +
+                    "the land to birth that disastrous Azrael against our wishes. The ##queen## came " +
                     "to our rescue and freed us from the Cult of C.U.M. so that we may continue to live. ",
                 button: [
                     { chatID: 3, text: "... but I escaped", callback: "" }
@@ -303,7 +303,7 @@ room480.chat = function (chatID) {
                 text: "One day I met with a new mistress. It was stupid, I should have been more safe, but she looked " +
                     "amazing! I agreed to get tied up with a hood over my head with her and she ended up kidnapping me. " +
                     "She must have drugged me somehow because everything was black then I woke up at the cult place in " +
-                    "a cell. That " + sc.n("ubel") + " guy beat me once a week and they took turns on me so many times. ",
+                    "a cell. That ##ubel## guy beat me once a week and they took turns on me so many times. ",
                 button: [
                     { chatID: 14, text: "I know that feeling. ", callback: "" }
                 ]
@@ -312,7 +312,7 @@ room480.chat = function (chatID) {
                 chatID: 14,
                 speaker: "vag",
                 text: "After about six months I was taken to the cum bath ritual and changed into the girl you see now. " +
-                    "I was about to be inseminated with the seed of Azrael, but the " + sc.n("queen") + " snuck into my " +
+                    "I was about to be inseminated with the seed of Azrael, but the ##queen## snuck into my " +
                     "cell and freed me and brought me here. I'm so happy she freed me. I'm sure they would have " +
                     "killed me if I stayed. I'm forever in her debt. That's why I stay to help others like me. ",
                 button: [
@@ -331,7 +331,7 @@ room480.chat = function (chatID) {
                 chatID: 16,
                 speaker: "vag",
                 text: "At first I was scared, but I've grown to love my pussy. I even changed my name from John to " +
-                    sc.n("vag") + " after I accepted this is who I am now. ",
+                    "##vag## after I accepted this is who I am now. ",
                 button: [
                     { chatID: 17, text: "Well, it is a great pussy. ", callback: "cg1" },
                 ]
@@ -373,7 +373,7 @@ room480.chat = function (chatID) {
             {
                 chatID: 21,
                 speaker: "cock",
-                text: "All new arrivals must first speak with " + sc.n("a") + ". ",
+                text: "All new arrivals must first speak with ##a##. ",
                 button: [
                     { chatID: -1, text: "...", callback: "" },
                 ]

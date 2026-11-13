@@ -140,7 +140,7 @@ room220.chat = function (chatID) {
         {
             chatID: 0,
             speaker: "thinking",
-            text: "Hmmm. Looks like " + sc.n("cecilia") + " left some pills in here. Should I take them?",
+            text: "Hmmm. Looks like ##cecilia## left some pills in here. Should I take them?",
             button: [
                 { chatID: -1, text: "Take them!", callback: "takePills" },
                 { chatID: -1, text: "They aren't mine. I should leave them. ", callback: "" },

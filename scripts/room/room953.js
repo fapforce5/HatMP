@@ -462,7 +462,7 @@ room953.chat = function (chatID) {
             speaker: "ubel",
             text: "You did good today. Unlike the other true believers you still have one more step before " +
                 "you can receive your robe. Until then you'll wait in your cell while we continue with our rituals." +
-                "Now go, so I can enjoy " + sc.n("stormy") + " next. She is one of my favorites. ",
+                "Now go, so I can enjoy ##stormy## next. She is one of my favorites. ",
             button: [
                 { chatID: -1, text: "*sigh* ok", callback: "room950" },
             ]
@@ -578,7 +578,7 @@ room953.chat = function (chatID) {
         {
             chatID: 46,
             speaker: "thinking",
-            text: "He just keeps going! I wouldn't want to make " + sc.n("ubel") + " angry. ",
+            text: "He just keeps going! I wouldn't want to make ##ubel## angry. ",
             button: [
                 { chatID: 47, text: "...", callback: "e10" }
             ]
@@ -701,7 +701,7 @@ room953.chat = function (chatID) {
             text: "But the chosen one was killed by the fanatics to stop the coming of Azrael! She was six " +
                 "months into her pregnancy. The furthest any sissy has come to bringing the birth of Azrael. " +
                 "Some say the failures of every sissy since then was due to Azrael's anger in us not protecting " +
-                "the chosen one. But now. Now we will be in Azrael's graces again. " + sc.n("me") + " step " +
+                "the chosen one. But now. Now we will be in Azrael's graces again. ##me## step " +
                 "forward! Come into the light of the new world! ",
             button: [
                 { chatID: 61, text: "...", callback: "change1" }

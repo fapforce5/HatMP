@@ -706,72 +706,55 @@ rape.phase4 = function () {
     else {
         if (rape.rapeType === "anal") {
             if (rape.phases[4].c === 0) {
-                img = "hover_cock_astart_" + rape.char.color + ".png";
-                if (rape.char.color === "w" && rape.char.cocksize < 4)
-                    img = "hover_cock_astart_w3.png";
-                nav.button({
-                    "type": "img",
-                    "name": "r1004bg",
-                    "left": 0,
-                    "top": 0,
-                    "width": 1920,
-                    "height": 1080,
-                    "image": "1004_rape/" + img
-                }, 1004);
+                zcl.closeup(0, 0, 1, "teaseass", false, (rape.char.cocksize < 4 ? "s" : rape.char.color));
                 rape.message("Please don't put that dirty dick in me", "me");
                 rape.displayMenu(rape.rapeType);
                 rape.phases[4].c++;
                 return;
             }
             if (rape.phaseChange === "phase3cover") {
-                img = "hover_cock_block_" + rape.char.color + ".png";
-                if (rape.char.color === "w" && rape.char.cocksize < 4)
-                    img = "hover_cock_block_w3.png";
-                nav.button({
-                    "type": "img",
-                    "name": "r1004bg",
-                    "left": 0,
-                    "top": 0,
-                    "width": 1920,
-                    "height": 1080,
-                    "image": "1004_rape/" + img
-                }, 1004);
+                zcl.closeup(0, 0, 1, "block", false, (rape.char.cocksize < 4 ? "s" : rape.char.color));
                 rape.displayMenu("phase2");
                 rape.message("Aaakk no! I don't want it", "me");
                 return;
             }
             else if (rape.phaseChange === "phase3sub") {
-                img = "hover_cock_enter_" + rape.char.color + ".png";
-                if (rape.char.color === "w" && rape.char.cocksize < 4)
-                    img = "hover_cock_enter_w3.png";
-
+                zcl.closeup(0, 0, 1, "slam", false, (rape.char.cocksize < 4 ? "s" : rape.char.color));
                 rape.updateEnergy(null, null, 15);
-                nav.button({
-                    "type": "img",
-                    "name": "r1004bg",
-                    "left": 0,
-                    "top": 0,
-                    "width": 1920,
-                    "height": 1080,
-                    "image": "1004_rape/" + img
-                }, 1004);
                 rape.message("I am such a dirty anal whore", "me");
             }
             else if (rape.phaseChange === "limp" || rape.phaseChange === "struggle") {
-                img = "hover_cock_owie_" + rape.char.color + ".png";
-                if (rape.char.color === "w" && rape.char.cocksize < 4)
-                    img = "hover_cock_enter_w3.png";
-
+                zcl.closeup(0, 0, 1, "slam", false, (rape.char.cocksize < 4 ? "s" : rape.char.color));
                 rape.updateEnergy(null, null, 15);
-                nav.button({
-                    "type": "img",
-                    "name": "r1004bg",
-                    "left": 0,
-                    "top": 0,
-                    "width": 1920,
-                    "height": 1080,
-                    "image": "1004_rape/" + img
-                }, 1004);
+                rape.message("Fuck that cock hurts", "me");
+            }
+            else if (rape.phaseChange === "next") {
+                rape.callphase(true);
+                return;
+            }
+        }
+        else if (rape.rapeType === "pussy") {
+            if (rape.phases[4].c === 0) {
+                zcl.closeup(0, 0, 1, "teasepussy", false, (rape.char.cocksize < 4 ? "s" : rape.char.color));
+                rape.message("Please don't put that dirty dick in my pussy", "me");
+                rape.displayMenu(rape.rapeType);
+                rape.phases[4].c++;
+                return;
+            }
+            if (rape.phaseChange === "phase3cover") {
+                zcl.closeup(0, 0, 1, "block", false, (rape.char.cocksize < 4 ? "s" : rape.char.color));
+                rape.displayMenu("phase2");
+                rape.message("Aaakk no! I don't want it", "me");
+                return;
+            }
+            else if (rape.phaseChange === "phase3sub") {
+                zcl.closeup(0, 0, 1, "pussy", false, (rape.char.cocksize < 4 ? "s" : rape.char.color));
+                rape.updateEnergy(null, null, 15);
+                rape.message("I am such a dirty cunt whore", "me");
+            }
+            else if (rape.phaseChange === "limp" || rape.phaseChange === "struggle") {
+                zcl.closeup(0, 0, 1, "pussy", false, (rape.char.cocksize < 4 ? "s" : rape.char.color));
+                rape.updateEnergy(null, null, 15);
                 rape.message("Fuck that cock hurts", "me");
             }
             else if (rape.phaseChange === "next") {
@@ -1144,6 +1127,179 @@ rape.phase5 = function () {
 
         pleasure = levels.analSize(rape.char.cocksize);
     }
+    else if (rape.rapeType === "pussy") {
+        if (rape.phaseChange === "phase4Sub") {
+            if (rape.char.t === "duo") {
+                rapeMsg = [
+                    { n: "me", m: "GAK GAK Mmmmm slurp GAK GAK" },
+                    { n: rape.char.name, m: "Your pussy is drippin!" },
+                    { n: rape.char.name, m: "Fuck, so tight and warm. " },
+                    { n: rape.char.name, m: "This bitch is really into it!" },
+                    { n: rape.char.name, m: "I knew you wanted our dicks" },
+                    { n: rape.char.name, m: "Take our cocks in your tight little holes!" },
+                ];
+            }
+            else if (rape.char.t === "duowolf") {
+                rapeMsg = [
+                    { n: "me", m: "GAK GAK Mmmmm slurp GAK GAK" },
+                    { n: rape.char.name, m: "arf" },
+                ];
+            }
+            else if (rape.char.t === "wolf") {
+                rapeMsg = [
+                    { n: "me", m: "uh uh uh *moan*" },
+                    { n: "me", m: "That dire wolf knot is so thick in my cunt!" },
+                    { n: "me", m: "So full!" },
+                    { n: "me", m: "My pussy is locked into that cock!" },
+                    { n: rape.char.name, m: "arf" },
+                    { n: rape.char.name, m: "grrrr" },
+                    { n: rape.char.name, m: "*panting*" },
+                ];
+            }
+            else if (rape.char.t === "plant") {
+                rapeMsg = [
+                    { n: "thinking", m: "Fuck me harder! I need it so bad!" },
+                    { n: "thinking", m: "I'm so full in all my holes! I love it" },
+                    { n: "thinking", m: "It's so slimy, but thick! " },
+                    { n: "thinking", m: "Fuck it feels so good!" }
+                ];
+            }
+            else {
+                rapeMsg = [
+                    { n: "me", m: "Fuck me harder! I need it so bad!" },
+                    { n: "me", m: "That feels so good. I love your cock in my cunt! " },
+                    { n: "me", m: "I'm such a dirty whore! I'm such a dirty whore! I'm such a dirty whore!" },
+                    { n: rape.char.name, m: "GRUNT!" },
+                    { n: rape.char.name, m: "MMMmmm yeah!" },
+                ];
+                if (rape.char.t === "male") {
+                    rapeMsg.push({ n: "me", m: "Fuck me harder daddy! I need it so bad!" });
+                    rapeMsg.push({ n: "me", m: "Impregnate my hot wet pussy!" });
+                    rapeMsg.push({ n: rape.char.name, m: "Love a bitch that pushed back into my dick" });
+                    rapeMsg.push({ n: rape.char.name, m: "I knew you wanted to get fucked!" });
+                    rapeMsg.push({ n: rape.char.name, m: "I'm going to make you a mommy!" });
+                    if (gender.pronoun("f") === "f") {
+                        rapeMsg.push({ n: rape.char.name, m: "Love your cunt hole!" });
+                        rapeMsg.push({ n: rape.char.name, m: "You fuck like you look! Smooth and hot!" });
+                        rapeMsg.push({ n: rape.char.name, m: "I'm going to fill you full of babies!" });
+                    }
+                    else {
+                        rapeMsg.push({ n: rape.char.name, m: "Man pussy is so hot!" });
+                        rapeMsg.push({ n: rape.char.name, m: "I'm going to fill up that man pussy with babies." });
+                    }
+                }
+                else if (rape.char.t === "femdom") {
+                    rapeMsg.push({ n: rape.char.name, m: "You love my giant strap-on don't you bitch? " });
+                    rapeMsg.push({ n: rape.char.name, m: "You're a bigger pussy than me! " });
+                    rapeMsg.push({ n: rape.char.name, m: "Love that bounce on my strap" });
+                    rapeMsg.push({ n: rape.char.name, m: "Bounce harder. I can feel it on my clit!" });
+                }
+
+            }
+        }
+        else if (rape.phaseChange === "phase4Limp") {
+            rapeMsg = [
+                { n: "thinking", m: "When will it end." },
+                { n: "thinking", m: "..." },
+            ];
+            if (rape.char.t === "duo") {
+                rapeMsg.push({ n: rape.char.name, m: "You suck as a flesh light. Do something. " });
+            }
+            else if (rape.char.t === "duowolf" || rape.char.t === "wolf") {
+                rapeMsg.push({ n: rape.char.name, m: "grrrrr" });
+                rapeMsg.push({ n: rape.char.name, m: "arf" });
+                rapeMsg.push({ n: rape.char.name, m: "*panting*" });
+            }
+            else if (rape.char.t === "plant") {
+                rapeMsg.push({ n: "me", m: "So gross and slimy" });
+
+            }
+            else {
+                rapeMsg.push({ n: rape.char.name, m: "You make a shity flesh light" });
+                rapeMsg.push({ n: rape.char.name, m: "Be a good victim and move a bit. " });
+                rapeMsg.push({ n: rape.char.name, m: "If you don't move, you're just going to make this rape take longer. " });
+            }
+        }
+        else if (rape.phaseChange === "phase4Struggle") {
+            if (rape.char.t === "duo") {
+                rapeMsg = [
+                    { n: "me", m: "GAK GAK stahp GLUG GAK GAK" },
+                    { n: "me", m: "MMmdmmd mmhhhrrrr fffff" },
+                    { n: rape.char.name, m: "If I feel teeth I'm going to punch your face!" },
+                    { n: rape.char.name, m: "Love it when a bitch struggles. " },
+                    { n: rape.char.name, m: "Stop playing. We know you want this" },
+                    { n: rape.char.name, m: "If you didn't want our dicks, you wouldn't be acting like a whore!" },
+                    { n: rape.char.name, m: "If you didn't want to get fucked you wouldn't be so wet." },
+                ];
+            }
+            else if (rape.char.t === "duowolf") {
+                rapeMsg = [
+                    { n: "me", m: "GAK GAK Mmmmm stahp GAK GAK" },
+                    { n: "me", m: "MMmdmmd mmhhhrrrr fffff" },
+                    { n: rape.char.name, m: "grrrrrr" },
+                ];
+            }
+            else if (rape.char.t === "wolf") {
+                rapeMsg = [
+                    { n: "me", m: "Good doggy... Please stop raping my pussy" },
+                    { n: "me", m: "That dire wolf knot hurts so much! Please stop. Shoo!" },
+                    { n: "me", m: "Owie owie owie!" },
+                    { n: "me", m: "HELP ME! That knot is stretching me out!" },
+                    { n: rape.char.name, m: "arf" },
+                    { n: rape.char.name, m: "grrrr" },
+                    { n: rape.char.name, m: "*panting*" },
+                ];
+            }
+            else if (rape.char.t === "plant") {
+                rapeMsg = [
+                    { n: "thinking", m: "So gross! How do I get free?" },
+                    { n: "thinking", m: "Owie owie owie!" },
+                    { n: "thinking", m: "I hope it's over quick!" },
+                    { n: "thinking", m: "My mouth is so full of plant cock I can't call for help!" }
+                ];
+            }
+            else {
+                rapeMsg = [
+                    { n: "me", m: "STOP!! Please stop raping me!" },
+                    { n: "me", m: "HELP! HELP ME!" },
+                    { n: "me", m: "I'm being raped! Please someone help me!" },
+                    { n: "me", m: "GRUNT!" },
+                    { n: "me", m: "owie owie owie! Please stop raping my pussy!" },
+                    { n: "me", m: "You're ripping my tight little vagina open! " },
+                    { n: "me", m: "*Crying*" },
+                    { n: "me", m: "*sob* *sob* *sob*" },
+                    { n: rape.char.name, m: "You're pretty when you cry" },
+                    { n: rape.char.name, m: "The more you squirm the harder I fuck!" },
+
+                ];
+                if (rape.char.t === "male" || rape.char.t === "futa") {
+                    rapeMsg.push({ n: "me", m: "Your dick hurts so bad! Please stop!" });
+                    rapeMsg.push({ n: "me", m: "Please take your dick out of my pussy mister!" });
+                    rapeMsg.push({ n: rape.char.name, m: "Your tears only make my dick harder!" });
+                    rapeMsg.push({ n: rape.char.name, m: "I don't know why you're crying. You know you want this dick" });
+                    rapeMsg.push({ n: rape.char.name, m: "Your mouth says no, but my dick says YES!" });
+
+                    if (gender.pronoun("f") === "f") {
+                        rapeMsg.push({ n: rape.char.name, m: "If you didn't want my dick, you shouldn't look like a bitch" });
+                        rapeMsg.push({ n: rape.char.name, m: "Girls don't get to say no to me!" });
+
+                    }
+                    else {
+                        rapeMsg.push({ n: rape.char.name, m: "Relax boy. I'm going to fill your cunt with my seed." });
+                    }
+                }
+                else if (rape.char.t === "femdom") {
+                    rapeMsg.push({ n: "me", m: "Your giant strap-on hurts so bad! Please stop!" });
+                    rapeMsg.push({ n: "me", m: "Please take your strap-on out of my ass mister!" });
+                    rapeMsg.push({ n: rape.char.name, m: "Your tears only my pussy wetter!" });
+                    rapeMsg.push({ n: rape.char.name, m: "I don't know why you're crying. You know you want this strap-on" });
+                    rapeMsg.push({ n: rape.char.name, m: "Your mouth says no, but my strap-on says YES!" });
+                }
+            }
+        }
+
+        pleasure = { canTake: true, pleasure: 13 };
+    }
     else if (rape.rapeType === "oral") {
         if (rape.phaseChange === "phase4Sub") {
             if (rape.char.t === "wolf") {
@@ -1327,8 +1483,7 @@ rape.phase5 = function () {
     else {
         pleasure = { canTake: false, pleasure: 3 };
     }
-
-    if (gv.get("arousal") > 95 && pleasure.canTake && rape.rapeType === "anal" && rape.phases[5].c > 1) {
+    if (gv.get("arousal") > 95 && pleasure.canTake && (rape.rapeType === "anal" || rape.rapeType === "pussy") && rape.phases[5].c > 1) {
         nav.button({
             "type": "zimg",
             "name": "r1004fg",
@@ -1338,15 +1493,26 @@ rape.phase5 = function () {
             "height": 1080,
             "image": "1004_rape/sissygasm1.jpg"
         }, 1004);
-        nav.button({
-            "type": "zimg",
-            "name": "r1004fg",
-            "left": 661,
-            "top": 382,
-            "width": 598,
-            "height": 316,
-            "image": "1004_rape/sissygasm1.gif"
-        }, 1004);
+        if (rape.rapeType === "pussy")
+            nav.button({
+                "type": "zimg",
+                "name": "r1004fg",
+                "left": 0,
+                "top": 0,
+                "width": 1920,
+                "height": 1080,
+                "image": "1004_rape/pussygasm.webp"
+            }, 1004);
+        else
+            nav.button({
+                "type": "zimg",
+                "name": "r1004fg",
+                "left": 661,
+                "top": 382,
+                "width": 598,
+                "height": 316,
+                "image": "1004_rape/sissygasm1.gif"
+            }, 1004);
         chat(499, 1004);
         return;
     }
@@ -1367,6 +1533,7 @@ rape.phase5 = function () {
 };
 
 rape.phase6 = function () {
+    fame.moanAnimateStop();       // stops it
     rape.updateEnergy(null, null, -100, null);
     nav.killbutton("r1004bg");
     isComplete = rape.char.phase6();
@@ -1387,20 +1554,23 @@ rape.phase7 = function () {
         if (rape.rapeType === "anal") {
             if (g.rand(0, 3) === 0) {
                 if (rape.char.gender === "m")
-                    zcl.asshole(261, 200, 1.4, "cum", false);
+                    zcl.asshole(300, 500, .8, "cum", false);
                 else
-                    zcl.asshole(261, 200, 1.4, "", false);
+                    zcl.asshole(300, 500, .8, "", false);
             }
             else {
-                nav.button({
-                    "type": "img",
-                    "name": "r1004bg",
-                    "left": 743,
-                    "top": 725,
-                    "width": 619,
-                    "height": 427,
-                    "image": "1004_rape/rapeman0/rape5.png"
-                }, 1004);
+                zcl.bellydown_v2(400, 500, .4, "", false);
+            }
+        }
+        else if (rape.rapeType === "pussy") {
+            if (g.rand(0, 2) == 0) {
+                if (rape.gender !== "f")
+                    zcl.legsup(-200, 500, .6, "cp", true);
+                else
+                    zcl.legsup(-200, 500, .6, "", true);
+            }
+            else {
+                zcl.bellydown(400, 600, .5, "sad", false);
             }
         }
         else if (rape.rapeType === "oral") {
@@ -1648,6 +1818,10 @@ rape.displayMenu = function (menu) {
                     btnList.push({ n: "choiceOral", i: "icon_choice_oral.png" });
             }
 
+            if (rape.char.options.includes("pussy") && cl.c.cock === 5) {
+                btnList.push({ n: "choicePussy", i: "icon_choice_pussy.png" });
+            }
+            
             if (rape.char.options.includes("anal")) {
                 if (subLevelChoice < 6)
                     btnList.push({ n: "sub6", i: "icon_choice_anal_x.png" });
@@ -1661,6 +1835,34 @@ rape.displayMenu = function (menu) {
             var rapeDomLevel = levels.get("dom").l;
             var rapeSubLevel = levels.get("sub").l;
             if (rape.rapeType === "anal") {
+                if (rape.phases[4].c === 0) {
+                    if (rapeDomLevel < 3)
+                        btnList.push({ n: "dom3scream", i: "anal_struggle_x.png" });
+                    else
+                        btnList.push({ n: "phase4Struggle", i: "anal_struggle1.png" });
+
+                    if (rapeSubLevel < 6)
+                        btnList.push({ n: "sub6anal", i: "anal_thust_x.png" });
+                    else
+                        btnList.push({ n: "phase4Sub", i: "anal_thust1.png" });
+
+                    btnList.push({ n: "phase4Limp", i: "anal_limp1.png" });
+                }
+                else {
+                    if (rapeDomLevel < 3)
+                        btnList.push({ n: "dom3scream", i: "anal_struggle_x.png" });
+                    else
+                        btnList.push({ n: "phase4Struggle", i: "anal_struggle" + g.rand(2, 6) + ".png" });
+
+                    if (rapeSubLevel < 6)
+                        btnList.push({ n: "sub6anal", i: "anal_thust_x.png" });
+                    else
+                        btnList.push({ n: "phase4Sub", i: "anal_thust" + g.rand(2, 6) + ".png" });
+
+                    btnList.push({ n: "phase4Limp", i: "anal_limp" + g.rand(2, 6) + ".png" });
+                }
+            }
+            else if (rape.rapeType === "pussy") {
                 if (rape.phases[4].c === 0) {
                     if (rapeDomLevel < 3)
                         btnList.push({ n: "dom3scream", i: "anal_struggle_x.png" });
@@ -1794,6 +1996,19 @@ rape.displayMenu = function (menu) {
 
             btnList.push({ n: "limp", i: "icon_limp.png" });
             break;
+        case "pussy":
+            if (levels.get("dom").l < 3)
+                btnList.push({ n: "dom3", i: "icon_cover_x.png" });
+            else
+                btnList.push({ n: "phase3cover", i: "icon_cover.png" });
+
+            if (levels.get("sub").l < 6)
+                btnList.push({ n: "sub6", i: "icon_anal_sub_" + rape.char.gender + "_x.png" });
+            else
+                btnList.push({ n: "phase3sub", i: "icon_anal_sub_" + rape.char.gender + ".png" });
+
+            btnList.push({ n: "limp", i: "icon_limp.png" });
+            break;
         case "oral":
         case "cunnilugus":
             if (levels.get("dom").l < 3)
@@ -1817,16 +2032,20 @@ rape.displayMenu = function (menu) {
             btnList.push({ n: "limp", i: "icon_limp.png" });
             break;
     }
-
     rape.renderActionButtons(btnList);
 };
 
 rape.message = function (message, speaker = null) {
     nav.killbutton("m1004-d");
+    if (message === "tittymilk") {
+        rape.drawPanelBackground("1004_rape/icon_bg_tittymilk.webp");
+        return;
+    }
     if (rape.phase === 0 || speaker === "rapeMessage") {
         rape.drawPanelBackground("1004_rape/icon_bg_rape.png");
         return;
     }
+    
     if (typeof message === "string") {
         let temp = message;
         message = new Array();
@@ -2099,6 +2318,29 @@ room1004.btnclick = function (name) {
             rape.message("You used your pocket sand and escaped!", "thinking");
             rape.displayMenu("goodflee");
             break;
+        case "icon_tittymilk":
+            let milkLevel = gv.get("milk");
+            if (milkLevel < .3) {
+                chat(20, 1004);
+            }
+            else {
+                rape.message("tittymilk", "")
+                gv.set("milk", 0);
+                nav.killbutton("r1004fg");
+                nav.killbutton("r1004bg");
+                rape.displayMenu("");
+                nav.button({
+                    "type": "img",
+                    "name": "r1004bg",
+                    "left": 0,
+                    "top": 0,
+                    "width": 1920,
+                    "height": 1080,
+                    "image": "1004_rape/tittymilk.webp"
+                }, 1004);
+                chat(21, 1004);
+            }
+            break;
         case "icon_horn":
             nav.killbuttonStartsWith("b1004-");
             nav.button({
@@ -2169,6 +2411,10 @@ room1004.btnclick = function (name) {
                 rape.rapeType = "oral";
             else
                 rape.rapeType = "cunnilugus";
+            rape.callphase(true);
+            break;
+        case "choicePussy":
+            rape.rapeType = "pussy";
             rape.callphase(true);
             break;
         case "choiceCock":
@@ -2275,21 +2521,24 @@ room1004.chatcatch = function (callback) {
             break;
         case "sissygasm1":
             nav.killbutton("r1004fg");
-            nav.button({
-                "type": "zimg",
-                "name": "r1004fg",
-                "left": 0,
-                "top": 0,
-                "width": 1920,
-                "height": 1080,
-                "image": "1004_rape/sissygasm2_" + gender.cock() + ".jpg"
-            }, 1004);
+            if (rape.rapeType === "pussy")
+                zcl.sissygasm(0, 240, .8, "p", false, "r1004fg");
+            else
+                zcl.sissygasm(0, 240, .8, "", false, "r1004fg");
             break;
         case "sissygasm2":
             levels.mod("xdress", 20);
             cl.doCum();
             rape.updateEnergy(null, null, 25, null);
             nav.killbutton("r1004fg");
+            break;
+        case "victorypose":
+            nav.kill();
+            nav.killbutton("r1004bg");
+            zcl.displayMain(100, 700, .18, "", false);
+            break;
+        case "kill":
+            rape.kill();
             break;
         default:
             break;
@@ -2539,6 +2788,30 @@ room1004.chat = function (chatID) {
                 "a tiny clit! How are you supposed to fuck me with such a tiny tiny clit? ",
             button: [
                 { chatID: -1, text: "[You're 'dick' is too small for sex 😝]", callback: "" }
+            ]
+        },
+        {
+            chatID: 20,
+            speaker: "thinking",
+            text: "Damn. I need time to refill my titty milk! ",
+            button: [
+                { chatID: -1, text: "[You don't have enough milk in your titties, you'll have to wait for it to refill over time.]", callback: "" }
+            ]
+        },
+        {
+            chatID: 21,
+            speaker: "me",
+            text: "Suck titty milk evil doer!!! ",
+            button: [
+                { chatID: 22, text: "....", callback: "victorypose" }
+            ]
+        },
+        {
+            chatID: 22,
+            speaker: "me",
+            text: "Nothing beats my full milky tits! Not even evil rapists!",
+            button: [
+                { chatID: -1, text: "....", callback: "kill" }
             ]
         },
     ];

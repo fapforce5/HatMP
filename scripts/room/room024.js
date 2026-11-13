@@ -642,7 +642,7 @@ room24.chat = function (chatID) {
         {
             chatID: 5,
             speaker: "lola",
-            text: "I guess " + sc.n("eva") + " can't be the only topless girl here!",
+            text: "I guess ##eva## can't be the only topless girl here!",
             button: [
                 { chatID: 6, text: "...", callback: "lolaTalk" }
             ]
@@ -707,7 +707,7 @@ room24.chat = function (chatID) {
         {
             chatID: 13,
             speaker: "eva",
-            text: "I can't let " + sc.n("lola") + " be the only wild one here! ",
+            text: "I can't let ##lola## be the only wild one here! ",
             button: [
                 { chatID: 14, text: "...", callback: "lolaTalk" }
             ]
@@ -724,7 +724,7 @@ room24.chat = function (chatID) {
         {
             chatID: 15,
             speaker: "eva",
-            text: "You're such a prude " + sc.n("lola") + "! Look at my boobs! ",
+            text: "You're such a prude ##lola##! Look at my boobs! ",
             button: [
                 { chatID: -1, text: "You do have great boobs! ", callback: "evaLevel evaSpin" },
                 { chatID: -1, text: "...", callback: "evaSpin" },

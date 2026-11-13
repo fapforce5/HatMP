@@ -990,7 +990,7 @@ room601.chat = function (chatID) {
                             "a bit more handsy today and one even said he was going to cum so " +
                             "deep in me I'll be coughing his cum up. Usually he's really nice. ",
                         button: [
-                            { chatID: -1, text: "I'm sure it's nothing. Probably " + sc.n("!timothy") + " getting them all worked up.", callback: "mingleInc" }
+                            { chatID: -1, text: "I'm sure it's nothing. Probably ##!timothy## getting them all worked up.", callback: "mingleInc" }
                         ]
                     };
                 }
@@ -1071,7 +1071,7 @@ room601.chat = function (chatID) {
                     return {
                         chatID: 900,
                         speaker: "chloe",
-                        text: "Oh hi! I don't think we've talked since you told on me to " + sc.n("zoey") + ". ",
+                        text: "Oh hi! I don't think we've talked since you told on me to ##zoey##. ",
                         button: [
                             { chatID: 7, text: "Oh no...", callback: "" }
                         ]
@@ -1269,7 +1269,7 @@ room601.chat = function (chatID) {
         {
             chatID: 18,
             speaker: "!chris",
-            text: "Hi daddy. I brought my friend, " + sc.n("me") + ". She's the one I told " +
+            text: "Hi daddy. I brought my friend, ##me##. She's the one I told " +
                 "you about. One of the few girls dirtier than me and we're going to do " +
                 "anything you want daddy.",
             button: [
@@ -1289,7 +1289,7 @@ room601.chat = function (chatID) {
         {
             chatID: 20,
             speaker: "!boy",
-            text: "Fuck yeah! Love horny sluts! " + sc.n("!chris") + " I want to see you " +
+            text: "Fuck yeah! Love horny sluts! ##!chris## I want to see you " +
                 "eat her ass! It gets me so hard to see a chick just get to it!",
             button: [
                 { chatID: 21, text: "...but we're not supposed to take off our panties.", callback: "" },

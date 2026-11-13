@@ -375,7 +375,7 @@ room175.chat = function (chatID) {
         {
             chatID: 18,
             speaker: "p",
-            text: "All my sluts are nice and stuffed. Now time for the test. Ready sluts? " + sc.n("me") + " will go first. ",
+            text: "All my sluts are nice and stuffed. Now time for the test. Ready sluts? ##me## will go first. ",
             button: [
                 { chatID: 19, text: "...", callback: "anal102" }
             ]
@@ -507,7 +507,7 @@ room175.chat = function (chatID) {
         {
             chatID: 33,
             speaker: "p",
-            text: "Ok. " + sc.n("me") + " get on up here. ",
+            text: "Ok. ##me## get on up here. ",
             button: [
                 { chatID: 35, text: "...", callback: "lube1" }
             ]
@@ -621,7 +621,7 @@ room175.chat = function (chatID) {
         {
             chatID: 45,
             speaker: "philbert",
-            text: sc.n("me") + " said she wanted to volunteer, but is too shy. ",
+            text: "##me## said she wanted to volunteer, but is too shy. ",
             button: [
                 { chatID: 46, text: "What? No I didn't!", callback: "" },
             ]
@@ -629,7 +629,7 @@ room175.chat = function (chatID) {
         {
             chatID: 46,
             speaker: "p",
-            text: "Excellent choice. " + sc.n("me") + " come up front and bend over my bench. I'll blind fold " +
+            text: "Excellent choice. ##me## come up front and bend over my bench. I'll blind fold " +
                 "you and you tell us what's in your butt. ",
             button: [
                 { chatID: 47, text: "..ok", callback: "anal212_1" },
@@ -638,7 +638,7 @@ room175.chat = function (chatID) {
         {
             chatID: 47,
             speaker: "p",
-            text: "Now class be quiet. " + sc.n("me") + " needs to focus on her bussy and tell us what I inserted. " +
+            text: "Now class be quiet. ##me## needs to focus on her bussy and tell us what I inserted. " +
                 "Are you ready for your first object? ",
             button: [
                 { chatID: 48, text: "Oh yes! So ready!", callback: "anal212_2" },
@@ -765,8 +765,8 @@ room175.chat = function (chatID) {
         {
             chatID: 61,
             speaker: "p",
-            text: "Yes she is. Something you should try harder to achieve. Now, " + sc.n("me") + 
-                ", turn around and clean his cock off. " + sc.n("!thomas") + ", get down there and " +
+            text: "Yes she is. Something you should try harder to achieve. Now, ##me##" + 
+                ", turn around and clean his cock off. ##!thomas##, get down there and " +
                 "clean her cum dripping pussy. I want all the leftover cum in both your bellies. ",
             button: [
                 { chatID: 62, text: "ok", callback: "anal212_11" },

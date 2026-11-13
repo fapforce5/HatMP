@@ -1346,10 +1346,10 @@ room958.chat = function (chatID) {
             chatID: 69,
             speaker: "daria",
             text: "The only thing you'll find here is pain and misery. It's your dumb ass crotch. I'm " +
-                "through with this place. " + sc.n("bodhi") + " and I are going to get out of here. It " +
-                "was nice while we were here, but I fear " + sc.n("bodhi") + " is next after the cut your " +
+                "through with this place. ##bodhi## and I are going to get out of here. It " +
+                "was nice while we were here, but I fear ##bodhi## is next after the cut your " +
                 "dick off and I don't want to see him dead. Good luck in there. You deserve every bit of " +
-                "pain and misery that coming. Let's go " + sc.n("bodhi") + ". I'm not going to see you die. " ,
+                "pain and misery that coming. Let's go ##bodhi##. I'm not going to see you die. " ,
             button: [
                 { chatID: -1, text: "Good luck", callback: "dariaComplete" },
             ]

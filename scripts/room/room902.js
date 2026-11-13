@@ -211,7 +211,7 @@ room902.chat = function (chatID) {
         {
             chatID: 1,
             speaker: "me",
-            text: "Oh nice, it's " + sc.n("lola") + "'s locker. Hmmm I wonder what the combination is...",
+            text: "Oh nice, it's ##lola##'s locker. Hmmm I wonder what the combination is...",
             button: [{ chatID: -1, text: "...", callback: "" }]
         },
         {
@@ -229,7 +229,7 @@ room902.chat = function (chatID) {
         {
             chatID: 4,
             speaker: "thinking",
-            text: sc.n("lola") + " must be out swimming. Should I play a prank on her and hide her clothes when she gets back? ",
+            text: "##lola## must be out swimming. Should I play a prank on her and hide her clothes when she gets back? ",
             button: [
                 { chatID: 5, text: "Hide in a locker and wait for her. ", callback: "s1" },
                 { chatID: -1, text: "Leave it", callback: "resest" },
@@ -294,7 +294,7 @@ room902.chat = function (chatID) {
         {
             chatID: 12,
             speaker: "thinking",
-            text: "Awww. I should rescue her from this prank. I think she's going to have a complete breakdown. " + sc.n("lola") +
+            text: "Awww. I should rescue her from this prank. I think she's going to have a complete breakdown. ##lola##" +
                 " was never good at public embarrassment. ",
             button: [
                 { chatID: 13, text: "...", callback: "s7" },
@@ -319,7 +319,7 @@ room902.chat = function (chatID) {
         {
             chatID: 15,
             speaker: "me",
-            text: "Wait " + sc.n("lola") + ". Wait up!",
+            text: "Wait ##lola##. Wait up!",
             button: [
                 { chatID: 16, text: "...", callback: "s10" },
             ]
@@ -335,7 +335,7 @@ room902.chat = function (chatID) {
         {
             chatID: 17,
             speaker: "me",
-            text: sc.n("lola") + "! Are you over this way? It's " + sc.n("me") + ".",
+            text: "##lola##! Are you over this way? It's ##me##.",
             button: [
                 { chatID: 18, text: "...", callback: "s11" },
             ]
@@ -343,7 +343,7 @@ room902.chat = function (chatID) {
         {
             chatID: 18,
             speaker: "lola",
-            text: "Oh thank god! " + sc.n("eva") + " hid my clothes after I went swimming again. Can you save me and look " +
+            text: "Oh thank god! ##eva## hid my clothes after I went swimming again. Can you save me and look " +
                 "around the locker room at the pool for my clothes. Pretty please. Please. Please. You're dressed like " +
                 "a girl so it shouldn't be a big deal. ",
             button: [
@@ -354,8 +354,8 @@ room902.chat = function (chatID) {
         {
             chatID: 19,
             speaker: "thinking",
-            text: "I'm so glad she thinks " + sc.n("eva") + " did this. Hopefully it doesn't come up that I did it. I'll " +
-                "just grab her clothes from the locker I was hiding in and blame it all on " + sc.n("eva") + ". Simple. ",
+            text: "I'm so glad she thinks ##eva## did this. Hopefully it doesn't come up that I did it. I'll " +
+                "just grab her clothes from the locker I was hiding in and blame it all on ##eva##. Simple. ",
             button: [
                 { chatID: 20, text: "...", callback: "s13" },
             ]
@@ -363,7 +363,7 @@ room902.chat = function (chatID) {
         {
             chatID: 20,
             speaker: "lola",
-            text: "My hero! I'm going to get dressed, but promise not to tell " + sc.n("eva") + ". She'll never " +
+            text: "My hero! I'm going to get dressed, but promise not to tell ##eva##. She'll never " +
                 "let me live it down that her prank had me run across the campus naked. Now hand over my clothes so " +
                 "I can get dressed. No peeking. ",
             button: [

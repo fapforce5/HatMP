@@ -229,19 +229,19 @@ room11.chat = function (chatID) {
         {
             chatID: 1,
             speaker: "me",
-            text: sc.n("landlord") + " has locked the door.",
+            text: "##landlord## has locked the door.",
             button: []
         },
         {
             chatID: 2,
             speaker: "me",
-            text: "It appears my " + sc.n("el") + " has locked their door.",
+            text: "It appears my ##el## has locked their door.",
             button: []
         },
         {
             chatID: 3,
             speaker: "me",
-            text: "Unlock " + sc.n("el") + "'s door?",
+            text: "Unlock ##el##'s door?",
             button: [
                 { chatID: -1, text: "Yes", callback: "enterELRoom" },
                 { chatID: -1, text: "No", callback: "" }
@@ -250,7 +250,7 @@ room11.chat = function (chatID) {
         {
             chatID: 4,
             speaker: "me",
-            text: "Unlock " + sc.n("landlord") + "'s door?",
+            text: "Unlock ##landlord##'s door?",
             button: [
                 { chatID: -1, text: "Yes", callback: "enterLLRoom" },
                 { chatID: -1, text: "No", callback: "" }
@@ -261,13 +261,13 @@ room11.chat = function (chatID) {
             speaker: "landlord",
             text: "I don't know how you got in here, but I know where you're going to go! Get out of my house!",
             button: [
-                { chatID: -1, text: "Sorry " + sc.n("landlord"), callback: "kickouot" }
+                { chatID: -1, text: "Sorry ##landlord##", callback: "kickouot" }
             ]
         },
         {
             chatID: 6,
             speaker: "me",
-            text: "I better get out of here before " + sc.n("landlord") + " finds me.", 
+            text: "I better get out of here before ##landlord## finds me.", 
             button: [
                 { chatID: -1, text: "...", callback: "kickouot" }
             ]
@@ -276,7 +276,7 @@ room11.chat = function (chatID) {
             chatID: 7,
             speaker: "eva",
             text: "I have to talk to you! It's worse than I thought. I was snooping in her phone and I found her chat history " +
-                "with " + sc.n("chad") + "! He pressured her into sending him a naked picture. She sent him a picture " +
+                "with ##chad##! He pressured her into sending him a naked picture. She sent him a picture " +
                 "of herself in her underwear, but it's spreading faster than I thought. We should try to find a nice boy for her, " +
                 "someone who will treat her right. I don't know anyone I'd match her with. Think you could help me find a nice boy? " +
                 "And it can't be someone who has fucked either of us. Too icky.",
@@ -288,7 +288,7 @@ room11.chat = function (chatID) {
             chatID: 8,
             speaker: "eva",
             text: "That's because all the boys want this booty, so thbptttttttt. We have to break them up! I haven't told anyone, " +
-                "but I found the recordings " + sc.n("chad") + " made when we had sex. I told him to delete it, but he made me " +
+                "but I found the recordings ##chad## made when we had sex. I told him to delete it, but he made me " +
                 "blow all his friends before he would. He's such an ass, and I was afraid he would post them to those porn sites. " +
                 "We can't let her date him. She's too naive for a guy like him.",
             button: [

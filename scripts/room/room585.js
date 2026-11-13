@@ -439,7 +439,7 @@ room585.chat = function (chatID) {
         {
             chatID: 2,
             speaker: "eva",
-            text: "Hahaha yeah! Later though, I just got here! " + sc.n("me") + " this " +
+            text: "Hahaha yeah! Later though, I just got here! ##me## this " +
                 "is Liam and Doofus's house. They let us party here. Don't worry if " +
                 "you spill a drink, I don't think these floors have been cleaned since " +
                 "they got here. There's only one house rule, and that's if you hurl, " +
@@ -642,7 +642,7 @@ room585.chat = function (chatID) {
             chatID: 25,
             speaker: "thinking",
             text: "Why now. I was happily moving between the groups and enjoying myself, and " +
-                sc.n("eva") + " has to ruin that. If she does what I think she's going to do then " +
+                "##eva## has to ruin that. If she does what I think she's going to do then " +
                 "no one here will ever see me more than her party favor. *sigh*",
             button: [
                 { chatID: 26, text: "[Lost your dignity and bark for her]", callback: "eva1" },
@@ -751,7 +751,7 @@ room585.chat = function (chatID) {
             chatID: 37,
             speaker: "thinking",
             text: "What? Do they hate me? They're all laughing at me. I just did what " +
-                sc.n("eva") + " said to do. Why do they seem disgusted?",
+                "##eva## said to do. Why do they seem disgusted?",
             button: [
                 { chatID: 38, text: "...", callback: "eva10" },
             ]

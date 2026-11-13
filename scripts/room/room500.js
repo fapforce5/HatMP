@@ -132,7 +132,7 @@ room500.chat = function (chatID) {
         {
             chatID: 0,
             speaker: "zoey",
-            text: "Hey " + sc.n("me") + "... I am totally toooo tired to play. Can you come back later, maybe afternoon?",
+            text: "Hey ##me##... I am totally toooo tired to play. Can you come back later, maybe afternoon?",
             button: [
                 { chatID: -1, text: "Of course. ", callback: "reset" }
             ]
@@ -140,7 +140,7 @@ room500.chat = function (chatID) {
         {
             chatID: 1,
             speaker: "zoey",
-            text: "Hey " + sc.n("me") + "! It is so nice to see you! You want to come in and play some video games?",
+            text: "Hey ##me##! It is so nice to see you! You want to come in and play some video games?",
             button: [
                 { chatID: -1, text: "Only if it's a retro game!", callback: "inside" },
                 { chatID: 2, text: "No, I have no idea why I knocked on your door. Bye", callback: "reset" }
@@ -173,7 +173,7 @@ room500.chat = function (chatID) {
         {
             chatID: 5,
             speaker: "zoey",
-            text: "Hey " + sc.n("me") + "... I am totally toooo tired to play. Can you come back later, maybe afternoon?",
+            text: "Hey ##me##... I am totally toooo tired to play. Can you come back later, maybe afternoon?",
             button: [
                 { chatID: 6, text: "I was just kicked out of my house, I have no place to go ", callback: "" }
             ]
@@ -183,7 +183,7 @@ room500.chat = function (chatID) {
             speaker: "zoey",
             text: "That is terrible, come in so we can talk.",
             button: [
-                { chatID: 7, text: "Thank you soooo much " + sc.n("zoey") + "!", callback: "sleep" }
+                { chatID: 7, text: "Thank you soooo much ##zoey##!", callback: "sleep" }
             ]
         },
         {
@@ -198,8 +198,8 @@ room500.chat = function (chatID) {
         {
             chatID: 8,
             speaker: "me",
-            text: "So.. I was playing truth or dare with " + sc.n("eva") + " and " + sc.n("lola") +
-                " and my " + sc.n("landlord") + " walked in on us right when we were all naked... she " +
+            text: "So.. I was playing truth or dare with ##eva## and ##lola##" +
+                " and my ##landlord## walked in on us right when we were all naked... she " +
                 "got mad at me and kicked me out!",
             button: [
                 { chatID: 9, text: "...", callback: "" }
@@ -208,7 +208,7 @@ room500.chat = function (chatID) {
         {
             chatID: 9,
             speaker: "zoey",
-            text: "You are such a pervert messing around with your " + sc.n("el") + "! I like it you " +
+            text: "You are such a pervert messing around with your ##el##! I like it you " +
                 "little weird-o.",
             button: [
                 { chatID: 13, text: "really?", callback: "zoeyLike" }
@@ -217,7 +217,7 @@ room500.chat = function (chatID) {
         {
             chatID: 10,
             speaker: "me",
-            text: "My " + sc.n("landlord") + " had me paying rent and I just couldn't cover it so she kicked me out. ",
+            text: "My ##landlord## had me paying rent and I just couldn't cover it so she kicked me out. ",
             button: [
                 { chatID: 11, text: "...", callback: "" }
             ]
@@ -258,7 +258,7 @@ room500.chat = function (chatID) {
         {
             chatID: 15,
             speaker: "zoey",
-            text: sc.n("zoey") + " said never to come back. She's still really mad. ",
+            text: "##zoey## said never to come back. She's still really mad. ",
             button: [
                 { chatID: -1, text: "...", callback: "" }
             ]

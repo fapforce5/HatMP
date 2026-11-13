@@ -364,7 +364,7 @@ room300.chat = function (chatID) {
             {
                 chatID: 3,
                 speaker: "envy",
-                text: "Hey " + sc.n("me") + " do you want to come in? ",
+                text: "Hey ##me## do you want to come in? ",
                 button: [
                     { chatID: -1, text: "Yeah, I do", callback: "enter" },
                     { chatID: -1, text: "Oh, no", callback: "reset" }
@@ -375,7 +375,7 @@ room300.chat = function (chatID) {
                 speaker: "kei",
                 text: "...I don't feel like going to your place. Why should I? This place is filthy and you never put out!",
                 button: [
-                    { chatID: 5, text: "Oh wow it looks like " + sc.n("kei") + " and his girlfriend are fighting. Maybe I'll just stick around and see what's going on.", callback: "" }
+                    { chatID: 5, text: "Oh wow it looks like ##kei## and his girlfriend are fighting. Maybe I'll just stick around and see what's going on.", callback: "" }
                 ]
             },
             {
@@ -443,8 +443,8 @@ room300.chat = function (chatID) {
             {
                 chatID: 12,
                 speaker: "kei",
-                text: "Oh hi " + sc.n("me") + ". Don't date that prude bitch. She's lame as hell. I'm going to go piss in the " +
-                    sc.n("bimbo") + "'s face and fuck her in the ass. She loves that stuff! If you fuck her later you " +
+                text: "Oh hi ##me##. Don't date that prude bitch. She's lame as hell. I'm going to go piss in the " +
+                    "##bimbo##'s face and fuck her in the ass. She loves that stuff! If you fuck her later you " +
                     "can get my sloppy seconds! Later.",
                 button: [
                     { chatID: -1, text: "You're too kind. Later.", callback: "fightend" }
@@ -478,7 +478,7 @@ room300.chat = function (chatID) {
             {
                 chatID: 16,
                 speaker: "envy",
-                text: "That's ok. I didn't expect " + sc.n("kei") + " to start a fight with me right there. Why are guys " +
+                text: "That's ok. I didn't expect ##kei## to start a fight with me right there. Why are guys " +
                     "such horny pigs?",
                 button: [
                     { chatID: 17, text: "Not all of us are horny pigs.", callback: "envyUp" },
@@ -497,7 +497,7 @@ room300.chat = function (chatID) {
             {
                 chatID: 18,
                 speaker: "envy",
-                text: "You are too much! " + sc.n("kei") + " said the same thing to me! Why can't guys just be friends " +
+                text: "You are too much! ##kei## said the same thing to me! Why can't guys just be friends " +
                     "for a while till we get to know each other instead of always making dirty jokes?",
                 button: [
                     { chatID: 19, text: "Yeah that was a bad joke. ", callback: "" }
@@ -524,7 +524,7 @@ room300.chat = function (chatID) {
             {
                 chatID: 21,
                 speaker: "thinking",
-                text: "I need to get the frozen pizza from " + sc.n("spanky") + "'s before I visit her again. ",
+                text: "I need to get the frozen pizza from ##spanky##'s before I visit her again. ",
                 button: [
                     { chatID: -1, text: "Duh!", callback: "" }
                 ]
@@ -576,7 +576,7 @@ room300.chat = function (chatID) {
             {
                 chatID: 27,
                 speaker: "envy",
-                text: "Is that you " + sc.n("me") + "!",
+                text: "Is that you ##me##!",
                 button: [
                     { chatID: 28, text: "It is. I came to apologize.", callback: "" },
                 ]
@@ -640,12 +640,12 @@ room300.chat = function (chatID) {
                 chatID: 34,
                 speaker: "envy",
                 text: "You know I'm mad at you. But I came to realize I should really be mad at " +
-                    sc.n("spanky") + " too. Even more so. What kind of weird-o goes out and pays " +
+                    "##spanky## too. Even more so. What kind of weird-o goes out and pays " +
                     "someone to make a hypno video, just because I dumped him. I'm so glad you " +
                     "at least told me before showing me more. I would hate to think where I would " +
                     "be if I watched more movies. ",
                 button: [
-                    { chatID: 35, text: "Yes. It's " + sc.n("spanky") + "'s fault! I didn't think they would even work. ", callback: "" },
+                    { chatID: 35, text: "Yes. It's ##spanky##'s fault! I didn't think they would even work. ", callback: "" },
                 ]
             },
             {
@@ -733,7 +733,7 @@ room300.chat = function (chatID) {
             {
                 chatID: 44,
                 speaker: "thinking",
-                text: "If anyone knows how to make a girl orgasm it's " + sc.n("tiffany") + "! She'll have " +
+                text: "If anyone knows how to make a girl orgasm it's ##tiffany##! She'll have " +
                     "something. She has to have something!",
                 button: [
                     { chatID: -1, text: "I'll look for her at Toys 'n Us!", callback: "backin_1" },

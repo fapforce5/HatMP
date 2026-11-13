@@ -116,8 +116,8 @@ room178.chat = function (chatID) {
             speaker: "missy",
             text: "Since this is your first class we're going to start out simple. Each of you will savor and swallow your own cum. It's " +
                 "in your body anyway, we're just putting it in a different hole. Your mouth hole. Next class we'll have some more fun, but " +
-                "I'm a busy woman so this class will be quick. Luckily only " + sc.n("me") + " is in chastity, so the other two of you " +
-                "can just jack off in my hand. Martin and Jeremy go first. I'll do " + sc.n("me") + " last. I have a special gift " +
+                "I'm a busy woman so this class will be quick. Luckily only ##me## is in chastity, so the other two of you " +
+                "can just jack off in my hand. Martin and Jeremy go first. I'll do ##me## last. I have a special gift " +
                 "for my chastity sissy. Now bring those cocks here.",
             button: [
                 { chatID: 2, text: "Yes ma'am", callback: "cum1" }
@@ -299,7 +299,7 @@ room178.chat = function (chatID) {
         {
             chatID: 21,
             speaker: "missy",
-            text: sc.n("me") + " take that bowl of cum and drizzle it over my ass like warm gooey cinnamon buns. ",
+            text: "##me## take that bowl of cum and drizzle it over my ass like warm gooey cinnamon buns. ",
             button: [
                 { chatID: 22, text: "Yes ma'am", callback: "cum105" },
             ]
@@ -335,7 +335,7 @@ room178.chat = function (chatID) {
         {
             chatID: 25,
             speaker: "missy",
-            text: "I brought a treat today, or I should say " + sc.n("cecilia") +
+            text: "I brought a treat today, or I should say ##cecilia##" +
                 " brought a treat. As a sissy the desire to swallow cum is strong, " +
                 "sometimes overwhelming. During those times you may find that " +
                 "there aren't any dicks around to fill that thirst. That's why you " +
@@ -347,7 +347,7 @@ room178.chat = function (chatID) {
         {
             chatID: 26,
             speaker: "missy",
-            text: sc.n("cecilia") + " squat down and fill up a jar of cum so these " +
+            text: "##cecilia## squat down and fill up a jar of cum so these " +
                 "sissies can enjoy a nice warm cup of real man. ",
             button: [
                 { chatID: 27, text: "huh?", callback: "cum201_1" },
@@ -376,7 +376,7 @@ room178.chat = function (chatID) {
         {
             chatID: 29,
             speaker: "!kareem",
-            text: "That was very different. " + sc.n("cecilia") + ", who did that come from?",
+            text: "That was very different. ##cecilia##, who did that come from?",
             button: [
                 { chatID: 30, text: "...", callback: "" },
             ]

@@ -143,7 +143,7 @@ room651.chat = function (chatID) {
         {
             chatID: 1,
             speaker: "tiffany",
-            text: sc.n("candy") + " are you licking the cum‽",
+            text: "##candy## are you licking the cum‽",
             button: [
                 { chatID: 2, text: "....", callback: "changePic" }
             ]
@@ -193,9 +193,9 @@ room651.chat = function (chatID) {
         {
             chatID: 7,
             speaker: "tiffany",
-            text: "Yeah, " + sc.n("missy") + " sent him over. I'm going to take him to the back so he can watch the booths. ",
+            text: "Yeah, ##missy## sent him over. I'm going to take him to the back so he can watch the booths. ",
             button: [
-                { chatID: -1, text: "[Follow " + sc.n("tiffany") + " behind the 'Employees Only' Door]", callback: "onDuty" }
+                { chatID: -1, text: "[Follow ##tiffany## behind the 'Employees Only' Door]", callback: "onDuty" }
             ]
         },
         {
@@ -226,7 +226,7 @@ room651.chat = function (chatID) {
         {
             chatID: 11,
             speaker: "tiffany",
-            text: "Oh hi " + sc.n("me") + ". Did you come in to jack off to my pussy?",
+            text: "Oh hi ##me##. Did you come in to jack off to my pussy?",
             button: [
                 { chatID: -1, text: "Oh yeah!", callback: "checkjo2" }
             ]

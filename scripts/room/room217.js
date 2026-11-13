@@ -163,7 +163,7 @@ room217.chat = function (chatID) {
             chatID: 3,
             speaker: "missy",
             text: "You know I have enough power in my legs to pop your head clean off. But then I would have " +
-                "to get " + sc.n("cecilia") + " to clean up, and she doesn't deserve that. Now you were saying " +
+                "to get ##cecilia## to clean up, and she doesn't deserve that. Now you were saying " +
                 "how you were going to strip down. ",
             button: [
                 { chatID: 4, text: "*GASP* yes ma'am", callback: "disrobe" },
@@ -270,7 +270,7 @@ room217.chat = function (chatID) {
             chatID: 15,
             speaker: "missy",
             text: "You know I have enough power in my legs to pop your head clean off. But then I would have " +
-                "to get " + sc.n("cecilia") + " to clean up, and she doesn't deserve that. Now are you ready " +
+                "to get ##cecilia## to clean up, and she doesn't deserve that. Now are you ready " +
                 "to move this rice? ",
             button: [
                 { chatID: 16, text: "Yes ma'am", callback: "rice1" },
@@ -343,7 +343,7 @@ room217.chat = function (chatID) {
         {
             chatID: 24,
             speaker: "missy",
-            text: "You are deserving of a proper punishment. Report to " + sc.n("black") +
+            text: "You are deserving of a proper punishment. Report to ##black##" +
                 " in the Black room immediately. ",
             button: [
                 { chatID: -1, text: "Yes ma'am", callback: "black" },

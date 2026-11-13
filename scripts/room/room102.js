@@ -98,7 +98,7 @@ room102.chat = function (chatID) {
         {
             chatID: 0,
             speaker: "construction",
-            text: "Hey " + sc.n("tina") + "! Who the fuck is this in my office? I asked for someone with tits!",
+            text: "Hey ##tina##! Who the fuck is this in my office? I asked for someone with tits!",
             button: [
                 { chatID: 1, text: "....", callback: "" }
             ]
@@ -106,7 +106,7 @@ room102.chat = function (chatID) {
         {
             chatID: 1,
             speaker: "tina",
-            text: "It's " + sc.n("me") + "! He's here for the laborer job!",
+            text: "It's ##me##! He's here for the laborer job!",
             button: [
                 { chatID: 2, text: "....", callback: "" }
             ]
@@ -114,7 +114,7 @@ room102.chat = function (chatID) {
         {
             chatID: 2,
             speaker: "construction",
-            text: "Oh, hey " + sc.n("me") + ", so you want to work construction? The job starts at $40 per day.",
+            text: "Oh, hey ##me##, so you want to work construction? The job starts at $40 per day.",
             button: [
                 { chatID: 3, text: "Yes sir!", callback: "" },
                 { chatID: 4, text: "Is that porn on the TV?", callback: "" }
@@ -123,7 +123,7 @@ room102.chat = function (chatID) {
         {
             chatID: 3,
             speaker: "construction",
-            text: "Okay, kid — you're hired. You need to be here before nine each day. We don't work on Sundays. Collect your money from " + sc.n("tina") + " at the end of each day. If you forget to pick up your money at the end of your shift, it's your loss. You can start whenever.",
+            text: "Okay, kid — you're hired. You need to be here before nine each day. We don't work on Sundays. Collect your money from ##tina## at the end of each day. If you forget to pick up your money at the end of your shift, it's your loss. You can start whenever.",
             button: [
                 { chatID: -1, text: "Thank you sir", callback: "setInit" }
             ]
@@ -148,7 +148,7 @@ room102.chat = function (chatID) {
         {
             chatID: 6,
             speaker: "construction",
-            text: "We're going to get along just fine then. You want to see some tits? Hey, " + sc.n("tina") + ", get in here and show the new guy your tits.",
+            text: "We're going to get along just fine then. You want to see some tits? Hey, ##tina##, get in here and show the new guy your tits.",
             button: [
                 { chatID: 7, text: "...", callback: "" }
             ]

@@ -540,7 +540,7 @@ room53.chat = function (chatID) {
         {
             chatID: 16,
             speaker: "thinking",
-            text: "Oh I got an image from " + sc.n("candy") + ". I wonder what she sent.",
+            text: "Oh I got an image from ##candy##. I wonder what she sent.",
             button: [
                 { chatID: -1, text: "Better check my photos.", callback: "100_goodend" },
             ]
@@ -598,8 +598,8 @@ room53.chat = function (chatID) {
         {
             chatID: 23,
             speaker: "candy",
-            text: "Oh that. Hehehe. Yes, only girls can come up here. Girls and studs like " + sc.n("chad") + ". " +
-                sc.n("treyvon") + " doesn't let wimpy boys in. It's ok, we told him you're a sissy, not a wimpy boy " +
+            text: "Oh that. Hehehe. Yes, only girls can come up here. Girls and studs like ##chad##. " +
+                "##treyvon## doesn't let wimpy boys in. It's ok, we told him you're a sissy, not a wimpy boy " +
                 "so that's how we got you in. You know he's taken a liking to you. I think he wants to fuck you. ",
             button: [
                 { chatID: 24, text: "What, no, why....", callback: "" }
@@ -608,8 +608,8 @@ room53.chat = function (chatID) {
         {
             chatID: 24,
             speaker: "chad",
-            text: "Too much talking, not enough fucking. " + sc.n("candy") + " get on the bed with your ass up. I'm going to " +
-                "fuck that cunt. " + sc.n("me") + " sit your ass on the floor and watch how a real man fucks. ",
+            text: "Too much talking, not enough fucking. ##candy## get on the bed with your ass up. I'm going to " +
+                "fuck that cunt. ##me## sit your ass on the floor and watch how a real man fucks. ",
             button: [
                 { chatID: 25, text: "[Sit your ass on the floor and watch a real man fuck]", callback: "101_3" }
             ]
@@ -625,7 +625,7 @@ room53.chat = function (chatID) {
         {
             chatID: 26,
             speaker: "candy",
-            text: "Oh look. My pussy is all sloppy with " + sc.n("chad") + "'s yummy cum. You want a taste? ",
+            text: "Oh look. My pussy is all sloppy with ##chad##'s yummy cum. You want a taste? ",
             button: [
                 { chatID: 27, text: "Oh....", callback: "101_9" }
             ]
@@ -641,7 +641,7 @@ room53.chat = function (chatID) {
         {
             chatID: 28,
             speaker: "thinking",
-            text: "Oh my god, his cum is so pungent, but I better eat it all. I don't want to make " + sc.n("chad") + 
+            text: "Oh my god, his cum is so pungent, but I better eat it all. I don't want to make ##chad##" + 
                 " angry. Besides, maybe she'll let me fuck her after. ",
             button: [
                 { chatID: 29, text: "...", callback: "101_10" }
@@ -802,7 +802,7 @@ room53.chat = function (chatID) {
         {
             chatID: 20,
             speaker: "candy",
-            text: "Oh yeah, I've been saving it all day and I know you'll love it! Do you know " + sc.n("chad") + "?",
+            text: "Oh yeah, I've been saving it all day and I know you'll love it! Do you know ##chad##?",
             button: [
                 { chatID: 21, text: "I know him. He's kinda a dick", callback: "" },
                 { chatID: 22, text: "He's so dreamy..", callback: "" }
@@ -854,7 +854,7 @@ room53.chat = function (chatID) {
         {
             chatID: 26,
             speaker: "candy",
-            text: "Just pull out my tampon and so you can suck out " + sc.n("chad") + "'s cum baby.",
+            text: "Just pull out my tampon and so you can suck out ##chad##'s cum baby.",
             button: [
                 { chatID: -1, text: "...", callback: "" }
             ]

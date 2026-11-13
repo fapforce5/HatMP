@@ -74,7 +74,7 @@ room152.chat = function (chatID) {
         {
             chatID: 0,
             speaker: "bitch",
-            text: "You fucking idiot! Can't you see that " + sc.n("jones") + " has his dick out while you're " +
+            text: "You fucking idiot! Can't you see that ##jones## has his dick out while you're " +
                 "fucking around with those microscopic specks of dust! You get here right now and take care of " +
                 "that dick! ",
             button: [
@@ -95,7 +95,7 @@ room152.chat = function (chatID) {
             chatID: 2,
             speaker: "bitch",
             text: "Get all the way down. He deserves to thrust into your tight throat so " +
-                sc.n("jones") + " can really feel it.",
+                "##jones## can really feel it.",
             button: [
                 { chatID: 3, text: "Guk!", callback: "e5" }
             ]
@@ -111,7 +111,7 @@ room152.chat = function (chatID) {
         {
             chatID: 4,
             speaker: "bitch",
-            text: "There you go. Keep it deep in there. " + sc.n("jones") + " needs to continue to feel " +
+            text: "There you go. Keep it deep in there. ##jones## needs to continue to feel " +
                 "your tight throat as he gives you the gift of his cum. ",
             button: [
                 { chatID: 5, text: "*gulp* *gulp* *gulp*", callback: "e7" }

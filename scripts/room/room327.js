@@ -544,7 +544,7 @@ room327.chat = function (chatID) {
             chatID: 27,
             speaker: "envy",
             text: "I'm sooooo glad you brought me here! Not only do I get to be a Hucow at night they take me to the barn " +
-                "and the farm hands and security guards fuck all my holes! Drake said I'm way better than " + sc.n("kinsey") +
+                "and the farm hands and security guards fuck all my holes! Drake said I'm way better than ##kinsey##" +
                 " at taking cock and not complaining!",
             button: [
                 { chatID: 28, text: "...", callback: "" }
@@ -570,9 +570,9 @@ room327.chat = function (chatID) {
         {
             chatID: 30,
             speaker: "envy",
-            text: "You'll never believe what we did last night! " + sc.n("kinsey") + " was talking back to Drake saying " +
+            text: "You'll never believe what we did last night! ##kinsey## was talking back to Drake saying " +
                 "he was too rough, so I said to Drake just fuck my ass tonight. So he said I'm too easy, he likes a challenge, " +
-                "so " + sc.n("kinsey") + " said Drake's biggest challenge was to get laid with that ugly face. So he got so mad! " +
+                "so ##kinsey## said Drake's biggest challenge was to get laid with that ugly face. So he got so mad! " +
                 "He said he was going to punish both of us!",
             button: [
                 { chatID: 31, text: "...", callback: "" }
@@ -582,8 +582,8 @@ room327.chat = function (chatID) {
             chatID: 31,
             speaker: "envy",
             text: "So he tied us up together facing each other with a dildo in both of us and covered us in itching powder. He said " +
-                "he would only scratch our itchies if " + sc.n("kinsey") + " begged for all their cocks in her ass. I was so itchy " +
-                "I begged them all to fuck me, but Drake said " + sc.n("kinsey") + " had to beg. I told her she didn't have to, " +
+                "he would only scratch our itchies if ##kinsey## begged for all their cocks in her ass. I was so itchy " +
+                "I begged them all to fuck me, but Drake said ##kinsey## had to beg. I told her she didn't have to, " +
                 "but my entire body was crawling. I didn't think she was going to do it. She said they could all fuck themselves " +
                 "but after an hour we were rubbing each other to get some relief, but it was no use.",
             button: [
@@ -597,7 +597,7 @@ room327.chat = function (chatID) {
                 "shoved two at a time in her. She's such a champ! After they were all done they even let me eat the cum out of her " +
                 "ass and a couple of them fucked me so I wasn't left out. I hope they let us sleep tonight. I'm so tired.",
             button: [
-                { chatID: 33, text: "Oh wow. Are you ok " + sc.n("kinsey") + "?", callback: "" }
+                { chatID: 33, text: "Oh wow. Are you ok ##kinsey##?", callback: "" }
             ]
         },
         {

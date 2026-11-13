@@ -444,7 +444,7 @@ room54.chat = function (chatID) {
         {
             chatID: 25,
             speaker: "tiffany",
-            text: "Have fun in here, and clean up after you're done. I'm going to go fuck " + sc.n("candy") + " now.",
+            text: "Have fun in here, and clean up after you're done. I'm going to go fuck ##candy## now.",
             button: [
                 { chatID: 26, text: "...", callback: "" },
             ]
@@ -460,7 +460,7 @@ room54.chat = function (chatID) {
         {
             chatID: 27,
             speaker: "tiffany",
-            text: "You caught us! I love it when " + sc.n("candy") + " puts on her " +
+            text: "You caught us! I love it when ##candy## puts on her " +
                 "cheerleader outfit and cheers for me! ",
             button: [
                 { chatID: 28, text: "oh yeah", callback: "" },
@@ -751,7 +751,7 @@ room54.chat = function (chatID) {
         {
             chatID: 28,
             speaker: "tiffany",
-            text: sc.n("candy") + " and I have our cam room and makeup room behind this door. We keep it locked because some " +
+            text: "##candy## and I have our cam room and makeup room behind this door. We keep it locked because some " +
                 "pervert broke into our house and masturbated all over our bed. It would have been hot if he wasn't so homeless looking. " +
                 "The old gross pervert still grosses me out. Let's go in.",
             button: [

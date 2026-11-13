@@ -172,6 +172,7 @@ gv.init = function () {
         { n: "janiceAfternoon", t: 0, q: "int" },
         { n: "janiceRand", t: 0, q: "int" },
         { n: "janiceAnnoyance", t: 0, q: "hundred" },
+        { n: "janiceRandDaily", t: "", q: "string" },
 
         { n: "486gamecounter", t: 0, q: "int" },
 

@@ -32,7 +32,7 @@
             fight: g.rand(8, 15),
             energy: 100,
             arousal: 0,
-            options: ["oral", "oral", "anal"],
+            options: ["oral", "oral", "anal", "pussy", "pussy"],
             slap: true,
             color: "w",
             gender: "m",
@@ -77,6 +77,13 @@
                             "image": "1004_rape/anal_xray.gif"
                         }, 1004);
                     }
+                    else if (rape.rapeType === "pussy") {
+                        zcl.assup(650, 500, .7, "");
+                        rapeCharFullscreen("1004_rape/rapeman0/rape3.png");
+                        if (rape.phases[5].c === 0) {
+                            fame.moanAnimate("center");
+                        }
+                    }
                     else {
                         zcl.bj(0, 200, .7, "open", true);
                         nav.button({
@@ -109,6 +116,21 @@
                         }, 1004);
                         levels.anal(4, false, "m", true, "!rape0");
                         return { c: false, s: "me", m: "You fucking raped me! Came in me! And didn't even bother to pull out! Fuck I feel so used. "}
+                    }
+                    else if (rape.rapeType === "pussy") {
+                        zcl.assup(650, 500, .7, "");
+                        rapeCharFullscreen("1004_rape/rapeman0/rape3.png");
+                        nav.button({
+                            "type": "img",
+                            "name": "r1004bg",
+                            "left": 528,
+                            "top": 227,
+                            "width": 638,
+                            "height": 591,
+                            "image": "1004_rape/rapeman0/rape4_pussy.webp"
+                        }, 1004);
+                        levels.fuckedinpussy(false, "m", true, "!rape0");
+                        return { c: false, s: "me", m: "You fucking raped me! Came in me! And didn't even bother to pull out! Fuck I feel so used. " }
                     }
                     else {
                         zcl.bj(100, 400, 1, "w", true);
@@ -253,17 +275,29 @@
                 if (rape.phases[6].c === 0) {
                     if (rape.rapeType === "anal") {
                         zcl.kill();
-                        nav.button({
-                            "type": "img",
-                            "name": "r1004bg",
-                            "left": 442,
-                            "top": 0,
-                            "width": 1478,
-                            "height": 1080,
-                            "image": "1004_rape/missx/phase5.png"
-                        }, 1004);
+                        if (cl.c.cock === 5) {
+                            nav.button({
+                                "type": "img",
+                                "name": "r1004bg",
+                                "left": 442,
+                                "top": 0,
+                                "width": 1478,
+                                "height": 1080,
+                                "image": "1004_rape/missx/phase5_vag.webp"
+                            }, 1004);
+                        }
+                        else {
+                            nav.button({
+                                "type": "img",
+                                "name": "r1004bg",
+                                "left": 442,
+                                "top": 0,
+                                "width": 1478,
+                                "height": 1080,
+                                "image": "1004_rape/missx/phase5.png"
+                            }, 1004);
+                        }
                         return { c: false, s: rape.char.name, m: "Such a pretty gape for such a slutty hole." }
-
                     }
                     else {
                         zcl.bj(100, -50, 1, "", true);
@@ -299,7 +333,7 @@
             fight: g.rand(8, 12),
             energy: 100,
             arousal: 0,
-            options: ["cunnilugus", "anal", "anal"],
+            options: ["cunnilugus", "anal", "anal", "pussy", "pussy"],
             slap: true,
             color: "w",
             gender: "f",
@@ -368,6 +402,12 @@
                             "image": "1004_rape/anal_xray.gif"
                         }, 1004);
                     }
+                    else if (rape.rapeType === "pussy") {
+                        rapeCharImage(605, 425, 1063, 595, "1004_rape/futa0/phase4_anal_bottom.png");
+                        zcl.assup(600, 500, .75, "");
+                        rapeCharImage(605, 425, 1063, 595, "1004_rape/futa0/phase4_anal_top.png");
+                        fame.moanAnimate("center");
+                    }
                     else {
                         zcl.bj(200, 300, .5, "open", true);
                         rapeCharImage(652, 103, 820, 977, "1004_rape/futa0/phase4_oral.png");
@@ -384,6 +424,13 @@
                         rapeCharImage(605, 425, 1063, 595, "1004_rape/futa0/phase5_anal_top.png");
                         levels.anal(3, false, "n", true, "!futa0");
                         return { c: false, s: rape.char.name, m: "The best pussy to cum in is a smooth sissy bussy!" }
+                    }
+                    else if (rape.rapeType === "pussy") {
+                        rapeCharImage(605, 425, 1063, 595, "1004_rape/futa0/phase4_anal_bottom.png");
+                        zcl.assup(600, 500, .75, "");
+                        rapeCharImage(605, 425, 1063, 595, "1004_rape/futa0/phase6_pussy_f.webp");
+                        levels.fuckedinpussy(false, "n", true, "!futa0");
+                        return { c: false, s: rape.char.name, m: "Fuck yeah! Take every drop of my cum in that tight little pussy!" }
                     }
                     else {
                         zcl.bj(200, 300, .5, "open", true);
@@ -722,7 +769,7 @@
             fight: g.rand(7, 12),
             energy: 100,
             arousal: 0,
-            options: ["oral", "anal", "anal"],
+            options: ["oral", "anal", "anal", "pussy", "pussy"],
             slap: true,
             color: "d",
             gender: "m",
@@ -798,16 +845,7 @@
             },
             phase3: function () {
                 zcl.kill();
-                let hairlength = cl.c.hairLength > 2 ? "f" : "m";
-                nav.button({
-                    "type": "img",
-                    "name": "r1004bg",
-                    "left": 347,
-                    "top": 363,
-                    "width": 936,
-                    "height": 717,
-                    "image": "1004_rape/wolf2/single_phase3_" + hairlength + ".png"
-                }, 1004);
+                zcl.squat(370, 743, .35, "", false, "r1004bg");
                 nav.button({
                     "type": "img",
                     "name": "r1004bg",
@@ -846,10 +884,16 @@
                         return { c: false, s: "thinking", m: "OOooo that cum is so thick and bitter. I'm such a lowly fuck hole... " }
 
                     }
+                    else if (rape.rapeType === "pussy") {
+                        levels.fuckedinpussy(false, "m", true, "!wolf", "dog");
+                        zcl.double(-100, -200, 1, "", false);
+                        rapeCharFullscreen("1004_rape/wolf2/single_phase6_pussy_" + rape.modifier + ".png");
+                        return { c: false, s: "me", m: "I just got fucked and used like a cum sock by a dire wolf. " }
+                    }
                     else {
                         levels.anal(5, false, "m", true, "!wolf", "dog");
                         zcl.double(-100, -200, 1, "", false);
-                        rapeCharFullscreen("1004_rape/wolf2/phase6_1.png");
+                        rapeCharFullscreen("1004_rape/wolf2/single_phase6_anal_" + rape.modifier + ".png");
                         return { c: false, s: "me", m: "I just got fucked and used like a cum sock by a dire wolf. " }
                     }
                 }
@@ -1135,7 +1179,7 @@
             fight: g.rand(8, 15),
             energy: 100,
             arousal: 0,
-            options: ["oral", "oral", "anal"],
+            options: ["oral", "oral", "anal", "pussy", "pussy"],
             slap: true,
             color: "w",
             gender: "m",
@@ -1176,6 +1220,12 @@
                             "image": "1004_rape/anal_xray.gif"
                         }, 1004);
                     }
+                    else if (rape.rapeType === "pussy") {
+                        rapeCharImage(619, 440, 985, 594, "1004_rape/futa1/phase5_anal_b.png");
+                        zcl.assup(650, 500, .7, "");
+                        rapeCharImage(619, 440, 985, 594, "1004_rape/futa1/phase5_anal_f.png");
+                        fame.moanAnimate("center");
+                    }
                     else {
                         zcl.bj(250, 400, .6, "open", true);
                         rapeCharImage(544, 0, 699, 1080, "1004_rape/futa1/phase6_oral.png");
@@ -1191,6 +1241,13 @@
                         zcl.assup(650, 500, .7, "");
                         rapeCharImage(619, 440, 985, 594, "1004_rape/futa1/phase6_anal_f.png");
                         levels.anal(5, false, "n", true, "!futa1");
+                        return { c: false, s: rape.char.name, m: "Oh fuck! I'm cummin'!!!!!" };
+                    }
+                    else if (rape.rapeType === "pussy") {
+                        rapeCharImage(619, 440, 985, 594, "1004_rape/futa1/phase5_anal_b.png");
+                        zcl.assup(650, 500, .7, "");
+                        rapeCharImage(619, 440, 985, 594, "1004_rape/futa1/phase6_pussy_f.webp");
+                        levels.fuckedinpussy(false, "n", true, "!futa1");
                         return { c: false, s: rape.char.name, m: "Oh fuck! I'm cummin'!!!!!" };
                     }
                     else {
@@ -1804,8 +1861,13 @@
         }
         num = g.rand(0, retVar.length);
     }
-    
-    return retVar[num];
+
+    let selectedRaper = retVar[num];
+    if (cl.c.cock !== 5) {
+        selectedRaper.options = selectedRaper.options.filter(o => o !== "pussy");
+    }
+
+    return selectedRaper;
 }
 
 function getTrap(location, id) {

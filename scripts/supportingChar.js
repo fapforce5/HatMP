@@ -676,7 +676,8 @@ sc.init = function () {
                     missionName: "random", mStatus: 0, title: "Misc Events", desc: "", task:
                         [
                             { id: 0, txt: "Dog park", show: true, mStatus: 0, roomId: 322 },
-                            { id: 1, txt: "Dog park1", show: true, mStatus: 0, roomId: 322 },
+                            { id: 1, txt: "Dog park 1", show: true, mStatus: 0, roomId: 322 },
+                            { id: 2, txt: "Dog park 2", show: true, mStatus: 0, roomId: 322 },
                         ]
                 },
                 {
@@ -686,17 +687,12 @@ sc.init = function () {
                         ]
                 },
                 {
-                    missionName: "*doggy", mStatus: 0, title: "My Boyfriend", desc: "You don't matter to me.", task:
+                    missionName: "*doggy", mStatus: 0, title: "My doggy", desc: "You're my second favorite pet", task:
                         [
-                            { id: 0, txt: "Why are you here?", show: true, mStatus: 0, roomId: 315 },
+                            { id: 0, txt: "Welcome back", show: true, mStatus: 0, roomId: 315 },
+                            { id: 1, txt: "Don't call me a dog fucker", show: true, mStatus: 0, roomId: 315 },
                         ]
-                },
-                {
-                    missionName: "*cuck", mStatus: 0, title: "My Boyfriend", desc: "You don't matter to me.", task:
-                        [
-                            { id: 0, txt: "Why are you here?", show: true, mStatus: 0, roomId: 315 },
-                        ]
-                },
+                }
             ]
         },
         {
@@ -1896,6 +1892,55 @@ sc.replace = function (txt) {
     return txt;
 };
 
+//Chat text: ##name## becomes a colored name with a hover/tap card (see chat.js).
+//Uses double # so hex colors and "#2" in chat text are left alone. Single #name# stays for sc.replace (trophies).
+sc.replaceChat = function (txt) {
+    if (typeof txt !== "string" || txt.indexOf("##") === -1)
+        return txt;
+    return txt.replace(/##([^#]+)##/g, function (match, name) {
+        return '<span class="chat-name" data-char="' + name + '" style="color:' + sc.chatColor(name) + '">' + sc.chatName(name) + '</span>';
+    });
+};
+
+sc.chatName = function (name) {
+    if (name[0] !== "!" && name[0] !== "*" && sc.i(name) === -1)
+        return name;
+    return sc.n(name);
+};
+
+//sc.char hex lifted to at least 75% lightness so it reads on the dark chat box.
+sc.chatColorCache = {};
+sc.chatColor = function (name) {
+    var hex = "";
+    if (name[0] !== "!" && name[0] !== "*") {
+        var i = sc.i(name);
+        if (i > -1 && sc.char[i].hex)
+            hex = sc.char[i].hex;
+    }
+    if (!/^#[0-9a-fA-F]{6}$/.test(hex))
+        return "#ffe7a3";
+    if (sc.chatColorCache[hex])
+        return sc.chatColorCache[hex];
+
+    var r = parseInt(hex.substr(1, 2), 16) / 255;
+    var g2 = parseInt(hex.substr(3, 2), 16) / 255;
+    var b = parseInt(hex.substr(5, 2), 16) / 255;
+    var max = Math.max(r, g2, b), min = Math.min(r, g2, b);
+    var h = 0, s = 0, l = (max + min) / 2;
+    if (max !== min) {
+        var d = max - min;
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+        if (max === r) h = (g2 - b) / d + (g2 < b ? 6 : 0);
+        else if (max === g2) h = (b - r) / d + 2;
+        else h = (r - g2) / d + 4;
+        h /= 6;
+    }
+    l = Math.max(l, 0.75);
+    var color = "hsl(" + Math.round(h * 360) + ", " + Math.round(s * 100) + "%, " + Math.round(l * 100) + "%)";
+    sc.chatColorCache[hex] = color;
+    return color;
+};
+
  //mStatus 0 = not started, 1 - 99 = inprogress, 100 = complete - success, 101 = complete - fail
 
 sc.el = function () {
@@ -2119,7 +2164,11 @@ sc.getMissionEntry = function (name, missionName) {
             }
         }
     }
-
+    //fix for v 28.0-28.2
+    if (name === "janice" && missionName === "*cuck") {
+        sc.startMission("janice", "*doggy")
+        return null;
+    }
     console.log("mission not found: " + name + " " + missionName);
     return null;
 };
@@ -2522,19 +2571,6 @@ sc.load = function (ra) {
     //fix bad early data
     if (sc.getMission("landlord", "spermbank").complete)
         sc.startMission("landlord", "spermbank");
-    //fix v0.23 sissy
-    if (sc.getMission("lola", "sissy").notStarted) {
-        let x, y, z;
-        x = sc.i("lola");
-        y = sc.i("eva");
-        z = sc.i("landlord");
-        if (sc.char[x].secret > 95)
-            sc.char[x].secret = 95;
-        if (sc.char[y].secret > 95)
-            sc.char[y].secret = 95;
-        if (sc.char[z].secret > 95)
-            sc.char[z].secret = 95;
-    }
 
     //fix for v 0.25.3 for people that started it 
     if (sc.getMissionTask("lola", "sissy", 5).startedOrComplete && future.get("lolaboy") < 0) {
@@ -3345,7 +3381,9 @@ sc.trivialLookup = {
     "!nar": { display: "Narrator ", image: "nar.png" },
     "!wolfgirl": { display: "Snail Trail", image: "wolfgirl.png" },
     "!tree": { display: "Tree branch", image: "tree.png" },
-    "!dolly0": { display: "Dolly", image: "dolly0.png" }
+    "!dolly0": { display: "Dolly", image: "dolly0.png" },
+    "!bf1": { display: "Michael", image: "bf1.png" },
+    "!bf2": { display: "Mike", image: "bf2.png" }
 };
 
 

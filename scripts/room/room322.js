@@ -1120,7 +1120,7 @@ room322.chat = function (chatID) {
         },
         {
             chatID: 5,
-            speaker: "thinking",
+            speaker: "janice",
             text: "That's a good doggy. You must love this doggy food, you ate it all up!",
             button: [
                 { chatID: -1, text: "*whine*", callback: "kitchen" },
@@ -1210,7 +1210,7 @@ room322.chat = function (chatID) {
         {
             chatID: 16,
             speaker: "janice",
-            text: "Oh hi " + sc.n("eva") + ". Your " + g.makeSingular(sc.n("el")) + "'s my doggy " +
+            text: "Oh hi ##eva##. Your " + g.makeSingular(sc.n("el")) + "'s my doggy " +
                 "now. She's been a bad girl, but she does deserve her walks. ",
             button: [
                 { chatID: 17, text: "ugh", callback: "" },
@@ -1247,7 +1247,7 @@ room322.chat = function (chatID) {
             chatID: 20,
             speaker: "janice",
             text: "Hehehe! Yeah. I can't believe I dated that loser. She's much better as my little " +
-                "doggy now hehehe. I caught her getting fucked by " + sc.n("dog") + ", so I did the only " +
+                "doggy now hehehe. I caught her getting fucked by ##dog##, so I did the only " +
                 "thing I could. Make her my bitch. ",
             button: [
                 { chatID: 21, text: "...", callback: "park1_2" },
@@ -1413,7 +1413,7 @@ room322.chat = function (chatID) {
         {
             chatID: 39,
             speaker: "thinking",
-            text: "Uh oh. " + sc.n("dog") + " looks mad. I wonder what I did wrong?",
+            text: "Uh oh. ##dog## looks mad. I wonder what I did wrong?",
             button: [
                 { chatID: 40, text: "...", callback: "waiter11" },
             ]
@@ -1421,7 +1421,7 @@ room322.chat = function (chatID) {
         {
             chatID: 40,
             speaker: "!waiter",
-            text: "You're such a bitch. You both know " + sc.n("dog") + " is the real one. You're " +
+            text: "You're such a bitch. You both know ##dog## is the real one. You're " +
                 "just his bitch! Hahahahah!",
             button: [
                 { chatID: -1, text: "*sigh*", callback: "evening" },
@@ -1478,7 +1478,7 @@ room322.chat = function (chatID) {
         {
             chatID: 47,
             speaker: "janice",
-            text: "Oh my, no! I would never do that to " + sc.n("dog") + ". ",
+            text: "Oh my, no! I would never do that to ##dog##. ",
             button: [
                 { chatID: 48, text: "...", callback: "" },
             ]
@@ -1587,7 +1587,7 @@ room322.chat = function (chatID) {
         {
             chatID: 60,
             speaker: "!plumber",
-            text: "Now those are some properly fucked bitches! Good job " + sc.n("dog") + ". Love to " +
+            text: "Now those are some properly fucked bitches! Good job ##dog##. Love to " +
                 "leave a couple properly fucked holes dripping. ",
             button: [
                 { chatID: -1, text: "*hard breathing*", callback: "evening" },
@@ -1655,7 +1655,7 @@ room322.chat = function (chatID) {
             chatID: 68,
             speaker: "janice",
             text: "ugh. This show is boring and dumb. Hey, you know what would be funny? If you " +
-                "sucked " + sc.n("dog") + "'s dick! Hehehe. Roll over, let me see you suck his dick. ",
+                "sucked ##dog##'s dick! Hehehe. Roll over, let me see you suck his dick. ",
             button: [
                 { chatID: 69, text: "[roll over]", callback: "ds0" },
                 { chatID: -1, text: "*yelp* [Run to the back yard]", callback: "backyardannoy" },
@@ -1665,7 +1665,7 @@ room322.chat = function (chatID) {
             chatID: 69,
             speaker: "janice",
             text: "Hahaha! You are such a loser! You just rolled over! Hehehe, Let me get " +
-                sc.n("dog") + " hard so you can suck his dick! hehehe",
+                "##dog## hard so you can suck his dick! hehehe",
             button: [
                 { chatID: 70, text: "....", callback: "ds1" },
             ]
@@ -1684,7 +1684,7 @@ room322.chat = function (chatID) {
             text: "...you just play with their penis for a little bit and they instantly get " +
                 "hard. But the thing about a hard penis is now it's in control of the boy. It " +
                 "seeks a warm wet hole to ejaculate in and nothing else matters. Open your mouth " +
-                "so " + sc.n("dog") + " can put his penis in your warm wet hole.",
+                "so ##dog## can put his penis in your warm wet hole.",
             button: [
                 { chatID: 72, text: "Awwww", callback: "ds3" },
             ]
@@ -1849,7 +1849,7 @@ room322.chat = function (chatID) {
         {
             chatID: 90,
             speaker: "janice",
-            text: "Oh yeah. " + sc.n("dog") + " just loves to run around and " + sc.n("me") + 
+            text: "Oh yeah. ##dog## just loves to run around and ##me##" + 
                 " loves to get fucked by doggies. What are you going to do?",
             button: [
                 { chatID: 91, text: "...", callback: "park1_2" },
@@ -2100,7 +2100,7 @@ room322.chat = function (chatID) {
             chatID: 120,
             speaker: "!girl",
             text: "I called you both bitches! Your bitch let herself get mounted and bred by my little doggy last time you " +
-                "were here! His smashed his poor testicles against your doggy and now he can't get hard! " +
+                "were here! He smashed his poor testicles against your doggy and now he can't get hard! " +
                 "I can't use him at the breeding farm if he can't get a boner! " +
                 "The vet said I have to rub his balls to get him to relax, but there's no way I'm doing that! ",
             button: [
@@ -2135,7 +2135,7 @@ room322.chat = function (chatID) {
         {
             chatID: 124,
             speaker: "!girl",
-            text: "If you're not going to pay me then you can rub my doggies balls! At least that way I can get " +
+            text: "If you're not going to pay me then you can rub my doggy's balls! At least that way I can get " +
                 "him to mate again! ",
             button: [
                 { chatID: 125, text: "...", callback: "" },
@@ -2144,7 +2144,7 @@ room322.chat = function (chatID) {
         {
             chatID: 125,
             speaker: "janice",
-            text: "I'm not rubbing your dog's balls. But... hmmmm... I can have my bitch do it. " + gender.pronoun("he") +
+            text: "I'm not rubbing your dog's balls. But... hmmmm... I can have my bitch do it. " + gender.pronoun("he").capitalize() +
                 "'s the reason for this mess. ",
             button: [
                 { chatID: 126, text: "...", callback: "" },
@@ -2153,7 +2153,7 @@ room322.chat = function (chatID) {
         {
             chatID: 126,
             speaker: "!girl",
-            text: "How is " + gender.pronoun("she") + " going to do that? " + gender.pronoun("her") + " hands are bound. ",
+            text: "How is " + gender.pronoun("she") + " going to do that? " + gender.pronoun("his").capitalize() + " hands are bound. ",
             button: [
                 { chatID: 127, text: "...", callback: "" },
             ]
@@ -2161,7 +2161,7 @@ room322.chat = function (chatID) {
         {
             chatID: 127,
             speaker: "janice",
-            text: gender.pronoun("she") + " won't be using her hands. I've got a little jar of peanut butter we can rub on his balls. We'll " +
+            text: gender.pronoun("she").capitalize() + " won't be using " + gender.pronoun("his") + " hands. I've got a little jar of peanut butter we can rub on his balls. We'll " +
                 "let the bitch lick it off. Even better than rubbing. ",
             button: [
                 { chatID: 128, text: "...", callback: "" },
@@ -2196,7 +2196,7 @@ room322.chat = function (chatID) {
         {
             chatID: 131,
             speaker: "!girl",
-            text: "Wow. " + String.prototype.capitalize(gender.pronoun("she")) + " really licks up that peanut " +
+            text: "Wow. " + gender.pronoun("she").capitalize() + " really licks up that peanut " +
                 "butter better than my doggy. You're a lucky girl. ",
             button: [
                 { chatID: 132, text: "*lick* *slurp*", callback: "park2_4" },
@@ -2205,7 +2205,7 @@ room322.chat = function (chatID) {
         {
             chatID: 132,
             speaker: "janice",
-            text: "Oh! Look! You're doggy is getting boner! My bitch really knows how to lick some balls! ",
+            text: "Oh! Look! Your doggy is getting a boner! My bitch really knows how to lick some balls! ",
             button: [
                 { chatID: 133, text: "[Finish up]", callback: "park2_7" },
                 { chatID: -1, text: "[Move around and take the doggy penis in your mouth]", callback: "park2_5" },

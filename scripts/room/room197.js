@@ -695,7 +695,7 @@ room197.chat = function (chatID) {
         {
             chatID: 39,
             speaker: "missy",
-            text: sc.n("cecilia") + " get in here! ",
+            text: "##cecilia## get in here! ",
             button: [
                 { chatID: 40, text: "...", callback: "two" },
             ]
@@ -736,7 +736,7 @@ room197.chat = function (chatID) {
         {
             chatID: 44,
             speaker: "missy",
-            text: sc.n("cecilia") + " get in here!",
+            text: "##cecilia## get in here!",
             button: [
                 { chatID: 45, text: "...", callback: "two" },
             ]
@@ -745,7 +745,7 @@ room197.chat = function (chatID) {
             chatID: 45,
             speaker: "missy",
             text: "I stepped in something sticky on my floor. This is unacceptable! " +
-                sc.n("cecilia") + " become a chair, " + sc.n("me") + " clean this nasty " +
+                "##cecilia## become a chair, ##me## clean this nasty " +
                 "sticky gunk off my feet. Now!",
             button: [
                 { chatID: 46, text: "Yes ma'am!", callback: "cleanfoot" },
@@ -764,7 +764,7 @@ room197.chat = function (chatID) {
         {
             chatID: 47,
             speaker: "cecilia",
-            text: "Thanks for not ratting me out! " + sc.n("chad") + " stopped by this morning and " +
+            text: "Thanks for not ratting me out! ##chad## stopped by this morning and " +
                 "I can't help but say yes every time he pulls his dick out! I guess " +
                 "some of his cum leaked out again. ",
             button: [

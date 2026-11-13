@@ -936,7 +936,7 @@ room329.chat = function (chatID) {
                 speaker: whospeak,
                 text: "Awww. I see you're looking at the breeding phantom. It does need to be cleaned. Just " +
                     "open it up, pull out the silcon A.V. and wash it. Be sure to get in the case and wash the " +
-                    "back of it. Just be careful. It's really expensive and " + sc.n("rachel") + " will kill you " +
+                    "back of it. Just be careful. It's really expensive and ##rachel## will kill you " +
                     "if you break it. ",
                 button: [
                     { chatID: -1, text: "oh. ok. ", callback: "reset" }
@@ -1048,7 +1048,7 @@ room329.chat = function (chatID) {
             {
                 chatID: 0,
                 speaker: "me",
-                text: sc.n("philbert") + "!!!!!!",
+                text: "##philbert##!!!!!!",
                 button: [
                     { chatID: 1, text: "...", callback: "" }
                 ]
@@ -1058,7 +1058,7 @@ room329.chat = function (chatID) {
                 speaker: "philbert",
                 text: "HAHAHAHAHA!!!! Oh my god! Don't tell me you're one of those hucows they keep in the field? " +
                     "You know I knew I would see one of you around here, but I always thought it would be " +
-                    sc.n("sporty") + ". She always did have a thing for big dicks. But you! I guess I'm not surprised. " +
+                    "##sporty##. She always did have a thing for big dicks. But you! I guess I'm not surprised. " +
                     "You were always a little more weird than the rest of them. ",
                 button: [
                     { chatID: 2, text: "You got to get me out of here! They kidnapped me and are forcing me to be here! ", callback: "" }
@@ -1067,7 +1067,7 @@ room329.chat = function (chatID) {
             {
                 chatID: 2,
                 speaker: "philbert",
-                text: "I'm not going to do that. I love it here. I only have to work a few hours a day and " + sc.n("rachel") +
+                text: "I'm not going to do that. I love it here. I only have to work a few hours a day and ##rachel##" +
                     "pays me great! What do I care if she keeps a few of you losers as milking cows. If you ended up here " +
                     "you either belong or you deserve it. ",
                 button: [
@@ -1117,7 +1117,7 @@ room329.chat = function (chatID) {
                 chatID: 7,
                 speaker: "philbert",
                 text: "*psssht* Don't try to play cool now. I'll let you work in my barn after you eat my " +
-                    "ass. Now get out of here before I tell " + sc.n("rachel") + " you tried to run away. ",
+                    "ass. Now get out of here before I tell ##rachel## you tried to run away. ",
                 button: [
                     { chatID: -1, text: "asshole", callback: "leave" }
                 ]
@@ -1536,7 +1536,7 @@ room329.chat = function (chatID) {
                 speaker: "ppgirl",
                 text: "I don't really know you well enough to pee in your mouth. ",
                 button: [
-                    { chatID: 40, text: "[Need " + sc.n("ppgirl") + " Level 3]", callback: "ppreset" },
+                    { chatID: 40, text: "[Need ##ppgirl## Level 3]", callback: "ppreset" },
                 ]
             },
             {
@@ -1562,7 +1562,7 @@ room329.chat = function (chatID) {
                 text: "I don't really know you well enough to give you a jar of my pee. What do you " +
                     "even do with a jar of pee?",
                 button: [
-                    { chatID: 40, text: "[Need " + sc.n("ppgirl") + " Level 5]", callback: "ppreset" },
+                    { chatID: 40, text: "[Need ##ppgirl## Level 5]", callback: "ppreset" },
                 ]
             },
             {
@@ -1595,7 +1595,7 @@ room329.chat = function (chatID) {
                 speaker: "ppgirl",
                 text: "I'm not doing you any favors like that! ",
                 button: [
-                    { chatID: 40, text: "[Need " + sc.n("ppgirl") + " Level 6]", callback: "ppreset" },
+                    { chatID: 40, text: "[Need ##ppgirl## Level 6]", callback: "ppreset" },
                 ]
             },
             {
@@ -1854,7 +1854,7 @@ room329.chat = function (chatID) {
             {
                 chatID: 92,
                 speaker: "thinking",
-                text: "Oh no. The food pellets I was saving for " + sc.n("ppgirl") + " came out too! ",
+                text: "Oh no. The food pellets I was saving for ##ppgirl## came out too! ",
                 button: [
                     { chatID: -1, text: "drat!", callback: "" },
                 ]

@@ -208,7 +208,7 @@ room224.chat = function (chatID) {
             speaker: "landlord",
             text: c[g.rand(0, c.length)],
             button: [
-                { chatID: -1, text: "Awww " + sc.n("landlord") + ".", callback: "endlunchEnergy" }
+                { chatID: -1, text: "Awww ##landlord##.", callback: "endlunchEnergy" }
             ]
         };
     }
@@ -247,7 +247,7 @@ room224.chat = function (chatID) {
             speaker: "janice",
             text: c[g.rand(0, c.length)],
             button: [
-                { chatID: -1, text: "Awww " + sc.n("janice") + ".", callback: "endlunchEnergy" }
+                { chatID: -1, text: "Awww ##janice##.", callback: "endlunchEnergy" }
             ]
         };
     }
@@ -286,7 +286,7 @@ room224.chat = function (chatID) {
             speaker: "elijah",
             text: c[g.rand(0, c.length)],
             button: [
-                { chatID: -1, text: "Awww " + sc.n("elijah") + ".", callback: "endlunchEnergy" }
+                { chatID: -1, text: "Awww ##elijah##.", callback: "endlunchEnergy" }
             ]
         };
     }

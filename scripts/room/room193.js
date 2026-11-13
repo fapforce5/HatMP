@@ -724,11 +724,11 @@ room193.chat = function (chatID) {
             {
                 chatID: 20,
                 speaker: "missy",
-                text: "Shut up " + sc.n("jeffery") + ". If you didn't have money no one " +
-                    "would listen to you. " + sc.n("me") + " we need you to break into a " +
+                text: "Shut up ##jeffery##. If you didn't have money no one " +
+                    "would listen to you. ##me## we need you to break into a " +
                     "young woman's house and steal her panties. You'll need to pick the " +
                     "lock on her front door, find a pair of dirty panties, and return " +
-                    "them back here for " + sc.n("jeffery") + ". I'll send you to the house, " +
+                    "them back here for ##jeffery##. I'll send you to the house, " +
                     "but you'll have to break in and steal the panties. If you get caught you " +
                     "will probably go to jail, so if it gets dangerous, feel free to leave.",
                 button: [

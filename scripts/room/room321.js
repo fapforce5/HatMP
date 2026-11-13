@@ -656,7 +656,7 @@ room321.chat = function (chatID) {
         {
             chatID: 1,
             speaker: "janice",
-            text: "I know what you boys want! Free titties! " + sc.n("me") + " take my " +
+            text: "I know what you boys want! Free titties! ##me## take my " +
                 "bra off! Show the men my titties! ",
             button: [
                 { chatID: 2, text: "...", callback: "w1_1" }
@@ -899,7 +899,7 @@ room321.chat = function (chatID) {
         {
             chatID: 28,
             speaker: "janice",
-            text: "Come here " + sc.n("dog") + ". Time for your treat!",
+            text: "Come here ##dog##. Time for your treat!",
             button: [
                 { chatID: 29, text: "....", callback: "doggy3" }
             ]

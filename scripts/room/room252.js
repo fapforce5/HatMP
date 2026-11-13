@@ -495,7 +495,7 @@ room252.chat = function (chatID) {
             case 4:
                 if (sc.getMissionTask("envy", "gf", 0).complete) {
                     txt = "*Ugh* you. Wasted perfectly good hypno on you. I'm no longer hungry. Next time send one of the hot girls over.  "
-                    btn = [{ chatID: 9, text: "Sure " + sc.n("spanky") + ". ", callback: "250_beaver" }];
+                    btn = [{ chatID: 9, text: "Sure ##spanky##. ", callback: "250_beaver" }];
                 }
                 else if (sc.getMissionTask("spanky", "shop", 1).notStarted && sissy.st[21].ach) {
                     sc.completeMissionTask("spanky", "shop", 1);
@@ -902,7 +902,7 @@ room252.chat = function (chatID) {
             {
                 chatID: 4,
                 speaker: "jeffery",
-                text: sc.n("me") + " what are you doing! Report to my office.",
+                text: "##me## what are you doing! Report to my office.",
                 button: [
                     { chatID: 5, text: "Coming", callback: "cock2" }
                 ]
@@ -948,7 +948,7 @@ room252.chat = function (chatID) {
             {
                 chatID: 9,
                 speaker: "thinking",
-                text: "Such a baby. Excuse me if I didn't want " + sc.n("envy") + " to " +
+                text: "Such a baby. Excuse me if I didn't want ##envy## to " +
                     "be a mindless zombie! ",
                 button: [
                     { chatID: -1, text: "...", callback: "notip" },
@@ -959,8 +959,8 @@ room252.chat = function (chatID) {
                 speaker: "holly",
                 text: "Hey new girl, what's your name?",
                 button: [
-                    { chatID: 47, text: sc.n("me") + "-y ... shit that's not my name, I'm " + sc.n("me") + ", and I'm really a boy.", callback: "" },
-                    { chatID: 47, text: "I'm " + sc.n("me") + ".", callback: "" },
+                    { chatID: 47, text: "##me##-y ... shit that's not my name, I'm ##me##, and I'm really a boy.", callback: "" },
+                    { chatID: 47, text: "I'm ##me##.", callback: "" },
                     { chatID: 11, text: "My name is waitress-fucker. Want me to show you how I got my name?", callback: "hollymad" },
                     { chatID: 11, text: "I'm not a chick, and my cock is huge, we should go somewhere private", callback: "hollymad" }
                 ]
@@ -976,7 +976,7 @@ room252.chat = function (chatID) {
             {
                 chatID: 12,
                 speaker: "holly",
-                text: "You've been here long enough. What do you think of " + sc.n("jeffery") + "?",
+                text: "You've been here long enough. What do you think of ##jeffery##?",
                 button: [
                     { chatID: 11, text: "He's such a great guy! You're lucky to have him as a boss. ", callback: "hollymad" },
                     { chatID: 11, text: "I think he only hires whores.", callback: "hollymad" },
@@ -986,7 +986,7 @@ room252.chat = function (chatID) {
             {
                 chatID: 13,
                 speaker: "holly",
-                text: "I know, he keeps insisting we change in front of him! I thought " + sc.n("dolly") + " was going to punch him! " +
+                text: "I know, he keeps insisting we change in front of him! I thought ##dolly## was going to punch him! " +
                     "Of course none of us ever change with him in the room, you would have to be a total spineless slut to do that!",
                 button: [
                     { chatID: 14, text: "He made me change in front of him.", callback: "" }
@@ -1015,7 +1015,7 @@ room252.chat = function (chatID) {
             {
                 chatID: 16,
                 speaker: "holly",
-                text: "Hey honey! You still working here? " + sc.n("jeffery") + " still hasn't scared you away?",
+                text: "Hey honey! You still working here? ##jeffery## still hasn't scared you away?",
                 button: [
                     { chatID: 17, text: "He's the worst, such a pervert", callback: "" },
                 ]
@@ -1046,7 +1046,7 @@ room252.chat = function (chatID) {
                 chatID: 19,
                 speaker: "holly",
                 text: "I can tell girlfriend! Any guy willing to work here has some dirty fantasies! I was kinda worried at first about you, " +
-                    "but after talking to " + sc.n("molly") + " and " + sc.n("dolly") + " you feel like one of us! ",
+                    "but after talking to ##molly## and ##dolly## you feel like one of us! ",
                 button: [
                     { chatID: -1, text: "Awww thank you! I like working with you too!", callback: "success" }
                 ]
@@ -1072,8 +1072,8 @@ room252.chat = function (chatID) {
             {
                 chatID: 22,
                 speaker: "dolly",
-                text: "I was just chattin' with " + sc.n("holly") + " and she was sayin' you was " +
-                    "the boy that changed in front of " + sc.n("jeffery") + " here the other day. " +
+                text: "I was just chattin' with ##holly## and she was sayin' you was " +
+                    "the boy that changed in front of ##jeffery## here the other day. " +
                     "Bless my heart I wouldn't have the gumption to show my face to the world if " +
                     "that happened to me!",
                 button: [
@@ -1104,7 +1104,7 @@ room252.chat = function (chatID) {
                 chatID: 25,
                 speaker: "dolly",
                 text: "I'm glad to see you're still toughing it out sugar! They just don't pay enough here to cover rent! " +
-                    "That " + sc.n("jeffery") + " only cares about perving on pretty little things. He doesn't seem to care at all about " +
+                    "That ##jeffery## only cares about perving on pretty little things. He doesn't seem to care at all about " +
                     "us getting enough to get by.",
                 button: [
                     { chatID: 21, text: "Did you want to make a few extra bucks, I'll buy your panties?", callback: "dollymad" },
@@ -1183,7 +1183,7 @@ room252.chat = function (chatID) {
                 chatID: 33,
                 speaker: "molly",
                 text: "Ohhh I bet he would love that. If you feel him stick his finger in your butt-hole just let him. He's safe and his tips " +
-                    "are awesome! Not like " + sc.n("jeffery") + " at all! He offered me $10 for my panties! I told him my panties cost like " +
+                    "are awesome! Not like ##jeffery## at all! He offered me $10 for my panties! I told him my panties cost like " +
                     "$30 new, he was going to have to cough up like $50 for them. So I sold them to him, caught him sniffing them in his office. ",
                 button: [
                     { chatID: 34, text: "That's awesome! I bet your panties smell like sex!", callback: "" },
@@ -1223,7 +1223,7 @@ room252.chat = function (chatID) {
             {
                 chatID: 37,
                 speaker: "molly",
-                text: "Oh, hmmmmm.... Maybe after you've been working here a while me and " + sc.n("holly") + " and " + sc.n("dolly") +
+                text: "Oh, hmmmmm.... Maybe after you've been working here a while me and ##holly## and ##dolly##" +
                     " will show you some tricks. Until then I got to get back and 'accidently flash' one of my regulars",
                 button: [
                     { chatID: -1, text: "Ok, you keep it slutty!", callback: "success" }
@@ -1487,7 +1487,7 @@ room252.chat = function (chatID) {
             {
                 chatID: 66,
                 speaker: "holly",
-                text: "It's our reward for putting up with " + sc.n("jeffery") + " the pervert. ",
+                text: "It's our reward for putting up with ##jeffery## the pervert. ",
                 button: [
                     { chatID: 67, text: "...", callback: "" }
                 ]
@@ -1524,7 +1524,7 @@ room252.chat = function (chatID) {
                 text: "You don't need a dick to fuck me! I'll take anything up my bussy. " +
                     "Fists, strapons, feet, uhhhh, toys... what are we talking about?",
                 button: [
-                    { chatID: 71, text: "Oh " + sc.n("cecilia") + ".", callback: "" }
+                    { chatID: 71, text: "Oh ##cecilia##.", callback: "" }
                 ]
             },
             {

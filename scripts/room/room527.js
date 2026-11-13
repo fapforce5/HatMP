@@ -379,7 +379,7 @@ room527.chat = function (chatID) {
         {
             chatID: 6,
             speaker: "zoey",
-            text: sc.n("me") + " are you waiting in here so you can be someone's toilet? ",
+            text: "##me## are you waiting in here so you can be someone's toilet? ",
             button: [
                 { chatID: 8, text: "Uhhh yea", callback: "" },
                 { chatID: 7, text: "Wha. No. Gross", callback: "" }
@@ -422,7 +422,7 @@ room527.chat = function (chatID) {
             speaker: "zoey",
             text: "Hahaha. Fille dégoûtante. Don't drip any of that on my floor, there's enough gross things I have to clean up. ",
             button: [
-                { chatID: 12, text: "Lol ok " + sc.n("zoey") + ". ", callback: "" }
+                { chatID: 12, text: "Lol ok ##zoey##. ", callback: "" }
             ]
         },
         {

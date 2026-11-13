@@ -571,7 +571,7 @@ room800.chat = function (chatID) {
                 speaker: "ralphsmom",
                 text: carray[g.rand(0, carray.length)],
                 button: [
-                    { chatID: -1, text: "Thanks " + sc.n("ralphsmom"), callback: "choices" }
+                    { chatID: -1, text: "Thanks ##ralphsmom##", callback: "choices" }
                 ]
             };
         }
@@ -608,7 +608,7 @@ room800.chat = function (chatID) {
         {
             chatID: 0,
             speaker: "ralphsmom",
-            text: "Oh you must be Ralph's little friend, " + sc.n("me") + ". We've heard so much about you. He's inside if " +
+            text: "Oh you must be Ralph's little friend, ##me##. We've heard so much about you. He's inside if " +
                 "you want to play in his room. It's so good that he has friends to play with. ",
             button: [
                 { chatID: -1, text: "Thanks Ralph's mom!", callback: "reset" }
@@ -625,7 +625,7 @@ room800.chat = function (chatID) {
         {
             chatID: 2,
             speaker: "thinking",
-            text: sc.n("ralph") + "'s parents don't like visitors at night. ",
+            text: "##ralph##'s parents don't like visitors at night. ",
             button: [
                 { chatID: -1, text: "...", callback: "" }
             ]
@@ -819,7 +819,7 @@ room800.chat = function (chatID) {
         {
             chatID: 24,
             speaker: "thinking",
-            text: "Oh no. They're all gone. I failed " + sc.n("ralph") + "! Sorry I wasn't strong enough dear friend. I'll find a way to get you " +
+            text: "Oh no. They're all gone. I failed ##ralph##! Sorry I wasn't strong enough dear friend. I'll find a way to get you " +
                 "free. ",
             button: [
                 { chatID: -1, text: "...", callback: "case6_badEnd_lostFight" }
@@ -846,7 +846,7 @@ room800.chat = function (chatID) {
         {
             chatID: 27,
             speaker: "me",
-            text: "Hi " + sc.n("ralph") + "'s parent. I found him like this. I think he fell and knocked " +
+            text: "Hi ##ralph##'s parent. I found him like this. I think he fell and knocked " +
                 "himself out. ",
             button: [
                 { chatID: 28, text: "...", callback: "" }
@@ -855,7 +855,7 @@ room800.chat = function (chatID) {
         {
             chatID: 28,
             speaker: "ralphsmom",
-            text: "Oh wow. Uhhh... Honey, take him from " + sc.n("me") + ". Put him on the couch. We'll take " +
+            text: "Oh wow. Uhhh... Honey, take him from ##me##. Put him on the couch. We'll take " +
                 "it from here. ",
             button: [
                 { chatID: -1, text: "Get out of here! ", callback: "case6_6GoodEnd_complete" }
@@ -864,7 +864,7 @@ room800.chat = function (chatID) {
         {
             chatID: 29,
             speaker: "ralphsmom",
-            text: "Oh you. " + sc.n("ralph") + "'s inside. Now you two stay out of trouble " +
+            text: "Oh you. ##ralph##'s inside. Now you two stay out of trouble " +
                 "I know how hard the world is on your girls like yourselves. ",
             button: [
                 { chatID: -1, text: "ok", callback: "choices" }
@@ -874,7 +874,7 @@ room800.chat = function (chatID) {
             chatID: 30,
             speaker: "ralphsmom",
             text: "oh! oh my. Did you just swat my apple? I'm sure you didn't mean to. " +
-                sc.n("ralph") + "'s upstairs in his room again. ",
+                "##ralph##'s upstairs in his room again. ",
             button: [
                 { chatID: -1, text: "ok", callback: "choices" }
             ]
@@ -892,7 +892,7 @@ room800.chat = function (chatID) {
             speaker: "ralphsmom",
             text: "Oh no. You're one of those sissies aren't you. If you're going to show your caged " +
                 "penis to a girl, I hope you are extremely good at licking her fun bean. hahaha. " +
-                "I guess it makes sense that my little " + sc.n("ralph") + " would " +
+                "I guess it makes sense that my little ##ralph## would " +
                 "have a sissy friend. He's a bit of a sissy too, but I'm sure you already know that. ",
             button: [
                 { chatID: -1, text: "MMMhmmmm", callback: "reset" }
@@ -921,7 +921,7 @@ room800.chat = function (chatID) {
             text: "Oh honey. Look at the tiny little penis. You poor thing. I do hope " +
                 "you are good giving the lotus a kiss because " +
                 "no girl's going to want to have that inside her. You can do what " +
-                sc.n("ralph") + " does and just be a sissy. It's really not all that bad. " +
+                "##ralph## does and just be a sissy. It's really not all that bad. " +
                 "It'll be hard at first, but practice putting a joy stick in your tushie and in no " +
                 "time you'll find your real self. I know you can do it! ",
             button: [
@@ -1019,7 +1019,7 @@ room800.chat = function (chatID) {
             chatID: 46,
             speaker: "ralphsmom",
             text: "Hehehe. See I told you I was good at using my hands. I've got your victory splash all over " +
-                "my honey pot. Gotta go change. I hope " + sc.n("ralph") + " doesn't see me going " +
+                "my honey pot. Gotta go change. I hope ##ralph## doesn't see me going " +
                 "to my room with your splash all over me. ",
             button: [
                 { chatID: -1, text: "*huff* so good", callback: "cockgrabcum" }
@@ -1101,7 +1101,7 @@ room800.chat = function (chatID) {
             chatID: 55,
             speaker: "ralphsmom",
             text: "I'm so happy you've decided to come back. My husband and I were talking and we agreed to " +
-                "speak to you together. Once he gets back we'll talk. You can play with " + sc.n("ralph") + 
+                "speak to you together. Once he gets back we'll talk. You can play with ##ralph##" + 
                 " when he's out playing. ",
             button: [
                 { chatID: -1, text: "ok. I'll come back when your husband's home. ", callback: "leave" }
@@ -1126,7 +1126,7 @@ room800.chat = function (chatID) {
         {
             chatID: 58,
             speaker: "thinking",
-            text: "With " + sc.n("ralph") + " gone, there isn't a reason to go to his house anymore. 😢",
+            text: "With ##ralph## gone, there isn't a reason to go to his house anymore. 😢",
             button: [
                 { chatID: -1, text: "....", callback: "leave" }
             ]

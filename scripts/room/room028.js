@@ -1053,7 +1053,7 @@ room28.chat = function (chatID) {
                 speaker: "thinking",
                 text: "Holy fuck that was hot. Her wet slippery tongue twisting around my mouth " +
                     "while she played with my dick. Fuck!! This is so wrong! I really " +
-                    "shouldn't keep pushing it with my " + sc.n("landlord") + ". What would people " +
+                    "shouldn't keep pushing it with my ##landlord##. What would people " +
                     "think? I should stop. I'm taking advantage of her just so I can nut, but I don't " +
                     "know if I can stop. I need her. I need to be inside her.",
                 button: [
@@ -1185,7 +1185,7 @@ room28.chat = function (chatID) {
             {
                 chatID: 29,
                 speaker: "thinking",
-                text: "I need to make sure I feed " + sc.n("dog") + " tomorrow. ",
+                text: "I need to make sure I feed ##dog## tomorrow. ",
                 button: [
                     { chatID: -1, text: "...", callback: "endDream" }
                 ]

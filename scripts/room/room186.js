@@ -110,8 +110,8 @@ room186.chat = function (chatID) {
         {
             chatID: 0,
             speaker: "black",
-            text: "Hey! It's so good to see you outside of class. You know " + sc.n("martha") +
-                " keeps me so busy disciplining " + sc.n("!sanaria") + ". She is a wild one, " +
+            text: "Hey! It's so good to see you outside of class. You know ##martha##" +
+                " keeps me so busy disciplining ##!sanaria##. She is a wild one, " +
                 "but her screams are fulfilling. So what have you been up to? ",
             button: [
                 { chatID: 1, text: "Oh, you know, mostly butt stuff. ", callback: "" }
@@ -120,7 +120,7 @@ room186.chat = function (chatID) {
         {
             chatID: 1,
             speaker: "black",
-            text: "That's my girl! You know, speaking of butt stuff, " + sc.n("cecilia") +
+            text: "That's my girl! You know, speaking of butt stuff, ##cecilia##" +
                 " and I do the talent show on the weekends. We would love to have a third for " +
                 "our act and you would be perfect. ",
             button: [

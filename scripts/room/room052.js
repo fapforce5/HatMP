@@ -293,7 +293,7 @@ room52.chat = function (chatID) {
         {
             chatID: 2,
             speaker: "tiffany",
-            text: sc.n("me") + "! I thought we told you no more boys clothes! ",
+            text: "##me##! I thought we told you no more boys clothes! ",
             button: [
                 { chatID: 3, text: "wha", callback: "" }
             ]

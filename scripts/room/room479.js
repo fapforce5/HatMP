@@ -585,7 +585,7 @@ room479.chat = function (chatID) {
             chatID: 8,
             speaker: "random",
             text: "When they found her with her aborted fetus they tied her to a tree in the swamps to die of exposure " +
-                "or dehydration while the mosquitoes fed on her. Luckily the " + sc.n("queen") + " found her and saved her " +
+                "or dehydration while the mosquitoes fed on her. Luckily the ##queen## found her and saved her " +
                 "from death. Unable to talk and tired from the years of abuse she was on the edge of ending her own life. " +
                 "That's when I found her brought her some soup. ",
             button: [
@@ -950,7 +950,7 @@ room479.chat = function (chatID) {
         {
             chatID: 50,
             speaker: "ff",
-            text: "Well well well. " + sc.n("!ledja") + ", you brought someone to replace you. This " +
+            text: "Well well well. ##!ledja##, you brought someone to replace you. This " +
                 "replacement will do nicely. Per our agreement you're free to go. Remember, one word to " +
                 "anyone and you'll be back in the dungeons of the cult. Now scat! ",
             button: [
@@ -969,9 +969,9 @@ room479.chat = function (chatID) {
         {
             chatID: 52,
             speaker: "ff",
-            text: "I'm " + sc.n("ff") + " and my friends and I now own your ass. You see, for quite some " +
+            text: "I'm ##ff## and my friends and I now own your ass. You see, for quite some " +
                 "time we've known about this little hole filled with run away sissies. The only reason you " +
-                "all are still here is because they haven't told " + sc.n("ubel") + " about this place. If " +
+                "all are still here is because they haven't told ##ubel## about this place. If " +
                 "he knew the entire cult would come down on you and all your sissy friends. And it would be bad. " +
                 "Really bad. ",
             button: [
@@ -1092,7 +1092,7 @@ room479.chat = function (chatID) {
             speaker: "ff",
             text: "You did good for your first day. We took it easy on you. Really easy. I'll be back " +
                 "tomorrow night with more friends. Be sure to be here. You know the last girl, " +
-                sc.n("!ledja") + ", served our cocks for over a year before she gave you up. How many " +
+                "##!ledja##, served our cocks for over a year before she gave you up. How many " +
                 "years are you going to be our little cock slave? ",
             button: [
                 { chatID: 67, text: "ugh....", callback: "ledge12" }
@@ -1148,14 +1148,14 @@ room479.chat = function (chatID) {
         {
             chatID: 72,
             speaker: "queen",
-            text: sc.n("!jenna") + " told me everything on the way down here. This is most troubling. " +
+            text: "##!jenna## told me everything on the way down here. This is most troubling. " +
                 "You really can't stay here. I don't trust them not to try something drastic that you " +
-                "won't be able to handle. " + sc.n("me") + " follow me back upstairs. " + sc.n("!jenna") +
+                "won't be able to handle. ##me## follow me back upstairs. ##!jenna##" +
                 " you'll have to take " + gender.pronoun("her") + " place. Stay strong, you'll only be " +
                 "stuck here until we can take care of this problem. Just remember to lube up before they come, " +
                 "an unlubed hole can be quite painful. ",
             button: [
-                { chatID: -1, text: "[Follow the " + sc.n("queen") + " upstairs]", callback: "ledge_end" },
+                { chatID: -1, text: "[Follow the ##queen## upstairs]", callback: "ledge_end" },
             ]
         },
     ];

@@ -186,26 +186,26 @@ room17.chat = function (chatID) {
         {
             chatID: 3,
             speaker: "me",
-            text: "huh.... I guess I'll take some of my " + sc.n("landlord") + "'s lube. It may come in handy. I'll put it in my nightstand.",
+            text: "huh.... I guess I'll take some of my ##landlord##'s lube. It may come in handy. I'll put it in my nightstand.",
             button: [{ chatID: -1, text: "Close", callback: "killLube" }]
         },
         {
             chatID: 4,
             speaker: "me",
-            text: "Eww... It's bad enough I'm face to face with my " + sc.n("landlord") + "'s dildo, but there's no way I'm touching that thing. " +
-                "She'll blame it on " + sc.n("eva") + ". Find out it isn't her, then come after me.",
+            text: "Eww... It's bad enough I'm face to face with my ##landlord##'s dildo, but there's no way I'm touching that thing. " +
+                "She'll blame it on ##eva##. Find out it isn't her, then come after me.",
             button: []
         },
         {
             chatID: 5,
             speaker: "me",
-            text: "Those are my " + sc.n("landlord") + "'s shoes... Not sure what I would do with them...",
+            text: "Those are my ##landlord##'s shoes... Not sure what I would do with them...",
             button: []
         },
         {
             chatID: 6,
             speaker: "me",
-            text: "I would look so sexy in those, but my " + sc.n("landlord") + "'s feet are too small and I'm not cutting off my toes to be fabulous.",
+            text: "I would look so sexy in those, but my ##landlord##'s feet are too small and I'm not cutting off my toes to be fabulous.",
             button: []
         },
         {
@@ -217,7 +217,7 @@ room17.chat = function (chatID) {
         {
             chatID: 8,
             speaker: "thinking",
-            text: "You found your " + sc.n("landlord") + "'s panties.",
+            text: "You found your ##landlord##'s panties.",
             button: [
                 { chatID: -1, text: "Stuff them in your pocket.", callback: "pantiesTake" },
                 { chatID: -1, text: "Put them back.", callback: "pantiesKill" }

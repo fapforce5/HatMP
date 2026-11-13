@@ -57,7 +57,7 @@ room41.chat = function (chatID) {
         {
             chatID: 2,
             speaker: "thinking",
-            text: "It's closed on the weekend, 'cause he's at home fucking my " + sc.n("landlord") + ".",
+            text: "It's closed on the weekend, 'cause he's at home fucking my ##landlord##.",
             button: [
                 { chatID: -1, text: "...", callback: "" },
             ]

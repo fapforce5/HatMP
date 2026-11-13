@@ -708,7 +708,7 @@ room226.chat = function (chatID) {
         {
             chatID: 0,
             speaker: "me",
-            text: "Made it, now to get " + sc.n("missy") + "'s red box.",
+            text: "Made it, now to get ##missy##'s red box.",
             button: [
                 { chatID: -1, text: "..look for the red box", callback: "" }
             ]
@@ -716,9 +716,9 @@ room226.chat = function (chatID) {
         {
             chatID: 1,
             speaker: "me",
-            text: "Awesome! Now to return it to " + sc.n("missy") + ".",
+            text: "Awesome! Now to return it to ##missy##.",
             button: [
-                { chatID: -1, text: "Return box to " + sc.n("missy") + ".", callback: "" }
+                { chatID: -1, text: "Return box to ##missy##.", callback: "" }
             ]
         },
         {

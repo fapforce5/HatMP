@@ -123,7 +123,7 @@ room482.chat = function (chatID) {
             chatID: 0,
             speaker: "!chris",
             text: "Oh my god! So happy you made it out! That place went from amazing to the worst days " +
-                "of our lives! Thank god for the " + sc.n("queen") + "! ",
+                "of our lives! Thank god for the ##queen##! ",
             button: [
                 { chatID: 1, text: "So what happened?", callback: "" }
             ]
@@ -131,7 +131,7 @@ room482.chat = function (chatID) {
         {
             chatID: 1,
             speaker: "!timothy",
-            text: "Yeah. I was tied up and dumped in the swamp. Left to die, but " + sc.n("!jenna") + 
+            text: "Yeah. I was tied up and dumped in the swamp. Left to die, but ##!jenna##" + 
                 " scooped me up. I'm not sure how she knew where I was, but she did. She helped me back " +
                 "here bandaged me up, and oh my god. She so saved my life. ",
             button: [
@@ -196,7 +196,7 @@ room482.chat = function (chatID) {
         {
             chatID: 8,
             speaker: "!chris",
-            text: "Yeah. We just have to wait a bit for the next ride out of here. " + sc.n("!jenna") +
+            text: "Yeah. We just have to wait a bit for the next ride out of here. ##!jenna##" +
                 " has a secret way to get out of town and get new identities for us. But she said it " +
                 "takes time. Once she's ready we're out of here! So excited! ",
             button: [
