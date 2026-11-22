@@ -1082,7 +1082,7 @@ room324.chat = function (chatID) {
         {
             chatID: 63,
             speaker: "janice",
-            text: "Oh hi ##eva##. Your " + g.makeSingular(sc.n("el")) + "'s my doggy " +
+            text: "Oh hi ##eva##. Your ##el:s##'s my doggy " +
                 "now. She's been a bad girl, but she does deserve her walks. ",
             button: [
                 { chatID: 64, text: "ugh", callback: "" },

@@ -303,11 +303,11 @@ room40.chat = function (chatID) {
             {
                 chatID: 14,
                 speaker: "tom",
-                text: "Wow, small world. So your " + g.makeSingular(sc.n("el")) + " is " +
+                text: "Wow, small world. So your ##el:s## is " +
                     "##lola##? She was in my biology class last year. Haven't " +
                     "seen her since. It's a big campus.",
                 button: [
-                    { chatID: 15, text: "Oh yeah. She's my " + g.makeSingular(sc.n("el")) + ". ", callback: "" }
+                    { chatID: 15, text: "Oh yeah. She's my ##el:s##. ", callback: "" }
                 ]
             },
             {

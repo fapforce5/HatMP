@@ -389,7 +389,7 @@ invoker.registerRoom(221, room221);
 
 room221.chat = function (chatID) {
     if (chatID === 999) {
-        var cecilia = sc.n("cecilia");
+        var cecilia = "##cecilia##";
         var chatLine = [
             "OMG I'm so bored! ",
             "I can't just sit here all day! ",

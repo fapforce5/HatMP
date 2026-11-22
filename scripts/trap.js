@@ -734,7 +734,7 @@ trap.ff = function () {
                 sc.completeMissionTask("ff", "forest", 1);
                 chat(72, 1005);
                 sc.modLevel("ff", 50, 10);
-                sc.modSecret("ff");
+                sc.modSecret("ff", 100);
                 break;
             case 2:
                 sc.completeMissionTask("ff", "forest", 2);

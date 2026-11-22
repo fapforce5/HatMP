@@ -36,7 +36,10 @@ room905.main = function () {
 room905.btnclick = function (name) {
     switch (name) {
         case "lib":
-            if (inv.has("studentid")) {
+            if (missy.getenvelope("librarian").active) {
+                chat(24, 905);
+            }
+            else if (inv.has("studentid")) {
                 chat(2, 905);
             }
             else {
@@ -63,7 +66,16 @@ room905.chatcatch = function (callback) {
         case "e13":
         case "e14":
         case "e15":
+        case "inside":
             nav.bg("905_library/" + callback + ".jpg");
+            break;
+        case "inside":
+            nav.kill();
+            nav.bg("905_library/" + callback + ".jpg");
+            break;
+        case "book":
+        case "book1":
+            nav.bg("905_library/" + callback + ".webp");
             break;
         case "e4":
             cl.nude();
@@ -95,6 +107,21 @@ room905.chatcatch = function (callback) {
             }
             else
                 chat(3, 905);
+            break;
+        case "inside1":
+            nav.kill();
+            nav.bg("905_library/inside.jpg");
+            if (missy.getenvelope("librarian").hasKey) {
+                nav.bg("905_library/book1.webp");
+                chat(29, 905);
+            }
+            else {
+                nav.bg("905_library/book.webp");
+            }
+            missy.setenvelope("librarian");
+            break;
+        case "leave":
+            char.room(900);
             break;
         default:
             break;
@@ -296,6 +323,71 @@ room905.chat = function (chatID) {
             text: "I've told my friends all about your perverted ways. Even how you like to play doggy. ",
             button: [
                 { chatID: 7, text: "Huh?", callback: "e2" }
+            ]
+        },
+        {
+            chatID: 24,
+            speaker: "me",
+            text: "Excuse me, I’m looking into the C.U.M. cult. Have you seen anything strange on campus?",
+            button: [
+                { chatID: 25, text: "...", callback: "" }
+            ]
+        },
+        {
+            chatID: 25,
+            speaker: "librarian",
+            text: "Shhh! This is a library. The only cult around here is the one that never returns their books on time.",
+            button: [
+                { chatID: 26, text: "[Push a little harder]", callback: "" },
+                { chatID: -1, text: "[Leave it alone]", callback: "" },
+            ]
+        },
+        {
+            chatID: 26,
+            speaker: "librarian",
+            text: "Hmph. Well, books are going missing. The same one, every single week. Checked out, returned sticky, checked out again.",
+            button: [
+                { chatID: 26, text: "Which book?", callback: "" },
+            ]
+        },
+        {
+            chatID: 26,
+            speaker: "librarian",
+            text: "Fertility Rites of the Ancient Phallus.Disgusting. Pages glued together.I had to wear gloves to reshelve it. ",
+            button: [
+                { chatID: 27, text: "Where is it?", callback: "" },
+            ]
+        },
+        {
+            chatID: 27,
+            speaker: "librarian",
+            text: "On the shelf, row 17, shelf 7. Can't miss it. ",
+            button: [
+                { chatID: 28, text: "Thanks! [Go look for that book!]", callback: "inside" },
+            ]
+        },
+        {
+            chatID: 28,
+            speaker: "thinking",
+            text: "Now to find that book. There maybe a clue in it!",
+            button: [
+                { chatID: -1, text: "[Go look for that book!]", callback: "inside1" },
+            ]
+        },
+        {
+            chatID: 29,
+            speaker: "thinking",
+            text: "Oh! Is that the code to the gate 1-2-3-4-5! Sweet! I can now go back to ##p## and let her know! Also gross. Sick bastard!",
+            button: [
+                { chatID: -1, text: "Go tell ##p## you have the code", callback: "leave" },
+            ]
+        },
+        {
+            chatID: 30,
+            speaker: "thinking",
+            text: "Gross. I just discovered a book coated in cum. On to the next one. ",
+            button: [
+                { chatID: -1, text: "[Continue down the list]", callback: "leave" },
             ]
         },
     ];

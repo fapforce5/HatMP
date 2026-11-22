@@ -2244,7 +2244,7 @@ room14.chat = function (chatID) {
                 chatID: 104,
                 speaker: "landlord",
                 text: "Sorry. I'm so not in the mood anymore. I'm sorry you heard that, I didn't " +
-                    "expect that from her. Your " + g.makeSingular(sc.n("eva")) + " really has " +
+                    "expect that from her. Your ##eva:s## really has " +
                     "a lot to learn about life. Too bad she's not more like ##lola##" + 
                     ". My job as her ##landlord## would be much easier. Now give me a " +
                     "kiss before you go. ",

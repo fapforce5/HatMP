@@ -30,7 +30,7 @@ room526.main = function () {
             });
         }
     }
-    else {
+    else if(cl.c.cock !== 5) {
         if (!daily.get("orchid")) {
             btnList.push({
                 "type": "btn",

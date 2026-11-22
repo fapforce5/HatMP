@@ -269,6 +269,7 @@ saves.snapshot = function () {
     var data = menu.save(" ", false);
     var meta = saves.buildMeta(g.saveState, saves.currentRoomName(), saves.captureScene());
     try { meta.storyPct = sc.mainStory.percent(); meta.story = sc.mainStory.shortText(); } catch (err) { }
+    meta.edited = gv.get("iFuckedItUp") || 0;
     return { data: data, meta: meta };
 };
 
@@ -667,6 +668,8 @@ saves.buildCard = function (key, meta, newestKey) {
         card.addClass("sv-card-newest");
         head.append('<span class="sv-badge">NEW</span>');
     }
+    if (meta.edited > 0)
+        head.append($('<span class="sv-badge sv-badge-edited">EDITED</span>').attr('title', "Changed with the save editor " + meta.edited + (meta.edited === 1 ? " time" : " times")));
     card.append(saves.buildThumb(meta));
 
     var info = $('<div class="sv-card-info"></div>');
@@ -683,6 +686,12 @@ saves.buildCard = function (key, meta, newestKey) {
         e.stopPropagation();
         saves.exportSlot(key);
     }));
+    if (!incompatible) {
+        tools.append($('<span class="sv-tool" title="Edit Save">Edit</span>').on('click', function (e) {
+            e.stopPropagation();
+            saves.editSave.open(key, label);
+        }));
+    }
     tools.append($('<span class="sv-tool sv-tool-del" title="Delete Save">Delete</span>').on('click', function (e) {
         e.stopPropagation();
         saves.confirm("delete", key, label);
@@ -819,7 +828,7 @@ saves.isScreenOpen = function () {
 };
 
 saves.handleKey = function (e) {
-    if (!saves.isScreenOpen() || $('[data-name="phone_save_verify"]').length > 0)
+    if (!saves.isScreenOpen() || $('[data-name="phone_save_verify"]').length > 0 || $('[data-name="phone_save_edit"]').length > 0)
         return;
     if (e.key === "ArrowLeft" || e.key === "PageUp")
         saves.setPage(saves.page - 1);
@@ -833,3 +842,568 @@ saves.handleKey = function (e) {
 
 saves.restorePage();
 document.addEventListener('keydown', saves.handleKey, true);
+
+//---------------------------------------------------------------------------
+// Save editor: full-screen editor for a stored slot.
+// "Safe" fields can't break story flow. "Risky" fields are valid to change but can
+// skip content or show missing art, so they sit behind a warning.
+// Story/mission/system data (missions, Missy cases, dailies, trophies, rooms...) is never shown.
+// Only fields the player actually changes are written. The original is copied to an
+// auto slot before the edited save is stored.
+//---------------------------------------------------------------------------
+
+saves.editSave = {};
+saves.editSave.fields = [];
+
+saves.editSave.safeStats = {
+    money: { label: "Money", min: 0, max: 999999999 },
+    maxenergy: { label: "Max Energy", min: 1, max: 9999 },
+    energy: { label: "Energy", min: 0, maxFrom: "maxenergy" },
+    arousal: { label: "Arousal", min: 0, max: 100 },
+    hormone: { label: "Hormone", min: 0, max: 100 },
+    autohormone: { label: "Auto take hormones" },
+    bladder: { label: "Bladder", min: 0, max: 9999 },
+    milk: { label: "Breast Milk", min: 0, max: 9999 },
+    rentOwed: { label: "Rent Owed", min: 0, max: 999999 },
+    encM: { label: "Encounters: Male" },
+    encF: { label: "Encounters: Female" },
+    encBeast: { label: "Encounters: Beast" },
+    encMyth: { label: "Encounters: Mythical" },
+    slimeMonsters: { label: "Slime Monsters" },
+    difficulty: { label: "Difficulty", min: 0, max: 9 },
+    fightspeed: { label: "Fight Speed (ms)", min: 100, max: 10000 },
+    clock24: { label: "Clock", options: ["12", "24"] }
+};
+
+saves.editSave.riskyStats = ["xdress", "chastityCounter", "dildoanal", "fingeranal", "dildooral", "receiveOralMale",
+    "receiveOralFemale", "receiveAnalMale", "receiveAnalFemale", "beer", "breastSelect", "assSelect", "lipSelect",
+    "analCum", "analCumDog", "analCumHorse", "analCumPig", "analCumPlant", "pussyCum", "masturbate_dick",
+    "masturbate_pussy", "masturbate_vibrator", "masturbate_oral", "masturbate_finger", "masturbate_dildo", "phum",
+    "transformation", "pronouns", "girlname", "castitycage", "chastityOverride", "painting", "mr_paint", "mr_poster_l",
+    "mr_poster_r", "mr_bed", "mr_rug", "lipstick", "eyeliner", "makeupx", "playWithPussy", "cheatMode", "panties"];
+
+saves.editSave.riskyBody = ["leg", "chest", "cock", "butthole", "lips", "hairLength", "hairStyle", "bodyhair", "lastHairCut",
+    "fingernail", "toenail", "lipstick", "tattoo", "buttplug", "chastity", "chastitylock", "necklace", "earring",
+    "bellyring", "nipplering", "nosering", "bracelets", "cumface", "cumchest", "cumbutt", "pissface", "pisschest", "pisspants"];
+
+saves.editSave.riskyWorn = ["shoes", "socks", "pants", "panties", "bra", "shirt", "dress", "swimsuit", "pj", "pjs", "accessories", "wig"];
+
+//cl.list (the clothing catalog) is only filled by cl.init() when a game starts or loads.
+//From the title screen it's empty, so build a copy with cl.init() and put everything back.
+saves.editSave.clothesCatalog = function () {
+    if (cl.list.length > 0)
+        return cl.list;
+    var keep = { c: cl.c, saveOutfit: cl.saveOutfit, list: cl.list };
+    cl.init();
+    var catalog = cl.list;
+    cl.c = keep.c;
+    cl.saveOutfit = keep.saveOutfit;
+    cl.list = keep.list;
+    return catalog;
+};
+
+saves.editSave.isOpen = function () {
+    return $('[data-name="phone_save_edit"]').length > 0;
+};
+
+saves.editSave.close = function () {
+    $('[data-name="phone_save_edit"]').remove();
+};
+
+saves.editSave.open = function (key, label) {
+    saves.getData(key).then(function (data) {
+        if (data === null)
+            return;
+        var state;
+        try {
+            state = JSON.parse(data);
+        }
+        catch (err) {
+            g.popUpNotice("This save can't be read, so it can't be edited.");
+            return;
+        }
+        saves.editSave.render(key, label, state, data);
+    });
+};
+
+saves.editSave.findBy = function (list, prop, value) {
+    if (!Array.isArray(list))
+        return null;
+    for (var i = 0; i < list.length; i++) {
+        if (list[i] && list[i][prop] === value)
+            return list[i];
+    }
+    return null;
+};
+
+//Adds a field. f: { section, group, label, type: num|bool|text|select, get(state), set(state, v), min, max, maxFrom, options, nullable, name }
+saves.editSave.add = function (f) {
+    f.id = saves.editSave.fields.length;
+    saves.editSave.fields.push(f);
+};
+
+//Picks the input type from the current value: number, true/false, or text (empty text = null).
+saves.editSave.addAuto = function (section, group, label, obj, prop, opts) {
+    var v = obj[prop];
+    var f = $.extend({
+        section: section,
+        group: group,
+        label: label,
+        get: function () { return obj[prop]; },
+        set: function (s, nv) { obj[prop] = nv; }
+    }, opts || {});
+    if (typeof v === "number")
+        f.type = "num";
+    else if (typeof v === "boolean")
+        f.type = "bool";
+    else if (typeof v === "string" || v === null) {
+        f.type = f.options ? "select" : "text";
+        f.nullable = true;
+    }
+    else
+        return;
+    if (f.type === "num" && f.min === undefined) {
+        f.min = -999999999;
+        f.max = 999999999;
+    }
+    saves.editSave.add(f);
+};
+
+saves.editSave.buildFields = function (state) {
+    var es = saves.editSave;
+    es.fields = [];
+    var gvList = state.gv && state.gv.gv ? state.gv.gv : [];
+    var savedLevels = state.gv && state.gv.levels ? state.gv.levels : [];
+    var cur = state.cl && state.cl.current ? state.cl.current : null;
+    var chars = state.sc && state.sc.char ? state.sc.char : [];
+
+    //------------------------------ SAFE ------------------------------
+    if (typeof state.savename === "string") {
+        es.add({
+            section: "safe", group: "General", label: "Save name", type: "text",
+            get: function () { return state.savename; },
+            set: function (s, v) { s.savename = v; }
+        });
+    }
+
+    $.each(sc.char, function (i, c) {
+        if (!c.setName && c.name !== "me")
+            return;
+        var saved = es.findBy(chars, "name", c.name);
+        if (saved === null || typeof saved.display !== "string")
+            return;
+        es.add({
+            section: "safe", group: "Names", label: c.name === "me" ? "Your name" : saved.display + " (" + c.name + ")",
+            type: "text", name: true,
+            get: function () { return saved.display; },
+            set: function (s, v) { saved.display = v; }
+        });
+    });
+
+    $.each(es.safeStats, function (n, cfg) {
+        var entry = es.findBy(gvList, "n", n);
+        if (entry !== null)
+            es.addAuto("safe", "Stats", cfg.label, entry, "t", { min: cfg.min, max: cfg.max, maxFrom: cfg.maxFrom, options: cfg.options, statName: n });
+    });
+
+    $.each(levels.st, function (i, v) {
+        if (v.display && v.n !== "cheer" && savedLevels[i] && typeof savedLevels[i].l === "number") {
+            es.add({
+                section: "safe", group: "Levels", label: v.d, type: "num", min: 0, max: v.cap,
+                get: function () { return savedLevels[i].l; },
+                set: function (s, nv) { savedLevels[i].l = nv; savedLevels[i].c = 0; }
+            });
+        }
+    });
+
+    if (cur !== null) {
+        var looks = [
+            { p: "makeup", label: "Makeup", options: cl.makeup.map(function (m) { return m.name; }) },
+            { p: "eyes", label: "Eye color", options: cl.eyes.map(function (m) { return m.name; }) },
+            { p: "hairColor", label: "Hair color", options: cl.hairColor.map(function (m) { return m.color; }) }
+        ];
+        $.each(looks, function (i, v) {
+            if (typeof cur[v.p] === "string") {
+                es.add({
+                    section: "safe", group: "Looks", label: v.label, type: "select", options: v.options,
+                    get: function () { return cur[v.p]; },
+                    set: function (s, nv) { cur[v.p] = nv; }
+                });
+            }
+        });
+    }
+
+    //------------------------------ RISKY ------------------------------
+    $.each(levels.st, function (i, v) {
+        if ((!v.display || v.n === "cheer") && savedLevels[i] && typeof savedLevels[i].l === "number") {
+            es.add({
+                section: "risky", group: "Hidden levels", label: v.d, type: "num", min: 0, max: v.cap,
+                get: function () { return savedLevels[i].l; },
+                set: function (s, nv) { savedLevels[i].l = nv; savedLevels[i].c = 0; }
+            });
+        }
+    });
+
+    $.each(chars, function (i, c) {
+        if (!c || typeof c.l !== "number" || ["mainstory", "me", "random", "thinking"].indexOf(c.name) > -1)
+            return;
+        var charLabel = (c.display || c.name).trim() || c.name;
+        es.add({
+            section: "risky", group: "Relationship levels", label: charLabel + " level", type: "num", min: 0, max: 999,
+            row: c.name, rowLabel: charLabel, columns: ["Level", "Secret"],
+            get: function () { return c.l; },
+            set: function (s, nv) { c.l = nv; }
+        });
+        //older saves store secret as null for characters that never had one; treat that as 0
+        if (typeof c.secret === "number" || c.secret === null || c.secret === undefined) {
+            es.add({
+                section: "risky", group: "Relationship levels", label: charLabel + " secret", type: "num", min: 0, max: 100,
+                row: c.name, rowLabel: charLabel,
+                get: function () { return typeof c.secret === "number" ? c.secret : 0; },
+                set: function (s, nv) { c.secret = nv; }
+            });
+        }
+    });
+
+    $.each(es.riskyStats, function (i, n) {
+        var entry = es.findBy(gvList, "n", n);
+        if (entry !== null)
+            es.addAuto("risky", "Counters and flags", n, entry, "t");
+    });
+
+    if (cur !== null) {
+        $.each(es.riskyBody, function (i, p) {
+            if (p in cur) {
+                var opts = {};
+                if (p === "hairLength") opts = { min: 0, max: 4 };
+                if (p === "hairStyle") opts = { options: cl.hairStyle.slice() };
+                es.addAuto("risky", "Body", p, cur, p, opts);
+            }
+        });
+        $.each(es.riskyWorn, function (i, p) {
+            if (p in cur)
+                es.addAuto("risky", "Worn clothes", p, cur, p);
+        });
+    }
+
+    //owned clothes: the save lists only owned {type, name}; the full catalog comes from cl.list
+    if (state.cl && Array.isArray(state.cl.list)) {
+        var ownedIndex = function (type, name) {
+            for (var k = 0; k < state.cl.list.length; k++) {
+                if (state.cl.list[k].type === type && state.cl.list[k].name === name)
+                    return k;
+            }
+            return -1;
+        };
+        $.each(es.clothesCatalog(), function (i, item) {
+            es.add({
+                section: "risky", group: "Owned clothes: " + item.type, label: (item.display || item.name) + " [" + item.name + "]", type: "bool",
+                get: function () { return ownedIndex(item.type, item.name) > -1; },
+                set: function (s, nv) {
+                    var at = ownedIndex(item.type, item.name);
+                    if (nv && at === -1)
+                        state.cl.list.push({ type: item.type, name: item.name });
+                    else if (!nv && at > -1)
+                        state.cl.list.splice(at, 1);
+                }
+            });
+        });
+    }
+
+    var invList = state.inv && state.inv.master ? state.inv.master : [];
+    $.each(inv.master, function (i, item) {
+        if (item.count === null)
+            return;
+        var saved = es.findBy(invList, "name", item.name);
+        if (saved !== null && typeof saved.count === "number")
+            es.add({
+                section: "risky", group: "Inventory", label: item.display, type: "num", min: 0, max: 9999,
+                get: function () { return saved.count; },
+                set: function (s, nv) { saved.count = nv; if (nv > 0) saved.entry = true; }
+            });
+    });
+
+    if (state.missy && Array.isArray(state.missy.st)) {
+        $.each(state.missy.st, function (i, v) {
+            if (typeof v === "number" && missy.st[i])
+                es.add({
+                    section: "risky", group: "Missy", label: missy.st[i].n, type: "num", min: -999999, max: 999999,
+                    get: function () { return state.missy.st[i]; },
+                    set: function (s, nv) { state.missy.st[i] = nv; }
+                });
+        });
+    }
+
+    if (state.gv && Array.isArray(state.gv.stats)) {
+        $.each(state.gv.stats, function (i, v) {
+            if (typeof v === "number" && stats.st[i])
+                es.add({
+                    section: "risky", group: "Activity counters", label: stats.st[i].t + ": " + stats.st[i].n, type: "num", min: 0, max: 999999,
+                    get: function () { return state.gv.stats[i]; },
+                    set: function (s, nv) { state.gv.stats[i] = nv; }
+                });
+        });
+    }
+};
+
+saves.editSave.inputFor = function (f) {
+    var v = f.get();
+    var orig, input;
+    if (f.type === "bool") {
+        orig = v ? "true" : "false";
+        input = $('<input type="checkbox" />').prop('checked', !!v);
+    }
+    else if (f.type === "select") {
+        orig = v === null ? "" : String(v);
+        input = $('<select></select>');
+        var opts = f.options.slice();
+        if (orig !== "" && opts.indexOf(orig) === -1)
+            opts.unshift(orig);
+        if (f.nullable)
+            input.append($('<option value=""></option>').text("(none)"));
+        $.each(opts, function (i, o) {
+            input.append($('<option></option>').attr('value', o).text(o));
+        });
+        input.val(orig);
+    }
+    else {
+        orig = v === null ? "" : String(v);
+        input = $('<input type="text" />').val(orig);
+    }
+    return input.attr('data-fid', f.id).attr('data-orig', orig);
+};
+
+saves.editSave.render = function (key, label, state, data) {
+    var es = saves.editSave;
+    es.close();
+    es.buildFields(state);
+
+    var panel = $('<div class="sv-edit" data-name="phone_save_edit"></div>');
+    panel.css('--r', g.ratio);
+
+    var intro = $('<div class="sv-edit-intro"></div>');
+    intro.append($('<div class="sv-edit-header"></div>').text("Edit your save"));
+    intro.append($('<div class="sv-edit-note"></div>').text("You're probably going to break the game somehow if you edit this, but here it is. " +
+        "It may not break when you load, but you can get stuck in a story or a mission if you do. " +
+        "I recommend not editing your main save, but here's the power to edit. " +
+        "If you edit something and break it, don't go complaining about it. I told you not to."));
+    panel.append(intro);
+
+    var top = $('<div class="sv-edit-top"></div>');
+    top.append($('<div class="sv-edit-title"></div>').text(label));
+    var filter = $('<input type="text" class="sv-edit-filter" placeholder="Search fields..." />');
+    top.append(filter);
+    panel.append(top);
+
+    var body = $('<div class="sv-edit-body"></div>');
+    var sections = {
+        safe: $('<div class="sv-edit-section" data-section="safe"></div>'),
+        risky: $('<div class="sv-edit-section sv-edit-risky" data-section="risky"></div>')
+    };
+    var groups = {};
+    var rows = {};
+    $.each(es.fields, function (i, f) {
+        var gKey = f.section + "|" + f.group;
+        if (!groups[gKey]) {
+            groups[gKey] = $('<div class="sv-edit-group"></div>');
+            groups[gKey].append($('<div class="sv-edit-head"></div>').text(f.group));
+            var grid = $('<div class="sv-edit-grid"></div>');
+            //row fields (one line per item, several inputs) use a single column with column headers
+            if (f.row !== undefined) {
+                grid.addClass("sv-edit-rows");
+                var header = $('<div class="sv-edit-field sv-edit-colhead"><span>Name</span></div>');
+                $.each(f.columns || [], function (j, col) {
+                    header.append($('<span class="sv-edit-col"></span>').text(col));
+                });
+                grid.append(header);
+            }
+            groups[gKey].append(grid);
+            sections[f.section].append(groups[gKey]);
+        }
+        if (f.row !== undefined) {
+            var rKey = gKey + "|" + f.row;
+            if (!rows[rKey]) {
+                rows[rKey] = $('<div class="sv-edit-field"></div>');
+                rows[rKey].append($('<span></span>').text(f.rowLabel));
+                groups[gKey].find('.sv-edit-grid').append(rows[rKey]);
+            }
+            rows[rKey].append($('<span class="sv-edit-col"></span>').append(es.inputFor(f)));
+            return;
+        }
+        var row = $('<label class="sv-edit-field"></label>');
+        row.append($('<span></span>').text(f.label));
+        row.append(es.inputFor(f));
+        groups[gKey].find('.sv-edit-grid').append(row);
+    });
+
+    body.append(sections.safe);
+    var riskyToggle = $('<div class="sv-edit-warn"></div>');
+    riskyToggle.append($('<div></div>').text("Risky fields: these can skip story content, unlock scenes early or show missing art. Only change them if you know what they do."));
+    var showBtn = $('<span class="sv-tab">Show risky fields</span>');
+    showBtn.on('click', function () {
+        sections.risky.toggle();
+        showBtn.text(sections.risky.is(':visible') ? "Hide risky fields" : "Show risky fields");
+    });
+    riskyToggle.append(showBtn);
+    body.append(riskyToggle);
+    sections.risky.hide();
+    body.append(sections.risky);
+    panel.append(body);
+
+    filter.on('input', function () {
+        var q = filter.val().trim().toLowerCase();
+        panel.find('.sv-edit-field:not(.sv-edit-colhead)').each(function () {
+            $(this).toggle(q === "" || $(this).find('span').first().text().toLowerCase().indexOf(q) > -1);
+        });
+        panel.find('.sv-edit-group').each(function () {
+            $(this).toggle($(this).find('.sv-edit-field:not(.sv-edit-colhead)').filter(function () { return this.style.display !== "none"; }).length > 0);
+        });
+        if (q !== "" && sections.risky.find('.sv-edit-field:not(.sv-edit-colhead)').filter(function () { return this.style.display !== "none"; }).length > 0) {
+            sections.risky.show();
+            showBtn.text("Hide risky fields");
+        }
+    });
+
+    var error = $('<div class="sv-edit-error"></div>');
+    var buttons = $('<div class="sv-edit-buttons"></div>');
+    buttons.append(error);
+    buttons.append($('<span class="sv-tab">Cancel</span>').on('click', es.close));
+    buttons.append($('<span class="sv-tab sv-tab-current">Save changes</span>').on('click', function () {
+        es.apply(key, state, data, panel, error);
+    }));
+    panel.append(buttons);
+
+    //keep typing out of the game's keyboard shortcuts
+    panel.on('keydown keyup keypress', function (e) {
+        e.stopPropagation();
+        if (e.type === "keydown" && e.key === "Escape")
+            es.close();
+    });
+
+    $('body').append(panel);
+};
+
+//Reads an input back as the value it would save: number, boolean, string or null.
+saves.editSave.readInput = function (f, el) {
+    if (f.type === "bool")
+        return { raw: el.prop('checked') ? "true" : "false", value: el.prop('checked') };
+    var raw = String(el.val()).trim();
+    if (f.type === "num")
+        return { raw: raw, value: /^-?\d+$/.test(raw) ? Number(raw) : NaN };
+    return { raw: raw, value: (raw === "" && f.nullable) ? null : raw };
+};
+
+saves.editSave.apply = function (key, state, data, panel, error) {
+    var es = saves.editSave;
+    var errors = [];
+    var changes = [];
+
+    panel.find('[data-fid]').each(function () {
+        var el = $(this);
+        var f = es.fields[Number(el.attr('data-fid'))];
+        var r = es.readInput(f, el);
+        if (r.raw !== el.attr('data-orig'))
+            changes.push({ f: f, raw: r.raw, value: r.value });
+    });
+
+    if (changes.length === 0) {
+        es.close();
+        return;
+    }
+
+    //energy is checked against max energy, which may be changing in the same edit
+    var newValueOf = function (statName) {
+        for (var i = 0; i < changes.length; i++) {
+            if (changes[i].f.statName === statName)
+                return changes[i].value;
+        }
+        for (var j = 0; j < es.fields.length; j++) {
+            if (es.fields[j].statName === statName)
+                return es.fields[j].get();
+        }
+        return null;
+    };
+
+    $.each(changes, function (i, c) {
+        var f = c.f;
+        if (f.type === "num") {
+            if (isNaN(c.value)) {
+                errors.push(f.label + ": whole numbers only");
+                return;
+            }
+            var max = f.maxFrom ? newValueOf(f.maxFrom) : f.max;
+            if (c.value < f.min || c.value > max)
+                errors.push(f.label + ": must be between " + f.min + " and " + max);
+        }
+        else if (f.type === "text") {
+            if (f.name && (c.raw.length < 1 || c.raw.length > 20 || /[<>#"\\]/.test(c.raw)))
+                errors.push(f.label + ": 1 to 20 characters, no < > # \" or \\");
+            else if (!f.name && (c.raw.length > 60 || /[<>]/.test(c.raw)))
+                errors.push(f.label + ": up to 60 characters, no < or >");
+            else if (!f.nullable && c.raw === "")
+                errors.push(f.label + ": can't be empty");
+        }
+    });
+
+    if (errors.length > 0) {
+        error.html(errors.slice(0, 6).join("<br/>") + (errors.length > 6 ? "<br/>...and " + (errors.length - 6) + " more" : ""));
+        return;
+    }
+
+    $.each(changes, function (i, c) {
+        c.f.set(state, c.value);
+    });
+
+    //mark the save as edited; the gv value travels with every later save of this game
+    var marker = es.findBy(state.gv.gv, "n", "iFuckedItUp");
+    if (marker === null) {
+        marker = { n: "iFuckedItUp", t: 0 };
+        state.gv.gv.push(marker);
+    }
+    marker.t = (typeof marker.t === "number" ? marker.t : 0) + 1;
+
+    es.save(key, data, state);
+};
+
+//Copies the untouched save into the oldest auto slot (never the slot being edited), then writes the edit.
+saves.editSave.save = function (key, originalData, state) {
+    saves.getAllMeta().then(function (list) {
+        var meta = list[key];
+        var backupKey = null;
+        var oldest = null;
+        for (var i = 1; i <= saves.autoCount; i++) {
+            var autoKey = "auto-" + i;
+            if (autoKey === key)
+                continue;
+            if (!list[autoKey]) {
+                backupKey = autoKey;
+                break;
+            }
+            var dt = new Date(list[autoKey].saveDt).getTime();
+            if (oldest === null || dt < oldest) {
+                oldest = dt;
+                backupKey = autoKey;
+            }
+        }
+        var backupMeta = $.extend(true, {}, meta);
+        backupMeta.room = "Before edit: " + (meta.room || meta.savename);
+        backupMeta.saveDt = new Date().toISOString();
+
+        var newMeta = $.extend(true, {}, meta);
+        if (typeof state.savename === "string")
+            newMeta.savename = state.savename;
+        var marker = saves.editSave.findBy(state.gv.gv, "n", "iFuckedItUp");
+        newMeta.edited = marker ? marker.t : 1;
+
+        return saves.put(backupKey, backupMeta, originalData).then(function () {
+            return saves.put(key, newMeta, JSON.stringify(state));
+        }).then(function () {
+            saves.editSave.close();
+            g.popUpNotice("Save edited. The original was copied to " + saves.slotLabel(backupKey) + ".");
+            saves.renderScreen();
+        });
+    }).catch(function (err) {
+        console.error("Save edit failed:", err);
+        g.popUpNotice("Unable to save the edit.");
+    });
+};

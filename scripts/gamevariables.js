@@ -173,6 +173,7 @@ gv.init = function () {
         { n: "janiceRand", t: 0, q: "int" },
         { n: "janiceAnnoyance", t: 0, q: "hundred" },
         { n: "janiceRandDaily", t: "", q: "string" },
+        { n: "iFuckedItUp", t: 0, q: "int" }, //times this save was changed with the save editor (saves.editSave)
 
         { n: "486gamecounter", t: 0, q: "int" },
 
@@ -215,7 +216,7 @@ gv.init = function () {
         { n: "magfemboy", t: false, q: "bool" },
 
         //{ n: "jobConstWorkToday", t: 0, q: "int" },
-        //---------------------------------check not used------------------------------
+        //---------------------------------check not used---No---------------------------
         { n: "reddoorloc", t: 1, q: "int" },
         
         { n: "slimeMonsters", t: true, q: "bool" },
@@ -225,6 +226,7 @@ gv.init = function () {
         { n: "girlname", t: "Scarlett", q: "string" },
 
         { n: "jobConstGetRaise", t: false, q: "bool" },
+        { n: "iFuckedItUp", t: 0, q: "int" },
     ];
 
     //save by index

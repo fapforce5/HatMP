@@ -179,8 +179,8 @@ room588.chat = function (chatID) {
         {
             chatID: 5,
             speaker: "thinking",
-            text: "Holy shit, who's that fucking my " + g.makeSingular(sc.n("el")) + "? He's so " +
-                "dreamy. That's a real man! I mean, my " + g.makeSingular(sc.n("el")) + " needs " +
+            text: "Holy shit, who's that fucking my ##el:s##? He's so " +
+                "dreamy. That's a real man! I mean, my ##el:s## needs " +
                 "to make better choices with men. ",
             button: [
                 { chatID: -1, text: "...", callback: "leave" },

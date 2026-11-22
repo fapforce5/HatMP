@@ -4019,7 +4019,7 @@ room13.chat = function (chatID) {
             {
                 chatID: 210,
                 speaker: "thinking",
-                text: "I can't let ##chad## date my " + g.makeSingular(sc.n("el")) + "! She's such a nice girl " +
+                text: "I can't let ##chad## date my ##el:s##! She's such a nice girl " +
                     "she'll totally fall for his games. That asshole! I must think of something to make sure he doesn't " +
                     "use her and dump her. ",
                 button: [
@@ -4544,7 +4544,7 @@ room13.chat = function (chatID) {
                 text: "She's so cute when she's sleeping. I'm sure she won't mind if I just " +
                     "put my penis in her vagina for a little bit. Just to see how it feels. ",
                 button: [
-                    { chatID: -1, text: "[Carefully slide your penis into your sleeping " + g.makeSingular(sc.n("el")) + "]", callback: "" },
+                    { chatID: -1, text: "[Carefully slide your penis into your sleeping ##el:s##]", callback: "" },
                     { chatID: -1, text: "[Leave. Not worth getting caught]", callback: "leave" },
                 ]
             },
@@ -4707,7 +4707,7 @@ room13.chat = function (chatID) {
             {
                 chatID: 287,
                 speaker: "eva",
-                text: "Get railed by my " + g.makeSingular(sc.n("el")) + "'s perverted boyfriend? " +
+                text: "Get railed by my ##el:s##'s perverted boyfriend? " +
                     "Sure. He was right. He does have a giant hard cock and can go for hours. For you, " +
                     "##lola##, I'll get fucked. ", 
                 button: [

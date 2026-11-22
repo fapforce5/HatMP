@@ -490,7 +490,7 @@ room203.chat = function (chatID) {
         return {
             chatID: 800,
             speaker: "p",
-            text: sc.n(gv.get("cultpartner")) + " it is. I'll let them know when the time is right. Don't " +
+            text: "##" + gv.get("cultpartner") + "## it is. I'll let them know when the time is right. Don't " +
                 "worry about them getting there I have a way. Also don't tell them, I don't want to tip off the cult.",
             button: [
                 { chatID: 58, text: "Ok. I'm ready", callback: "p15" },

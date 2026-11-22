@@ -1719,7 +1719,7 @@ room10.chat = function (chatID) {
             {
                 chatID: 73,
                 speaker: "thinking",
-                text: "She's so wet. I can feel her pussy juice splash on my legs. My " + g.makeSingular(sc.n("el")) +
+                text: "She's so wet. I can feel her pussy juice splash on my legs. My ##el:s##" +
                     " is so hot and ready for dick. ",
                 button: [
                     { chatID: 74, text: "Finish off", callback: "lola_sleep5" },
@@ -1841,7 +1841,7 @@ room10.chat = function (chatID) {
                 chatID: 87,
                 speaker: "landlord",
                 text: "Listen here ##me##! You'll share this room and be nice to your " +
-                    g.makeSingular(sc.n("el")) + "! If you two can't get along I'll turn this room into my " +
+                    "##el:s##! If you two can't get along I'll turn this room into my " +
                     "new craft room and you two will live on the streets! Now be good! ",
                 button: [
                     { chatID: 88, text: "*hrumph*", callback: "" },
@@ -1859,7 +1859,7 @@ room10.chat = function (chatID) {
             {
                 chatID: 89,
                 speaker: "landlord",
-                text: "*sigh* ##me##, don't harass your " + g.makeSingular(sc.n("el")) + ". If I have to " +
+                text: "*sigh* ##me##, don't harass your ##el:s##. If I have to " +
                     "come up here again, you're out of here. DON'T interrupt " +
                     "my shows again! ",
                 button: [
@@ -1955,7 +1955,7 @@ room10.chat = function (chatID) {
             {
                 chatID: 100,
                 speaker: "!man",
-                text: "Oh. No worries. I'm going to fuck your " + g.makeSingular(sc.n("el")) + " up the ass then. Take care. ",
+                text: "Oh. No worries. I'm going to fuck your ##el:s## up the ass then. Take care. ",
                 button: [
                     { chatID: -1, text: "Yeah. You too?", callback: "reset" },
                 ]

@@ -1046,7 +1046,7 @@ sc.init = function () {
                             { id: 2, txt: "Bring the letter from the Forest Queen", show: true, mStatus: 0, roomId: 203 },
                             { id: 3, txt: "Ask each person on the list if they have the code", show: true, mStatus: 0, roomId: 0 },
                             { id: 4, txt: "Report back to Missy's Dective Agency", show: true, mStatus: 0, roomId: 203 },
-                            { id: 5, txt: "Go deep past the caves and sneak into the C.U.M. compound", show: true, mStatus: 0, roomId: 445 },
+                            { id: 5, txt: "Go deep past the caves and sneak into the C.U.M. compound", show: true, mStatus: 0, roomId: 487 },
                         ]
                 },
             ]
@@ -1200,7 +1200,7 @@ sc.init = function () {
                 {
                     missionName: "*gf", mStatus: 0, title: "Girlfriend", desc: "I think I'm in love", task:
                         [
-                            { id: 0, txt: "Confesses his love your you", show: true, mStatus: 0, roomId: 100 },
+                            { id: 0, txt: "Confesses his love your you", show: true, mStatus: 0, roomId: 725 },
                         ]
                 },
             ]
@@ -1453,6 +1453,14 @@ sc.init = function () {
                         [
                             { id: 0, txt: "Meet", show: true, mStatus: 0, roomId: 155 },
                             { id: 1, txt: "Take his fat greasy hog in your mouth", show: true, mStatus: 0, roomId: 155 },
+                        ]
+                },
+                {
+                    missionName: "*env", mStatus: 0, title: "Look at it", desc: "Look at my penis", task:
+                        [
+                            { id: 0, txt: "First peek", show: true, mStatus: 0, roomId: 525 },
+                            { id: 1, txt: "Touch it", show: true, mStatus: 0, roomId: 525 },
+                            { id: 2, txt: "Virginity thief", show: true, mStatus: 0, roomId: 525 },
                         ]
                 }
             ]
@@ -1841,7 +1849,8 @@ sc.init = function () {
                 {
                     missionName: "*dolls", mStatus: 0, title: "Dolls", desc: "Living dolls", task:
                         [
-                            { id: 0, txt: "Come back anytime", show: true, mStatus: 0, roomId: 752 },
+                            { id: 0, txt: "Come back anytime", show: true, mStatus: 0, roomId: 310 },
+                            { id: 1, txt: "Find Snuggle Ruffles", show: true, mStatus: 0, roomId: 310 },
                         ]
                 }
             ]
@@ -1897,8 +1906,14 @@ sc.replace = function (txt) {
 sc.replaceChat = function (txt) {
     if (typeof txt !== "string" || txt.indexOf("##") === -1)
         return txt;
-    return txt.replace(/##([^#]+)##/g, function (match, name) {
-        return '<span class="chat-name" data-char="' + name + '" style="color:' + sc.chatColor(name) + '">' + sc.chatName(name) + '</span>';
+    return txt.replace(/##([^#]+)##/g, function (match, token) {
+        //##name:s## = singular form (same as g.makeSingular(sc.n(name)))
+        var parts = token.split(":");
+        var name = parts[0];
+        var display = sc.chatName(name);
+        if (parts[1] === "s")
+            display = g.makeSingular(display);
+        return '<span class="chat-name" data-char="' + name + '" style="color:' + sc.chatColor(name) + '">' + display + '</span>';
     });
 };
 
@@ -2375,7 +2390,15 @@ sc.setMissionTask = function (name, missionName, taskId, mStatus) {
 
 sc.modSecret = function (name, amount) {
     let i = sc.i(name);
-    
+
+    //a missing amount or a broken (null / NaN) secret would turn into NaN and save as null
+    if (typeof amount !== "number" || isNaN(amount)) {
+        console.log("bad secret: " + name);
+        return;
+    }
+    if (typeof sc.char[i].secret !== "number" || isNaN(sc.char[i].secret))
+        sc.char[i].secret = 0;
+
     //Don't modify, secret is already known
     if (sc.char[i].secret > 99)
         return;
@@ -2543,7 +2566,8 @@ sc.load = function (ra) {
                 sc.char[j].events = Array.isArray(ra.char[i].events) ? ra.char[i].events.slice() : [];
                 sc.char[j].c = ra.char[i].c;
                 sc.char[j].l = ra.char[i].l;
-                if (typeof ra.char[i].secret !== "undefined")
+                //null comes from an old NaN secret (see sc.modSecret); load it as 0
+                if (typeof ra.char[i].secret === "number" && !isNaN(ra.char[i].secret))
                     sc.char[j].secret = ra.char[i].secret;
                 else
                     sc.char[j].secret = 0;

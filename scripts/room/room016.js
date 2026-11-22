@@ -1158,7 +1158,7 @@ room16.chat = function (chatID) {
         {
             chatID: 65,
             speaker: "cult",
-            text: "Oh hey! It's the new slut! Clean your " + g.makeSingular(sc.n("el")) + "'s pussy off " +
+            text: "Oh hey! It's the new slut! Clean your ##el:s##'s pussy off " +
                 "my cock slut!",
             button: [
                 { chatID: 66, text: "Hey! I'm not....", callback: "cumdump4" }

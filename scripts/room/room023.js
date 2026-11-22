@@ -1434,11 +1434,11 @@ room23.chat = function (chatID) {
     else if (chatID === 500) {
         room23.drawEva("sit");
         room23.drawLola("sit");
-        var otherSpeaker = g.internal.nextTurn === "lola" ? sc.n("eva") : sc.n("lola");
+        var otherSpeaker = g.internal.nextTurn === "lola" ? "##eva##" : "##lola##";
         return {
             chatID: 500,
             speaker: "me",
-            text: sc.n(g.internal.nextTurn) + ", " + g.internal.dares[g.internal.gamephase][g.internal.gamepointer].txt.replace("#other#", otherSpeaker),
+            text: "##" + g.internal.nextTurn + "##, " + g.internal.dares[g.internal.gamephase][g.internal.gamepointer].txt.replace("#other#", otherSpeaker),
             button: [
                 { chatID: 501, text: "...", callback: "" }
             ]
@@ -1578,7 +1578,7 @@ room23.chat = function (chatID) {
             {
                 chatID: 3,
                 speaker: g.internal.whoTurn,
-                text: sc.n(g.internal.nextTurn ?? "lola") + " truth or dare? ",
+                text: "##" + (g.internal.nextTurn ?? "lola") + "## truth or dare? ",
                 button: [
                     { chatID: -1, text: "...", callback: "tord" }
                 ]
@@ -3583,7 +3583,7 @@ room23.getTheirQuestion = function () {
     return {
         chatID: 800,
         speaker: g.internal.whoTurn,
-        text: sc.n(g.internal.nextTurn) + ", " + selectedQustion.q,
+        text: "##" + g.internal.nextTurn + "##, " + selectedQustion.q,
         button: [
             { chatID: 801, text: "...", callback: "" }
         ]

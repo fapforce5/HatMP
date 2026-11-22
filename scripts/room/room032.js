@@ -623,7 +623,7 @@ room32.chat = function (chatID) {
         {
             chatID: 28,
             speaker: "chad",
-            text: "Oh, don't think you're getting out of cleaning your " + g.makeSingular(sc.n("el")) + "'s ass off my cock. ##me##" +
+            text: "Oh, don't think you're getting out of cleaning your ##el:s##'s ass off my cock. ##me##" +
                 ", you can join her though. Two tongues are better than none! Get down here, I'm just about to blow a load up ##lola##" +
                 "'s tight little asshole! ",
             button: [

@@ -499,7 +499,7 @@ room487.chat = function (chatID) {
             speaker: "cecilia",
             text: "No time to explain. I have to get back to ##p## at the front gate. We're " +
                 "going to distract and pull as many guards as we can over there so inside the compound is " +
-                "cleared out a bit for you. I already told " + sc.n(gv.get("cultpartner")) + " that there " +
+                "cleared out a bit for you. I already told ##" + gv.get("cultpartner") + "## that there " +
                 "are needed as a distraction. Go save Missy. She's counting on you two. ",
             button: [
                 { chatID: 17, text: "yeah", callback: "missy5" },

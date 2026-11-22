@@ -393,34 +393,49 @@ room601.btnclick = function (name) {
             invoker.invokeCurrent("btnclick", "showExcitement");
             break;
         case "bar":
-            nav.kill();
-            var barppl = [0, 1, 2, 3, 4, 5];
-            if (g.internal.sissySchool) {
-                if (g.gethourdecimal() < 3)
-                    g.internal.excitement += 8;
-                else
-                    g.internal.excitement += 4;
+            if (missy.getenvelope("tony").active && daily.get("tony601")) {
+                nav.bg("601_dance/bar.jpg");
+                nav.button({
+                    "type": "img",
+                    "name": "bar",
+                    "left": 750,
+                    "top": 0,
+                    "width": 761,
+                    "height": 1080,
+                    "image": "601_dance/missy0.webp"
+                }, 601);
+                chat(46, 601);
             }
-            nav.bg("601_dance/bar.jpg");
+            else {
+                nav.kill();
+                var barppl = [0, 1, 2, 3, 4, 5];
+                if (g.internal.sissySchool) {
+                    if (g.gethourdecimal() < 3)
+                        g.internal.excitement += 8;
+                    else
+                        g.internal.excitement += 4;
+                }
+                nav.bg("601_dance/bar.jpg");
 
-            if (sc.getMission("zoey", "cheating").complete && g.dt.getDay() < 5)
-                barppl.push(6);
-            
-            g.internal.bar = barppl[g.rand(0, barppl.length)];
+                if (sc.getMission("zoey", "cheating").complete && g.dt.getDay() < 5)
+                    barppl.push(6);
 
-            if (g.internal.bar === -1 && g.internal.sissySchool)
-                g.internal.bar = 7;
+                g.internal.bar = barppl[g.rand(0, barppl.length)];
 
-            nav.button({
-                "type": "img",
-                "name": "bar",
-                "left": 750,
-                "top": 0,
-                "width": 761,
-                "height": 1080,
-                "image": "601_dance/b" + g.internal.bar + ".webp"
-            }, 601);
-            chat(900, 601);
+                if (g.internal.bar === -1 && g.internal.sissySchool)
+                    g.internal.bar = 7;
+
+                nav.button({
+                    "type": "img",
+                    "name": "bar",
+                    "left": 750,
+                    "top": 0,
+                    "width": 761,
+                    "height": 1080,
+                    "image": "601_dance/b" + g.internal.bar + ".webp"
+                }, 601);
+                chat(900, 601);
+            }
             break;
         case "private":
             var foundSomeone = false;
@@ -753,6 +768,9 @@ room601.chatcatch = function (callback) {
         case "sissyEvent2":
         case "sissyEvent3":
         case "sissyEvent8":
+        case "missy1":
+        case "missy2":
+        case "missy3":
             nav.bg("601_dance/" + callback + ".webp");
             break;
         case "chrisPrivate0":
@@ -895,6 +913,19 @@ room601.chatcatch = function (callback) {
             daily.set("stripper");
             gv.set("sissyfinal_stripper", true);
             char.room(602);
+            break;
+        case "missy0":
+            nav.kill();
+            nav.bg("600_body/office.jpg");
+            break;
+        case "missy4":
+            nav.bg("601_dance/missy3.webp");
+            cl.nude();
+            zcl.pucker(650, 830, .3, "back", false);
+            break;
+        case "missy5":
+            nav.bg("601_dance/missy5.webp");
+            zcl.embarrass(250, 200, 1.5, "back", false);
             break;
         default:
             break;
@@ -1524,6 +1555,65 @@ room601.chat = function (chatID) {
                 "dressed an get outta 'ere. I gosta get home. ",
             button: [
                 { chatID: -1, text: "...", callback: "sissyEventEnd" },
+            ]
+        },
+        {
+            chatID: 45,
+            speaker: "tony",
+            text: "Ya know, youse a hot set o' tits. You wanna come up to ma office? ",
+            button: [
+                { chatID: -1, text: "I do, please! ", callback: "missy0" },
+                { chatID: -1, text: "Sorry boss. Workin' ya know. ", callback: "mingleInc" },
+            ]
+        },
+        {
+            chatID: 45,
+            speaker: "tony",
+            text: "Take those panties off. I want to see you girls dance. Rub all over each other. I love that. ",
+            button: [
+                { chatID: 46, text: "Strip down and dance for the strange man", callback: "missy1" },
+            ]
+        },
+        {
+            chatID: 46,
+            speaker: "tony",
+            text: "Oh yeah. That's hot. Pink hair come 'ere. I wanna see that pussy. ",
+            button: [
+                { chatID: 47, text: "...", callback: "missy2" },
+            ]
+        },
+        {
+            chatID: 47,
+            speaker: "tony",
+            text: "Dark girl, kneel down and eat pink hair's asshole. I love seeing the look in her eyes when she gets her asshole eatin' ",
+            button: [
+                { chatID: 48, text: "...", callback: "missy3" },
+            ]
+        },
+        {
+            chatID: 48,
+            speaker: "tony",
+            text: "New " + gender.pronoun("girl") + " eat dark girl's asshole. Can have youse just standing there. Get to it!",
+            button: [
+                { chatID: 49, text: "[Eat ##martin##'s asshole]", callback: "missy4" },
+            ]
+        },
+        {
+            chatID: 49,
+            speaker: "tony",
+            text: "Fuck yeah pink hair. I can see your pussy drippin. Fuck it's makin' me so hard. come 'ere. Lick my dick pink.",
+            button: [
+                { chatID: 50, text: "...", callback: "missy5" },
+            ]
+        },
+        {
+            chatID: 50,
+            speaker: "tony",
+            text: "Three hungry sluts all for ma dick. Bend over pink, Imma use you first. Dark girl and new girl, you two can suck my balls and " +
+                "eat my ass like the sluts you are. ",
+            button: [
+                { chatID: 51, text: "[suck his hair balls]", callback: "missy6balls" },
+                { chatID: 51, text: "[tongue his hair asshole]", callback: "missy6ass" },
             ]
         },
     ];

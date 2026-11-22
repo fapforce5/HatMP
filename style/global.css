@@ -260,7 +260,6 @@ input[type=text]:disabled{
 
 /* ##name## in chat text (sc.replaceChat); color is set inline from sc.char hex */
 .chat-name {
-    font-weight: bold;
     cursor: help;
 }
 
@@ -294,7 +293,6 @@ input[type=text]:disabled{
 
 .chat-nameCard-name {
     margin-top: 4px;
-    font-weight: bold;
     font-size: calc(.8em + .6vh);
     text-shadow: 1px 1px 3px #000;
 }
@@ -1240,6 +1238,7 @@ hr {
     padding: 0 calc(var(--r) * 6px);
     font-size: calc(var(--r) * 14px);
 }
+.sv-badge-edited { background: #ffb347; cursor: help; }
 .sv-thumb {
     position: relative;
     width: calc(var(--r) * 336px);
@@ -1292,6 +1291,65 @@ hr {
 }
 .sv-tool:hover { background: #444; }
 .sv-tool-del:hover { background: #a3203a; border-color: #ff6b88; }
+
+/* Save editor (saves.editSave): full screen, like the export dialog */
+.sv-edit {
+    --r: 1;
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--r) * 12px);
+    padding: calc(var(--r) * 20px) calc(var(--r) * 40px);
+    box-sizing: border-box;
+    background: #120c1a;
+    color: #fff;
+    font-size: calc(var(--r) * 20px);
+    user-select: text;
+}
+.sv-edit-intro { display: flex; flex-direction: column; gap: calc(var(--r) * 6px); padding-bottom: calc(var(--r) * 10px); border-bottom: calc(var(--r) * 2px) solid #3a2a47; }
+.sv-edit-header { font-size: calc(var(--r) * 36px); color: #ff7fd8; }
+.sv-edit-note { font-size: calc(var(--r) * 18px); color: #d9c4e6; line-height: 1.35; max-width: calc(var(--r) * 1400px); }
+.sv-edit-top { display: flex; align-items: center; gap: calc(var(--r) * 20px); }
+.sv-edit-title { flex: 1; font-size: calc(var(--r) * 24px); color: #a493ae; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sv-edit-body { flex: 1; min-height: 0; overflow-y: auto; padding-right: calc(var(--r) * 12px); display: flex; flex-direction: column; gap: calc(var(--r) * 18px); }
+.sv-edit-section { display: flex; flex-direction: column; gap: calc(var(--r) * 18px); }
+.sv-edit-head { font-size: calc(var(--r) * 22px); color: #ff9ee2; margin-bottom: calc(var(--r) * 8px); border-bottom: calc(var(--r) * 1px) solid #3a2a47; }
+.sv-edit-risky .sv-edit-head { color: #ffb347; }
+.sv-edit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: calc(var(--r) * 8px) calc(var(--r) * 30px); }
+.sv-edit-field { display: flex; align-items: center; justify-content: space-between; gap: calc(var(--r) * 10px); font-size: calc(var(--r) * 18px); }
+.sv-edit-field span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sv-edit-rows { grid-template-columns: 1fr; max-width: calc(var(--r) * 760px); gap: calc(var(--r) * 6px); }
+.sv-edit-rows .sv-edit-field > span:first-child { flex: 1; }
+.sv-edit-col { flex: none; width: calc(var(--r) * 190px); text-align: left; }
+.sv-edit-colhead { color: #a493ae; font-size: calc(var(--r) * 16px); }
+.sv-edit-field input[type="text"], .sv-edit-field select, .sv-edit-filter {
+    flex: none;
+    width: calc(var(--r) * 170px);
+    padding: calc(var(--r) * 4px) calc(var(--r) * 8px);
+    font-size: calc(var(--r) * 18px);
+    color: #fff;
+    background: #1d1426;
+    border: calc(var(--r) * 2px) solid #4a3755;
+    border-radius: calc(var(--r) * 6px);
+}
+.sv-edit-filter { width: calc(var(--r) * 320px); }
+.sv-edit-field input[type="checkbox"] { width: calc(var(--r) * 22px); height: calc(var(--r) * 22px); accent-color: #ff7fd8; }
+.sv-edit-field input:focus, .sv-edit-field select:focus, .sv-edit-filter:focus { outline: none; border-color: #ff7fd8; }
+.sv-edit-warn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: calc(var(--r) * 20px);
+    padding: calc(var(--r) * 12px) calc(var(--r) * 16px);
+    border: calc(var(--r) * 2px) solid #ffb347;
+    border-radius: calc(var(--r) * 10px);
+    color: #ffd27f;
+    font-size: calc(var(--r) * 18px);
+}
+.sv-edit-error { flex: 1; color: #ff8a9e; font-size: calc(var(--r) * 16px); }
+.sv-edit-buttons { display: flex; align-items: center; justify-content: flex-end; gap: calc(var(--r) * 12px); }
 
 .sv-pager { display: flex; justify-content: center; align-items: center; gap: calc(var(--r) * 6px); }
 .sv-page {

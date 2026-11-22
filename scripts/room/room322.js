@@ -1210,7 +1210,7 @@ room322.chat = function (chatID) {
         {
             chatID: 16,
             speaker: "janice",
-            text: "Oh hi ##eva##. Your " + g.makeSingular(sc.n("el")) + "'s my doggy " +
+            text: "Oh hi ##eva##. Your ##el:s##'s my doggy " +
                 "now. She's been a bad girl, but she does deserve her walks. ",
             button: [
                 { chatID: 17, text: "ugh", callback: "" },

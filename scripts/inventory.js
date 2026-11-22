@@ -33,6 +33,7 @@ inv.t = [
     { t: "g", n: "General Item" },
     { t: "h", n: "Female Hormone" },
     { t: "i", n: "Dale's Fighting" },
+    { t: "j", n: "Mission Item" },
     { t: "l", n: "Lock Pick" },
     { t: "m", n: "Makeup" },
     { t: "n", n: "Magazine" },
@@ -58,6 +59,8 @@ inv.init = function () {
     inv.master = [
         { type: "f", name: "envelope", display: "Forest Queen's List", entry: false, count: null, cost: -1, buy: null, image: "envelope.png", n: false, desc: "Take this to Princess at the Detective Agency" },
         { type: "f", name: "envelope1", display: "Forest Queen's List", entry: false, count: null, cost: -1, buy: null, image: "envelope.png", n: false, desc: "List of C.U.M. Cultist that may know the secret code." },
+        { type: "j", name: "dollmakerTeddy", display: "Snuggle Ruffles", entry: false, count: null, cost: -1, buy: null, image: "dollmakerTeddy.png", n: false, desc: "Dollmaker's Teddy" },
+
         { type: "g", name: "usb", display: "USB Cult List", entry: false, count: null, cost: -1, buy: null, image: "usb.png", n: false, desc: "Use this in your home computer" },
         { type: "g", name: "missyusb", display: "USB for Missy`", entry: false, count: null, cost: -1, buy: null, image: "usb.png", n: false, desc: "Give this to Missy, or take a peek in your home PC" },
         { type: "g", name: "locket", display: "Locket for Missy's Case", entry: false, count: null, cost: -1, buy: null, image: "locket.png", n: false, desc: "Give this to Missy. " },
@@ -1029,6 +1032,17 @@ inv.createElements = function (showFilter = true) {
                             "height": 36,
                             "image": charInfo.img.replace("./images", ".."),
                         }, 1010);
+                    }
+                    if (sc.getMissionTask("p", "*missy", 4).startedOrComplete) {
+                        nav.t({
+                            type: "zimg",
+                            name: "inv_listofbadpeople",
+                            left: 800,
+                            top: 70,
+                            font: 30,
+                            hex: "#1f6e34",
+                            text: g.newLine("COMPLETE. See " + sc.n("p") + " at Missy's Detective Agency", 30)
+                        }, 9999);
                     }
                     nav.close("inv_listofbadpeople", 1010);
                     break;

@@ -790,7 +790,7 @@ room350.chat = function (chatID) {
             text: "You have some nerve coming into my place of work after what you've done! " +
                 "I would put you over my knee if I didn't need to stay up here!",
             button: [
-                { chatID: 57, text: "I'm so sorry! I promise I won't cum in my " + g.makeSingular(sc.n("el")) + " while she sleeps anymore! ", callback: "" },
+                { chatID: 57, text: "I'm so sorry! I promise I won't cum in my ##el:s## while she sleeps anymore! ", callback: "" },
             ]
         },
         {
