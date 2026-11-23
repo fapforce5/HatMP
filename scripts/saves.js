@@ -1144,6 +1144,58 @@ saves.editSave.buildFields = function (state) {
                 });
         });
     }
+
+    //sissy school classes: the save stores one true/false per class, by position in sissy.st
+    if (state.gv && Array.isArray(state.gv.sissy)) {
+        $.each(sissy.st, function (i, cls) {
+            if (typeof state.gv.sissy[i] !== "boolean")
+                return;
+            es.add({
+                section: "risky", group: "Sissy school classes", label: cls.name, type: "bool",
+                get: function () { return state.gv.sissy[i]; },
+                set: function (s, nv) { state.gv.sissy[i] = nv; }
+            });
+        });
+    }
+
+    //sissy upgrades (qdress): the save stores the ids of unlocked upgrades. Ticking skips the points cost and prerequisite.
+    if (state.gv) {
+        if (!Array.isArray(state.gv.qdress))
+            state.gv.qdress = [];
+        $.each(qdress.st, function (i, q) {
+            es.add({
+                section: "risky", group: "Sissy upgrades", label: q.name, tip: q.desc, type: "bool",
+                get: function () { return state.gv.qdress.indexOf(i) > -1; },
+                set: function (s, nv) {
+                    var at = state.gv.qdress.indexOf(i);
+                    if (nv && at === -1)
+                        state.gv.qdress.push(i);
+                    else if (!nv && at > -1)
+                        state.gv.qdress.splice(at, 1);
+                }
+            });
+        });
+    }
+
+    //trophies: the save stores the ids of earned trophies. Ticking one here only marks it earned,
+    //it doesn't pay out the money/level rewards trophy.add gives in game.
+    if (state.gv) {
+        if (!Array.isArray(state.gv.trophy))
+            state.gv.trophy = [];
+        $.each(trophy.st, function (i, t) {
+            es.add({
+                section: "risky", group: "Trophies", label: sc.replace(t.title), type: "bool",
+                get: function () { return state.gv.trophy.indexOf(i) > -1; },
+                set: function (s, nv) {
+                    var at = state.gv.trophy.indexOf(i);
+                    if (nv && at === -1)
+                        state.gv.trophy.push(i);
+                    else if (!nv && at > -1)
+                        state.gv.trophy.splice(at, 1);
+                }
+            });
+        });
+    }
 };
 
 saves.editSave.inputFor = function (f) {
@@ -1233,6 +1285,8 @@ saves.editSave.render = function (key, label, state, data) {
         var row = $('<label class="sv-edit-field"></label>');
         row.append($('<span></span>').text(f.label));
         row.append(es.inputFor(f));
+        if (f.tip)
+            row.attr('title', f.tip);
         groups[gKey].find('.sv-edit-grid').append(row);
     });
 

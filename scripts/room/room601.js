@@ -393,7 +393,8 @@ room601.btnclick = function (name) {
             invoker.invokeCurrent("btnclick", "showExcitement");
             break;
         case "bar":
-            if (missy.getenvelope("tony").active && daily.get("tony601")) {
+            if (missy.getenvelope("tony").active && !daily.get("tony601")) {
+                nav.kill();
                 nav.bg("601_dance/bar.jpg");
                 nav.button({
                     "type": "img",
@@ -404,7 +405,9 @@ room601.btnclick = function (name) {
                     "height": 1080,
                     "image": "601_dance/missy0.webp"
                 }, 601);
+                daily.set("tony601")
                 chat(46, 601);
+                return;
             }
             else {
                 nav.kill();
@@ -927,6 +930,34 @@ room601.chatcatch = function (callback) {
             nav.bg("601_dance/missy5.webp");
             zcl.embarrass(250, 200, 1.5, "back", false);
             break;
+        case "missy6balls":
+            nav.kill();
+            nav.bg("601_dance/missy6_balls_" + gender.pronoun("f") + ".webp");
+            break;
+        case "missy6ass":
+            nav.kill();
+            levels.oralass("m", "tony");
+            nav.bg("601_dance/missy6_ass_" + gender.pronoun("f") + ".webp");
+            break;
+        case "missy7":
+            nav.bg("601_dance/missy7.webp");
+            zcl.bj(450, 550, .45, "", true);
+            break;
+        case "missy8":
+            nav.kill();
+            nav.bg("601_dance/missy8_" + (cl.c.cock === 5 ? "v" : "c") + ".webp");
+            if (missy.getenvelope("tony").hasKey) {
+                chat(55, 601);
+            }
+            else {
+                chat(56, 601);
+            }
+            missy.setenvelope("tony");
+            break;
+        case "endMissy":
+            cl.undo();
+            room601.chatcatch("mingleInc");
+            break;
         default:
             break;
     }
@@ -953,7 +984,7 @@ room601.chat = function (chatID) {
             return {
                 chatID: 13,
                 speaker: "!frank",
-                text: "Hey! Clubs closed. You made $" + g.internal.money + " tonight. You " +
+                text: "Hey! Club's closed. You made $" + g.internal.money + " tonight. You " +
                     "get half, $" + moneyMade + ". Now go change. ",
                 button: [
                     { chatID: -1, text: "ok!", callback: "leave" },
@@ -1080,7 +1111,7 @@ room601.chat = function (chatID) {
                 return {
                     chatID: 900,
                     speaker: "!girl",
-                    text: "hiccup! You are so sexy! Maybe it's the beer, but I didn't see your " +
+                    text: "hiccup! You are so sexy! Maybe it's the beer, but if I didn't see your " +
                         "balls hanging from your panties I would totally think you're a chick! ",
                     button: [
                         { chatID: -1, text: "Oh. Thanks?", callback: "mingleInc" },
@@ -1135,7 +1166,7 @@ room601.chat = function (chatID) {
         {
             chatID: 0,
             speaker: "!frank",
-            text: "youse gotta share the stage. Go mingle with guests. Make them happy " +
+            text: "Youse gotta share the stage. Go mingle with guests. Make them happy " +
                 "and make some money, ok? ",
             button: [
                 { chatID: -1, text: "Sure.", callback: "mingleStart" }
@@ -1144,7 +1175,7 @@ room601.chat = function (chatID) {
         {
             chatID: 1,
             speaker: "!frank",
-            text: "youse trying to get the heat on us? Keep your panties on, on stage. Got it! ",
+            text: "Youse trying to get the heat on us? Keep your panties on, on stage. Got it! ",
             button: [
                 { chatID: -1, text: "Got it.", callback: "mingleStart" }
             ]
@@ -1169,7 +1200,7 @@ room601.chat = function (chatID) {
         {
             chatID: 4,
             speaker: "!bwc",
-            text: "I know. You have the look of someone that eats silicon packets. I would " +
+            text: "I know. You have the look of someone that eats silica packets. I would " +
                 "never fuck someone as stupid as you. I'm much too rich. ",
             button: [
                 { chatID: -1, text: "gggrrrr", callback: "mingleInc" },
@@ -1199,7 +1230,7 @@ room601.chat = function (chatID) {
             speaker: "chloe",
             text: "Oh. Don't worry. I'm not mad. That wasn't going to last. Too much work " +
                 "pretending like she's the only one I was fucking. I would have broke it off " +
-                "sooner, but that pussy is just so sweet! And when she fuck, she fucks with " +
+                "sooner, but that pussy is just so sweet! And when she fucks, she fucks with " +
                 "her entire soul. So nice. Guys just fuck me with their cocks, ya know. ",
             button: [
                 { chatID: 8, text: "Oh. She really is the greatest. ", callback: "" },
@@ -1281,7 +1312,7 @@ room601.chat = function (chatID) {
         },
         {
             chatID: 16,
-            speaker: "boy",
+            speaker: "!boy",
             text: "You were amazing, but I'm totally out of money. ",
             button: [
                 { chatID: -1, text: "...", callback: "privateEnd" },
@@ -1377,7 +1408,7 @@ room601.chat = function (chatID) {
             text: "pssst. You're supposed to say that. I did see a cute guy. I wonder " +
                 "if he's into a girl like me? ",
             button: [
-                { chatID: 27, text: "You're crazy! There's giant banner that says Femboy Friday! He's totally into girls like you!", callback: "" },
+                { chatID: 27, text: "You're crazy! There's a giant banner that says Femboy Friday! He's totally into girls like you!", callback: "" },
             ]
         },
         {
@@ -1394,7 +1425,7 @@ room601.chat = function (chatID) {
             chatID: 28,
             speaker: "me",
             text: "You're thinking too hard. Just talk to him and slowly rub your body " +
-                "oh his. Don't get too desperate, just tease him a little. Casually rub " +
+                "on his. Don't get too desperate, just tease him a little. Casually rub " +
                 "his inner thigh. Then rub your butt on his wiener. If he's hard then he's " +
                 "totally into you. Just leave him wanting more. ",
             button: [
@@ -1457,7 +1488,7 @@ room601.chat = function (chatID) {
             chatID: 35,
             speaker: "tony",
             text: "I ain't giving you shit! You changed the deal at the last minute! " +
-                "You said you'd delivery me sissies that fuck! They're just out there " +
+                "You said you'd deliver me sissies that fuck! They're just out there " +
                 "dancing like all my other strippers and not fucking no one! You know how " +
                 "hard it was to keep the cops away tonight! I promised my clients they'd " +
                 "be fucking sissies! And ain't no one fucking out there! Either " +
@@ -1558,62 +1589,94 @@ room601.chat = function (chatID) {
             ]
         },
         {
-            chatID: 45,
+            chatID: 46,
             speaker: "tony",
             text: "Ya know, youse a hot set o' tits. You wanna come up to ma office? ",
             button: [
-                { chatID: -1, text: "I do, please! ", callback: "missy0" },
+                { chatID: 47, text: "I do, please! ", callback: "missy0" },
                 { chatID: -1, text: "Sorry boss. Workin' ya know. ", callback: "mingleInc" },
-            ]
-        },
-        {
-            chatID: 45,
-            speaker: "tony",
-            text: "Take those panties off. I want to see you girls dance. Rub all over each other. I love that. ",
-            button: [
-                { chatID: 46, text: "Strip down and dance for the strange man", callback: "missy1" },
-            ]
-        },
-        {
-            chatID: 46,
-            speaker: "tony",
-            text: "Oh yeah. That's hot. Pink hair come 'ere. I wanna see that pussy. ",
-            button: [
-                { chatID: 47, text: "...", callback: "missy2" },
             ]
         },
         {
             chatID: 47,
             speaker: "tony",
-            text: "Dark girl, kneel down and eat pink hair's asshole. I love seeing the look in her eyes when she gets her asshole eatin' ",
+            text: "Take those panties off. I want to see you girls dance. Rub all over each other. I love that. ",
             button: [
-                { chatID: 48, text: "...", callback: "missy3" },
+                { chatID: 48, text: "Strip down and dance for the strange man", callback: "missy1" },
             ]
         },
         {
             chatID: 48,
             speaker: "tony",
-            text: "New " + gender.pronoun("girl") + " eat dark girl's asshole. Can have youse just standing there. Get to it!",
+            text: "Oh yeah. That's hot. Pink hair come 'ere. I wanna see that pussy. ",
             button: [
-                { chatID: 49, text: "[Eat ##martin##'s asshole]", callback: "missy4" },
+                { chatID: 49, text: "...", callback: "missy2" },
             ]
         },
         {
             chatID: 49,
             speaker: "tony",
-            text: "Fuck yeah pink hair. I can see your pussy drippin. Fuck it's makin' me so hard. come 'ere. Lick my dick pink.",
+            text: "Dark girl, kneel down and eat pink hair's asshole. I love seeing the look in her eyes when she gets her asshole eatin' ",
             button: [
-                { chatID: 50, text: "...", callback: "missy5" },
+                { chatID: 50, text: "...", callback: "missy3" },
             ]
         },
         {
             chatID: 50,
             speaker: "tony",
+            text: "New " + gender.pronoun("girl") + " eat dark girl's asshole. Can't have youse just standing there. Get to it!",
+            button: [
+                { chatID: 51, text: "[Eat ##!martin##'s asshole]", callback: "missy4" },
+            ]
+        },
+        {
+            chatID: 51,
+            speaker: "tony",
+            text: "Fuck yeah pink hair. I can see your pussy drippin. Fuck it's makin' me so hard. come 'ere. Lick my dick pink.",
+            button: [
+                { chatID: 52, text: "...", callback: "missy5" },
+            ]
+        },
+        {
+            chatID: 52,
+            speaker: "tony",
             text: "Three hungry sluts all for ma dick. Bend over pink, Imma use you first. Dark girl and new girl, you two can suck my balls and " +
                 "eat my ass like the sluts you are. ",
             button: [
-                { chatID: 51, text: "[suck his hair balls]", callback: "missy6balls" },
-                { chatID: 51, text: "[tongue his hair asshole]", callback: "missy6ass" },
+                { chatID: 53, text: "[suck his hairy balls]", callback: "missy6balls" },
+                { chatID: 53, text: "[tongue his hairy asshole]", callback: "missy6ass" },
+            ]
+        },
+        {
+            chatID: 53,
+            speaker: "tony",
+            text: "Youse bitches *grunt* best. Aaaa fuck can't hold it....",
+            button: [
+                { chatID: 54, text: "nom nom nom", callback: "missy7" },
+            ]
+        },
+        {
+            chatID: 54,
+            speaker: "tony",
+            text: "Imma wash my dick off. You bitches get youse panties on and get back to work, 'k.",
+            button: [
+                { chatID: -1, text: "ok [Look around see if you can find the Cult's code]", callback: "missy8" },
+            ]
+        },
+        {
+            chatID: 55,
+            speaker: "thinking",
+            text: "How nice! There's a giant note here that says 'CULT SECRET CODE: 1-2-3-4-5!' I've got it. Now to get back to ##p## and let her know!",
+            button: [
+                { chatID: -1, text: "[Head back downstairs]", callback: "endMissy" },
+            ]
+        },
+        {
+            chatID: 56,
+            speaker: "thinking",
+            text: "Damn! There's nothing here. I bet he doesn't have the code. Oh well, back downstairs. ",
+            button: [
+                { chatID: -1, text: "[Head back downstairs]", callback: "endMissy" },
             ]
         },
     ];

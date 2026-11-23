@@ -93,7 +93,7 @@ missy.init = function () {
         { n: "whore", roomID: 752, key: false, ach: false, canBe: true },//d
         { n: "priest", roomID: 776, key: false, ach: false, canBe: false },//d
         { n: "dollmaker", roomID: 300, key: false, ach: false, canBe: true },//d
-        { n: "tony", roomID: 600, key: false, ach: false, canBe: false },  ////////////////// add this
+        { n: "tony", roomID: 600, key: false, ach: false, canBe: true },//d
         { n: "!jail0", roomID: 376, key: false, ach: false, canBe: true },//d
         { n: "!seller", roomID: 485, key: false, ach: false, canBe: true },//d
         { n: "!barker", roomID: 486, key: false, ach: false, canBe: true },//d
