@@ -19,6 +19,8 @@ old saves repair themselves.
 - `sc.autoCloseSkip` (~70 missions) lists missions the story still needs
   "In Progress" (ending missions, missions a later scene checks or can still
   fail). These are never auto-closed.
+  Nov 24, 2026: removed `janice/*cuck` from this list because upstream
+  dropped that mission and replaced it with `*doggy`.
 - `sc.autoCloseStepLookup` lists missions read through `sc.taskGetStep`;
   those only auto-close when every step succeeded, so scene choice is not
   changed.

@@ -2316,7 +2316,7 @@ sc.autoCloseSkip = [
     "cop/*escape", "dog/vacation", "dollmaker/*dolls", "dolly/happy", "dolly/mad", "elijah/elijah",
     "envy/breakup", "envy/gf", "envy/hypno", "envy/meet", "eva/*cumdump", "eva/*tom2",
     "eva/*wife", "eva/massage", "eva/talk", "g/spar", "holly/case",
-    "holly/happy", "holly/mad", "janice/*boyfriend", "janice/*cuck", "janice/*doggy", "janice/breakup",
+    "holly/happy", "holly/mad", "janice/*boyfriend", "janice/*doggy", "janice/breakup", //"janice/*cuck" removed: upstream dropped that mission in Nov 2026 (replaced by *doggy)
     "janice/cuck", "janice/date", "janice/dog-x", "janice/femdom", "janice/webcam", "jeffery/*panties",
     "jones/invite", "kinsey/*post", "kinsey/milk", "landlord/*cumdump", "landlord/*mother", "landlord/sissy",
     "landlord/spermbank", "liam/date", "lola/*cumdump", "lola/*tom2", "lola/*wife",
