@@ -13,7 +13,7 @@ room250.main = function () {
         nav.buildnav([0]);
     }
     else if (cl.isLewd()) {
-        if (sc.getMission("dolly", "happy").inProgress) { 
+        if (sc.getMission("dolly", "happy").inProgress || sc.getMission("dolly", "happy").success) { //Friends now completes after Gooey goo - keep the repeat scene
             
             if (sc.getMissionTask("dolly", "happy", 1).complete) {
                 nav.bg("250_beaver/d1.jpg");
@@ -22,6 +22,7 @@ room250.main = function () {
             else {
                 nav.bg("250_beaver/d0.jpg");
                 sc.completeMissionTask("dolly", "happy", 1);
+                sc.completeMission("dolly", "happy", true); //fix: Friends never completed (it was kept open for this scene)
                 chat(12, 250);
             }
         }
@@ -279,6 +280,7 @@ room250.chatcatch = function (callback) {
             }
             break;
         case "sneak1":
+            sc.completeMissionTask("jeffery", "*panties", 0); //fix: "Break into his office at night" was only ever started
             nav.kill();
             nav.bg("251_office/j12.jpg");
             break;

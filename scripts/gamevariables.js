@@ -69,6 +69,7 @@ gv.init = function () {
         { n: "clock24", t: "12", q: "string" },
         { n: "cheatMode", t: false, q: "bool" },
         { n: "showHiddenTasks", t: false, q: "bool" }, //cheat menu: show hidden mission steps
+        { n: "lastChastity", t: null, q: "string" }, //last chastity device worn - the cheat menu's Chastity On puts it back
         { n: "showAbilityPoints", t: false, q: "bool" }, //settings page 2: points line under Abilities on the stats screen
         { n: "showBarPercent", t: false, q: "bool" }, //settings page 2: % inside the Abilities progress bars
         { n: "transformation", t: "voluntary", q: "string" }, //voluntary, voluntaryoff, forced
@@ -141,6 +142,10 @@ gv.init = function () {
         { n: "janiceDatr", t: null, q: "string" },
 
         { n: "pink", t: 0, q: "int" },
+        { n: "blackPunishCount", t: 0, q: "int" }, //times Black has punished you (room172) - "Repeat customer" ticks on the 2nd
+        { n: "ceciliaGloryClosed", t: false, q: "bool" }, //true after the cult - Cecilia's park stall scene (room451) stops
+        { n: "cheerPractices", t: 0, q: "int" }, //Saturday cheer practices started (room875 "practice") - Candy's "Cheerleading practice" ticks on the 2nd
+        { n: "doormanRepeat", t: false, q: "bool" }, //true once Treyvon's repeat lobby scene has played (room050) - ticks Doorman step 1
         { n: "pinkroomopen", t: false, q: "int" },
         { n: "pinkGloryHole", t: 0, q: "int" },
         //{ n: "sissy", t: 0, q: "sissy" },
@@ -197,6 +202,7 @@ gv.init = function () {
 
         { n: "cultRank", t: "Slave", q: "string" }, //Slave, Sissy?, Sissy, Cum Supplier, Mother of Azreal, Mother Candidate
         { n: "cultDayCounter", t: 0, q: "int" },
+        { n: "cultFoundJeffery", t: false, q: "bool" }, //reached Jeffery on a panty delivery - unlocks the automatic delivery choices
         { n: "cultbrick", t: 0, q: "int" },
         { n: "cultLastClean", t: null, q: "date" },
         { n: "cultMilkCounter", t: 0, q: "int" },
@@ -520,7 +526,7 @@ gv.init = function () {
         { id: 10, pID: [3, 4, 5, 6, 7, 8, 9, 29], icon: "test1", x: 0, y: 3, name: "Sissy mid-term", description: "Show your progress!", ach: false, active: true, room: 182 },
 
         { id: 11, pID: [10], icon: "anal210", x: 5, y: 4, name: "Anal 210", description: "Find your bussy p-spot", ach: false, active: false },
-        { id: 12, pID: [10], icon: "anal212", x: 3, y: 4, name: "Anal 312", description: "Experaince the joy of being filled", ach: false, active: true, room: 175 },
+        { id: 12, pID: [10], icon: "anal212", x: 3, y: 4, name: "Anal 312", description: "Experience the joy of being filled", ach: false, active: true, room: 175 }, //fix: description was "Experaince the joy of being filled"
         { id: 13, pID: [10], icon: "chastity201", x: 6, y: 4, name: "Chastity 302", description: "Smaller chastity, smaller clitty", ach: false, active: true, room: 177 },
         { id: 14, pID: [10], icon: "enema205", x: 2, y: 4, name: "Enema 305", description: "A clean bussy makes everyone happy", ach: false, active: true, room: 180 },
         { id: 15, pID: [10], icon: "fem201", x: 0, y: 4, name: "Feminization 301", description: "Introduction to hormones", ach: false, active: true, room: 180 },
@@ -679,8 +685,8 @@ gv.init = function () {
         { id: 27, o: 1, title: "Glory Hole", display: "Took 15 dicks in one session", img: "gloryhole15.webp", ach: false, group: "pinkroom", money: 100, sissy: 100, dom: 0, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 0, fitness: 0, strength: 0 },
         { id: 28, o: 1, title: "Ranch", display: "Took down the ranch", img: "eventrachel.webp", ach: false, group: "event", money: 0, sissy: 100, dom: 0, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 100, fitness: 0, strength: 0 },
         { id: 29, o: 6, title: "Missy's Panties", display: "Steal Missy's panties", img: "pantiesmissy.webp", ach: false, group: "panties", money: 0, sissy: 30, dom: 0, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 0, fitness: 0, strength: 0 },
-        { id: 30, o: 6, title: "Sociopath", display: "Escape as a Cum Giver", img: "cultempathy.webp", ach: false, group: "event", money: 0, sissy: 0, dom: 100, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 0, fitness: 0, strength: 0 },
-        { id: 31, o: 6, title: "Exit before entry", display: "Lost anal virginity before penis", img: "analfirst.webp", ach: false, group: "anal", money: 0, sissy: 75, dom: 0, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 0, fitness: 0, strength: 0 },
+        { id: 30, o: 6, title: "Sociopath", display: "Escape as a Cum Giver", img: "cultempathy.webp", ach: false, notInGame: true, group: "event", money: 0, sissy: 0, dom: 100, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 0, fitness: 0, strength: 0 }, //fix: added notInGame: nothing in the game awards this yet
+        { id: 31, o: 6, title: "Exit before entry", display: "Lost anal virginity before penis", img: "analfirst.webp", ach: false, notInGame: true, group: "anal", money: 0, sissy: 75, dom: 0, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 0, fitness: 0, strength: 0 }, //fix: added notInGame: nothing in the game awards this yet
         { id: 32, o: 6, title: "#ralph#", display: "Slurped cum from his asshole", img: "ralph.webp", ach: false, group: "event", money: 0, sissy: 75, dom: 0, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 0, fitness: 0, strength: 0 },
         { id: 33, o: 500, title: "Bad End", display: "The virgin birth", img: "end_azrael.webp", ach: false, group: "end", money: 100, sissy: 100, dom: 0, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 0, fitness: 0, strength: 0 },
         { id: 34, o: 500, title: "Saved the Nun", display: "You fucked her, but saved her too", img: "nunpreg.webp", ach: false, group: "event", money: 0, sissy: 0, dom: 50, makeup: 0, pee: 0, beast: 0, charisma: 0, pi: 0, fitness: 0, strength: 0 },

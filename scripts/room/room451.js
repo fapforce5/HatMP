@@ -177,7 +177,8 @@ room451.btnclick = function (name) {
             break;
         case "stall1":
             if (sc.getTimeline("cecilia").thisRoom) {
-                if (sc.getMission("cecilia", "gloryhole").inProgress) {
+                //Her stall scene keeps playing after "Glory hole!" is Completed, until the cult closes it (ceciliaGloryClosed)
+                if (sc.getMission("cecilia", "gloryhole").inProgress || (sc.getMission("cecilia", "gloryhole").success && !gv.get("ceciliaGloryClosed"))) {
                     chat(14, 451);
                 }
                 else {

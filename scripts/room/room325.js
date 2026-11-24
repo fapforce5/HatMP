@@ -9,7 +9,7 @@ room325.main = function () {
             chat(48, 325);
         return;
     }
-    if (sc.getMission("kinsey", "*post").inProgress) {
+    if (sc.getMission("kinsey", "*post").startedOrSuccess) { //Owner now completes after "Free roam" - keep this scene
         nav.button({
             "type": "btn",
             "name": "kinsey",
@@ -19,10 +19,13 @@ room325.main = function () {
             "height": 961,
             "image": "325_farm/kinsey.webp"
         }, 325);
-        if (taskGetStep("kinsey", "*post") < 1) {
+        if (sc.taskGetStep("kinsey", "*post") < 1) { //fix: was taskGetStep(...) without "sc." - a crash
+            sc.completeMissionTask("kinsey", "*post", 0); //fix: "First meeting" was never ticked
             chat(53, 325);
         }
         else {
+            sc.completeMissionTask("kinsey", "*post", 1); //fix: "Free roam" was never ticked
+            sc.completeMission("kinsey", "*post", true);
             chat(60, 325);
         }
         nav.buildnav([0]);

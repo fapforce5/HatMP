@@ -7,6 +7,7 @@ room725.main = function () {
     }
     else if (sc.getMission("zoey", "cheating").inProgress
         && sc.getMissionTask("zoey", "cheating", 1).notStarted
+        && sc.getMissionTask("zoey", "cheating", 3).notStarted //either/or: not if you already caught her at the glory hole
         && !daily.get("chloe")) {
         nav.button({
             "type": "btn",

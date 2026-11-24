@@ -598,6 +598,7 @@ room450.chatcatch = function(callback){
             nav.kill();
             nav.bg("450_park/c12.webp");
             zcl.bellydown(750, 1000, .15, "back", false);
+            sc.completeMissionTask("cop", "bitch", 3); //fix: "You know why you keep coming back." was never ticked
             sc.completeMission("cop", "bitch");
             sc.completeMission("cop", "*escape");
             sc.completeMissionTask("cop", "*escape", 0);

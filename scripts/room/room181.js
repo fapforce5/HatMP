@@ -127,7 +127,7 @@ room181.chatcatch = function (callback) {
             }
             break;
         case "b203_23":
-            levels.anal(7);
+            levels.anal(7, false, "m", false, "!man"); //fix: without a gender levels.anal never awarded "Took Monster Size Dick"
             sissy.passclass(true);
             break;
         case "b203_7Nolike":

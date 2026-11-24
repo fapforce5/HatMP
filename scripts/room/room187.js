@@ -11,6 +11,9 @@ room187.main = function () {
                 chat(7, 187);
             }
             else {
+                //Mistress Martha's "Sissy pills": first visit to her ticks "Welcome" (was never ticked)
+                if (sissy.st[21].ach && sc.getMissionTask("martha", "sissy", 2).notStarted)
+                    sc.completeMissionTask("martha", "sissy", 2);
                 chat(1, 187);
             }
             break;

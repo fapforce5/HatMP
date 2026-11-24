@@ -124,6 +124,8 @@ room155.chatcatch = function (callback) {
             nav.bg("155_wander/" + callback + ".webp");
             break;
         case "servent2":
+            //you followed her instead of running away - "Friend" is done (running away still fails it in "badEnd")
+            sc.completeMission("bitch", "bitch", true);
             cl.nude();
             nav.bg("155_wander/" + callback + ".webp");
             break;

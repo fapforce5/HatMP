@@ -83,6 +83,13 @@ room252.btnclick = function (name) {
             g.internal.pointer++;
             if (g.internal.pointer > 2) {
                 gv.mod("energy", -75);
+                //Jeffery's "You're hired!": first shift worked after being hired ticks "Get to work!"
+                if (sc.getMission("jeffery", "work").inProgress || sc.getMission("jeffery", "work").complete) {
+                    if (sc.getMissionTask("jeffery", "work", 0).complete)
+                        sc.completeMissionTask("jeffery", "work", 1); //fix: later shifts tick "Work a shift. [Loop]" (was never ticked)
+                    else
+                        sc.completeMissionTask("jeffery", "work", 0);
+                }
                 g.pass = "finishWork";
                 char.room(251);
                 return;

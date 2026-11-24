@@ -26,6 +26,14 @@ room958.main = function () {
         };
         char.changeMenu("map", false, true);
     }
+    //Automatic delivery w/o Events: skip straight to Jeffery's room. The squares on the way are marked as
+    //walked on the map and the time is added as if you'd walked it (2 minutes a step; this room change already added one).
+    if (g.pass?.auto?.jump) {
+        room958.autoJump(room958.autoRoute.to);
+        g.dt = char.addMinutes(g.dt, (room958.autoRoute.to.length - 1) * 2);
+        g.pass.auto = null;
+    }
+    room958.autoSchedule(); //automatic delivery w/ Events: take the next step in 3 seconds (does nothing otherwise)
     g.map.map[g.map.y][g.map.x].x = "c"; 
     
     invoker.invokeCurrent("btnclick", "displayBackground");
@@ -108,6 +116,7 @@ room958.main = function () {
         case "p":
             nav.kill();
             if (g.pass.e === "panties") {
+                gv.set("cultFoundJeffery", true); //found him - the automatic delivery choices show from now on
                
                 if (g.pass.compete) {
                     nav.bg("958_wander/panties_complete.webp");
@@ -481,6 +490,11 @@ room958.chatcatch = function (callback) {
             nav.bg("958_wander/" + callback + "_" + gender.pronoun("f") + ".webp");
             break;
         case "givepanties":
+            //fix: Jeffery "Cult" - "Have you brought me the panties?" was never ticked
+            if (!sc.getMission("jeffery", "cult").complete) {
+                sc.startMission("jeffery", "cult");
+                sc.completeMissionTask("jeffery", "cult", 0);
+            }
             cl.c.panties = null;
             g.pass.compete = true;
             cl.display();
@@ -731,6 +745,18 @@ room958.chatcatch = function (callback) {
         case "reset":
             char.room(958);
             break;
+        case "backAutoEv":
+        case "backAutoNoEv":
+            room958.autoBegin("back", callback === "backAutoEv");
+            break;
+        case "autoTrainAnal":
+        case "autoTrainOral":
+            //w/o Events: stands in for the events you skipped - 1 point to Anal or 1 point to Oral.
+            //Only the point; no scene plays and nothing else changes.
+            if (callback === "autoTrainAnal") levels.mod("anal", 1);
+            else levels.mod("oral", 1);
+            room958.autoRun(room958.autoPending.leg, false);
+            break;
         default:
             break;
     }
@@ -759,7 +785,10 @@ room958.chat = function (chatID) {
             speaker: "jeffery",
             text: "Oh yummy yummy yummy!!!! I can smell the musk from your balls and stink from your pink! ",
             button: [
-                { chatID: -1, text: "[I think I can head back...?]", callback: "pantiesReset" }
+                //Same choices as when you set out: walk back yourself, or let the game walk you back to the cell hallway
+                { chatID: -1, text: "[I think I can head back...?]", callback: "pantiesReset" },
+                { chatID: -1, text: "[Head back automatically (w/ Events)]", callback: "backAutoEv" },
+                { chatID: -1, text: "[Head back automatically (w/o Events)]", callback: "backAutoNoEv" }
             ]
         },
         {
@@ -1354,6 +1383,16 @@ room958.chat = function (chatID) {
                 { chatID: -1, text: "Good luck", callback: "dariaComplete" },
             ]
         },
+        {
+            //Automatic delivery w/o Events: pick the training the skipped events would have given
+            chatID: 70,
+            speaker: "thinking",
+            text: "I'll take the quick way. What do I get up to along the way? ",
+            button: [
+                { chatID: -1, text: "[+1 Anal]", callback: "autoTrainAnal" },
+                { chatID: -1, text: "[+1 Oral]", callback: "autoTrainOral" }
+            ]
+        },
     ]
     if (cArray.length > chatID && chatID > -1)
         return cArray[chatID];
@@ -1361,7 +1400,6 @@ room958.chat = function (chatID) {
         return [];
 };
 
-invoker.registerRoom(958, room958);
 //Automatic panty delivery (cult job). Chosen from the delivery chat in the cell (room950) and from Jeffery's
 //chat after the panties are handed over.
 //  w/ Events : walks the shortest route one screen every 3 seconds by pressing the same direction buttons you would,
@@ -1468,3 +1506,4 @@ room958.autoStep = function () {
     room958.btnclick(dir);
 };
 
+invoker.registerRoom(958, room958);

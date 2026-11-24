@@ -92,7 +92,7 @@ room171.btnclick = function (name) {
                 nav.killall();
                 nav.bg("171_gh/face_t0.jpg");
                 if (sc.getMissionTask("p", "pink", 3).notStarted) {
-                    sc.startMissionTask("p", "pink", 3);
+                    sc.completeMissionTask("p", "pink", 3); //fix: was only started, never ticked
                     chat(0, 171);
                 }
                 else {

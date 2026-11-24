@@ -381,6 +381,9 @@ room526.chatcatch = function (callback) {
                     chat(53, 526);
                     break;
                 case 4:
+                case 5: //"Sex at home..." ticked - the bar repeat scene keeps playing
+                case 6:
+                    sc.completeMissionTask("zoey", "sex", 4); //first repeat scene ticks the [Loop] step
                     nav.bg("526_bar/sex3_0.jpg");
                     chat(71, 526);
             }

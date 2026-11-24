@@ -313,6 +313,7 @@ room776.chatcatch = function (callback) {
             missy.setenvelope("priest");
             sc.startMission("priest", "*closed");
             sc.completeMissionTask("priest", "*closed", 1);
+            sc.completeMissionTask("nun", "*sin", 0); //fix: "Get the list and talk to the priest" was never ticked
             sc.completeMission("nun", "*sin");
             sc.completeMissionTask("nun", "*sin", 1);
             char.addtime(180);

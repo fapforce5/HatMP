@@ -189,7 +189,7 @@ room551.btnclick = function (name) {
                     sc.select("icon_workout", "551_gymInside/icon_workout.png", 0);
                     if (spar.startedOrComplete)
                         sc.select("icon_spar", "551_gymInside/icon_spar.png", 1);
-                    if (secretRoom.startedOrComplete)
+                    if (secretRoom.startedOrComplete) //fix: was inProgress, so the secret room vanished once its mission was completed
                         sc.select("icon_secret", "551_gymInside/icon_secret.png", 2);
                     sc.selectCancel("icon_cancel", 3);
                 }

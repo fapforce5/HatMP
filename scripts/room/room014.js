@@ -155,6 +155,7 @@ room14.main = function () {
                                 chat(156, 14);
                                 break;
                             case 5:
+                            case 6: //"Extra hole" Completed - same scene
                                 sc.modLevel("bigguy", 200, 10);
                                 nav.button(
                                     {

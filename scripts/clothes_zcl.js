@@ -235,7 +235,7 @@ zcl.displayMain = function (top, left, ratio, spec, dback, tag = "zzz-clothing-k
             $.each(cl.dressTop, function (i, v) {
                 if (v.name === cl.c.dress && v.chest === cl.c.chest) {
                     let dressimg = v.image;
-                    if (cl.c.cock !== 5) {
+                    if (cl.c.cock !== 5 && ["pleo", "pls"].includes(cl.c.dress)) { //fix: only the leotards have a "_c" picture - other dresses vanished on stage (same rule as cl.display)
                         let dressdot = dressimg.lastIndexOf(".");
                         dressimg = dressimg.substring(0, dressdot) + "_c" + dressimg.substring(dressdot);
                     }

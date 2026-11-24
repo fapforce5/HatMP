@@ -490,6 +490,7 @@ room479.chatcatch = function (callback) {
             nav.bg("479_hall/ledge14.webp");
             break;
         case "ledge_end":
+            sc.completeMissionTask("a", "secret", 1); //fix: "First time? " was never ticked
             g.pass = "endCave477";
             char.room(477);
             break;
@@ -944,7 +945,7 @@ room479.chat = function (chatID) {
             speaker: "!ledja",
             text: "Welcome back fuck hole! ",
             button: [
-                { chatID: 999, text: "oh.", callback: "ledge2" }
+                { chatID: 50, text: "oh.", callback: "ledge2" } //fix: was chatID 999 (no such chat), so a repeat visit stalled
             ]
         },
         {

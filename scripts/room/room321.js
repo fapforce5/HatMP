@@ -54,6 +54,10 @@ room321.main = function () {
                 nav.bg("321_whorechat/w1_0.jpg"); 
                 g.internal.maxviews = 500;
                 sc.completeMissionTask("janice", "femdom", 3);
+                //fix: the makeup scene ticks "She knows." before you get here, so case 2 never runs -
+                //tick Webcam "Meet my femboy!" on this first femboy show instead
+                if (sc.getMissionTask("janice", "webcam", 4).notStarted)
+                    sc.completeMissionTask("janice", "webcam", 4);
                 chat(8, 321);
                 break;
             case 4:
@@ -123,7 +127,7 @@ room321.main = function () {
 };
 
 room321.gameloop = function () {
-    let fame = sc.taskGetStep("janice", "webcam");
+    let fame = Math.min(sc.taskGetStep("janice", "webcam"), 7); //step 7 is now a repeatable step that gets ticked - keep fame (viewers/tips) the same as before
     g.internal.ticks++;
 
     if (g.internal.ticks > 50) {

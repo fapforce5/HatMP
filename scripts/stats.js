@@ -8,8 +8,11 @@ sstat.hormoneText = function (hormone) {
     return "Masculine";
 };
 
-// Stats under the "Abilities" heading on the stats screen
-sstat.pointStats = ["fitness", "strength", "charisma", "pi"];
+// Stats under the "Abilities", "Skills" and "Talents" headings on the stats screen - they get the points line
+// and the percentage inside the bar when Settings page 2 > Points / Percentage are On
+sstat.pointStats = ["fitness", "strength", "charisma", "pi",
+    "makeup", "heels", "oral", "anal", "sub", "dom", "cum", "piss", "beast", "fame",
+    "cheer", "stripper", "whore"];
 
 // Centered "xx%" label inside an ability's progress bar, sized to the bar's height
 sstat.updateBarPercent = function (stat, barWidth) {

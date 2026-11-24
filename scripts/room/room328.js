@@ -62,6 +62,10 @@ room328.main = function () {
         cl.c.nipplering = null;
         cl.nude();
         sc.startMission("rachel", "ranch");
+        sc.completeMissionTask("rachel", "ranch", 0); //fix: "First day" was never ticked
+        sc.completeMission("rachel", "ranch", true);
+        sc.completeMissionTask("rachel", "milk", 1); //you're a hucow now - "Hucow." if it wasn't ticked yet
+        sc.completeMission("rachel", "milk", true);
         room328.btnclick("meadow");
         nav.button({
             "type": "img",

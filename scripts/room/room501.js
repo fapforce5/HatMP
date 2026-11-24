@@ -55,7 +55,8 @@ room501.main = function () {
 room501.btnclick = function (name) {
     switch (name) {
         case "zoey":
-            if (cl.c.cock === 5 && sc.taskGetStep("zoey", "sex") === 4) {
+            //"My new vagina": first visit with a vagina after "Mon cœur souffre pour toi" (step 4 can already be ticked by the repeat scenes)
+            if (cl.c.cock === 5 && sc.getMissionTask("zoey", "sex", 3).complete && sc.getMissionTask("zoey", "sex", 5).notStarted) {
                 sc.completeMissionTask("zoey", "sex", 4);
                 sc.completeMissionTask("zoey", "sex", 5);
                 chat(110, 501);
@@ -195,6 +196,8 @@ room501.btnclick = function (name) {
                         chat(101, 501);
                         break;
                     case 4:
+                    case 5: //"Sex at home..." ticked - same chat
+                    case 6:
                         nav.killall();
                         invoker.invokeCurrent("chatcatch", "zLookx");
                         chat(102, 501);
@@ -223,6 +226,9 @@ room501.btnclick = function (name) {
             char.room(28);
             break;
         case "door":
+            //NOTE: NOT IMPLEMENTED YET - g.pass "zoeyLickPussy" is meant to start a repeat scene in Zoey's bedroom
+            //(after "Mon cœur souffre pour toi"), but room502.main never checks for it, so you get the normal bedroom.
+            //When the scene is written, handle g.pass === "zoeyLickPussy" at the top of room502.main (and clear g.pass).
             if (sc.getMissionTask("zoey", "sex", 3).complete)
                 g.pass = "zoeyLickPussy";
             char.room(502);
@@ -682,6 +688,7 @@ room501.chatcatch = function (callback) {
             break;
         case "cheat":
             sc.modLevel("zoey", 100, 5);
+            sc.completeMissionTask("zoey", "friends", 5); //"I need your help!"
             sc.completeMission("zoey", "friends");
             sc.startMission("zoey", "cheating");
             sc.completeMissionTask("zoey", "cheating", 0); //Spy on her.
@@ -690,6 +697,7 @@ room501.chatcatch = function (callback) {
             break;
         case "cheat2":
             sc.modLevel("zoey", 20, 5);
+            sc.completeMissionTask("zoey", "friends", 5); //"I need your help!"
             sc.completeMission("zoey", "friends");
             sc.startMission("zoey", "cheating");
             sc.completeMissionTask("zoey", "cheating", 0); //Spy on her.
@@ -830,6 +838,7 @@ room501.chatcatch = function (callback) {
         case "zoeyDestroy":
             sc.completeMission("zoey", "friends", false);
             sc.startMission("zoey", "xfriends");
+            sc.completeMissionTask("zoey", "xfriends", 0); //fix: "Always trust your friends." was never ticked - Ex-friends now completes
             daily.set("zoey");
             char.addtime(37);
             char.room(0);
@@ -872,6 +881,7 @@ room501.chatcatch = function (callback) {
             chat(999, 501);
             break;
         case "playForSex":
+            sc.completeMissionTask("zoey", "sex", 4); //"Sex at home, sex at work, sex everywhere [Loop]" - first repeat scene
             nav.killall();
             var playForSex = g.rand(0, 9);
             nav.bg("501_jadaGame/game" + playForSex + ".jpg");

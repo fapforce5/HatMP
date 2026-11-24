@@ -57,6 +57,7 @@ room186.chatcatch = function (callback) {
                 chat(6, 186);
             }
             else {
+                sc.completeMissionTask("black", "talent", 1); //fix: "Repeat customer" was never ticked
                 chat(8, 186);
             }
             break;

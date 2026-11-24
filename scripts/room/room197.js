@@ -23,11 +23,14 @@ room197.main = function () {
         chat(selected.chatid, 197);
     }
     else {
+        //1 in 5: replay one of the earlier lessons (the foot lessons still let you say no -> Ms. Black)
+        //fix: this used to fall through to the switch below, which replaced the replayed lesson straight away
         if (g.rand(0, 5) === 0) {
             selected = sublist[g.rand(0, sublist.length)];
             if (selected.n === "anal")
                 nav.bg("197_sub/anal0.jpg");
             chat(selected.chatid, 197);
+            return; //fix: stop here so the replayed lesson isn't replaced by this week's
         }
         switch (g.rand(0, 4)) {
             case 0: nav.bg("197_sub/anal0.jpg"); chat(28, 197); break;

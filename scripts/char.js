@@ -655,19 +655,19 @@ char.applyScaledShellStyles = function (options) {
         height: 50 * g.ratio + "px"
     });
     $(".rl-change[data-type='map']").css({
-        left: ox + 75 * g.ratio + "px",
+        left: ox + 75 * g.ratio + "px", //fix: offset so the buttons stay inside the panel
         top: "0px",
         width: 75 * g.ratio + "px",
         height: 50 * g.ratio + "px"
     });
     $(".rl-change[data-type='graph']").css({
-        left: ox + 150 * g.ratio + "px",
+        left: ox + 150 * g.ratio + "px", //fix: offset so the buttons stay inside the panel
         top: "0px",
         width: 75 * g.ratio + "px",
         height: 50 * g.ratio + "px"
     });
     $(".rl-change[data-type='walk']").css({
-        left: ox + 225 * g.ratio + "px",
+        left: ox + 225 * g.ratio + "px", //fix: offset so the buttons stay inside the panel
         top: "0px",
         width: 75 * g.ratio + "px",
         height: 50 * g.ratio + "px"
@@ -1284,6 +1284,7 @@ char.applyLoadedState = function (tp) {
     cl.load(tp.cl);
     sc.load(tp.sc);
     gv.load(tp.gv, saveVersion);
+    sc.loadRepairsAfterGv(); //mission repairs that depend on game variables
     missy.load(tp.missy);
 
     try {

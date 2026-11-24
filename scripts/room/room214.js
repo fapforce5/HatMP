@@ -122,6 +122,7 @@ room214.chatcatch = function (callback) {
             levels.mod("whore", 25);
             levels.oral(3, "m", "!man", true);
             gv.mod("pink", 1);
+            sc.completeMissionTask("p", "pink", 1); //fix: "First blowjob" was never ticked
             char.addtime(37);
             char.room(214);
             break;

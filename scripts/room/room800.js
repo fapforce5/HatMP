@@ -132,7 +132,8 @@ room800.btnclick = function (name) {
             sc.select("gift", "252_waitress/icon_gift.png", 0);
             sc.select("chat", "252_waitress/icon_chat.png", 1);
             sc.select("dick", "752_whore/whore_dick.png", 2);
-            if (sc.getMissionTask("ralphsmom", "room", 4).complete && !daily.get("room800dad")) {
+            //"Sissy in the middle" needs Dad at home (he's away Friday to Sunday)
+            if (sc.getMissionTask("ralphsmom", "room", 4).complete && !daily.get("room800dad") && sc.getTimeline("ralphsdad").roomID !== null) {
                 sc.select("sissy", "800_ralph/icon_middle.webp", 3);
                 sc.selectCancel("cancel", 4);
             }
@@ -451,7 +452,8 @@ room800.chatcatch = function (callback) {
             sc.select("gift", "252_waitress/icon_gift.png", 0);
             sc.select("chat", "252_waitress/icon_chat.png", 1);
             sc.select("dick", "752_whore/whore_dick.png", 2);
-            if (sc.getMissionTask("ralphsmom", "room", 4).complete && !daily.get("room800dad")) {
+            //"Sissy in the middle" needs Dad at home (he's away Friday to Sunday)
+            if (sc.getMissionTask("ralphsmom", "room", 4).complete && !daily.get("room800dad") && sc.getTimeline("ralphsdad").roomID !== null) {
                 sc.select("sissy", "800_ralph/icon_middle.webp", 3);
                 sc.selectCancel("cancel", 4);
             }

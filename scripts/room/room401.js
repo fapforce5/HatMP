@@ -143,7 +143,8 @@ room401.main = function () {
             var spankyInv = ["e", "g", "n"];
             if (sc.getMissionTask("spanky", "shop", 1).complete)
                 spankyInv.push("h");
-            if (sc.getMission("spanky", "hypno").inProgress)
+            //hypno tapes: same as before - sold while Hypno is going and after the half-price ending, not after triple prices
+            if (sc.getMission("spanky", "hypno").inProgress || (sc.getMission("spanky", "hypno").complete && sc.getMissionTask("spanky", "hypno", 1).success))
                 spankyInv.push("y");
             if (sc.getMissionTask("spanky", "hypno", 2).success) {
                 priceMult = 3;

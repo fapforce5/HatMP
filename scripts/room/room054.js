@@ -202,6 +202,7 @@ room54.chatcatch = function (callback) {
         case "e6_end":
             sc.startMission("candy", "cheer");
             sc.completeMissionTask("tiffany", "friend", 6);
+            sc.completeMission("tiffany", "friend", true); //fix: last step - one change-room choice is always Failed, so it never auto-completed
             char.addtime(97);
             break;
         default:

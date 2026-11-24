@@ -55,7 +55,7 @@ room750.main = function () {
         "image": "750_homeless/crystal.png",
         "night": "750_homeless/crystalnight.png"
     }, 750);
-    var navList = [751, 752, 0];
+    var navList = [751, 752, 753, 0]; //added 753: Dale's Tent button
     nav.buildnav(navList);
     //if (g.isNight()) {
     //    fame.event();
@@ -83,6 +83,7 @@ room750.btnclick = function (name) {
                 switch (sc.taskGetStep("doc", "doc")) {
                     case -1:
                     case 0:
+                        sc.show("doc"); //fix: Dr. Strangelove never appeared on the phone's Relationships list
                         sc.startMission("doc", "doc");
                         sc.completeMissionTask("doc", "doc", 0);
                         chat(0, 750);
@@ -104,18 +105,7 @@ room750.btnclick = function (name) {
             char.room(751);
             break;
         case "daletent":
-            nav.kill();
-            nav.bg("750_homeless/dalebg.webp");
-            nav.button({
-                "type": "btn",
-                "name": "dale",
-                "left": 641,
-                "top": 382,
-                "width": 480,
-                "height": 611,
-                "image": "750_homeless/dale.webp",
-            }, 750);
-            nav.buildnav([750, 0], true);
+            char.room(753); //Dale's Tent is its own room now (with a bottom-bar button like the other tents)
             break;
         case "dale":
             if (missy.activecase().caseId === 20 && !inv.get("sewer").entry) {
@@ -197,6 +187,7 @@ room750.btnclick = function (name) {
                     break;
                 case 7:
                     sc.completeMissionTask("elijah", "elijah", 7);
+                    sc.startMissionTask("elijah", "elijah", 8); //"Wait for the day we can get married" - his ending (room975) needs it started
                     chat(67, 750);
                     break;
                 case 8:

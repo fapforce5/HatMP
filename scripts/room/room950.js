@@ -1240,6 +1240,11 @@ room950.chatcatch = function (callback) {
         case "room952":
             char.room(958);
             break;
+        case "deliverAutoEv":
+        case "deliverAutoNoEv":
+            //Automatic panty delivery - the walk itself is handled in room958 (autoBegin also checks energy first)
+            room958.autoBegin("to", callback === "deliverAutoEv");
+            break;
         case "reset":
             char.room(950);
             break;
@@ -2098,9 +2103,15 @@ room950.chat = function (chatID) {
                 chatID: 96,
                 speaker: "cult",
                 text: "I don't fuckin' know. Probably in his chamber, dumb ass. Now get!",
+                //Delivery choices: walk it yourself, or let the game walk it for you (see room958.autoBegin).
+                //w/ Events walks the route one screen every 3 seconds and random events can still happen;
+                //w/o Events goes straight to Jeffery. The automatic choices only show once you've found Jeffery yourself.
                 button: [
                     { chatID: -1, text: "[Put on the panties and deliver them]", callback: "room952" }
-                ]
+                ].concat(gv.get("cultFoundJeffery") ? [ //automatic delivery choices once you've reached Jeffery on a delivery (cultFoundJeffery)
+                    { chatID: -1, text: "[Deliver automatically (w/ Events)]", callback: "deliverAutoEv" },
+                    { chatID: -1, text: "[Deliver automatically (w/o Events)]", callback: "deliverAutoNoEv" }
+                ] : [])
             },
             {
                 chatID: 97,

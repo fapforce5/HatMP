@@ -9,8 +9,8 @@ g.map = null;
 g.roomAdd = new Array();
 g.saveState = null;
 g.startDate = new Date(2012, 0, 1, 0, 0, 0, 0);
-g.version = 28.3;
-g.versionText = "0.28.3 - NOV 2026";
+g.version = 28.2;
+g.versionText = "0.28.2 - OCT 2026";
 g.newLoad = true;
 g.back = false;
 g.altview = false;
@@ -439,6 +439,7 @@ g.rooms = [
     { roomID: 750, name: "Homeless Camp", image: "750_homeless/bg.jpg", nightImage: "750_homeless/bgNight.jpg", houseID: 750, btn: "roomBtn_750.png" },
     { roomID: 751, name: "Fortune Teller", image: "751_crystal/bg.jpg", nightImage: "751_crystal/bg.jpg", houseID: 750, btn: "roomBtn_751.png" },
     { roomID: 752, name: "Dirty Whore's Tent", image: "752_whore/bg.jpg", nightImage: "752_whore/bg.jpg", houseID: 750, btn: "roomBtn_752.png" },
+    { roomID: 753, name: "Dale's Tent", image: "750_homeless/dalebg.webp", nightImage: "750_homeless/dalebg.webp", houseID: 750, btn: "roomBtn_750.png" }, //bottom-bar button for Dale's tent (uses the camp picture - no Dale button picture in the game yet)
 
     { roomID: 775, name: "Church", image: "775_church/boy.jpg", nightImage: "775_church/boy.jpg", houseID: 775, btn: "roomBtn_10.png" },
     { roomID: 776, name: "Church", image: "776_church/bg.webp", nightImage: "776_church/bg.webp", houseID: 775, btn: "roomBtn_10.png" },
@@ -639,7 +640,6 @@ g.room = function (roomID) {
     return "room" + roomID.toString();
 };
 
-g.getRooms = function (roomID) {
 //Name shown for a room (room buttons, phone mission locations, envelope list).
 //Ralph's house rooms are named "R ..." - after Ralph picks a new name at poker, the R becomes her first initial.
 g.roomDisplayName = function (room) {
@@ -673,6 +673,7 @@ g.mapDisplayName = function (place) {
     return place.display;
 };
 
+g.getRooms = function (roomID) {
     for (i = 0; i < g.rooms.length; i++)
         if (g.rooms[i].roomID === roomID)
             return g.rooms[i];

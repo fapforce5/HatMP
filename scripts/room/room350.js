@@ -56,7 +56,7 @@ room350.btnclick = function (name) {
             else if (cl.stinky()) {
                 chat(81, 350);
             }
-            else if (sc.getMission("landlord", "sissy").inProgress) {
+            else if (sc.getMission("landlord", "sissy").inProgress || sc.getMission("landlord", "sissy").success) { //Naughty girl now completes - the nurse job stays open
                
                 if (cl.getBodyHair() !== null)
                     chat(33, 350);

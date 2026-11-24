@@ -257,6 +257,7 @@ room954.chatcatch = function (callback) {
             sc.completeMissionTopLevelOnly("philbert", "bully");
             sc.completeMissionTopLevelOnly("philbert", "barn");
             sc.completeMissionTopLevelOnly("cecilia", "gloryhole");
+            gv.set("ceciliaGloryClosed", true); //her park stall scene stops after the cult (it used to stop when the mission left In Progress)
             sc.completeMissionTopLevelOnly("bimbo", "fuck");
             sc.completeMissionTopLevelOnly("raven", "bitch");
             sc.completeMissionTopLevelOnly("ppgirl", "pp");

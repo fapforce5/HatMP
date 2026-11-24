@@ -2,6 +2,8 @@
 var room502 = {};
 room502.main = function () {
     var btnList = new Array();
+    //NOTE: NOT IMPLEMENTED YET - room501 "door" sets g.pass = "zoeyLickPussy" for a repeat bedroom scene with Zoey,
+    //but no scene exists here yet. Add it as the first check below when it's written.
     if (g.pass === "endSleepyTime") {
         if (sc.getTimeline("zoey").thisRoom) {
             nav.button({

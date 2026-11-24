@@ -49,6 +49,7 @@ room207.main = function () {
     }
     else if (sissy.st[21].ach) {
         if (sc.getMissionTask("martha", "sissy", 0).notStarted) {
+            sc.startMission("martha", "sissy"); //fix: the mission was never started, so it stayed Not Started
             sc.completeMissionTask("martha", "sissy", 0);
             chat(7, 207);
         }

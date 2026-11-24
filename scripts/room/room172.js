@@ -21,6 +21,9 @@ room172.main = function () {
 room172.btnclick = function (name) {
     switch (name) {
         case "black":
+            gv.mod("blackPunishCount", 1);
+            if (gv.get("blackPunishCount") > 1 && sc.getMissionTask("black", "punish", 1).notStarted)
+                sc.completeMissionTask("black", "punish", 1); //2nd punishment: "Repeat customer" - mission completes [Repeatable]
             if (sc.getMission("black", "punish").notStarted) {
                 sc.startMission("black", "punish");
                 sc.completeMissionTask("black", "punish", 0);

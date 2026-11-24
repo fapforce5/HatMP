@@ -21,7 +21,7 @@ room952.main = function() {
             "top": 445,
             "width": 173,
             "height": 243,
-            "title": "Attempt and escape",
+            "title": "Attempt an escape", //fix: was "Attempt and escape"
             "image": "952_hallway/escape.png"
         }];
     }
@@ -65,7 +65,7 @@ room952.main = function() {
             "top": 445,
             "width": 173,
             "height": 243,
-            "title": "Attempt and escape",
+            "title": "Attempt an escape", //fix: was "Attempt and escape"
             "image": "952_hallway/escape.png"
         });
         nav.drawButton("1001_rand/turnaround.png", "turnaround", 952);
@@ -270,6 +270,8 @@ room952.btnclick = function (name) {
                 chat(42, 952);
             }
             else {
+                if (sc.getMissionTask("ralph", "cult", 4).complete)
+                    sc.completeMissionTask("ralph", "cult", 5); //fix: "I'm ready to be broken again" was never ticked
                 chat(43, 952);
             }
             break;

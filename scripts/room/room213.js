@@ -48,6 +48,7 @@ room213.main = function () {
     }, 213);
 
     if (sc.getMissionTask("p", "pink", 0).notStarted) {
+        sc.startMission("p", "pink"); //fix: the mission was never started, so it stayed Not Started
         sc.completeMissionTask("p", "pink", 0);
         nav.button({
             "type": "btn",

@@ -226,7 +226,7 @@ room16.main = function () {
             });
         }
         if (thisMomRoomID.roomID === 26 && thisSisterRoomID.roomID === 26) {
-            if (sc.getMission("lola", "*cumdump")) {
+            if (sc.getMission("lola", "*cumdump").inProgress) { //fix: was missing .inProgress, so the pregnant picture always showed
                 btnList.push({
                     "type": "btn",
                     "name": "living",
