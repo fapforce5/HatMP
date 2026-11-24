@@ -378,8 +378,10 @@ room950.btnclick = function (name) {
             }
             break;
         case "clean":
-            if (gv.get("energy") < 20) {
-                chat(6, 950); 
+            if (gv.get("energy") < 20) { //fix: offers energy items from the bag first (inv.energyPrompt); runs this choice again once there is enough
+                inv.energyPrompt(20, function () { room950.btnclick(name); }, function () {
+                    chat(6, 950); 
+                });
             }
             else {
                 gv.mod("energy", -20);
@@ -416,8 +418,10 @@ room950.btnclick = function (name) {
             chat(8, 950);
             break;
         case "icon_pushup":
-            if (gv.get("energy") < 50) {
-                chat(6, 950);
+            if (gv.get("energy") < 50) { //fix: offers energy items from the bag first (inv.energyPrompt); runs this choice again once there is enough
+                inv.energyPrompt(50, function () { room950.btnclick(name); }, function () {
+                    chat(6, 950);
+                });
             }
             else {
                 nav.killall();
@@ -438,8 +442,10 @@ room950.btnclick = function (name) {
             }
             break;
         case "icon_squats":
-            if (gv.get("energy") < 50) {
-                chat(6, 950);
+            if (gv.get("energy") < 50) { //fix: offers energy items from the bag first (inv.energyPrompt); runs this choice again once there is enough
+                inv.energyPrompt(50, function () { room950.btnclick(name); }, function () {
+                    chat(6, 950);
+                });
             }
             else {
                 nav.killall();
@@ -557,8 +563,10 @@ room950.btnclick = function (name) {
             break;
         case "brick":
             if (sc.getMission("bodhi", "cult").notStarted) {
-                if (gv.get("energy") < 60) {
-                    chat(89, 950);
+                if (gv.get("energy") < 60) { //fix: offers energy items from the bag first (inv.energyPrompt); runs this choice again once there is enough
+                    inv.energyPrompt(60, function () { room950.btnclick(name); }, function () {
+                        chat(89, 950);
+                    });
                     return;
                 }
                 nav.kill();

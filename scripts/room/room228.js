@@ -48,8 +48,10 @@ room228.btnclick = function (name) {
             char.room(225);
             break;
         case "in":
-            if (gv.get("energy") < 10) {
-                chat(1, 228);
+            if (gv.get("energy") < 10) { //fix: offers energy items from the bag first (inv.energyPrompt); runs this choice again once there is enough
+                inv.energyPrompt(10, function () { room228.btnclick(name); }, function () {
+                    chat(1, 228);
+                });
             }
             else {
                 g.pass = "foo";

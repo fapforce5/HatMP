@@ -67,8 +67,10 @@ room484.btnclick = function (name) {
                 sc.completeMissionTask("wolf", "pack", 2);
             }
             sc.modLevel("wolf", 75, 10);
-            if (gv.get("energy") < 35) {
-                chat(7, 484)
+            if (gv.get("energy") < 35) { //fix: offers energy items from the bag first (inv.energyPrompt); runs this choice again once there is enough
+                inv.energyPrompt(35, function () { room484.btnclick(name); }, function () {
+                    chat(7, 484)
+                });
             }
             else {
                 gv.mod("energy", -35);

@@ -70,8 +70,10 @@ room213.main = function () {
 room213.btnclick = function (name) {
     switch (name) {
         case "icon_waitress":
-            if (gv.get("energy") < 33) {
-                chat(33, 213);
+            if (gv.get("energy") < 33) { //fix: offers energy items from the bag first (inv.energyPrompt); runs this choice again once there is enough
+                inv.energyPrompt(33, function () { room213.btnclick(name); }, function () {
+                    chat(33, 213);
+                });
             }
             else if (sc.getMissionTask("p", "pink", 2).notStarted) {
                 sc.completeMissionTask("p", "pink", 2);

@@ -242,8 +242,8 @@ room451.btnclick = function (name) {
                     chat(59, 451);
                 }
                 else {
-                    if (gv.get("energy") < 20)
-                        chat(63, 451);
+                    if (gv.get("energy") < 20) //fix: offers energy items from the bag first (inv.energyPrompt); runs this choice again once there is enough
+                        inv.energyPrompt(20, function () { room451.btnclick(name); }, function () { chat(63, 451); });
                     else
                         invoker.invokeCurrent("chatcatch", "suck1");
                 }
@@ -316,8 +316,8 @@ room451.btnclick = function (name) {
 
             break;
         case "cecilia":
-            if (gv.get("energy") < 20)
-                chat(66, 451);
+            if (gv.get("energy") < 20) //fix: offers energy items from the bag first (inv.energyPrompt); runs this choice again once there is enough
+                inv.energyPrompt(20, function () { room451.btnclick(name); }, function () { chat(66, 451); });
             else
                 chat(46, 451);
             break;

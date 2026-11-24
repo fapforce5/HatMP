@@ -53,8 +53,8 @@ room183.main = function () {
 room183.btnclick = function (name) {
     switch (name) {
         case "whore":
-            if (gv.get("energy") < 25)
-                char.room(213);
+            if (gv.get("energy") < 25) //fix: offers energy items from the bag first (inv.energyPrompt); runs this choice again once there is enough
+                inv.energyPrompt(25, function () { room183.btnclick(name); }, function () { char.room(213); });
             else {
                 g.internal = { assout: true, customer: 0, s: 0, t: 0 };
                 nav.killbutton("whore");

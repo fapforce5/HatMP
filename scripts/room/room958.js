@@ -1362,3 +1362,109 @@ room958.chat = function (chatID) {
 };
 
 invoker.registerRoom(958, room958);
+//Automatic panty delivery (cult job). Chosen from the delivery chat in the cell (room950) and from Jeffery's
+//chat after the panties are handed over.
+//  w/ Events : walks the shortest route one screen every 3 seconds by pressing the same direction buttons you would,
+//              so random events can still happen. After an event it carries on from where it stopped.
+//  w/o Events: goes straight there (to Jeffery, or back to the cell hallway). Time is added as if you walked it.
+//              First you pick +1 Anal or +1 Oral, standing in for the events you skipped.
+//The route never steps on a random event square. Energy is checked first and you're offered energy items (inv.energyPrompt).
+room958.autoRoute = {
+    to: ["east", "east", "north", "north", "east", "east", "north", "east", "east", "south"],     //entrance (0,6) -> Jeffery (6,4)
+    back: ["north", "west", "west", "south", "west", "west", "south", "south", "west", "west"]   //Jeffery (6,4) -> entrance (0,6)
+};
+room958.autoStart = { to: { x: 0, y: 6 }, back: { x: 6, y: 4 } };
+room958.autoPending = null;
+room958.autoTimer = null;
+
+//energy check: w/ Events needs enough for an event (50), w/o Events only needs to not be out of energy
+room958.autoBegin = function (leg, withEvents) {
+    //low on energy: offer energy items from the bag (inv.energyPrompt); if you say no, it goes anyway
+    var need = withEvents ? 50 : 1;
+    if (gv.get("energy") < need)
+        inv.energyPrompt(need, function () { room958.autoGo(leg, withEvents); }, function () { room958.autoGo(leg, withEvents); });
+    else
+        room958.autoGo(leg, withEvents);
+};
+
+room958.autoGo = function (leg, withEvents) {
+    //w/o Events: the events you skip would have trained you, so you pick what to train first (chat 72)
+    if (!withEvents) {
+        room958.autoPending = { leg: leg, withEvents: false };
+        chat(70, 958);
+        return;
+    }
+    room958.autoRun(leg, true);
+};
+
+room958.autoRun = function (leg, withEvents) {
+    room958.autoPending = null;
+    if (leg === "to") {
+        g.pass.auto = { leg: "to", i: 0, jump: !withEvents };
+        g.map = null;
+        char.room(958);
+    }
+    else if (withEvents) {
+        room958.chatcatch("pantiesReset"); //puts the North button back so the walk can press it
+        g.pass.auto = { leg: "back", i: 0, jump: false };
+        room958.autoSchedule();
+    }
+    else {
+        //straight back to the cell hallway - same as stepping on the entrance square
+        g.pass.auto = null;
+        room958.autoJump(room958.autoRoute.back);
+        g.dt = char.addMinutes(g.dt, (room958.autoRoute.back.length - 1) * 2);
+        g.map = null;
+        gv.mod("cultDayCounter", 1);
+        char.room(952);
+    }
+};
+
+//marks every square on the route as walked and moves you to the end of it
+room958.autoJump = function (route) {
+    $.each(route, function (i, dir) {
+        g.map.map[g.map.y][g.map.x].x = "c";
+        if (dir === "north") g.map.y--;
+        else if (dir === "south") g.map.y++;
+        else if (dir === "east") g.map.x++;
+        else g.map.x--;
+        g.map.counter++;
+        g.map.lastRape++;
+    });
+};
+
+room958.autoSchedule = function () {
+    clearTimeout(room958.autoTimer);
+    if (g.pass?.auto && !g.pass.auto.jump)
+        room958.autoTimer = setTimeout(room958.autoStep, 3000);
+};
+
+room958.autoStep = function () {
+    var a = g.pass?.auto;
+    if (!a || g.roomID !== 958 || g.map === null || typeof g.map !== "object" || !g.map.map)
+        return;
+    var route = room958.autoRoute[a.leg];
+    //where you should be after a.i steps - if you've moved yourself the automatic walk stops
+    var pos = $.extend({}, room958.autoStart[a.leg]);
+    for (var i = 0; i < a.i; i++) {
+        if (route[i] === "north") pos.y--;
+        else if (route[i] === "south") pos.y++;
+        else if (route[i] === "east") pos.x++;
+        else pos.x--;
+    }
+    if (pos.x !== g.map.x || pos.y !== g.map.y || a.i >= route.length) {
+        g.pass.auto = null;
+        return;
+    }
+    //an event is on screen (chat open or the direction button isn't there): wait and check again
+    if ($('#room_chatOverlay').is(":visible") || $('[data-name="' + route[a.i] + '"]').length === 0) {
+        room958.autoTimer = setTimeout(room958.autoStep, 500);
+        return;
+    }
+    var dir = route[a.i];
+    a.i++;
+    if (a.i >= route.length)
+        g.pass.auto = null; //last step - Jeffery's chat or the cell hallway takes over from here
+    room958.btnclick(dir);
+};
+

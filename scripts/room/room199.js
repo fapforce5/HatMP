@@ -74,9 +74,11 @@ room199.chatcatch = function (callback) {
             missy.mod("mood", -5);
             break;
         case "first":
-            if (gv.get("energy") < 15) {
-                nav.bg("199_workout/tired.jpg");
-                chat(8, 199);
+            if (gv.get("energy") < 15) { //fix: offers energy items from the bag first (inv.energyPrompt); runs this choice again once there is enough
+                inv.energyPrompt(15, function () { room199.chatcatch(callback); }, function () {
+                    nav.bg("199_workout/tired.jpg");
+                    chat(8, 199);
+                });
             }
             else {
                 g.internal++;
@@ -87,9 +89,11 @@ room199.chatcatch = function (callback) {
             nav.killall();
             gv.mod("energy", -15);
             levels.mod("fitness", 7);
-            if (gv.get("energy") < 15) {
-                nav.bg("199_workout/tired.jpg");
-                chat(8, 199);
+            if (gv.get("energy") < 15) { //fix: offers energy items from the bag first (inv.energyPrompt); runs this choice again once there is enough
+                inv.energyPrompt(15, function () { room199.chatcatch(callback); }, function () {
+                    nav.bg("199_workout/tired.jpg");
+                    chat(8, 199);
+                });
             }
             else {
                 nav.bg("199_workout/jump.jpg");
@@ -101,9 +105,11 @@ room199.chatcatch = function (callback) {
             nav.killall();
             gv.mod("energy", -15);
             levels.mod("fitness", 5);
-            if (gv.get("energy") < 15) {
-                nav.bg("199_workout/tired.jpg");
-                chat(8, 199);
+            if (gv.get("energy") < 15) { //fix: offers energy items from the bag first (inv.energyPrompt); runs this choice again once there is enough
+                inv.energyPrompt(15, function () { room199.chatcatch(callback); }, function () {
+                    nav.bg("199_workout/tired.jpg");
+                    chat(8, 199);
+                });
             }
             else {
                 nav.bg("199_workout/toes.jpg");

@@ -226,8 +226,10 @@ room901.btnclick = function (name) {
             char.room(902);
             break;
         case "swimming":
-            if (gv.get("energy") < 30) {
-                chat(21, 901);
+            if (gv.get("energy") < 30) { //fix: offers energy items from the bag first (inv.energyPrompt); runs this choice again once there is enough
+                inv.energyPrompt(30, function () { room901.btnclick(name); }, function () {
+                    chat(21, 901);
+                });
             }
             else {
                 nav.killall();

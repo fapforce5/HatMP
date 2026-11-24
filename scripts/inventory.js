@@ -1261,3 +1261,247 @@ inv.load = function (ia) {
     inv.backpackIcon();
     inv.phoneIcon();
 };
+
+//Energy boost - when a choice needs more energy than you have, offer to use energy items from the bag first.
+//  inv.energyPrompt(need, retry, fail): only asks when energy is below what the choice needs AND you have
+//  something that gives energy. retry() runs the choice again once you have enough; fail() is the game's
+//  normal "too tired" result (used when you say no, or have nothing / not enough left).
+//  The list shows each item you have with "+ energy" beside it, then "Fill up" - the mix of what you have that
+//  gets closest to max energy without going over (it tells you what it used). After picking one item it asks
+//  how many: One, Two or Three. The beast cum jars are left out of this list on purpose (still usable from the bag).
+inv.energyBoostItems = ["cumjar", "soda", "pissjargirl", "pissjarboy", "acia", "hornyGoatWeed"];
+inv.eb = null;
+
+//how much energy one of these gives (same amounts as using it from the bag)
+inv.energyGain = function (name) {
+    switch (name) {
+        case "acia": return 15;
+        case "soda": return 50;
+        case "hornyGoatWeed": return 10;
+        case "cumjar": return 100;
+        case "pissjarboy":
+        case "pissjargirl":
+            return inv.pissJarGain(name, gv.get("bladder"));
+    }
+    return 0;
+};
+
+//a jar of piss: levels.piss gives (piss level - 4) x 5 (+20 for a girl's, nothing until piss level 5), and it fills
+//the bladder by .3 - that adds +10 if the bladder was under .9, but costs -30 if it ends up over .9 (too full)
+inv.pissJarBase = function (name) {
+    var pissLevel = levels.get("piss").l - 4;
+    return pissLevel > 0 ? pissLevel * 5 + (name === "pissjargirl" ? 20 : 0) : 0;
+};
+inv.pissJarGain = function (name, bladder) {
+    var gain = inv.pissJarBase(name);
+    if (bladder < .9)
+        gain += 10;
+    if (Math.min(1, bladder + .3) > .9)
+        gain -= 30;
+    return gain;
+};
+
+inv.energyLabel = function (name) {
+    if (name === "pissjarboy") return "A Jar full of piss (guy's)";
+    if (name === "pissjargirl") return "A Jar full of piss (girl's)";
+    return inv.get(name).display;
+};
+
+//items you have that would give energy right now, biggest first
+inv.energyOnHand = function () {
+    return inv.energyBoostItems.filter(function (n) {
+        var it = inv.get(n);
+        return it !== null && it.count > 0 && inv.energyGain(n) > 0;
+    });
+};
+
+//uses one - same effects as using it from the bag (inv.js "e" items)
+inv.useEnergyItem = function (name) {
+    var it = inv.get(name);
+    if (it === null || it.count < 1)
+        return false;
+    it.count--;
+    switch (name) {
+        case "acia": gv.mod("energy", 15); break;
+        case "soda": gv.mod("energy", 50); break;
+        case "hornyGoatWeed":
+            gv.mod("energy", 10);
+            gv.mod("arousal", 100);
+            gv.mod("cum", -2000);
+            cl.display();
+            break;
+        case "cumjar":
+            gv.mod("energy", 100);
+            levels.mod("xdress", 10);
+            levels.mod("cum", 25);
+            break;
+        case "pissjarboy": levels.piss(true, false, false, "m"); break;
+        case "pissjargirl": levels.piss(true, false, false, "f"); break;
+    }
+    if (it.count < 1) {
+        it.count = 0;
+        it.entry = false;
+    }
+    return true;
+};
+
+//"Fill up": the mix of items on hand that adds the most energy without going over max (fewest items if tied)
+inv.energyFillPlan = function () {
+    var room = gv.get("maxenergy") - gv.get("energy");
+    if (room < 1)
+        return null;
+    var best = [{ n: 0, use: {} }];
+    var e;
+    for (e = 1; e <= room; e++)
+        best[e] = null;
+    //jars of piss: only as many as keep the bladder at .9 or under (past that each one costs energy instead)
+    var pissAllowed = Math.max(0, Math.floor((.9 - gv.get("bladder")) / .3 + 1e-9));
+    $.each(inv.energyOnHand(), function (i, name) {
+        var gain = inv.energyGain(name);
+        var copies = Math.min(inv.get(name).count, Math.floor(room / gain));
+        if (name === "pissjarboy" || name === "pissjargirl") {
+            gain = inv.pissJarBase(name) + 10;
+            copies = Math.min(inv.get(name).count, Math.floor(room / gain), pissAllowed);
+            pissAllowed -= copies;
+        }
+        for (var k = 0; k < copies; k++) {
+            for (e = room; e >= gain; e--) {
+                var prev = best[e - gain];
+                if (prev !== null && (best[e] === null || prev.n + 1 < best[e].n)) {
+                    var use = $.extend({}, prev.use);
+                    use[name] = (use[name] || 0) + 1;
+                    best[e] = { n: prev.n + 1, use: use };
+                }
+            }
+        }
+    });
+    for (e = room; e > 0; e--) {
+        if (best[e] !== null)
+            return { gain: e, use: best[e].use };
+    }
+    return null;
+};
+
+inv.energyPrompt = function (need, retry, fail) {
+    //the caller only asks when it's short; if it already has enough, something else stopped the choice - don't loop
+    if (gv.get("energy") >= need) {
+        fail();
+        return;
+    }
+    if (inv.energyOnHand().length === 0) {
+        fail();
+        return;
+    }
+    inv.eb = { need: need, retry: retry, fail: fail, page: 0, pick: null, msg: "" };
+    chat(0, 9998);
+};
+
+//after using something: go ahead if there's enough now, otherwise ask again (or the normal "too tired")
+inv.energyAfter = function () {
+    var eb = inv.eb;
+    cl.energydisplay();
+    if (gv.get("energy") >= eb.need) {
+        inv.eb = null;
+        eb.retry();
+    }
+    else if (inv.energyOnHand().length > 0) {
+        eb.page = 0;
+        chat(0, 9998);
+    }
+    else {
+        inv.eb = null;
+        eb.fail();
+    }
+};
+
+var room9998 = {};
+room9998.main = function () { };
+room9998.btnclick = function (name) { };
+room9998.chatcatch = function (callback) {
+    var eb = inv.eb;
+    if (eb === null)
+        return;
+    if (callback === "eb_no") {
+        inv.eb = null;
+        eb.fail();
+    }
+    else if (callback === "eb_more") {
+        eb.page++;
+        chat(0, 9998);
+    }
+    else if (callback.startsWith("eb_pick_")) {
+        eb.pick = callback.replace("eb_pick_", "");
+        chat(1, 9998);
+    }
+    else if (callback.startsWith("eb_qty_")) {
+        var qty = parseInt(callback.replace("eb_qty_", ""));
+        for (var i = 0; i < qty; i++)
+            inv.useEnergyItem(eb.pick);
+        inv.energyAfter();
+    }
+    else if (callback === "eb_fill") {
+        var plan = inv.energyFillPlan();
+        var used = [];
+        $.each(plan.use, function (name, count) {
+            var label = inv.energyLabel(name);
+            for (var j = 0; j < count; j++)
+                inv.useEnergyItem(name);
+            used.push(count + " x " + label + " (+" + (count * inv.energyGain(name)) + ")");
+        });
+        cl.energydisplay();
+        eb.msg = "I used " + used.join(", ") + ". Energy is now " + gv.get("energy") + " / " + gv.get("maxenergy") + ". ";
+        chat(2, 9998);
+    }
+    else if (callback === "eb_after") {
+        inv.energyAfter();
+    }
+};
+room9998.chat = function (chatID) {
+    var eb = inv.eb;
+    if (eb === null)
+        return { chatID: chatID, speaker: "thinking", text: "...", button: [{ chatID: -1, text: "...", callback: "" }] };
+    if (chatID === 0) {
+        //6 chat buttons: [No thanks] + items + [More...] when they don't all fit + [Fill up] when it would add something
+        var items = inv.energyOnHand();
+        var canFill = inv.energyFillPlan() !== null;
+        var slots = 6 - 1 - (canFill ? 1 : 0);
+        var perPage = items.length > slots ? slots - 1 : slots;
+        var pages = Math.ceil(items.length / perPage);
+        var start = (eb.page % pages) * perPage;
+        var button = [{ chatID: -1, text: "[No thanks]", callback: "eb_no" }];
+        $.each(items.slice(start, start + perPage), function (i, name) {
+            button.push({ chatID: -1, text: "[" + inv.energyLabel(name) + " +" + inv.energyGain(name) + " Energy]", callback: "eb_pick_" + name });
+        });
+        if (pages > 1)
+            button.push({ chatID: -1, text: "[More...]", callback: "eb_more" });
+        if (canFill)
+            button.push({ chatID: -1, text: "[Fill up]", callback: "eb_fill" });
+        return {
+            chatID: 0,
+            speaker: "thinking",
+            text: "I'm too tired for that. I need " + eb.need + " energy and I only have " + gv.get("energy") +
+                ". Should I use something from my bag? ",
+            button: button
+        };
+    }
+    if (chatID === 1) {
+        var have = inv.get(eb.pick).count;
+        var words = ["One", "Two", "Three"];
+        var qty = [];
+        for (var q = 1; q <= Math.min(3, have); q++)
+            qty.push({ chatID: -1, text: "[" + words[q - 1] + "]", callback: "eb_qty_" + q });
+        return {
+            chatID: 1,
+            speaker: "thinking",
+            text: "How many " + inv.energyLabel(eb.pick) + " (+" + inv.energyGain(eb.pick) + " energy each)? I have " + have + ". ",
+            button: qty
+        };
+    }
+    return {
+        chatID: 2,
+        speaker: "thinking",
+        text: eb.msg,
+        button: [{ chatID: -1, text: "[Ok]", callback: "eb_after" }]
+    };
+};
+invoker.registerRoom(9998, room9998);

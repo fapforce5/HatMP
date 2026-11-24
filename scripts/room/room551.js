@@ -199,8 +199,8 @@ room551.btnclick = function (name) {
                         g.internal = outfit;
                         chat(31, 551);
                     }
-                    else if (gv.get("energy") < 50)
-                        chat(32, 551);
+                    else if (gv.get("energy") < 50) //fix: offers energy items from the bag first (inv.energyPrompt); runs this choice again once there is enough
+                        inv.energyPrompt(50, function () { room551.btnclick(name); }, function () { chat(32, 551); });
                     else if (sc.taskGetStep("g", "workout") === -1)
                         chat(14, 551);
                     else
