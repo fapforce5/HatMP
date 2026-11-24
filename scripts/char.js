@@ -310,6 +310,7 @@ $(document).ready(function () {
 
         $('.char-container').css({ "height": 670 * g.ratio + "px" });
         $('.glob-bg').css({ "height": 1080 * g.ratio + "px" });
+        char.sizeWalkPanel(); //History panel: fixed Back area + list that stops above the room buttons (was one 1000-tall scrolling box)
 
         $('.char-modBtn').css({
             width: 75 * g.ratio + "px",
@@ -331,6 +332,7 @@ $(document).ready(function () {
             "width": (72 * g.ratio) + "px"
         });
         $("#help_backButton").css({"width": (200 * g.ratio) + "px", "height": (66.6 * g.ratio) + "px", "top": (75 * g.ratio) + "px", "left": (30 * g.ratio) + "px" });
+        privateChat.placeBox(); //chat box stays right of the left sidebar after a resize
         char.menu();
     };
 
@@ -437,7 +439,7 @@ $(document).ready(function () {
         resizeHeight: 4,
         graphBarHeight: 15,
         hideLeftMenu: true,
-        walkSubHeight: 1000
+        walkSubHeight: 839 //fix: History list ends above the room buttons (was 1000, ran under them)
     });
     $(".rl-change").on('click', function () {
         char.changeMenu($(this).data("type"), true, false);
@@ -719,6 +721,18 @@ char.addMapText = function (left, top, text, color = "#fff") {
         '</div>');
 };
 
+//Shrink the last line added to the map panel so it never runs past the panel's right edge (300 wide)
+char.fitMapLine = function (left) {
+    var line = $('#room_left_map').children().last();
+    var inner = line.children().first();
+    if (inner.length === 0)
+        return;
+    var avail = (300 - left - 8) * g.ratio;
+    var w = inner[0].getBoundingClientRect().width;
+    if (w > avail && w > 0)
+        line.css("font-size", (20 * g.ratio * avail / w) + "px");
+};
+
 char.addMapImage = function (src, height, width, top, left) {
     $('#room_left_map').append('<img src="' + src + '" class="width-l resize killmap" style="position:absolute; ' +
         g.makeCss(height, width, top, left) + '" />');
@@ -799,18 +813,14 @@ char.map = function () {
             char.addMapText(10, ttop, cArray[i].c, "#fff");
             ttop += 30;
             for (j = 0; j < cArray[i].t.subList.length; j++) {
-                if (cArray[i].t.subList[j].current) {
-                    char.addMapText(15, ttop,
-                        char.friendlyTime(cArray[i].t.subList[j].hstart, ampm) + " to " +
-                        char.friendlyTime(cArray[i].t.subList[j].hend, ampm) + " - " +
-                        cArray[i].t.subList[j].room + " *", "#fdd");
-                }
-                else {
-                    char.addMapText(15, ttop,
-                        char.friendlyTime(cArray[i].t.subList[j].hstart, ampm) + " - " +
-                        char.friendlyTime(cArray[i].t.subList[j].hend, ampm) + " - " +
-                        cArray[i].t.subList[j].room, "#ccc");
-                }
+                //every line: "start - end - room"; both times sit in a fixed-width box (same in 12h and 24h)
+                //so the dashes line up down the list. The current slot is highlighted and ends with " *"
+                var thisSlot = cArray[i].t.subList[j];
+                char.addMapText(5, ttop, '<span style="white-space:nowrap;">' +
+                    char.scheduleTime(thisSlot.hstart, ampm) + " - " +
+                    char.scheduleTime(thisSlot.hend, ampm) + " - " +
+                    g.roomNameText(thisSlot.room) + (thisSlot.current ? " *" : "") + '</span>', thisSlot.current ? "#fdd" : "#ccc");
+                char.fitMapLine(5); //long room names: shrink this line to fit the panel width
                 ttop += 25;
             }
         }
@@ -832,6 +842,19 @@ char.map = function () {
     }
 };
 
+//A schedule time in a fixed-width box for the map panel list: "12AM", "7AM", "12PM" (12h) or "07:00", "24:00" (24h).
+//Midnight at the end of the day (24) is 12AM, not 12PM. Right-aligned so the dashes after it line up.
+char.scheduleTime = function (hour, ampm) {
+    var txt;
+    if (ampm) {
+        var h = hour % 24;
+        txt = (h % 12 === 0 ? 12 : h % 12) + (h < 12 ? "AM" : "PM");
+    }
+    else
+        txt = (hour < 10 ? "0" : "") + hour + ":00";
+    return '<span style="display:inline-block; width:2.65em; text-align:right;">' + txt + '</span>';
+};
+
 char.friendlyTime = function (hour, ampm = null) {
     if (ampm === null)
         ampm = gv.get("clock24") === "12";
@@ -848,25 +871,62 @@ char.friendlyTime = function (hour, ampm = null) {
     return hour.toString();
 };
 
+//History panel: the top part (behind the Back button and "Back to:") stays put; only the history list scrolls
+char.sizeWalkPanel = function () {
+    if ($("#room_left_walk_head").length === 0)
+        $("#room_left_walk").prepend('<div id="room_left_walk_head"></div>');
+    $("#room_left_walk_head").css({
+        "height": 145 * g.ratio + "px", "box-sizing": "border-box", "padding": "0 " + 10 * g.ratio + "px",
+        "padding-top": 118 * g.ratio + "px", "background": "rgba(0,0,0,.7)", "color": "#fff",
+        "font-size": 20 * g.ratio + "px", "text-align": "left", "white-space": "nowrap", "overflow": "hidden"
+    });
+    $("#room_left_walk_sub").css({ "height": 839 * g.ratio + "px", "scroll-snap-type": "y proximity" }); //ends just above the room buttons at the bottom
+    $("#room_left_walk_sub").off("scroll.walkclip").on("scroll.walkclip", function () {
+        if (char.walkClipFrame)
+            return;
+        char.walkClipFrame = requestAnimationFrame(function () {
+            char.walkClipFrame = null;
+            char.clipWalkLines();
+        });
+    });
+};
+
+//hide any history line that is only partly showing at the top or bottom of the scroll area
+char.clipWalkLines = function () {
+    var box = $("#room_left_walk_sub")[0];
+    if (!box)
+        return;
+    var top = box.getBoundingClientRect().top;
+    var bottom = top + box.clientHeight;
+    $(box).children().each(function () {
+        var r = this.getBoundingClientRect();
+        this.style.visibility = (r.top >= top - 1 && r.bottom <= bottom + 1) ? "visible" : "hidden";
+        this.style.scrollSnapAlign = "start";
+    });
+};
+
 char.makeWalk = function () {
-    $("#room_left_walk_sub").html("'<br/><br/>");
+    //fix: Back button area stays put and only the history scrolls; removed a stray ' that showed at the top
+    char.sizeWalkPanel();
+    $("#room_left_walk_sub").html("");
     if (g.pastSaves.length > 1) {
-        char.addWalkText('<br/><br/><br/><br/>Back to: ' + g.pastSaves[g.pastSaves.length - 2].name);
+        $("#room_left_walk_head").text('Back to: ' + g.pastSaves[g.pastSaves.length - 2].name); //fix: "Back to:" now sits under the Back button instead of behind it
         if ($("#room_left_walk").is(":visible")) {
             $("#help_backButton").show();
         }
     }
     else {
-        char.addWalkText('<br/><br/><br/><br/>', 20);
+        $("#room_left_walk_head").text(''); //no earlier room to go back to
         $("#help_backButton").hide();
     }
-    char.addWalkText('<br/>History:', 30);
+    char.addWalkText('History:', 30); //(the spacing above is now the fixed head area)
     if (g.popArray.length === 0) {
         char.addWalkText('None', 20, "popUpHistory resize-font");
     }
     for (let i = 0; i < g.popArray.length; i++) {
         char.addWalkText(g.popArray[i], 20, "popUpHistory resize-font");
     }
+    setTimeout(char.clipWalkLines, 0); //hide history lines that are only partly showing
 };
 
 char.newdayfake = function () {

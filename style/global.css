@@ -181,6 +181,10 @@ input[type=text]:disabled{
     bottom:0;
     left:0;
     z-index:3;
+    /* room buttons: one row, centred left-to-right and top-to-bottom in the bar (left edge is set to the sidebar's edge in privateChat.placeBox) */
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 .room-changeRoomBtn{
     background:none;

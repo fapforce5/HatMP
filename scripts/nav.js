@@ -366,6 +366,7 @@ nav.buildnav = function (roomIDList, rebuild = false) {
 
     if (rebuild)
         $('#room_footer').html("");
+    privateChat.placeBox(); //room buttons start right of the left sidebar
 
     for (i = 0; i < roomIDList.length; i++) {
         $.each(g.rooms, function (j, u) {
