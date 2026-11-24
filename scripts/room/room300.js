@@ -133,7 +133,9 @@ room300.btnclick = function (name) {
                     char.room(301);
                 }
             }
-            else if (sc.getMission("envy", "gf").inProgress) {
+            //"|| ..." keeps "end of her path" at the door now that Girlfriend completes after step 6.
+            //REMOVE the "|| ..." part when step 7 is implemented (see the note on step 7 in supportingChar.js) - also remove notImplemented from that step in supportingChar.js so the phone drops [Not Fully Implemented Yet]
+            else if (sc.getMission("envy", "gf").inProgress || (sc.getMission("envy", "gf").success && sc.getMissionTask("envy", "gf", 7).notStarted)) {
                 var gfStep = sc.taskGetStep("envy", "gf");
                 if (gfStep === 0)
                     chat(25, 300);

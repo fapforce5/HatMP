@@ -650,6 +650,9 @@ room26.chatcatch = function (callback) {
                 sc.completeMissionTask("bigguy", "straight", 2, true);
                 char.addtime(37);
                 daily.set("bigguy");
+                //step 3 is not implemented yet, so the mission completes here.
+                //REMOVE this line when step 3 is implemented (see the note on step 3 in supportingChar.js) - also remove notImplemented from that step in supportingChar.js so the phone drops [Not Fully Implemented Yet]
+                sc.completeMission("bigguy", "straight", true);
                 break;
             case "tv_closer":
                 g.internal.c--;

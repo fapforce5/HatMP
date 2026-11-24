@@ -190,6 +190,7 @@ room950.main = function () {
             if (sc.getMission("priest", "cult").notStarted) {
                 sc.startMission("priest", "cult");
                 sc.completeMissionTask("priest", "cult", 0);
+                sc.completeMission("priest", "cult", true); //REMOVE when "Connections" step 1 is implemented (step 1 has no scene yet) - also remove notImplemented from that step in supportingChar.js so the phone drops [Not Fully Implemented Yet]
                 chat(132, 950);
             }
             else {

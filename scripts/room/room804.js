@@ -148,7 +148,7 @@ room804.chatcatch = function (callback) {
             }
             else {
                 if (!sc.getMissionTask("ralphsdad", "main", 2).complete) {
-                    sc.completeMissionTask("ralphsdad", "random", 0);
+                    sc.completeMissionTask("ralphsdad", "random", 0); if (sc.getMissionTask("ralphsdad", "random", 1).complete) sc.completeMission("ralphsdad", "random", true); //REMOVE completeMission when Random step 2 is implemented - also remove notImplemented from that step in supportingChar.js so the phone drops [Not Fully Implemented Yet]
                     sc.modLevel("ralphsdad", 51, 5);
                     nav.button({
                         "type": "img",
@@ -162,7 +162,7 @@ room804.chatcatch = function (callback) {
                     chat(7, 804);
                 }
                 else {
-                    sc.completeMissionTask("ralphsdad", "random", 0);
+                    sc.completeMissionTask("ralphsdad", "random", 0); if (sc.getMissionTask("ralphsdad", "random", 1).complete) sc.completeMission("ralphsdad", "random", true); //REMOVE completeMission when Random step 2 is implemented - also remove notImplemented from that step in supportingChar.js so the phone drops [Not Fully Implemented Yet]
                     if (cl.c.panties === null) {
                         nav.bg("804_kitchen/me_panties0.webp");
                         chat(11, 804);
@@ -175,7 +175,7 @@ room804.chatcatch = function (callback) {
             }
             break;
         case "me_pantiesEnd":
-            sc.completeMissionTask("ralphsdad", "random", 1);
+            sc.completeMissionTask("ralphsdad", "random", 1); if (sc.getMissionTask("ralphsdad", "random", 0).complete) sc.completeMission("ralphsdad", "random", true); //REMOVE completeMission when Random step 2 is implemented - also remove notImplemented from that step in supportingChar.js so the phone drops [Not Fully Implemented Yet]
             sc.modLevel("ralphsdad", 51, 10);
             levels.mod("xdress", 25);
             char.addtime(30);

@@ -124,7 +124,8 @@ room750.btnclick = function (name) {
             else if (sc.getMission("dale", "dale").notStarted) {
                 sc.show("dale");
                 sc.startMission("dale", "dale");
-                sc.completeMissionTask("dale", "dale");
+                sc.completeMissionTask("dale", "dale", 0); //fix: the step id was missing, so "Intro" never ticked
+                sc.completeMission("dale", "dale", true); //REMOVE when Dale step 1 is implemented (step 1 has no scene yet) - also remove notImplemented from that step in supportingChar.js so the phone drops [Not Fully Implemented Yet]
                 chat(17, 750);
             }
             else {

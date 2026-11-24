@@ -41,6 +41,7 @@ room125.main = function () {
             }
             else if (sc.getMissionTask("kei", "cards", 3).notStarted) {
                 sc.completeMissionTask("kei", "cards", 3);
+                sc.completeMission("kei", "cards", true); //REMOVE when Kei's "Boy's Game" step 4 is implemented (step 4 has no scene yet) - also remove notImplemented from that step in supportingChar.js so the phone drops [Not Fully Implemented Yet]
                 sc.completeMissionTask("ralph", "cards", 1);
                 nav.killall();
                 nav.bg("125_poker/r0.jpg");
@@ -960,6 +961,7 @@ room125.chatcatch = function (callback) {
             sc.startMission("ralph", "cards");
             sc.completeMissionTask("ralph", "cards", 0);
             sc.completeMissionTask("jimmy", "cards", 0);
+            sc.completeMission("jimmy", "cards", true); //REMOVE when Jimmy's "Boy's Game" step 1 is implemented (step 1 has no scene yet) - also remove notImplemented from that step in supportingChar.js so the phone drops [Not Fully Implemented Yet]
             sc.completeMissionTask("ralph", "cards", 0);
             sc.modSecret("kei", 100);
             sc.modSecret("ralph", 100);

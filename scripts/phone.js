@@ -214,7 +214,8 @@ phone.handlePrefixAction = function (name) {
             "top": 250,
             font: 30,
             hex: "#ffffff",
-            text: sc.charMission[ch.i].mission[ch.j].title + " [" + sc.mStatus(sc.charMission[ch.i].mission[ch.j].mStatus) + "]"
+            //title tag: [Failed - Secret Known], [Another Path Chosen]/[Ranch Closed], [Repeatable], [Not Fully Implemented Yet]
+            text: sc.charMission[ch.i].mission[ch.j].title + (sc.isSecretFailedMission(sc.charMission[ch.i].mission[ch.j]) ? ' <span style="color:#cc3333">[Failed - Secret Known]</span>' : " [" + (sc.isAltPathMission(sc.charMission[ch.i].name, sc.charMission[ch.i].mission[ch.j].missionName) ? sc.altPathLabel(sc.charMission[ch.i].name, sc.charMission[ch.i].mission[ch.j].missionName) : sc.mStatus(sc.charMission[ch.i].mission[ch.j].mStatus)) + "]") + phone.repeatableTag(sc.charMission[ch.i].mission[ch.j]) + phone.notImplementedTag(sc.charMission[ch.i].mission[ch.j])
         }, 9999);
         nav.t({
             type: "zimg",
@@ -248,9 +249,19 @@ phone.handlePrefixAction = function (name) {
                     case "Not Started": tcolor = "#999999"; mstatus = " ☐ "; break;
                     default: tcolor = "#ffffff"; mstatus = " ";
                 }
-                var taskText = mstatus + thisTask.txt + roomList;
-                //orTask: this step and another are alternatives - once the other one is done, strike this one out
-                if (thisTask.orTask !== undefined && thisTask.mStatus < 100) {
+                var struck = false;
+                var orStruck = false; //the other choice of an either/or pair was picked
+                //once a mission is finished (Completed, Failed or Closed - e.g. Lola's Sissy after picking Tom),
+                //steps that were never reached can't be done any more - strike them out
+                var thisMission = sc.charMission[ch.i].mission[ch.j];
+                if (thisMission.mStatus > 99 && thisTask.mStatus < 100 && !thisTask.repeatable && !thisTask.optional && !thisTask.notImplemented && !(thisTask.ongoing && thisTask.mStatus > 0)) //optional and WIP (Not Implemented Yet) steps are never struck out
+                    struck = true;
+                if (thisTask.blocked && thisTask.mStatus < 100) //blocked: can't be done any more (e.g. "Secret Known")
+                    struck = true;
+                //orTask: this step and another are alternatives - once the other one is done, strike this one out.
+                //This also covers a choice the game marked Failed because the other one was picked:
+                //it is struck out in grey instead of red. Red is kept for steps that really failed.
+                if (thisTask.orTask !== undefined && thisTask.mStatus !== 100) {
                     var otherTask = sc.charMission[ch.i].mission[ch.j].task[thisTask.orTask];
                     if (otherTask && otherTask.mStatus === 100) {
                         tcolor = "#999999";
@@ -266,11 +277,66 @@ phone.handlePrefixAction = function (name) {
                     hex: tcolor,
                     text: taskText
                 }, 1);
-                taskcounter++;
+                //a blocked step's reason (e.g. "Secret Known") goes at the end of the step line after " - " if it fits;
+                //otherwise it goes on its own line under the step (only once per mission so long missions still fit)
+                var noteInline = false;
+                if (thisTask.blocked && thisTask.mStatus < 100 && thisTask.note && !Array.isArray(thisTask.note)) {
+                    var stepEl = $('#room-buttons .resize-font').last()[0];
+                    if (stepEl) {
+                        stepEl.innerHTML = taskText + " - " + thisTask.note;
+                        if (stepEl.offsetLeft + stepEl.offsetWidth <= 1626 * g.ratio)
+                            noteInline = true;
+                        else
+                            stepEl.innerHTML = taskText;
+                    }
+                }
+                taskcounter += phone.wrapLastLine(350 + (taskcounter * 40)); //a long step goes onto a second line (or shrinks if there's no room below)
+                //note: an extra line under the step, lined up with the step text (e.g. "(Not Implemented Yet)")
+                var showNoteLine = !!thisTask.note && !noteInline && !(thisTask.notImplemented && thisTask.note === "(Not Implemented Yet)"); //WIP steps show [WIP] on the step line instead
+                if (showNoteLine && thisTask.blocked) {
+                    if (blockedNoteShown)
+                        showNoteLine = false;
+                    blockedNoteShown = true;
+                }
+                if (showNoteLine) {
+                    //note can be one line or a list of lines
+                    var noteLines = Array.isArray(thisTask.note) ? thisTask.note : [thisTask.note];
+                    for (var nl = 0; nl < noteLines.length; nl++) {
+                        var noteText = '<span class="phone-step-box" style="visibility:hidden;">' + mstatus + '</span>' + (thisTask.blocked ? noteLines[nl] : strikeOn + noteLines[nl] + strikeOff); //a blocked step's reason (e.g. Secret Known) is not struck
+                        nav.t({
+                            type: "zimg",
+                            name: "phone_charsel_",
+                            "left": 910,
+                            "top": 350 + (taskcounter * 40),
+                            font: 24,
+                            hex: tcolor,
+                            text: noteText
+                        }, 1);
+                        taskcounter += phone.wrapLastLine(350 + (taskcounter * 40));
+                    }
+                }
             }
         }
         return true;
     }
+                else if (altPath) {
+                    struck = true;
+                    if (orStruck)
+                        tcolor = "#999999"; //the choice you didn't pick stays grey, not red (e.g. Spanky's Hypno)
+                }
+                else if (struck)
+                    tcolor = "#999999";
+                //the line-through starts at the step text, not at the check box
+                var strikeOn = !struck ? '' : (thisTask.blocked && thisTask.mStatus < 100)
+                    ? '<span style="text-decoration: line-through; text-decoration-color: #cc3333;">' //blocked (e.g. Secret Known): red strike line
+                    : '<span style="text-decoration: line-through;">';
+                var strikeOff = struck ? '</span>' : '';
+                var taskText = '<span class="phone-step-box">' + mstatus + '</span>' + strikeOn + thisTask.txt + roomList + strikeOff;
+                //WIP (Not Implemented Yet) step: short [WIP] tag at the end of the step line instead of a note line under it
+                //(the mission line keeps the full [Not Fully Implemented Yet] tag)
+                var wipStep = thisTask.notImplemented && thisTask.mStatus < 100;
+                if (wipStep)
+                    taskText += ' <span style="color:#33cc33">[</span><span style="color:#ffffff">WIP</span><span style="color:#33cc33">]</span>';
 
     if (name.startsWith("phone_cheatmod")) {
         if (name === "phone_cheatmod_money") {
@@ -278,6 +344,7 @@ phone.handlePrefixAction = function (name) {
             phone.cheat();
             $('#char_alert').hide();
         }
+                    //step line built above: check box, strike-out rules, location and [WIP]
         else if (name === "phone_cheatmod_on") {
             gv.set("cheatMode", true);
             phone.cheat();
@@ -667,9 +734,14 @@ phone.addCharacterCard = function (character, row, column) {
     }, 1);
 
     $('#room-buttons').append('<div class="resize room-img" data-name="phone_char_" data-room="999" style=" ' +
-        g.makeCss(5, ((character.l > 10 ? 10 : character.l) * 15), top + 180, left) +
-        '  background: #00ff00; border-radius:100px; z-index:2" ></div>');
+        g.makeCss(5, (noLevel ? 150 : (character.l > 10 ? 10 : character.l) * 15), top + 180, left) +
+        '  background: ' + (noLevel ? '#ffffff' : '#00ff00') + '; border-radius:100px; z-index:2" ></div>');
 
+    const secretTxt = character.secret > 99 ? "They know" : (character.secret === 0 ? "" : "Suspicious");
+    //one line under the bar: "They know" (pink), then a white " - ", then "WIP" (yellow) for WIP characters
+    let secretLine = secretTxt;
+    if (waiting)
+        secretLine = (secretTxt === "" ? "" : secretTxt + '<span style="color:#ffffff"> - </span>') + '<span style="color:#ffdd33">WIP</span>';
     nav.t({
         type: "zimg",
         name: "phone_char_",
@@ -677,7 +749,7 @@ phone.addCharacterCard = function (character, row, column) {
         "top": top + 185,
         font: 20,
         hex: "#ffc2ff",
-        text: character.secret > 99 ? "They know" : (character.secret === 0 ? "" : "Suspicious"),
+        text: secretLine, //"They know"/"Suspicious" and " - WIP" for WIP characters
     }, 1);
 };
 
@@ -856,6 +928,11 @@ phone.addAchievementCard = function (achievement, index) {
         font: 16,
         hex: "#cccccc",
         text: achieved ? sc.replace(achievement.display) : "Not Achieved"
+    //yellow characters get "WIP" (work in progress) in yellow under the level bar, same size as "They know";
+    //"They know"/"Suspicious" comes first on that line, then a white dash, then WIP
+    //NOTE: the WIP tag is removed automatically when the character's missions are complete - see phone.charNameWaiting
+    //level bar under the name: green, filled by level; a character with no level gets a full white bar the same size
+    const noLevel = !(character.l > 0);
     }, 9999);
 
     nav.t({
@@ -869,6 +946,7 @@ phone.addAchievementCard = function (achievement, index) {
     }, 9999);
 };
 
+    $('[data-name="phone_char_"]').last().css("white-space", "nowrap"); //keep "They know - WIP" on one line
 phone.saveMenu = function () {
     phone.clear(false);
     phone.showPanel("999_phone/save_bg.jpg");
@@ -1136,6 +1214,92 @@ phone.characterSelect = function (name) {
     }, 1);
     phone.addStatBar({
         left: 500,
+// " [Not Fully Implemented Yet]" after a Completed mission that still has a step marked notImplemented
+// (a step with no scene yet, e.g. Envy's Girlfriend step 7): brackets green, words white
+// To clear it when a step gets its scene: delete note: "(Not Implemented Yet)", notImplemented: true from that step in
+// supportingChar.js and follow the NOTE above that step (REMOVE lines in the room file and the repair in sc.load).
+phone.notImplementedTag = function (mission) {
+    if (mission.mStatus !== 100 && !phone.missionWaitingOnNI(mission)) //also In Progress missions that only have Not Implemented steps left
+        return "";
+    for (let i = 0; i < mission.task.length; i++) {
+        if (mission.task[i].notImplemented && mission.task[i].mStatus < 100)
+            return ' <span style="color:#33cc33">[</span><span style="color:#ffffff">Not Fully Implemented Yet</span><span style="color:#33cc33">]</span>';
+    }
+    return "";
+};
+
+//true when a mission isn't finished but every step still to do is marked notImplemented (no scene yet),
+//so there's nothing left you can do in it (optional steps are ignored)
+phone.missionWaitingOnNI = function (mission) {
+    if (mission.mStatus > 99 || !mission.task)
+        return false;
+    let hasNI = false;
+    for (let i = 0; i < mission.task.length; i++) {
+        let t = mission.task[i];
+        if (t.mStatus >= 100 || t.optional)
+            continue;
+        if (!t.notImplemented)
+            return false;
+        hasNI = true;
+    }
+    return hasNI;
+};
+
+//Yellow name on the Characters screen: nothing left you can do with this character, but at least one of their
+//steps is marked Not Implemented Yet (waiting on new content). Missions ruled out by another path don't count.
+//NOTE - REMOVING THE WIP TAG: nothing to edit here. The yellow name and "WIP" go away by themselves once the
+//character's Not Implemented steps are done: when a step gets its scene, delete note: "(Not Implemented Yet)",
+//notImplemented: true from that step in supportingChar.js (and follow the NOTE above that step). When the step
+//is ticked or the mission is completed, the character turns white (more to do) or green (all missions complete).
+phone.charNameWaiting = function (character) {
+    if (character.name === "mainstory" || character.name === "me")
+        return false;
+    let entry = sc.charMission.find(function (c) { return c.name === character.name; });
+    if (!entry || !entry.mission || entry.mission.length === 0)
+        return false;
+    let hasNI = false;
+    for (let j = 0; j < entry.mission.length; j++) {
+        let m = entry.mission[j];
+        if (sc.isAltPathMission(character.name, m.missionName))
+            continue;
+        if (m.mStatus > 99) {
+            if (m.mStatus === 100 && phone.notImplementedTag(m) !== "")
+                hasNI = true;
+            continue;
+        }
+        if (!phone.missionWaitingOnNI(m))
+            return false; //something you can still do
+        hasNI = true;
+    }
+    return hasNI;
+};
+
+//Unlocks listed on the main character's phone page (Wear panties ... Lewd in public)
+phone.meUnlocks = [0, 1, 2, 3, 4, 24, 7, 5, 8, 25, 9, 23, 10];
+
+//Green name on the Characters screen:
+// - main character: every item on their page shows Unlocked
+// - Main Story: every story step is done ("All steps complete")
+// - everyone else: all their missions are complete, or they have no tasks at all
+phone.charNameDone = function (character) {
+    if (character.name === "mainstory")
+        return sc.mainStory.status().current < 0;
+    if (character.name === "me") {
+        for (let i = 0; i < phone.meUnlocks.length; i++)
+            if (!qdress.st[phone.meUnlocks[i]].ach)
+                return false;
+        return true;
+    }
+    return sc.allMissionsComplete(character.name) || sc.hasNoTasks(character.name);
+};
+
+// " [Repeatable]" after a Completed mission that has a repeatable step: brackets green, word white
+phone.repeatableTag = function (mission) {
+    if (mission.mStatus !== 100 || !sc.isRepeatableMission(mission))
+        return "";
+    return ' <span style="color:#33cc33">[</span><span style="color:#ffffff">Repeatable</span><span style="color:#33cc33">]</span>';
+};
+
         top: 580,
         font: 14,
         hex: "#aaaaaa",
@@ -1363,7 +1527,8 @@ phone.characterSelect = function (name) {
                             "top": 180 + (j * 80),
                             font: 30,
                             hex: tcolor,
-                            text: sc.charMission[i].mission[j].title + mstatus
+                            //added [Repeatable] and [Not Fully Implemented Yet] tags after the mission title
+                            text: sc.charMission[i].mission[j].title + mstatus + phone.repeatableTag(sc.charMission[i].mission[j]) + phone.notImplementedTag(sc.charMission[i].mission[j])
                         }, 9999);
                         nav.t({
                             type: "zimg",
@@ -1392,7 +1557,8 @@ phone.characterSelect = function (name) {
                             "top": 180 + (j * 80),
                             font: 30,
                             hex: tcolor,
-                            text: sc.charMission[i].mission[j].title + mstatus
+                            //added [Repeatable] and [Not Fully Implemented Yet] tags after the mission title
+                            text: sc.charMission[i].mission[j].title + mstatus + phone.repeatableTag(sc.charMission[i].mission[j]) + phone.notImplementedTag(sc.charMission[i].mission[j])
                         }, 9999);
                         nav.t({
                             type: "zimg",

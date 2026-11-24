@@ -415,10 +415,14 @@ sc.init = function () {
                 {
                     missionName: "straight", mStatus: 1, title: "Laius", desc: "Stop pestering me you little shit. ", task:
                         [
-                            { id: 0, txt: "Meet for the first time. ", show: true, mStatus: 0, roomId: 26 },
-                            { id: 1, txt: "This little finger goes wee wee wee. ", show: true, mStatus: 0, roomId: 26 },
-                            { id: 2, txt: "My milkshake brings all the boys to the yard. ", show: true, mStatus: 0, roomId: 26 },
-                            { id: 3, txt: "My milkshake brings all the boys to the yard. ", show: true, mStatus: 0, roomId: 26 },
+                            { id: 0, txt: "Meet for the first time.", show: true, mStatus: 0, roomId: 26 },
+                            { id: 1, txt: "This little finger goes wee wee wee.", show: true, mStatus: 0, roomId: 26 },
+                            { id: 2, txt: "My milkshake brings all the boys to the yard.", show: true, mStatus: 0, roomId: 26 },
+                            //NOTE: step 3 has no scene yet. When it is implemented, remove the "mission complete"
+                            //tag added at step 2 (room026.js "bg_s_2_end" and the load repair in sc.load),
+                            //and remove the note/notImplemented options below.
+                            //Removing notImplemented also takes the [Not Fully Implemented Yet] tag off this mission, the [WIP] tag off this step and the yellow WIP name off the character on the phone.
+                            { id: 3, txt: "My milkshake brings all the boys to the yard.", show: true, mStatus: 0, roomId: 26, note: "(Not Implemented Yet)", notImplemented: true },
 
                         ]
                 },
@@ -488,6 +492,11 @@ sc.init = function () {
                             { id: 0, txt: "Spy on her.", show: true, mStatus: 0, roomId: 725 },
                             { id: 1, txt: "Catch her at the club?", show: true, mStatus: 0, roomId: 725, orTask: 3 }, //orTask: struck out on the phone once the other choice is done
                             { id: 2, txt: "Catch her at the strip club? (Hidden Task)", show: false, showWhenDone: true, mStatus: 0, roomId: 400 },
+                            //Listed after the glory hole on purpose (ids stay the same so saves and the code still match).
+                            //NOTE: step 2 has no scene yet (Zoey's report chat already has "Caught her at the mall!" for it).
+                            //When it is implemented, remove the note/notImplemented options below.
+                            //Removing notImplemented also takes the [Not Fully Implemented Yet] tag off this mission, the [WIP] tag off this step and the yellow WIP name off the character on the phone.
+                            { id: 2, txt: "Catch her at the mall?", show: true, mStatus: 0, roomId: 400, note: "(Not Implemented Yet)", notImplemented: true },
                             { id: 3, txt: "Glory hole?", show: true, mStatus: 0, roomId: 216, orTask: 1 },
                         ]
                 },
@@ -627,7 +636,11 @@ sc.init = function () {
                             { id: 4, txt: "Get a strap-on. ", show: true, mStatus: 0, roomId: 316 },
                             { id: 5, txt: "The talk. ", show: true, mStatus: 0, roomId: 316 },
                             { id: 6, txt: "Surprise", show: true, mStatus: 0, roomId: 316 },
-                            { id: 7, txt: "A whole new world!", show: true, mStatus: 0, roomId: 316 },
+                            //NOTE: step 7 has no scene yet. When it is implemented, remove the "mission complete" line
+                            //marked REMOVE in room318.js (b2_end) and the Mine! repair in sc.load, and remove
+                            //the note/notImplemented options below.
+                            //Removing notImplemented also takes the [Not Fully Implemented Yet] tag off this mission, the [WIP] tag off this step and the yellow WIP name off the character on the phone.
+                            { id: 7, txt: "A whole new world!", show: true, mStatus: 0, roomId: 316, note: "(Not Implemented Yet)", notImplemented: true },
                         ]
                 },
                 {
@@ -741,9 +754,13 @@ sc.init = function () {
                 {
                     missionName: "hucow", mStatus: 0, title: "Hucow", desc: "I love it here!", task:
                         [
-                            { id: 0, txt: "Last night!", show: true, mStatus: 0, roomId: 301 },
-                            { id: 1, txt: "Drake", show: true, mStatus: 0, roomId: 301 },
-                            { id: 2, txt: "TBD", show: true, mStatus: 0, roomId: 301 },
+                            { id: 0, txt: "Last night!", show: true, mStatus: 0, roomId: 327 },
+                            { id: 1, txt: "Drake", show: true, mStatus: 0, roomId: 327 },
+                            //NOTE: step 2 has no scene yet (Envy just says a placeholder line at the farm). When it is implemented,
+                            //remove the "mission complete" line marked REMOVE in room327.js and the Hucow repair in sc.load,
+                            //and remove the note/notImplemented options below.
+                            //Removing notImplemented also takes the [Not Fully Implemented Yet] tag off this mission, the [WIP] tag off this step and the yellow WIP name off the character on the phone.
+                            { id: 2, txt: "TBD", show: true, mStatus: 0, roomId: 327, note: "(Not Implemented Yet)", notImplemented: true },
                         ]
                 },
                 {
@@ -754,9 +771,13 @@ sc.init = function () {
                             { id: 2, txt: "Forgivness comes slowly.", show: true, mStatus: 0, roomId: 301 },
                             { id: 3, txt: "Get Help from Tiffany!", show: true, mStatus: 0, roomId: 650 },
                             { id: 4, txt: "Give her the gift of orgasms.", show: true, mStatus: 0, roomId: 301 },
-                            { id: 5, txt: "See how her pussy is doing. ", show: true, mStatus: 0, roomId: 301 },
-                            { id: 6, txt: "Go to her place before " + nav.convertTime(14, 0) + " tomorrow. ", show: true, mStatus: 0, roomId: 301 },
-                            { id: 7, txt: "Successful test! [Not ready] ", show: true, mStatus: 0, roomId: 301 },
+                            { id: 5, txt: "See how her pussy is doing.", show: true, mStatus: 0, roomId: 301 },
+                            { id: 6, txt: "Go to her place before " + nav.convertTime(14, 0) + " tomorrow.", show: true, mStatus: 0, roomId: 301 },
+                            //NOTE: step 7 has no scene yet. When it is implemented, remove the "mission complete"
+                            //tag added after step 6 (room904.js "endGood", room300.js door check and the load
+                            //repair in sc.load), and remove the note/notImplemented options below.
+                            //Removing notImplemented also takes the [Not Fully Implemented Yet] tag off this mission, the [WIP] tag off this step and the yellow WIP name off the character on the phone.
+                            { id: 7, txt: "Successful test!", show: true, mStatus: 0, roomId: 301, note: "(Not Implemented Yet)", notImplemented: true },
                         ]
                 },
                 {
@@ -857,7 +878,11 @@ sc.init = function () {
                             { id: 0, txt: "Shows his bully side", show: true, mStatus: 0, roomId: 211 },
                             { id: 1, txt: "Blackmailed into sucking his cock", show: true, mStatus: 0, roomId: 211 },
                             { id: 2, txt: "Everyone knows", show: true, mStatus: 0, roomId: 211 },
-                            { id: 3, txt: "Not made yet.", show: true, mStatus: 0, roomId: 211 },
+                            //NOTE: step 3 has no scene yet. When it is implemented, remove the "mission complete" line
+                            //marked REMOVE in room211.js and the Bully repair in sc.load, and remove
+                            //the note/notImplemented options below.
+                            //Removing notImplemented also takes the [Not Fully Implemented Yet] tag off this mission, the [WIP] tag off this step and the yellow WIP name off the character on the phone.
+                            { id: 3, txt: "Not made yet.", show: true, mStatus: 0, roomId: 211, note: "(Not Implemented Yet)", notImplemented: true },
                         ]
                 },
                 {
@@ -873,8 +898,12 @@ sc.init = function () {
                 {
                     missionName: "corrupt", mStatus: 0, title: "Corrupt the sissy", desc: "Not made yet.", task:
                         [
-                            { id: 0, txt: "In development (Not made)", show: true, mStatus: 0, roomId: 211 },
-                            { id: 1, txt: "strip club", show: true, mStatus: 0, roomId: 211 },
+                            //NOTE: step 0 has no scene yet. When it is implemented, remove the "mission complete" line
+                            //marked REMOVE in room601.js and the Corrupt the sissy repair in sc.load, and remove
+                            //the note/notImplemented options below.
+                            //Removing notImplemented also takes the [Not Fully Implemented Yet] tag off this mission, the [WIP] tag off this step and the yellow WIP name off the character on the phone.
+                            { id: 0, txt: "In development (Not made)", show: true, mStatus: 0, roomId: 211, note: "(Not Implemented Yet)", notImplemented: true },
+                            { id: 1, txt: "strip club", show: true, mStatus: 0, roomId: 601 },
                         ]
                 },
             ]
@@ -1183,7 +1212,11 @@ sc.init = function () {
                     missionName: "slut", mStatus: 0, title: "Party Bitches!", desc: "Slut, slut in da butt", task:
                         [
                             { id: 0, txt: "Meet", show: true, mStatus: 0, roomId: 526 },
-                            { id: 1, txt: "Pink room", show: true, mStatus: 0, roomId: 213 },
+                            //NOTE: step 1 has no scene yet (Orchid never appears in the Pink Room). When it is implemented,
+                            //remove the "mission complete" line marked REMOVE in room526.js (g1) and the Party Bitches!
+                            //repair in sc.load, and remove the note/notImplemented options below.
+                            //Removing notImplemented also takes the [Not Fully Implemented Yet] tag off this mission, the [WIP] tag off this step and the yellow WIP name off the character on the phone.
+                            { id: 1, txt: "Pink room", show: true, mStatus: 0, roomId: 213, note: "(Not Implemented Yet)", notImplemented: true },
                             { id: 2, txt: "I was there! (Hidden Task)", show: false, showWhenDone: true, mStatus: 0, roomId: 526 },
                         ]
                 }
@@ -1285,7 +1318,10 @@ sc.init = function () {
                             { id: 1, txt: "New rule", show: true, mStatus: 0, roomId: 125 },
                             { id: 2, txt: "Blowjob bitch", show: true, mStatus: 0, roomId: 125 },
                             { id: 3, txt: "Me too", show: true, mStatus: 0, roomId: 125 },
-                            { id: 4, txt: "The new class", show: true, mStatus: 0, roomId: 125 },
+                            //NOTE: step 4 has no scene yet. When it is implemented, remove the "mission complete" line marked
+                            //REMOVE in room125.js (Kei step 3) and the Boy's Game repair in sc.load, and remove the note/notImplemented options below.
+                            //Removing notImplemented also takes the [Not Fully Implemented Yet] tag off this mission, the [WIP] tag off this step and the yellow WIP name off the character on the phone.
+                            { id: 4, txt: "The new class", show: true, mStatus: 0, roomId: 125, note: "(Not Implemented Yet)", notImplemented: true },
                         ]
                 },
             ]
@@ -1296,7 +1332,10 @@ sc.init = function () {
                     missionName: "cards", mStatus: 0, title: "Boy's Game", desc: "Play some poker", task:
                         [
                             { id: 0, txt: "Sucked his cock", show: true, mStatus: 0, roomId: 125 },
-                            { id: 1, txt: "Not there, my no-no square", show: true, mStatus: 0, roomId: 125 },
+                            //NOTE: step 1 has no scene yet. When it is implemented, remove the "mission complete" line marked
+                            //REMOVE in room125.js (t4) and the Jimmy Boy's Game repair in sc.load, and remove the note/notImplemented options below.
+                            //Removing notImplemented also takes the [Not Fully Implemented Yet] tag off this mission, the [WIP] tag off this step and the yellow WIP name off the character on the phone.
+                            { id: 1, txt: "Not there, my no-no square", show: true, mStatus: 0, roomId: 125, note: "(Not Implemented Yet)", notImplemented: true },
                         ]
                 },
             ]
@@ -1385,7 +1424,10 @@ sc.init = function () {
                         [
                             { id: 0, txt: "Bad girls get spanked", show: true, mStatus: 0, roomId: 804 },
                             { id: 1, txt: "Thumb in the bum", show: true, mStatus: 0, roomId: 804 },
-                            { id: 2, txt: "Don't act like you've never seen a dick before", show: true, mStatus: 0, roomId: 803 },
+                            //NOTE: step 2 has no scene yet. When it is implemented, remove the completeMission lines marked REMOVE
+                            //in room804.js and the Dad Random repair in sc.load, and remove the note/notImplemented options below.
+                            //Removing notImplemented also takes the [Not Fully Implemented Yet] tag off this mission, the [WIP] tag off this step and the yellow WIP name off the character on the phone.
+                            { id: 2, txt: "Don't act like you've never seen a dick before", show: true, mStatus: 0, roomId: 803, note: "(Not Implemented Yet)", notImplemented: true },
 
                         ]
                 },
@@ -1488,7 +1530,7 @@ sc.init = function () {
                     missionName: "cabin", mStatus: 0, title: "Cabin", desc: "Highway to hell", task:
                         [
                             { id: 0, txt: "A new fuck toy?", show: true, mStatus: 0, roomId: 450 },
-                            { id: 1, txt: "You just can't get enough", show: true, mStatus: 0, roomId: 150 },
+                            { id: 1, txt: "You just can't get enough", show: true, mStatus: 0, roomId: 150, note: "(Not Implemented Yet)", notImplemented: true }, //NOTE: nothing in the game ticks this step yet - remove notImplemented when it's built
                         ]
                 },
                 {
@@ -1527,7 +1569,10 @@ sc.init = function () {
                     missionName: "date", mStatus: 0, title: "Date", desc: "Romance is in the air", task:
                         [
                             { id: 0, txt: "Got his phone number. ", show: true, mStatus: 0, roomId: 575 },
-                            { id: 1, txt: "Call him after the Final", show: true, mStatus: 0, roomId: 210 },
+                            //NOTE: NOT IMPLEMENTED YET - nothing in the game ticks this step (Brayden has no phone contact and no call scene yet).
+                            //When it is implemented, remove the note/notImplemented options below.
+                            //Removing notImplemented also takes the [Not Fully Implemented Yet] tag off this mission, the [WIP] tag off this step and the yellow WIP name off the character on the phone.
+                            { id: 1, txt: "Call him after the Final", show: true, mStatus: 0, roomId: 210, note: "(Not Implemented Yet)", notImplemented: true },
                         ]
                 },
             ]
@@ -1557,14 +1602,22 @@ sc.init = function () {
                     missionName: "dirty", mStatus: 0, title: "Web of lies", desc: "Get trapped in the web of lies", task:
                         [
                             { id: 0, txt: "Dirty girl", show: true, mStatus: 0, roomId: 775 },
-                            { id: 1, txt: "Next release", show: true, mStatus: 0, roomId: 775 },
+                            //NOTE: step 1 has no scene yet. When it is implemented, remove the "mission complete" lines
+                            //marked REMOVE in room775.js (sit_stroke) and the Web of lies repair in sc.load, and remove
+                            //the note/notImplemented options below.
+                            //Removing notImplemented also takes the [Not Fully Implemented Yet] tag off this mission, the [WIP] tag off this step and the yellow WIP name off the character on the phone.
+                            { id: 1, txt: "Next release", show: true, mStatus: 0, roomId: 775, note: "(Not Implemented Yet)", notImplemented: true },
                         ]
                 },
                 {
                     missionName: "cult", mStatus: 0, title: "Connections", desc: "Meet as a sissy", task:
                         [
                             { id: 0, txt: "Reintroduce", show: true, mStatus: 0, roomId: 950 },
-                            //{ id: 1, txt: "Next release", show: true, mStatus: 0, roomId: 775 },
+                            //NOTE: step 1 has no scene yet. When it is implemented, remove the "mission complete" line
+                            //marked REMOVE in room950.js and the Connections repair in sc.load, and remove
+                            //the note/notImplemented options below.
+                            //Removing notImplemented also takes the [Not Fully Implemented Yet] tag off this mission, the [WIP] tag off this step and the yellow WIP name off the character on the phone.
+                            { id: 1, txt: "Next release", show: true, mStatus: 0, roomId: 775, note: "(Not Implemented Yet)", notImplemented: true },
                         ]
                 },
                 {
@@ -1663,8 +1716,11 @@ sc.init = function () {
                 {
                     missionName: "doc", mStatus: 0, title: "*hic*", desc: "I'm a drunk", task:
                         [
-                            { id: 0, txt: "intro", show: true, mStatus: 0, roomId: 328 },
-                            { id: 1, txt: "Give me wine!", show: true, mStatus: 0, roomId: 328 },
+                            { id: 0, txt: "Intro", show: true, mStatus: 0, roomId: 750 },
+                            //NOTE: step 1 has no scene yet (Dale never asks for wine). When it is implemented, remove the
+                            //completeMission line marked REMOVE in room750.js and the Dale repair in sc.load, and remove the note/notImplemented options below.
+                            //Removing notImplemented also takes the [Not Fully Implemented Yet] tag off this mission, the [WIP] tag off this step and the yellow WIP name off the character on the phone.
+                            { id: 1, txt: "Give me wine!", show: true, mStatus: 0, roomId: 750, note: "(Not Implemented Yet)", notImplemented: true },
                         ]
                 },
             ]
@@ -2418,6 +2474,326 @@ sc.completeMissionTopLevelOnly = function (name, missionName) {
 
 sc.completeMissionTaskAll = function (name, missionName, taskId, success = true) {
     let ind = sc.getMission(name, missionName);
+//Missions with a repeatable step (task option repeatable: true): once every other step is done
+//(a step whose orTask partner succeeded counts as done), tick the repeatable steps and mark the
+//mission Completed. The repeatable scenes keep playing - they only check steps, not the mission.
+//Missions the game marks Failed only because the player went down a different storyline
+//(not because they did something wrong). The phone shows these as [Another Path Chosen] with every
+//step struck out. The mission itself stays Failed (101) so every game check works the same.
+//Each rule returns true when the failure came from the other path.
+sc.altPathRules = {
+    "envy/hypno": function () { return true; },          //Envy moved on to the Girlfriend path
+    "spanky/hypno": function () { return true; },        //added 2026-11-24: only fails when you go Envy's Girlfriend way (room301/room404 "envy100")
+    "elijah/elijah": function () { return true; },       //Betray path taken (Missy case / break up)
+    "holly/happy": function () { return true; },         //Beaver case: Happy vs Mad
+    "holly/mad": function () { return true; },
+    "dolly/happy": function () { return true; },
+    "dolly/mad": function () { return true; },
+    "molly/happy": function () { return true; },
+    "molly/mad": function () { return true; },
+    "zoey/friends": function () { return true; },        //chose to destroy the friendship (Ex-Friends path)
+    "bodhi/escape": function () { return true; },        //Daria path taken
+    //Janice: these fail when you break up with her (Breakup path). Dog can also fail on its own.
+    "janice/date": function () { return sc.getMission("janice", "breakup").startedOrComplete; },
+    "janice/webcam": function () { return sc.getMission("janice", "breakup").startedOrComplete; },
+    "janice/datr": function () { return sc.getMission("janice", "breakup").startedOrComplete; },
+    "janice/dog-x": function () { return sc.getMission("janice", "breakup").startedOrComplete; },
+    "janice/femdom": function () { return sc.getMission("janice", "breakup").startedOrComplete; }
+};
+
+//Missions that were never started and now can't be, because every scene that starts them is
+//behind a story choice you've already made the other way. Shown as [Another Path Chosen] too.
+sc.altPathNotStartedRules = {
+    //Envy: Hypno -> Hucow and Hypno -> Girlfriend are the two paths. "Failed me!" can only start from a failed Girlfriend.
+    "bigguy/ex": function () { return sc.getMissionTask("bigguy", "sissy", 4).complete; },  //confessed and took Dick's side instead of fighting him
+    //Ralph: saving him on his lawn (Missy's case) starts "My hero!" in Chat; his Cult mission only starts if that case goes badly
+    "ralph/cult": function () { return sc.getMissionTask("ralph", "room", 9).startedOrComplete; },
+    //Dick "Cult": only starts in the cult's Cum Donation once Lola's "Sissy" reached "Everyone gets fucked!" (step 13).
+    //If her Sissy mission ended without it, his Cult mission can never start.
+    "bigguy/cult": function () {
+        var lolaSissy = sc.getMission("lola", "sissy");
+        return (lolaSissy.complete || lolaSissy.fail) && !sc.getMissionTask("lola", "sissy", 13).startedOrComplete;
+    },
+    //Zoey: "Friends" ends either way - help her with Chloé (Chloé and Fuck me please follow) or end the friendship (Ex-friends)
+    "zoey/xfriends": function () { return sc.getMission("zoey", "friends").success; },
+    "zoey/cheating": function () { return sc.getMission("zoey", "friends").fail; },
+    "zoey/sex": function () { return sc.getMission("zoey", "friends").fail; },   //needs Chloé completed
+    "envy/hucow": function () { return sc.getMission("envy", "hypno").fail; },          //went the Girlfriend way
+    "envy/gf": function () { return sc.getMission("envy", "hypno").success; },          //went the Hucow way
+    "envy/breakup": function () {                                                         //she passed the test, or you went the Hucow way
+        return sc.getMission("envy", "gf").success || sc.getMission("envy", "hypno").success;
+    },
+    //Janice "Break Up": every breakup choice is in Getting to know you., the dog-sitting return,
+    //Mine! (The talk / Surprise) or the start of Bad dog!. Once you stayed with her through all of
+    //those, there is nothing left that can start it.
+    "janice/breakup": function () {
+        return sc.getMission("janice", "date").success &&
+            sc.getMission("janice", "femdom").success &&
+            sc.getMissionTask("janice", "femdom", 6).complete &&
+            sc.getMission("janice", "dog-x").startedOrComplete;
+    }
+};
+
+//A mission that isn't finished and whose every remaining step is blocked by "Secret Known" can never be completed.
+//The phone shows it in red as [Failed - Secret Known] (the saved status is not changed).
+sc.isSecretFailedMission = function (mission) {
+    if (!mission || mission.mStatus > 99)
+        return false;
+    var left = mission.task.filter(function (t) { return t.mStatus < 100 && !t.optional && !t.notImplemented; });
+    return left.length > 0 && left.every(function (t) { return t.blocked && t.note === "Secret Known"; });
+};
+
+//Missions that can't be finished any more because the story moved on (not a choice between two paths).
+//They show [<label>] instead of [Another Path Chosen], and only their unfinished steps are struck out.
+//They're still closed as Completed later by the story (e.g. the time jump in room954), which replaces this.
+//Only "is the ranch case finished" is checked, so it works wherever you were in these missions: done steps stay ticked,
+//a mission finished before the case stays Completed, a Failed one stays Failed, and nothing changes while the case is open.
+//A failed case also shuts the ranch; the time jump then completes the guard's and Philbert's missions but not Kinsey's Ranch.
+sc.closedByStoryRules = {
+    //the ranch shuts down when Missy's ranch case is done (Rachel is arrested; the farm only shows the "so quiet" scene)
+    "security/ranch": { label: "Ranch Closed", rule: function () { return missy.cases[19].complete; } }, //CUM Guard "Who am I"
+    "kinsey/ranch": { label: "Ranch Closed", rule: function () { return missy.cases[19].complete; } },   //Kinsey "Ranch" (Break out plan #2)
+    "philbert/barn": { label: "Ranch Closed", rule: function () { return missy.cases[19].complete; } },  //Philbert "Barn" (starts in the barn after "Who am I")
+};
+sc.isClosedByStory = function (name, missionName) {
+    var r = sc.closedByStoryRules[name + "/" + missionName];
+    var m = sc.getMission(name, missionName);
+    return !!(r && m !== null && m.mStatus < 100 && typeof missy !== "undefined" && missy.cases && r.rule());
+};
+//The bracketed tag shown for a ruled-out mission
+sc.altPathLabel = function (name, missionName) {
+    return sc.isClosedByStory(name, missionName) ? sc.closedByStoryRules[name + "/" + missionName].label : "Another Path Chosen";
+};
+
+sc.isAltPathMission = function (name, missionName) {
+    var key = name + "/" + missionName;
+    var m = sc.getMission(name, missionName);
+    if (m === null)
+        return false;
+    if (sc.isClosedByStory(name, missionName))
+        return true;
+    if (m.fail && sc.altPathRules[key])
+        return sc.altPathRules[key]();
+    if (m.notStarted && sc.altPathNotStartedRules[key])
+        return sc.altPathNotStartedRules[key]();
+    return false;
+};
+
+//Copy Sissy School class progress (sissy.st) into Mistress Martha's "Classes - Level N" missions.
+//A class step is ticked when the class is done. A level is In Progress once any of its classes is
+//done or can be taken (all its prerequisite classes done), and Completed when every class is done.
+//During the final week the Final step lists the final's tasks underneath it.
+sc.syncSissyClasses = function () {
+    sc.closeLandlordMisc(); //Mother's Random (runs whenever the phone opens)
+    if (typeof sissy === "undefined" || !Array.isArray(sissy.st) || sissy.st.length === 0)
+        return;
+    var mi = sc.charMission.findIndex(function (c) { return c.name === "martha"; });
+    if (mi < 0)
+        return;
+    var classDone = function (id) { return sissy.st[id] !== undefined && sissy.st[id].ach; };
+    sc.charMission[mi].mission.forEach(function (m) {
+        if (!m.missionName.startsWith("class"))
+            return;
+        var done = 0, open = false;
+        m.task.forEach(function (t) {
+            var c = sissy.st[t.id];
+            t.mStatus = classDone(t.id) ? 100 : 0;
+            if (t.mStatus === 100)
+                done++;
+            else if (c && t.id === 21) { //Final: needs every Level 4 and 5 class (same rule as the class board, room210)
+                if (sissy.st.every(function (o, k) { return k === 21 || !o.active || o.y < 4 || o.ach; }))
+                    open = true;
+            }
+            else if (c && c.pID.every(classDone))
+                open = true;
+            delete t.note;
+        });
+        if (m.task.length > 0 && done === m.task.length)
+            m.mStatus = 100;
+        else if (done > 0 || open)
+            m.mStatus = 1;
+        else
+            m.mStatus = 0;
+    });
+    //"Sneaky sleep fuck" needs the girl drunk, and she only gets drunk at Truth or Dare / Spin the Bottle, which stop
+    //once her Sissy mission starts (your secret is known). Then the step can't be done: strike it out with a note.
+    var blockStep = function (name, missionName, taskId, blocked, note) {
+        var e = sc.getMissionTaskEntry(name, missionName, taskId);
+        if (e === null)
+            return;
+        if (blocked && e.task.mStatus < 100) {
+            e.task.blocked = true;
+            e.task.note = note;
+        }
+        else {
+            delete e.task.blocked;
+            if (e.task.note === note)
+                delete e.task.note;
+        }
+    };
+    //Steps that can only be done before a character finds out your secret. Once her Sissy mission has started
+    //(the secret is out), the scenes that tick them are gone, so an unfinished step is struck out with "Secret Known".
+    //  Lola / Eva: everything on their old chat menu (talk, massage, drinking games, practice dates,
+    //  sneaky sleep fuck - which needs her drunk from the games). Mother: "Now you're a man!" (her masculine route).
+    //only when that character's own secret flag is on (and her Sissy mission has started, which removes the scenes)
+    var lolaOut = sc.getSecret("lola").secretOut && sc.getMission("lola", "sissy").startedOrComplete;
+    var evaOut = sc.getSecret("eva").secretOut && sc.getMission("eva", "sissy").startedOrComplete;
+    var momOut = sc.getSecret("landlord").secretOut && sc.getMission("landlord", "sissy").startedOrComplete;
+    var secretRules = [
+        ["lola", "talk", null, lolaOut], ["lola", "massage", null, lolaOut], ["lola", "games", null, lolaOut],
+        ["lola", "date", null, lolaOut], ["lola", "random", [1], lolaOut],
+        ["eva", "talk", null, evaOut], ["eva", "massage", null, evaOut], ["eva", "games", null, evaOut],
+        ["eva", "random", [0], evaOut],
+        ["landlord", "man", null, momOut]
+        //not marked: steps blocked by ANOTHER character's secret (Eva's Dirty sex steps on Lola's dates,
+        //Mother's "Kicked out"/"Chastity Check" after a sneaky sleep fuck)
+    ];
+    secretRules.forEach(function (r) {
+        var m = sc.getMission(r[0], r[1]);
+        if (m === null)
+            return;
+        sc.charMission[m.i].mission[m.j].task.forEach(function (t) {
+            if (r[2] === null || r[2].indexOf(t.id) > -1)
+                blockStep(r[0], r[1], t.id, r[3], "Secret Known");
+        });
+    });
+    //(the phone puts "Secret Known" at the end of each struck step when it fits, else on one line per mission)
+    //Ms. Pussywinks' "The Pink Room" needs you to graduate first - say so under its first step
+    var pink = sc.getMissionTaskEntry("p", "pink", 0);
+    if (pink !== null) {
+        if (!classDone(21) && pink.task.mStatus < 100)
+            pink.task.note = "(Must graduate from the Sissy School)";
+        else
+            delete pink.task.note;
+    }
+    //final week: show the final's tasks under the Final step
+    if (gv.get("sissySchoolClass") === "finalx" && !classDone(21)) {
+        var fin = sc.getMissionTaskEntry("martha", "class6", 21);
+        if (fin !== null) {
+            //each task is crossed off with (Done) once you've done it
+            var finDone = function (txt, done, doneTxt) {
+                return done ? '<span style="text-decoration: line-through;">' + txt + '</span> (' + (doneTxt || "Done") + ')' : txt;
+            };
+            var pageant = gv.get("sissyfinal_pageant");
+            fin.task.note = [
+                "Final week - days left: " + future.get("sissyfinal"),
+                finDone("1. Friday Night: Strip at the strip club", gv.get("sissyfinal_stripper") === true),
+                finDone("2. Saturday Night: Visit the Pink Room at Missy's before " + nav.convertTime(18, 0), pageant !== null, pageant ? "Done - won the crown" : "Done"),
+                finDone("3. At the fast food restaurant get a boy's phone number.", gv.get("sissyfinal_brayden") === true),
+                "4. Get as many creampies as you can!"
+            ];
+            sc.charMission[mi].mission.forEach(function (m) { if (m.missionName === "class6") m.mStatus = 1; });
+        }
+    }
+};
+
+//Repairs that need the game variables (gv) - called from char.js after gv.load (gv loads after sc.load)
+sc.loadRepairsAfterGv = function () {
+    //Cult "Slave": "Taken by the cult" was never ticked (fixed in room949.js) - repair saves already taken by the cult
+    //(the Missy Cult case is done, or the cult rank has moved on from the starting "Slave")
+    if (!sc.getMission("cult", "kidnap").complete &&
+        ((typeof missy !== "undefined" && missy.cases[22] && missy.cases[22].complete) || gv.get("cultRank") !== "Slave")) {
+        sc.startMission("cult", "kidnap");
+        sc.completeMissionTask("cult", "kidnap", 0);
+    }
+    //Jeffery "Cult": "Have you brought me the panties?" was never ticked (fixed in room958.js) - repair saves that have
+    //already reached him on a delivery
+    if (!sc.getMission("jeffery", "cult").complete && gv.get("cultFoundJeffery")) {
+        sc.startMission("jeffery", "cult");
+        sc.completeMissionTask("jeffery", "cult", 0);
+    }
+    //"Took Monster Size Dick" was never awarded in Bondage 436 (fixed in room181.js) - give it to saves that passed the class
+    if (typeof sissy !== "undefined" && sissy.st[20] && sissy.st[20].ach && !trophy.st[25].ach)
+        trophy.add(25);
+    //Stacy's "Cheerleader": "Sunday Big game!" and "You're a cheerleader now" were never ticked - repair older
+    //saves that already played the first big game (cheer level 8+)
+    var stacyCheer = levels.get("cheer");
+    if (stacyCheer !== null && stacyCheer.l > 7 && sc.getMission("stacy", "cheer").inProgress) {
+        sc.completeMissionTask("stacy", "cheer", 5);
+        sc.completeMissionTask("stacy", "cheer", 6);
+    }
+    //Cecilia's park stall scene stops after the cult - older saves that already went through it (lolapostcult is set at the cult's end)
+    if (gv.get("lolapostcult") !== null && !gv.get("ceciliaGloryClosed"))
+        gv.set("ceciliaGloryClosed", true);
+    //Treyvon's "Doorman": step 1 was auto-ticked by an earlier patch right after step 0. It now needs a real
+    //repeat lobby scene (doormanRepeat) - undo the auto-tick on older saves
+    if (sc.getMissionTask("treyvon", "doorman", 1).complete && !gv.get("doormanRepeat")) {
+        sc.charMission[sc.getMission("treyvon", "doorman").i].mission[sc.getMission("treyvon", "doorman").j].task[1].mStatus = 0;
+        sc.setMission("treyvon", "doorman", 1);
+    }
+    //Candy's "Cheerleader!": "Meet Saturday morning" was never ticked - repair older saves that already practiced
+    var cheer = levels.get("cheer");
+    if (sc.getMission("candy", "cheer").inProgress && sc.getMissionTask("candy", "cheer", 0).notStarted && cheer !== null && (cheer.l > 0 || cheer.c > 0))
+        sc.completeMissionTask("candy", "cheer", 0);
+    //Candy's "Cheerleader!": "Cheerleading practice." ticks on your 2nd practice, counted in cheerPractices.
+    //Older saves have no count yet: one practice if the cheer level is still 0, otherwise two (estimated once).
+    if (cheer !== null && sc.getMissionTask("candy", "cheer", 0).complete && gv.get("cheerPractices") === 0)
+        gv.set("cheerPractices", (cheer.l > 0 || sc.getMissionTask("candy", "cheer", 1).complete) ? 2 : 1);
+    if (cheer !== null && sc.getMissionTask("candy", "cheer", 0).complete) {
+        var cheerM = sc.getMission("candy", "cheer");
+        if (sc.getMissionTask("candy", "cheer", 1).complete && gv.get("cheerPractices") < 2) {
+            sc.charMission[cheerM.i].mission[cheerM.j].task[1].mStatus = 0;
+            sc.setMission("candy", "cheer", 1);
+        }
+        else if (sc.getMissionTask("candy", "cheer", 1).notStarted && gv.get("cheerPractices") > 1)
+            sc.completeMissionTask("candy", "cheer", 1);
+    }
+    //older saves: a ticked "First time." means you've already been punished once
+    if (sc.getMissionTask("black", "punish", 0).complete && gv.get("blackPunishCount") < 1)
+        gv.set("blackPunishCount", 1);
+    //Black's "Punishment": "Repeat customer" was auto-ticked by an earlier patch even if you were only punished once.
+    //It now needs a real 2nd punishment (counted in blackPunishCount) - undo the auto-tick on older saves
+    if (sc.getMissionTask("black", "punish", 1).complete && gv.get("blackPunishCount") < 2) {
+        sc.charMission[sc.getMission("black", "punish").i].mission[sc.getMission("black", "punish").j].task[1].mStatus = 0;
+        sc.setMission("black", "punish", 1);
+    }
+};
+
+//Mother's "Random": "Chastity Check" is an ongoing check - it stays started (never ticked) so her daily
+//chastity checks keep happening. The mission counts as Completed once every other event is done and the
+//checks have started.
+sc.closeLandlordMisc = function () {
+    var m = sc.getMission("landlord", "misc");
+    if (m === null || m.complete)
+        return;
+    var tasks = sc.charMission[m.i].mission[m.j].task;
+    var ok = tasks.every(function (t) { return t.id === 5 ? t.mStatus > 0 : t.mStatus > 99; });
+    if (ok)
+        sc.setMission("landlord", "misc", 100);
+};
+
+sc.isRepeatableMission = function (mission) {
+    for (let i = 0; i < mission.task.length; i++)
+        if (mission.task[i].repeatable)
+            return true;
+    return false;
+};
+
+sc.closeRepeatableMission = function (name, missionName) {
+    let m = sc.getMission(name, missionName);
+    if (m === null || m.notStarted || m.fail)
+        return false;
+    let mission = sc.charMission[m.i].mission[m.j];
+    if (!sc.isRepeatableMission(mission))
+        return false;
+    let tasks = mission.task;
+    for (let i = 0; i < tasks.length; i++) {
+        if (tasks[i].repeatable && tasks[i].needsRepeat && tasks[i].mStatus < 100)
+            return true; //needsRepeat: this repeatable step must actually be done once before the mission completes
+        if (tasks[i].repeatable || tasks[i].mStatus > 99 || tasks[i].optional) //optional steps don't hold the mission open
+            continue;
+        if (tasks[i].orTask !== undefined && tasks[tasks[i].orTask] && tasks[tasks[i].orTask].mStatus === 100)
+            continue;
+        return true; //repeatable mission, but not finished yet
+    }
+    for (let i = 0; i < tasks.length; i++)
+        if (tasks[i].repeatable && tasks[i].mStatus < 100)
+            tasks[i].mStatus = 100;
+    if (mission.mStatus < 100)
+        mission.mStatus = 100;
+    return true;
+};
+
     for (let i = 0; i < sc.charMission[ind.i].mission[ind.j].task.length; i++) {
         if (sc.charMission[ind.i].mission[ind.j].task[i].id <= taskId)
             sc.charMission[ind.i].mission[ind.j].task[i].mStatus = success ? 100 : 101;

@@ -175,6 +175,7 @@ room327.btnclick = function (name) {
                 case 2:
                     chat(34, 327);
                     break;
+                    sc.completeMission("envy", "hucow", true); //REMOVE when "Hucow" step 2 is implemented (step 2 has no scene yet) - also remove notImplemented from that step in supportingChar.js so the phone drops [Not Fully Implemented Yet]
             }
             break;
         case "energy":

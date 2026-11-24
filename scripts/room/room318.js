@@ -428,6 +428,7 @@ room318.chatcatch = function (callback) {
             break;
         case "b2_end":
             cl.undo();
+            sc.completeMission("janice", "femdom", true); //REMOVE when "Mine!" step 7 is implemented (step 7 has no scene yet) - also remove notImplemented from that step in supportingChar.js so the phone drops [Not Fully Implemented Yet]
             sc.modLevel("janice", 100, 10);
             char.addtime(120);
             char.room(0);

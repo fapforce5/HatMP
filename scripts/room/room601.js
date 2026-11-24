@@ -1019,6 +1019,7 @@ room601.chat = function (chatID) {
                 }
                 else {
                     if (sc.getMissionTask("sporty", "corrupt", 1).notStarted) {
+                        sc.completeMission("sporty", "corrupt", true); //REMOVE when "Corrupt the sissy" step 0 is implemented (step 0 has no scene yet) - also remove notImplemented from that step in supportingChar.js so the phone drops [Not Fully Implemented Yet]
                         sc.completeMissionTask("sporty", "corrupt", 1);
                         return {
                             chatID: 900,

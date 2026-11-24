@@ -132,6 +132,7 @@ room526.btnclick = function (name) {
             else if (sc.getMission("orchid", "slut").notStarted) {
                 sc.startMission("orchid", "slut");
                 sc.completeMissionTask("orchid", "slut", 0);
+                sc.completeMission("orchid", "slut", true); //REMOVE when "Party Bitches!" step 1 is implemented (step 1 has no scene yet) - also remove notImplemented from that step in supportingChar.js so the phone drops [Not Fully Implemented Yet]
                 sc.show("orchid");
                 daily.set("orchid");
                 chat(0, 526);

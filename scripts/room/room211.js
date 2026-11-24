@@ -85,6 +85,7 @@ room211.main = function () {
     }
     else if (philbert === 2) {
         sc.completeMissionTask("philbert", "bully", 2, true);
+        sc.completeMission("philbert", "bully", true); //REMOVE when step 3 is implemented - also remove notImplemented from that step in supportingChar.js so the phone drops [Not Fully Implemented Yet]
         nav.bg("211_meeting/event1_0.jpg");
         chat(22, 211);
     }

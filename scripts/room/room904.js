@@ -108,6 +108,9 @@ room904.chatcatch = function (callback) {
             sc.completeMissionTask("envy", "gf", 6);
             char.addtime(67);
             char.room(900);
+            //step 7 is not implemented yet, so the mission completes here.
+            //REMOVE this line when step 7 is implemented (see the note on step 7 in supportingChar.js) - also remove notImplemented from that step in supportingChar.js so the phone drops [Not Fully Implemented Yet]
+            sc.completeMission("envy", "gf", true);
             break;
         default:
             break;

@@ -274,6 +274,7 @@ room775.chatcatch = function (callback) {
             levels.gavehandjob("m", "priest");
             sc.startMission("priest", "dirty");
             sc.completeMissionTask("priest", "dirty", 0);
+            sc.completeMission("priest", "dirty", true); //REMOVE when "Web of lies" step 1 is implemented (step 1 has no scene yet) - also remove notImplemented from that step in supportingChar.js so the phone drops [Not Fully Implemented Yet]
             nav.bg("775_church/sit_stroke.webp");
             break;
         case "sit_smile":
