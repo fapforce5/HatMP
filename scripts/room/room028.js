@@ -403,6 +403,7 @@ room28.future = function () {
                         sc.completeMissionTask("envy", "gf", 6, false);
                         sc.startMission("envy", "breakup");
                         sc.completeMissionTask("envy", "breakup", 0, true);
+                        sc.completeMission("envy", "breakup", true); //one ending is enough - the other two are struck out
                     }
                     break;
                 case "practiceDate0":

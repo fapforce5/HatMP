@@ -94,6 +94,7 @@ room904.chatcatch = function (callback) {
             sc.completeMission("envy", "gf", false);
             sc.startMission("envy", "breakup");
             sc.completeMissionTask("envy", "breakup", 1);
+            sc.completeMission("envy", "breakup", true); //one ending is enough - the other two are struck out
             char.addtime(37);
             char.room(900);
             break;
@@ -101,6 +102,7 @@ room904.chatcatch = function (callback) {
             sc.completeMission("envy", "gf", false);
             sc.startMission("envy", "breakup");
             sc.completeMissionTask("envy", "breakup", 2);
+            sc.completeMission("envy", "breakup", true); //one ending is enough - the other two are struck out
             char.addtime(37);
             char.room(900);
             break;

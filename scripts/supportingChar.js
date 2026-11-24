@@ -195,7 +195,7 @@ sc.init = function () {
                         ]
                 },
                 {
-                    missionName: "sissy", mStatus: 0, title: "Sissy", desc: "Secret's out", task:
+                    missionName: "sissy", mStatus: 0, title: "Sissy", desc: "Secret's out", strikeOpenWhenDone: true, task: //fix: added strikeOpenWhenDone: unfinished steps struck out when the mission ends
                         [
                             { id: 0, txt: "The talk", show: true, mStatus: 0, roomId: 16 },
                             { id: 1, txt: "Ice cream and dignity", show: true, mStatus: 0, roomId: 13 },
@@ -384,8 +384,8 @@ sc.init = function () {
                             { id: 2, txt: "Help with your sissy hole", show: true, mStatus: 0, roomId: 14 },
                             { id: 3, txt: "River Whore event", show: true, mStatus: 0, roomId: 14 },
                             { id: 4, txt: "Kicked out", show: true, mStatus: 0, roomId: 13 },
-                            { id: 5, txt: "Chastity Check", show: true, mStatus: 0, roomId: 16 },
-                            { id: 6, txt: "Cranival", show: true, mStatus: 0, roomId: 7 },
+                            { id: 5, txt: "Chastity Check (Ongoing)", show: true, mStatus: 0, roomId: 16, ongoing: true }, //stays started so the daily checks keep going (room016) - never struck out
+                            { id: 6, txt: "Carnival", show: true, mStatus: 0, roomId: 7 },
                             { id: 7, txt: "Coming home nude", show: true, mStatus: 0, roomId: 16 },
                         ]
                 },
@@ -490,8 +490,8 @@ sc.init = function () {
                     missionName: "cheating", mStatus: -1, title: "Chloé", desc: "Find out if Chloé is cheating", task:
                         [
                             { id: 0, txt: "Spy on her.", show: true, mStatus: 0, roomId: 725 },
-                            { id: 1, txt: "Catch her at the club?", show: true, mStatus: 0, roomId: 725, orTask: 3 }, //orTask: struck out on the phone once the other choice is done
-                            { id: 2, txt: "Catch her at the strip club? (Hidden Task)", show: false, showWhenDone: true, mStatus: 0, roomId: 400 },
+                            { id: 1, txt: "Catch her at the club?", show: true, mStatus: 0, roomId: 725, orTask: 3 }, //orTask: club and glory hole are either/or - catching her at one locks out the other
+                            { id: 3, txt: "Glory hole?", show: true, mStatus: 0, roomId: 216, orTask: 1 },
                             //Listed after the glory hole on purpose (ids stay the same so saves and the code still match).
                             //NOTE: step 2 has no scene yet (Zoey's report chat already has "Caught her at the mall!" for it).
                             //When it is implemented, remove the note/notImplemented options below.
@@ -1104,7 +1104,7 @@ sc.init = function () {
                             { id: 0, txt: "Chat at the diner", show: true, mStatus: 0, roomId: 250 },
                             { id: 1, txt: "Chat at the diner", show: true, mStatus: 0, roomId: 250 },
                             { id: 2, txt: "Chat at the diner", show: true, mStatus: 0, roomId: 250 },
-                            { id: 3, txt: "Gift?", show: true, mStatus: 0, roomId: 250 },
+                            { id: 3, txt: "Gift? (Optional)", show: true, mStatus: 0, roomId: 250, optional: true }, //optional: not struck out if the mission finishes without it
                         ]
                 },
                 {
@@ -1129,7 +1129,7 @@ sc.init = function () {
                             { id: 0, txt: "Chat at the diner", show: true, mStatus: 0, roomId: 250 },
                             { id: 1, txt: "Chat at the diner", show: true, mStatus: 0, roomId: 250 },
                             { id: 2, txt: "Chat at the diner", show: true, mStatus: 0, roomId: 250 },
-                            { id: 3, txt: "Gift?", show: true, mStatus: 0, roomId: 250 },
+                            { id: 3, txt: "Gift? (Optional)", show: true, mStatus: 0, roomId: 250, optional: true }, //optional: not struck out if the mission finishes without it
                         ]
                 },
                 {
@@ -1155,7 +1155,7 @@ sc.init = function () {
                             { id: 0, txt: "Chat at the diner", show: true, mStatus: 0, roomId: 250 },
                             { id: 1, txt: "Chat at the diner", show: true, mStatus: 0, roomId: 250 },
                             { id: 2, txt: "Chat at the diner", show: true, mStatus: 0, roomId: 250 },
-                            { id: 3, txt: "Gift?", show: true, mStatus: 0, roomId: 250 },
+                            { id: 3, txt: "Gift? (Optional)", show: true, mStatus: 0, roomId: 250, optional: true }, //optional: not struck out if the mission finishes without it
                         ]
                 },
                 {

@@ -267,9 +267,39 @@ phone.handlePrefixAction = function (name) {
                         tcolor = "#999999";
                         taskText = '<span style="text-decoration: line-through;">' + taskText + '</span>';
                     }
+                        struck = true;
+                        orStruck = true;
+                        mstatus = " ☐ ";
+                    }
+                }
+                //[Another Path Chosen]: every step is struck out, colours stay as they are
+                var altPath = sc.isAltPathMission(sc.charMission[ch.i].name, thisMission.missionName);
+                //closed by the story (e.g. [Ranch Closed]): only the steps you didn't get to are struck out, in grey
+                var closedByStory = altPath && sc.isClosedByStory(sc.charMission[ch.i].name, thisMission.missionName);
+                if (closedByStory) {
+                    if (thisTask.mStatus < 100) {
+                        struck = true;
                 }
                 nav.t({
                     type: "zimg",
+                else if (altPath) {
+                    struck = true;
+                    if (orStruck)
+                        tcolor = "#999999"; //the choice you didn't pick stays grey, not red (e.g. Spanky's Hypno)
+                }
+                else if (struck)
+                    tcolor = "#999999";
+                //the line-through starts at the step text, not at the check box
+                var strikeOn = !struck ? '' : (thisTask.blocked && thisTask.mStatus < 100)
+                    ? '<span style="text-decoration: line-through; text-decoration-color: #cc3333;">' //blocked (e.g. Secret Known): red strike line
+                    : '<span style="text-decoration: line-through;">';
+                var strikeOff = struck ? '</span>' : '';
+                var taskText = '<span class="phone-step-box">' + mstatus + '</span>' + strikeOn + thisTask.txt + roomList + strikeOff;
+                //WIP (Not Implemented Yet) step: short [WIP] tag at the end of the step line instead of a note line under it
+                //(the mission line keeps the full [Not Fully Implemented Yet] tag)
+                var wipStep = thisTask.notImplemented && thisTask.mStatus < 100;
+                if (wipStep)
+                    taskText += ' <span style="color:#33cc33">[</span><span style="color:#ffffff">WIP</span><span style="color:#33cc33">]</span>';
                     name: "phone_charsel_",
                     "left": 910,
                     "top": 350 + (taskcounter * 40),
@@ -319,24 +349,6 @@ phone.handlePrefixAction = function (name) {
         }
         return true;
     }
-                else if (altPath) {
-                    struck = true;
-                    if (orStruck)
-                        tcolor = "#999999"; //the choice you didn't pick stays grey, not red (e.g. Spanky's Hypno)
-                }
-                else if (struck)
-                    tcolor = "#999999";
-                //the line-through starts at the step text, not at the check box
-                var strikeOn = !struck ? '' : (thisTask.blocked && thisTask.mStatus < 100)
-                    ? '<span style="text-decoration: line-through; text-decoration-color: #cc3333;">' //blocked (e.g. Secret Known): red strike line
-                    : '<span style="text-decoration: line-through;">';
-                var strikeOff = struck ? '</span>' : '';
-                var taskText = '<span class="phone-step-box">' + mstatus + '</span>' + strikeOn + thisTask.txt + roomList + strikeOff;
-                //WIP (Not Implemented Yet) step: short [WIP] tag at the end of the step line instead of a note line under it
-                //(the mission line keeps the full [Not Fully Implemented Yet] tag)
-                var wipStep = thisTask.notImplemented && thisTask.mStatus < 100;
-                if (wipStep)
-                    taskText += ' <span style="color:#33cc33">[</span><span style="color:#ffffff">WIP</span><span style="color:#33cc33">]</span>';
 
     if (name.startsWith("phone_cheatmod")) {
         if (name === "phone_cheatmod_money") {
@@ -1510,11 +1522,28 @@ phone.repeatableTag = function (mission) {
                     var tcolor = "#ffffff";
                     var mstatus;
                     switch (sc.mStatus(sc.charMission[i].mission[j].mStatus)) {
-                        case "Failed": tcolor = "#cc3333"; mstatus = " [Fail]"; break;
+                        case "Failed":
+                            tcolor = "#cc3333";
+                            mstatus = " [Fail]";
+                            if (sc.isAltPathMission(sc.charMission[i].name, sc.charMission[i].mission[j].missionName)) {
+                                mstatus = ' [<span style="color:#ffffff">' + sc.altPathLabel(sc.charMission[i].name, sc.charMission[i].mission[j].missionName) + '</span>]'; //words white, brackets grey
+                                tcolor = "#999999"; //another path chosen: standard grey, not red
+                            }
+                            break;
                         case "Completed": tcolor = "#33cc33"; mstatus = " ☑"; break;
-                        case "Not Started": tcolor = "#999999"; mstatus = ""; break;
+                        //Not Started but ruled out: show [Another Path Chosen] (or [Ranch Closed])
+                        case "Not Started": tcolor = "#999999"; mstatus = sc.isAltPathMission(sc.charMission[i].name, sc.charMission[i].mission[j].missionName) ? ' [<span style="color:#ffffff">' + sc.altPathLabel(sc.charMission[i].name, sc.charMission[i].mission[j].missionName) + '</span>]' : ""; break;
                         case "Closed": tcolor = "#3e3e5c"; mstatus = ""; break;
-                        default: tcolor = "#ffffff"; mstatus = "";
+                        default:
+                            tcolor = "#ffffff"; mstatus = "";
+                            if (sc.isClosedByStory(sc.charMission[i].name, sc.charMission[i].mission[j].missionName)) { //In Progress but closed by the story
+                                tcolor = "#999999";
+                                mstatus = ' [<span style="color:#ffffff">' + sc.altPathLabel(sc.charMission[i].name, sc.charMission[i].mission[j].missionName) + '</span>]';
+                            }
+                    }
+                    if (sc.isSecretFailedMission(sc.charMission[i].mission[j])) {
+                        tcolor = "#cc3333"; //every step left needs the secret unknown - shown as failed
+                        mstatus = " [Failed - Secret Known]";
                     }
                     
                     if (sc.charMission[i].mission[j].missionName.startsWith("*")) {
@@ -1524,7 +1553,7 @@ phone.repeatableTag = function (mission) {
                             type: "zimg",
                             name: "phone_charsel_",
                             "left": 850,
-                            "top": 180 + (j * 80),
+                            "top": 180 + (row * 80), //row = position after sorting Another Path missions to the bottom (was j)
                             font: 30,
                             hex: tcolor,
                             //added [Repeatable] and [Not Fully Implemented Yet] tags after the mission title
@@ -1534,7 +1563,7 @@ phone.repeatableTag = function (mission) {
                             type: "zimg",
                             name: "phone_charsel_",
                             "left": 1500,
-                            "top": 180 + (j * 80),
+                            "top": 180 + (row * 80), //row = position after sorting Another Path missions to the bottom (was j)
                             font: 10,
                             hex: tcolor,
                             text: "Ending"
@@ -1543,7 +1572,7 @@ phone.repeatableTag = function (mission) {
                             type: "zimg",
                             name: "phone_charsel_",
                             "left": 900,
-                            "top": 220 + (j * 80),
+                            "top": 220 + (row * 80), //row = position after sorting Another Path missions to the bottom (was j)
                             font: 20,
                             hex: "#999999",
                             text: sc.charMission[i].mission[j].desc
@@ -1554,7 +1583,7 @@ phone.repeatableTag = function (mission) {
                             type: "zimg",
                             name: "phone_charsel_",
                             "left": 850,
-                            "top": 180 + (j * 80),
+                            "top": 180 + (row * 80), //row = position after sorting Another Path missions to the bottom (was j)
                             font: 30,
                             hex: tcolor,
                             //added [Repeatable] and [Not Fully Implemented Yet] tags after the mission title
@@ -1564,7 +1593,7 @@ phone.repeatableTag = function (mission) {
                             type: "zimg",
                             name: "phone_charsel_",
                             "left": 900,
-                            "top": 220 + (j * 80),
+                            "top": 220 + (row * 80), //row = position after sorting Another Path missions to the bottom (was j)
                             font: 20,
                             hex: "#999999",
                             text: sc.charMission[i].mission[j].desc
@@ -1573,7 +1602,7 @@ phone.repeatableTag = function (mission) {
                             type: "zimg",
                             name: "phone_charsel_",
                             "left": 900,
-                            "top": 220 + (j * 80),
+                            "top": 220 + (row * 80), //row = position after sorting Another Path missions to the bottom (was j)
                             font: 20,
                             hex: "#ffffff",
                             text: sc.charMission[i].mission[j].desc
@@ -1584,7 +1613,7 @@ phone.repeatableTag = function (mission) {
                         "type": "zbtn",
                         "name": "phone_charsel_" + sc.charMission[i].name + "_" + sc.charMission[i].mission[j].missionName,
                         "left": 800,
-                        "top": 180 + (j * 80),
+                        "top": 180 + (row * 80), //row = position after sorting Another Path missions to the bottom (was j)
                         "width": 40,
                         "height": 40,
                         "image": "999_phone/char_left.png",
