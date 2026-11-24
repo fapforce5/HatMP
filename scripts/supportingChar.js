@@ -157,40 +157,40 @@ sc.init = function () {
         {
             name: "lola", mission: [
                 {
-                    missionName: "talk", mStatus: 1, title: "Get to know her better. ", desc: "You have to talk to girls, silly. ", task:
+                    missionName: "talk", mStatus: 1, title: "Get to know her better.", desc: "You have to talk to girls, silly.", task: //fix: removed extra space in title; removed extra space in desc
                         [
                             { id: 0, txt: "It's ok", show: true, mStatus: 0, roomId: 13 },
-                            { id: 1, txt: "Back is sore! ", show: true, mStatus: 0, roomId: 13 },
+                            { id: 1, txt: "Back is sore!", show: true, mStatus: 0, roomId: 13 }, //fix: removed extra space in text
                             { id: 2, txt: "Massages", show: true, mStatus: 0, roomId: 13 },
                         ]
                 },
                 {
-                    missionName: "massage", mStatus: 0, title: "Massage", desc: "Help her loosen up a bit. ", task:
+                    missionName: "massage", mStatus: 0, title: "Massage", desc: "Help her loosen up a bit.", task: //fix: removed extra space in desc
                         [
                             { id: 0, txt: "Back Rub", show: true, mStatus: 0, roomId: 13 },
-                            { id: 1, txt: "Shirt off back rub. ", show: true, mStatus: 0, roomId: 13 },
+                            { id: 1, txt: "Shirt off back rub.", show: true, mStatus: 0, roomId: 13 }, //fix: removed extra space in text
                             { id: 2, txt: "Massage her tight legs", show: true, mStatus: 0, roomId: 13 },
                             { id: 3, txt: "Massage them glutes", show: true, mStatus: 0, roomId: 13 },
                             { id: 4, txt: "Free choice", show: true, mStatus: 0, roomId: 13 },
                         ]
                 },
                 {
-                    missionName: "games", mStatus: 0, title: "Drinking Games", desc: "Play some drinking games with the girls. ", task:
+                    missionName: "games", mStatus: 0, title: "Drinking Games", desc: "Play some drinking games with the girls.", task: //fix: removed extra space in desc
                         [
-                            { id: 0, txt: "Invited to get wine and play spin the bottle. ", show: true, mStatus: 0, roomId: 13 },
-                            { id: 1, txt: "Invited to get wine and play Truth or Dare. ", show: true, mStatus: 0, roomId: 13 },
-                            { id: 2, txt: "Played Truth or Dare. ", show: true, mStatus: 0, roomId: 13 },
+                            { id: 0, txt: "Invited to get wine and play spin the bottle.", show: true, mStatus: 0, roomId: 13 }, //fix: removed extra space in text
+                            { id: 1, txt: "Invited to get wine and play Truth or Dare.", show: true, mStatus: 0, roomId: 13 }, //fix: removed extra space in text
+                            { id: 2, txt: "Played Truth or Dare.", show: true, mStatus: 0, roomId: 13 }, //fix: removed extra space in text
                         ]
                 },
                 {
                     missionName: "date", mStatus: 0, title: "Practice dates", desc: "Landlady suggests practice for the real thing.", task:
                         [
-                            { id: 0, txt: "You should go on a practice date. ", show: true, mStatus: 0, roomId: 13 },
-                            { id: 1, txt: "Give me a day to get ready. ", show: true, mStatus: 0, roomId: 13 },
-                            { id: 2, txt: "Come by before dark for our first practice date. ", show: true, mStatus: 0, roomId: 13 },
-                            { id: 3, txt: "Won a teddy bear (Hidden Task)", show: false, showWhenDone: true, mStatus: 0, roomId: 13 },
-                            { id: 4, txt: "Meet her in her room. Go on dates. ", show: true, mStatus: 0, roomId: 13 },
-                            { id: 5, txt: "Creampie is the best pie. ", show: true, mStatus: 0, roomId: 13 },
+                            { id: 0, txt: "You should go on a practice date.", show: true, mStatus: 0, roomId: 13 }, //fix: removed extra space in text
+                            { id: 1, txt: "Give me a day to get ready.", show: true, mStatus: 0, roomId: 13 }, //fix: removed extra space in text
+                            { id: 2, txt: "Come by before dark for our first practice date.", show: true, mStatus: 0, roomId: 450 }, //fix: removed extra space in text; location was Girl's Room
+                            { id: 3, txt: "Won a teddy bear (Hidden Task)", show: false, showWhenDone: true, mStatus: 0, roomId: 627 }, //fix: text was "Won a teddy bear "; added showWhenDone: hidden step, shown once done; location was Girl's Room
+                            { id: 4, txt: "Meet her in her room. Go on dates.", show: true, mStatus: 0, roomId: 13 }, //fix: removed extra space in text
+                            { id: 5, txt: "Creampie is the best pie.", show: true, mStatus: 0, roomId: 13 }, //fix: removed extra space in text
                             { id: 6, txt: "Threesome is best cum.", show: true, mStatus: 0, roomId: 13 },
                         ]
                 },
@@ -202,23 +202,23 @@ sc.init = function () {
                             { id: 2, txt: "Dress up", show: true, mStatus: 0, roomId: 13 },
                             { id: 3, txt: "No! Not him!", show: true, mStatus: 0, roomId: 13 },
                             { id: 4, txt: "Worse than we thought", show: true, mStatus: 0, roomId: 11 },
-                            { id: 5, txt: "You have a week to find a nice boy", show: true, mStatus: 0, roomId: 0 },
-                            { id: 6, txt: "Fuck you, I won't do what you tell me", show: true, mStatus: 0, roomId: 0 },
+                            { id: 5, txt: "You have a week to find a nice boy", show: true, mStatus: 0, roomId: 40 }, //fix: location was Map
+                            { id: 6, txt: "Fuck you, I won't do what you tell me", show: true, mStatus: 0, roomId: 13 }, //fix: location was Map
                             { id: 7, txt: "Unexpected visitor", show: true, mStatus: 0, roomId: 13 },
                             { id: 8, txt: "A taste of the unexpected visitor", show: true, mStatus: 0, roomId: 13 },
                             { id: 9, txt: "This could be fun", show: true, mStatus: 0, roomId: 13 },
-                            { id: 10, txt: "Surprise motherfucker! ", show: true, mStatus: 0, roomId: 13 },
+                            { id: 10, txt: "Surprise motherfucker!", show: true, mStatus: 0, roomId: 174 }, //fix: removed extra space in text; location was Girl's Room
                             { id: 11, txt: "Pills are best served cold", show: true, mStatus: 0, roomId: 13 },
-                            { id: 12, txt: "Give them both the sleeping pills", show: true, mStatus: 0, roomId: 25 },
+                            { id: 12, txt: "Give them both the sleeping pills", show: true, mStatus: 0, roomId: 26 }, //fix: location was room 25
                             { id: 13, txt: "Everyone gets fucked!", show: true, mStatus: 0, roomId: 13 },
                         ]
                 },
                 {
                     missionName: "tom", mStatus: 0, title: "Tom", desc: "True love in another's arms", task:
                         [
-                            { id: 0, txt: "Set up on date with Tom", show: true, mStatus: 0, roomId: 16 },
-                            { id: 1, txt: "He's the best", show: true, mStatus: 0, roomId: 16 },
-                            { id: 2, txt: "Bla bla bla [End]", show: true, mStatus: 0, roomId: 16 },
+                            { id: 0, txt: "Set up on date with Tom", show: true, mStatus: 0, roomId: 40 }, //fix: location was 1st Floor
+                            { id: 1, txt: "He's the best", show: true, mStatus: 0, roomId: 13 }, //fix: location was 1st Floor
+                            { id: 2, txt: "Bla bla bla [End]", show: true, mStatus: 0, roomId: 13 }, //fix: location was 1st Floor
                         ]
                 },
                 {
@@ -231,7 +231,7 @@ sc.init = function () {
                 {
                     missionName: "*wife", mStatus: 0, title: "Mother", desc: "Mother of my child", task:
                         [
-                            { id: 0, txt: "Reunion", show: true, mStatus: 0, roomId: 14 },
+                            { id: 0, txt: "Reunion", show: true, mStatus: 0, roomId: 16 }, //fix: location was Master Bedroom
                             { id: 1, txt: "Proper welcome back", show: true, mStatus: 0, roomId: 10 },
                         ]
                 },
@@ -244,7 +244,7 @@ sc.init = function () {
                 {
                     missionName: "*cumdump", mStatus: 0, title: "Cum Dump", desc: "Whore for all", task:
                         [
-                            { id: 0, txt: "Reunion", show: true, mStatus: 0, roomId: 26 },
+                            { id: 0, txt: "Reunion", show: true, mStatus: 0, roomId: 32 }, //fix: location was Living Room
                             { id: 1, txt: "Catch up", show: true, mStatus: 0, roomId: 13 },
                             { id: 2, txt: "Baby talk", show: true, mStatus: 0, roomId: 13 },
                             { id: 3, txt: "Final Loop", show: true, mStatus: 0, roomId: 13 },
@@ -255,7 +255,7 @@ sc.init = function () {
         {
             name: "eva", mission: [
                 {
-                    missionName: "talk", mStatus: 1, title: "Get to know her better. ", desc: "You have to talk to girls, silly. ", task:
+                    missionName: "talk", mStatus: 1, title: "Get to know her better.", desc: "You have to talk to girls, silly.", task: //fix: removed extra space in title; removed extra space in desc
                         [
                             { id: 0, txt: "Small chat", show: true, mStatus: 0, roomId: 13 },
                             { id: 1, txt: "Feet?!", show: true, mStatus: 0, roomId: 13 },
@@ -265,25 +265,25 @@ sc.init = function () {
                     missionName: "massage", mStatus: 0, title: "Help her out", desc: "She really likes massages", task:
                         [
                             { id: 0, txt: "Massage her feet.", show: true, mStatus: 0, roomId: 13 },
-                            { id: 1, txt: "Suck her toes doggy. ", show: true, mStatus: 0, roomId: 13 },
-                            { id: 2, txt: "Show me your dick. ", show: true, mStatus: 0, roomId: 13 },
-                            { id: 3, txt: "I want to play with it. ", show: true, mStatus: 0, roomId: 13 },
+                            { id: 1, txt: "Suck her toes doggy.", show: true, mStatus: 0, roomId: 13 }, //fix: removed extra space in text
+                            { id: 2, txt: "Show me your dick.", show: true, mStatus: 0, roomId: 13 }, //fix: removed extra space in text
+                            { id: 3, txt: "I want to play with it.", show: true, mStatus: 0, roomId: 13 }, //fix: removed extra space in text
 
                         ]
                 },
                 {
-                    missionName: "games", mStatus: 0, title: "Drinking Games", desc: "Play some drinking games with the girls. ", task:
+                    missionName: "games", mStatus: 0, title: "Drinking Games", desc: "Play some drinking games with the girls.", task: //fix: removed extra space in desc
                         [
-                            { id: 0, txt: "Invited to get wine and play spin the bottle. ", show: true, mStatus: 0, roomId: 13 },
-                            { id: 1, txt: "Invited to get wine and play Truth or Dare. ", show: true, mStatus: 0, roomId: 13 },
-                            { id: 2, txt: "Played Truth or Dare. ", show: true, mStatus: 0, roomId: 13 },
+                            { id: 0, txt: "Invited to get wine and play spin the bottle.", show: true, mStatus: 0, roomId: 13 }, //fix: removed extra space in text
+                            { id: 1, txt: "Invited to get wine and play Truth or Dare.", show: true, mStatus: 0, roomId: 13 }, //fix: removed extra space in text
+                            { id: 2, txt: "Played Truth or Dare.", show: true, mStatus: 0, roomId: 13 }, //fix: removed extra space in text
                         ]
                 },
                 {
-                    missionName: "fuck", mStatus: 0, title: "Dirty sex", desc: "I guess we're fucking now ", task:
+                    missionName: "fuck", mStatus: 0, title: "Dirty sex", desc: "I guess we're fucking now", task: //fix: removed extra space in desc
                         [
-                            { id: 0, txt: "Supervised blow job. ", show: true, mStatus: 0, roomId: 13 },
-                            { id: 1, txt: "Weak pullout game", show: true, mStatus: 0, roomId: 10 },
+                            { id: 0, txt: "Supervised blow job.", show: true, mStatus: 0, roomId: 13 }, //fix: removed extra space in text
+                            { id: 1, txt: "Weak pullout game", show: true, mStatus: 0, roomId: 7 }, //fix: location was room 10
                             { id: 2, txt: "Threesome is best cum.", show: true, mStatus: 0, roomId: 13 },
                         ]
                 },
@@ -294,10 +294,10 @@ sc.init = function () {
                             { id: 1, txt: "Ice cream and dignity", show: true, mStatus: 0, roomId: 13 },
                             { id: 2, txt: "Dress up", show: true, mStatus: 0, roomId: 13 },
                             { id: 3, txt: "Lick my feet. No chastity", show: true, mStatus: 0, roomId: 13 },
-                            { id: 4, txt: "Slave doggy. ", show: true, mStatus: 0, roomId: 13 },
-                            { id: 5, txt: "Wear a doggy collar and no chastity.", show: true, mStatus: 0, roomId: 900 },
+                            { id: 4, txt: "Slave doggy.", show: true, mStatus: 0, roomId: 13 }, //fix: removed extra space in text
+                            { id: 5, txt: "Wear a doggy collar and no chastity.", show: true, mStatus: 0, roomId: 905 }, //fix: location was College
                             { id: 6, txt: "Stand up for yourself or not?", show: true, mStatus: 0, roomId: 13 },
-                            { id: 7, txt: "Meet her Friday night. ", show: true, mStatus: 0, roomId: 13 },
+                            { id: 7, txt: "Meet her Friday night.", show: true, mStatus: 0, roomId: 585 }, //fix: removed extra space in text; location was room 13
                             { id: 8, txt: "Do you embarrass yourself?", show: true, mStatus: 0, roomId: 585 },
                             { id: 9, txt: "Apology", show: true, mStatus: 0, roomId: 13 },
                         ]
@@ -305,7 +305,7 @@ sc.init = function () {
                 {
                     missionName: "teach", mStatus: 0, title: "Teach me", desc: "Show me how to be a girl", task:
                         [
-                            { id: 0, txt: "Lesson 1", show: true, mStatus: 0, roomId: 16 },
+                            { id: 0, txt: "Lesson 1", show: true, mStatus: 0, roomId: 174 }, //fix: location was 1st Floor
                         ]
                 },
                 {
@@ -331,7 +331,7 @@ sc.init = function () {
                 {
                     missionName: "*cumdump", mStatus: 0, title: "Cum Dump", desc: "Whore for all", task:
                         [
-                            { id: 0, txt: "Reunion", show: true, mStatus: 0, roomId: 26 },
+                            { id: 0, txt: "Reunion", show: true, mStatus: 0, roomId: 32 }, //fix: location was Living Room
                             { id: 1, txt: "Catch up", show: true, mStatus: 0, roomId: 13 },
                             { id: 2, txt: "Baby talk", show: true, mStatus: 0, roomId: 13 },
                         ]
@@ -345,7 +345,7 @@ sc.init = function () {
                         [
                             { id: 0, txt: "You're not a fuckup", show: true, mStatus: 0, roomId: 26 },
                             { id: 1, txt: "Help at the sperm bank. ", show: true, mStatus: 0, roomId: 26 },
-                            { id: 2, txt: "Come to the sperm bank Saturday morning. ", show: true, mStatus: 0, roomId: 26 },
+                            { id: 2, txt: "Come to the sperm bank Saturday morning. ", show: true, mStatus: 0, roomId: 350 }, //fix: location was Living Room
                             { id: 3, txt: "Room key for more chores. ", show: true, mStatus: 0, roomId: 26 },
                             { id: 4, txt: "You're so sexy", show: true, mStatus: 0, roomId: 26 },
                             { id: 5, txt: "Practice Date", show: true, mStatus: 0, roomId: 26 },
@@ -357,8 +357,8 @@ sc.init = function () {
                         [
                             { id: 0, txt: "Donated sperm first time. ", show: true, mStatus: 0, roomId: 350 },
                             { id: 1, txt: "Advertised first time. ", show: true, mStatus: 0, roomId: 350 },
-                            { id: 2, txt: "Assistant Nurse first day. (Hidden Task)", show: false, showWhenDone: true, mStatus: 0, roomId: 350 },
-                            { id: 3, txt: "Assistant Nurse loop. (Hidden Task)", show: false, showWhenDone: true, mStatus: 0, roomId: 350 },
+                            { id: 2, txt: "Assistant Nurse first day. (Hidden Task)", show: false, showWhenDone: true, mStatus: 0, roomId: 350 }, //fix: text was "Assistant Nurse first day. "; added showWhenDone: hidden step, shown once done
+                            { id: 3, txt: "Assistant Nurse loop. (Hidden Task)", show: false, showWhenDone: true, mStatus: 0, roomId: 350, repeatable: true }, //fix: text was "Assistant Nurse loop. "; added showWhenDone: hidden step, shown once done; added repeatable step
                         ]
                 },
                 {
@@ -382,7 +382,7 @@ sc.init = function () {
                             { id: 0, txt: "Jacked Off first time", show: true, mStatus: 0, roomId: 10 },
                             { id: 1, txt: "Threesome! [After first time]", show: true, mStatus: 0, roomId: 26 },
                             { id: 2, txt: "Help with your sissy hole", show: true, mStatus: 0, roomId: 14 },
-                            { id: 3, txt: "River Whore event", show: true, mStatus: 0, roomId: 14 },
+                            { id: 3, txt: "River Whore event", show: true, mStatus: 0, roomId: 183 }, //fix: location was Master Bedroom
                             { id: 4, txt: "Kicked out", show: true, mStatus: 0, roomId: 13 },
                             { id: 5, txt: "Chastity Check (Ongoing)", show: true, mStatus: 0, roomId: 16, ongoing: true }, //stays started so the daily checks keep going (room016) - never struck out
                             { id: 6, txt: "Carnival", show: true, mStatus: 0, roomId: 7 },
@@ -413,7 +413,7 @@ sc.init = function () {
         {
             name: "bigguy", mission: [
                 {
-                    missionName: "straight", mStatus: 1, title: "Laius", desc: "Stop pestering me you little shit. ", task:
+                    missionName: "straight", mStatus: 1, title: "Laius", desc: "Stop pestering me you little shit.", task: //fix: removed extra space in desc
                         [
                             { id: 0, txt: "Meet for the first time.", show: true, mStatus: 0, roomId: 26 },
                             { id: 1, txt: "This little finger goes wee wee wee.", show: true, mStatus: 0, roomId: 26 },
@@ -427,7 +427,7 @@ sc.init = function () {
                         ]
                 },
                 {
-                    missionName: "rent", mStatus: 0, title: "Rent", desc: "You have to pay to stay. ", task:
+                    missionName: "rent", mStatus: 0, title: "Rent", desc: "You have to pay to stay.", task: //fix: removed extra space in desc
                         [
                             { id: 0, txt: "Explained", show: true, mStatus: 0, roomId: 7 },
                             { id: 1, txt: "First Day. ", show: true, mStatus: 0, roomId: 7 },
@@ -436,7 +436,7 @@ sc.init = function () {
                         ]
                 },
                 {
-                    missionName: "sissy", mStatus: 0, title: "Extra hole", desc: "Let's talk about sex baby. ", task:
+                    missionName: "sissy", mStatus: 0, title: "Extra hole", desc: "Let's talk about sex baby.", task: //fix: removed extra space in desc
                         [
                             { id: 0, txt: "Catch them having sex. ", show: true, mStatus: 0, roomId: 14 },
                             { id: 1, txt: "This little finger goes wee wee wee. ", show: true, mStatus: 0, roomId: 26 },
@@ -449,14 +449,14 @@ sc.init = function () {
                 {
                     missionName: "cult", mStatus: 0, title: "Cult", desc: "Good times at the cult", task:
                         [
-                            { id: 0, txt: "Whose the daddy.", show: true, mStatus: 0, roomId: 955 },
-                            { id: 0, txt: "Got the first", show: true, mStatus: 0, roomId: 955 },
+                            { id: 0, txt: "Who's the daddy.", show: true, mStatus: 0, roomId: 955 }, //fix: text was "Whose the daddy."
+                            { id: 1, txt: "Dropped out of college", show: true, mStatus: 0, roomId: 955 }, //fix: id was 0; text was "Got the first" (unfinished) - this step is when he tells you your ##el## dropped out of college
                         ]
                 },
                 {
                     missionName: "ex", mStatus: 0, title: "Ex [Not built yet]", desc: "Not allowed back!", task:
                         [
-                            { id: 0, txt: "Never coming back!", show: true, mStatus: 0, roomId: 40 },
+                            { id: 0, txt: "Never coming back!", show: true, mStatus: 0, roomId: 14 }, //fix: location was Auto Repair
                         ]
                 },
             ]
@@ -480,8 +480,8 @@ sc.init = function () {
                         [
                             { id: 0, txt: "I'm a can opener", show: true, mStatus: 0, roomId: 501 },
                             { id: 1, txt: "Back for a can of beat ass?", show: true, mStatus: 0, roomId: 501 },
-                            { id: 2, txt: "Meet my friend. ", show: true, mStatus: 0, roomId: 501 },
-                            { id: 3, txt: "Sleep over. ", show: true, mStatus: 0, roomId: 501 },
+                            { id: 2, txt: "Meet my friend.", show: true, mStatus: 0, roomId: 501 }, //fix: removed extra space in text
+                            { id: 3, txt: "Sleep over.", show: true, mStatus: 0, roomId: 501 }, //fix: removed extra space in text
                             { id: 4, txt: "I have a feeling", show: true, mStatus: 0, roomId: 501 },
                             { id: 5, txt: "I need your help!", show: true, mStatus: 0, roomId: 501 },
                         ]
@@ -504,17 +504,17 @@ sc.init = function () {
                     missionName: "sex", mStatus: -1, title: "Fuck me please", desc: "Will we be more than friends?", task:
                         [
                             { id: 0, txt: "New petite amie.", show: true, mStatus: 0, roomId: 525 },
-                            { id: 1, txt: "Mystery friend at night. ", show: true, mStatus: 0, roomId: 502 },
-                            { id: 2, txt: "Handcuffs and chastity. ", show: true, mStatus: 0, roomId: 525 },
+                            { id: 1, txt: "Mystery friend at night.", show: true, mStatus: 0, roomId: 502 }, //fix: removed extra space in text
+                            { id: 2, txt: "Handcuffs and chastity.", show: true, mStatus: 0, roomId: 525 }, //fix: removed extra space in text
                             { id: 3, txt: "Mon cœur souffre pour toi", show: true, mStatus: 0, roomId: 525 },
                             { id: 4, txt: "Sex at home, sex at work, sex everywhere [Loop]", show: true, mStatus: 0, roomId: 502 },
                             { id: 5, txt: "My new vagina [After you get a vagina]", show: true, mStatus: 0, roomId: 500 },
                         ]
                 },
                 {
-                    missionName: "xfriends", mStatus: -1, title: "Ex-friends", desc: "You've lost her trust. ", task:
+                    missionName: "xfriends", mStatus: -1, title: "Ex-friends", desc: "You've lost her trust.", task: //fix: removed extra space in desc
                         [
-                            { id: 0, txt: "Always trust your friends. ", show: true, mStatus: 0, roomId: 501 },
+                            { id: 0, txt: "Always trust your friends.", show: true, mStatus: 0, roomId: 501 }, //fix: removed extra space in text
                         ]
                 },
                 {
@@ -532,8 +532,8 @@ sc.init = function () {
                 {
                     missionName: "*help", mStatus: -1, title: "Help with the list", desc: "I hear stuff, let me help", task:
                         [
-                            { id: 0, txt: "Spoke at the bar. ", show: true, mStatus: 0, roomId: 525 },
-                            { id: 1, txt: "Spoke at the home. ", show: true, mStatus: 0, roomId: 500 },
+                            { id: 0, txt: "Spoke at the bar.", show: true, mStatus: 0, roomId: 525 }, //fix: removed extra space in text
+                            { id: 1, txt: "Spoke at the home.", show: true, mStatus: 0, roomId: 501 }, //fix: removed extra space in text; location was Zoey's House
                         ]
                 },
             ]
@@ -543,7 +543,7 @@ sc.init = function () {
                 {
                     missionName: "random", mStatus: 1, title: "Random Events", desc: " ", task:
                         [
-                            { id: 0, txt: "First meeting after caught cheeting", show: true, mStatus: 0, roomId: 600 },
+                            { id: 0, txt: "First meeting after caught cheating", show: true, mStatus: 0, roomId: 600 }, //fix: text was "First meeting after caught cheeting"
                         ]
                 },
             ]
@@ -564,11 +564,11 @@ sc.init = function () {
         {
             name: "chad", mission: [
                 {
-                    missionName: "membership", mStatus: 0, title: "Membership Dues", desc: "Get into the gym. ", task:
+                    missionName: "membership", mStatus: 0, title: "Membership Dues", desc: "Get into the gym.", task: //fix: removed extra space in desc
                         [
-                            { id: 0, txt: "Meet for the first time. ", show: true, mStatus: 0, roomId: 550 },
+                            { id: 0, txt: "Meet for the first time.", show: true, mStatus: 0, roomId: 550 }, //fix: removed extra space in text
                             { id: 1, txt: "Pay the $500", show: true, mStatus: 0, roomId: 550, orTask: 2 }, //pay OR picture - either one completes the mission
-                            { id: 2, txt: "Get topless picture. ", show: true, mStatus: 0, roomId: 550, orTask: 1 },
+                            { id: 2, txt: "Get topless picture.", show: true, mStatus: 0, roomId: 550, orTask: 1 }, //fix: removed extra space in text
 
                         ]
                 },
@@ -577,20 +577,20 @@ sc.init = function () {
         {
             name: "g", mission: [
                 {
-                    missionName: "workout", mStatus: 0, title: "Personal Trainer", desc: "Get into the gym. ", task:
+                    missionName: "workout", mStatus: 0, title: "Personal Trainer", desc: "Get into the gym.", task: //fix: removed extra space in desc
                         [
-                            { id: 0, txt: "Meet for the first time. ", show: true, mStatus: 0, roomId: 550 },
-                            { id: 1, txt: "Raise your strength bitch!", show: true, mStatus: 0, roomId: 550 },
-                            { id: 2, txt: "Regular workouts. ", show: true, mStatus: 0, roomId: 550 },
+                            { id: 0, txt: "Meet for the first time.", show: true, mStatus: 0, roomId: 551 }, //fix: removed extra space in text; location was room 550 (front desk), it happens in the gym
+                            { id: 1, txt: "Raise your strength bitch!", show: true, mStatus: 0, roomId: 551 }, //fix: location was room 550 (front desk), it happens in the gym
+                            { id: 2, txt: "Regular workouts.", show: true, mStatus: 0, roomId: 551 }, //fix: removed extra space in text; location was room 550 (front desk), it happens in the gym
 
                         ]
                 },
                 {
-                    missionName: "spar", mStatus: 0, title: "Spar", desc: "Learn how to fight. ", task:
+                    missionName: "spar", mStatus: 0, title: "Spar", desc: "Learn how to fight.", task: //fix: removed extra space in desc
                         [
                             { id: 0, txt: "Introduction", show: true, mStatus: 0, roomId: 556 },
-                            { id: 1, txt: "Beginner Spar. Beat Maggie ", show: true, mStatus: 0, roomId: 556 },
-                            { id: 2, txt: "Advanced Spar. ", show: true, mStatus: 0, roomId: 556 },
+                            { id: 1, txt: "Beginner Spar. Beat Maggie", show: true, mStatus: 0, roomId: 556 }, //fix: removed extra space in text
+                            { id: 2, txt: "Advanced Spar.", show: true, mStatus: 0, roomId: 556 }, //fix: removed extra space in text
 
                         ]
                 },
@@ -607,8 +607,8 @@ sc.init = function () {
                     missionName: "mom", mStatus: 0, title: "Muscle Mommy", desc: "", task:
                         [
                             { id: 0, txt: "Cum in her tight muscle mommy pussy.", show: true, mStatus: 0, roomId: 555 },
-                            { id: 1, txt: "Wait. ", show: true, mStatus: 0, roomId: 555 },
-                            { id: 2, txt: "My baby's mama. ", show: true, mStatus: 0, roomId: 555 },
+                            { id: 1, txt: "Wait.", show: true, mStatus: 0, roomId: 555 }, //fix: removed extra space in text
+                            { id: 2, txt: "My baby's mama.", show: true, mStatus: 0, roomId: 551 }, //fix: removed extra space in text; location was Back Gym
                         ]
                 },
             ]
@@ -728,22 +728,22 @@ sc.init = function () {
                 {
                     missionName: "meet", mStatus: 0, title: "Get to know her", desc: "Getting to know the odd unshaven girl", task:
                         [
-                            { id: 0, txt: "Introduce yourself. ", show: true, mStatus: 0, roomId: 300 },
-                            { id: 1, txt: "Lost at a board game. ", show: true, mStatus: 0, roomId: 301 },
-                            { id: 2, txt: "Bring Pizza! ", show: true, mStatus: 0, roomId: 301 },
-                            { id: 3, txt: "Just friends. ", show: true, mStatus: 0, roomId: 301 },
+                            { id: 0, txt: "Introduce yourself.", show: true, mStatus: 0, roomId: 300 }, //fix: removed extra space in text
+                            { id: 1, txt: "Lost at a board game.", show: true, mStatus: 0, roomId: 301 }, //fix: removed extra space in text
+                            { id: 2, txt: "Bring Pizza!", show: true, mStatus: 0, roomId: 301 }, //fix: removed extra space in text
+                            { id: 3, txt: "Just friends.", show: true, mStatus: 0, roomId: 301 }, //fix: removed extra space in text
                         ]
                 },
                 {
                     missionName: "hypno", mStatus: 0, title: "Hypno", desc: "Turning a girl into a slut.", task:
                         [
                             { id: 0, txt: "Hypno 1: Touch myself", show: true, mStatus: 0, roomId: 301 },
-                            { id: 1, txt: "Hypno 2: Makeup ", show: true, mStatus: 0, roomId: 301 },
+                            { id: 1, txt: "Hypno 2: Makeup", show: true, mStatus: 0, roomId: 301 }, //fix: removed extra space in text
                             { id: 2, txt: "Hypno 3: Dresses are pretty", show: true, mStatus: 0, roomId: 301 },
                             { id: 3, txt: "Hypno 4: Blondes have more fun", show: true, mStatus: 0, roomId: 301 }, //fix: spelling (was "Blonde have")
                             { id: 4, txt: "Hypno 5: Dumb is sexy", show: true, mStatus: 0, roomId: 301 },
                             { id: 5, txt: "Hypno 6: Tits. Bigger is Better", show: true, mStatus: 0, roomId: 301 },
-                            { id: 6, txt: "Break that Hymen and fill that belly.", show: true, mStatus: 0, roomId: 301 },
+                            { id: 6, txt: "Break that hymen and fill that belly.", show: true, mStatus: 0, roomId: 301 }, //fix: text was "Break that Hymen and fill that belly."
                             { id: 7, txt: "Hypno 7", show: true, mStatus: 0, roomId: 301 },
                             { id: 8, txt: "Double team! Leave your cage at home.", show: true, mStatus: 0, roomId: 301 },
                             { id: 9, txt: "Broken.", show: true, mStatus: 0, roomId: 301 },
@@ -764,11 +764,11 @@ sc.init = function () {
                         ]
                 },
                 {
-                    missionName: "gf", mStatus: 0, title: "Girlfriend", desc: "Emotional Connection. ", task:
+                    missionName: "gf", mStatus: 0, title: "Girlfriend", desc: "Emotional Connection.", task: //fix: removed extra space in desc
                         [
-                            { id: 0, txt: "Talk to Spanky to undo the hypno", show: true, mStatus: 0, roomId: 301 },
+                            { id: 0, txt: "Talk to Spanky to undo the hypno", show: true, mStatus: 0, roomId: 404 }, //fix: location was room 301
                             { id: 1, txt: "Go Away!", show: true, mStatus: 0, roomId: 301 },
-                            { id: 2, txt: "Forgivness comes slowly.", show: true, mStatus: 0, roomId: 301 },
+                            { id: 2, txt: "Forgiveness comes slowly.", show: true, mStatus: 0, roomId: 300 }, //fix: text was "Forgivness comes slowly."; location was Living Room
                             { id: 3, txt: "Get Help from Tiffany!", show: true, mStatus: 0, roomId: 650 },
                             { id: 4, txt: "Give her the gift of orgasms.", show: true, mStatus: 0, roomId: 301 },
                             { id: 5, txt: "See how her pussy is doing.", show: true, mStatus: 0, roomId: 301 },
@@ -781,7 +781,7 @@ sc.init = function () {
                         ]
                 },
                 {
-                    missionName: "breakup", mStatus: 0, title: "Failed me!", desc: "I hate you! ", task:
+                    missionName: "breakup", mStatus: 0, title: "Failed me!", desc: "I hate you!", task: //fix: removed extra space in desc
                         [
                             { id: 0, txt: "Didn't meet her before her test.", show: true, mStatus: 0, roomId: 301 },
                             { id: 1, txt: "Made her orgasm too much.", show: true, mStatus: 0, roomId: 904 },
@@ -820,7 +820,7 @@ sc.init = function () {
                             { id: 3, txt: "Home. ", show: true, mStatus: 0, roomId: 51 },
                             { id: 4, txt: "How to use your pussy", show: true, mStatus: 0, roomId: 54 },
                             { id: 5, txt: "Pussy Palace", show: true, mStatus: 0, roomId: 54 },
-                            { id: 6, txt: "Cheerleader! ", show: true, mStatus: 0, roomId: 54 },
+                            { id: 6, txt: "Cheerleader!", show: true, mStatus: 0, roomId: 54 }, //fix: removed extra space in text
                         ]
                 },
             ]
@@ -834,7 +834,7 @@ sc.init = function () {
                         ]
                 },
                 {
-                    missionName: "cheer", mStatus: 0, title: "Cheerleader!", desc: "Be a cheerleader! ", task:
+                    missionName: "cheer", mStatus: 0, title: "Cheerleader!", desc: "Be a cheerleader!", task: //fix: removed extra space in desc
                         [
                             { id: 0, txt: "Meet Saturday morning", show: true, mStatus: 0, roomId: 875 },
                         ]
@@ -911,7 +911,7 @@ sc.init = function () {
         {
             name: "cecilia", mission: [
                 {
-                    missionName: "gloryhole", mStatus: 0, title: "Glory hole!", desc: "Park bathroom on weekends ", task:
+                    missionName: "gloryhole", mStatus: 0, title: "Glory hole!", desc: "Park bathroom on weekends", task: //fix: removed extra space in desc
                         [
                             { id: 0, txt: "Did we just become friends?", show: true, mStatus: 0, roomId: 211 },
                             { id: 1, txt: "2 sissies. 1 gloryhole", show: true, mStatus: 0, roomId: 211 },
@@ -947,7 +947,7 @@ sc.init = function () {
                             { id: 0, txt: "Meet", show: true, mStatus: 0, roomId: 350 },
                             { id: 1, txt: "Titty grabbing perv", show: true, mStatus: 0, roomId: 350 },
                             { id: 2, txt: "Eat a bag of dicks", show: true, mStatus: 0, roomId: 350 },
-                            { id: 3, txt: "Stop touching her! (Repeatable)", show: true, mStatus: 0, roomId: 350 },
+                            { id: 3, txt: "Stop touching her! (Repeatable)", show: true, mStatus: 0, roomId: 350, repeatable: true }, //fix: text was "Stop touching her!"; added repeatable step
                         ]
                 },
             ]
@@ -977,13 +977,13 @@ sc.init = function () {
         {
             name: "rachel", mission: [
                 {
-                    missionName: "horse", mStatus: 0, title: "Horse Brushing", desc: "Help out around the farm. ", task:
+                    missionName: "horse", mStatus: 0, title: "Horse Brushing", desc: "Help out around the farm.", task: //fix: removed extra space in desc
                         [
                             { id: 0, txt: "First meeting", show: true, mStatus: 0, roomId: 325 },
                         ]
                 },
                 {
-                    missionName: "milk", mStatus: 0, title: "Hucow", desc: "Become her milking cow ", task:
+                    missionName: "milk", mStatus: 0, title: "Hucow", desc: "Become her milking cow", task: //fix: removed extra space in desc
                         [
                             { id: 0, txt: "Inspection.", show: true, mStatus: 0, roomId: 325 },
                             { id: 1, txt: "Hucow.", show: true, mStatus: 0, roomId: 325 },
@@ -1002,17 +1002,17 @@ sc.init = function () {
                 {
                     missionName: "milk", mStatus: 0, title: "Fellow Hucow", desc: "Gain her trust", task:
                         [
-                            { id: 0, txt: "Moooo", show: true, mStatus: 0, roomId: 325 },
-                            { id: 1, txt: "Fucking Moooo", show: true, mStatus: 0, roomId: 325 },
-                            { id: 2, txt: "I'm not talking to Mooo either", show: true, mStatus: 0, roomId: 325 },
-                            { id: 3, txt: "Get me an energy drink", show: true, mStatus: 0, roomId: 325 },
-                            { id: 4, txt: "Thanks", show: true, mStatus: 0, roomId: 325 },
+                            { id: 0, txt: "Moooo", show: true, mStatus: 0, roomId: 327 }, //fix: location was Farm
+                            { id: 1, txt: "Fucking Moooo", show: true, mStatus: 0, roomId: 327 }, //fix: location was Farm
+                            { id: 2, txt: "I'm not talking to Mooo either", show: true, mStatus: 0, roomId: 327 }, //fix: location was Farm
+                            { id: 3, txt: "Get me an energy drink", show: true, mStatus: 0, roomId: 327 }, //fix: location was Farm
+                            { id: 4, txt: "Thanks", show: true, mStatus: 0, roomId: 327 }, //fix: location was Farm
                         ]
                 },
                 {
                     missionName: "ranch", mStatus: 0, title: "Ranch", desc: "Fun on the Ranch", task:
                         [
-                            { id: 0, txt: "First meeting", show: true, mStatus: 0, roomId: 325 },
+                            { id: 0, txt: "First meeting", show: true, mStatus: 0, roomId: 328 }, //fix: location was Farm
                             { id: 1, txt: "Break out plan #1", show: true, mStatus: 0, roomId: 328 },
                             { id: 2, txt: "Break out plan #2", show: true, mStatus: 0, roomId: 328 },
                         ]
@@ -1063,19 +1063,19 @@ sc.init = function () {
                             { id: 0, txt: "Introduction", show: true, mStatus: 0, roomId: 213 },
                             { id: 1, txt: "First blowjob", show: true, mStatus: 0, roomId: 213 },
                             { id: 2, txt: "Waitress first time", show: true, mStatus: 0, roomId: 213 },
-                            { id: 3, txt: "Gloryhole first time", show: true, mStatus: 0, roomId: 213 },
-                            { id: 4, txt: "Your own room", show: true, mStatus: 0, roomId: 213 },
+                            { id: 3, txt: "Gloryhole first time", show: true, mStatus: 0, roomId: 171 }, //fix: location was room 213
+                            { id: 4, txt: "Your own room", show: true, mStatus: 0, roomId: 215 }, //fix: location was room 213
                         ]
                 },
                 {
-                    missionName: "*missy", mStatus: 0, title: "Save Missy", desc: "What you need to do ", task:
+                    missionName: "*missy", mStatus: 0, title: "Save Missy", desc: "What you need to do", task: //fix: removed extra space in desc
                         [
                             { id: 0, txt: "Met at Missy's", show: true, mStatus: 0, roomId: 203 },
                             { id: 1, txt: "Get more information from the Forest Queen", show: true, mStatus: 0, roomId: 477 }, //fix: spelling (was "More")
                             { id: 2, txt: "Bring the letter from the Forest Queen", show: true, mStatus: 0, roomId: 203 },
                             { id: 3, txt: "Ask each person on the list if they have the code", show: true, mStatus: 0, roomId: 0 },
-                            { id: 4, txt: "Report back to Missy's Dective Agency", show: true, mStatus: 0, roomId: 203 },
-                            { id: 5, txt: "Go deep past the caves and sneak into the C.U.M. compound", show: true, mStatus: 0, roomId: 487 },
+                            { id: 4, txt: "Report back to Missy's Detective Agency", show: true, mStatus: 0, roomId: 203 }, //fix: text was "Report back to Missy's Dective Agency"
+                            { id: 5, txt: "Go deep past the caves and sneak into the C.U.M. compound", show: true, mStatus: 0, roomId: 487 }, //fix: location was 445 (upstream Nov 23 made the same change)
                         ]
                 },
             ]
@@ -1095,7 +1095,7 @@ sc.init = function () {
                 {
                     missionName: "bar", mStatus: 0, title: "Caravaggio", desc: "Meet them", task:
                         [
-                            { id: 0, txt: "Met at the bar", show: true, mStatus: 0, roomId: 250 },
+                            { id: 0, txt: "Met at the bar", show: true, mStatus: 0, roomId: 526 }, //fix: location was Naked Beaver Diner
                         ]
                 },
                 {
@@ -1110,13 +1110,13 @@ sc.init = function () {
                 {
                     missionName: "happy", mStatus: 0, title: "Friends", desc: "Bestest work friends!", task:
                         [
-                            { id: 0, txt: "Didn't rat us out to Jeffery", show: true, mStatus: 0, roomId: 250 },
+                            { id: 0, txt: "Didn't rat us out to Jeffery", show: true, mStatus: 0, roomId: 200 }, //fix: location was Naked Beaver Diner
                         ]
                 },
                 {
                     missionName: "mad", mStatus: 0, title: "Enemies", desc: "I hate you!", task:
                         [
-                            { id: 0, txt: "Ratted us out to Jeffery", show: true, mStatus: 0, roomId: 250 },
+                            { id: 0, txt: "Ratted us out to Jeffery", show: true, mStatus: 0, roomId: 200 }, //fix: location was Naked Beaver Diner
                         ]
                 },
             ]
@@ -1135,14 +1135,14 @@ sc.init = function () {
                 {
                     missionName: "happy", mStatus: 0, title: "Friends", desc: "Bestest work friends!", task:
                         [
-                            { id: 0, txt: "Didn't rat us out to Jeffery", show: true, mStatus: 0, roomId: 250 },
+                            { id: 0, txt: "Didn't rat us out to Jeffery", show: true, mStatus: 0, roomId: 200 }, //fix: location was Naked Beaver Diner
                             { id: 1, txt: "Warm cup of Gooey goo", show: true, mStatus: 0, roomId: 250 },
                         ]
                 },
                 {
                     missionName: "mad", mStatus: 0, title: "Enemies", desc: "I hate you!", task:
                         [
-                            { id: 0, txt: "Ratted us out to Jeffery", show: true, mStatus: 0, roomId: 250 },
+                            { id: 0, txt: "Ratted us out to Jeffery", show: true, mStatus: 0, roomId: 200 }, //fix: location was Naked Beaver Diner
                         ]
                 },
             ]
@@ -1161,13 +1161,13 @@ sc.init = function () {
                 {
                     missionName: "happy", mStatus: 0, title: "Friends", desc: "Bestest work friends!", task:
                         [
-                            { id: 0, txt: "Didn't rat us out to Jeffery", show: true, mStatus: 0, roomId: 250 },
+                            { id: 0, txt: "Didn't rat us out to Jeffery", show: true, mStatus: 0, roomId: 200 }, //fix: location was Naked Beaver Diner
                         ]
                 },
                 {
                     missionName: "mad", mStatus: 0, title: "Enemies", desc: "I hate you!", task:
                         [
-                            { id: 0, txt: "Ratted us out to Jeffery", show: true, mStatus: 0, roomId: 250 },
+                            { id: 0, txt: "Ratted us out to Jeffery", show: true, mStatus: 0, roomId: 200 }, //fix: location was Naked Beaver Diner
                         ]
                 },
             ]
@@ -1233,7 +1233,7 @@ sc.init = function () {
                 {
                     missionName: "*gf", mStatus: 0, title: "Girlfriend", desc: "I think I'm in love", task:
                         [
-                            { id: 0, txt: "Confesses his love your you", show: true, mStatus: 0, roomId: 725 },
+                            { id: 0, txt: "Confesses his love to you", show: true, mStatus: 0, roomId: 728 }, //fix: text was "Confesses his love your you"; location was Construction Entrance (upstream Nov 23 set it to 725 Bar; kept 728 River's Apartment)
                         ]
                 },
             ]
@@ -1261,9 +1261,9 @@ sc.init = function () {
                 {
                     missionName: "fuck", mStatus: 0, title: "Man enough?", desc: "A swimmer's body is hot.", task:
                         [
-                            { id: 0, txt: "Be manly enough. ", show: true, mStatus: 0, roomId: 901 },
-                            { id: 1, txt: "Swim race! ", show: true, mStatus: 0, roomId: 901 },
-                            { id: 2, txt: "Swoon her ", show: true, mStatus: 0, roomId: 726 },
+                            { id: 0, txt: "Be manly enough.", show: true, mStatus: 0, roomId: 901 }, //fix: removed extra space in text
+                            { id: 1, txt: "Swim race!", show: true, mStatus: 0, roomId: 901 }, //fix: removed extra space in text
+                            { id: 2, txt: "Swoon her", show: true, mStatus: 0, roomId: 727 }, //fix: removed extra space in text; location was Dance Floor
                         ]
                 },
             ]
@@ -1273,8 +1273,8 @@ sc.init = function () {
                 {
                     missionName: "fuck", mStatus: 0, title: "Girl enough?", desc: "Love big tits!", task:
                         [
-                            { id: 0, txt: "Tits big enough? ", show: true, mStatus: 0, roomId: 901 },
-                            { id: 1, txt: "Tricked you into sucking your cock.", show: true, mStatus: 0, roomId: 726 },
+                            { id: 0, txt: "Tits big enough?", show: true, mStatus: 0, roomId: 901 }, //fix: removed extra space in text
+                            { id: 1, txt: "Tricked you into sucking your cock.", show: true, mStatus: 0, roomId: 727 }, //fix: location was Dance Floor
                             { id: 2, txt: "The jig is up.", show: true, mStatus: 0, roomId: 726 },
                             { id: 3, txt: "I do love bussy.", show: true, mStatus: 0, roomId: 726 },
                         ]
@@ -1351,10 +1351,10 @@ sc.init = function () {
                             { id: 3, txt: "Sissy School, Midterm", show: true, mStatus: 0, roomId: 802 },
                             { id: 4, txt: "Sissy School, Final - Find a job", show: true, mStatus: 0, roomId: 802 },
                             { id: 5, txt: "Ask Zoey about a job", show: true, mStatus: 0, roomId: 525 },
-                            { id: 6, txt: "He has the job. Now let him know. ", show: true, mStatus: 0, roomId: 802 },
-                            { id: 7, txt: "Working girl. ", show: true, mStatus: 0, roomId: 526 },
-                            { id: 8, txt: "Boyfriend ", show: true, mStatus: 0, roomId: 526 },
-                            { id: 9, txt: "My hero! ", show: true, mStatus: 0, roomId: 802 },
+                            { id: 6, txt: "He has the job. Now let him know.", show: true, mStatus: 0, roomId: 802 }, //fix: removed extra space in text
+                            { id: 7, txt: "Working girl.", show: true, mStatus: 0, roomId: 526 }, //fix: removed extra space in text
+                            { id: 8, txt: "Boyfriend", show: true, mStatus: 0, roomId: 526 }, //fix: removed extra space in text
+                            { id: 9, txt: "My hero!", show: true, mStatus: 0, roomId: 802 }, //fix: removed extra space in text
                         ]
                 },
                 {
@@ -1386,16 +1386,16 @@ sc.init = function () {
                         [
                             { id: 0, txt: "First", show: true, mStatus: 0, roomId: 800 },
                             { id: 1, txt: "Rub my penis", show: true, mStatus: 0, roomId: 800 },
-                            { id: 2, txt: "Hairy muff pie", show: true, mStatus: 0, roomId: 803 },
+                            { id: 2, txt: "Hairy muff pie", show: true, mStatus: 0, roomId: 804 }, //fix: location was R Parents
                             { id: 3, txt: "Caught her husband", show: true, mStatus: 0, roomId: 803 },
                             { id: 4, txt: "The talk", show: true, mStatus: 0, roomId: 800 },
-                            { id: 5, txt: "Sissy in the middle", show: true, mStatus: 0, roomId: 800 },
+                            { id: 5, txt: "Sissy in the middle", show: true, mStatus: 0, roomId: 803 }, //fix: location was room 800
                         ]
                 },
                 {
                     missionName: "book", mStatus: 0, title: "Bedroom", desc: "Wha cha reading?", task:
                         [
-                            { id: 0, txt: "Tell me about your book. ", show: true, mStatus: 0, roomId: 803 },
+                            { id: 0, txt: "Tell me about your book.", show: true, mStatus: 0, roomId: 803 }, //fix: removed extra space in text
                             { id: 1, txt: "Honey Biscuits", show: true, mStatus: 0, roomId: 803 },
                             { id: 2, txt: "Tell me even more (Repeatable)", show: true, mStatus: 0, roomId: 803 },
                             { id: 3, txt: "One great fuck!", show: true, mStatus: 0, roomId: 803 },
@@ -1416,7 +1416,7 @@ sc.init = function () {
                             { id: 4, txt: "Dirty little secret", show: true, mStatus: 0, roomId: 803 },
                             { id: 5, txt: "Dirty little secret exposed", show: true, mStatus: 0, roomId: 803 },
                             { id: 6, txt: "The talk", show: true, mStatus: 0, roomId: 800 },
-                            { id: 7, txt: "Sissy in the middle", show: true, mStatus: 0, roomId: 801 },
+                            { id: 7, txt: "Sissy in the middle", show: true, mStatus: 0, roomId: 803 }, //fix: location was R Living Room
                         ]
                 },
                 {
@@ -1438,7 +1438,7 @@ sc.init = function () {
                 {
                     missionName: "meet", mStatus: 0, title: "Help", desc: "Hello weary traveler", task:
                         [
-                            { id: 0, txt: "Met for the first time", show: true, mStatus: 0, roomId: 125 },
+                            { id: 0, txt: "Met for the first time", show: true, mStatus: 0, roomId: 477 }, //fix: location was Jimmy's House
                         ]
                 },
             ]
@@ -1451,7 +1451,7 @@ sc.init = function () {
                             { id: 0, txt: "Met for the first time", show: true, mStatus: 0, roomId: 483 },
                             { id: 1, txt: "Gain their trust", show: true, mStatus: 0, roomId: 483 },
                             { id: 2, txt: "Welcome to the pack", show: true, mStatus: 0, roomId: 483 },
-                            { id: 3, txt: "Recieve the horn [Need level 10]", show: true, mStatus: 0, roomId: 483 },
+                            { id: 3, txt: "Receive the horn [Need level 10]", show: true, mStatus: 0, roomId: 483 }, //fix: text was "Recieve the horn [Need level 10]"
                         ]
                 },
             ]
@@ -1463,7 +1463,7 @@ sc.init = function () {
                         [
                             { id: 0, txt: "Submissive piss whore", show: true, mStatus: 0, roomId: 170 },
                             { id: 1, txt: "Visit me at my mansion", show: true, mStatus: 0, roomId: 150 },
-                            { id: 2, txt: "First time around", show: true, mStatus: 0, roomId: 150 },
+                            { id: 2, txt: "First time around", show: true, mStatus: 0, roomId: 154 }, //fix: location was Jones Home
                             { id: 3, txt: "Missing bitch", show: true, mStatus: 0, roomId: 150 },
                         ]
                 },
@@ -1558,7 +1558,7 @@ sc.init = function () {
                         [
                             { id: 0, txt: "Want a job? ", show: true, mStatus: 0, roomId: 600 },
                             { id: 1, txt: "First day ", show: true, mStatus: 0, roomId: 600 },
-                            { id: 2, txt: "StripWithChris ", show: true, mStatus: 0, roomId: 600 },
+                            { id: 2, txt: "Strip with Chris", show: true, mStatus: 0, roomId: 600 }, //fix: text was "StripWithChris "
                         ]
                 },
             ]
@@ -1623,8 +1623,8 @@ sc.init = function () {
                 {
                     missionName: "*closed", mStatus: 0, title: "Church is closed", desc: "No longer can go to the church", task:
                         [
-                            { id: 0, txt: "Sold the Nun's soul", show: true, mStatus: 0, roomId: 950 },
-                            { id: 1, txt: "Busted!", show: true, mStatus: 0, roomId: 775 },
+                            { id: 0, txt: "Sold the Nun's soul", show: true, mStatus: 0, roomId: 776 }, //fix: location was Cell
+                            { id: 1, txt: "Busted!", show: true, mStatus: 0, roomId: 776 }, //fix: location was Church
                         ]
                 },
             ]
@@ -1634,16 +1634,16 @@ sc.init = function () {
                 {
                     missionName: "sin", mStatus: 0, title: "Penance", desc: "I can't help myself", task:
                         [
-                            { id: 0, txt: "Grab tits", show: true, mStatus: 0, roomId: 775 },
-                            { id: 1, txt: "Took virginity", show: true, mStatus: 0, roomId: 775 },
-                            { id: 2, txt: "Cycle of sin", show: true, mStatus: 0, roomId: 775 },
+                            { id: 0, txt: "Grab tits", show: true, mStatus: 0, roomId: 776 }, //fix: location was Church
+                            { id: 1, txt: "Took virginity", show: true, mStatus: 0, roomId: 776 }, //fix: location was Church
+                            { id: 2, txt: "Cycle of sin", show: true, mStatus: 0, roomId: 776 }, //fix: location was Church
                         ]
                 },
                 {
                     missionName: "*sin", mStatus: 0, title: "Free her", desc: "Her only sin was falling in love.", task:
                         [
-                            { id: 0, txt: "Get the list and talk to the priest", show: true, mStatus: 0, roomId: 775 },
-                            { id: 1, txt: "Freed the nun!", show: true, mStatus: 0, roomId: 775 },
+                            { id: 0, txt: "Get the list and talk to the priest", show: true, mStatus: 0, roomId: 776 }, //fix: location was Church
+                            { id: 1, txt: "Freed the nun!", show: true, mStatus: 0, roomId: 776 }, //fix: location was Church
                         ]
                 },
             ]
@@ -1695,7 +1695,7 @@ sc.init = function () {
                 {
                     missionName: "cult", mStatus: 0, title: "Changes", desc: "I'm a sissy now!", task:
                         [
-                            { id: 0, txt: "First meeting", show: true, mStatus: 0, roomId: 328 },
+                            { id: 0, txt: "First meeting", show: true, mStatus: 0, roomId: 952 }, //fix: location was ranch
                         ]
                 },
             ]
@@ -1716,11 +1716,8 @@ sc.init = function () {
                 {
                     missionName: "doc", mStatus: 0, title: "*hic*", desc: "I'm a drunk", task:
                         [
-                            { id: 0, txt: "Intro", show: true, mStatus: 0, roomId: 750 },
-                            //NOTE: step 1 has no scene yet (Dale never asks for wine). When it is implemented, remove the
-                            //completeMission line marked REMOVE in room750.js and the Dale repair in sc.load, and remove the note/notImplemented options below.
-                            //Removing notImplemented also takes the [Not Fully Implemented Yet] tag off this mission, the [WIP] tag off this step and the yellow WIP name off the character on the phone.
-                            { id: 1, txt: "Give me wine!", show: true, mStatus: 0, roomId: 750, note: "(Not Implemented Yet)", notImplemented: true },
+                            { id: 0, txt: "Intro", show: true, mStatus: 0, roomId: 750 }, //fix: text was "intro"; location was ranch
+                            { id: 1, txt: "Give me wine!", show: true, mStatus: 0, roomId: 750 }, //fix: location was ranch
                         ]
                 },
             ]
@@ -1733,7 +1730,7 @@ sc.init = function () {
                             { id: 0, txt: "Didn't rat him out.", show: true, mStatus: 0, roomId: 408 },
                             { id: 1, txt: "Third date?", show: true, mStatus: 0, roomId: 408 },
                             { id: 2, txt: "Where is he?", show: true, mStatus: 0, roomId: 408 },
-                            { id: 3, txt: "Forth date?", show: true, mStatus: 0, roomId: 750 },
+                            { id: 3, txt: "Fourth date?", show: true, mStatus: 0, roomId: 750 }, //fix: text was "Forth date?"
                             { id: 4, txt: "You tried to touch my erect penis!", show: true, mStatus: 0, roomId: 750 },
                             { id: 5, txt: "Gift for my girl.", show: true, mStatus: 0, roomId: 750 },
                             { id: 6, txt: "Hand job is still a job.", show: true, mStatus: 0, roomId: 750 },
@@ -1745,7 +1742,7 @@ sc.init = function () {
                     missionName: "betray", mStatus: 0, title: "No date", desc: "Not going on that date. ", task:
                         [
                             { id: 0, txt: "Betrayed him. Told Missy where he is", show: true, mStatus: 0, roomId: 200 },
-                            { id: 1, txt: "I just don't want to date you.", show: true, mStatus: 0, roomId: 408 },
+                            { id: 1, txt: "I just don't want to date you.", show: true, mStatus: 0, roomId: 750 }, //fix: location was Stormy's
                             { id: 2, txt: "You're a boy!", show: true, mStatus: 0, roomId: 750 },
                         ]
                 },
@@ -1772,9 +1769,9 @@ sc.init = function () {
         {
             name: "crystal", mission: [
                 {
-                    missionName: "t", mStatus: 0, title: "Future", desc: "I can see your future. ", task:
+                    missionName: "t", mStatus: 0, title: "Future", desc: "I can see your future.", task: //fix: removed extra space in desc
                         [
-                            { id: 0, txt: "Why hello", show: true, mStatus: 0, roomId: 328 },
+                            { id: 0, txt: "Why hello", show: true, mStatus: 0, roomId: 751 }, //fix: location was room 328
                         ]
                 },
             ]
@@ -1784,7 +1781,7 @@ sc.init = function () {
                 {
                     missionName: "cabin", mStatus: 0, title: "Cabin", desc: "Welcome to my home, but leave.", task:
                         [
-                            { id: 0, txt: "Introduction", show: true, mStatus: 0, roomId: 328 },
+                            { id: 0, txt: "Introduction", show: true, mStatus: 0, roomId: 488 }, //fix: location was ranch
                         ]
                 },
                 {
@@ -1824,10 +1821,10 @@ sc.init = function () {
                 {
                     missionName: "chat", mStatus: 0, title: "Chat", desc: "Leave me be", task:
                         [
-                            { id: 0, txt: "First attempt", show: true, mStatus: 0, roomId: 950 },
-                            { id: 1, txt: "Second attempt", show: true, mStatus: 0, roomId: 950 },
-                            { id: 2, txt: "Third attempt", show: true, mStatus: 0, roomId: 950 },
-                            { id: 3, txt: "Good attempt", show: true, mStatus: 0, roomId: 950 },
+                            { id: 0, txt: "First attempt", show: true, mStatus: 0, roomId: 479 }, //fix: location was Cell
+                            { id: 1, txt: "Second attempt", show: true, mStatus: 0, roomId: 479 }, //fix: location was Cell
+                            { id: 2, txt: "Third attempt", show: true, mStatus: 0, roomId: 479 }, //fix: location was Cell
+                            { id: 3, txt: "Good attempt", show: true, mStatus: 0, roomId: 479 }, //fix: location was Cell
                         ]
                 },
                 {
