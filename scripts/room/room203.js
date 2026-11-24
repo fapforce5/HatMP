@@ -773,7 +773,7 @@ room203.chat = function (chatID) {
                 speaker: "cecilia",
                 text: "Oh my god! You are so cute! And so professional! " +
                     "Welcome to the sisterhood I am so happy for you. It takes a lot to " +
-                    "find oneself's true calling",
+                    "find one's true calling", //fix: spelling/wording (was "find oneself's true calling")
                 button: [
                     { chatID: -1, text: "Thanks!", callback: "enter" }
                 ]

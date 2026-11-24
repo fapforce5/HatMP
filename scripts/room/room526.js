@@ -859,7 +859,7 @@ room526.chat = function (chatID) {
         {
             chatID: 44,
             speaker: "stormy",
-            text: "That makes my pussy tingle..hehehe. Strip dishwasher and show us your cage. " +
+            text: "That makes my pussy tingle... hehehe. Strip, dish washer, and show us your cage. " + //fix: spelling/wording (was "That makes my pussy tingle..hehehe. Strip dis...")
                 "I want to make sure you don't try to rape us if we get too close. ",
             button: [
                 { chatID: 45, text: "I'm not going to rape either of you!", callback: "" },

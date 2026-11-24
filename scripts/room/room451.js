@@ -1033,7 +1033,7 @@ room451.chat = function (chatID) {
             {
                 chatID: 7,
                 speaker: "cecilia",
-                text: "Oh ##me##, I'm so happy you're here. Want to shove you cock down my throat?",
+                text: "Oh ##me##, I'm so happy you're here. Want to shove your cock down my throat?", //fix: spelling/wording (was "Oh ##me##, I'm so happy you're here. Want to ...")
                 button: [
                     { chatID: 8, text: "Hmmmm", callback: "bj2" }
                 ]
@@ -1466,7 +1466,7 @@ room451.chat = function (chatID) {
                 chatID: 58,
                 speaker: "cecilia",
                 text: "Sorry, I promised the Cum gang I would be the center of their " +
-                    "gang bang. It's pretty rough crowd. I leave there smelling of piss, " +
+                    "gang bang. It's a pretty rough crowd. I leave there smelling of piss, " + //fix: spelling/wording (was "gang bang. It's pretty rough crowd. I leave t...")
                     "beer, cum, and musk and a bussy that doesn't close for a day. I " +
                     "would invite you, but it's a very private party. ",
                 button: [

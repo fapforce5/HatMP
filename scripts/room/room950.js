@@ -307,7 +307,7 @@ room950.btnclick = function (name) {
                 "color": "red",
                 "maxVal": 1000,
                 "val": cult950x,
-                "title": "Rank: " + gv.get("cultRank") + " [Level: " + cult950.l + "] Days till Chaple: " + ((5 - g.dt.getDay() + 7) % 7)
+                "title": "Rank: " + gv.get("cultRank") + " [Level: " + cult950.l + "] Days till Chapel: " /*fix: spelling was "Chaple"*/ + ((5 - g.dt.getDay() + 7) % 7)
             }, 322);
 
             if (cultbrick > 0 && cultbrick < 100) {

@@ -264,7 +264,7 @@ g.rooms = [
     { roomID: 176, name: "Oral", image: "176_oral/oral0.jpg", nightImage: "176_oral/oral0.jpg", houseID: 203, btn: "roomBtn_200.png" },
     { roomID: 177, name: "Chastity", image: "177_chastity/bg.jpg", nightImage: "177_chastity/bg.jpg", houseID: 203, btn: "roomBtn_200.png" },
     { roomID: 178, name: "Cum", image: "177_chastity/bg.jpg", nightImage: "177_chastity/bg.jpg", houseID: 203, btn: "roomBtn_200.png" },
-    { roomID: 180, name: "Feminity", image: "180_ballroom/bg.jpg", nightImage: "180_ballroom/bg.jpg", houseID: 203, btn: "roomBtn_200.png" },
+    { roomID: 180, name: "Femininity", image: "180_ballroom/bg.jpg", nightImage: "180_ballroom/bg.jpg", houseID: 203, btn: "roomBtn_200.png" }, //fix: name was "Feminity"
     { roomID: 181, name: "Black Room", image: "181_black/bg.jpg", nightImage: "181_black/bg.jpg", houseID: 203, btn: "roomBtn_208.png" },
     { roomID: 182, name: "Test 1", image: "181_black/bg.jpg", nightImage: "181_black/bg.jpg", houseID: 203, btn: "roomBtn_208.png" },
 
@@ -397,7 +397,7 @@ g.rooms = [
     { roomID: 526, name: "Caravaggio", image: "526_bar/bg.jpg", nightImage: "526_bar/bg.jpg", houseID: 525, btn: "roomBtn_526.png" },
     { roomID: 527, name: "Caravaggio Toilet", image: "527_bathroom/bg.jpg", nightImage: "527_bathroom/bg.jpg", houseID: 525, btn: "roomBtn_527.png" },
 
-    { roomID: 550, name: "Gym Front Desk", image: "550_gymFront/entrance.jpg", nightImage: "550_gymFront/entrance.jpg", houseID: 550, btn: "roomBtn_550.png" },
+    { roomID: 550, name: "Gym Front Desk", image: "550_gymFront/entrance.jpg", nightImage: "550_gymFront/entrance.jpg", houseID: 550, btn: "roomBtn_550.png" }, //fix: name was "Gym Front Desm"
     { roomID: 551, name: "Gym", image: "551_gymInside/551_gym.jpg", nightImage: "551_gymInside/551_gym.jpg", houseID: 550, btn: "roomBtn_551.png" },
     { roomID: 552, name: "Boys Locker", image: "552_boy/lockeroom.jpg", nightImage: "552_boy/lockeroom.jpg", houseID: 550, btn: "roomBtn_552.png" },
     { roomID: 553, name: "Girls Locker", image: "553_girl/553_girl.jpg", nightImage: "553_girl/553_girl.jpg", houseID: 550, btn: "roomBtn_553.png" },
@@ -468,7 +468,7 @@ g.rooms = [
     { roomID: 950, name: "Cell", image: "950_cell/cell.jpg", nightImage: "950_cell/cell.jpg", houseID: 950, btn: "bg.jpg" },
     { roomID: 951, name: "Box", image: "951_box/box.jpg", nightImage: "951_box/box.jpg", houseID: 950, btn: "bg.jpg" },
     { roomID: 952, name: "Hallway", image: "952_hallway/hallway.jpg", nightImage: "952_hallway/hallway.jpg", houseID: 950, btn: "bg.jpg" },
-    { roomID: 953, name: "Chaple", image: "953_chaple/bg.jpg", nightImage: "953_chaple/bg.jpg", houseID: 950, btn: "roomBtn_953.png" },
+    { roomID: 953, name: "Chapel", /*fix: spelling was "Chaple" (image folder 953_chaple left as is)*/ image: "953_chaple/bg.jpg", nightImage: "953_chaple/bg.jpg", houseID: 950, btn: "roomBtn_953.png" },
     { roomID: 954, name: "Torture Room", image: "954_torture/bg.jpg", nightImage: "954_torture/bg.jpg", houseID: 950, btn: "bg.jpg" },
     { roomID: 955, name: "Cum Donation", image: "954_torture/bg.jpg", nightImage: "954_torture/bg.jpg", houseID: 950, btn: "bg.jpg" },
     { roomID: 956, name: "Science", image: "956_science/bg.webp", nightImage: "956_science/bg.webp", houseID: 950, btn: "bg.jpg" },

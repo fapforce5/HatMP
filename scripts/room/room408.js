@@ -602,7 +602,7 @@ room408.chat = function (chatID) {
         {
             chatID: 15,
             speaker: "stormy",
-            text: "I don't get many customers asking about about my faith. It really is a great church, way better than those " +
+            text: "I don't get many customers asking about my faith. It really is a great church, way better than those " + //fix: spelling/wording (was "I don't get many customers asking about about...")
                 "stupid other churches. ",
             button: [
                 { chatID: 16, text: "Other churches? ", callback: "s1" },
@@ -612,7 +612,7 @@ room408.chat = function (chatID) {
             chatID: 16,
             speaker: "stormy",
             text: "When I was 16 I got my first tattoo of the dragon on my leg. It really hurt, ya know, but I loved it " +
-                "so much. It was a tribute to my dead dad who was born in the year of the dragon. My mom was christian " +
+                "so much. It was a tribute to my dead dad who was born in the year of the dragon. My mom was Christian " + //fix: spelling/wording (was "so much. It was a tribute to my dead dad who ...")
                 "so when she took me to church one of those old bitches tried to tell me I was going to hell if I keep " +
                 "marking up my body like that. It was that day that I knew those churches weren't for me. I stopped " +
                 "going to church and soon after I met a boy that did tattoos. I hung out in his shop all the time and " +
@@ -691,7 +691,7 @@ room408.chat = function (chatID) {
             speaker: "stormy",
             text: "If you have to ask you'll never know, you big dummy! ",
             button: [
-                { chatID: 24, text: "oh. uh. So anyway.. ", callback: "s1" },
+                { chatID: 24, text: "oh. uh. So anyway... ", callback: "s1" }, //fix: spelling/wording (was "oh. uh. So anyway.. ")
             ]
         },
         {
@@ -733,7 +733,7 @@ room408.chat = function (chatID) {
             speaker: "stormy",
             text: "So I don't know how to get there 'cause ##daddy## always drives me, but I do know the code to " +
                 "get into the compound. ##daddy## makes me hop out and open the door since I ride shotgun. It " +
-                "would be fun to see you there.. I really shouldn't.",
+                "would be fun to see you there... I really shouldn't.", //fix: spelling/wording (was "would be fun to see you there.. I really shou...")
             button: [
                 { chatID: 29, text: "...", callback: "s2" },
             ]
@@ -770,7 +770,7 @@ room408.chat = function (chatID) {
             chatID: 32,
             speaker: "stormy",
             text: "You're the sweetest! The code to get in the door is 1-2-3-4-5. I just finished the tattoo, want to see " +
-                "it. I know you'll love it! ",
+                "it? I know you'll love it! ", //fix: spelling/wording (was "it. I know you'll love it! ")
             button: [
                 { chatID: -1, text: "Sweet!", callback: "showtattoo" },
             ]
@@ -804,7 +804,7 @@ room408.chat = function (chatID) {
             chatID: 36,
             speaker: "stormy",
             text: "I know meeting a big group is scary, but they're all very nice and you'll fit right in. I can tell. " +
-                "besides I don't even know how to get in. ##daddy## or ##charlie## take me there " +
+                "Besides I don't even know how to get in. ##daddy## or ##charlie## take me there " + //fix: spelling/wording (was "besides I don't even know how to get in. ##da...")
                 "since I don't have a ride, and I don't know how to get in without them. ",
             button: [
                 { chatID: 37, text: "Oh. Ok. Well the church does sound amazing", callback: "" },

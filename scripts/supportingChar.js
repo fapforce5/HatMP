@@ -727,7 +727,7 @@ sc.init = function () {
                             { id: 0, txt: "Hypno 1: Touch myself", show: true, mStatus: 0, roomId: 301 },
                             { id: 1, txt: "Hypno 2: Makeup ", show: true, mStatus: 0, roomId: 301 },
                             { id: 2, txt: "Hypno 3: Dresses are pretty", show: true, mStatus: 0, roomId: 301 },
-                            { id: 3, txt: "Hypno 4: Blonde have more fun", show: true, mStatus: 0, roomId: 301 },
+                            { id: 3, txt: "Hypno 4: Blondes have more fun", show: true, mStatus: 0, roomId: 301 }, //fix: spelling (was "Blonde have")
                             { id: 4, txt: "Hypno 5: Dumb is sexy", show: true, mStatus: 0, roomId: 301 },
                             { id: 5, txt: "Hypno 6: Tits. Bigger is Better", show: true, mStatus: 0, roomId: 301 },
                             { id: 6, txt: "Break that Hymen and fill that belly.", show: true, mStatus: 0, roomId: 301 },
@@ -1042,7 +1042,7 @@ sc.init = function () {
                     missionName: "*missy", mStatus: 0, title: "Save Missy", desc: "What you need to do ", task:
                         [
                             { id: 0, txt: "Met at Missy's", show: true, mStatus: 0, roomId: 203 },
-                            { id: 1, txt: "Get More information from the Forest Queen", show: true, mStatus: 0, roomId: 477 },
+                            { id: 1, txt: "Get more information from the Forest Queen", show: true, mStatus: 0, roomId: 477 }, //fix: spelling (was "More")
                             { id: 2, txt: "Bring the letter from the Forest Queen", show: true, mStatus: 0, roomId: 203 },
                             { id: 3, txt: "Ask each person on the list if they have the code", show: true, mStatus: 0, roomId: 0 },
                             { id: 4, txt: "Report back to Missy's Dective Agency", show: true, mStatus: 0, roomId: 203 },
@@ -1538,7 +1538,7 @@ sc.init = function () {
                     missionName: "confession", mStatus: 0, title: "confession", desc: "Free yourself of sin", task:
                         [
                             { id: 0, txt: "First day", show: true, mStatus: 0, roomId: 775 },
-                            { id: 1, txt: "Masterbate", show: true, mStatus: 0, roomId: 775 },
+                            { id: 1, txt: "Masturbate", show: true, mStatus: 0, roomId: 775 }, //fix: spelling (was "Masterbate")
                             { id: 2, txt: "Peeked", show: true, mStatus: 0, roomId: 775 },
                             { id: 3, txt: "New Job", show: true, mStatus: 0, roomId: 775 },
                             { id: 4, txt: "Inserted my finger in my butthole", show: true, mStatus: 0, roomId: 775 },
@@ -2088,7 +2088,7 @@ sc.levelName = function (charIndex) {
                 case -1: return "Enemies";
                 case 0: return "Gain trust";
                 case 1: return "Keep going";
-                case 2: return "Almsot there";
+                case 2: return "Almost there"; //fix: spelling/wording (was "Almsot there")
                 case 3: return "Complete";
                 default: return "Friends";
             }

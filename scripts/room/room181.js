@@ -321,7 +321,7 @@ room181.chat = function (chatID) {
         {
             chatID: 13,
             speaker: "cecilia",
-            text: "Did we just become best friends? Because I'm totally going to eat that bussy! It's just so pink and and right " +
+            text: "Did we just become best friends? Because I'm totally going to eat that bussy! It's just so pink and right " + //fix: spelling/wording (was "Did we just become best friends? Because I'm ...")
                 "there! I'm sorry I can't help myself! ",
             button: [
                 { chatID: 14, text: "huh?", callback: "bondage101_7" }
@@ -425,7 +425,7 @@ room181.chat = function (chatID) {
             chatID: 25,
             speaker: "cecilia",
             text: "She was so mad! I would've taken his dick at my desk, but that security guard stares at me all day. Gives me " +
-                "the creeps. I tried to blow him, but he slapped me and said I wasn't worthy. So I snuck him in her office.. and " +
+                "the creeps. I tried to blow him, but he slapped me and said I wasn't worthy. So I snuck him in her office... and " + //fix: spelling/wording (was "the creeps. I tried to blow him, but he slapp...")
                 "now we're here. ",
             button: [
                 { chatID: -1, text: "Yep. Now we're here.", callback: "bondage101_11" },
