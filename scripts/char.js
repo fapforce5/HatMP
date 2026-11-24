@@ -824,7 +824,7 @@ char.map = function () {
                     var newRatio = 45 / g.roomMap[i].height;
                     char.addMapImage("./images/room/" + g.roomMap[i].img, g.roomMap[i].height * newRatio, g.roomMap[i].width * newRatio, ttop, 10);
                     $('#room_left_map').append(char.getMapDayNightIcons(g.roomMap[i], ttop));
-                    char.addMapText(100, ttop, g.roomMap[i].display, "#fff");
+                    char.addMapText(100, ttop, g.mapDisplayName(g.roomMap[i]), "#fff"); //fix: Ralph's house shows her name after the rename (was g.roomMap[i].display)
                     ttop += 50;
                 }
             }

@@ -1021,7 +1021,7 @@ inv.createElements = function (showFilter = true) {
                             top: i * 38 + (150),
                             font: 26,
                             hex: missy.envelope[i].ach ? "#999999" : "#000000",
-                            text: (missy.envelope[i].ach ? "☑" : "☐") + ": " + charInfo.name + " @" + g.getRooms(missy.envelope[i].roomID).name
+                            text: (missy.envelope[i].ach ? "☑" : "☐") + ": " + charInfo.name + " @" + g.roomDisplayName(g.getRooms(missy.envelope[i].roomID)) //fix: Ralph's house rooms use her initial after the rename
                         }, 9999);
                         nav.button({
                             "type": "zimg",

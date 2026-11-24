@@ -115,7 +115,7 @@ room0.btnclick = function (name) {
                         "width": v.width,
                         "height": v.height,
                         "image": "map/625_a.png",
-                        "title": v.display
+                        "title": g.mapDisplayName(v) //fix: Ralph's house shows her name after the rename (was v.display)
                     });
                 }
                 else if (g.isNight() && v.darkAccess) {
@@ -127,7 +127,7 @@ room0.btnclick = function (name) {
                         "width": v.width,
                         "height": v.height,
                         "image": v.night,
-                        "title": v.display
+                        "title": g.mapDisplayName(v) //fix: Ralph's house shows her name after the rename (was v.display)
                     });
                 }
                 else if (!g.isNight() && v.access) {

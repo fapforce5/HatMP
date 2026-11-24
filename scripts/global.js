@@ -640,6 +640,39 @@ g.room = function (roomID) {
 };
 
 g.getRooms = function (roomID) {
+//Name shown for a room (room buttons, phone mission locations, envelope list).
+//Ralph's house rooms are named "R ..." - after Ralph picks a new name at poker, the R becomes her first initial.
+g.roomDisplayName = function (room) {
+    if (!room)
+        return "";
+    var name = room.name;
+    if (room.houseID === 800 && name.startsWith("R ")) {
+        var newName = sc.n("ralph");
+        if (newName && newName.length > 0)
+            name = newName.charAt(0).toUpperCase() + name.substring(1);
+    }
+    return name;
+};
+
+//Room name text from a schedule (timeline) - Ralph's house rooms ("R Bedroom") use her initial after the rename
+g.roomNameText = function (name) {
+    if (typeof name === "string" && name.startsWith("R ")) {
+        for (var i = 0; i < g.rooms.length; i++)
+            if (g.rooms[i].name === name && g.rooms[i].houseID === 800)
+                return g.roomDisplayName(g.rooms[i]);
+    }
+    return name;
+};
+
+//Name shown for a place on the map. Ralph's house follows her name after the rename (e.g. "Brenda's House").
+g.mapDisplayName = function (place) {
+    if (!place)
+        return "";
+    if (place.roomID === 800)
+        return sc.n("ralph") + "'s House";
+    return place.display;
+};
+
     for (i = 0; i < g.rooms.length; i++)
         if (g.rooms[i].roomID === roomID)
             return g.rooms[i];

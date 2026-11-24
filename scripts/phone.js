@@ -238,7 +238,8 @@ phone.handlePrefixAction = function (name) {
         for (i = 0; i < sc.charMission[ch.i].mission[ch.j].task.length; i++) {
             var thisTask = sc.charMission[ch.i].mission[ch.j].task[i];
             if (thisTask.show || (thisTask.showWhenDone && thisTask.mStatus > 99) || gv.get("showHiddenTasks")) { //showWhenDone: hidden until completed; cheat toggle shows all
-                roomList = " @: " + (g.getRooms(sc.charMission[ch.i].mission[ch.j].task[i].roomId).name ?? "");
+                var roomName = thisTask.roomName ?? g.roomDisplayName(g.getRooms(thisTask.roomId)); //roomName: optional label for a spot inside a room (e.g. Saucy Change Room)
+                roomList = roomName === "" ? "" : " @: " + roomName; //no location known - leave off the "@:"
                 var tcolor = "#ffffff";
                 var mstatus;
                 switch (sc.mStatus(sc.charMission[ch.i].mission[ch.j].task[i].mStatus)) {
@@ -1162,7 +1163,7 @@ phone.characterSelect = function (name) {
             "top": 680 + (i*22),
             font: 20,
             hex: thisTimeline.subList[i].current ? "#FF76FF" : "#ffffff",
-            text: thisTimeline.subList[i].hstart + ":00 " + thisTimeline.subList[i].hend + ":00 " + thisTimeline.subList[i].room
+            text: thisTimeline.subList[i].hstart + ":00 " + thisTimeline.subList[i].hend + ":00 " + g.roomNameText(thisTimeline.subList[i].room) //fix: Ralph's house rooms use her initial after the rename
         }, 1);
     }
     if (name === "me") {
