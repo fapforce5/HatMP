@@ -81,6 +81,40 @@ flags moved back out of the daily list on load.
 - **Spelling** (`global.js`): "Gym Front Desm" is now "Gym Front Desk".
 - **Version text** (`global.js`): 0.28.2 became 0.28.3 to match the release.
 
+## Full working build (merged 2026-11-24)
+
+The sections above describe the first set of fixes. Mike's full working build
+(96 changed script files on top of the upstream Nov 13 code) was then 3-way
+merged onto upstream 9dfae55 (Nov 23). Most of its changes carry their own
+`//fix:` comments in the code. On GitHub it is split into these commits:
+energy items from the bag, spelling and wording, mission step text and
+locations, Ralph's new name, Not Implemented steps, Another Path Chosen,
+chat box / room buttons / History layout, phone cheat menu and sorted lists,
+and mission and story fixes. Main additions:
+
+- **Relationships list**: Main Story and the MC first, then characters with
+  missions to do, characters waiting only on Not Implemented steps (yellow name,
+  "WIP" under the bar), and fully done characters (green). A to Z inside each group.
+- **Not Implemented steps**: task option `notImplemented` shows a [WIP] tag on the
+  step and [Not Fully Implemented Yet] on the mission.
+- **Another Path Chosen**: `sc.altPathRules` / `sc.altPathNotStartedRules` mark
+  missions ruled out by a story choice; `sc.closedByStoryRules` adds labels such as
+  [Ranch Closed]. Also [Repeatable] and [Failed - Secret Known] tags, and
+  `optional` / `repeatable` task options.
+- Merge clashes in `supportingChar.js`: Save Missy step room 487 (both sides);
+  River "Confesses his love to you" kept at room 728 (upstream had 725).
+- New images in `images/room/999_phone/`: `cheat_bg2.jpg`, `cheat_body.png`,
+  `cheat_body_down.png`, `settings_next_down.png`, `settings_prev_down.png`.
+
+Added on top of the merge:
+- **Mission order** (`phone.js`): In Progress, Not Started, done, waiting on Not
+  Implemented, Another Path Chosen; A to Z inside each group.
+- **Spanky "Hypno"** (`supportingChar.js`): shows [Another Path Chosen] (it only
+  fails when you take Envy's Girlfriend path).
+- **Completion fix** (`supportingChar.js`): a skipped optional step made a finished
+  mission Closed instead of Completed; hidden steps never found and the unchosen
+  orTask step no longer hold a mission open.
+
 ## Known issues left as-is
 - Sperm Bank [Side Quest]: "Assistant Nurse loop" is never ticked, so the
   mission cannot complete.
