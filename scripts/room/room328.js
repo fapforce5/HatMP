@@ -62,6 +62,10 @@ room328.main = function () {
         cl.c.nipplering = null;
         cl.nude();
         sc.startMission("rachel", "ranch");
+        sc.completeMissionTask("rachel", "ranch", 0); //fix: "First day" was never ticked
+        sc.completeMission("rachel", "ranch", true);
+        sc.completeMissionTask("rachel", "milk", 1); //you're a hucow now - "Hucow." if it wasn't ticked yet
+        sc.completeMission("rachel", "milk", true);
         room328.btnclick("meadow");
         nav.button({
             "type": "img",
@@ -330,8 +334,10 @@ room328.btnclick = function (name) {
             }, 322);
             break;
         case "icon_frolic":
-            if (gv.get("energy") < 5) {
-                chat(38, 328);
+            if (gv.get("energy") < 5) { //fix: offers energy items from the bag first (inv.energyPrompt); runs this choice again once there is enough
+                inv.energyPrompt(5, function () { room328.btnclick(name); }, function () {
+                    chat(38, 328);
+                });
             }
             else {
                 nav.kill();
@@ -660,8 +666,10 @@ room328.btnclick = function (name) {
             chat(144, 328);
             break;
         case "icon_dig":
-            if (gv.get("energy") < 30) {
-                chat(145, 328);
+            if (gv.get("energy") < 30) { //fix: offers energy items from the bag first (inv.energyPrompt); runs this choice again once there is enough
+                inv.energyPrompt(30, function () { room328.btnclick(name); }, function () {
+                    chat(145, 328);
+                });
             }
             else if (g.map.hole > 198) {
                 g.map.temp = 1;

@@ -366,12 +366,13 @@ nav.buildnav = function (roomIDList, rebuild = false) {
 
     if (rebuild)
         $('#room_footer').html("");
+    privateChat.placeBox(); //room buttons start right of the left sidebar
 
     for (i = 0; i < roomIDList.length; i++) {
         $.each(g.rooms, function (j, u) {
             if (u.roomID === roomIDList[i]) {
                 if ($('.room-changeRoomBtn[data-roomid="' + u.roomID + '"]').length === 0) {
-                    var line = '<div class="room-changeRoomBtn" data-roomid="' + u.roomID + '"><img src="./images/room/navBtn/' + u.btn + '" /><span>' + u.name + '</span></div>';
+                    var line = '<div class="room-changeRoomBtn" data-roomid="' + u.roomID + '"><img src="./images/room/navBtn/' + u.btn + '" /><span>' + g.roomDisplayName(u) + '</span></div>'; //Ralph's rooms use her initial after she renames
                     $('#room_footer').append(line);
                 }
                 return false;

@@ -10,7 +10,9 @@ room216.main = function () {
         invoker.invokeCurrent("chatcatch", "cumRoom");
         if (g.internal
             && sc.getMissionTask("zoey", "friends", 2).complete
-            && sc.getMissionTask("zoey", "cheating", 3).notStarted) {
+            && sc.getMissionTask("zoey", "cheating", 3).notStarted
+            && sc.getMission("zoey", "cheating").inProgress //only while you're looking for evidence
+            && sc.getMissionTask("zoey", "cheating", 1).notStarted) { //either/or: not if you already caught her at the club
 
             sc.completeMissionTask("zoey", "cheating", 3);
             if (sc.getMission("zoey", "cheating").complete)

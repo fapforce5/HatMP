@@ -1,6 +1,11 @@
 ﻿//Room name
 var room327 = {};
 room327.main = function () {
+    //Rachel's "Hucow": your first milking after her inspection ticks "Hucow." (was never ticked)
+    if (sc.getMissionTask("rachel", "milk", 0).complete && sc.getMissionTask("rachel", "milk", 1).notStarted) {
+        sc.completeMissionTask("rachel", "milk", 1);
+        sc.completeMission("rachel", "milk", true);
+    }
     var kinseyStep = sc.taskGetStep("kinsey", "milk");
     if (kinseyStep === 4) {
         g.internal = false;
@@ -170,6 +175,7 @@ room327.btnclick = function (name) {
                     break;
                 case 1:
                     sc.completeMissionTask("envy", "hucow", 1);
+                    sc.completeMission("envy", "hucow", true); //REMOVE when "Hucow" step 2 is implemented (step 2 has no scene yet) - also remove notImplemented from that step in supportingChar.js so the phone drops [Not Fully Implemented Yet]
                     chat(30, 327);
                     break;
                 case 2:

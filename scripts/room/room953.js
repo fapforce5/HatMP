@@ -378,7 +378,7 @@ room953.chat = function (chatID) {
             chatID: 23,
             speaker: "stormy",
             text: "Hey. Sorry, I didn't know you were cool or I wouldn't have peed on you. " +
-                "Soooo, are you really a Cum Supplier. You know " +
+                "Soooo, are you really a Cum Supplier? You know " + //fix: spelling/wording (was "Soooo, are you really a Cum Supplier. You kno...")
                 "us Milk Maids have to do anything you say. ",
             button: [
                 { chatID: 27, text: "Really? Well I am a Cum Supplier and my penis has something to say.", callback: "x2" },

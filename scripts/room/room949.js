@@ -5,6 +5,11 @@ room949.main = function () {
     char.addtime(257);
     chat(1, 949);
     sc.show("cult");
+    //fix: Cult "Slave" - "Taken by the cult" was never started or ticked. Every way into the cult comes through here.
+    if (!sc.getMission("cult", "kidnap").complete) {
+        sc.startMission("cult", "kidnap");
+        sc.completeMissionTask("cult", "kidnap", 0);
+    }
     //var btnList = [
     //    {
     //        "type": "btn",

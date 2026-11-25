@@ -439,6 +439,7 @@ room301.chatcatch = function (callback) {
             sc.completeMissionTask("envy", "meet", 3);
             sc.show("spanky");
             sc.startMission("spanky", "hypno");
+            sc.completeMissionTask("spanky", "hypno", 0); //fix: "Purchase Hypno Tapes." was never ticked
             daily.set("envy");
             char.addtime(180);
             char.room(300);
@@ -790,12 +791,14 @@ room301.chatcatch = function (callback) {
             sc.completeMissionTask("envy", "hypno", 8);
             sc.completeMissionTask("spanky", "hypno", 1);
             sc.completeMissionTask("spanky", "hypno", 2, false);
+            sc.completeMission("spanky", "hypno", true); //fix: half prices is the end of this mission - it never completed
             char.room(0);
             break;
         case "step13end":
             sc.completeMissionTask("envy", "hypno", 8);
             sc.completeMissionTask("spanky", "hypno", 1);
             sc.completeMissionTask("spanky", "hypno", 2, false);
+            sc.completeMission("spanky", "hypno", true); //fix: half prices is the end of this mission - it never completed
             levels.gotbj("f", "envy");
             char.room(0);
             break;
@@ -851,7 +854,7 @@ room301.chatcatch = function (callback) {
         case "envy100":
             sc.completeMission("envy", "hypno", false);
             sc.startMission("envy", "gf");
-            sc.completeMission("spanky", "hypno", false);
+            sc.completeMission("spanky", "hypno", true); //Girlfriend path: triple prices is how Spanky's Hypno ends here (was marked Failed)
             sc.completeMissionTask("spanky", "hypno", 2);
             sc.completeMissionTask("spanky", "hypno", 1, false);
             char.room(0);

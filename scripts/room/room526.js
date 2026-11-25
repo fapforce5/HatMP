@@ -132,6 +132,7 @@ room526.btnclick = function (name) {
             else if (sc.getMission("orchid", "slut").notStarted) {
                 sc.startMission("orchid", "slut");
                 sc.completeMissionTask("orchid", "slut", 0);
+                sc.completeMission("orchid", "slut", true); //REMOVE when "Party Bitches!" step 1 is implemented (step 1 has no scene yet) - also remove notImplemented from that step in supportingChar.js so the phone drops [Not Fully Implemented Yet]
                 sc.show("orchid");
                 daily.set("orchid");
                 chat(0, 526);
@@ -380,6 +381,9 @@ room526.chatcatch = function (callback) {
                     chat(53, 526);
                     break;
                 case 4:
+                case 5: //"Sex at home..." ticked - the bar repeat scene keeps playing
+                case 6:
+                    sc.completeMissionTask("zoey", "sex", 4); //first repeat scene ticks the [Loop] step
                     nav.bg("526_bar/sex3_0.jpg");
                     chat(71, 526);
             }
@@ -859,7 +863,7 @@ room526.chat = function (chatID) {
         {
             chatID: 44,
             speaker: "stormy",
-            text: "That makes my pussy tingle..hehehe. Strip dishwasher and show us your cage. " +
+            text: "That makes my pussy tingle... hehehe. Strip, dish washer, and show us your cage. " + //fix: spelling/wording (was "That makes my pussy tingle..hehehe. Strip dis...")
                 "I want to make sure you don't try to rape us if we get too close. ",
             button: [
                 { chatID: 45, text: "I'm not going to rape either of you!", callback: "" },

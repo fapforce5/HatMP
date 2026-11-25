@@ -10,6 +10,10 @@ room0.main = function () {
     }
     g.pass = g.internal = "";
     $('#room_footer').hide();
+    //open the map on the page that has the place you just came from
+    var fromPage = room0.mapPageForRoom(g.prevRoom, gv.get("map"));
+    if (fromPage !== null)
+        gv.set("map", fromPage);
     var tempMap = gv.get("map");
     if (tempMap === 0)
         invoker.invokeCurrent("btnclick", "map_0");
@@ -28,6 +32,34 @@ room0.main = function () {
         $('#room_footer').hide();
     }, 200);
     
+};
+
+//Which map page (0-3) shows the room you came from?
+//1. the page already showing it (some places are on two pages), 2. a page with that exact room,
+//3. a page with another room in the same building (houseID). null = not on any map page.
+room0.mapPageForRoom = function (roomID, currentPage) {
+    if (roomID === undefined || roomID === null || roomID === 0)
+        return null;
+    var room = g.getRooms(roomID);
+    var houseID = room ? room.houseID : null;
+    var exactPage = null, housePage = null, onCurrent = false;
+    for (let j = 0; j < g.roomMap.length; j++) {
+        let entry = g.roomMap[j];
+        let exact = entry.roomID === roomID;
+        let entryRoom = exact ? room : g.getRooms(entry.roomID);
+        let sameHouse = houseID !== null && entryRoom !== null && entryRoom.houseID === houseID;
+        if ((exact || sameHouse) && entry.map === currentPage)
+            onCurrent = true;
+        if (exact && exactPage === null)
+            exactPage = entry.map;
+        if (sameHouse && housePage === null)
+            housePage = entry.map;
+    }
+    if (onCurrent)
+        return currentPage;
+    if (exactPage !== null)
+        return exactPage;
+    return housePage;
 };
 
 room0.btnclick = function (name) {
@@ -83,7 +115,7 @@ room0.btnclick = function (name) {
                         "width": v.width,
                         "height": v.height,
                         "image": "map/625_a.png",
-                        "title": v.display
+                        "title": g.mapDisplayName(v) //fix: Ralph's house shows her name after the rename (was v.display)
                     });
                 }
                 else if (g.isNight() && v.darkAccess) {
@@ -95,7 +127,7 @@ room0.btnclick = function (name) {
                         "width": v.width,
                         "height": v.height,
                         "image": v.night,
-                        "title": v.display
+                        "title": g.mapDisplayName(v) //fix: Ralph's house shows her name after the rename (was v.display)
                     });
                 }
                 else if (!g.isNight() && v.access) {

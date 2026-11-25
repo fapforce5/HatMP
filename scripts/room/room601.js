@@ -779,9 +779,7 @@ room601.chatcatch = function (callback) {
         case "chrisPrivate0":
             nav.kill();
             nav.bg("601_dance/" + callback + ".webp");
-            if (sc.getMissionTask("tony", "strip", 2).notStarted) {
-                chat(19, 601);
-            }
+            chat(19, 601); //fix: was only shown the first time, but nothing ticked the step so a repeat would have stalled here
             break;
         case "chrisPrivate2":
             cl.c.panties = cl.c.bra = null;
@@ -813,6 +811,7 @@ room601.chatcatch = function (callback) {
             nav.bg("601_dance/chrisPrivate9.webp");
             break;
         case "chrisPrivateEnd":
+            sc.completeMissionTask("tony", "strip", 2); //fix: "StripWithChris" was never ticked
             g.internal.money += 150;
             g.popUpNotice("You earned $150");
             invoker.invokeCurrent("btnclick", "mingle");
@@ -1020,6 +1019,7 @@ room601.chat = function (chatID) {
                 else {
                     if (sc.getMissionTask("sporty", "corrupt", 1).notStarted) {
                         sc.completeMissionTask("sporty", "corrupt", 1);
+                        sc.completeMission("sporty", "corrupt", true); //REMOVE when "Corrupt the sissy" step 0 is implemented (step 0 has no scene yet) - also remove notImplemented from that step in supportingChar.js so the phone drops [Not Fully Implemented Yet]
                         return {
                             chatID: 900,
                             speaker: "!sporty",

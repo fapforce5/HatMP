@@ -154,7 +154,9 @@ room26.btnclick = function (name) {
                     daily.set("landlordChat");
                 }
                 room26.selectLandlordOverlayOption("sit_dickSissy", "26_livingRoom/icon_bussy.png", 1);
-                if (sc.getMissionTask("bigguy", "rent", 2).complete && sc.getMissionTask("bigguy", "rent", 3).notStarted) {
+                //Confess once only: hidden after you confessed and took his side ("Clean up duty") or won the fight (Ex)
+                if (sc.getMissionTask("bigguy", "rent", 2).complete && sc.getMissionTask("bigguy", "rent", 3).notStarted
+                    && sc.getMissionTask("bigguy", "sissy", 4).notStarted && sc.getMission("bigguy", "ex").notStarted) {
                     room26.selectLandlordOverlayOption("confess_bigguy", "26_livingRoom/icon_confess.png", 3);
                 }
                 room26.selectLandlordOverlayOption("icon_girl", "26_livingRoom/icon_girl.png", 2);
@@ -176,7 +178,7 @@ room26.btnclick = function (name) {
                     break;
                 case 1:
                     if (cl.c.dress === "pd") {
-                        sc.completeMissionTask("landlord", "sissy", 1);
+                        sc.completeMissionTask("landlord", "sissy", 1); sc.completeMission("landlord", "sissy", true); //fix: Naughty girl never completed (it was kept open for the Sperm Bank job)
                         chat(83, 26);
                     }
                     else {
@@ -332,7 +334,7 @@ room26.btnclick = function (name) {
                         break;
                     case 1:
                         if (cl.c.dress === "pd") {
-                            sc.completeMissionTask("landlord", "sissy", 1);
+                            sc.completeMissionTask("landlord", "sissy", 1); sc.completeMission("landlord", "sissy", true); //fix: Naughty girl never completed (it was kept open for the Sperm Bank job)
                             chat(83, 26);
                         }
                         else {
@@ -648,6 +650,9 @@ room26.chatcatch = function (callback) {
                 break;
             case "bg_s_2_end":
                 sc.completeMissionTask("bigguy", "straight", 2, true);
+                //step 3 is not implemented yet, so the mission completes here.
+                //REMOVE this line when step 3 is implemented (see the note on step 3 in supportingChar.js) - also remove notImplemented from that step in supportingChar.js so the phone drops [Not Fully Implemented Yet]
+                sc.completeMission("bigguy", "straight", true);
                 char.addtime(37);
                 daily.set("bigguy");
                 break;

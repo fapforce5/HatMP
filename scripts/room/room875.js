@@ -185,6 +185,10 @@ room875.chatcatch = function (callback) {
             char.room(0);
             break;
         case "practice":
+            gv.mod("cheerPractices", 1);
+            if (gv.get("cheerPractices") > 1 && sc.getMissionTask("candy", "cheer", 0).complete)
+                sc.completeMissionTask("candy", "cheer", 1); //2nd practice: ticks "Cheerleading practice. [Loop]" and the mission shows Completed [Repeatable]
+            sc.completeMissionTask("candy", "cheer", 0); //fix: "Meet Saturday morning" was never ticked
             var cheerLevel = levels.get("cheer").l;
             if (cheerLevel < 3) {
                 g.internal = cl.hasoutfit("workout");
@@ -277,6 +281,10 @@ room875.chatcatch = function (callback) {
             nav.bg("875_entrance/" + callback + ".jpg");
             break;
         case "cheer1_13x":
+            if (sc.getMission("stacy", "cheer").inProgress) { //Stacy's "Cheerleader": first big game done
+                sc.completeMissionTask("stacy", "cheer", 5);
+                sc.completeMissionTask("stacy", "cheer", 6);
+            }
             gv.mod("fame", 30);
             levels.set("cheer", 100, 8);
             char.settime(17, 12);

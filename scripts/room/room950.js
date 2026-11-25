@@ -190,6 +190,7 @@ room950.main = function () {
             if (sc.getMission("priest", "cult").notStarted) {
                 sc.startMission("priest", "cult");
                 sc.completeMissionTask("priest", "cult", 0);
+                sc.completeMission("priest", "cult", true); //REMOVE when "Connections" step 1 is implemented (step 1 has no scene yet) - also remove notImplemented from that step in supportingChar.js so the phone drops [Not Fully Implemented Yet]
                 chat(132, 950);
             }
             else {
@@ -307,7 +308,7 @@ room950.btnclick = function (name) {
                 "color": "red",
                 "maxVal": 1000,
                 "val": cult950x,
-                "title": "Rank: " + gv.get("cultRank") + " [Level: " + cult950.l + "] Days till Chaple: " + ((5 - g.dt.getDay() + 7) % 7)
+                "title": "Rank: " + gv.get("cultRank") + " [Level: " + cult950.l + "] Days till Chapel: " /*fix: spelling was "Chaple"*/ + ((5 - g.dt.getDay() + 7) % 7)
             }, 322);
 
             if (cultbrick > 0 && cultbrick < 100) {
@@ -378,8 +379,10 @@ room950.btnclick = function (name) {
             }
             break;
         case "clean":
-            if (gv.get("energy") < 20) {
-                chat(6, 950); 
+            if (gv.get("energy") < 20) { //fix: offers energy items from the bag first (inv.energyPrompt); runs this choice again once there is enough
+                inv.energyPrompt(20, function () { room950.btnclick(name); }, function () {
+                    chat(6, 950); 
+                });
             }
             else {
                 gv.mod("energy", -20);
@@ -416,8 +419,10 @@ room950.btnclick = function (name) {
             chat(8, 950);
             break;
         case "icon_pushup":
-            if (gv.get("energy") < 50) {
-                chat(6, 950);
+            if (gv.get("energy") < 50) { //fix: offers energy items from the bag first (inv.energyPrompt); runs this choice again once there is enough
+                inv.energyPrompt(50, function () { room950.btnclick(name); }, function () {
+                    chat(6, 950);
+                });
             }
             else {
                 nav.killall();
@@ -438,8 +443,10 @@ room950.btnclick = function (name) {
             }
             break;
         case "icon_squats":
-            if (gv.get("energy") < 50) {
-                chat(6, 950);
+            if (gv.get("energy") < 50) { //fix: offers energy items from the bag first (inv.energyPrompt); runs this choice again once there is enough
+                inv.energyPrompt(50, function () { room950.btnclick(name); }, function () {
+                    chat(6, 950);
+                });
             }
             else {
                 nav.killall();
@@ -557,8 +564,10 @@ room950.btnclick = function (name) {
             break;
         case "brick":
             if (sc.getMission("bodhi", "cult").notStarted) {
-                if (gv.get("energy") < 60) {
-                    chat(89, 950);
+                if (gv.get("energy") < 60) { //fix: offers energy items from the bag first (inv.energyPrompt); runs this choice again once there is enough
+                    inv.energyPrompt(60, function () { room950.btnclick(name); }, function () {
+                        chat(89, 950);
+                    });
                     return;
                 }
                 nav.kill();
@@ -1230,6 +1239,11 @@ room950.chatcatch = function (callback) {
             break;
         case "room952":
             char.room(958);
+            break;
+        case "deliverAutoEv":
+        case "deliverAutoNoEv":
+            //Automatic panty delivery - the walk itself is handled in room958 (autoBegin also checks energy first)
+            room958.autoBegin("to", callback === "deliverAutoEv");
             break;
         case "reset":
             char.room(950);
@@ -2089,9 +2103,15 @@ room950.chat = function (chatID) {
                 chatID: 96,
                 speaker: "cult",
                 text: "I don't fuckin' know. Probably in his chamber, dumb ass. Now get!",
+                //Delivery choices: walk it yourself, or let the game walk it for you (see room958.autoBegin).
+                //w/ Events walks the route one screen every 3 seconds and random events can still happen;
+                //w/o Events goes straight to Jeffery. The automatic choices only show once you've found Jeffery yourself.
                 button: [
                     { chatID: -1, text: "[Put on the panties and deliver them]", callback: "room952" }
-                ]
+                ].concat(gv.get("cultFoundJeffery") ? [ //automatic delivery choices once you've reached Jeffery on a delivery (cultFoundJeffery)
+                    { chatID: -1, text: "[Deliver automatically (w/ Events)]", callback: "deliverAutoEv" },
+                    { chatID: -1, text: "[Deliver automatically (w/o Events)]", callback: "deliverAutoNoEv" }
+                ] : [])
             },
             {
                 chatID: 97,

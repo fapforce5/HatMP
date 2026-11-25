@@ -181,15 +181,18 @@ input[type=text]:disabled{
     bottom:0;
     left:0;
     z-index:3;
+    /* room buttons: one row, centred left-to-right and top-to-bottom in the bar (left edge is set to the sidebar's edge in privateChat.placeBox) */
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 .room-changeRoomBtn{
     background:none;
     position:relative;
     width:6vw;
-    height:1.5vw;
+    height:auto; /* the button is as tall as its picture, so the label centres on the picture (was 1.5vw, shorter than the picture) */
     text-align:center;
-    margin-top:.2vw;
-    margin-left:5vw;
+    margin:0 2.5vw; /* same space on both sides so the row stays centred */
     cursor:pointer;
     display:inline-block;
 }
@@ -199,12 +202,16 @@ input[type=text]:disabled{
 
 .room-changeRoomBtn img{
     width:100%;
+    display:block; /* no gap under the picture */
 }
 .room-changeRoomBtn span{
     display:block;
     width:100%;
     position:absolute;
-    top:.5vw;
+    top:50%; /* label centred in the button, up-down and left-right */
+    transform:translateY(-50%);
+    line-height:1;
+    left:0;
     font-size:.75vw;
     color:#fff;
     font-weight:500;

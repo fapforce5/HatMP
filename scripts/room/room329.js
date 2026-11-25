@@ -686,6 +686,7 @@ room329.chatcatch = function (callback) {
                     daily.set("ppgirldrink");
                     sc.modLevel("ppgirl", 34, 10);
                 }
+                sc.completeMissionTask("ppgirl", "ranch", 1); //fix: "Gave her water." was never ticked
                 chat(45, 329);
             }
             else

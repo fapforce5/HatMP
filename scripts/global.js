@@ -264,7 +264,7 @@ g.rooms = [
     { roomID: 176, name: "Oral", image: "176_oral/oral0.jpg", nightImage: "176_oral/oral0.jpg", houseID: 203, btn: "roomBtn_200.png" },
     { roomID: 177, name: "Chastity", image: "177_chastity/bg.jpg", nightImage: "177_chastity/bg.jpg", houseID: 203, btn: "roomBtn_200.png" },
     { roomID: 178, name: "Cum", image: "177_chastity/bg.jpg", nightImage: "177_chastity/bg.jpg", houseID: 203, btn: "roomBtn_200.png" },
-    { roomID: 180, name: "Feminity", image: "180_ballroom/bg.jpg", nightImage: "180_ballroom/bg.jpg", houseID: 203, btn: "roomBtn_200.png" },
+    { roomID: 180, name: "Femininity", image: "180_ballroom/bg.jpg", nightImage: "180_ballroom/bg.jpg", houseID: 203, btn: "roomBtn_200.png" }, //fix: name was "Feminity"
     { roomID: 181, name: "Black Room", image: "181_black/bg.jpg", nightImage: "181_black/bg.jpg", houseID: 203, btn: "roomBtn_208.png" },
     { roomID: 182, name: "Test 1", image: "181_black/bg.jpg", nightImage: "181_black/bg.jpg", houseID: 203, btn: "roomBtn_208.png" },
 
@@ -397,7 +397,7 @@ g.rooms = [
     { roomID: 526, name: "Caravaggio", image: "526_bar/bg.jpg", nightImage: "526_bar/bg.jpg", houseID: 525, btn: "roomBtn_526.png" },
     { roomID: 527, name: "Caravaggio Toilet", image: "527_bathroom/bg.jpg", nightImage: "527_bathroom/bg.jpg", houseID: 525, btn: "roomBtn_527.png" },
 
-    { roomID: 550, name: "Gym Front Desm", image: "550_gymFront/entrance.jpg", nightImage: "550_gymFront/entrance.jpg", houseID: 550, btn: "roomBtn_550.png" },
+    { roomID: 550, name: "Gym Front Desk", image: "550_gymFront/entrance.jpg", nightImage: "550_gymFront/entrance.jpg", houseID: 550, btn: "roomBtn_550.png" }, //fix: name was "Gym Front Desm"
     { roomID: 551, name: "Gym", image: "551_gymInside/551_gym.jpg", nightImage: "551_gymInside/551_gym.jpg", houseID: 550, btn: "roomBtn_551.png" },
     { roomID: 552, name: "Boys Locker", image: "552_boy/lockeroom.jpg", nightImage: "552_boy/lockeroom.jpg", houseID: 550, btn: "roomBtn_552.png" },
     { roomID: 553, name: "Girls Locker", image: "553_girl/553_girl.jpg", nightImage: "553_girl/553_girl.jpg", houseID: 550, btn: "roomBtn_553.png" },
@@ -439,6 +439,7 @@ g.rooms = [
     { roomID: 750, name: "Homeless Camp", image: "750_homeless/bg.jpg", nightImage: "750_homeless/bgNight.jpg", houseID: 750, btn: "roomBtn_750.png" },
     { roomID: 751, name: "Fortune Teller", image: "751_crystal/bg.jpg", nightImage: "751_crystal/bg.jpg", houseID: 750, btn: "roomBtn_751.png" },
     { roomID: 752, name: "Dirty Whore's Tent", image: "752_whore/bg.jpg", nightImage: "752_whore/bg.jpg", houseID: 750, btn: "roomBtn_752.png" },
+    { roomID: 753, name: "Dale's Tent", image: "750_homeless/dalebg.webp", nightImage: "750_homeless/dalebg.webp", houseID: 750, btn: "roomBtn_750.png" }, //bottom-bar button for Dale's tent (uses the camp picture - no Dale button picture in the game yet)
 
     { roomID: 775, name: "Church", image: "775_church/boy.jpg", nightImage: "775_church/boy.jpg", houseID: 775, btn: "roomBtn_10.png" },
     { roomID: 776, name: "Church", image: "776_church/bg.webp", nightImage: "776_church/bg.webp", houseID: 775, btn: "roomBtn_10.png" },
@@ -468,7 +469,7 @@ g.rooms = [
     { roomID: 950, name: "Cell", image: "950_cell/cell.jpg", nightImage: "950_cell/cell.jpg", houseID: 950, btn: "bg.jpg" },
     { roomID: 951, name: "Box", image: "951_box/box.jpg", nightImage: "951_box/box.jpg", houseID: 950, btn: "bg.jpg" },
     { roomID: 952, name: "Hallway", image: "952_hallway/hallway.jpg", nightImage: "952_hallway/hallway.jpg", houseID: 950, btn: "bg.jpg" },
-    { roomID: 953, name: "Chaple", image: "953_chaple/bg.jpg", nightImage: "953_chaple/bg.jpg", houseID: 950, btn: "roomBtn_953.png" },
+    { roomID: 953, name: "Chapel", /*fix: spelling was "Chaple" (image folder 953_chaple left as is)*/ image: "953_chaple/bg.jpg", nightImage: "953_chaple/bg.jpg", houseID: 950, btn: "roomBtn_953.png" },
     { roomID: 954, name: "Torture Room", image: "954_torture/bg.jpg", nightImage: "954_torture/bg.jpg", houseID: 950, btn: "bg.jpg" },
     { roomID: 955, name: "Cum Donation", image: "954_torture/bg.jpg", nightImage: "954_torture/bg.jpg", houseID: 950, btn: "bg.jpg" },
     { roomID: 956, name: "Science", image: "956_science/bg.webp", nightImage: "956_science/bg.webp", houseID: 950, btn: "bg.jpg" },
@@ -589,6 +590,14 @@ g.setRatio = function () {
     var width = $(window).width();
     var height = $(window).height();
     g.ratio = width / height > 16 / 9 ? height / 1080 : width / 1920;
+    //Right-align: if the window is wider than the scaled 1920x1080 game, push the game to the right edge
+    g.offsetX = Math.max(0, Math.floor(width - 1920 * g.ratio));
+    $('.room-full').css({
+        'transform': g.offsetX > 0 ? 'translateX(' + g.offsetX + 'px)' : '',
+        'width': g.offsetX > 0 ? Math.ceil(1920 * g.ratio) + 'px' : ''
+    });
+    //Left menu stays on the left edge of the screen (undo the shift for it only)
+    $('.room-left').css('left', g.offsetX > 0 ? -g.offsetX + 'px' : '');
     var btnWidth = 300 * g.ratio;
     var btnHeight = 620 * g.ratio;
     $('.char-container').css({ "width": btnWidth, "height": btnHeight });
@@ -629,6 +638,39 @@ g.diffDateByMinutes = function (startDate, endDate) {
 
 g.room = function (roomID) {
     return "room" + roomID.toString();
+};
+
+//Name shown for a room (room buttons, phone mission locations, envelope list).
+//Ralph's house rooms are named "R ..." - after Ralph picks a new name at poker, the R becomes her first initial.
+g.roomDisplayName = function (room) {
+    if (!room)
+        return "";
+    var name = room.name;
+    if (room.houseID === 800 && name.startsWith("R ")) {
+        var newName = sc.n("ralph");
+        if (newName && newName.length > 0)
+            name = newName.charAt(0).toUpperCase() + name.substring(1);
+    }
+    return name;
+};
+
+//Room name text from a schedule (timeline) - Ralph's house rooms ("R Bedroom") use her initial after the rename
+g.roomNameText = function (name) {
+    if (typeof name === "string" && name.startsWith("R ")) {
+        for (var i = 0; i < g.rooms.length; i++)
+            if (g.rooms[i].name === name && g.rooms[i].houseID === 800)
+                return g.roomDisplayName(g.rooms[i]);
+    }
+    return name;
+};
+
+//Name shown for a place on the map. Ralph's house follows her name after the rename (e.g. "Brenda's House").
+g.mapDisplayName = function (place) {
+    if (!place)
+        return "";
+    if (place.roomID === 800)
+        return sc.n("ralph") + "'s House";
+    return place.display;
 };
 
 g.getRooms = function (roomID) {

@@ -397,7 +397,7 @@ room585.chat = function (chatID) {
             else if (jsuc)
                 txt903 = "Her favorite animal is the Turtle, but don't worry, I saved it with some fish facts I knew. ";
             else
-                txt903 = "She's a biology student!! Lucky you gave me that seal. Totally saved it! "
+                txt903 = "She's a biology student!! Lucky you gave me that turtle. Totally saved it! " //fix: spelling/wording (was "She's a biology student!! Lucky you gave me t...")
             txt903 += "We have a date tomorrow! Just coffee, but I'm so totally stoked! I don't have much, but here's some jars. It used to be a set of 8, but we totally broke one. "
             return {
                 chatID: 903,
@@ -893,8 +893,8 @@ room585.chat = function (chatID) {
             text: "Oh. ok cool. I can start with that. Anything else you can help me with?",
             button: [
                 { chatID: 54, text: "Her favorite animal is an elephant", callback: "liamchoice6" },
-                { chatID: 54, text: "Her favorite animal is an turtle", callback: "liamchoice7" },
-                { chatID: 54, text: "Her favorite animal is an seal", callback: "liamchoice8" }
+                { chatID: 54, text: "Her favorite animal is a turtle", callback: "liamchoice7" }, //fix: spelling/wording (was "Her favorite animal is an turtle")
+                { chatID: 54, text: "Her favorite animal is a seal", callback: "liamchoice8" } //fix: spelling/wording (was "Her favorite animal is an seal")
             ]
         },
         {

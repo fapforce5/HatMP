@@ -94,6 +94,7 @@ room904.chatcatch = function (callback) {
             sc.completeMission("envy", "gf", false);
             sc.startMission("envy", "breakup");
             sc.completeMissionTask("envy", "breakup", 1);
+            sc.completeMission("envy", "breakup", true); //one ending is enough - the other two are struck out
             char.addtime(37);
             char.room(900);
             break;
@@ -101,11 +102,15 @@ room904.chatcatch = function (callback) {
             sc.completeMission("envy", "gf", false);
             sc.startMission("envy", "breakup");
             sc.completeMissionTask("envy", "breakup", 2);
+            sc.completeMission("envy", "breakup", true); //one ending is enough - the other two are struck out
             char.addtime(37);
             char.room(900);
             break;
         case "endGood":
             sc.completeMissionTask("envy", "gf", 6);
+            //step 7 is not implemented yet, so the mission completes here.
+            //REMOVE this line when step 7 is implemented (see the note on step 7 in supportingChar.js) - also remove notImplemented from that step in supportingChar.js so the phone drops [Not Fully Implemented Yet]
+            sc.completeMission("envy", "gf", true);
             char.addtime(67);
             char.room(900);
             break;

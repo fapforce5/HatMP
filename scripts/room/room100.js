@@ -75,8 +75,8 @@ room100.btnclick = function (name) {
         case "job":
             if (gv.get("jobConstructionPay") === 0)
                 chat(0, 100);
-            else if (gv.get("energy") < 60)
-                chat(1, 100);
+            else if (gv.get("energy") < 60) //fix: offers energy items from the bag first (inv.energyPrompt); runs this choice again once there is enough
+                inv.energyPrompt(60, function () { room100.btnclick(name); }, function () { chat(1, 100); });
             else if (!(cl.c.pants === "j" && cl.c.shirt !== null)) {
                 chat(2, 100);
             }

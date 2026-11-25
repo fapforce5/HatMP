@@ -608,8 +608,10 @@ room486.btnclick = function (name) {
             break;
         case "greenbutton":
             if (g.pass.greenbutton) {
-                if (gv.get("energy") < 1) {
-                    chat(50, 486);
+                if (gv.get("energy") < 1) { //fix: offers energy items from the bag first (inv.energyPrompt); runs this choice again once there is enough
+                    inv.energyPrompt(1, function () { room486.btnclick(name); }, function () {
+                        chat(50, 486);
+                    });
                     return;
                 }
                 nav.killbutton("redbutton");

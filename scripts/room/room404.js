@@ -54,7 +54,7 @@ room404.chatcatch = function (callback) {
             break;
         case "envy100":
             sc.completeMissionTask("envy", "gf", 0);
-            sc.completeMission("spanky", "hypno", false);
+            sc.completeMission("spanky", "hypno", true); //Girlfriend path: triple prices is how Spanky's Hypno ends here (was marked Failed)
             sc.completeMissionTask("spanky", "hypno", 2);
             char.addtime(60);
             char.room(0);

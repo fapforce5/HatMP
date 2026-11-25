@@ -316,6 +316,8 @@ room728.chatcatch = function (callback) {
             break;
         case "leaveLove":
             sc.startMission("river", "*gf");
+            sc.completeMissionTask("river", "*gf", 0); //fix: "Confesses his love to you" was never ticked
+            sc.completeMission("river", "*gf", true);
             char.addtime(90);
             char.room(0);
             break;

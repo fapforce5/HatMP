@@ -185,11 +185,11 @@ room551.btnclick = function (name) {
                 chat(37, 551);
             }
             else {
-                if (secretRoom.inProgress || spar.inProgress) {
+                if (secretRoom.startedOrComplete || spar.inProgress) { //fix: keep secret room after completing it
                     sc.select("icon_workout", "551_gymInside/icon_workout.png", 0);
                     if (spar.startedOrComplete)
                         sc.select("icon_spar", "551_gymInside/icon_spar.png", 1);
-                    if (secretRoom.inProgress)
+                    if (secretRoom.startedOrComplete) //fix: was inProgress, so the secret room vanished once its mission was completed
                         sc.select("icon_secret", "551_gymInside/icon_secret.png", 2);
                     sc.selectCancel("icon_cancel", 3);
                 }
@@ -199,8 +199,8 @@ room551.btnclick = function (name) {
                         g.internal = outfit;
                         chat(31, 551);
                     }
-                    else if (gv.get("energy") < 50)
-                        chat(32, 551);
+                    else if (gv.get("energy") < 50) //fix: offers energy items from the bag first (inv.energyPrompt); runs this choice again once there is enough
+                        inv.energyPrompt(50, function () { room551.btnclick(name); }, function () { chat(32, 551); });
                     else if (sc.taskGetStep("g", "workout") === -1)
                         chat(14, 551);
                     else
@@ -321,6 +321,8 @@ room551.chatcatch = function (callback) {
             gv.mod("energy", -50);
             levels.mod("fitness", 15);
             levels.mod("strength", 34);
+            if (sc.getMissionTask("g", "workout", 1).complete) //fix: "Regular workouts" was never ticked
+                sc.completeMissionTask("g", "workout", 2, true);
             sc.completeMissionTask("g", "workout", 1, true);
             daily.set("g");
             nav.killall();
@@ -414,6 +416,8 @@ room551.chatcatch = function (callback) {
             gv.mod("energy", -50);
             levels.mod("fitness", 15);
             levels.mod("strength", 30);
+            if (sc.getMissionTask("g", "workout", 1).complete) //fix: finishing a regular workout ticks "Regular workouts"
+                sc.completeMissionTask("g", "workout", 2, true);
             daily.set("g");
             nav.killall();
             nav.bg("551_gymInside/551_gym.jpg");

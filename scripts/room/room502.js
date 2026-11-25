@@ -2,6 +2,8 @@
 var room502 = {};
 room502.main = function () {
     var btnList = new Array();
+    //NOTE: NOT IMPLEMENTED YET - room501 "door" sets g.pass = "zoeyLickPussy" for a repeat bedroom scene with Zoey,
+    //but no scene exists here yet. Add it as the first check below when it's written.
     if (g.pass === "endSleepyTime") {
         if (sc.getTimeline("zoey").thisRoom) {
             nav.button({
@@ -781,7 +783,7 @@ room502.chat = function (chatID) {
             {
                 chatID: 36,
                 speaker: "stormy",
-                text: "I love you way you lust after us. ",
+                text: "I love the way you lust after us. ", //fix: spelling/wording (was "I love you way you lust after us. ")
                 button: [
                     { chatID: 37, text: "...", callback: "" }
                 ]
@@ -813,8 +815,8 @@ room502.chat = function (chatID) {
             {
                 chatID: 40,
                 speaker: "stormy",
-                text: "Does our little cuck want a taste? I'll be you do. You can smell the sex coming from my pussy can't you. " + 
-                    "just reach your tongue out and have a taste. ",
+                text: "Does our little cuck want a taste? I'll bet you do. You can smell the sex coming from my pussy can't you? " + //fix: spelling/wording (was "Does our little cuck want a taste? I'll be yo...")
+                    "Just reach your tongue out and have a taste. ", //fix: spelling/wording (was "just reach your tongue out and have a taste. ")
                 button: [
                     { chatID: 41, text: "[Try to lick her pussy]", callback: "s13" }
                 ]

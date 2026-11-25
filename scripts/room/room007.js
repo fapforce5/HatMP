@@ -147,6 +147,7 @@ room7.main = function () {
                         chat(999, 7);
                     break;
                 case 3:
+                case 4: //Rent Completed - he keeps taking his rent this way every Saturday
                     nav.bg("7_mainCharRoomAlt/bigguy1.jpg");
                     chat(57, 7);
                     break;
@@ -254,7 +255,7 @@ room7.btnclick = function (name) {
             var chastx1 = [7, 8, 10, 12, 13];
             var cx1 = "";
             if (chastx1.includes(g.internal) && cl.c.chastity !== null)
-                c = "_c";
+                cx1 = "_c"; //fix: was "c = ...", so the chastity pictures (bigguy7/8/10/12/13_c.jpg) never showed
             nav.bg("7_mainCharRoomAlt/bigguy" + g.internal + cx1 + ".jpg");
 
             if (g.internal === 14) {
@@ -292,6 +293,7 @@ room7.chatcatch = function (callback) {
             nav.bg("7_mainCharRoomAlt/" + callback + ".jpg");
             break;
         case "bigguy15_4":
+            sc.completeMissionTask("bigguy", "rent", 3); //"No rent, only ass" - the Saturday scene keeps playing (case 3/4 in room7.main)
             gv.set("pastRent", 0);
             gv.set("rentChores", 0);
             nav.bg("7_mainCharRoomAlt/bigguy15.jpg");

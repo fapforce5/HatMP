@@ -1401,11 +1401,12 @@ room324.chat = function (chatID) {
             ]
         },
         {
-            chatID: 10,
+            chatID: 100, //fix: was numbered 10 (it's the 101st entry, shown by chat(100, 324) after 8 PM)
             speaker: "!bf1",
             text: "Ma dick's needin' a release, let's head to the bedroom. ",
             button: [
-                { chatID: -1, text: "[Follow them]", callback: "kitchen" },
+                //NOTE: NOT IMPLEMENTED YET - the bedroom scene hasn't been made; following them goes to the kitchen like staying does
+                { chatID: -1, text: "[Follow them] [Not made yet]", callback: "kitchen" },
                 { chatID: -1, text: "[Stay in the livingroom]", callback: "kitchen" },
             ]
         },

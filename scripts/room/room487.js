@@ -204,6 +204,8 @@ room487.chatcatch = function (callback) {
             sc.select("icon_walk", "487_castle/icon_walk.webp", 1);
             break;
         case "lost":
+            sc.completeMissionTask("p", "*missy", 5, false); //lost the fight at the compound
+            sc.completeMission("p", "*missy", false);
             g.pass = "lost487";
             char.room(975);
             break;
@@ -263,6 +265,8 @@ room487.chatcatch = function (callback) {
             zcl.bellydown(800, 800, .2, "", false);
             break;
         case "goodend":
+            sc.completeMissionTask("p", "*missy", 5); //fix: Save Missy's last step was never ticked
+            sc.completeMission("p", "*missy", true);
             g.pass = "goodend";
             char.room(975);
             break;

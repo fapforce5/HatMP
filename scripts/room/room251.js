@@ -207,17 +207,19 @@ room251.chatcatch = function (callback) {
             char.room(0);
             break;
         case "thinkingcheckpanties":
-            if (cl.hasClothing("panties", "holly") &&
+            //fix: these checks were inverted - you got "I don't have them yet" WITH all three pairs, and the
+            //success scene WITHOUT them. Now: missing a pair -> 50, not wearing panties -> 51, otherwise success.
+            if (!(cl.hasClothing("panties", "holly") &&
                 cl.hasClothing("panties", "dolly") &&
-                cl.hasClothing("panties", "molly")) {
-                if (cl.c.panties !== null) {
-                    chat(50, 251);
-                }
-                else {
-                    chat(51, 251);
-                }
+                cl.hasClothing("panties", "molly"))) {
+                chat(50, 251);
+            }
+            else if (cl.c.panties === null) {
+                chat(51, 251);
             }
             else {
+                sc.completeMissionTask("jeffery", "*panties", 1); //"Steal the panties"
+                sc.completeMission("jeffery", "*panties", true);
                 nav.kill();
                 nav.bg("251_office/s10_0.jpg");
                 cl.remove("panties", "holly");

@@ -40,6 +40,7 @@ phone.getAchievementGroups = function (index) {
 
 phone.showAchievementGroup = function (index) {
     phone.charPointer = index;
+    phone.achPage = 0; //a tab always opens on its first page
     invoker.invoke(9999, "btnclick", "phone_ach_draw");
 };
 
@@ -125,6 +126,31 @@ phone.handleSettingsAction = function (name) {
         return true;
     }
 
+    //Settings page 2 (Points / Percentage), achievements Other page 2 and cheat pages - added
+    if (name === "phone_setting_next") {
+        phone.settings2();
+        return true;
+    }
+
+    if (name === "phone_setting_prev") {
+        phone.settings();
+        return true;
+    }
+
+    if (name === "phone_setting_percent_on" || name === "phone_setting_percent_off") {
+        gv.set("showBarPercent", name === "phone_setting_percent_on");
+        sstat.makeGraph();
+        phone.settings2();
+        return true;
+    }
+
+    if (name === "phone_setting_points_on" || name === "phone_setting_points_off") {
+        gv.set("showAbilityPoints", name === "phone_setting_points_on");
+        sstat.makeGraph();
+        phone.settings2();
+        return true;
+    }
+
     if (name === "phone_setting_m" || name === "phone_setting_f" || name === "phone_setting_a") {
         gv.set("pronouns", name.replace("phone_setting_", ""));
         phone.settings();
@@ -178,6 +204,7 @@ phone.handlePrefixAction = function (name) {
 
     if (name.startsWith("phone_charsel_")) {
         nav.killbuttonStartsWith("phone_charsel_");
+        sc.syncSissyClasses(); //keep Mistress Martha's class missions in step with the Sissy School before showing a mission
         var charstep1 = name.replace("phone_charsel_", "");
         var varstep2 = charstep1.split("_");
         var ch = sc.getMission(varstep2[0], varstep2[1]);
@@ -189,7 +216,8 @@ phone.handlePrefixAction = function (name) {
             "top": 250,
             font: 30,
             hex: "#ffffff",
-            text: sc.charMission[ch.i].mission[ch.j].title + " [" + sc.mStatus(sc.charMission[ch.i].mission[ch.j].mStatus) + "]"
+            //title tag: [Failed - Secret Known], [Another Path Chosen]/[Ranch Closed], [Repeatable], [Not Fully Implemented Yet]
+            text: sc.charMission[ch.i].mission[ch.j].title + (sc.isSecretFailedMission(sc.charMission[ch.i].mission[ch.j]) ? ' <span style="color:#cc3333">[Failed - Secret Known]</span>' : " [" + (sc.isAltPathMission(sc.charMission[ch.i].name, sc.charMission[ch.i].mission[ch.j].missionName) ? sc.altPathLabel(sc.charMission[ch.i].name, sc.charMission[ch.i].mission[ch.j].missionName) : sc.mStatus(sc.charMission[ch.i].mission[ch.j].mStatus)) + "]") + phone.repeatableTag(sc.charMission[ch.i].mission[ch.j]) + phone.notImplementedTag(sc.charMission[ch.i].mission[ch.j])
         }, 9999);
         nav.t({
             type: "zimg",
@@ -210,17 +238,68 @@ phone.handlePrefixAction = function (name) {
             "image": "999_phone/char_down.png",
         }, 9999);
         let taskcounter = 0;
+        let blockedNoteShown = false; //a blocked step's note line is shown once per mission
         for (i = 0; i < sc.charMission[ch.i].mission[ch.j].task.length; i++) {
-            if (sc.charMission[ch.i].mission[ch.j].task[i].show) {
-                roomList = " @: " + (g.getRooms(sc.charMission[ch.i].mission[ch.j].task[i].roomId).name ?? "");
+            var thisTask = sc.charMission[ch.i].mission[ch.j].task[i];
+            if (thisTask.show || (thisTask.showWhenDone && thisTask.mStatus > 99) || gv.get("showHiddenTasks")) { //showWhenDone: hidden until completed; cheat toggle shows all
+                var roomName = thisTask.roomName ?? g.roomDisplayName(g.getRooms(thisTask.roomId)); //roomName: optional label for a spot inside a room (e.g. Saucy Change Room)
+                roomList = roomName === "" ? "" : " @: " + roomName; //no location known - leave off the "@:"
                 var tcolor = "#ffffff";
                 var mstatus;
                 switch (sc.mStatus(sc.charMission[ch.i].mission[ch.j].task[i].mStatus)) {
                     case "Failed": tcolor = "#cc3333"; mstatus = " ✘ "; break;
-                    case "Completed": tcolor = "#33cc33"; mstatus = " ☑ "; break;
+                    case "Completed": tcolor = thisTask.repeatable ? "#ffffff" : "#33cc33"; mstatus = " ☑ "; break; //repeatable steps show in white
                     case "Not Started": tcolor = "#999999"; mstatus = " ☐ "; break;
                     default: tcolor = "#ffffff"; mstatus = " ";
                 }
+                var struck = false;
+                var orStruck = false; //the other choice of an either/or pair was picked
+                //once a mission is finished (Completed, Failed or Closed - e.g. Lola's Sissy after picking Tom),
+                //steps that were never reached can't be done any more - strike them out
+                var thisMission = sc.charMission[ch.i].mission[ch.j];
+                if (thisMission.mStatus > 99 && thisTask.mStatus < 100 && !thisTask.repeatable && !thisTask.optional && !thisTask.notImplemented && !(thisTask.ongoing && thisTask.mStatus > 0)) //optional and WIP (Not Implemented Yet) steps are never struck out
+                    struck = true;
+                if (thisTask.blocked && thisTask.mStatus < 100) //blocked: can't be done any more (e.g. "Secret Known")
+                    struck = true;
+                //orTask: this step and another are alternatives - once the other one is done, strike this one out.
+                //This also covers a choice the game marked Failed because the other one was picked:
+                //it is struck out in grey instead of red. Red is kept for steps that really failed.
+                if (thisTask.orTask !== undefined && thisTask.mStatus !== 100) {
+                    var otherTask = sc.charMission[ch.i].mission[ch.j].task[thisTask.orTask];
+                    if (otherTask && otherTask.mStatus === 100) {
+                        struck = true;
+                        orStruck = true;
+                        mstatus = " ☐ ";
+                    }
+                }
+                //[Another Path Chosen]: every step is struck out, colours stay as they are
+                var altPath = sc.isAltPathMission(sc.charMission[ch.i].name, thisMission.missionName);
+                //closed by the story (e.g. [Ranch Closed]): only the steps you didn't get to are struck out, in grey
+                var closedByStory = altPath && sc.isClosedByStory(sc.charMission[ch.i].name, thisMission.missionName);
+                if (closedByStory) {
+                    if (thisTask.mStatus < 100) {
+                        struck = true;
+                        tcolor = "#999999";
+                    }
+                }
+                else if (altPath) {
+                    struck = true;
+                    if (orStruck)
+                        tcolor = "#999999"; //the choice you didn't pick stays grey, not red (e.g. Spanky's Hypno)
+                }
+                else if (struck)
+                    tcolor = "#999999";
+                //the line-through starts at the step text, not at the check box
+                var strikeOn = !struck ? '' : (thisTask.blocked && thisTask.mStatus < 100)
+                    ? '<span style="text-decoration: line-through; text-decoration-color: #cc3333;">' //blocked (e.g. Secret Known): red strike line
+                    : '<span style="text-decoration: line-through;">';
+                var strikeOff = struck ? '</span>' : '';
+                var taskText = '<span class="phone-step-box">' + mstatus + '</span>' + strikeOn + thisTask.txt + roomList + strikeOff;
+                //WIP (Not Implemented Yet) step: short [WIP] tag at the end of the step line instead of a note line under it
+                //(the mission line keeps the full [Not Fully Implemented Yet] tag)
+                var wipStep = thisTask.notImplemented && thisTask.mStatus < 100;
+                if (wipStep)
+                    taskText += ' <span style="color:#33cc33">[</span><span style="color:#ffffff">WIP</span><span style="color:#33cc33">]</span>';
                 nav.t({
                     type: "zimg",
                     name: "phone_charsel_",
@@ -228,9 +307,47 @@ phone.handlePrefixAction = function (name) {
                     "top": 350 + (taskcounter * 40),
                     font: 24,
                     hex: tcolor,
-                    text: mstatus + sc.charMission[ch.i].mission[ch.j].task[i].txt + roomList
+                    //step line built above: check box, strike-out rules, location and [WIP]
+                    text: taskText
                 }, 1);
-                taskcounter++;
+                //a blocked step's reason (e.g. "Secret Known") goes at the end of the step line after " - " if it fits;
+                //otherwise it goes on its own line under the step (only once per mission so long missions still fit)
+                var noteInline = false;
+                if (thisTask.blocked && thisTask.mStatus < 100 && thisTask.note && !Array.isArray(thisTask.note)) {
+                    var stepEl = $('#room-buttons .resize-font').last()[0];
+                    if (stepEl) {
+                        stepEl.innerHTML = taskText + " - " + thisTask.note;
+                        if (stepEl.offsetLeft + stepEl.offsetWidth <= 1626 * g.ratio)
+                            noteInline = true;
+                        else
+                            stepEl.innerHTML = taskText;
+                    }
+                }
+                taskcounter += phone.wrapLastLine(350 + (taskcounter * 40)); //a long step goes onto a second line (or shrinks if there's no room below)
+                //note: an extra line under the step, lined up with the step text (e.g. "(Not Implemented Yet)")
+                var showNoteLine = !!thisTask.note && !noteInline && !(thisTask.notImplemented && thisTask.note === "(Not Implemented Yet)"); //WIP steps show [WIP] on the step line instead
+                if (showNoteLine && thisTask.blocked) {
+                    if (blockedNoteShown)
+                        showNoteLine = false;
+                    blockedNoteShown = true;
+                }
+                if (showNoteLine) {
+                    //note can be one line or a list of lines
+                    var noteLines = Array.isArray(thisTask.note) ? thisTask.note : [thisTask.note];
+                    for (var nl = 0; nl < noteLines.length; nl++) {
+                        var noteText = '<span class="phone-step-box" style="visibility:hidden;">' + mstatus + '</span>' + (thisTask.blocked ? noteLines[nl] : strikeOn + noteLines[nl] + strikeOff); //a blocked step's reason (e.g. Secret Known) is not struck
+                        nav.t({
+                            type: "zimg",
+                            name: "phone_charsel_",
+                            "left": 910,
+                            "top": 350 + (taskcounter * 40),
+                            font: 24,
+                            hex: tcolor,
+                            text: noteText
+                        }, 1);
+                        taskcounter += phone.wrapLastLine(350 + (taskcounter * 40));
+                    }
+                }
             }
         }
         return true;
@@ -246,7 +363,130 @@ phone.handlePrefixAction = function (name) {
             gv.set("cheatMode", true);
             phone.cheat();
         }
-        else {
+        else if (name === "phone_cheatmod_next") {
+            phone.cheat2();
+        }
+        //Cheats landing page buttons
+        else if (name === "phone_cheatmod_patreon") {
+            //Login to Patreon - not hooked up yet, does nothing for now
+        }
+        else if (name === "phone_cheatmod_abilities") {
+            phone.cheatAbilities();
+        }
+        else if (name === "phone_cheatmod_skills") {
+            phone.cheatSkills();
+        }
+        else if (name === "phone_cheatmod_bodyland") {
+            phone.cheatBodyFrom = 1; //Previous Page on the body page comes back to the landing page
+            phone.cheatBody();
+        }
+        else if (name === "phone_cheatmod_landprev") {
+            phone.cheat();
+        }
+        else if (name.startsWith("phone_cheatmod_add_") || name.startsWith("phone_cheatmod_max_")) {
+            //Abilities / Skills: + 100 points or Max Level, then redraw the page you're on
+            var cheatSkill = name.substring("phone_cheatmod_add_".length);
+            if (name.startsWith("phone_cheatmod_add_"))
+                phone.cheatAddLevel(cheatSkill);
+            else
+                phone.cheatMaxOut(cheatSkill);
+            if (phone.cheatPage === "skills")
+                phone.cheatSkills();
+            else
+                phone.cheatAbilities();
+            $('#char_alert').hide();
+        }
+        else if (name === "phone_cheatmod_prev") {
+            phone.cheat();
+        }
+        else if (name === "phone_cheatmod_day_minus" || name === "phone_cheatmod_day_plus") {
+            //Day of Week: picks a day inside the current week (Sunday to Saturday), same time of day.
+            //It rolls over at the ends of the week: + on Saturday goes back to Sunday, - on Sunday goes to Saturday.
+            //So it never moves into another week. Never before the first day of the game.
+            var dayStep = name === "phone_cheatmod_day_plus" ? 1 : -1;
+            var dow = g.dt.getDay();
+            if (dayStep > 0 && dow === 6) dayStep = -6;
+            else if (dayStep < 0 && dow === 0) dayStep = 6;
+            var newDt = new Date(g.dt.getFullYear(), g.dt.getMonth(), g.dt.getDate() + dayStep, g.dt.getHours(), g.dt.getMinutes(), 0, 0);
+            var firstDay = new Date(g.startDate.getFullYear(), g.startDate.getMonth(), g.startDate.getDate());
+            if (newDt >= firstDay) {
+                g.dt = newDt;
+                nav.buildclock();
+            }
+            phone.cheat2();
+        }
+        else if (name === "phone_cheatmod_time_minus" || name === "phone_cheatmod_time_plus") {
+            //Adjust Time: steps to the top of the hour, kept within today so the day doesn't change (that's done by sleeping).
+            //+ goes to the next full hour (1:12 -> 2:00); - goes to the previous full hour (1:12 -> 1:00, 1:00 -> 12:00).
+            var curHour = g.dt.getHours();
+            var newHour;
+            if (name === "phone_cheatmod_time_plus")
+                newHour = curHour + 1;
+            else
+                newHour = g.dt.getMinutes() > 0 ? curHour : curHour - 1;
+            if (newHour >= 0 && newHour <= 23) {
+                char.settime(newHour, 0);
+                cl.display();
+            }
+            phone.cheat2();
+        }
+        else if (name === "phone_cheatmod_body" || name === "phone_cheatmod_body2") {
+            phone.cheatBodyFrom = name === "phone_cheatmod_body" ? 1 : 2; //Previous Page on the body page goes back here
+            phone.cheatBody();
+        }
+        else if (name === "phone_cheatmod_prev2") {
+            if (phone.cheatBodyFrom === 1)
+                phone.cheat();
+            else
+                phone.cheat2();
+        }
+        else if (name.startsWith("phone_cheatmod_lips_")) {
+            cl.c.lips = parseInt(name.replace("phone_cheatmod_lips_", ""));
+            cl.display();
+            phone.cheatBody();
+        }
+        else if (name === "phone_cheatmod_hidden_on" || name === "phone_cheatmod_hidden_off") {
+            gv.set("showHiddenTasks", name === "phone_cheatmod_hidden_on");
+            phone.cheat2();
+        }
+        else if (name.startsWith("phone_cheatmod_cock_")) {
+            if (cl.c.cock !== 5) { //never turns a pussy back into a penis, and never makes one
+                cl.c.cock = parseInt(name.replace("phone_cheatmod_cock_", ""));
+                cl.display();
+            }
+            phone.cheatBody();
+        }
+        else if (name.startsWith("phone_cheatmod_leg_")) {
+            cl.c.leg = parseInt(name.replace("phone_cheatmod_leg_", ""));
+            cl.display();
+            phone.cheatBody();
+        }
+        else if (name.startsWith("phone_cheatmod_chest_")) {
+            cl.c.chest = parseInt(name.replace("phone_cheatmod_chest_", ""));
+            cl.display();
+            phone.cheatBody();
+        }
+        else if (name === "phone_cheatmod_chast_on") {
+            if (cl.c.chastity === null) {
+                var lastCage = gv.get("lastChastity");
+                if (lastCage === null || cl.where("chastity", lastCage) < 0) { //never worn one: first one you own, else the basic cage
+                    var owned = cl.list.find(function (c) { return c.type === "chastity" && c.inv; });
+                    lastCage = owned ? owned.name : "cage";
+                }
+                cl.c.chastity = lastCage;
+                cl.display();
+            }
+            phone.cheat2();
+        }
+        else if (name === "phone_cheatmod_chast_off") {
+            if (cl.c.chastity !== null) {
+                gv.st[gv.i("lastChastity")].t = cl.c.chastity;
+                cl.c.chastity = null;
+                cl.display();
+            }
+            phone.cheat2();
+        }
+        else if (name.startsWith("phone_cheatmod_level_")) { //was a plain else - any other cheat name would have been treated as a level
             var cheatLevel = name.replace("phone_cheatmod_level_", "");
             levels.mod(cheatLevel, 100);
             phone.cheat();
@@ -417,8 +657,21 @@ phone.drawAchievements = function () {
             return a.o - b.o;
         });
 
-    for (let i = 0; i < newAchList.length; i++)
-        phone.addAchievementCard(newAchList[i], i);
+    //6 rows of 3 cards fit above the tabs (rows at 200..700, tabs at 800). Tabs with more than that
+    //(Other) are split into pages with the same Next/Prev buttons as the Settings pages.
+    const perPage = 18;
+    const pageCount = Math.max(1, Math.ceil(newAchList.length / perPage));
+    if (typeof phone.achPage !== "number" || phone.achPage < 0 || phone.achPage >= pageCount)
+        phone.achPage = 0;
+    const pageList = newAchList.slice(phone.achPage * perPage, (phone.achPage + 1) * perPage);
+
+    for (let i = 0; i < pageList.length; i++)
+        phone.addAchievementCard(pageList[i], i);
+
+    if (phone.achPage < pageCount - 1)
+        phone.settingsPageButton("phone_ach_next", "999_phone/settings_next.png");
+    else if (phone.achPage > 0)
+        phone.settingsPageButton("phone_ach_prev", "999_phone/settings_prev.png");
 };
 
 phone.build = function (selection = null) {
@@ -585,6 +838,49 @@ phone.showSaveConfirmDialog = function (config) {
     }, 9999);
 };
 
+//Shrink the font of the text line just added until it fits inside the phone screen
+//(screen right edge is 451 + 1185 = 1636, minus a small margin). Never goes below 16px.
+phone.fitLastLine = function (maxRight = 1626, minFont = 16) {
+    var el = $('#room-buttons .resize-font').last()[0];
+    if (!el)
+        return;
+    var size = parseFloat(el.style.fontSize);
+    while (el.offsetLeft + el.offsetWidth > maxRight * g.ratio && size > minFont * g.ratio) {
+        size -= 1;
+        el.style.fontSize = size + "px";
+    }
+};
+
+//A mission step line that is too wide for the phone screen wraps onto a second line, with the
+//second line lined up under the step text (not the check box). Lines are 40 apart, the same as the
+//steps, so the next step simply moves down. Returns how many 40-high rows the step used.
+//If there isn't room below (screen bottom is 155 + 815 = 970), the font is shrunk instead.
+phone.wrapLastLine = function (top, maxRight = 1626, bottom = 970) {
+    var el = $('#room-buttons .resize-font').last()[0];
+    if (!el || el.offsetLeft + el.offsetWidth <= maxRight * g.ratio)
+        return 1;
+    var fs = parseFloat(el.style.fontSize);
+    var rowPx = 40 * g.ratio;
+    var oneLine = el.offsetHeight;
+    var box = el.querySelector(".phone-step-box");
+    var indent = box ? box.offsetWidth / fs : 0;
+    //em units so the layout keeps its shape when the window is resized (only font-size is rescaled)
+    el.style.width = ((maxRight * g.ratio - el.offsetLeft) / fs) + "em";
+    el.style.whiteSpace = "normal";
+    el.style.lineHeight = (rowPx / fs) + "em";
+    el.style.marginTop = (-(rowPx - oneLine) / 2 / fs) + "em";
+    el.style.paddingLeft = indent + "em";
+    el.style.textIndent = -indent + "em";
+    el.style.boxSizing = "border-box";
+    var rows = Math.max(1, Math.round(el.offsetHeight / rowPx));
+    if (top + rows * 40 <= bottom)
+        return rows;
+    //no room for the extra line: undo the wrap and shrink the font to fit on one line
+    ["width", "whiteSpace", "lineHeight", "marginTop", "paddingLeft", "textIndent", "boxSizing"].forEach(function (k) { el.style[k] = ""; });
+    phone.fitLastLine(maxRight);
+    return 1;
+};
+
 phone.showPanel = function (image, name = "phone_") {
     nav.button({
         "type": "zimg",
@@ -616,20 +912,31 @@ phone.addCharacterCard = function (character, row, column) {
         "image": "../speaker/" + character.image,
     }, character.name, 9999);
 
+    const waiting = phone.charNameWaiting(character); //only Not Implemented steps left
     nav.t({
         type: "zimg",
         name: "phone_char_",
         "left": left,
         "top": top + 150,
         font: character.display.length < 20 ? 20 : 12,
-        hex: "#ffffff",
-        text: character.display,
+        hex: waiting ? "#ffdd33" : (phone.charNameDone(character) ? "#33cc33" : "#ffffff"), //yellow: only Not Implemented steps left; green (same as Completed) when the character is "done"
+        text: character.display + (character.name === "me" ? " (Me)" : ""), //mark the main character
     }, 1);
 
+    //yellow characters get "WIP" (work in progress) in yellow under the level bar, same size as "They know";
+    //"They know"/"Suspicious" comes first on that line, then a white dash, then WIP
+    //NOTE: the WIP tag is removed automatically when the character's missions are complete - see phone.charNameWaiting
+    //level bar under the name: green, filled by level; a character with no level gets a full white bar the same size
+    const noLevel = !(character.l > 0);
     $('#room-buttons').append('<div class="resize room-img" data-name="phone_char_" data-room="999" style=" ' +
-        g.makeCss(5, ((character.l > 10 ? 10 : character.l) * 15), top + 180, left) +
-        '  background: #00ff00; border-radius:100px; z-index:2" ></div>');
+        g.makeCss(5, (noLevel ? 150 : (character.l > 10 ? 10 : character.l) * 15), top + 180, left) +
+        '  background: ' + (noLevel ? '#ffffff' : '#00ff00') + '; border-radius:100px; z-index:2" ></div>');
 
+    const secretTxt = character.secret > 99 ? "They know" : (character.secret === 0 ? "" : "Suspicious");
+    //one line under the bar: "They know" (pink), then a white " - ", then "WIP" (yellow) for WIP characters
+    let secretLine = secretTxt;
+    if (waiting)
+        secretLine = (secretTxt === "" ? "" : secretTxt + '<span style="color:#ffffff"> - </span>') + '<span style="color:#ffdd33">WIP</span>';
     nav.t({
         type: "zimg",
         name: "phone_char_",
@@ -637,8 +944,9 @@ phone.addCharacterCard = function (character, row, column) {
         "top": top + 185,
         font: 20,
         hex: "#ffc2ff",
-        text: character.secret > 99 ? "They know" : (character.secret === 0 ? "" : "Suspicious"),
+        text: secretLine, //"They know"/"Suspicious" and " - WIP" for WIP characters
     }, 1);
+    $('[data-name="phone_char_"]').last().css("white-space", "nowrap"); //keep "They know - WIP" on one line
 };
 
 phone.addStatBar = function (config) {
@@ -814,8 +1122,9 @@ phone.addAchievementCard = function (achievement, index) {
         "left": left + 95,
         "top": top + 50,
         font: 16,
-        hex: "#cccccc",
-        text: achieved ? sc.replace(achievement.display) : "Not Achieved"
+        hex: (!achieved && achievement.notInGame) ? "#ffdd33" : "#cccccc",
+        //notInGame: nothing in the game awards it yet (remove notInGame from its trophy.st entry once something does)
+        text: achieved ? sc.replace(achievement.display) : (achievement.notInGame ? "Not in the game yet" : "Not Achieved")
     }, 9999);
 
     nav.t({
@@ -876,7 +1185,162 @@ phone.settings = function () {
             "image": "999_phone/" + v.i + "_" + (v.active ? "active" : "inactive") + ".png",
         }, 9999);
     });
-}
+    phone.settingsPageButton("phone_setting_next", "999_phone/settings_next.png");
+};
+
+//Settings page buttons sit right-justified on the "Settings" line at the bottom of settingbg.jpg
+phone.settingsPageButton = function (name, image) {
+    nav.button({
+        "type": "zbtn",
+        "name": name,
+        "left": 1401,   //right edge 1601 = 35px in from the panel's right side
+        "top": 875,     //centred on the "Settings" text line
+        "width": 200,
+        "height": 50,
+        "image": image,
+    }, 9999);
+};
+
+//Settings page 2 - same layout as page 1: rows start at 220, buttons start at 925 and are 200 x 50
+phone.settings2 = function () {
+    phone.clear(false);
+    phone.showPanel("999_phone/settingbg2.png");
+
+    //Line one: Points - shows "current / needed Points" under Abilities on the stats screen
+    phone.settingsToggle(0, "points", gv.get("showAbilityPoints"));
+    //Line two: Percentage - shows the % inside the Abilities progress bars
+    phone.settingsToggle(1, "percent", gv.get("showBarPercent"));
+
+    phone.settingsPageButton("phone_setting_prev", "999_phone/settings_prev.png");
+};
+
+// " [Not Fully Implemented Yet]" after a Completed mission that still has a step marked notImplemented
+// (a step with no scene yet, e.g. Envy's Girlfriend step 7): brackets green, words white
+// To clear it when a step gets its scene: delete note: "(Not Implemented Yet)", notImplemented: true from that step in
+// supportingChar.js and follow the NOTE above that step (REMOVE lines in the room file and the repair in sc.load).
+phone.notImplementedTag = function (mission) {
+    if (mission.mStatus !== 100 && !phone.missionWaitingOnNI(mission)) //also In Progress missions that only have Not Implemented steps left
+        return "";
+    for (let i = 0; i < mission.task.length; i++) {
+        if (mission.task[i].notImplemented && mission.task[i].mStatus < 100)
+            return ' <span style="color:#33cc33">[</span><span style="color:#ffffff">Not Fully Implemented Yet</span><span style="color:#33cc33">]</span>';
+    }
+    return "";
+};
+
+//true when a mission isn't finished but every step still to do is marked notImplemented (no scene yet),
+//so there's nothing left you can do in it (optional steps are ignored)
+phone.missionWaitingOnNI = function (mission) {
+    if (mission.mStatus > 99 || !mission.task)
+        return false;
+    let hasNI = false;
+    for (let i = 0; i < mission.task.length; i++) {
+        let t = mission.task[i];
+        if (t.mStatus >= 100 || t.optional)
+            continue;
+        if (!t.notImplemented)
+            return false;
+        hasNI = true;
+    }
+    return hasNI;
+};
+
+//Yellow name on the Characters screen: nothing left you can do with this character, but at least one of their
+//steps is marked Not Implemented Yet (waiting on new content). Missions ruled out by another path don't count.
+//NOTE - REMOVING THE WIP TAG: nothing to edit here. The yellow name and "WIP" go away by themselves once the
+//character's Not Implemented steps are done: when a step gets its scene, delete note: "(Not Implemented Yet)",
+//notImplemented: true from that step in supportingChar.js (and follow the NOTE above that step). When the step
+//is ticked or the mission is completed, the character turns white (more to do) or green (all missions complete).
+phone.charNameWaiting = function (character) {
+    if (character.name === "mainstory" || character.name === "me")
+        return false;
+    let entry = sc.charMission.find(function (c) { return c.name === character.name; });
+    if (!entry || !entry.mission || entry.mission.length === 0)
+        return false;
+    let hasNI = false;
+    for (let j = 0; j < entry.mission.length; j++) {
+        let m = entry.mission[j];
+        if (sc.isAltPathMission(character.name, m.missionName))
+            continue;
+        if (m.mStatus > 99) {
+            if (m.mStatus === 100 && phone.notImplementedTag(m) !== "")
+                hasNI = true;
+            continue;
+        }
+        if (!phone.missionWaitingOnNI(m))
+            return false; //something you can still do
+        hasNI = true;
+    }
+    return hasNI;
+};
+
+//Unlocks listed on the main character's phone page (Wear panties ... Lewd in public)
+phone.meUnlocks = [0, 1, 2, 3, 4, 24, 7, 5, 8, 25, 9, 23, 10];
+
+//Green name on the Characters screen:
+// - main character: every item on their page shows Unlocked
+// - Main Story: every story step is done ("All steps complete")
+// - everyone else: all their missions are complete, or they have no tasks at all
+phone.charNameDone = function (character) {
+    if (character.name === "mainstory")
+        return sc.mainStory.status().current < 0;
+    if (character.name === "me") {
+        for (let i = 0; i < phone.meUnlocks.length; i++)
+            if (!qdress.st[phone.meUnlocks[i]].ach)
+                return false;
+        return true;
+    }
+    return sc.allMissionsComplete(character.name) || sc.hasNoTasks(character.name);
+};
+
+// " [Repeatable]" after a Completed mission that has a repeatable step: brackets green, word white
+phone.repeatableTag = function (mission) {
+    if (mission.mStatus !== 100 || !sc.isRepeatableMission(mission))
+        return "";
+    return ' <span style="color:#33cc33">[</span><span style="color:#ffffff">Repeatable</span><span style="color:#33cc33">]</span>';
+};
+
+//On/Off toggle on a settings row - same size and spacing as page 1 (rows 125 apart from 220, buttons 200 x 50 from 925)
+phone.settingsToggle = function (row, key, isOn) {
+    var top = 220 + (row * 125);
+    nav.button({
+        "type": "zbtn",
+        "name": "phone_setting_" + key + "_on",
+        "left": 925,
+        "top": top,
+        "width": 200,
+        "height": 50,
+        "image": "999_phone/d_on_" + (isOn ? "active" : "inactive") + ".png",
+    }, 9999);
+    nav.button({
+        "type": "zbtn",
+        "name": "phone_setting_" + key + "_off",
+        "left": 1125,
+        "top": top,
+        "width": 200,
+        "height": 50,
+        "image": "999_phone/d_off_" + (isOn ? "inactive" : "active") + ".png",
+    }, 9999);
+    phone.addToggleOffEdge("phone_setting_" + key + "_off", 1125, top, 200, 50);
+};
+
+//d_off is the middle button in Settings, so its graphic has no right edge.
+//Round its right corners and draw a white rounded edge that matches the left side of d_on.
+//Measured on a 31.25px-high button: corner radius ~5.6, side border ~1.7, top/bottom line ~1.1 game px.
+phone.addToggleOffEdge = function (name, left, top, width, height) {
+    var k = height / 31.25;
+    var edgeRadius = 5.6 * k * g.ratio;
+    $('[data-name="' + name + '"]').css({
+        "border-top-right-radius": edgeRadius + "px",
+        "border-bottom-right-radius": edgeRadius + "px"
+    });
+    $('#room-buttons').append('<div data-name="' + name + '_edge" style="position:absolute; pointer-events:none; z-index:3; box-sizing:border-box; ' +
+        'left:' + (left * g.ratio) + 'px; top:' + (top * g.ratio) + 'px; ' +
+        'width:' + (width * g.ratio) + 'px; height:' + (height * g.ratio) + 'px; ' +
+        'border-style:solid; border-color:#ffffff; ' +
+        'border-width:' + (1.1 * k * g.ratio) + 'px ' + (1.7 * k * g.ratio) + 'px ' + (1.1 * k * g.ratio) + 'px 0; ' +
+        'border-top-right-radius:' + edgeRadius + 'px; border-bottom-right-radius:' + edgeRadius + 'px;"></div>');
+};
 
 phone.pictures = function () {
     phone.clear(false);
@@ -903,18 +1367,35 @@ phone.characters = function () {
     phone.clear(false);
     phone.showPanel("999_phone/rel_bg.jpg");
     
+    //Characters are listed alphabetically by the name on their card; Main Story and you (Me) stay first,
+    //then characters with missions still to do, then ones only waiting on Not Implemented steps, then characters whose missions are all done
+    let shown = sc.char.filter(function (c) { return c.show; });
+    let pinned = ["mainstory", "me"];
+    //in progress (white name) first, then waiting on Not Implemented steps (yellow), then all done (green)
+    let done = {};
+    shown.forEach(function (c) { done[c.name] = phone.charNameWaiting(c) ? 1 : (phone.charNameDone(c) ? 2 : 0); });
+    shown.sort(function (a, b) {
+        let pa = pinned.indexOf(a.name), pb = pinned.indexOf(b.name);
+        if (pa > -1 || pb > -1)
+            return (pa > -1 ? pa : 99) - (pb > -1 ? pb : 99);
+        if (done[a.name] !== done[b.name])
+            return done[a.name] - done[b.name];
+        return String(a.display).localeCompare(String(b.display), undefined, { sensitivity: "base" });
+    });
+    //keep the page in range (a quick double click on Prev/Next could push it below 0 or past the last page,
+    //which drew an empty screen with no buttons) - pages start at 0, 18, 36...
+    if (typeof phone.charPointer !== "number" || isNaN(phone.charPointer) || phone.charPointer < 0)
+        phone.charPointer = 0;
+    if (phone.charPointer >= shown.length)
+        phone.charPointer = Math.max(0, Math.floor((shown.length - 1) / 18) * 18);
+    phone.charPointer -= phone.charPointer % 18;
     let j = 0;
-    let i;
-    let showCharcterCounter = 0;
-    for (i = 0; i < sc.char.length; i++) {
-        if (sc.char[i].show) {
-            if (showCharcterCounter >= phone.charPointer && j < 18) {
-                phone.addCharacterCard(sc.char[i], Math.floor(j / 6), j % 6);
-                j++;
-            }
-            showCharcterCounter++;
-        }
+    for (let k = phone.charPointer; k < shown.length && j < 18; k++) { //18 cards a page from the sorted list (was drawn straight from sc.char in its stored order)
+        phone.addCharacterCard(shown[k], Math.floor(j / 6), j % 6);
+        j++;
     }
+    if (shown.length > phone.charPointer + 18)
+        j = 18; //more on the next page
     let prevexists = phone.charPointer > 0;
     let nextexist = j > 17;
     nav.button({
@@ -963,6 +1444,7 @@ phone.drawMainStory = function () {
     }
 };
 phone.characterSelect = function (name) {
+    sc.syncSissyClasses(); //keep Mistress Martha's class missions up to date
     phone.clear(false);
     phone.backbutton("phone_rel");
 
@@ -989,6 +1471,7 @@ phone.characterSelect = function (name) {
             hex: "#ffffff",
             text: thisChar.display
         }, 1);
+        phone.fitLastLine(750); //long names (e.g. Mistress Martha) shrink to fit the 250-wide card, like the name box on other pages
     }
     else {
         nav.inputbox({
@@ -1054,8 +1537,10 @@ phone.characterSelect = function (name) {
             "top": 680 + (i*22),
             font: 20,
             hex: thisTimeline.subList[i].current ? "#FF76FF" : "#ffffff",
-            text: thisTimeline.subList[i].hstart + ":00 " + thisTimeline.subList[i].hend + ":00 " + thisTimeline.subList[i].room
+            text: thisTimeline.subList[i].hstart + ":00 " + thisTimeline.subList[i].hend + ":00 " + g.roomNameText(thisTimeline.subList[i].room) //fix: Ralph's house rooms use her initial after the rename
         }, 1);
+        $('#room-buttons .resize-font').last().css("white-space", "nowrap");
+        phone.fitLastLine(785, 12); //long room names (e.g. Bimbo's Living Room) shrink so they don't run into the mission list
     }
     if (name === "me") {
             var locked = '<span style="color:#cc3333">Locked</span>';
@@ -1078,11 +1563,12 @@ phone.characterSelect = function (name) {
                 "Panties and bra are optional: " + (qdress.st[9].ach ? unlocked : locked) + "<br/>" +
                 "Work as a whore: " + (qdress.st[23].ach ? unlocked : locked) + "<br/>" +
                 "Lewd in public: " + (qdress.st[10].ach ? unlocked : locked) + "<br/>";
+            //the Missy message below is two lines when locked, so the list starts one line lower
             nav.t({
                 type: "zimg",
                 name: "phone_charselx",
                 "left": 850,
-                "top": 240,
+                "top": sissy.st[0].ach ? 240 : 275, //fix: the locked Missy message is 2 lines, so the list starts lower and doesn't overlap it
                 font: 30,
                 hex: "#ffffff",
                 text: metxt
@@ -1095,7 +1581,7 @@ phone.characterSelect = function (name) {
                 "top": 180,
                 font: 30,
                 hex: "#ffffff",
-                text: "To unlock and grow you must prove to Missy you deserve it. Keep working. "
+                text: "To unlock and grow you must prove to Missy<br/>you deserve it. Keep working." //2 lines so it stays inside the phone screen
             }, 9999);
         }
         else {
@@ -1155,92 +1641,59 @@ phone.characterSelect = function (name) {
             text: mtxt
         }, 9999);
     }
-    if ((name === "p" || name === "martha") && !sissy.st[21].ach) {
-        switch (name) {
-            case "p":
-                var ptxt = "Pink Room: <br />Must graduate from the Sissy School.";
-                nav.t({
-                    type: "zimg",
-                    name: "phone_charselx",
-                    "left": 850,
-                    "top": 180,
-                    font: 30,
-                    hex: "#ffffff",
-                    text: ptxt
-                }, 9999);
-                break;
-            case "martha":
-                if (gv.get("sissySchoolClass") === "finalx") {
-                    var m1txtss = "Sissy School Final! <br/>" +
-                        "Days left: " + future.get("sissyfinal") + "<br/>" +
-                        "1. Friday Night: Strip at the strip club<br/>" +
-                        "2. Saturday Night: Visit the Pink Room at Missy's<br/> &nbsp;&nbsp;&nbsp;&nbsp; before " + nav.convertTime(18, 0) + "<br/>" +
-                        "3. At the fast food restaurant get a boy's phone number. <br/>" +
-                        "4. Get as many creampies as you can!";
-                    nav.t({
-                        type: "zimg",
-                        name: "phone_charselx",
-                        "left": 850,
-                        "top": 180,
-                        font: 30,
-                        hex: "#ffffff",
-                        text: m1txtss
-                    }, 9999);
-                }
-                else {
-                    var m1txt = "Classes completed: <br/>";
-                    var m2txt = "Classes not taken: <br/>";
-                    var c1 = new Array();
-                    var c2 = new Array();
-                    for (let mi = 0; mi < 8; mi++) {
-                        c1.push("");
-                        c2.push("");
-                    }
-                    for (let mi = 0; mi < sissy.st.length; mi++) {
-                        if (sissy.st[mi].active && sissy.st[mi].y > 0 && sissy.st[mi].y < 7) {
-                            if (sissy.st[mi].ach)
-                                c1[sissy.st[mi].y] += sissy.st[mi].name + ", ";
-                            else {
-                                c2[sissy.st[mi].y] += sissy.st[mi].name + ", ";
-                            }
-                        }
-                    }
-                    for (let mi = 1; mi < 7; mi++) {
-                        if (c1[mi].length > 0) {
-                            c1[mi] = c1[mi].replace(/,\s*$/, "");
-                            m1txt += g.linebreak(c1[mi], 50) + "<br/>";
-                        }
-                        if (c2[mi].length > 0) {
-                            c2[mi] = c2[mi].replace(/,\s*$/, "");
-                            m2txt += g.linebreak(c2[mi], 50) + "<br/>";
-                        }
-                    }
-
-                    nav.t({
-                        type: "zimg",
-                        name: "phone_charselx",
-                        "left": 850,
-                        "top": 180,
-                        font: 30,
-                        hex: "#ffffff",
-                        text: m1txt + "<br /><br />" + m2txt
-                    }, 9999);
-                }
-                break;
-        }
-    }
-    else {
+    //Mistress Martha and Ms. Pussywinks use the normal mission list (the "must graduate" text is now a note on The Pink Room)
+    {
         for (i = 0; i < sc.charMission.length; i++) {
             if (sc.charMission[i].name === thisChar.name) {
-                for (j = 0; j < sc.charMission[i].mission.length; j++) {
+                //mission order (2026-11-24): by completion, then A to Z by title inside each group -
+                //In Progress, Not Started, done (Completed / Failed / Closed), only Not Implemented steps left,
+                //and missions ruled out by another path at the very bottom (before: only that last group was moved down,
+                //the rest kept the order they are defined in supportingChar.js)
+                var missionOrder = [];
+                var charName = sc.charMission[i].name;
+                var missionList = sc.charMission[i].mission;
+                var missionRank = function (m) {
+                    if (sc.isAltPathMission(charName, m.missionName)) return 4;
+                    if (phone.missionWaitingOnNI(m)) return 3;
+                    if (m.mStatus > 99) return 2;
+                    if (m.mStatus > 0) return 0;
+                    return 1;
+                };
+                for (j = 0; j < missionList.length; j++)
+                    missionOrder.push(j);
+                missionOrder.sort(function (a, b) {
+                    var r = missionRank(missionList[a]) - missionRank(missionList[b]);
+                    if (r !== 0)
+                        return r;
+                    return String(missionList[a].title).localeCompare(String(missionList[b].title), undefined, { sensitivity: "base" });
+                });
+                for (var row = 0; row < missionOrder.length; row++) {
+                    j = missionOrder[row];
                     var tcolor = "#ffffff";
                     var mstatus;
                     switch (sc.mStatus(sc.charMission[i].mission[j].mStatus)) {
-                        case "Failed": tcolor = "#cc3333"; mstatus = " [Fail]"; break;
+                        case "Failed":
+                            tcolor = "#cc3333";
+                            mstatus = " [Fail]";
+                            if (sc.isAltPathMission(sc.charMission[i].name, sc.charMission[i].mission[j].missionName)) {
+                                mstatus = ' [<span style="color:#ffffff">' + sc.altPathLabel(sc.charMission[i].name, sc.charMission[i].mission[j].missionName) + '</span>]'; //words white, brackets grey
+                                tcolor = "#999999"; //another path chosen: standard grey, not red
+                            }
+                            break;
                         case "Completed": tcolor = "#33cc33"; mstatus = " ☑"; break;
-                        case "Not Started": tcolor = "#999999"; mstatus = ""; break;
+                        //Not Started but ruled out: show [Another Path Chosen] (or [Ranch Closed])
+                        case "Not Started": tcolor = "#999999"; mstatus = sc.isAltPathMission(sc.charMission[i].name, sc.charMission[i].mission[j].missionName) ? ' [<span style="color:#ffffff">' + sc.altPathLabel(sc.charMission[i].name, sc.charMission[i].mission[j].missionName) + '</span>]' : ""; break;
                         case "Closed": tcolor = "#3e3e5c"; mstatus = ""; break;
-                        default: tcolor = "#ffffff"; mstatus = "";
+                        default:
+                            tcolor = "#ffffff"; mstatus = "";
+                            if (sc.isClosedByStory(sc.charMission[i].name, sc.charMission[i].mission[j].missionName)) { //In Progress but closed by the story
+                                tcolor = "#999999";
+                                mstatus = ' [<span style="color:#ffffff">' + sc.altPathLabel(sc.charMission[i].name, sc.charMission[i].mission[j].missionName) + '</span>]';
+                            }
+                    }
+                    if (sc.isSecretFailedMission(sc.charMission[i].mission[j])) {
+                        tcolor = "#cc3333"; //every step left needs the secret unknown - shown as failed
+                        mstatus = " [Failed - Secret Known]";
                     }
                     
                     if (sc.charMission[i].mission[j].missionName.startsWith("*")) {
@@ -1250,16 +1703,17 @@ phone.characterSelect = function (name) {
                             type: "zimg",
                             name: "phone_charsel_",
                             "left": 850,
-                            "top": 180 + (j * 80),
+                            "top": 180 + (row * 80), //row = position after sorting Another Path missions to the bottom (was j)
                             font: 30,
                             hex: tcolor,
-                            text: sc.charMission[i].mission[j].title + mstatus
+                            //added [Repeatable] and [Not Fully Implemented Yet] tags after the mission title
+                            text: sc.charMission[i].mission[j].title + mstatus + phone.repeatableTag(sc.charMission[i].mission[j]) + phone.notImplementedTag(sc.charMission[i].mission[j])
                         }, 9999);
                         nav.t({
                             type: "zimg",
                             name: "phone_charsel_",
                             "left": 1500,
-                            "top": 180 + (j * 80),
+                            "top": 180 + (row * 80), //row = position after sorting Another Path missions to the bottom (was j)
                             font: 10,
                             hex: tcolor,
                             text: "Ending"
@@ -1268,7 +1722,7 @@ phone.characterSelect = function (name) {
                             type: "zimg",
                             name: "phone_charsel_",
                             "left": 900,
-                            "top": 220 + (j * 80),
+                            "top": 220 + (row * 80), //row = position after sorting Another Path missions to the bottom (was j)
                             font: 20,
                             hex: "#999999",
                             text: sc.charMission[i].mission[j].desc
@@ -1279,16 +1733,17 @@ phone.characterSelect = function (name) {
                             type: "zimg",
                             name: "phone_charsel_",
                             "left": 850,
-                            "top": 180 + (j * 80),
+                            "top": 180 + (row * 80), //row = position after sorting Another Path missions to the bottom (was j)
                             font: 30,
                             hex: tcolor,
-                            text: sc.charMission[i].mission[j].title + mstatus
+                            //added [Repeatable] and [Not Fully Implemented Yet] tags after the mission title
+                            text: sc.charMission[i].mission[j].title + mstatus + phone.repeatableTag(sc.charMission[i].mission[j]) + phone.notImplementedTag(sc.charMission[i].mission[j])
                         }, 9999);
                         nav.t({
                             type: "zimg",
                             name: "phone_charsel_",
                             "left": 900,
-                            "top": 220 + (j * 80),
+                            "top": 220 + (row * 80), //row = position after sorting Another Path missions to the bottom (was j)
                             font: 20,
                             hex: "#999999",
                             text: sc.charMission[i].mission[j].desc
@@ -1297,7 +1752,7 @@ phone.characterSelect = function (name) {
                             type: "zimg",
                             name: "phone_charsel_",
                             "left": 900,
-                            "top": 220 + (j * 80),
+                            "top": 220 + (row * 80), //row = position after sorting Another Path missions to the bottom (was j)
                             font: 20,
                             hex: "#ffffff",
                             text: sc.charMission[i].mission[j].desc
@@ -1308,7 +1763,7 @@ phone.characterSelect = function (name) {
                         "type": "zbtn",
                         "name": "phone_charsel_" + sc.charMission[i].name + "_" + sc.charMission[i].mission[j].missionName,
                         "left": 800,
-                        "top": 180 + (j * 80),
+                        "top": 180 + (row * 80), //row = position after sorting Another Path missions to the bottom (was j)
                         "width": 40,
                         "height": 40,
                         "image": "999_phone/char_left.png",
@@ -1317,6 +1772,8 @@ phone.characterSelect = function (name) {
             }
         }
     }
+    //keep long text inside the phone screen: wrap it at the screen's right edge (panel ends at 451 + 1185)
+    $('[data-name="phone_charselx"]').css({ "max-width": ((451 + 1185 - 850 - 25) * g.ratio) + "px", "white-space": "normal" });
 }
 
 phone.thankyou = function () {
@@ -1421,52 +1878,40 @@ phone.cheat = function () {
     phone.clear(false);
 
     if (gv.get("cheatMode")) {
-        phone.showPanel("999_phone/cheat_bg.jpg");
+        //Cheats landing page (laid out like the original page 1): Login to Patreon top left, then the
+        //Abilities, Skills and Body buttons, then the Money line. Next Page (bottom right) still goes to page 2.
+        //Uses the background without the icons, since the rows no longer match them.
+        phone.showPanel("999_phone/cheat_bg2.jpg");
+        phone.cheatPage = "landing";
 
-        var levelToMod = ["fitness", "charisma", "strength"];
+        //Login to Patreon - does nothing for now
+        phone.cheatTextBtn("phone_cheatmod_patreon", "Login to Patreon", 520, 175, 260, false);
 
+        phone.cheatPurpleBtn("phone_cheatmod_abilities", "Abilities and Talents", 700, 290, 750, 70, 36);
+        phone.cheatPurpleBtn("phone_cheatmod_skills", "Skills", 700, 445, 750, 70, 36);
+        phone.cheatPurpleBtn("phone_cheatmod_bodyland", "Body", 700, 600, 750, 70, 36);
+
+        //Money - moved here from the original page 1, same layout
         nav.t({
             type: "zimg",
             name: "phone_cheatmod",
             left: 700,
-            top: 300,
+            top: 765,
             font: 40,
             hex: "#ffffff",
             text: "Money: $" + gv.get("money")
         }, 1);
-
         nav.button({
             "type": "zbtn",
             "name": "phone_cheatmod_money",
             "left": 1200,
-            "top": 300,
+            "top": 765,
             "width": 250,
             "height": 50,
             "image": "999_phone/cheat_money.png",
         }, 9999);
 
-        for (var i = 0; i < levelToMod.length; i++) {
-            var l = levels.st[levels.i(levelToMod[i])];
-            nav.t({
-                type: "zimg",
-                name: "phone_cheatmod",
-                left: 700,
-                top: 300 + ((i + 1) * 155),
-                font: 40,
-                hex: "#ffffff",
-                text: l.d + " Level: " + l.l
-            }, 1);
-
-            nav.button({
-                "type": "zbtn",
-                "name": "phone_cheatmod_level_" + levelToMod[i],
-                "left": 1200,
-                "top": 300 + ((i + 1) * 155),
-                "width": 250,
-                "height": 50,
-                "image": "999_phone/cheat_stats.png",
-            }, 9999);
-        }
+        phone.settingsPageButton("phone_cheatmod_next", "999_phone/settings_next.png");
     }
     else {
         phone.showPanel("999_phone/cheat_bg1.jpg");
@@ -1482,6 +1927,203 @@ phone.cheat = function () {
         }, 9999);
     }
 };
+
+//a button styled like the purple "+ 100" buttons (same gradient, white border, rounded)
+phone.cheatPurpleBtn = function (name, text, left, top, width, height, font) {
+    nav.t({ type: "zbtn", name: name, left: left, top: top, font: font, hex: "#ffffff", text: text }, 9999);
+    $('[data-name="' + name + '"]').last().css({
+        "width": (width * g.ratio) + "px", "height": (height * g.ratio) + "px", "line-height": ((height - 4) * g.ratio) + "px",
+        "text-align": "center", "white-space": "nowrap", "box-sizing": "border-box", "cursor": "pointer",
+        "border-radius": (8 * g.ratio) + "px", "border": (2 * g.ratio) + "px solid #ffffff",
+        "background": "linear-gradient(to bottom, #c923c3, #3e063c)"
+    });
+};
+
+//Max Level for the cheats: the level's own cap (Fitness has no real cap, 999, so it uses the normal 15)
+phone.cheatMaxLevel = function (lv) {
+    return lv.cap > 100 ? LEVEL_CAP_DEFAULT : lv.cap;
+};
+
+//+100 points (levels that don't level up from points - Cheerleader - go up one level instead)
+phone.cheatAddLevel = function (n) {
+    var lv = levels.st[levels.i(n)];
+    if (lv.autoLevel)
+        levels.mod(n, 100);
+    else if (lv.l < phone.cheatMaxLevel(lv))
+        lv.l++;
+};
+
+//Max Level: level up through levels.mod so its side effects still happen (Fitness raises max energy)
+phone.cheatMaxOut = function (n) {
+    var lv = levels.st[levels.i(n)];
+    var max = phone.cheatMaxLevel(lv);
+    var guard = 0;
+    while (lv.l < max && lv.autoLevel && guard++ < 200)
+        levels.mod(n, levels.getPointsCapForLevel(lv) - lv.c);
+    if (lv.l < max)
+        lv.l = max;
+};
+
+//Abilities and Talents page - grouped like the stats screen: Abilities (Fitness, Strength, Charisma, Intelligence)
+//and Talents (Cheerleader, Stripping, Whore), each with + 100 and Max Level
+phone.cheatAbilityList = ["fitness", "strength", "charisma", "pi"];
+phone.cheatTalentList = ["cheer", "stripper", "whore"];
+phone.cheatAbilities = function () {
+    phone.clear(false);
+    phone.showPanel("999_phone/cheat_bg2.jpg");
+    phone.cheatPage = "abilities";
+    var row = function (n, top) {
+        var lv = levels.st[levels.i(n)];
+        nav.t({ type: "zimg", name: "phone_cheatmod", left: 600, top: top, font: 34, hex: "#ffffff", text: lv.d + " Level: " + lv.l }, 1);
+        phone.cheatPurpleBtn("phone_cheatmod_add_" + n, "+ 100", 1180, top, 200, 46, 28);
+        phone.cheatPurpleBtn("phone_cheatmod_max_" + n, "Max Level", 1395, top, 200, 46, 24);
+    };
+    nav.t({ type: "zimg", name: "phone_cheatmod", left: 520, top: 180, font: 30, hex: "#e75480", text: "Abilities" }, 1);
+    $.each(phone.cheatAbilityList, function (i, n) { row(n, 235 + (i * 72)); });
+    nav.t({ type: "zimg", name: "phone_cheatmod", left: 520, top: 525, font: 30, hex: "#e75480", text: "Talents" }, 1);
+    $.each(phone.cheatTalentList, function (i, n) { row(n, 580 + (i * 72)); });
+    phone.settingsPageButton("phone_cheatmod_landprev", "999_phone/settings_prev.png");
+};
+
+//Skills page - the stats screen's Skills (except Beast) plus Sissy, in two columns, + 100 and Max on each
+//(Intelligence and the Talents moved to the Abilities and Talents page, matching the stats screen)
+phone.cheatSkillList = ["makeup", "heels", "oral", "anal", "sub", "dom", "cum", "piss", "fame", "xdress"];
+phone.cheatSkills = function () {
+    phone.clear(false);
+    phone.showPanel("999_phone/cheat_bg2.jpg");
+    phone.cheatPage = "skills";
+    //"Skills" heading, same as the Abilities / Talents headings
+    nav.t({ type: "zimg", name: "phone_cheatmod", left: 520, top: 180, font: 30, hex: "#e75480", text: "Skills" }, 1);
+    var perCol = Math.ceil(phone.cheatSkillList.length / 2);
+    $.each(phone.cheatSkillList, function (i, n) {
+        var lv = levels.st[levels.i(n)];
+        var col = Math.floor(i / perCol);
+        var left = col === 0 ? 510 : 1065;
+        var top = 240 + ((i % perCol) * 92); //starts under the heading
+        nav.t({ type: "zimg", name: "phone_cheatmod", left: left, top: top + 6, font: 26, hex: "#ffffff", text: lv.d + ": " + lv.l }, 1);
+        phone.cheatPurpleBtn("phone_cheatmod_add_" + n, "+ 100", left + 280, top, 110, 44, 22);
+        phone.cheatPurpleBtn("phone_cheatmod_max_" + n, "Max", left + 400, top, 110, 44, 22);
+    });
+    phone.settingsPageButton("phone_cheatmod_landprev", "999_phone/settings_prev.png");
+};
+
+//Cheats page 2 - five rows 120 apart; label on top, buttons under it
+phone.cheatPenisSizes = ["Porn star", "Large", "Average", "Small", "Clitty"]; //cl.c.cock 0-4 (5 = pussy, never set from here)
+phone.cheatBreastSizes = ["Flat", "A", "B", "C", "D", "DD", "DDD"];      //cl.c.chest 0-6, named as real cup sizes
+phone.cheatAssSizes = ["Manly", "Tiny", "Trim", "Phat Ass!", "Plump", "Porn star"]; //cl.c.leg 0-5, the game's own names (cl.buttsize)
+phone.cheatLipSizes = ["Thin", "Plump", "Bimbo"];                                   //cl.c.lips 0-2, the game's own names (cl.lipsize); "Bimbo cock sucker" shortened to "Bimbo" for the button
+phone.cheatRows = [270, 390, 510, 630, 750];
+phone.cheatLabel = function (row, text) {
+    nav.t({ type: "zimg", name: "phone_cheatmod", left: 520, top: phone.cheatRows[row] - 30, font: 40, hex: "#ffffff", text: text }, 1);
+};
+//a text button styled like the Next Page button: dark, rounded, white text; the current choice is the purple of the "+ 100" buttons (was pink)
+phone.cheatTextBtn = function (name, text, left, top, width, active) {
+    nav.t({ type: "zbtn", name: name, left: left, top: top, font: 24, hex: "#ffffff", text: text }, 9999);
+    $('[data-name="' + name + '"]').last().css({
+        "width": (width * g.ratio) + "px", "height": (44 * g.ratio) + "px", "line-height": (44 * g.ratio) + "px",
+        "text-align": "center", "white-space": "nowrap", "box-sizing": "border-box", "cursor": "pointer",
+        "border-radius": (8 * g.ratio) + "px", "border": (2 * g.ratio) + "px solid " + (active ? "#ffffff" : "#555555"),
+        "background": active ? "linear-gradient(to bottom, #c923c3, #3e063c)" : "#2b2b2b"
+    });
+};
+//On / Off pair, same images as the Settings toggles
+phone.cheatOnOff = function (key, top, isOn) {
+    nav.button({ "type": "zbtn", "name": "phone_cheatmod_" + key + "_on", "left": 520, "top": top, "width": 200, "height": 50,
+        "image": "999_phone/d_on_" + (isOn ? "active" : "inactive") + ".png" }, 9999);
+    nav.button({ "type": "zbtn", "name": "phone_cheatmod_" + key + "_off", "left": 720, "top": top, "width": 200, "height": 50,
+        "image": "999_phone/d_off_" + (isOn ? "inactive" : "active") + ".png" }, 9999);
+    phone.addToggleOffEdge("phone_cheatmod_" + key + "_off", 720, top, 200, 50);
+};
+
+//Cheats page 2 - Show Hidden Tasks and Chastity
+phone.cheat2 = function () {
+    phone.clear(false);
+    phone.showPanel("999_phone/cheat_bg2.jpg");
+    var rows = phone.cheatRows;
+
+    //Line one: Show Hidden Tasks (moved here from page 1)
+    phone.cheatLabel(0, "Show Hidden Tasks");
+    phone.cheatOnOff("hidden", rows[0] + 25, gv.get("showHiddenTasks"));
+
+    //Line two: Chastity On/Off - On puts back the last chastity device you wore
+    phone.cheatLabel(1, "Chastity");
+    phone.cheatOnOff("chast", rows[1] + 25, cl.c.chastity !== null);
+
+    //Line three: Adjust Time (steps to the top of the hour) - [ - ] [ time ] [ + ] moves the clock one hour, within today (00:xx to 23:xx).
+    //The time follows the 12h/24h setting and sits in a fixed-width box so it doesn't change size between them.
+    phone.cheatLabel(2, "Adjust Time");
+    var timeTop = rows[2] + 28;
+    phone.cheatTextBtn("phone_cheatmod_time_minus", "-", 520, timeTop, 60, false);
+    var timeTxt = nav.friendlyTime(); //same format as the game clock: "01:12 PM" (12h) or "13:12" (24h)
+    nav.t({ type: "zimg", name: "phone_cheatmod", left: 590, top: timeTop, font: 24, hex: "#ffffff", text: timeTxt }, 1);
+    $('[data-name="phone_cheatmod"]').last().css({
+        "width": (150 * g.ratio) + "px", "height": (44 * g.ratio) + "px", "line-height": (44 * g.ratio) + "px",
+        "text-align": "center", "white-space": "nowrap", "box-sizing": "border-box",
+        "border-radius": (8 * g.ratio) + "px", "border": (2 * g.ratio) + "px solid #555555", "background": "#1b1b1b"
+    });
+    phone.cheatTextBtn("phone_cheatmod_time_plus", "+", 750, timeTop, 60, false);
+
+    //Line four: Day of Week - same layout: [ - ] [ day ] [ + ] shows one day at a time, Sunday to Saturday,
+    //and rolls over at the end of the week (time stays the same).
+    //It only changes the date; it doesn't run a night's sleep, so daily resets and countdowns don't happen.
+    phone.cheatLabel(3, "Day of Week");
+    var dayTop = rows[3] + 28;
+    phone.cheatTextBtn("phone_cheatmod_day_minus", "-", 520, dayTop, 60, false);
+    var dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    nav.t({ type: "zimg", name: "phone_cheatmod", left: 590, top: dayTop, font: 24, hex: "#ffffff", text: dayNames[g.dt.getDay()] }, 1);
+    $('[data-name="phone_cheatmod"]').last().css({
+        "width": (150 * g.ratio) + "px", "height": (44 * g.ratio) + "px", "line-height": (44 * g.ratio) + "px",
+        "text-align": "center", "white-space": "nowrap", "box-sizing": "border-box",
+        "border-radius": (8 * g.ratio) + "px", "border": (2 * g.ratio) + "px solid #555555", "background": "#1b1b1b"
+    });
+    phone.cheatTextBtn("phone_cheatmod_day_plus", "+", 750, dayTop, 60, false);
+
+    //Previous Page (to page 1) sits left of Next Page (to the body page)
+    nav.button({ "type": "zbtn", "name": "phone_cheatmod_prev", "left": 1191, "top": 875, "width": 200, "height": 50, "image": "999_phone/settings_prev.png" }, 9999);
+    phone.settingsPageButton("phone_cheatmod_body2", "999_phone/settings_next.png");
+};
+
+//Cheats body page - every body change on one page (also reached straight from page 1's Body button).
+//Each button changes your actual body, so dialog and your portrait follow it.
+phone.cheatBody = function () {
+    phone.clear(false);
+    phone.showPanel("999_phone/cheat_bg2.jpg");
+    var rows = phone.cheatRows;
+    var i;
+
+    //Penis Size - no pussy option
+    if (cl.c.cock === 5) {
+        phone.cheatLabel(0, "Penis Size: Pussy (can't be changed here)");
+    }
+    else {
+        phone.cheatLabel(0, "Penis Size");
+        //shown smallest to biggest (Clitty ... Porn star); each button still sets its own cl.c.cock value
+        for (i = 0; i < phone.cheatPenisSizes.length; i++) {
+            var cockVal = phone.cheatPenisSizes.length - 1 - i;
+            phone.cheatTextBtn("phone_cheatmod_cock_" + cockVal, phone.cheatPenisSizes[cockVal], 520 + (i * 210), rows[0] + 28, 200, cl.c.cock === cockVal);
+        }
+    }
+
+    //Breast Size - 7 sizes, Flat to DDD
+    phone.cheatLabel(1, "Breast Size");
+    for (i = 0; i < phone.cheatBreastSizes.length; i++)
+        phone.cheatTextBtn("phone_cheatmod_chest_" + i, phone.cheatBreastSizes[i], 520 + (i * 150), rows[1] + 28, 140, cl.c.chest === i);
+
+    //Ass Size
+    phone.cheatLabel(2, "Ass Size");
+    for (i = 0; i < phone.cheatAssSizes.length; i++)
+        phone.cheatTextBtn("phone_cheatmod_leg_" + i, phone.cheatAssSizes[i], 520 + (i * 175), rows[2] + 28, 165, cl.c.leg === i);
+
+    //Lip Size
+    phone.cheatLabel(3, "Lip Size");
+    for (i = 0; i < phone.cheatLipSizes.length; i++)
+        phone.cheatTextBtn("phone_cheatmod_lips_" + i, phone.cheatLipSizes[i], 520 + (i * 260), rows[3] + 28, 250, cl.c.lips === i);
+
+    //Previous Page goes back to the page you came from (page 1 via Body, page 2 via Next Page)
+    phone.settingsPageButton("phone_cheatmod_prev2", "999_phone/settings_prev.png");
+};
+
+
 
 phone.purity = function () {
     phone.clear(false);
@@ -1661,6 +2303,15 @@ room9999.btnclick = function (name) {
             case "phone_ach_draw":
                 phone.drawAchievements();
                 break;
+            //achievements Other tab split over 2 pages
+            case "phone_ach_next":
+                phone.achPage = (phone.achPage || 0) + 1;
+                phone.drawAchievements();
+                break;
+            case "phone_ach_prev":
+                phone.achPage = Math.max(0, (phone.achPage || 0) - 1);
+                phone.drawAchievements();
+                break;
             case "phone_time":
                 phone.passtime();
                 break;
@@ -1696,3 +2347,35 @@ $(document).on('keyup', function (e) {
     if (phone.close())
         e.preventDefault();
 });
+
+//Cheat menu press feedback: while the Next / Previous / Body page buttons or a + / - button is held down,
+//it turns the same purple as the "+ 100" buttons on cheat page 1. It goes back to normal as soon as it's let go.
+//The page buttons are pictures, so they swap to a purple "_down" copy of the same picture while held.
+phone.cheatPressNames = ["phone_cheatmod_next", "phone_cheatmod_prev", "phone_cheatmod_prev2", "phone_cheatmod_body", "phone_cheatmod_body2", "phone_cheatmod_landprev", "phone_cheatmod_patreon",
+    "phone_cheatmod_time_minus", "phone_cheatmod_time_plus", "phone_cheatmod_day_minus", "phone_cheatmod_day_plus"];
+phone.cheatPressRelease = function () {
+    $('[data-cheatpressed="1"]').each(function () {
+        var el = $(this);
+        if (this.tagName === "IMG")
+            el.attr("src", el.attr("data-cheatsrc"));
+        else
+            el.css("background", el.attr("data-cheatbg"));
+        el.removeAttr("data-cheatpressed");
+    });
+};
+$(document).on("mousedown.cheatpress touchstart.cheatpress", "[data-name]", function () {
+    var name = $(this).attr("data-name");
+    if (phone.cheatPressNames.indexOf(name) === -1) return;
+    var el = $(this);
+    el.attr("data-cheatpressed", "1");
+    if (this.tagName === "IMG") {
+        el.attr("data-cheatsrc", el.attr("src"));
+        el.attr("src", el.attr("src").replace(/\.png($|\?)/, "_down.png$1"));
+    }
+    else {
+        el.attr("data-cheatbg", this.style.background);
+        el.css("background", "linear-gradient(to bottom, #c923c3, #3e063c)"); //purple of the "+ 100" buttons on cheat page 1
+    }
+});
+$(document).on("mouseup.cheatpress touchend.cheatpress touchcancel.cheatpress", phone.cheatPressRelease);
+$(document).on("mouseleave.cheatpress", "[data-cheatpressed]", phone.cheatPressRelease);

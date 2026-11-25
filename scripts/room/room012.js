@@ -656,6 +656,8 @@ room12.chatcatch = function (callback) {
             zcl.asshole(100, 400, 1, "", false);
             break;
         case "showerReset":
+            if (sc.getMissionTask("bigguy", "sissy", 4).complete) //Dick's "Extra hole": "You're such my bitch." (his shower visit)
+                sc.completeMissionTask("bigguy", "sissy", 5);
             room12.btnclick("shower");
             break;
         case "reset":

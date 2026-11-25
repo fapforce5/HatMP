@@ -108,6 +108,17 @@ privateChat.kill = function(){
     privateChat.resetButtons();
 };
 
+//Keep the chat box (portrait, text and answer buttons) and the room buttons along the bottom of the screen
+//to the right of the left sidebar so they never cover it. When the sidebar is hidden they use the full width again.
+privateChat.placeBox = function () {
+    var left = 0;
+    var side = $('.room-left');
+    if (side.length > 0 && side.is(":visible"))
+        left = side.offset().left + side.outerWidth();
+    $('.room-chatBox').css({ "left": left + "px", "width": "calc(100% - " + left + "px)" });
+    $('#room_footer').css({ "left": left + "px", "width": "calc(100% - " + left + "px)" });
+};
+
 privateChat.makeChat = function (entry, chatID, roomID) {
     if (entry !== null) {
         var thisSpeaker = privateChat.speakerInfo(entry.speaker);
@@ -116,6 +127,7 @@ privateChat.makeChat = function (entry, chatID, roomID) {
             $('#room_chatOverlay').show();
             //$('#char_charDisplay').hide();
         }
+        privateChat.placeBox(); //keep the chat box right of the left sidebar when a chat opens
         var counter = 0;
         privateChat.resetButtons();
         privateChat.hideNameCard();

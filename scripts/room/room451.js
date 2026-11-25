@@ -177,7 +177,8 @@ room451.btnclick = function (name) {
             break;
         case "stall1":
             if (sc.getTimeline("cecilia").thisRoom) {
-                if (sc.getMission("cecilia", "gloryhole").inProgress) {
+                //Her stall scene keeps playing after "Glory hole!" is Completed, until the cult closes it (ceciliaGloryClosed)
+                if (sc.getMission("cecilia", "gloryhole").inProgress || (sc.getMission("cecilia", "gloryhole").success && !gv.get("ceciliaGloryClosed"))) {
                     chat(14, 451);
                 }
                 else {
@@ -242,8 +243,8 @@ room451.btnclick = function (name) {
                     chat(59, 451);
                 }
                 else {
-                    if (gv.get("energy") < 20)
-                        chat(63, 451);
+                    if (gv.get("energy") < 20) //fix: offers energy items from the bag first (inv.energyPrompt); runs this choice again once there is enough
+                        inv.energyPrompt(20, function () { room451.btnclick(name); }, function () { chat(63, 451); });
                     else
                         invoker.invokeCurrent("chatcatch", "suck1");
                 }
@@ -316,8 +317,8 @@ room451.btnclick = function (name) {
 
             break;
         case "cecilia":
-            if (gv.get("energy") < 20)
-                chat(66, 451);
+            if (gv.get("energy") < 20) //fix: offers energy items from the bag first (inv.energyPrompt); runs this choice again once there is enough
+                inv.energyPrompt(20, function () { room451.btnclick(name); }, function () { chat(66, 451); });
             else
                 chat(46, 451);
             break;
@@ -1033,7 +1034,7 @@ room451.chat = function (chatID) {
             {
                 chatID: 7,
                 speaker: "cecilia",
-                text: "Oh ##me##, I'm so happy you're here. Want to shove you cock down my throat?",
+                text: "Oh ##me##, I'm so happy you're here. Want to shove your cock down my throat?", //fix: spelling/wording (was "Oh ##me##, I'm so happy you're here. Want to ...")
                 button: [
                     { chatID: 8, text: "Hmmmm", callback: "bj2" }
                 ]
@@ -1466,7 +1467,7 @@ room451.chat = function (chatID) {
                 chatID: 58,
                 speaker: "cecilia",
                 text: "Sorry, I promised the Cum gang I would be the center of their " +
-                    "gang bang. It's pretty rough crowd. I leave there smelling of piss, " +
+                    "gang bang. It's a pretty rough crowd. I leave there smelling of piss, " + //fix: spelling/wording (was "gang bang. It's pretty rough crowd. I leave t...")
                     "beer, cum, and musk and a bussy that doesn't close for a day. I " +
                     "would invite you, but it's a very private party. ",
                 button: [

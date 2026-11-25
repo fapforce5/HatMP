@@ -105,7 +105,7 @@ room803.btnclick = function (name) {
             else if (sc.getMissionTask("ralphsmom", "book", 1).notStarted) {
                 chat(45, 803);
             }
-            else if (sc.getMissionTask("ralphsmom", "book", 2).notStarted) {
+            else { //fix: keep this chat available after "Tell me even more" is ticked
                 if (sc.getLevel("ralphsmom") < 6) {
                     chat(50, 803);
                 }
@@ -611,6 +611,7 @@ room803.chatcatch = function (callback) {
             char.room(803);
             break;
         case "bed":
+            sc.completeMissionTask("ralphsmom", "book", 2); //fix: "Tell me even more" was never ticked
             nav.killall();
             char.changeMenu("hide", false, true);
             g.internal = {

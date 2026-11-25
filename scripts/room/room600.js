@@ -3,7 +3,7 @@
 var room600 = {};
 
 room600.main = function () {
-    if (g.gethourdecimal() > 3 && g.gethourdecimal() < 17) {
+    if (g.gethourdecimal() > 3 && g.gethourdecimal() < 20) { //fix: opens at 8 PM (was 17 = 5 PM, but the map only lets you in at night, from 8 PM)
         nav.bg("600_body/closed.jpg");
         chat(18, 600);
     }
@@ -263,7 +263,7 @@ room600.chat = function(chatID){
         {
             chatID: 18,
             speaker: "thinking",
-            text: "Oh. They're closed..",
+            text: "Oh. They're closed. They open at " + nav.convertTime(20, 0) + ".", //fix: says when it opens (follows the 12h/24h setting); was "Oh. They're closed.."
             button: [
                 { chatID: -1, text: "...", callback: "leave" },
             ]

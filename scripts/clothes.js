@@ -2119,6 +2119,8 @@ cl.display = function () {
         // not yet initialized, display refresh probably triggered while we are still on the start screen
         return;
     }
+    if (cl.c.chastity !== null && gv.i("lastChastity") > -1) //remember the last chastity device worn (cheat menu Chastity On)
+        gv.st[gv.i("lastChastity")].t = cl.c.chastity;
     var thisHair;
     $('.bladder-box').remove();
     $(".char-layer").css({

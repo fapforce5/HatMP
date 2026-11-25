@@ -1184,8 +1184,8 @@ room1005.btnclick = function (name) {
             trap.displayMenu("close");
             break;
         case "flee":
-            if (gv.get("energy") < 50)
-                chat(9, 1005);
+            if (gv.get("energy") < 50) //fix: offers energy items from the bag first (inv.energyPrompt); runs this choice again once there is enough
+                inv.energyPrompt(50, function () { room1005.btnclick(name); }, function () { chat(9, 1005); });
             else {
                 gv.mod("energy", -50);
                 chat(10, 1005);

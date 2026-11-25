@@ -58,8 +58,11 @@ room50.main = function () {
 room50.btnclick = function (name) {
     switch (name) {
         case "doorman":
-           if (sc.getMission("treyvon", "doorman").inProgress && cl.appearance() > 0)
+           if (sc.getMission("treyvon", "doorman").startedOrComplete && cl.appearance() > 0) { //mission now closes as Completed [Repeatable], so check started-or-complete
+                gv.set("doormanRepeat", true);
+                sc.completeMissionTask("treyvon", "doorman", 1); //first repeat lobby scene ticks the [Loop] step
                 chat(10, 50);
+            }
             else
                 chat(0, 50);
             break;

@@ -45,7 +45,7 @@ room975.main = function () {
             if (sc.getMission("lola", "*tom2").inProgress) {
                 g.internal.list.find(e => e.n === "lola").active = false;
             }
-            if (!sc.getMission("kinsey", "*post").inProgress) {
+            if (!sc.getMission("kinsey", "*post").startedOrSuccess) { //Owner can now be Completed - still counts
                 g.internal.list.find(e => e.n === "kinsey").active = false;
             }
             if (!sissy.st[10].ach) {

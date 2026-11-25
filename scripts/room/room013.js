@@ -333,7 +333,7 @@ room13.btnclick = function (name) {
                     sc.select("spin", "13_sisterRoom/icon_spinthebottle.png", 2);
                 if (sc.getMissionTask("lola", "games", 1).complete)
                     sc.select("tord", "13_sisterRoom/icon_truthordare.png", 3);
-                if (sc.getMission("lola", "date").inProgress && !g.isNight()) {
+                if ((sc.getMission("lola", "date").inProgress || sc.getMission("lola", "date").success) && !g.isNight()) { //fix: keep dates after Practice dates is Completed
                     sc.select("practiceDate", "13_sisterRoom/icon_practice.png", 4);
                 }
                 sc.select("dick", "13_sisterRoom/icon_dick.png", 5);
@@ -540,6 +540,7 @@ room13.btnclick = function (name) {
                     case 0: chat(10, 13); break;
                     case 1: chat(14, 13); break;
                     case 2: if (massageStep > 0) chat(17, 13); else chat(14, 13); break;
+					default: chat(24, 13); break; //fix: fallback chat so the switch never ends with no chat
                 }
             }
             break;
@@ -552,7 +553,8 @@ room13.btnclick = function (name) {
                 daily.set("evatalk");
                 switch (sc.taskGetStep("eva", "talk")) {
                     case 0: chat(26, 13); break;
-                    case 1: chat(33, 13);
+                    case 1: chat(33, 13); break;
+					default: chat(46, 13); break; //fix: case 1 fell through into this (missing break) - added break and a fallback
                 }
             }
             break;
@@ -1614,7 +1616,8 @@ room13.chatcatch = function (callback) {
             case "evatalk1":
                 char.addtime(20);
                 daily.set("evatalk");
-                sc.completeMissionTask("eva", "talk", 0, true);
+                sc.completeMissionTask("eva", "talk", 1, true);
+				sc.completeMission("eva", "talk", true); //fix: was ticking step 0 again; now ticks step 1 and completes "Get to know her better."
                 sc.startMission("eva", "massage");
                 sc.modLevel("eva", 27, 1);
                 char.room(13);
@@ -1632,6 +1635,12 @@ room13.chatcatch = function (callback) {
                 sc.modLevel("lola", 27, 4);
                 char.room(13);
                 break;
+			//added: Lola's last "Get to know her better." step (nothing ticked it before)
+			case "talkLola2":
+				sc.completeMissionTask("lola", "talk", 2, true);
+				sc.completeMission("lola", "talk", true);
+				char.room(13);
+				break;
             case "rollChrisma2":
                 charisma.init(g.internal.charisma, "massage2chanceWin", "massage2chanceLose", g.roomID);
                 break;
@@ -2309,7 +2318,7 @@ room13.chat = function (chatID) {
                 text: "Hrumph. He couldn't save himself from a burning candle. We all know you get moist watching " +
                     "that firefighter show. ",
                 button: [
-                    { chatID: -1, text: "Hey", callback: "" },
+                    { chatID: -1, text: "Hey", callback: "talkLola2" }, //fix: added the missing text
                 ]
             },
             {

@@ -66,15 +66,15 @@ room460.btnclick = function (name) {
             if (gv.get("energy") > 29 && g.pass === "")
                 char.room(461);
             else {
-                if (gv.get("energy") < 31)
-                    chat(1, 460);
+                if (gv.get("energy") < 31) //fix: offers energy items from the bag first (inv.energyPrompt); runs this choice again once there is enough
+                    inv.energyPrompt(31, function () { room460.btnclick(name); }, function () { chat(1, 460); });
                 else
                     chat(2, 460);
             }
             break;
         case "path3":
-            if (gv.get("energy") < 5)
-                chat(4, 460);
+            if (gv.get("energy") < 5) //fix: offers energy items from the bag first (inv.energyPrompt); runs this choice again once there is enough
+                inv.energyPrompt(5, function () { room460.btnclick(name); }, function () { chat(4, 460); });
             else {
                 g.map = null;
                 if (gv.get("difficulty") === 2) {

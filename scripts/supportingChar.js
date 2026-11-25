@@ -157,68 +157,68 @@ sc.init = function () {
         {
             name: "lola", mission: [
                 {
-                    missionName: "talk", mStatus: 1, title: "Get to know her better. ", desc: "You have to talk to girls, silly. ", task:
+                    missionName: "talk", mStatus: 1, title: "Get to know her better.", desc: "You have to talk to girls, silly.", task: //fix: removed extra space in title; removed extra space in desc
                         [
                             { id: 0, txt: "It's ok", show: true, mStatus: 0, roomId: 13 },
-                            { id: 1, txt: "Back is sore! ", show: true, mStatus: 0, roomId: 13 },
+                            { id: 1, txt: "Back is sore!", show: true, mStatus: 0, roomId: 13 }, //fix: removed extra space in text
                             { id: 2, txt: "Massages", show: true, mStatus: 0, roomId: 13 },
                         ]
                 },
                 {
-                    missionName: "massage", mStatus: 0, title: "Massage", desc: "Help her loosen up a bit. ", task:
+                    missionName: "massage", mStatus: 0, title: "Massage", desc: "Help her loosen up a bit.", task: //fix: removed extra space in desc
                         [
                             { id: 0, txt: "Back Rub", show: true, mStatus: 0, roomId: 13 },
-                            { id: 1, txt: "Shirt off back rub. ", show: true, mStatus: 0, roomId: 13 },
+                            { id: 1, txt: "Shirt off back rub.", show: true, mStatus: 0, roomId: 13 }, //fix: removed extra space in text
                             { id: 2, txt: "Massage her tight legs", show: true, mStatus: 0, roomId: 13 },
                             { id: 3, txt: "Massage them glutes", show: true, mStatus: 0, roomId: 13 },
                             { id: 4, txt: "Free choice", show: true, mStatus: 0, roomId: 13 },
                         ]
                 },
                 {
-                    missionName: "games", mStatus: 0, title: "Drinking Games", desc: "Play some drinking games with the girls. ", task:
+                    missionName: "games", mStatus: 0, title: "Drinking Games", desc: "Play some drinking games with the girls.", task: //fix: removed extra space in desc
                         [
-                            { id: 0, txt: "Invited to get wine and play spin the bottle. ", show: true, mStatus: 0, roomId: 13 },
-                            { id: 1, txt: "Invited to get wine and play Truth or Dare. ", show: true, mStatus: 0, roomId: 13 },
-                            { id: 2, txt: "Played Truth or Dare. ", show: true, mStatus: 0, roomId: 13 },
+                            { id: 0, txt: "Invited to get wine and play spin the bottle.", show: true, mStatus: 0, roomId: 13 }, //fix: removed extra space in text
+                            { id: 1, txt: "Invited to get wine and play Truth or Dare.", show: true, mStatus: 0, roomId: 13 }, //fix: removed extra space in text
+                            { id: 2, txt: "Played Truth or Dare.", show: true, mStatus: 0, roomId: 13 }, //fix: removed extra space in text
                         ]
                 },
                 {
                     missionName: "date", mStatus: 0, title: "Practice dates", desc: "Landlady suggests practice for the real thing.", task:
                         [
-                            { id: 0, txt: "You should go on a practice date. ", show: true, mStatus: 0, roomId: 13 },
-                            { id: 1, txt: "Give me a day to get ready. ", show: true, mStatus: 0, roomId: 13 },
-                            { id: 2, txt: "Come by before dark for our first practice date. ", show: true, mStatus: 0, roomId: 13 },
-                            { id: 3, txt: "Won a teddy bear ", show: false, mStatus: 0, roomId: 13 },
-                            { id: 4, txt: "Meet her in her room. Go on dates. ", show: true, mStatus: 0, roomId: 13 },
-                            { id: 5, txt: "Creampie is the best pie. ", show: true, mStatus: 0, roomId: 13 },
+                            { id: 0, txt: "You should go on a practice date.", show: true, mStatus: 0, roomId: 13 }, //fix: removed extra space in text
+                            { id: 1, txt: "Give me a day to get ready.", show: true, mStatus: 0, roomId: 13 }, //fix: removed extra space in text
+                            { id: 2, txt: "Come by before dark for our first practice date.", show: true, mStatus: 0, roomId: 450 }, //fix: removed extra space in text; location was Girl's Room
+                            { id: 3, txt: "Won a teddy bear (Hidden Task)", show: false, showWhenDone: true, mStatus: 0, roomId: 627 }, //fix: text was "Won a teddy bear "; added showWhenDone: hidden step, shown once done; location was Girl's Room
+                            { id: 4, txt: "Meet her in her room. Go on dates.", show: true, mStatus: 0, roomId: 13 }, //fix: removed extra space in text
+                            { id: 5, txt: "Creampie is the best pie.", show: true, mStatus: 0, roomId: 13 }, //fix: removed extra space in text
                             { id: 6, txt: "Threesome is best cum.", show: true, mStatus: 0, roomId: 13 },
                         ]
                 },
                 {
-                    missionName: "sissy", mStatus: 0, title: "Sissy", desc: "Secret's out", task:
+                    missionName: "sissy", mStatus: 0, title: "Sissy", desc: "Secret's out", strikeOpenWhenDone: true, task: //fix: added strikeOpenWhenDone: unfinished steps struck out when the mission ends
                         [
                             { id: 0, txt: "The talk", show: true, mStatus: 0, roomId: 16 },
                             { id: 1, txt: "Ice cream and dignity", show: true, mStatus: 0, roomId: 13 },
                             { id: 2, txt: "Dress up", show: true, mStatus: 0, roomId: 13 },
                             { id: 3, txt: "No! Not him!", show: true, mStatus: 0, roomId: 13 },
                             { id: 4, txt: "Worse than we thought", show: true, mStatus: 0, roomId: 11 },
-                            { id: 5, txt: "You have a week to find a nice boy", show: true, mStatus: 0, roomId: 0 },
-                            { id: 6, txt: "Fuck you, I won't do what you tell me", show: true, mStatus: 0, roomId: 0 },
+                            { id: 5, txt: "You have a week to find a nice boy", show: true, mStatus: 0, roomId: 40 }, //fix: location was Map
+                            { id: 6, txt: "Fuck you, I won't do what you tell me", show: true, mStatus: 0, roomId: 13 }, //fix: location was Map
                             { id: 7, txt: "Unexpected visitor", show: true, mStatus: 0, roomId: 13 },
                             { id: 8, txt: "A taste of the unexpected visitor", show: true, mStatus: 0, roomId: 13 },
                             { id: 9, txt: "This could be fun", show: true, mStatus: 0, roomId: 13 },
-                            { id: 10, txt: "Surprise motherfucker! ", show: true, mStatus: 0, roomId: 13 },
+                            { id: 10, txt: "Surprise motherfucker!", show: true, mStatus: 0, roomId: 174 }, //fix: removed extra space in text; location was Girl's Room
                             { id: 11, txt: "Pills are best served cold", show: true, mStatus: 0, roomId: 13 },
-                            { id: 12, txt: "Give them both the sleeping pills", show: true, mStatus: 0, roomId: 25 },
+                            { id: 12, txt: "Give them both the sleeping pills", show: true, mStatus: 0, roomId: 26 }, //fix: location was room 25
                             { id: 13, txt: "Everyone gets fucked!", show: true, mStatus: 0, roomId: 13 },
                         ]
                 },
                 {
                     missionName: "tom", mStatus: 0, title: "Tom", desc: "True love in another's arms", task:
                         [
-                            { id: 0, txt: "Set up on date with Tom", show: true, mStatus: 0, roomId: 16 },
-                            { id: 1, txt: "He's the best", show: true, mStatus: 0, roomId: 16 },
-                            { id: 2, txt: "Bla bla bla [End]", show: true, mStatus: 0, roomId: 16 },
+                            { id: 0, txt: "Set up on date with Tom", show: true, mStatus: 0, roomId: 40 }, //fix: location was 1st Floor
+                            { id: 1, txt: "He's the best", show: true, mStatus: 0, roomId: 13 }, //fix: location was 1st Floor
+                            { id: 2, txt: "Bla bla bla [End]", show: true, mStatus: 0, roomId: 13 }, //fix: location was 1st Floor
                         ]
                 },
                 {
@@ -231,7 +231,7 @@ sc.init = function () {
                 {
                     missionName: "*wife", mStatus: 0, title: "Mother", desc: "Mother of my child", task:
                         [
-                            { id: 0, txt: "Reunion", show: true, mStatus: 0, roomId: 14 },
+                            { id: 0, txt: "Reunion", show: true, mStatus: 0, roomId: 16 }, //fix: location was Master Bedroom
                             { id: 1, txt: "Proper welcome back", show: true, mStatus: 0, roomId: 10 },
                         ]
                 },
@@ -244,7 +244,7 @@ sc.init = function () {
                 {
                     missionName: "*cumdump", mStatus: 0, title: "Cum Dump", desc: "Whore for all", task:
                         [
-                            { id: 0, txt: "Reunion", show: true, mStatus: 0, roomId: 26 },
+                            { id: 0, txt: "Reunion", show: true, mStatus: 0, roomId: 32 }, //fix: location was Living Room
                             { id: 1, txt: "Catch up", show: true, mStatus: 0, roomId: 13 },
                             { id: 2, txt: "Baby talk", show: true, mStatus: 0, roomId: 13 },
                             { id: 3, txt: "Final Loop", show: true, mStatus: 0, roomId: 13 },
@@ -255,7 +255,7 @@ sc.init = function () {
         {
             name: "eva", mission: [
                 {
-                    missionName: "talk", mStatus: 1, title: "Get to know her better. ", desc: "You have to talk to girls, silly. ", task:
+                    missionName: "talk", mStatus: 1, title: "Get to know her better.", desc: "You have to talk to girls, silly.", task: //fix: removed extra space in title; removed extra space in desc
                         [
                             { id: 0, txt: "Small chat", show: true, mStatus: 0, roomId: 13 },
                             { id: 1, txt: "Feet?!", show: true, mStatus: 0, roomId: 13 },
@@ -265,25 +265,25 @@ sc.init = function () {
                     missionName: "massage", mStatus: 0, title: "Help her out", desc: "She really likes massages", task:
                         [
                             { id: 0, txt: "Massage her feet.", show: true, mStatus: 0, roomId: 13 },
-                            { id: 1, txt: "Suck her toes doggy. ", show: true, mStatus: 0, roomId: 13 },
-                            { id: 2, txt: "Show me your dick. ", show: true, mStatus: 0, roomId: 13 },
-                            { id: 3, txt: "I want to play with it. ", show: true, mStatus: 0, roomId: 13 },
+                            { id: 1, txt: "Suck her toes doggy.", show: true, mStatus: 0, roomId: 13 }, //fix: removed extra space in text
+                            { id: 2, txt: "Show me your dick.", show: true, mStatus: 0, roomId: 13 }, //fix: removed extra space in text
+                            { id: 3, txt: "I want to play with it.", show: true, mStatus: 0, roomId: 13 }, //fix: removed extra space in text
 
                         ]
                 },
                 {
-                    missionName: "games", mStatus: 0, title: "Drinking Games", desc: "Play some drinking games with the girls. ", task:
+                    missionName: "games", mStatus: 0, title: "Drinking Games", desc: "Play some drinking games with the girls.", task: //fix: removed extra space in desc
                         [
-                            { id: 0, txt: "Invited to get wine and play spin the bottle. ", show: true, mStatus: 0, roomId: 13 },
-                            { id: 1, txt: "Invited to get wine and play Truth or Dare. ", show: true, mStatus: 0, roomId: 13 },
-                            { id: 2, txt: "Played Truth or Dare. ", show: true, mStatus: 0, roomId: 13 },
+                            { id: 0, txt: "Invited to get wine and play spin the bottle.", show: true, mStatus: 0, roomId: 13 }, //fix: removed extra space in text
+                            { id: 1, txt: "Invited to get wine and play Truth or Dare.", show: true, mStatus: 0, roomId: 13 }, //fix: removed extra space in text
+                            { id: 2, txt: "Played Truth or Dare.", show: true, mStatus: 0, roomId: 13 }, //fix: removed extra space in text
                         ]
                 },
                 {
-                    missionName: "fuck", mStatus: 0, title: "Dirty sex", desc: "I guess we're fucking now ", task:
+                    missionName: "fuck", mStatus: 0, title: "Dirty sex", desc: "I guess we're fucking now", task: //fix: removed extra space in desc
                         [
-                            { id: 0, txt: "Supervised blow job. ", show: true, mStatus: 0, roomId: 13 },
-                            { id: 1, txt: "Weak pullout game", show: true, mStatus: 0, roomId: 10 },
+                            { id: 0, txt: "Supervised blow job.", show: true, mStatus: 0, roomId: 13 }, //fix: removed extra space in text
+                            { id: 1, txt: "Weak pullout game", show: true, mStatus: 0, roomId: 7 }, //fix: location was room 10
                             { id: 2, txt: "Threesome is best cum.", show: true, mStatus: 0, roomId: 13 },
                         ]
                 },
@@ -294,10 +294,10 @@ sc.init = function () {
                             { id: 1, txt: "Ice cream and dignity", show: true, mStatus: 0, roomId: 13 },
                             { id: 2, txt: "Dress up", show: true, mStatus: 0, roomId: 13 },
                             { id: 3, txt: "Lick my feet. No chastity", show: true, mStatus: 0, roomId: 13 },
-                            { id: 4, txt: "Slave doggy. ", show: true, mStatus: 0, roomId: 13 },
-                            { id: 5, txt: "Wear a doggy collar and no chastity.", show: true, mStatus: 0, roomId: 900 },
+                            { id: 4, txt: "Slave doggy.", show: true, mStatus: 0, roomId: 13 }, //fix: removed extra space in text
+                            { id: 5, txt: "Wear a doggy collar and no chastity.", show: true, mStatus: 0, roomId: 905 }, //fix: location was College
                             { id: 6, txt: "Stand up for yourself or not?", show: true, mStatus: 0, roomId: 13 },
-                            { id: 7, txt: "Meet her Friday night. ", show: true, mStatus: 0, roomId: 13 },
+                            { id: 7, txt: "Meet her Friday night.", show: true, mStatus: 0, roomId: 585 }, //fix: removed extra space in text; location was room 13
                             { id: 8, txt: "Do you embarrass yourself?", show: true, mStatus: 0, roomId: 585 },
                             { id: 9, txt: "Apology", show: true, mStatus: 0, roomId: 13 },
                         ]
@@ -305,14 +305,14 @@ sc.init = function () {
                 {
                     missionName: "teach", mStatus: 0, title: "Teach me", desc: "Show me how to be a girl", task:
                         [
-                            { id: 0, txt: "Lesson 1", show: true, mStatus: 0, roomId: 16 },
+                            { id: 0, txt: "Lesson 1", show: true, mStatus: 0, roomId: 174 }, //fix: location was 1st Floor
                         ]
                 },
                 {
                     missionName: "random", mStatus: 0, title: "Random", desc: "Random Events", task:
                         [
                             { id: 0, txt: "Sneaky sleep fuck", show: true, mStatus: 0, roomId: 13 },
-                            { id: 1, txt: "Walk the dog", show: true, mStatus: 0, roomId: 13 },
+                            { id: 1, txt: "Walk the dog", show: true, mStatus: 0, roomId: 322 }, //happens on a walk with Janice's dog (room322)
                         ]
                 },
                 {
@@ -331,7 +331,7 @@ sc.init = function () {
                 {
                     missionName: "*cumdump", mStatus: 0, title: "Cum Dump", desc: "Whore for all", task:
                         [
-                            { id: 0, txt: "Reunion", show: true, mStatus: 0, roomId: 26 },
+                            { id: 0, txt: "Reunion", show: true, mStatus: 0, roomId: 32 }, //fix: location was Living Room
                             { id: 1, txt: "Catch up", show: true, mStatus: 0, roomId: 13 },
                             { id: 2, txt: "Baby talk", show: true, mStatus: 0, roomId: 13 },
                         ]
@@ -345,7 +345,7 @@ sc.init = function () {
                         [
                             { id: 0, txt: "You're not a fuckup", show: true, mStatus: 0, roomId: 26 },
                             { id: 1, txt: "Help at the sperm bank. ", show: true, mStatus: 0, roomId: 26 },
-                            { id: 2, txt: "Come to the sperm bank Saturday morning. ", show: true, mStatus: 0, roomId: 26 },
+                            { id: 2, txt: "Come to the sperm bank Saturday morning. ", show: true, mStatus: 0, roomId: 350 }, //fix: location was Living Room
                             { id: 3, txt: "Room key for more chores. ", show: true, mStatus: 0, roomId: 26 },
                             { id: 4, txt: "You're so sexy", show: true, mStatus: 0, roomId: 26 },
                             { id: 5, txt: "Practice Date", show: true, mStatus: 0, roomId: 26 },
@@ -357,8 +357,8 @@ sc.init = function () {
                         [
                             { id: 0, txt: "Donated sperm first time. ", show: true, mStatus: 0, roomId: 350 },
                             { id: 1, txt: "Advertised first time. ", show: true, mStatus: 0, roomId: 350 },
-                            { id: 2, txt: "Assistant Nurse first day. ", show: false, mStatus: 0, roomId: 350 },
-                            { id: 3, txt: "Assistant Nurse loop. ", show: false, mStatus: 0, roomId: 350 },
+                            { id: 2, txt: "Assistant Nurse first day. (Hidden Task)", show: false, showWhenDone: true, mStatus: 0, roomId: 350 }, //fix: text was "Assistant Nurse first day. "; added showWhenDone: hidden step, shown once done
+                            { id: 3, txt: "Assistant Nurse loop. (Hidden Task)", show: false, showWhenDone: true, mStatus: 0, roomId: 350, repeatable: true }, //fix: text was "Assistant Nurse loop. "; added showWhenDone: hidden step, shown once done; added repeatable step
                         ]
                 },
                 {
@@ -382,10 +382,10 @@ sc.init = function () {
                             { id: 0, txt: "Jacked Off first time", show: true, mStatus: 0, roomId: 10 },
                             { id: 1, txt: "Threesome! [After first time]", show: true, mStatus: 0, roomId: 26 },
                             { id: 2, txt: "Help with your sissy hole", show: true, mStatus: 0, roomId: 14 },
-                            { id: 3, txt: "River Whore event", show: true, mStatus: 0, roomId: 14 },
+                            { id: 3, txt: "River Whore event", show: true, mStatus: 0, roomId: 183 }, //fix: location was Master Bedroom
                             { id: 4, txt: "Kicked out", show: true, mStatus: 0, roomId: 13 },
-                            { id: 5, txt: "Chastity Check", show: true, mStatus: 0, roomId: 16 },
-                            { id: 6, txt: "Cranival", show: true, mStatus: 0, roomId: 7 },
+                            { id: 5, txt: "Chastity Check (Ongoing)", show: true, mStatus: 0, roomId: 16, ongoing: true }, //stays started so the daily checks keep going (room016) - never struck out
+                            { id: 6, txt: "Carnival", show: true, mStatus: 0, roomId: 7 },
                             { id: 7, txt: "Coming home nude", show: true, mStatus: 0, roomId: 16 },
                         ]
                 },
@@ -413,46 +413,50 @@ sc.init = function () {
         {
             name: "bigguy", mission: [
                 {
-                    missionName: "straight", mStatus: 1, title: "Laius", desc: "Stop pestering me you little shit. ", task:
+                    missionName: "straight", mStatus: 1, title: "Laius", desc: "Stop pestering me you little shit.", task: //fix: removed extra space in desc
                         [
-                            { id: 0, txt: "Meet for the first time. ", show: true, mStatus: 0, roomId: 26 },
-                            { id: 1, txt: "This little finger goes wee wee wee. ", show: true, mStatus: 0, roomId: 26 },
-                            { id: 2, txt: "My milkshake brings all the boys to the yard. ", show: true, mStatus: 0, roomId: 26 },
-                            { id: 3, txt: "My milkshake brings all the boys to the yard. ", show: true, mStatus: 0, roomId: 26 },
+                            { id: 0, txt: "Meet for the first time.", show: true, mStatus: 0, roomId: 26 },
+                            { id: 1, txt: "This little finger goes wee wee wee.", show: true, mStatus: 0, roomId: 26 },
+                            { id: 2, txt: "My milkshake brings all the boys to the yard.", show: true, mStatus: 0, roomId: 26 },
+                            //NOTE: step 3 has no scene yet. When it is implemented, remove the "mission complete"
+                            //tag added at step 2 (room026.js "bg_s_2_end" and the load repair in sc.load),
+                            //and remove the note/notImplemented options below.
+                            //Removing notImplemented also takes the [Not Fully Implemented Yet] tag off this mission, the [WIP] tag off this step and the yellow WIP name off the character on the phone.
+                            { id: 3, txt: "My milkshake brings all the boys to the yard.", show: true, mStatus: 0, roomId: 26, note: "(Not Implemented Yet)", notImplemented: true },
 
                         ]
                 },
                 {
-                    missionName: "rent", mStatus: 0, title: "Rent", desc: "You have to pay to stay. ", task:
+                    missionName: "rent", mStatus: 0, title: "Rent", desc: "You have to pay to stay.", task: //fix: removed extra space in desc
                         [
                             { id: 0, txt: "Explained", show: true, mStatus: 0, roomId: 7 },
-                            { id: 1, txt: "First Day. ", show: true, mStatus: 0, roomId: 7 },
-                            { id: 2, txt: "To tell or not to tell. ", show: true, mStatus: 0, roomId: 26 },
-                            { id: 3, txt: "No rent, only ass", show: true, mStatus: 0, roomId: 14 },
+                            { id: 1, txt: "First Day.", show: true, mStatus: 0, roomId: 40 },
+                            { id: 2, txt: "To tell or not to tell.", show: true, mStatus: 0, roomId: 7 },
+                            { id: 3, txt: "No rent, only ass", show: true, mStatus: 0, roomId: 7 }, //Saturday wake-up after you confessed (room007 "bigguy15_4")
                         ]
                 },
                 {
-                    missionName: "sissy", mStatus: 0, title: "Extra hole", desc: "Let's talk about sex baby. ", task:
+                    missionName: "sissy", mStatus: 0, title: "Extra hole", desc: "Let's talk about sex baby.", task: //fix: removed extra space in desc
                         [
-                            { id: 0, txt: "Catch them having sex. ", show: true, mStatus: 0, roomId: 14 },
-                            { id: 1, txt: "This little finger goes wee wee wee. ", show: true, mStatus: 0, roomId: 26 },
-                            { id: 2, txt: "I drink your milk! ", show: true, mStatus: 0, roomId: 26 },
-                            { id: 3, txt: "My man! ", show: true, mStatus: 0, roomId: 26 },
-                            { id: 4, txt: "Clean up duty", show: true, mStatus: 0, roomId: 10 },
-                            { id: 5, txt: "You're such my bitch. ", show: true, mStatus: 0, roomId: 26 },
+                            { id: 0, txt: "Catch them having sex.", show: true, mStatus: 0, roomId: 14 },
+                            { id: 1, txt: "This little finger goes wee wee wee.", show: true, mStatus: 0, roomId: 14 },
+                            { id: 2, txt: "I drink your milk!", show: true, mStatus: 0, roomId: 14 },
+                            { id: 3, txt: "My man!", show: true, mStatus: 0, roomId: 14 },
+                            { id: 4, txt: "Clean up duty", show: true, mStatus: 0, roomId: 14 }, //ticked when you confess and take his side (room014 "confess_end")
+                            { id: 5, txt: "You're such my bitch.", show: true, mStatus: 0, roomId: 12 }, //his surprise shower visit (room012 "showerReset")
                         ]
                 },
                 {
                     missionName: "cult", mStatus: 0, title: "Cult", desc: "Good times at the cult", task:
                         [
-                            { id: 0, txt: "Whose the daddy.", show: true, mStatus: 0, roomId: 955 },
-                            { id: 0, txt: "Got the first", show: true, mStatus: 0, roomId: 955 },
+                            { id: 0, txt: "Who's the daddy.", show: true, mStatus: 0, roomId: 955 }, //fix: text was "Whose the daddy."
+                            { id: 1, txt: "Dropped out of college", show: true, mStatus: 0, roomId: 955 }, //fix: id was 0; text was "Got the first" (unfinished) - this step is when he tells you your ##el## dropped out of college
                         ]
                 },
                 {
                     missionName: "ex", mStatus: 0, title: "Ex [Not built yet]", desc: "Not allowed back!", task:
                         [
-                            { id: 0, txt: "Never coming back!", show: true, mStatus: 0, roomId: 40 },
+                            { id: 0, txt: "Never coming back!", show: true, mStatus: 0, roomId: 14 }, //fix: location was Auto Repair
                         ]
                 },
             ]
@@ -476,8 +480,8 @@ sc.init = function () {
                         [
                             { id: 0, txt: "I'm a can opener", show: true, mStatus: 0, roomId: 501 },
                             { id: 1, txt: "Back for a can of beat ass?", show: true, mStatus: 0, roomId: 501 },
-                            { id: 2, txt: "Meet my friend. ", show: true, mStatus: 0, roomId: 501 },
-                            { id: 3, txt: "Sleep over. ", show: true, mStatus: 0, roomId: 501 },
+                            { id: 2, txt: "Meet my friend.", show: true, mStatus: 0, roomId: 501 }, //fix: removed extra space in text
+                            { id: 3, txt: "Sleep over.", show: true, mStatus: 0, roomId: 501 }, //fix: removed extra space in text
                             { id: 4, txt: "I have a feeling", show: true, mStatus: 0, roomId: 501 },
                             { id: 5, txt: "I need your help!", show: true, mStatus: 0, roomId: 501 },
                         ]
@@ -486,26 +490,30 @@ sc.init = function () {
                     missionName: "cheating", mStatus: -1, title: "Chloé", desc: "Find out if Chloé is cheating", task:
                         [
                             { id: 0, txt: "Spy on her.", show: true, mStatus: 0, roomId: 725 },
-                            { id: 1, txt: "Catch her at the club?", show: true, mStatus: 0, roomId: 725 },
-                            { id: 2, txt: "Catch her at the strip club?", show: false, mStatus: 0, roomId: 400 },
-                            { id: 3, txt: "Glory hole?", show: true, mStatus: 0, roomId: 216 },
+                            { id: 1, txt: "Catch her at the club?", show: true, mStatus: 0, roomId: 725, orTask: 3 }, //orTask: club and glory hole are either/or - catching her at one locks out the other
+                            { id: 3, txt: "Glory hole?", show: true, mStatus: 0, roomId: 216, orTask: 1 },
+                            //Listed after the glory hole on purpose (ids stay the same so saves and the code still match).
+                            //NOTE: step 2 has no scene yet (Zoey's report chat already has "Caught her at the mall!" for it).
+                            //When it is implemented, remove the note/notImplemented options below.
+                            //Removing notImplemented also takes the [Not Fully Implemented Yet] tag off this mission, the [WIP] tag off this step and the yellow WIP name off the character on the phone.
+                            { id: 2, txt: "Catch her at the mall?", show: true, mStatus: 0, roomId: 400, note: "(Not Implemented Yet)", notImplemented: true },
                         ]
                 },
                 {
                     missionName: "sex", mStatus: -1, title: "Fuck me please", desc: "Will we be more than friends?", task:
                         [
                             { id: 0, txt: "New petite amie.", show: true, mStatus: 0, roomId: 525 },
-                            { id: 1, txt: "Mystery friend at night. ", show: true, mStatus: 0, roomId: 502 },
-                            { id: 2, txt: "Handcuffs and chastity. ", show: true, mStatus: 0, roomId: 525 },
+                            { id: 1, txt: "Mystery friend at night.", show: true, mStatus: 0, roomId: 502 }, //fix: removed extra space in text
+                            { id: 2, txt: "Handcuffs and chastity.", show: true, mStatus: 0, roomId: 525 }, //fix: removed extra space in text
                             { id: 3, txt: "Mon cœur souffre pour toi", show: true, mStatus: 0, roomId: 525 },
-                            { id: 4, txt: "Sex at home, sex at work, sex everywhere [Loop]", show: true, mStatus: 0, roomId: 502 },
-                            { id: 5, txt: "My new vagina [After you get a vagina]", show: true, mStatus: 0, roomId: 500 },
+                            { id: 4, txt: "Sex at home, sex at work, sex everywhere [Loop]", show: true, mStatus: 0, roomId: 501, repeatable: true, needsRepeat: true }, //ticked by your first repeat scene (game night "Winner gets the sex!" or the bar),
+                            { id: 5, txt: "My new vagina (Optional) [After you get a vagina]", show: true, mStatus: 0, roomId: 501, optional: true }, //optional: the mission completes without it,
                         ]
                 },
                 {
-                    missionName: "xfriends", mStatus: -1, title: "Ex-friends", desc: "You've lost her trust. ", task:
+                    missionName: "xfriends", mStatus: -1, title: "Ex-friends", desc: "You've lost her trust.", task: //fix: removed extra space in desc
                         [
-                            { id: 0, txt: "Always trust your friends. ", show: true, mStatus: 0, roomId: 501 },
+                            { id: 0, txt: "Always trust your friends.", show: true, mStatus: 0, roomId: 501 }, //fix: removed extra space in text
                         ]
                 },
                 {
@@ -523,8 +531,8 @@ sc.init = function () {
                 {
                     missionName: "*help", mStatus: -1, title: "Help with the list", desc: "I hear stuff, let me help", task:
                         [
-                            { id: 0, txt: "Spoke at the bar. ", show: true, mStatus: 0, roomId: 525 },
-                            { id: 1, txt: "Spoke at the home. ", show: true, mStatus: 0, roomId: 500 },
+                            { id: 0, txt: "Spoke at the bar.", show: true, mStatus: 0, roomId: 525 }, //fix: removed extra space in text
+                            { id: 1, txt: "Spoke at the home.", show: true, mStatus: 0, roomId: 501 }, //fix: removed extra space in text; location was Zoey's House
                         ]
                 },
             ]
@@ -534,7 +542,7 @@ sc.init = function () {
                 {
                     missionName: "random", mStatus: 1, title: "Random Events", desc: " ", task:
                         [
-                            { id: 0, txt: "First meeting after caught cheeting", show: true, mStatus: 0, roomId: 600 },
+                            { id: 0, txt: "First meeting after caught cheating", show: true, mStatus: 0, roomId: 600 }, //fix: text was "First meeting after caught cheeting"
                         ]
                 },
             ]
@@ -544,9 +552,9 @@ sc.init = function () {
                 {
                     missionName: "property", mStatus: 0, title: "Property", desc: "You're my property", task:
                         [
-                            { id: 0, txt: "Marked by the piss. ", show: true, mStatus: 0, roomId: 550 },
-                            { id: 1, txt: "I'm not a submissive slut!", show: true, mStatus: 0, roomId: 408 },
-                            { id: 2, txt: "I guess I am a submissive slut", show: true, mStatus: 0, roomId: 408 },
+                            { id: 0, txt: "Marked by the piss.", show: true, mStatus: 0, roomId: 526 }, //Zoey's bar (room526 "sex1_15")
+                            { id: 1, txt: "I'm not a submissive slut!", show: true, mStatus: 0, roomId: 408, orTask: 2 }, //1 and 2 are alternatives
+                            { id: 2, txt: "I guess I am a submissive slut", show: true, mStatus: 0, roomId: 408, orTask: 1 },
 
                         ]
                 },
@@ -555,11 +563,11 @@ sc.init = function () {
         {
             name: "chad", mission: [
                 {
-                    missionName: "membership", mStatus: 0, title: "Membership Dues", desc: "Get into the gym. ", task:
+                    missionName: "membership", mStatus: 0, title: "Membership Dues", desc: "Get into the gym.", task: //fix: removed extra space in desc
                         [
-                            { id: 0, txt: "Meet for the first time. ", show: true, mStatus: 0, roomId: 550 },
-                            { id: 1, txt: "Pay the $500", show: true, mStatus: 0, roomId: 550 },
-                            { id: 2, txt: "Get topless picture. ", show: true, mStatus: 0, roomId: 550 },
+                            { id: 0, txt: "Meet for the first time.", show: true, mStatus: 0, roomId: 550 }, //fix: removed extra space in text
+                            { id: 1, txt: "Pay the $500", show: true, mStatus: 0, roomId: 550, orTask: 2 }, //pay OR picture - either one completes the mission
+                            { id: 2, txt: "Get topless picture.", show: true, mStatus: 0, roomId: 550, orTask: 1 }, //fix: removed extra space in text
 
                         ]
                 },
@@ -568,20 +576,20 @@ sc.init = function () {
         {
             name: "g", mission: [
                 {
-                    missionName: "workout", mStatus: 0, title: "Personal Trainer", desc: "Get into the gym. ", task:
+                    missionName: "workout", mStatus: 0, title: "Personal Trainer", desc: "Get into the gym.", task: //fix: removed extra space in desc
                         [
-                            { id: 0, txt: "Meet for the first time. ", show: true, mStatus: 0, roomId: 550 },
-                            { id: 1, txt: "Raise your strength bitch!", show: true, mStatus: 0, roomId: 550 },
-                            { id: 2, txt: "Regular workouts. ", show: true, mStatus: 0, roomId: 550 },
+                            { id: 0, txt: "Meet for the first time.", show: true, mStatus: 0, roomId: 551 }, //fix: removed extra space in text; location was room 550 (front desk), it happens in the gym
+                            { id: 1, txt: "Raise your strength bitch!", show: true, mStatus: 0, roomId: 551 }, //fix: location was room 550 (front desk), it happens in the gym
+                            { id: 2, txt: "Regular workouts.", show: true, mStatus: 0, roomId: 551 }, //fix: removed extra space in text; location was room 550 (front desk), it happens in the gym
 
                         ]
                 },
                 {
-                    missionName: "spar", mStatus: 0, title: "Spar", desc: "Learn how to fight. ", task:
+                    missionName: "spar", mStatus: 0, title: "Spar", desc: "Learn how to fight.", task: //fix: removed extra space in desc
                         [
                             { id: 0, txt: "Introduction", show: true, mStatus: 0, roomId: 556 },
-                            { id: 1, txt: "Beginner Spar. Beat Maggie ", show: true, mStatus: 0, roomId: 556 },
-                            { id: 2, txt: "Advanced Spar. ", show: true, mStatus: 0, roomId: 556 },
+                            { id: 1, txt: "Beginner Spar. Beat Maggie", show: true, mStatus: 0, roomId: 556 }, //fix: removed extra space in text
+                            { id: 2, txt: "Advanced Spar.", show: true, mStatus: 0, roomId: 556 }, //fix: removed extra space in text
 
                         ]
                 },
@@ -598,8 +606,8 @@ sc.init = function () {
                     missionName: "mom", mStatus: 0, title: "Muscle Mommy", desc: "", task:
                         [
                             { id: 0, txt: "Cum in her tight muscle mommy pussy.", show: true, mStatus: 0, roomId: 555 },
-                            { id: 1, txt: "Wait. ", show: true, mStatus: 0, roomId: 555 },
-                            { id: 2, txt: "My baby's mama. ", show: true, mStatus: 0, roomId: 555 },
+                            { id: 1, txt: "Wait.", show: true, mStatus: 0, roomId: 555 }, //fix: removed extra space in text
+                            { id: 2, txt: "My baby's mama.", show: true, mStatus: 0, roomId: 551 }, //fix: removed extra space in text; location was Back Gym
                         ]
                 },
             ]
@@ -627,7 +635,11 @@ sc.init = function () {
                             { id: 4, txt: "Get a strap-on. ", show: true, mStatus: 0, roomId: 316 },
                             { id: 5, txt: "The talk. ", show: true, mStatus: 0, roomId: 316 },
                             { id: 6, txt: "Surprise", show: true, mStatus: 0, roomId: 316 },
-                            { id: 7, txt: "A whole new world!", show: true, mStatus: 0, roomId: 316 },
+                            //NOTE: step 7 has no scene yet. When it is implemented, remove the "mission complete" line
+                            //marked REMOVE in room318.js (b2_end) and the Mine! repair in sc.load, and remove
+                            //the note/notImplemented options below.
+                            //Removing notImplemented also takes the [Not Fully Implemented Yet] tag off this mission, the [WIP] tag off this step and the yellow WIP name off the character on the phone.
+                            { id: 7, txt: "A whole new world!", show: true, mStatus: 0, roomId: 316, note: "(Not Implemented Yet)", notImplemented: true },
                         ]
                 },
                 {
@@ -640,7 +652,7 @@ sc.init = function () {
                             { id: 4, txt: "Meet my femboy!", show: true, mStatus: 0, roomId: 321 },
                             { id: 5, txt: "Take my cute little strap-on", show: true, mStatus: 0, roomId: 321 },
                             { id: 6, txt: "Reintroduce myself", show: true, mStatus: 0, roomId: 321 },
-                            { id: 7, txt: "You just keep cuming back fo rmore", show: true, mStatus: 0, roomId: 321 },
+                            { id: 7, txt: "You just keep cuming back for more", show: true, mStatus: 0, roomId: 321, repeatable: true }, //the repeat webcam shows after step 6 - mission shows Completed [Repeatable]
                         ]
                 },
                 {
@@ -670,7 +682,7 @@ sc.init = function () {
                         ]
                 },
                 {
-                    missionName: "breakup", mStatus: 0, title: "Break Up", desc: "You two just wearn't meant for each other. It's over", task: new Array()
+                    missionName: "breakup", mStatus: 0, title: "Break Up", desc: "You two just weren't meant for each other. It's over", task: new Array() //fix: desc was "You two just wearn't meant for each other. It..."
                 },
                 {
                     missionName: "random", mStatus: 0, title: "Misc Events", desc: "", task:
@@ -715,22 +727,22 @@ sc.init = function () {
                 {
                     missionName: "meet", mStatus: 0, title: "Get to know her", desc: "Getting to know the odd unshaven girl", task:
                         [
-                            { id: 0, txt: "Introduce yourself. ", show: true, mStatus: 0, roomId: 300 },
-                            { id: 1, txt: "Lost at a board game. ", show: true, mStatus: 0, roomId: 301 },
-                            { id: 2, txt: "Bring Pizza! ", show: true, mStatus: 0, roomId: 301 },
-                            { id: 3, txt: "Just friends. ", show: true, mStatus: 0, roomId: 301 },
+                            { id: 0, txt: "Introduce yourself.", show: true, mStatus: 0, roomId: 300 }, //fix: removed extra space in text
+                            { id: 1, txt: "Lost at a board game.", show: true, mStatus: 0, roomId: 301 }, //fix: removed extra space in text
+                            { id: 2, txt: "Bring Pizza!", show: true, mStatus: 0, roomId: 301 }, //fix: removed extra space in text
+                            { id: 3, txt: "Just friends.", show: true, mStatus: 0, roomId: 301 }, //fix: removed extra space in text
                         ]
                 },
                 {
                     missionName: "hypno", mStatus: 0, title: "Hypno", desc: "Turning a girl into a slut.", task:
                         [
                             { id: 0, txt: "Hypno 1: Touch myself", show: true, mStatus: 0, roomId: 301 },
-                            { id: 1, txt: "Hypno 2: Makeup ", show: true, mStatus: 0, roomId: 301 },
+                            { id: 1, txt: "Hypno 2: Makeup", show: true, mStatus: 0, roomId: 301 }, //fix: removed extra space in text
                             { id: 2, txt: "Hypno 3: Dresses are pretty", show: true, mStatus: 0, roomId: 301 },
-                            { id: 3, txt: "Hypno 4: Blonde have more fun", show: true, mStatus: 0, roomId: 301 },
+                            { id: 3, txt: "Hypno 4: Blondes have more fun", show: true, mStatus: 0, roomId: 301 }, //fix: spelling (was "Blonde have")
                             { id: 4, txt: "Hypno 5: Dumb is sexy", show: true, mStatus: 0, roomId: 301 },
                             { id: 5, txt: "Hypno 6: Tits. Bigger is Better", show: true, mStatus: 0, roomId: 301 },
-                            { id: 6, txt: "Break that Hymen and fill that belly.", show: true, mStatus: 0, roomId: 301 },
+                            { id: 6, txt: "Break that hymen and fill that belly.", show: true, mStatus: 0, roomId: 301 }, //fix: text was "Break that Hymen and fill that belly."
                             { id: 7, txt: "Hypno 7", show: true, mStatus: 0, roomId: 301 },
                             { id: 8, txt: "Double team! Leave your cage at home.", show: true, mStatus: 0, roomId: 301 },
                             { id: 9, txt: "Broken.", show: true, mStatus: 0, roomId: 301 },
@@ -741,30 +753,38 @@ sc.init = function () {
                 {
                     missionName: "hucow", mStatus: 0, title: "Hucow", desc: "I love it here!", task:
                         [
-                            { id: 0, txt: "Last night!", show: true, mStatus: 0, roomId: 301 },
-                            { id: 1, txt: "Drake", show: true, mStatus: 0, roomId: 301 },
-                            { id: 2, txt: "TBD", show: true, mStatus: 0, roomId: 301 },
+                            { id: 0, txt: "Last night!", show: true, mStatus: 0, roomId: 327 },
+                            { id: 1, txt: "Drake", show: true, mStatus: 0, roomId: 327 },
+                            //NOTE: step 2 has no scene yet (Envy just says a placeholder line at the farm). When it is implemented,
+                            //remove the "mission complete" line marked REMOVE in room327.js and the Hucow repair in sc.load,
+                            //and remove the note/notImplemented options below.
+                            //Removing notImplemented also takes the [Not Fully Implemented Yet] tag off this mission, the [WIP] tag off this step and the yellow WIP name off the character on the phone.
+                            { id: 2, txt: "TBD", show: true, mStatus: 0, roomId: 327, note: "(Not Implemented Yet)", notImplemented: true },
                         ]
                 },
                 {
-                    missionName: "gf", mStatus: 0, title: "Girlfriend", desc: "Emotional Connection. ", task:
+                    missionName: "gf", mStatus: 0, title: "Girlfriend", desc: "Emotional Connection.", task: //fix: removed extra space in desc
                         [
-                            { id: 0, txt: "Talk to Spanky to undo the hypno", show: true, mStatus: 0, roomId: 301 },
+                            { id: 0, txt: "Talk to Spanky to undo the hypno", show: true, mStatus: 0, roomId: 404 }, //fix: location was room 301
                             { id: 1, txt: "Go Away!", show: true, mStatus: 0, roomId: 301 },
-                            { id: 2, txt: "Forgivness comes slowly.", show: true, mStatus: 0, roomId: 301 },
+                            { id: 2, txt: "Forgiveness comes slowly.", show: true, mStatus: 0, roomId: 300 }, //fix: text was "Forgivness comes slowly."; location was Living Room
                             { id: 3, txt: "Get Help from Tiffany!", show: true, mStatus: 0, roomId: 650 },
                             { id: 4, txt: "Give her the gift of orgasms.", show: true, mStatus: 0, roomId: 301 },
-                            { id: 5, txt: "See how her pussy is doing. ", show: true, mStatus: 0, roomId: 301 },
-                            { id: 6, txt: "Go to her place before " + nav.convertTime(14, 0) + " tomorrow. ", show: true, mStatus: 0, roomId: 301 },
-                            { id: 7, txt: "Successful test! [Not ready] ", show: true, mStatus: 0, roomId: 301 },
+                            { id: 5, txt: "See how her pussy is doing.", show: true, mStatus: 0, roomId: 301 },
+                            { id: 6, txt: "Go to her place before " + nav.convertTime(14, 0) + " tomorrow.", show: true, mStatus: 0, roomId: 301 },
+                            //NOTE: step 7 has no scene yet. When it is implemented, remove the "mission complete"
+                            //tag added after step 6 (room904.js "endGood", room300.js door check and the load
+                            //repair in sc.load), and remove the note/notImplemented options below.
+                            //Removing notImplemented also takes the [Not Fully Implemented Yet] tag off this mission, the [WIP] tag off this step and the yellow WIP name off the character on the phone.
+                            { id: 7, txt: "Successful test!", show: true, mStatus: 0, roomId: 301, note: "(Not Implemented Yet)", notImplemented: true },
                         ]
                 },
                 {
-                    missionName: "breakup", mStatus: 0, title: "Failed me!", desc: "I hate you! ", task:
+                    missionName: "breakup", mStatus: 0, title: "Failed me!", desc: "I hate you!", task: //fix: removed extra space in desc
                         [
                             { id: 0, txt: "Didn't meet her before her test.", show: true, mStatus: 0, roomId: 301 },
-                            { id: 1, txt: "Made her orgasm too much.", show: true, mStatus: 0, roomId: 904 },
-                            { id: 2, txt: "Didn't give her enough orgasms.", show: true, mStatus: 0, roomId: 904 },
+                            { id: 1, txt: "Didn't give her enough orgasms.", show: true, mStatus: 0, roomId: 904 }, //fix: texts of 1 and 2 were swapped (room904: endNoButton = 1, endTooMany = 2)
+                            { id: 2, txt: "Made her orgasm too much.", show: true, mStatus: 0, roomId: 904 },
                         ]
                 },
             ]
@@ -774,16 +794,16 @@ sc.init = function () {
                 {
                     missionName: "shop", mStatus: 0, title: "Spanky's Store", desc: "Buy some shit", task:
                         [
-                            { id: 0, txt: "You're cool. I guess", show: true, mStatus: 0, roomId: 301 },
-                            { id: 1, txt: "You can buy sissy bimbo pills!", show: true, mStatus: 0, roomId: 404 },
+                            { id: 0, txt: "You're cool. I guess", show: true, mStatus: 0, roomId: 404 },
+                            { id: 1, txt: "You can buy sissy bimbo pills!", show: true, mStatus: 0, roomId: 213, roomName: "Pink Room / Naked Beaver" }, //Spanky shows up while you waitress at either place (after graduating)
                         ]
                 },
                 {
                     missionName: "hypno", mStatus: 0, title: "Hypno", desc: "Make her a slut", task:
                         [
-                            { id: 0, txt: "Purchase Hypno Takes. ", show: true, mStatus: 0, roomId: 301 },
-                            { id: 1, txt: "I love you man! 1/2 prices! ", show: true, mStatus: 0, roomId: 301 },
-                            { id: 2, txt: "I hate you! Triple the prices! ", show: true, mStatus: 0, roomId: 301 },
+                            { id: 0, txt: "Purchase Hypno Tapes.", show: true, mStatus: 0, roomId: 301 }, //ticked when Spanky brings the tapes (room301 envy3end)
+                            { id: 1, txt: "I love you man! 1/2 prices!", show: true, mStatus: 0, roomId: 301, orTask: 2 }, //1 and 2 are alternatives
+                            { id: 2, txt: "I hate you! Triple the prices!", show: true, mStatus: 0, roomId: 301, orTask: 1 },
                         ]
                 },
             ]
@@ -793,13 +813,13 @@ sc.init = function () {
                 {
                     missionName: "friend", mStatus: 0, title: "Friends!", desc: "Did we just become best friends?", task:
                         [
-                            { id: 0, txt: "Shopping trip! ", show: true, mStatus: 0, roomId: 650 },
-                            { id: 1, txt: "Came inside her in the change room. ", show: true, mStatus: 0, roomId: 301 },
-                            { id: 2, txt: "Sprayed your cum on her back in the change room. ", show: true, mStatus: 0, roomId: 301 },
-                            { id: 3, txt: "Home. ", show: true, mStatus: 0, roomId: 51 },
+                            { id: 0, txt: "Shopping trip!", show: true, mStatus: 0, roomId: 650 },
+                            { id: 1, txt: "Came inside her.", show: true, mStatus: 0, roomId: 403, roomName: "Saucy Change Room", orTask: 2 }, //1 and 2 are alternatives; roomName overrides the phone location text
+                            { id: 2, txt: "Sprayed your cum on her back.", show: true, mStatus: 0, roomId: 403, roomName: "Saucy Change Room", orTask: 1 },
+                            { id: 3, txt: "Home.", show: true, mStatus: 0, roomId: 51 },
                             { id: 4, txt: "How to use your pussy", show: true, mStatus: 0, roomId: 54 },
                             { id: 5, txt: "Pussy Palace", show: true, mStatus: 0, roomId: 54 },
-                            { id: 6, txt: "Cheerleader! ", show: true, mStatus: 0, roomId: 54 },
+                            { id: 6, txt: "Cheerleader!", show: true, mStatus: 0, roomId: 54 }, //fix: removed extra space in text
                         ]
                 },
             ]
@@ -813,9 +833,10 @@ sc.init = function () {
                         ]
                 },
                 {
-                    missionName: "cheer", mStatus: 0, title: "Cheerleader!", desc: "Be a cheerleader! ", task:
+                    missionName: "cheer", mStatus: 0, title: "Cheerleader!", desc: "Be a cheerleader!", task: //fix: removed extra space in desc
                         [
-                            { id: 0, txt: "Meet Saturday morning", show: true, mStatus: 0, roomId: 875 },
+                            { id: 0, txt: "Meet Saturday morning", show: true, mStatus: 0, roomId: 875 }, //ticked at your first practice (room875 "practice")
+                            { id: 1, txt: "Cheerleading practice. [Loop]", show: true, mStatus: 0, roomId: 875, repeatable: true, needsRepeat: true }, //ticked at your 2nd practice (room875 "practice"), then Completed [Repeatable]
                         ]
                 },
             ]
@@ -825,7 +846,8 @@ sc.init = function () {
                 {
                     missionName: "doorman", mStatus: 0, title: "Doorman", desc: "A little molestation and a big dick", task:
                         [
-                            { id: 0, txt: "You can enter the building as a girl.", show: true, mStatus: 0, roomId: 650 },
+                            { id: 0, txt: "You can enter the building as a girl.", show: true, mStatus: 0, roomId: 50 },
+                            { id: 1, txt: "Visit him in the lobby as a girl. [Loop]", show: true, mStatus: 0, roomId: 50, repeatable: true, needsRepeat: true }, //ticked on your first repeat lobby scene (room050), then Completed [Repeatable]
                         ]
                 },
             ]
@@ -857,7 +879,11 @@ sc.init = function () {
                             { id: 0, txt: "Shows his bully side", show: true, mStatus: 0, roomId: 211 },
                             { id: 1, txt: "Blackmailed into sucking his cock", show: true, mStatus: 0, roomId: 211 },
                             { id: 2, txt: "Everyone knows", show: true, mStatus: 0, roomId: 211 },
-                            { id: 3, txt: "Not made yet.", show: true, mStatus: 0, roomId: 211 },
+                            //NOTE: step 3 has no scene yet. When it is implemented, remove the "mission complete" line
+                            //marked REMOVE in room211.js and the Bully repair in sc.load, and remove
+                            //the note/notImplemented options below.
+                            //Removing notImplemented also takes the [Not Fully Implemented Yet] tag off this mission, the [WIP] tag off this step and the yellow WIP name off the character on the phone.
+                            { id: 3, txt: "Not made yet.", show: true, mStatus: 0, roomId: 211, note: "(Not Implemented Yet)", notImplemented: true },
                         ]
                 },
                 {
@@ -873,8 +899,12 @@ sc.init = function () {
                 {
                     missionName: "corrupt", mStatus: 0, title: "Corrupt the sissy", desc: "Not made yet.", task:
                         [
-                            { id: 0, txt: "In development (Not made)", show: true, mStatus: 0, roomId: 211 },
-                            { id: 1, txt: "strip club", show: true, mStatus: 0, roomId: 211 },
+                            //NOTE: step 0 has no scene yet. When it is implemented, remove the "mission complete" line
+                            //marked REMOVE in room601.js and the Corrupt the sissy repair in sc.load, and remove
+                            //the note/notImplemented options below.
+                            //Removing notImplemented also takes the [Not Fully Implemented Yet] tag off this mission, the [WIP] tag off this step and the yellow WIP name off the character on the phone.
+                            { id: 0, txt: "In development (Not made)", show: true, mStatus: 0, roomId: 211, note: "(Not Implemented Yet)", notImplemented: true },
+                            { id: 1, txt: "strip club", show: true, mStatus: 0, roomId: 601 },
                         ]
                 },
             ]
@@ -882,10 +912,10 @@ sc.init = function () {
         {
             name: "cecilia", mission: [
                 {
-                    missionName: "gloryhole", mStatus: 0, title: "Glory hole!", desc: "Park bathroom on weekends ", task:
+                    missionName: "gloryhole", mStatus: 0, title: "Glory hole!", desc: "Park bathroom on weekends", task: //fix: removed extra space in desc
                         [
-                            { id: 0, txt: "Did we just become friends?", show: true, mStatus: 0, roomId: 211 },
-                            { id: 1, txt: "2 sissies. 1 gloryhole", show: true, mStatus: 0, roomId: 211 },
+                            { id: 0, txt: "Did we just become friends?", show: true, mStatus: 0, roomId: 451 }, //first time in her stall (room451 "enterstall")
+                            { id: 1, txt: "2 sissies. 1 gloryhole", show: true, mStatus: 0, roomId: 451 },
                         ]
                 },
             ]
@@ -918,7 +948,7 @@ sc.init = function () {
                             { id: 0, txt: "Meet", show: true, mStatus: 0, roomId: 350 },
                             { id: 1, txt: "Titty grabbing perv", show: true, mStatus: 0, roomId: 350 },
                             { id: 2, txt: "Eat a bag of dicks", show: true, mStatus: 0, roomId: 350 },
-                            { id: 3, txt: "Stop touching her!", show: true, mStatus: 0, roomId: 350 },
+                            { id: 3, txt: "Stop touching her! (Repeatable)", show: true, mStatus: 0, roomId: 350, repeatable: true }, //fix: text was "Stop touching her!"; added repeatable step
                         ]
                 },
             ]
@@ -948,16 +978,16 @@ sc.init = function () {
         {
             name: "rachel", mission: [
                 {
-                    missionName: "horse", mStatus: 0, title: "Horse Brushing", desc: "Help out around the farm. ", task:
+                    missionName: "horse", mStatus: 0, title: "Horse Brushing", desc: "Help out around the farm.", task: //fix: removed extra space in desc
                         [
                             { id: 0, txt: "First meeting", show: true, mStatus: 0, roomId: 325 },
                         ]
                 },
                 {
-                    missionName: "milk", mStatus: 0, title: "Hucow", desc: "Become her milking cow ", task:
+                    missionName: "milk", mStatus: 0, title: "Hucow", desc: "Become her milking cow", task: //fix: removed extra space in desc
                         [
                             { id: 0, txt: "Inspection.", show: true, mStatus: 0, roomId: 325 },
-                            { id: 1, txt: "Hucow.", show: true, mStatus: 0, roomId: 325 },
+                            { id: 1, txt: "Hucow.", show: true, mStatus: 0, roomId: 327 }, //ticked on your first milking (room327)
                         ]
                 },
                 {
@@ -973,17 +1003,17 @@ sc.init = function () {
                 {
                     missionName: "milk", mStatus: 0, title: "Fellow Hucow", desc: "Gain her trust", task:
                         [
-                            { id: 0, txt: "Moooo", show: true, mStatus: 0, roomId: 325 },
-                            { id: 1, txt: "Fucking Moooo", show: true, mStatus: 0, roomId: 325 },
-                            { id: 2, txt: "I'm not talking to Mooo either", show: true, mStatus: 0, roomId: 325 },
-                            { id: 3, txt: "Get me an energy drink", show: true, mStatus: 0, roomId: 325 },
-                            { id: 4, txt: "Thanks", show: true, mStatus: 0, roomId: 325 },
+                            { id: 0, txt: "Moooo", show: true, mStatus: 0, roomId: 327 }, //fix: location was Farm
+                            { id: 1, txt: "Fucking Moooo", show: true, mStatus: 0, roomId: 327 }, //fix: location was Farm
+                            { id: 2, txt: "I'm not talking to Mooo either", show: true, mStatus: 0, roomId: 327 }, //fix: location was Farm
+                            { id: 3, txt: "Get me an energy drink", show: true, mStatus: 0, roomId: 327 }, //fix: location was Farm
+                            { id: 4, txt: "Thanks", show: true, mStatus: 0, roomId: 327 }, //fix: location was Farm
                         ]
                 },
                 {
                     missionName: "ranch", mStatus: 0, title: "Ranch", desc: "Fun on the Ranch", task:
                         [
-                            { id: 0, txt: "First meeting", show: true, mStatus: 0, roomId: 325 },
+                            { id: 0, txt: "First meeting", show: true, mStatus: 0, roomId: 328 }, //fix: location was Farm
                             { id: 1, txt: "Break out plan #1", show: true, mStatus: 0, roomId: 328 },
                             { id: 2, txt: "Break out plan #2", show: true, mStatus: 0, roomId: 328 },
                         ]
@@ -1013,15 +1043,15 @@ sc.init = function () {
                 {
                     missionName: "punish", mStatus: 0, title: "Punishment", desc: "A proper punishment.", task:
                         [
-                            { id: 0, txt: "First time.", show: true, mStatus: 0, roomId: 172 },
-                            { id: 1, txt: "Repeat customer ", show: true, mStatus: 0, roomId: 172 },
+                            { id: 0, txt: "First time.", show: true, mStatus: 0, roomId: 172, roomName: "Black room" }, //roomName: what Ms. Black calls it (room 172 is "Punishment2" in global.js)
+                            { id: 1, txt: "Repeat customer", show: true, mStatus: 0, roomId: 172, roomName: "Black room", repeatable: true, needsRepeat: true }, //ticked on your 2nd punishment (room172), then the mission shows Completed [Repeatable]
                         ]
                 },
                 {
                     missionName: "talent", mStatus: 0, title: "Talent show", desc: "Expose yourself to the people", task:
                         [
-                            { id: 0, txt: "Explain", show: true, mStatus: 0, roomId: 172 },
-                            { id: 1, txt: "Repeat customer ", show: true, mStatus: 0, roomId: 172 },
+                            { id: 0, txt: "Explain", show: true, mStatus: 0, roomId: 186 },
+                            { id: 1, txt: "Repeat customer", show: true, mStatus: 0, roomId: 186, repeatable: true }, //repeat talent shows - mission shows Completed [Repeatable]
                         ]
                 },
             ]
@@ -1032,21 +1062,21 @@ sc.init = function () {
                     missionName: "pink", mStatus: 0, title: "The Pink Room", desc: "A proper place for a sissy.", task:
                         [
                             { id: 0, txt: "Introduction", show: true, mStatus: 0, roomId: 213 },
-                            { id: 1, txt: "First blowjob", show: true, mStatus: 0, roomId: 213 },
+                            { id: 1, txt: "First blowjob", show: true, mStatus: 0, roomId: 214 }, //ticked after your first Game Room session (room214)
                             { id: 2, txt: "Waitress first time", show: true, mStatus: 0, roomId: 213 },
-                            { id: 3, txt: "Gloryhole first time", show: true, mStatus: 0, roomId: 213 },
-                            { id: 4, txt: "Your own room", show: true, mStatus: 0, roomId: 213 },
+                            { id: 3, txt: "Gloryhole first time", show: true, mStatus: 0, roomId: 171 }, //fix: location was room 213
+                            { id: 4, txt: "Your own room", show: true, mStatus: 0, roomId: 215 }, //fix: location was room 213
                         ]
                 },
                 {
-                    missionName: "*missy", mStatus: 0, title: "Save Missy", desc: "What you need to do ", task:
+                    missionName: "*missy", mStatus: 0, title: "Save Missy", desc: "What you need to do", task: //fix: removed extra space in desc
                         [
                             { id: 0, txt: "Met at Missy's", show: true, mStatus: 0, roomId: 203 },
-                            { id: 1, txt: "Get More information from the Forest Queen", show: true, mStatus: 0, roomId: 477 },
+                            { id: 1, txt: "Get more information from the Forest Queen", show: true, mStatus: 0, roomId: 477 }, //fix: spelling (was "More")
                             { id: 2, txt: "Bring the letter from the Forest Queen", show: true, mStatus: 0, roomId: 203 },
                             { id: 3, txt: "Ask each person on the list if they have the code", show: true, mStatus: 0, roomId: 0 },
-                            { id: 4, txt: "Report back to Missy's Dective Agency", show: true, mStatus: 0, roomId: 203 },
-                            { id: 5, txt: "Go deep past the caves and sneak into the C.U.M. compound", show: true, mStatus: 0, roomId: 487 },
+                            { id: 4, txt: "Report back to Missy's Detective Agency", show: true, mStatus: 0, roomId: 203 }, //fix: text was "Report back to Missy's Dective Agency"
+                            { id: 5, txt: "Go deep past the caves and sneak into the C.U.M. compound", show: true, mStatus: 0, roomId: 487 }, //fix: location was 445 (upstream Nov 23 made the same change)
                         ]
                 },
             ]
@@ -1066,7 +1096,7 @@ sc.init = function () {
                 {
                     missionName: "bar", mStatus: 0, title: "Caravaggio", desc: "Meet them", task:
                         [
-                            { id: 0, txt: "Met at the bar", show: true, mStatus: 0, roomId: 250 },
+                            { id: 0, txt: "Met at the bar", show: true, mStatus: 0, roomId: 526 }, //fix: location was Naked Beaver Diner
                         ]
                 },
                 {
@@ -1075,19 +1105,19 @@ sc.init = function () {
                             { id: 0, txt: "Chat at the diner", show: true, mStatus: 0, roomId: 250 },
                             { id: 1, txt: "Chat at the diner", show: true, mStatus: 0, roomId: 250 },
                             { id: 2, txt: "Chat at the diner", show: true, mStatus: 0, roomId: 250 },
-                            { id: 3, txt: "Gift?", show: true, mStatus: 0, roomId: 250 },
+                            { id: 3, txt: "Gift? (Optional)", show: true, mStatus: 0, roomId: 250, optional: true }, //optional: not struck out if the mission finishes without it
                         ]
                 },
                 {
                     missionName: "happy", mStatus: 0, title: "Friends", desc: "Bestest work friends!", task:
                         [
-                            { id: 0, txt: "Didn't rat us out to Jeffery", show: true, mStatus: 0, roomId: 250 },
+                            { id: 0, txt: "Didn't rat us out to Jeffery", show: true, mStatus: 0, roomId: 200 }, //fix: location was Naked Beaver Diner
                         ]
                 },
                 {
                     missionName: "mad", mStatus: 0, title: "Enemies", desc: "I hate you!", task:
                         [
-                            { id: 0, txt: "Ratted us out to Jeffery", show: true, mStatus: 0, roomId: 250 },
+                            { id: 0, txt: "Ratted us out to Jeffery", show: true, mStatus: 0, roomId: 200 }, //fix: location was Naked Beaver Diner
                         ]
                 },
             ]
@@ -1100,20 +1130,20 @@ sc.init = function () {
                             { id: 0, txt: "Chat at the diner", show: true, mStatus: 0, roomId: 250 },
                             { id: 1, txt: "Chat at the diner", show: true, mStatus: 0, roomId: 250 },
                             { id: 2, txt: "Chat at the diner", show: true, mStatus: 0, roomId: 250 },
-                            { id: 3, txt: "Gift?", show: true, mStatus: 0, roomId: 250 },
+                            { id: 3, txt: "Gift? (Optional)", show: true, mStatus: 0, roomId: 250, optional: true }, //optional: not struck out if the mission finishes without it
                         ]
                 },
                 {
                     missionName: "happy", mStatus: 0, title: "Friends", desc: "Bestest work friends!", task:
                         [
-                            { id: 0, txt: "Didn't rat us out to Jeffery", show: true, mStatus: 0, roomId: 250 },
+                            { id: 0, txt: "Didn't rat us out to Jeffery", show: true, mStatus: 0, roomId: 200 }, //fix: location was Naked Beaver Diner
                             { id: 1, txt: "Warm cup of Gooey goo", show: true, mStatus: 0, roomId: 250 },
                         ]
                 },
                 {
                     missionName: "mad", mStatus: 0, title: "Enemies", desc: "I hate you!", task:
                         [
-                            { id: 0, txt: "Ratted us out to Jeffery", show: true, mStatus: 0, roomId: 250 },
+                            { id: 0, txt: "Ratted us out to Jeffery", show: true, mStatus: 0, roomId: 200 }, //fix: location was Naked Beaver Diner
                         ]
                 },
             ]
@@ -1126,19 +1156,19 @@ sc.init = function () {
                             { id: 0, txt: "Chat at the diner", show: true, mStatus: 0, roomId: 250 },
                             { id: 1, txt: "Chat at the diner", show: true, mStatus: 0, roomId: 250 },
                             { id: 2, txt: "Chat at the diner", show: true, mStatus: 0, roomId: 250 },
-                            { id: 3, txt: "Gift?", show: true, mStatus: 0, roomId: 250 },
+                            { id: 3, txt: "Gift? (Optional)", show: true, mStatus: 0, roomId: 250, optional: true }, //optional: not struck out if the mission finishes without it
                         ]
                 },
                 {
                     missionName: "happy", mStatus: 0, title: "Friends", desc: "Bestest work friends!", task:
                         [
-                            { id: 0, txt: "Didn't rat us out to Jeffery", show: true, mStatus: 0, roomId: 250 },
+                            { id: 0, txt: "Didn't rat us out to Jeffery", show: true, mStatus: 0, roomId: 200 }, //fix: location was Naked Beaver Diner
                         ]
                 },
                 {
                     missionName: "mad", mStatus: 0, title: "Enemies", desc: "I hate you!", task:
                         [
-                            { id: 0, txt: "Ratted us out to Jeffery", show: true, mStatus: 0, roomId: 250 },
+                            { id: 0, txt: "Ratted us out to Jeffery", show: true, mStatus: 0, roomId: 200 }, //fix: location was Naked Beaver Diner
                         ]
                 },
             ]
@@ -1148,7 +1178,8 @@ sc.init = function () {
                 {
                     missionName: "work", mStatus: 0, title: "You're hired!", desc: "Waitress @ the Naked Beaver", task:
                         [
-                            { id: 0, txt: "Get to work!", show: true, mStatus: 0, roomId: 250 },
+                            { id: 0, txt: "Get to work!", show: true, mStatus: 0, roomId: 250 }, //ticked after your first shift once hired (room252)
+                            { id: 1, txt: "Work a shift. [Loop]", show: true, mStatus: 0, roomId: 250, repeatable: true }, //shifts keep going - mission shows Completed [Repeatable]
                         ]
                 },
                 {
@@ -1161,7 +1192,7 @@ sc.init = function () {
                     missionName: "*panties", mStatus: 0, title: "Panties", desc: "Bring me their panties!", task:
                         [
                             { id: 0, txt: "Break into his office at night", show: true, mStatus: 0, roomId: 250 },
-                            { id: 1, txt: "Steal the panties", show: true, mStatus: 0, roomId: 303 },
+                            { id: 1, txt: "Steal the panties", show: true, mStatus: 0, roomId: 251 }, //ticked when you hand all three pairs to Jeffery in his office (room251)
                         ]
                 },
             ]
@@ -1183,8 +1214,12 @@ sc.init = function () {
                     missionName: "slut", mStatus: 0, title: "Party Bitches!", desc: "Slut, slut in da butt", task:
                         [
                             { id: 0, txt: "Meet", show: true, mStatus: 0, roomId: 526 },
-                            { id: 1, txt: "Pink room", show: true, mStatus: 0, roomId: 213 },
-                            { id: 2, txt: "I was there!", show: false, mStatus: 0, roomId: 526 },
+                            //NOTE: step 1 has no scene yet (Orchid never appears in the Pink Room). When it is implemented,
+                            //remove the "mission complete" line marked REMOVE in room526.js (g1) and the Party Bitches!
+                            //repair in sc.load, and remove the note/notImplemented options below.
+                            //Removing notImplemented also takes the [Not Fully Implemented Yet] tag off this mission, the [WIP] tag off this step and the yellow WIP name off the character on the phone.
+                            { id: 1, txt: "Pink room", show: true, mStatus: 0, roomId: 213, note: "(Not Implemented Yet)", notImplemented: true },
+                            { id: 2, txt: "I was there! (Hidden Task)", show: false, showWhenDone: true, mStatus: 0, roomId: 526 },
                         ]
                 }
             ]
@@ -1200,7 +1235,7 @@ sc.init = function () {
                 {
                     missionName: "*gf", mStatus: 0, title: "Girlfriend", desc: "I think I'm in love", task:
                         [
-                            { id: 0, txt: "Confesses his love your you", show: true, mStatus: 0, roomId: 725 },
+                            { id: 0, txt: "Confesses his love to you", show: true, mStatus: 0, roomId: 728 }, //fix: text was "Confesses his love your you"; location was Construction Entrance (upstream Nov 23 set it to 725 Bar; kept 728 River's Apartment)
                         ]
                 },
             ]
@@ -1228,9 +1263,9 @@ sc.init = function () {
                 {
                     missionName: "fuck", mStatus: 0, title: "Man enough?", desc: "A swimmer's body is hot.", task:
                         [
-                            { id: 0, txt: "Be manly enough. ", show: true, mStatus: 0, roomId: 901 },
-                            { id: 1, txt: "Swim race! ", show: true, mStatus: 0, roomId: 901 },
-                            { id: 2, txt: "Swoon her ", show: true, mStatus: 0, roomId: 726 },
+                            { id: 0, txt: "Be manly enough.", show: true, mStatus: 0, roomId: 901 }, //fix: removed extra space in text
+                            { id: 1, txt: "Swim race!", show: true, mStatus: 0, roomId: 901 }, //fix: removed extra space in text
+                            { id: 2, txt: "Swoon her", show: true, mStatus: 0, roomId: 727 }, //fix: removed extra space in text; location was Dance Floor
                         ]
                 },
             ]
@@ -1240,8 +1275,8 @@ sc.init = function () {
                 {
                     missionName: "fuck", mStatus: 0, title: "Girl enough?", desc: "Love big tits!", task:
                         [
-                            { id: 0, txt: "Tits big enough? ", show: true, mStatus: 0, roomId: 901 },
-                            { id: 1, txt: "Tricked you into sucking your cock.", show: true, mStatus: 0, roomId: 726 },
+                            { id: 0, txt: "Tits big enough?", show: true, mStatus: 0, roomId: 901 }, //fix: removed extra space in text
+                            { id: 1, txt: "Tricked you into sucking your cock.", show: true, mStatus: 0, roomId: 727 }, //fix: location was Dance Floor
                             { id: 2, txt: "The jig is up.", show: true, mStatus: 0, roomId: 726 },
                             { id: 3, txt: "I do love bussy.", show: true, mStatus: 0, roomId: 726 },
                         ]
@@ -1258,8 +1293,8 @@ sc.init = function () {
                             { id: 2, txt: "Keep practicing at home", show: true, mStatus: 0, roomId: 875 },
                             { id: 3, txt: "Uniform!!!", show: true, mStatus: 0, roomId: 875 },
                             { id: 4, txt: "Keep practicing at home", show: true, mStatus: 0, roomId: 875 },
-                            { id: 5, txt: "Sunday Big game! [Cheer level 7]", show: true, mStatus: 0, roomId: 875 },
-                            { id: 6, txt: "You're a cheerleader now  ", show: true, mStatus: 0, roomId: 875 },
+                            { id: 5, txt: "Sunday Big game! [Cheer level 7]", show: true, mStatus: 0, roomId: 875 }, //ticked when your first big game ends (room875 "cheer1_13x")
+                            { id: 6, txt: "You're a cheerleader now", show: true, mStatus: 0, roomId: 875 }, //ticked with step 5
                         ]
                 },
             ]
@@ -1285,7 +1320,10 @@ sc.init = function () {
                             { id: 1, txt: "New rule", show: true, mStatus: 0, roomId: 125 },
                             { id: 2, txt: "Blowjob bitch", show: true, mStatus: 0, roomId: 125 },
                             { id: 3, txt: "Me too", show: true, mStatus: 0, roomId: 125 },
-                            { id: 4, txt: "The new class", show: true, mStatus: 0, roomId: 125 },
+                            //NOTE: step 4 has no scene yet. When it is implemented, remove the "mission complete" line marked
+                            //REMOVE in room125.js (Kei step 3) and the Boy's Game repair in sc.load, and remove the note/notImplemented options below.
+                            //Removing notImplemented also takes the [Not Fully Implemented Yet] tag off this mission, the [WIP] tag off this step and the yellow WIP name off the character on the phone.
+                            { id: 4, txt: "The new class", show: true, mStatus: 0, roomId: 125, note: "(Not Implemented Yet)", notImplemented: true },
                         ]
                 },
             ]
@@ -1296,7 +1334,10 @@ sc.init = function () {
                     missionName: "cards", mStatus: 0, title: "Boy's Game", desc: "Play some poker", task:
                         [
                             { id: 0, txt: "Sucked his cock", show: true, mStatus: 0, roomId: 125 },
-                            { id: 1, txt: "Not there, my no-no square", show: true, mStatus: 0, roomId: 125 },
+                            //NOTE: step 1 has no scene yet. When it is implemented, remove the "mission complete" line marked
+                            //REMOVE in room125.js (t4) and the Jimmy Boy's Game repair in sc.load, and remove the note/notImplemented options below.
+                            //Removing notImplemented also takes the [Not Fully Implemented Yet] tag off this mission, the [WIP] tag off this step and the yellow WIP name off the character on the phone.
+                            { id: 1, txt: "Not there, my no-no square", show: true, mStatus: 0, roomId: 125, note: "(Not Implemented Yet)", notImplemented: true },
                         ]
                 },
             ]
@@ -1312,10 +1353,10 @@ sc.init = function () {
                             { id: 3, txt: "Sissy School, Midterm", show: true, mStatus: 0, roomId: 802 },
                             { id: 4, txt: "Sissy School, Final - Find a job", show: true, mStatus: 0, roomId: 802 },
                             { id: 5, txt: "Ask Zoey about a job", show: true, mStatus: 0, roomId: 525 },
-                            { id: 6, txt: "He has the job. Now let him know. ", show: true, mStatus: 0, roomId: 802 },
-                            { id: 7, txt: "Working girl. ", show: true, mStatus: 0, roomId: 526 },
-                            { id: 8, txt: "Boyfriend ", show: true, mStatus: 0, roomId: 526 },
-                            { id: 9, txt: "My hero! ", show: true, mStatus: 0, roomId: 802 },
+                            { id: 6, txt: "He has the job. Now let him know.", show: true, mStatus: 0, roomId: 802 }, //fix: removed extra space in text
+                            { id: 7, txt: "Working girl.", show: true, mStatus: 0, roomId: 526 }, //fix: removed extra space in text
+                            { id: 8, txt: "Boyfriend", show: true, mStatus: 0, roomId: 526 }, //fix: removed extra space in text
+                            { id: 9, txt: "My hero!", show: true, mStatus: 0, roomId: 802 }, //fix: removed extra space in text
                         ]
                 },
                 {
@@ -1330,12 +1371,12 @@ sc.init = function () {
                 {
                     missionName: "cult", mStatus: 0, title: "Cult", desc: "Taken by the cult", task:
                         [
-                            { id: 0, txt: "Taken by the cult", show: true, mStatus: 0, roomId: 800 },
-                            { id: 1, txt: "Lost son", show: false, mStatus: 0, roomId: 800 },
-                            { id: 2, txt: "Welcome", show: false, mStatus: 0, roomId: 952 },
-                            { id: 3, txt: "Can I go home?", show: false, mStatus: 0, roomId: 952 },
-                            { id: 4, txt: "I need some lotion", show: false, mStatus: 0, roomId: 952 },
-                            { id: 5, txt: "I'm ready to be broken again", show: false, mStatus: 0, roomId: 952 },
+                            { id: 0, txt: "Taken by the cult", show: true, mStatus: 0, roomId: 952 },
+                            { id: 1, txt: "Lost son (Hidden Task)", show: false, showWhenDone: true, mStatus: 0, roomId: 203 }, //his mom finds you at the PI Entrance
+                            { id: 2, txt: "Welcome (Hidden Task)", show: false, showWhenDone: true, mStatus: 0, roomId: 952 },
+                            { id: 3, txt: "Can I go home? (Hidden Task)", show: false, showWhenDone: true, mStatus: 0, roomId: 952 },
+                            { id: 4, txt: "I need some lotion (Hidden Task)", show: false, showWhenDone: true, mStatus: 0, roomId: 952 },
+                            { id: 5, txt: "I'm ready to be broken again (Hidden Task)", show: false, showWhenDone: true, mStatus: 0, roomId: 952 }, //ticked when he's ready to go again (room952 icon_boys_ralph)
                         ]
                 },
             ]
@@ -1347,20 +1388,20 @@ sc.init = function () {
                         [
                             { id: 0, txt: "First", show: true, mStatus: 0, roomId: 800 },
                             { id: 1, txt: "Rub my penis", show: true, mStatus: 0, roomId: 800 },
-                            { id: 2, txt: "Hairy muff pie", show: true, mStatus: 0, roomId: 803 },
+                            { id: 2, txt: "Hairy muff pie", show: true, mStatus: 0, roomId: 804 }, //fix: location was R Parents
                             { id: 3, txt: "Caught her husband", show: true, mStatus: 0, roomId: 803 },
                             { id: 4, txt: "The talk", show: true, mStatus: 0, roomId: 800 },
-                            { id: 5, txt: "Sissy in the middle", show: true, mStatus: 0, roomId: 800 },
+                            { id: 5, txt: "Sissy in the middle", show: true, mStatus: 0, roomId: 803 }, //fix: location was room 800
                         ]
                 },
                 {
-                    missionName: "book", mStatus: 0, title: "Bedroom", desc: "Wha cha reading?", task:
+                    missionName: "book", mStatus: 0, title: "Bedroom", desc: "Whatcha reading?", task: //fix: desc was "Wha cha reading?"
                         [
-                            { id: 0, txt: "Tell me about your book. ", show: true, mStatus: 0, roomId: 803 },
+                            { id: 0, txt: "Tell me about your book.", show: true, mStatus: 0, roomId: 803 }, //fix: removed extra space in text
                             { id: 1, txt: "Honey Biscuits", show: true, mStatus: 0, roomId: 803 },
-                            { id: 2, txt: "Tell me even more", show: true, mStatus: 0, roomId: 803 },
-                            { id: 3, txt: "One great fuck!", show: true, mStatus: 0, roomId: 803 },
-                            { id: 4, txt: "A dissapointing tiny dick", show: true, mStatus: 0, roomId: 803 },
+                            { id: 2, txt: "Tell me even more (Repeatable)", show: true, mStatus: 0, roomId: 803, repeatable: true },
+                            { id: 3, txt: "One great fuck!", show: true, mStatus: 0, roomId: 803, orTask: 4 }, //3 and 4 are alternatives
+                            { id: 4, txt: "A disappointing tiny dick", show: true, mStatus: 0, roomId: 803, orTask: 3 },
                         ]
                 },
             ]
@@ -1377,7 +1418,7 @@ sc.init = function () {
                             { id: 4, txt: "Dirty little secret", show: true, mStatus: 0, roomId: 803 },
                             { id: 5, txt: "Dirty little secret exposed", show: true, mStatus: 0, roomId: 803 },
                             { id: 6, txt: "The talk", show: true, mStatus: 0, roomId: 800 },
-                            { id: 7, txt: "Sissy in the middle", show: true, mStatus: 0, roomId: 801 },
+                            { id: 7, txt: "Sissy in the middle", show: true, mStatus: 0, roomId: 803 }, //fix: location was R Living Room
                         ]
                 },
                 {
@@ -1385,7 +1426,10 @@ sc.init = function () {
                         [
                             { id: 0, txt: "Bad girls get spanked", show: true, mStatus: 0, roomId: 804 },
                             { id: 1, txt: "Thumb in the bum", show: true, mStatus: 0, roomId: 804 },
-                            { id: 2, txt: "Don't act like you've never seen a dick before", show: true, mStatus: 0, roomId: 803 },
+                            //NOTE: step 2 has no scene yet. When it is implemented, remove the completeMission lines marked REMOVE
+                            //in room804.js and the Dad Random repair in sc.load, and remove the note/notImplemented options below.
+                            //Removing notImplemented also takes the [Not Fully Implemented Yet] tag off this mission, the [WIP] tag off this step and the yellow WIP name off the character on the phone.
+                            { id: 2, txt: "Don't act like you've never seen a dick before", show: true, mStatus: 0, roomId: 803, note: "(Not Implemented Yet)", notImplemented: true },
 
                         ]
                 },
@@ -1396,7 +1440,7 @@ sc.init = function () {
                 {
                     missionName: "meet", mStatus: 0, title: "Help", desc: "Hello weary traveler", task:
                         [
-                            { id: 0, txt: "Met for the first time", show: true, mStatus: 0, roomId: 125 },
+                            { id: 0, txt: "Met for the first time", show: true, mStatus: 0, roomId: 477 }, //fix: location was Jimmy's House
                         ]
                 },
             ]
@@ -1409,7 +1453,7 @@ sc.init = function () {
                             { id: 0, txt: "Met for the first time", show: true, mStatus: 0, roomId: 483 },
                             { id: 1, txt: "Gain their trust", show: true, mStatus: 0, roomId: 483 },
                             { id: 2, txt: "Welcome to the pack", show: true, mStatus: 0, roomId: 483 },
-                            { id: 3, txt: "Recieve the horn [Need level 10]", show: true, mStatus: 0, roomId: 483 },
+                            { id: 3, txt: "Receive the horn [Need level 10]", show: true, mStatus: 0, roomId: 483 }, //fix: text was "Recieve the horn [Need level 10]"
                         ]
                 },
             ]
@@ -1417,11 +1461,11 @@ sc.init = function () {
         {
             name: "jones", mission: [
                 {
-                    missionName: "invite", mStatus: 0, title: "Sevice", desc: "Be my submissive slut. ", task:
+                    missionName: "invite", mStatus: 0, title: "Service", desc: "Be my submissive slut. ", task: //fix: title was "Sevice"
                         [
                             { id: 0, txt: "Submissive piss whore", show: true, mStatus: 0, roomId: 170 },
                             { id: 1, txt: "Visit me at my mansion", show: true, mStatus: 0, roomId: 150 },
-                            { id: 2, txt: "First time around", show: true, mStatus: 0, roomId: 150 },
+                            { id: 2, txt: "First time around", show: true, mStatus: 0, roomId: 154 }, //fix: location was Jones Home
                             { id: 3, txt: "Missing bitch", show: true, mStatus: 0, roomId: 150 },
                         ]
                 },
@@ -1488,7 +1532,7 @@ sc.init = function () {
                     missionName: "cabin", mStatus: 0, title: "Cabin", desc: "Highway to hell", task:
                         [
                             { id: 0, txt: "A new fuck toy?", show: true, mStatus: 0, roomId: 450 },
-                            { id: 1, txt: "You just can't get enough", show: true, mStatus: 0, roomId: 150 },
+                            { id: 1, txt: "You just can't get enough", show: true, mStatus: 0, roomId: 150, note: "(Not Implemented Yet)", notImplemented: true }, //NOTE: nothing in the game ticks this step yet - remove notImplemented when it's built
                         ]
                 },
                 {
@@ -1516,7 +1560,7 @@ sc.init = function () {
                         [
                             { id: 0, txt: "Want a job? ", show: true, mStatus: 0, roomId: 600 },
                             { id: 1, txt: "First day ", show: true, mStatus: 0, roomId: 600 },
-                            { id: 2, txt: "StripWithChris ", show: true, mStatus: 0, roomId: 600 },
+                            { id: 2, txt: "Strip with Chris", show: true, mStatus: 0, roomId: 600 }, //fix: text was "StripWithChris "
                         ]
                 },
             ]
@@ -1527,7 +1571,10 @@ sc.init = function () {
                     missionName: "date", mStatus: 0, title: "Date", desc: "Romance is in the air", task:
                         [
                             { id: 0, txt: "Got his phone number. ", show: true, mStatus: 0, roomId: 575 },
-                            { id: 1, txt: "Call him after the Final", show: true, mStatus: 0, roomId: 210 },
+                            //NOTE: NOT IMPLEMENTED YET - nothing in the game ticks this step (Brayden has no phone contact and no call scene yet).
+                            //When it is implemented, remove the note/notImplemented options below.
+                            //Removing notImplemented also takes the [Not Fully Implemented Yet] tag off this mission, the [WIP] tag off this step and the yellow WIP name off the character on the phone.
+                            { id: 1, txt: "Call him after the Final", show: true, mStatus: 0, roomId: 210, note: "(Not Implemented Yet)", notImplemented: true },
                         ]
                 },
             ]
@@ -1535,10 +1582,10 @@ sc.init = function () {
         {
             name: "priest", mission: [
                 {
-                    missionName: "confession", mStatus: 0, title: "confession", desc: "Free yourself of sin", task:
+                    missionName: "confession", mStatus: 0, title: "Confession", desc: "Free yourself of sin", task: //fix: title was "confession"
                         [
                             { id: 0, txt: "First day", show: true, mStatus: 0, roomId: 775 },
-                            { id: 1, txt: "Masterbate", show: true, mStatus: 0, roomId: 775 },
+                            { id: 1, txt: "Masturbate", show: true, mStatus: 0, roomId: 775 }, //fix: spelling (was "Masterbate")
                             { id: 2, txt: "Peeked", show: true, mStatus: 0, roomId: 775 },
                             { id: 3, txt: "New Job", show: true, mStatus: 0, roomId: 775 },
                             { id: 4, txt: "Inserted my finger in my butthole", show: true, mStatus: 0, roomId: 775 },
@@ -1557,21 +1604,29 @@ sc.init = function () {
                     missionName: "dirty", mStatus: 0, title: "Web of lies", desc: "Get trapped in the web of lies", task:
                         [
                             { id: 0, txt: "Dirty girl", show: true, mStatus: 0, roomId: 775 },
-                            { id: 1, txt: "Next release", show: true, mStatus: 0, roomId: 775 },
+                            //NOTE: step 1 has no scene yet. When it is implemented, remove the "mission complete" lines
+                            //marked REMOVE in room775.js (sit_stroke) and the Web of lies repair in sc.load, and remove
+                            //the note/notImplemented options below.
+                            //Removing notImplemented also takes the [Not Fully Implemented Yet] tag off this mission, the [WIP] tag off this step and the yellow WIP name off the character on the phone.
+                            { id: 1, txt: "Next release", show: true, mStatus: 0, roomId: 775, note: "(Not Implemented Yet)", notImplemented: true },
                         ]
                 },
                 {
                     missionName: "cult", mStatus: 0, title: "Connections", desc: "Meet as a sissy", task:
                         [
                             { id: 0, txt: "Reintroduce", show: true, mStatus: 0, roomId: 950 },
-                            //{ id: 1, txt: "Next release", show: true, mStatus: 0, roomId: 775 },
+                            //NOTE: step 1 has no scene yet. When it is implemented, remove the "mission complete" line
+                            //marked REMOVE in room950.js and the Connections repair in sc.load, and remove
+                            //the note/notImplemented options below.
+                            //Removing notImplemented also takes the [Not Fully Implemented Yet] tag off this mission, the [WIP] tag off this step and the yellow WIP name off the character on the phone.
+                            { id: 1, txt: "Next release", show: true, mStatus: 0, roomId: 775, note: "(Not Implemented Yet)", notImplemented: true },
                         ]
                 },
                 {
                     missionName: "*closed", mStatus: 0, title: "Church is closed", desc: "No longer can go to the church", task:
                         [
-                            { id: 0, txt: "Sold the Nun's soul", show: true, mStatus: 0, roomId: 950 },
-                            { id: 1, txt: "Busted!", show: true, mStatus: 0, roomId: 775 },
+                            { id: 0, txt: "Sold the Nun's soul", show: true, mStatus: 0, roomId: 776 }, //fix: location was Cell
+                            { id: 1, txt: "Busted!", show: true, mStatus: 0, roomId: 776 }, //fix: location was Church
                         ]
                 },
             ]
@@ -1581,16 +1636,16 @@ sc.init = function () {
                 {
                     missionName: "sin", mStatus: 0, title: "Penance", desc: "I can't help myself", task:
                         [
-                            { id: 0, txt: "Grab tits", show: true, mStatus: 0, roomId: 775 },
-                            { id: 1, txt: "Took virginity", show: true, mStatus: 0, roomId: 775 },
-                            { id: 2, txt: "Cycle of sin", show: true, mStatus: 0, roomId: 775 },
+                            { id: 0, txt: "Grab tits", show: true, mStatus: 0, roomId: 776 }, //fix: location was Church
+                            { id: 1, txt: "Took virginity", show: true, mStatus: 0, roomId: 776 }, //fix: location was Church
+                            { id: 2, txt: "Cycle of sin", show: true, mStatus: 0, roomId: 776 }, //fix: location was Church
                         ]
                 },
                 {
                     missionName: "*sin", mStatus: 0, title: "Free her", desc: "Her only sin was falling in love.", task:
                         [
-                            { id: 0, txt: "Get the list and talk to the priest", show: true, mStatus: 0, roomId: 775 },
-                            { id: 1, txt: "Freed the nun!", show: true, mStatus: 0, roomId: 775 },
+                            { id: 0, txt: "Get the list and talk to the priest", show: true, mStatus: 0, roomId: 776 }, //fix: location was Church
+                            { id: 1, txt: "Freed the nun!", show: true, mStatus: 0, roomId: 776 }, //fix: location was Church
                         ]
                 },
             ]
@@ -1615,12 +1670,75 @@ sc.init = function () {
         },
         {
             name: "martha", mission: [
+                //Sissy School classes, one mission per class level (sissy.st "y" in gamevariables.js).
+                //Titles: Classes - Level 1, Classes - Level 2, Mid-term exam, Classes - Level 3, Classes - Level 4, Final Exam
+                //(missionName class1-class6 follows the code's y value - keep it so saves still match).
+                //Steps are in the order you can take them (prerequisites first). Task id = the class id in sissy.st. Statuses are copied from sissy.st by sc.syncSissyClasses().
+                {
+                    missionName: "class1", mStatus: 0, title: "Classes - Level 1", desc: "First year classes", task:
+                        [
+                            { id: 0, txt: "Sissy Intro", show: true, mStatus: 0, roomId: 209 },
+                            { id: 1, txt: "Feminization 101", show: true, mStatus: 0, roomId: 180 },
+                            { id: 2, txt: "Anal 101", show: true, mStatus: 0, roomId: 175 },
+                            { id: 26, txt: "Bondage 107", show: true, mStatus: 0, roomId: 181 },
+                            { id: 19, txt: "Feminization 102", show: true, mStatus: 0, roomId: 180 },
+                        ]
+                },
+                {
+                    missionName: "class2", mStatus: 0, title: "Classes - Level 2", desc: "Second year classes", task:
+                        [
+                            { id: 3, txt: "Feminization 201", show: true, mStatus: 0, roomId: 180 },
+                            { id: 16, txt: "Feminization 202", show: true, mStatus: 0, roomId: 180 },
+                            { id: 6, txt: "Toilet 207", show: true, mStatus: 0, roomId: 180 },
+                            { id: 4, txt: "Anal 202", show: true, mStatus: 0, roomId: 175 },
+                            { id: 7, txt: "Oral 206", show: true, mStatus: 0, roomId: 176 },
+                            { id: 5, txt: "Chastity 201", show: true, mStatus: 0, roomId: 177 },
+                            { id: 9, txt: "Cum 234", show: true, mStatus: 0, roomId: 178 },
+                            { id: 29, txt: "Exposure 215", show: true, mStatus: 0, roomId: 181 },
+                            { id: 8, txt: "Bondage 202", show: true, mStatus: 0, roomId: 181 },
+                        ]
+                },
+                {
+                    missionName: "class3", mStatus: 0, title: "Mid-term exam", desc: "Show your progress!", task:
+                        [
+                            { id: 10, txt: "Sissy mid-term", show: true, mStatus: 0, roomId: 182 },
+                        ]
+                },
+                {
+                    missionName: "class4", mStatus: 0, title: "Classes - Level 3", desc: "Third year classes", task:
+                        [
+                            { id: 15, txt: "Feminization 301", show: true, mStatus: 0, roomId: 180 },
+                            { id: 14, txt: "Enema 305", show: true, mStatus: 0, roomId: 180 },
+                            { id: 12, txt: "Anal 312", show: true, mStatus: 0, roomId: 175 },
+                            { id: 18, txt: "Oral 310", show: true, mStatus: 0, roomId: 176 },
+                            { id: 13, txt: "Chastity 302", show: true, mStatus: 0, roomId: 177 },
+                            { id: 22, txt: "Cum 304", show: true, mStatus: 0, roomId: 178 },
+                            { id: 30, txt: "Exposure 317", show: true, mStatus: 0, roomId: 170 },
+                            { id: 24, txt: "Bondage 310", show: true, mStatus: 0, roomId: 181 },
+                        ]
+                },
+                {
+                    missionName: "class5", mStatus: 0, title: "Classes - Level 4", desc: "Fourth year classes", task:
+                        [
+                            { id: 23, txt: "Feminization 423", show: true, mStatus: 0, roomId: 180 },
+                            { id: 28, txt: "Anal/Oral 421", show: true, mStatus: 0, roomId: 175 },
+                            { id: 27, txt: "Chastity 442", show: true, mStatus: 0, roomId: 177 },
+                            { id: 20, txt: "Bondage 436", show: true, mStatus: 0, roomId: 181 },
+                        ]
+                },
+                {
+                    missionName: "class6", mStatus: 0, title: "Final Exam", desc: "Graduation", task:
+                        [
+                            { id: 21, txt: "Final", show: true, mStatus: 0, roomId: 176 },
+                        ]
+                },
+                //Sissy pills is listed last, after the class missions
                 {
                     missionName: "sissy", mStatus: 0, title: "Sissy pills", desc: "Take your pills", task:
                         [
                             { id: 0, txt: "Hallway notice", show: true, mStatus: 0, roomId: 207 },
                             { id: 1, txt: "Foyer notice", show: true, mStatus: 0, roomId: 211 },
-                            { id: 2, txt: "Welcome", show: true, mStatus: 0, roomId: 211 },
+                            { id: 2, txt: "Welcome", show: true, mStatus: 0, roomId: 187 }, //ticked on your first daytime visit to Martha (elevator, white floor - room187)
                         ]
                 },
             ]
@@ -1642,7 +1760,7 @@ sc.init = function () {
                 {
                     missionName: "cult", mStatus: 0, title: "Changes", desc: "I'm a sissy now!", task:
                         [
-                            { id: 0, txt: "First meeting", show: true, mStatus: 0, roomId: 328 },
+                            { id: 0, txt: "First meeting", show: true, mStatus: 0, roomId: 952 }, //fix: location was ranch
                         ]
                 },
             ]
@@ -1652,8 +1770,11 @@ sc.init = function () {
                 {
                     missionName: "dale", mStatus: 0, title: "...", desc: "...", task:
                         [
-                            { id: 0, txt: "intro", show: true, mStatus: 0, roomId: 328 },
-                            { id: 1, txt: "Give me wine!", show: true, mStatus: 0, roomId: 328 },
+                            { id: 0, txt: "Intro", show: true, mStatus: 0, roomId: 750 },
+                            //NOTE: step 1 has no scene yet (Dale never asks for wine). When it is implemented, remove the
+                            //completeMission line marked REMOVE in room750.js and the Dale repair in sc.load, and remove the note/notImplemented options below.
+                            //Removing notImplemented also takes the [Not Fully Implemented Yet] tag off this mission, the [WIP] tag off this step and the yellow WIP name off the character on the phone.
+                            { id: 1, txt: "Give me wine!", show: true, mStatus: 0, roomId: 750, note: "(Not Implemented Yet)", notImplemented: true },
                         ]
                 },
             ]
@@ -1663,8 +1784,8 @@ sc.init = function () {
                 {
                     missionName: "doc", mStatus: 0, title: "*hic*", desc: "I'm a drunk", task:
                         [
-                            { id: 0, txt: "intro", show: true, mStatus: 0, roomId: 328 },
-                            { id: 1, txt: "Give me wine!", show: true, mStatus: 0, roomId: 328 },
+                            { id: 0, txt: "Intro", show: true, mStatus: 0, roomId: 750 }, //fix: text was "intro"; location was ranch
+                            { id: 1, txt: "Give me wine!", show: true, mStatus: 0, roomId: 750 }, //fix: location was ranch
                         ]
                 },
             ]
@@ -1677,19 +1798,19 @@ sc.init = function () {
                             { id: 0, txt: "Didn't rat him out.", show: true, mStatus: 0, roomId: 408 },
                             { id: 1, txt: "Third date?", show: true, mStatus: 0, roomId: 408 },
                             { id: 2, txt: "Where is he?", show: true, mStatus: 0, roomId: 408 },
-                            { id: 3, txt: "Forth date?", show: true, mStatus: 0, roomId: 750 },
+                            { id: 3, txt: "Fourth date?", show: true, mStatus: 0, roomId: 750 }, //fix: text was "Forth date?"
                             { id: 4, txt: "You tried to touch my erect penis!", show: true, mStatus: 0, roomId: 750 },
                             { id: 5, txt: "Gift for my girl.", show: true, mStatus: 0, roomId: 750 },
                             { id: 6, txt: "Hand job is still a job.", show: true, mStatus: 0, roomId: 750 },
                             { id: 7, txt: "Please don't touch my no no square", show: true, mStatus: 0, roomId: 750 },
-                            { id: 8, txt: "Wait for the day we can get married", show: true, mStatus: 0, roomId: 750 }
+                            { id: 8, txt: "Wait for the day we can get married", show: true, mStatus: 0, roomId: 750 } //started (In Progress) after step 7 (room750) - the ending (room975) needs it started
                         ]
                 },
                 {
                     missionName: "betray", mStatus: 0, title: "No date", desc: "Not going on that date. ", task:
                         [
                             { id: 0, txt: "Betrayed him. Told Missy where he is", show: true, mStatus: 0, roomId: 200 },
-                            { id: 1, txt: "I just don't want to date you.", show: true, mStatus: 0, roomId: 408 },
+                            { id: 1, txt: "I just don't want to date you.", show: true, mStatus: 0, roomId: 750 }, //fix: location was Stormy's
                             { id: 2, txt: "You're a boy!", show: true, mStatus: 0, roomId: 750 },
                         ]
                 },
@@ -1716,9 +1837,9 @@ sc.init = function () {
         {
             name: "crystal", mission: [
                 {
-                    missionName: "t", mStatus: 0, title: "Future", desc: "I can see your future. ", task:
+                    missionName: "t", mStatus: 0, title: "Future", desc: "I can see your future.", task: //fix: removed extra space in desc
                         [
-                            { id: 0, txt: "Why hello", show: true, mStatus: 0, roomId: 328 },
+                            { id: 0, txt: "Why hello", show: true, mStatus: 0, roomId: 751 }, //fix: location was room 328
                         ]
                 },
             ]
@@ -1728,7 +1849,7 @@ sc.init = function () {
                 {
                     missionName: "cabin", mStatus: 0, title: "Cabin", desc: "Welcome to my home, but leave.", task:
                         [
-                            { id: 0, txt: "Introduction", show: true, mStatus: 0, roomId: 328 },
+                            { id: 0, txt: "Introduction", show: true, mStatus: 0, roomId: 488 }, //fix: location was ranch
                         ]
                 },
                 {
@@ -1736,7 +1857,7 @@ sc.init = function () {
                         [
                             { id: 0, txt: "Did you poop?", show: true, mStatus: 0, roomId: 950 },
                             { id: 1, txt: "Can you help?", show: true, mStatus: 0, roomId: 950 },
-                            { id: 2, txt: "You need the proper rank.", show: true, mStatus: 0, roomId: 950 },
+                            { id: 2, txt: "You need the proper rank", show: true, mStatus: 0, roomId: 950 }, //tidy: dropped the full stop to match the other steps
                             { id: 3, txt: "A gift", show: true, mStatus: 0, roomId: 950 },
                         ]
                 },
@@ -1751,7 +1872,7 @@ sc.init = function () {
                             { id: 1, txt: "The path to enlightenment", show: true, mStatus: 0, roomId: 950 },
                             { id: 2, txt: "Did we just become friends?", show: true, mStatus: 0, roomId: 950 },
                             { id: 3, txt: "Can request work", show: true, mStatus: 0, roomId: 950 },
-                            { id: 4, txt: "Steal the Keys", show: true, mStatus: 0, roomId: 952 },
+                            { id: 4, txt: "Steal the keys", show: true, mStatus: 0, roomId: 952 }, //tidy: was "Steal the Keys"
                             { id: 5, txt: "Have some fun?", show: true, mStatus: 0, roomId: 952 },
                         ]
                 },
@@ -1768,10 +1889,10 @@ sc.init = function () {
                 {
                     missionName: "chat", mStatus: 0, title: "Chat", desc: "Leave me be", task:
                         [
-                            { id: 0, txt: "First attempt", show: true, mStatus: 0, roomId: 950 },
-                            { id: 1, txt: "Second attempt", show: true, mStatus: 0, roomId: 950 },
-                            { id: 2, txt: "Third attempt", show: true, mStatus: 0, roomId: 950 },
-                            { id: 3, txt: "Good attempt", show: true, mStatus: 0, roomId: 950 },
+                            { id: 0, txt: "First attempt", show: true, mStatus: 0, roomId: 479 }, //fix: location was Cell
+                            { id: 1, txt: "Second attempt", show: true, mStatus: 0, roomId: 479 }, //fix: location was Cell
+                            { id: 2, txt: "Third attempt", show: true, mStatus: 0, roomId: 479 }, //fix: location was Cell
+                            { id: 3, txt: "Good attempt", show: true, mStatus: 0, roomId: 479 }, //fix: location was Cell
                         ]
                 },
                 {
@@ -1837,7 +1958,7 @@ sc.init = function () {
         {
             name: "whore", mission: [
                 {
-                    missionName: "*assistant", mStatus: 0, title: "Assistant", desc: "My personal ass-isstant", task:
+                    missionName: "*assistant", mStatus: 0, title: "Assistant", desc: "My personal ass-istant", task: //fix: desc was "My personal ass-isstant"
                         [
                             { id: 0, txt: "Come back anytime", show: true, mStatus: 0, roomId: 752 },
                         ]
@@ -2001,18 +2122,18 @@ sc.levelName = function (charIndex) {
         //            { step: 2, txt: "She's liking you. ", m: [16] },
         //            { step: 3, txt: "A little crush perhaps? ", m: [16] },
         //            { step: 4, txt: "* Go in for the kiss!", m: [16] },
-        //            { step: 5, txt: "[M] Talk about her boyfried.", m: [16] },
+        //            { step: 5, txt: "[M] Talk about her boyfriend.", m: [16] },
         //            { step: 6, txt: "[M] Talk to her on the couch during the day or early evening. Eat that ass!", m: [16] },
         //            { step: 7, txt: "[M] Talk to her on the couch during the day or early evening. Lesson learned.", m: [16] },
         //            { step: 8, txt: "[M] On the couch - Pee pee slap.", img: "", m: [16] },
         //            { step: 9, txt: "[M] Visit her in her room between 8PM and 10PM. It only happens after you've been kicked out due to playing truth or dare with the girls. ", m: [16] },
         //            { step: 10, txt: "[M] Visit her in her room between 8PM and 10PM. ", m: [16] },
-        //            { step: 11, txt: "[M] Progress Lola and Evas story line. Then talk to her in her room between 8PM to 10PM.", m: [16] },
+        //            { step: 11, txt: "[M] Progress Lola and Eva's story line. Then talk to her in her room between 8PM to 10PM.", m: [16] },
         //            { step: 12, txt: "[M] End of masculine route. Find the bonus content.", img: "evaLolaBlow", m: [16] },
         //        ];
         //    else
         //        tempLevel = [
-        //            { step: 0, txt: "[F] Sissy! Get caught at home crossdressing. Purchase a polka dot dress at he mall for Sunday outing.", m: [16, 400] },
+        //            { step: 0, txt: "[F] Sissy! Get caught at home crossdressing. Purchase a polka dot dress at the mall for Sunday outing.", m: [16, 400] },
         //            { step: 1, txt: "[F] Talk to her in the living room for your surprise guest.", m: [16] },
         //            { step: 2, txt: "[F] No new content", m: [16] },
         //        ];
@@ -2037,13 +2158,13 @@ sc.levelName = function (charIndex) {
         //    //    { step: 3, txt: "Watch her eat out Chloé.", m: [500] },
         //    //    { step: 4, txt: "Talk to Zoey about her problems with Chloé.", m: [500] },
         //    //    { step: 5, txt: "Catch Chloé  Cheating (Only if your support your best friend)", m: [500] },
-        //    //    { step: 6, txt: "Sleep at Zoey's on five differnt nights.", m: [500] },
+        //    //    { step: 6, txt: "Sleep at Zoey's on five different nights.", m: [500] },
         //    //    { step: 10, txt: "Sleep once more to see her night visitor", m: [500] },
         //    //    {
         //    //        step: 11, txt: "Raise her love to max. You can help her clean up at the bar or play video games at her home. Once you're " +
         //    //            "there wear a chasity device and buy the handcuffs from the Toy Store and help her clean her bar.", m: [525]
         //    //    },
-        //    //    { step: 12, txt: "Keep helping her clean until her love meter is full. Get toy and cuffs - Voyer", m: [525] },
+        //    //    { step: 12, txt: "Keep helping her clean until her love meter is full. Get toy and cuffs - Voyeur", m: [525] },
         //    //    { step: 13, txt: "Eat her pussy after you finish cleaning up.", m: [500] },
         //    //    { step: 14, txt: "Relationship - no new content", m: [500] },
 
@@ -2088,7 +2209,7 @@ sc.levelName = function (charIndex) {
                 case -1: return "Enemies";
                 case 0: return "Gain trust";
                 case 1: return "Keep going";
-                case 2: return "Almsot there";
+                case 2: return "Almost there"; //fix: spelling/wording (was "Almsot there")
                 case 3: return "Complete";
                 default: return "Friends";
             }
@@ -2161,8 +2282,10 @@ sc.setLevel = function (name, level, points) {
 //Mission ----------------------------------------------------------------------
 
 sc.startMission = function (name, missionName, mStatus = 1) {
-    if (sc.getMission(name, missionName).notStarted)
+    if (sc.getMission(name, missionName).notStarted) {
         sc.setMission(name, missionName, mStatus);
+        sc.closeMissionIfAllTasksDone(name, missionName); //tasks may have been finished before the mission started
+    }
 };
 
 sc.getMissionEntry = function (name, missionName) {
@@ -2186,6 +2309,36 @@ sc.getMissionEntry = function (name, missionName) {
     }
     console.log("mission not found: " + name + " " + missionName);
     return null;
+};
+
+//true when the character has no missions, or none of their missions has any steps
+sc.hasNoTasks = function (name) {
+    for (let i = 0; i < sc.charMission.length; i++) {
+        if (sc.charMission[i].name === name) {
+            let missions = sc.charMission[i].mission || [];
+            for (let j = 0; j < missions.length; j++)
+                if (missions[j].task && missions[j].task.length > 0)
+                    return false;
+        }
+    }
+    return true;
+};
+
+//true when the character has missions and every one of them is complete (Completed, Failed or Closed)
+sc.allMissionsComplete = function (name) {
+    for (let i = 0; i < sc.charMission.length; i++) {
+        if (sc.charMission[i].name === name) {
+            let missions = sc.charMission[i].mission;
+            if (!missions || missions.length === 0)
+                return false;
+            for (let j = 0; j < missions.length; j++) {
+                if (!(missions[j].mStatus > 99) && !sc.isAltPathMission(name, missions[j].missionName)) //a mission ruled out by another path counts as done
+                    return false;
+            }
+            return true;
+        }
+    }
+    return false;
 };
 
 sc.getMission = function (name, missionName) {
@@ -2280,6 +2433,416 @@ sc.getActiveMissions = function (name) {
     return retArray;
 };
 
+//---------------------------------------------------------------------------
+//Auto-complete: when every task of a mission is finished, the mission itself is
+//marked finished too, instead of staying "In Progress" forever.
+//
+//sc.autoCloseSkip: missions the game still needs "In Progress" after their tasks
+//are done (ending missions, and missions checked with .inProgress/.complete/
+//.success/.fail, or that a later scene can still fail). These are never touched.
+//
+//sc.autoCloseStepLookup: missions read through sc.taskGetStep. Those are only
+//auto-closed when every task succeeded, because a Failed/Closed mission makes
+//taskGetStep return -2 and would change which scene plays.
+//---------------------------------------------------------------------------
+sc.autoCloseSkip = [
+    "bigguy/ex", "bitch/bitch", "bodhi/escape", "chuck/fuck",
+    "cop/*escape", "dog/vacation", "dollmaker/*dolls", "dolly/happy", "elijah/elijah",
+    "envy/breakup", "envy/gf", "envy/hypno", "envy/meet", "eva/*cumdump", "eva/*tom2",
+    "eva/*wife", "eva/massage", "eva/talk", "g/spar", "holly/case",
+    "janice/*boyfriend", "janice/*cuck", "janice/breakup", //"janice/*doggy" removed: My doggy completes when both steps are done (nothing checks it In Progress)
+    "janice/cuck", "janice/date", "janice/dog-x", "janice/femdom", "janice/webcam", "jeffery/*panties",
+    "jones/invite", "kinsey/*post", "landlord/*cumdump", "landlord/*mother", "landlord/sissy",
+    "landlord/spermbank", "liam/date", "lola/*cumdump", "lola/*tom2", "lola/*wife",
+    "lola/massage", "lola/sissy", "lola/talk", "nun/*sin", "nun/sin",
+    "p/*missy", "ppgirl/pp", "priest/*closed", "rachel/ranch", "ralph/cult", "river/*gf",
+    "security/ranch", "spanky/hypno", "tina/*leave", "whore/*assistant", "zoey/*bff",
+    "zoey/*help", "zoey/*wife", "zoey/cheating", "zoey/friends"
+];
+
+sc.autoCloseStepLookup = [
+    "amputee/chat", "bigguy/cult", "bigguy/rent", "bigguy/sissy", "bigguy/straight", "bitch/bitch",
+    "bodhi/cult", "cecilia/gloryhole", "chad/membership", "chuck/fuck", "cindy/fuck", "cop/bitch",
+    "crystal/t", "daria/cult", "doc/doc", "dolly/case", "elijah/elijah", "envy/gf",
+    "envy/hucow", "envy/hypno", "envy/meet", "eva/*cumdump", "eva/*tom2", "eva/fuck",
+    "eva/massage", "eva/sissy", "eva/talk", "ff/forest", "g/workout", "holly/case",
+    "janice/bitch", "janice/cuck", "janice/date", "janice/dog", "janice/femdom", "janice/webcam",
+    "jones/invite", "kinsey/milk", "landlord/man", "landlord/sissy", "landlord/talk", "lead/ranch",
+    "liam/date", "lola/*cumdump", "lola/*wife", "lola/date", "lola/massage", "lola/sissy",
+    "lola/talk", "lola/tom", "molly/case", "nun/sin", "philbert/bully", "ppgirl/pp",
+    "ralph/cult", "raven/bitch", "security/cult", "security/ranch", "stormy/property", "tiffany/friend",
+    "tim/fuck", "tom/chat", "wolf/pack", "zoey/friends", "zoey/sex"
+];
+
+//Missions with a repeatable step (task option repeatable: true): once every other step is done
+//(a step whose orTask partner succeeded counts as done), tick the repeatable steps and mark the
+//mission Completed. The repeatable scenes keep playing - they only check steps, not the mission.
+//Missions the game marks Failed only because the player went down a different storyline
+//(not because they did something wrong). The phone shows these as [Another Path Chosen] with every
+//step struck out. The mission itself stays Failed (101) so every game check works the same.
+//Each rule returns true when the failure came from the other path.
+sc.altPathRules = {
+    "envy/hypno": function () { return true; },          //Envy moved on to the Girlfriend path
+    "spanky/hypno": function () { return true; },        //added 2026-11-24: only fails when you go Envy's Girlfriend way (room301/room404 "envy100")
+    "elijah/elijah": function () { return true; },       //Betray path taken (Missy case / break up)
+    "holly/happy": function () { return true; },         //Beaver case: Happy vs Mad
+    "holly/mad": function () { return true; },
+    "dolly/happy": function () { return true; },
+    "dolly/mad": function () { return true; },
+    "molly/happy": function () { return true; },
+    "molly/mad": function () { return true; },
+    "zoey/friends": function () { return true; },        //chose to destroy the friendship (Ex-Friends path)
+    "bodhi/escape": function () { return true; },        //Daria path taken
+    //Janice: these fail when you break up with her (Breakup path). Dog can also fail on its own.
+    "janice/date": function () { return sc.getMission("janice", "breakup").startedOrComplete; },
+    "janice/webcam": function () { return sc.getMission("janice", "breakup").startedOrComplete; },
+    "janice/datr": function () { return sc.getMission("janice", "breakup").startedOrComplete; },
+    "janice/dog-x": function () { return sc.getMission("janice", "breakup").startedOrComplete; },
+    "janice/femdom": function () { return sc.getMission("janice", "breakup").startedOrComplete; }
+};
+
+//Missions that were never started and now can't be, because every scene that starts them is
+//behind a story choice you've already made the other way. Shown as [Another Path Chosen] too.
+sc.altPathNotStartedRules = {
+    //Envy: Hypno -> Hucow and Hypno -> Girlfriend are the two paths. "Failed me!" can only start from a failed Girlfriend.
+    "bigguy/ex": function () { return sc.getMissionTask("bigguy", "sissy", 4).complete; },  //confessed and took Dick's side instead of fighting him
+    //Ralph: saving him on his lawn (Missy's case) starts "My hero!" in Chat; his Cult mission only starts if that case goes badly
+    "ralph/cult": function () { return sc.getMissionTask("ralph", "room", 9).startedOrComplete; },
+    //Dick "Cult": only starts in the cult's Cum Donation once Lola's "Sissy" reached "Everyone gets fucked!" (step 13).
+    //If her Sissy mission ended without it, his Cult mission can never start.
+    "bigguy/cult": function () {
+        var lolaSissy = sc.getMission("lola", "sissy");
+        return (lolaSissy.complete || lolaSissy.fail) && !sc.getMissionTask("lola", "sissy", 13).startedOrComplete;
+    },
+    //Zoey: "Friends" ends either way - help her with Chloé (Chloé and Fuck me please follow) or end the friendship (Ex-friends)
+    "zoey/xfriends": function () { return sc.getMission("zoey", "friends").success; },
+    "zoey/cheating": function () { return sc.getMission("zoey", "friends").fail; },
+    "zoey/sex": function () { return sc.getMission("zoey", "friends").fail; },   //needs Chloé completed
+    "envy/hucow": function () { return sc.getMission("envy", "hypno").fail; },          //went the Girlfriend way
+    "envy/gf": function () { return sc.getMission("envy", "hypno").success; },          //went the Hucow way
+    "envy/breakup": function () {                                                         //she passed the test, or you went the Hucow way
+        return sc.getMission("envy", "gf").success || sc.getMission("envy", "hypno").success;
+    },
+    //Janice "Break Up": every breakup choice is in Getting to know you., the dog-sitting return,
+    //Mine! (The talk / Surprise) or the start of Bad dog!. Once you stayed with her through all of
+    //those, there is nothing left that can start it.
+    "janice/breakup": function () {
+        return sc.getMission("janice", "date").success &&
+            sc.getMission("janice", "femdom").success &&
+            sc.getMissionTask("janice", "femdom", 6).complete &&
+            sc.getMission("janice", "dog-x").startedOrComplete;
+    }
+};
+
+//A mission that isn't finished and whose every remaining step is blocked by "Secret Known" can never be completed.
+//The phone shows it in red as [Failed - Secret Known] (the saved status is not changed).
+sc.isSecretFailedMission = function (mission) {
+    if (!mission || mission.mStatus > 99)
+        return false;
+    var left = mission.task.filter(function (t) { return t.mStatus < 100 && !t.optional && !t.notImplemented; });
+    return left.length > 0 && left.every(function (t) { return t.blocked && t.note === "Secret Known"; });
+};
+
+//Missions that can't be finished any more because the story moved on (not a choice between two paths).
+//They show [<label>] instead of [Another Path Chosen], and only their unfinished steps are struck out.
+//They're still closed as Completed later by the story (e.g. the time jump in room954), which replaces this.
+//Only "is the ranch case finished" is checked, so it works wherever you were in these missions: done steps stay ticked,
+//a mission finished before the case stays Completed, a Failed one stays Failed, and nothing changes while the case is open.
+//A failed case also shuts the ranch; the time jump then completes the guard's and Philbert's missions but not Kinsey's Ranch.
+sc.closedByStoryRules = {
+    //the ranch shuts down when Missy's ranch case is done (Rachel is arrested; the farm only shows the "so quiet" scene)
+    "security/ranch": { label: "Ranch Closed", rule: function () { return missy.cases[19].complete; } }, //CUM Guard "Who am I"
+    "kinsey/ranch": { label: "Ranch Closed", rule: function () { return missy.cases[19].complete; } },   //Kinsey "Ranch" (Break out plan #2)
+    "philbert/barn": { label: "Ranch Closed", rule: function () { return missy.cases[19].complete; } },  //Philbert "Barn" (starts in the barn after "Who am I")
+};
+sc.isClosedByStory = function (name, missionName) {
+    var r = sc.closedByStoryRules[name + "/" + missionName];
+    var m = sc.getMission(name, missionName);
+    return !!(r && m !== null && m.mStatus < 100 && typeof missy !== "undefined" && missy.cases && r.rule());
+};
+//The bracketed tag shown for a ruled-out mission
+sc.altPathLabel = function (name, missionName) {
+    return sc.isClosedByStory(name, missionName) ? sc.closedByStoryRules[name + "/" + missionName].label : "Another Path Chosen";
+};
+
+sc.isAltPathMission = function (name, missionName) {
+    var key = name + "/" + missionName;
+    var m = sc.getMission(name, missionName);
+    if (m === null)
+        return false;
+    if (sc.isClosedByStory(name, missionName))
+        return true;
+    if (m.fail && sc.altPathRules[key])
+        return sc.altPathRules[key]();
+    if (m.notStarted && sc.altPathNotStartedRules[key])
+        return sc.altPathNotStartedRules[key]();
+    return false;
+};
+
+//Copy Sissy School class progress (sissy.st) into Mistress Martha's "Classes - Level N" missions.
+//A class step is ticked when the class is done. A level is In Progress once any of its classes is
+//done or can be taken (all its prerequisite classes done), and Completed when every class is done.
+//During the final week the Final step lists the final's tasks underneath it.
+sc.syncSissyClasses = function () {
+    sc.closeLandlordMisc(); //Mother's Random (runs whenever the phone opens)
+    if (typeof sissy === "undefined" || !Array.isArray(sissy.st) || sissy.st.length === 0)
+        return;
+    var mi = sc.charMission.findIndex(function (c) { return c.name === "martha"; });
+    if (mi < 0)
+        return;
+    var classDone = function (id) { return sissy.st[id] !== undefined && sissy.st[id].ach; };
+    sc.charMission[mi].mission.forEach(function (m) {
+        if (!m.missionName.startsWith("class"))
+            return;
+        var done = 0, open = false;
+        m.task.forEach(function (t) {
+            var c = sissy.st[t.id];
+            t.mStatus = classDone(t.id) ? 100 : 0;
+            if (t.mStatus === 100)
+                done++;
+            else if (c && t.id === 21) { //Final: needs every Level 4 and 5 class (same rule as the class board, room210)
+                if (sissy.st.every(function (o, k) { return k === 21 || !o.active || o.y < 4 || o.ach; }))
+                    open = true;
+            }
+            else if (c && c.pID.every(classDone))
+                open = true;
+            delete t.note;
+        });
+        if (m.task.length > 0 && done === m.task.length)
+            m.mStatus = 100;
+        else if (done > 0 || open)
+            m.mStatus = 1;
+        else
+            m.mStatus = 0;
+    });
+    //"Sneaky sleep fuck" needs the girl drunk, and she only gets drunk at Truth or Dare / Spin the Bottle, which stop
+    //once her Sissy mission starts (your secret is known). Then the step can't be done: strike it out with a note.
+    var blockStep = function (name, missionName, taskId, blocked, note) {
+        var e = sc.getMissionTaskEntry(name, missionName, taskId);
+        if (e === null)
+            return;
+        if (blocked && e.task.mStatus < 100) {
+            e.task.blocked = true;
+            e.task.note = note;
+        }
+        else {
+            delete e.task.blocked;
+            if (e.task.note === note)
+                delete e.task.note;
+        }
+    };
+    //Steps that can only be done before a character finds out your secret. Once her Sissy mission has started
+    //(the secret is out), the scenes that tick them are gone, so an unfinished step is struck out with "Secret Known".
+    //  Lola / Eva: everything on their old chat menu (talk, massage, drinking games, practice dates,
+    //  sneaky sleep fuck - which needs her drunk from the games). Mother: "Now you're a man!" (her masculine route).
+    //only when that character's own secret flag is on (and her Sissy mission has started, which removes the scenes)
+    var lolaOut = sc.getSecret("lola").secretOut && sc.getMission("lola", "sissy").startedOrComplete;
+    var evaOut = sc.getSecret("eva").secretOut && sc.getMission("eva", "sissy").startedOrComplete;
+    var momOut = sc.getSecret("landlord").secretOut && sc.getMission("landlord", "sissy").startedOrComplete;
+    var secretRules = [
+        ["lola", "talk", null, lolaOut], ["lola", "massage", null, lolaOut], ["lola", "games", null, lolaOut],
+        ["lola", "date", null, lolaOut], ["lola", "random", [1], lolaOut],
+        ["eva", "talk", null, evaOut], ["eva", "massage", null, evaOut], ["eva", "games", null, evaOut],
+        ["eva", "random", [0], evaOut],
+        ["landlord", "man", null, momOut]
+        //not marked: steps blocked by ANOTHER character's secret (Eva's Dirty sex steps on Lola's dates,
+        //Mother's "Kicked out"/"Chastity Check" after a sneaky sleep fuck)
+    ];
+    secretRules.forEach(function (r) {
+        var m = sc.getMission(r[0], r[1]);
+        if (m === null)
+            return;
+        sc.charMission[m.i].mission[m.j].task.forEach(function (t) {
+            if (r[2] === null || r[2].indexOf(t.id) > -1)
+                blockStep(r[0], r[1], t.id, r[3], "Secret Known");
+        });
+    });
+    //(the phone puts "Secret Known" at the end of each struck step when it fits, else on one line per mission)
+    //Ms. Pussywinks' "The Pink Room" needs you to graduate first - say so under its first step
+    var pink = sc.getMissionTaskEntry("p", "pink", 0);
+    if (pink !== null) {
+        if (!classDone(21) && pink.task.mStatus < 100)
+            pink.task.note = "(Must graduate from the Sissy School)";
+        else
+            delete pink.task.note;
+    }
+    //final week: show the final's tasks under the Final step
+    if (gv.get("sissySchoolClass") === "finalx" && !classDone(21)) {
+        var fin = sc.getMissionTaskEntry("martha", "class6", 21);
+        if (fin !== null) {
+            //each task is crossed off with (Done) once you've done it
+            var finDone = function (txt, done, doneTxt) {
+                return done ? '<span style="text-decoration: line-through;">' + txt + '</span> (' + (doneTxt || "Done") + ')' : txt;
+            };
+            var pageant = gv.get("sissyfinal_pageant");
+            fin.task.note = [
+                "Final week - days left: " + future.get("sissyfinal"),
+                finDone("1. Friday Night: Strip at the strip club", gv.get("sissyfinal_stripper") === true),
+                finDone("2. Saturday Night: Visit the Pink Room at Missy's before " + nav.convertTime(18, 0), pageant !== null, pageant ? "Done - won the crown" : "Done"),
+                finDone("3. At the fast food restaurant get a boy's phone number.", gv.get("sissyfinal_brayden") === true),
+                "4. Get as many creampies as you can!"
+            ];
+            sc.charMission[mi].mission.forEach(function (m) { if (m.missionName === "class6") m.mStatus = 1; });
+        }
+    }
+};
+
+//Repairs that need the game variables (gv) - called from char.js after gv.load (gv loads after sc.load)
+sc.loadRepairsAfterGv = function () {
+    //Cult "Slave": "Taken by the cult" was never ticked (fixed in room949.js) - repair saves already taken by the cult
+    //(the Missy Cult case is done, or the cult rank has moved on from the starting "Slave")
+    if (!sc.getMission("cult", "kidnap").complete &&
+        ((typeof missy !== "undefined" && missy.cases[22] && missy.cases[22].complete) || gv.get("cultRank") !== "Slave")) {
+        sc.startMission("cult", "kidnap");
+        sc.completeMissionTask("cult", "kidnap", 0);
+    }
+    //Jeffery "Cult": "Have you brought me the panties?" was never ticked (fixed in room958.js) - repair saves that have
+    //already reached him on a delivery
+    if (!sc.getMission("jeffery", "cult").complete && gv.get("cultFoundJeffery")) {
+        sc.startMission("jeffery", "cult");
+        sc.completeMissionTask("jeffery", "cult", 0);
+    }
+    //"Took Monster Size Dick" was never awarded in Bondage 436 (fixed in room181.js) - give it to saves that passed the class
+    if (typeof sissy !== "undefined" && sissy.st[20] && sissy.st[20].ach && !trophy.st[25].ach)
+        trophy.add(25);
+    //Stacy's "Cheerleader": "Sunday Big game!" and "You're a cheerleader now" were never ticked - repair older
+    //saves that already played the first big game (cheer level 8+)
+    var stacyCheer = levels.get("cheer");
+    if (stacyCheer !== null && stacyCheer.l > 7 && sc.getMission("stacy", "cheer").inProgress) {
+        sc.completeMissionTask("stacy", "cheer", 5);
+        sc.completeMissionTask("stacy", "cheer", 6);
+    }
+    //Cecilia's park stall scene stops after the cult - older saves that already went through it (lolapostcult is set at the cult's end)
+    if (gv.get("lolapostcult") !== null && !gv.get("ceciliaGloryClosed"))
+        gv.set("ceciliaGloryClosed", true);
+    //Treyvon's "Doorman": step 1 was auto-ticked by an earlier patch right after step 0. It now needs a real
+    //repeat lobby scene (doormanRepeat) - undo the auto-tick on older saves
+    if (sc.getMissionTask("treyvon", "doorman", 1).complete && !gv.get("doormanRepeat")) {
+        sc.charMission[sc.getMission("treyvon", "doorman").i].mission[sc.getMission("treyvon", "doorman").j].task[1].mStatus = 0;
+        sc.setMission("treyvon", "doorman", 1);
+    }
+    //Candy's "Cheerleader!": "Meet Saturday morning" was never ticked - repair older saves that already practiced
+    var cheer = levels.get("cheer");
+    if (sc.getMission("candy", "cheer").inProgress && sc.getMissionTask("candy", "cheer", 0).notStarted && cheer !== null && (cheer.l > 0 || cheer.c > 0))
+        sc.completeMissionTask("candy", "cheer", 0);
+    //Candy's "Cheerleader!": "Cheerleading practice." ticks on your 2nd practice, counted in cheerPractices.
+    //Older saves have no count yet: one practice if the cheer level is still 0, otherwise two (estimated once).
+    if (cheer !== null && sc.getMissionTask("candy", "cheer", 0).complete && gv.get("cheerPractices") === 0)
+        gv.set("cheerPractices", (cheer.l > 0 || sc.getMissionTask("candy", "cheer", 1).complete) ? 2 : 1);
+    if (cheer !== null && sc.getMissionTask("candy", "cheer", 0).complete) {
+        var cheerM = sc.getMission("candy", "cheer");
+        if (sc.getMissionTask("candy", "cheer", 1).complete && gv.get("cheerPractices") < 2) {
+            sc.charMission[cheerM.i].mission[cheerM.j].task[1].mStatus = 0;
+            sc.setMission("candy", "cheer", 1);
+        }
+        else if (sc.getMissionTask("candy", "cheer", 1).notStarted && gv.get("cheerPractices") > 1)
+            sc.completeMissionTask("candy", "cheer", 1);
+    }
+    //older saves: a ticked "First time." means you've already been punished once
+    if (sc.getMissionTask("black", "punish", 0).complete && gv.get("blackPunishCount") < 1)
+        gv.set("blackPunishCount", 1);
+    //Black's "Punishment": "Repeat customer" was auto-ticked by an earlier patch even if you were only punished once.
+    //It now needs a real 2nd punishment (counted in blackPunishCount) - undo the auto-tick on older saves
+    if (sc.getMissionTask("black", "punish", 1).complete && gv.get("blackPunishCount") < 2) {
+        sc.charMission[sc.getMission("black", "punish").i].mission[sc.getMission("black", "punish").j].task[1].mStatus = 0;
+        sc.setMission("black", "punish", 1);
+    }
+};
+
+//Mother's "Random": "Chastity Check" is an ongoing check - it stays started (never ticked) so her daily
+//chastity checks keep happening. The mission counts as Completed once every other event is done and the
+//checks have started.
+sc.closeLandlordMisc = function () {
+    var m = sc.getMission("landlord", "misc");
+    if (m === null || m.complete)
+        return;
+    var tasks = sc.charMission[m.i].mission[m.j].task;
+    var ok = tasks.every(function (t) { return t.id === 5 ? t.mStatus > 0 : t.mStatus > 99; });
+    if (ok)
+        sc.setMission("landlord", "misc", 100);
+};
+
+sc.isRepeatableMission = function (mission) {
+    for (let i = 0; i < mission.task.length; i++)
+        if (mission.task[i].repeatable)
+            return true;
+    return false;
+};
+
+sc.closeRepeatableMission = function (name, missionName) {
+    let m = sc.getMission(name, missionName);
+    if (m === null || m.notStarted || m.fail)
+        return false;
+    let mission = sc.charMission[m.i].mission[m.j];
+    if (!sc.isRepeatableMission(mission))
+        return false;
+    let tasks = mission.task;
+    for (let i = 0; i < tasks.length; i++) {
+        if (tasks[i].repeatable && tasks[i].needsRepeat && tasks[i].mStatus < 100)
+            return true; //needsRepeat: this repeatable step must actually be done once before the mission completes
+        if (tasks[i].repeatable || tasks[i].mStatus > 99 || tasks[i].optional) //optional steps don't hold the mission open
+            continue;
+        if (tasks[i].orTask !== undefined && tasks[tasks[i].orTask] && tasks[tasks[i].orTask].mStatus === 100)
+            continue;
+        return true; //repeatable mission, but not finished yet
+    }
+    for (let i = 0; i < tasks.length; i++)
+        if (tasks[i].repeatable && tasks[i].mStatus < 100)
+            tasks[i].mStatus = 100;
+    if (mission.mStatus < 100)
+        mission.mStatus = 100;
+    return true;
+};
+
+sc.closeMissionIfAllTasksDone = function (name, missionName) {
+    let key = name + "/" + missionName;
+    if (sc.closeRepeatableMission(name, missionName))
+        return; //handled above
+    if (sc.autoCloseSkip.indexOf(key) > -1)
+        return;
+    let m = sc.getMission(name, missionName);
+    if (m === null || !m.inProgress)
+        return;
+    let tasks = sc.charMission[m.i].mission[m.j].task;
+    if (tasks.length === 0)
+        return;
+    //fix (2026-11-24): only the steps that are counted are compared below. Before, a skipped optional step still
+    //counted in tasks.length, so a mission finished without its optional step was set Closed instead of Completed.
+    //Also skipped now: a hidden step that was never found, and the unchosen orTask step while it is still unstarted.
+    let success = 0, fail = 0, counted = 0;
+    for (let i = 0; i < tasks.length; i++) {
+        if (tasks[i].optional && tasks[i].mStatus < 100)
+            continue; //optional steps don't hold the mission open
+        if (tasks[i].mStatus < 100 && tasks[i].orTask !== undefined && tasks.some(function (t) { return t.id === tasks[i].orTask && t.mStatus === 100; }))
+            continue; //the other choice was taken - this one no longer needs doing
+        if (tasks[i].mStatus < 100 && !tasks[i].show)
+            continue; //hidden step that was never found
+        if (tasks[i].mStatus < 100)
+            return; //still something left to do
+        counted++;
+        if (tasks[i].mStatus === 100) success++;
+        else if (tasks[i].mStatus === 101 && tasks[i].orTask !== undefined && tasks.some(function (t) { return t.id === tasks[i].orTask && t.mStatus === 100; }))
+            success++; //the other choice of an either/or (orTask) step was taken - counts as done
+        else if (tasks[i].mStatus === 101) fail++;
+    }
+    if (counted === 0)
+        return;
+    if (success === counted)
+        sc.setMission(name, missionName, 100); //Completed
+    else if (sc.autoCloseStepLookup.indexOf(key) > -1)
+        return; //some tasks failed and scenes depend on this mission's step - leave it alone
+    else if (fail === counted)
+        sc.setMission(name, missionName, 101); //Failed
+    else
+        sc.setMission(name, missionName, 102); //Closed
+};
+
+sc.closeAllFinishedMissions = function () {
+    for (let i = 0; i < sc.charMission.length; i++)
+        for (let j = 0; j < sc.charMission[i].mission.length; j++)
+            sc.closeMissionIfAllTasksDone(sc.charMission[i].name, sc.charMission[i].mission[j].missionName);
+};
+
 sc.completeMissionTask = function (name, missionName, taskId, success = true) {
     sc.setMissionTask(name, missionName, taskId, success ? 100 : 101);
 };
@@ -2300,7 +2863,7 @@ sc.completeAllUnstartedMissionAndTasks = function (name, missionName, success) {
 
 sc.completeMissionTopLevelOnly = function (name, missionName) {
     let ind = sc.getMission(name, missionName);
-    if (sc.charMission[ind.i].mission[ind.j] > 99)
+    if (sc.charMission[ind.i].mission[ind.j].mStatus > 99) //fix: compared the mission object itself to 99 (always false), now its mStatus
         return;
     let total = 0;
     let completedSuccess = 0;
@@ -2329,6 +2892,7 @@ sc.completeMissionTaskAll = function (name, missionName, taskId, success = true)
         if (sc.charMission[ind.i].mission[ind.j].task[i].id <= taskId)
             sc.charMission[ind.i].mission[ind.j].task[i].mStatus = success ? 100 : 101;
     }
+    sc.closeMissionIfAllTasksDone(name, missionName); //fix: close the mission when this ticks its last steps
 };
 
 sc.rollbackMission = function (name, missionName) {
@@ -2347,8 +2911,11 @@ sc.startMissionTask = function (name, missionName, taskId) {
 
 sc.modMissionTask = function (name, missionName, taskId, modNum) {
     var taskEntry = sc.getMissionTaskEntry(name, missionName, taskId);
-    if (taskEntry !== null)
+    if (taskEntry !== null) { //fix: ticking a step now starts its mission if needed and closes it once every step is done
         taskEntry.task.mStatus += modNum;
+        sc.autoStartMission(name, missionName);
+        sc.closeMissionIfAllTasksDone(name, missionName);
+    }
 };
 
 sc.completeMission = function (name, missionName, success = true, closed = false) {
@@ -2382,10 +2949,39 @@ sc.setMission = function (name, missionName, mStatus) {
     sc.charMission[ml.i].mission[ml.j].mStatus = mStatus;
 };
 
+//Event-tracker missions the game never starts itself. They switch to In Progress
+//as soon as any of their steps is started or completed.
+sc.autoStartMissions = [
+    "landlord/misc",    //Landlady/Mother "Random"
+    "lola/random",      //Lola "Misc"
+    "eva/random",       //Eva "Random"
+    "janice/random",    //Janice "Misc Events"
+    "ralphsdad/random"  //Ralph's Dad "Random"
+];
+
+sc.autoStartMission = function (name, missionName) {
+    if (sc.autoStartMissions.indexOf(name + "/" + missionName) < 0)
+        return;
+    let m = sc.getMission(name, missionName);
+    if (m === null || !m.notStarted)
+        return;
+    let tasks = sc.charMission[m.i].mission[m.j].task;
+    for (let i = 0; i < tasks.length; i++) {
+        if (tasks[i].mStatus > 0) {
+            sc.setMission(name, missionName, 1);
+            return;
+        }
+    }
+};
+
 sc.setMissionTask = function (name, missionName, taskId, mStatus) {
     var taskEntry = sc.getMissionTaskEntry(name, missionName, taskId);
-    if (taskEntry !== null)
+    if (taskEntry !== null) { //fix: ticking a step now starts its mission if needed and closes it once every step is done
         taskEntry.task.mStatus = mStatus;
+        sc.autoStartMission(name, missionName);
+        if (mStatus > 99)
+            sc.closeMissionIfAllTasksDone(name, missionName);
+    }
 }
 
 sc.modSecret = function (name, amount) {
@@ -2597,11 +3193,170 @@ sc.load = function (ra) {
         sc.startMission("landlord", "spermbank");
 
     //fix for v 0.25.3 for people that started it 
-    if (sc.getMissionTask("lola", "sissy", 5).startedOrComplete && future.get("lolaboy") < 0) {
+    //only when "find a nice boy" (sissy step 5) is still open and its timer is gone - not after you
+    //already picked Tom or Chad (picking kills the timer, which made this fail Tom on every load)
+    if (sc.getMissionTask("lola", "sissy", 5).inProgress && future.get("lolaboy") < 0 && sc.getMission("lola", "tom").notStarted) {
         future.kill("lolaboy");
         sc.completeMissionTask("lola", "sissy", 5, false);
         sc.completeMission("lola", "tom", false); 
     }
+    //repair saves where the line above wrongly failed Lola's Tom mission after you picked Tom
+    //(picking Tom ticks Tom step 0; picking Chad never does)
+    else if (sc.getMission("lola", "tom").fail && sc.getMissionTask("lola", "tom", 0).complete
+        && !sc.getMissionTask("lola", "tom", 2).complete) {
+        sc.setMission("lola", "tom", 1);
+        sc.completeMissionTask("lola", "sissy", 5);
+    }
+
+    //Janice Webcam "Meet my femboy!" was never ticked (see room321) - repair older saves
+    if (sc.getMissionTask("janice", "femdom", 3).complete && sc.getMissionTask("janice", "webcam", 4).notStarted)
+        sc.completeMissionTask("janice", "webcam", 4);
+    //Envy's "Girlfriend": completes after step 6 because step 7 is not implemented yet - repair older saves
+    //(remove when step 7 is implemented - see the note on that step)
+    if (sc.getMissionTask("envy", "gf", 6).complete && sc.getMission("envy", "gf").inProgress && sc.getMission("envy", "breakup").notStarted)
+        sc.completeMission("envy", "gf", true);
+    //Dick's "Laius": completes at step 2 because step 3 is not implemented yet - repair older saves
+    //(remove when step 3 is implemented - see the note on that step)
+    if (sc.getMissionTask("bigguy", "straight", 2).complete && sc.getMission("bigguy", "straight").inProgress)
+        sc.completeMission("bigguy", "straight", true);
+    //Jeffery's "You're hired!": "Get to work!" was never ticked by any scene. You are hired after
+    //the Beaver case, which already had you working shifts - repair older saves
+    if (sc.getMission("jeffery", "work").inProgress && sc.getMissionTask("jeffery", "work", 0).notStarted)
+        sc.completeMissionTask("jeffery", "work", 0);
+    //Father O'Malley's "Web of lies": completes after step 0 because step 1 is not implemented yet - repair older saves
+    //(remove when step 1 is implemented - see the note on that step)
+    if (sc.getMissionTask("priest", "dirty", 0).complete && sc.getMission("priest", "dirty").inProgress)
+        sc.completeMission("priest", "dirty", true);
+    //Janice's "Mine!": completes after step 6 because step 7 is not implemented yet - repair older saves
+    //(remove when step 7 is implemented - see the note on that step)
+    if (sc.getMissionTask("janice", "femdom", 6).complete && sc.getMission("janice", "femdom").inProgress && sc.getMission("janice", "breakup").notStarted)
+        sc.completeMission("janice", "femdom", true);
+    //Mistress Martha's "Sissy pills" was never started even after its steps were ticked - repair older saves
+    if (sc.getMission("martha", "sissy").notStarted && sc.getMissionTask("martha", "sissy", 0).complete)
+        sc.startMission("martha", "sissy");
+    //Ms. Pussywinks' "The Pink Room" was never started, and "Gloryhole first time" was only ever started - repair older saves
+    if (sc.getMission("p", "pink").notStarted && sc.getMissionTask("p", "pink", 0).complete)
+        sc.startMission("p", "pink");
+    if (sc.getMissionTask("p", "pink", 3).inProgress)
+        sc.completeMissionTask("p", "pink", 3);
+    //Zoey's "Friends": "I need your help!" was never ticked (the scene ticked step 4 again) - repair older saves
+    if (sc.getMission("zoey", "friends").success && sc.getMission("zoey", "cheating").startedOrComplete && sc.getMissionTask("zoey", "friends", 5).notStarted)
+        sc.charMission[sc.getMission("zoey", "friends").i].mission[sc.getMission("zoey", "friends").j].task[5].mStatus = 100;
+    //Orchid's "Party Bitches!": completes after "Meet" because step 1 is not implemented yet - repair older saves
+    //(remove when step 1 is implemented - see the note on that step)
+    if (sc.getMissionTask("orchid", "slut", 0).complete && sc.getMission("orchid", "slut").inProgress)
+        sc.completeMission("orchid", "slut", true);
+    //Envy's "Hucow": completes after "Drake" because step 2 is not implemented yet - repair older saves
+    //(remove when step 2 is implemented - see the note on that step)
+    if (sc.getMissionTask("envy", "hucow", 1).complete && sc.getMission("envy", "hucow").inProgress)
+        sc.completeMission("envy", "hucow", true);
+    //Envy's "Failed me!": one of its three endings happening now completes it - repair older saves
+    if (sc.getMission("envy", "breakup").inProgress &&
+        [0, 1, 2].some(function (k) { return sc.getMissionTask("envy", "breakup", k).complete; }))
+        sc.completeMission("envy", "breakup", true);
+    //Tiffany's "Friends!": the change room is a choice (one of steps 1/2 is always Failed), so the mission never
+    //auto-completed. It now completes at "Cheerleader!" - repair older saves
+    if (sc.getMissionTask("tiffany", "friend", 6).complete && sc.getMission("tiffany", "friend").inProgress)
+        sc.completeMission("tiffany", "friend", true);
+    //Kei's "Boy's Game": completes after "Me too" because step 4 is not implemented yet - repair older saves
+    //(REMOVE this repair when that step is implemented - see the NOTE on that step)
+    if (sc.getMissionTask("kei", "cards", 3).complete && sc.getMission("kei", "cards").inProgress)
+        sc.completeMission("kei", "cards", true);
+    //Jimmy's "Boy's Game": completes after step 0 because step 1 is not implemented yet - repair older saves
+    //(REMOVE this repair when that step is implemented - see the NOTE on that step)
+    if (sc.getMissionTask("jimmy", "cards", 0).complete && sc.getMission("jimmy", "cards").inProgress)
+        sc.completeMission("jimmy", "cards", true);
+    //Spanky's "Hypno": "Purchase Hypno Tapes." was never ticked, and the Hucow-path ending (half prices) never
+    //completed the mission - repair older saves
+    if (sc.getMission("spanky", "hypno").startedOrComplete && sc.getMissionTask("spanky", "hypno", 0).notStarted)
+        sc.charMission[sc.getMission("spanky", "hypno").i].mission[sc.getMission("spanky", "hypno").j].task[0].mStatus = 100;
+    if (sc.getMission("spanky", "hypno").inProgress && sc.getMissionTask("spanky", "hypno", 1).complete)
+        sc.completeMission("spanky", "hypno", true);
+    //Spanky's "Hypno": the Girlfriend path (triple prices) used to mark it Failed - it now ends Completed - repair older saves
+    if (sc.getMission("spanky", "hypno").fail && sc.getMissionTask("spanky", "hypno", 2).complete)
+        sc.setMission("spanky", "hypno", 100);
+    //Ralph's Dad "Random": completes once steps 0 and 1 are done because step 2 is not implemented yet - repair older saves
+    //(REMOVE this repair when that step is implemented - see the NOTE on that step)
+    if (sc.getMissionTask("ralphsdad", "random", 0).complete && sc.getMissionTask("ralphsdad", "random", 1).complete && !sc.getMission("ralphsdad", "random").complete)
+        sc.completeMission("ralphsdad", "random", true);
+    //Dolly's "Friends": completes after "Warm cup of Gooey goo" (the repeat scenes still play) - repair older saves
+    if (sc.getMission("dolly", "happy").inProgress && sc.getMissionTask("dolly", "happy", 1).complete)
+        sc.completeMission("dolly", "happy", true);
+    //Rachel's "Ranch": "First day" was never ticked - repair older saves that reached the ranch
+    if (sc.getMission("rachel", "ranch").startedOrComplete && sc.getMissionTask("rachel", "ranch", 0).notStarted) {
+        sc.completeMissionTask("rachel", "ranch", 0);
+        sc.completeMission("rachel", "ranch", true);
+    }
+    if (sc.getMission("rachel", "ranch").startedOrComplete && sc.getMission("rachel", "milk").inProgress) {
+        sc.completeMissionTask("rachel", "milk", 1);
+        sc.completeMission("rachel", "milk", true);
+    }
+    //Big Cop "Park": "You know why you keep coming back." was never ticked - repair older saves (mission already completed)
+    if (sc.getMission("cop", "bitch").success && sc.getMissionTask("cop", "bitch", 3).notStarted)
+        sc.charMission[sc.getMission("cop", "bitch").i].mission[sc.getMission("cop", "bitch").j].task[3].mStatus = 100;
+    //Dale: "Intro" was never ticked (called without a step id), and step 1 is not implemented yet - repair older saves
+    //(REMOVE this repair when that step is implemented - see the NOTE on that step)
+    if (sc.getMission("dale", "dale").inProgress) {
+        sc.completeMissionTask("dale", "dale", 0);
+        sc.completeMission("dale", "dale", true);
+    }
+    //Sister Jane's "Free her": "Get the list and talk to the priest" was never ticked - repair older saves
+    if (sc.getMission("nun", "*sin").success && sc.getMissionTask("nun", "*sin", 0).notStarted)
+        sc.charMission[sc.getMission("nun", "*sin").i].mission[sc.getMission("nun", "*sin").j].task[0].mStatus = 100;
+    //Mother's "Naughty girl": completes once the polka dot dress step is done - repair older saves
+    if (sc.getMissionTask("landlord", "sissy", 1).complete && sc.getMission("landlord", "sissy").inProgress)
+        sc.completeMission("landlord", "sissy", true);
+    sc.closeLandlordMisc();
+    //Philbert's "Bully": completes after "Everyone knows" because step 3 is not implemented yet - repair older saves
+    //(REMOVE this repair when that step is implemented - see the NOTE on that step)
+    if (sc.getMissionTask("philbert", "bully", 2).complete && sc.getMission("philbert", "bully").inProgress)
+        sc.completeMission("philbert", "bully", true);
+    //Father O'Mally's "Connections": completes after "Reintroduce" because step 1 is not implemented yet - repair older saves
+    //(REMOVE this repair when that step is implemented - see the NOTE on that step)
+    if (sc.getMissionTask("priest", "cult", 0).complete && sc.getMission("priest", "cult").inProgress)
+        sc.completeMission("priest", "cult", true);
+    //Sporty's "Corrupt the sissy": completes after "strip club" because step 0 is not implemented yet - repair older saves
+    //(REMOVE this repair when that step is implemented - see the NOTE on that step)
+    if (sc.getMissionTask("sporty", "corrupt", 1).complete && !sc.getMission("sporty", "corrupt").complete)
+        sc.completeMission("sporty", "corrupt", true);
+    //Cecilia's "Glory hole!": never completed after both steps (it was kept In Progress so her stall scene
+    //keeps playing - room451 now checks ceciliaGloryClosed instead) - repair older saves
+    if (sc.getMission("cecilia", "gloryhole").inProgress && sc.getMissionTask("cecilia", "gloryhole", 0).complete && sc.getMissionTask("cecilia", "gloryhole", 1).complete)
+        sc.completeMission("cecilia", "gloryhole", true);
+    //Kinsey's "Fellow Hucow": only completed when you start working on the ranch (room328). It now completes
+    //as soon as "Thanks" (the energy drink) is ticked - repair older saves
+    if (sc.getMission("kinsey", "milk").inProgress && sc.getMissionTask("kinsey", "milk", 4).complete)
+        sc.completeMission("kinsey", "milk", true);
+    //Stormy's "Property": never completed after picking one of its either/or steps - older saves are repaired by
+    //sc.closeAllFinishedMissions() at the end of sc.load (it now counts a failed orTask step as done when its other choice succeeded)
+    //Elijah's "Date": "Wait for the day we can get married" was never started after step 7, so his ending
+    //(room975) could never be picked - repair older saves
+    if (sc.getMissionTask("elijah", "elijah", 7).complete && sc.getMissionTask("elijah", "elijah", 8).notStarted && !sc.getMission("elijah", "elijah").fail)
+        sc.startMissionTask("elijah", "elijah", 8);
+    //Dr. Strangelove: never shown on the phone after you met him - repair older saves
+    if (!sc.getMission("doc", "doc").notStarted && !sc.char[sc.i("doc")].show)
+        sc.show("doc");
+    //Zoey's "Ex-friends": "Always trust your friends." was never ticked, so it stayed In Progress - repair older saves
+    if (sc.getMission("zoey", "xfriends").inProgress && sc.getMissionTask("zoey", "xfriends", 0).notStarted)
+        sc.completeMissionTask("zoey", "xfriends", 0);
+    //Bitch Face's "Friend": never completed after "I warned you!" when you followed her - repair older saves
+    //(running away fails it, so an In Progress mission with every step ticked means you followed her)
+    if (sc.getMission("bitch", "bitch").inProgress && sc.getMissionTask("bitch", "bitch", 3).complete)
+        sc.completeMission("bitch", "bitch", true);
+    //Zoey's "Chloé": "Spy on her." is ticked when the mission starts - repair older saves
+    if (sc.getMission("zoey", "cheating").inProgress && sc.getMissionTask("zoey", "cheating", 0).notStarted)
+        sc.completeMissionTask("zoey", "cheating", 0);
+    //fix: River's Bully was started without ticking "Welcome back wedgie" - repair older saves
+    if (sc.getMission("river", "bully").inProgress && sc.getMissionTask("river", "bully", 0).notStarted)
+        sc.completeMissionTask("river", "bully", 0);
+
+    //fix: start event-tracker missions that already have steps done (older saves)
+    for (i = 0; i < sc.autoStartMissions.length; i++)
+        sc.autoStartMission(sc.autoStartMissions[i].split("/")[0], sc.autoStartMissions[i].split("/")[1]);
+
+    //fix missions left In Progress after all their tasks were completed
+    sc.syncSissyClasses(); //Mistress Martha's class missions follow the Sissy School progress
+    sc.closeAllFinishedMissions();
 
     sc.show("me");
 };

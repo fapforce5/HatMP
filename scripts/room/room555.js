@@ -10,6 +10,9 @@ room555.main = function () {
         sc.modSecret("g", 100);
         sc.modSecret("chad", 100);
     }
+    //fix: mission is often started at the gym first, which skipped ticking "Introduction"
+    if (!sc.getMission("g", "secret").notStarted && sc.getMissionTask("g", "secret", 0).notStarted)
+        sc.completeMissionTask("g", "secret", 0, true);
     if (sc.getMission("g", "secret").notStarted) {
         sc.startMission("g", "secret");
         sc.completeMissionTask("g", "secret", 0, true);
@@ -51,8 +54,10 @@ room555.btnclick = function (name) {
                 "image": "555_backgym/rope2r.png",
                 "spaceAdvance": true
             }, 555);
-            if (g.pass === 5)
+            if (g.pass === 5) {
+                sc.completeMissionTask("g", "secret", 1, true); //fix: finished Drippy Bicep Curls
                 chat(13, 555);
+            }
             break;
         case "row2":
             g.pass++;
@@ -143,8 +148,10 @@ room555.btnclick = function (name) {
             invoker.invokeCurrent("chatcatch", "drawIcons");
             break;
         case "icon_curls":
-            if (gv.get("energy") < 75) {
-                chat(34, 555);
+            if (gv.get("energy") < 75) { //fix: offers energy items from the bag first (inv.energyPrompt); runs this choice again once there is enough
+                inv.energyPrompt(75, function () { room555.btnclick(name); }, function () {
+                    chat(34, 555);
+                });
             }
             else {
                 nav.killall();
@@ -157,8 +164,10 @@ room555.btnclick = function (name) {
             }
             break;
         case "icon_hipthruster":
-            if (gv.get("energy") < 75) {
-                chat(34, 555);
+            if (gv.get("energy") < 75) { //fix: offers energy items from the bag first (inv.energyPrompt); runs this choice again once there is enough
+                inv.energyPrompt(75, function () { room555.btnclick(name); }, function () {
+                    chat(34, 555);
+                });
             }
             else {
                 if (sc.getMissionTask("g", "secret", 2).notStarted) {
@@ -177,8 +186,10 @@ room555.btnclick = function (name) {
             }
             break;
         case "icon_yoga":
-            if (gv.get("energy") < 75) {
-                chat(34, 555);
+            if (gv.get("energy") < 75) { //fix: offers energy items from the bag first (inv.energyPrompt); runs this choice again once there is enough
+                inv.energyPrompt(75, function () { room555.btnclick(name); }, function () {
+                    chat(34, 555);
+                });
             }
             else if (cl.c.chastity !== null) {
                 chat(35, 555);
@@ -209,6 +220,7 @@ room555.btnclick = function (name) {
             }
             else {
                 nav.killall();
+                sc.completeMissionTask("g", "secret", 2, true); //fix: finished Hip Thrusters
                 if (cl.c.chastity === null) {
                     levels.fuckpussy("g");
                     nav.bg("555_backgym/thrust3.jpg");
@@ -258,6 +270,7 @@ room555.btnclick = function (name) {
         case "g_yoga":
             if (g.internal > 13) {
                 nav.killall();
+                sc.completeMissionTask("g", "secret", 3, true); //fix: finished Yoga Bridge
                 levels.gotbj("f", "g");
                 nav.bg("555_backgym/yoga3.jpg");
                 chat(46, 555);
@@ -282,8 +295,10 @@ room555.btnclick = function (name) {
             g.internal++;
             break;
         case "icon_cardio":
-            if (gv.get("energy") < 75) {
-                chat(34, 555);
+            if (gv.get("energy") < 75) { //fix: offers energy items from the bag first (inv.energyPrompt); runs this choice again once there is enough
+                inv.energyPrompt(75, function () { room555.btnclick(name); }, function () {
+                    chat(34, 555);
+                });
             }
             else if (levels.analSize(3).c > 2) {
                 chat(48, 555);
@@ -295,8 +310,10 @@ room555.btnclick = function (name) {
             }
             break;
         case "icon_quad":
-            if (gv.get("energy") < 75) {
-                chat(34, 555);
+            if (gv.get("energy") < 75) { //fix: offers energy items from the bag first (inv.energyPrompt); runs this choice again once there is enough
+                inv.energyPrompt(75, function () { room555.btnclick(name); }, function () {
+                    chat(34, 555);
+                });
             }
             else if (!levels.analSize(3).canTake) {
                 chat(48, 555);
@@ -311,8 +328,10 @@ room555.btnclick = function (name) {
             }
             break;
         case "icon_splits":
-            if (gv.get("energy") < 75) {
-                chat(34, 555);
+            if (gv.get("energy") < 75) { //fix: offers energy items from the bag first (inv.energyPrompt); runs this choice again once there is enough
+                inv.energyPrompt(75, function () { room555.btnclick(name); }, function () {
+                    chat(34, 555);
+                });
             }
             else if (!levels.analSize(4).canTake) {
                 chat(48, 555);
@@ -344,8 +363,10 @@ room555.btnclick = function (name) {
             chat(60, 555);
             break;
         case "icon_cockkiss":
-            if (gv.get("energy") < 75) {
-                chat(34, 555);
+            if (gv.get("energy") < 75) { //fix: offers energy items from the bag first (inv.energyPrompt); runs this choice again once there is enough
+                inv.energyPrompt(75, function () { room555.btnclick(name); }, function () {
+                    chat(34, 555);
+                });
             }
             else {
                 nav.killall();
@@ -354,8 +375,10 @@ room555.btnclick = function (name) {
             }
             break;
         case "icon_squat":
-            if (gv.get("energy") < 75) {
-                chat(34, 555);
+            if (gv.get("energy") < 75) { //fix: offers energy items from the bag first (inv.energyPrompt); runs this choice again once there is enough
+                inv.energyPrompt(75, function () { room555.btnclick(name); }, function () {
+                    chat(34, 555);
+                });
             }
             else {
                 nav.killall();

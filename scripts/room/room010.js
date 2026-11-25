@@ -382,8 +382,8 @@ room10.btnclick = function (name) {
             }
             break;
         case "cheerleader":
-            if (gv.get("energy") < 51)
-                chat(41, 10);
+            if (gv.get("energy") < 51) //fix: offers energy items from the bag first (inv.energyPrompt); runs this choice again once there is enough
+                inv.energyPrompt(51, function () { room10.btnclick(name); }, function () { chat(41, 10); });
             else {
                 switch (levels.get("cheer").l) {
                     case 1:

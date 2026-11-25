@@ -83,14 +83,16 @@ room171.btnclick = function (name) {
     var i, j;
     switch (name) {
         case "start":
-            if (gv.get("energy") < 33) {
-                chat(6, 171);
+            if (gv.get("energy") < 33) { //fix: offers energy items from the bag first (inv.energyPrompt); runs this choice again once there is enough
+                inv.energyPrompt(33, function () { room171.btnclick(name); }, function () {
+                    chat(6, 171);
+                });
             }
             else {
                 nav.killall();
                 nav.bg("171_gh/face_t0.jpg");
                 if (sc.getMissionTask("p", "pink", 3).notStarted) {
-                    sc.startMissionTask("p", "pink", 3);
+                    sc.completeMissionTask("p", "pink", 3); //fix: was only started, never ticked
                     chat(0, 171);
                 }
                 else {
@@ -331,8 +333,10 @@ room171.btnclick = function (name) {
             invoker.invokeCurrent("btnclick", "drawButtons");
             break;
         case "nextCock":
-            if (gv.get("energy") < 33) {
-                chat(7, 171);
+            if (gv.get("energy") < 33) { //fix: offers energy items from the bag first (inv.energyPrompt); runs this choice again once there is enough
+                inv.energyPrompt(33, function () { room171.btnclick(name); }, function () {
+                    chat(7, 171);
+                });
             }
             else {
                 char.addtime(20);
